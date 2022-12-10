@@ -1,0 +1,55 @@
+# @powershell-sdk.cmdlet-name Get-ActivitySeries
+query ActivitySeriesConnection(
+  $after: String
+  $filters: ActivitySeriesFilter
+  $first: Int
+  $sortBy: ActivitySeriesSortField
+  $sortOrder: SortOrder
+) {
+  activitySeriesConnection(
+    after: $after
+    first: $first
+    filters: $filters
+    sortBy: $sortBy
+    sortOrder: $sortOrder
+  ) {
+    ...ActivitySeriesConnectionFragment1
+  }
+}
+
+fragment ActivitySeriesConnectionFragment1 on ActivitySeriesConnection {
+  edges {
+    node {
+      id
+      fid
+      activitySeriesId
+      startTime
+      lastUpdated
+      lastActivityType
+      lastActivityStatus
+      location
+      objectName
+      objectId
+      objectType
+      severity
+      progress
+      cluster {
+        id
+        name
+      }
+      activityConnection {
+        nodes {
+          id
+          message
+          severity
+          time
+        }
+      }
+    }
+  }
+  pageInfo {
+    endCursor
+    hasNextPage
+    hasPreviousPage
+  }
+}

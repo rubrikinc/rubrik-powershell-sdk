@@ -1,0 +1,17 @@
+# @sh.function rsc-query-cluster-state
+# @sh.jq-filter .data.clusterConnection.nodes[] | {id, name, connectedState: .state.connectedState}
+query ClusterState($filter: ClusterFilterInput) {
+  clusterConnection(filter: $filter) {
+    ...ClusterConnectionFragment_State
+  }
+}
+
+fragment ClusterConnectionFragment_State on ClusterConnection {
+  nodes {
+    id
+    name
+    state {
+      connectedState
+    }
+  }
+}

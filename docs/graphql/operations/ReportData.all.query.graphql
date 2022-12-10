@@ -1,0 +1,55 @@
+query ReportData(
+  $first: Int!
+  $filter: SnappableFilterInput
+  $after: String
+  $sortBy: SnappableSortByEnum
+  $sortOrder: SortOrder
+) {
+  snappableConnection(
+    first: $first
+    filter: $filter
+    after: $after
+    sortBy: $sortBy
+    sortOrder: $sortOrder
+  ) {
+    ...SnappableConnectionFragment
+  }
+}
+
+fragment SnappableConnectionFragment on SnappableConnection {
+  edges {
+    cursor
+    node {
+      name
+      objectType
+      fid
+      protectionStatus
+      lastSnapshot
+      location
+      archiveStorage
+      replicaStorage
+      pullTime
+      totalSnapshots
+      missedSnapshots
+      localSnapshots
+      logicalDataReduction
+      physicalBytes
+      logicalBytes
+      archiveSnapshots
+      replicaSnapshots
+      complianceStatus
+      slaDomain {
+        name
+        id
+      }
+      cluster {
+        name
+        id
+      }
+    }
+  }
+  pageInfo {
+    endCursor
+    hasNextPage
+  }
+}

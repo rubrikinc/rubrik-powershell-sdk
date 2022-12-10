@@ -1,0 +1,30 @@
+# @powershell-sdk.cmdlet-name Get-K8Clusters
+query K8Clusters(
+  $first: Int
+  $after: String
+  $filter: [Filter!]
+  $sortBy: HierarchySortByField
+  $sortOrder: SortOrder
+) {
+  k8sClusters(
+    filter: $filter
+    first: $first
+    after: $after
+    sortBy: $sortBy
+    sortOrder: $sortOrder
+  ) {
+    ...K8ClustersFragment
+  }
+}
+
+fragment K8ClustersFragment on K8sClusterConnection {
+    edges {
+      node {
+        id
+        name
+        status
+        slaAssignment
+        lastRefreshTime
+      }
+    }
+}

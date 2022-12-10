@@ -1,0 +1,26 @@
+# @powershell-sdk.cmdlet-name Get-AllGcpCloudAccountProjectsByFeature
+query AllGcpCloudAccountProjectsByFeature(
+  $feature: CloudAccountFeature = CLOUD_NATIVE_PROTECTION
+  $search_text: String!
+  $status_filters: [CloudAccountStatus!]!
+) {
+  allGcpCloudAccountProjectsByFeature(
+    feature: $feature
+    projectStatusFilters: $status_filters
+    projectSearchText: $search_text
+  ) {
+    ...AllGcpCloudAccountProjectsByFeatureFragment
+  }
+}
+
+fragment AllGcpCloudAccountProjectsByFeatureFragment on GcpCloudAccountProjectDetail {
+    project {
+      projectId
+      projectNumber
+      name
+      id
+    }
+    featureDetail {
+      status
+    }
+}

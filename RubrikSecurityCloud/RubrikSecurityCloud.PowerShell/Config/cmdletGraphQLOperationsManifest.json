@@ -1,0 +1,7 @@
+﻿{
+  "Get-RscVsphereVm": {
+    "ListQuery": "VSphereVmListQuery",
+    "DetailQuery": "vSphereVmNew",
+    "ListQueryBySlaDomain": "vSphereVmListBySlaDomainId"
+  }
+}

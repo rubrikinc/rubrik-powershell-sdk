@@ -1,0 +1,11 @@
+# @powershell-sdk.cmdlet-name Toggle-RadarPrefsMutation
+mutation ToggleRadarPrefsMutation($input: EnableAutomaticFmdUploadInput!) {
+  enableAutomaticFmdUpload(input: $input) {
+    ...EnableAutomaticFmdUploadFragment
+  }
+}
+
+fragment EnableAutomaticFmdUploadFragment on EnableAutomaticFmdUploadReply {
+  clusterId
+  enabled
+}

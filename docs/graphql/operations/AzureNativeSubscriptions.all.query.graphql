@@ -1,0 +1,32 @@
+# @powershell-sdk.cmdlet-name Get-AzureNativeSubscriptions
+query AzureNativeSubscriptions($filter: String = "") {
+  azureNativeSubscriptions(
+    subscriptionFilters: {nameSubstringFilter: {nameSubstring: $filter}}
+  ) {
+    ...AzureNativeSubscriptionsFragment
+  }
+}
+
+fragment AzureNativeSubscriptionsFragment on AzureNativeSubscriptionConnection {
+    edges {
+      node {
+        id: id
+        name: name
+        sla_assignment: slaAssignment
+        native_id: azureSubscriptionNativeId
+        tenant_id: tenantId
+        configured_sla_domain_name: configuredSlaDomain {
+          name
+        }
+        configured_sla_domain_id: configuredSlaDomain {
+          id
+        }
+        effective_sla_domain_name: effectiveSlaDomain {
+          name
+        }
+        effective_sla_domain_id: effectiveSlaDomain {
+          id
+        }
+      }
+    }
+}

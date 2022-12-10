@@ -1,0 +1,11 @@
+# @powershell-sdk.cmdlet-name Refresh-K8sCluster
+mutation RefreshK8sCluster($input: RefreshK8sClusterInput!) {
+  refreshK8sCluster(input: $input) {
+    ...RefreshK8sClusterFragment
+  }
+}
+
+fragment RefreshK8sClusterFragment on CreateOnDemandJobReply{
+  taskchainId
+  jobId
+}

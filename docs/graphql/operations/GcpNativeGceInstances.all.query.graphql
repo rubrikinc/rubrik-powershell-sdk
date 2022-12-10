@@ -1,0 +1,66 @@
+# @powershell-sdk.cmdlet-name Get-GcpNativeGceInstances
+query GcpNativeGceInstances(
+  $first: Int
+  $after: String
+  $sortBy: GcpNativeGceInstanceSortFields
+  $sortOrder: SortOrder
+  $filters: GcpNativeGceInstanceFilters
+) {
+  gcpNativeGceInstances(
+    first: $first
+    after: $after
+    sortBy: $sortBy
+    sortOrder: $sortOrder
+    gceInstanceFilters: $filters
+  ) {
+    ...GcpNativeGceInstancesFragment
+  }
+}
+
+fragment GcpNativeGceInstancesFragment on GcpNativeGceInstanceConnection {
+    edges {
+      node {
+        id
+        nativeId
+        nativeName
+        vpcName
+        networkHostProjectNativeId
+        region
+        zone
+        isRelic
+        machineType
+        effectiveSlaDomain {
+          name
+          ... on ClusterSlaDomain {
+            fid
+            cluster {
+              id
+              name
+            }
+          }
+          ... on GlobalSlaReply {
+            id
+            name
+          }
+        }
+        gcpNativeProject {
+          id
+          name
+          nativeId
+          status
+        }
+        slaAssignment
+        authorizedOperations
+        effectiveSlaSourceObject {
+          fid
+          name
+          objectType
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+}

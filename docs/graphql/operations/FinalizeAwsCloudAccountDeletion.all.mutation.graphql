@@ -1,0 +1,15 @@
+# @powershell-sdk.cmdlet-name Start-FinalizeAwsCloudAccountDeletion
+mutation FinalizeAwsCloudAccountDeletion($cloud_account_uuid: UUID!) {
+  finalizeAwsCloudAccountDeletion(
+    input: {
+      cloudAccountId: $cloud_account_uuid
+      feature: CLOUD_NATIVE_PROTECTION
+    }
+  ) {
+    ...FinalizeAwsCloudAccountDeletionFragment
+  }
+}
+
+fragment FinalizeAwsCloudAccountDeletionFragment on FinalizeAwsCloudAccountDeletionReply {
+  message
+}

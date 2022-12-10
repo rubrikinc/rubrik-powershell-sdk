@@ -1,0 +1,35 @@
+# @powershell-sdk.cmdlet-name Start-Ec2InstanceSnapshotExportJob
+mutation StartEc2InstanceSnapshotExportJob(
+  $snapshot_id: UUID!
+  $account_id: UUID!
+  $instance_type: AwsNativeEc2InstanceType!
+  $instance_name: String!
+  $security_group_ids: [String!]!
+  $subnet_id: String!
+  $region: AwsNativeRegion!
+  $copy_tags: Boolean!
+  $kms_key_id: String
+  $ssh_keypair_name: String
+) {
+  startEc2InstanceSnapshotExportJob(
+    input: {
+      snapshotId: $snapshot_id
+      destinationAwsAccountRubrikId: $account_id
+      instanceType: $instance_type
+      instanceName: $instance_name
+      securityGroupIds: $security_group_ids
+      subnetId: $subnet_id
+      destinationRegionId: $region
+      shouldCopyTags: $copy_tags
+      kmsKeyId: $kms_key_id
+      sshKeyPairName: $ssh_keypair_name
+    }
+  ) {
+    ...StartEc2InstanceSnapshotExportJobFragment
+  }
+}
+
+fragment StartEc2InstanceSnapshotExportJobFragment on AsyncJobStatus {
+  jobId
+  __typename
+}

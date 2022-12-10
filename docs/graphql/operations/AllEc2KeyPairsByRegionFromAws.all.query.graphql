@@ -1,0 +1,10 @@
+# @powershell-sdk.cmdlet-name Get-AllEc2KeyPairsByRegionFromAws
+query AllEc2KeyPairsByRegionFromAws(
+  $region: AwsNativeRegion!
+  $aws_native_account_id: UUID!
+) {
+  allEc2KeyPairsByRegionFromAws(
+    region: $region
+    awsAccountRubrikId: $aws_native_account_id
+  )
+}

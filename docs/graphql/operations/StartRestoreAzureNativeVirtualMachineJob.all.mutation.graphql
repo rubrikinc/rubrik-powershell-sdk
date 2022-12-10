@@ -1,0 +1,20 @@
+# @powershell-sdk.cmdlet-name Start-RestoreAzureNativeVirtualMachineJob
+mutation StartRestoreAzureNativeVirtualMachineJob(
+  $snapshot_id: UUID!
+  $should_power_on: Boolean = true
+  $should_restore_tags: Boolean = true
+) {
+  startRestoreAzureNativeVirtualMachineJob(
+    input: {
+      snapshotId: $snapshot_id
+      shouldPowerOn: $should_power_on
+      shouldRestoreTags: $should_restore_tags
+    }
+  ) {
+    ...StartRestoreAzureNativeVirtualMachineJobFragment
+  }
+}
+
+fragment StartRestoreAzureNativeVirtualMachineJobFragment on AsyncJobStatus {
+  jobId
+}

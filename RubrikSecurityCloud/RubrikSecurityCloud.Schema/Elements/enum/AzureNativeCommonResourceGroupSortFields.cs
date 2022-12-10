@@ -1,0 +1,43 @@
+// AzureNativeCommonResourceGroupSortFields.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:03:14.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    public enum AzureNativeCommonResourceGroupSortFields
+    {
+        [EnumMember(Value = "AZURE_REGION")]
+        AZURE_REGION,
+
+        [EnumMember(Value = "AZURE_RG_DISK_EFFECTIVE_SLA")]
+        AZURE_RG_DISK_EFFECTIVE_SLA,
+
+        [EnumMember(Value = "AZURE_RG_SQL_DATABASE_DB_EFFECTIVE_SLA")]
+        AZURE_RG_SQL_DATABASE_DB_EFFECTIVE_SLA,
+
+        [EnumMember(Value = "AZURE_RG_SQL_MANAGED_INSTANCE_DB_EFFECTIVE_SLA")]
+        AZURE_RG_SQL_MANAGED_INSTANCE_DB_EFFECTIVE_SLA,
+
+        [EnumMember(Value = "AZURE_RG_SUBSCRIPTION_NAME")]
+        AZURE_RG_SUBSCRIPTION_NAME,
+
+        [EnumMember(Value = "AZURE_RG_VM_EFFECTIVE_SLA")]
+        AZURE_RG_VM_EFFECTIVE_SLA,
+
+        [EnumMember(Value = "NAME")]
+        NAME
+
+
+    } // enum AzureNativeCommonResourceGroupSortFields
+
+} // namespace Rubrik.SecurityCloud.Types

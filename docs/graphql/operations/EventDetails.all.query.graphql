@@ -1,0 +1,30 @@
+# @powershell-sdk.cmdlet-name Get-EventDetails
+query EventDetails($activitySeriesId: UUID!, $clusterUuid: UUID!) {
+  activitySeries(
+    input: {activitySeriesId: $activitySeriesId, clusterUuid: $clusterUuid}
+  ) {
+    ...EventDetailFragment
+  }
+}
+
+fragment EventDetailFragment on ActivitySeries {
+  activityConnection {
+    nodes {
+      message
+      status
+      time
+      severity
+    }
+  }
+  id
+  fid
+  activitySeriesId
+  objectId
+  objectName
+  objectType
+  cluster {
+    id
+    name
+  }
+  lastActivityStatus
+}

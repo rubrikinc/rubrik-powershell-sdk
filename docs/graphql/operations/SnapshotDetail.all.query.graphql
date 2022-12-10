@@ -1,0 +1,116 @@
+# @powershell-sdk.Cmdlet Get-RscSnapshot
+# @powershell-sdk.ParameterSetName Detail
+# @powershell-sdk.OutputType GenericSnapshotConnection
+query SnapshotDetail(
+  $workloadId: String!
+  $first: Int
+  $after: String
+  $snapshotFilter: [SnapshotQueryFilterInput!]
+  $sortBy: SnapshotQuerySortByField
+  $sortOrder: SortOrder
+  $timeRange: TimeRangeInput
+) {
+  snapshotOfASnappableConnection(
+    workloadId: $workloadId
+    first: $first
+    after: $after
+    snapshotFilter: $snapshotFilter
+    sortBy: $sortBy
+    sortOrder: $sortOrder
+    timeRange: $timeRange
+  ) {
+    ...SnapshotListFragment
+  }
+}
+
+fragment SnapshotListFragment on GenericSnapshotConnection {
+    edges {
+      node {
+        id
+        date
+        expirationDate
+        isOnDemandSnapshot
+        ... on CdmSnapshot {
+          cdmVersion
+          isDownloadedSnapshot
+          cluster {
+            id
+            name
+            version
+            status
+          }
+          pendingSnapshotDeletion {
+            id: snapshotFid
+            status
+          }
+          slaDomain {
+            name
+            ... on ClusterSlaDomain {
+              fid
+              cluster {
+                id
+                name
+              }
+            }
+            ... on GlobalSlaReply {
+              id
+            }
+          }
+          pendingSla {
+            id
+            name
+          }
+          snapshotRetentionInfo {
+            archivalInfos {
+              name
+              isExpirationDateCalculated
+              expirationTime
+            }
+            localInfo {
+              name
+              isExpirationDateCalculated
+              expirationTime
+            }
+            replicationInfos {
+              name
+              isExpirationDateCalculated
+              expirationTime
+            }
+          }
+          sapHanaAppMetadata {
+            backupId
+            backupPrefix
+            snapshotType
+            files {
+              backupFileSizeInBytes
+            }
+          }
+          legalHoldInfo {
+            shouldHoldInPlace
+          }
+        }
+        ... on PolarisSnapshot {
+          isDownloadedSnapshot
+          isReplica
+          isArchivalCopy
+          slaDomain {
+            name
+            ... on ClusterSlaDomain {
+              fid
+              cluster {
+                id
+                name
+              }
+            }
+            ... on GlobalSlaReply {
+              id
+            }
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+}

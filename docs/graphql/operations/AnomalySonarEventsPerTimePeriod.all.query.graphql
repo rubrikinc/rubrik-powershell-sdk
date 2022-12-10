@@ -1,0 +1,35 @@
+# @powershell-sdk.cmdlet-name Get-AnomalySonarEvent
+query AnomalySonarEventsPerTimePeriod($timeAgo: DateTime) {
+	activitySeriesConnection(filters: { lastActivityType: [ANOMALY, CLASSIFICATION], startTimeGt: $timeAgo }) {
+    ...AnomalySonarEventFragment
+	}
+}
+
+fragment AnomalySonarEventFragment on ActivitySeriesConnection {
+  edges {
+    node {
+      id
+      fid
+      activitySeriesId
+      lastUpdated
+      lastActivityType
+      lastActivityStatus
+      objectId
+      objectName
+      objectType
+      severity
+      progress
+      cluster {
+        id
+        name
+      }
+      activityConnection {
+        nodes {
+          id
+          message
+          time
+        }
+      }
+    }
+  }
+}

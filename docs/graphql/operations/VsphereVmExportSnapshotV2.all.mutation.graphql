@@ -1,0 +1,12 @@
+  # @powershell-sdk.cmdlet-name Export-VsphereVmSnapshot
+  mutation VsphereVmExportSnapshotV2(
+    $input: VsphereVmExportSnapshotV2Input!
+  ) {
+    vsphereVmExportSnapshotV2(input: $input) {
+      ...AsyncRequestStatusFragment3
+    }
+  }
+
+fragment AsyncRequestStatusFragment3 on AsyncRequestStatus {
+  id
+}

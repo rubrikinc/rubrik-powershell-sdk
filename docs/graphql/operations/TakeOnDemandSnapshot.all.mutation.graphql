@@ -1,0 +1,17 @@
+# @powershell-sdk.cmdlet-name Take-OnDemandSnapshot
+mutation TakeOnDemandSnapshot(
+  $retentionSlaId: String!
+  $snappableIds: [UUID!]!
+) {
+  takeOnDemandSnapshot(
+    input: {slaId: $retentionSlaId, workloadIds: $snappableIds}
+  ) {
+    ...TakeOnDemandSnapshot
+  }
+}
+
+fragment TakeOnDemandSnapshot on TakeOnDemandSnapshotReply {
+  errors {
+    error
+  }
+}

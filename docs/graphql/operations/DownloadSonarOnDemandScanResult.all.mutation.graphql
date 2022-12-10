@@ -1,0 +1,13 @@
+# @powershell-sdk.cmdlet-name Download-SonarOnDemandScanResult
+mutation DownloadSonarOnDemandScanResult(
+  $crawlId: String!
+  $filter: DownloadResultsCsvFiltersInput!
+) {
+  downloadResultsCsv(crawlId: $crawlId, downloadFilter: $filter) {
+    ...DownloadResultsCsv
+  }
+}
+
+fragment DownloadResultsCsv on DownloadResultsCsvReply {
+  downloadLink
+}

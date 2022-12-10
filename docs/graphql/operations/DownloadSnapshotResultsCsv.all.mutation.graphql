@@ -1,0 +1,18 @@
+# @powershell-sdk.cmdlet-name Download-SnapshotResultsCsv
+mutation DownloadSnapshotResultsCsv(
+  $filters: DownloadResultsCsvFiltersInput
+  $snappableFid: String!
+  $snapshotFid: String!
+) {
+  downloadSnapshotResultsCsv(
+    snappableFid: $snappableFid
+    snapshotFid: $snapshotFid
+    downloadFilter: $filters
+  ) {
+    ...DownloadSnapshotResultsCsvFragment
+  }
+}
+
+fragment DownloadSnapshotResultsCsvFragment on DownloadCsvReply {
+  isSuccessful
+}

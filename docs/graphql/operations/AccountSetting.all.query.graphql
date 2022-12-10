@@ -1,0 +1,12 @@
+﻿# @sh.function rsc-query-account-setting
+# @sh.jq-filter .data.accountSettings
+query AccountSetting {
+  accountSettings {
+    ...AccountSettingFragment1
+  }
+}
+
+fragment AccountSettingFragment1 on AccountSetting {
+  isEulaAccepted
+  isEmailNotificationEnabled
+}

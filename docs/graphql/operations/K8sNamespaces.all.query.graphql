@@ -1,0 +1,52 @@
+# @powershell-sdk.cmdlet-name Get-K8sNamespaces
+query K8sNamespaces($filter: [Filter!]) {
+  k8sNamespaces(filter: $filter) {
+    edges {
+      node {
+        id
+        k8sClusterId
+        namespaceName
+        isRelic
+        configuredSlaDomain {
+          id
+          name
+          version
+        }
+        effectiveSlaDomain {
+          id
+          name
+          version
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment K8sNamespaces on K8sNamespaceConnection {
+  edges {
+    node {
+      id
+      k8sClusterId
+      namespaceName
+      isRelic
+      configuredSlaDomain {
+        id
+        name
+        version
+      }
+      effectiveSlaDomain {
+        id
+        name
+        version
+      }
+    }
+  }
+  pageInfo {
+    endCursor
+    hasNextPage
+  }
+}

@@ -1,0 +1,36 @@
+query BrowseSnapshotFile(
+  $after: String
+  $first: Int
+  $path: String!
+  $searchPrefix: String
+  $snapshotFid: UUID!
+) {
+  browseSnapshotFileConnection(
+    path: $path
+    searchPrefix: $searchPrefix
+    snapshotFid: $snapshotFid
+    first: $first
+    after: $after
+  ) {
+    ...SnapshotFileConnectionFragment1
+  }
+}
+
+fragment SnapshotFileConnectionFragment1 on SnapshotFileConnection {
+  edges {
+    node {
+      absolutePath
+      displayPath
+      path
+      filename
+      fileMode
+      size
+      lastModified
+    }
+  }
+  pageInfo {
+    endCursor
+    hasNextPage
+    hasPreviousPage
+  }
+}

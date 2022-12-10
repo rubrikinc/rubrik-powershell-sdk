@@ -1,0 +1,157 @@
+{
+  "POST /api/client_token": {
+    "{'client_id':'mock_client_id','client_secret':'mock_client_secret'}": {
+      "response": {
+        "access_token": "mock_access_token",
+        "client_id": "mock_client_id"
+      },
+      "status": 200
+    }
+  },
+  "POST /api/graphql": {
+    "{'query':'query ClusterConnection{clusterConnection{edges{node{id name type}}}}'}": {
+      "response": {
+        "data": {
+          "clusterConnection": {
+            "edges": [
+              {
+                "node": {
+                  "id": "f1cd7413-5d08-4168-bcf5-e75fd80ea96b",
+                  "name": "pso-brik02",
+                  "type": "Unknown"
+                }
+              },
+              {
+                "node": {
+                  "id": "eeb06571-e013-49b2-a635-33c309c52270",
+                  "name": "pso-brik01",
+                  "type": "Unknown"
+                }
+              },
+              {
+                "node": {
+                  "id": "9b429c53-2afe-44b5-b4e4-e3a4308a69fb",
+                  "name": "WestWales",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "cfcd6638-45e8-472a-b68a-08a4f26d43f2",
+                  "name": "testseb",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "74866ac2-9495-4b5c-85f8-f9e588c56e61",
+                  "name": "Test-Cluster",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "3783fe7b-91dd-4b37-ad84-ad0e88b186df",
+                  "name": "psoghrbke01",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "545e17bc-f8eb-4ff8-ae56-f2656f590ae3",
+                  "name": "PSO-LTS-Edge",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "b96e4355-e305-4f95-b274-b2df13dd362b",
+                  "name": "KM-Edge-8",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "c31611b3-5a36-4245-82fa-8dae8ab190c2",
+                  "name": "ITS-INDIA-EDGE01",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "883c733f-450a-43e4-a6f7-3a633038f34b",
+                  "name": "davi-osla-e8-15",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "70357537-b067-43c5-b94d-896e9065f682",
+                  "name": "davi-osla-e8-02",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "32128992-a993-48f5-833a-4a4ec4df70f6",
+                  "name": "davi-osla-e8-01",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "a473b33a-4771-4e23-9420-6117e91cdd23",
+                  "name": "Carolina-HughG01",
+                  "type": "Robo"
+                }
+              },
+              {
+                "node": {
+                  "id": "eaa575f5-188f-40b7-b9da-3e49704f58ae",
+                  "name": "mtw-cces-test01",
+                  "type": "Cloud"
+                }
+              },
+              {
+                "node": {
+                  "id": "011cc51c-a98f-4391-a8c4-a9c1ca20ff58",
+                  "name": "pso-brik03",
+                  "type": "OnPrem"
+                }
+              },
+              {
+                "node": {
+                  "id": "8b012728-f4d4-4147-b2fb-e6a88042f5d8",
+                  "name": "brik04",
+                  "type": "OnPrem"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": 200
+    },
+    "{'query':'query AccountSettings{accountSettings{...AccountSettingFragment1}} fragment AccountSettingFragment1 on AccountSetting{isEulaAccepted isEmailNotificationEnabled}','operationName':'AccountSettings'}": {
+      "response": {
+        "data": {
+          "accountSettings": {
+            "isEmailNotificationEnabled": true,
+            "isEulaAccepted": false
+          }
+        }
+      },
+      "status": 200
+    },
+    "{'query':'{currentUser{id}}'}": {
+      "response": {
+        "data": {
+          "currentUser": {
+            "id": "mock_client_id"
+          }
+        }
+      },
+      "status": 200
+    }
+  }
+}

@@ -1,0 +1,38 @@
+query VsphereHostConnection(
+  $first: Int!
+  $after: String
+  $filter: [Filter!]
+  $sortBy: HierarchySortByField
+  $sortOrder: SortOrder
+) {
+  vSphereHostConnection(
+    first: $first
+    after: $after
+    filter: $filter
+    sortBy: $sortBy
+    sortOrder: $sortOrder
+  ) {
+    edges {
+      node {
+        id
+        ...VSphereHostNameFragment
+        ...VSphereHostPhysicalPathFragment
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}
+fragment VSphereHostNameFragment on VsphereHost {
+  name
+}
+fragment VSphereHostPhysicalPathFragment on VsphereHost {
+  physicalPath {
+    fid
+    name
+    objectType
+  }
+}

@@ -1,0 +1,19 @@
+# @powershell-sdk.cmdlet-name Get-SonarAnalyzerGroup
+query SonarAnalyzerGroups {
+  analyzerGroups {
+    ...AnalyzerGroupFragment
+  }
+}
+
+fragment AnalyzerGroupFragment on AnalyzerGroupConnection {
+  nodes {
+    id
+    name
+    groupType
+    analyzers {
+      id
+      name
+      analyzerType
+    }
+  }
+}

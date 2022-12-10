@@ -1,0 +1,16 @@
+# @powershell-sdk.cmdlet-name Get-AzureCloudAccountPermissionConfig
+query AzureCloudAccountPermissionConfig($cloud_account_features: CloudAccountFeature!) {
+  azureCloudAccountPermissionConfig(feature: $cloud_account_features) {
+    ...AzureCloudAccountPermissionConfigFragment
+  }
+}
+
+fragment AzureCloudAccountPermissionConfigFragment on AzureCloudAccountPermissionConfigResponse {
+    permissionVersion
+    rolePermissions {
+      excludedActions
+      excludedDataActions
+      includedActions
+      includedDataActions
+    }
+}

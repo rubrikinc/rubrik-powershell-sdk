@@ -1,0 +1,104 @@
+// AzureNativeDiskFilters.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:03:14.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    #region AzureNativeDiskFilters
+
+    public class AzureNativeDiskFilters
+    {
+        #region members
+        //      C# -> NameSubstringFilter? NameSubstringFilter
+        // GraphQL -> nameSubstringFilter: NameSubstringFilter (input)
+        [JsonProperty("nameSubstringFilter")]
+        public NameSubstringFilter? NameSubstringFilter { get; set; }
+
+        //      C# -> EffectiveSlaFilter? EffectiveSlaFilter
+        // GraphQL -> effectiveSlaFilter: EffectiveSlaFilter (input)
+        [JsonProperty("effectiveSlaFilter")]
+        public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
+
+        //      C# -> AzureNativeDiskResourceGroupFilter? ResourceGroupFilter
+        // GraphQL -> resourceGroupFilter: AzureNativeDiskResourceGroupFilter (input)
+        [JsonProperty("resourceGroupFilter")]
+        public AzureNativeDiskResourceGroupFilter? ResourceGroupFilter { get; set; }
+
+        //      C# -> AzureNativeDiskSubscriptionFilter? SubscriptionFilter
+        // GraphQL -> subscriptionFilter: AzureNativeDiskSubscriptionFilter (input)
+        [JsonProperty("subscriptionFilter")]
+        public AzureNativeDiskSubscriptionFilter? SubscriptionFilter { get; set; }
+
+        //      C# -> AzureNativeRegionFilter? RegionFilter
+        // GraphQL -> regionFilter: AzureNativeRegionFilter (input)
+        [JsonProperty("regionFilter")]
+        public AzureNativeRegionFilter? RegionFilter { get; set; }
+
+        //      C# -> AzureNativeDiskTypeFilter? DiskTypeFilter
+        // GraphQL -> diskTypeFilter: AzureNativeDiskTypeFilter (input)
+        [JsonProperty("diskTypeFilter")]
+        public AzureNativeDiskTypeFilter? DiskTypeFilter { get; set; }
+
+        //      C# -> AzureNativeAttachedVmFilter? AttachedVmFilter
+        // GraphQL -> attachedVmFilter: AzureNativeAttachedVmFilter (input)
+        [JsonProperty("attachedVmFilter")]
+        public AzureNativeAttachedVmFilter? AttachedVmFilter { get; set; }
+
+        //      C# -> RelicFilter? RelicFilter
+        // GraphQL -> relicFilter: RelicFilter (input)
+        [JsonProperty("relicFilter")]
+        public RelicFilter? RelicFilter { get; set; }
+
+        //      C# -> AzureNativeTagFilter? TagFilter
+        // GraphQL -> tagFilter: AzureNativeTagFilter (input)
+        [JsonProperty("tagFilter")]
+        public AzureNativeTagFilter? TagFilter { get; set; }
+
+        //      C# -> AzureNativeDiskExocomputeConnectedFilter? ExocomputeConnectedFilter
+        // GraphQL -> exocomputeConnectedFilter: AzureNativeDiskExocomputeConnectedFilter (input)
+        [JsonProperty("exocomputeConnectedFilter")]
+        public AzureNativeDiskExocomputeConnectedFilter? ExocomputeConnectedFilter { get; set; }
+
+        //      C# -> AzureNativeDiskFileIndexingFilter? FileIndexingFilter
+        // GraphQL -> fileIndexingFilter: AzureNativeDiskFileIndexingFilter (input)
+        [JsonProperty("fileIndexingFilter")]
+        public AzureNativeDiskFileIndexingFilter? FileIndexingFilter { get; set; }
+
+        #endregion
+
+    
+        #region methods
+        public dynamic GetInputObject()
+        {
+            IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+
+            var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            foreach (var propertyInfo in properties)
+            {
+                var value = propertyInfo.GetValue(this);
+                var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+
+                var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+
+                if (requiredProp || value != defaultValue)
+                {
+                    d[propertyInfo.Name] = value;
+                }
+            }
+            return d;
+        }
+        #endregion
+
+    } // class AzureNativeDiskFilters
+    #endregion
+
+} // namespace Rubrik.SecurityCloud.Types

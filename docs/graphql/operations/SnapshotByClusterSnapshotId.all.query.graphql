@@ -1,0 +1,16 @@
+# @powershell-sdk.Cmdlet Get-RscSnapshot
+# @powershell-sdk.ParameterSetName ClusterSnapshotId
+# @powershell-sdk.OutputType PolarisSnapshot
+query SnapshotByClusterSnapshotId($snapshotId: UUID!) {
+  snapshot(snapshotFid: $snapshotId) {
+    ...CdmSnapshotFragment1
+  }
+}
+
+fragment CdmSnapshotFragment1 on CdmSnapshot {
+  id
+  snappableId
+  expirationDate
+  isCorrupted
+  isExpired
+}

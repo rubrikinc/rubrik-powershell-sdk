@@ -1,0 +1,43 @@
+# @powershell-sdk.cmdlet-name Get-AllBlueprints
+query AllBlueprints($filter: [Filter!]!) {
+  allBlueprints(filter: $filter) {
+    ...AllBlueprintsFragment
+  }
+}
+
+fragment AllBlueprintsFragment on BlueprintNewConnection {
+  edges {
+    node {
+      id
+      name
+      status
+      version
+      numChildren
+      sourceLocation {
+        ... on BlueprintCdmLocation {
+          cluster {
+            name
+            id
+            status
+          }
+        }
+      }
+      targetLocation {
+        ... on BlueprintCdmLocation {
+          cluster {
+            name
+            id
+            status
+          }
+        }
+      }
+      latestFailover {
+        status
+        failoverType
+      }
+      lastFailoverStatus
+      lastFailoverTime
+      lastTestFailoverStatus
+    }
+  }
+}

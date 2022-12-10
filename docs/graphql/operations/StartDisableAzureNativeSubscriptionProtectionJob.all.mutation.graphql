@@ -1,0 +1,20 @@
+# @powershell-sdk.cmdlet-name Start-DisableAzureNativeSubscriptionProtectionJob
+mutation StartDisableAzureNativeSubscriptionProtectionJob(
+  $azure_subscription_rubrik_id: UUID!
+  $delete_snapshots: Boolean!
+  $feature: AzureNativeProtectionFeature!
+) {
+  startDisableAzureNativeSubscriptionProtectionJob(
+    input: {
+      azureSubscriptionRubrikId: $azure_subscription_rubrik_id
+      shouldDeleteNativeSnapshots: $delete_snapshots
+      azureNativeProtectionFeature: $feature
+    }
+  ) {
+    ...StartDisableAzureNativeSubscriptionProtectionJobFragment
+  }
+}
+
+fragment StartDisableAzureNativeSubscriptionProtectionJobFragment on AsyncJobStatus {
+  jobId
+}

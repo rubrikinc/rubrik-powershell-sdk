@@ -1,0 +1,17 @@
+# RadarEnabledClusters
+
+query RadarEnabledClusters {
+  radarClusterConnection {
+    ...ClusterConnectionFragment_RadarEnabledClusters
+  }
+}
+
+fragment ClusterConnectionFragment_RadarEnabledClusters on ClusterConnection {
+  nodes {
+    lambdaConfig {
+      clusterId
+      enableAutomaticFmdUpload
+    }
+    name
+  }
+}

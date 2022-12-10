@@ -1,0 +1,11 @@
+# @powershell-sdk.cmdlet-name Take-VsphereOnDemandSnapshot
+mutation VsphereOnDemandSnapshot($input: VsphereOnDemandSnapshotInput!) {
+  vsphereOnDemandSnapshot(input: $input) {
+    ...AsyncRequestStatusFragment1
+  }
+}
+
+fragment AsyncRequestStatusFragment1 on AsyncRequestStatus {
+  id
+  status
+}

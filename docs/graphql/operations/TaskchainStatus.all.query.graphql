@@ -1,0 +1,16 @@
+query TaskchainStatus($filter: String!) {
+  getKorgTaskchainStatus(taskchainId: $filter) {
+    ...KorgTaskchainStatusFragment
+  }
+}
+
+fragment KorgTaskchainStatusFragment on GetTaskchainStatusReply {
+  taskchain {
+    id
+    state
+    taskchainUuid
+    ... on Taskchain {
+      progressedAt
+    }
+  }
+}

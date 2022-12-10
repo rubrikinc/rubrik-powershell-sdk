@@ -1,0 +1,60 @@
+# @powershell-sdk.cmdlet-name Get-SonarOnDemandScanStatus
+query SonarOnDemandScanStatuses($crawlId: String!) {
+  crawl(crawlId: $crawlId) {
+    id
+    crawlObjConnection {
+      nodes {
+        ...CrawlObjFragment
+      }
+    }
+  }
+}
+
+fragment CrawlObjFragment on CrawlObj {
+  crawlId
+  error
+  snappable {
+    id
+    name
+    objectType
+  }
+  snapshotTime
+  status
+  progress
+  totalHits
+  analyzerGroupResults {
+    ...AnalyzerGroupResultFragment
+  }
+  cluster {
+    id
+    name
+    type
+  }
+}
+
+fragment AnalyzerGroupResultFragment on AnalyzerGroupResult {
+  analyzerGroup {
+    groupType
+    id
+    name
+  }
+  analyzerResults {
+    hits {
+      totalHits
+      violations
+      permittedHits
+    }
+    analyzer {
+      id
+      name
+      analyzerType
+    }
+  }
+  hits {
+    totalHits
+    violations
+    permittedHits
+    violationsDelta
+    totalHitsDelta
+  }
+}

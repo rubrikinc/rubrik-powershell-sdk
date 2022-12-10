@@ -1,0 +1,31 @@
+// MssqlRootPropertiesRootType.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:03:46.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    public enum MssqlRootPropertiesRootType
+    {
+        [EnumMember(Value = "MSSQL_ROOT_PROPERTIES_ROOT_TYPE_HOST")]
+        MSSQL_ROOT_PROPERTIES_ROOT_TYPE_HOST,
+
+        [EnumMember(Value = "MSSQL_ROOT_PROPERTIES_ROOT_TYPE_MSSQL_AVAILABILITY_GROUP")]
+        MSSQL_ROOT_PROPERTIES_ROOT_TYPE_MSSQL_AVAILABILITY_GROUP,
+
+        [EnumMember(Value = "MSSQL_ROOT_PROPERTIES_ROOT_TYPE_WINDOWS_CLUSTER")]
+        MSSQL_ROOT_PROPERTIES_ROOT_TYPE_WINDOWS_CLUSTER
+
+
+    } // enum MssqlRootPropertiesRootType
+
+} // namespace Rubrik.SecurityCloud.Types

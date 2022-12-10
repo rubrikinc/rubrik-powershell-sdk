@@ -1,0 +1,52 @@
+# @powershell-sdk.cmdlet-name Get-FilterAllEventsPerTimePeriod
+query AllRscEventsPerTimePeriod($timeAgo: DateTime, $after: String) {
+  activitySeriesConnection(
+    filters: {
+      clusterId: {id: ["00000000-0000-0000-0000-000000000000"]}
+      startTimeGt: $timeAgo
+      lastUpdatedTimeGt: $timeAgo
+    }
+    first: 20
+    after: $after
+  ) {
+    ...AllRscEventsPerTimePeriodFragment
+  }
+}
+
+fragment AllRscEventsPerTimePeriodFragment on ActivitySeriesConnection {
+    edges {
+      node {
+        id
+        fid
+        activitySeriesId
+        lastUpdated
+        lastActivityType
+        lastActivityStatus
+        objectId
+        objectName
+        objectType
+        severity
+        progress
+        cluster {
+          id
+          name
+        }
+        cluster {
+          id
+          name
+        }
+        activityConnection {
+          nodes {
+            id
+            message
+            time
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+}

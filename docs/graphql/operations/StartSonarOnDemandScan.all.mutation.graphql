@@ -1,0 +1,18 @@
+# @powershell-sdk.cmdlet-name Start-SonarOnDemandScan
+mutation StartSonarOnDemandScan(
+  $crawlName: String!
+  $resources: [ResourceInput!]!
+  $analyzerGroups: [AnalyzerGroupInput!]!
+) {
+  startCrawl(
+    name: $crawlName
+    resources: $resources
+    analyzerGroups: $analyzerGroups
+  ) {
+    ...StartCrawlFragment
+  }
+}
+
+fragment StartCrawlFragment on StartCrawlReply {
+  crawlId
+}

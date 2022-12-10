@@ -1,0 +1,11 @@
+# @powershell-sdk.cmdlet-name Download-Report
+mutation DownloadReport($id: Int!, $config: CustomReportCreate) {
+  downloadReportCsvAsync(input: {id: $id, config: $config}) {
+    ...DownloadReportFragment
+  }
+}
+
+fragment DownloadReportFragment on AsyncDownloadReply {
+  jobId
+  referenceId
+}

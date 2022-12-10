@@ -1,0 +1,22 @@
+# @powershell-sdk.cmdlet-name Get-AuditLogsPerTimePeriod
+query AuditLogsPerTimePeriod($timeAgo: DateTime) {
+	userAuditConnection(filters: { timeGt: $timeAgo }) {
+    ...AuditLogsPerTimePeriodFragment
+	}
+}
+
+fragment AuditLogsPerTimePeriodFragment on UserAuditConnection {
+  edges {
+    node {
+      id
+      message
+      time
+      severity
+      status
+      cluster {
+        id
+        name
+      }
+    }
+  }
+}

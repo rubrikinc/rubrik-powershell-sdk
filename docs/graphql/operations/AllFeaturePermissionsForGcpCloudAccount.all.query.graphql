@@ -1,0 +1,12 @@
+# @powershell-sdk.cmdlet-name Get-AllFeaturePermissionsForGcpCloudAccount
+query AllFeaturePermissionsForGcpCloudAccount(
+  $feature: CloudAccountFeature = CLOUD_NATIVE_PROTECTION
+) {
+  allFeaturePermissionsForGcpCloudAccount(feature: $feature) {
+    ...AllFeaturePermissionsForGcpCloudAccountFragment
+  }
+}
+
+fragment AllFeaturePermissionsForGcpCloudAccountFragment on GcpPermission {
+  permission
+}

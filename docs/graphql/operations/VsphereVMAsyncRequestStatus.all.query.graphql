@@ -1,0 +1,15 @@
+query VsphereVMAsyncRequestStatus($clusterUuid: UUID!, $id: String!) {
+  vSphereVMAsyncRequestStatus(clusterUuid: $clusterUuid, id: $id) {
+    id
+    nodeId
+    status
+    progress
+    links {
+      href
+      rel
+    }
+    error {
+      message
+    }
+  }
+}

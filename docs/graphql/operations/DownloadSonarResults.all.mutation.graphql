@@ -1,0 +1,10 @@
+# @powershell-sdk.cmdlet-name Download-SonarResults
+mutation DownloadSonarResults($downloadId: Long!) {
+  getDownloadUrl(downloadId: $downloadId) {
+    ...GetDownloadUrlFragment
+  }
+}
+
+fragment GetDownloadUrlFragment on UserDownloadUrl {
+  url
+}

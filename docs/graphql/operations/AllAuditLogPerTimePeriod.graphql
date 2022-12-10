@@ -1,0 +1,17 @@
+query AllAuditLogPerTimePeriod($timeAgo: DateTime) {
+	userAuditConnection(filters: { timeGt: $timeAgo }) {
+		edges {
+			node {
+				id
+				message
+				time
+				severity
+				status
+				cluster {
+					id
+					name
+				}
+			}
+		}
+	}
+}

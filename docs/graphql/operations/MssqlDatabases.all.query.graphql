@@ -1,0 +1,42 @@
+﻿# @powershell-sdk.cmdlet-name Get-MssqlDatabases
+query MssqlDatabases{
+    mssqlDatabases{
+      ...MssqlDatabasesFragment
+    }
+}
+
+fragment MssqlDatabasesFragment on MssqlDatabaseConnection {
+  nodes{
+      id
+      name
+      dagId
+      physicalPath{
+          fid
+          name
+      }
+      logicalPath{
+          fid
+          name
+      }
+      isInAvailabilityGroup
+      cdmLink
+      cdmId
+      cluster{
+          id
+          name
+      }
+      effectiveSlaDomain{
+          id
+          name
+      }
+      primaryClusterLocation{
+          name
+      }
+      recoveryModel
+      slaAssignment
+      configuredSlaDomain{
+          id
+          name
+      }
+  }
+}

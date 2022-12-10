@@ -1,0 +1,20 @@
+query PolicyObjConnection($day: String!, $timezone: String!) {
+  policyObjs(day: $day, timezone: $timezone) {
+    edges {
+      node {
+        snapshotFid
+        snapshotTimestamp
+        objectStatus {
+          latestSnapshotResult {
+            snapshotTime
+            snapshotFid
+          }
+        }
+        snappable {
+          name
+          id
+        }
+      }
+    }
+  }
+}

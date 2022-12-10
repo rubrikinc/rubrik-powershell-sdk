@@ -1,0 +1,30 @@
+﻿query VSphereVmListQuery {
+  vSphereVmNewConnection {
+    ...VsphereVmConnectionFragment1
+  }
+}
+
+fragment VsphereVmConnectionFragment1 on VsphereVmConnection {
+  nodes {
+    id
+    name
+    cdmId
+    cdmLink
+    configuredSlaDomain {
+      id
+      name
+    }
+    guestOsType
+    guestOsName
+    slaAssignment
+    agentStatus {
+      agentStatus
+    }
+    effectiveSlaDomain {
+      id
+      name
+    }
+    protectionDate
+    powerStatus
+  }
+}

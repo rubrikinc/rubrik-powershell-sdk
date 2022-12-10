@@ -1,0 +1,25 @@
+# @powershell-sdk.cmdlet-name Get-AllAzureCloudAccountTenants
+query AllAzureCloudAccountTenants($cloud_account_features: CloudAccountFeature!) {
+  allAzureCloudAccountTenants(
+    feature: $cloud_account_features
+    includeSubscriptionDetails: true
+  ) {
+    ...AllAzureCloudAccountTenantsFragment
+  }
+}
+
+fragment AllAzureCloudAccountTenantsFragment on AzureCloudAccountTenant {
+    azureCloudAccountTenantRubrikId
+    domainName
+    subscriptionCount
+    subscriptions {
+      id
+      nativeId
+      name
+      featureDetail {
+        status
+        feature
+        regions
+      }
+    }
+}

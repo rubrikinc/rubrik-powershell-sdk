@@ -1,0 +1,40 @@
+// AzureNativeSubscriptionSortFields.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:03:14.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    public enum AzureNativeSubscriptionSortFields
+    {
+        [EnumMember(Value = "ASSIGNED_SLA_DOMAIN")]
+        ASSIGNED_SLA_DOMAIN,
+
+        [EnumMember(Value = "AZURE_SUBSCRIPTION_DISKCOUNT")]
+        AZURE_SUBSCRIPTION_DISKCOUNT,
+
+        [EnumMember(Value = "AZURE_SUBSCRIPTION_VMCOUNT")]
+        AZURE_SUBSCRIPTION_VMCOUNT,
+
+        [EnumMember(Value = "AZURE_TENANT_ID")]
+        AZURE_TENANT_ID,
+
+        [EnumMember(Value = "EFFECTIVE_SLA_DOMAIN")]
+        EFFECTIVE_SLA_DOMAIN,
+
+        [EnumMember(Value = "NAME")]
+        NAME
+
+
+    } // enum AzureNativeSubscriptionSortFields
+
+} // namespace Rubrik.SecurityCloud.Types

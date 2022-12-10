@@ -1,0 +1,31 @@
+# @powershell-sdk.cmdlet-name Create-K8sCluster
+mutation CreateK8sCluster(
+  $cdmClusterId: UUID
+  $hostList: [String!]!
+  $name: String!
+  $rbsPort: [PortRange!]!
+  $userDrivenPortRanges: [PortRange!]
+  $port: Int!
+  $type: K8sClusterProtoType!
+  $proxyUrl: String
+) {
+  createK8sCluster(
+    input: {
+      cdmClusterId: $cdmClusterId
+      hostList: $hostList
+      name: $name
+      rbsPortRanges: $rbsPort
+      userDrivenPortRanges: $userDrivenPortRanges
+      port: $port
+      type: $type
+      proxyUrl: $proxyUrl
+    }
+  ) {
+    ...CreateK8sClusterFragment
+  }
+}
+
+fragment CreateK8sClusterFragment on CreateK8sClusterReply {
+  clusterId
+  yamlUrl
+}

@@ -1,0 +1,30 @@
+# @powershell-sdk.Cmdlet Get-RscSnapshot
+# @powershell-sdk.ParameterSetName Summary
+# @powershell-sdk.OutputType GenericSnapshotConnection
+query SnapshotSummary($first: Int, $workloadId: String!) {
+  snapshotOfASnappableConnection(
+    first: $first
+    workloadId: $workloadId
+    sortOrder: DESC
+  ) {
+    ...GenericSnapshotConnectionFragment
+  }
+}
+
+fragment GenericSnapshotConnectionFragment on GenericSnapshotConnection {
+  edges {
+    node {
+      id
+      date
+      expirationDate
+      isOnDemandSnapshot
+      snappableId
+      ... on PolarisSnapshot {
+        slaDomain {
+          name
+          id
+        }
+      }
+    }
+  }
+}

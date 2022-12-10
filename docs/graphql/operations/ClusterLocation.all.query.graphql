@@ -1,0 +1,17 @@
+# @sh.function rsc-query-cluster-location
+# @sh.jq-filter .data.clusterConnection.nodes[]
+query ClusterLocation($filter: ClusterFilterInput) {
+  clusterConnection(filter: $filter) {
+    ...ClusterConnectionFragment_Location
+  }
+}
+
+fragment ClusterConnectionFragment_Location on ClusterConnection {
+  nodes {
+    id
+    name
+    geoLocation {
+      address
+    }
+  }
+}

@@ -1,0 +1,18 @@
+# @powershell-sdk.cmdlet-name Get-InvestigationCsvDownloadLink
+query InvestigationCsvDownloadLink(
+  $clusterUuid: UUID!
+  $workloadId: String!
+  $snapshotId: String!
+) {
+  investigationCsvDownloadLink(
+    clusterUuid: $clusterUuid
+    workloadId: $workloadId
+    snapshotId: $snapshotId
+  ) {
+    ...DownloadLinkFragment
+  }
+}
+
+fragment DownloadLinkFragment on InvestigationCsvDownloadLinkReply {
+  downloadLink
+}

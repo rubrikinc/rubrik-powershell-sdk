@@ -1,0 +1,52 @@
+# @powershell-sdk.cmdlet-name Get-SonarPolicyObject
+query SonarPolicyObjects($snappableFid: String!, $snapshotFid: String!) {
+  policyObj(snappableFid: $snappableFid, snapshotFid: $snapshotFid) {
+    ...PolicyObjectFragment
+  }
+}
+
+fragment PolicyObjectFragment on PolicyObj {
+  id
+  rootFileResult {
+    hits {
+      totalHits
+    }
+    analyzerGroupResults {
+      analyzerGroup {
+        name
+      }
+      analyzerResults {
+        hits {
+          totalHits
+        }
+        analyzer {
+          name
+        }
+      }
+      hits {
+        totalHits
+      }
+    }
+    filesWithHits {
+      totalHits
+    }
+    openAccessFiles {
+      totalHits
+    }
+    openAccessFolders {
+      totalHits
+    }
+    openAccessFilesWithHits {
+      totalHits
+    }
+    staleFiles {
+      totalHits
+    }
+    staleFilesWithHits {
+      totalHits
+    }
+    openAccessStaleFiles {
+      totalHits
+    }
+  }
+}

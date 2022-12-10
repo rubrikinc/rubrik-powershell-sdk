@@ -1,0 +1,64 @@
+# @powershell-sdk.cmdlet-name Get-K8sNamespace
+query K8sNamespace($polaris_id: UUID!) {
+  k8sNamespace(fid: $polaris_id) {
+    ...K8sNamespaceFragment
+  }
+}
+
+fragment K8sNamespaceFragment on K8sNamespace {
+  k8sClusterId
+  namespaceName
+  clusterScoped
+  apiVersion
+  resourceVersion
+  isRelic
+  numWorkloads
+  numPvcs
+  authorizedOperations
+  id
+  name
+  objectType
+  slaAssignment
+  effectiveSlaDomain {
+    name
+    id
+  }
+  slaPauseStatus
+  effectiveRetentionSlaDomain {
+    id
+    name
+  }
+  configuredSlaDomain {
+    id
+    name
+  }
+  effectiveSlaSourceObject {
+    fid
+    name
+    objectType
+  }
+  logicalPath {
+    fid
+    name
+    objectType
+  }
+  physicalPath {
+    fid
+    name
+    objectType
+  }
+  numWorkloadDescendants
+  newestSnapshot {
+    id
+    date
+  }
+  oldestSnapshot {
+    id
+    date
+  }
+  onDemandSnapshotCount
+  newestIndexedSnapshot {
+    id
+    date
+  }
+}

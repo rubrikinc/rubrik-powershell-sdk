@@ -1,0 +1,51 @@
+﻿# @powershell-sdk.cmdlet-name Get-MssqlDatabase
+query GetMssqlDatabase($fid: UUID!) {
+  mssqlDatabase(fid: $fid) {
+    ...MssqlDatabaseFragment
+  }
+}
+
+fragment MssqlDatabaseFragment on MssqlDatabase {
+    cdmSnapshots {
+      nodes {
+        id
+        expirationDate
+        expiryHint
+        workloadId
+        isCorrupted
+        indexingAttempts
+        isIndexed
+        isUnindexable
+        isOnDemandSnapshot
+        workloadType
+        clusterUuid
+        cdmId
+        cdmVersion
+        retentionInfo
+        isDownloadedSnapshot
+        subObjs {
+          subObj {
+            volumeGroupSubObj {
+              mountPointsOpt
+              capacityInBytes
+              fileSystemType
+              fileSizeInBytes
+              volumeId
+            }
+          }
+        }
+        isExpired
+        slaDomain {
+          id
+          name
+        }
+        date
+        latestUserNote {
+          time
+          userName
+          objectId
+          userNote
+        }
+      }
+    }
+}

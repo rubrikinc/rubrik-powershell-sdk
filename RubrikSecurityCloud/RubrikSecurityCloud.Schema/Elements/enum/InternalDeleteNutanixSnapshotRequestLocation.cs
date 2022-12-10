@@ -1,0 +1,28 @@
+// InternalDeleteNutanixSnapshotRequestLocation.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:04:35.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    public enum InternalDeleteNutanixSnapshotRequestLocation
+    {
+        [EnumMember(Value = "INTERNAL_DELETE_NUTANIX_SNAPSHOT_REQUEST_LOCATION_ALL")]
+        INTERNAL_DELETE_NUTANIX_SNAPSHOT_REQUEST_LOCATION_ALL,
+
+        [EnumMember(Value = "INTERNAL_DELETE_NUTANIX_SNAPSHOT_REQUEST_LOCATION_LOCAL")]
+        INTERNAL_DELETE_NUTANIX_SNAPSHOT_REQUEST_LOCATION_LOCAL
+
+
+    } // enum InternalDeleteNutanixSnapshotRequestLocation
+
+} // namespace Rubrik.SecurityCloud.Types

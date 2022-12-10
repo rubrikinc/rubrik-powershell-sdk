@@ -1,0 +1,89 @@
+# @powershell-sdk.cmdlet-name Get-VsphereVms
+query VsphereVms(
+  $first: Int
+  $after: String
+  $filter: [Filter!]!
+) {
+  vSphereVmNewConnection(first: $first, filter: $filter, after: $after) {
+    ...VsphereVmConnectionFragment2
+  }
+}
+
+fragment VsphereVmConnectionFragment2 on VsphereVmConnection {
+  edges {
+    cursor
+    node {
+      isRelic
+      authorizedOperations
+      replicatedObjectCount
+      id
+      name
+      cluster {
+        id
+        name
+        version
+        status
+      }
+      primaryClusterLocation {
+        id
+        name
+      }
+      objectType
+      effectiveSlaDomain {
+        ...EffectiveSLADomainFragment
+      }
+      effectiveSlaSourceObject {
+        fid
+        name
+        objectType
+      }
+      pendingSla {
+        id
+        name
+      }
+      slaAssignment
+      logicalPath {
+        fid
+        name
+        objectType
+      }
+      snapshotDistribution {
+        id
+        onDemandCount
+        retrievedCount
+        scheduledCount
+        totalCount
+      }
+      reportWorkload {
+        id
+        archiveStorage
+        physicalBytes
+        __typename
+      }
+      vmwareToolsInstalled
+      agentStatus {
+        agentStatus
+        disconnectReason
+        __typename
+      }
+    }
+  }
+  pageInfo {
+    startCursor
+    endCursor
+    hasNextPage
+    hasPreviousPage
+  }
+}
+
+fragment EffectiveSLADomainFragment on SlaDomain {
+  id
+  name
+  ... on ClusterSlaDomain {
+    fid
+    cluster {
+      id
+      name
+    }
+  }
+}

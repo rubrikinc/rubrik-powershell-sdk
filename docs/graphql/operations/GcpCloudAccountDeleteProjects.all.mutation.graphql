@@ -1,0 +1,25 @@
+# @powershell-sdk.cmdlet-name Delete-GcpCloudAccountProjects
+mutation GcpCloudAccountDeleteProjects(
+  $native_protection_ids: [UUID!]!
+  $shared_vpc_host_project_ids: [UUID!]!
+  $cloud_account_project_ids: [UUID!]!
+) {
+  gcpCloudAccountDeleteProjects(
+    input: {
+      nativeProtectionProjectIds: $native_protection_ids
+      sharedVpcHostProjectIds: $shared_vpc_host_project_ids
+      cloudAccountsProjectIds: $cloud_account_project_ids
+      skipResourceDeletion: true
+    }
+  ) {
+    ...GcpCloudAccountDeleteProjectsFragment
+  }
+}
+
+fragment GcpCloudAccountDeleteProjectsFragment on GcpCloudAccountDeleteProjectsReply {
+    gcpProjectDeleteStatuses {
+      projectUuid
+      success
+      error
+    }
+}

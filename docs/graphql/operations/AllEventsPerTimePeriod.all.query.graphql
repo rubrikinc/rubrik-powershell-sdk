@@ -1,0 +1,41 @@
+# @powershell-sdk.cmdlet-name Get-AllEventsPerTimePeriod
+query AllEventsPerTimePeriod($timeAgo: DateTime) {
+  activitySeriesConnection(filters: {lastUpdatedTimeGt: $timeAgo}) {
+    ...AllEventsPerTimePeriodFragment
+  }
+}
+
+fragment AllEventsPerTimePeriodFragment on ActivitySeriesConnection {
+    edges {
+      node {
+        id
+        fid
+        activitySeriesId
+        lastUpdated
+        lastActivityType
+        lastActivityStatus
+        objectId
+        objectName
+        objectType
+        severity
+        progress
+        isCancelable
+        isPolarisEventSeries
+        cluster {
+          id
+          name
+        }
+        activityConnection(first: 1) {
+          nodes {
+            id
+            message
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+}

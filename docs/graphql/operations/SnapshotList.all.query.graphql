@@ -1,0 +1,172 @@
+﻿query SnapshotsListSingleQuery(
+  $workloadId: String!
+  $first: Int
+  $after: String
+  $snapshotFilter: [SnapshotQueryFilterInput!]
+  $sortBy: SnapshotQuerySortByField
+  $sortOrder: SortOrder
+  $timeRange: TimeRangeInput
+) {
+  snapshotOfASnappableConnection(
+    workloadId: $workloadId
+    first: $first
+    after: $after
+    snapshotFilter: $snapshotFilter
+    sortBy: $sortBy
+    sortOrder: $sortOrder
+    timeRange: $timeRange
+  ) {
+    edges {
+      cursor
+      node {
+        ...CdmSnapshotLatestUserNotesFragment
+        id
+        date
+        expirationDate
+        isOnDemandSnapshot
+        ... on CdmSnapshot {
+          cdmVersion
+          isRetentionLocked
+          isDownloadedSnapshot
+          cluster {
+            id
+            name
+            version
+            status
+            __typename
+          }
+          pendingSnapshotDeletion {
+            id: snapshotFid
+            status
+            __typename
+          }
+          slaDomain {
+            ...EffectiveSlaDomainFragment
+            __typename
+          }
+          pendingSla {
+            ...SLADomainFragment
+            __typename
+          }
+          snapshotRetentionInfo {
+            isCustomRetentionApplied
+            archivalInfos {
+              name
+              isExpirationDateCalculated
+              expirationTime
+              locationId
+              __typename
+            }
+            localInfo {
+              name
+              isExpirationDateCalculated
+              expirationTime
+              __typename
+            }
+            replicationInfos {
+              name
+              isExpirationDateCalculated
+              expirationTime
+              locationId
+              isExpirationInformationUnavailable
+              __typename
+            }
+            __typename
+          }
+          sapHanaAppMetadata {
+            backupId
+            backupPrefix
+            snapshotType
+            files {
+              backupFileSizeInBytes
+              __typename
+            }
+            __typename
+          }
+          legalHoldInfo {
+            shouldHoldInPlace
+            __typename
+          }
+          __typename
+        }
+        ... on PolarisSnapshot {
+          isDeletedFromSource
+          isDownloadedSnapshot
+          isReplica
+          isArchivalCopy
+          slaDomain {
+            name
+            ... on ClusterSlaDomain {
+              fid
+              cluster {
+                id
+                name
+                __typename
+              }
+              __typename
+            }
+            ... on GlobalSlaReply {
+              id
+              __typename
+            }
+            __typename
+          }
+          __typename
+        }
+        __typename
+      }
+      __typename
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      __typename
+    }
+    __typename
+  }
+}
+
+fragment EffectiveSlaDomainFragment on SlaDomain {
+  id
+  name
+  ... on GlobalSlaReply {
+    isRetentionLockedSla
+    __typename
+  }
+  ... on ClusterSlaDomain {
+    fid
+    cluster {
+      id
+      name
+      __typename
+    }
+    isRetentionLockedSla
+    __typename
+  }
+  __typename
+}
+
+fragment SLADomainFragment on SlaDomain {
+  id
+  name
+  ... on ClusterSlaDomain {
+    fid
+    cluster {
+      id
+      name
+      __typename
+    }
+    __typename
+  }
+  __typename
+}
+
+fragment CdmSnapshotLatestUserNotesFragment on CdmSnapshot {
+  latestUserNote {
+    time
+    userName
+    userNote
+    __typename
+  }
+  __typename
+}

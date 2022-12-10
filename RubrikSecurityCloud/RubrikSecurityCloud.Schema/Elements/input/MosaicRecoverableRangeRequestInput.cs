@@ -1,0 +1,75 @@
+// MosaicRecoverableRangeRequestInput.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:03:17.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    #region MosaicRecoverableRangeRequestInput
+
+    public class MosaicRecoverableRangeRequestInput
+    {
+        #region members
+        //      C# -> MosaicRecoverableRangeRequestSourceType? SourceType
+        // GraphQL -> sourceType: MosaicRecoverableRangeRequestSourceType (enum)
+        [JsonProperty("sourceType")]
+        public MosaicRecoverableRangeRequestSourceType? SourceType { get; set; }
+
+        //      C# -> System.String? DatabaseName
+        // GraphQL -> databaseName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("databaseName")]
+        public System.String? DatabaseName { get; set; }
+
+        //      C# -> System.String? SourceName
+        // GraphQL -> sourceName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("sourceName")]
+        public System.String? SourceName { get; set; }
+
+        //      C# -> System.String? TableName
+        // GraphQL -> tableName: String! (scalar)
+        [Required]
+        [JsonRequired]
+        [JsonProperty("tableName")]
+        public System.String? TableName { get; set; }
+
+        #endregion
+
+    
+        #region methods
+        public dynamic GetInputObject()
+        {
+            IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+
+            var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            foreach (var propertyInfo in properties)
+            {
+                var value = propertyInfo.GetValue(this);
+                var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+
+                var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+
+                if (requiredProp || value != defaultValue)
+                {
+                    d[propertyInfo.Name] = value;
+                }
+            }
+            return d;
+        }
+        #endregion
+
+    } // class MosaicRecoverableRangeRequestInput
+    #endregion
+
+} // namespace Rubrik.SecurityCloud.Types

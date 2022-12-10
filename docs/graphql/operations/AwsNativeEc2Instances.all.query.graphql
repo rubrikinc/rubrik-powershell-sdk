@@ -1,0 +1,69 @@
+# @powershell-sdk.cmdlet-name Get-AwsNativeEc2Instances
+query AwsNativeEc2Instances(
+  $first: Int
+  $after: String
+  $filters: AwsNativeEc2InstanceFilters
+) {
+  awsNativeEc2Instances(
+    first: $first
+    after: $after
+    ec2InstanceFilters: $filters
+  ) {
+    ...AwsNativeEc2InstancesFragment
+  }
+}
+
+fragment AwsNativeEc2InstancesFragment on AwsNativeEc2InstanceConnection {
+    edges {
+      cursor
+      node {
+        id
+        instanceNativeId
+        instanceName
+        vpcName
+        region
+        vpcId
+        isRelic
+        instanceType
+        isExocomputeConfigured
+        isIndexingEnabled
+        isMarketplace
+        tags {
+          key
+          value
+        }
+        effectiveSlaDomain {
+          name
+          ... on ClusterSlaDomain {
+            fid
+            cluster {
+              id
+              name
+            }
+            __typename
+          }
+          ... on GlobalSlaReply {
+            id
+            name
+          }
+        }
+        awsNativeAccount {
+          id
+          name
+          status
+        }
+        slaAssignment
+        authorizedOperations
+        effectiveSlaSourceObject {
+          fid
+          name
+          objectType
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+}

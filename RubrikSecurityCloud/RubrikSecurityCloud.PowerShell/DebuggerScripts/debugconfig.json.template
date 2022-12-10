@@ -1,0 +1,19 @@
+{
+    "environments":
+    [
+        {
+                "name": "sa_rsc_pso",
+                "filepath": "/Users/rynardtspies/repos/RubrikSecurityCloud-UserFiles/rubrik-rbkpso20.my.rubrik.com.json",
+                "sa_id": "",
+                "sa_secret": "",
+                "sa_url": ""
+        },
+        {
+                "name": "sa_rsc_eng",
+                "filepath": "/Users/rynardtspies/repos/RubrikSecurityCloud-UserFiles/rubrik-rbkpso.my.rubrik.com.json",
+                "sa_id": "",
+                "sa_secret": "",
+                "sa_url": ""
+        }
+    ]
+}

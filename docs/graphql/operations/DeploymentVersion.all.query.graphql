@@ -1,0 +1,4 @@
+# @powershell-sdk.cmdlet-name Get-DeploymentVersion
+query DeploymentVersion {
+  deploymentVersion
+}

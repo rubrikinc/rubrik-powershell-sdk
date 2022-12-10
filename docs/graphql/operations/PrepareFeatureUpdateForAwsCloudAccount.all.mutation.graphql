@@ -1,0 +1,19 @@
+# @powershell-sdk.cmdlet-name Prepare-FeatureUpdateForAwsCloudAccount
+mutation PrepareFeatureUpdateForAwsCloudAccount(
+  $aws_native_protection_feature: [CloudAccountFeature!]!
+  $polaris_account_id: UUID!
+) {
+  prepareFeatureUpdateForAwsCloudAccount(
+    input: {
+      features: $aws_native_protection_feature
+      cloudAccountId: $polaris_account_id
+    }
+  ) {
+    ...PrepareFeatureUpdateForAwsCloudAccountFragment
+  }
+}
+
+fragment PrepareFeatureUpdateForAwsCloudAccountFragment on PrepareFeatureUpdateForAwsCloudAccountReply {
+  cloudFormationUrl
+  templateUrl
+}

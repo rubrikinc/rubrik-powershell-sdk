@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.PowerShell", "RubrikSecurityCloud.PowerShell\RubrikSecurityCloud.PowerShell.csproj", "{299AA422-2BD2-44B0-8AB7-32BAC6AAEDCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Client", "RubrikSecurityCloud.Client\RubrikSecurityCloud.Client.csproj", "{31BC8B67-8AF6-4EF3-918E-F623508A4E4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Schema", "RubrikSecurityCloud.Schema\RubrikSecurityCloud.Schema.csproj", "{0E9D7EC7-E238-46F7-AADF-CD94C4B0C2E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Schema.Tests", "RubrikSecurityCloud.Schema.Tests\RubrikSecurityCloud.Schema.Tests.csproj", "{42975AE7-8245-46C5-9566-D23C71FAF6E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{299AA422-2BD2-44B0-8AB7-32BAC6AAEDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{299AA422-2BD2-44B0-8AB7-32BAC6AAEDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{299AA422-2BD2-44B0-8AB7-32BAC6AAEDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{299AA422-2BD2-44B0-8AB7-32BAC6AAEDCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31BC8B67-8AF6-4EF3-918E-F623508A4E4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31BC8B67-8AF6-4EF3-918E-F623508A4E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31BC8B67-8AF6-4EF3-918E-F623508A4E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31BC8B67-8AF6-4EF3-918E-F623508A4E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E9D7EC7-E238-46F7-AADF-CD94C4B0C2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9D7EC7-E238-46F7-AADF-CD94C4B0C2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9D7EC7-E238-46F7-AADF-CD94C4B0C2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E9D7EC7-E238-46F7-AADF-CD94C4B0C2E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42975AE7-8245-46C5-9566-D23C71FAF6E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42975AE7-8245-46C5-9566-D23C71FAF6E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42975AE7-8245-46C5-9566-D23C71FAF6E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42975AE7-8245-46C5-9566-D23C71FAF6E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF7D23B9-6B90-4D7E-9B41-50CC0A1D26F6}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = null
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.scope = text/x-csharp
+		$0.TextStylePolicy = $4
+		$4.FileWidth = 80
+		$4.TabsToSpaces = True
+		$4.scope = text/plain
+		$0.TextStylePolicy = $5
+		$5.inheritsSet = null
+		$5.scope = application/xml
+		$0.XmlFormattingPolicy = $6
+		$6.scope = application/xml
+	EndGlobalSection
+EndGlobal

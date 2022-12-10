@@ -1,0 +1,14 @@
+{
+  "POST /api/graphql": {
+    "{'query':'{ currentUser { id}}'}": {
+      "response": {
+        "data": {
+          "currentUser": {
+            "id": "client|ngAOr0aW9W8cmmTpxvQg0qi1zceatcM8"
+          }
+        }
+      },
+      "status": 200
+    }
+  }
+}

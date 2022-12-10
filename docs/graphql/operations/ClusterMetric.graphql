@@ -1,0 +1,13 @@
+fragment ClusterMetricFragment_All on ClusterMetric {
+  availableCapacity
+  usedCapacity
+  totalCapacity
+  snapshotCapacity
+  liveMountCapacity
+  miscellaneousCapacity
+  ingestedSnapshotStorage
+  physicalSnapshotStorage
+  ingestedArchivalStorage
+  physicalArchivalStorage
+  lastUpdateTime
+}

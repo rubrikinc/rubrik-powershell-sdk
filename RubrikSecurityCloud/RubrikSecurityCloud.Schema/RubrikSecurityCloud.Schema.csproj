@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Models\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="System.ComponentModel.Annotations" />
+    <None Remove="Operations\" />
+    <None Remove="GraphQL.Client.Abstractions" />
+    <None Remove="GraphQL" />
+    <None Remove="Elements\query\" />
+    <None Remove="Elements\mutation\" />
+    <None Remove="HelperClasses\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="GraphQL.Client.Abstractions" Version="5.1.0" />
+    <PackageReference Include="GraphQL" Version="7.2.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Elements\enum\*.cs" />
+    <Folder Include="Elements\input\*.cs" />
+    <Folder Include="Elements\interface\*.cs" />
+    <Folder Include="Elements\operation\*.cs" />
+    <Folder Include="Elements\type\*.cs" />
+    <Folder Include="Elements\union\*.cs" />
+    <Folder Include="Elements\query\" />
+    <Folder Include="Elements\mutation\" />
+    <Folder Include="HelperClasses\" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,69 @@
+// VirtualMachineUpdateWithSecretInput.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:04:42.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    #region VirtualMachineUpdateWithSecretInput
+
+    public class VirtualMachineUpdateWithSecretInput
+    {
+        #region members
+        //      C# -> BaseGuestCredentialInput? GuestCredential
+        // GraphQL -> guestCredential: BaseGuestCredentialInput (input)
+        [JsonProperty("guestCredential")]
+        public BaseGuestCredentialInput? GuestCredential { get; set; }
+
+        //      C# -> System.Boolean? ShouldRefreshCacheAfterUpdate
+        // GraphQL -> shouldRefreshCacheAfterUpdate: Boolean (scalar)
+        [JsonProperty("shouldRefreshCacheAfterUpdate")]
+        public System.Boolean? ShouldRefreshCacheAfterUpdate { get; set; }
+
+        //      C# -> System.String? GuestCredentialId
+        // GraphQL -> guestCredentialId: String (scalar)
+        [JsonProperty("guestCredentialId")]
+        public System.String? GuestCredentialId { get; set; }
+
+        //      C# -> VirtualMachineUpdateInput? VirtualMachineUpdate
+        // GraphQL -> virtualMachineUpdate: VirtualMachineUpdateInput (input)
+        [JsonProperty("virtualMachineUpdate")]
+        public VirtualMachineUpdateInput? VirtualMachineUpdate { get; set; }
+
+        #endregion
+
+    
+        #region methods
+        public dynamic GetInputObject()
+        {
+            IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+
+            var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            foreach (var propertyInfo in properties)
+            {
+                var value = propertyInfo.GetValue(this);
+                var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+
+                var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+
+                if (requiredProp || value != defaultValue)
+                {
+                    d[propertyInfo.Name] = value;
+                }
+            }
+            return d;
+        }
+        #endregion
+
+    } // class VirtualMachineUpdateWithSecretInput
+    #endregion
+
+} // namespace Rubrik.SecurityCloud.Types

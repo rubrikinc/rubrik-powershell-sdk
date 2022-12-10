@@ -1,0 +1,22 @@
+# @powershell-sdk.cmdlet-name Delete-AzureCloudAccountWithoutOauth
+mutation DeleteAzureCloudAccountWithoutOauth(
+  $cloud_account_features: [CloudAccountFeature!]!
+  $azure_subscription_ids: [UUID!]!
+) {
+  deleteAzureCloudAccountWithoutOauth(
+    input: {
+      features: $cloud_account_features
+      azureSubscriptionRubrikIds: $azure_subscription_ids
+    }
+  ) {
+    ...DeleteAzureCloudAccountWithoutOauthFragment
+  }
+}
+
+fragment DeleteAzureCloudAccountWithoutOauthFragment on DeleteAzureCloudAccountWithoutOauthReply {
+    status {
+      azureSubscriptionNativeId
+      isSuccess
+      error
+    }
+}

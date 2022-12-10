@@ -1,0 +1,26 @@
+# @powershell-sdk.cmdlet-name Get-AllVpcsByRegionFromAws
+query AllVpcsByRegionFromAws(
+  $region: AwsNativeRegion!
+  $aws_native_account_id: UUID!
+) {
+  allVpcsByRegionFromAws(
+    region: $region
+    awsAccountRubrikId: $aws_native_account_id
+  ) {
+    ...AllVpcsByRegionFromAwsFragment
+  }
+}
+
+fragment AllVpcsByRegionFromAwsFragment on AwsVpc {
+  id
+  name
+  subnets {
+    id
+    name
+    availabilityZone
+  }
+  securityGroups {
+    id
+    name
+  }
+}

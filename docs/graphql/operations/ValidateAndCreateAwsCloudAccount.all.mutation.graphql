@@ -1,0 +1,44 @@
+# @powershell-sdk.cmdlet-name Start-ValidateAndCreateAwsCloudAccount
+mutation ValidateAndCreateAwsCloudAccount(
+  $account_name: String!
+  $aws_account_id: String!
+  $cloud_account_action: CloudAccountAction!
+  $cloud_account_features: [CloudAccountFeature!]!
+) {
+  validateAndCreateAwsCloudAccount(
+    input: {
+      action: $cloud_account_action
+      awsChildAccounts: [
+        {accountName: $account_name, nativeId: $aws_account_id}
+      ]
+      features: $cloud_account_features
+    }
+  ) {
+    ...ValidateAndCreateAwsCloudAccountFragment
+  }
+}
+
+fragment ValidateAndCreateAwsCloudAccountFragment on ValidateAndCreateAwsCloudAccountReply{
+      initiateResponse {
+      cloudFormationUrl
+      externalId
+      featureVersions {
+        feature
+        version
+      }
+      stackName
+      templateUrl
+    }
+    validateResponse {
+      invalidAwsAccounts {
+        accountName
+        nativeId
+        message
+      }
+      invalidAwsAdminAccount {
+        accountName
+        nativeId
+        message
+      }
+    }
+}

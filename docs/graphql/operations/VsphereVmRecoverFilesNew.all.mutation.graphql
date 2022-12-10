@@ -1,0 +1,12 @@
+# @powershell-sdk.cmdlet-name Recover-VsphereVmFiles
+mutation VsphereVmRecoverFilesNew(
+  $input: VsphereVmRecoverFilesNewInput!
+) {
+  vsphereVmRecoverFilesNew(input: $input) {
+    ...AsyncRequestStatusFragment4
+  }
+}
+
+fragment AsyncRequestStatusFragment4 on AsyncRequestStatus{
+  id
+}

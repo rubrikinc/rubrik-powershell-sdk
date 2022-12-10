@@ -1,0 +1,61 @@
+# @powershell-sdk.cmdlet-name Get-VsphereVmSnapshot
+query VsphereVmSnapshot(
+  $id: UUID!
+  $snapshotGroupBy: CdmSnapshotGroupByEnum!
+  $missedSnapshotGroupBy: MissedSnapshotGroupByTime!
+  $timeRange: TimeRangeInput!
+  $timezoneOffset: Float!
+  $clusterConnected: Boolean!
+) {
+  vSphereVmNew(fid: $id) {
+    ...VsphereVmFragment4
+  }
+}
+
+fragment VsphereVmFragment4 on VsphereVm {
+    id
+    missedSnapshotGroupByConnection(
+      groupBy: $missedSnapshotGroupBy
+      filter: {timeRange: $timeRange}
+      timezoneOffset: $timezoneOffset
+    ) @include(if: $clusterConnected) {
+      nodes {
+        groupByInfo {
+          ... on TimeRangeWithUnit {
+            unit
+            start
+            end
+          }
+        }
+        missedSnapshotConnection {
+          count
+          nodes {
+            date
+          }
+        }
+      }
+    }
+    snapshotGroupByConnection(
+      groupBy: $snapshotGroupBy
+      filter: {timeRange: $timeRange}
+      timezoneOffset: $timezoneOffset
+    ) {
+      nodes {
+        groupByInfo {
+          ... on TimeRangeWithUnit {
+            unit
+            start
+            end
+          }
+        }
+        snapshotConnection {
+          count
+          nodes {
+            id
+            isIndexed
+            isUnindexable
+          }
+        }
+      }
+    }
+}

@@ -1,0 +1,11 @@
+# @powershell-sdk.cmdlet-name Get-K8sClusterStatus
+query K8sClusterStatus($kupr_cluster_id: UUID!) {
+  k8sCluster(fid: $kupr_cluster_id) {
+    ...K8sClusterStatusFragment
+  }
+}
+
+fragment K8sClusterStatusFragment on K8sCluster {
+  status
+  slaAssignment
+}

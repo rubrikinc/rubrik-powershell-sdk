@@ -1,0 +1,18 @@
+# @powershell-sdk.cmdlet-name Get-AllKmsEncryptionKeysByRegionFromAws
+query AllKmsEncryptionKeysByRegionFromAws(
+  $region: AwsNativeRegion!
+  $aws_native_account_id: UUID!
+) {
+  allKmsEncryptionKeysByRegionFromAws(
+    region: $region
+    awsAccountRubrikId: $aws_native_account_id
+  ) {
+    ...AllKmsEncryptionKeysByRegionFromAwsFragment
+  }
+}
+
+fragment AllKmsEncryptionKeysByRegionFromAwsFragment on KmsEncryptionKey{
+  id
+  aliases
+  arn
+}

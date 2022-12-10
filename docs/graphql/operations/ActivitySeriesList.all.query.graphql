@@ -1,0 +1,35 @@
+# @powershell-sdk.cmdlet-name Get-ActivitySeriesList
+query ActivitySeriesList($activitySeriesId: UUID!, $clusterUuid: UUID) {
+  activitySeries(
+    input: { activitySeriesId: $activitySeriesId, clusterUuid: $clusterUuid }
+  ) {
+    ...ActivitySeriesFragment
+  }
+}
+
+fragment ActivitySeriesFragment on ActivitySeries {
+  id
+  activityConnection {
+    nodes {
+      id
+      message
+      status
+      time
+      severity
+      activityInfo
+    }
+  }
+  progress
+  lastUpdated
+  startTime
+  objectName
+  objectType
+  objectId
+  lastActivityType
+  lastActivityStatus
+  isPolarisEventSeries
+  cluster {
+    id
+    name
+  }
+}

@@ -1,0 +1,19 @@
+# @powershell-sdk.cmdlet-name Add-GcpCloudAccountManualAuthProject
+mutation GcpCloudAccountAddManualAuthProject(
+  $gcp_native_project_id: String!
+  $gcp_native_project_name: String!
+  $gcp_native_project_number: Long!
+  $organization_name: String
+  $service_account_auth_key: String
+) {
+  gcpCloudAccountAddManualAuthProject(
+    input: {
+      gcpNativeProjectId: $gcp_native_project_id
+      gcpProjectName: $gcp_native_project_name
+      gcpProjectNumber: $gcp_native_project_number
+      organizationName: $organization_name
+      serviceAccountJwtConfig: $service_account_auth_key
+      features: [CLOUD_NATIVE_PROTECTION]
+    }
+  )
+}

@@ -1,0 +1,24 @@
+# @powershell-sdk.cmdlet-name Download-VsphereVmSnapshotFiles
+mutation VsphereVmDownloadSnapshotFiles(
+  $input: VsphereVmDownloadSnapshotFilesInput!
+) {
+  vsphereVmDownloadSnapshotFiles(input: $input) {
+    ...AsyncRequestStatusFragment2
+  }
+}
+
+fragment AsyncRequestStatusFragment2 on AsyncRequestStatus {
+  id
+  status
+  progress
+  nodeId
+  error {
+    message
+  }
+  links {
+    href
+    rel
+  }
+  endTime
+  startTime
+}

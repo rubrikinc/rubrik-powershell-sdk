@@ -1,0 +1,115 @@
+# @powershell-sdk.cmdlet-name Get-VsphereVms
+query VsphereVmsWithSort(
+  $first: Int!
+  $after: String
+  $filter: [Filter!]!
+  $sortBy: HierarchySortByField
+  $sortOrder: SortOrder
+) {
+  vSphereVmNewConnection(
+    filter: $filter
+    first: $first
+    after: $after
+    sortBy: $sortBy
+    sortOrder: $sortOrder
+  ) {
+    ...VsphereVmConnectionFragment3
+  }
+}
+fragment VsphereVmConnectionFragment3 on VsphereVmConnection {
+    edges {
+      node {
+        id
+        ...VSphereNameColumnFragment
+        ...CdmClusterColumnFragment
+        ...EffectiveSlaColumnFragment
+        ...VSphereSlaAssignmentColumnFragment
+        isRelic
+        authorizedOperations
+        primaryClusterLocation {
+          id
+          name
+        }
+        logicalPath {
+          fid
+          name
+          objectType
+        }
+        snapshotDistribution {
+          id
+          onDemandCount
+          retrievedCount
+          scheduledCount
+          totalCount
+        }
+        reportWorkload {
+          id
+          archiveStorage
+          physicalBytes
+        }
+        vmwareToolsInstalled
+        agentStatus {
+          agentStatus
+          disconnectReason
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+}
+
+fragment VSphereNameColumnFragment on HierarchyObject {
+  id
+  name
+  ...HierarchyObjectTypeFragment
+}
+fragment HierarchyObjectTypeFragment on HierarchyObject {
+  objectType
+}
+fragment EffectiveSlaColumnFragment on HierarchyObject {
+  effectiveSlaDomain {
+    id
+    name
+    ... on GlobalSlaReply {
+      description
+    }
+    ... on ClusterSlaDomain {
+      fid
+      cluster {
+        id
+        name
+      }
+    }
+  }
+  ...PendingSlaFragment
+}
+fragment PendingSlaFragment on CdmHierarchyObject {
+  pendingSla {
+    id
+    name
+  }
+}
+fragment CdmClusterColumnFragment on CdmHierarchyObject {
+  replicatedObjectCount
+  cluster {
+    id
+    name
+    version
+    status
+  }
+}
+fragment VSphereSlaAssignmentColumnFragment on HierarchyObject {
+  effectiveSlaSourceObject {
+    fid
+    name
+    objectType
+  }
+  ...SlaAssignmentColumnFragment
+}
+fragment SlaAssignmentColumnFragment on HierarchyObject {
+  slaAssignment
+}

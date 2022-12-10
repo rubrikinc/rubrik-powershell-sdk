@@ -1,0 +1,40 @@
+// RefreshableObjectConnectionStatusType.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:03:49.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Runtime.Serialization;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    public enum RefreshableObjectConnectionStatusType
+    {
+        [EnumMember(Value = "REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_BADLY_CONFIGURED")]
+        REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_BADLY_CONFIGURED,
+
+        [EnumMember(Value = "REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_CONNECTED")]
+        REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_CONNECTED,
+
+        [EnumMember(Value = "REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_DELETING")]
+        REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_DELETING,
+
+        [EnumMember(Value = "REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_DISCONNECTED")]
+        REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_DISCONNECTED,
+
+        [EnumMember(Value = "REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_REFRESHING")]
+        REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_REFRESHING,
+
+        [EnumMember(Value = "REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_REMOTE")]
+        REFRESHABLE_OBJECT_CONNECTION_STATUS_TYPE_REMOTE
+
+
+    } // enum RefreshableObjectConnectionStatusType
+
+} // namespace Rubrik.SecurityCloud.Types

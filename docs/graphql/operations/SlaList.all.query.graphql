@@ -1,0 +1,14 @@
+query SlaList($filter: [GlobalSlaFilterInput!]) {
+  globalSlaFilterConnection(filter: $filter) {
+    ...GlobalSlaForFilterConnectionFragment
+  }
+}
+
+fragment GlobalSlaForFilterConnectionFragment on GlobalSlaForFilterConnection {
+  edges {
+    node {
+      name
+      id
+    }
+  }
+}

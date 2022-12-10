@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "525116f7-5d7a-41c0-b043-a3ae5192a06e",
+		"name": "mock_api_server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14870169"
+	},
+	"item": [
+		{
+			"name": "get cache",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cache",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cache"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query {currentUser{id}}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"{currentUser{id}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query {accountSettings {isEulaAccepted, isEmailNotificationEnabled}}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"{accountSettings {isEulaAccepted, isEmailNotificationEnabled}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post cache {currentUser{id}}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"POST /api/graphql\": {\n        \"{'query':'{currentUser{id}}'}\": {\n            \"response\": {\n                \"data\": {\n                    \"currentUser\": {\n                        \"id\": \"client id set from Postman\"\n                    }\n                }\n            },\n            \"status\": 200\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cache",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cache"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post cache {accountSettings {isEulaAccepted, isEmailNotificationEnabled}}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"POST /api/graphql\": {\n        \"{'query':'{accountSettings {isEulaAccepted, isEmailNotificationEnabled}}'}\": {\n            \"response\": {\n                \"data\": {\n                    \"accountSettings\": {\n                        \"isEulaAccepted\": false,\n                        \"isEmailNotificationEnabled\": true\n                    }\n                }\n            },\n            \"status\": 200\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/cache",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cache"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

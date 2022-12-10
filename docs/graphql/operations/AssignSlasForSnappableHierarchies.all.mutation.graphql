@@ -1,0 +1,22 @@
+# @powershell-sdk.cmdlet-name AssignSla-SnappableHierarchies
+mutation AssignSlasForSnappableHierarchies(
+  $slaId: UUID
+  $globalSlaAssignType: SlaAssignTypeEnum = protectWithSlaId
+  $objectIds: [UUID!]!
+  $existing_snapshot_retention: GlobalExistingSnapshotRetention
+  $shouldApplyToExistingSnapshots: Boolean = false
+) {
+  assignSlasForSnappableHierarchies(
+    globalSlaOptionalFid: $slaId
+    globalSlaAssignType: $globalSlaAssignType
+    objectIds: $objectIds
+    shouldApplyToExistingSnapshots: $shouldApplyToExistingSnapshots
+    globalExistingSnapshotRetention: $existing_snapshot_retention
+  ) {
+    ...AssignSlasForSnappableHierarchiesFragment
+  }
+}
+
+fragment AssignSlasForSnappableHierarchiesFragment on SlaAssignResult {
+  success
+}

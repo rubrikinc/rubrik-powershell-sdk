@@ -1,0 +1,5 @@
+fragment GeoLocationFragment_All on GeoLocation {
+  address
+  latitude
+  longitude
+}

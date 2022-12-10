@@ -1,0 +1,32 @@
+# @powershell-sdk.cmdlet-name Add-AzureCloudAccountWithoutOauth
+mutation AddAzureCloudAccountWithoutOauth(
+  $azure_tenant_domain_name: String!
+  $azure_cloud_type: AzureCloudType!
+  $azure_regions: [AzureCloudAccountRegion!]!
+  $feature: AddAzureCloudAccountFeatureInputWithoutOauth!
+  $subscription_name: String!
+  $subscription_id: String!
+) {
+  addAzureCloudAccountWithoutOauth(
+    input: {
+      tenantDomainName: $azure_tenant_domain_name
+      azureCloudType: $azure_cloud_type
+      subscriptions: {
+        subscription: {name: $subscription_name, nativeId: $subscription_id}
+        features: [$feature]
+      }
+      regions: $azure_regions
+    }
+  ) {
+    ...AddAzureCloudAccountWithoutOauthFragment
+  }
+}
+
+fragment AddAzureCloudAccountWithoutOauthFragment on AddAzureCloudAccountWithoutOauthReply {
+  tenantId
+  status {
+    azureSubscriptionRubrikId
+    azureSubscriptionNativeId
+    error
+  }
+}

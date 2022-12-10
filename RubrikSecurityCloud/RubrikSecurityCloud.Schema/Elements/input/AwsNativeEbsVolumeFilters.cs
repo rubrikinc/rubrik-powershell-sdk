@@ -1,0 +1,99 @@
+// AwsNativeEbsVolumeFilters.cs
+//
+// This file is part of the Rubrik PowerShell SDK.
+// Generated on 2023-04-13 20:03:10.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    #region AwsNativeEbsVolumeFilters
+
+    public class AwsNativeEbsVolumeFilters
+    {
+        #region members
+        //      C# -> AwsNativeEbsVolumeNameOrIdSubstringFilter? NameOrIdSubstringFilter
+        // GraphQL -> nameOrIdSubstringFilter: AwsNativeEbsVolumeNameOrIdSubstringFilter (input)
+        [JsonProperty("nameOrIdSubstringFilter")]
+        public AwsNativeEbsVolumeNameOrIdSubstringFilter? NameOrIdSubstringFilter { get; set; }
+
+        //      C# -> AwsNativeEbsVolumeFileRecoveryStatusFilter? FileRecoveryStatusFilter
+        // GraphQL -> fileRecoveryStatusFilter: AwsNativeEbsVolumeFileRecoveryStatusFilter (input)
+        [JsonProperty("fileRecoveryStatusFilter")]
+        public AwsNativeEbsVolumeFileRecoveryStatusFilter? FileRecoveryStatusFilter { get; set; }
+
+        //      C# -> AwsNativeEbsVolumeTypeFilter? TypeFilter
+        // GraphQL -> typeFilter: AwsNativeEbsVolumeTypeFilter (input)
+        [JsonProperty("typeFilter")]
+        public AwsNativeEbsVolumeTypeFilter? TypeFilter { get; set; }
+
+        //      C# -> AwsNativeAttachedInstanceFilter? AttachedInstanceFilter
+        // GraphQL -> attachedInstanceFilter: AwsNativeAttachedInstanceFilter (input)
+        [JsonProperty("attachedInstanceFilter")]
+        public AwsNativeAttachedInstanceFilter? AttachedInstanceFilter { get; set; }
+
+        //      C# -> EffectiveSlaFilter? EffectiveSlaFilter
+        // GraphQL -> effectiveSlaFilter: EffectiveSlaFilter (input)
+        [JsonProperty("effectiveSlaFilter")]
+        public EffectiveSlaFilter? EffectiveSlaFilter { get; set; }
+
+        //      C# -> AwsNativeAccountFilter? AccountFilter
+        // GraphQL -> accountFilter: AwsNativeAccountFilter (input)
+        [JsonProperty("accountFilter")]
+        public AwsNativeAccountFilter? AccountFilter { get; set; }
+
+        //      C# -> AwsNativeRegionFilter? RegionFilter
+        // GraphQL -> regionFilter: AwsNativeRegionFilter (input)
+        [JsonProperty("regionFilter")]
+        public AwsNativeRegionFilter? RegionFilter { get; set; }
+
+        //      C# -> RelicFilter? RelicFilter
+        // GraphQL -> relicFilter: RelicFilter (input)
+        [JsonProperty("relicFilter")]
+        public RelicFilter? RelicFilter { get; set; }
+
+        //      C# -> AwsNativeTagFilter? TagFilter
+        // GraphQL -> tagFilter: AwsNativeTagFilter (input)
+        [JsonProperty("tagFilter")]
+        public AwsNativeTagFilter? TagFilter { get; set; }
+
+        //      C# -> OrgFilter? OrgFilter
+        // GraphQL -> orgFilter: OrgFilter (input)
+        [JsonProperty("orgFilter")]
+        public OrgFilter? OrgFilter { get; set; }
+
+        #endregion
+
+    
+        #region methods
+        public dynamic GetInputObject()
+        {
+            IDictionary<string, object> d = new System.Dynamic.ExpandoObject();
+
+            var properties = GetType().GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            foreach (var propertyInfo in properties)
+            {
+                var value = propertyInfo.GetValue(this);
+                var defaultValue = propertyInfo.PropertyType.IsValueType ? Activator.CreateInstance(propertyInfo.PropertyType) : null;
+
+                var requiredProp = propertyInfo.GetCustomAttributes(typeof(JsonRequiredAttribute), false).Length > 0;
+
+                if (requiredProp || value != defaultValue)
+                {
+                    d[propertyInfo.Name] = value;
+                }
+            }
+            return d;
+        }
+        #endregion
+
+    } // class AwsNativeEbsVolumeFilters
+    #endregion
+
+} // namespace Rubrik.SecurityCloud.Types

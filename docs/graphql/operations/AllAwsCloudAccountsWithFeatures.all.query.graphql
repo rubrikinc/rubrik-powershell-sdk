@@ -1,0 +1,28 @@
+# @powershell-sdk.cmdlet-name Get-AllAwsCloudAccountsWithFeatures
+query AllAwsCloudAccountsWithFeatures($column_filter: String = "") {
+  allAwsCloudAccountsWithFeatures(
+    awsCloudAccountsArg: {
+      columnSearchFilter: $column_filter
+      statusFilters: []
+      feature: CLOUD_NATIVE_PROTECTION
+    }
+  ) {
+    ...AllAwsCloudAccountsWithFeaturesFragment
+  }
+}
+
+fragment AllAwsCloudAccountsWithFeaturesFragment on AwsCloudAccountWithFeatures{
+    awsCloudAccount {
+      id
+      nativeId
+      message
+      accountName
+    }
+    featureDetails {
+      feature
+      roleArn
+      stackArn
+      status
+      awsRegions
+    }
+}
