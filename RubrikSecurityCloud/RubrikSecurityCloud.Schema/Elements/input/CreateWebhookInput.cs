@@ -1,7 +1,6 @@
 // CreateWebhookInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateWebhookInput
 
-    public class CreateWebhookInput
+    public class CreateWebhookInput: IInput
     {
         #region members
+
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         [JsonProperty("description")]
@@ -67,6 +67,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> authInfo: AuthInfoInput (input)
         [JsonProperty("authInfo")]
         public AuthInfoInput? AuthInfo { get; set; }
+
 
         #endregion
 

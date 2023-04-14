@@ -1,7 +1,6 @@
 // HypervExportSnapshotJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HypervExportSnapshotJobConfigInput
 
-    public class HypervExportSnapshotJobConfigInput
+    public class HypervExportSnapshotJobConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? DisableNetwork
         // GraphQL -> disableNetwork: Boolean (scalar)
         [JsonProperty("disableNetwork")]
@@ -49,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("path")]
         public System.String? Path { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // MssqlRecoveryPointInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlRecoveryPointInput
 
-    public class MssqlRecoveryPointInput
+    public class MssqlRecoveryPointInput: IInput
     {
         #region members
+
         //      C# -> LsnRecoveryPointInput? LsnPoint
         // GraphQL -> lsnPoint: LsnRecoveryPointInput (input)
         [JsonProperty("lsnPoint")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> date: DateTime (scalar)
         [JsonProperty("date")]
         public DateTime? Date { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // NtpServerConfigurationInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NtpServerConfigurationInput
 
-    public class NtpServerConfigurationInput
+    public class NtpServerConfigurationInput: IInput
     {
         #region members
+
         //      C# -> NtpSymmKeyConfigurationInput? SymmetricKey
         // GraphQL -> symmetricKey: NtpSymmKeyConfigurationInput (input)
         [JsonProperty("symmetricKey")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("server")]
         public System.String? Server { get; set; }
+
 
         #endregion
 

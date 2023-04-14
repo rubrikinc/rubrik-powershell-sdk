@@ -157,6 +157,8 @@ type Query {
     # Region of AWS account.
     region: String!
   ): [String!]!
+  # List of all the database instance classes supported by AWS RDS Aurora databases.
+  allAwsRdsAuroraInstanceClasses: AwsNativeRdsAuroraInstanceClassesReply!
   # All valid AWS regions for this cloud account.
   allAwsRegions(
     # Cloud account ID.
@@ -17359,6 +17361,128 @@ enum AwsNativeProtectionFeature {
   # AWS native protection feature is S3.
   S3
 }
+# DB class of an Aurora RDS instance.
+enum AwsNativeRdsAuroraDbInstanceClass {
+  # DB class is db.r3.2xlarge.
+  DB_R3_2XLARGE
+  # DB class is db.r3.4xlarge.
+  DB_R3_4XLARGE
+  # DB class is db.r3.8xlarge.
+  DB_R3_8XLARGE
+  # DB class is db.r3.large.
+  DB_R3_LARGE
+  # DB class is db.r3.xlarge.
+  DB_R3_XLARGE
+  # DB class is db.r4.12xlarge.
+  DB_R4_12XLARGE
+  # DB class is db.r4.16xlarge.
+  DB_R4_16XLARGE
+  # DB class is db.r4.2xlarge.
+  DB_R4_2XLARGE
+  # DB class is db.r4.4xlarge.
+  DB_R4_4XLARGE
+  # DB class is db.r4.8xlarge.
+  DB_R4_8XLARGE
+  # DB class is db.r4.large.
+  DB_R4_LARGE
+  # DB class is db.r4.xlarge.
+  DB_R4_XLARGE
+  # DB class is db.r5.12xlarge.
+  DB_R5_12XLARGE
+  # DB class is db.r5.16xlarge.
+  DB_R5_16XLARGE
+  # DB class is db.r5.24xlarge.
+  DB_R5_24XLARGE
+  # DB class is db.r5.2xlarge.
+  DB_R5_2XLARGE
+  # DB class is db.r5.4xlarge.
+  DB_R5_4XLARGE
+  # DB class is db.r5.8xlarge.
+  DB_R5_8XLARGE
+  # DB class is db.r5.large.
+  DB_R5_LARGE
+  # DB class is db.r5.xlarge.
+  DB_R5_XLARGE
+  # DB class is db.r6g.12xlarge.
+  DB_R6G_12XLARGE
+  # DB class is db.r6g.16xlarge.
+  DB_R6G_16XLARGE
+  # DB class is db.r6g.2xlarge.
+  DB_R6G_2XLARGE
+  # DB class is db.r6g.4xlarge.
+  DB_R6G_4XLARGE
+  # DB class is db.r6g.8xlarge.
+  DB_R6G_8XLARGE
+  # DB class is db.r6g.large.
+  DB_R6G_LARGE
+  # DB class is db.r6g.xlarge.
+  DB_R6G_XLARGE
+  # DB class is db.r6i.12xlarge.
+  DB_R6I_12XLARGE
+  # DB class is db.r6i.16xlarge.
+  DB_R6I_16XLARGE
+  # DB class is db.r6i.24xlarge.
+  DB_R6I_24XLARGE
+  # DB class is db.r6i.2xlarge.
+  DB_R6I_2XLARGE
+  # DB class is db.r6i.32xlarge.
+  DB_R6I_32XLARGE
+  # DB class is db.r6i.4xlarge.
+  DB_R6I_4XLARGE
+  # DB class is db.r6i.8xlarge.
+  DB_R6I_8XLARGE
+  # DB class is db.r6i.large.
+  DB_R6I_LARGE
+  # DB class is db.r6i.xlarge.
+  DB_R6I_XLARGE
+  # DB class is db.t2.medium.
+  DB_T2_MEDIUM
+  # DB class is db.t2.small.
+  DB_T2_SMALL
+  # DB class is db.t3.2xlarge.
+  DB_T3_2XLARGE
+  # DB class is db.t3.large.
+  DB_T3_LARGE
+  # DB class is db.t3.medium.
+  DB_T3_MEDIUM
+  # DB class is db.t3.micro.
+  DB_T3_MICRO
+  # DB class is db.t3.small.
+  DB_T3_SMALL
+  # DB class is db.t3.xlarge.
+  DB_T3_XLARGE
+  # DB class is db.t4g.2xlarge.
+  DB_T4G_2XLARGE
+  # DB class is db.t4g.large.
+  DB_T4G_LARGE
+  # DB class is db.t4g.medium.
+  DB_T4G_MEDIUM
+  # DB class is db.t4g.small.
+  DB_T4G_SMALL
+  # DB class is db.t4g.xlarge.
+  DB_T4G_XLARGE
+  # DB class is db.x2g.12xlarge.
+  DB_X2G_12XLARGE
+  # DB class is db.x2g.16xlarge.
+  DB_X2G_16XLARGE
+  # DB class is db.x2g.2xlarge.
+  DB_X2G_2XLARGE
+  # DB class is db.x2g.4xlarge.
+  DB_X2G_4XLARGE
+  # DB class is db.x2g.8xlarge.
+  DB_X2G_8XLARGE
+  # DB class is db.x2g.large.
+  DB_X2G_LARGE
+  # DB class is db.x2g.xlarge.
+  DB_X2G_XLARGE
+  # DB class is unknown.
+  UNKNOWN
+}
+# Represents the instance classes supported for AWS RDS Aurora.
+type AwsNativeRdsAuroraInstanceClassesReply {
+  # Instance classes supported for AWS RDS Aurora.
+  instanceClasses: [AwsNativeRdsAuroraDbInstanceClass!]!
+}
 # DB engine of an RDS instance.
 enum AwsNativeRdsDbEngine {
   # DB engine is Aurora.
@@ -17886,6 +18010,8 @@ type AwsNativeRdsPointInTimeRestoreWindow {
 enum AwsNativeRdsStorageType {
   # Storage type is gp2.
   GP2
+  # Storage type is gp3.
+  GP3
   # Storage type is io1.
   IO1
   # Storage type is not specified.
@@ -28104,6 +28230,8 @@ type ClusterSlaDomain implements SlaDomain {
   id: String!
   # ID of the Rubrik cluster.
   cdmId: String!
+  # Specifies the name of the owner organization of the SLA Domain.
+  ownerOrgName: String!
 }
 # Paginated list of ClusterSlaDomain objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type ClusterSlaDomainConnection {
@@ -36834,10 +36962,10 @@ type FailoverJobReport {
   isArchived: Boolean!
   # The ID of the Blueprint.
   blueprintId: UUID!
-  # Name of the Blueprint.
-  blueprintName: String!
   # Specifies if the Blueprint is visible.
   isBlueprintVisible: Boolean!
+  # Name of the Blueprint.
+  blueprintName: String!
 }
 # Paginated list of FailoverJobReport objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type FailoverJobReportConnection {
@@ -37778,6 +37906,8 @@ enum FeatureFlagName {
   PRISM_CENTRAL_ENABLED
   # Determines if product-entitlement-anomaly korg job should be enabled.
   PRODUCT_ENTITLEMENT_ANOMALY_KORGJOB_ENABLED
+  # Specifies whether product trials are enabled.
+  PRODUCT_TRIALS_ENABLED
   # Determines whether Prompt for RSC Migration UI is enabled for this account or not.
   PROMPT_RSC_MIGRATION_UI_ENABLED
   # Determines whether QStar archival location is enabled.
@@ -41567,6 +41697,8 @@ type GlobalSlaReply implements SlaDomain {
   isRetentionLockedSla: Boolean!
   # Specifies the list of organizations that have view access for the SLA Domain.
   allOrgsWithAccess: [Org!]!
+  # Specifies the name of the owner organization of the SLA Domain.
+  ownerOrgName: String!
 }
 # SLA Domain sync status for a specified Rubrik cluster.
 type GlobalSlaSyncStatus {
@@ -42064,6 +42196,8 @@ input HideRevealNasSharesInput {
 }
 # ~ needed: description ~
 enum HierarchyFilterField {
+  # Filter by name of an Active Directory domain.
+  ACTIVE_DIRECTORY_DOMAIN_NAME
   # Filter AWS EC2 instances based on RBS connection status.
   AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS
   # Filter AWS native accounts based on the features enabled for them.
@@ -42219,6 +42353,8 @@ enum HierarchyFilterField {
   DOES_PHYSICAL_HOST_HAVE_RELIC_VOLUME_GROUP
   # Filter whether the sharepoint is relic or contains relic object.
   DOES_SHAREPOINT_HAVE_RELIC_OBJECTS
+  # Filter by FSMO role of a domain controller.
+  DOMAIN_CONTROLLER_FSMO_ROLE
   # Filter by EBSVolume native ID.
   EBS_VOLUME_ID
   # Filter EBS Volumes by status of indexing.
@@ -42855,6 +42991,8 @@ type HierarchySnappableFileVersion {
 }
 # ~ needed: description ~
 enum HierarchySortByField {
+  # Sort based on Active Directory domain name.
+  ACTIVE_DIRECTORY_DOMAIN_NAME
   # ~ needed: description ~
   ASSIGNED_SLA_DOMAIN
   # Sort by AWS native account name.
@@ -59792,8 +59930,12 @@ enum Operation {
   ADD_STORAGE_SETTINGS
   # ~ needed: description ~
   ALLOW_SUPPORT_USER_SESSIONS
+  # Approve TPR request.
+  APPROVE_TPR_REQUEST
   # ~ needed: description ~
   CANCEL_RUNNING_ACTIVITY
+  # Cancel TPR request.
+  CANCEL_TPR_REQUEST
   # ~ needed: description ~
   CATEGORY_MANAGE_DATA_SOURCE
   # ~ needed: description ~
@@ -59902,6 +60044,12 @@ enum Operation {
   MANAGE_SUPPORT_BUNDLE
   # Manage syslog rules.
   MANAGE_SYSLOG
+  # Manage TPR configuration.
+  MANAGE_TPR_CONFIGURATION
+  # Manage TPR enablement.
+  MANAGE_TPR_ENABLEMENT
+  # Manage TPR policy.
+  MANAGE_TPR_POLICY
   # ~ needed: description ~
   MANAGE_WEBHOOKS
   # ~ needed: description ~
@@ -60004,6 +60152,12 @@ enum Operation {
   VIEW_SYSTEM_PREFERENCE
   # ~ needed: description ~
   VIEW_THREAT_HUNT_RESULTS
+  # View TPR configuration.
+  VIEW_TPR_CONFIGURATION
+  # View TPR policy.
+  VIEW_TPR_POLICY
+  # View TPR request.
+  VIEW_TPR_REQUEST
   # ~ needed: description ~
   VIEW_USER_MANAGEMENT
   # ~ needed: description ~
@@ -63292,15 +63446,33 @@ type PolicyHitsSummary {
 }
 type PolicyObj {
   snapshotFid: String!
+  # Timestamp in ms.
   snapshotTimestamp: Long!
+  # Root file result.
   rootFileResult: FileResult!
+  # The same snapshot may be returned for different policy object queries at
+  # different time points since snapshot results are pulled forward if no new
+  # snapshots have come up from CDM. The daily change values will be
+  # different for these different time points.
+  #
+  # This time_context field is used by the graphql layer to make sure that
+  # Apollo cache on the UI can differentiate between the policy object at
+  # different time points.
   timeContext: String!
   osType: DataGovOsType!
   shareType: DataGovShareType!
-  # Risk level of policy object.
+  # Risk level of the policy object.
   riskLevel: RiskLevelType!
-  # Analysis status of policy object.
+  # Analysis status of the policy object.
   analysisStatus: AnalysisStatus!
+  # Sensitive File count for various risk levels.
+  sensitiveFiles: SensitiveFiles
+  # Sensitive hits accumulated across different workloads for the user.
+  totalSensitiveHits: SummaryHits
+  # Analyzer Hits count for various risk levels.
+  analyzerHits: AnalyzerHits
+  # User access risk reasons.
+  accessRiskReasons: [RiskReason!]!
   id: String!
   folderChildConnection(
     # Returns the first n elements from the list.
@@ -64762,7 +64934,7 @@ type RdsInstanceDetailsFromAws {
   engineVersion: String!
   # Key Management System (KMS) key ID associated with RDS Instance.
   kmsKeyId: String!
-  # Storage type of RDS Instance. Amazon RDS provides three storage types: General Purpose SSD (also known as gp2), Provisioned IOPS SSD (also known as io1), and magnetic (also known as standard).
+  # Storage type of RDS Instance. Amazon RDS provides four storage types: General Purpose SSD (gp2), General Purpose SSD (gp3), Provisioned IOPS SSD (io1), and magnetic (standard).
   storageType: String!
   # Port used to connect to the RDS Instance.
   port: Long!
@@ -64789,7 +64961,7 @@ type RdsInstanceExportDefaults {
   dbSubnetGroupName: String!
   # Primary Availability Zone (AZ) of RDS Instance.
   primaryAz: String!
-  # Storage type of RDS Instance. Amazon RDS provides three storage types: General Purpose SSD (also known as gp2), Provisioned IOPS SSD (also known as io1), and magnetic (also known as standard).
+  # Storage type of RDS Instance. Amazon RDS provides four storage types: General Purpose SSD (gp2), General Purpose SSD (gp3), Provisioned IOPS SSD (io1), and magnetic (standard).
   storageType: AwsNativeRdsStorageType!
   # Input/Output (IO) operation limit per second for RDS Instance.
   iops: Int!

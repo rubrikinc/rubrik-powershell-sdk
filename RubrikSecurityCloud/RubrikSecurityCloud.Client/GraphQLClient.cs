@@ -44,6 +44,12 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         private readonly string _clientSecret;
         private readonly string _polarisBaseUrl;
         private readonly string _polarisUrlScheme;
+        // Keep version number in sync with ModuleVersion in
+        // RubrikSecurityCloud.psd1. Version number is represented
+        // with underscores instead of dots, since operation names
+        // cannot contain dots. For example, 1.0.0 would be represented
+        // as 1_0_0.
+        private readonly string _module_version = "_RscPowershellSdk_0_1_0";
 
         private AuthenticationState _authenticationState = AuthenticationState.NOT_AUTHORIZED;
 
@@ -174,6 +180,20 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             apiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _clientToken.AccessToken);
+
+            if (!String.IsNullOrEmpty(Request.OperationName))
+            {
+                string signature = Request.OperationName + _module_version;
+                Request.Query
+                    = Request
+                        .Query
+                        .Replace(
+                            Request.OperationName,
+                            signature
+                        );
+                Request.OperationName = signature;
+            }
+            
 
             JsonSerializerSettings jsonSettings = new JsonSerializerSettings
             {

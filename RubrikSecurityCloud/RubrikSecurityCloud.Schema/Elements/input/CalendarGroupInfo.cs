@@ -1,7 +1,6 @@
 // CalendarGroupInfo.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CalendarGroupInfo
 
-    public class CalendarGroupInfo
+    public class CalendarGroupInfo: IInput
     {
         #region members
+
         //      C# -> System.String? CalendarGroupId
         // GraphQL -> calendarGroupId: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
+
 
         #endregion
 

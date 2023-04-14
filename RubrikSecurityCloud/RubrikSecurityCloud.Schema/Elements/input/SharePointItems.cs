@@ -1,7 +1,6 @@
 // SharePointItems.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SharePointItems
 
-    public class SharePointItems
+    public class SharePointItems: IInput
     {
         #region members
+
         //      C# -> System.String? SharepointId
         // GraphQL -> sharepointId: String! (scalar)
         [Required]
@@ -57,6 +57,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("arePageLibraryItems")]
         public System.Boolean? ArePageLibraryItems { get; set; }
+
 
         #endregion
 

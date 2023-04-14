@@ -1,7 +1,6 @@
 // IpmiUpdateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region IpmiUpdateInput
 
-    public class IpmiUpdateInput
+    public class IpmiUpdateInput: IInput
     {
         #region members
+
         //      C# -> IpmiAccessUpdateInput? Access
         // GraphQL -> access: IpmiAccessUpdateInput (input)
         [JsonProperty("access")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> password: String (scalar)
         [JsonProperty("password")]
         public System.String? Password { get; set; }
+
 
         #endregion
 

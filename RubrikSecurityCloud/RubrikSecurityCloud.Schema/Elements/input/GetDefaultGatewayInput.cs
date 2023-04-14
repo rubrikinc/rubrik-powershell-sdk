@@ -1,7 +1,6 @@
 // GetDefaultGatewayInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:21.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GetDefaultGatewayInput
 
-    public class GetDefaultGatewayInput
+    public class GetDefaultGatewayInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
 
         #endregion
 

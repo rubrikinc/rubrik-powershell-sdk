@@ -1,7 +1,6 @@
 // AddSapHanaSystemInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AddSapHanaSystemInput
 
-    public class AddSapHanaSystemInput
+    public class AddSapHanaSystemInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("sapHanaSystem")]
         public SapHanaSystemConfigInput? SapHanaSystem { get; set; }
+
 
         #endregion
 

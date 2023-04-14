@@ -1,7 +1,6 @@
 // RelicFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RelicFilter
 
-    public class RelicFilter
+    public class RelicFilter: IInput
     {
         #region members
+
         //      C# -> System.Boolean? Relic
         // GraphQL -> relic: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("relic")]
         public System.Boolean? Relic { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // AddO365OrgInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AddO365OrgInput
 
-    public class AddO365OrgInput
+    public class AddO365OrgInput: IInput
     {
         #region members
+
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         [Required]
@@ -45,6 +45,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("appTypes")]
         public List<System.String>? AppTypes { get; set; }
+
 
         #endregion
 

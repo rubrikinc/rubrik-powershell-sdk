@@ -1,7 +1,6 @@
 // RemoveInventoryWorkloadsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RemoveInventoryWorkloadsInput
 
-    public class RemoveInventoryWorkloadsInput
+    public class RemoveInventoryWorkloadsInput: IInput
     {
         #region members
+
         //      C# -> List<InventoryCard>? InventoryCards
         // GraphQL -> inventoryCards: [InventoryCard!]! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("inventoryCards")]
         public List<InventoryCard>? InventoryCards { get; set; }
+
 
         #endregion
 

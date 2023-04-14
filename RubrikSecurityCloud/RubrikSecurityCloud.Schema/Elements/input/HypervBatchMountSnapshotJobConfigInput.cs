@@ -1,7 +1,6 @@
 // HypervBatchMountSnapshotJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HypervBatchMountSnapshotJobConfigInput
 
-    public class HypervBatchMountSnapshotJobConfigInput
+    public class HypervBatchMountSnapshotJobConfigInput: IInput
     {
         #region members
+
         //      C# -> List<HypervMountSnapshotConfigForBatchInput>? Snapshots
         // GraphQL -> snapshots: [HypervMountSnapshotConfigForBatchInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("snapshots")]
         public List<HypervMountSnapshotConfigForBatchInput>? Snapshots { get; set; }
+
 
         #endregion
 

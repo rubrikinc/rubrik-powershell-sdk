@@ -1,7 +1,6 @@
 // NasSharePropertiesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:34.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NasSharePropertiesInput
 
-    public class NasSharePropertiesInput
+    public class NasSharePropertiesInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? IsIsilonChangelistEnabled
         // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
         [JsonProperty("isIsilonChangelistEnabled")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // O365FullSpExclusion.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:33.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365FullSpExclusion
 
-    public class O365FullSpExclusion
+    public class O365FullSpExclusion: IInput
     {
         #region members
+
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         [Required]
@@ -45,6 +45,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("objectType")]
         public SharePointDescendantType? ObjectType { get; set; }
+
 
         #endregion
 

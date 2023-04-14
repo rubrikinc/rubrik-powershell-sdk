@@ -1,7 +1,6 @@
 // BulkCreateOnDemandMssqlBackupInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BulkCreateOnDemandMssqlBackupInput
 
-    public class BulkCreateOnDemandMssqlBackupInput
+    public class BulkCreateOnDemandMssqlBackupInput: IInput
     {
         #region members
+
         //      C# -> MssqlBatchBackupJobConfigInput? Config
         // GraphQL -> config: MssqlBatchBackupJobConfigInput! (input)
         [Required]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userNote: String (scalar)
         [JsonProperty("userNote")]
         public System.String? UserNote { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // MailboxRestoreConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MailboxRestoreConfig
 
-    public class MailboxRestoreConfig
+    public class MailboxRestoreConfig: IInput
     {
         #region members
+
         //      C# -> System.String? SnapshotUuid
         // GraphQL -> SnapshotUUID: UUID (scalar)
         [JsonProperty("SnapshotUUID")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("RestoreConfigs")]
         public List<RestoreObjectConfig>? RestoreConfigs { get; set; }
+
 
         #endregion
 

@@ -1,5 +1,5 @@
 BeforeALl {
-    & "$PSScriptRoot\..\..\Samples\import.ps1"
+    & "$PSScriptRoot\..\..\Utils\import.ps1"
     . "$PSScriptRoot\..\serviceaccount.ps1"
 }
 

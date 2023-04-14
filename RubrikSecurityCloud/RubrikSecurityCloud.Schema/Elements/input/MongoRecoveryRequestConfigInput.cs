@@ -1,7 +1,6 @@
 // MongoRecoveryRequestConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MongoRecoveryRequestConfigInput
 
-    public class MongoRecoveryRequestConfigInput
+    public class MongoRecoveryRequestConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? Prefix
         // GraphQL -> prefix: String (scalar)
         [JsonProperty("prefix")]
@@ -76,6 +76,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("targetMongoClusterId")]
         public System.String? TargetMongoClusterId { get; set; }
+
 
         #endregion
 

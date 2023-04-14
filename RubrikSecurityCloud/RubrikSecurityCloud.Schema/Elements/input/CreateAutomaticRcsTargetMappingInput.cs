@@ -1,7 +1,6 @@
 // CreateAutomaticRcsTargetMappingInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:19.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateAutomaticRcsTargetMappingInput
 
-    public class CreateAutomaticRcsTargetMappingInput
+    public class CreateAutomaticRcsTargetMappingInput: IInput
     {
         #region members
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]
@@ -60,6 +60,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ipMapping: [IpMappingInput!] (input)
         [JsonProperty("ipMapping")]
         public List<IpMappingInput>? IpMapping { get; set; }
+
 
         #endregion
 

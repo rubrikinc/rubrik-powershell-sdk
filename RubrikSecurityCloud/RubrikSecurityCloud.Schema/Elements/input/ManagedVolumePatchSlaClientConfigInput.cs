@@ -1,7 +1,6 @@
 // ManagedVolumePatchSlaClientConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:28.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumePatchSlaClientConfigInput
 
-    public class ManagedVolumePatchSlaClientConfigInput
+    public class ManagedVolumePatchSlaClientConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? BackupScriptCommand
         // GraphQL -> backupScriptCommand: String (scalar)
         [JsonProperty("backupScriptCommand")]
@@ -98,6 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldDisablePreBackupScript")]
         public System.Boolean? ShouldDisablePreBackupScript { get; set; }
+
 
         #endregion
 

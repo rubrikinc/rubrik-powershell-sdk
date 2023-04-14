@@ -1,7 +1,6 @@
 // ExistingComputeConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ExistingComputeConfig
 
-    public class ExistingComputeConfig
+    public class ExistingComputeConfig: IInput
     {
         #region members
+
         //      C# -> System.String? VnetId
         // GraphQL -> vnetId: String (scalar)
         [JsonProperty("vnetId")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subnetId: String (scalar)
         [JsonProperty("subnetId")]
         public System.String? SubnetId { get; set; }
+
 
         #endregion
 

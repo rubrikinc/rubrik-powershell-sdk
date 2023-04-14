@@ -1,7 +1,6 @@
 // FilesetRestoreFilesJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:25.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FilesetRestoreFilesJobConfigInput
 
-    public class FilesetRestoreFilesJobConfigInput
+    public class FilesetRestoreFilesJobConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? IgnoreErrors
         // GraphQL -> ignoreErrors: Boolean (scalar)
         [JsonProperty("ignoreErrors")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("restoreConfig")]
         public List<FilesetRestorePathPairInput>? RestoreConfig { get; set; }
+
 
         #endregion
 

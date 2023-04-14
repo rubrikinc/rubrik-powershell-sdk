@@ -1,7 +1,6 @@
 // DriveRestoreConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DriveRestoreConfig
 
-    public class DriveRestoreConfig
+    public class DriveRestoreConfig: IInput
     {
         #region members
+
         //      C# -> List<FileInfo>? FilesToRestore
         // GraphQL -> filesToRestore: [FileInfo!]! (input)
         [Required]
@@ -38,6 +38,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("restoreFolderPath")]
         public System.String? RestoreFolderPath { get; set; }
+
 
         #endregion
 

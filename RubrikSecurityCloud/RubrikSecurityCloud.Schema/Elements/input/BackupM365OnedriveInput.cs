@@ -1,7 +1,6 @@
 // BackupM365OnedriveInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BackupM365OnedriveInput
 
-    public class BackupM365OnedriveInput
+    public class BackupM365OnedriveInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? WorkloadUuids
         // GraphQL -> workloadUuids: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("workloadUuids")]
         public List<System.String>? WorkloadUuids { get; set; }
+
 
         #endregion
 

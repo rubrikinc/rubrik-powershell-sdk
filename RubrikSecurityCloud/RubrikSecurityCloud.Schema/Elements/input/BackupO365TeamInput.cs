@@ -1,7 +1,6 @@
 // BackupO365TeamInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BackupO365TeamInput
 
-    public class BackupO365TeamInput
+    public class BackupO365TeamInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? SnappableUuids
         // GraphQL -> snappableUuids: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("snappableUuids")]
         public List<System.String>? SnappableUuids { get; set; }
+
 
         #endregion
 

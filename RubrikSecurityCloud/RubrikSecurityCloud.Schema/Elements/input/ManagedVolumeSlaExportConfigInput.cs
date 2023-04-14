@@ -1,7 +1,6 @@
 // ManagedVolumeSlaExportConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeSlaExportConfigInput
 
-    public class ManagedVolumeSlaExportConfigInput
+    public class ManagedVolumeSlaExportConfigInput: IInput
     {
         #region members
+
         //      C# -> ManagedVolumeExportConfigInput? ManagedVolumeExportConfig
         // GraphQL -> managedVolumeExportConfig: ManagedVolumeExportConfigInput (input)
         [JsonProperty("managedVolumeExportConfig")]
@@ -36,6 +36,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("hostMountPaths")]
         public List<System.String>? HostMountPaths { get; set; }
+
 
         #endregion
 

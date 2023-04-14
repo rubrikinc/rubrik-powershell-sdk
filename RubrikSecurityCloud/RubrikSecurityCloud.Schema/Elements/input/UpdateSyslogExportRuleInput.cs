@@ -1,7 +1,6 @@
 // UpdateSyslogExportRuleInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:35.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateSyslogExportRuleInput
 
-    public class UpdateSyslogExportRuleInput
+    public class UpdateSyslogExportRuleInput: IInput
     {
         #region members
+
         //      C# -> SyslogExportRuleUpdateInput? SyslogSettingsV51
         // GraphQL -> syslogSettingsV51: SyslogExportRuleUpdateInput (input)
         [JsonProperty("syslogSettingsV51")]
@@ -71,6 +71,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

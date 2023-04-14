@@ -1,7 +1,6 @@
 // MssqlSlaPatchPropertiesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlSlaPatchPropertiesInput
 
-    public class MssqlSlaPatchPropertiesInput
+    public class MssqlSlaPatchPropertiesInput: IInput
     {
         #region members
+
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         [JsonProperty("configuredSlaDomainId")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mssqlSlaRelatedProperties: MssqlSlaRelatedPropertiesInput (input)
         [JsonProperty("mssqlSlaRelatedProperties")]
         public MssqlSlaRelatedPropertiesInput? MssqlSlaRelatedProperties { get; set; }
+
 
         #endregion
 

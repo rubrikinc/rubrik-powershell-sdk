@@ -1,7 +1,6 @@
 // FileActivitiesSort.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FileActivitiesSort
 
-    public class FileActivitiesSort
+    public class FileActivitiesSort: IInput
     {
         #region members
+
         //      C# -> FileActivitiesSortBy? SortBy
         // GraphQL -> sortBy: FileActivitiesSortBy (enum)
         [JsonProperty("sortBy")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sortOrder: SortOrder (enum)
         [JsonProperty("sortOrder")]
         public SortOrder? SortOrder { get; set; }
+
 
         #endregion
 

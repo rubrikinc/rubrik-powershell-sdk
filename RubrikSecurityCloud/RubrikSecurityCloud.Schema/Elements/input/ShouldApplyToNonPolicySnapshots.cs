@@ -1,7 +1,6 @@
 // ShouldApplyToNonPolicySnapshots.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ShouldApplyToNonPolicySnapshots
 
-    public class ShouldApplyToNonPolicySnapshots
+    public class ShouldApplyToNonPolicySnapshots: IInput
     {
         #region members
+
         //      C# -> System.Boolean? Value
         // GraphQL -> value: Boolean (scalar)
         [JsonProperty("value")]
         public System.Boolean? Value { get; set; }
+
 
         #endregion
 

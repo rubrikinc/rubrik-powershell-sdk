@@ -1,7 +1,6 @@
 // AwsCloudAccountFeatureVersionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsCloudAccountFeatureVersionInput
 
-    public class AwsCloudAccountFeatureVersionInput
+    public class AwsCloudAccountFeatureVersionInput: IInput
     {
         #region members
+
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("version")]
         public System.Int32? Version { get; set; }
+
 
         #endregion
 

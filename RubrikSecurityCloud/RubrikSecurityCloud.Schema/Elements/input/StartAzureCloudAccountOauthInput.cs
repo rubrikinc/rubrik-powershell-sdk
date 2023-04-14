@@ -1,7 +1,6 @@
 // StartAzureCloudAccountOauthInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:21.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StartAzureCloudAccountOauthInput
 
-    public class StartAzureCloudAccountOauthInput
+    public class StartAzureCloudAccountOauthInput: IInput
     {
         #region members
+
         //      C# -> System.String? TenantDomainName
         // GraphQL -> tenantDomainName: String (scalar)
         [JsonProperty("tenantDomainName")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> azureCloudType: AzureCloudType (enum)
         [JsonProperty("azureCloudType")]
         public AzureCloudType? AzureCloudType { get; set; }
+
 
         #endregion
 

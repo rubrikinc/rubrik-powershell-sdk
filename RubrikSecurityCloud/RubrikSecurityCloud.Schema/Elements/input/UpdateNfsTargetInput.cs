@@ -1,7 +1,6 @@
 // UpdateNfsTargetInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:19.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateNfsTargetInput
 
-    public class UpdateNfsTargetInput
+    public class UpdateNfsTargetInput: IInput
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [Required]
@@ -54,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isConsolidationEnabled: Boolean (scalar)
         [JsonProperty("isConsolidationEnabled")]
         public System.Boolean? IsConsolidationEnabled { get; set; }
+
 
         #endregion
 

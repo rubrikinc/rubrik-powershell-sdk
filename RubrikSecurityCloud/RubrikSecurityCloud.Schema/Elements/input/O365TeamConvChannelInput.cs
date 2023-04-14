@@ -1,7 +1,6 @@
 // O365TeamConvChannelInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:53.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365TeamConvChannelInput
 
-    public class O365TeamConvChannelInput
+    public class O365TeamConvChannelInput: IInput
     {
         #region members
+
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
         [Required]
@@ -45,6 +45,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("membershipType")]
         public ChannelMembershipType? MembershipType { get; set; }
+
 
         #endregion
 

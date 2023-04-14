@@ -1,7 +1,6 @@
 // CdpPerfDashboardFilterParam.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:08.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CdpPerfDashboardFilterParam
 
-    public class CdpPerfDashboardFilterParam
+    public class CdpPerfDashboardFilterParam: IInput
     {
         #region members
+
         //      C# -> CdpPerfDashboardFilterField? FilterField
         // GraphQL -> filterField: CdpPerfDashboardFilterField (enum)
         [JsonProperty("filterField")]
@@ -52,6 +52,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmName: String (scalar)
         [JsonProperty("vmName")]
         public System.String? VmName { get; set; }
+
 
         #endregion
 

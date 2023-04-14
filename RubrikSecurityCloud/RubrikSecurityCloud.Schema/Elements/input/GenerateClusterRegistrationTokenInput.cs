@@ -1,7 +1,6 @@
 // GenerateClusterRegistrationTokenInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GenerateClusterRegistrationTokenInput
 
-    public class GenerateClusterRegistrationTokenInput
+    public class GenerateClusterRegistrationTokenInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? ManagedByPolaris
         // GraphQL -> managedByPolaris: Boolean (scalar)
         [JsonProperty("managedByPolaris")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isOfflineRegistration: Boolean (scalar)
         [JsonProperty("isOfflineRegistration")]
         public System.Boolean? IsOfflineRegistration { get; set; }
+
 
         #endregion
 

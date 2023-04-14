@@ -1,7 +1,6 @@
 // AwsNativeAccountFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsNativeAccountFilter
 
-    public class AwsNativeAccountFilter
+    public class AwsNativeAccountFilter: IInput
     {
         #region members
+
         //      C# -> List<System.String>? AccountIds
         // GraphQL -> accountIds: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("accountIds")]
         public List<System.String>? AccountIds { get; set; }
+
 
         #endregion
 

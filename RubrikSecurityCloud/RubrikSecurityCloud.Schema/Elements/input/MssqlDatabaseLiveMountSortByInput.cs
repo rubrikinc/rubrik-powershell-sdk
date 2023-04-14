@@ -1,7 +1,6 @@
 // MssqlDatabaseLiveMountSortByInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:47.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlDatabaseLiveMountSortByInput
 
-    public class MssqlDatabaseLiveMountSortByInput
+    public class MssqlDatabaseLiveMountSortByInput: IInput
     {
         #region members
+
         //      C# -> MssqlDatabaseLiveMountSortByField? Field
         // GraphQL -> field: MssqlDatabaseLiveMountSortByField (enum)
         [JsonProperty("field")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sortOrder: SortOrder (enum)
         [JsonProperty("sortOrder")]
         public SortOrder? SortOrder { get; set; }
+
 
         #endregion
 

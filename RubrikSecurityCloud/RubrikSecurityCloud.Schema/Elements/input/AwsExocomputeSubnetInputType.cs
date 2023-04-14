@@ -1,7 +1,6 @@
 // AwsExocomputeSubnetInputType.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:21.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsExocomputeSubnetInputType
 
-    public class AwsExocomputeSubnetInputType
+    public class AwsExocomputeSubnetInputType: IInput
     {
         #region members
+
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("availabilityZone")]
         public System.String? AvailabilityZone { get; set; }
+
 
         #endregion
 

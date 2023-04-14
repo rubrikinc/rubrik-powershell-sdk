@@ -1,7 +1,6 @@
 // VappVmRestoreSpecInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:40.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VappVmRestoreSpecInput
 
-    public class VappVmRestoreSpecInput
+    public class VappVmRestoreSpecInput: IInput
     {
         #region members
+
         //      C# -> System.String? StoragePolicyId
         // GraphQL -> storagePolicyId: String (scalar)
         [JsonProperty("storagePolicyId")]
@@ -43,6 +43,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("vcdMoid")]
         public System.String? VcdMoid { get; set; }
+
 
         #endregion
 

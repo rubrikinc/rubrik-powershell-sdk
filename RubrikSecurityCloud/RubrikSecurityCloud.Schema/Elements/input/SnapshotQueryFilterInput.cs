@@ -1,7 +1,6 @@
 // SnapshotQueryFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:02.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SnapshotQueryFilterInput
 
-    public class SnapshotQueryFilterInput
+    public class SnapshotQueryFilterInput: IInput
     {
         #region members
+
         //      C# -> SnapshotQueryFilterField? Field
         // GraphQL -> field: SnapshotQueryFilterField (enum)
         [JsonProperty("field")]
@@ -52,6 +52,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> customizationFilters: [SnapshotCustomization!] (enum)
         [JsonProperty("customizationFilters")]
         public List<SnapshotCustomization>? CustomizationFilters { get; set; }
+
 
         #endregion
 

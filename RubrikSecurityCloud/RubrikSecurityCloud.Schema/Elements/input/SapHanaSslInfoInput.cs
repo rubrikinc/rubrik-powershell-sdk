@@ -1,7 +1,6 @@
 // SapHanaSslInfoInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaSslInfoInput
 
-    public class SapHanaSslInfoInput
+    public class SapHanaSslInfoInput: IInput
     {
         #region members
+
         //      C# -> System.String? CryptoLibPath
         // GraphQL -> cryptoLibPath: String (scalar)
         [JsonProperty("cryptoLibPath")]
@@ -56,6 +56,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("keyStorePath")]
         public System.String? KeyStorePath { get; set; }
+
 
         #endregion
 

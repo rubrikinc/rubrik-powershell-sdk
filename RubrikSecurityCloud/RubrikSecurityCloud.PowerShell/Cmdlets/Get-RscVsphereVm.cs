@@ -80,28 +80,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         protected override void ProcessRecord()
         {
             try
-            {
-                //VsphereVmConnection listFields = new VsphereVmConnection
-                //{
-                //    Nodes = new List<VsphereVm>
-                //                {
-                //                    new VsphereVm
-                //                    {
-                //                        Id = "FETCH",
-                //                        Name = "FETCH",
-                //                        GuestOsName = "FETCH",
-                //                        GuestOsType = GuestOsType.UNKNOWN,
-                //                        ProtectionDate = new DateTime(),
-                //                        Cluster = new Cluster
-                //                        {
-                //                            Id = "FETCH",
-                //                            Name = "FETCH"
-                //                        }
-                //                    }
-                //                }
-                //};
-
+            {                
                 VsphereVmConnection listFields;
+                GraphQL.GraphQLRequest request = new GraphQL.GraphQLRequest();
 
                 if (Fields != null)
                 {
@@ -123,104 +104,118 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                                     "Nodes.VsphereVm.GuestOsType",
                                     "Nodes.VsphereVm.ProtectionDate",
                                     "Nodes.VsphereVm.Cluster.Id",
-                                    "Nodes.VsphereVm.Cluster.Name"
+                                    "Nodes.VsphereVm.Cluster.Name",
+                                    "Nodes.VSphereVm.EffectiveSlaDomain.Id",
+                                    "Nodes.VsphereVm.EffectiveSlaDomain.Name"
                                 });
                 }
 
                 switch (ParameterSetName)
-                    {
+                {
+                    case "Query":
 
-                        case "Query":
+                        //string operationStringOld = RscGqlOperationBuilder.BuildOperation(
+                        //                RscOperationType.query, "VsphereVmListQuery",
+                        //                Query.VsphereVmNewConnection(ref listFields),
+                        //                new Dictionary<string, string>
+                        //                {
+                        //                        { "first", "Int" },
+                        //                        { "after", "String" },
+                        //                        { "sortBy", "HierarchySortByField" },
+                        //                        { "sortOrder", "SortOrder" },
+                        //                        { "filter", "[Filter!]" }
+                        //                });
 
-                            if (String.IsNullOrEmpty(Name)) //&& String.IsNullOrEmpty(SLA))
-                            {
-                                string operationString =
-                                    $"query VsphereListQuery\n{{ " +
-                                    $"vSphereVmNewConnection\n{{"+
-                                    $"{listFields.AsFragment()}}}}}";
+                        string operationString =
+                                    $"query VsphereVmListQuery(" +
+                                    $"$first: Int, " +
+                                    $"$after: String, " +
+                                    $"$sortBy: HierarchySortByField, " +
+                                    $"$sortOrder: SortOrder, " +
+                                    $"$filter: [Filter!]" +
+                                    $"){{\n" +
+                                    $"{Query.VsphereVmNewConnection(ref listFields)}" +
+                                    $"\n}}";
 
-                                Task<List<VsphereVm>> getListTask =
-                                    _rbkClient.InvokeGenericCallAsync<List<VsphereVm>>(operationString);
-                                getListTask.Wait();
-                                WriteObject(getListTask.Result, true);
-                            }
-                            else
-                            {
-                                if (!String.IsNullOrEmpty(Name))
+                        if (String.IsNullOrEmpty(Name))
+                        {
+
+                            request.OperationName = "VsphereVmListQuery";
+                            request.Query = operationString;
+
+
+                            Task<VsphereVmConnection> getListTask =
+                                _rbkClient.InvokeGenericCallAsync<VsphereVmConnection>(request);
+
+                            getListTask.Wait();
+                            WriteObject(getListTask.Result.Nodes, true);
+                        }
+                        else
+                        {
+                            if (!String.IsNullOrEmpty(Name))                            {
+                                OperationVariableSet variables = new OperationVariableSet
                                 {
-                                    string operationByNameString =
-                                        $"query VsphereListQuery($filter: [Filter!]){{ " +
-                                        $"vSphereVmNewConnection\n{{" +
-                                        $"{listFields.AsFragment()}}}}}";
-
-                                    operationByNameString = operationByNameString.Replace(
-                                        "vSphereVmNewConnection",
-                                        "vSphereVmNewConnection(filter: $filter)");
-
-                                    OperationVariableSet variables = new OperationVariableSet
+                                    Filters = new List<Filter>
+                                {
+                                    new Filter
                                     {
-                                        Filters = new List<Filter>
-                                    {
-                                        new Filter
+                                        Field = HierarchyFilterField.NAME,
+                                        Texts = new List<string>
                                         {
-                                            Field = HierarchyFilterField.NAME,
-                                            Texts = new List<string>
-                                            {
-                                                Name
-                                            }
+                                            Name
                                         }
                                     }
-                                    };
-
-                                    Task<List<VsphereVm>> nameFilterListTask =
-                                         _rbkClient.InvokeGenericCallAsync<List<VsphereVm>>(operationByNameString, variables);
-                                    nameFilterListTask.Wait();
-                                    WriteObject(nameFilterListTask.Result, true);
                                 }
-                                //else if (!string.IsNullOrEmpty(SLA))
-                                //{
-                                //    throw new NotImplementedException();
-                                //}
+                                };
+
+                                request.OperationName = "VsphereVmListQuery";
+                                request.Query = operationString;
+
+                                Task<VsphereVmConnection> nameFilterListTask =
+                                        _rbkClient.InvokeGenericCallAsync<VsphereVmConnection>
+                                        (request, variables);
+                                nameFilterListTask.Wait();
+                                WriteObject(nameFilterListTask.Result.Nodes, true);
                             }
+                        }
+                        break;
 
-                            break;
+                    case "ID":
 
-                        case "ID":
-
-                            OperationVariableSet vars = new OperationVariableSet();
-                            vars.Variables = new Dictionary<string, object>()
+                        OperationVariableSet vars = new OperationVariableSet();
+                        vars.Variables = new Dictionary<string, object>()
                         {
                             { "fid",Id }
                         };
 
 
-                            VsphereVm detailFields = null;
+                        VsphereVm detailFields = null;
 
-                            if (Fields == null)
+                        if (Fields == null)
+                        {
+
+                            detailFields = new VsphereVm();
+                            detailFields.ApplyExploratoryFragment();
+                            detailFields.Cluster = new Cluster
                             {
+                                Id = "FETCH",
+                                Name = "FETCH"
+                            };
+                        }
+                        else
+                        {
+                            bool allNull = RscCmdletHelper.CheckAllPropertiesAreNull(Fields);
+                            if (allNull)
+                            {
+                                throw new Exception("At least one property of the object" +
+                                    " passed to the -Fields parameter must be not null");
 
-                                detailFields = new VsphereVm();
-                                detailFields.ApplyExploratoryFragment();
-                                detailFields.Cluster = new Cluster
-                                {
-                                    Id = "FETCH",
-                                    Name = "FETCH"
-                                };
                             }
                             else
                             {
-                                bool allNull = RscCmdletHelper.CheckAllPropertiesAreNull(Fields);
-                                if (allNull)
-                                {
-                                    throw new Exception("At least one property of the object" +
-                                        " passed to the -Fields parameter must be not null");
-
-                                }
-                                else
-                                {
-                                    detailFields = Fields;
-                                }
+                                detailFields = Fields;
                             }
+                        }
 
 
                             string operationByIdString =
@@ -232,18 +227,21 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                             //    "vSphereVmNew",
                             //    "vSphereVmNew(fid: $id)");
 
-                            Task<VsphereVm> getDetailTask =
-                                _rbkClient.InvokeGenericCallAsync<VsphereVm>(
-                                    operationByIdString, vars);
-                            getDetailTask.Wait();
+                        request.OperationName = "VsphereVmDetailQuery";
+                        request.Query = operationByIdString;
+                        Task<VsphereVm> getDetailTask =
+                            _rbkClient.InvokeGenericCallAsync<VsphereVm>(
+                                request, vars);
+                        getDetailTask.Wait();
 
-                            WriteObject(getDetailTask.Result, false);
+                        WriteObject(getDetailTask.Result, false);
 
-                            break;
+                        break;
 
-                        default:
-                            break;
-                    }
+                    default:
+
+                        break;
+                }
 
             }
             catch (Exception ex)

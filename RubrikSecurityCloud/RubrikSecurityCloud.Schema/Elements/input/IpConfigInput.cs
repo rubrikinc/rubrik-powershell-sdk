@@ -1,7 +1,6 @@
 // IpConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region IpConfigInput
 
-    public class IpConfigInput
+    public class IpConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? Vlan
         // GraphQL -> vlan: Int (scalar)
         [JsonProperty("vlan")]
@@ -43,6 +43,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("netmask")]
         public System.String? Netmask { get; set; }
+
 
         #endregion
 

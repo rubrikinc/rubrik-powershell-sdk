@@ -1,7 +1,6 @@
 // FileRecoveryLocationDetailsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:16.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FileRecoveryLocationDetailsInput
 
-    public class FileRecoveryLocationDetailsInput
+    public class FileRecoveryLocationDetailsInput: IInput
     {
         #region members
+
         //      C# -> CloudDownloadLocationDetailsInput? CloudDownloadLocationDetails
         // GraphQL -> cloudDownloadLocationDetails: CloudDownloadLocationDetailsInput (input)
         [JsonProperty("cloudDownloadLocationDetails")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmDownloadLocationDetails: VmDownloadLocationDetailsInput (input)
         [JsonProperty("vmDownloadLocationDetails")]
         public VmDownloadLocationDetailsInput? VmDownloadLocationDetails { get; set; }
+
 
         #endregion
 

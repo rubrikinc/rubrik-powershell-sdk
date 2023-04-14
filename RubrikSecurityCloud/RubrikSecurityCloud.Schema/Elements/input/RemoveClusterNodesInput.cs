@@ -1,7 +1,6 @@
 // RemoveClusterNodesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RemoveClusterNodesInput
 
-    public class RemoveClusterNodesInput
+    public class RemoveClusterNodesInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? NodeIds
         // GraphQL -> nodeIds: [String!] (scalar)
         [JsonProperty("nodeIds")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
 
         #endregion
 

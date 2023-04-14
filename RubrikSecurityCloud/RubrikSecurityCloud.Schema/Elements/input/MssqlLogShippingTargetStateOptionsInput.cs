@@ -1,7 +1,6 @@
 // MssqlLogShippingTargetStateOptionsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlLogShippingTargetStateOptionsInput
 
-    public class MssqlLogShippingTargetStateOptionsInput
+    public class MssqlLogShippingTargetStateOptionsInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
         // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
         [JsonProperty("shouldDisconnectStandbyUsers")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("state")]
         public MssqlLogShippingOkState? State { get; set; }
+
 
         #endregion
 

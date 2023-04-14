@@ -1,7 +1,6 @@
 // AzureSqlDatabaseFilters.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureSqlDatabaseFilters
 
-    public class AzureSqlDatabaseFilters
+    public class AzureSqlDatabaseFilters: IInput
     {
         #region members
+
         //      C# -> NameSubstringFilter? NameSubstringFilter
         // GraphQL -> nameSubstringFilter: NameSubstringFilter (input)
         [JsonProperty("nameSubstringFilter")]
@@ -57,6 +57,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> serverFilter: CloudNativeDatabaseServerFilter (input)
         [JsonProperty("serverFilter")]
         public CloudNativeDatabaseServerFilter? ServerFilter { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // StartAwsNativeEc2InstanceSnapshotsJobInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StartAwsNativeEc2InstanceSnapshotsJobInput
 
-    public class StartAwsNativeEc2InstanceSnapshotsJobInput
+    public class StartAwsNativeEc2InstanceSnapshotsJobInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? Ec2InstanceIds
         // GraphQL -> ec2InstanceIds: [UUID!]! (scalar)
         [Required]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> retentionSlaId: String (scalar)
         [JsonProperty("retentionSlaId")]
         public System.String? RetentionSlaId { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // ExpireDownloadedDb2SnapshotsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:24.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ExpireDownloadedDb2SnapshotsInput
 
-    public class ExpireDownloadedDb2SnapshotsInput
+    public class ExpireDownloadedDb2SnapshotsInput: IInput
     {
         #region members
+
         //      C# -> DateTime? AfterTime
         // GraphQL -> afterTime: DateTime (scalar)
         [JsonProperty("afterTime")]
@@ -39,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

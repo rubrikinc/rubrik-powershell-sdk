@@ -1,7 +1,6 @@
 // OnedriveSearchFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:53.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OnedriveSearchFilter
 
-    public class OnedriveSearchFilter
+    public class OnedriveSearchFilter: IInput
     {
         #region members
+
         //      C# -> OnedriveSearchKeywordFilter? SearchKeywordFilter
         // GraphQL -> searchKeywordFilter: OnedriveSearchKeywordFilter (input)
         [JsonProperty("searchKeywordFilter")]
@@ -72,6 +72,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lambdaFilters: LambdaPathFilters (input)
         [JsonProperty("lambdaFilters")]
         public LambdaPathFilters? LambdaFilters { get; set; }
+
 
         #endregion
 

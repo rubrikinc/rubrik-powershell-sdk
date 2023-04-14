@@ -1,7 +1,6 @@
 // CloudNativeFeatureForPermissionsCheck.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:19.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CloudNativeFeatureForPermissionsCheck
 
-    public class CloudNativeFeatureForPermissionsCheck
+    public class CloudNativeFeatureForPermissionsCheck: IInput
     {
         #region members
+
         //      C# -> AzureFeatureForPermissionCheck? AzureFeature
         // GraphQL -> azureFeature: AzureFeatureForPermissionCheck (enum)
         [JsonProperty("azureFeature")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> awsFeature: AwsFeatureForPermissionCheck (enum)
         [JsonProperty("awsFeature")]
         public AwsFeatureForPermissionCheck? AwsFeature { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // BulkClusterWebCertAndIpmiInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:22.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BulkClusterWebCertAndIpmiInput
 
-    public class BulkClusterWebCertAndIpmiInput
+    public class BulkClusterWebCertAndIpmiInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? ClusterUuids
         // GraphQL -> clusterUuids: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("clusterUuids")]
         public List<System.String>? ClusterUuids { get; set; }
+
 
         #endregion
 

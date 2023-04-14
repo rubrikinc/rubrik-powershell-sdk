@@ -1,7 +1,6 @@
 // ManagedVolumeResizeInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeResizeInput
 
-    public class ManagedVolumeResizeInput
+    public class ManagedVolumeResizeInput: IInput
     {
         #region members
+
         //      C# -> System.Int64? NewSize
         // GraphQL -> newSize: Long (scalar)
         [JsonProperty("newSize")]
         public System.Int64? NewSize { get; set; }
+
 
         #endregion
 

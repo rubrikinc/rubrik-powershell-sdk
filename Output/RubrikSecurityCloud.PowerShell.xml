@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RubrikSecurityCloud.PowerShell</name>
+    </assembly>
+    <members>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Connect_Rsc">
+             <summary>
+             Establishes a user session with Rubrik Security Cloud
+             </summary>
+             <description>
+             The Connect-Rsc Cmdlet is used to connect to the Rubrik Security Cloud (RSC) API. RSC then returns a unique token to represent the user's credentials for subsequent calls.
+             The token is stored securly in a .NET object within this PowerShell session. 
+             The recommended authentication method is a Rsc Service Account. 
+             </description>
+             <example>
+             Connct to Rubrik Security Cloud, using the service account file as downloaded from the Rsc Web UI:
+             <code>Connect-Rsc -ServiceAccountFile .\rubrik_service_account.json</code>
+             </example>
+             <example>
+             Connect to Rubrik Security Cloud, using the URL, Client Id and Client Secret
+             <code>Connect-Rsc -Server mycompany.my.rubrik.com -ClientId xxxxxxxxx -ClientSecret xxxxxxxxx</code>
+             </example>
+             
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Connect_Rsc.FromEnv">
+            <summary>
+            Use a service account, which path is stored in an environment variable
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Connect_Rsc.ServiceAccountFile">
+            <summary>
+            Used to specify the service account file downloaded from Rubrik Security Cloud
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Connect_Rsc.Server">
+            <summary>
+            FQDN or the Rubrik Security Cloud Instance. I.e. mycompany.my.rubrik.com
+            This can also be found in the JSON file downloaded from RSC when creating the Service Account
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Connect_Rsc.ClientId">
+            <summary>
+            The Service Account ClientId.
+            This can be found as "client_id" in the JSON file downloaded from RSC when creating the Service Account
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Connect_Rsc.ClientSecret">
+            <summary>
+            The Service Account ClientSecret in SecureString format.
+            The ClientSecret can be found as "client_secret" in the JSON file downloaded from RSC when creating the Service Account
+            Convert the JSON plain text field into a secure string with:
+            $secret = $(Get-Content service_account_file.json | ConvertFrom-Json).client_secret | ConvertTo-SecureString -AsPlainText
+            </summary>
+        </member>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase">
+            <summary>
+            Retrieve one or more Mssql Databases managed by
+            Rubrik Security Cloud (Rsc).
+            </summary>
+            <description>
+            The Get-RscMssqlDatabase cmdlet is used to get one or more Mssql DBs
+            known to RSC. The -Id parameter will return a single DB. All other
+            parameters will return a list of matching DBs.
+            </description>
+            <example>
+            Get a list of all Mssql DBs from the RSC instance.
+            <code>Get-RscMssqlDatabase</code>
+            </example>
+            <example>
+            Get a list of Mssql DBs, matching a name pattern.
+            <code>Get-RscMssqlDatabase -Name devVM</code>
+            </example>
+            <example>
+            Get a Mssql DB by Id, with default fields selected.
+            <code>Get-RscMssqlDatabase -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d</code>
+            </example>
+            <example>
+            Get a Mssql DB by Id, with custom fields selected (Id, Name)
+            <code>
+            $myFields = Get-RscType -Name MssqlDatabase -InitialFields @("Id","Name")
+            Get-RscMssqlDatabase -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d -Fields $myFields
+            </code>
+            </example>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase.Name">
+            <summary>
+            Filter Mssql Databases by name
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase.Id">
+            <summary>
+            Retrieve a single Mssql Database by Id
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase.Fields">
+            <summary>
+            An object to use as a field selector for the query.
+            Values from the API for fields set to not-null values in this object
+            will be returned.
+            </summary>
+        </member>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscSnapshot">
+            <summary>
+            Retrieves all of the snapshots (backups) for any given object
+            </summary>
+            <description>
+            The Get-RscSnapshor cmdlet is used to query the RSC instance for all
+            known snapshots (backups) for a protected object.
+            Multiple objects to be piped into this function is not yet supported
+            </description>
+            <example>
+            Get the snapshot list for an object by the object Id
+            <code>Get-RscSnapshot -Id 'xxxxxx-xxxxx-xxxxxx-xxxxx'</code>
+            </example>
+            <example>
+            Get the snapshots for vSphere VM from pipeline
+            <code>
+            $vm = Get-RscVsphereVm -Id xxxxxx-xxxxxx-xxxxxx-xxxxxx
+            $vm | Get-RscSnapshot
+            </code>
+            </example>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscSnapshot.SnappableId">
+            <summary>
+            The ID of the snappable object to get a list of snapshots for.
+            </summary>
+        </member>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType">
+            <summary>
+            Return a valid empty .NET object for the
+            RubrikSecurityCloud.PowerShell SDK
+            </summary>
+            <description>
+            Return a valid empty .NET object for the
+            RubrikSecurityCloud.PowerShell SDK.
+            
+            The cmdlet will return a .NET object by name.
+            The -ListAvailable parameter will return a list of
+            valid Rubrik.SecurityCloud.Types.
+            </description>
+            <example>
+            Get a list of all available Rsc .NET types
+            <code>
+            PS C:\> Get-RscType -ListAvailable
+            </code>
+            </example>
+            <example>
+            Get a list of available Rsc .NET types filtered by name
+            <code>
+            PS C:\> Get-RscType -ListAvailable -FilterByName "accountsetting"
+            </code>
+            </example>
+            <example>
+            Get an empty object that is compliant with the Rsc Type
+            specified by name
+            <code>
+            PS C:\> Get-RscType -Name "AccountSetting"
+            </code>
+            </example>
+            <example>
+            Get an empty object that is compliant with the Rsc Type
+            specified by name. Initialize the 'IsEulaAccepted' property
+            <code>
+            PS C:\> Get-RscType -Name "AccountSetting" -InitialProperties @("IsEulaAccepted")
+            </code>
+            </example>
+            <example>
+            Get an empty object that is compliant with the Rsc Type
+            specified by name. Initialize the 'IsEulaAccepted' property
+            with a specific value.
+            <code>
+            PS C:\> Get-RscType -Name "AccountSetting" -InitialValues @{"IsEulaAccepted"= $false}
+            </code>
+            </example>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.Name">
+            <summary>
+            The name of the Rsc Type to return
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.InitialProperties">
+            <summary>
+            Specify an array of string containing the names of the
+            properties to initialize.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.InitialValues">
+            <summary>
+            Specify a hashtable mapping the requested
+            fields to their values.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.ListAvailable">
+            <summary>
+            Used to request a list of valid Rsc Type Names.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.FilterByName">
+            <summary>
+            Optional to filter results by name.
+            </summary>
+        </member>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscVsphereVm">
+            <summary>
+            Retrieve one or more vSphere Virtual Machines (VMs) managed by
+            Rubrik Security Cloud (Rsc).
+            </summary>
+            <description>
+            The Get-RscVsphereVm cmdlet is used to get one or more vSphere VMs
+            known to RSC. The -Id parameter will return a single VM. All other
+            parameters will return a list of matching VMs.
+            </description>
+            <example>
+            Get a list of all vSphere VMs from the RSC instance.
+            <code>Get-RscVsphereVm</code>
+            </example>
+            <example>
+            Get a list of vSphere VMs, matching a name pattern.
+            <code>Get-RscVsphereVm -Name devVM</code>
+            </example>
+            <example>
+            Get a vSphere VM by Id, with default fields selected.
+            <code>Get-RscVsphereVm -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d</code>
+            </example>
+            <example>
+            Get a vSphere VM by Id, with custom fields selected (Id, Name, and
+            GuestOsType).
+            <code>
+            $myFields = Get-RscType -Name VSphereVm
+            $myFields.Id = "FETCH"
+            $myFields.Name = "FETCH"
+            $myFields.GuestOsType = "FETCH"
+            Get-RscVsphereVm -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d -Fields $myFields
+            </code>
+            </example>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscVsphereVm.Name">
+            <summary>
+            Filter VMs by Name
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscVsphereVm.Id">
+            <summary>
+            Retrieve a single known VM by Id
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscVsphereVm.Fields">
+            <summary>
+            An object to use as a field selector for the query.
+            Values from the API for fields set to not-null values in this object
+            will be returned. To be used only with -Id parameter.
+            </summary>
+        </member>
+        <member name="M:Rubrik.SecurityCloud.PowerShell.Private.RscCmdletInput.GqlOperation">
+            <summary>
+            The name of the underlying GQL operation.
+            </summary>
+            <returns> String </returns>
+        </member>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+              This class was generated by MSBuild using the GenerateResource task.
+              To add or remove a member, edit your .resx file then rerun MSBuild.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscTypeInitializer.InitializeInputWithSelectedFields(System.String,System.Collections.Hashtable)">
+            <summary>
+            Return an instance of an input, with fields contained in
+            inputFields initialized to non-null values.
+            </summary>
+            <param name="inputTypeName"></param>
+            <param name="providedInputFields"></param>
+            <returns>object</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscTypeInitializer.InitializeTypeWithSelectedProperties(System.String,System.String[])">
+            <summary>
+            Return an instance of an class, with properties listed in
+            requestedProperties initialized to non-null values.
+            </summary>
+            <param name="objectClassName"></param>
+            <param name="requestedProperties"></param>
+            <returns>object</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+    </members>
+</doc>

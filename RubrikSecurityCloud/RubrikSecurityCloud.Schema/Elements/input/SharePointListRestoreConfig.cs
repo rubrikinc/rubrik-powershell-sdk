@@ -1,7 +1,6 @@
 // SharePointListRestoreConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SharePointListRestoreConfig
 
-    public class SharePointListRestoreConfig
+    public class SharePointListRestoreConfig: IInput
     {
         #region members
+
         //      C# -> List<SharePointListItem>? ItemsToRestore
         // GraphQL -> itemsToRestore: [SharePointListItem!]! (input)
         [Required]
@@ -48,6 +48,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> parentSiteUuid: UUID (scalar)
         [JsonProperty("parentSiteUuid")]
         public System.String? ParentSiteUuid { get; set; }
+
 
         #endregion
 

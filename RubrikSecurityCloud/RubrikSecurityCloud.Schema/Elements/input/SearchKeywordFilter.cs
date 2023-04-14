@@ -1,7 +1,6 @@
 // SearchKeywordFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:53.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SearchKeywordFilter
 
-    public class SearchKeywordFilter
+    public class SearchKeywordFilter: IInput
     {
         #region members
+
         //      C# -> System.String? SearchKeyword
         // GraphQL -> searchKeyword: String (scalar)
         [JsonProperty("searchKeyword")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> keywordType: SearchKeywordType (enum)
         [JsonProperty("keywordType")]
         public SearchKeywordType? KeywordType { get; set; }
+
 
         #endregion
 

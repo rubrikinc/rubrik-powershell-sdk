@@ -1,7 +1,6 @@
 // FailoverClusterAppSourceInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:24.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FailoverClusterAppSourceInput
 
-    public class FailoverClusterAppSourceInput
+    public class FailoverClusterAppSourceInput: IInput
     {
         #region members
+
         //      C# -> List<FailoverClusterNodeOrderInput>? NodeOrders
         // GraphQL -> nodeOrders: [FailoverClusterNodeOrderInput!] (input)
         [JsonProperty("nodeOrders")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vips: [String!] (scalar)
         [JsonProperty("vips")]
         public List<System.String>? Vips { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // AddStorageArraysInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AddStorageArraysInput
 
-    public class AddStorageArraysInput
+    public class AddStorageArraysInput: IInput
     {
         #region members
+
         //      C# -> List<AddStorageArrayInput>? Configs
         // GraphQL -> configs: [AddStorageArrayInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("configs")]
         public List<AddStorageArrayInput>? Configs { get; set; }
+
 
         #endregion
 

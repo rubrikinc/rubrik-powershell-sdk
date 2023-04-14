@@ -1,7 +1,6 @@
 // MountMssqlDbConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MountMssqlDbConfigInput
 
-    public class MountMssqlDbConfigInput
+    public class MountMssqlDbConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? TargetInstanceId
         // GraphQL -> targetInstanceId: String (scalar)
         [JsonProperty("targetInstanceId")]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("recoveryPoint")]
         public MssqlRecoveryPointInput? RecoveryPoint { get; set; }
+
 
         #endregion
 

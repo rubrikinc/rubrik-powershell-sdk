@@ -1,7 +1,6 @@
 // SapHanaSystemPatchInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaSystemPatchInput
 
-    public class SapHanaSystemPatchInput
+    public class SapHanaSystemPatchInput: IInput
     {
         #region members
+
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         [JsonProperty("configuredSlaDomainId")]
@@ -52,6 +52,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sslInfo: SapHanaSslInfoInput (input)
         [JsonProperty("sslInfo")]
         public SapHanaSslInfoInput? SslInfo { get; set; }
+
 
         #endregion
 

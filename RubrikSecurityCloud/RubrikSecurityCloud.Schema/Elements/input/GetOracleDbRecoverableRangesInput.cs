@@ -1,7 +1,6 @@
 // GetOracleDbRecoverableRangesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:58.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GetOracleDbRecoverableRangesInput
 
-    public class GetOracleDbRecoverableRangesInput
+    public class GetOracleDbRecoverableRangesInput: IInput
     {
         #region members
+
         //      C# -> DateTime? AfterTime
         // GraphQL -> afterTime: DateTime (scalar)
         [JsonProperty("afterTime")]
@@ -39,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

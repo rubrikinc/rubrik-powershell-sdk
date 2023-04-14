@@ -1,7 +1,6 @@
 // TimeFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TimeFilterInput
 
-    public class TimeFilterInput
+    public class TimeFilterInput: IInput
     {
         #region members
+
         //      C# -> System.String? EndTime
         // GraphQL -> endTime: String (scalar)
         [JsonProperty("endTime")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> timezone: String (scalar)
         [JsonProperty("timezone")]
         public System.String? Timezone { get; set; }
+
 
         #endregion
 

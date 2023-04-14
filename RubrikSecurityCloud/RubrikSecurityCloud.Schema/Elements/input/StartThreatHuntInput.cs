@@ -1,7 +1,6 @@
 // StartThreatHuntInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:28.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StartThreatHuntInput
 
-    public class StartThreatHuntInput
+    public class StartThreatHuntInput: IInput
     {
         #region members
+
         //      C# -> System.String? Notes
         // GraphQL -> notes: String (scalar)
         [JsonProperty("notes")]
@@ -75,6 +75,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
 
         #endregion
 

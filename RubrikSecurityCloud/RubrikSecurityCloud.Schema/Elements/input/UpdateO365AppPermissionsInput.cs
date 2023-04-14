@@ -1,7 +1,6 @@
 // UpdateO365AppPermissionsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateO365AppPermissionsInput
 
-    public class UpdateO365AppPermissionsInput
+    public class UpdateO365AppPermissionsInput: IInput
     {
         #region members
+
         //      C# -> O365AppType? O365AppType
         // GraphQL -> o365AppType: O365AppType! (enum)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("o365AppId")]
         public System.String? O365AppId { get; set; }
+
 
         #endregion
 

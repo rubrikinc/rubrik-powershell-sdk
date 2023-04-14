@@ -1,7 +1,6 @@
 // TagInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:16.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TagInput
 
-    public class TagInput
+    public class TagInput: IInput
     {
         #region members
+
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("value")]
         public System.String? Value { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // AwsNativeAttachedInstanceFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsNativeAttachedInstanceFilter
 
-    public class AwsNativeAttachedInstanceFilter
+    public class AwsNativeAttachedInstanceFilter: IInput
     {
         #region members
+
         //      C# -> List<System.String>? Ec2InstanceIds
         // GraphQL -> ec2InstanceIds: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("ec2InstanceIds")]
         public List<System.String>? Ec2InstanceIds { get; set; }
+
 
         #endregion
 

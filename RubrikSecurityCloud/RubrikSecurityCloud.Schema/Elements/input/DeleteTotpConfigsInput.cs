@@ -1,7 +1,6 @@
 // DeleteTotpConfigsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:38.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DeleteTotpConfigsInput
 
-    public class DeleteTotpConfigsInput
+    public class DeleteTotpConfigsInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? UserIds
         // GraphQL -> userIds: [String!] (scalar)
         [JsonProperty("userIds")]
         public List<System.String>? UserIds { get; set; }
+
 
         #endregion
 

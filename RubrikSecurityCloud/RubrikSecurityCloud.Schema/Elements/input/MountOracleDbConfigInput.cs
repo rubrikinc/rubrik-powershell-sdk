@@ -1,7 +1,6 @@
 // MountOracleDbConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:34.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MountOracleDbConfigInput
 
-    public class MountOracleDbConfigInput
+    public class MountOracleDbConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? ShouldMountFilesOnly
         // GraphQL -> shouldMountFilesOnly: Boolean (scalar)
         [JsonProperty("shouldMountFilesOnly")]
@@ -76,6 +76,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("targetOracleHostOrRacId")]
         public System.String? TargetOracleHostOrRacId { get; set; }
+
 
         #endregion
 

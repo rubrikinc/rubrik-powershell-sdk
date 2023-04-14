@@ -1,7 +1,6 @@
 // AzureVnetReq.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:11.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureVnetReq
 
-    public class AzureVnetReq
+    public class AzureVnetReq: IInput
     {
         #region members
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String (scalar)
         [JsonProperty("cloudAccountId")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> resourceGroup: String (scalar)
         [JsonProperty("resourceGroup")]
         public System.String? ResourceGroup { get; set; }
+
 
         #endregion
 

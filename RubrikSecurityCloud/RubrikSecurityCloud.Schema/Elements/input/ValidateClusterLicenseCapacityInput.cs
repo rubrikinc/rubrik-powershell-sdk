@@ -1,7 +1,6 @@
 // ValidateClusterLicenseCapacityInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:04.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ValidateClusterLicenseCapacityInput
 
-    public class ValidateClusterLicenseCapacityInput
+    public class ValidateClusterLicenseCapacityInput: IInput
     {
         #region members
+
         //      C# -> List<NodeRegistrationConfigsInput>? Nodes
         // GraphQL -> nodes: [NodeRegistrationConfigsInput!]! (input)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("managedByRubrik")]
         public ManagedByRubrik? ManagedByRubrik { get; set; }
+
 
         #endregion
 

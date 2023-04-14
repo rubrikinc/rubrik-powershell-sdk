@@ -1,7 +1,6 @@
 // FilesetArraySpecInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:25.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FilesetArraySpecInput
 
-    public class FilesetArraySpecInput
+    public class FilesetArraySpecInput: IInput
     {
         #region members
+
         //      C# -> System.String? ProxyHostId
         // GraphQL -> proxyHostId: String (scalar)
         [JsonProperty("proxyHostId")]
         public System.String? ProxyHostId { get; set; }
+
 
         #endregion
 

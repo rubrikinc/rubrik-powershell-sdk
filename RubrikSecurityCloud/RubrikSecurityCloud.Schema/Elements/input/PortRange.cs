@@ -1,7 +1,6 @@
 // PortRange.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region PortRange
 
-    public class PortRange
+    public class PortRange: IInput
     {
         #region members
+
         //      C# -> System.Int32? PortMin
         // GraphQL -> portMin: Int (scalar)
         [JsonProperty("portMin")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> portMax: Int (scalar)
         [JsonProperty("portMax")]
         public System.Int32? PortMax { get; set; }
+
 
         #endregion
 

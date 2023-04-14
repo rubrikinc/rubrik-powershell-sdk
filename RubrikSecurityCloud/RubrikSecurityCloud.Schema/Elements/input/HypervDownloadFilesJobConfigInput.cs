@@ -1,7 +1,6 @@
 // HypervDownloadFilesJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HypervDownloadFilesJobConfigInput
 
-    public class HypervDownloadFilesJobConfigInput
+    public class HypervDownloadFilesJobConfigInput: IInput
     {
         #region members
+
         //      C# -> LegalHoldDownloadConfigInput? LegalHoldDownloadConfig
         // GraphQL -> legalHoldDownloadConfig: LegalHoldDownloadConfigInput (input)
         [JsonProperty("legalHoldDownloadConfig")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("paths")]
         public List<System.String>? Paths { get; set; }
+
 
         #endregion
 

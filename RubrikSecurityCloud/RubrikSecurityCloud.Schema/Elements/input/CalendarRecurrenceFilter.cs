@@ -1,7 +1,6 @@
 // CalendarRecurrenceFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:53.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CalendarRecurrenceFilter
 
-    public class CalendarRecurrenceFilter
+    public class CalendarRecurrenceFilter: IInput
     {
         #region members
+
         //      C# -> CalendarRecurrenceType? RecurrenceType
         // GraphQL -> recurrenceType: CalendarRecurrenceType (enum)
         [JsonProperty("recurrenceType")]
         public CalendarRecurrenceType? RecurrenceType { get; set; }
+
 
         #endregion
 

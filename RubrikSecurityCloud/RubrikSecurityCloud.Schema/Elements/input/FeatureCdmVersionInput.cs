@@ -1,7 +1,6 @@
 // FeatureCdmVersionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FeatureCdmVersionInput
 
-    public class FeatureCdmVersionInput
+    public class FeatureCdmVersionInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("featureType")]
         public CdmFeatureFlagType? FeatureType { get; set; }
+
 
         #endregion
 

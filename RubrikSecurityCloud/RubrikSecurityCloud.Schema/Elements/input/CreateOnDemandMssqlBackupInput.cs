@@ -1,7 +1,6 @@
 // CreateOnDemandMssqlBackupInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateOnDemandMssqlBackupInput
 
-    public class CreateOnDemandMssqlBackupInput
+    public class CreateOnDemandMssqlBackupInput: IInput
     {
         #region members
+
         //      C# -> MssqlBackupJobConfigInput? Config
         // GraphQL -> config: MssqlBackupJobConfigInput! (input)
         [Required]
@@ -36,6 +36,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userNote: String (scalar)
         [JsonProperty("userNote")]
         public System.String? UserNote { get; set; }
+
 
         #endregion
 

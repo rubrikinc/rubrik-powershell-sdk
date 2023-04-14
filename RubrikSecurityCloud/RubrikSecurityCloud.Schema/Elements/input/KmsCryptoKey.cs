@@ -1,7 +1,6 @@
 // KmsCryptoKey.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region KmsCryptoKey
 
-    public class KmsCryptoKey
+    public class KmsCryptoKey: IInput
     {
         #region members
+
         //      C# -> System.String? ProjectNativeId
         // GraphQL -> projectNativeId: String (scalar)
         [JsonProperty("projectNativeId")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> key: String (scalar)
         [JsonProperty("key")]
         public System.String? Key { get; set; }
+
 
         #endregion
 

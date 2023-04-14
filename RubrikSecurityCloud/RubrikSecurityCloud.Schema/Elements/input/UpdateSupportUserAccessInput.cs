@@ -1,7 +1,6 @@
 // UpdateSupportUserAccessInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateSupportUserAccessInput
 
-    public class UpdateSupportUserAccessInput
+    public class UpdateSupportUserAccessInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int (scalar)
         [JsonProperty("id")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> newDurationInHours: Int (scalar)
         [JsonProperty("newDurationInHours")]
         public System.Int32? NewDurationInHours { get; set; }
+
 
         #endregion
 

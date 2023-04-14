@@ -1,7 +1,6 @@
 // ExportMssqlDbJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ExportMssqlDbJobConfigInput
 
-    public class ExportMssqlDbJobConfigInput
+    public class ExportMssqlDbJobConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? AllowOverwrite
         // GraphQL -> allowOverwrite: Boolean (scalar)
         [JsonProperty("allowOverwrite")]
@@ -68,6 +68,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("targetInstanceId")]
         public System.String? TargetInstanceId { get; set; }
+
 
         #endregion
 

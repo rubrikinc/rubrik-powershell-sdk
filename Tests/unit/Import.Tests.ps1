@@ -1,7 +1,4 @@
-Write-Output $PSScriptRoot
-Write-Output Join-Path $PSScriptRoot '../import.ps1'
-
-& "$PSScriptRoot\..\..\Samples\import.ps1"
+& "$PSScriptRoot\..\..\Utils\import.ps1"
 # . Join-Path $PSScriptRoot '../import.ps1' -Verbose
 
 Describe -Name 'Connect-Rsc' -Fixture {

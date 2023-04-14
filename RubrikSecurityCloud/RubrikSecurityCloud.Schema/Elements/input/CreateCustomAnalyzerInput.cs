@@ -1,7 +1,6 @@
 // CreateCustomAnalyzerInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:23.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateCustomAnalyzerInput
 
-    public class CreateCustomAnalyzerInput
+    public class CreateCustomAnalyzerInput: IInput
     {
         #region members
+
         //      C# -> AnalyzerTypeEnum? AnalyzerType
         // GraphQL -> analyzerType: AnalyzerTypeEnum (enum)
         [JsonProperty("analyzerType")]
@@ -52,6 +52,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstanceInput (input)
         [JsonProperty("analyzerRiskInstance")]
         public AnalyzerRiskInstanceInput? AnalyzerRiskInstance { get; set; }
+
 
         #endregion
 

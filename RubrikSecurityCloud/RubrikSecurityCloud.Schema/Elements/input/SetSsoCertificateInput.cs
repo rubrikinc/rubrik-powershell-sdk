@@ -1,7 +1,6 @@
 // SetSsoCertificateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SetSsoCertificateInput
 
-    public class SetSsoCertificateInput
+    public class SetSsoCertificateInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? CertificateId
         // GraphQL -> certificateId: Int! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("certificateType")]
         public SsoCertificateType? CertificateType { get; set; }
+
 
         #endregion
 

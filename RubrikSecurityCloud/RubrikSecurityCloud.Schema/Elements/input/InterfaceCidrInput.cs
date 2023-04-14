@@ -1,7 +1,6 @@
 // InterfaceCidrInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region InterfaceCidrInput
 
-    public class InterfaceCidrInput
+    public class InterfaceCidrInput: IInput
     {
         #region members
+
         //      C# -> InterfaceType? InterfaceType
         // GraphQL -> interfaceType: InterfaceType (enum)
         [JsonProperty("interfaceType")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> selected: Boolean (scalar)
         [JsonProperty("selected")]
         public System.Boolean? Selected { get; set; }
+
 
         #endregion
 

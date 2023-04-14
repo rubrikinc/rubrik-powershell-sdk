@@ -1,7 +1,6 @@
 // LogConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region LogConfig
 
-    public class LogConfig
+    public class LogConfig: IInput
     {
         #region members
+
         //      C# -> SlaLogFrequencyConfig? SlaLogFrequencyConfig
         // GraphQL -> slaLogFrequencyConfig: SlaLogFrequencyConfig (input)
         [JsonProperty("slaLogFrequencyConfig")]
         public SlaLogFrequencyConfig? SlaLogFrequencyConfig { get; set; }
+
 
         #endregion
 

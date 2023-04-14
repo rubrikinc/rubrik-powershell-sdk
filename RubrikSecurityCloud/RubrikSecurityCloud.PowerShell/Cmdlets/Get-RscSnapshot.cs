@@ -52,6 +52,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         {
             try
             {
+                GraphQL.GraphQLRequest request = new GraphQL.GraphQLRequest();
+
                 //build a top-level query object for the snapshots query
                 GenericSnapshotConnection queryObj = new GenericSnapshotConnection();
                 queryObj.Nodes = new List<GenericSnapshot>();
@@ -98,6 +100,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 queryText += queryFragment;
                 queryText += "\n}";
 
+                request.OperationName = "SnapshotListQuery";
+                request.Query = queryText;
+
                 switch (ParameterSetName)
                 {
                     case "Summary":
@@ -113,12 +118,12 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                             }
                         };
 
-                        Task<List<GenericSnapshot>> dataTask =
-                                _rbkClient.InvokeGenericCallAsync<List<GenericSnapshot>>
-                            (getSnappableSnapshotsByIdQuery, vars);
+                        Task<GenericSnapshotConnection> dataTask =
+                                _rbkClient.InvokeGenericCallAsync<GenericSnapshotConnection>
+                            (request, vars);
 
                         dataTask.Wait();
-                        WriteObject(dataTask.Result, true);
+                        WriteObject(dataTask.Result.Nodes, true);
 
                         break;
 

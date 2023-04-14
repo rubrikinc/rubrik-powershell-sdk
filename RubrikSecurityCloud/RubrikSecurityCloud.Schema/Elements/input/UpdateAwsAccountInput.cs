@@ -1,7 +1,6 @@
 // UpdateAwsAccountInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:18.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateAwsAccountInput
 
-    public class UpdateAwsAccountInput
+    public class UpdateAwsAccountInput: IInput
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
@@ -50,6 +50,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("secretKey")]
         public System.String? SecretKey { get; set; }
+
 
         #endregion
 

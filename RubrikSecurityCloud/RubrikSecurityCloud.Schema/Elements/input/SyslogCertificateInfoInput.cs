@@ -1,7 +1,6 @@
 // SyslogCertificateInfoInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:35.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SyslogCertificateInfoInput
 
-    public class SyslogCertificateInfoInput
+    public class SyslogCertificateInfoInput: IInput
     {
         #region members
+
         //      C# -> System.String? ServerCertificate
         // GraphQL -> serverCertificate: String (scalar)
         [JsonProperty("serverCertificate")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> serverCertificateName: String (scalar)
         [JsonProperty("serverCertificateName")]
         public System.String? ServerCertificateName { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // ExportSnapshotJobConfigV2Input.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:41.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ExportSnapshotJobConfigV2Input
 
-    public class ExportSnapshotJobConfigV2Input
+    public class ExportSnapshotJobConfigV2Input: IInput
     {
         #region members
+
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         [JsonProperty("hostId")]
@@ -69,6 +69,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("datastoreId")]
         public System.String? DatastoreId { get; set; }
+
 
         #endregion
 

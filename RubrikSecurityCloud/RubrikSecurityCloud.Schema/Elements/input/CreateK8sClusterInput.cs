@@ -1,7 +1,6 @@
 // CreateK8sClusterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateK8sClusterInput
 
-    public class CreateK8sClusterInput
+    public class CreateK8sClusterInput: IInput
     {
         #region members
+
         //      C# -> System.String? CdmClusterId
         // GraphQL -> cdmClusterId: UUID (scalar)
         [JsonProperty("cdmClusterId")]
@@ -67,6 +67,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> proxyUrl: String (scalar)
         [JsonProperty("proxyUrl")]
         public System.String? ProxyUrl { get; set; }
+
 
         #endregion
 

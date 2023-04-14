@@ -1,7 +1,6 @@
 // CascadingArchivalSpecInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CascadingArchivalSpecInput
 
-    public class CascadingArchivalSpecInput
+    public class CascadingArchivalSpecInput: IInput
     {
         #region members
+
         //      C# -> System.String? ArchivalLocationId
         // GraphQL -> archivalLocationId: String (scalar)
         [JsonProperty("archivalLocationId")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> frequency: [RetentionUnit!] (enum)
         [JsonProperty("frequency")]
         public List<RetentionUnit>? Frequency { get; set; }
+
 
         #endregion
 

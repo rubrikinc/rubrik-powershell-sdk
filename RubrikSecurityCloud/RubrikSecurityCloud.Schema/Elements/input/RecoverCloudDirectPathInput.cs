@@ -1,7 +1,6 @@
 // RecoverCloudDirectPathInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RecoverCloudDirectPathInput
 
-    public class RecoverCloudDirectPathInput
+    public class RecoverCloudDirectPathInput: IInput
     {
         #region members
+
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: UUID! (scalar)
         [Required]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dstExportId: Int (scalar)
         [JsonProperty("dstExportId")]
         public System.Int32? DstExportId { get; set; }
+
 
         #endregion
 

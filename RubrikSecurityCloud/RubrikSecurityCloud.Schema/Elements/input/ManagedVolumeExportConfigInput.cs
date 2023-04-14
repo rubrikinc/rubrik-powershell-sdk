@@ -1,7 +1,6 @@
 // ManagedVolumeExportConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeExportConfigInput
 
-    public class ManagedVolumeExportConfigInput
+    public class ManagedVolumeExportConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? Subnet
         // GraphQL -> subnet: String (scalar)
         [JsonProperty("subnet")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> shareType: ManagedVolumeShareType (enum)
         [JsonProperty("shareType")]
         public ManagedVolumeShareType? ShareType { get; set; }
+
 
         #endregion
 

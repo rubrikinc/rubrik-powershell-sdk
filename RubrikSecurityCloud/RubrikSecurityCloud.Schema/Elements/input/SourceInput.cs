@@ -1,7 +1,6 @@
 // SourceInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SourceInput
 
-    public class SourceInput
+    public class SourceInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? Async
         // GraphQL -> async: Boolean (scalar)
         [JsonProperty("async")]
@@ -158,6 +158,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("sourceName")]
         public System.String? SourceName { get; set; }
+
 
         #endregion
 

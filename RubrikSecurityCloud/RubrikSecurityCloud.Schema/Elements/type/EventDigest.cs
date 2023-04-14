@@ -1,7 +1,6 @@
 // EventDigest.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:02.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -23,6 +22,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> account: String! (scalar)
         [JsonProperty("account")]
         public System.String? Account { get; set; }
+
+        //      C# -> List<System.String>? ClusterUuids
+        // GraphQL -> clusterUuids: [UUID!]! (scalar)
+        [JsonProperty("clusterUuids")]
+        public List<System.String>? ClusterUuids { get; set; }
 
         //      C# -> System.Int32? DigestId
         // GraphQL -> digestId: Int! (scalar)
@@ -70,6 +74,7 @@ namespace Rubrik.SecurityCloud.Types
 
     public EventDigest Set(
         System.String? Account = null,
+        List<System.String>? ClusterUuids = null,
         System.Int32? DigestId = null,
         System.String? DigestName = null,
         System.String? EventDigestConfigJson = null,
@@ -82,6 +87,9 @@ namespace Rubrik.SecurityCloud.Types
     {
         if ( Account != null ) {
             this.Account = Account;
+        }
+        if ( ClusterUuids != null ) {
+            this.ClusterUuids = ClusterUuids;
         }
         if ( DigestId != null ) {
             this.DigestId = DigestId;
@@ -122,6 +130,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Account != null)
             {
                  s += ind + "account\n";
+
+            }
+            //      C# -> List<System.String>? ClusterUuids
+            // GraphQL -> clusterUuids: [UUID!]! (scalar)
+            if (this.ClusterUuids != null)
+            {
+                 s += ind + "clusterUuids\n";
 
             }
             //      C# -> System.Int32? DigestId
@@ -193,6 +208,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Account == null && Exploration.Includes(parent + ".account$"))
             {
                 this.Account = new System.String("FETCH");
+            }
+            //      C# -> List<System.String>? ClusterUuids
+            // GraphQL -> clusterUuids: [UUID!]! (scalar)
+            if (this.ClusterUuids == null && Exploration.Includes(parent + ".clusterUuids$"))
+            {
+                this.ClusterUuids = new List<System.String>();
             }
             //      C# -> System.Int32? DigestId
             // GraphQL -> digestId: Int! (scalar)

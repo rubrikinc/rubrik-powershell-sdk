@@ -1,7 +1,6 @@
 // BidirectionalReplicationSpecInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BidirectionalReplicationSpecInput
 
-    public class BidirectionalReplicationSpecInput
+    public class BidirectionalReplicationSpecInput: IInput
     {
         #region members
+
         //      C# -> UnidirectionalReplicationSpecInput? ReplicationSpec1
         // GraphQL -> replicationSpec1: UnidirectionalReplicationSpecInput (input)
         [JsonProperty("replicationSpec1")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicationSpec2: UnidirectionalReplicationSpecInput (input)
         [JsonProperty("replicationSpec2")]
         public UnidirectionalReplicationSpecInput? ReplicationSpec2 { get; set; }
+
 
         #endregion
 

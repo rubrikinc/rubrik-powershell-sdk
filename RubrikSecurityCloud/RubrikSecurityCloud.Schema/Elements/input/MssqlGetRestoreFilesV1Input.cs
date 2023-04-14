@@ -1,7 +1,6 @@
 // MssqlGetRestoreFilesV1Input.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:47.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlGetRestoreFilesV1Input
 
-    public class MssqlGetRestoreFilesV1Input
+    public class MssqlGetRestoreFilesV1Input: IInput
     {
         #region members
+
         //      C# -> System.String? Lsn
         // GraphQL -> lsn: String (scalar)
         [JsonProperty("lsn")]
@@ -39,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

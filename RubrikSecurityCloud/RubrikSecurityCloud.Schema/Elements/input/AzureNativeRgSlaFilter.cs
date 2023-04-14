@@ -1,7 +1,6 @@
 // AzureNativeRgSlaFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeRgSlaFilter
 
-    public class AzureNativeRgSlaFilter
+    public class AzureNativeRgSlaFilter: IInput
     {
         #region members
+
         //      C# -> List<System.String>? EffectiveSlaIds
         // GraphQL -> effectiveSlaIds: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("effectiveSlaIds")]
         public List<System.String>? EffectiveSlaIds { get; set; }
+
 
         #endregion
 

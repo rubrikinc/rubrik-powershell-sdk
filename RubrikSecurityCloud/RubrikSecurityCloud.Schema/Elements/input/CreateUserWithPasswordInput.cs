@@ -1,7 +1,6 @@
 // CreateUserWithPasswordInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:38.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateUserWithPasswordInput
 
-    public class CreateUserWithPasswordInput
+    public class CreateUserWithPasswordInput: IInput
     {
         #region members
+
         //      C# -> System.String? Email
         // GraphQL -> email: String (scalar)
         [JsonProperty("email")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> roleIds: [String!] (scalar)
         [JsonProperty("roleIds")]
         public List<System.String>? RoleIds { get; set; }
+
 
         #endregion
 

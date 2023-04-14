@@ -1,7 +1,6 @@
 // AnalyzerRiskInstanceInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:23.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AnalyzerRiskInstanceInput
 
-    public class AnalyzerRiskInstanceInput
+    public class AnalyzerRiskInstanceInput: IInput
     {
         #region members
+
         //      C# -> System.String? AnalyzerId
         // GraphQL -> analyzerId: String (scalar)
         [JsonProperty("analyzerId")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> risk: RiskLevelType (enum)
         [JsonProperty("risk")]
         public RiskLevelType? Risk { get; set; }
+
 
         #endregion
 

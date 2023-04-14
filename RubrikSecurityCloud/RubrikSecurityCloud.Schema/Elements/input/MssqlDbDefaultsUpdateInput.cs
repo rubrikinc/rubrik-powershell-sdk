@@ -1,7 +1,6 @@
 // MssqlDbDefaultsUpdateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlDbDefaultsUpdateInput
 
-    public class MssqlDbDefaultsUpdateInput
+    public class MssqlDbDefaultsUpdateInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? CbtStatus
         // GraphQL -> cbtStatus: Boolean (scalar)
         [JsonProperty("cbtStatus")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> shouldUseDefaultBackupLocation: Boolean (scalar)
         [JsonProperty("shouldUseDefaultBackupLocation")]
         public System.Boolean? ShouldUseDefaultBackupLocation { get; set; }
+
 
         #endregion
 

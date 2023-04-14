@@ -1,7 +1,6 @@
 // AzureImmutabilitySettings.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:19.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureImmutabilitySettings
 
-    public class AzureImmutabilitySettings
+    public class AzureImmutabilitySettings: IInput
     {
         #region members
+
         //      C# -> System.Int32? LockDurationDays
         // GraphQL -> lockDurationDays: Int (scalar)
         [JsonProperty("lockDurationDays")]
         public System.Int32? LockDurationDays { get; set; }
+
 
         #endregion
 

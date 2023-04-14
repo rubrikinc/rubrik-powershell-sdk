@@ -1,7 +1,6 @@
 // K8sNamespaceSnapshot.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:28.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region K8sNamespaceSnapshot
 
-    public class K8sNamespaceSnapshot
+    public class K8sNamespaceSnapshot: IInput
     {
         #region members
+
         //      C# -> System.String? NamespaceId
         // GraphQL -> namespaceId: UUID! (scalar)
         [Required]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> onDemandSnapshotSlaId: String (scalar)
         [JsonProperty("onDemandSnapshotSlaId")]
         public System.String? OnDemandSnapshotSlaId { get; set; }
+
 
         #endregion
 

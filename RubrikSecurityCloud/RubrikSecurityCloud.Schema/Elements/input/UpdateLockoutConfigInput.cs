@@ -1,7 +1,6 @@
 // UpdateLockoutConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateLockoutConfigInput
 
-    public class UpdateLockoutConfigInput
+    public class UpdateLockoutConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? LoginAttemptsLimit
         // GraphQL -> loginAttemptsLimit: Int (scalar)
         [JsonProperty("loginAttemptsLimit")]
@@ -52,6 +52,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isAutoUnlockFeatureEnabled: Boolean (scalar)
         [JsonProperty("isAutoUnlockFeatureEnabled")]
         public System.Boolean? IsAutoUnlockFeatureEnabled { get; set; }
+
 
         #endregion
 

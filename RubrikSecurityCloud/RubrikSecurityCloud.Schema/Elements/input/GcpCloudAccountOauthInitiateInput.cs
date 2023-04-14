@@ -1,7 +1,6 @@
 // GcpCloudAccountOauthInitiateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:22.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GcpCloudAccountOauthInitiateInput
 
-    public class GcpCloudAccountOauthInitiateInput
+    public class GcpCloudAccountOauthInitiateInput: IInput
     {
         #region members
+
         //      C# -> System.String? CustomerUrl
         // GraphQL -> customerUrl: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("customerUrl")]
         public System.String? CustomerUrl { get; set; }
+
 
         #endregion
 

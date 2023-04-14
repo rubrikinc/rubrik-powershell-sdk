@@ -1,7 +1,6 @@
 // ClusterInfCidrsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ClusterInfCidrsInput
 
-    public class ClusterInfCidrsInput
+    public class ClusterInfCidrsInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String (scalar)
         [JsonProperty("clusterName")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> interfaceCidr: [InterfaceCidrInput!] (input)
         [JsonProperty("interfaceCidr")]
         public List<InterfaceCidrInput>? InterfaceCidr { get; set; }
+
 
         #endregion
 

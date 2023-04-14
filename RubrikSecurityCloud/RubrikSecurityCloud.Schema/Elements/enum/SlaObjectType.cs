@@ -1,7 +1,6 @@
 // SlaObjectType.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:13.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -16,6 +15,9 @@ namespace Rubrik.SecurityCloud.Types
 {
     public enum SlaObjectType
     {
+        [EnumMember(Value = "ACTIVE_DIRECTORY_OBJECT_TYPE")]
+        ACTIVE_DIRECTORY_OBJECT_TYPE,
+
         [EnumMember(Value = "AWS_EC2_EBS_OBJECT_TYPE")]
         AWS_EC2_EBS_OBJECT_TYPE,
 

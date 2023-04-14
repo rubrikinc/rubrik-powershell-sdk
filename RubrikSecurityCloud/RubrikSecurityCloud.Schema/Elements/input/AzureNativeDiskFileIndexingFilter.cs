@@ -1,7 +1,6 @@
 // AzureNativeDiskFileIndexingFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeDiskFileIndexingFilter
 
-    public class AzureNativeDiskFileIndexingFilter
+    public class AzureNativeDiskFileIndexingFilter: IInput
     {
         #region members
+
         //      C# -> List<AzureNativeFileIndexingStatus>? Statuses
         // GraphQL -> statuses: [AzureNativeFileIndexingStatus!]! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("statuses")]
         public List<AzureNativeFileIndexingStatus>? Statuses { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // TagFilterParams.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TagFilterParams
 
-    public class TagFilterParams
+    public class TagFilterParams: IInput
     {
         #region members
+
         //      C# -> TagFilterType? FilterType
         // GraphQL -> filterType: TagFilterType (enum)
         [JsonProperty("filterType")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> tagValue: String (scalar)
         [JsonProperty("tagValue")]
         public System.String? TagValue { get; set; }
+
 
         #endregion
 

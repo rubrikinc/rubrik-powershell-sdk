@@ -31,19 +31,31 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             this.Field = null;
         }
 
+        /// <summary>
+        /// The name of the underlying GQL operation.
+        /// </summary>
+        /// <returns> String </returns>
         public String GqlOperation() {
             return _gqlOperation;
         }
 
         private Object _jsonOk(Object obj)
         {
-            if (obj is String || obj is int || obj is bool)
+            if ( 
+                obj == null || 
+                obj is String || 
+                obj is int || 
+                obj is bool || 
+                obj is IFragment ||
+                obj is IInput
+            )
             {
                 return obj;
             }
             return obj.ToString();
-
         }
+
+        // make internal?
         public Dictionary<String, object> GetArgDict(bool beJsonOk=true)
         {
             var _arcDict = new Dictionary<String, Object>();

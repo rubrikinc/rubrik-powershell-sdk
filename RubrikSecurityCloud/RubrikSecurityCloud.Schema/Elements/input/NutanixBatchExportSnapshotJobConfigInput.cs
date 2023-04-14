@@ -1,7 +1,6 @@
 // NutanixBatchExportSnapshotJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:35.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NutanixBatchExportSnapshotJobConfigInput
 
-    public class NutanixBatchExportSnapshotJobConfigInput
+    public class NutanixBatchExportSnapshotJobConfigInput: IInput
     {
         #region members
+
         //      C# -> List<NutanixExportSnapshotJobConfigForBatchInput>? Snapshots
         // GraphQL -> snapshots: [NutanixExportSnapshotJobConfigForBatchInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("snapshots")]
         public List<NutanixExportSnapshotJobConfigForBatchInput>? Snapshots { get; set; }
+
 
         #endregion
 

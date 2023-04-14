@@ -1,7 +1,6 @@
 // PermissionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region PermissionInput
 
-    public class PermissionInput
+    public class PermissionInput: IInput
     {
         #region members
+
         //      C# -> Operation? Operation
         // GraphQL -> operation: Operation! (enum)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("objectsForHierarchyTypes")]
         public List<ObjectIdsForHierarchyTypeInput>? ObjectsForHierarchyTypes { get; set; }
+
 
         #endregion
 

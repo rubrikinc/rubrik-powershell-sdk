@@ -1,7 +1,6 @@
 // LegalHoldQueryFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:02.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region LegalHoldQueryFilter
 
-    public class LegalHoldQueryFilter
+    public class LegalHoldQueryFilter: IInput
     {
         #region members
+
         //      C# -> LegalHoldQueryFilterField? FilterField
         // GraphQL -> filterField: LegalHoldQueryFilterField (enum)
         [JsonProperty("filterField")]
@@ -52,6 +52,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotCustomizations: [SnapshotCustomization!] (enum)
         [JsonProperty("snapshotCustomizations")]
         public List<SnapshotCustomization>? SnapshotCustomizations { get; set; }
+
 
         #endregion
 

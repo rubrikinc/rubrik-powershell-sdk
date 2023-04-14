@@ -1,7 +1,6 @@
 // ActivitySeriesFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:05.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ActivitySeriesFilter
 
-    public class ActivitySeriesFilter
+    public class ActivitySeriesFilter: IInput
     {
         #region members
+
         //      C# -> List<EventStatus>? LastActivityStatus
         // GraphQL -> lastActivityStatus: [EventStatus!] (enum)
         [JsonProperty("lastActivityStatus")]
@@ -92,6 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> orgIds: [String!] (scalar)
         [JsonProperty("orgIds")]
         public List<System.String>? OrgIds { get; set; }
+
 
         #endregion
 

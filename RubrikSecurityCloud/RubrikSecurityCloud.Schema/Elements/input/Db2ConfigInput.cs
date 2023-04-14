@@ -1,7 +1,6 @@
 // Db2ConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region Db2ConfigInput
 
-    public class Db2ConfigInput
+    public class Db2ConfigInput: IInput
     {
         #region members
+
         //      C# -> SlaDurationInput? IncrementalFrequency
         // GraphQL -> incrementalFrequency: SlaDurationInput (input)
         [JsonProperty("incrementalFrequency")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> differentialFrequency: SlaDurationInput (input)
         [JsonProperty("differentialFrequency")]
         public SlaDurationInput? DifferentialFrequency { get; set; }
+
 
         #endregion
 

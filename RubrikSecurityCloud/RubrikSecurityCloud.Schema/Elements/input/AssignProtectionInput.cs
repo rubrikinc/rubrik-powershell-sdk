@@ -1,7 +1,6 @@
 // AssignProtectionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AssignProtectionInput
 
-    public class AssignProtectionInput
+    public class AssignProtectionInput: IInput
     {
         #region members
+
         //      C# -> System.String? GlobalSlaOptionalFid
         // GraphQL -> globalSlaOptionalFid: UUID (scalar)
         [JsonProperty("globalSlaOptionalFid")]
@@ -43,6 +43,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("backupInput")]
         public MosaicSlaInfoInput? BackupInput { get; set; }
+
 
         #endregion
 

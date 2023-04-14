@@ -1,7 +1,6 @@
 // FilesetDownloadSnapshotFilesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:25.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FilesetDownloadSnapshotFilesInput
 
-    public class FilesetDownloadSnapshotFilesInput
+    public class FilesetDownloadSnapshotFilesInput: IInput
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
@@ -46,6 +46,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> deltaTypeFilter: [DeltaType!] (enum)
         [JsonProperty("deltaTypeFilter")]
         public List<DeltaType>? DeltaTypeFilter { get; set; }
+
 
         #endregion
 

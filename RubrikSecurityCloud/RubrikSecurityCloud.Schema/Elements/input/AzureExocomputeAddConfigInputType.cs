@@ -1,7 +1,6 @@
 // AzureExocomputeAddConfigInputType.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureExocomputeAddConfigInputType
 
-    public class AzureExocomputeAddConfigInputType
+    public class AzureExocomputeAddConfigInputType: IInput
     {
         #region members
+
         //      C# -> AzureCloudAccountRegion? Region
         // GraphQL -> region: AzureCloudAccountRegion! (enum)
         [Required]
@@ -43,6 +43,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> podSubnetNativeId: String (scalar)
         [JsonProperty("podSubnetNativeId")]
         public System.String? PodSubnetNativeId { get; set; }
+
 
         #endregion
 

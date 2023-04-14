@@ -1,7 +1,6 @@
 // VolumeGroupMountSnapshotJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:40.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VolumeGroupMountSnapshotJobConfigInput
 
-    public class VolumeGroupMountSnapshotJobConfigInput
+    public class VolumeGroupMountSnapshotJobConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
         [JsonProperty("smbDomainName")]
@@ -44,6 +44,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("volumeConfigs")]
         public List<VolumeGroupVolumeMountConfigInput>? VolumeConfigs { get; set; }
+
 
         #endregion
 

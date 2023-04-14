@@ -1,7 +1,6 @@
 // AzureNativeDiskTypeFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeDiskTypeFilter
 
-    public class AzureNativeDiskTypeFilter
+    public class AzureNativeDiskTypeFilter: IInput
     {
         #region members
+
         //      C# -> List<System.String>? DiskTypes
         // GraphQL -> diskTypes: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("diskTypes")]
         public List<System.String>? DiskTypes { get; set; }
+
 
         #endregion
 

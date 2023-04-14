@@ -1,7 +1,6 @@
 // GcpNativeGceInstanceFilters.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:34.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GcpNativeGceInstanceFilters
 
-    public class GcpNativeGceInstanceFilters
+    public class GcpNativeGceInstanceFilters: IInput
     {
         #region members
+
         //      C# -> GcpNativeInstanceNameOrIdSubstringFilter? NameOrIdSubstringFilter
         // GraphQL -> nameOrIdSubstringFilter: GcpNativeInstanceNameOrIdSubstringFilter (input)
         [JsonProperty("nameOrIdSubstringFilter")]
@@ -62,6 +62,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> orgFilter: OrgFilter (input)
         [JsonProperty("orgFilter")]
         public OrgFilter? OrgFilter { get; set; }
+
 
         #endregion
 

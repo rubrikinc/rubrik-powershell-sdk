@@ -1,7 +1,6 @@
 // InstantRecoveryJobConfigV2Input.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:41.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region InstantRecoveryJobConfigV2Input
 
-    public class InstantRecoveryJobConfigV2Input
+    public class InstantRecoveryJobConfigV2Input: IInput
     {
         #region members
+
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         [JsonProperty("hostId")]
@@ -62,6 +62,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> requiredRecoveryParameters: RequiredRecoveryParametersInput (input)
         [JsonProperty("requiredRecoveryParameters")]
         public RequiredRecoveryParametersInput? RequiredRecoveryParameters { get; set; }
+
 
         #endregion
 

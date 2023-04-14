@@ -1,7 +1,6 @@
 // MssqlDbFileExportPathInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlDbFileExportPathInput
 
-    public class MssqlDbFileExportPathInput
+    public class MssqlDbFileExportPathInput: IInput
     {
         #region members
+
         //      C# -> System.String? NewFilename
         // GraphQL -> newFilename: String (scalar)
         [JsonProperty("newFilename")]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("logicalName")]
         public System.String? LogicalName { get; set; }
+
 
         #endregion
 

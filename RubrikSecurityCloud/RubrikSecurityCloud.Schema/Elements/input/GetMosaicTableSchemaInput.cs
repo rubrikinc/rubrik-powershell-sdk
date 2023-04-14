@@ -1,7 +1,6 @@
 // GetMosaicTableSchemaInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GetMosaicTableSchemaInput
 
-    public class GetMosaicTableSchemaInput
+    public class GetMosaicTableSchemaInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("schemaRequestData")]
         public MosaicGetSchemaRequestInput? SchemaRequestData { get; set; }
+
 
         #endregion
 

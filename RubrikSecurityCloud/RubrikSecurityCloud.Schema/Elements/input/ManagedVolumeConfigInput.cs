@@ -1,7 +1,6 @@
 // ManagedVolumeConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeConfigInput
 
-    public class ManagedVolumeConfigInput
+    public class ManagedVolumeConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int (scalar)
         [JsonProperty("numChannels")]
@@ -63,6 +63,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("volumeSize")]
         public System.Int64? VolumeSize { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // AzureNativeRegionFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeRegionFilter
 
-    public class AzureNativeRegionFilter
+    public class AzureNativeRegionFilter: IInput
     {
         #region members
+
         //      C# -> List<AzureNativeRegion>? Regions
         // GraphQL -> regions: [AzureNativeRegion!]! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("regions")]
         public List<AzureNativeRegion>? Regions { get; set; }
+
 
         #endregion
 

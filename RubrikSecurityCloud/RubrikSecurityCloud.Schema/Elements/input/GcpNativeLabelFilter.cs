@@ -1,7 +1,6 @@
 // GcpNativeLabelFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:34.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GcpNativeLabelFilter
 
-    public class GcpNativeLabelFilter
+    public class GcpNativeLabelFilter: IInput
     {
         #region members
+
         //      C# -> List<LabelFilterParams>? LabelFilterParams
         // GraphQL -> labelFilterParams: [LabelFilterParams!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("labelFilterParams")]
         public List<LabelFilterParams>? LabelFilterParams { get; set; }
+
 
         #endregion
 

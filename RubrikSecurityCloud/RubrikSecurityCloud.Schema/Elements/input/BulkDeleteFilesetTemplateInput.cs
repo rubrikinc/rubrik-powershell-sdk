@@ -1,7 +1,6 @@
 // BulkDeleteFilesetTemplateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:25.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BulkDeleteFilesetTemplateInput
 
-    public class BulkDeleteFilesetTemplateInput
+    public class BulkDeleteFilesetTemplateInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? PreserveSnapshots
         // GraphQL -> preserveSnapshots: Boolean (scalar)
         [JsonProperty("preserveSnapshots")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("ids")]
         public List<System.String>? Ids { get; set; }
+
 
         #endregion
 

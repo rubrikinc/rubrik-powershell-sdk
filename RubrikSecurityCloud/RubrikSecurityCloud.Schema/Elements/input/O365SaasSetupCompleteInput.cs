@@ -1,7 +1,6 @@
 // O365SaasSetupCompleteInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365SaasSetupCompleteInput
 
-    public class O365SaasSetupCompleteInput
+    public class O365SaasSetupCompleteInput: IInput
     {
         #region members
+
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         [Required]
@@ -57,6 +57,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("storeBackupInSameRegionAsData")]
         public System.Boolean? StoreBackupInSameRegionAsData { get; set; }
+
 
         #endregion
 

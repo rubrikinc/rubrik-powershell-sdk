@@ -1,7 +1,6 @@
 // SendPdfReportInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SendPdfReportInput
 
-    public class SendPdfReportInput
+    public class SendPdfReportInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? RubrikRecipientUserIds
         // GraphQL -> rubrikRecipientUserIds: [String!]! (scalar)
         [Required]
@@ -38,6 +38,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("password")]
         public System.String? Password { get; set; }
+
 
         #endregion
 

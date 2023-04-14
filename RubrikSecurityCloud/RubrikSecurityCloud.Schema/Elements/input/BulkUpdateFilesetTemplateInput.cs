@@ -1,7 +1,6 @@
 // BulkUpdateFilesetTemplateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:25.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BulkUpdateFilesetTemplateInput
 
-    public class BulkUpdateFilesetTemplateInput
+    public class BulkUpdateFilesetTemplateInput: IInput
     {
         #region members
+
         //      C# -> List<FilesetTemplatePatchInput>? Definitions
         // GraphQL -> definitions: [FilesetTemplatePatchInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("definitions")]
         public List<FilesetTemplatePatchInput>? Definitions { get; set; }
+
 
         #endregion
 

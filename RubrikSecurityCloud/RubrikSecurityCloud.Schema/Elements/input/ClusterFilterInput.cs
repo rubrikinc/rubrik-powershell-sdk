@@ -1,7 +1,6 @@
 // ClusterFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ClusterFilterInput
 
-    public class ClusterFilterInput
+    public class ClusterFilterInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? Id
         // GraphQL -> id: [UUID!] (scalar)
         [JsonProperty("id")]
@@ -87,6 +87,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> productFilters: [ClusterFilterPerProductInput!] (input)
         [JsonProperty("productFilters")]
         public List<ClusterFilterPerProductInput>? ProductFilters { get; set; }
+
 
         #endregion
 

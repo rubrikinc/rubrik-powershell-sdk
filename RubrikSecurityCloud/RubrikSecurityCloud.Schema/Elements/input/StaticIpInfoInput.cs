@@ -1,7 +1,6 @@
 // StaticIpInfoInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:42.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StaticIpInfoInput
 
-    public class StaticIpInfoInput
+    public class StaticIpInfoInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? DnsServers
         // GraphQL -> dnsServers: [String!] (scalar)
         [JsonProperty("dnsServers")]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("subnetMask")]
         public System.String? SubnetMask { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // MosaicRecoverableRangeRequestInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MosaicRecoverableRangeRequestInput
 
-    public class MosaicRecoverableRangeRequestInput
+    public class MosaicRecoverableRangeRequestInput: IInput
     {
         #region members
+
         //      C# -> MosaicRecoverableRangeRequestSourceType? SourceType
         // GraphQL -> sourceType: MosaicRecoverableRangeRequestSourceType (enum)
         [JsonProperty("sourceType")]
@@ -43,6 +43,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("tableName")]
         public System.String? TableName { get; set; }
+
 
         #endregion
 

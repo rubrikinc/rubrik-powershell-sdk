@@ -1,7 +1,6 @@
 // VirtualMachineUpdateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:42.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VirtualMachineUpdateInput
 
-    public class VirtualMachineUpdateInput
+    public class VirtualMachineUpdateInput: IInput
     {
         #region members
+
         //      C# -> CloudInstantiationSpecInput? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpecInput (input)
         [JsonProperty("cloudInstantiationSpec")]
@@ -67,6 +67,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotConsistencyMandate: VirtualMachineUpdateSnapshotConsistencyMandate (enum)
         [JsonProperty("snapshotConsistencyMandate")]
         public VirtualMachineUpdateSnapshotConsistencyMandate? SnapshotConsistencyMandate { get; set; }
+
 
         #endregion
 

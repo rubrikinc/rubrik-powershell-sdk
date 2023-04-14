@@ -1,7 +1,6 @@
 // WorkloadFieldsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:02.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region WorkloadFieldsInput
 
-    public class WorkloadFieldsInput
+    public class WorkloadFieldsInput: IInput
     {
         #region members
+
         //      C# -> O365SnapshotFileDeltaInput? O365FileDelta
         // GraphQL -> o365FileDelta: O365SnapshotFileDeltaInput (input)
         [JsonProperty("o365FileDelta")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> o365SharepointDelta: O365SharepointSnapshotFileDeltaInput (input)
         [JsonProperty("o365SharepointDelta")]
         public O365SharepointSnapshotFileDeltaInput? O365SharepointDelta { get; set; }
+
 
         #endregion
 

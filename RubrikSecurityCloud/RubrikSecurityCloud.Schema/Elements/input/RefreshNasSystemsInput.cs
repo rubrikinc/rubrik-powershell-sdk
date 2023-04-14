@@ -1,7 +1,6 @@
 // RefreshNasSystemsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:34.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RefreshNasSystemsInput
 
-    public class RefreshNasSystemsInput
+    public class RefreshNasSystemsInput: IInput
     {
         #region members
+
         //      C# -> DiscoverNasSystemRequestInput? DiscoverNasSystemRequest
         // GraphQL -> discoverNasSystemRequest: DiscoverNasSystemRequestInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("discoverNasSystemRequest")]
         public DiscoverNasSystemRequestInput? DiscoverNasSystemRequest { get; set; }
+
 
         #endregion
 

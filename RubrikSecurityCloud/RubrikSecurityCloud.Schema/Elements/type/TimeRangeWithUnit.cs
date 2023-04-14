@@ -1,7 +1,6 @@
 // TimeRangeWithUnit.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:02.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -17,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TimeRangeWithUnit
  
-    public class TimeRangeWithUnit: IFragment, ClusterGroupByInfo, SnappableGroupByInfo, MosaicSnapshotGroupByInfo, MongoSnapshotGroupByInfo, PolarisSnapshotGroupByInfo, ManagedVolumeQueuedSnapshotGroupByInfo, AnomalyResultGroupByInfo, TaskDetailGroupByInfo, RansomwareResultGroupByInfo, MissedSnapshotGroupByInfo, CdmSnapshotGroupByInfo, ClusterMetricGroupByInfo
+    public class TimeRangeWithUnit: IFragment, PolarisSnapshotGroupByInfo, ClusterGroupByInfo, ClusterMetricGroupByInfo, MongoSnapshotGroupByInfo, MosaicSnapshotGroupByInfo, TaskDetailGroupByInfo, RansomwareResultGroupByInfo, ManagedVolumeQueuedSnapshotGroupByInfo, CdmSnapshotGroupByInfo, MissedSnapshotGroupByInfo, AnomalyResultGroupByInfo, SnappableGroupByInfo
     {
         #region members
         //      C# -> DateTime? End

@@ -1,7 +1,6 @@
 // ManagedVolumeLogConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeLogConfigInput
 
-    public class ManagedVolumeLogConfigInput
+    public class ManagedVolumeLogConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClientLogMountPath
         // GraphQL -> clientLogMountPath: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("clientLogMountPath")]
         public System.String? ClientLogMountPath { get; set; }
+
 
         #endregion
 

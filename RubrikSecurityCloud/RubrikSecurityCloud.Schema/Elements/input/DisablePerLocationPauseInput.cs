@@ -1,7 +1,6 @@
 // DisablePerLocationPauseInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DisablePerLocationPauseInput
 
-    public class DisablePerLocationPauseInput
+    public class DisablePerLocationPauseInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? ShouldSkipOldSnapshots
         // GraphQL -> shouldSkipOldSnapshots: Boolean! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("sourceClusterUuids")]
         public List<System.String>? SourceClusterUuids { get; set; }
+
 
         #endregion
 

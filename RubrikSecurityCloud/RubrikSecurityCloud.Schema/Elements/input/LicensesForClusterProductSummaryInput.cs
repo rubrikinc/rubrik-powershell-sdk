@@ -1,7 +1,6 @@
 // LicensesForClusterProductSummaryInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:03.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region LicensesForClusterProductSummaryInput
 
-    public class LicensesForClusterProductSummaryInput
+    public class LicensesForClusterProductSummaryInput: IInput
     {
         #region members
+
         //      C# -> Product? Product
         // GraphQL -> product: Product (enum)
         [JsonProperty("product")]
         public Product? Product { get; set; }
+
 
         #endregion
 

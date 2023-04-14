@@ -1,7 +1,6 @@
 // AddAzureCloudAccountSubscriptionInputWithoutOauth.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:21.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AddAzureCloudAccountSubscriptionInputWithoutOauth
 
-    public class AddAzureCloudAccountSubscriptionInputWithoutOauth
+    public class AddAzureCloudAccountSubscriptionInputWithoutOauth: IInput
     {
         #region members
+
         //      C# -> List<AddAzureCloudAccountFeatureInputWithoutOauth>? Features
         // GraphQL -> features: [AddAzureCloudAccountFeatureInputWithoutOauth!]! (input)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("subscription")]
         public AzureSubscriptionInput? Subscription { get; set; }
+
 
         #endregion
 

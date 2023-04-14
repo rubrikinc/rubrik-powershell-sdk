@@ -1,7 +1,6 @@
 // StartExportRdsInstanceJobInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StartExportRdsInstanceJobInput
 
-    public class StartExportRdsInstanceJobInput
+    public class StartExportRdsInstanceJobInput: IInput
     {
         #region members
+
         //      C# -> System.String? RdsInstanceId
         // GraphQL -> rdsInstanceId: UUID! (scalar)
         [Required]
@@ -157,6 +157,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dbClusterParameterGroupName: String (scalar)
         [JsonProperty("dbClusterParameterGroupName")]
         public System.String? DbClusterParameterGroupName { get; set; }
+
 
         #endregion
 

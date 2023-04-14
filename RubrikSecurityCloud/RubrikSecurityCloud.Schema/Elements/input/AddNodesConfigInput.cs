@@ -1,7 +1,6 @@
 // AddNodesConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AddNodesConfigInput
 
-    public class AddNodesConfigInput
+    public class AddNodesConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? EncryptionPassword
         // GraphQL -> encryptionPassword: String (scalar)
         [JsonProperty("encryptionPassword")]
@@ -39,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("ipmiPassword")]
         public System.String? IpmiPassword { get; set; }
+
 
         #endregion
 

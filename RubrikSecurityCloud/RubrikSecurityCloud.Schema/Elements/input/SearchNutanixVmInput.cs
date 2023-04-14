@@ -1,7 +1,6 @@
 // SearchNutanixVmInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:50.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SearchNutanixVmInput
 
-    public class SearchNutanixVmInput
+    public class SearchNutanixVmInput: IInput
     {
         #region members
+
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String (scalar)
         [JsonProperty("cursor")]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("path")]
         public System.String? Path { get; set; }
+
 
         #endregion
 

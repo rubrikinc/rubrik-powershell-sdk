@@ -1,7 +1,6 @@
 // VersionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:18.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VersionInput
 
-    public class VersionInput
+    public class VersionInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? MaxEntries
         // GraphQL -> maxEntries: Int (scalar)
         [JsonProperty("maxEntries")]
@@ -58,6 +58,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("tableName")]
         public System.String? TableName { get; set; }
+
 
         #endregion
 

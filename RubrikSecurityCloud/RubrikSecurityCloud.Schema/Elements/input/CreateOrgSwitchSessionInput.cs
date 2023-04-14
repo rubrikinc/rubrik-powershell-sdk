@@ -1,7 +1,6 @@
 // CreateOrgSwitchSessionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateOrgSwitchSessionInput
 
-    public class CreateOrgSwitchSessionInput
+    public class CreateOrgSwitchSessionInput: IInput
     {
         #region members
+
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("orgId")]
         public System.String? OrgId { get; set; }
+
 
         #endregion
 

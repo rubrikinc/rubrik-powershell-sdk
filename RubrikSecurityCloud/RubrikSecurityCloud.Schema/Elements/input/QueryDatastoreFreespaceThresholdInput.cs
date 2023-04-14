@@ -1,7 +1,6 @@
 // QueryDatastoreFreespaceThresholdInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region QueryDatastoreFreespaceThresholdInput
 
-    public class QueryDatastoreFreespaceThresholdInput
+    public class QueryDatastoreFreespaceThresholdInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [Required]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmId: String (scalar)
         [JsonProperty("vmId")]
         public System.String? VmId { get; set; }
+
 
         #endregion
 

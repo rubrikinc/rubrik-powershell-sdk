@@ -1,7 +1,6 @@
 // ValidateOracleDatabaseBackupsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:34.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ValidateOracleDatabaseBackupsInput
 
-    public class ValidateOracleDatabaseBackupsInput
+    public class ValidateOracleDatabaseBackupsInput: IInput
     {
         #region members
+
         //      C# -> OracleValidateConfigInput? Config
         // GraphQL -> config: OracleValidateConfigInput! (input)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

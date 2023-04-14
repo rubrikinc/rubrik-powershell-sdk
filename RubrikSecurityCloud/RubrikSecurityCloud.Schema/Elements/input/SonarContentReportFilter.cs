@@ -1,7 +1,6 @@
 // SonarContentReportFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SonarContentReportFilter
 
-    public class SonarContentReportFilter
+    public class SonarContentReportFilter: IInput
     {
         #region members
+
         //      C# -> System.String? Search
         // GraphQL -> search: String (scalar)
         [JsonProperty("search")]
@@ -49,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("objectTypes")]
         public List<HierarchyObjectTypeEnum>? ObjectTypes { get; set; }
+
 
         #endregion
 

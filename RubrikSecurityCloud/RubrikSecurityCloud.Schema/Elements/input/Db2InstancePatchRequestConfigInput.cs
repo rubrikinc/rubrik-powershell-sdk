@@ -1,7 +1,6 @@
 // Db2InstancePatchRequestConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:24.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region Db2InstancePatchRequestConfigInput
 
-    public class Db2InstancePatchRequestConfigInput
+    public class Db2InstancePatchRequestConfigInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? HostIds
         // GraphQL -> hostIds: [String!] (scalar)
         [JsonProperty("hostIds")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> instanceName: String (scalar)
         [JsonProperty("instanceName")]
         public System.String? InstanceName { get; set; }
+
 
         #endregion
 

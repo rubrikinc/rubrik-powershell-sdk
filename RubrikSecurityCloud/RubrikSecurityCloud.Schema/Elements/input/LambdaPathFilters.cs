@@ -1,7 +1,6 @@
 // LambdaPathFilters.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:53.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region LambdaPathFilters
 
-    public class LambdaPathFilters
+    public class LambdaPathFilters: IInput
     {
         #region members
+
         //      C# -> System.Boolean? EnableAbsolutePaths
         // GraphQL -> enableAbsolutePaths: Boolean (scalar)
         [JsonProperty("enableAbsolutePaths")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> searchRecurseFolderId: String (scalar)
         [JsonProperty("searchRecurseFolderId")]
         public System.String? SearchRecurseFolderId { get; set; }
+
 
         #endregion
 

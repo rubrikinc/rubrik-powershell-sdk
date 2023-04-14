@@ -1,7 +1,6 @@
 // AwsNativeRdsDbInstanceClassFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:11.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsNativeRdsDbInstanceClassFilter
 
-    public class AwsNativeRdsDbInstanceClassFilter
+    public class AwsNativeRdsDbInstanceClassFilter: IInput
     {
         #region members
+
         //      C# -> List<AwsNativeRdsDbInstanceClass>? DbInstanceClasses
         // GraphQL -> dbInstanceClasses: [AwsNativeRdsDbInstanceClass!]! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("dbInstanceClasses")]
         public List<AwsNativeRdsDbInstanceClass>? DbInstanceClasses { get; set; }
+
 
         #endregion
 

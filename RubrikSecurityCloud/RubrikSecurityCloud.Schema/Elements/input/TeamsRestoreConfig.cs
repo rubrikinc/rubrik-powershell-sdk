@@ -1,7 +1,6 @@
 // TeamsRestoreConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TeamsRestoreConfig
 
-    public class TeamsRestoreConfig
+    public class TeamsRestoreConfig: IInput
     {
         #region members
+
         //      C# -> DriveRestoreConfig? FilesRestoreConfig
         // GraphQL -> filesRestoreConfig: DriveRestoreConfig (input)
         [JsonProperty("filesRestoreConfig")]
@@ -60,6 +60,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("snapshotSequenceNum")]
         public System.Int32? SnapshotSequenceNum { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // ProxyConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ProxyConfigInput
 
-    public class ProxyConfigInput
+    public class ProxyConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? Password
         // GraphQL -> password: String (scalar)
         [JsonProperty("password")]
@@ -46,6 +46,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("protocol")]
         public System.String? Protocol { get; set; }
+
 
         #endregion
 

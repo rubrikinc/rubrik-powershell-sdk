@@ -1,7 +1,6 @@
 // TriggerExocomputeHealthCheckInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:23.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TriggerExocomputeHealthCheckInput
 
-    public class TriggerExocomputeHealthCheckInput
+    public class TriggerExocomputeHealthCheckInput: IInput
     {
         #region members
+
         //      C# -> CloudVendor? CloudVendor
         // GraphQL -> cloudVendor: CloudVendor! (enum)
         [Required]
@@ -36,6 +36,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodeType: String (scalar)
         [JsonProperty("nodeType")]
         public System.String? NodeType { get; set; }
+
 
         #endregion
 

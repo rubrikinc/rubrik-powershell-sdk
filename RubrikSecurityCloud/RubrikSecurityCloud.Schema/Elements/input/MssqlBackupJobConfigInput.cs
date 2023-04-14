@@ -1,7 +1,6 @@
 // MssqlBackupJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlBackupJobConfigInput
 
-    public class MssqlBackupJobConfigInput
+    public class MssqlBackupJobConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? ForceFullSnapshot
         // GraphQL -> forceFullSnapshot: Boolean (scalar)
         [JsonProperty("forceFullSnapshot")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> baseOnDemandSnapshotConfig: BaseOnDemandSnapshotConfigInput (input)
         [JsonProperty("baseOnDemandSnapshotConfig")]
         public BaseOnDemandSnapshotConfigInput? BaseOnDemandSnapshotConfig { get; set; }
+
 
         #endregion
 

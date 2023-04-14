@@ -1,7 +1,6 @@
 // DeleteCloudNativeTagRuleInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DeleteCloudNativeTagRuleInput
 
-    public class DeleteCloudNativeTagRuleInput
+    public class DeleteCloudNativeTagRuleInput: IInput
     {
         #region members
+
         //      C# -> System.String? RuleId
         // GraphQL -> ruleId: UUID! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("ruleId")]
         public System.String? RuleId { get; set; }
+
 
         #endregion
 

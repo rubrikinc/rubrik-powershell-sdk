@@ -1,7 +1,6 @@
 // AnalyzerGroupInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:23.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AnalyzerGroupInput
 
-    public class AnalyzerGroupInput
+    public class AnalyzerGroupInput: IInput
     {
         #region members
+
         //      C# -> AnalyzerGroupTypeEnum? GroupType
         // GraphQL -> groupType: AnalyzerGroupTypeEnum (enum)
         [JsonProperty("groupType")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> analyzers: [CreateCustomAnalyzerInput!] (input)
         [JsonProperty("analyzers")]
         public List<CreateCustomAnalyzerInput>? Analyzers { get; set; }
+
 
         #endregion
 

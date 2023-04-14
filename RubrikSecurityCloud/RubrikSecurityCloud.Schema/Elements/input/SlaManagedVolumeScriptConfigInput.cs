@@ -1,7 +1,6 @@
 // SlaManagedVolumeScriptConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SlaManagedVolumeScriptConfigInput
 
-    public class SlaManagedVolumeScriptConfigInput
+    public class SlaManagedVolumeScriptConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Int64? Timeout
         // GraphQL -> timeout: Long (scalar)
         [JsonProperty("timeout")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("scriptCommand")]
         public System.String? ScriptCommand { get; set; }
+
 
         #endregion
 

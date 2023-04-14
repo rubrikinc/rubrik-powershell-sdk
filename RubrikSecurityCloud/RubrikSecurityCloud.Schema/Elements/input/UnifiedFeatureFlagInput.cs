@@ -1,7 +1,6 @@
 // UnifiedFeatureFlagInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UnifiedFeatureFlagInput
 
-    public class UnifiedFeatureFlagInput
+    public class UnifiedFeatureFlagInput: IInput
     {
         #region members
+
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
         [Required]
@@ -45,6 +45,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("attrs")]
         public List<AttributeInput>? Attrs { get; set; }
+
 
         #endregion
 

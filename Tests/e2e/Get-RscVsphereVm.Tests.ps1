@@ -1,4 +1,4 @@
-& "$PSScriptRoot\..\..\Samples\import.ps1"
+& "$PSScriptRoot\..\..\Utils\import.ps1"
 . "$PSScriptRoot\..\serviceaccount.ps1"
 
 Describe -Name 'Get-RscVSphereVM' -Tag 'Public' -Fixture{

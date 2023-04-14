@@ -1,7 +1,6 @@
 // TriggerRansomwareDetectionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:28.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TriggerRansomwareDetectionInput
 
-    public class TriggerRansomwareDetectionInput
+    public class TriggerRansomwareDetectionInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String (scalar)
         [JsonProperty("clusterUuid")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> previousSnapshotId: String (scalar)
         [JsonProperty("previousSnapshotId")]
         public System.String? PreviousSnapshotId { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // UpdateRcsAutomaticTargetMappingInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:19.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateRcsAutomaticTargetMappingInput
 
-    public class UpdateRcsAutomaticTargetMappingInput
+    public class UpdateRcsAutomaticTargetMappingInput: IInput
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuidList: [String!] (scalar)
         [JsonProperty("clusterUuidList")]
         public List<System.String>? ClusterUuidList { get; set; }
+
 
         #endregion
 

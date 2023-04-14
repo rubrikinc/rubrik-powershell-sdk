@@ -1,7 +1,6 @@
 // CreateK8sAgentManifestInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:28.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateK8sAgentManifestInput
 
-    public class CreateK8sAgentManifestInput
+    public class CreateK8sAgentManifestInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("timeoutMinutes")]
         public System.Int32? TimeoutMinutes { get; set; }
+
 
         #endregion
 

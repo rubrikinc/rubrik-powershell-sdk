@@ -1,7 +1,6 @@
 // UpdateAwsComputeSettingInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateAwsComputeSettingInput
 
-    public class UpdateAwsComputeSettingInput
+    public class UpdateAwsComputeSettingInput: IInput
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
         [JsonProperty("id")]
@@ -42,6 +42,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> securityGroupId: String (scalar)
         [JsonProperty("securityGroupId")]
         public System.String? SecurityGroupId { get; set; }
+
 
         #endregion
 

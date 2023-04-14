@@ -1,7 +1,6 @@
 // BulkDeleteHostInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:36.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BulkDeleteHostInput
 
-    public class BulkDeleteHostInput
+    public class BulkDeleteHostInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? Ids
         // GraphQL -> ids: [String!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("ids")]
         public List<System.String>? Ids { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // MongoSource.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:42.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -155,6 +154,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("authorizedOperations")]
         public List<Operation>? AuthorizedOperations { get; set; }
 
+        //      C# -> MongoDiscoveryStatus? DiscoveryStatus
+        // GraphQL -> discoveryStatus: MongoDiscoveryStatus! (enum)
+        [JsonProperty("discoveryStatus")]
+        public MongoDiscoveryStatus? DiscoveryStatus { get; set; }
+
         //      C# -> HierarchyObjectTypeEnum? ObjectType
         // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("objectType")]
@@ -232,6 +236,7 @@ namespace Rubrik.SecurityCloud.Types
         List<CdmMongoNode>? SourceNodes = null,
         CdmMongoSslParams? SslParams = null,
         List<Operation>? AuthorizedOperations = null,
+        MongoDiscoveryStatus? DiscoveryStatus = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         MongoSourceType? SourceType = null,
@@ -323,6 +328,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( AuthorizedOperations != null ) {
             this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( DiscoveryStatus != null ) {
+            this.DiscoveryStatus = DiscoveryStatus;
         }
         if ( ObjectType != null ) {
             this.ObjectType = ObjectType;
@@ -590,6 +598,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.AuthorizedOperations != null)
             {
                  s += ind + "authorizedOperations\n";
+
+            }
+            //      C# -> MongoDiscoveryStatus? DiscoveryStatus
+            // GraphQL -> discoveryStatus: MongoDiscoveryStatus! (enum)
+            if (this.DiscoveryStatus != null)
+            {
+                 s += ind + "discoveryStatus\n";
 
             }
             //      C# -> HierarchyObjectTypeEnum? ObjectType
@@ -890,6 +905,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations$"))
             {
                 this.AuthorizedOperations = new List<Operation>();
+            }
+            //      C# -> MongoDiscoveryStatus? DiscoveryStatus
+            // GraphQL -> discoveryStatus: MongoDiscoveryStatus! (enum)
+            if (this.DiscoveryStatus == null && Exploration.Includes(parent + ".discoveryStatus$"))
+            {
+                this.DiscoveryStatus = new MongoDiscoveryStatus();
             }
             //      C# -> HierarchyObjectTypeEnum? ObjectType
             // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)

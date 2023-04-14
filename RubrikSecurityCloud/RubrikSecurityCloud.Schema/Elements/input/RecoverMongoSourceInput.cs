@@ -1,7 +1,6 @@
 // RecoverMongoSourceInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RecoverMongoSourceInput
 
-    public class RecoverMongoSourceInput
+    public class RecoverMongoSourceInput: IInput
     {
         #region members
+
         //      C# -> MongoRecoveryRequestConfigInput? Input
         // GraphQL -> input: MongoRecoveryRequestConfigInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("input")]
         public MongoRecoveryRequestConfigInput? Input { get; set; }
+
 
         #endregion
 

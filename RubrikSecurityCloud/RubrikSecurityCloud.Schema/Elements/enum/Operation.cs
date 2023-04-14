@@ -1,7 +1,6 @@
 // Operation.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:02.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -199,6 +198,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "MANAGE_SNMP")]
         MANAGE_SNMP,
 
+        [EnumMember(Value = "MANAGE_SUPPORT_BUNDLE")]
+        MANAGE_SUPPORT_BUNDLE,
+
         [EnumMember(Value = "MANAGE_SYSLOG")]
         MANAGE_SYSLOG,
 
@@ -339,6 +341,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "VIEW_STORAGE_SETTINGS")]
         VIEW_STORAGE_SETTINGS,
+
+        [EnumMember(Value = "VIEW_SUPPORT_BUNDLE")]
+        VIEW_SUPPORT_BUNDLE,
 
         [EnumMember(Value = "VIEW_SYSLOG")]
         VIEW_SYSLOG,

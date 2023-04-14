@@ -1,7 +1,6 @@
 // AzureGetResourceGroupsInfoIfExistInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureGetResourceGroupsInfoIfExistInput
 
-    public class AzureGetResourceGroupsInfoIfExistInput
+    public class AzureGetResourceGroupsInfoIfExistInput: IInput
     {
         #region members
+
         //      C# -> System.String? SessionId
         // GraphQL -> sessionId: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("resourceGroupInputs")]
         public List<AzureNativeResourceGroupInfoInput>? ResourceGroupInputs { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // CreateAzureClusterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateAzureClusterInput
 
-    public class CreateAzureClusterInput
+    public class CreateAzureClusterInput: IInput
     {
         #region members
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String (scalar)
         [JsonProperty("cloudAccountId")]
@@ -42,6 +42,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmConfig: AzureVmConfig (input)
         [JsonProperty("vmConfig")]
         public AzureVmConfig? VmConfig { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // ReportFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:59.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ReportFilterInput
 
-    public class ReportFilterInput
+    public class ReportFilterInput: IInput
     {
         #region members
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("values")]
         public List<System.String>? Values { get; set; }
+
 
         #endregion
 

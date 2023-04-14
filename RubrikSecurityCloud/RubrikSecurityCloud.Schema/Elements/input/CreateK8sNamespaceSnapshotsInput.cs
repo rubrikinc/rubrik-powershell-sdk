@@ -1,7 +1,6 @@
 // CreateK8sNamespaceSnapshotsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:28.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateK8sNamespaceSnapshotsInput
 
-    public class CreateK8sNamespaceSnapshotsInput
+    public class CreateK8sNamespaceSnapshotsInput: IInput
     {
         #region members
+
         //      C# -> List<K8sNamespaceSnapshot>? SnapshotInput
         // GraphQL -> snapshotInput: [K8sNamespaceSnapshot!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("snapshotInput")]
         public List<K8sNamespaceSnapshot>? SnapshotInput { get; set; }
+
 
         #endregion
 

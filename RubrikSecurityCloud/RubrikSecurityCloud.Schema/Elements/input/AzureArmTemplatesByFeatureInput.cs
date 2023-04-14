@@ -1,7 +1,6 @@
 // AzureArmTemplatesByFeatureInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureArmTemplatesByFeatureInput
 
-    public class AzureArmTemplatesByFeatureInput
+    public class AzureArmTemplatesByFeatureInput: IInput
     {
         #region members
+
         //      C# -> System.String? CustomerTenantDomainName
         // GraphQL -> customerTenantDomainName: String! (scalar)
         [Required]
@@ -45,6 +45,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("cloudType")]
         public AzureCloudType? CloudType { get; set; }
+
 
         #endregion
 

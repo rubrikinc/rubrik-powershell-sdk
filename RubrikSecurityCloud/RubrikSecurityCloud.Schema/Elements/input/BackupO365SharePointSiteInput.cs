@@ -1,7 +1,6 @@
 // BackupO365SharePointSiteInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BackupO365SharePointSiteInput
 
-    public class BackupO365SharePointSiteInput
+    public class BackupO365SharePointSiteInput: IInput
     {
         #region members
+
         //      C# -> System.String? SiteFid
         // GraphQL -> siteFid: UUID! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("siteFid")]
         public System.String? SiteFid { get; set; }
+
 
         #endregion
 

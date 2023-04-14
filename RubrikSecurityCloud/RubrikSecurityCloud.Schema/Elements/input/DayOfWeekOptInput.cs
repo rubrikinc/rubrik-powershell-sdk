@@ -1,7 +1,6 @@
 // DayOfWeekOptInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DayOfWeekOptInput
 
-    public class DayOfWeekOptInput
+    public class DayOfWeekOptInput: IInput
     {
         #region members
+
         //      C# -> DayOfWeek? Day
         // GraphQL -> day: DayOfWeek (enum)
         [JsonProperty("day")]
         public DayOfWeek? Day { get; set; }
+
 
         #endregion
 

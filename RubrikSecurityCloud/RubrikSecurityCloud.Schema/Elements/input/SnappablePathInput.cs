@@ -1,7 +1,6 @@
 // SnappablePathInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:23.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SnappablePathInput
 
-    public class SnappablePathInput
+    public class SnappablePathInput: IInput
     {
         #region members
+
         //      C# -> System.String? SnappableFid
         // GraphQL -> snappableFid: String (scalar)
         [JsonProperty("snappableFid")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> stdPath: String (scalar)
         [JsonProperty("stdPath")]
         public System.String? StdPath { get; set; }
+
 
         #endregion
 

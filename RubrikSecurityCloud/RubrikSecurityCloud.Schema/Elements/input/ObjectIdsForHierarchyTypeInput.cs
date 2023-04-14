@@ -1,7 +1,6 @@
 // ObjectIdsForHierarchyTypeInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:48.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ObjectIdsForHierarchyTypeInput
 
-    public class ObjectIdsForHierarchyTypeInput
+    public class ObjectIdsForHierarchyTypeInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? ObjectIds
         // GraphQL -> objectIds: [String!]! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("snappableType")]
         public WorkloadLevelHierarchy? SnappableType { get; set; }
+
 
         #endregion
 

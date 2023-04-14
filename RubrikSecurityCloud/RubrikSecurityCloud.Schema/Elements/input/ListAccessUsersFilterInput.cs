@@ -1,7 +1,6 @@
 // ListAccessUsersFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ListAccessUsersFilterInput
 
-    public class ListAccessUsersFilterInput
+    public class ListAccessUsersFilterInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? GroupsIds
         // GraphQL -> groupsIds: [String!] (scalar)
         [JsonProperty("groupsIds")]
@@ -34,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("timeRange")]
         public UserTimeRangeInput? TimeRange { get; set; }
+
 
         #endregion
 

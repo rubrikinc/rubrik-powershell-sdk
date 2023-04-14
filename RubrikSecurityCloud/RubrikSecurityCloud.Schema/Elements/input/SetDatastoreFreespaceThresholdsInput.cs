@@ -1,7 +1,6 @@
 // SetDatastoreFreespaceThresholdsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:42.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SetDatastoreFreespaceThresholdsInput
 
-    public class SetDatastoreFreespaceThresholdsInput
+    public class SetDatastoreFreespaceThresholdsInput: IInput
     {
         #region members
+
         //      C# -> List<SetDatastoreFreespaceThresholdInput>? Thresholds
         // GraphQL -> thresholds: [SetDatastoreFreespaceThresholdInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("thresholds")]
         public List<SetDatastoreFreespaceThresholdInput>? Thresholds { get; set; }
+
 
         #endregion
 

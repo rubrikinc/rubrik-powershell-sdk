@@ -1,7 +1,6 @@
 // UserAuditFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:04.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UserAuditFilter
 
-    public class UserAuditFilter
+    public class UserAuditFilter: IInput
     {
         #region members
+
         //      C# -> List<AuditSeverity>? AuditSeverity
         // GraphQL -> auditSeverity: [AuditSeverity!] (enum)
         [JsonProperty("auditSeverity")]
@@ -72,6 +72,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> orgIds: [String!] (scalar)
         [JsonProperty("orgIds")]
         public List<System.String>? OrgIds { get; set; }
+
 
         #endregion
 

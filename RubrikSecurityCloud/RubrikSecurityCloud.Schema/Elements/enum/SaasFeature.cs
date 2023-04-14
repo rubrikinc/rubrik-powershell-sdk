@@ -1,7 +1,6 @@
 // SaasFeature.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:55.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -18,6 +17,9 @@ namespace Rubrik.SecurityCloud.Types
     {
         [EnumMember(Value = "TYPE_AAD")]
         TYPE_AAD,
+
+        [EnumMember(Value = "TYPE_ATLASSIAN")]
+        TYPE_ATLASSIAN,
 
         [EnumMember(Value = "TYPE_CLOUD_DIRECT_HOSTED")]
         TYPE_CLOUD_DIRECT_HOSTED,

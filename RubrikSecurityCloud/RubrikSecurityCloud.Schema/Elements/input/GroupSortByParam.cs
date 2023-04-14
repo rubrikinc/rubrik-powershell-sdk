@@ -1,7 +1,6 @@
 // GroupSortByParam.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:03.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GroupSortByParam
 
-    public class GroupSortByParam
+    public class GroupSortByParam: IInput
     {
         #region members
+
         //      C# -> GroupSortByField? Field
         // GraphQL -> field: GroupSortByField (enum)
         [JsonProperty("field")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sortOrder: SortOrder (enum)
         [JsonProperty("sortOrder")]
         public SortOrder? SortOrder { get; set; }
+
 
         #endregion
 

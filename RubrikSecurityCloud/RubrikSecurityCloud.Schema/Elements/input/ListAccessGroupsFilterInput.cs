@@ -1,7 +1,6 @@
 // ListAccessGroupsFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ListAccessGroupsFilterInput
 
-    public class ListAccessGroupsFilterInput
+    public class ListAccessGroupsFilterInput: IInput
     {
         #region members
+
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String (scalar)
         [JsonProperty("groupName")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userId: String (scalar)
         [JsonProperty("userId")]
         public System.String? UserId { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // ValidateAndCreateAwsCloudAccountInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ValidateAndCreateAwsCloudAccountInput
 
-    public class ValidateAndCreateAwsCloudAccountInput
+    public class ValidateAndCreateAwsCloudAccountInput: IInput
     {
         #region members
+
         //      C# -> CloudAccountAction? Action
         // GraphQL -> action: CloudAccountAction! (enum)
         [Required]
@@ -43,6 +43,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("awsChildAccounts")]
         public List<AwsCloudAccountInput>? AwsChildAccounts { get; set; }
+
 
         #endregion
 

@@ -1,3 +1,4 @@
+
 .PHONY: default build build-client build-schema build-cmdlets clean
 
 default: build
@@ -5,6 +6,7 @@ default: build
 OUTPUT = ../Output
 DOTNET_CLIENT_DIR = RubrikSecurityCloud.Client
 DOTNET_SCHEMA_DIR = RubrikSecurityCloud.Schema
+DOTNET_SCHEMA_TESTS_DIR = RubrikSecurityCloud.Schema.Tests
 DOTNET_CMDLETS_DIR = RubrikSecurityCloud.PowerShell
 
 build: build-client build-schema build-cmdlets
@@ -29,6 +31,8 @@ clean:
 	rm -rf $(OUTPUT)
 	rm -rf $(DOTNET_SCHEMA_DIR)/bin
 	rm -rf $(DOTNET_SCHEMA_DIR)/obj
+	rm -rf $(DOTNET_SCHEMA_TESTS_DIR)/bin
+	rm -rf $(DOTNET_SCHEMA_TESTS_DIR)/obj
 	rm -rf $(DOTNET_CLIENT_DIR)/bin
 	rm -rf $(DOTNET_CLIENT_DIR)/obj
 	rm -rf $(DOTNET_CMDLETS_DIR)/bin

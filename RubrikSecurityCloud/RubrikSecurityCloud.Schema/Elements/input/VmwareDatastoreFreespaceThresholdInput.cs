@@ -1,7 +1,6 @@
 // VmwareDatastoreFreespaceThresholdInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:42.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VmwareDatastoreFreespaceThresholdInput
 
-    public class VmwareDatastoreFreespaceThresholdInput
+    public class VmwareDatastoreFreespaceThresholdInput: IInput
     {
         #region members
+
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String (scalar)
         [JsonProperty("vmId")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("threshold")]
         public System.Single? Threshold { get; set; }
+
 
         #endregion
 

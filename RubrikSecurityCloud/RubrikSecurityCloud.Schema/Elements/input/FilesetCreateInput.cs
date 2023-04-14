@@ -1,7 +1,6 @@
 // FilesetCreateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:25.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FilesetCreateInput
 
-    public class FilesetCreateInput
+    public class FilesetCreateInput: IInput
     {
         #region members
+
         //      C# -> FilesetArraySpecInput? ArraySpec
         // GraphQL -> arraySpec: FilesetArraySpecInput (input)
         [JsonProperty("arraySpec")]
@@ -79,6 +79,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("templateId")]
         public System.String? TemplateId { get; set; }
+
 
         #endregion
 

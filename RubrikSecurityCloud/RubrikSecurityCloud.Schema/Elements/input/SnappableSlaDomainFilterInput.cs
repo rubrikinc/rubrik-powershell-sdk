@@ -1,7 +1,6 @@
 // SnappableSlaDomainFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SnappableSlaDomainFilterInput
 
-    public class SnappableSlaDomainFilterInput
+    public class SnappableSlaDomainFilterInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? Id
         // GraphQL -> id: [String!] (scalar)
         [JsonProperty("id")]
         public List<System.String>? Id { get; set; }
+
 
         #endregion
 

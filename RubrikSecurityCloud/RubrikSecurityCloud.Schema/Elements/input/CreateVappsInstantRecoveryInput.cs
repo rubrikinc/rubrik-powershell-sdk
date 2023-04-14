@@ -1,7 +1,6 @@
 // CreateVappsInstantRecoveryInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:40.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CreateVappsInstantRecoveryInput
 
-    public class CreateVappsInstantRecoveryInput
+    public class CreateVappsInstantRecoveryInput: IInput
     {
         #region members
+
         //      C# -> List<CreateVappInstantRecoveryInput>? Inputs
         // GraphQL -> inputs: [CreateVappInstantRecoveryInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("inputs")]
         public List<CreateVappInstantRecoveryInput>? Inputs { get; set; }
+
 
         #endregion
 

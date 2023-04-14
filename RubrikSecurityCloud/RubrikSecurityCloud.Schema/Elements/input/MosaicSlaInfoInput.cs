@@ -1,7 +1,6 @@
 // MosaicSlaInfoInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MosaicSlaInfoInput
 
-    public class MosaicSlaInfoInput
+    public class MosaicSlaInfoInput: IInput
     {
         #region members
+
         //      C# -> MosaicBackupStoreInfoInput? MosaicBackupStoreInfo
         // GraphQL -> mosaicBackupStoreInfo: MosaicBackupStoreInfoInput (input)
         [JsonProperty("mosaicBackupStoreInfo")]
@@ -42,6 +42,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> shouldDeleteData: Boolean (scalar)
         [JsonProperty("shouldDeleteData")]
         public System.Boolean? ShouldDeleteData { get; set; }
+
 
         #endregion
 

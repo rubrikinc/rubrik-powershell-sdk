@@ -1,7 +1,6 @@
 // SyslogExportRuleInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:35.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SyslogExportRuleInput
 
-    public class SyslogExportRuleInput
+    public class SyslogExportRuleInput: IInput
     {
         #region members
+
         //      C# -> SyslogCertificateInfoInput? SyslogCertificateInfo
         // GraphQL -> syslogCertificateInfo: SyslogCertificateInfoInput (input)
         [JsonProperty("syslogCertificateInfo")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> syslogExportRuleFull: SyslogExportRuleFullInput (input)
         [JsonProperty("syslogExportRuleFull")]
         public SyslogExportRuleFullInput? SyslogExportRuleFull { get; set; }
+
 
         #endregion
 

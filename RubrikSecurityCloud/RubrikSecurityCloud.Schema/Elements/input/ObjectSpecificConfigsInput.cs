@@ -1,7 +1,6 @@
 // ObjectSpecificConfigsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ObjectSpecificConfigsInput
 
-    public class ObjectSpecificConfigsInput
+    public class ObjectSpecificConfigsInput: IInput
     {
         #region members
+
         //      C# -> SapHanaConfigInput? SapHanaConfigInput
         // GraphQL -> sapHanaConfigInput: SapHanaConfigInput (input)
         [JsonProperty("sapHanaConfigInput")]
@@ -72,6 +72,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> awsNativeS3SlaConfigInput: AwsNativeS3SlaConfigInput (input)
         [JsonProperty("awsNativeS3SlaConfigInput")]
         public AwsNativeS3SlaConfigInput? AwsNativeS3SlaConfigInput { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // BulkCreateNasFilesetInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:25.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BulkCreateNasFilesetInput
 
-    public class BulkCreateNasFilesetInput
+    public class BulkCreateNasFilesetInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? IsHardlinkSupportEnabled
         // GraphQL -> isHardlinkSupportEnabled: Boolean (scalar)
         [JsonProperty("isHardlinkSupportEnabled")]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("nasShareIds")]
         public List<System.String>? NasShareIds { get; set; }
+
 
         #endregion
 

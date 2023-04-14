@@ -1,7 +1,6 @@
 // AwsCloudComputeSettingFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:24.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsCloudComputeSettingFilterInput
 
-    public class AwsCloudComputeSettingFilterInput
+    public class AwsCloudComputeSettingFilterInput: IInput
     {
         #region members
+
         //      C# -> AwsCloudComputeSettingFilterField? Field
         // GraphQL -> field: AwsCloudComputeSettingFilterField (enum)
         [JsonProperty("field")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> text: String (scalar)
         [JsonProperty("text")]
         public System.String? Text { get; set; }
+
 
         #endregion
 

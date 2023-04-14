@@ -1,7 +1,6 @@
 // CdmUpgradeInfoFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:21.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CdmUpgradeInfoFilterInput
 
-    public class CdmUpgradeInfoFilterInput
+    public class CdmUpgradeInfoFilterInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? Id
         // GraphQL -> id: [UUID!] (scalar)
         [JsonProperty("id")]
@@ -92,6 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> productType: [ClusterProductEnum!] (enum)
         [JsonProperty("productType")]
         public List<ClusterProductEnum>? ProductType { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // SapHanaLogSnapshotFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:01.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaLogSnapshotFilterInput
 
-    public class SapHanaLogSnapshotFilterInput
+    public class SapHanaLogSnapshotFilterInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? WorkloadId
         // GraphQL -> workloadId: [String!] (scalar)
         [JsonProperty("workloadId")]
@@ -42,6 +42,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isArchived: Boolean (scalar)
         [JsonProperty("isArchived")]
         public System.Boolean? IsArchived { get; set; }
+
 
         #endregion
 

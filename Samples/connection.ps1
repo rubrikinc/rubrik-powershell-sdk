@@ -1,4 +1,4 @@
-. "${PSScriptRoot}\import.ps1"
+. "${PSScriptRoot}\..\Utils\import.ps1"
 . "${PSScriptRoot}\SampleUtils.ps1"
 
 

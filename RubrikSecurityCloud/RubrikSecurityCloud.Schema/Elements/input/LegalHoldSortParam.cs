@@ -1,7 +1,6 @@
 // LegalHoldSortParam.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:02.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region LegalHoldSortParam
 
-    public class LegalHoldSortParam
+    public class LegalHoldSortParam: IInput
     {
         #region members
+
         //      C# -> LegalHoldSortType? Type
         // GraphQL -> type: LegalHoldSortType (enum)
         [JsonProperty("type")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sortOrder: SortOrder (enum)
         [JsonProperty("sortOrder")]
         public SortOrder? SortOrder { get; set; }
+
 
         #endregion
 

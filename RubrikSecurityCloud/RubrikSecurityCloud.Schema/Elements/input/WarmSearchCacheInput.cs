@@ -1,7 +1,6 @@
 // WarmSearchCacheInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:33.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region WarmSearchCacheInput
 
-    public class WarmSearchCacheInput
+    public class WarmSearchCacheInput: IInput
     {
         #region members
+
         //      C# -> System.String? WorkloadFid
         // GraphQL -> workloadFid: UUID! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("workloadFid")]
         public System.String? WorkloadFid { get; set; }
+
 
         #endregion
 

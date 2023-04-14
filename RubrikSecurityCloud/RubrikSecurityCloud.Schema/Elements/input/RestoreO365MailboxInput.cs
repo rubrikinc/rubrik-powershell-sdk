@@ -1,7 +1,6 @@
 // RestoreO365MailboxInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RestoreO365MailboxInput
 
-    public class RestoreO365MailboxInput
+    public class RestoreO365MailboxInput: IInput
     {
         #region members
+
         //      C# -> System.String? OrgUuid
         // GraphQL -> orgUuid: UUID (scalar)
         [JsonProperty("orgUuid")]
@@ -48,6 +48,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("actionType")]
         public O365RestoreActionType? ActionType { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // HotAddNetworkConfigWithIdInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:42.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HotAddNetworkConfigWithIdInput
 
-    public class HotAddNetworkConfigWithIdInput
+    public class HotAddNetworkConfigWithIdInput: IInput
     {
         #region members
+
         //      C# -> StaticIpInfoInput? StaticIpInfo
         // GraphQL -> staticIpInfo: StaticIpInfoInput (input)
         [JsonProperty("staticIpInfo")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("networkId")]
         public System.String? NetworkId { get; set; }
+
 
         #endregion
 

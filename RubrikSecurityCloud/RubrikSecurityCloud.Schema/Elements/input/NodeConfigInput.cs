@@ -1,7 +1,6 @@
 // NodeConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NodeConfigInput
 
-    public class NodeConfigInput
+    public class NodeConfigInput: IInput
     {
         #region members
+
         //      C# -> IpConfigInput? DataIpConfig
         // GraphQL -> dataIpConfig: IpConfigInput (input)
         [JsonProperty("dataIpConfig")]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vlanIpConfigs: [VlanIpInput!] (input)
         [JsonProperty("vlanIpConfigs")]
         public List<VlanIpInput>? VlanIpConfigs { get; set; }
+
 
         #endregion
 

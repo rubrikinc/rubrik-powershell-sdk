@@ -1,7 +1,6 @@
 // StartExportAzureSqlDatabaseDbJobInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StartExportAzureSqlDatabaseDbJobInput
 
-    public class StartExportAzureSqlDatabaseDbJobInput
+    public class StartExportAzureSqlDatabaseDbJobInput: IInput
     {
         #region members
+
         //      C# -> System.String? SourceDatabaseRubrikId
         // GraphQL -> sourceDatabaseRubrikId: UUID! (scalar)
         [Required]
@@ -63,6 +63,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> persistentBackupExportInput: AzureSqlPersistentBackupExportInput (input)
         [JsonProperty("persistentBackupExportInput")]
         public AzureSqlPersistentBackupExportInput? PersistentBackupExportInput { get; set; }
+
 
         #endregion
 

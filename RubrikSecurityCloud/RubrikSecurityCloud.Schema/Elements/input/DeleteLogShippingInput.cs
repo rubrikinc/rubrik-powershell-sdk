@@ -1,7 +1,6 @@
 // DeleteLogShippingInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DeleteLogShippingInput
 
-    public class DeleteLogShippingInput
+    public class DeleteLogShippingInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? DeleteSecondaryDatabase
         // GraphQL -> deleteSecondaryDatabase: Boolean (scalar)
         [JsonProperty("deleteSecondaryDatabase")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

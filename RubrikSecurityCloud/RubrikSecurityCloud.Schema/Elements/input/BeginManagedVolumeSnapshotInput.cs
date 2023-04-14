@@ -1,7 +1,6 @@
 // BeginManagedVolumeSnapshotInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BeginManagedVolumeSnapshotInput
 
-    public class BeginManagedVolumeSnapshotInput
+    public class BeginManagedVolumeSnapshotInput: IInput
     {
         #region members
+
         //      C# -> BeginSnapshotManagedVolumeRequestInput? Config
         // GraphQL -> config: BeginSnapshotManagedVolumeRequestInput (input)
         [JsonProperty("config")]
@@ -34,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

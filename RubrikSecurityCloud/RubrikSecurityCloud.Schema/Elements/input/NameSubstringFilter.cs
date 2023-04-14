@@ -1,7 +1,6 @@
 // NameSubstringFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NameSubstringFilter
 
-    public class NameSubstringFilter
+    public class NameSubstringFilter: IInput
     {
         #region members
+
         //      C# -> System.String? NameSubstring
         // GraphQL -> nameSubstring: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("nameSubstring")]
         public System.String? NameSubstring { get; set; }
+
 
         #endregion
 

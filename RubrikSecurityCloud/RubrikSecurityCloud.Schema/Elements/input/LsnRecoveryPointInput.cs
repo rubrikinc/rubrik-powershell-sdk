@@ -1,7 +1,6 @@
 // LsnRecoveryPointInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region LsnRecoveryPointInput
 
-    public class LsnRecoveryPointInput
+    public class LsnRecoveryPointInput: IInput
     {
         #region members
+
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String (scalar)
         [JsonProperty("recoveryForkGuid")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("lsn")]
         public System.String? Lsn { get; set; }
+
 
         #endregion
 

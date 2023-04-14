@@ -1,7 +1,6 @@
 // ChangeVfdOnHostInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:37.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ChangeVfdOnHostInput
 
-    public class ChangeVfdOnHostInput
+    public class ChangeVfdOnHostInput: IInput
     {
         #region members
+
         //      C# -> HostVfdInstallRequestInput? Config
         // GraphQL -> config: HostVfdInstallRequestInput! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("config")]
         public HostVfdInstallRequestInput? Config { get; set; }
+
 
         #endregion
 

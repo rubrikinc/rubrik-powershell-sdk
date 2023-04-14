@@ -1,7 +1,6 @@
 // AddClusterNodesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:17.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AddClusterNodesInput
 
-    public class AddClusterNodesInput
+    public class AddClusterNodesInput: IInput
     {
         #region members
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [Required]
@@ -38,6 +38,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("request")]
         public AddNodesConfigInput? Request { get; set; }
+
 
         #endregion
 

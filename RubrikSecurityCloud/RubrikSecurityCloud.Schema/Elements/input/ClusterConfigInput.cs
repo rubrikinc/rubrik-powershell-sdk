@@ -1,7 +1,6 @@
 // ClusterConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ClusterConfigInput
 
-    public class ClusterConfigInput
+    public class ClusterConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? UserEmail
         // GraphQL -> userEmail: String (scalar)
         [JsonProperty("userEmail")]
@@ -62,6 +62,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> awsEsConfig: AwsEsConfigInput (input)
         [JsonProperty("awsEsConfig")]
         public AwsEsConfigInput? AwsEsConfig { get; set; }
+
 
         #endregion
 

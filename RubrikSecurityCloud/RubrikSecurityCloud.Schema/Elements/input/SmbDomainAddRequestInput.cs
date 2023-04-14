@@ -1,7 +1,6 @@
 // SmbDomainAddRequestInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SmbDomainAddRequestInput
 
-    public class SmbDomainAddRequestInput
+    public class SmbDomainAddRequestInput: IInput
     {
         #region members
+
         //      C# -> SmbDomainJoinRequestInput? SmbDomainJoinRequest
         // GraphQL -> smbDomainJoinRequest: SmbDomainJoinRequestInput (input)
         [JsonProperty("smbDomainJoinRequest")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("name")]
         public System.String? Name { get; set; }
+
 
         #endregion
 

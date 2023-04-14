@@ -1,7 +1,6 @@
 // AwsVmConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsVmConfig
 
-    public class AwsVmConfig
+    public class AwsVmConfig: IInput
     {
         #region members
+
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String (scalar)
         [JsonProperty("cdmVersion")]
@@ -62,6 +62,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> securityGroups: [String!] (scalar)
         [JsonProperty("securityGroups")]
         public List<System.String>? SecurityGroups { get; set; }
+
 
         #endregion
 

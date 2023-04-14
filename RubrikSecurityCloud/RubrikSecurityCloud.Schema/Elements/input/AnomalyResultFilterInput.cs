@@ -1,7 +1,6 @@
 // AnomalyResultFilterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:07.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AnomalyResultFilterInput
 
-    public class AnomalyResultFilterInput
+    public class AnomalyResultFilterInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? ClusterUuid
         // GraphQL -> clusterUuid: [UUID!] (scalar)
         [JsonProperty("clusterUuid")]
@@ -47,6 +47,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> workloadFid: [UUID!] (scalar)
         [JsonProperty("workloadFid")]
         public List<System.String>? WorkloadFid { get; set; }
+
 
         #endregion
 

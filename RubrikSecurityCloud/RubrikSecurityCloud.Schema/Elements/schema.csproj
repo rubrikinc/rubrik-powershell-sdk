@@ -281,6 +281,7 @@
     <Compile Include="./input/VolumeGroupRestoreFilesConfigInput.cs" />
     <Compile Include="./input/NutanixBulkOnDemandSnapshotJobConfigInput.cs" />
     <Compile Include="./input/MssqlDownloadFromArchiveConfigInput.cs" />
+    <Compile Include="./input/OracleHostInput.cs" />
     <Compile Include="./input/TestExistingWebhookInput.cs" />
     <Compile Include="./input/GetDefaultGatewayInput.cs" />
     <Compile Include="./input/SelfServicePermissionInput.cs" />
@@ -408,6 +409,7 @@
     <Compile Include="./input/UpdateEventDigestInput.cs" />
     <Compile Include="./input/BulkDeleteSourceRequestInput.cs" />
     <Compile Include="./input/ReportFilterInput.cs" />
+    <Compile Include="./input/NodeRemovalCancelPermissionInput.cs" />
     <Compile Include="./input/UnconfigureSapHanaRestoreInput.cs" />
     <Compile Include="./input/AzureNativeVmResourceGroupFilter.cs" />
     <Compile Include="./input/TeamsConversationsSearchFilter.cs" />
@@ -539,7 +541,6 @@
     <Compile Include="./input/CreateGcpTargetInput.cs" />
     <Compile Include="./input/ReplicationBandwidthIncomingInput.cs" />
     <Compile Include="./input/PutSmbConfigurationInput.cs" />
-    <Compile Include="./input/LockIsolatedRecoveryInput.cs" />
     <Compile Include="./input/MssqlDatabaseLiveMountSortByInput.cs" />
     <Compile Include="./input/StartAwsExocomputeDisableJobInput.cs" />
     <Compile Include="./input/OracleNodeOrderInput.cs" />
@@ -752,6 +753,7 @@
     <Compile Include="./input/AwsNativeS3SlaConfigInput.cs" />
     <Compile Include="./input/SetDatastoreFreespaceThresholdsInput.cs" />
     <Compile Include="./input/DownloadManagedVolumeFilesInput.cs" />
+    <Compile Include="./input/VirtualMachineFilesInput.cs" />
     <Compile Include="./input/SlaLogFrequencyConfig.cs" />
     <Compile Include="./input/ShouldApplyToExistingSnapshots.cs" />
     <Compile Include="./input/KmsCryptoKey.cs" />
@@ -1007,6 +1009,7 @@
     <Compile Include="./input/CreateAzureTargetInput.cs" />
     <Compile Include="./input/NetworkThrottleScheduleSummaryInput.cs" />
     <Compile Include="./input/MosaicDatabaseManagementObjectInput.cs" />
+    <Compile Include="./input/OracleRacInput.cs" />
     <Compile Include="./input/ReplicationSpecInput.cs" />
     <Compile Include="./input/VmwareStorageIdWithDeviceKeyV2Input.cs" />
     <Compile Include="./input/UpdateFailoverClusterAppInput.cs" />
@@ -1135,6 +1138,7 @@
     <Compile Include="./input/MountNutanixSnapshotV1Input.cs" />
     <Compile Include="./input/GenerateClusterRegistrationTokenInput.cs" />
     <Compile Include="./input/DownloadThreatHuntCsvInput.cs" />
+    <Compile Include="./input/OracleDbInput.cs" />
     <Compile Include="./input/VolumeGroupLiveMountSortByInput.cs" />
     <Compile Include="./input/UpdateVcenterHotAddBandwidthInput.cs" />
     <Compile Include="./input/NutanixVmDownloadRequestInput.cs" />
@@ -1575,6 +1579,7 @@
     <Compile Include="./enum/TransportLayerProtocol.cs" />
     <Compile Include="./enum/NutanixSnapshotConsistencyMandate.cs" />
     <Compile Include="./enum/CdmManagedVolumeType.cs" />
+    <Compile Include="./enum/MongoDiscoveryStatus.cs" />
     <Compile Include="./enum/MongoSourceStatus.cs" />
     <Compile Include="./enum/AuditStatus.cs" />
     <Compile Include="./enum/SmbDomainFilterField.cs" />
@@ -2071,6 +2076,7 @@
     <Compile Include="./enum/TaskchainState.cs" />
     <Compile Include="./enum/RansomwareResultSortBy.cs" />
     <Compile Include="./enum/FileActivitiesSortBy.cs" />
+    <Compile Include="./enum/VirtualMachineFileType.cs" />
     <Compile Include="./enum/InfrastructureTableColumnEnum.cs" />
     <Compile Include="./enum/AdoptionStatus.cs" />
     <Compile Include="./enum/ClusterDiskType.cs" />
@@ -2181,6 +2187,7 @@
     <Compile Include="./type/PrecheckStatusNextRunInfo.cs" />
     <Compile Include="./type/CloudInstantiationSpec.cs" />
     <Compile Include="./type/GenericTimeRange.cs" />
+    <Compile Include="./type/ThreatMonitoringStats.cs" />
     <Compile Include="./type/ClassificationPolicySummary.cs" />
     <Compile Include="./type/CrawlConnection.cs" />
     <Compile Include="./type/CreateCloudNativeTagRuleReply.cs" />
@@ -2294,6 +2301,7 @@
     <Compile Include="./type/MssqlBackup.cs" />
     <Compile Include="./type/SetDatastoreFreespaceThresholdsReply.cs" />
     <Compile Include="./type/LdapIntegrationConnection.cs" />
+    <Compile Include="./type/VirtualMachineFilesReply.cs" />
     <Compile Include="./type/ResponseSuccess.cs" />
     <Compile Include="./type/UnidirectionalReplicationSpec.cs" />
     <Compile Include="./type/O365UserConnection.cs" />
@@ -2512,6 +2520,7 @@
     <Compile Include="./type/OracleRacLogicalChildTypeConnection.cs" />
     <Compile Include="./type/CdmSnapshotConnection.cs" />
     <Compile Include="./type/SyslogExportRuleSummaryListResponse.cs" />
+    <Compile Include="./type/ThreatMonitoringMatchedObjectConnection.cs" />
     <Compile Include="./type/DownloadCsvReply.cs" />
     <Compile Include="./type/FailoverClusterAppDescendantTypeConnection.cs" />
     <Compile Include="./type/VsphereDatastoreEdge.cs" />
@@ -2654,8 +2663,10 @@
     <Compile Include="./type/AnomalyStatus.cs" />
     <Compile Include="./type/LdapServer.cs" />
     <Compile Include="./type/ExchangeDatabaseConnection.cs" />
+    <Compile Include="./type/NodeRemovalCancelPermissionReply.cs" />
     <Compile Include="./type/GlobalSlaReply.cs" />
     <Compile Include="./type/RansomwareResultConnection.cs" />
+    <Compile Include="./type/VirtualMachineFileInfo.cs" />
     <Compile Include="./type/UpdateEventDigestReply.cs" />
     <Compile Include="./type/MongoCollection.cs" />
     <Compile Include="./type/AzureNativeRegionSpec.cs" />
@@ -3289,6 +3300,7 @@
     <Compile Include="./type/ManagedVolumeSnapshotSummary.cs" />
     <Compile Include="./type/Db2LogBackupFile.cs" />
     <Compile Include="./type/VmwareHostSummary.cs" />
+    <Compile Include="./type/ThreatMonitoringMatchedObject.cs" />
     <Compile Include="./type/NasSystemLogicalChildTypeEdge.cs" />
     <Compile Include="./type/MssqlAvailabilityGroupDescendantTypeEdge.cs" />
     <Compile Include="./type/CdmWorkloadSnapshotConnection.cs" />
@@ -3448,6 +3460,7 @@
     <Compile Include="./type/AzureCdmVersion.cs" />
     <Compile Include="./type/VsphereVcenterTagChildTypeConnection.cs" />
     <Compile Include="./type/CdmSnapshotGroupBy.cs" />
+    <Compile Include="./type/ThreatMonitoringMatchedObjectEdge.cs" />
     <Compile Include="./type/CreateK8sAgentManifestReply.cs" />
     <Compile Include="./type/SapHanaLogBackup.cs" />
     <Compile Include="./type/LockoutConfig.cs" />
@@ -3738,6 +3751,7 @@
     <Compile Include="./type/VsphereResourcePool.cs" />
     <Compile Include="./type/VsphereVirtualDiskEdge.cs" />
     <Compile Include="./type/KnowledgeBaseArticle.cs" />
+    <Compile Include="./type/OracleLogBackupConfig.cs" />
     <Compile Include="./type/IsCloudNativeTagRuleNameUniqueReply.cs" />
     <Compile Include="./type/YearlySnapshotSchedule.cs" />
     <Compile Include="./type/ExchangeLiveMountConnection.cs" />
@@ -3940,34 +3954,41 @@
     <Compile Include="./union/TaskDetailGroupByInfo.cs" />
     <Compile Include="./union/PolarisSnapshotGroupByInfo.cs" />
     <Compile Include="./query/Query.cs" />
-    <Compile Include="./cmdlet/Mutate-RscAws.cs" />
-    <Compile Include="./cmdlet/Query-RscMssql.cs" />
-    <Compile Include="./cmdlet/Query-RscCassandra.cs" />
-    <Compile Include="./cmdlet/Mutate-RscHyperv.cs" />
-    <Compile Include="./cmdlet/Query-RscHyperv.cs" />
-    <Compile Include="./cmdlet/Query-RscSla.cs" />
-    <Compile Include="./cmdlet/Query-RscMongo.cs" />
-    <Compile Include="./cmdlet/Mutate-RscLdap.cs" />
-    <Compile Include="./cmdlet/Mutate-RscOracle.cs" />
-    <Compile Include="./cmdlet/Query-RscOracle.cs" />
-    <Compile Include="./cmdlet/Query-RscNutanix.cs" />
-    <Compile Include="./cmdlet/Mutate-RscActivitySeries.cs" />
-    <Compile Include="./cmdlet/Mutate-RscO365.cs" />
-    <Compile Include="./cmdlet/Mutate-RscNutanix.cs" />
-    <Compile Include="./cmdlet/Query-RscAzure.cs" />
-    <Compile Include="./cmdlet/Query-RscLdap.cs" />
-    <Compile Include="./cmdlet/Query-RscCluster.cs" />
-    <Compile Include="./cmdlet/Mutate-RscMssql.cs" />
-    <Compile Include="./cmdlet/Query-RscO365.cs" />
-    <Compile Include="./cmdlet/Mutate-RscMongo.cs" />
-    <Compile Include="./cmdlet/Query-RscActivitySeries.cs" />
-    <Compile Include="./cmdlet/Mutate-RscSla.cs" />
-    <Compile Include="./cmdlet/Query-RscVsphere.cs" />
-    <Compile Include="./cmdlet/Query-RscAccount.cs" />
-    <Compile Include="./cmdlet/Mutate-RscCassandra.cs" />
-    <Compile Include="./cmdlet/Query-RscAws.cs" />
-    <Compile Include="./cmdlet/Mutate-RscVsphere.cs" />
-    <Compile Include="./cmdlet/Mutate-RscAzure.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryAzureO365.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryMssql.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateAws.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryMongo.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateNutanix.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateOracle.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryVsphereVm.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateVcenter.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryCassandra.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryNutanix.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateActivitySeries.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryLdap.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryO365.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryActivitySeries.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateHyperv.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryVcenter.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQuerySla.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryAzure.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateVsphereVm.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryAws.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateCassandra.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateVsphere.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryCluster.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateAzure.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryHyperv.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateAzureO365.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryOracle.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateMongo.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateSla.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateMssql.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryVsphere.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateLdap.cs" />
+    <Compile Include="./cmdlet/Invoke-RscQueryAccount.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateCluster.cs" />
+    <Compile Include="./cmdlet/Invoke-RscMutateO365.cs" />
   </ItemGroup>
 </Project>
 

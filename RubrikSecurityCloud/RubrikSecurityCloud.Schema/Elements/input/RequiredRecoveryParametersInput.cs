@@ -1,7 +1,6 @@
 // RequiredRecoveryParametersInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:41.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RequiredRecoveryParametersInput
 
-    public class RequiredRecoveryParametersInput
+    public class RequiredRecoveryParametersInput: IInput
     {
         #region members
+
         //      C# -> DateTime? RecoveryPoint
         // GraphQL -> recoveryPoint: DateTime (scalar)
         [JsonProperty("recoveryPoint")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotId: String (scalar)
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
+
 
         #endregion
 

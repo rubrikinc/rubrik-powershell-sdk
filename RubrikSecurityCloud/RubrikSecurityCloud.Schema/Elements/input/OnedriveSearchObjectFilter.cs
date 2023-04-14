@@ -1,7 +1,6 @@
 // OnedriveSearchObjectFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:53.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OnedriveSearchObjectFilter
 
-    public class OnedriveSearchObjectFilter
+    public class OnedriveSearchObjectFilter: IInput
     {
         #region members
+
         //      C# -> OnedriveSearchObjectType? SearchObjectType
         // GraphQL -> searchObjectType: OnedriveSearchObjectType (enum)
         [JsonProperty("searchObjectType")]
         public OnedriveSearchObjectType? SearchObjectType { get; set; }
+
 
         #endregion
 

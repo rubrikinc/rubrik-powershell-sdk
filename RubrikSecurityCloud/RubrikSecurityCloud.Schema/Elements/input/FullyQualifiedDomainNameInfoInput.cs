@@ -1,7 +1,6 @@
 // FullyQualifiedDomainNameInfoInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:42.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region FullyQualifiedDomainNameInfoInput
 
-    public class FullyQualifiedDomainNameInfoInput
+    public class FullyQualifiedDomainNameInfoInput: IInput
     {
         #region members
+
         //      C# -> System.String? Fqdn
         // GraphQL -> fqdn: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("fqdn")]
         public System.String? Fqdn { get; set; }
+
 
         #endregion
 

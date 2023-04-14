@@ -1,7 +1,6 @@
 // HypervBatchOnDemandBackupJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HypervBatchOnDemandBackupJobConfigInput
 
-    public class HypervBatchOnDemandBackupJobConfigInput
+    public class HypervBatchOnDemandBackupJobConfigInput: IInput
     {
         #region members
+
         //      C# -> List<HypervOnDemandBackupJobConfigForBatchInput>? Vms
         // GraphQL -> vms: [HypervOnDemandBackupJobConfigForBatchInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("vms")]
         public List<HypervOnDemandBackupJobConfigForBatchInput>? Vms { get; set; }
+
 
         #endregion
 

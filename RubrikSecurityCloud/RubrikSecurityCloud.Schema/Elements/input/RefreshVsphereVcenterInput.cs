@@ -1,7 +1,6 @@
 // RefreshVsphereVcenterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:41.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RefreshVsphereVcenterInput
 
-    public class RefreshVsphereVcenterInput
+    public class RefreshVsphereVcenterInput: IInput
     {
         #region members
+
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
         [Required]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> shouldDiagnose: Boolean (scalar)
         [JsonProperty("shouldDiagnose")]
         public System.Boolean? ShouldDiagnose { get; set; }
+
 
         #endregion
 

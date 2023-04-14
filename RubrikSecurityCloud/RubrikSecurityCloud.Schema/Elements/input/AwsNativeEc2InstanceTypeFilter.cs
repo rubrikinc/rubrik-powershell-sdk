@@ -1,7 +1,6 @@
 // AwsNativeEc2InstanceTypeFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsNativeEc2InstanceTypeFilter
 
-    public class AwsNativeEc2InstanceTypeFilter
+    public class AwsNativeEc2InstanceTypeFilter: IInput
     {
         #region members
+
         //      C# -> List<AwsNativeEc2InstanceType>? Ec2InstanceTypes
         // GraphQL -> ec2InstanceTypes: [AwsNativeEc2InstanceType!]! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("ec2InstanceTypes")]
         public List<AwsNativeEc2InstanceType>? Ec2InstanceTypes { get; set; }
+
 
         #endregion
 

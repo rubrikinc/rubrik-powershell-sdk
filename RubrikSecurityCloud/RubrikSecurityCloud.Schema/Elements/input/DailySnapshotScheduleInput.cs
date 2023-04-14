@@ -1,7 +1,6 @@
 // DailySnapshotScheduleInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DailySnapshotScheduleInput
 
-    public class DailySnapshotScheduleInput
+    public class DailySnapshotScheduleInput: IInput
     {
         #region members
+
         //      C# -> BasicSnapshotScheduleInput? BasicSchedule
         // GraphQL -> basicSchedule: BasicSnapshotScheduleInput (input)
         [JsonProperty("basicSchedule")]
         public BasicSnapshotScheduleInput? BasicSchedule { get; set; }
+
 
         #endregion
 

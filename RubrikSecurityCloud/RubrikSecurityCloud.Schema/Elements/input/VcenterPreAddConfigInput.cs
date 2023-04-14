@@ -1,7 +1,6 @@
 // VcenterPreAddConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:08.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VcenterPreAddConfigInput
 
-    public class VcenterPreAddConfigInput
+    public class VcenterPreAddConfigInput: IInput
     {
         #region members
+
         //      C# -> VcenterConnectionConfigInput? ConnectionConfig
         // GraphQL -> connectionConfig: VcenterConnectionConfigInput (input)
         [JsonProperty("connectionConfig")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String (scalar)
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

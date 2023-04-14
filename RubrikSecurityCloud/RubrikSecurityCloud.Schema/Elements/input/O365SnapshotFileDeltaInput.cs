@@ -1,7 +1,6 @@
 // O365SnapshotFileDeltaInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:02.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365SnapshotFileDeltaInput
 
-    public class O365SnapshotFileDeltaInput
+    public class O365SnapshotFileDeltaInput: IInput
     {
         #region members
+
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String (scalar)
         [JsonProperty("folderId")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> orgId: String (scalar)
         [JsonProperty("orgId")]
         public System.String? OrgId { get; set; }
+
 
         #endregion
 

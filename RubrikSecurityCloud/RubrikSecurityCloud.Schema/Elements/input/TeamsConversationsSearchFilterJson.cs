@@ -1,7 +1,6 @@
 // TeamsConversationsSearchFilterJson.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TeamsConversationsSearchFilterJson
 
-    public class TeamsConversationsSearchFilterJson
+    public class TeamsConversationsSearchFilterJson: IInput
     {
         #region members
+
         //      C# -> TimeRangeFilterJson? PostedTime
         // GraphQL -> PostedTime: TimeRangeFilterJson (input)
         [JsonProperty("PostedTime")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> SnapshotId: String (scalar)
         [JsonProperty("SnapshotId")]
         public System.String? SnapshotId { get; set; }
+
 
         #endregion
 

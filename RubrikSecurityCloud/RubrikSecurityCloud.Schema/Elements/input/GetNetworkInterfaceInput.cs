@@ -1,7 +1,6 @@
 // GetNetworkInterfaceInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:21.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GetNetworkInterfaceInput
 
-    public class GetNetworkInterfaceInput
+    public class GetNetworkInterfaceInput: IInput
     {
         #region members
+
         //      C# -> System.String? Interface
         // GraphQL -> interface: String (scalar)
         [JsonProperty("interface")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

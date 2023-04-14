@@ -1,7 +1,6 @@
 // VsphereVmExportSnapshotV2Input.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:41.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VsphereVmExportSnapshotV2Input
 
-    public class VsphereVmExportSnapshotV2Input
+    public class VsphereVmExportSnapshotV2Input: IInput
     {
         #region members
+
         //      C# -> ExportSnapshotJobConfigV2Input? Config
         // GraphQL -> config: ExportSnapshotJobConfigV2Input! (input)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

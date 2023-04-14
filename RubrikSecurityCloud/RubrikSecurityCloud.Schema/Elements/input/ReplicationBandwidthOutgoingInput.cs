@@ -1,7 +1,6 @@
 // ReplicationBandwidthOutgoingInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:24.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ReplicationBandwidthOutgoingInput
 
-    public class ReplicationBandwidthOutgoingInput
+    public class ReplicationBandwidthOutgoingInput: IInput
     {
         #region members
+
         //      C# -> System.String? Range
         // GraphQL -> range: String (scalar)
         [JsonProperty("range")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
 
         #endregion
 

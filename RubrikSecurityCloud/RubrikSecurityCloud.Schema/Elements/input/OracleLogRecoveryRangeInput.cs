@@ -1,7 +1,6 @@
 // OracleLogRecoveryRangeInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:34.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OracleLogRecoveryRangeInput
 
-    public class OracleLogRecoveryRangeInput
+    public class OracleLogRecoveryRangeInput: IInput
     {
         #region members
+
         //      C# -> OracleTimeRangeInput? OracleTimeRange
         // GraphQL -> oracleTimeRange: OracleTimeRangeInput (input)
         [JsonProperty("oracleTimeRange")]
         public OracleTimeRangeInput? OracleTimeRange { get; set; }
+
 
         #endregion
 

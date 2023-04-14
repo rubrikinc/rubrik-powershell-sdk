@@ -1,7 +1,6 @@
 // GcpSetDefaultServiceAccountJwtConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:23.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GcpSetDefaultServiceAccountJwtConfigInput
 
-    public class GcpSetDefaultServiceAccountJwtConfigInput
+    public class GcpSetDefaultServiceAccountJwtConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? ServiceAccountName
         // GraphQL -> serviceAccountName: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("serviceAccountJwtConfig")]
         public System.String? ServiceAccountJwtConfig { get; set; }
+
 
         #endregion
 

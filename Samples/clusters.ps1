@@ -1,5 +1,5 @@
 
-. "${PSScriptRoot}\import.ps1"
+. "${PSScriptRoot}\..\Utils\import.ps1"
 . "${PSScriptRoot}\SampleUtils.ps1"
 
 # Path to the service account file must be set in the 

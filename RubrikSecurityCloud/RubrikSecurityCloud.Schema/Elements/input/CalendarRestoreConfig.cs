@@ -1,7 +1,6 @@
 // CalendarRestoreConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CalendarRestoreConfig
 
-    public class CalendarRestoreConfig
+    public class CalendarRestoreConfig: IInput
     {
         #region members
+
         //      C# -> List<EventInfo>? EventsToRestore
         // GraphQL -> eventsToRestore: [EventInfo!]! (input)
         [Required]
@@ -38,6 +38,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("calendarGroupsToRestore")]
         public List<CalendarGroupInfo>? CalendarGroupsToRestore { get; set; }
+
 
         #endregion
 

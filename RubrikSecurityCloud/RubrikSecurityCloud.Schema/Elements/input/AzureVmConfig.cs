@@ -1,7 +1,6 @@
 // AzureVmConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureVmConfig
 
-    public class AzureVmConfig
+    public class AzureVmConfig: IInput
     {
         #region members
+
         //      C# -> System.String? ResourceGroup
         // GraphQL -> resourceGroup: String (scalar)
         [JsonProperty("resourceGroup")]
@@ -92,6 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> instanceType: AzureInstanceType (enum)
         [JsonProperty("instanceType")]
         public AzureInstanceType? InstanceType { get; set; }
+
 
         #endregion
 

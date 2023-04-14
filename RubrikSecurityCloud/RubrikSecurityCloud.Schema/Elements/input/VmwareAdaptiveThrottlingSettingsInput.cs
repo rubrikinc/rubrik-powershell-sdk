@@ -1,7 +1,6 @@
 // VmwareAdaptiveThrottlingSettingsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:42.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VmwareAdaptiveThrottlingSettingsInput
 
-    public class VmwareAdaptiveThrottlingSettingsInput
+    public class VmwareAdaptiveThrottlingSettingsInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? CpuUtilizationThreshold
         // GraphQL -> cpuUtilizationThreshold: Int (scalar)
         [JsonProperty("cpuUtilizationThreshold")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ioLatencyThreshold: Int (scalar)
         [JsonProperty("ioLatencyThreshold")]
         public System.Int32? IoLatencyThreshold { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // AzureNativeVirtualMachineFilters.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeVirtualMachineFilters
 
-    public class AzureNativeVirtualMachineFilters
+    public class AzureNativeVirtualMachineFilters: IInput
     {
         #region members
+
         //      C# -> NameSubstringFilter? NameSubstringFilter
         // GraphQL -> nameSubstringFilter: NameSubstringFilter (input)
         [JsonProperty("nameSubstringFilter")]
@@ -82,6 +82,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> rbsStatusFilter: AzureVmCcOrCnpRbsConnectionStatusFilter (input)
         [JsonProperty("rbsStatusFilter")]
         public AzureVmCcOrCnpRbsConnectionStatusFilter? RbsStatusFilter { get; set; }
+
 
         #endregion
 

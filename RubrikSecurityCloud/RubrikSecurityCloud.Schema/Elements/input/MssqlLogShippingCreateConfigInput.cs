@@ -1,7 +1,6 @@
 // MssqlLogShippingCreateConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlLogShippingCreateConfigInput
 
-    public class MssqlLogShippingCreateConfigInput
+    public class MssqlLogShippingCreateConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? MaxDataStreams
         // GraphQL -> maxDataStreams: Int (scalar)
         [JsonProperty("maxDataStreams")]
@@ -56,6 +56,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("targetInstanceId")]
         public System.String? TargetInstanceId { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // UpdateBadDiskLedStatusInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:16.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateBadDiskLedStatusInput
 
-    public class UpdateBadDiskLedStatusInput
+    public class UpdateBadDiskLedStatusInput: IInput
     {
         #region members
+
         //      C# -> System.String? DiskSerial
         // GraphQL -> diskSerial: String (scalar)
         [JsonProperty("diskSerial")]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("nodeId")]
         public System.String? NodeId { get; set; }
+
 
         #endregion
 

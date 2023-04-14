@@ -1,7 +1,6 @@
 // NutanixVmExportSnapshotJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:35.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NutanixVmExportSnapshotJobConfigInput
 
-    public class NutanixVmExportSnapshotJobConfigInput
+    public class NutanixVmExportSnapshotJobConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? NutanixClusterId
         // GraphQL -> nutanixClusterId: String (scalar)
         [JsonProperty("nutanixClusterId")]
@@ -54,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("containerNaturalId")]
         public System.String? ContainerNaturalId { get; set; }
+
 
         #endregion
 

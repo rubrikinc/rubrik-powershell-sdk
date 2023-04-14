@@ -1,7 +1,6 @@
 // GetCompatibleMssqlInstancesV1Input.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:46.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GetCompatibleMssqlInstancesV1Input
 
-    public class GetCompatibleMssqlInstancesV1Input
+    public class GetCompatibleMssqlInstancesV1Input: IInput
     {
         #region members
+
         //      C# -> DateTime? RecoveryTime
         // GraphQL -> recoveryTime: DateTime (scalar)
         [JsonProperty("recoveryTime")]
@@ -36,6 +36,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("id")]
         public System.String? Id { get; set; }
+
 
         #endregion
 

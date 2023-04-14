@@ -1,7 +1,6 @@
 // DisableSupportUserAccessInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DisableSupportUserAccessInput
 
-    public class DisableSupportUserAccessInput
+    public class DisableSupportUserAccessInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int (scalar)
         [JsonProperty("id")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> impersonatedUserId: String (scalar)
         [JsonProperty("impersonatedUserId")]
         public System.String? ImpersonatedUserId { get; set; }
+
 
         #endregion
 

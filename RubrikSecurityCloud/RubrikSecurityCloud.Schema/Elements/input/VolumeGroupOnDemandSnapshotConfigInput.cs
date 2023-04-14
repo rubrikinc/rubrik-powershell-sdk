@@ -1,7 +1,6 @@
 // VolumeGroupOnDemandSnapshotConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:40.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VolumeGroupOnDemandSnapshotConfigInput
 
-    public class VolumeGroupOnDemandSnapshotConfigInput
+    public class VolumeGroupOnDemandSnapshotConfigInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? VolumeIdsIncludedInSnapshot
         // GraphQL -> volumeIdsIncludedInSnapshot: [String!] (scalar)
         [JsonProperty("volumeIdsIncludedInSnapshot")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> baseOnDemandSnapshotConfig: BaseOnDemandSnapshotConfigInput (input)
         [JsonProperty("baseOnDemandSnapshotConfig")]
         public BaseOnDemandSnapshotConfigInput? BaseOnDemandSnapshotConfig { get; set; }
+
 
         #endregion
 

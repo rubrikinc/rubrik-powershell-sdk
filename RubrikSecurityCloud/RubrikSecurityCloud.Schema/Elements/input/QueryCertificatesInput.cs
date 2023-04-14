@@ -1,7 +1,6 @@
 // QueryCertificatesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:22.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region QueryCertificatesInput
 
-    public class QueryCertificatesInput
+    public class QueryCertificatesInput: IInput
     {
         #region members
+
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         [JsonProperty("description")]
@@ -64,6 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
 
         #endregion
 

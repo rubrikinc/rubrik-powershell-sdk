@@ -1,7 +1,6 @@
 // SetupCloudNativeSqlServerBackupInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:16.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SetupCloudNativeSqlServerBackupInput
 
-    public class SetupCloudNativeSqlServerBackupInput
+    public class SetupCloudNativeSqlServerBackupInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? DatabaseIds
         // GraphQL -> databaseIds: [UUID!]! (scalar)
         [Required]
@@ -39,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sessionId: String (scalar)
         [JsonProperty("sessionId")]
         public System.String? SessionId { get; set; }
+
 
         #endregion
 

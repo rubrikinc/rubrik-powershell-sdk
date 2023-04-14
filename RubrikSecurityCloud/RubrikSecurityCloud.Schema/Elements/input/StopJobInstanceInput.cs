@@ -1,7 +1,6 @@
 // StopJobInstanceInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:25.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StopJobInstanceInput
 
-    public class StopJobInstanceInput
+    public class StopJobInstanceInput: IInput
     {
         #region members
+
         //      C# -> System.String? JobInstanceId
         // GraphQL -> jobInstanceId: String (scalar)
         [JsonProperty("jobInstanceId")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> eventSeriesId: String (scalar)
         [JsonProperty("eventSeriesId")]
         public System.String? EventSeriesId { get; set; }
+
 
         #endregion
 

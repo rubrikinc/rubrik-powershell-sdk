@@ -1,7 +1,6 @@
 // UpdateAwsCloudAccountFeatureInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:21.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateAwsCloudAccountFeatureInput
 
-    public class UpdateAwsCloudAccountFeatureInput
+    public class UpdateAwsCloudAccountFeatureInput: IInput
     {
         #region members
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: UUID! (scalar)
         [Required]
@@ -58,6 +58,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> awsAccountName: String (scalar)
         [JsonProperty("awsAccountName")]
         public System.String? AwsAccountName { get; set; }
+
 
         #endregion
 

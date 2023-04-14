@@ -1,7 +1,6 @@
 // NasConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:36.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NasConfigInput
 
-    public class NasConfigInput
+    public class NasConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? ApiCertificate
         // GraphQL -> apiCertificate: String (scalar)
         [JsonProperty("apiCertificate")]
@@ -84,6 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("vendorType")]
         public System.String? VendorType { get; set; }
+
 
         #endregion
 

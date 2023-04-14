@@ -1,7 +1,6 @@
 // AzureEsConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureEsConfigInput
 
-    public class AzureEsConfigInput
+    public class AzureEsConfigInput: IInput
     {
         #region members
+
         //      C# -> System.String? StorageAccount
         // GraphQL -> storageAccount: String (scalar)
         [JsonProperty("storageAccount")]
@@ -47,6 +47,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> enableImmutability: Boolean (scalar)
         [JsonProperty("enableImmutability")]
         public System.Boolean? EnableImmutability { get; set; }
+
 
         #endregion
 

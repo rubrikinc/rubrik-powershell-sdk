@@ -1,7 +1,6 @@
 // BatchVmwareVmRecoverableRangesRequestInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:09.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BatchVmwareVmRecoverableRangesRequestInput
 
-    public class BatchVmwareVmRecoverableRangesRequestInput
+    public class BatchVmwareVmRecoverableRangesRequestInput: IInput
     {
         #region members
+
         //      C# -> DateTime? AfterTime
         // GraphQL -> afterTime: DateTime (scalar)
         [JsonProperty("afterTime")]
@@ -34,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("vmIds")]
         public List<System.String>? VmIds { get; set; }
+
 
         #endregion
 

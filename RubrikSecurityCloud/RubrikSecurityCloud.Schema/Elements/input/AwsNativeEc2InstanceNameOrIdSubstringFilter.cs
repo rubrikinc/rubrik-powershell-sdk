@@ -1,7 +1,6 @@
 // AwsNativeEc2InstanceNameOrIdSubstringFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsNativeEc2InstanceNameOrIdSubstringFilter
 
-    public class AwsNativeEc2InstanceNameOrIdSubstringFilter
+    public class AwsNativeEc2InstanceNameOrIdSubstringFilter: IInput
     {
         #region members
+
         //      C# -> System.String? NameOrIdSubstring
         // GraphQL -> nameOrIdSubstring: String! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("nameOrIdSubstring")]
         public System.String? NameOrIdSubstring { get; set; }
+
 
         #endregion
 

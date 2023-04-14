@@ -1,7 +1,6 @@
 // GcpNativeRefreshProjectsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GcpNativeRefreshProjectsInput
 
-    public class GcpNativeRefreshProjectsInput
+    public class GcpNativeRefreshProjectsInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? ProjectIds
         // GraphQL -> projectIds: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("projectIds")]
         public List<System.String>? ProjectIds { get; set; }
+
 
         #endregion
 

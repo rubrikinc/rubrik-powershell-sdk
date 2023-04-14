@@ -1,7 +1,6 @@
 // IbmCosDetails.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:19.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region IbmCosDetails
 
-    public class IbmCosDetails
+    public class IbmCosDetails: IInput
     {
         #region members
+
         //      C# -> System.String? ProvisioningCode
         // GraphQL -> provisioningCode: String (scalar)
         [JsonProperty("provisioningCode")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> deploymentType: IbmDeploymentType (enum)
         [JsonProperty("deploymentType")]
         public IbmDeploymentType? DeploymentType { get; set; }
+
 
         #endregion
 

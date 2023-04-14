@@ -1,7 +1,6 @@
 // UpdateSupportTunnelConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:16.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateSupportTunnelConfigInput
 
-    public class UpdateSupportTunnelConfigInput
+    public class UpdateSupportTunnelConfigInput: IInput
     {
         #region members
+
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long (scalar)
         [JsonProperty("inactivityTimeoutInSeconds")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("isTunnelEnabled")]
         public System.Boolean? IsTunnelEnabled { get; set; }
+
 
         #endregion
 

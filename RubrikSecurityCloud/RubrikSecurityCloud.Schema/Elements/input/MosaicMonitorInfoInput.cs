@@ -1,7 +1,6 @@
 // MosaicMonitorInfoInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MosaicMonitorInfoInput
 
-    public class MosaicMonitorInfoInput
+    public class MosaicMonitorInfoInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean (scalar)
         [JsonProperty("isEnabled")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> frequencyUnit: RetentionUnit (enum)
         [JsonProperty("frequencyUnit")]
         public RetentionUnit? FrequencyUnit { get; set; }
+
 
         #endregion
 

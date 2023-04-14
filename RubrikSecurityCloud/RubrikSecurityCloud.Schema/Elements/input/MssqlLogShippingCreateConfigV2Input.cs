@@ -1,7 +1,6 @@
 // MssqlLogShippingCreateConfigV2Input.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:31.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlLogShippingCreateConfigV2Input
 
-    public class MssqlLogShippingCreateConfigV2Input
+    public class MssqlLogShippingCreateConfigV2Input: IInput
     {
         #region members
+
         //      C# -> System.Int32? MakeupReseedLimit
         // GraphQL -> makeupReseedLimit: Int (scalar)
         [JsonProperty("makeupReseedLimit")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mssqlLogShippingCreateConfig: MssqlLogShippingCreateConfigInput (input)
         [JsonProperty("mssqlLogShippingCreateConfig")]
         public MssqlLogShippingCreateConfigInput? MssqlLogShippingCreateConfig { get; set; }
+
 
         #endregion
 

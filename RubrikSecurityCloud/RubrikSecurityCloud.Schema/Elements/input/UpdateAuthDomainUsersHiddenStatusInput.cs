@@ -1,7 +1,6 @@
 // UpdateAuthDomainUsersHiddenStatusInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateAuthDomainUsersHiddenStatusInput
 
-    public class UpdateAuthDomainUsersHiddenStatusInput
+    public class UpdateAuthDomainUsersHiddenStatusInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? UserIds
         // GraphQL -> userIds: [String!]! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("isHidden")]
         public System.Boolean? IsHidden { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // UserGroupToRolesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:37.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UserGroupToRolesInput
 
-    public class UserGroupToRolesInput
+    public class UserGroupToRolesInput: IInput
     {
         #region members
+
         //      C# -> System.String? UserGroupId
         // GraphQL -> userGroupId: String (scalar)
         [JsonProperty("userGroupId")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> roleIds: [String!] (scalar)
         [JsonProperty("roleIds")]
         public List<System.String>? RoleIds { get; set; }
+
 
         #endregion
 

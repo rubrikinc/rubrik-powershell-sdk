@@ -1,7 +1,6 @@
 // CloudNativeInstaceAppProtectionFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:10.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CloudNativeInstaceAppProtectionFilter
 
-    public class CloudNativeInstaceAppProtectionFilter
+    public class CloudNativeInstaceAppProtectionFilter: IInput
     {
         #region members
+
         //      C# -> System.Boolean? IsProtectionSetup
         // GraphQL -> isProtectionSetup: Boolean! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("isProtectionSetup")]
         public System.Boolean? IsProtectionSetup { get; set; }
+
 
         #endregion
 

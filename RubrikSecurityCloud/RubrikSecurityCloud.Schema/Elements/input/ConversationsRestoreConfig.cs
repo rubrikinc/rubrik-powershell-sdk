@@ -1,7 +1,6 @@
 // ConversationsRestoreConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ConversationsRestoreConfig
 
-    public class ConversationsRestoreConfig
+    public class ConversationsRestoreConfig: IInput
     {
         #region members
+
         //      C# -> TeamsConversationsSearchFilterJson? SearchFilter
         // GraphQL -> SearchFilter: TeamsConversationsSearchFilterJson (input)
         [JsonProperty("SearchFilter")]
@@ -55,6 +55,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("ShouldRestoreFileAttachments")]
         public System.Boolean? ShouldRestoreFileAttachments { get; set; }
+
 
         #endregion
 

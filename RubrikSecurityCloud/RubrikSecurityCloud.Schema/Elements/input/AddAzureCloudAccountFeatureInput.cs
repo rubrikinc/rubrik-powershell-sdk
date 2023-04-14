@@ -1,7 +1,6 @@
 // AddAzureCloudAccountFeatureInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:21.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AddAzureCloudAccountFeatureInput
 
-    public class AddAzureCloudAccountFeatureInput
+    public class AddAzureCloudAccountFeatureInput: IInput
     {
         #region members
+
         //      C# -> AddAzureCloudAccountResourceGroupInput? ResourceGroup
         // GraphQL -> resourceGroup: AddAzureCloudAccountResourceGroupInput (input)
         [JsonProperty("resourceGroup")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("featureType")]
         public CloudAccountFeature? FeatureType { get; set; }
+
 
         #endregion
 

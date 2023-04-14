@@ -1,4 +1,4 @@
-& "$PSScriptRoot\..\..\Samples\import.ps1"
+& "$PSScriptRoot\..\..\Utils\import.ps1"
 . "$PSScriptRoot\..\serviceaccount.ps1"
 
 $url = $global:serviceAccount.access_token_uri -replace "https://([^/]*).*", '$1'

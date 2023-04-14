@@ -1,7 +1,6 @@
 // HypervBatchInstantRecoverSnapshotJobConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HypervBatchInstantRecoverSnapshotJobConfigInput
 
-    public class HypervBatchInstantRecoverSnapshotJobConfigInput
+    public class HypervBatchInstantRecoverSnapshotJobConfigInput: IInput
     {
         #region members
+
         //      C# -> List<HypervInstantRecoverConfigForBatchInput>? Snapshots
         // GraphQL -> snapshots: [HypervInstantRecoverConfigForBatchInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("snapshots")]
         public List<HypervInstantRecoverConfigForBatchInput>? Snapshots { get; set; }
+
 
         #endregion
 

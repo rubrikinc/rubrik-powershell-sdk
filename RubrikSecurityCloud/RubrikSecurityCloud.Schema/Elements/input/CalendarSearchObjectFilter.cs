@@ -1,7 +1,6 @@
 // CalendarSearchObjectFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:53.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CalendarSearchObjectFilter
 
-    public class CalendarSearchObjectFilter
+    public class CalendarSearchObjectFilter: IInput
     {
         #region members
+
         //      C# -> O365CalendarSearchObjectType? SearchObjectType
         // GraphQL -> searchObjectType: O365CalendarSearchObjectType (enum)
         [JsonProperty("searchObjectType")]
         public O365CalendarSearchObjectType? SearchObjectType { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // EnableSupportUserAccessInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region EnableSupportUserAccessInput
 
-    public class EnableSupportUserAccessInput
+    public class EnableSupportUserAccessInput: IInput
     {
         #region members
+
         //      C# -> System.String? ImpersonatedUserId
         // GraphQL -> impersonatedUserId: String (scalar)
         [JsonProperty("impersonatedUserId")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> durationInHours: Int (scalar)
         [JsonProperty("durationInHours")]
         public System.Int32? DurationInHours { get; set; }
+
 
         #endregion
 

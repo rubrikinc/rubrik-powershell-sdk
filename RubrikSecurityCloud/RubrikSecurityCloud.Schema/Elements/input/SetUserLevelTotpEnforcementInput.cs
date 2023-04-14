@@ -1,7 +1,6 @@
 // SetUserLevelTotpEnforcementInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:38.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SetUserLevelTotpEnforcementInput
 
-    public class SetUserLevelTotpEnforcementInput
+    public class SetUserLevelTotpEnforcementInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? UserIds
         // GraphQL -> userIds: [String!] (scalar)
         [JsonProperty("userIds")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isEnforced: Boolean (scalar)
         [JsonProperty("isEnforced")]
         public System.Boolean? IsEnforced { get; set; }
+
 
         #endregion
 

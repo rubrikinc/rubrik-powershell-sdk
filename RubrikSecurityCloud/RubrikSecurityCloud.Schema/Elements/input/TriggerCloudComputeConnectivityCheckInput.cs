@@ -1,7 +1,6 @@
 // TriggerCloudComputeConnectivityCheckInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:19.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TriggerCloudComputeConnectivityCheckInput
 
-    public class TriggerCloudComputeConnectivityCheckInput
+    public class TriggerCloudComputeConnectivityCheckInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? ShouldCheckCloudConnectivityForCloudOut
         // GraphQL -> shouldCheckCloudConnectivityForCloudOut: Boolean (scalar)
         [JsonProperty("shouldCheckCloudConnectivityForCloudOut")]
@@ -36,6 +36,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("shouldCheckCloudConnectivityForCloudOn")]
         public System.Boolean? ShouldCheckCloudConnectivityForCloudOn { get; set; }
+
 
         #endregion
 

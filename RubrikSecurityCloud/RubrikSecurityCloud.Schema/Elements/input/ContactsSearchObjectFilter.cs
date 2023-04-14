@@ -1,7 +1,6 @@
 // ContactsSearchObjectFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:53.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,13 +14,15 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ContactsSearchObjectFilter
 
-    public class ContactsSearchObjectFilter
+    public class ContactsSearchObjectFilter: IInput
     {
         #region members
+
         //      C# -> O365ContactsSearchObjectType? SearchObjectType
         // GraphQL -> searchObjectType: O365ContactsSearchObjectType (enum)
         [JsonProperty("searchObjectType")]
         public O365ContactsSearchObjectType? SearchObjectType { get; set; }
+
 
         #endregion
 

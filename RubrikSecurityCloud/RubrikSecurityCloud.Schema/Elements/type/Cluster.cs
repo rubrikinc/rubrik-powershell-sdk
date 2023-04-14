@@ -1,7 +1,6 @@
 // Cluster.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:01.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -17,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region Cluster
  
-    public class Cluster: IFragment, SnappableGroupByInfo, AnomalyResultGroupByInfo, TaskDetailGroupByInfo, RansomwareResultGroupByInfo
+    public class Cluster: IFragment, TaskDetailGroupByInfo, AnomalyResultGroupByInfo, SnappableGroupByInfo, RansomwareResultGroupByInfo
     {
         #region members
         //      C# -> DateTime? ConnectivityLastUpdated
@@ -240,6 +239,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("productType")]
         public ClusterProductEnum? ProductType { get; set; }
 
+        //      C# -> ClusterRegistrationMode? RegisteredMode
+        // GraphQL -> registeredMode: ClusterRegistrationMode (enum)
+        [JsonProperty("registeredMode")]
+        public ClusterRegistrationMode? RegisteredMode { get; set; }
+
         //      C# -> ClusterStatus? Status
         // GraphQL -> status: ClusterStatus! (enum)
         [JsonProperty("status")]
@@ -309,6 +313,7 @@ namespace Rubrik.SecurityCloud.Types
         List<Product>? LicensedProducts = null,
         ClusterPauseStatus? PauseStatus = null,
         ClusterProductEnum? ProductType = null,
+        ClusterRegistrationMode? RegisteredMode = null,
         ClusterStatus? Status = null,
         ClusterSubStatus? SubStatus = null,
         ClusterSystemStatus? SystemStatus = null,
@@ -446,6 +451,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( ProductType != null ) {
             this.ProductType = ProductType;
+        }
+        if ( RegisteredMode != null ) {
+            this.RegisteredMode = RegisteredMode;
         }
         if ( Status != null ) {
             this.Status = Status;
@@ -855,6 +863,13 @@ namespace Rubrik.SecurityCloud.Types
                  s += ind + "productType\n";
 
             }
+            //      C# -> ClusterRegistrationMode? RegisteredMode
+            // GraphQL -> registeredMode: ClusterRegistrationMode (enum)
+            if (this.RegisteredMode != null)
+            {
+                 s += ind + "registeredMode\n";
+
+            }
             //      C# -> ClusterStatus? Status
             // GraphQL -> status: ClusterStatus! (enum)
             if (this.Status != null)
@@ -1180,6 +1195,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.ProductType == null && Exploration.Includes(parent + ".productType$"))
             {
                 this.ProductType = new ClusterProductEnum();
+            }
+            //      C# -> ClusterRegistrationMode? RegisteredMode
+            // GraphQL -> registeredMode: ClusterRegistrationMode (enum)
+            if (this.RegisteredMode == null && Exploration.Includes(parent + ".registeredMode$"))
+            {
+                this.RegisteredMode = new ClusterRegistrationMode();
             }
             //      C# -> ClusterStatus? Status
             // GraphQL -> status: ClusterStatus! (enum)

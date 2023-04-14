@@ -1,7 +1,6 @@
 // TimeRangeFilterJson.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TimeRangeFilterJson
 
-    public class TimeRangeFilterJson
+    public class TimeRangeFilterJson: IInput
     {
         #region members
+
         //      C# -> System.Int64? FromTime
         // GraphQL -> FromTime: Long (scalar)
         [JsonProperty("FromTime")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> UntilTime: Long (scalar)
         [JsonProperty("UntilTime")]
         public System.Int64? UntilTime { get; set; }
+
 
         #endregion
 

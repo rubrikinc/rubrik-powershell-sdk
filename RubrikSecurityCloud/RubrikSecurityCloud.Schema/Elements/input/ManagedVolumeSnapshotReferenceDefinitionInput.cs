@@ -1,7 +1,6 @@
 // ManagedVolumeSnapshotReferenceDefinitionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:29.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeSnapshotReferenceDefinitionInput
 
-    public class ManagedVolumeSnapshotReferenceDefinitionInput
+    public class ManagedVolumeSnapshotReferenceDefinitionInput: IInput
     {
         #region members
+
         //      C# -> ManagedVolumeSnapshotReferencePatchInput? ManagedVolumeSnapshotReferencePatch
         // GraphQL -> managedVolumeSnapshotReferencePatch: ManagedVolumeSnapshotReferencePatchInput (input)
         [JsonProperty("managedVolumeSnapshotReferencePatch")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("ownerId")]
         public System.String? OwnerId { get; set; }
+
 
         #endregion
 

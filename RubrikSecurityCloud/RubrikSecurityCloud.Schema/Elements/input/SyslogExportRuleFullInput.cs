@@ -1,7 +1,6 @@
 // SyslogExportRuleFullInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:35.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SyslogExportRuleFullInput
 
-    public class SyslogExportRuleFullInput
+    public class SyslogExportRuleFullInput: IInput
     {
         #region members
+
         //      C# -> System.String? CertificateId
         // GraphQL -> certificateId: String (scalar)
         [JsonProperty("certificateId")]
@@ -64,6 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("port")]
         public System.Int32? Port { get; set; }
+
 
         #endregion
 

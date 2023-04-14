@@ -1,7 +1,6 @@
 // DownloadVolumeGroupSnapshotFromLocationInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:40.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DownloadVolumeGroupSnapshotFromLocationInput
 
-    public class DownloadVolumeGroupSnapshotFromLocationInput
+    public class DownloadVolumeGroupSnapshotFromLocationInput: IInput
     {
         #region members
+
         //      C# -> VolumeGroupSnapshotDownloadConfigInput? DownloadConfig
         // GraphQL -> downloadConfig: VolumeGroupSnapshotDownloadConfigInput (input)
         [JsonProperty("downloadConfig")]
@@ -36,6 +36,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("snapshotId")]
         public System.String? SnapshotId { get; set; }
+
 
         #endregion
 

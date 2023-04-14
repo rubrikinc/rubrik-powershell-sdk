@@ -1,7 +1,6 @@
 // HypervRestoreFilesConfigInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HypervRestoreFilesConfigInput
 
-    public class HypervRestoreFilesConfigInput
+    public class HypervRestoreFilesConfigInput: IInput
     {
         #region members
+
         //      C# -> List<HypervRestoreFileConfigInput>? RestoreConfig
         // GraphQL -> restoreConfig: [HypervRestoreFileConfigInput!]! (input)
         [Required]
         [JsonRequired]
         [JsonProperty("restoreConfig")]
         public List<HypervRestoreFileConfigInput>? RestoreConfig { get; set; }
+
 
         #endregion
 

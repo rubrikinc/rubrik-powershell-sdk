@@ -1,7 +1,6 @@
 // ContactFolderInfo.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ContactFolderInfo
 
-    public class ContactFolderInfo
+    public class ContactFolderInfo: IInput
     {
         #region members
+
         //      C# -> System.String? ContactFolderId
         // GraphQL -> contactFolderId: String! (scalar)
         [Required]
@@ -38,6 +38,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("snapshotNum")]
         public System.Int32? SnapshotNum { get; set; }
+
 
         #endregion
 

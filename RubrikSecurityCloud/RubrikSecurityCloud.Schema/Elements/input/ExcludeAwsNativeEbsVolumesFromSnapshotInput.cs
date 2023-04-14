@@ -1,7 +1,6 @@
 // ExcludeAwsNativeEbsVolumesFromSnapshotInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ExcludeAwsNativeEbsVolumesFromSnapshotInput
 
-    public class ExcludeAwsNativeEbsVolumesFromSnapshotInput
+    public class ExcludeAwsNativeEbsVolumesFromSnapshotInput: IInput
     {
         #region members
+
         //      C# -> System.String? AwsNativeEc2InstanceId
         // GraphQL -> awsNativeEc2InstanceId: UUID! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("volumeIdExclusions")]
         public List<VolumeIdExclusion>? VolumeIdExclusions { get; set; }
+
 
         #endregion
 

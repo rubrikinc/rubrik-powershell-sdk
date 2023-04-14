@@ -1,7 +1,6 @@
 // StartRecoverS3SnapshotJobInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StartRecoverS3SnapshotJobInput
 
-    public class StartRecoverS3SnapshotJobInput
+    public class StartRecoverS3SnapshotJobInput: IInput
     {
         #region members
+
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         [Required]
@@ -55,6 +55,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("objectKeys")]
         public List<System.String>? ObjectKeys { get; set; }
+
 
         #endregion
 

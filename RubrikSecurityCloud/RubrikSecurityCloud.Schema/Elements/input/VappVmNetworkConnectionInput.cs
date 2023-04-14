@@ -1,7 +1,6 @@
 // VappVmNetworkConnectionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:40.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VappVmNetworkConnectionInput
 
-    public class VappVmNetworkConnectionInput
+    public class VappVmNetworkConnectionInput: IInput
     {
         #region members
+
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
         [JsonProperty("ipAddress")]
@@ -58,6 +58,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("nicIndex")]
         public System.Int32? NicIndex { get; set; }
+
 
         #endregion
 

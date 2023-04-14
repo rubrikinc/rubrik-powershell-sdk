@@ -1,7 +1,6 @@
 // SharePointFullRestoreConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SharePointFullRestoreConfig
 
-    public class SharePointFullRestoreConfig
+    public class SharePointFullRestoreConfig: IInput
     {
         #region members
+
         //      C# -> SharePointObject? SpObjectToRestore
         // GraphQL -> spObjectToRestore: SharePointObject (input)
         [JsonProperty("spObjectToRestore")]
@@ -54,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> newObjectName: String (scalar)
         [JsonProperty("newObjectName")]
         public System.String? NewObjectName { get; set; }
+
 
         #endregion
 

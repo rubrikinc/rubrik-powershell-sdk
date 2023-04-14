@@ -1,7 +1,6 @@
 // AzureO365ExocomputeConfig.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:33.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureO365ExocomputeConfig
 
-    public class AzureO365ExocomputeConfig
+    public class AzureO365ExocomputeConfig: IInput
     {
         #region members
+
         //      C# -> System.String? RegionName
         // GraphQL -> regionName: String! (scalar)
         [Required]
@@ -54,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> existingStorageAccountConfig: ExistingStorageAccountConfig (input)
         [JsonProperty("existingStorageAccountConfig")]
         public ExistingStorageAccountConfig? ExistingStorageAccountConfig { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // DeleteAzureClusterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:43.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region DeleteAzureClusterInput
 
-    public class DeleteAzureClusterInput
+    public class DeleteAzureClusterInput: IInput
     {
         #region members
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: String (scalar)
         [JsonProperty("cloudAccountId")]
@@ -72,6 +72,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: String (scalar)
         [JsonProperty("clusterUuid")]
         public System.String? ClusterUuid { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // MosaicDatabaseObjectInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:18.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MosaicDatabaseObjectInput
 
-    public class MosaicDatabaseObjectInput
+    public class MosaicDatabaseObjectInput: IInput
     {
         #region members
+
         //      C# -> System.String? DbName
         // GraphQL -> dbName: String (scalar)
         [JsonProperty("dbName")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> tables: [String!] (scalar)
         [JsonProperty("tables")]
         public List<System.String>? Tables { get; set; }
+
 
         #endregion
 

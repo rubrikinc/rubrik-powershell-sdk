@@ -1,7 +1,6 @@
 // PendingActionSubGroupTypeEnum.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:58.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -111,6 +110,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "SECURITY_SETTING_ADD_KMIP_SERVER")]
         SECURITY_SETTING_ADD_KMIP_SERVER,
+
+        [EnumMember(Value = "SECURITY_SETTING_DELETE_KMIP_SERVER")]
+        SECURITY_SETTING_DELETE_KMIP_SERVER,
 
         [EnumMember(Value = "SERVICE_ACCOUNT_DELETE")]
         SERVICE_ACCOUNT_DELETE,

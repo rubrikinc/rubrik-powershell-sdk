@@ -1,7 +1,6 @@
 // VmwareVnicBindingInfoV2Input.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:41.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VmwareVnicBindingInfoV2Input
 
-    public class VmwareVnicBindingInfoV2Input
+    public class VmwareVnicBindingInfoV2Input: IInput
     {
         #region members
+
         //      C# -> VmwareNetworkInfoV2Input? BackingNetworkInfo
         // GraphQL -> backingNetworkInfo: VmwareNetworkInfoV2Input! (input)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("networkDeviceInfo")]
         public VmwareNetworkDeviceInfoV2Input? NetworkDeviceInfo { get; set; }
+
 
         #endregion
 

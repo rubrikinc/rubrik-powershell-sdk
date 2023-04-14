@@ -1,7 +1,6 @@
 // StorageAccountConfigItem.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StorageAccountConfigItem
 
-    public class StorageAccountConfigItem
+    public class StorageAccountConfigItem: IInput
     {
         #region members
+
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         [JsonProperty("name")]
@@ -42,6 +42,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> versioningEnabled: Boolean (scalar)
         [JsonProperty("versioningEnabled")]
         public System.Boolean? VersioningEnabled { get; set; }
+
 
         #endregion
 

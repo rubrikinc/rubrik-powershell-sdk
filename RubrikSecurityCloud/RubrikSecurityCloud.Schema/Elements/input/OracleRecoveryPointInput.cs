@@ -1,7 +1,6 @@
 // OracleRecoveryPointInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:58.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OracleRecoveryPointInput
 
-    public class OracleRecoveryPointInput
+    public class OracleRecoveryPointInput: IInput
     {
         #region members
+
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
         [JsonProperty("snapshotId")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> timestampMs: Long (scalar)
         [JsonProperty("timestampMs")]
         public System.Int64? TimestampMs { get; set; }
+
 
         #endregion
 

@@ -1,7 +1,6 @@
 // MssqlSlaRelatedPropertiesInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:30.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlSlaRelatedPropertiesInput
 
-    public class MssqlSlaRelatedPropertiesInput
+    public class MssqlSlaRelatedPropertiesInput: IInput
     {
         #region members
+
         //      C# -> System.Boolean? CopyOnly
         // GraphQL -> copyOnly: Boolean (scalar)
         [JsonProperty("copyOnly")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
         [JsonProperty("hasLogConfigFromSla")]
         public System.Boolean? HasLogConfigFromSla { get; set; }
+
 
         #endregion
 

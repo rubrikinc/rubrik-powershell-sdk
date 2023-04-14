@@ -1,7 +1,6 @@
 // RefreshK8sClusterInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region RefreshK8sClusterInput
 
-    public class RefreshK8sClusterInput
+    public class RefreshK8sClusterInput: IInput
     {
         #region members
+
         //      C# -> System.String? K8sClusterId
         // GraphQL -> k8sClusterId: UUID! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("k8sClusterId")]
         public System.String? K8sClusterId { get; set; }
+
 
         #endregion
 

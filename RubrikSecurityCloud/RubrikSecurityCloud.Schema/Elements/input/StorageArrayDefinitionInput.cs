@@ -1,7 +1,6 @@
 // StorageArrayDefinitionInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StorageArrayDefinitionInput
 
-    public class StorageArrayDefinitionInput
+    public class StorageArrayDefinitionInput: IInput
     {
         #region members
+
         //      C# -> System.String? CaCerts
         // GraphQL -> caCerts: String (scalar)
         [JsonProperty("caCerts")]
@@ -55,6 +55,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("username")]
         public System.String? Username { get; set; }
+
 
         #endregion
 

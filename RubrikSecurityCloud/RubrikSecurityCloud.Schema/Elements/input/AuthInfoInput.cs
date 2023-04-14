@@ -1,7 +1,6 @@
 // AuthInfoInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:14.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AuthInfoInput
 
-    public class AuthInfoInput
+    public class AuthInfoInput: IInput
     {
         #region members
+
         //      C# -> AuthenticationType? AuthType
         // GraphQL -> authType: AuthenticationType! (enum)
         [Required]
@@ -39,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> customHeader: CustomHeader (input)
         [JsonProperty("customHeader")]
         public CustomHeader? CustomHeader { get; set; }
+
 
         #endregion
 

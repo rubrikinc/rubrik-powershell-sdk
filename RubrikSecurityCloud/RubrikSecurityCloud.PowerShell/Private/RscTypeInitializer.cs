@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Collections;
 using System.Management.Automation;
 using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud.Client;
+using Rubrik.SecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Private
 {
@@ -215,9 +217,9 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
                         if (currentProperty == null)
                         {
-                            Console.WriteLine($"WARN: Unable to find property: " +
-                                $"'{requestedPropertyTree[0]}' when evaluating " +
-                                $"'{ requestedProperty }'");
+                            //Console.WriteLine($"WARN: Unable to find property: " +
+                            //    $"'{requestedPropertyTree[0]}' when evaluating " +
+                            //    $"'{ requestedProperty }'");
                             continue;
                         }
 

@@ -1,7 +1,6 @@
 // CloudNativeFilter.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:18.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CloudNativeFilter
 
-    public class CloudNativeFilter
+    public class CloudNativeFilter: IInput
     {
         #region members
+
         //      C# -> CloudNativeTagRuleFilterFields? Field
         // GraphQL -> field: CloudNativeTagRuleFilterFields (enum)
         [JsonProperty("field")]
@@ -27,6 +27,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> texts: [String!] (scalar)
         [JsonProperty("texts")]
         public List<System.String>? Texts { get; set; }
+
 
         #endregion
 

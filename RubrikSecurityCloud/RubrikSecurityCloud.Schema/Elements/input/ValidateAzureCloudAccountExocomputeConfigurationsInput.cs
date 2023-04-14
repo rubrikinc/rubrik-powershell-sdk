@@ -1,7 +1,6 @@
 // ValidateAzureCloudAccountExocomputeConfigurationsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ValidateAzureCloudAccountExocomputeConfigurationsInput
 
-    public class ValidateAzureCloudAccountExocomputeConfigurationsInput
+    public class ValidateAzureCloudAccountExocomputeConfigurationsInput: IInput
     {
         #region members
+
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: UUID! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("azureExocomputeRegionConfigs")]
         public List<AzureExocomputeAddConfigInputType>? AzureExocomputeRegionConfigs { get; set; }
+
 
         #endregion
 

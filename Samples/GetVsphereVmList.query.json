@@ -1,0 +1,3 @@
+{
+  "query": "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}"
+}

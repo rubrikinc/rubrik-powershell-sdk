@@ -1,7 +1,6 @@
 // BatchOnDemandBackupHypervVmInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region BatchOnDemandBackupHypervVmInput
 
-    public class BatchOnDemandBackupHypervVmInput
+    public class BatchOnDemandBackupHypervVmInput: IInput
     {
         #region members
+
         //      C# -> System.String? UserNote
         // GraphQL -> userNote: String (scalar)
         [JsonProperty("userNote")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("config")]
         public HypervBatchOnDemandBackupJobConfigInput? Config { get; set; }
+
 
         #endregion
 

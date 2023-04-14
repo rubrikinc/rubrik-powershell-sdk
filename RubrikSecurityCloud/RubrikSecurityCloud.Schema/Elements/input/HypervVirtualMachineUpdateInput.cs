@@ -1,7 +1,6 @@
 // HypervVirtualMachineUpdateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:27.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HypervVirtualMachineUpdateInput
 
-    public class HypervVirtualMachineUpdateInput
+    public class HypervVirtualMachineUpdateInput: IInput
     {
         #region members
+
         //      C# -> CloudInstantiationSpecInput? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpecInput (input)
         [JsonProperty("cloudInstantiationSpec")]
@@ -32,6 +32,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> virtualDiskIdsExcludedFromSnapshot: [String!] (scalar)
         [JsonProperty("virtualDiskIdsExcludedFromSnapshot")]
         public List<System.String>? VirtualDiskIdsExcludedFromSnapshot { get; set; }
+
 
         #endregion
 

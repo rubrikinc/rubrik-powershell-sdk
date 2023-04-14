@@ -1,7 +1,6 @@
 // CdmFeatureFlagType.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:20.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -87,6 +86,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "ARCHIVAL_QSTAR")]
         ARCHIVAL_QSTAR,
+
+        [EnumMember(Value = "CDM_LOCATION_UPGRADE")]
+        CDM_LOCATION_UPGRADE,
 
         [EnumMember(Value = "DOWNLOAD_REPLICATED_SNAPSHOT")]
         DOWNLOAD_REPLICATED_SNAPSHOT,
@@ -186,6 +188,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_RUBRIK_BACKUP_SERVICE")]
         NUTANIX_RUBRIK_BACKUP_SERVICE,
+
+        [EnumMember(Value = "ON_PREM_AD")]
+        ON_PREM_AD,
 
         [EnumMember(Value = "ORACLEDB_CHANGE_RETENTION")]
         ORACLEDB_CHANGE_RETENTION,

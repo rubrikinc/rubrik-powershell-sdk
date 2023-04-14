@@ -1,7 +1,6 @@
 // NasSystemUpdateInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:34.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NasSystemUpdateInput
 
-    public class NasSystemUpdateInput
+    public class NasSystemUpdateInput: IInput
     {
         #region members
+
         //      C# -> GenericNasSystemParametersInput? GenericNasSystemParameters
         // GraphQL -> genericNasSystemParameters: GenericNasSystemParametersInput (input)
         [JsonProperty("genericNasSystemParameters")]
@@ -37,6 +37,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nasApiCredentials: NasApiCredentialsInput (input)
         [JsonProperty("nasApiCredentials")]
         public NasApiCredentialsInput? NasApiCredentials { get; set; }
+
 
         #endregion
 

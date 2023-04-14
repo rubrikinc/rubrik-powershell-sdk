@@ -1,7 +1,6 @@
 // SapHanaDownloadRecoverableRangeRequestInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:39.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaDownloadRecoverableRangeRequestInput
 
-    public class SapHanaDownloadRecoverableRangeRequestInput
+    public class SapHanaDownloadRecoverableRangeRequestInput: IInput
     {
         #region members
+
         //      C# -> DateTime? PointInTime
         // GraphQL -> pointInTime: DateTime (scalar)
         [JsonProperty("pointInTime")]
@@ -29,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("preferredLocationId")]
         public System.String? PreferredLocationId { get; set; }
+
 
         #endregion
 

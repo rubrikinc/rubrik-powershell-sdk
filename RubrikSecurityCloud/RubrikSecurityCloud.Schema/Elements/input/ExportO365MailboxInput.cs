@@ -1,7 +1,6 @@
 // ExportO365MailboxInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:32.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ExportO365MailboxInput
 
-    public class ExportO365MailboxInput
+    public class ExportO365MailboxInput: IInput
     {
         #region members
+
         //      C# -> System.String? OrgUuid
         // GraphQL -> orgUuid: UUID (scalar)
         [JsonProperty("orgUuid")]
@@ -48,6 +48,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("exportConfigs")]
         public List<RestoreObjectConfig>? ExportConfigs { get; set; }
+
 
         #endregion
 

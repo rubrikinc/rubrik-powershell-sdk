@@ -1,7 +1,6 @@
 // AuditType.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:04.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -42,6 +41,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "DOWNLOAD")]
         DOWNLOAD,
+
+        [EnumMember(Value = "ENCRYPTION_MANAGEMENT_OPERATION")]
+        ENCRYPTION_MANAGEMENT_OPERATION,
 
         [EnumMember(Value = "FAILOVER")]
         FAILOVER,

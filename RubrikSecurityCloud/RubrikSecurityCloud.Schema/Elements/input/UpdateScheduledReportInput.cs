@@ -1,7 +1,6 @@
 // UpdateScheduledReportInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:38.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateScheduledReportInput
 
-    public class UpdateScheduledReportInput
+    public class UpdateScheduledReportInput: IInput
     {
         #region members
+
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("config")]
         public ScheduledReportCreate? Config { get; set; }
+
 
         #endregion
 

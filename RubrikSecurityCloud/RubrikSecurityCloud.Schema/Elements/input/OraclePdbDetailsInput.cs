@@ -1,7 +1,6 @@
 // OraclePdbDetailsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:58.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OraclePdbDetailsInput
 
-    public class OraclePdbDetailsInput
+    public class OraclePdbDetailsInput: IInput
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [Required]
@@ -31,6 +31,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonRequired]
         [JsonProperty("pdbDetailsRequest")]
         public GetOraclePdbDetailsRequestInput? PdbDetailsRequest { get; set; }
+
 
         #endregion
 

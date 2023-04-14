@@ -1,7 +1,6 @@
 // AwsCloudAccountConfigsInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:03:26.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,9 +14,10 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsCloudAccountConfigsInput
 
-    public class AwsCloudAccountConfigsInput
+    public class AwsCloudAccountConfigsInput: IInput
     {
         #region members
+
         //      C# -> CloudAccountFeature? Feature
         // GraphQL -> feature: CloudAccountFeature! (enum)
         [Required]
@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> columnSearchFilter: String (scalar)
         [JsonProperty("columnSearchFilter")]
         public System.String? ColumnSearchFilter { get; set; }
+
 
         #endregion
 

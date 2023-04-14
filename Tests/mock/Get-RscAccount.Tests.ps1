@@ -15,7 +15,7 @@ param(
     [switch]$UseExistingMockServer
 )
 
-& "$PSScriptRoot\..\..\Samples\import.ps1"
+& "$PSScriptRoot\..\..\Utils\import.ps1"
 . "$PSScriptRoot\..\mock_api_server.ps1"
 
 BeforeAll {

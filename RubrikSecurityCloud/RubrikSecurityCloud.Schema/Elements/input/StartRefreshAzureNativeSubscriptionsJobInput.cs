@@ -1,7 +1,6 @@
 // StartRefreshAzureNativeSubscriptionsJobInput.cs
 //
-// This file is part of the Rubrik PowerShell SDK.
-// Generated on 2023-04-13 20:04:15.
+// This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
 
 #nullable enable
@@ -15,15 +14,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region StartRefreshAzureNativeSubscriptionsJobInput
 
-    public class StartRefreshAzureNativeSubscriptionsJobInput
+    public class StartRefreshAzureNativeSubscriptionsJobInput: IInput
     {
         #region members
+
         //      C# -> List<System.String>? AzureSubscriptionRubrikIds
         // GraphQL -> azureSubscriptionRubrikIds: [UUID!]! (scalar)
         [Required]
         [JsonRequired]
         [JsonProperty("azureSubscriptionRubrikIds")]
         public List<System.String>? AzureSubscriptionRubrikIds { get; set; }
+
 
         #endregion
 
