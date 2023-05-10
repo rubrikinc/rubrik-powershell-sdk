@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.Operations;
 using RubrikSecurityCloud.PowerShell.Private;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
 

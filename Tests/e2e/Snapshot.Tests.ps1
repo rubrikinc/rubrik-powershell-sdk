@@ -4,7 +4,7 @@
 Describe -Name 'Connect to API' -Fixture {
     Context -Name 'Connections with service account file' {
         It -Name 'Connect-Rsc -ServiceAccountFile' -Test {
-            Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile) | Should -BeLikeExactly "Authentication Status: AUTHORIZED"
+            Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
         }
         It -Name 'Get-RscSnapshot' -Test {
             Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)

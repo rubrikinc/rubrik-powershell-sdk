@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -30,6 +31,23 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
         // and initialized in the Invoke methods in derived classes.
         internal RscCmdletInput _input = null;
 
+        protected Dictionary<string, string> GetMetricTags()
+        {
+            string version =
+                this
+                    .MyInvocation
+                    .MyCommand
+                    .Module
+                    .Version
+                    .ToString();
+
+            return new Dictionary<string, string>{
+                {"Sdk-Caller", this._rbkClient.ClientId},
+                {"Sdk-Language", "PowerShell"},
+                {"Sdk-Rsc-Version", SchemaMeta.GraphqlSchemaVersion},
+                {"Sdk-Version", version}
+            };
+        }
 
         protected override void BeginProcessing()
         {

@@ -1,7 +1,6 @@
 #
 # Module manifest for module 'RubrikSecurityCloud'
 #
-#
 
 @{
 
@@ -27,7 +26,8 @@ CompanyName = 'Rubrik'
 Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+# NOTE: The word after "GraphQL schema version:" is generated.
+Description = 'RSC PowerShell SDK. GraphQL schema version: v20230426-26 .'
 
 # Minimum version of the PowerShell engine required by this module
 #PowerShellVersion = '7.0.0'
@@ -66,7 +66,8 @@ TypesToProcess = @('Types.ps1xml')
 NestedModules = @('PublicFunctions.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('List-RscCluster')
+# FunctionsToExport = @('List-RscCluster')
+FunctionsToExport = '*'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'

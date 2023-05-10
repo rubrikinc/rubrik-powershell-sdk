@@ -27,6 +27,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "EXCLUDE_CLOUD_NATIVE")]
         EXCLUDE_CLOUD_NATIVE,
 
+        [EnumMember(Value = "EXTERNAL_CDM_LOCATION_ID")]
+        EXTERNAL_CDM_LOCATION_ID,
+
         [EnumMember(Value = "GROUP_NAME")]
         GROUP_NAME,
 

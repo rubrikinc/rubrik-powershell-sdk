@@ -10,6 +10,8 @@ namespace RubrikSecurityCloud.Client
         [CallerLineNumber] int lineNumber = 0);
 
         public void Verbose(string message);
+        public void Info(string message);
+        public void Warning(string message);
     }
 }
 

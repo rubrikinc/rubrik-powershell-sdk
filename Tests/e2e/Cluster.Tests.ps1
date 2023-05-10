@@ -4,7 +4,7 @@
 Describe -Name 'Cluster' -Fixture {
     Context -Name 'Connections with service account file' {
         It -Name 'Connect-Rsc' -Test {
-            Connect-Rsc | Should -BeLikeExactly "Authentication Status: AUTHORIZED"
+            Connect-Rsc
         }
         It -Name 'Get-RscCluster' -Test {
             Get-RscCluster | Should -Not -BeNullOrEmpty

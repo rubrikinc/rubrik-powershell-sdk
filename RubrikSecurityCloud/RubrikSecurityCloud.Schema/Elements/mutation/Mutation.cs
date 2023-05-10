@@ -1781,6 +1781,28 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> AsyncRequestStatus? GenerateSupportBundle
+        // GraphQL -> generateSupportBundle: AsyncRequestStatus! (type)
+        public static string GenerateSupportBundle(
+            ref AsyncRequestStatus? cmdletReply
+        )
+        {
+            string args = "";
+            args += "\n(";
+            args += "\n";
+            args += String.Format("{0}: ${0}", "input"); 
+            args += "\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new AsyncRequestStatus() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "generateSupportBundle" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
         //      C# -> GenerateConfigProtectionRestoreFormReply? GenerateConfigProtectionRestoreForm
         // GraphQL -> generateConfigProtectionRestoreForm: GenerateConfigProtectionRestoreFormReply! (type)
         public static string GenerateConfigProtectionRestoreForm(
@@ -2920,28 +2942,6 @@ namespace Rubrik.SecurityCloud.Types
             return new string("createReplicationPair" + args + "\n");
         }
 
-        //      C# -> CreateCrossAccountReplicationPairReply? CreateCrossAccountReplicationPair
-        // GraphQL -> createCrossAccountReplicationPair: CreateCrossAccountReplicationPairReply! (type)
-        public static string CreateCrossAccountReplicationPair(
-            ref CreateCrossAccountReplicationPairReply? cmdletReply
-        )
-        {
-            string args = "";
-            args += "\n(";
-            args += "\n";
-            args += String.Format("{0}: ${0}", "input"); 
-            args += "\n)";
-            if (cmdletReply == null)
-            {
-                cmdletReply = new CreateCrossAccountReplicationPairReply() ;
-                cmdletReply.ApplyExploratoryFragment();
-            }
-            return new string(
-                "createCrossAccountReplicationPair" + args + "{\n" +
-                cmdletReply.AsFragment(1) +
-                "}\n");
-        }
-
         //      C# -> System.String? UpdateReplicationTarget
         // GraphQL -> updateReplicationTarget: Void (scalar)
         public static string UpdateReplicationTarget(
@@ -3124,6 +3124,72 @@ namespace Rubrik.SecurityCloud.Types
             args += "\n)";
             // TODO: SPARK-195026 function signature for scalar types?
             return new string("removePrivateEndpointConnection" + args + "\n");
+        }
+
+        //      C# -> Target? CreateTapeTarget
+        // GraphQL -> createTapeTarget: Target! (interface)
+        public static string CreateTapeTarget(
+            ref Target? cmdletReply
+        )
+        {
+            string args = "";
+            args += "\n(";
+            args += "\n";
+            args += String.Format("{0}: ${0}", "input"); 
+            args += "\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = (Target)InterfaceHelper.CreateInstanceOfFirstType(typeof(Target)) ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "createTapeTarget" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
+        //      C# -> Target? UpdateTapeTarget
+        // GraphQL -> updateTapeTarget: Target! (interface)
+        public static string UpdateTapeTarget(
+            ref Target? cmdletReply
+        )
+        {
+            string args = "";
+            args += "\n(";
+            args += "\n";
+            args += String.Format("{0}: ${0}", "input"); 
+            args += "\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = (Target)InterfaceHelper.CreateInstanceOfFirstType(typeof(Target)) ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "updateTapeTarget" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
+        //      C# -> Target? CreateTapeReaderTarget
+        // GraphQL -> createTapeReaderTarget: Target! (interface)
+        public static string CreateTapeReaderTarget(
+            ref Target? cmdletReply
+        )
+        {
+            string args = "";
+            args += "\n(";
+            args += "\n";
+            args += String.Format("{0}: ${0}", "input"); 
+            args += "\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = (Target)InterfaceHelper.CreateInstanceOfFirstType(typeof(Target)) ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "createTapeReaderTarget" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
         }
 
         //      C# -> ValidateAndCreateAwsCloudAccountReply? ValidateAndCreateAwsCloudAccount
@@ -6094,6 +6160,21 @@ namespace Rubrik.SecurityCloud.Types
                 "enableAutomaticFmdUpload" + args + "{\n" +
                 cmdletReply.AsFragment(1) +
                 "}\n");
+        }
+
+        //      C# -> System.String? EnableThreatMonitoring
+        // GraphQL -> enableThreatMonitoring: Void (scalar)
+        public static string EnableThreatMonitoring(
+            ref System.String? cmdletReply
+        )
+        {
+            string args = "";
+            args += "\n(";
+            args += "\n";
+            args += String.Format("{0}: ${0}", "input"); 
+            args += "\n)";
+            // TODO: SPARK-195026 function signature for scalar types?
+            return new string("enableThreatMonitoring" + args + "\n");
         }
 
         //      C# -> TriggerRansomwareDetectionReply? TriggerRansomwareDetection
@@ -10302,28 +10383,6 @@ namespace Rubrik.SecurityCloud.Types
             return new string("upgradeToRsc" + args + "\n");
         }
 
-        //      C# -> SetUserSessionManagementConfigReply? SetUserSessionManagementConfig
-        // GraphQL -> setUserSessionManagementConfig: SetUserSessionManagementConfigReply! (type)
-        public static string SetUserSessionManagementConfig(
-            ref SetUserSessionManagementConfigReply? cmdletReply
-        )
-        {
-            string args = "";
-            args += "\n(";
-            args += "\n";
-            args += String.Format("{0}: ${0}", "input"); 
-            args += "\n)";
-            if (cmdletReply == null)
-            {
-                cmdletReply = new SetUserSessionManagementConfigReply() ;
-                cmdletReply.ApplyExploratoryFragment();
-            }
-            return new string(
-                "setUserSessionManagementConfig" + args + "{\n" +
-                cmdletReply.AsFragment(1) +
-                "}\n");
-        }
-
         //      C# -> System.String? SetSsoCertificate
         // GraphQL -> setSsoCertificate: Void (scalar)
         public static string SetSsoCertificate(
@@ -11487,6 +11546,28 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "vsphereDeleteVcenter" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
+        //      C# -> AsyncRequestStatus? DownloadVsphereVirtualMachineFiles
+        // GraphQL -> downloadVsphereVirtualMachineFiles: AsyncRequestStatus! (type)
+        public static string DownloadVsphereVirtualMachineFiles(
+            ref AsyncRequestStatus? cmdletReply
+        )
+        {
+            string args = "";
+            args += "\n(";
+            args += "\n";
+            args += String.Format("{0}: ${0}", "input"); 
+            args += "\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new AsyncRequestStatus() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "downloadVsphereVirtualMachineFiles" + args + "{\n" +
                 cmdletReply.AsFragment(1) +
                 "}\n");
         }

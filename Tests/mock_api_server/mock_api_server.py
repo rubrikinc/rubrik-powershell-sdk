@@ -15,31 +15,28 @@ os.makedirs(os.path.dirname(CURRENT_CACHE_FILE), exist_ok=True)
 
 
 def normalize_query(query_string: str) -> str:
-    # Remove extra newlines
-    query_string = re.sub(r"\n", "", query_string)
-    # Remove extra whitespace between curly braces
-    query_string = re.sub(r"{[^\S\n]+", "{", query_string)
-    query_string = re.sub(r"[^\S\n]+}", "}", query_string)
-    # Remove extra whitespace between field names
-    query_string = re.sub(r"[^\S\n]+([A-Za-z_])", r" \1", query_string)
-    query_string = re.sub(r"([A-Za-z_])[^\S\n]+", r"\1 ", query_string)
-    return (
-        query_string.replace("{ ", "{")
-        .replace(" {", "{")
-        .replace(" ", "")
-        .strip()
-    )
+    query_string = query_string.replace('\t', '')
+    query_string = query_string.replace('\n', '')
+    query_string = query_string.replace(' ', '')
+    query_string = query_string.replace('__typename', '')
+
+    return query_string
 
 
-def body_as_key(body):
+def get_key(body):
+    variables = ""
+    query = ""
     if isinstance(body, str):
         body = re.sub(r"\n", "", body)
         body = json.loads(body.replace("'", '"'))
     if "query" in body:
         LOG.debug("Normalizing query: %s", body["query"])
-        body["query"] = normalize_query(body["query"])
-    json_str = json.dumps(body, separators=(",", ":"))
-    return json_str.replace("\n", "").replace('"', "'").replace(" ", "")
+        query = body["query"]
+        query = \
+            normalize_query(query[query.index('{') + 1:query.rindex('}')])
+    if "variables" in body:
+        variables = normalize_query(body["variables"])
+    return variables + query
 
 
 # a simple in-memory cache
@@ -64,7 +61,7 @@ class Cache:
                 self.cache[request] = {}
             for body in new_cache[request]:
                 response = new_cache[request][body]
-                key = body_as_key(body)
+                key = get_key(body)
                 if key not in self.cache[request]:
                     self.cache[request][key] = {}
                 self.cache[request][key].update(response)
@@ -91,7 +88,7 @@ class Cache:
             )
             return {"error": f"request not found: {request}"}, 404
 
-        key = body_as_key(payload)
+        key = get_key(payload)
         if key not in self.cache[request]:
             LOG.info("Request not found:\n%s\n%s\n", request, key)
             return {"error": f"request not found:\n\t{request}\n\t{key}\n"}, 404

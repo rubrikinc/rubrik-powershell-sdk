@@ -269,19 +269,31 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Export-RscMssqlDatabase</command:name>
-      <command:verb>Export</command:verb>
-      <command:noun>RscMssqlDatabase</command:noun>
+      <command:name>Get-RscFileset</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>RscFileset</command:noun>
       <maml:description>
-        <maml:para>{{ Fill in the Synopsis }}</maml:para>
+        <maml:para>Retrieve one or more filsets managed by Rubrik Security Cloud (Rsc).</maml:para>
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>{{ Fill in the Description }}</maml:para>
+      <maml:para>The Get-RscFileset cmdlet is used to get one or more filesets known to RSC. The -FilesetId parameter will return a single fileset. All other parameters will return a list of matching filesets. When -FilesetId is NOT specified, -HostId is required. -HostId can accept a value from the pipeline</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Export-RscMssqlDatabase</maml:name>
+        <maml:name>Get-RscFileset</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>FilesetId</maml:name>
+          <maml:description>
+            <maml:para>Get a fileset using its ID</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
           <maml:name>Op</maml:name>
           <maml:description>
@@ -309,7 +321,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
           <maml:name>Field</maml:name>
           <maml:description>
-            <maml:para>{{ Fill Field Description }}</maml:para>
+            <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
           <dev:type>
@@ -341,37 +353,37 @@
           <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
           <dev:type>
             <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>Id</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Id Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>RecoveryDateTime</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill RecoveryDateTime Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-          <dev:type>
-            <maml:name>DateTime</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Export-RscMssqlDatabase</maml:name>
+        <maml:name>Get-RscFileset</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="Id">
+          <maml:name>HostId</maml:name>
+          <maml:description>
+            <maml:para>The Id of the Physical Host to get filesets for</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Filter results by name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
           <maml:name>Op</maml:name>
           <maml:description>
@@ -396,14 +408,38 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>First</maml:name>
+          <maml:description>
+            <maml:para>Gets only the specified number of objects. Enter the number of objects to get.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
           <maml:name>Field</maml:name>
           <maml:description>
-            <maml:para>{{ Fill Field Description }}</maml:para>
+            <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
           <dev:type>
             <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>SortBy</maml:name>
+          <maml:description>
+            <maml:para>Sort by field name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -419,95 +455,17 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
-          <maml:name>InputProfile</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill InputProfile Description }}</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
-          <dev:type>
-            <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>Id</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Id Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>RecoveryLSN</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill RecoveryLSN Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Export-RscMssqlDatabase</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
-          <maml:name>Op</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Op Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
-          <maml:name>Arg</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Arg Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
-          <maml:name>Field</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Field Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
-          <maml:name>GetInputs</maml:name>
+          <maml:name>SortOrder</maml:name>
           <maml:description>
-            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+            <maml:para>Sort Order</maml:para>
           </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
-            <maml:name>SwitchParameter</maml:name>
+            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
+          <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
           <maml:name>InputProfile</maml:name>
@@ -521,30 +479,6 @@
           <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
           <dev:type>
             <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>Id</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Id Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-          <maml:name>TimestampMs</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill TimestampMs Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
-          <dev:type>
-            <maml:name>Int64</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -567,11 +501,35 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
         <maml:name>Field</maml:name>
         <maml:description>
-          <maml:para>{{ Fill Field Description }}</maml:para>
+          <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
         <dev:type>
           <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>FilesetId</maml:name>
+        <maml:description>
+          <maml:para>Get a fileset using its ID</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>First</maml:name>
+        <maml:description>
+          <maml:para>Gets only the specified number of objects. Enter the number of objects to get.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -588,10 +546,10 @@
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-        <maml:name>Id</maml:name>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="Id">
+        <maml:name>HostId</maml:name>
         <maml:description>
-          <maml:para>{{ Fill Id Description }}</maml:para>
+          <maml:para>The Id of the Physical Host to get filesets for</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -612,6 +570,18 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Filter results by name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
         <maml:name>Op</maml:name>
         <maml:description>
@@ -624,22 +594,10 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>RecoveryDateTime</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>SortBy</maml:name>
         <maml:description>
-          <maml:para>{{ Fill RecoveryDateTime Description }}</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
-        <dev:type>
-          <maml:name>DateTime</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>RecoveryLSN</maml:name>
-        <maml:description>
-          <maml:para>{{ Fill RecoveryLSN Description }}</maml:para>
+          <maml:para>Sort by field name</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -648,14 +606,14 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
-        <maml:name>TimestampMs</maml:name>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>SortOrder</maml:name>
         <maml:description>
-          <maml:para>{{ Fill TimestampMs Description }}</maml:para>
+          <maml:para>Sort Order</maml:para>
         </maml:description>
-        <command:parameterValue required="true" variableLength="false">Int64</command:parameterValue>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
-          <maml:name>Int64</maml:name>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -697,9 +655,900 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS C:\&gt; {{ Add example code here }}</dev:code>
+        <dev:code>Get-RscFileset -HostId xxxxx-xxxxx-xxxxx-xxxxx</dev:code>
         <dev:remarks>
-          <maml:para>{{ Add example description here }}</maml:para>
+          <maml:para>Get a list of all filesets on a specified host</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Get-RscFileset -HostId xxxxx-xxxxx-xxxxx-xxxxx -Name etc</dev:code>
+        <dev:remarks>
+          <maml:para>Get a list of all filesets on a specified host, filtered by name</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>Get-RscHost -OsType Linux -First 1 | Get-RscFileset</dev:code>
+        <dev:remarks>
+          <maml:para>Get a list of all filesets on a host, providing the host via the pipeline</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-RscFilesetTemplate</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>RscFilesetTemplate</command:noun>
+      <maml:description>
+        <maml:para>Retrieve one or more filset templates managed by Rubrik Security Cloud (Rsc).</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-RscFileset cmdlet is used to get one or more fileset templates known to RSC. The -Id parameter will return a template. All other parameters will return a list of matching templates. Returns Windows and Linux fileset templates.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-RscFilesetTemplate</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">FilesetTemplate</command:parameterValue>
+          <dev:type>
+            <maml:name>FilesetTemplate</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>OsType</maml:name>
+          <maml:description>
+            <maml:para>Operating system type of fileset templates to return. Valid values are: "Windows" and "Linux".</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Filter results by name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>First</maml:name>
+          <maml:description>
+            <maml:para>Gets only the specified number of objects. Enter the number of objects to get.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>SortBy</maml:name>
+          <maml:description>
+            <maml:para>Sort by field name</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">NAME</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">ID</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">PHYSICAL_HOST_OS_NAME</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>SortOrder</maml:name>
+          <maml:description>
+            <maml:para>Sort Order</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-RscFilesetTemplate</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">FilesetTemplate</command:parameterValue>
+          <dev:type>
+            <maml:name>FilesetTemplate</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Id</maml:name>
+          <maml:description>
+            <maml:para>Get a physical host using its ID</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+        <maml:name>Arg</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Arg Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Field</maml:name>
+        <maml:description>
+          <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">FilesetTemplate</command:parameterValue>
+        <dev:type>
+          <maml:name>FilesetTemplate</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>First</maml:name>
+        <maml:description>
+          <maml:para>Gets only the specified number of objects. Enter the number of objects to get.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>GetInputs</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill GetInputs Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>Get a physical host using its ID</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <maml:name>InputProfile</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill InputProfile Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+        <dev:type>
+          <maml:name>Profile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Filter results by name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+        <maml:name>Op</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Op Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>OsType</maml:name>
+        <maml:description>
+          <maml:para>Operating system type of fileset templates to return. Valid values are: "Windows" and "Linux".</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>SortBy</maml:name>
+        <maml:description>
+          <maml:para>Sort by field name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>SortOrder</maml:name>
+        <maml:description>
+          <maml:para>Sort Order</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-RscFilesetTemplate -OsType Linux</dev:code>
+        <dev:remarks>
+          <maml:para>Get a list of all Linux fileset templates.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Get-RscFilesetTemplate -OsType Windows -Name myWinTemplate</dev:code>
+        <dev:remarks>
+          <maml:para>Get a list of Windows fileset templates, matching a name pattern.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>Get-RscFilesetTemplate -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d</dev:code>
+        <dev:remarks>
+          <maml:para>Get a template by Id, with default fields selected.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-RscHost</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>RscHost</command:noun>
+      <maml:description>
+        <maml:para>Retrieve one or more physical hosts managed by Rubrik Security Cloud (Rsc).</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-RscHost cmdlet is used to get one or more physical hosts known to RSC. The -Id parameter will return a single host. All other parameters will return a list of matching hosts.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-RscHost</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PhysicalHost</command:parameterValue>
+          <dev:type>
+            <maml:name>PhysicalHost</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>OsType</maml:name>
+          <maml:description>
+            <maml:para>Operating system type of hosts to return. Valid values are "Windows" and "Linux".</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Filter results by name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>First</maml:name>
+          <maml:description>
+            <maml:para>Gets only the specified number of objects. Enter the number of objects to get.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Relics</maml:name>
+          <maml:description>
+            <maml:para>Include only items that are relics</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+          <dev:type>
+            <maml:name>Boolean</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>Replicated</maml:name>
+          <maml:description>
+            <maml:para>Include only items that are replicated</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+          <dev:type>
+            <maml:name>Boolean</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>SortBy</maml:name>
+          <maml:description>
+            <maml:para>Sort by field name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
+          <maml:name>SortOrder</maml:name>
+          <maml:description>
+            <maml:para>Sort Order</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ASC</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DESC</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-RscHost</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">PhysicalHost</command:parameterValue>
+          <dev:type>
+            <maml:name>PhysicalHost</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Id</maml:name>
+          <maml:description>
+            <maml:para>Get a physical host using its ID</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+        <maml:name>Arg</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Arg Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Field</maml:name>
+        <maml:description>
+          <maml:para>Activate selected fields based on not-null properties of the input fields object</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">PhysicalHost</command:parameterValue>
+        <dev:type>
+          <maml:name>PhysicalHost</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>First</maml:name>
+        <maml:description>
+          <maml:para>Gets only the specified number of objects. Enter the number of objects to get.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>GetInputs</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill GetInputs Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>Get a physical host using its ID</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <maml:name>InputProfile</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill InputProfile Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+        <dev:type>
+          <maml:name>Profile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>Filter results by name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+        <maml:name>Op</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Op Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>OsType</maml:name>
+        <maml:description>
+          <maml:para>Operating system type of hosts to return. Valid values are "Windows" and "Linux".</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>Relics</maml:name>
+        <maml:description>
+          <maml:para>Include only items that are relics</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>Replicated</maml:name>
+        <maml:description>
+          <maml:para>Include only items that are replicated</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <maml:name>SortBy</maml:name>
+        <maml:description>
+          <maml:para>Sort by field name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="6" aliases="none">
+        <maml:name>SortOrder</maml:name>
+        <maml:description>
+          <maml:para>Sort Order</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code>Get-RscHost -OsType Linux</dev:code>
+        <dev:remarks>
+          <maml:para>Get a list of all Linux from the RSC instance.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <dev:code>Get-RscHost -OsType Windows -Name myWindowsServer</dev:code>
+        <dev:remarks>
+          <maml:para>Get a list of Windows Hosts, matching a name pattern.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 3 --------------------------</maml:title>
+        <dev:code>Get-RscHost -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d</dev:code>
+        <dev:remarks>
+          <maml:para>Get a host by Id, with default fields selected.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -1073,12 +1922,102 @@
       </maml:description>
     </command:details>
     <maml:description>
-      <maml:para>The Get-RscSnapshor cmdlet is used to query the RSC instance for all known snapshots (backups) for a protected object. Multiple objects to be piped into this function is not yet supported</maml:para>
+      <maml:para>The Get-RscSnapshot cmdlet is used to query the RSC instance for all known snapshots (backups) for a protected object. Multiple objects to be piped into this function is not yet supported</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-RscSnapshot</maml:name>
-        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+          <maml:name>ClusterUUID</maml:name>
+          <maml:description>
+            <maml:para>Ensure that the snapshot returned belongs to a specific CDM Cluster.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+          <maml:name>SnapshotId</maml:name>
+          <maml:description>
+            <maml:para>Retreive a single CDM snapshot by ID. PolarisSnapshot is not yet supported.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Field Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Get-RscSnapshot</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="Id">
           <maml:name>SnappableId</maml:name>
           <maml:description>
             <maml:para>The ID of the snappable object to get a list of snapshots for.</maml:para>
@@ -1086,6 +2025,18 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
             <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>First</maml:name>
+          <maml:description>
+            <maml:para>Gets only the specified number of objects. Enter the number of objects to get.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -1168,6 +2119,18 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>ClusterUUID</maml:name>
+        <maml:description>
+          <maml:para>Ensure that the snapshot returned belongs to a specific CDM Cluster.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
         <maml:name>Field</maml:name>
         <maml:description>
@@ -1176,6 +2139,18 @@
         <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
         <dev:type>
           <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>First</maml:name>
+        <maml:description>
+          <maml:para>Gets only the specified number of objects. Enter the number of objects to get.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
@@ -1216,10 +2191,22 @@
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="Id">
         <maml:name>SnappableId</maml:name>
         <maml:description>
           <maml:para>The ID of the snappable object to get a list of snapshots for.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByValue)" position="0" aliases="none">
+        <maml:name>SnapshotId</maml:name>
+        <maml:description>
+          <maml:para>Retreive a single CDM snapshot by ID. PolarisSnapshot is not yet supported.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1481,6 +2468,192 @@
         <dev:code>PS C:\&gt; Get-RscType -Name "AccountSetting" -InitialValues @{"IsEulaAccepted"= $false}</dev:code>
         <dev:remarks>
           <maml:para>Get an empty object that is compliant with the Rsc Type specified by name. Initialize the 'IsEulaAccepted' property with a specific value.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-RscVersion</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>RscVersion</command:noun>
+      <maml:description>
+        <maml:para>Returns the Rubrik Security Cloud Server version, as well a the Rubrik Security Cloud PowerShell SDK schema version. Ideally these values should match for maximum SDK compatibility.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para></maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-RscVersion</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Field Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+        <maml:name>Arg</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Arg Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+        <maml:name>Field</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Field Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+        <dev:type>
+          <maml:name>Object</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>GetInputs</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill GetInputs Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <maml:name>InputProfile</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill InputProfile Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+        <dev:type>
+          <maml:name>Profile</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+        <maml:name>Op</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill Op Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <dev:code></dev:code>
+        <dev:remarks>
+          <maml:para></maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>
@@ -25424,6 +26597,83 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscMutateVsphere</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>downloadVirtualMachineFile</maml:name>
+          <maml:description>
+            <maml:para>GraphQL operation: downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!):AsyncRequestStatus!</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Field Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Invoke-RscMutateVsphere</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>updateAdvancedTag</maml:name>
           <maml:description>
             <maml:para>GraphQL operation: updateVsphereAdvancedTag(input: UpdateVsphereAdvancedTagInput!):UpdateVsphereAdvancedTagReply!</maml:para>
@@ -25636,6 +26886,18 @@
         <maml:name>deleteLiveMount</maml:name>
         <maml:description>
           <maml:para>GraphQL operation: deleteVsphereLiveMount(input: DeleteVsphereLiveMountInput!):AsyncRequestStatus!</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>downloadVirtualMachineFile</maml:name>
+        <maml:description>
+          <maml:para>GraphQL operation: downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!):AsyncRequestStatus!</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -28039,10 +29301,13 @@
             <command:parameterValue required="false" command:variableLength="false">NOSQL</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">O365</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">RADAR</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">RADAR_UCL</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">RCV</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">RCV_UCL</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">RDP</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">SAPHANA</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">SONAR</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">SONAR_UCL</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">UNSPECIFIED_NAME</command:parameterValue>
           </command:parameterValueGroup>
           <command:parameterValue required="true" variableLength="false">System.Collections.Generic.List`1[Rubrik.SecurityCloud.Types.ProductName]</command:parameterValue>
@@ -29177,6 +30442,17 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>allInstanceProfileName</maml:name>
+          <maml:description>
+            <maml:para>GraphQL operation: allAwsInstanceProfileNames(cloudAccountId: String!, region: String!):[String!]!</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
           <maml:name>Op</maml:name>
           <maml:description>
@@ -29341,9 +30617,9 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>CloudAccountListSecurityGroup</maml:name>
+          <maml:name>CloudAccountListSubnet</maml:name>
           <maml:description>
-            <maml:para>GraphQL operation: awsCloudAccountListSecurityGroups(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSecurityGroupsResponse!</maml:para>
+            <maml:para>GraphQL operation: awsCloudAccountListSubnets(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSubnetsResponse!</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -29425,13 +30701,113 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>VpcId</maml:name>
+          <maml:description>
+            <maml:para>GraphQL argument vpcID: String!</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>CloudAccountListSecurityGroup</maml:name>
+          <maml:description>
+            <maml:para>GraphQL operation: awsCloudAccountListSecurityGroups(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSecurityGroupsResponse!</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>NativeRoot</maml:name>
           <maml:description>
             <maml:para>GraphQL operation: awsNativeRoot:AwsNativeRoot!</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Field Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Invoke-RscQueryAws</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>NativeAccount</maml:name>
+          <maml:description>
+            <maml:para>GraphQL operation: awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!):AwsNativeAccount!</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -29525,94 +30901,6 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Invoke-RscQueryAws</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>NativeAccount</maml:name>
-          <maml:description>
-            <maml:para>GraphQL operation: awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!):AwsNativeAccount!</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>allCloudAccountConfig</maml:name>
-          <maml:description>
-            <maml:para>GraphQL operation: allAwsCloudAccountConfigs(awsCloudAccountsArg: AwsCloudAccountConfigsInput!):[AwsFeatureConfig!]!</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
-          <maml:name>Op</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Op Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
-          <maml:name>Arg</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Arg Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
-          <maml:name>Field</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Field Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
-          <maml:name>GetInputs</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill GetInputs Description }}</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
-          <maml:name>InputProfile</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill InputProfile Description }}</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
-          <dev:type>
-            <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
           <maml:name>AwsNativeAccountRubrikId</maml:name>
           <maml:description>
@@ -29657,9 +30945,9 @@
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>allRegion</maml:name>
+          <maml:name>allCloudAccountConfig</maml:name>
           <maml:description>
-            <maml:para>GraphQL operation: allAwsRegions(cloudAccountId: String!):[AwsCloudAccountRegion!]!</maml:para>
+            <maml:para>GraphQL operation: allAwsCloudAccountConfigs(awsCloudAccountsArg: AwsCloudAccountConfigsInput!):[AwsFeatureConfig!]!</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -29757,9 +31045,9 @@
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>allCdmVersion</maml:name>
+          <maml:name>allRegion</maml:name>
           <maml:description>
-            <maml:para>GraphQL operation: allAwsCdmVersions(input: AwsCdmVersionRequest!):[AwsCdmVersion!]!</maml:para>
+            <maml:para>GraphQL operation: allAwsRegions(cloudAccountId: String!):[AwsCloudAccountRegion!]!</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -29857,9 +31145,9 @@
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>allInstanceProfileName</maml:name>
+          <maml:name>allCdmVersion</maml:name>
           <maml:description>
-            <maml:para>GraphQL operation: allAwsInstanceProfileNames(cloudAccountId: String!, region: String!):[String!]!</maml:para>
+            <maml:para>GraphQL operation: allAwsCdmVersions(input: AwsCdmVersionRequest!):[AwsCdmVersion!]!</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -30575,6 +31863,83 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>allS3BucketsDetail</maml:name>
+          <maml:description>
+            <maml:para>GraphQL operation: allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!):[S3BucketDetails!]!</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Field Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Invoke-RscQueryAws</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>NativeRdsInstance</maml:name>
           <maml:description>
             <maml:para>GraphQL operation: awsNativeRdsInstance(rdsInstanceRubrikId: UUID!):AwsNativeRdsInstance!</maml:para>
@@ -30666,7 +32031,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>NativeRdsPointInTimeRestoreWindow</maml:name>
           <maml:description>
-            <maml:para>GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):AwsNativeRdsPointInTimeRestoreWindow!</maml:para>
+            <maml:para>GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):AwsNativeRdsPointInTimeRestoreWindow!</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -30738,6 +32103,18 @@
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>RdsDatabaseRubrikId</maml:name>
+          <maml:description>
+            <maml:para>GraphQL argument rdsDatabaseRubrikId: UUID</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
           <maml:name>RdsInstanceName</maml:name>
           <maml:description>
             <maml:para>GraphQL argument rdsInstanceName: String!</maml:para>
@@ -30755,7 +32132,7 @@
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>rdsInstanceDetail</maml:name>
           <maml:description>
-            <maml:para>GraphQL operation: rdsInstanceDetailsFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):RdsInstanceDetailsFromAws!</maml:para>
+            <maml:para>GraphQL operation: rdsInstanceDetailsFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):RdsInstanceDetailsFromAws!</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -31144,6 +32521,7 @@
           </maml:description>
           <command:parameterValueGroup>
             <command:parameterValue required="false" command:variableLength="false">GP2</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">GP3</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">IO1</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">NOT_SPECIFIED</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">STANDARD</command:parameterValue>
@@ -32341,95 +33719,6 @@
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Invoke-RscQueryAws</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>CloudAccountListSubnet</maml:name>
-          <maml:description>
-            <maml:para>GraphQL operation: awsCloudAccountListSubnets(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSubnetsResponse!</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
-          <maml:name>Op</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Op Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
-          <maml:name>Arg</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Arg Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
-          <maml:name>Field</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Field Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
-          <maml:name>GetInputs</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill GetInputs Description }}</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
-          <maml:name>InputProfile</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill InputProfile Description }}</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
-          <dev:type>
-            <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>VpcId</maml:name>
-          <maml:description>
-            <maml:para>GraphQL argument vpcID: String!</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
@@ -32987,7 +34276,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
         <maml:name>NativeRdsPointInTimeRestoreWindow</maml:name>
         <maml:description>
-          <maml:para>GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):AwsNativeRdsPointInTimeRestoreWindow!</maml:para>
+          <maml:para>GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):AwsNativeRdsPointInTimeRestoreWindow!</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -33048,6 +34337,18 @@
         <maml:name>RdsClusterName</maml:name>
         <maml:description>
           <maml:para>GraphQL argument rdsClusterName: String!</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+        <maml:name>RdsDatabaseRubrikId</maml:name>
+        <maml:description>
+          <maml:para>GraphQL argument rdsDatabaseRubrikId: UUID</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -33345,6 +34646,18 @@
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>allS3BucketsDetail</maml:name>
+        <maml:description>
+          <maml:para>GraphQL operation: allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!):[S3BucketDetails!]!</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
         <maml:name>allVpc</maml:name>
         <maml:description>
           <maml:para>GraphQL operation: allVpcsFromAws(awsAccountRubrikId: UUID):[AwsVpc!]!</maml:para>
@@ -33419,7 +34732,7 @@
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
         <maml:name>rdsInstanceDetail</maml:name>
         <maml:description>
-          <maml:para>GraphQL operation: rdsInstanceDetailsFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):RdsInstanceDetailsFromAws!</maml:para>
+          <maml:para>GraphQL operation: rdsInstanceDetailsFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):RdsInstanceDetailsFromAws!</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -39892,6 +41205,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -43863,6 +45177,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -44033,6 +45348,7 @@
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SCVMM</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SERVER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_VIRTUAL_MACHINE</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">JIRA_PROJECT</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_CLUSTER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_NAMESPACE</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">LINUX_FILESET</command:parameterValue>
@@ -46113,6 +47429,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -47327,6 +48644,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -47497,6 +48815,7 @@
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SCVMM</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SERVER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_VIRTUAL_MACHINE</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">JIRA_PROJECT</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_CLUSTER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_NAMESPACE</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">LINUX_FILESET</command:parameterValue>
@@ -49194,6 +50513,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -49364,6 +50684,7 @@
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SCVMM</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SERVER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_VIRTUAL_MACHINE</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">JIRA_PROJECT</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_CLUSTER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_NAMESPACE</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">LINUX_FILESET</command:parameterValue>
@@ -50996,6 +52317,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -54548,6 +55870,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -54718,6 +56041,7 @@
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SCVMM</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SERVER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_VIRTUAL_MACHINE</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">JIRA_PROJECT</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_CLUSTER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_NAMESPACE</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">LINUX_FILESET</command:parameterValue>
@@ -57076,6 +58400,7 @@
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SCVMM</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SERVER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_VIRTUAL_MACHINE</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">JIRA_PROJECT</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_CLUSTER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_NAMESPACE</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">LINUX_FILESET</command:parameterValue>
@@ -57901,6 +59226,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -59094,6 +60420,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>
@@ -59264,6 +60591,7 @@
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SCVMM</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_SERVER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">HYPERV_VIRTUAL_MACHINE</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">JIRA_PROJECT</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_CLUSTER</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">KUPR_NAMESPACE</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">LINUX_FILESET</command:parameterValue>
@@ -61519,6 +62847,7 @@
             <maml:para>GraphQL argument sortBy: HierarchySortByField</maml:para>
           </maml:description>
           <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ACTIVE_DIRECTORY_DOMAIN_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">ASSIGNED_SLA_DOMAIN</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_ACCOUNT_NAME</command:parameterValue>
             <command:parameterValue required="false" command:variableLength="false">AWS_NATIVE_RDS_DB_ENGINE</command:parameterValue>

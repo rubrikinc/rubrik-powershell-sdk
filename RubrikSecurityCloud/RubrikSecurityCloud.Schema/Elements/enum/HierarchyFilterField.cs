@@ -15,6 +15,9 @@ namespace Rubrik.SecurityCloud.Types
 {
     public enum HierarchyFilterField
     {
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_NAME")]
+        ACTIVE_DIRECTORY_DOMAIN_NAME,
+
         [EnumMember(Value = "AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS")]
         AWS_INSTANCE_CC_OR_CNP_RBS_CONNECTION_STATUS,
 
@@ -210,6 +213,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "DOES_SHAREPOINT_HAVE_RELIC_OBJECTS")]
         DOES_SHAREPOINT_HAVE_RELIC_OBJECTS,
 
+        [EnumMember(Value = "DOMAIN_CONTROLLER_FSMO_ROLE")]
+        DOMAIN_CONTROLLER_FSMO_ROLE,
+
         [EnumMember(Value = "EBS_VOLUME_ID")]
         EBS_VOLUME_ID,
 
@@ -285,6 +291,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "FAILOVER_CLUSTER_ID")]
         FAILOVER_CLUSTER_ID,
 
+        [EnumMember(Value = "FILESET_MIGRATION_STATUS")]
+        FILESET_MIGRATION_STATUS,
+
         [EnumMember(Value = "FILESET_SLA")]
         FILESET_SLA,
 
@@ -342,8 +351,14 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "HOST_CBT_STATUS")]
         HOST_CBT_STATUS,
 
+        [EnumMember(Value = "HOST_MIGRATION_STATUS")]
+        HOST_MIGRATION_STATUS,
+
         [EnumMember(Value = "HOST_OPERATING_SYSTEM")]
         HOST_OPERATING_SYSTEM,
+
+        [EnumMember(Value = "HOST_SHARE_MIGRATION_STATUS")]
+        HOST_SHARE_MIGRATION_STATUS,
 
         [EnumMember(Value = "HOST_VENDOR_TYPE")]
         HOST_VENDOR_TYPE,
@@ -474,6 +489,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "NAS_SHARE_TYPE")]
         NAS_SHARE_TYPE,
 
+        [EnumMember(Value = "NAS_SYSTEM_FOR_NAS_MIGRATION")]
+        NAS_SYSTEM_FOR_NAS_MIGRATION,
+
         [EnumMember(Value = "NAS_VENDOR_TYPE")]
         NAS_VENDOR_TYPE,
 
@@ -554,6 +572,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "SAP_HANA_SYSTEM_STATUS")]
         SAP_HANA_SYSTEM_STATUS,
+
+        [EnumMember(Value = "TOP_LEVEL_SITES_OF_O365_ORG")]
+        TOP_LEVEL_SITES_OF_O365_ORG,
 
         [EnumMember(Value = "UDF_DATABASE_TYPE")]
         UDF_DATABASE_TYPE,

@@ -28,6 +28,31 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("eventsSyncLastSuccessTime")]
         public DateTime? EventsSyncLastSuccessTime { get; set; }
 
+        //      C# -> System.Boolean? IsClusterSyncHealthy
+        // GraphQL -> isClusterSyncHealthy: Boolean! (scalar)
+        [JsonProperty("isClusterSyncHealthy")]
+        public System.Boolean? IsClusterSyncHealthy { get; set; }
+
+        //      C# -> System.Boolean? IsEventsSyncHealthy
+        // GraphQL -> isEventsSyncHealthy: Boolean! (scalar)
+        [JsonProperty("isEventsSyncHealthy")]
+        public System.Boolean? IsEventsSyncHealthy { get; set; }
+
+        //      C# -> System.Boolean? IsJobMonitoringSyncHealthy
+        // GraphQL -> isJobMonitoringSyncHealthy: Boolean! (scalar)
+        [JsonProperty("isJobMonitoringSyncHealthy")]
+        public System.Boolean? IsJobMonitoringSyncHealthy { get; set; }
+
+        //      C# -> System.Boolean? IsMetadataSyncHealthy
+        // GraphQL -> isMetadataSyncHealthy: Boolean! (scalar)
+        [JsonProperty("isMetadataSyncHealthy")]
+        public System.Boolean? IsMetadataSyncHealthy { get; set; }
+
+        //      C# -> System.Boolean? IsReportsSyncHealthy
+        // GraphQL -> isReportsSyncHealthy: Boolean! (scalar)
+        [JsonProperty("isReportsSyncHealthy")]
+        public System.Boolean? IsReportsSyncHealthy { get; set; }
+
         //      C# -> DateTime? JobMonitoringSyncLastSuccessTime
         // GraphQL -> jobMonitoringSyncLastSuccessTime: DateTime (scalar)
         [JsonProperty("jobMonitoringSyncLastSuccessTime")]
@@ -50,6 +75,11 @@ namespace Rubrik.SecurityCloud.Types
     public RubrikSyncStatus Set(
         DateTime? ClusterSyncLastSuccessTime = null,
         DateTime? EventsSyncLastSuccessTime = null,
+        System.Boolean? IsClusterSyncHealthy = null,
+        System.Boolean? IsEventsSyncHealthy = null,
+        System.Boolean? IsJobMonitoringSyncHealthy = null,
+        System.Boolean? IsMetadataSyncHealthy = null,
+        System.Boolean? IsReportsSyncHealthy = null,
         DateTime? JobMonitoringSyncLastSuccessTime = null,
         DateTime? ObjectMetadataSyncLastSuccessTime = null,
         DateTime? ReportsSyncLastSuccessTime = null
@@ -60,6 +90,21 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( EventsSyncLastSuccessTime != null ) {
             this.EventsSyncLastSuccessTime = EventsSyncLastSuccessTime;
+        }
+        if ( IsClusterSyncHealthy != null ) {
+            this.IsClusterSyncHealthy = IsClusterSyncHealthy;
+        }
+        if ( IsEventsSyncHealthy != null ) {
+            this.IsEventsSyncHealthy = IsEventsSyncHealthy;
+        }
+        if ( IsJobMonitoringSyncHealthy != null ) {
+            this.IsJobMonitoringSyncHealthy = IsJobMonitoringSyncHealthy;
+        }
+        if ( IsMetadataSyncHealthy != null ) {
+            this.IsMetadataSyncHealthy = IsMetadataSyncHealthy;
+        }
+        if ( IsReportsSyncHealthy != null ) {
+            this.IsReportsSyncHealthy = IsReportsSyncHealthy;
         }
         if ( JobMonitoringSyncLastSuccessTime != null ) {
             this.JobMonitoringSyncLastSuccessTime = JobMonitoringSyncLastSuccessTime;
@@ -92,6 +137,41 @@ namespace Rubrik.SecurityCloud.Types
             if (this.EventsSyncLastSuccessTime != null)
             {
                  s += ind + "eventsSyncLastSuccessTime\n";
+
+            }
+            //      C# -> System.Boolean? IsClusterSyncHealthy
+            // GraphQL -> isClusterSyncHealthy: Boolean! (scalar)
+            if (this.IsClusterSyncHealthy != null)
+            {
+                 s += ind + "isClusterSyncHealthy\n";
+
+            }
+            //      C# -> System.Boolean? IsEventsSyncHealthy
+            // GraphQL -> isEventsSyncHealthy: Boolean! (scalar)
+            if (this.IsEventsSyncHealthy != null)
+            {
+                 s += ind + "isEventsSyncHealthy\n";
+
+            }
+            //      C# -> System.Boolean? IsJobMonitoringSyncHealthy
+            // GraphQL -> isJobMonitoringSyncHealthy: Boolean! (scalar)
+            if (this.IsJobMonitoringSyncHealthy != null)
+            {
+                 s += ind + "isJobMonitoringSyncHealthy\n";
+
+            }
+            //      C# -> System.Boolean? IsMetadataSyncHealthy
+            // GraphQL -> isMetadataSyncHealthy: Boolean! (scalar)
+            if (this.IsMetadataSyncHealthy != null)
+            {
+                 s += ind + "isMetadataSyncHealthy\n";
+
+            }
+            //      C# -> System.Boolean? IsReportsSyncHealthy
+            // GraphQL -> isReportsSyncHealthy: Boolean! (scalar)
+            if (this.IsReportsSyncHealthy != null)
+            {
+                 s += ind + "isReportsSyncHealthy\n";
 
             }
             //      C# -> DateTime? JobMonitoringSyncLastSuccessTime
@@ -134,6 +214,36 @@ namespace Rubrik.SecurityCloud.Types
             if (this.EventsSyncLastSuccessTime == null && Exploration.Includes(parent + ".eventsSyncLastSuccessTime$"))
             {
                 this.EventsSyncLastSuccessTime = new DateTime();
+            }
+            //      C# -> System.Boolean? IsClusterSyncHealthy
+            // GraphQL -> isClusterSyncHealthy: Boolean! (scalar)
+            if (this.IsClusterSyncHealthy == null && Exploration.Includes(parent + ".isClusterSyncHealthy$"))
+            {
+                this.IsClusterSyncHealthy = new System.Boolean();
+            }
+            //      C# -> System.Boolean? IsEventsSyncHealthy
+            // GraphQL -> isEventsSyncHealthy: Boolean! (scalar)
+            if (this.IsEventsSyncHealthy == null && Exploration.Includes(parent + ".isEventsSyncHealthy$"))
+            {
+                this.IsEventsSyncHealthy = new System.Boolean();
+            }
+            //      C# -> System.Boolean? IsJobMonitoringSyncHealthy
+            // GraphQL -> isJobMonitoringSyncHealthy: Boolean! (scalar)
+            if (this.IsJobMonitoringSyncHealthy == null && Exploration.Includes(parent + ".isJobMonitoringSyncHealthy$"))
+            {
+                this.IsJobMonitoringSyncHealthy = new System.Boolean();
+            }
+            //      C# -> System.Boolean? IsMetadataSyncHealthy
+            // GraphQL -> isMetadataSyncHealthy: Boolean! (scalar)
+            if (this.IsMetadataSyncHealthy == null && Exploration.Includes(parent + ".isMetadataSyncHealthy$"))
+            {
+                this.IsMetadataSyncHealthy = new System.Boolean();
+            }
+            //      C# -> System.Boolean? IsReportsSyncHealthy
+            // GraphQL -> isReportsSyncHealthy: Boolean! (scalar)
+            if (this.IsReportsSyncHealthy == null && Exploration.Includes(parent + ".isReportsSyncHealthy$"))
+            {
+                this.IsReportsSyncHealthy = new System.Boolean();
             }
             //      C# -> DateTime? JobMonitoringSyncLastSuccessTime
             // GraphQL -> jobMonitoringSyncLastSuccessTime: DateTime (scalar)

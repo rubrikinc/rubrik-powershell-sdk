@@ -23,6 +23,16 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("databaseName")]
         public System.String? DatabaseName { get; set; }
 
+        //      C# -> System.String? HostOrRacManagedId
+        // GraphQL -> hostOrRacManagedId: String (scalar)
+        [JsonProperty("hostOrRacManagedId")]
+        public System.String? HostOrRacManagedId { get; set; }
+
+        //      C# -> System.String? HostOrRacName
+        // GraphQL -> hostOrRacName: String (scalar)
+        [JsonProperty("hostOrRacName")]
+        public System.String? HostOrRacName { get; set; }
+
         //      C# -> System.Boolean? IsValid
         // GraphQL -> isValid: Boolean (scalar)
         [JsonProperty("isValid")]
@@ -44,6 +54,8 @@ namespace Rubrik.SecurityCloud.Types
 
     public OracleDbSnapshotSummary Set(
         System.String? DatabaseName = null,
+        System.String? HostOrRacManagedId = null,
+        System.String? HostOrRacName = null,
         System.Boolean? IsValid = null,
         List<System.String>? Tablespaces = null,
         BaseSnapshotSummary? BaseSnapshotSummary = null
@@ -51,6 +63,12 @@ namespace Rubrik.SecurityCloud.Types
     {
         if ( DatabaseName != null ) {
             this.DatabaseName = DatabaseName;
+        }
+        if ( HostOrRacManagedId != null ) {
+            this.HostOrRacManagedId = HostOrRacManagedId;
+        }
+        if ( HostOrRacName != null ) {
+            this.HostOrRacName = HostOrRacName;
         }
         if ( IsValid != null ) {
             this.IsValid = IsValid;
@@ -76,6 +94,20 @@ namespace Rubrik.SecurityCloud.Types
             if (this.DatabaseName != null)
             {
                  s += ind + "databaseName\n";
+
+            }
+            //      C# -> System.String? HostOrRacManagedId
+            // GraphQL -> hostOrRacManagedId: String (scalar)
+            if (this.HostOrRacManagedId != null)
+            {
+                 s += ind + "hostOrRacManagedId\n";
+
+            }
+            //      C# -> System.String? HostOrRacName
+            // GraphQL -> hostOrRacName: String (scalar)
+            if (this.HostOrRacName != null)
+            {
+                 s += ind + "hostOrRacName\n";
 
             }
             //      C# -> System.Boolean? IsValid
@@ -115,6 +147,18 @@ namespace Rubrik.SecurityCloud.Types
             if (this.DatabaseName == null && Exploration.Includes(parent + ".databaseName$"))
             {
                 this.DatabaseName = new System.String("FETCH");
+            }
+            //      C# -> System.String? HostOrRacManagedId
+            // GraphQL -> hostOrRacManagedId: String (scalar)
+            if (this.HostOrRacManagedId == null && Exploration.Includes(parent + ".hostOrRacManagedId$"))
+            {
+                this.HostOrRacManagedId = new System.String("FETCH");
+            }
+            //      C# -> System.String? HostOrRacName
+            // GraphQL -> hostOrRacName: String (scalar)
+            if (this.HostOrRacName == null && Exploration.Includes(parent + ".hostOrRacName$"))
+            {
+                this.HostOrRacName = new System.String("FETCH");
             }
             //      C# -> System.Boolean? IsValid
             // GraphQL -> isValid: Boolean (scalar)

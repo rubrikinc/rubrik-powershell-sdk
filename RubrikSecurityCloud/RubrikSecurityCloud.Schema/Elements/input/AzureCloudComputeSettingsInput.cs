@@ -68,6 +68,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("computeProxySettings")]
         public ProxySettingsInput? ComputeProxySettings { get; set; }
 
+        //      C# -> System.String? CloudAccountId
+        // GraphQL -> cloudAccountId: String (scalar)
+        [JsonProperty("cloudAccountId")]
+        public System.String? CloudAccountId { get; set; }
+
 
         #endregion
 

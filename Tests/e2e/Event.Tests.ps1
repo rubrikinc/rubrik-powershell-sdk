@@ -4,11 +4,10 @@
 Describe -Name 'Event tests' -Fixture {
     Context -Name 'Event tests' {
         It -Name 'Connect-Rsc -ServiceAccountFile' -Test {
-            Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile) | Should -BeLikeExactly "Authentication Status: AUTHORIZED"
+            Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
         }
         It -Name 'Get-RscEvent' -Test {
-            Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
-            $events = Get-RscEvent -First 1
+            $events = Get-RscEventSeries -First 1
             $events | Should -Not -BeNullOrEmpty
         }
         It -Name 'Disconnect-Rsc' -Test {

@@ -33,6 +33,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("runAsAccount")]
         public System.String? RunAsAccount { get; set; }
 
+        //      C# -> System.String? ScvmmVersion
+        // GraphQL -> scvmmVersion: String (scalar)
+        [JsonProperty("scvmmVersion")]
+        public System.String? ScvmmVersion { get; set; }
+
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean! (scalar)
         [JsonProperty("shouldDeployAgent")]
@@ -56,6 +61,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? Id = null,
         System.String? PrimaryClusterId = null,
         System.String? RunAsAccount = null,
+        System.String? ScvmmVersion = null,
         System.Boolean? ShouldDeployAgent = null,
         System.String? Status = null,
         SlaAssignable? SlaAssignable = null
@@ -69,6 +75,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( RunAsAccount != null ) {
             this.RunAsAccount = RunAsAccount;
+        }
+        if ( ScvmmVersion != null ) {
+            this.ScvmmVersion = ScvmmVersion;
         }
         if ( ShouldDeployAgent != null ) {
             this.ShouldDeployAgent = ShouldDeployAgent;
@@ -108,6 +117,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.RunAsAccount != null)
             {
                  s += ind + "runAsAccount\n";
+
+            }
+            //      C# -> System.String? ScvmmVersion
+            // GraphQL -> scvmmVersion: String (scalar)
+            if (this.ScvmmVersion != null)
+            {
+                 s += ind + "scvmmVersion\n";
 
             }
             //      C# -> System.Boolean? ShouldDeployAgent
@@ -159,6 +175,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.RunAsAccount == null && Exploration.Includes(parent + ".runAsAccount$"))
             {
                 this.RunAsAccount = new System.String("FETCH");
+            }
+            //      C# -> System.String? ScvmmVersion
+            // GraphQL -> scvmmVersion: String (scalar)
+            if (this.ScvmmVersion == null && Exploration.Includes(parent + ".scvmmVersion$"))
+            {
+                this.ScvmmVersion = new System.String("FETCH");
             }
             //      C# -> System.Boolean? ShouldDeployAgent
             // GraphQL -> shouldDeployAgent: Boolean! (scalar)

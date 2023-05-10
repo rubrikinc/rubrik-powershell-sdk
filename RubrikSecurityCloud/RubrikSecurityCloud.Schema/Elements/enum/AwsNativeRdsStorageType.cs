@@ -18,6 +18,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "GP2")]
         GP2,
 
+        [EnumMember(Value = "GP3")]
+        GP3,
+
         [EnumMember(Value = "IO1")]
         IO1,
 

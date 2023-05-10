@@ -36,6 +36,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "AP_SOUTHEAST_2")]
         AP_SOUTHEAST_2,
 
+        [EnumMember(Value = "AP_SOUTHEAST_3")]
+        AP_SOUTHEAST_3,
+
         [EnumMember(Value = "AP_SOUTH_1")]
         AP_SOUTH_1,
 

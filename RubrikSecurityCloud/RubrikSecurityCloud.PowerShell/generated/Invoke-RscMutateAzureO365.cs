@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -136,7 +135,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<SetupAzureO365ExocomputeResp> task = this._rbkClient.InvokeGenericCallAsync<SetupAzureO365ExocomputeResp>(request, vars, this._logger);
+            Task<SetupAzureO365ExocomputeResp> task = this._rbkClient.InvokeGenericCallAsync<SetupAzureO365ExocomputeResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

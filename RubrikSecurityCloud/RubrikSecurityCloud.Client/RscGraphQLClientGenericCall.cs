@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using GraphQL;
 using GraphQLParser.AST;
@@ -61,7 +62,12 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         /// <param name="operationName"></param>
         /// <param name="variables"></param>
         /// <returns></returns>
-        public async Task<T> InvokeGenericCallAsync<T>(string operationString, OperationVariableSet variables = null, IRscLogger logger = null)
+        public async Task<T> InvokeGenericCallAsync<T>(
+            string operationString,
+            OperationVariableSet variables = null,
+            IRscLogger logger = null,
+            Dictionary<string, string> metricsTags = null
+        )
         {
             //var request = new GraphQLRequest
             //{
@@ -74,7 +80,12 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 Query = operationString
             };
 
-            return await InvokeGenericCallAsync<T>(request, variables, logger);
+            return await InvokeGenericCallAsync<T>(
+                request,
+                variables,
+                logger,
+                metricsTags
+            );
         }
 
         /// <summary>
@@ -85,7 +96,12 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         /// <param name="request"></param>
         /// <param name="variables"></param>
         /// <returns></returns>
-        public async Task<T> InvokeGenericCallAsync<T>(GraphQLRequest request, OperationVariableSet variables = null, IRscLogger logger = null)
+        public async Task<T> InvokeGenericCallAsync<T>(
+            GraphQLRequest request,
+            OperationVariableSet variables = null,
+            IRscLogger logger = null,
+            Dictionary<string, string> metricsTags = null
+        )
         {
             // Verbose log request and variables:
             String parentSelectorName = "";
@@ -121,7 +137,11 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             );
             
 
-            JObject response = await InvokeGraphQLQuery<JObject>(request, logger)
+            JObject response = await InvokeGraphQLQuery<JObject>(
+                request,
+                logger,
+                metricsTags
+            )
                 ?? throw new InvalidOperationException("server response is null");
             String returnAsJson = "";
             JObject parentSelectorObj = response[parentSelectorName] as JObject;
@@ -154,12 +174,15 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         /// </summary>
         /// <param name="content"></param>
         /// <returns></returns>
-        public async Task<Object> InvokeGenericCall(string content)
+        public async Task<Object> InvokeGenericCall(
+            string content,
+            Dictionary<string, string> metricsTags = null
+        )
         {
             JObject contentAsJson = JObject.Parse(content);
-            if (!(contentAsJson.ContainsKey("query") ^ contentAsJson.ContainsKey("mutation")))
+            if (!contentAsJson.ContainsKey("query"))
             {
-                return "Input content should either a 'query' or 'mutation' key.";
+                return "Input content should have a 'query' key.";
             }
 
             var request = new GraphQLRequest
@@ -172,7 +195,11 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 request.Variables = SerializeVariables(contentAsJson.GetValue("vars"));
             }
 
-            var response = await InvokeGraphQLQuery<Object>(request);
+            var response = await InvokeGraphQLQuery<Object>(
+                request,
+                null, // logger
+                metricsTags
+            );
 
             return response;
         }

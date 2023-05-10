@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -482,7 +481,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<SlaDomainConnection> task = this._rbkClient.InvokeGenericCallAsync<SlaDomainConnection>(request, vars, this._logger);
+            Task<SlaDomainConnection> task = this._rbkClient.InvokeGenericCallAsync<SlaDomainConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -528,7 +527,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CountOfObjectsProtectedBySlAsResult> task = this._rbkClient.InvokeGenericCallAsync<CountOfObjectsProtectedBySlAsResult>(request, vars, this._logger);
+            Task<CountOfObjectsProtectedBySlAsResult> task = this._rbkClient.InvokeGenericCallAsync<CountOfObjectsProtectedBySlAsResult>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -580,7 +579,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<SlaAuditDetail>> task = this._rbkClient.InvokeGenericCallAsync<List<SlaAuditDetail>>(request, vars, this._logger);
+            Task<List<SlaAuditDetail>> task = this._rbkClient.InvokeGenericCallAsync<List<SlaAuditDetail>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -618,7 +617,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<HierarchyObject>> task = this._rbkClient.InvokeGenericCallAsync<List<HierarchyObject>>(request, vars, this._logger);
+            Task<List<HierarchyObject>> task = this._rbkClient.InvokeGenericCallAsync<List<HierarchyObject>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -666,7 +665,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ManagedVolumeConnection> task = this._rbkClient.InvokeGenericCallAsync<ManagedVolumeConnection>(request, vars, this._logger);
+            Task<ManagedVolumeConnection> task = this._rbkClient.InvokeGenericCallAsync<ManagedVolumeConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -704,7 +703,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<SlaInfo>> task = this._rbkClient.InvokeGenericCallAsync<List<SlaInfo>>(request, vars, this._logger);
+            Task<List<SlaInfo>> task = this._rbkClient.InvokeGenericCallAsync<List<SlaInfo>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -742,7 +741,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<NcdSlaComplianceData>> task = this._rbkClient.InvokeGenericCallAsync<List<NcdSlaComplianceData>>(request, vars, this._logger);
+            Task<List<NcdSlaComplianceData>> task = this._rbkClient.InvokeGenericCallAsync<List<NcdSlaComplianceData>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

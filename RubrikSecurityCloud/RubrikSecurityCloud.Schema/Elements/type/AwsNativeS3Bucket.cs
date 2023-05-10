@@ -29,6 +29,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("cloudNativeId")]
         public System.String? CloudNativeId { get; set; }
 
+        //      C# -> DateTime? CreationTime
+        // GraphQL -> creationTime: DateTime (scalar)
+        [JsonProperty("creationTime")]
+        public DateTime? CreationTime { get; set; }
+
         //      C# -> DateTime? EarliestRestoreTime
         // GraphQL -> earliestRestoreTime: DateTime (scalar)
         [JsonProperty("earliestRestoreTime")]
@@ -186,6 +191,7 @@ namespace Rubrik.SecurityCloud.Types
     public AwsNativeS3Bucket Set(
         System.String? AwsAccountRubrikId = null,
         System.String? CloudNativeId = null,
+        DateTime? CreationTime = null,
         DateTime? EarliestRestoreTime = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
@@ -223,6 +229,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( CloudNativeId != null ) {
             this.CloudNativeId = CloudNativeId;
+        }
+        if ( CreationTime != null ) {
+            this.CreationTime = CreationTime;
         }
         if ( EarliestRestoreTime != null ) {
             this.EarliestRestoreTime = EarliestRestoreTime;
@@ -336,6 +345,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.CloudNativeId != null)
             {
                  s += ind + "cloudNativeId\n";
+
+            }
+            //      C# -> DateTime? CreationTime
+            // GraphQL -> creationTime: DateTime (scalar)
+            if (this.CreationTime != null)
+            {
+                 s += ind + "creationTime\n";
 
             }
             //      C# -> DateTime? EarliestRestoreTime
@@ -645,6 +661,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.CloudNativeId == null && Exploration.Includes(parent + ".cloudNativeId$"))
             {
                 this.CloudNativeId = new System.String("FETCH");
+            }
+            //      C# -> DateTime? CreationTime
+            // GraphQL -> creationTime: DateTime (scalar)
+            if (this.CreationTime == null && Exploration.Includes(parent + ".creationTime$"))
+            {
+                this.CreationTime = new DateTime();
             }
             //      C# -> DateTime? EarliestRestoreTime
             // GraphQL -> earliestRestoreTime: DateTime (scalar)

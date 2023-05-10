@@ -66,6 +66,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("status")]
         ArchivalLocationStatus? Status { get; set; }
 
+        //      C# -> UpgradeStatus? UpgradeStatus
+        // GraphQL -> upgradeStatus: UpgradeStatus! (enum)
+        [JsonProperty("upgradeStatus")]
+        UpgradeStatus? UpgradeStatus { get; set; }
+
         //      C# -> System.Int64? ConsumedBytes
         // GraphQL -> consumedBytes: Long (scalar)
         [JsonProperty("consumedBytes")]

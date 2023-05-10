@@ -28,6 +28,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("hasLogConfigFromSla")]
         public System.Boolean? HasLogConfigFromSla { get; set; }
 
+        //      C# -> System.Int32? HostLogRetention
+        // GraphQL -> hostLogRetention: Int (scalar)
+        [JsonProperty("hostLogRetention")]
+        public System.Int32? HostLogRetention { get; set; }
+
         //      C# -> System.Int32? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Int (scalar)
         [JsonProperty("logBackupFrequencyInSeconds")]
@@ -45,6 +50,7 @@ namespace Rubrik.SecurityCloud.Types
     public MssqlSlaRelatedProperties Set(
         System.Boolean? CopyOnly = null,
         System.Boolean? HasLogConfigFromSla = null,
+        System.Int32? HostLogRetention = null,
         System.Int32? LogBackupFrequencyInSeconds = null,
         System.Int32? LogRetentionHours = null
     ) 
@@ -54,6 +60,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( HasLogConfigFromSla != null ) {
             this.HasLogConfigFromSla = HasLogConfigFromSla;
+        }
+        if ( HostLogRetention != null ) {
+            this.HostLogRetention = HostLogRetention;
         }
         if ( LogBackupFrequencyInSeconds != null ) {
             this.LogBackupFrequencyInSeconds = LogBackupFrequencyInSeconds;
@@ -83,6 +92,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.HasLogConfigFromSla != null)
             {
                  s += ind + "hasLogConfigFromSla\n";
+
+            }
+            //      C# -> System.Int32? HostLogRetention
+            // GraphQL -> hostLogRetention: Int (scalar)
+            if (this.HostLogRetention != null)
+            {
+                 s += ind + "hostLogRetention\n";
 
             }
             //      C# -> System.Int32? LogBackupFrequencyInSeconds
@@ -118,6 +134,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.HasLogConfigFromSla == null && Exploration.Includes(parent + ".hasLogConfigFromSla$"))
             {
                 this.HasLogConfigFromSla = new System.Boolean();
+            }
+            //      C# -> System.Int32? HostLogRetention
+            // GraphQL -> hostLogRetention: Int (scalar)
+            if (this.HostLogRetention == null && Exploration.Includes(parent + ".hostLogRetention$"))
+            {
+                this.HostLogRetention = new System.Int32();
             }
             //      C# -> System.Int32? LogBackupFrequencyInSeconds
             // GraphQL -> logBackupFrequencyInSeconds: Int (scalar)

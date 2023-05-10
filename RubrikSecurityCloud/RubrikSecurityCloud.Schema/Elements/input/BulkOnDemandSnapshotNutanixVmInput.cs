@@ -25,6 +25,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("config")]
         public NutanixBulkOnDemandSnapshotJobConfigInput? Config { get; set; }
 
+        //      C# -> System.String? UserNote
+        // GraphQL -> userNote: String (scalar)
+        [JsonProperty("userNote")]
+        public System.String? UserNote { get; set; }
+
 
         #endregion
 

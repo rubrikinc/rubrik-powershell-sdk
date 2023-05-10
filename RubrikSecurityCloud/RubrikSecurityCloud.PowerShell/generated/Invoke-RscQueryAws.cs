@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -388,6 +387,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // allS3BucketsDetail parameter set
+        //
+        // GraphQL operation: allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!):[S3BucketDetails!]!
+        //
+        [Parameter(
+            ParameterSetName = "allS3BucketsDetail",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage = "GraphQL operation: allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!):[S3BucketDetails!]!",
+            Position = 0
+        )]
+        public SwitchParameter allS3BucketsDetail { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // NativeRdsInstance parameter set
         //
         // GraphQL operation: awsNativeRdsInstance(rdsInstanceRubrikId: UUID!):AwsNativeRdsInstance!
@@ -414,14 +429,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // NativeRdsPointInTimeRestoreWindow parameter set
         //
-        // GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):AwsNativeRdsPointInTimeRestoreWindow!
+        // GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):AwsNativeRdsPointInTimeRestoreWindow!
         //
         [Parameter(
             ParameterSetName = "NativeRdsPointInTimeRestoreWindow",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):AwsNativeRdsPointInTimeRestoreWindow!",
+            HelpMessage = "GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):AwsNativeRdsPointInTimeRestoreWindow!",
             Position = 0
         )]
         public SwitchParameter NativeRdsPointInTimeRestoreWindow { get; set; }
@@ -434,18 +449,26 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             HelpMessage = "GraphQL argument rdsInstanceName: String!"
         )]
         public System.String? RdsInstanceName { get; set; }
+        [Parameter(
+            ParameterSetName = "NativeRdsPointInTimeRestoreWindow",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage = "GraphQL argument rdsDatabaseRubrikId: UUID"
+        )]
+        public System.String? RdsDatabaseRubrikId { get; set; }
         
         // -------------------------------------------------------------------
         // rdsInstanceDetail parameter set
         //
-        // GraphQL operation: rdsInstanceDetailsFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):RdsInstanceDetailsFromAws!
+        // GraphQL operation: rdsInstanceDetailsFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):RdsInstanceDetailsFromAws!
         //
         [Parameter(
             ParameterSetName = "rdsInstanceDetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: rdsInstanceDetailsFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):RdsInstanceDetailsFromAws!",
+            HelpMessage = "GraphQL operation: rdsInstanceDetailsFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):RdsInstanceDetailsFromAws!",
             Position = 0
         )]
         public SwitchParameter rdsInstanceDetail { get; set; }
@@ -1019,6 +1042,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "allS3Bucket":
                         this.ProcessRecord_allS3Bucket();
                         break;
+                    case "allS3BucketsDetail":
+                        this.ProcessRecord_allS3BucketsDetail();
+                        break;
                     case "NativeRdsInstance":
                         this.ProcessRecord_NativeRdsInstance();
                         break;
@@ -1231,6 +1257,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -allS3Bucket";
             // Invoke graphql operation allS3BucketsFromAws
             InvokeQueryAllS3BucketsFromAws();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allS3BucketsDetailsFromAws.
+        protected void ProcessRecord_allS3BucketsDetail()
+        {
+            this._logger.name += " -allS3BucketsDetail";
+            // Invoke graphql operation allS3BucketsDetailsFromAws
+            InvokeQueryAllS3BucketsDetailsFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1480,7 +1515,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 this.WriteObject(this._input);
                 return;
             }
-            Task<AwsNativeRoot> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRoot>(request, vars, this._logger);
+            Task<AwsNativeRoot> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRoot>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1519,7 +1554,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeAccount> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeAccount>(request, vars, this._logger);
+            Task<AwsNativeAccount> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeAccount>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1557,7 +1592,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeEc2Instance> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEc2Instance>(request, vars, this._logger);
+            Task<AwsNativeEc2Instance> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEc2Instance>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1595,7 +1630,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeEbsVolume> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEbsVolume>(request, vars, this._logger);
+            Task<AwsNativeEbsVolume> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEbsVolume>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1633,7 +1668,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeS3Bucket> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeS3Bucket>(request, vars, this._logger);
+            Task<AwsNativeS3Bucket> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeS3Bucket>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1685,7 +1720,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeEc2InstanceConnection> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEc2InstanceConnection>(request, vars, this._logger);
+            Task<AwsNativeEc2InstanceConnection> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEc2InstanceConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1737,7 +1772,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeEbsVolumeConnection> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEbsVolumeConnection>(request, vars, this._logger);
+            Task<AwsNativeEbsVolumeConnection> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEbsVolumeConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1776,7 +1811,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsVpc>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsVpc>>(request, vars, this._logger);
+            Task<List<AwsVpc>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsVpc>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1814,7 +1849,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsVpc>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsVpc>>(request, vars, this._logger);
+            Task<List<AwsVpc>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsVpc>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1852,7 +1887,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<IsVolumeSnapshotRestorableReply> task = this._rbkClient.InvokeGenericCallAsync<IsVolumeSnapshotRestorableReply>(request, vars, this._logger);
+            Task<IsVolumeSnapshotRestorableReply> task = this._rbkClient.InvokeGenericCallAsync<IsVolumeSnapshotRestorableReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1891,7 +1926,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger);
+            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1930,7 +1965,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<KmsEncryptionKey>> task = this._rbkClient.InvokeGenericCallAsync<List<KmsEncryptionKey>>(request, vars, this._logger);
+            Task<List<KmsEncryptionKey>> task = this._rbkClient.InvokeGenericCallAsync<List<KmsEncryptionKey>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1969,7 +2004,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger);
+            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2007,7 +2042,45 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger);
+            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger, GetMetricTags());
+            task.Wait();
+            this._logger.Flush();
+            WriteObject(task.Result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!): [S3BucketDetails!]!
+        protected void InvokeQueryAllS3BucketsDetailsFromAws()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+            };
+            List<S3BucketDetails>? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject) {
+                    var psObject = (PSObject)this.Field;
+                    fields = (List<S3BucketDetails>)psObject.BaseObject;
+                } else {
+                    fields = (List<S3BucketDetails>)this.Field;
+                }
+            }
+            string document = Query.AllS3BucketsDetailsFromAws(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.AllS3BucketsDetailsFromAws");
+            string parameters = "($awsAccountRubrikId: UUID!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryAllS3BucketsDetailsFromAws" + parameters + "{" + document + "}",
+                OperationName = "QueryAllS3BucketsDetailsFromAws",
+            };
+            OperationVariableSet vars = new OperationVariableSet();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            Task<List<S3BucketDetails>> task = this._rbkClient.InvokeGenericCallAsync<List<S3BucketDetails>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2045,20 +2118,26 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeRdsInstance> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRdsInstance>(request, vars, this._logger);
+            Task<AwsNativeRdsInstance> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRdsInstance>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
         }
 
         // Invoke GraphQL Query:
-        // awsNativeRdsPointInTimeRestoreWindow(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!): AwsNativeRdsPointInTimeRestoreWindow!
+        // awsNativeRdsPointInTimeRestoreWindow(
+        //     awsAccountRubrikId: UUID!
+        //     region: AwsNativeRegion!
+        //     rdsInstanceName: String!
+        //     rdsDatabaseRubrikId: UUID
+        //   ): AwsNativeRdsPointInTimeRestoreWindow!
         protected void InvokeQueryAwsNativeRdsPointInTimeRestoreWindow()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
                 Tuple.Create("rdsInstanceName", "String!"),
+                Tuple.Create("rdsDatabaseRubrikId", "UUID"),
             };
             AwsNativeRdsPointInTimeRestoreWindow? fields = null ;
             if (this.Field != null)
@@ -2072,7 +2151,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeRdsPointInTimeRestoreWindow(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeRdsPointInTimeRestoreWindow");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!)\n";
+            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeRdsPointInTimeRestoreWindow" + parameters + "{" + document + "}",
@@ -2085,20 +2164,26 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeRdsPointInTimeRestoreWindow> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRdsPointInTimeRestoreWindow>(request, vars, this._logger);
+            Task<AwsNativeRdsPointInTimeRestoreWindow> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRdsPointInTimeRestoreWindow>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
         }
 
         // Invoke GraphQL Query:
-        // rdsInstanceDetailsFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!): RdsInstanceDetailsFromAws!
+        // rdsInstanceDetailsFromAws(
+        //     awsAccountRubrikId: UUID!
+        //     region: AwsNativeRegion!
+        //     rdsInstanceName: String!
+        //     rdsDatabaseRubrikId: UUID
+        //   ): RdsInstanceDetailsFromAws!
         protected void InvokeQueryRdsInstanceDetailsFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
                 Tuple.Create("region", "AwsNativeRegion!"),
                 Tuple.Create("rdsInstanceName", "String!"),
+                Tuple.Create("rdsDatabaseRubrikId", "UUID"),
             };
             RdsInstanceDetailsFromAws? fields = null ;
             if (this.Field != null)
@@ -2112,7 +2197,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.RdsInstanceDetailsFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.RdsInstanceDetailsFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!)\n";
+            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryRdsInstanceDetailsFromAws" + parameters + "{" + document + "}",
@@ -2125,7 +2210,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RdsInstanceDetailsFromAws> task = this._rbkClient.InvokeGenericCallAsync<RdsInstanceDetailsFromAws>(request, vars, this._logger);
+            Task<RdsInstanceDetailsFromAws> task = this._rbkClient.InvokeGenericCallAsync<RdsInstanceDetailsFromAws>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2183,7 +2268,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger);
+            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2231,7 +2316,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<OptionGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<OptionGroup>>(request, vars, this._logger);
+            Task<List<OptionGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<OptionGroup>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2279,7 +2364,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<DbParameterGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<DbParameterGroup>>(request, vars, this._logger);
+            Task<List<DbParameterGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<DbParameterGroup>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2318,7 +2403,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<SubnetGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<SubnetGroup>>(request, vars, this._logger);
+            Task<List<SubnetGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<SubnetGroup>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2358,7 +2443,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ValidateAwsNativeRdsInstanceNameForExportReply> task = this._rbkClient.InvokeGenericCallAsync<ValidateAwsNativeRdsInstanceNameForExportReply>(request, vars, this._logger);
+            Task<ValidateAwsNativeRdsInstanceNameForExportReply> task = this._rbkClient.InvokeGenericCallAsync<ValidateAwsNativeRdsInstanceNameForExportReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2398,7 +2483,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ValidateAwsNativeRdsClusterNameForExportReply> task = this._rbkClient.InvokeGenericCallAsync<ValidateAwsNativeRdsClusterNameForExportReply>(request, vars, this._logger);
+            Task<ValidateAwsNativeRdsClusterNameForExportReply> task = this._rbkClient.InvokeGenericCallAsync<ValidateAwsNativeRdsClusterNameForExportReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2438,7 +2523,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RdsInstanceExportDefaults> task = this._rbkClient.InvokeGenericCallAsync<RdsInstanceExportDefaults>(request, vars, this._logger);
+            Task<RdsInstanceExportDefaults> task = this._rbkClient.InvokeGenericCallAsync<RdsInstanceExportDefaults>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2477,7 +2562,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger);
+            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2515,7 +2600,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AmiTypeForAwsNativeArchivedSnapshotExportReply> task = this._rbkClient.InvokeGenericCallAsync<AmiTypeForAwsNativeArchivedSnapshotExportReply>(request, vars, this._logger);
+            Task<AmiTypeForAwsNativeArchivedSnapshotExportReply> task = this._rbkClient.InvokeGenericCallAsync<AmiTypeForAwsNativeArchivedSnapshotExportReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2553,7 +2638,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsComputeSettings> task = this._rbkClient.InvokeGenericCallAsync<AwsComputeSettings>(request, vars, this._logger);
+            Task<AwsComputeSettings> task = this._rbkClient.InvokeGenericCallAsync<AwsComputeSettings>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2599,7 +2684,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsComputeSettings>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsComputeSettings>>(request, vars, this._logger);
+            Task<List<AwsComputeSettings>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsComputeSettings>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2637,7 +2722,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsCloudAccountWithFeatures>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCloudAccountWithFeatures>>(request, vars, this._logger);
+            Task<List<AwsCloudAccountWithFeatures>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCloudAccountWithFeatures>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2676,7 +2761,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsCloudAccountWithFeatures> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountWithFeatures>(request, vars, this._logger);
+            Task<AwsCloudAccountWithFeatures> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountWithFeatures>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2716,7 +2801,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsCloudAccountListVpcResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListVpcResponse>(request, vars, this._logger);
+            Task<AwsCloudAccountListVpcResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListVpcResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2762,7 +2847,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsCloudAccountListSubnetsResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListSubnetsResponse>(request, vars, this._logger);
+            Task<AwsCloudAccountListSubnetsResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListSubnetsResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2808,7 +2893,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsCloudAccountListSecurityGroupsResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListSecurityGroupsResponse>(request, vars, this._logger);
+            Task<AwsCloudAccountListSecurityGroupsResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListSecurityGroupsResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2846,7 +2931,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsExocomputeConfig>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsExocomputeConfig>>(request, vars, this._logger);
+            Task<List<AwsExocomputeConfig>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsExocomputeConfig>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2884,7 +2969,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsFeatureConfig>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsFeatureConfig>>(request, vars, this._logger);
+            Task<List<AwsFeatureConfig>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsFeatureConfig>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2922,7 +3007,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsCloudAccountRegion>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCloudAccountRegion>>(request, vars, this._logger);
+            Task<List<AwsCloudAccountRegion>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCloudAccountRegion>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2960,7 +3045,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsCdmVersion>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCdmVersion>>(request, vars, this._logger);
+            Task<List<AwsCdmVersion>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCdmVersion>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2999,7 +3084,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger);
+            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

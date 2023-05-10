@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -232,7 +231,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 this.WriteObject(this._input);
                 return;
             }
-            Task<AccountSetting> task = this._rbkClient.InvokeGenericCallAsync<AccountSetting>(request, vars, this._logger);
+            Task<AccountSetting> task = this._rbkClient.InvokeGenericCallAsync<AccountSetting>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -280,7 +279,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AccountProduct>> task = this._rbkClient.InvokeGenericCallAsync<List<AccountProduct>>(request, vars, this._logger);
+            Task<List<AccountProduct>> task = this._rbkClient.InvokeGenericCallAsync<List<AccountProduct>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -316,7 +315,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 this.WriteObject(this._input);
                 return;
             }
-            Task<System.String> task = this._rbkClient.InvokeGenericCallAsync<System.String>(request, vars, this._logger);
+            Task<System.String> task = this._rbkClient.InvokeGenericCallAsync<System.String>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -352,7 +351,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 this.WriteObject(this._input);
                 return;
             }
-            Task<List<User>> task = this._rbkClient.InvokeGenericCallAsync<List<User>>(request, vars, this._logger);
+            Task<List<User>> task = this._rbkClient.InvokeGenericCallAsync<List<User>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

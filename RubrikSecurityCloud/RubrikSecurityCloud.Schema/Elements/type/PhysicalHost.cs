@@ -29,6 +29,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("cdmId")]
         public System.String? CdmId { get; set; }
 
+        //      C# -> System.String? CdmLink
+        // GraphQL -> cdmLink: String! (scalar)
+        [JsonProperty("cdmLink")]
+        public System.String? CdmLink { get; set; }
+
         //      C# -> System.Boolean? DefaultCbt
         // GraphQL -> defaultCbt: Boolean (scalar)
         [JsonProperty("defaultCbt")]
@@ -221,6 +226,7 @@ namespace Rubrik.SecurityCloud.Types
     public PhysicalHost Set(
         System.String? CbtStatus = null,
         System.String? CdmId = null,
+        System.String? CdmLink = null,
         System.Boolean? DefaultCbt = null,
         System.String? Id = null,
         List<System.String>? IpAddresses = null,
@@ -265,6 +271,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
+        }
+        if ( CdmLink != null ) {
+            this.CdmLink = CdmLink;
         }
         if ( DefaultCbt != null ) {
             this.DefaultCbt = DefaultCbt;
@@ -399,6 +408,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.CdmId != null)
             {
                  s += ind + "cdmId\n";
+
+            }
+            //      C# -> System.String? CdmLink
+            // GraphQL -> cdmLink: String! (scalar)
+            if (this.CdmLink != null)
+            {
+                 s += ind + "cdmLink\n";
 
             }
             //      C# -> System.Boolean? DefaultCbt
@@ -773,6 +789,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
             {
                 this.CdmId = new System.String("FETCH");
+            }
+            //      C# -> System.String? CdmLink
+            // GraphQL -> cdmLink: String! (scalar)
+            if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink$"))
+            {
+                this.CdmLink = new System.String("FETCH");
             }
             //      C# -> System.Boolean? DefaultCbt
             // GraphQL -> defaultCbt: Boolean (scalar)

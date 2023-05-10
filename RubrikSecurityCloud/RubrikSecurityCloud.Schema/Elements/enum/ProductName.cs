@@ -39,8 +39,14 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "RADAR")]
         RADAR,
 
+        [EnumMember(Value = "RADAR_UCL")]
+        RADAR_UCL,
+
         [EnumMember(Value = "RCV")]
         RCV,
+
+        [EnumMember(Value = "RCV_UCL")]
+        RCV_UCL,
 
         [EnumMember(Value = "RDP")]
         RDP,
@@ -50,6 +56,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "SONAR")]
         SONAR,
+
+        [EnumMember(Value = "SONAR_UCL")]
+        SONAR_UCL,
 
         [EnumMember(Value = "UNSPECIFIED_NAME")]
         UNSPECIFIED_NAME

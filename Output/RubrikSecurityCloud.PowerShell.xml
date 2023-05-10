@@ -105,7 +105,7 @@
             Retrieves all of the snapshots (backups) for any given object
             </summary>
             <description>
-            The Get-RscSnapshor cmdlet is used to query the RSC instance for all
+            The Get-RscSnapshot cmdlet is used to query the RSC instance for all
             known snapshots (backups) for a protected object.
             Multiple objects to be piped into this function is not yet supported
             </description>
@@ -124,6 +124,21 @@
         <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscSnapshot.SnappableId">
             <summary>
             The ID of the snappable object to get a list of snapshots for.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscSnapshot.First">
+            <summary>
+            Return only the first # of results
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscSnapshot.SnapshotId">
+            <summary>
+            Retreive a single CDM snapshot by ID. PolarisSnapshot is not yet supported.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscSnapshot.ClusterUUID">
+            <summary>
+            Ensure that the snapshot returned belongs to a specific CDM Cluster.
             </summary>
         </member>
         <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType">
@@ -252,6 +267,37 @@
             will be returned. To be used only with -Id parameter.
             </summary>
         </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet.Op">
+            <summary>
+            Input: Operation to run. Overridden by operation switches.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet.Arg">
+            <summary>
+            Input: Arguments to the operation. Overridden by argument parameters.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet.Field">
+            <summary>
+            An object that represents the fields that need to be returned
+            for a given query. Each property on this object that does not
+            have a null value (actual values don’t matter) will be included 
+            in the API request.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet.GetInputs">
+            <summary>
+            Returns an object that contains the Op, Arg and Field inputs
+            that would be used to run the operation.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet.InputProfile">
+            <summary>
+            The input profile determines how inputs to the operation
+            should be automatically set if they are not explicitly given
+            as parameters.
+            </summary>
+        </member>
         <member name="M:Rubrik.SecurityCloud.PowerShell.Private.RscCmdletInput.GqlOperation">
             <summary>
             The name of the underlying GQL operation.
@@ -275,6 +321,227 @@
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
             </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFileset">
+            <summary>
+            Retrieve one or more filsets managed by
+            Rubrik Security Cloud (Rsc).
+            </summary>
+            <description>
+            The Get-RscFileset cmdlet is used to get one or more filesets
+            known to RSC. The -FilesetId parameter will return a single fileset.
+            All other parameters will return a list of matching filesets.
+            When -FilesetId is NOT specified, -HostId is required.
+            -HostId can accept a value from the pipeline
+            </description>
+            <example>
+            Get a list of all filesets on a specified host
+            <code> Get-RscFileset -HostId xxxxx-xxxxx-xxxxx-xxxxx </code>
+            </example>
+            <example>
+            Get a list of all filesets on a specified host, filtered by name
+            <code> Get-RscFileset -HostId xxxxx-xxxxx-xxxxx-xxxxx -Name etc </code>
+            </example>
+            <example>
+            Get a list of all filesets on a host, providing the host via the pipeline
+            <code> Get-RscHost -OsType Linux -First 1 | Get-RscFileset </code>
+            </example>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFileset.HostId">
+            <summary>
+            The Id of the Physical Host to get filesets for
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFileset.Name">
+            <summary>
+            Filter results by name
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFileset.First">
+            <summary>
+            Return only the fist # of results
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFileset.SortBy">
+            <summary>
+            Sort by field name
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFileset.SortOrder">
+            <summary>
+            Sort Order
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFileset.FilesetId">
+            <summary>
+            Get a fileset using its ID
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate">
+            <summary>
+            Retrieve one or more filset templates managed by
+            Rubrik Security Cloud (Rsc).
+            </summary>
+            <description>
+            The Get-RscFileset cmdlet is used to get one or more fileset templates
+            known to RSC. The -Id parameter will return a template. All other
+            parameters will return a list of matching templates.
+            Returns Windows and Linux fileset templates.
+            </description>
+            <example>
+            Get a list of all Linux fileset templates.
+            <code>Get-RscFilesetTemplate -OsType Linux </code>
+            </example>
+            <example>
+            Get a list of Windows fileset templates, matching a name pattern.
+            <code>Get-RscFilesetTemplate -OsType Windows -Name myWinTemplate</code>
+            </example>
+            <example>
+            Get a template by Id, with default fields selected.
+            <code>Get-RscFilesetTemplate -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d</code>
+            </example>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate.OsType">
+            <summary>
+            Operating system type of fileset templates to return.
+            Valid values are: "Windows" and "Linux".
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate.Name">
+            <summary>
+            Filter results by name
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate.First">
+            <summary>
+            Return only the fist # of results
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate.SortBy">
+            <summary>
+            Sort by field name
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate.SortOrder">
+            <summary>
+            Sort Order
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate.Id">
+            <summary>
+            Get a physical host using its ID
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscFilesetTemplate.Field">
+            <summary>
+            Activate selected fields based on not-null properties
+            of the input fields object
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost">
+            <summary>
+            Retrieve one or more physical hosts managed by
+            Rubrik Security Cloud (Rsc).
+            </summary>
+            <description>
+            The Get-RscHost cmdlet is used to get one or more physical hosts
+            known to RSC. The -Id parameter will return a single host. All other
+            parameters will return a list of matching hosts.
+            </description>
+            <example>
+            Get a list of all Linux from the RSC instance.
+            <code>Get-RscHost -OsType Linux </code>
+            </example>
+            <example>
+            Get a list of Windows Hosts, matching a name pattern.
+            <code>Get-RscHost -OsType Windows -Name myWindowsServer</code>
+            </example>
+            <example>
+            Get a host by Id, with default fields selected.
+            <code>Get-RscHost -Id 76254be7-baa4-5145-a4b7-a7a7773ad97d</code>
+            </example>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.OsType">
+            <summary>
+            Operating system type of hosts to return. Valid values are
+            "Windows" and "Linux".
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.Name">
+            <summary>
+            Filter results by name
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.First">
+            <summary>
+            Return only the fist # of results
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.Relics">
+            <summary>
+            Include only items that are relics
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.Replicated">
+            <summary>
+            Include only items that are replicated
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.SortBy">
+            <summary>
+            Sort by field name
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.SortOrder">
+            <summary>
+            Sort Order
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.Id">
+            <summary>
+            Get a physical host using its ID
+            </summary>
+        </member>
+        <member name="P:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscHost.Field">
+            <summary>
+            Activate selected fields based on not-null properties
+            of the input fields object
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Cmdlets.Get_RscVersion">
+            <summary>
+            Returns the Rubrik Security Cloud Server version, as well a the
+            Rubrik Security Cloud PowerShell SDK schema version. Ideally these
+            values should match for maximum SDK compatibility. 
+            </summary>
+        </member>
+        <member name="T:RubrikSecurityCloud.PowerShell.Private.RscSessionInfo">
+            <summary>
+            Used to return information on the user session and SDK/Server
+            versions in use.
+            </summary>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscSessionInfo.#ctor(Rubrik.SecurityCloud.NetSDK.Client.RscGraphQLClient,RubrikSecurityCloud.Client.IRscLogger)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="rscClient">Instance of RscGraphQLClient</param>
+            <param name="logger">Instance of type implementing IRscLogger</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscSessionInfo.GetRscPsVersion">
+            <summary>
+            Returns an instance of RscPsVersionTable containing the
+            server deployment version and the SDK schema version.
+            </summary>
+            <returns>Instance of RscPsVersionTable</returns>
+        </member>
+        <member name="M:RubrikSecurityCloud.PowerShell.Private.RscSessionInfo.GetSessionInfo">
+            <summary>
+            Returns an instance of RscPsSession info containing the
+            client information, authentication state and version info.
+            </summary>
+            <returns>Instance of RscPsSessionInfo</returns>
         </member>
         <member name="M:RubrikSecurityCloud.PowerShell.Private.RscTypeInitializer.InitializeInputWithSelectedFields(System.String,System.Collections.Hashtable)">
             <summary>

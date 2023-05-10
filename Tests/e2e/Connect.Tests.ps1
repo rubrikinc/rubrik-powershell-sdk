@@ -11,13 +11,13 @@ $clientSecret = ConvertTo-SecureString -String $plainText -AsPlainText -Force
 Describe -Name 'Connect to API' -Fixture {
     Context -Name 'Connections with service account details' {
         It -Name 'Connect-Rsc -Server xxx -ClientId xxx -ClientSecret xxx' -Test {
-            Connect-Rsc -Server $url -ClientId $clientId -ClientSecret $clientSecret | Should -BeLikeExactly "Authentication Status: AUTHORIZED"
+            Connect-Rsc -Server $url -ClientId $clientId -ClientSecret $clientSecret
         }
         It -Name 'Disconnect-Rsc' -Test {
             Disconnect-Rsc | Should -BeLikeExactly "The Rubrik Security Cloud session has been terminated."
         }
         It -Name 'Connect-Rsc -ServiceAccountFile' -Test {
-            Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile) | Should -BeLikeExactly "Authentication Status: AUTHORIZED"
+            Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
         }
         It -Name 'Disconnect-Rsc 2' -Test {
             Disconnect-Rsc | Should -BeLikeExactly "The Rubrik Security Cloud session has been terminated."

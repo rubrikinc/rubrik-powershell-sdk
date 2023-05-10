@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -392,7 +391,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongoSourceConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoSourceConnection>(request, vars, this._logger);
+            Task<MongoSourceConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoSourceConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -440,7 +439,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongoDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoDatabaseConnection>(request, vars, this._logger);
+            Task<MongoDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoDatabaseConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -488,7 +487,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongoCollectionConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoCollectionConnection>(request, vars, this._logger);
+            Task<MongoCollectionConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoCollectionConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -526,7 +525,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongoRecoverableRanges> task = this._rbkClient.InvokeGenericCallAsync<MongoRecoverableRanges>(request, vars, this._logger);
+            Task<MongoRecoverableRanges> task = this._rbkClient.InvokeGenericCallAsync<MongoRecoverableRanges>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -574,7 +573,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongodbSourceConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbSourceConnection>(request, vars, this._logger);
+            Task<MongodbSourceConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbSourceConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -622,7 +621,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongodbDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbDatabaseConnection>(request, vars, this._logger);
+            Task<MongodbDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbDatabaseConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -670,7 +669,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongodbCollectionConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbCollectionConnection>(request, vars, this._logger);
+            Task<MongodbCollectionConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbCollectionConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -708,7 +707,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<GetMosaicRecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<GetMosaicRecoverableRangeResponse>(request, vars, this._logger);
+            Task<GetMosaicRecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<GetMosaicRecoverableRangeResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -746,7 +745,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicRecoveryRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicRecoveryRangeResponse>(request, vars, this._logger);
+            Task<MosaicRecoveryRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicRecoveryRangeResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

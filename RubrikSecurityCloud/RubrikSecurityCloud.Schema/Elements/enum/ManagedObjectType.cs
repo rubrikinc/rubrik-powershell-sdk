@@ -150,6 +150,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE")]
         HYPERV_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "JIRA_PROJECT")]
+        JIRA_PROJECT,
+
         [EnumMember(Value = "KUPR_CLUSTER")]
         KUPR_CLUSTER,
 
@@ -218,6 +221,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_CLUSTER")]
         NUTANIX_CLUSTER,
+
+        [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
+        NUTANIX_PRISM_CENTRAL,
 
         [EnumMember(Value = "NUTANIX_VIRTUAL_MACHINE")]
         NUTANIX_VIRTUAL_MACHINE,

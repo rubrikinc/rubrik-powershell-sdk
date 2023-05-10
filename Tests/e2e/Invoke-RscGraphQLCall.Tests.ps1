@@ -9,7 +9,7 @@ Describe -Name "Send a generic GraphQL call\n" -Fixture {
 
             Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
             
-            $response = Invoke-RscGraphQLCall -Body '{"query":"query accountSettings{accountSettings{isEulaAccepted}}"}'
+            $response = Invoke-Rsc -OperationText '{"query":"query accountSettings{accountSettings{isEulaAccepted}}"}'
             $response | Should -Not -BeNullOrEmpty
             $response | Should -BeLikeExactly $(ConvertFrom-Json -InputObject '{"accountSettings":{"isEulaAccepted":false}}')
         }

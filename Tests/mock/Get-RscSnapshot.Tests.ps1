@@ -28,48 +28,43 @@ BeforeAll {
 
 Describe -Name 'Query for Snapshot' -Fixture {
   It "Returns <expected> (for <name>)" -ForEach @(
-    @{ 
+    @{
       Query =
       "{
         'query':
           'query SnapshotListQuery(
-`$after: String
-`$before: String
-`$first: Int
-`$ignoreActiveWorkloadCheck: Boolean
-`$last: Int
-`$snapshotFilter: [SnapshotQueryFilterInput!]
-`$sortBy: SnapshotQuerySortByField
-`$sortOrder: SortOrder
-`$timeRange: TimeRangeInput
-`$workloadId: String!
-){snapshotOfASnappableConnection
-(
-after: `$after
-before: `$before
-first: `$first
-ignoreActiveWorkloadCheck: `$ignoreActiveWorkloadCheck
-last: `$last
-snapshotFilter: `$snapshotFilter
-sortBy: `$sortBy
-sortOrder: `$sortOrder
-timeRange: `$timeRange
-workloadId: `$workloadId
-){
-nodes
-{
-... on CdmSnapshot
-{
-date
-expirationDate
-id
-isOnDemandSnapshot
-snappableId
- __typename}
- __typename}
- __typename}
- __typename}',
-'Variables': '{\'workloadId\':\'76254be7-baa4-5145-a4b7-a7a7773ad97d\'}'
+            `$after: String
+            `$before: String
+            `$first: Int
+            `$ignoreActiveWorkloadCheck: Boolean
+            `$last: Int
+            `$snapshotFilter: [SnapshotQueryFilterInput!]
+            `$sortBy: SnapshotQuerySortByField
+            `$sortOrder: SortOrder
+            `$timeRange: TimeRangeInput
+            `$workloadId: String!
+            ){snapshotOfASnappableConnection(
+                after: `$after
+                before: `$before
+                first: `$first
+                ignoreActiveWorkloadCheck: `$ignoreActiveWorkloadCheck
+                last: `$last
+                snapshotFilter: `$snapshotFilter
+                sortBy: `$sortBy
+                sortOrder: `$sortOrder
+                timeRange: `$timeRange
+                workloadId: `$workloadId
+              ){
+                nodes
+                {
+                ... on CdmSnapshot
+                {
+                date
+                expirationDate
+                id
+                isOnDemandSnapshot
+                snappableId}}}}',
+                'Variables': '{\'workloadId\':\'76254be7-baa4-5145-a4b7-a7a7773ad97d\'}'
       }"
 
       ExpectedReply =
@@ -82,26 +77,35 @@ snappableId
                 'id': 'b7b4231e-9750-58de-8892-1521abc6d0a1',
                 'isOnDemandSnapshot': true,
                 'snappableId': '79893e4a-50de-4167-b147-de6ed87bedac-vm-58319',
-                  '__typename': 'CdmSnapshot'
+                '__typename': 'CdmSnapshot'
               }
-          ],
-          '__typename': 'GenericSnapshotConnection'
-      },
-      '__typename': 'Query'
+          ]
+      }
+      }"
+
+      HierarchyObjectQuery = "{
+        'query':
+          'query HierarchyObjects(`$fids:[UUID!]!){hierarchyObjects(fids:`$fids){id}}',
+        'variables':'{\'fids\':[\'76254be7-baa4-5145-a4b7-a7a7773ad97d\']}'}"
+
+      HierarchyObjectReply =
+      "{
+        'id': '76254be7-baa4-5145-a4b7-a7a7773ad97d',
+        '__typename': 'CdmSnapshot'
       }"
     }
   ) {
     Update-MockApiServerCache -Query $Query -Reply $ExpectedReply
-    Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile) |
-    Should -BeLikeExactly "AUTHORIZED"
+    Update-MockApiServerCache -Query $HierarchyObjectQuery -Reply $HierarchyObjectReply
 
+    Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
     Get-RscSnapshot -SnappableId "76254be7-baa4-5145-a4b7-a7a7773ad97d"
     $snapshots[0].Id | Should -Be "b7b4231e-9750-58de-8892-1521abc6d0a1"
   }
 }
 
 AfterAll {
-  if ( ! $UseExistingMockServer) {
+  if (!$UseExistingMockServer) {
     Close-MockApiServer
   }
 }

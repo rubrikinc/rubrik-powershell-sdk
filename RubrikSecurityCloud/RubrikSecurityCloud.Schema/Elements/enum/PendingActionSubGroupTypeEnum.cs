@@ -102,6 +102,12 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "OBJECT_STORE_LOCATION_READER_POST")]
         OBJECT_STORE_LOCATION_READER_POST,
 
+        [EnumMember(Value = "QSTAR_LOCATION_PUT")]
+        QSTAR_LOCATION_PUT,
+
+        [EnumMember(Value = "QSTAR_LOCATION_READER_POST")]
+        QSTAR_LOCATION_READER_POST,
+
         [EnumMember(Value = "S3COMPATIBLE_LOCATION_PUT")]
         S3COMPATIBLE_LOCATION_PUT,
 
@@ -113,6 +119,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "SECURITY_SETTING_DELETE_KMIP_SERVER")]
         SECURITY_SETTING_DELETE_KMIP_SERVER,
+
+        [EnumMember(Value = "SECURITY_SETTING_EDIT_KMIP_SERVER")]
+        SECURITY_SETTING_EDIT_KMIP_SERVER,
 
         [EnumMember(Value = "SERVICE_ACCOUNT_DELETE")]
         SERVICE_ACCOUNT_DELETE,

@@ -43,6 +43,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("isRetainedForSecurity")]
         public System.Boolean? IsRetainedForSecurity { get; set; }
 
+        //      C# -> System.Boolean? IsSnapshotOnLegalHold
+        // GraphQL -> isSnapshotOnLegalHold: Boolean (scalar)
+        [JsonProperty("isSnapshotOnLegalHold")]
+        public System.Boolean? IsSnapshotOnLegalHold { get; set; }
+
         //      C# -> System.Boolean? IsSnapshotPresent
         // GraphQL -> isSnapshotPresent: Boolean! (scalar)
         [JsonProperty("isSnapshotPresent")]
@@ -68,6 +73,7 @@ namespace Rubrik.SecurityCloud.Types
         System.Boolean? IsExpirationDateCalculated = null,
         System.Boolean? IsExpirationInformationUnavailable = null,
         System.Boolean? IsRetainedForSecurity = null,
+        System.Boolean? IsSnapshotOnLegalHold = null,
         System.Boolean? IsSnapshotPresent = null,
         System.String? Name = null,
         System.String? SnapshotFrequency = null
@@ -87,6 +93,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( IsRetainedForSecurity != null ) {
             this.IsRetainedForSecurity = IsRetainedForSecurity;
+        }
+        if ( IsSnapshotOnLegalHold != null ) {
+            this.IsSnapshotOnLegalHold = IsSnapshotOnLegalHold;
         }
         if ( IsSnapshotPresent != null ) {
             this.IsSnapshotPresent = IsSnapshotPresent;
@@ -140,6 +149,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.IsRetainedForSecurity != null)
             {
                  s += ind + "isRetainedForSecurity\n";
+
+            }
+            //      C# -> System.Boolean? IsSnapshotOnLegalHold
+            // GraphQL -> isSnapshotOnLegalHold: Boolean (scalar)
+            if (this.IsSnapshotOnLegalHold != null)
+            {
+                 s += ind + "isSnapshotOnLegalHold\n";
 
             }
             //      C# -> System.Boolean? IsSnapshotPresent
@@ -200,6 +216,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.IsRetainedForSecurity == null && Exploration.Includes(parent + ".isRetainedForSecurity$"))
             {
                 this.IsRetainedForSecurity = new System.Boolean();
+            }
+            //      C# -> System.Boolean? IsSnapshotOnLegalHold
+            // GraphQL -> isSnapshotOnLegalHold: Boolean (scalar)
+            if (this.IsSnapshotOnLegalHold == null && Exploration.Includes(parent + ".isSnapshotOnLegalHold$"))
+            {
+                this.IsSnapshotOnLegalHold = new System.Boolean();
             }
             //      C# -> System.Boolean? IsSnapshotPresent
             // GraphQL -> isSnapshotPresent: Boolean! (scalar)

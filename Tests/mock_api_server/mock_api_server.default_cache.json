@@ -152,6 +152,14 @@
         }
       },
       "status": 200
+    },
+    "{'query':'query GetRscVersion{deploymentVersion}','operationName':'GetRscVersion'}": {
+      "response": {
+        "data": {
+          "deploymentVersion": "latest"
+        }
+      },
+      "status": 200
     }
   }
 }

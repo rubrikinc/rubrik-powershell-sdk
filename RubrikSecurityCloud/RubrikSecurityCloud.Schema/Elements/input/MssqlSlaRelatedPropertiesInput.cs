@@ -38,6 +38,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("hasLogConfigFromSla")]
         public System.Boolean? HasLogConfigFromSla { get; set; }
 
+        //      C# -> System.Int32? HostLogRetention
+        // GraphQL -> hostLogRetention: Int (scalar)
+        [JsonProperty("hostLogRetention")]
+        public System.Int32? HostLogRetention { get; set; }
+
 
         #endregion
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.IO;
 using System.Management.Automation;
 using System.Security;
@@ -8,6 +9,9 @@ using Newtonsoft.Json;
 using Rubrik.SecurityCloud.NetSDK.Client;
 using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
 using Rubrik.SecurityCloud.PowerShell.Models;
+using RubrikSecurityCloud.PowerShell.Models;
+using RubrikSecurityCloud.PowerShell.Private;
+using Rubrik.SecurityCloud.PowerShell.Private;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 {
@@ -192,7 +196,6 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 this._Connect();
             }
-            WriteObject(this._rbkClient.AuthenticationState);
         }
 
         protected void _Connect()
@@ -213,10 +216,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                             "RscConnectionClient",
                             this._rbkClient,
                             ScopedItemOptions.AllScope));
+
+                    RscSessionInfo sessionInfo = new RscSessionInfo(
+                        this._rbkClient, new RscLogger(this));
+
+                    WriteObject(sessionInfo.GetSessionInfo());
                 }
-                this.WriteVerbose(
-                    "Authentication Status: " +
-                        this._rbkClient.AuthenticationState.ToString());
+
+                this.WriteVerbose($"Authentication Status: " +
+                        $"{ this._rbkClient.AuthenticationState.ToString()}");
             }
             catch (Exception ex)
             {

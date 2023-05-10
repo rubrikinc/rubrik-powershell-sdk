@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -346,7 +345,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VsphereVm> task = this._rbkClient.InvokeGenericCallAsync<VsphereVm>(request, vars, this._logger);
+            Task<VsphereVm> task = this._rbkClient.InvokeGenericCallAsync<VsphereVm>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -394,7 +393,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VsphereVmConnection> task = this._rbkClient.InvokeGenericCallAsync<VsphereVmConnection>(request, vars, this._logger);
+            Task<VsphereVmConnection> task = this._rbkClient.InvokeGenericCallAsync<VsphereVmConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -434,7 +433,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<RecoverableRangeResponse>(request, vars, this._logger);
+            Task<RecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<RecoverableRangeResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -472,7 +471,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchVmwareVmRecoverableRanges> task = this._rbkClient.InvokeGenericCallAsync<BatchVmwareVmRecoverableRanges>(request, vars, this._logger);
+            Task<BatchVmwareVmRecoverableRanges> task = this._rbkClient.InvokeGenericCallAsync<BatchVmwareVmRecoverableRanges>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -512,7 +511,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<RecoverableRangeResponse>(request, vars, this._logger);
+            Task<RecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<RecoverableRangeResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -551,7 +550,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger);
+            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

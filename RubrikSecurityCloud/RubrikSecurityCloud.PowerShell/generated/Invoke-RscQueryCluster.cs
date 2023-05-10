@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -994,7 +993,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<NodeStatusListResponse> task = this._rbkClient.InvokeGenericCallAsync<NodeStatusListResponse>(request, vars, this._logger);
+            Task<NodeStatusListResponse> task = this._rbkClient.InvokeGenericCallAsync<NodeStatusListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1046,7 +1045,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterConnection>(request, vars, this._logger);
+            Task<ClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1084,7 +1083,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<Cluster> task = this._rbkClient.InvokeGenericCallAsync<Cluster>(request, vars, this._logger);
+            Task<Cluster> task = this._rbkClient.InvokeGenericCallAsync<Cluster>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1136,7 +1135,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterConnection>(request, vars, this._logger);
+            Task<ClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1174,7 +1173,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterDnsReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterDnsReply>(request, vars, this._logger);
+            Task<ClusterDnsReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterDnsReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1212,7 +1211,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterProxyReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterProxyReply>(request, vars, this._logger);
+            Task<ClusterProxyReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterProxyReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1250,7 +1249,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<NtpServerConfigurationListResponse> task = this._rbkClient.InvokeGenericCallAsync<NtpServerConfigurationListResponse>(request, vars, this._logger);
+            Task<NtpServerConfigurationListResponse> task = this._rbkClient.InvokeGenericCallAsync<NtpServerConfigurationListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1288,7 +1287,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<NetworkInterfaceListResponse> task = this._rbkClient.InvokeGenericCallAsync<NetworkInterfaceListResponse>(request, vars, this._logger);
+            Task<NetworkInterfaceListResponse> task = this._rbkClient.InvokeGenericCallAsync<NetworkInterfaceListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1326,7 +1325,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<InternalGetClusterIpsResponse> task = this._rbkClient.InvokeGenericCallAsync<InternalGetClusterIpsResponse>(request, vars, this._logger);
+            Task<InternalGetClusterIpsResponse> task = this._rbkClient.InvokeGenericCallAsync<InternalGetClusterIpsResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1364,7 +1363,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VlanConfigListResponse> task = this._rbkClient.InvokeGenericCallAsync<VlanConfigListResponse>(request, vars, this._logger);
+            Task<VlanConfigListResponse> task = this._rbkClient.InvokeGenericCallAsync<VlanConfigListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1402,7 +1401,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<InternalGetDefaultGatewayResponse> task = this._rbkClient.InvokeGenericCallAsync<InternalGetDefaultGatewayResponse>(request, vars, this._logger);
+            Task<InternalGetDefaultGatewayResponse> task = this._rbkClient.InvokeGenericCallAsync<InternalGetDefaultGatewayResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1440,7 +1439,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterWebSignedCertificateReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterWebSignedCertificateReply>(request, vars, this._logger);
+            Task<ClusterWebSignedCertificateReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterWebSignedCertificateReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1478,7 +1477,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ModifyIpmiReply> task = this._rbkClient.InvokeGenericCallAsync<ModifyIpmiReply>(request, vars, this._logger);
+            Task<ModifyIpmiReply> task = this._rbkClient.InvokeGenericCallAsync<ModifyIpmiReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1516,7 +1515,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CertificateSummaryListResponse> task = this._rbkClient.InvokeGenericCallAsync<CertificateSummaryListResponse>(request, vars, this._logger);
+            Task<CertificateSummaryListResponse> task = this._rbkClient.InvokeGenericCallAsync<CertificateSummaryListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1554,7 +1553,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<ClusterWebCertAndIpmi>> task = this._rbkClient.InvokeGenericCallAsync<List<ClusterWebCertAndIpmi>>(request, vars, this._logger);
+            Task<List<ClusterWebCertAndIpmi>> task = this._rbkClient.InvokeGenericCallAsync<List<ClusterWebCertAndIpmi>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1592,7 +1591,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterOperationJobProgress> task = this._rbkClient.InvokeGenericCallAsync<ClusterOperationJobProgress>(request, vars, this._logger);
+            Task<ClusterOperationJobProgress> task = this._rbkClient.InvokeGenericCallAsync<ClusterOperationJobProgress>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1630,7 +1629,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterCsr> task = this._rbkClient.InvokeGenericCallAsync<ClusterCsr>(request, vars, this._logger);
+            Task<ClusterCsr> task = this._rbkClient.InvokeGenericCallAsync<ClusterCsr>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1666,7 +1665,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 this.WriteObject(this._input);
                 return;
             }
-            Task<List<GroupCount>> task = this._rbkClient.InvokeGenericCallAsync<List<GroupCount>>(request, vars, this._logger);
+            Task<List<GroupCount>> task = this._rbkClient.InvokeGenericCallAsync<List<GroupCount>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1718,7 +1717,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterGroupByConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterGroupByConnection>(request, vars, this._logger);
+            Task<ClusterGroupByConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterGroupByConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1756,7 +1755,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<DataLocationSupportedCluster>> task = this._rbkClient.InvokeGenericCallAsync<List<DataLocationSupportedCluster>>(request, vars, this._logger);
+            Task<List<DataLocationSupportedCluster>> task = this._rbkClient.InvokeGenericCallAsync<List<DataLocationSupportedCluster>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1794,7 +1793,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<ClusterReplicationTarget>> task = this._rbkClient.InvokeGenericCallAsync<List<ClusterReplicationTarget>>(request, vars, this._logger);
+            Task<List<ClusterReplicationTarget>> task = this._rbkClient.InvokeGenericCallAsync<List<ClusterReplicationTarget>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1832,7 +1831,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<HostFailoverCluster> task = this._rbkClient.InvokeGenericCallAsync<HostFailoverCluster>(request, vars, this._logger);
+            Task<HostFailoverCluster> task = this._rbkClient.InvokeGenericCallAsync<HostFailoverCluster>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1880,7 +1879,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<K8sClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<K8sClusterConnection>(request, vars, this._logger);
+            Task<K8sClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<K8sClusterConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1918,7 +1917,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<WindowsCluster> task = this._rbkClient.InvokeGenericCallAsync<WindowsCluster>(request, vars, this._logger);
+            Task<WindowsCluster> task = this._rbkClient.InvokeGenericCallAsync<WindowsCluster>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1956,7 +1955,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<SlaInfo>> task = this._rbkClient.InvokeGenericCallAsync<List<SlaInfo>>(request, vars, this._logger);
+            Task<List<SlaInfo>> task = this._rbkClient.InvokeGenericCallAsync<List<SlaInfo>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1992,7 +1991,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 this.WriteObject(this._input);
                 return;
             }
-            Task<ClusterRegistrationProductInfoType> task = this._rbkClient.InvokeGenericCallAsync<ClusterRegistrationProductInfoType>(request, vars, this._logger);
+            Task<ClusterRegistrationProductInfoType> task = this._rbkClient.InvokeGenericCallAsync<ClusterRegistrationProductInfoType>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2030,7 +2029,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger);
+            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -2068,7 +2067,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.Boolean>> task = this._rbkClient.InvokeGenericCallAsync<List<System.Boolean>>(request, vars, this._logger);
+            Task<List<System.Boolean>> task = this._rbkClient.InvokeGenericCallAsync<List<System.Boolean>>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -479,7 +478,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<GetAzureO365ExocomputeResp> task = this._rbkClient.InvokeGenericCallAsync<GetAzureO365ExocomputeResp>(request, vars, this._logger);
+            Task<GetAzureO365ExocomputeResp> task = this._rbkClient.InvokeGenericCallAsync<GetAzureO365ExocomputeResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -519,7 +518,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger);
+            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -565,7 +564,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger);
+            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -605,7 +604,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger);
+            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -645,7 +644,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger);
+            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -691,7 +690,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger);
+            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -730,7 +729,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureUserRoleResp> task = this._rbkClient.InvokeGenericCallAsync<AzureUserRoleResp>(request, vars, this._logger);
+            Task<AzureUserRoleResp> task = this._rbkClient.InvokeGenericCallAsync<AzureUserRoleResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -778,7 +777,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureNetworkSecurityGroupResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSecurityGroupResp>(request, vars, this._logger);
+            Task<AzureNetworkSecurityGroupResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSecurityGroupResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -828,7 +827,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureNetworkSubnetResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSubnetResp>(request, vars, this._logger);
+            Task<AzureNetworkSubnetResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSubnetResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -878,7 +877,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureNetworkSubnetUnusedAddrResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSubnetUnusedAddrResp>(request, vars, this._logger);
+            Task<AzureNetworkSubnetUnusedAddrResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSubnetUnusedAddrResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -914,7 +913,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 this.WriteObject(this._input);
                 return;
             }
-            Task<GetAzureHostTypeResp> task = this._rbkClient.InvokeGenericCallAsync<GetAzureHostTypeResp>(request, vars, this._logger);
+            Task<GetAzureHostTypeResp> task = this._rbkClient.InvokeGenericCallAsync<GetAzureHostTypeResp>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

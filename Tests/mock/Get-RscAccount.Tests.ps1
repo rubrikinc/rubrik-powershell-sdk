@@ -19,7 +19,7 @@ param(
 . "$PSScriptRoot\..\mock_api_server.ps1"
 
 BeforeAll {
-    if ( ! $UseExistingMockServer) {
+    if (!$UseExistingMockServer) {
         Start-MockApiServer
     }
     $Env:RSC_SERVICE_ACCOUNT_FILE = "$PSScriptRoot/mock_service_account.json"
@@ -28,7 +28,7 @@ BeforeAll {
 
 Describe -Name 'Connect to API' -Fixture {
     It "Returns <expected> (for <name>)" -ForEach @(
-        @{ 
+        @{
             Query         =
             "{
                     'query':
@@ -36,27 +36,21 @@ Describe -Name 'Connect to API' -Fixture {
                             accountSettings{
                                 isEmailNotificationEnabled
                                 isEulaAccepted
-                                __typename
                             }
-                            __typename
-                        }',
-                        'operationName': 'QueryAccountSettings',
-                        'variables': '{}'
+                        }'
                 }"
             ExpectedReply =
             "{
                     'accountSettings': {
                         'isEmailNotificationEnabled': true,
-                        'isEulaAccepted': false,
-                        '__typename': 'AccountSetting'
+                        'isEulaAccepted': false
                     }
                 }"
         }
     ) {
         Update-MockApiServerCache -Query $Query -Reply $ExpectedReply
-        Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile) |
-        Should -BeLikeExactly "AUTHORIZED"
-        $accountSetting = Query-RscAccount -Setting -Debug
+        Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
+        $accountSetting = Invoke-RscQueryAccount -Setting -Debug
         $accountSetting | Should -Not -BeNullOrEmpty
 
         $accountSetting.IsEmailNotificationEnabled | Should -Be $true
@@ -65,7 +59,7 @@ Describe -Name 'Connect to API' -Fixture {
 }
 
 AfterAll {
-    if ( ! $UseExistingMockServer) {
+    if (!$UseExistingMockServer) {
         Close-MockApiServer
     }
 }

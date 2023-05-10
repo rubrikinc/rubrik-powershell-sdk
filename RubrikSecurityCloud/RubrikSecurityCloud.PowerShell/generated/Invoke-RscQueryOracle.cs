@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -586,7 +585,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleTopLevelDescendantTypeConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleTopLevelDescendantTypeConnection>(request, vars, this._logger);
+            Task<OracleTopLevelDescendantTypeConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleTopLevelDescendantTypeConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -634,7 +633,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleDatabaseConnection>(request, vars, this._logger);
+            Task<OracleDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleDatabaseConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -672,7 +671,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleHost> task = this._rbkClient.InvokeGenericCallAsync<OracleHost>(request, vars, this._logger);
+            Task<OracleHost> task = this._rbkClient.InvokeGenericCallAsync<OracleHost>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -710,7 +709,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleRac> task = this._rbkClient.InvokeGenericCallAsync<OracleRac>(request, vars, this._logger);
+            Task<OracleRac> task = this._rbkClient.InvokeGenericCallAsync<OracleRac>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -748,7 +747,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleDataGuardGroup> task = this._rbkClient.InvokeGenericCallAsync<OracleDataGuardGroup>(request, vars, this._logger);
+            Task<OracleDataGuardGroup> task = this._rbkClient.InvokeGenericCallAsync<OracleDataGuardGroup>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -794,7 +793,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleLiveMountConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleLiveMountConnection>(request, vars, this._logger);
+            Task<OracleLiveMountConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleLiveMountConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -832,7 +831,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleAcoParameterList> task = this._rbkClient.InvokeGenericCallAsync<OracleAcoParameterList>(request, vars, this._logger);
+            Task<OracleAcoParameterList> task = this._rbkClient.InvokeGenericCallAsync<OracleAcoParameterList>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -870,7 +869,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<OracleRecoverableRangeListResponse>(request, vars, this._logger);
+            Task<OracleRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<OracleRecoverableRangeListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -908,7 +907,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleMissedRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<OracleMissedRecoverableRangeListResponse>(request, vars, this._logger);
+            Task<OracleMissedRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<OracleMissedRecoverableRangeListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -946,7 +945,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MissedSnapshotListResponse> task = this._rbkClient.InvokeGenericCallAsync<MissedSnapshotListResponse>(request, vars, this._logger);
+            Task<MissedSnapshotListResponse> task = this._rbkClient.InvokeGenericCallAsync<MissedSnapshotListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -984,7 +983,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleFileDownloadLink> task = this._rbkClient.InvokeGenericCallAsync<OracleFileDownloadLink>(request, vars, this._logger);
+            Task<OracleFileDownloadLink> task = this._rbkClient.InvokeGenericCallAsync<OracleFileDownloadLink>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1022,7 +1021,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OraclePdbDetails> task = this._rbkClient.InvokeGenericCallAsync<OraclePdbDetails>(request, vars, this._logger);
+            Task<OraclePdbDetails> task = this._rbkClient.InvokeGenericCallAsync<OraclePdbDetails>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1060,7 +1059,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger);
+            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1098,7 +1097,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger);
+            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1136,7 +1135,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger);
+            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

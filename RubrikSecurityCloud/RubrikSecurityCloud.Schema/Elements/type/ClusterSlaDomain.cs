@@ -44,6 +44,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? OwnerOrgName
+        // GraphQL -> ownerOrgName: String! (scalar)
+        [JsonProperty("ownerOrgName")]
+        public System.String? OwnerOrgName { get; set; }
+
         //      C# -> System.String? PolarisManagedId
         // GraphQL -> polarisManagedId: String (scalar)
         [JsonProperty("polarisManagedId")]
@@ -129,6 +134,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? Id = null,
         System.Boolean? IsRetentionLockedSla = null,
         System.String? Name = null,
+        System.String? OwnerOrgName = null,
         System.String? PolarisManagedId = null,
         System.Int32? ProtectedObjectCount = null,
         System.String? Version = null,
@@ -160,6 +166,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( OwnerOrgName != null ) {
+            this.OwnerOrgName = OwnerOrgName;
         }
         if ( PolarisManagedId != null ) {
             this.PolarisManagedId = PolarisManagedId;
@@ -249,6 +258,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Name != null)
             {
                  s += ind + "name\n";
+
+            }
+            //      C# -> System.String? OwnerOrgName
+            // GraphQL -> ownerOrgName: String! (scalar)
+            if (this.OwnerOrgName != null)
+            {
+                 s += ind + "ownerOrgName\n";
 
             }
             //      C# -> System.String? PolarisManagedId
@@ -429,6 +445,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Name == null && Exploration.Includes(parent + ".name$"))
             {
                 this.Name = new System.String("FETCH");
+            }
+            //      C# -> System.String? OwnerOrgName
+            // GraphQL -> ownerOrgName: String! (scalar)
+            if (this.OwnerOrgName == null && Exploration.Includes(parent + ".ownerOrgName$"))
+            {
+                this.OwnerOrgName = new System.String("FETCH");
             }
             //      C# -> System.String? PolarisManagedId
             // GraphQL -> polarisManagedId: String (scalar)

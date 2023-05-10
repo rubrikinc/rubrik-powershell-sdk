@@ -54,6 +54,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_AWS_IMMUTABLE")]
         ARCHIVAL_AWS_IMMUTABLE,
 
+        [EnumMember(Value = "ARCHIVAL_AWS_JAKARTA")]
+        ARCHIVAL_AWS_JAKARTA,
+
         [EnumMember(Value = "ARCHIVAL_AWS_ZURICH")]
         ARCHIVAL_AWS_ZURICH,
 
@@ -223,7 +226,10 @@ namespace Rubrik.SecurityCloud.Types
         ORACLEDB_TAKE_ON_DEMAND_SNAPSHOT,
 
         [EnumMember(Value = "ORACLEDB_TAKE_TLOG_BACKUP")]
-        ORACLEDB_TAKE_TLOG_BACKUP
+        ORACLEDB_TAKE_TLOG_BACKUP,
+
+        [EnumMember(Value = "SAP_HANA_STATIC_RETENTION")]
+        SAP_HANA_STATIC_RETENTION
 
 
     } // enum CdmFeatureFlagType

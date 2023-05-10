@@ -55,6 +55,35 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 Console.WriteLine($"VERBOSE: {m}");
             }
         }
+
+        public void Info(string message)
+        {
+            var m = ($"{name}: {message}");
+            if (_cmdlet != null)
+            {
+                this._logQueue.Enqueue("I" + m);
+                this.Flush();
+            }
+            else
+            {
+                Console.WriteLine($"INFO: {m}");
+            }
+        }
+
+        public void Warning(string message)
+        {
+            var m = ($"{name}: {message}");
+            if (_cmdlet != null)
+            {
+                this._logQueue.Enqueue("W" + m);
+                this.Flush();
+            }
+            else
+            {
+                Console.WriteLine($"WARNING: {m}");
+            }
+        }
+
         public void Flush()
         {
             if (_cmdlet == null)
@@ -73,10 +102,25 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 // console.
                 try
                 {
-                    if (method == 'V')
-                        _cmdlet.WriteVerbose(message);
-                    else
-                        _cmdlet.WriteDebug(message);
+                    switch (method)
+                    {
+                        case 'V':
+                            _cmdlet.WriteVerbose(message);
+                            break;
+                        case 'D':
+                            _cmdlet.WriteDebug(message);
+                            break;
+                        case 'W':
+                            _cmdlet.WriteWarning(message);
+                            break;
+                        case 'I':
+                            _cmdlet.WriteInformation(
+                                new InformationRecord(message,name));
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
                 catch (Exception ex)
                 {

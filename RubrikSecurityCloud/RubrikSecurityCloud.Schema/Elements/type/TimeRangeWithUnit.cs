@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region TimeRangeWithUnit
  
-    public class TimeRangeWithUnit: IFragment, PolarisSnapshotGroupByInfo, ClusterGroupByInfo, ClusterMetricGroupByInfo, MongoSnapshotGroupByInfo, MosaicSnapshotGroupByInfo, TaskDetailGroupByInfo, RansomwareResultGroupByInfo, ManagedVolumeQueuedSnapshotGroupByInfo, CdmSnapshotGroupByInfo, MissedSnapshotGroupByInfo, AnomalyResultGroupByInfo, SnappableGroupByInfo
+    public class TimeRangeWithUnit: IFragment, PolarisSnapshotGroupByInfo, AnomalyResultGroupByInfo, TaskDetailGroupByInfo, MosaicSnapshotGroupByInfo, ClusterGroupByInfo, SnappableGroupByInfo, CdmSnapshotGroupByInfo, ClusterMetricGroupByInfo, MongoSnapshotGroupByInfo, RansomwareResultGroupByInfo, ManagedVolumeQueuedSnapshotGroupByInfo, MissedSnapshotGroupByInfo
     {
         #region members
         //      C# -> DateTime? End

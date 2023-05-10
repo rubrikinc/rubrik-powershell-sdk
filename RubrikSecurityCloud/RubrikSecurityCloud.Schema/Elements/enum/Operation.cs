@@ -39,8 +39,14 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "ALLOW_SUPPORT_USER_SESSIONS")]
         ALLOW_SUPPORT_USER_SESSIONS,
 
+        [EnumMember(Value = "APPROVE_TPR_REQUEST")]
+        APPROVE_TPR_REQUEST,
+
         [EnumMember(Value = "CANCEL_RUNNING_ACTIVITY")]
         CANCEL_RUNNING_ACTIVITY,
+
+        [EnumMember(Value = "CANCEL_TPR_REQUEST")]
+        CANCEL_TPR_REQUEST,
 
         [EnumMember(Value = "CATEGORY_MANAGE_DATA_SOURCE")]
         CATEGORY_MANAGE_DATA_SOURCE,
@@ -98,6 +104,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET")]
         DOWNLOAD_SNAPSHOT_FROM_REPLICATION_TARGET,
+
+        [EnumMember(Value = "DOWNLOAD_VIRTUAL_MACHINE_FILE")]
+        DOWNLOAD_VIRTUAL_MACHINE_FILE,
 
         [EnumMember(Value = "EDIT_AWS_CLOUD_ACCOUNT")]
         EDIT_AWS_CLOUD_ACCOUNT,
@@ -204,6 +213,15 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "MANAGE_SYSLOG")]
         MANAGE_SYSLOG,
 
+        [EnumMember(Value = "MANAGE_TPR_CONFIGURATION")]
+        MANAGE_TPR_CONFIGURATION,
+
+        [EnumMember(Value = "MANAGE_TPR_ENABLEMENT")]
+        MANAGE_TPR_ENABLEMENT,
+
+        [EnumMember(Value = "MANAGE_TPR_POLICY")]
+        MANAGE_TPR_POLICY,
+
         [EnumMember(Value = "MANAGE_WEBHOOKS")]
         MANAGE_WEBHOOKS,
 
@@ -264,6 +282,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
 
+        [EnumMember(Value = "VIEW_ARCHIVAL_LOCATION")]
+        VIEW_ARCHIVAL_LOCATION,
+
         [EnumMember(Value = "VIEW_AUDIT_LOG")]
         VIEW_AUDIT_LOG,
 
@@ -305,9 +326,6 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "VIEW_INVENTORY")]
         VIEW_INVENTORY,
-
-        [EnumMember(Value = "VIEW_INVENTORY_WITH_HIERARCHY")]
-        VIEW_INVENTORY_WITH_HIERARCHY,
 
         [EnumMember(Value = "VIEW_NETWORK_THROTTLE_SETTINGS")]
         VIEW_NETWORK_THROTTLE_SETTINGS,
@@ -356,6 +374,15 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "VIEW_THREAT_HUNT_RESULTS")]
         VIEW_THREAT_HUNT_RESULTS,
+
+        [EnumMember(Value = "VIEW_TPR_CONFIGURATION")]
+        VIEW_TPR_CONFIGURATION,
+
+        [EnumMember(Value = "VIEW_TPR_POLICY")]
+        VIEW_TPR_POLICY,
+
+        [EnumMember(Value = "VIEW_TPR_REQUEST")]
+        VIEW_TPR_REQUEST,
 
         [EnumMember(Value = "VIEW_USER_MANAGEMENT")]
         VIEW_USER_MANAGEMENT,

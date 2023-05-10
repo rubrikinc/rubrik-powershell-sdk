@@ -57,6 +57,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("recipientUserIds")]
         public List<System.String>? RecipientUserIds { get; set; }
 
+        //      C# -> List<System.String>? ClusterUuids
+        // GraphQL -> clusterUuids: [UUID!] (scalar)
+        [JsonProperty("clusterUuids")]
+        public List<System.String>? ClusterUuids { get; set; }
+
 
         #endregion
 

@@ -87,6 +87,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "HypervVirtualMachine")]
         HYPERV_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "JIRA_PROJECT")]
+        JIRA_PROJECT,
+
         [EnumMember(Value = "KuprNamespace")]
         KUPR_NAMESPACE,
 

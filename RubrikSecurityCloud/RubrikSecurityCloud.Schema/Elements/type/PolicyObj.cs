@@ -43,6 +43,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("allAnalyzerMappings")]
         public List<AnalyzerMapping>? AllAnalyzerMappings { get; set; }
 
+        //      C# -> AnalyzerHits? AnalyzerHits
+        // GraphQL -> analyzerHits: AnalyzerHits (type)
+        [JsonProperty("analyzerHits")]
+        public AnalyzerHits? AnalyzerHits { get; set; }
+
         //      C# -> FileResultConnection? FileResultConnection
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         [JsonProperty("fileResultConnection")]
@@ -68,10 +73,25 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("rootFileResult")]
         public FileResult? RootFileResult { get; set; }
 
+        //      C# -> SensitiveFiles? SensitiveFiles
+        // GraphQL -> sensitiveFiles: SensitiveFiles (type)
+        [JsonProperty("sensitiveFiles")]
+        public SensitiveFiles? SensitiveFiles { get; set; }
+
+        //      C# -> SummaryHits? TotalSensitiveHits
+        // GraphQL -> totalSensitiveHits: SummaryHits (type)
+        [JsonProperty("totalSensitiveHits")]
+        public SummaryHits? TotalSensitiveHits { get; set; }
+
         //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
         // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
         [JsonProperty("whitelistedAnalyzerList")]
         public List<WhitelistedAnalyzer>? WhitelistedAnalyzerList { get; set; }
+
+        //      C# -> List<RiskReason>? AccessRiskReasons
+        // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
+        [JsonProperty("accessRiskReasons")]
+        public List<RiskReason>? AccessRiskReasons { get; set; }
 
         //      C# -> AnalysisStatus? AnalysisStatus
         // GraphQL -> analysisStatus: AnalysisStatus! (enum)
@@ -108,12 +128,16 @@ namespace Rubrik.SecurityCloud.Types
         System.Int64? SnapshotTimestamp = null,
         System.String? TimeContext = null,
         List<AnalyzerMapping>? AllAnalyzerMappings = null,
+        AnalyzerHits? AnalyzerHits = null,
         FileResultConnection? FileResultConnection = null,
         FileResultConnection? FolderChildConnection = null,
         ObjectStatus? ObjectStatus = null,
         List<ClassificationPolicySummary>? PolicySummaries = null,
         FileResult? RootFileResult = null,
+        SensitiveFiles? SensitiveFiles = null,
+        SummaryHits? TotalSensitiveHits = null,
         List<WhitelistedAnalyzer>? WhitelistedAnalyzerList = null,
+        List<RiskReason>? AccessRiskReasons = null,
         AnalysisStatus? AnalysisStatus = null,
         DataGovOsType? OsType = null,
         RiskLevelType? RiskLevel = null,
@@ -136,6 +160,9 @@ namespace Rubrik.SecurityCloud.Types
         if ( AllAnalyzerMappings != null ) {
             this.AllAnalyzerMappings = AllAnalyzerMappings;
         }
+        if ( AnalyzerHits != null ) {
+            this.AnalyzerHits = AnalyzerHits;
+        }
         if ( FileResultConnection != null ) {
             this.FileResultConnection = FileResultConnection;
         }
@@ -151,8 +178,17 @@ namespace Rubrik.SecurityCloud.Types
         if ( RootFileResult != null ) {
             this.RootFileResult = RootFileResult;
         }
+        if ( SensitiveFiles != null ) {
+            this.SensitiveFiles = SensitiveFiles;
+        }
+        if ( TotalSensitiveHits != null ) {
+            this.TotalSensitiveHits = TotalSensitiveHits;
+        }
         if ( WhitelistedAnalyzerList != null ) {
             this.WhitelistedAnalyzerList = WhitelistedAnalyzerList;
+        }
+        if ( AccessRiskReasons != null ) {
+            this.AccessRiskReasons = AccessRiskReasons;
         }
         if ( AnalysisStatus != null ) {
             this.AnalysisStatus = AnalysisStatus;
@@ -217,6 +253,16 @@ namespace Rubrik.SecurityCloud.Types
                  this.AllAnalyzerMappings.AsFragment(indent+1) + 
                  ind + "}\n";
             }
+            //      C# -> AnalyzerHits? AnalyzerHits
+            // GraphQL -> analyzerHits: AnalyzerHits (type)
+            if (this.AnalyzerHits != null)
+            {
+                 s += ind + "analyzerHits\n";
+
+                 s += ind + "{\n" + 
+                 this.AnalyzerHits.AsFragment(indent+1) + 
+                 ind + "}\n";
+            }
             //      C# -> FileResultConnection? FileResultConnection
             // GraphQL -> fileResultConnection: FileResultConnection! (type)
             if (this.FileResultConnection != null)
@@ -267,6 +313,26 @@ namespace Rubrik.SecurityCloud.Types
                  this.RootFileResult.AsFragment(indent+1) + 
                  ind + "}\n";
             }
+            //      C# -> SensitiveFiles? SensitiveFiles
+            // GraphQL -> sensitiveFiles: SensitiveFiles (type)
+            if (this.SensitiveFiles != null)
+            {
+                 s += ind + "sensitiveFiles\n";
+
+                 s += ind + "{\n" + 
+                 this.SensitiveFiles.AsFragment(indent+1) + 
+                 ind + "}\n";
+            }
+            //      C# -> SummaryHits? TotalSensitiveHits
+            // GraphQL -> totalSensitiveHits: SummaryHits (type)
+            if (this.TotalSensitiveHits != null)
+            {
+                 s += ind + "totalSensitiveHits\n";
+
+                 s += ind + "{\n" + 
+                 this.TotalSensitiveHits.AsFragment(indent+1) + 
+                 ind + "}\n";
+            }
             //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
             // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
             if (this.WhitelistedAnalyzerList != null)
@@ -276,6 +342,13 @@ namespace Rubrik.SecurityCloud.Types
                  s += ind + "{\n" + 
                  this.WhitelistedAnalyzerList.AsFragment(indent+1) + 
                  ind + "}\n";
+            }
+            //      C# -> List<RiskReason>? AccessRiskReasons
+            // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
+            if (this.AccessRiskReasons != null)
+            {
+                 s += ind + "accessRiskReasons\n";
+
             }
             //      C# -> AnalysisStatus? AnalysisStatus
             // GraphQL -> analysisStatus: AnalysisStatus! (enum)
@@ -363,6 +436,13 @@ namespace Rubrik.SecurityCloud.Types
                 this.AllAnalyzerMappings = new List<AnalyzerMapping>();
                 this.AllAnalyzerMappings.ApplyExploratoryFragment(parent + ".allAnalyzerMappings");
             }
+            //      C# -> AnalyzerHits? AnalyzerHits
+            // GraphQL -> analyzerHits: AnalyzerHits (type)
+            if (this.AnalyzerHits == null && Exploration.Includes(parent + ".analyzerHits"))
+            {
+                this.AnalyzerHits = new AnalyzerHits();
+                this.AnalyzerHits.ApplyExploratoryFragment(parent + ".analyzerHits");
+            }
             //      C# -> FileResultConnection? FileResultConnection
             // GraphQL -> fileResultConnection: FileResultConnection! (type)
             if (this.FileResultConnection == null && Exploration.Includes(parent + ".fileResultConnection"))
@@ -398,12 +478,32 @@ namespace Rubrik.SecurityCloud.Types
                 this.RootFileResult = new FileResult();
                 this.RootFileResult.ApplyExploratoryFragment(parent + ".rootFileResult");
             }
+            //      C# -> SensitiveFiles? SensitiveFiles
+            // GraphQL -> sensitiveFiles: SensitiveFiles (type)
+            if (this.SensitiveFiles == null && Exploration.Includes(parent + ".sensitiveFiles"))
+            {
+                this.SensitiveFiles = new SensitiveFiles();
+                this.SensitiveFiles.ApplyExploratoryFragment(parent + ".sensitiveFiles");
+            }
+            //      C# -> SummaryHits? TotalSensitiveHits
+            // GraphQL -> totalSensitiveHits: SummaryHits (type)
+            if (this.TotalSensitiveHits == null && Exploration.Includes(parent + ".totalSensitiveHits"))
+            {
+                this.TotalSensitiveHits = new SummaryHits();
+                this.TotalSensitiveHits.ApplyExploratoryFragment(parent + ".totalSensitiveHits");
+            }
             //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
             // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
             if (this.WhitelistedAnalyzerList == null && Exploration.Includes(parent + ".whitelistedAnalyzerList"))
             {
                 this.WhitelistedAnalyzerList = new List<WhitelistedAnalyzer>();
                 this.WhitelistedAnalyzerList.ApplyExploratoryFragment(parent + ".whitelistedAnalyzerList");
+            }
+            //      C# -> List<RiskReason>? AccessRiskReasons
+            // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
+            if (this.AccessRiskReasons == null && Exploration.Includes(parent + ".accessRiskReasons$"))
+            {
+                this.AccessRiskReasons = new List<RiskReason>();
             }
             //      C# -> AnalysisStatus? AnalysisStatus
             // GraphQL -> analysisStatus: AnalysisStatus! (enum)

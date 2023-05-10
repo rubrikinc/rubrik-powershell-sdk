@@ -23,6 +23,16 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("inactivityTimeoutInSeconds")]
         public System.Int64? InactivityTimeoutInSeconds { get; set; }
 
+        //      C# -> System.Int64? InactivityTimeoutInSecondsMaxLimit
+        // GraphQL -> inactivityTimeoutInSecondsMaxLimit: Long! (scalar)
+        [JsonProperty("inactivityTimeoutInSecondsMaxLimit")]
+        public System.Int64? InactivityTimeoutInSecondsMaxLimit { get; set; }
+
+        //      C# -> System.Int64? InactivityTimeoutInSecondsMinLimit
+        // GraphQL -> inactivityTimeoutInSecondsMinLimit: Long! (scalar)
+        [JsonProperty("inactivityTimeoutInSecondsMinLimit")]
+        public System.Int64? InactivityTimeoutInSecondsMinLimit { get; set; }
+
         //      C# -> System.Boolean? IsConcurrentSessionLimitationEnabled
         // GraphQL -> isConcurrentSessionLimitationEnabled: Boolean! (scalar)
         [JsonProperty("isConcurrentSessionLimitationEnabled")]
@@ -38,19 +48,39 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("maxConcurrentSessions")]
         public System.Int32? MaxConcurrentSessions { get; set; }
 
+        //      C# -> System.Int32? MaxConcurrentSessionsMaxLimit
+        // GraphQL -> maxConcurrentSessionsMaxLimit: Int! (scalar)
+        [JsonProperty("maxConcurrentSessionsMaxLimit")]
+        public System.Int32? MaxConcurrentSessionsMaxLimit { get; set; }
+
+        //      C# -> System.Int64? SessionTimeoutInSeconds
+        // GraphQL -> sessionTimeoutInSeconds: Long! (scalar)
+        [JsonProperty("sessionTimeoutInSeconds")]
+        public System.Int64? SessionTimeoutInSeconds { get; set; }
+
         #endregion
 
     #region methods
 
     public UserSessionManagementConfig Set(
         System.Int64? InactivityTimeoutInSeconds = null,
+        System.Int64? InactivityTimeoutInSecondsMaxLimit = null,
+        System.Int64? InactivityTimeoutInSecondsMinLimit = null,
         System.Boolean? IsConcurrentSessionLimitationEnabled = null,
         System.Boolean? IsInactivityTimeoutEnabled = null,
-        System.Int32? MaxConcurrentSessions = null
+        System.Int32? MaxConcurrentSessions = null,
+        System.Int32? MaxConcurrentSessionsMaxLimit = null,
+        System.Int64? SessionTimeoutInSeconds = null
     ) 
     {
         if ( InactivityTimeoutInSeconds != null ) {
             this.InactivityTimeoutInSeconds = InactivityTimeoutInSeconds;
+        }
+        if ( InactivityTimeoutInSecondsMaxLimit != null ) {
+            this.InactivityTimeoutInSecondsMaxLimit = InactivityTimeoutInSecondsMaxLimit;
+        }
+        if ( InactivityTimeoutInSecondsMinLimit != null ) {
+            this.InactivityTimeoutInSecondsMinLimit = InactivityTimeoutInSecondsMinLimit;
         }
         if ( IsConcurrentSessionLimitationEnabled != null ) {
             this.IsConcurrentSessionLimitationEnabled = IsConcurrentSessionLimitationEnabled;
@@ -60,6 +90,12 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( MaxConcurrentSessions != null ) {
             this.MaxConcurrentSessions = MaxConcurrentSessions;
+        }
+        if ( MaxConcurrentSessionsMaxLimit != null ) {
+            this.MaxConcurrentSessionsMaxLimit = MaxConcurrentSessionsMaxLimit;
+        }
+        if ( SessionTimeoutInSeconds != null ) {
+            this.SessionTimeoutInSeconds = SessionTimeoutInSeconds;
         }
         return this;
     }
@@ -76,6 +112,20 @@ namespace Rubrik.SecurityCloud.Types
             if (this.InactivityTimeoutInSeconds != null)
             {
                  s += ind + "inactivityTimeoutInSeconds\n";
+
+            }
+            //      C# -> System.Int64? InactivityTimeoutInSecondsMaxLimit
+            // GraphQL -> inactivityTimeoutInSecondsMaxLimit: Long! (scalar)
+            if (this.InactivityTimeoutInSecondsMaxLimit != null)
+            {
+                 s += ind + "inactivityTimeoutInSecondsMaxLimit\n";
+
+            }
+            //      C# -> System.Int64? InactivityTimeoutInSecondsMinLimit
+            // GraphQL -> inactivityTimeoutInSecondsMinLimit: Long! (scalar)
+            if (this.InactivityTimeoutInSecondsMinLimit != null)
+            {
+                 s += ind + "inactivityTimeoutInSecondsMinLimit\n";
 
             }
             //      C# -> System.Boolean? IsConcurrentSessionLimitationEnabled
@@ -99,6 +149,20 @@ namespace Rubrik.SecurityCloud.Types
                  s += ind + "maxConcurrentSessions\n";
 
             }
+            //      C# -> System.Int32? MaxConcurrentSessionsMaxLimit
+            // GraphQL -> maxConcurrentSessionsMaxLimit: Int! (scalar)
+            if (this.MaxConcurrentSessionsMaxLimit != null)
+            {
+                 s += ind + "maxConcurrentSessionsMaxLimit\n";
+
+            }
+            //      C# -> System.Int64? SessionTimeoutInSeconds
+            // GraphQL -> sessionTimeoutInSeconds: Long! (scalar)
+            if (this.SessionTimeoutInSeconds != null)
+            {
+                 s += ind + "sessionTimeoutInSeconds\n";
+
+            }
             return new string(s);
         }
 
@@ -112,6 +176,18 @@ namespace Rubrik.SecurityCloud.Types
             if (this.InactivityTimeoutInSeconds == null && Exploration.Includes(parent + ".inactivityTimeoutInSeconds$"))
             {
                 this.InactivityTimeoutInSeconds = new System.Int64();
+            }
+            //      C# -> System.Int64? InactivityTimeoutInSecondsMaxLimit
+            // GraphQL -> inactivityTimeoutInSecondsMaxLimit: Long! (scalar)
+            if (this.InactivityTimeoutInSecondsMaxLimit == null && Exploration.Includes(parent + ".inactivityTimeoutInSecondsMaxLimit$"))
+            {
+                this.InactivityTimeoutInSecondsMaxLimit = new System.Int64();
+            }
+            //      C# -> System.Int64? InactivityTimeoutInSecondsMinLimit
+            // GraphQL -> inactivityTimeoutInSecondsMinLimit: Long! (scalar)
+            if (this.InactivityTimeoutInSecondsMinLimit == null && Exploration.Includes(parent + ".inactivityTimeoutInSecondsMinLimit$"))
+            {
+                this.InactivityTimeoutInSecondsMinLimit = new System.Int64();
             }
             //      C# -> System.Boolean? IsConcurrentSessionLimitationEnabled
             // GraphQL -> isConcurrentSessionLimitationEnabled: Boolean! (scalar)
@@ -130,6 +206,18 @@ namespace Rubrik.SecurityCloud.Types
             if (this.MaxConcurrentSessions == null && Exploration.Includes(parent + ".maxConcurrentSessions$"))
             {
                 this.MaxConcurrentSessions = new System.Int32();
+            }
+            //      C# -> System.Int32? MaxConcurrentSessionsMaxLimit
+            // GraphQL -> maxConcurrentSessionsMaxLimit: Int! (scalar)
+            if (this.MaxConcurrentSessionsMaxLimit == null && Exploration.Includes(parent + ".maxConcurrentSessionsMaxLimit$"))
+            {
+                this.MaxConcurrentSessionsMaxLimit = new System.Int32();
+            }
+            //      C# -> System.Int64? SessionTimeoutInSeconds
+            // GraphQL -> sessionTimeoutInSeconds: Long! (scalar)
+            if (this.SessionTimeoutInSeconds == null && Exploration.Includes(parent + ".sessionTimeoutInSeconds$"))
+            {
+                this.SessionTimeoutInSeconds = new System.Int64();
             }
         }
 

@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -230,7 +229,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger);
+            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -268,7 +267,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger);
+            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -306,7 +305,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger);
+            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -344,7 +343,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger);
+            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -382,7 +381,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger);
+            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

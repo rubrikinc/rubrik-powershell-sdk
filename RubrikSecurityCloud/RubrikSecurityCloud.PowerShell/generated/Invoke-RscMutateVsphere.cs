@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -100,6 +99,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // downloadVirtualMachineFile parameter set
+        //
+        // GraphQL operation: downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!):AsyncRequestStatus!
+        //
+        [Parameter(
+            ParameterSetName = "downloadVirtualMachineFile",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage = "GraphQL operation: downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!):AsyncRequestStatus!",
+            Position = 0
+        )]
+        public SwitchParameter downloadVirtualMachineFile { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // createAdvancedTag parameter set
         //
         // GraphQL operation: createVsphereAdvancedTag(input: CreateVsphereAdvancedTagInput!):CreateVsphereAdvancedTagReply!
@@ -165,6 +180,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "ExportSnapshotToStandaloneHostV2":
                         this.ProcessRecord_ExportSnapshotToStandaloneHostV2();
                         break;
+                    case "downloadVirtualMachineFile":
+                        this.ProcessRecord_downloadVirtualMachineFile();
+                        break;
                     case "createAdvancedTag":
                         this.ProcessRecord_createAdvancedTag();
                         break;
@@ -227,6 +245,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // downloadVsphereVirtualMachineFiles.
+        protected void ProcessRecord_downloadVirtualMachineFile()
+        {
+            this._logger.name += " -downloadVirtualMachineFile";
+            // Invoke graphql operation downloadVsphereVirtualMachineFiles
+            InvokeMutationDownloadVsphereVirtualMachineFiles();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // createVsphereAdvancedTag.
         protected void ProcessRecord_createAdvancedTag()
         {
@@ -286,7 +313,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger);
+            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -324,7 +351,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchAsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<BatchAsyncRequestStatus>(request, vars, this._logger);
+            Task<BatchAsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<BatchAsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -362,7 +389,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger);
+            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -400,7 +427,45 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger);
+            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
+            task.Wait();
+            this._logger.Flush();
+            WriteObject(task.Result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!): AsyncRequestStatus!
+        protected void InvokeMutationDownloadVsphereVirtualMachineFiles()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DownloadVsphereVirtualMachineFilesInput!"),
+            };
+            AsyncRequestStatus? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject) {
+                    var psObject = (PSObject)this.Field;
+                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                } else {
+                    fields = (AsyncRequestStatus)this.Field;
+                }
+            }
+            string document = Mutation.DownloadVsphereVirtualMachineFiles(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.DownloadVsphereVirtualMachineFiles");
+            string parameters = "($input: DownloadVsphereVirtualMachineFilesInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationDownloadVsphereVirtualMachineFiles" + parameters + "{" + document + "}",
+                OperationName = "MutationDownloadVsphereVirtualMachineFiles",
+            };
+            OperationVariableSet vars = new OperationVariableSet();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -438,7 +503,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CreateVsphereAdvancedTagReply> task = this._rbkClient.InvokeGenericCallAsync<CreateVsphereAdvancedTagReply>(request, vars, this._logger);
+            Task<CreateVsphereAdvancedTagReply> task = this._rbkClient.InvokeGenericCallAsync<CreateVsphereAdvancedTagReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -476,7 +541,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger);
+            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -514,7 +579,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateVsphereAdvancedTagReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateVsphereAdvancedTagReply>(request, vars, this._logger);
+            Task<UpdateVsphereAdvancedTagReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateVsphereAdvancedTagReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

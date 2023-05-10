@@ -15,6 +15,9 @@ namespace Rubrik.SecurityCloud.Types
 {
     public enum HierarchySortByField
     {
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_NAME")]
+        ACTIVE_DIRECTORY_DOMAIN_NAME,
+
         [EnumMember(Value = "ASSIGNED_SLA_DOMAIN")]
         ASSIGNED_SLA_DOMAIN,
 

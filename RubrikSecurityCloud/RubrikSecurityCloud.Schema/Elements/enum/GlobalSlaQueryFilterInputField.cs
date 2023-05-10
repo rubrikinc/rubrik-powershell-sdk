@@ -36,6 +36,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "ORG_ID_WITH_VIEW_ACCESS_ONLY")]
         ORG_ID_WITH_VIEW_ACCESS_ONLY,
 
+        [EnumMember(Value = "OWNER_ORG_ID")]
+        OWNER_ORG_ID,
+
         [EnumMember(Value = "SHOW_ALL_RUBRIK_AND_APPLIANCE_SLAS")]
         SHOW_ALL_RUBRIK_AND_APPLIANCE_SLAS,
 

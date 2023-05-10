@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ClusterType
  
-    public class ClusterType: IFragment, ClusterGroupByInfo, SnappableGroupByInfo
+    public class ClusterType: IFragment, SnappableGroupByInfo, ClusterGroupByInfo
     {
         #region members
         //      C# -> ClusterTypeEnum? EnumValue

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using RubrikSecurityCloud.PowerShell.Private;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets

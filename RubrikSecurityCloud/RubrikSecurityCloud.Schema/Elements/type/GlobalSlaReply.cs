@@ -54,6 +54,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
+        //      C# -> System.String? OwnerOrgName
+        // GraphQL -> ownerOrgName: String! (scalar)
+        [JsonProperty("ownerOrgName")]
+        public System.String? OwnerOrgName { get; set; }
+
         //      C# -> System.Int32? ProtectedObjectCount
         // GraphQL -> protectedObjectCount: Int! (scalar)
         [JsonProperty("protectedObjectCount")]
@@ -171,6 +176,7 @@ namespace Rubrik.SecurityCloud.Types
         System.Boolean? IsDefault = null,
         System.Boolean? IsRetentionLockedSla = null,
         System.String? Name = null,
+        System.String? OwnerOrgName = null,
         System.Int32? ProtectedObjectCount = null,
         DateTime? SnapshotScheduleLastUpdatedAt = null,
         System.Int64? StateVersion = null,
@@ -214,6 +220,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Name != null ) {
             this.Name = Name;
+        }
+        if ( OwnerOrgName != null ) {
+            this.OwnerOrgName = OwnerOrgName;
         }
         if ( ProtectedObjectCount != null ) {
             this.ProtectedObjectCount = ProtectedObjectCount;
@@ -335,6 +344,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Name != null)
             {
                  s += ind + "name\n";
+
+            }
+            //      C# -> System.String? OwnerOrgName
+            // GraphQL -> ownerOrgName: String! (scalar)
+            if (this.OwnerOrgName != null)
+            {
+                 s += ind + "ownerOrgName\n";
 
             }
             //      C# -> System.Int32? ProtectedObjectCount
@@ -578,6 +594,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Name == null && Exploration.Includes(parent + ".name$"))
             {
                 this.Name = new System.String("FETCH");
+            }
+            //      C# -> System.String? OwnerOrgName
+            // GraphQL -> ownerOrgName: String! (scalar)
+            if (this.OwnerOrgName == null && Exploration.Includes(parent + ".ownerOrgName$"))
+            {
+                this.OwnerOrgName = new System.String("FETCH");
             }
             //      C# -> System.Int32? ProtectedObjectCount
             // GraphQL -> protectedObjectCount: Int! (scalar)

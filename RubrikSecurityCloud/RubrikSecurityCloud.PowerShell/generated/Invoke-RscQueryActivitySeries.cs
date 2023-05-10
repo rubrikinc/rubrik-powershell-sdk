@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -202,7 +201,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ActivitySeries> task = this._rbkClient.InvokeGenericCallAsync<ActivitySeries>(request, vars, this._logger);
+            Task<ActivitySeries> task = this._rbkClient.InvokeGenericCallAsync<ActivitySeries>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -254,7 +253,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ActivitySeriesConnection> task = this._rbkClient.InvokeGenericCallAsync<ActivitySeriesConnection>(request, vars, this._logger);
+            Task<ActivitySeriesConnection> task = this._rbkClient.InvokeGenericCallAsync<ActivitySeriesConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

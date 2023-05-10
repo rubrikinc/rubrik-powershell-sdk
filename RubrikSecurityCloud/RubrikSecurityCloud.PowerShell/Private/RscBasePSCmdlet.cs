@@ -16,7 +16,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
 {
     public class RscBasePSCmdlet : PSCmdlet
     {
-        //
+        /// <summary>
+        /// Input: Operation to run. Overridden by operation switches.
+        /// </summary>
         [Parameter(
             Mandatory = false,
             Position = 1,
@@ -24,7 +26,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             ValueFromPipelineByPropertyName = true)]
         public String Op { get; set; }
 
-        //
+        /// <summary>
+        /// Input: Arguments to the operation. Overridden by argument parameters.
+        /// </summary>
         [Parameter(
             Mandatory = false,
             Position = 2,
@@ -32,7 +36,12 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             ValueFromPipelineByPropertyName = true)]
         public Object Arg { get; set; }
 
-        //
+        /// <summary>
+        /// An object that represents the fields that need to be returned
+        /// for a given query. Each property on this object that does not
+        /// have a null value (actual values don’t matter) will be included 
+        /// in the API request.
+        /// </summary>
         [Parameter(
             Mandatory = false,
             Position = 3,
@@ -40,12 +49,21 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             ValueFromPipelineByPropertyName = true)]
         public Object Field { get; set; }
 
+        /// <summary>
+        /// Returns an object that contains the Op, Arg and Field inputs
+        /// that would be used to run the operation.
+        /// </summary>
         [Parameter(
             Mandatory = false,
             Position = 4,
             ValueFromPipeline = false)]
         public SwitchParameter GetInputs { get; set; }
 
+        /// <summary>
+        /// The input profile determines how inputs to the operation
+        /// should be automatically set if they are not explicitly given
+        /// as parameters.
+        /// </summary>
         [Parameter(
             Mandatory = false,
             Position = 5,

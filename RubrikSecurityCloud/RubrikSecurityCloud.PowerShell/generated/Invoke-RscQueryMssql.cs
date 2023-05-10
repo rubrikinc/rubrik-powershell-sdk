@@ -14,7 +14,6 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
-using Rubrik.SecurityCloud.Operations;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -558,7 +557,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlTopLevelDescendantTypeConnection> task = this._rbkClient.InvokeGenericCallAsync<MssqlTopLevelDescendantTypeConnection>(request, vars, this._logger);
+            Task<MssqlTopLevelDescendantTypeConnection> task = this._rbkClient.InvokeGenericCallAsync<MssqlTopLevelDescendantTypeConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -606,7 +605,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<MssqlDatabaseConnection>(request, vars, this._logger);
+            Task<MssqlDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<MssqlDatabaseConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -644,7 +643,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlAvailabilityGroup> task = this._rbkClient.InvokeGenericCallAsync<MssqlAvailabilityGroup>(request, vars, this._logger);
+            Task<MssqlAvailabilityGroup> task = this._rbkClient.InvokeGenericCallAsync<MssqlAvailabilityGroup>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -682,7 +681,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlInstance> task = this._rbkClient.InvokeGenericCallAsync<MssqlInstance>(request, vars, this._logger);
+            Task<MssqlInstance> task = this._rbkClient.InvokeGenericCallAsync<MssqlInstance>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -720,7 +719,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<MssqlRecoverableRangeListResponse>(request, vars, this._logger);
+            Task<MssqlRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<MssqlRecoverableRangeListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -758,7 +757,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MissedSnapshotListResponse> task = this._rbkClient.InvokeGenericCallAsync<MissedSnapshotListResponse>(request, vars, this._logger);
+            Task<MissedSnapshotListResponse> task = this._rbkClient.InvokeGenericCallAsync<MissedSnapshotListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -796,7 +795,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlInstanceSummaryListResponse> task = this._rbkClient.InvokeGenericCallAsync<MssqlInstanceSummaryListResponse>(request, vars, this._logger);
+            Task<MssqlInstanceSummaryListResponse> task = this._rbkClient.InvokeGenericCallAsync<MssqlInstanceSummaryListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -834,7 +833,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlMissedRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<MssqlMissedRecoverableRangeListResponse>(request, vars, this._logger);
+            Task<MssqlMissedRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<MssqlMissedRecoverableRangeListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -872,7 +871,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<V1MssqlGetRestoreFilesV1Response> task = this._rbkClient.InvokeGenericCallAsync<V1MssqlGetRestoreFilesV1Response>(request, vars, this._logger);
+            Task<V1MssqlGetRestoreFilesV1Response> task = this._rbkClient.InvokeGenericCallAsync<V1MssqlGetRestoreFilesV1Response>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -918,7 +917,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlDatabaseLiveMountConnection> task = this._rbkClient.InvokeGenericCallAsync<MssqlDatabaseLiveMountConnection>(request, vars, this._logger);
+            Task<MssqlDatabaseLiveMountConnection> task = this._rbkClient.InvokeGenericCallAsync<MssqlDatabaseLiveMountConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -956,7 +955,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateMssqlDefaultPropertiesReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateMssqlDefaultPropertiesReply>(request, vars, this._logger);
+            Task<UpdateMssqlDefaultPropertiesReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateMssqlDefaultPropertiesReply>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -994,7 +993,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlRestoreEstimateResult> task = this._rbkClient.InvokeGenericCallAsync<MssqlRestoreEstimateResult>(request, vars, this._logger);
+            Task<MssqlRestoreEstimateResult> task = this._rbkClient.InvokeGenericCallAsync<MssqlRestoreEstimateResult>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1040,7 +1039,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlLogShippingTargetConnection> task = this._rbkClient.InvokeGenericCallAsync<MssqlLogShippingTargetConnection>(request, vars, this._logger);
+            Task<MssqlLogShippingTargetConnection> task = this._rbkClient.InvokeGenericCallAsync<MssqlLogShippingTargetConnection>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);
@@ -1078,7 +1077,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MssqlLogShippingSummaryV2ListResponse> task = this._rbkClient.InvokeGenericCallAsync<MssqlLogShippingSummaryV2ListResponse>(request, vars, this._logger);
+            Task<MssqlLogShippingSummaryV2ListResponse> task = this._rbkClient.InvokeGenericCallAsync<MssqlLogShippingSummaryV2ListResponse>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

@@ -112,6 +112,24 @@ namespace Rubrik.SecurityCloud.Types
             return new string("allDeploymentIpAddresses" + args + "\n");
         }
 
+        //      C# -> LookupAccountReply? LookupAccount
+        // GraphQL -> lookupAccount: LookupAccountReply! (type)
+        public static string LookupAccount(
+            ref LookupAccountReply? cmdletReply
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new LookupAccountReply() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "lookupAccount" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
         //      C# -> ActivitySeries? ActivitySeries
         // GraphQL -> activitySeries: ActivitySeries! (type)
         public static string ActivitySeries(
@@ -505,6 +523,24 @@ namespace Rubrik.SecurityCloud.Types
             return new string("allS3BucketsFromAws" + args + "\n");
         }
 
+        //      C# -> List<S3BucketDetails>? AllS3BucketsDetailsFromAws
+        // GraphQL -> allS3BucketsDetailsFromAws: [S3BucketDetails!]! (type)
+        public static string AllS3BucketsDetailsFromAws(
+            ref List<S3BucketDetails>? cmdletReply
+        )
+        {
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new List<S3BucketDetails>() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "allS3BucketsDetailsFromAws" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
         //      C# -> AwsNativeRdsInstance? AwsNativeRdsInstance
         // GraphQL -> awsNativeRdsInstance: AwsNativeRdsInstance! (type)
         public static string AwsNativeRdsInstance(
@@ -547,7 +583,7 @@ namespace Rubrik.SecurityCloud.Types
             ref AwsNativeRdsPointInTimeRestoreWindow? cmdletReply
         )
         {
-            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\n)";
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\nrdsDatabaseRubrikId: $rdsDatabaseRubrikId\n)";
             if (cmdletReply == null)
             {
                 cmdletReply = new AwsNativeRdsPointInTimeRestoreWindow() ;
@@ -565,7 +601,7 @@ namespace Rubrik.SecurityCloud.Types
             ref RdsInstanceDetailsFromAws? cmdletReply
         )
         {
-            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\n)";
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\nrdsInstanceName: $rdsInstanceName\nrdsDatabaseRubrikId: $rdsDatabaseRubrikId\n)";
             if (cmdletReply == null)
             {
                 cmdletReply = new RdsInstanceDetailsFromAws() ;
@@ -2491,6 +2527,24 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> AsyncRequestStatus? SupportBundle
+        // GraphQL -> supportBundle: AsyncRequestStatus! (type)
+        public static string SupportBundle(
+            ref AsyncRequestStatus? cmdletReply
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new AsyncRequestStatus() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "supportBundle" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount! (interface)
         public static string CloudAccount(
@@ -2703,6 +2757,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "allConnectedClusters" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
+        //      C# -> ValidReplicationTargetConnection? AllValidReplicationTargets
+        // GraphQL -> allValidReplicationTargets: ValidReplicationTargetConnection! (type)
+        public static string AllValidReplicationTargets(
+            ref ValidReplicationTargetConnection? cmdletReply
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new ValidReplicationTargetConnection() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "allValidReplicationTargets" + args + "{\n" +
                 cmdletReply.AsFragment(1) +
                 "}\n");
         }
@@ -3646,7 +3718,7 @@ namespace Rubrik.SecurityCloud.Types
             ref PolicyObjConnection? cmdletReply
         )
         {
-            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\nday: $day\ntimezone: $timezone\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nanalysisStatusesFilter: $analysisStatusesFilter\npolicyIdsFilter: $policyIdsFilter\nriskLevelsFilter: $riskLevelsFilter\nclusterIdsFilter: $clusterIdsFilter\nsearchObjectName: $searchObjectName\nsubscriptionIdsFilter: $subscriptionIdsFilter\nincludeWhitelistedResults: $includeWhitelistedResults\nsids: $sids\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             if (cmdletReply == null)
             {
                 cmdletReply = new PolicyObjConnection() ;
@@ -5607,6 +5679,42 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "threatMonitoringMatchedObjects" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
+        //      C# -> FileMatchConnection? ThreatMonitoringMatchedFiles
+        // GraphQL -> threatMonitoringMatchedFiles: FileMatchConnection! (type)
+        public static string ThreatMonitoringMatchedFiles(
+            ref FileMatchConnection? cmdletReply
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nobjectFid: $objectFid\nfilenameSearchFilter: $filenameSearchFilter\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new FileMatchConnection() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "threatMonitoringMatchedFiles" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
+        //      C# -> ThreatMonitoringFileMatchDetailsReply? ThreatMonitoringMatchedFileDetails
+        // GraphQL -> threatMonitoringMatchedFileDetails: ThreatMonitoringFileMatchDetailsReply! (type)
+        public static string ThreatMonitoringMatchedFileDetails(
+            ref ThreatMonitoringFileMatchDetailsReply? cmdletReply
+        )
+        {
+            string args = "\n(\nobjectFid: $objectFid\nfilename: $filename\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new ThreatMonitoringFileMatchDetailsReply() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "threatMonitoringMatchedFileDetails" + args + "{\n" +
                 cmdletReply.AsFragment(1) +
                 "}\n");
         }
@@ -10067,6 +10175,24 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> LockoutConfig? GlobalLockoutConfig
+        // GraphQL -> globalLockoutConfig: LockoutConfig! (type)
+        public static string GlobalLockoutConfig(
+            ref LockoutConfig? cmdletReply
+        )
+        {
+            string args = "";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new LockoutConfig() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "globalLockoutConfig" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
         //      C# -> OauthCodesForEdgeRegReply? OauthCodesForEdgeReg
         // GraphQL -> oauthCodesForEdgeReg: OauthCodesForEdgeRegReply! (type)
         public static string OauthCodesForEdgeReg(
@@ -11884,24 +12010,6 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "supportUserAccesses" + args + "{\n" +
-                cmdletReply.AsFragment(1) +
-                "}\n");
-        }
-
-        //      C# -> UnifiedFeatureFlag? SingleUnifiedFeatureFlag
-        // GraphQL -> singleUnifiedFeatureFlag: UnifiedFeatureFlag! (type)
-        public static string SingleUnifiedFeatureFlag(
-            ref UnifiedFeatureFlag? cmdletReply
-        )
-        {
-            string args = "\n(\ninput: $input\n)";
-            if (cmdletReply == null)
-            {
-                cmdletReply = new UnifiedFeatureFlag() ;
-                cmdletReply.ApplyExploratoryFragment();
-            }
-            return new string(
-                "singleUnifiedFeatureFlag" + args + "{\n" +
                 cmdletReply.AsFragment(1) +
                 "}\n");
         }

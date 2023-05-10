@@ -54,6 +54,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "HYPERV_ROOT")]
         HYPERV_ROOT,
 
+        [EnumMember(Value = "JIRA_ROOT")]
+        JIRA_ROOT,
+
         [EnumMember(Value = "KUPR_ROOT")]
         KUPR_ROOT,
 

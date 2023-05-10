@@ -54,6 +54,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("rdsInstanceCount")]
         public System.Int32? RdsInstanceCount { get; set; }
 
+        //      C# -> System.Int32? S3BucketCount
+        // GraphQL -> s3BucketCount: Int! (scalar)
+        [JsonProperty("s3BucketCount")]
+        public System.Int32? S3BucketCount { get; set; }
+
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
@@ -156,6 +161,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? RdsInstanceCount = null,
+        System.Int32? S3BucketCount = null,
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         AwsNativeEbsVolumeConnection? AwsNativeEbsVolumes = null,
@@ -196,6 +202,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( RdsInstanceCount != null ) {
             this.RdsInstanceCount = RdsInstanceCount;
+        }
+        if ( S3BucketCount != null ) {
+            this.S3BucketCount = S3BucketCount;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -308,6 +317,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.RdsInstanceCount != null)
             {
                  s += ind + "rdsInstanceCount\n";
+
+            }
+            //      C# -> System.Int32? S3BucketCount
+            // GraphQL -> s3BucketCount: Int! (scalar)
+            if (this.S3BucketCount != null)
+            {
+                 s += ind + "s3BucketCount\n";
 
             }
             //      C# -> System.Boolean? SlaPauseStatus
@@ -548,6 +564,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.RdsInstanceCount == null && Exploration.Includes(parent + ".rdsInstanceCount$"))
             {
                 this.RdsInstanceCount = new System.Int32();
+            }
+            //      C# -> System.Int32? S3BucketCount
+            // GraphQL -> s3BucketCount: Int! (scalar)
+            if (this.S3BucketCount == null && Exploration.Includes(parent + ".s3BucketCount$"))
+            {
+                this.S3BucketCount = new System.Int32();
             }
             //      C# -> System.Boolean? SlaPauseStatus
             // GraphQL -> slaPauseStatus: Boolean! (scalar)

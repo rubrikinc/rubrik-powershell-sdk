@@ -49,7 +49,6 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         // with underscores instead of dots, since operation names
         // cannot contain dots. For example, 1.0.0 would be represented
         // as 1_0_0.
-        private readonly string _module_version = "_RscPowershellSdk_0_1_0";
 
         private AuthenticationState _authenticationState = AuthenticationState.NOT_AUTHORIZED;
 
@@ -61,6 +60,14 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         private string SerializeVariables(object variables)
         {
             return JsonConvert.SerializeObject(variables, SerializerSettings);
+        }
+
+        public string ClientId
+        {
+            get
+            {
+                return _clientId;
+            }
         }
 
         public AuthenticationState AuthenticationState
@@ -162,7 +169,11 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             }
         }
 
-        private async Task<T> InvokeGraphQLQuery<T>(GraphQLRequest Request, IRscLogger logger = null)
+        private async Task<T> InvokeGraphQLQuery<T>(
+            GraphQLRequest Request,
+            IRscLogger logger = null,
+            Dictionary<string, string> metricsTags = null
+        )
         {
             HttpClientHandler httpHandler = new HttpClientHandler();
             var loggingHandler = new LoggingDelegatingHandler { InnerHandler = httpHandler };
@@ -180,20 +191,13 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             apiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _clientToken.AccessToken);
-
-            if (!String.IsNullOrEmpty(Request.OperationName))
-            {
-                string signature = Request.OperationName + _module_version;
-                Request.Query
-                    = Request
-                        .Query
-                        .Replace(
-                            Request.OperationName,
-                            signature
-                        );
-                Request.OperationName = signature;
+            if (metricsTags != null) {
+                foreach (var header in metricsTags) {
+                    apiClient
+                        .DefaultRequestHeaders
+                        .Add(header.Key, header.Value);
+                }
             }
-            
 
             JsonSerializerSettings jsonSettings = new JsonSerializerSettings
             {
