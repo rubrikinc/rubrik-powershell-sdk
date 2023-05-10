@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region K8sNamespace
  
-    public class K8sNamespace: IFragment, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable, K8sClusterDescendant
+    public class K8sNamespace: IFragment, HierarchyObject, HierarchySnappable, K8sClusterDescendant, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.String? ApiVersion

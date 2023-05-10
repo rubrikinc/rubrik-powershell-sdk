@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaDatabase
  
-    public class SapHanaDatabase: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, SapHanaSystemPhysicalChildType, SapHanaSystemDescendantType
+    public class SapHanaDatabase: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, SapHanaSystemDescendantType, SapHanaSystemPhysicalChildType
     {
         #region members
         //      C# -> System.String? CdmId

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeVirtualMachine
  
-    public class AzureNativeVirtualMachine: IFragment, PolarisHierarchyObject, PolarisHierarchySnappable, HierarchyObject, AzureNativeHierarchyObjectType
+    public class AzureNativeVirtualMachine: IFragment, AzureNativeHierarchyObjectType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.String? AvailabilitySetNativeId

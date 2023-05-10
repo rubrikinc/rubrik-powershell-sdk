@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeManagedDisk
  
-    public class AzureNativeManagedDisk: IFragment, PolarisHierarchyObject, PolarisHierarchySnappable, HierarchyObject, AzureNativeHierarchyObjectType
+    public class AzureNativeManagedDisk: IFragment, AzureNativeHierarchyObjectType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.String? AvailabilityZone

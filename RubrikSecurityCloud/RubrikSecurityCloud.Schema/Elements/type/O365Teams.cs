@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365Teams
  
-    public class O365Teams: IFragment, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable, O365OrgDescendant
+    public class O365Teams: IFragment, HierarchyObject, HierarchySnappable, O365OrgDescendant, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.String? Id

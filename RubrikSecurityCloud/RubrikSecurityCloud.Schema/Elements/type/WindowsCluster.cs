@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region WindowsCluster
  
-    public class WindowsCluster: IFragment, HierarchyObject, CdmHierarchyObject, MssqlTopLevelDescendantType
+    public class WindowsCluster: IFragment, CdmHierarchyObject, HierarchyObject, MssqlTopLevelDescendantType
     {
         #region members
         //      C# -> System.String? Id

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CloudDirectNasExport
  
-    public class CloudDirectNasExport: IFragment, CloudDirectHierarchyWorkload, CloudDirectHierarchyObject, HierarchyObject
+    public class CloudDirectNasExport: IFragment, CloudDirectHierarchyObject, CloudDirectHierarchyWorkload, HierarchyObject
     {
         #region members
         //      C# -> System.String? CloudDirectId

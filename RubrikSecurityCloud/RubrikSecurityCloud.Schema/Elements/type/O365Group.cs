@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365Group
  
-    public class O365Group: IFragment, HierarchyObject, PolarisHierarchyObject, O365OrgDescendant
+    public class O365Group: IFragment, HierarchyObject, O365OrgDescendant, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.String? ConfiguredGroupSpec

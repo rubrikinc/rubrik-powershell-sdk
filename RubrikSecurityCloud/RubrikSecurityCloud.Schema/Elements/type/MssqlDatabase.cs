@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlDatabase
  
-    public class MssqlDatabase: IFragment, HierarchyObject, CdmHierarchyObject, CdmHierarchySnappableNew, MssqlTopLevelDescendantType, PhysicalHostDescendantType, WindowsClusterDescendantType, MssqlAvailabilityGroupDescendantType, MssqlAvailabilityGroupLogicalChildType, MssqlInstanceDescendantType, MssqlInstanceLogicalChildType
+    public class MssqlDatabase: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, MssqlAvailabilityGroupDescendantType, MssqlAvailabilityGroupLogicalChildType, MssqlInstanceDescendantType, MssqlInstanceLogicalChildType, MssqlTopLevelDescendantType, PhysicalHostDescendantType, WindowsClusterDescendantType
     {
         #region members
         //      C# -> System.String? CdmId

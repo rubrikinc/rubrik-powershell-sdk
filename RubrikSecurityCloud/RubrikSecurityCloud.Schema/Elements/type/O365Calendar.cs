@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365Calendar
  
-    public class O365Calendar: IFragment, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable, O365OrgDescendant, O365UserDescendant
+    public class O365Calendar: IFragment, HierarchyObject, HierarchySnappable, O365OrgDescendant, O365UserDescendant, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.String? Id

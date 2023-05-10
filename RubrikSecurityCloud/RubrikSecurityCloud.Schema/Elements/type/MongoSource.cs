@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MongoSource
  
-    public class MongoSource: IFragment, HierarchyObject, CdmHierarchyObject
+    public class MongoSource: IFragment, CdmHierarchyObject, HierarchyObject
     {
         #region members
         //      C# -> System.String? CdmId

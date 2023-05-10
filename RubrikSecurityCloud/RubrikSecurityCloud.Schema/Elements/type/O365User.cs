@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365User
  
-    public class O365User: IFragment, HierarchyObject, PolarisHierarchyObject, O365OrgDescendant
+    public class O365User: IFragment, HierarchyObject, O365OrgDescendant, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.String? EmailAddress

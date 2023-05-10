@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeSubscription
  
-    public class AzureNativeSubscription: IFragment, PolarisHierarchyObject, HierarchyObject
+    public class AzureNativeSubscription: IFragment, HierarchyObject, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.String? AccountConnectionId

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HypervServer
  
-    public class HypervServer: IFragment, HierarchyObject, CdmHierarchyObject, PhysicalHostDescendantType, PhysicalHostPhysicalChildType, HyperVscvmmDescendantType, HyperVscvmmLogicalChildType, HyperVclusterDescendantType, HyperVclusterLogicalChildType, HypervTopLevelDescendantType
+    public class HypervServer: IFragment, CdmHierarchyObject, HierarchyObject, HyperVclusterDescendantType, HyperVclusterLogicalChildType, HyperVscvmmDescendantType, HyperVscvmmLogicalChildType, HypervTopLevelDescendantType, PhysicalHostDescendantType, PhysicalHostPhysicalChildType
     {
         #region members
         //      C# -> System.String? Id

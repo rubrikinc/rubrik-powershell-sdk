@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VsphereDatastore
  
-    public class VsphereDatastore: IFragment, CdmHierarchyObject, HierarchyObject, VsphereComputeClusterDescendantType, VsphereDatacenterDescendantType, VsphereHostDescendantType, VsphereResourcePoolDescendantType, VsphereVcenterDescendantType, VsphereDatastoreClusterPhysicalChildType, VsphereDatastoreClusterDescendantType
+    public class VsphereDatastore: IFragment, CdmHierarchyObject, HierarchyObject, VsphereComputeClusterDescendantType, VsphereDatacenterDescendantType, VsphereDatastoreClusterDescendantType, VsphereDatastoreClusterPhysicalChildType, VsphereHostDescendantType, VsphereResourcePoolDescendantType, VsphereVcenterDescendantType
     {
         #region members
         //      C# -> System.Int64? Capacity

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region LinuxFileset
  
-    public class LinuxFileset: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, PhysicalHostDescendantType, PhysicalHostPhysicalChildType, HostFailoverClusterDescendantType, HostFailoverClusterPhysicalChildType, FailoverClusterAppDescendantType, FailoverClusterAppPhysicalChildType, FailoverClusterTopLevelDescendantType, FilesetTemplateDescendantType, FilesetTemplatePhysicalChildType
+    public class LinuxFileset: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, FailoverClusterAppDescendantType, FailoverClusterAppPhysicalChildType, FailoverClusterTopLevelDescendantType, FilesetTemplateDescendantType, FilesetTemplatePhysicalChildType, HierarchyObject, HierarchySnappable, HostFailoverClusterDescendantType, HostFailoverClusterPhysicalChildType, PhysicalHostDescendantType, PhysicalHostPhysicalChildType
     {
         #region members
         //      C# -> System.String? CdmId

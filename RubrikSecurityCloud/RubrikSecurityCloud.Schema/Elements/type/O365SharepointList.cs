@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region O365SharepointList
  
-    public class O365SharepointList: IFragment, HierarchyObject, HierarchySnappable, PolarisHierarchyObject, PolarisHierarchySnappable, O365OrgDescendant, O365SharepointObject
+    public class O365SharepointList: IFragment, HierarchyObject, HierarchySnappable, O365OrgDescendant, O365SharepointObject, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.String? Id

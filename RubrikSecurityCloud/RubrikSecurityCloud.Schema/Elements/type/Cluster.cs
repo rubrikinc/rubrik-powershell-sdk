@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region Cluster
  
-    public class Cluster: IFragment, AnomalyResultGroupByInfo, SnappableGroupByInfo, TaskDetailGroupByInfo, RansomwareResultGroupByInfo
+    public class Cluster: IFragment, AnomalyResultGroupByInfo, RansomwareResultGroupByInfo, SnappableGroupByInfo, TaskDetailGroupByInfo
     {
         #region members
         //      C# -> DateTime? ConnectivityLastUpdated

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region NasShare
  
-    public class NasShare: IFragment, CdmHierarchyObject, HierarchyObject, NasSystemDescendantType, NasSystemLogicalChildType, NasNamespaceDescendantType, NasNamespaceLogicalChildType, NasVolumeDescendantType, NasVolumeLogicalChildType
+    public class NasShare: IFragment, CdmHierarchyObject, HierarchyObject, NasNamespaceDescendantType, NasNamespaceLogicalChildType, NasSystemDescendantType, NasSystemLogicalChildType, NasVolumeDescendantType, NasVolumeLogicalChildType
     {
         #region members
         //      C# -> System.String? CdmId

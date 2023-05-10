@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region CassandraColumnFamily
  
-    public class CassandraColumnFamily: IFragment, HierarchyObject, PolarisHierarchyObject, CassandraSourceDescendantType, CassandraKeyspaceDescendantType, CassandraKeyspacePhysicalChildType
+    public class CassandraColumnFamily: IFragment, CassandraKeyspaceDescendantType, CassandraKeyspacePhysicalChildType, CassandraSourceDescendantType, HierarchyObject, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.Int32? BackupCount

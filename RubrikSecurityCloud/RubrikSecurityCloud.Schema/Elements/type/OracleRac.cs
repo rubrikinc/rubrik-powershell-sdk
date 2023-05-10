@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OracleRac
  
-    public class OracleRac: IFragment, HierarchyObject, CdmHierarchyObject, OracleTopLevelDescendantType
+    public class OracleRac: IFragment, CdmHierarchyObject, HierarchyObject, OracleTopLevelDescendantType
     {
         #region members
         //      C# -> System.Boolean? DistributeBackupsAutomatically

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GcpNativeDisk
  
-    public class GcpNativeDisk: IFragment, PolarisHierarchyObject, PolarisHierarchySnappable, HierarchyObject, GcpNativeProjectLogicalChildType, GcpNativeProjectDescendantType
+    public class GcpNativeDisk: IFragment, GcpNativeProjectDescendantType, GcpNativeProjectLogicalChildType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.String? DiskId

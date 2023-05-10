@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region GcpNativeProject
  
-    public class GcpNativeProject: IFragment, PolarisHierarchyObject, HierarchyObject
+    public class GcpNativeProject: IFragment, HierarchyObject, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.Int32? DiskCount

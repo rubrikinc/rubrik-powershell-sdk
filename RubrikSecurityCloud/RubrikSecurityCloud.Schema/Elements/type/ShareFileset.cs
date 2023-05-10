@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ShareFileset
  
-    public class ShareFileset: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, HostShareDescendantType, HostSharePhysicalChildType, PhysicalHostDescendantType, PhysicalHostPhysicalChildType, FilesetTemplateDescendantType, FilesetTemplatePhysicalChildType
+    public class ShareFileset: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, FilesetTemplateDescendantType, FilesetTemplatePhysicalChildType, HierarchyObject, HierarchySnappable, HostShareDescendantType, HostSharePhysicalChildType, PhysicalHostDescendantType, PhysicalHostPhysicalChildType
     {
         #region members
         //      C# -> System.String? CdmId

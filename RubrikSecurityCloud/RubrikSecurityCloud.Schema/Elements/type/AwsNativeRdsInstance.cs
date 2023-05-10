@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsNativeRdsInstance
  
-    public class AwsNativeRdsInstance: IFragment, PolarisHierarchyObject, PolarisHierarchySnappable, HierarchyObject, AwsNativeAccountLogicalChildType, AwsNativeAccountDescendantType
+    public class AwsNativeRdsInstance: IFragment, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.Int64? AllocatedStorageInGibi

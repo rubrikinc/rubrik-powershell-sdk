@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlInstance
  
-    public class MssqlInstance: IFragment, HierarchyObject, CdmHierarchyObject, MssqlTopLevelDescendantType, PhysicalHostDescendantType, PhysicalHostPhysicalChildType, WindowsClusterDescendantType, WindowsClusterLogicalChildType
+    public class MssqlInstance: IFragment, CdmHierarchyObject, HierarchyObject, MssqlTopLevelDescendantType, PhysicalHostDescendantType, PhysicalHostPhysicalChildType, WindowsClusterDescendantType, WindowsClusterLogicalChildType
     {
         #region members
         //      C# -> System.Boolean? HasLogConfigFromSla

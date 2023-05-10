@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OracleHost
  
-    public class OracleHost: IFragment, HierarchyObject, CdmHierarchyObject, OracleTopLevelDescendantType
+    public class OracleHost: IFragment, CdmHierarchyObject, HierarchyObject, OracleTopLevelDescendantType
     {
         #region members
         //      C# -> System.Int32? HostLogRetentionHours

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeMount
  
-    public class ManagedVolumeMount: IFragment, HierarchyObject, CdmHierarchyObject, ManagedVolumeDescendantType, ManagedVolumePhysicalChildType
+    public class ManagedVolumeMount: IFragment, CdmHierarchyObject, HierarchyObject, ManagedVolumeDescendantType, ManagedVolumePhysicalChildType
     {
         #region members
         //      C# -> System.String? Id

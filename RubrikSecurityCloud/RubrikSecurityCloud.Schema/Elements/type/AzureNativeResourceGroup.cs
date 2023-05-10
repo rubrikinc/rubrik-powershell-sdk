@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeResourceGroup
  
-    public class AzureNativeResourceGroup: IFragment, PolarisHierarchyObject, HierarchyObject
+    public class AzureNativeResourceGroup: IFragment, HierarchyObject, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.Int32? AzureSqlDatabaseCount

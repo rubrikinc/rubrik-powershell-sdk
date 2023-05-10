@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OracleDatabase
  
-    public class OracleDatabase: IFragment, HierarchyObject, CdmHierarchyObject, CdmHierarchySnappableNew, OracleTopLevelDescendantType, OracleHostDescendantType, OracleHostLogicalChildType, OracleRacDescendantType, OracleRacLogicalChildType, OracleDataGuardGroupDescendantType, OracleDataGuardGroupLogicalChildType
+    public class OracleDatabase: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, OracleDataGuardGroupDescendantType, OracleDataGuardGroupLogicalChildType, OracleHostDescendantType, OracleHostLogicalChildType, OracleRacDescendantType, OracleRacLogicalChildType, OracleTopLevelDescendantType
     {
         #region members
         //      C# -> System.String? ArchiveLogMode

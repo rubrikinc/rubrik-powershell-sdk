@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VsphereTag
  
-    public class VsphereTag: IFragment, CdmHierarchyObject, HierarchyObject, VsphereVcenterDescendantType, VsphereTagCategoryDescendantType, VsphereTagCategoryTagChildType
+    public class VsphereTag: IFragment, CdmHierarchyObject, HierarchyObject, VsphereTagCategoryDescendantType, VsphereTagCategoryTagChildType, VsphereVcenterDescendantType
     {
         #region members
         //      C# -> System.String? Condition

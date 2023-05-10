@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlAvailabilityGroup
  
-    public class MssqlAvailabilityGroup: IFragment, HierarchyObject, CdmHierarchyObject, MssqlTopLevelDescendantType
+    public class MssqlAvailabilityGroup: IFragment, CdmHierarchyObject, HierarchyObject, MssqlTopLevelDescendantType
     {
         #region members
         //      C# -> System.Boolean? CopyOnly

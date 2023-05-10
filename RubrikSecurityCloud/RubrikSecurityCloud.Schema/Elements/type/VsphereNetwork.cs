@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VsphereNetwork
  
-    public class VsphereNetwork: IFragment, CdmHierarchyObject, HierarchyObject, VsphereHostDescendantType, VsphereComputeClusterDescendantType, VsphereResourcePoolDescendantType, VsphereVcenterDescendantType
+    public class VsphereNetwork: IFragment, CdmHierarchyObject, HierarchyObject, VsphereComputeClusterDescendantType, VsphereHostDescendantType, VsphereResourcePoolDescendantType, VsphereVcenterDescendantType
     {
         #region members
         //      C# -> System.String? Id

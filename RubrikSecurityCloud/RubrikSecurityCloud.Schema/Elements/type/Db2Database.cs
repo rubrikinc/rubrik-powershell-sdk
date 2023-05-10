@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region Db2Database
  
-    public class Db2Database: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, Db2InstanceDescendantType, Db2InstancePhysicalChildType
+    public class Db2Database: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, Db2InstanceDescendantType, Db2InstancePhysicalChildType, HierarchyObject
     {
         #region members
         //      C# -> System.String? CdmId

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region PhysicalHost
  
-    public class PhysicalHost: IFragment, CdmHierarchyObject, HierarchyObject, MssqlTopLevelDescendantType, Db2InstanceDescendantType, Db2InstancePhysicalChildType, ManagedVolumeDescendantType, ManagedVolumeMountDescendantType, ManagedVolumeMountPhysicalChildType, MongoSourceDescendantType, MongoSourcePhysicalChildType
+    public class PhysicalHost: IFragment, CdmHierarchyObject, Db2InstanceDescendantType, Db2InstancePhysicalChildType, HierarchyObject, ManagedVolumeDescendantType, ManagedVolumeMountDescendantType, ManagedVolumeMountPhysicalChildType, MongoSourceDescendantType, MongoSourcePhysicalChildType, MssqlTopLevelDescendantType
     {
         #region members
         //      C# -> System.String? CbtStatus

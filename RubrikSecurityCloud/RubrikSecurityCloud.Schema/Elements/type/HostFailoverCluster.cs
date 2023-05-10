@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HostFailoverCluster
  
-    public class HostFailoverCluster: IFragment, CdmHierarchyObject, HierarchyObject, FailoverClusterTopLevelDescendantType
+    public class HostFailoverCluster: IFragment, CdmHierarchyObject, FailoverClusterTopLevelDescendantType, HierarchyObject
     {
         #region members
         //      C# -> System.String? CdmId

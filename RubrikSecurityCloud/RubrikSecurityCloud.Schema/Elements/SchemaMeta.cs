@@ -16,56 +16,28 @@ namespace Rubrik.SecurityCloud.Types
         public static HashSet<string> UnionMembership( string typeName )
         {
             var UnionMembershipDict = new Dictionary<string, HashSet<string>> {
-                { "TimeRangeWithUnit", new HashSet<string> {
-                    "PolarisSnapshotGroupByInfo",
-                    "AnomalyResultGroupByInfo",
-                    "TaskDetailGroupByInfo",
-                    "MosaicSnapshotGroupByInfo",
-                    "ClusterGroupByInfo",
-                    "SnappableGroupByInfo",
-                    "CdmSnapshotGroupByInfo",
-                    "ClusterMetricGroupByInfo",
-                    "MongoSnapshotGroupByInfo",
-                    "RansomwareResultGroupByInfo",
-                    "ManagedVolumeQueuedSnapshotGroupByInfo",
-                    "MissedSnapshotGroupByInfo",
-                    }
-                },
-                { "Cluster", new HashSet<string> {
-                    "AnomalyResultGroupByInfo",
-                    "SnappableGroupByInfo",
-                    "TaskDetailGroupByInfo",
-                    "RansomwareResultGroupByInfo",
-                    }
-                },
-                { "Snappable", new HashSet<string> {
-                    "AnomalyResultGroupByInfo",
-                    "RansomwareResultGroupByInfo",
-                    }
-                },
-                { "AnomalyStatus", new HashSet<string> {
-                    "AnomalyResultGroupByInfo",
+                { "ActivityChart", new HashSet<string> {
+                    "ReportChartType",
                     }
                 },
                 { "ActivitySeverityLevel", new HashSet<string> {
                     "AnomalyResultGroupByInfo",
                     }
                 },
-                { "Status", new HashSet<string> {
-                    "TaskDetailGroupByInfo",
+                { "ActivityTable", new HashSet<string> {
+                    "ReportTableType",
                     }
                 },
-                { "TaskDetailClusterType", new HashSet<string> {
-                    "TaskDetailGroupByInfo",
+                { "AnomalyChart", new HashSet<string> {
+                    "ReportChartType",
                     }
                 },
-                { "TaskDetailObjectType", new HashSet<string> {
-                    "TaskDetailGroupByInfo",
+                { "AnomalyStatus", new HashSet<string> {
+                    "AnomalyResultGroupByInfo",
                     }
                 },
-                { "ClusterType", new HashSet<string> {
-                    "SnappableGroupByInfo",
-                    "ClusterGroupByInfo",
+                { "AnomalyTable", new HashSet<string> {
+                    "ReportTableType",
                     }
                 },
                 { "AzureSnappableLocation", new HashSet<string> {
@@ -76,11 +48,43 @@ namespace Rubrik.SecurityCloud.Types
                     "SnappableLocationType",
                     }
                 },
-                { "WorkloadLocation", new HashSet<string> {
-                    "SnappableLocationType",
+                { "Cluster", new HashSet<string> {
+                    "AnomalyResultGroupByInfo",
+                    "RansomwareResultGroupByInfo",
+                    "SnappableGroupByInfo",
+                    "TaskDetailGroupByInfo",
+                    }
+                },
+                { "ClusterSlaDomain", new HashSet<string> {
+                    "SnappableGroupByInfo",
+                    }
+                },
+                { "ClusterType", new HashSet<string> {
+                    "ClusterGroupByInfo",
+                    "SnappableGroupByInfo",
                     }
                 },
                 { "ComplianceStatus", new HashSet<string> {
+                    "SnappableGroupByInfo",
+                    }
+                },
+                { "FailoverChart", new HashSet<string> {
+                    "ReportChartType",
+                    }
+                },
+                { "FailoverTable", new HashSet<string> {
+                    "ReportTableType",
+                    }
+                },
+                { "InfrastructureChart", new HashSet<string> {
+                    "ReportChartType",
+                    }
+                },
+                { "InfrastructureTable", new HashSet<string> {
+                    "ReportTableType",
+                    }
+                },
+                { "ObjectType", new HashSet<string> {
                     "SnappableGroupByInfo",
                     }
                 },
@@ -88,51 +92,12 @@ namespace Rubrik.SecurityCloud.Types
                     "SnappableGroupByInfo",
                     }
                 },
-                { "ObjectType", new HashSet<string> {
-                    "SnappableGroupByInfo",
-                    }
-                },
-                { "ClusterSlaDomain", new HashSet<string> {
-                    "SnappableGroupByInfo",
+                { "Snappable", new HashSet<string> {
+                    "AnomalyResultGroupByInfo",
+                    "RansomwareResultGroupByInfo",
                     }
                 },
                 { "SnappableChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "ActivityChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "InfrastructureChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "AnomalyChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "FailoverChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "UserAuditChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "TaskDetailChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "TaskSummaryChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "SonarReportChart", new HashSet<string> {
-                    "ReportChartType",
-                    }
-                },
-                { "SonarContentReportChart", new HashSet<string> {
                     "ReportChartType",
                     }
                 },
@@ -140,40 +105,75 @@ namespace Rubrik.SecurityCloud.Types
                     "ReportTableType",
                     }
                 },
-                { "ActivityTable", new HashSet<string> {
+                { "SonarContentReportChart", new HashSet<string> {
+                    "ReportChartType",
+                    }
+                },
+                { "SonarContentReportTable", new HashSet<string> {
                     "ReportTableType",
                     }
                 },
-                { "InfrastructureTable", new HashSet<string> {
-                    "ReportTableType",
-                    }
-                },
-                { "AnomalyTable", new HashSet<string> {
-                    "ReportTableType",
-                    }
-                },
-                { "FailoverTable", new HashSet<string> {
-                    "ReportTableType",
-                    }
-                },
-                { "UserAuditTable", new HashSet<string> {
-                    "ReportTableType",
-                    }
-                },
-                { "TaskDetailTable", new HashSet<string> {
-                    "ReportTableType",
-                    }
-                },
-                { "TaskSummaryTable", new HashSet<string> {
-                    "ReportTableType",
+                { "SonarReportChart", new HashSet<string> {
+                    "ReportChartType",
                     }
                 },
                 { "SonarReportTable", new HashSet<string> {
                     "ReportTableType",
                     }
                 },
-                { "SonarContentReportTable", new HashSet<string> {
+                { "Status", new HashSet<string> {
+                    "TaskDetailGroupByInfo",
+                    }
+                },
+                { "TaskDetailChart", new HashSet<string> {
+                    "ReportChartType",
+                    }
+                },
+                { "TaskDetailClusterType", new HashSet<string> {
+                    "TaskDetailGroupByInfo",
+                    }
+                },
+                { "TaskDetailObjectType", new HashSet<string> {
+                    "TaskDetailGroupByInfo",
+                    }
+                },
+                { "TaskDetailTable", new HashSet<string> {
                     "ReportTableType",
+                    }
+                },
+                { "TaskSummaryChart", new HashSet<string> {
+                    "ReportChartType",
+                    }
+                },
+                { "TaskSummaryTable", new HashSet<string> {
+                    "ReportTableType",
+                    }
+                },
+                { "TimeRangeWithUnit", new HashSet<string> {
+                    "AnomalyResultGroupByInfo",
+                    "CdmSnapshotGroupByInfo",
+                    "ClusterGroupByInfo",
+                    "ClusterMetricGroupByInfo",
+                    "ManagedVolumeQueuedSnapshotGroupByInfo",
+                    "MissedSnapshotGroupByInfo",
+                    "MongoSnapshotGroupByInfo",
+                    "MosaicSnapshotGroupByInfo",
+                    "PolarisSnapshotGroupByInfo",
+                    "RansomwareResultGroupByInfo",
+                    "SnappableGroupByInfo",
+                    "TaskDetailGroupByInfo",
+                    }
+                },
+                { "UserAuditChart", new HashSet<string> {
+                    "ReportChartType",
+                    }
+                },
+                { "UserAuditTable", new HashSet<string> {
+                    "ReportTableType",
+                    }
+                },
+                { "WorkloadLocation", new HashSet<string> {
+                    "SnappableLocationType",
                     }
                 },
             };

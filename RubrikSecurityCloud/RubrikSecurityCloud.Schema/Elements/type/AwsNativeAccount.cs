@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsNativeAccount
  
-    public class AwsNativeAccount: IFragment, PolarisHierarchyObject, HierarchyObject
+    public class AwsNativeAccount: IFragment, HierarchyObject, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.Int32? EbsVolumeCount

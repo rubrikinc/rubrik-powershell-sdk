@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region HyperVvirtualMachine
  
-    public class HyperVvirtualMachine: IFragment, HierarchyObject, CdmHierarchyObject, CdmHierarchySnappableNew, HyperVscvmmDescendantType, HyperVclusterDescendantType, HypervServerLogicalChildType, HypervServerDescendantType, HypervTopLevelDescendantType
+    public class HyperVvirtualMachine: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HyperVclusterDescendantType, HyperVscvmmDescendantType, HypervServerDescendantType, HypervServerLogicalChildType, HypervTopLevelDescendantType
     {
         #region members
         //      C# -> System.String? CdmId

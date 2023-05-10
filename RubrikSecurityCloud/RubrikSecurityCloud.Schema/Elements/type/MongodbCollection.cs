@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region MongodbCollection
  
-    public class MongodbCollection: IFragment, HierarchyObject, PolarisHierarchyObject, MongodbSourceDescendantType, MongodbDatabaseDescendantType, MongodbDatabasePhysicalChildType
+    public class MongodbCollection: IFragment, HierarchyObject, MongodbDatabaseDescendantType, MongodbDatabasePhysicalChildType, MongodbSourceDescendantType, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.Int32? BackupCount

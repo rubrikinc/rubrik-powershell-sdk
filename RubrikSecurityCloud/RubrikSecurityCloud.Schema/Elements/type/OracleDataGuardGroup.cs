@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region OracleDataGuardGroup
  
-    public class OracleDataGuardGroup: IFragment, HierarchyObject, CdmHierarchyObject, CdmHierarchySnappableNew, OracleTopLevelDescendantType
+    public class OracleDataGuardGroup: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, OracleTopLevelDescendantType
     {
         #region members
         //      C# -> System.String? CdmId

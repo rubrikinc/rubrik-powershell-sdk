@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolume
  
-    public class ManagedVolume: IFragment, HierarchyObject, CdmHierarchyObject, CdmHierarchySnappableNew
+    public class ManagedVolume: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject
     {
         #region members
         //      C# -> System.String? CdmId

@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AwsNativeEc2Instance
  
-    public class AwsNativeEc2Instance: IFragment, PolarisHierarchyObject, PolarisHierarchySnappable, HierarchyObject, AwsNativeAccountLogicalChildType, AwsNativeAccountDescendantType, AwsNativeHierarchyObject
+    public class AwsNativeEc2Instance: IFragment, AwsNativeAccountDescendantType, AwsNativeAccountLogicalChildType, AwsNativeHierarchyObject, HierarchyObject, PolarisHierarchyObject, PolarisHierarchySnappable
     {
         #region members
         //      C# -> System.String? AvailabilityZone

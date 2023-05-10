@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region VsphereVm
  
-    public class VsphereVm: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, VsphereComputeClusterDescendantType, VsphereDatacenterDescendantType, VsphereFolderLogicalChildType, VsphereFolderDescendantType, VsphereHostPhysicalChildType, VsphereHostDescendantType, VsphereVcenterDescendantType, VsphereTagTagChildType, VsphereTagDescendantType, VsphereTagCategoryDescendantType, VcdDescendantType, VcdLogicalChildType, VcdOrgDescendantType, VcdOrgLogicalChildType, VcdOrgVdcDescendantType, VcdOrgVdcLogicalChildType, VcdVappDescendantType, VcdVappLogicalChildType, VcdTopLevelDescendantType
+    public class VsphereVm: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, HierarchySnappable, VcdDescendantType, VcdLogicalChildType, VcdOrgDescendantType, VcdOrgLogicalChildType, VcdOrgVdcDescendantType, VcdOrgVdcLogicalChildType, VcdTopLevelDescendantType, VcdVappDescendantType, VcdVappLogicalChildType, VsphereComputeClusterDescendantType, VsphereDatacenterDescendantType, VsphereFolderDescendantType, VsphereFolderLogicalChildType, VsphereHostDescendantType, VsphereHostPhysicalChildType, VsphereTagCategoryDescendantType, VsphereTagDescendantType, VsphereTagTagChildType, VsphereVcenterDescendantType
     {
         #region members
         //      C# -> System.Boolean? ArrayIntegrationEnabled

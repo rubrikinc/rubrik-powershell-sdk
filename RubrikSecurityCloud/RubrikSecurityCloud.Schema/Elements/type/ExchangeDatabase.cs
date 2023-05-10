@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region ExchangeDatabase
  
-    public class ExchangeDatabase: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, HierarchyObject, ExchangeDagDescendantType, ExchangeServerDescendantType
+    public class ExchangeDatabase: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, ExchangeDagDescendantType, ExchangeServerDescendantType, HierarchyObject
     {
         #region members
         //      C# -> System.Int32? ActiveCopies

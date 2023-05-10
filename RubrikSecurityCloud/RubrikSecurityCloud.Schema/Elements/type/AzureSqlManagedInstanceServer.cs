@@ -16,7 +16,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     #region AzureSqlManagedInstanceServer
  
-    public class AzureSqlManagedInstanceServer: IFragment, PolarisHierarchyObject, HierarchyObject
+    public class AzureSqlManagedInstanceServer: IFragment, HierarchyObject, PolarisHierarchyObject
     {
         #region members
         //      C# -> System.String? Id
