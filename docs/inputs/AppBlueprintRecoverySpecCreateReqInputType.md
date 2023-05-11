@@ -1,0 +1,13 @@
+### AppBlueprintRecoverySpecCreateReqInputType
+- childRecoverySpecs: a list of ChildRecoverySpecCreateReqInputTypes
+  - None
+- failoverId: System.String
+  - None
+- locationInfo: LocationInfo
+  - None
+- planType: PlanName
+  - None
+- resourceSpecType: ResourceSpecType
+  - None
+- userData: System.String
+  - None

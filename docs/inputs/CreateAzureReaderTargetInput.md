@@ -1,0 +1,33 @@
+### CreateAzureReaderTargetInput
+Input for creating an Azure Reader Target.
+
+- accessKey: System.String
+  - Field for specifying access key of the target.
+- bypassProxy: System.Boolean
+  - Specifies whether the proxy settings should be bypassed for creating this target location.
+- cloudAccountId: System.String
+  - Field for specifying cloud account ID.
+- clusterUuid: System.String
+  - Field for specifying cluster UUID of the target.
+- computeSettings: AzureCloudComputeSettingsInput
+  - Field for Azure compute settings.
+- containerName: System.String
+  - Field for specifying container name of the target.
+- immutabilitySettings: AzureImmutabilitySettings
+  - Field for specifying immutability settings of Azure target.
+- instanceType: InstanceTypeEnum
+  - Field for specifying instance type of Azure target.
+- isConsolidationEnabled: System.Boolean
+  - Field for specifying whether consolidation is enabled or not.
+- name: System.String
+  - Field for specifying name of the target.
+- proxySettings: ProxySettingsInput
+  - Field for specifying compute settings.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - Field for specifying the metadata to be retrieved from a target.
+- retrievalTier: AzureRetrievalTier
+  - Retrieval tier to use for retrieving data from archive storage.
+- rsaKey: System.String
+  - Field for specifying RSA key for encryption.
+- storageAccountName: System.String
+  - Field for specifying storage account name.

@@ -1,0 +1,17 @@
+### Column
+- aggregate: System.Boolean
+  - None
+- default: System.Boolean
+  - None
+- dimensional: System.Boolean
+  - None
+- displayName: System.String
+  - None
+- name: System.String
+  - None
+- nullable: System.Boolean
+  - None
+- sortable: System.Boolean
+  - None
+- type: DataTypeEnum
+  - None

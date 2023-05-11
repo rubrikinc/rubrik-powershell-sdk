@@ -1,0 +1,61 @@
+### PolarisSnapshot
+- consistencyLevel: SnapshotConsistencyLevel
+  - None
+- date: DateTime
+  - None
+- expirationDate: DateTime
+  - None
+- expiryHint: System.Boolean
+  - None
+- hasUnexpiredArchivedCopy: System.Boolean
+  - Indicates whether the snapshot has a valid archived copy.
+- hasUnexpiredReplica: System.Boolean
+  - Indicates whether the snapshot has a valid replica.
+- id: System.String
+  - None
+- indexTime: DateTime
+  - None
+- indexingAttempts: System.Int64
+  - None
+- isArchivalCopy: System.Boolean
+  - None
+- isArchived: System.Boolean
+  - None
+- isCorrupted: System.Boolean
+  - None
+- isDeletedFromSource: System.Boolean
+  - None
+- isDownloadedSnapshot: System.Boolean
+  - None
+- isExpired: System.Boolean
+  - Specifies whether or not the snapshot is expired.
+- isIndexed: System.Boolean
+  - Specifies whether or not the snapshot is indexed.
+- isOnDemandSnapshot: System.Boolean
+  - None
+- isQuarantined: System.Boolean
+  - Specifies whether the snapshot is quarantined.
+- isReplica: System.Boolean
+  - None
+- isReplicated: System.Boolean
+  - None
+- isUnindexable: System.Boolean
+  - None
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- parentSnapshotId: System.String
+  - None
+- polarisSpecificSnapshot: PolarisSpecificSnapshot
+  - Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and O365 Site snapshots.
+- replicationLocations: a list of DataLocations
+  - None
+- sequenceNumber: System.Int32
+  - None
+- slaDomain: SlaDomain
+  - None
+- snappableId: System.String
+  - None
+- unexpiredArchivedSnapshotCount: System.Int32
+  - None
+- unexpiredReplicaCount: System.Int32
+  - None

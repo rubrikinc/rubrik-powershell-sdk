@@ -1,0 +1,13 @@
+### SDDLPermission
+- access: System.String
+  - None
+- accessType: AceQualifier
+  - None
+- cn: System.String
+  - None
+- dn: System.String
+  - None
+- flags: a list of AceFlagss
+  - None
+- resolutionType: ResolutionType
+  - None

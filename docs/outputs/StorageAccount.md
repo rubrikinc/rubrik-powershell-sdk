@@ -1,0 +1,19 @@
+### StorageAccount
+- accessTier: StorageAccountTier
+  - None
+- id: System.String
+  - None
+- isVersioningEnabled: System.Boolean
+  - Specifies if versioning is enabled for the storage account.
+- kind: System.String
+  - None
+- name: System.String
+  - None
+- networkRuleSet: NetworkRuleSet
+  - Network rules for Azure storage account.
+- regionName: System.String
+  - None
+- resourceGroup: ResourceGroup
+  - None
+- sku: StorageAccountSku
+  - None

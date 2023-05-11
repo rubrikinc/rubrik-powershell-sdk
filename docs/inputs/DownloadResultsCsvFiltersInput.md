@@ -1,0 +1,15 @@
+### DownloadResultsCsvFiltersInput
+- analyzerGroupIds: a list of System.Strings
+  - None
+- browseDirectorySnappablePath: SnappablePathInput
+  - None
+- fileType: FileCountType
+  - None
+- listFileResultsSearchText: System.String
+  - None
+- listFileResultsSnappablePaths: a list of SnappablePathInputs
+  - None
+- listFileResultsSnappableTypes: a list of System.Strings
+  - None
+- whitelistEnabled: System.Boolean
+  - None

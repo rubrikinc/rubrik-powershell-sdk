@@ -1,0 +1,21 @@
+### VmwareResourceSpec
+- isArchived: System.Boolean
+  - None
+- memoryMbs: System.Int32
+  - None
+- osType: System.String
+  - None
+- recoveryPointOpt: System.Int64
+  - Recovery point of the workload.
+- snappableId: System.String
+  - None
+- snappableName: System.String
+  - None
+- snapshotId: System.String
+  - None
+- vCpus: System.Int32
+  - None
+- vmWareVolumeSpecs: a list of VmwareVirtualMachineVolumes
+  - None
+- vmwareNics: a list of VmwareVirtualMachineNics
+  - None

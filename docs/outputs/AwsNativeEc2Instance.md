@@ -1,0 +1,97 @@
+### AwsNativeEc2Instance
+AWS native EC2 instance.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- attachedEbsVolumes: a list of AwsNativeEbsVolumes
+  - Attach an AWS Elastic Block Store (EBS) volume to your instance.
+- attachmentSpecs: a list of AttachmentSpecForEc2Instances
+  - List of EBS volume details attached to the instance.
+- authorizedOperations: a list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- availabilityZone: System.String
+  - Name of the Availability Zone (AZ). Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty string and will be mapped directly to available AZs for EC2 instance on cloud(AWS). For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-availability-zones.
+- awsAccountRubrikId: System.String
+  - Rubrik ID of Instance.
+- awsNativeAccount: AwsNativeAccount
+  - AWS account of the EC2 instance.
+- awsNativeAccountName: System.String
+  - Name for the AWS Account.
+- cloudNativeId: System.String
+  - AWS Native ID of Instance.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- hostInfo: PhysicalHost
+  - Rubrik CDM host information for the AWS EC2 instance added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
+- id: System.String
+  - The FID of the hierarchy object.
+- instanceName: System.String
+  - Name of instance on AWS. Name is not necessarily unique for different instances.
+- instanceNativeId: System.String
+  - AWS Native ID of Instance.
+- instanceType: System.String
+  - AWS Native EC2 instance type. Some examples are: t2.nano, m5.xlarge. This field cannot be null or empty string and will be mapped directly to available EC2 instance on cloud(AWS). For more information, see https://aws.amazon.com/ec2/instance-types.
+- isExocomputeConfigured: System.Boolean
+  - Whether exocompute is configured for the region where the instance is.
+- isIndexingEnabled: System.Boolean
+  - Whether indexing is enabled for snapshots of instance.
+- isMarketplace: System.Boolean
+  - Whether the instance image is marketplace image.
+- isRelic: System.Boolean
+  - Whether the instance is relic.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- nativeName: System.String
+  - AWS Native name of the object.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The newest snapshot that is indexed and unexpired, and therefore restorable.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- osType: OsType
+  - Name of the Operating System (OS) for the Instance. Some examples are: Linux, Windows. This field cannot be null or empty string but can be Undefined in case it is not currently supported.List of supported OS: Linux, Windows.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- privateIp: System.String
+  - Private IP address for instance.
+- publicIp: System.String
+  - Public IP address for instance.
+- region: AwsNativeRegion
+  - Name of the region. Some examples are: US_EAST_1, AP_EAST_1. This field cannot be null or empty string and will be mapped directly to available regions for EC2 instance on cloud(AWS). For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for this workload's snapshots.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for this workload's snapshots.
+- sshKeyPairName: System.String
+  - Name of SSH key-pair for the Instance.
+- tags: a list of Tags
+  - List of tags associated with Instance.
+- vpcId: System.String
+  - ID of Virtual Private Cloud (VPC) associated with instance.
+- vpcName: System.String
+  - Name of Virtual Private Cloud (VPC) associated with instance.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.

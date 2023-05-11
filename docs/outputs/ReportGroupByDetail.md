@@ -1,0 +1,15 @@
+### ReportGroupByDetail
+- aggregations: a list of DisplayableValues
+  - None
+- allValues: a list of DisplayableValues
+  - None
+- displayName: System.String
+  - None
+- name: System.String
+  - None
+- primaryGroupBy: System.String
+  - None
+- secondaryAggregation: System.String
+  - None
+- secondaryGroupBy: System.String
+  - None

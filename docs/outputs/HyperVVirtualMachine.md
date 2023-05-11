@@ -1,0 +1,81 @@
+### HyperVVirtualMachine
+Hyper-V virtual machine details.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of Operations
+  - The authorized operations on the object.
+- cdmId: System.String
+  - ID of the virtual machine in Rubrik CDM.
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- hypervVmMountCount: System.Int32
+  - Hyper-V virtual machine Live Count Connection.
+- id: System.String
+  - The FID of the hierarchy object.
+- isRelic: System.Boolean
+  - Flag to indicate whether the virtual machine is a relic.
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- name: System.String
+  - The name of the hierarchy object.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- osType: System.String
+  - Type of operating system used by the Hyper-V virtual machine.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from objectID to pending object deletion status.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- protectionDate: DateTime
+  - Hyper-V virtual machine SLA Domain protection start date.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- replicatedObjects: a list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- reportWorkload: Snappable
+  - Stats for Hyper-V virtual machine (e.g., capacity).
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.

@@ -1,0 +1,3 @@
+### LastTestStatus
+- enumValue: LastTestStatusEnum
+  - None

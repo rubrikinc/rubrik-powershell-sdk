@@ -1,0 +1,11 @@
+### ObjectSummary
+- id: System.String
+  - None
+- isArchived: System.Boolean
+  - None
+- mailAddress: System.String
+  - None
+- name: System.String
+  - None
+- objectType: ManagedObjectType
+  - None

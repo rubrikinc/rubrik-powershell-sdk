@@ -1,0 +1,67 @@
+### RubrikManagedS3CompatibleTarget
+Specific information for Amazon S3 compatible target created on Rubrik.
+
+- accessKey: System.String
+  - Access key for authentication to the S3Compatible target.
+- bucketPrefix: System.String
+  - Prefix of the S3Compatible target bucket.
+- cluster: Cluster
+  - The cluster to which this target belongs.
+- clusterName: System.String
+  - Name of the Rubrik cluster that archives to this archival location.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the S3Compatible target.
+- consumedBytes: System.Int64
+  - Number of bytes stored on the target.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type to be used for the S3-compatible target.
+- endpoint: System.String
+  - Host of the S3Compatible location.
+- failedTasks: System.Int32
+  - Number of archiving tasks failed on this target.
+- ibmDetail: IbmCosDetailsType
+  - IBM subtype specific details.
+- ibmDetails: System.String
+  - IBM subtype specific details.
+- id: System.String
+  - The ID of this target.
+- immutabilitySetting: LocationImmutabilityType
+  - Immutability information of S3-compatible location.
+- immutabilitySettings: LocationImmutabilityType
+  - Immutability information of S3-compatible location.
+- isActive: System.Boolean
+  - Specifies whether this target is active. When false, the target is either paused or not enabled.
+- isArchived: System.Boolean
+  - Specifies whether this target is archived.
+- isConsolidationEnabled: System.Boolean
+  - Flag to check if consolidation is enabled or not in this target.
+- locationConnectionStatus: ConnectionStatusType
+  - Connected or Disconnected status of the target.
+- locationScope: LocationScope
+  - The scope of location of this target. Possible values are Global or Local.
+- name: System.String
+  - The name of this target.
+- numberOfBuckets: System.Int32
+  - Number of buckets in the S3Compatible target.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - The retrieval method of the reader target.
+- runningTasks: System.Int32
+  - Number of archiving tasks running on this target.
+- status: ArchivalLocationStatus
+  - Status of the target.
+- subType: S3CompatibleSubType
+  - S3-compatible target subtype.
+- syncFailureReason: System.String
+  - Reason why sync of this target with CDM failed.
+- syncStatus: TargetSyncStatus
+  - Sync status of S3Compatible target.
+- targetMapping: TargetMappingBasic
+  - Archival location to which the mapping target belongs.
+- targetMappingBasic: a list of TargetMappingBasics
+  - List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+- targetType: TargetType
+  - The type of this target.
+- upgradeStatus: UpgradeStatus
+  - Upgrade status of the target.
+- useSystemProxy: System.Boolean
+  - Flag to check if system proxy is being used in this target.

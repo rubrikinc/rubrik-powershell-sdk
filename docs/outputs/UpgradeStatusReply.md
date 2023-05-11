@@ -1,0 +1,33 @@
+### UpgradeStatusReply
+Upgrade status response.
+
+- currentState: System.String
+  - Current state.
+- currentStateName: System.String
+  - Current state name.
+- currentStateProgress: System.String
+  - Progress percentage of current state.
+- finishedStates: System.String
+  - Upgrade states successfully completed running.
+- mode: System.String
+  - Upgrade mode.
+- nodeName: System.String
+  - Upgrade driver node name.
+- pendingStates: System.String
+  - Upgrade states to be attempted to run.
+- progress: System.String
+  - Progress percentage of current state.
+- ruInfo: RollingUpgradeInfo
+  - Rolling upgrade information.
+- tarballName: System.String
+  - Upgrade tarball package name.
+- upgradeProgressPercentage: System.String
+  - Overall upgrade progress percentage.
+- upgradeStatus: StatusResponse
+  - Upgrade status object.
+- upgradeTimeLeftSecs: System.String
+  - Time remaining for upgrade to complete.
+- upgradeTimestamp: System.String
+  - Upgrade start Timestamp.
+- userSurfacedTaskName: System.String
+  - Current upgrade task name.

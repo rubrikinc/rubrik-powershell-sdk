@@ -1,0 +1,33 @@
+### CdmUpgradeInfoFilterInput
+Filters for the cluster list.
+
+- clusterLocation: a list of System.Strings
+  - Location of cluster.
+- connectionState: a list of ClusterStatuss
+  - None
+- downloadedVersion: a list of System.Strings
+  - Cluster software version greater than or equal to.
+- id: a list of System.Strings
+  - Cluster UUIDs.
+- installedVersion: a list of System.Strings
+  - None
+- minSoftwareVersion: System.String
+  - Cluster software version greater than or equal to.
+- name: a list of System.Strings
+  - Cluster names.
+- prechecksStatus: a list of PrechecksStatusTypeEnums
+  - Prechecks status of cluster.
+- productType: a list of ClusterProductEnums
+  - Product type of Rubrik cluster.
+- registrationTime_gt: DateTime
+  - Cluster registration time greater than.
+- registrationTime_lt: DateTime
+  - Cluster registration time less than.
+- type: a list of ClusterTypeEnums
+  - Cluster types.
+- upgradeJobStatus: a list of ClusterJobStatusTypeEnums
+  - Cluster upgrade job status.
+- upgradeScheduled: System.Boolean
+  - None
+- versionStatus: a list of VersionStatuss
+  - None

@@ -1,0 +1,3 @@
+### ProtectionStatus
+- enumValue: ProtectionStatusEnum
+  - None

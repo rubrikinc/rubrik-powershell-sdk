@@ -1,0 +1,13 @@
+### ReportFilterDetail
+- dataType: DataTypeEnum
+  - None
+- defaultValues: a list of DisplayableValues
+  - None
+- displayName: System.String
+  - None
+- name: System.String
+  - None
+- type: FilterTypeEnum
+  - None
+- values: a list of DisplayableValues
+  - None

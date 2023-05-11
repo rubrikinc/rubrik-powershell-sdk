@@ -1,0 +1,79 @@
+### TaskDetail
+Task details.
+
+- archivalTarget: System.String
+  - The archival target of an archival task.
+- clusterLocation: System.String
+  - The cluster location of the task.
+- clusterName: System.String
+  - The cluster name of the task.
+- clusterType: System.String
+  - The cluster type of the task.
+- clusterUuid: System.String
+  - The cluster UUID of the task.
+- dataReduction: System.Single
+  - Data reduction of the task.
+- dataTransferred: System.Int64
+  - Total number of bytes transferred for the task.
+- dedupRatio: System.Single
+  - Deduplication ratio of the task.
+- directArchive: System.String
+  - Specifies whether an archival task has direct archive enabled.
+- duration: System.Int64
+  - The time taken to run the task.
+- endTime: DateTime
+  - The time when the task ended.
+- failureReason: System.String
+  - The reason for failure if the task failed to complete.
+- id: System.Int64
+  - The task monitoring ID.
+- location: System.String
+  - The location of the task.
+- logicalBytes: System.Int64
+  - Logical bytes of the task.
+- logicalDataReduction: System.Single
+  - Logical data reduction of the task.
+- logicalDedupRatio: System.Single
+  - Logical deduplication ratio of the task.
+- objectFid: System.String
+  - The fid of the object related to the task.
+- objectName: System.String
+  - The name of the object related to the task.
+- objectType: System.String
+  - The type of the object related to the task.
+- orgId: System.String
+  - The organization ID related to the task.
+- orgName: System.String
+  - The organization name related to the task.
+- physicalBytes: System.Int64
+  - Physical bytes of the task.
+- protectedVolume: System.String
+  - Protected volume of the task.
+- recoveryPoint: System.String
+  - The recovery point of a recovery task.
+- recoveryPointType: System.String
+  - The recovery point type of a recovery task.
+- replicationSource: System.String
+  - The replication source of a replication task.
+- replicationTarget: System.String
+  - The replication target of a replication task.
+- reportJobInstanceId: System.String
+  - The job instance ID.
+- slaDomainId: System.String
+  - The SLA Domain ID of the task.
+- slaDomainName: System.String
+  - The SLA Domain name of the task.
+- snapshotConsistency: System.String
+  - Snapshot consistency of the task.
+- startTime: DateTime
+  - The time when the task started.
+- status: System.String
+  - The status of the task.
+- taskCategory: System.String
+  - The category type of the task.
+- taskType: System.String
+  - The type of the task.
+- totalFilesTransferred: System.Int64
+  - Total number of files transferred for the task.
+- userName: System.String
+  - The user who started the task.

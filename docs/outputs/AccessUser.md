@@ -1,0 +1,15 @@
+### AccessUser
+- activityDelta: System.Int64
+  - None
+- email: System.String
+  - None
+- lastAccessTime: System.Int64
+  - None
+- numActivities: System.Int64
+  - None
+- subjectName: System.String
+  - None
+- userSid: System.String
+  - None
+- username: System.String
+  - None

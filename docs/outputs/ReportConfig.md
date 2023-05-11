@@ -1,0 +1,19 @@
+### ReportConfig
+- aggregations: a list of System.Strings
+  - None
+- columns: a list of System.Strings
+  - Column selection for the report.
+- dataViewType: DataViewTypeEnum
+  - Type of report.
+- filters: a list of ConfigFilters
+  - Filter selection for the report.
+- groupBy: configGroupBy
+  - GroupBy selection for the report.
+- id: System.Int64
+  - None
+- name: System.String
+  - Report name.
+- sortBy: System.String
+  - None
+- sortOrder: SortOrder
+  - None

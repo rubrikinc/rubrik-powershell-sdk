@@ -1,0 +1,13 @@
+### AnomalyTable
+- focus: ReportFocusEnum
+  - None
+- groupBy: a list of AnomalyResultGroupBys
+  - None
+- name: System.String
+  - None
+- selectedColumns: a list of AnomalyTableColumnEnums
+  - None
+- sortBy: AnomalyResultSortBy
+  - None
+- sortOrder: SortOrder
+  - Sorts by order.

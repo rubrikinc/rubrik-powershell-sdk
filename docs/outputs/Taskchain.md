@@ -1,0 +1,43 @@
+### Taskchain
+Taskchain.
+
+- account: System.String
+  - None
+- component: System.String
+  - None
+- config: System.String
+  - None
+- currentTaskExecutionAttempts: System.Int32
+  - None
+- currentTaskIndex: System.Int32
+  - None
+- endTime: DateTime
+  - None
+- error: System.String
+  - None
+- id: System.Int64
+  - None
+- jobId: System.Int64
+  - None
+- jobType: System.String
+  - None
+- name: System.String
+  - None
+- parentTaskchainId: System.String
+  - None
+- podName: System.String
+  - None
+- priority: System.Int32
+  - None
+- progress: System.Int64
+  - None
+- progressedAt: DateTime
+  - None
+- startTime: DateTime
+  - None
+- state: TaskchainState
+  - None
+- taskchainUuid: System.String
+  - None
+- workflowName: System.String
+  - None

@@ -1,0 +1,17 @@
+### VsphereBlueprintChildSnapshotInfo
+- host: VmHost
+  - None
+- memoryMbs: System.Int32
+  - None
+- nicMap: a list of VmNicMapEntrys
+  - None
+- osType: System.String
+  - None
+- snapshotAppMetadata: System.String
+  - None
+- snapshotId: System.String
+  - None
+- vcpus: System.Int32
+  - None
+- volumeMap: a list of VmDiskMapEntrys
+  - None

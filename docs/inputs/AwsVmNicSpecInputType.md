@@ -1,0 +1,13 @@
+### AwsVmNicSpecInputType
+- awsSecurityGroupId: System.String
+  - None
+- awsSubnetId: System.String
+  - None
+- ipv4Address: System.String
+  - None
+- key: System.Int32
+  - None
+- securityGroupId: System.String
+  - None
+- subnetId: System.String
+  - None

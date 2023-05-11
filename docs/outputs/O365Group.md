@@ -1,0 +1,49 @@
+### O365Group
+O365 Groups from O365 hierarchy.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of Operations
+  - The authorized operations on the object.
+- configuredGroupSpec: System.String
+  - The specification for a configured group.
+- configuredGroupSpecification: O365ConfiguredGroupSpec
+  - The specification for a configured group.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- deletedInAzure: System.Boolean
+  - True, if the group is deleted in AD.
+- displayName: System.String
+  - Display name of the group.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- groupID: System.String
+  - Rubrik internal UUID for group.
+- groupType: O365GroupType
+  - The type of group.
+- id: System.String
+  - Group ID of o365 group object.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- naturalID: System.String
+  - Natural ID of the group.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- userCount: System.Int64
+  - Number of user that are member of group.

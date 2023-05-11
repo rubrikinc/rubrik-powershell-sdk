@@ -1,0 +1,31 @@
+### UpdateOrgInput
+Update organization details.
+
+- allowedClusters: a list of System.Strings
+  - Allowed clusters for the organization.
+- authDomainConfig: TenantAuthDomainConfig
+  - Use the SSO/LDAP configuration of the global organization or set the configuration specific to this organization.
+- description: System.String
+  - New description of the organization.
+- existingSsoGroups: a list of ExistingSsoGroupInputs
+  - Existing SSO groups to be authorized for this tenant organization.
+- existingUsers: a list of ExistingUserInputs
+  - Existing users to add to the tenant organization.
+- fullName: System.String
+  - New full name of the tenant organization.
+- isEnvoyRequired: System.Boolean
+  - Force organization to use envoy to connect their hosts.
+- name: System.String
+  - New unique name ID of the organization.
+- newSsoGroups: a list of NewSsoGroupInputs
+  - New SSO groups to be authorized for this tenant organization.
+- organizationId: System.String
+  - ID of the organization to be updated.
+- permissions: a list of PermissionInputs
+  - Permissions to be given to the org admin role.
+- selfServicePermissions: a list of SelfServicePermissionInputs
+  - Self-service permissions to be assigned to the organization.
+- shouldEnforceMfaForAll: System.Boolean
+  - Enforce MFA for all users in the organization.
+- userInvites: a list of UserInviteInputs
+  - Invitations to invite new users to the tenant organization.

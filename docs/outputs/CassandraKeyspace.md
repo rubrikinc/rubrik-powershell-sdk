@@ -1,0 +1,49 @@
+### CassandraKeyspace
+Cassandra Keyspace information.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- backupCount: System.Int32
+  - The backup count.
+- backupParams: CassandraBackupParams
+  - Backup Params of the source.
+- cluster: Cluster
+  - Mosaic cluster information.
+- clusterUuid: System.String
+  - UUID of the Mosaic cluster.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- descendantConnection: CassandraKeyspaceDescendantTypeConnection
+  - List of descendants.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- id: System.String
+  - The FID of the hierarchy object.
+- isRelic: System.Boolean
+  - Is the keyspace a relic.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- physicalChildConnection: CassandraKeyspacePhysicalChildTypeConnection
+  - List of physical children.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- source: CassandraSource
+  - Parent source connection.
+- watcherEnabled: System.Boolean
+  - Watcher status of the keyspace.

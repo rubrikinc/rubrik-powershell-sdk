@@ -1,0 +1,29 @@
+### CdmClusterStatusInfo
+- completedNodes: System.String
+  - Number of nodes where rolling upgrade is complete.
+- currentNode: System.String
+  - Node going through rolling upgrade currently.
+- currentNodeState: System.String
+  - Upgrade state of the node going through the rolling upgrade currently.
+- currentState: System.String
+  - The upgrade state running at the time of the query.
+- currentStateProgress: System.String
+  - Progress percentage of the current upgrade state.
+- currentTask: System.String
+  - The upgrade task running at the time of the query.
+- downloadJobStatus: System.String
+  - Status of the download job.
+- downloadProgress: System.String
+  - Download progress.
+- downloadRemainingTimeEstimateInSeconds: System.String
+  - Time, in seconds, remaining for the download to complete.
+- downloadVersion: System.String
+  - Download package version.
+- finishedStates: System.String
+  - A list of upgrade states that are completed.
+- overallProgress: System.String
+  - Overall upgrade progress percentage.
+- pendingStates: System.String
+  - A list of upgrade states that are pending.
+- totalNodes: System.String
+  - Total number of nodes in the Rubrik cluster.

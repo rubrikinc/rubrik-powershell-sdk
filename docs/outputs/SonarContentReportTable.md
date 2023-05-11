@@ -1,0 +1,13 @@
+### SonarContentReportTable
+- focus: ReportFocusEnum
+  - None
+- groupBy: a list of DiscoveryContentReportGroupBys
+  - None
+- name: System.String
+  - None
+- selectedColumns: a list of SonarContentReportTableColumnEnums
+  - None
+- sortBy: DiscoveryContentReportSortBy
+  - None
+- sortOrder: SortOrder
+  - Sorts by order.

@@ -1,0 +1,19 @@
+### O365App
+- addedAt: DateTime
+  - The added time of the O365 app.
+- appAuthStatus: AppAuthStatus
+  - The authentication status of the app against the subscription.
+- appAuthVersion: System.Int32
+  - The authentication version of the app against the subscription.
+- appId: System.String
+  - The ID of the O365 app.
+- appOwner: System.String
+  - The owner of the O365 app (RUBRIK or CUSTOMER).
+- appType: System.String
+  - The type of the O365 app (e.g. ONEDRIVE).
+- isAuthenticated: System.Boolean
+  - The authentication status of the app against the subscription [To be deprecated].
+- subscription: System.String
+  - The subscription to which the O365 app is associated.
+- subscriptionId: System.String
+  - The ID of the O365 subscription.

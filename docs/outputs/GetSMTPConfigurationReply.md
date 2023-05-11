@@ -1,0 +1,15 @@
+### GetSMTPConfigurationReply
+- defaultFromEmail: System.String
+  - None
+- hostname: System.String
+  - None
+- isValid: System.Boolean
+  - None
+- port: System.Int32
+  - None
+- securityType: SMTPSecurityTypeEnum
+  - None
+- trustedCerts: System.String
+  - None
+- username: System.String
+  - None

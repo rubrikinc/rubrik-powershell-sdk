@@ -1,0 +1,23 @@
+### VSphereVMNicSpecInputType
+- adapterType: NetworkAdapterType
+  - None
+- dnsInfos: a list of System.Strings
+  - None
+- gateway: System.String
+  - None
+- ipv4Address: System.String
+  - None
+- ipv6Address: System.String
+  - None
+- isPrimaryNic: System.Boolean
+  - None
+- key: System.String
+  - None
+- netmask: System.String
+  - None
+- networkId: System.String
+  - None
+- networkMoid: System.String
+  - None
+- networkType: NetworkType
+  - None

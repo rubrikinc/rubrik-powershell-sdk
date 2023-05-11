@@ -1,0 +1,11 @@
+### IssueEvent
+- snapshotFid: System.String
+  - None
+- timestamp: System.Int64
+  - None
+- type: IssueEventType
+  - None
+- violations: System.Int32
+  - None
+- violationsDelta: System.Int32
+  - None

@@ -1,0 +1,29 @@
+### UserAudit
+- auditType: UserAuditTypeEnum
+  - None
+- cluster: Cluster
+  - None
+- id: System.String
+  - None
+- message: System.String
+  - None
+- objectId: System.String
+  - None
+- objectName: System.String
+  - None
+- objectType: UserAuditObjectTypeEnum
+  - None
+- orgId: System.String
+  - The organization ID of this user audit.
+- orgName: System.String
+  - The organization name of this user audit.
+- severity: UserAuditSeverityEnum
+  - None
+- status: UserAuditStatusEnum
+  - None
+- time: DateTime
+  - None
+- userName: System.String
+  - None
+- userNote: System.String
+  - Optional user note.

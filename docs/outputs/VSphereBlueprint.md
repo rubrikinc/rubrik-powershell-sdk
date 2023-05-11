@@ -1,0 +1,103 @@
+### VSphereBlueprint
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of Operations
+  - The authorized operations on the object.
+- cdmId: System.String
+  - None
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- childConnection: BlueprintChildConnection
+  - The list of child objects in the workload.
+- children: a list of VSphereVmChilds
+  - None
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- currentFailoverStatus: AppBlueprintFailoverStatus
+  - None
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- id: System.String
+  - The FID of the hierarchy object.
+- isAssignedSlaSynced: System.Boolean
+  - None
+- isMount: System.Boolean
+  - None
+- isRelic: System.Boolean
+  - None
+- lastFailover: Failover
+  - last failover
+- lastFailoverStatus: AppBlueprintLastFailoverStatus
+  - None
+- lastFailoverTimeMillisOpt: System.Int64
+  - None
+- lastTestFailover: Failover
+  - last test failover
+- lastTestFailoverStatus: AppBlueprintLastFailoverStatus
+  - None
+- lastTestFailoverTimeMillisOpt: System.Int64
+  - None
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- mountTimeMillisOpt: System.Int64
+  - None
+- name: System.String
+  - The name of the hierarchy object.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- numChildren: System.Int32
+  - Number of child workloads of the Blueprint.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from objectID to pending object deletion status.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- recoveryInfo: BlueprintRecoveryRanges
+  - The recovery ranges of the blueprint
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- replicatedObjects: a list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- rmStatus: AppBlueprintRmStatus
+  - None
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.
+- status: AppBlueprintStatus
+  - None

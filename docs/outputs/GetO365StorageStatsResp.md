@@ -1,0 +1,13 @@
+### GetO365StorageStatsResp
+- dailyGrowthInBytes: System.Int64
+  - None
+- estimatedThirtyDaysStorageInBytes: System.Int64
+  - None
+- liveDataSizeInBytes: System.Int64
+  - None
+- physicalDataSizeInBytes: System.Int64
+  - None
+- physicalDataSizeTimeSeries: a list of O365PhysicalDataSizeTimeStamps
+  - None
+- storageEfficiencyPercent: System.Int64
+  - None

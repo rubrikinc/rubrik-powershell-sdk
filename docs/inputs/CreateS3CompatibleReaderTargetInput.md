@@ -1,0 +1,33 @@
+### CreateS3CompatibleReaderTargetInput
+Input for creating a S3Compatible Reader Target.
+
+- accessKey: System.String
+  - Field for specifying access key of the target.
+- bucketPrefix: System.String
+  - Field for specifying the bucket prefix of the S3Compatible target.
+- clusterUuid: System.String
+  - Field for specifying cluster UUID of the target.
+- encryptionKeyInDer: System.String
+  - Field for specifying encryption key.
+- encryptionPassword: System.String
+  - Encryption password for the S3-compatible archival target.
+- endpoint: System.String
+  - Field for specifying the endpoint of the target.
+- ibmDetails: IbmCosDetails
+  - Deprecated: IBM subtype location specific details is no longer used.
+- immutabilitySettings: LocationImmutabilitySettings
+  - Deprecated: S3-compatible immutability settings is no longer used.
+- isConsolidationEnabled: System.Boolean
+  - Field for whether consolidation should be enabled or not for this target.
+- name: System.String
+  - Field for specifying name of the target.
+- numberOfBuckets: System.Int32
+  - Field for specifying number of buckets.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - Field for specifying the metadata to be retrieved from a target.
+- secretKey: System.String
+  - Field for specifying the secret key of the target.
+- subType: S3CompatibleSubType
+  - Subtype of an S3-compatible target.
+- useSystemProxy: System.Boolean
+  - Field for specifying whether to use system proxy or not.

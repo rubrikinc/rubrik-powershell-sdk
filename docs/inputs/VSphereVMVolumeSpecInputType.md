@@ -1,0 +1,13 @@
+### VSphereVMVolumeSpecInputType
+- dataStoreCdmId: System.String
+  - Cdm Id of vSphere Datastore.
+- dataStoreId: System.String
+  - Id of vSphere Datastore.
+- datastoreClusterId: System.String
+  - Id of vSphere Datastore Cluster.
+- key: System.String
+  - Key value defined in Ebs Volume.
+- label: System.String
+  - Label for vSphere volume.
+- sizeGbs: System.Single
+  - Size of datastore or datastore cluster in Gbs.

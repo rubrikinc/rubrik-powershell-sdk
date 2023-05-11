@@ -1,0 +1,61 @@
+### GlobalSlaReply
+Metadata for rendering an SLA Domain.
+
+- allOrgsWithAccess: a list of Orgs
+  - Specifies the list of organizations that have view access for the SLA Domain.
+- archivalSpec: ArchivalSpec
+  - Archiving specification for the SLA Domain.
+- archivalSpecs: a list of ArchivalSpecs
+  - List of archival specifications for SLA Domain.
+- backupWindows: a list of BackupWindows
+  - Backup windows for the SLA Domain.
+- baseFrequency: Duration
+  - Base frequency for the SLA Domain.
+- clusterToSyncStatusMap: a list of GlobalSlaSyncStatuss
+  - Sync status of the clusters.
+- clusterUuid: System.String
+  - Rubrik cluster ID of the SLA Domain.
+- description: System.String
+  - Description of the SLA Domain.
+- firstFullBackupWindows: a list of BackupWindows
+  - First full backup windows.
+- id: System.String
+  - SLA Domain ID.
+- isArchived: System.Boolean
+  - Specifies whether the SLA Domain is archived or not.
+- isDefault: System.Boolean
+  - Specifies whether the SLA Domain is a default SLA Domain or not.
+- isRetentionLockedSla: System.Boolean
+  - Specifies if this SLA Domain is retention-locked or not.
+- localRetentionLimit: Duration
+  - Local retention limit.
+- logConfig: LogConfigResult
+  - Log configuration of the SLA Domain.
+- name: System.String
+  - SLA Domain name.
+- objectSpecificConfigs: ObjectSpecificConfigs
+  - The object-specific configurations of the SLA Domain.
+- objectTypes: a list of SlaObjectTypes
+  - The object-types supported by the SLA Domain.
+- ownerOrgName: System.String
+  - Specifies the name of the owner organization of the SLA Domain.
+- pausedClustersInfo: PausedClustersInfo
+  - Information about Rubrik clusters where this SLA Domain is paused.
+- protectedObjectCount: System.Int32
+  - Workload count for the SLA Domain.
+- replicationSpec: ReplicationSpec
+  - Replication specification for the SLA Domain.
+- replicationSpecsV2: a list of ReplicationSpecV2s
+  - Replication specification for the SLA Domain.
+- snapshotSchedule: SnapshotSchedule
+  - Snapshot schedule for the SLA Domain.
+- snapshotScheduleLastUpdatedAt: DateTime
+  - Last update timestamp of the snapshot schedule of the SLA Domain.
+- stateVersion: System.Int64
+  - State version of the SLA Domain.
+- uiColor: System.String
+  - Color of the SLA Domain on the User Interface.
+- upgradeInfo: SlaUpgradeInfo
+  - SLA Domain upgrade information.
+- version: System.String
+  - Version for the SLA Domain.

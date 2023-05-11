@@ -1,0 +1,123 @@
+### VsphereVm
+- agentStatus: AgentStatus
+  - Rubrik Backup Service (RBS) agent status on this virtual machine.
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- arrayIntegrationEnabled: System.Boolean
+  - Whether array integration for this virtual machine is enabled.
+- authorizedOperations: a list of Operations
+  - The authorized operations on the object.
+- blueprintId: System.String
+  - ID of the recovery plan when the virtual machine is a child of the recovery plan.
+- blueprintName: System.String
+  - Name of the Recovery Plan when the virtual machine is a child of the Recovery Plan.
+- cdmId: System.String
+  - None
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- duplicatedVms: a list of DuplicatedVms
+  - List of duplicated virtual machines.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- guestCredentialAuthorizationStatus: GuestCredentialAuthorizationStatus
+  - Guest OS credentials authorization status.
+- guestCredentialId: System.String
+  - ID of guest credential assigned to the virtual machine.
+- guestOsName: System.String
+  - None
+- guestOsType: GuestOsType
+  - The Guest OS type of this virtual machine.
+- id: System.String
+  - Object ID.
+- isActive: System.Boolean
+  - Specifies whether the virtual machine is active or not.
+- isArrayIntegrationPossible: System.Boolean
+  - If Virtual Machine integration with storage array is possible.
+- isBlueprintChild: System.Boolean
+  - Specifies whether the virtual machine is a child of a Disaster Recovery Plan.
+- isRelic: System.Boolean
+  - None
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- name: System.String
+  - The name of the hierarchy object.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- parentWorkloadIdOpt: System.String
+  - Parent ID of this workload.
+- parentWorkloadTypeOpt: System.String
+  - Parent workload type of this workload.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from objectID to pending object deletion status.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- postBackupScript: PrePostScript
+  - Post-backup script.
+- postSnapScript: PrePostScript
+  - Post-snap script.
+- powerStatus: VmPowerStatus
+  - None
+- preBackupScript: PrePostScript
+  - Pre-backup script.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- protectionDate: DateTime
+  - Date at which the SLA Domain was assigned or inherited.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- replicatedObjects: a list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- reportWorkload: Snappable
+  - Contains statistics for the protected objects, for example, capacity.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotConsistencyMandate: ConsistencyLevelEnum
+  - Snapshot consistency mandate.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.
+- vSphereLiveMounts: VsphereLiveMountConnection
+  - List of Live Mounts for this virtual machine.
+- vSphereMounts: VsphereMountConnection
+  - List of Live Mounts for this virtual machine.
+- vmwareToolsInstalled: System.Boolean
+  - None
+- vsphereTagPath: a list of PathNodes
+  - None
+- vsphereVirtualDisks: VsphereVirtualDiskConnection
+  - List of virtual disks for this virtual machine.

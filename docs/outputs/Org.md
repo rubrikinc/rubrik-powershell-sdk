@@ -1,0 +1,37 @@
+### Org
+Details of an org.
+
+- allUrls: a list of System.Strings
+  - All URLs associated with the organization.
+- allowedClusters: a list of System.Strings
+  - Allowed clusters for the organization.
+- authDomainConfig: TenantAuthDomainConfig
+  - Specifies whether to use the SSO/LDAP configuration of the global organization or to use configuration specific to this organization.
+- description: System.String
+  - Description of the organization.
+- fullName: System.String
+  - Full name of the organization.
+- hasOwnIdpConfigured: System.Boolean
+  - Specifies whether this tenant organization has configured its own identity providers.
+- id: System.String
+  - ID of the organization.
+- isEnvoyRequired: System.Boolean
+  - Specifies whether organization is forced to use Rubrik Envoy to connect their hosts.
+- name: System.String
+  - Name of the organization.
+- orgAdminRole: Role
+  - Organization admin role.
+- permissions: a list of Permissions
+  - Permissions given to the organization.
+- physicalStorageUsed: System.Int64
+  - Physical storage used by the organization.
+- selfServicePermissions: a list of SelfServicePermissions
+  - Self-service permissions assigned to the organization.
+- shouldEnforceMfaForAll: System.Boolean
+  - Specifies whether MFA is enforced for all users in the organization.
+- ssoGroups: a list of SsoGroups
+  - SSO groups authorized for the organization.
+- tenantNetworkHealth: TenantNetworkHealth
+  - Health of the tenant networks associated with the organization.
+- users: a list of ExistingUsers
+  - Existing users in the organization.

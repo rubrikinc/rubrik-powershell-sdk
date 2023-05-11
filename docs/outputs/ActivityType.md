@@ -1,0 +1,3 @@
+### ActivityType
+- enumValue: ActivityTypeEnum
+  - None

@@ -1,0 +1,13 @@
+### ChartConfig
+- aggregations: a list of System.Strings
+  - None
+- chartType: ChartType
+  - None
+- chartViewId: System.String
+  - None
+- defaultChart: System.Boolean
+  - None
+- groupBys: a list of System.Strings
+  - None
+- name: System.String
+  - None

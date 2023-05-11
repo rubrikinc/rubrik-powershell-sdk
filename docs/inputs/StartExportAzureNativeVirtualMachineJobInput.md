@@ -1,0 +1,37 @@
+### StartExportAzureNativeVirtualMachineJobInput
+Input for the job to export the specified Azure Native Virtual Machine to the specified destination.
+
+- availabilitySetNativeId: System.String
+  - The native ID of the availability set used by the virtual machine created by the export job.
+- destinationAvailabilityZone: System.String
+  - The Availability Zone where the virtual machine created by the export job exists. When the region type does not support Availability Zones, this value is null.
+- destinationRegion: AzureNativeRegion
+  - The region where the virtual machine created by the export job exists.
+- destinationSubscriptionRubrikId: System.String
+  - The Rubrik ID of the Azure subscription to which the virtual machine is exported. When this value is not specified, the virtual machine is exported to the same Azure subscription.
+- diskEncryptionSetNativeId: System.String
+  - Native ID of the disk encryption set for encrypting the newly created disks.
+- networkSecurityGroupNativeId: System.String
+  - The native ID of the network security group used by the virtual machine created by the export job.
+- recoveryDiskIds: a list of System.Strings
+  - Specifies a list of Azure disk unique native IDs that will be exported. When empty, all disks from the snapshot will be exported.
+- resourceGroupName: System.String
+  - The resource group associated with the virtual machine created by the export job.
+- shouldEnableAcceleratedNetworking: System.Boolean
+  - Specifies whether to enable accelerated networking for the virtual machine created by the export job. This value is false by default.
+- shouldExportTags: System.Boolean
+  - Specifies whether to export the tags from the snapshot.
+- shouldPowerOff: System.Boolean
+  - Specifies whether to export the virtual machine in a powered-down state.
+- shouldUseReplica: System.Boolean
+  - Specifies whether to recover from a replica of the source snapshot.
+- snapshotId: System.String
+  - The snapshot ID of the snapshot used to export a virtual machine.
+- snapshotType: AzureSnapshotType
+  - The type of the snapshot to recover from.
+- subnetNativeId: System.String
+  - The native ID of the subnet used by the virtual machine created by the export job.
+- virtualMachineName: System.String
+  - The name of the virtual machine created as a result of the export job.
+- virtualMachineSize: System.String
+  - The size, in GiB, of the virtual machine created by the export job.

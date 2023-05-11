@@ -1,0 +1,65 @@
+### K8sNamespace
+Kubernetes namespace.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- apiVersion: System.String
+  - API version of the namespace.
+- authorizedOperations: a list of Operations
+  - The authorized operations on the object.
+- clusterScoped: System.Boolean
+  - Specifies whether the namespace contains Kubernetes cluster-scoped resources.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- id: System.String
+  - Object ID.
+- isRelic: System.Boolean
+  - Specifies whether the namespace is a relic.
+- k8sClusterId: System.String
+  - Kubernetes cluster ID.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- namespaceName: System.String
+  - Name of the namespace.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The newest snapshot that is indexed and unexpired, and therefore restorable.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- numPvcs: System.Int32
+  - Number of persistent volume claims.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- numWorkloads: System.Int32
+  - Number of workloads.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- resourceVersion: System.String
+  - Version of the namespace on the Kubernetes cluster.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for this workload's snapshots.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for this workload's snapshots.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.

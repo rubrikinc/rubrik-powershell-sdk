@@ -1,0 +1,51 @@
+### RubrikManagedGlacierTarget
+Information about the Amazon Glacier target created on Rubrik.
+
+- cloudAccount: CloudAccount
+  - Cloud account details of the Amazon Glacier target.
+- cluster: Cluster
+  - The cluster to which this target belongs.
+- clusterName: System.String
+  - Name of the Rubrik cluster that archives to this archival location.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the AWS target.
+- consumedBytes: System.Int64
+  - Number of bytes stored on the target.
+- failedTasks: System.Int32
+  - Number of archiving tasks failed on this target.
+- id: System.String
+  - The ID of this target.
+- isActive: System.Boolean
+  - Specifies whether this target is active. When false, the target is either paused or not enabled.
+- isArchived: System.Boolean
+  - Specifies whether this target is archived.
+- locationConnectionStatus: ConnectionStatusType
+  - Connected or Disconnected status of the target.
+- locationScope: LocationScope
+  - The scope of location of this target. Possible values are Global or Local.
+- name: System.String
+  - The name of this target.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - The retrieval method of the reader target.
+- region: AwsRegion
+  - Region of the Amazon Glacier target.
+- retrievalTier: AwsRetrievalTier
+  - Retrieval tier of the Amazon Glacier target.
+- runningTasks: System.Int32
+  - Number of archiving tasks running on this target.
+- status: ArchivalLocationStatus
+  - Status of the target.
+- syncFailureReason: System.String
+  - Reason of sync failure of this target with Rubrik CDM. This is empty if syncStatus is not failed.
+- syncStatus: TargetSyncStatus
+  - Sync status of Amazon Glacier target.
+- targetMapping: TargetMappingBasic
+  - Archival location to which the mapping target belongs.
+- targetMappingBasic: a list of TargetMappingBasics
+  - List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+- targetType: TargetType
+  - The type of this target.
+- upgradeStatus: UpgradeStatus
+  - Upgrade status of the target.
+- vaultName: System.String
+  - Vault name of the Amazon Glacier target.

@@ -1,0 +1,21 @@
+### RestoreConfig
+- deltaTypeFilter: a list of DeltaTypes
+  - None
+- domainName: System.String
+  - None
+- nextSnapshotFid: System.String
+  - None
+- password: System.String
+  - None
+- restoreFilesConfig: a list of RestoreFileConfigs
+  - None
+- shouldIgnoreErrors: System.Boolean
+  - None
+- shouldRestoreXAttrs: System.Boolean
+  - None
+- shouldSaveCredentials: System.Boolean
+  - None
+- shouldUseAgent: System.Boolean
+  - None
+- username: System.String
+  - None

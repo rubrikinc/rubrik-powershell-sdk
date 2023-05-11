@@ -1,0 +1,27 @@
+### AppflowsSummary
+- numBlueprintsReady: System.Int32
+  - None
+- numBlueprintsWithIssues: System.Int32
+  - None
+- numBpFailedLastFailover: System.Int32
+  - None
+- numBpFailedLastTestFailover: System.Int32
+  - None
+- numBpFailedTestFailoverLastQuarter: System.Int32
+  - None
+- numBpPassedLastFailover: System.Int32
+  - None
+- numBpPassedLastTestFailover: System.Int32
+  - None
+- numDrPlansReady: System.Int32
+  - None
+- numDrPlansWithIssues: System.Int32
+  - None
+- numVmwareVmsProtected: System.Int32
+  - None
+- totalBlueprints: System.Int32
+  - None
+- totalDrPlans: System.Int32
+  - None
+- totalVmwareVms: System.Int32
+  - None

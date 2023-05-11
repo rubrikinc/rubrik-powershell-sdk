@@ -1,0 +1,11 @@
+### FileAccessResult
+- accessType: ActivityAccessType
+  - None
+- directory: System.String
+  - None
+- filename: System.String
+  - None
+- nativePath: System.String
+  - None
+- numAccesses: System.Int32
+  - None

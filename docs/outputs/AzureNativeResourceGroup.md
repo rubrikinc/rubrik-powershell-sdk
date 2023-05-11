@@ -1,0 +1,59 @@
+### AzureNativeResourceGroup
+An Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of PolarisObjectAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- azureNativeVirtualMachines: AzureNativeVirtualMachineConnection
+  - Paginated ist of Azure Virtual Machines (VMs) in the Resource Group.
+- azureSqlDatabaseCount: System.Int32
+  - Count of Azure SQL databases in the Resource Group.
+- azureSqlManagedInstanceDbCount: System.Int32
+  - Count of Azure SQL Managed Instance databases in the Resource Group.
+- azureSubscriptionRubrikId: System.String
+  - Rubrik ID of the Azure Native Resource Group.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- diskSla: AzureNativeResourceGroupSlaAssignment
+  - Deprecated, use protectedObjectTypeToSla instead. Rubrik Service Level Agreement (SLA) assigned to the disks in the Resource Group.
+- disksCount: System.Int32
+  - Count of disks in the Resource Group.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- id: System.String
+  - The FID of the hierarchy object.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- protectedObjectTypeToSla: a list of ProtectedObjectTypeToSlas
+  - A list of mappings between protected object types and SLA Domains.
+- region: AzureNativeRegion
+  - Azure region associated with the Resource Group.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snappableTypeToBackupSetupSpecs: a list of WorkloadTypeToBackupSetupSpecss
+  - A list of mappings between object types and details about the backup setup.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- subscription: AzureNativeSubscription
+  - Azure Native Subscription of the Resource Group.
+- tags: a list of AzureTags
+  - List of tags associated with the Resource Group.
+- vmSla: AzureNativeResourceGroupSlaAssignment
+  - Deprecated, use protectedObjectTypeToSla instead. Rubrik Service Level Agreement (SLA) assigned to the Virtual Machines (VMs) in the Resource Group.
+- vmsCount: System.Int32
+  - Count of Virtual Machines (VMs) in the Resource Group.

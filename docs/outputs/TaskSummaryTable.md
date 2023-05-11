@@ -1,0 +1,13 @@
+### TaskSummaryTable
+- focus: ReportFocusEnum
+  - None
+- groupBy: a list of TaskSummaryGroupByEnums
+  - None
+- name: System.String
+  - None
+- selectedColumns: a list of TaskReportTableColumnEnums
+  - None
+- sortBy: TaskSummarySortByEnum
+  - None
+- sortOrder: SortOrder
+  - Sorts by order.

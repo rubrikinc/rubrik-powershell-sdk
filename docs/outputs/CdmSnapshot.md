@@ -1,0 +1,87 @@
+### CdmSnapshot
+- archivalLocations: a list of DataLocations
+  - None
+- cdmId: System.String
+  - None
+- cdmVersion: System.String
+  - None
+- childSnapshots: a list of CdmSnapshots
+  - Children snapshot ID list.
+- cloudNativeLocations: a list of DataLocations
+  - None
+- cloudState: SnapshotCloudState
+  - Cloud state of the snapshot.
+- cluster: Cluster
+  - None
+- consistencyLevel: ConsistencyLevelEnum
+  - None
+- date: DateTime
+  - None
+- db2AppMetadata: Db2AppMetadata
+  - Db2 specific metadata for the snapshot.
+- expirationDate: DateTime
+  - None
+- expiryHint: System.Boolean
+  - None
+- fileCount: System.Int64
+  - Number of files in the snapshot.
+- hasDelta: System.Boolean
+  - None
+- id: System.String
+  - None
+- indexingAttempts: System.Int64
+  - None
+- isAnomaly: System.Boolean
+  - Flag if the snapshot is an anomaly.
+- isCorrupted: System.Boolean
+  - None
+- isDownloadedSnapshot: System.Boolean
+  - None
+- isExpired: System.Boolean
+  - Specifies whether or not the snapshot is expired.
+- isIndexed: System.Boolean
+  - None
+- isOnDemandSnapshot: System.Boolean
+  - None
+- isQuarantined: System.Boolean
+  - Specifies whether the snapshot is quarantined.
+- isRetentionLocked: System.Boolean
+  - Specifies whether the snapshot follows retention lock constraint.
+- isSapHanaIncrementalSnapshot: System.Boolean
+  - Specifies whether the snapshot is an incremental SAP HANA snapshot.
+- isUnindexable: System.Boolean
+  - None
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- legalHoldInfo: LegalHoldInfo
+  - Contains info regarding legal hold on snapshot, null otherwise.
+- localLocations: a list of DataLocations
+  - None
+- locations: a list of DataLocations
+  - None
+- managedVolumeAppMetadata: ManagedVolumeAppMetadata
+  - Managed Volume specific metadata for the snapshot. Null if snapshot is not of a managed volume.
+- parentSnapshotId: System.String
+  - The ID of the parent snapshot.
+- pendingSla: SlaDomain
+  - Non-null when a user has assigned a SLA to this snapshot, and the SLA assignment is in the process of being synced over to CDM.
+- pendingSnapshotDeletion: PendingSnapshotDeletion
+  - Mapping from snapshot to delete pending action status.
+- replicationLocations: a list of DataLocations
+  - None
+- resourceSpec: System.String
+  - Resource spec for a snapshot.
+- sapHanaAppMetadata: SapHanaAppMetadata
+  - SAP HANA specific metadata for the snapshot.
+- slaDomain: SlaDomain
+  - SLA domain of the snapshot.
+- snappableId: System.String
+  - The workload ID of the snapshot.
+- snappableNew: CdmHierarchySnappableNew
+  - None
+- snapshotRetentionInfo: CdmSnapshotRetentionInfo
+  - None
+- vappAppMetadata: a list of VappAppMetadatas
+  - Vmware vApp specific snapshot metadata.
+- vmwareAppMetadata: VmwareAppMetadata
+  - VMware specific metadata for the snapshot.

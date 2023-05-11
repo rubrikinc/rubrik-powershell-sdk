@@ -1,0 +1,35 @@
+### ClassificationPolicyDetail
+- analyzers: a list of Analyzers
+  - None
+- colorEnum: ClassificationPolicyColor
+  - None
+- createdTime: System.Int64
+  - None
+- creator: User
+  - None
+- deletable: System.Boolean
+  - None
+- description: System.String
+  - None
+- hierarchyObjectConnection: HierarchyObjectConnection
+  - Connection on hierarchy objects.
+- hierarchyObjectIds: a list of System.Strings
+  - None
+- hierarchyObjects: a list of HierarchyObjects
+  - None
+- id: System.String
+  - None
+- lastUpdatedTime: System.Int64
+  - None
+- mode: ClassificationPolicyMode
+  - None
+- name: System.String
+  - None
+- numAnalyzers: System.Int32
+  - None
+- objectStatuses: a list of ObjectStatuss
+  - None
+- totalObjects: System.Int32
+  - None
+- whitelists: a list of ClassificationPolicyWhitelistDetailedEntrys
+  - None

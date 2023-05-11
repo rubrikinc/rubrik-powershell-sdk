@@ -1,0 +1,15 @@
+### HierarchySnappableFileVersion
+- fileMode: FileModeEnum
+  - None
+- lastModified: DateTime
+  - None
+- quarantineInfo: QuarantineInfo
+  - Quarantine information corresponding to the path.
+- size: System.Int64
+  - None
+- snapshot: CdmSnapshot
+  - None
+- snapshotId: System.String
+  - None
+- source: FileVersionSourceEnum
+  - None

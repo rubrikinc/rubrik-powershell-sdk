@@ -1,0 +1,95 @@
+### VsphereBlueprintNew
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of Operations
+  - The authorized operations on the object.
+- blueprintRecoveryCount: BlueprintRecoveryCount
+  - Blueprint recovery count.
+- blueprintRecoveryType: BlueprintRecoveryType
+  - Blueprint recovery type.
+- childConnection: BlueprintChildConnection
+  - The list of child objects in the workload.
+- children: a list of VSphereVmChilds
+  - None
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- enableHydrationOpt: System.Boolean
+  - Flag to enable hydration.
+- id: System.String
+  - The FID of the hierarchy object.
+- isArchived: System.Boolean
+  - None
+- isBlueprintVisible: System.Boolean
+  - Flag to enable visibility of Cyber Recovery Blueprint.
+- isHydrationEnabled: System.Boolean
+  - Status of hydration enablement.
+- lastFailoverSource: System.String
+  - Last failover source location.
+- lastFailoverStatus: BlueprintFailoverStatus
+  - None
+- lastFailoverTime: DateTime
+  - Last failover time.
+- lastFailoverTimeOpt: DateTime
+  - None
+- lastIsolatedRecoveryStatus: BlueprintFailoverStatus
+  - Status of the last isolated recovery.
+- lastIsolatedRecoveryTime: DateTime
+  - Last isolated recovery time.
+- lastIsolatedRecoveryTimeOpt: DateTime
+  - Last isolated recovery time.
+- lastLocalRecoveryStatus: BlueprintFailoverStatus
+  - Status of the last local recovery.
+- lastLocalRecoveryTime: DateTime
+  - Last local recovery time.
+- lastLocalRecoveryTimeOpt: DateTime
+  - Last local recovery time.
+- lastTestFailoverStatus: BlueprintFailoverStatus
+  - None
+- lastTestFailoverTime: DateTime
+  - Last test failover time.
+- lastTestFailoverTimeOpt: DateTime
+  - None
+- latestFailover: BlueprintFailover
+  - None
+- localRpoLagInfo: RpoLagInfo
+  - Details of the local blueprint RPO lag.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- numChildren: System.Int32
+  - Number of child workloads of the Blueprint.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- platform: BlueprintPlatform
+  - None
+- recoveryInfo: BlueprintRecoveryRanges
+  - The recovery ranges of the blueprint
+- remoteRpoLagInfo: RpoLagInfo
+  - Information about the remote RPO lag for the Blueprint.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- sourceLocation: BlueprintLocation
+  - The source location from which this object originated.
+- status: BlueprintStatus
+  - None
+- targetLocation: BlueprintLocation
+  - The target location to which the object failed over.
+- timeoutBetweenPriorityGroups: a list of System.Int64s
+  - A list of numbers representing the length of time, in minutes, to pause between each priority group during recovery. The numbers are ordered to align with the order of the priority groups. For example, consider a Blueprint with 3 priority groups. For this Blueprint, a value of [5,10,0] implies that there is a 5-minute pause between the 1st and 2nd priority groups and a 10-minute pause between the 2nd and 3rd priority groups. The last value in the list is always 0.
+- version: System.Int32
+  - None

@@ -1,0 +1,11 @@
+### CheckGuestOsResult
+- errorMessage: System.String
+  - None
+- instance: VsphereVm
+  - vsphere vm instance
+- instanceId: System.String
+  - None
+- instanceOs: GuestOS
+  - None
+- instanceType: System.String
+  - None

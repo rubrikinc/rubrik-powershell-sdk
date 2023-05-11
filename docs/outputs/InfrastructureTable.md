@@ -1,0 +1,13 @@
+### InfrastructureTable
+- focus: ReportFocusEnum
+  - None
+- groupBy: a list of ClusterGroupByEnums
+  - None
+- name: System.String
+  - None
+- selectedColumns: a list of InfrastructureTableColumnEnums
+  - None
+- sortBy: ClusterSortByEnum
+  - None
+- sortOrder: SortOrder
+  - Sorts by order.

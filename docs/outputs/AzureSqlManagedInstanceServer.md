@@ -1,0 +1,57 @@
+### AzureSqlManagedInstanceServer
+Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- azureNativeResourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure SQL Managed Instance Server.
+- backupSetupSourceObject: PathNode
+  - The object from where the setup for performing backups of Azure SQL Managed Instance Databases is inherited.
+- backupStorageRedundancy: AzureSqlBackupStorageRedundancyType
+  - Type of backup storage redundancy. Examples: LRS, ZRS, GRS.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- id: System.String
+  - The FID of the hierarchy object.
+- instancePoolName: System.String
+  - Name of the Instance Pool the Azure SQL Managed Instance Server belongs to.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- region: AzureNativeRegion
+  - Azure region where the Azure SQL Managed Instance Server is located.
+- serverName: System.String
+  - Name of the Azure SQL Managed Instance Server.
+- serviceTier: System.String
+  - Service Tier associated with the Azure SQL Managed Instance Server.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- storageSizeGib: System.Int64
+  - Storage size of the Azure SQL Managed Instance Server, in GiB.
+- subnetName: System.String
+  - Name of the subnet associated with the Azure SQL Managed Instance Server.
+- tags: a list of AzureTags
+  - List of tags associated with the Azure SQL Managed Instance Server.
+- vCoresCount: System.Int32
+  - Count of the vCores in the Azure SQL Managed Instance Server.
+- vnetName: System.String
+  - Name of the Virtual Network associated with the Azure SQL Managed Instance Server.

@@ -1,0 +1,61 @@
+### AzureNativeSubscription
+An Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
+
+- accountConnectionId: System.String
+  - Cloud account ID associated with the subscription.
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of PolarisObjectAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- azureCloudType: AzureCloudType
+  - Type of Azure cloud, for example, Azure Public Cloud and Azure China Cloud.
+- azureNativeResourceGroups: AzureNativeResourceGroupConnection
+  - Paginated list of all Azure Resource Groups in the subscription.
+- azureSqlDatabaseDbCount: System.Int32
+  - Count of Azure SQL databases in the subscription.
+- azureSqlManagedInstanceDbCount: System.Int32
+  - Count of Azure SQL Managed Instance databases in the subscription.
+- azureSubscriptionNativeId: System.String
+  - Native ID of the subscription.
+- azureSubscriptionStatus: AzureSubscriptionStatus
+  - Status of the subscription at a given time. Some examples are: added, deleted, refreshed. For more information, see https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/subscription-states.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- disksCount: System.Int32
+  - Count of managed disks in the subscription.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- enabledFeatures: a list of AzureNativeSubscriptionEnabledFeatures
+  - Details of features enabled for the subscription.
+- id: System.String
+  - The FID of the hierarchy object.
+- lastRefreshedAt: DateTime
+  - Last refresh time of the subscription, in UTC date-time format.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- regionSpecs: a list of AzureNativeRegionSpecs
+  - List of Azure region specifications associated with the subscription.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snappableTypeToBackupSetupSpecs: a list of WorkloadTypeToBackupSetupSpecss
+  - A list of mappings between object types and details about the backup setup.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- tenantId: System.String
+  - Tenant ID associated with the subscription.
+- vmsCount: System.Int32
+  - Count of virtual machines (VMs) in the subscription.

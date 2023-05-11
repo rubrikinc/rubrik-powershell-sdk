@@ -1,0 +1,33 @@
+### StartCyberRecoveryInput
+Input to start the cyber recovery job.
+
+- blueprintId: System.String
+  - The ID of the Recovery Plan to be recovered.
+- childSnappableFailoverInfos: a list of SnappableFailoverInfoTypes
+  - None
+- dataTransferType: DataTransferType
+  - The type of the data transfer, LIVEMOUNT.
+- failoverFailureAction: System.String
+  - The failure action of failover, PAUSE or CLEANUP.
+- failoverId: System.String
+  - The failover ID to resume cyber recovery.
+- failoverIgnorableErrors: a list of BlueprintFailoverIgnorableErrors
+  - Errors that should be ignored during cyber recovery.
+- failoverOperation: System.String
+  - The operation of the failover, Start or Resume.
+- failoverType: System.String
+  - The type of the failover job, ISOLATED_RECOVERY.
+- jobTriggerEmail: System.String
+  - None
+- recoveryName: System.String
+  - The recovery name.
+- recoverySpecId: System.String
+  - The ID of the Recovery Spec to use for cyber recovery.
+- targetLocationType: LocationType
+  - The type of the target location, CDM, AZURE, AWS or GCP.
+- targetLocationUuid: System.String
+  - The UUID of the target location.
+- timeoutInMinutes: System.Int32
+  - Timeout in minutes for cyber recovery job, if it is not given, then there will be no timeout.
+- triggeredFrom: System.String
+  - Location that triggers the recovery job, available values are APPFLOWS/RADAR.

@@ -1,0 +1,3 @@
+### ClusterType
+- enumValue: ClusterTypeEnum
+  - None

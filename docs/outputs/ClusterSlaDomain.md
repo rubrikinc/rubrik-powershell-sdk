@@ -1,0 +1,45 @@
+### ClusterSlaDomain
+Metadata for rendering a Rubrik cluster SLA Domain.
+
+- archivalSpec: ClusterArchivalSpec
+  - Archiving specification for the SLA Domain.
+- archivalSpecs: a list of ClusterArchivalSpecs
+  - List of archival specifications for SLA Domain.
+- backupWindows: a list of BackupWindows
+  - Backup windows for the SLA Domain.
+- baseFrequency: Duration
+  - Base frequency for the SLA Domain.
+- cdmId: System.String
+  - ID of the Rubrik cluster.
+- cluster: Cluster
+  - Rubrik cluster ID of SLA Domain.
+- fid: System.String
+  - FID.
+- firstFullBackupWindows: a list of BackupWindows
+  - First full backup windows.
+- id: System.String
+  - ID of Rubrik cluster SLA Domain.
+- isRetentionLockedSla: System.Boolean
+  - Specifies if this SLA Domain is Retention Locked or not.
+- localRetentionLimit: Duration
+  - Local retention limit.
+- name: System.String
+  - Rubrik Cluster SLA Domain name.
+- objectSpecificConfigs: ObjectSpecificConfigs
+  - The object-specific configurations of the SLA Domain.
+- ownerOrgName: System.String
+  - Specifies the name of the owner organization of the SLA Domain.
+- polarisManagedId: System.String
+  - Rubrik SaaS managed ID for the SLA Domain.
+- protectedObjectCount: System.Int32
+  - Protected object count for the SLA Domain.
+- replicationSpec: ReplicationSpec
+  - Replication specification for the SLA Domain.
+- replicationSpecsV2: a list of ReplicationSpecV2s
+  - Replication specification for the SLA Domain.
+- snapshotSchedule: SnapshotSchedule
+  - Snapshot schedule for the SLA Domain.
+- upgradeInfo: SlaUpgradeInfo
+  - SLA Domain upgrade information.
+- version: System.String
+  - Version for the SLA Domain.

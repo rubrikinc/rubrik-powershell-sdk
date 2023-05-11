@@ -1,0 +1,45 @@
+### GlobalSlaEditRequest
+- archivalSpecInput: ArchivalSpecInput
+  - None
+- archivalSpecInputs: a list of ArchivalSpecInputs
+  - None
+- archivalSpecs: a list of ArchivalSpecInputs
+  - None
+- backupWindows: a list of BackupWindowInputs
+  - None
+- description: System.String
+  - None
+- firstFullBackupWindows: a list of BackupWindowInputs
+  - None
+- id: System.String
+  - None
+- isRetentionLockedSla: System.Boolean
+  - Specifies if the SLA Domain to be edited must be Retention Locked or not.
+- localRetentionLimit: SlaDurationInput
+  - None
+- logConfig: LogConfig
+  - None
+- name: System.String
+  - None
+- objectSpecificConfigsInput: ObjectSpecificConfigsInput
+  - None
+- objectTypeList: a list of SlaObjectTypes
+  - None
+- objectTypes: a list of SlaObjectTypes
+  - None
+- replicationSpecInput: ReplicationSpecInput
+  - None
+- replicationSpecV2List: a list of ReplicationSpecV2Inputs
+  - None
+- replicationSpecsV2: a list of ReplicationSpecV2Inputs
+  - None
+- shouldApplyToExistingSnapshots: ShouldApplyToExistingSnapshots
+  - None
+- shouldApplyToNonPolicySnapshots: ShouldApplyToNonPolicySnapshots
+  - None
+- snapshotSchedule: GlobalSnapshotScheduleInput
+  - None
+- stateVersion: System.Int64
+  - None
+- userNote: System.String
+  - Optional user note.

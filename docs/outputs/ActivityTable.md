@@ -1,0 +1,13 @@
+### ActivityTable
+- focus: ReportFocusEnum
+  - None
+- groupBy: a list of ActivitySeriesGroupByEnums
+  - None
+- name: System.String
+  - None
+- selectedColumns: a list of ActivityTableColumnEnums
+  - None
+- sortBy: ActivitySeriesSortByEnum
+  - None
+- sortOrder: SortOrder
+  - Sorts by order.

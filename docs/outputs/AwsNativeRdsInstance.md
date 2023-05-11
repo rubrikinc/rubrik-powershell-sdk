@@ -1,0 +1,85 @@
+### AwsNativeRdsInstance
+AWS native RDS instance.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- allocatedStorageInGibi: System.Int64
+  - Allocated size of RDS Instance in GiB.
+- auroraAvailabilityZones: a list of System.Strings
+  - Availability zones if this is an Aurora cluster.
+- authorizedOperations: a list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- awsAccountRubrikId: System.String
+  - Rubrik Identifier for account associated with RDS Instance.
+- awsNativeAccount: AwsNativeAccount
+  - AWS account of the Amazon Relational Database Service (RDS) instance.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- dbEngine: AwsNativeRdsDbEngine
+  - Engine being used for RDS Instance.
+- dbInstanceClass: AwsNativeRdsDbInstanceClass
+  - Class type of RDS Instance.
+- dbInstanceName: System.String
+  - Name of RDS Instance.
+- dbiResourceId: System.String
+  - Resource identifier of RDS Instance.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- id: System.String
+  - The FID of the hierarchy object.
+- isMultiAz: System.Boolean
+  - Identifies if the RDS Instance is part of multiple Availability Zones.
+- isRelic: System.Boolean
+  - Specifies whether the RDS Instance is a relic.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- maintenanceWindow: System.String
+  - Maintenance window of RDS Instance.
+- name: System.String
+  - The name of the hierarchy object.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The newest snapshot that is indexed and unexpired, and therefore restorable.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- primaryAvailabilityZone: System.String
+  - Name of Availability Zone(AZ) associated with RDS Instance.
+- rdsType: AwsNativeRdsType
+  - The type of the RDS instance such as Aurora or a regular instance.
+- readReplicaSourceName: System.String
+  - Name of the source RDS instance if this instance is a read replica. This field is not applicable for primary RDS instances.
+- region: AwsNativeRegion
+  - AWS region of RDS Instance.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for this workload's snapshots.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for this workload's snapshots.
+- tags: a list of Tags
+  - List of tags associated with RDS Instance.
+- vpcId: System.String
+  - Identifier of VPC associated with RDS Instance.
+- vpcName: System.String
+  - Name of VPC associated with RDS Instance.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.

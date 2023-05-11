@@ -1,0 +1,13 @@
+### Hits
+- permittedHits: System.Int32
+  - None
+- permittedHitsDelta: System.Int32
+  - None
+- totalHits: System.Int32
+  - None
+- totalHitsDelta: System.Int32
+  - None
+- violations: System.Int32
+  - None
+- violationsDelta: System.Int32
+  - None

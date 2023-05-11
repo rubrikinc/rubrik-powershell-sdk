@@ -1,0 +1,11 @@
+### JobReply
+- clusterName: System.String
+  - None
+- clusterUuid: System.String
+  - None
+- customerAccount: System.String
+  - None
+- metadata: JobMetadata
+  - None
+- version: System.String
+  - None

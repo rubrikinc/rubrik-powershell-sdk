@@ -1,0 +1,13 @@
+### SnappableTable
+- focus: ReportFocusEnum
+  - None
+- groupBy: a list of SnappableGroupByEnums
+  - None
+- name: System.String
+  - None
+- selectedColumns: a list of SnappableTableColumnEnums
+  - None
+- sortBy: SnappableSortByEnum
+  - None
+- sortOrder: SortOrder
+  - Sorts by order.

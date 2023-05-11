@@ -1,0 +1,31 @@
+### ClusterFilterInput
+Filters for the cluster list.
+
+- clusterLocation: a list of System.Strings
+  - Location of the Rubrik cluster.
+- excludeEmptyCluster: System.Boolean
+  - Exclude clusters that do not have any nodes connected.
+- id: a list of System.Strings
+  - Cluster UUIDs.
+- minSoftwareVersion: System.String
+  - Returns clusters running software version equal to or greater than the specified version.
+- name: a list of System.Strings
+  - Cluster names.
+- objectType: a list of ObjectTypeEnums
+  - Object types of snappables protected by the cluster.
+- orgId: a list of System.Strings
+  - Filter for clusters belonging to the specified organizations.
+- product: Product
+  - The licensed product type.
+- productFilters: a list of ClusterFilterPerProductInputs
+  - Product type specific filters for the clusters.
+- productType: a list of ClusterProductEnums
+  - Type of Rubrik cluster.
+- registeredMode: a list of ClusterRegistrationModes
+  - The mode in which the cluster is registered.
+- registrationTime_gt: DateTime
+  - Cluster registration time greater than.
+- registrationTime_lt: DateTime
+  - Cluster registration time less than.
+- type: a list of ClusterTypeEnums
+  - Cluster types.

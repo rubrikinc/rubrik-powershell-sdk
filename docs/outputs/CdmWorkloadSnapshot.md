@@ -1,0 +1,43 @@
+### CdmWorkloadSnapshot
+Snapshot of a Rubrik CDM workload.
+
+- cdmId: System.String
+  - Rubrik CDM ID of the snapshot.
+- cdmVersion: System.String
+  - Version of the Rubrik cluster to which the snapshot belongs.
+- clusterUuid: System.String
+  - ID of the Rubrik cluster to which the snapshot belongs.
+- date: System.String
+  - The date the snapshot was taken. This value is formatted as YYYY/MM/DD HH:mm:ss.
+- expirationDate: DateTime
+  - Date the snapshot will expire.
+- expiryHint: System.Boolean
+  - Specifies whether the expiration hint is enabled.
+- id: System.String
+  - ID of the SLA Domain.
+- indexingAttempts: System.Int64
+  - Number of attempts for indexing the snapshot.
+- isCorrupted: System.Boolean
+  - Specifies whether the snapshot is corrupted or not.
+- isDownloadedSnapshot: System.Boolean
+  - Specifies whether the snapshot was downloaded.
+- isExpired: System.Boolean
+  - Specifies whether the snapshot is expired or not.
+- isIndexed: System.Boolean
+  - Specifies whether the snapshot is indexed or not.
+- isOnDemandSnapshot: System.Boolean
+  - Specifies whether the snapshot is an on-demand snapshot.
+- isUnindexable: System.Boolean
+  - Specifies whether the snapshot can be unindexed.
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- retentionInfo: System.String
+  - The information about how long this snapshot will be retained.
+- slaDomain: SlaConfig
+  - SLA Domain of the snapshot.
+- subObjs: a list of SnapshotSubObjects
+  - Sub objects for the snapshot.
+- workloadId: System.String
+  - ID of the workload to which the snapshot belongs.
+- workloadType: System.String
+  - Type of the workload to which the snapshot belongs.

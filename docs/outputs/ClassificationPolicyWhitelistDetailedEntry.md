@@ -1,0 +1,11 @@
+### ClassificationPolicyWhitelistDetailedEntry
+- nativePath: System.String
+  - None
+- snappable: HierarchyObject
+  - None
+- stdPath: System.String
+  - None
+- updateTs: System.Int64
+  - None
+- updateUsername: System.String
+  - None

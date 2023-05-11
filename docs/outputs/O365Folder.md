@@ -1,0 +1,11 @@
+### O365Folder
+- id: System.String
+  - None
+- name: System.String
+  - None
+- parentFolderId: System.String
+  - None
+- snapshotId: System.String
+  - None
+- snapshotNum: System.Int32
+  - None

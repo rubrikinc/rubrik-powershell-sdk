@@ -1,0 +1,11 @@
+### CdmSnapshotFilterInput
+- clusterUuid: a list of System.Strings
+  - None
+- isOnDemandSnapshot: System.Boolean
+  - None
+- snappableId: a list of System.Strings
+  - None
+- snapshotId: a list of System.Strings
+  - None
+- timeRange: TimeRangeInput
+  - None

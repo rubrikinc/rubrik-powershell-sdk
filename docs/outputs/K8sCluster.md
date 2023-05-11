@@ -1,0 +1,49 @@
+### K8sCluster
+Kubernetes cluster.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of Operations
+  - The authorized operations on the object.
+- clusterInfo: K8sClusterInfo
+  - Information about the Kubernetes cluster.
+- clusterIp: a list of System.Strings
+  - List of IPs for the Kubernetes cluster.
+- clusterPortRanges: a list of K8sClusterPortsInfos
+  - Ranges for ports used for backup and recovery.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- descendantConnection: K8sClusterDescendantConnection
+  - List of descendants.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- id: System.String
+  - The FID of the hierarchy object.
+- k8sDescendantNamespaces: K8sNamespaceConnection
+  - Namespaces belonging to the Kubernetes cluster.
+- lastRefreshTime: DateTime
+  - Time of the last successful refresh task on the Kubernetes cluster.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- name: System.String
+  - The name of the hierarchy object.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- rbsPortRanges: a list of K8sRbsInfos
+  - Deprecated. Use clusterPortRanges instead.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- status: K8sClusterStatus
+  - Connection status of the Kubernetes cluster.

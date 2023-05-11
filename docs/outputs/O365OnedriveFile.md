@@ -1,0 +1,31 @@
+### O365OnedriveFile
+- channelFolderName: System.String
+  - The folder name of the Teams channel containing this folder.
+- channelId: System.String
+  - The ID of the Teams channel containing this folder.
+- channelMembershipType: ChannelMembershipType
+  - The membership type of the channel containing this file for Teams files.
+- channelName: System.String
+  - The name of the Teams channel containing this folder.
+- createTime: DateTime
+  - The time the file was created.
+- fileType: System.String
+  - None
+- id: System.String
+  - The ID of the file.
+- modifiedTime: DateTime
+  - The time the file was modified.
+- name: System.String
+  - The name of the file.
+- objectType: SharePointDescendantType
+  - The object type of this file, for example, Onedrive or SharePoint drive.
+- parentFolderId: System.String
+  - The ID of the parent folder.
+- size: System.Int64
+  - The size of the file.
+- snapshotId: System.String
+  - The ID of the snapshot containing this file.
+- snapshotNum: System.Int32
+  - The sequence number of the snapshot containing this file.
+- snapshotTime: DateTime
+  - The time at which the snapshot containing this file was taken.

@@ -1,0 +1,11 @@
+### VersionedFile
+- absolutePath: System.String
+  - None
+- displayPath: System.String
+  - None
+- fileVersions: a list of HierarchySnappableFileVersions
+  - None
+- filename: System.String
+  - None
+- path: System.String
+  - None

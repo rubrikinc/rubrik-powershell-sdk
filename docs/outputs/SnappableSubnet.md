@@ -1,0 +1,13 @@
+### SnappableSubnet
+- availabilityZone: System.String
+  - None
+- cidrBlock: AddressBlockV4
+  - None
+- id: System.String
+  - None
+- name: System.String
+  - None
+- subnetId: System.String
+  - None
+- vpc: Vpc
+  - vpc of the subnet

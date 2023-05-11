@@ -1,0 +1,91 @@
+### NasFileset
+NAS Fileset protected object.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of Operations
+  - The authorized operations on the object.
+- cdmId: System.String
+  - The Rubrik CDM-assigned UUID of the NAS fileset.
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- hardlinkSupportEnabled: System.Boolean
+  - Whether optimized backup of hardlinks is supported on this fileset.
+- id: System.String
+  - The object's FID.
+- isPassThrough: System.Boolean
+  - Whether this is a NAS Direct Archive fileset.
+- isRelic: System.Boolean
+  - Whether this object is a relic.
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- name: System.String
+  - The name of the hierarchy object.
+- nasMigrationInfo: System.String
+  - Information pertaining to migration of the NAS host from Rubrik CDM to RSC.
+- nasShare: NasShare
+  - The NAS share to which this fileset belongs.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- pathsExceptions: a list of System.Strings
+  - The exceptions to the fileset's exclusion rules.
+- pathsExcluded: a list of System.Strings
+  - The paths to be excluded from the fileset's inclusion rules.
+- pathsIncluded: a list of System.Strings
+  - The paths to include in the backup of the fileset.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from objectID to pending object deletion status.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- replicatedObjects: a list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.
+- symlinkResolutionEnabled: System.Boolean
+  - Whether resolution of symlinks is supported on this fileset.
+- templateFid: System.String
+  - The associated fileset template's FID.

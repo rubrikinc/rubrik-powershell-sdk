@@ -1,0 +1,11 @@
+### HyperVSCVMMLogicalChildTypeConnection
+Paginated list of HyperVSCVMMLogicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+
+- count: System.Int32
+  - Total number of HyperVSCVMMLogicalChildType objects matching the request arguments.
+- edges: a list of HyperVSCVMMLogicalChildTypeEdges
+  - List of HyperVSCVMMLogicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+- nodes: a list of HyperVSCVMMLogicalChildTypes
+  - List of HyperVSCVMMLogicalChildType objects.
+- pageInfo: PageInfo
+  - General information about this page of results.

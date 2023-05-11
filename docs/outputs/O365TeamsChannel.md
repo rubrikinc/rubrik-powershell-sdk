@@ -1,0 +1,13 @@
+### O365TeamsChannel
+- folderId: System.String
+  - None
+- folderName: System.String
+  - None
+- id: System.String
+  - None
+- membershipType: ChannelMembershipType
+  - The membership type of the channel.
+- name: System.String
+  - None
+- naturalId: System.String
+  - None

@@ -1,0 +1,35 @@
+### OracleLiveMount
+Oracle live mount.
+
+- cdmId: System.String
+  - ID of the Oracle live mount.
+- cluster: Cluster
+  - Cluster of the live mount.
+- creationDate: DateTime
+  - Date when live mount was created.
+- id: System.String
+  - Fid of the Oracle live mount.
+- isFilesOnlyMount: System.Boolean
+  - Indicates if mount is files only.
+- isInstantRecovered: System.Boolean
+  - Indicates whether this mount was created during an instant recovery or live mount.
+- isReady: System.Boolean
+  - Describes if the live mount is ready.
+- mountedDatabase: OracleDatabase
+  - Mounted database of the live mount.
+- mountedDatabaseName: System.String
+  - Name of the mounted database.
+- owner: User
+  - The creator of the live mount.
+- sourceDatabase: OracleDatabase
+  - Source Oracle database of the live mount.
+- sourceSnapshot: CdmSnapshot
+  - Source snapshot of the Oracle live mount.
+- status: OracleLiveMountStatus
+  - Status of the live mount.
+- targetHostMount: System.String
+  - The full path for the directory on the target host where the NFS share is mounted.
+- targetOracleHost: OracleHost
+  - Target Oracle host of the live mount. If the live mount target is an Oracle RAC, this value will be null and the field targetOracleRac will be populated instead.
+- targetOracleRac: OracleRac
+  - Target Oracle RAC of the live mount. If the live mount target is an Oracle Host, this value will be null and the field targetOracleHost will be populated instead.

@@ -1,0 +1,101 @@
+### Cluster
+A Rubrik CDM Cluster.
+
+- activitySeriesConnection: ActivitySeriesConnection
+  - The cluster's activity series.
+- allOrgs: a list of Orgs
+  - The organizations to which this cluster is authorized.
+- authorizedOperations: AuthorizedOperations
+  - Operations that the user is authorized to perform on the Rubrik cluster.
+- ccprovisionInfo: CcprovisionInfo
+  - Job status of a create cluster operation.
+- cdmClusterNodeDetails: a list of CdmNodeDetails
+  - The CDM cluster node details.
+- cdmUpgradeInfo: CdmUpgradeInfo
+  - Cluster upgrade information.
+- cloudInfo: CcWithCloudInfo
+  - Cloud information for this cluster.
+- clusterDiskConnection: ClusterDiskConnection
+  - The cluster disks.
+- clusterNodeConnection: ClusterNodeConnection
+  - The cluster nodes.
+- clusterNodeStats: a list of ClusterNodeStatss
+  - The node-level performance statistics of a Rubrik cluster.
+- configProtectionInfo: ConfigProtectionInfo
+  - Config protection information.
+- connectivityLastUpdated: DateTime
+  - When the global manager connectivity was last updated.
+- datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply
+  - Auto Enable Sensitive Data Discovery policy configuration.
+- datagovPreviewerConfig: PreviewerClusterConfig
+  - Sonar previewer configuration.
+- defaultAddress: System.String
+  - The cluster's default address.
+- encryptionEnabled: System.Boolean
+  - Whether or not the cluster is encrypted.
+- estimatedRunway: System.Int64
+  - The number of days remaining before the system fills up.
+- geoLocation: GeoLocation
+  - The cluster's location.
+- globalManagerConnectivityStatus: GlobalManagerConnectivity
+  - The cluster's global manager connectivity status.
+- id: System.String
+  - The cluster uuid.
+- isHealthy: System.Boolean
+  - Whether or not the cluster is healthy.
+- lambdaConfig: GetLambdaConfigReply
+  - Lambda configuration.
+- lambdaFeatureHistory: LambdaFeatureHistory
+  - Lambda feature history.
+- lastConnectionTime: DateTime
+  - The time the cluster was last connected.
+- licensedProducts: a list of Products
+  - The licensed products that belong to this cluster.
+- metadataPullScheduler: JobsReply
+  - Metadata pull scheduler.
+- metric: ClusterMetric
+  - The most recent metric of a cluster.
+- metricTimeSeries: a list of metricTimeSeriess
+  - The metric time series of a cluster.
+- name: System.String
+  - The cluster name.
+- noSqlWorkloadCount: System.Int32
+  - Total number of protected NoSQL workloads.
+- passesConnectivityCheck: System.Boolean
+  - Whether the global manager connectivity is healthy.
+- pauseStatus: ClusterPauseStatus
+  - Pause status of the cluster.
+- productType: ClusterProductEnum
+  - The cluster product type (e.g., CDM, DATOS, etc.).
+- registeredMode: ClusterRegistrationMode
+  - The Rubrik cluster's registered mode.
+- registrationTime: DateTime
+  - The time the cluster was registered.
+- replicationSources: a list of ReplicationSources
+  - The cluster's replication sources.
+- replicationTargets: a list of ReplicationTargets
+  - The cluster's replication targets.
+- rubrikSyncStatus: RubrikSyncStatus
+  - This field lists jobs that sync CDM cluster data to RSC.
+- snappableConnection: SnappableConnection
+  - The cluster's snappables.
+- snapshotCount: System.Int64
+  - The total number of snapshots.
+- state: clusterState
+  - The cluster state.
+- status: ClusterStatus
+  - The cluster status.
+- subStatus: ClusterSubStatus
+  - The cluster sub status.
+- systemStatus: ClusterSystemStatus
+  - System status of the cluster. For Mosaic clusters and Rubrik clusters running CDM versions earlier than 5.0, this value is null.
+- systemStatusAffectedNodes: a list of ClusterNodes
+  - List of affected nodes in the cluster.
+- systemStatusMessage: System.String
+  - Human readable message explaining the systemStatus.
+- timezone: System.String
+  - The cluster's timezone.
+- type: ClusterTypeEnum
+  - The cluster type.
+- version: System.String
+  - The software version.

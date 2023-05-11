@@ -1,0 +1,11 @@
+### CommonNotificationConfig
+- hostname: System.String
+  - None
+- networkType: NetworkProtocolTypeEnum
+  - None
+- port: System.Int32
+  - None
+- securityType: SMTPSecurityTypeEnum
+  - None
+- trustedCerts: System.String
+  - None

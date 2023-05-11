@@ -1,0 +1,79 @@
+### AzureSqlDatabaseDb
+An Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more info, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
+
+- allOrgs: a list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- authorizedOperations: a list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- azureSqlDatabaseServer: AzureSqlDatabaseServer
+  - Azure SQL Database Server of the Azure SQL Database.
+- backupSetupSpecs: CloudNativeDatabaseBackupSetupSpecs
+  - Details of the setup for performing backups of the Azure SQL database.
+- backupSetupStatus: AzureSqlDbBackupSetupStatus
+  - Specifies the status of the setup for taking the backup of the database.
+- backupStorageRedundancy: AzureSqlBackupStorageRedundancyType
+  - Type of backup storage redundancy. Examples: LRS, ZRS, GRS.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- databaseName: System.String
+  - Name of the Azure SQL Database.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective Retention SLA Domain of the hierarchy object.
+- effectiveSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- elasticPoolName: System.String
+  - Name of the Elastic Pool in which the Azure SQL Database resides.
+- exocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for the database.
+- id: System.String
+  - The FID of the hierarchy object.
+- isEligibleForPersistentBackups: System.Boolean
+  - Specifies whether the database is eligible for immutable backups or not.
+- isRelic: System.Boolean
+  - Specifies whether the Azure SQL Database is a relic or not. A database is a relic when it is unprotected or deleted, but the previously taken snapshots of the database continue to exist within the Rubrik ecosystem.
+- logicalPath: a list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- maximumSizeInBytes: System.Int64
+  - Maximum size of the Azure SQL Database, in bytes.
+- name: System.String
+  - The name of the hierarchy object.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The newest snapshot that is indexed and unexpired, and therefore restorable.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- persistentStorage: PersistentStorage
+  - Persistent storage configured for storing backups. None represents that persistent storage has not been configured.
+- physicalPath: a list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- region: AzureNativeRegion
+  - Azure region where the Azure SQL Database is located.
+- serviceObjectiveName: System.String
+  - Specifies the service objective name of the Azure SQL Database.
+- serviceTier: System.String
+  - Service Tier associated with the Azure SQL Database. Examples: Basic, General Purpose.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for this workload's snapshots.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for this workload's snapshots.
+- tags: a list of AzureTags
+  - List of tags associated with the Azure SQL Database.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.

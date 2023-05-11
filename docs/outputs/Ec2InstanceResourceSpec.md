@@ -1,0 +1,27 @@
+### Ec2InstanceResourceSpec
+- ec2InstanceNics: a list of Ec2InstanceNics
+  - None
+- ec2InstanceVolumeSpecs: a list of Ec2InstanceVolumes
+  - None
+- instanceType: System.String
+  - None
+- instanceTypeMemoryMbs: System.Int32
+  - None
+- instanceTypeVcpus: System.Int32
+  - None
+- isArchived: System.Boolean
+  - None
+- nativeId: System.String
+  - None
+- osType: System.String
+  - None
+- recoveryPointOpt: System.Int64
+  - Recovery point of the workload.
+- region: System.String
+  - None
+- snappableId: System.String
+  - None
+- snappableName: System.String
+  - None
+- snapshotId: System.String
+  - None

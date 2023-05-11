@@ -1,0 +1,31 @@
+### RdsInstanceExportDefaults
+RDS Export defaults from AWS.
+
+- allocatedStorageInGb: System.Int64
+  - Allocated size of an RDS Instance.
+- dbEngine: AwsNativeRdsDbEngine
+  - DB Engine of RDS Instance.
+- dbEngineVersion: System.String
+  - Version of DB engine.
+- dbInstanceClass: AwsNativeRdsDbInstanceClass
+  - DB class for RDS Instance.
+- dbParameterGroupName: System.String
+  - NParameter group name of the RDS Instance.
+- dbSubnetGroupName: System.String
+  - Subnet group name of the RDS Instance.
+- iops: System.Int32
+  - Input/Output (IO) operation limit per second for RDS Instance.
+- isMultiAz: System.Boolean
+  - Specifies whether RDS is available in multi Availability Zones (AZs). If true, it means it is a multi-AZ RDS Instance.
+- kmsKeyId: System.String
+  - Key Management System (KMS) key ID associated with RDS Instance.
+- optionGroupName: System.String
+  - Name of option group of RDS Instance.
+- port: System.Int64
+  - Port used to connect to the RDS Instance.
+- primaryAz: System.String
+  - Primary Availability Zone (AZ) of RDS Instance.
+- storageType: AwsNativeRdsStorageType
+  - Storage type of RDS Instance. Amazon RDS provides four storage types: General Purpose SSD (gp2), General Purpose SSD (gp3), Provisioned IOPS SSD (io1), and magnetic (standard).
+- vpcId: System.String
+  - Virtual Private Cloud (VPC) associated with RDS Instance.

@@ -1,0 +1,73 @@
+### RubrikManagedAwsTarget
+Specific information for Amazon Web Services (AWS) target created on Rubrik.
+
+- awsRetrievalTier: AwsRetrievalTier
+  - Retrieval tier of the AWS target.
+- bucket: System.String
+  - Bucket name of the AWS target.
+- bypassProxy: System.Boolean
+  - Specifies whether the proxy settings should be bypassed for creating this target location.
+- cloudAccount: CloudAccount
+  - Cloud account details of the AWS target.
+- cloudNativeLocTemplateType: CloudNativeLocTemplateType
+  - Template type of the storage settings.
+- cluster: Cluster
+  - The cluster to which this target belongs.
+- clusterName: System.String
+  - Name of the Rubrik cluster that archives to this archival location.
+- computeSettings: AwsComputeSettings
+  - Compute settings of the AWS target.
+- connectionStatus: ConnectionStatusType
+  - Connected/Disconnected status of the AWS target.
+- consumedBytes: System.Int64
+  - Number of bytes stored on the target.
+- encryptionType: TargetEncryptionTypeEnum
+  - Encryption type to be used for the AWS target.
+- failedTasks: System.Int32
+  - Number of archiving tasks failed on this target.
+- id: System.String
+  - The ID of this target.
+- immutabilitySettings: AwsImmutabilitySettingsType
+  - Immutability settings of AWS target.
+- isActive: System.Boolean
+  - Specifies whether this target is active. When false, the target is either paused or not enabled.
+- isArchived: System.Boolean
+  - Specifies whether this target is archived.
+- isConsolidationEnabled: System.Boolean
+  - Flag to check if consolidation is enabled or not in this target.
+- kmsEndpoint: System.String
+  - Optional field of the KMS server endpoint when using KMS-based encryption for example, a VPC endpoint. When not provided, the default, region-based KMS server endpoint is used.
+- kmsMasterKeyId: System.String
+  - KMS master key ID required for encryption for the AWS target.
+- locationConnectionStatus: ConnectionStatusType
+  - Connected or Disconnected status of the target.
+- locationScope: LocationScope
+  - The scope of location of this target. Possible values are Global or Local.
+- name: System.String
+  - The name of this target.
+- proxySettings: ProxySettings
+  - Proxy settings of the AWS target.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - The retrieval method of the reader target.
+- region: AwsRegion
+  - Region of the AWS target.
+- runningTasks: System.Int32
+  - Number of archiving tasks running on this target.
+- s3Endpoint: System.String
+  - Optional field of an Amazon S3 endpoint for example, a VPC endpoint. When not provided, the default, region-based Amazon S3 endpoint is used.
+- status: ArchivalLocationStatus
+  - Status of the target.
+- storageClass: AwsStorageClass
+  - Storage class of the AWS target.
+- syncFailureReason: System.String
+  - Reason why sync of this target with CDM failed.
+- syncStatus: TargetSyncStatus
+  - Sync status of AWS target.
+- targetMapping: TargetMappingBasic
+  - Archival location to which the mapping target belongs.
+- targetMappingBasic: a list of TargetMappingBasics
+  - List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+- targetType: TargetType
+  - The type of this target.
+- upgradeStatus: UpgradeStatus
+  - Upgrade status of the target.

@@ -1,0 +1,13 @@
+### FailoverTable
+- focus: ReportFocusEnum
+  - None
+- groupBy: a list of FailoverGroupByEnums
+  - None
+- name: System.String
+  - None
+- selectedColumns: a list of FailoverTableColumnEnums
+  - None
+- sortBy: FailoverSortByEnum
+  - None
+- sortOrder: SortOrder
+  - Sorts by order.
