@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startRefreshAzureNativeSubscriptionsJob(input: StartRefreshAzureNativeSubscriptionsJobInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
+                GraphQL operation: startRefreshAzureNativeSubscriptionsJob(input: StartRefreshAzureNativeSubscriptionsJobInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startRefreshNativeSubscriptionsJob { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: StartRefreshAzureNativeSubscriptionsJobInput!"
+            HelpMessage =
+                @"
+                Input for the job to refresh Azure Native subscriptions.
+                GraphQL argument input: StartRefreshAzureNativeSubscriptionsJobInput!
+                "
         )]
         public StartRefreshAzureNativeSubscriptionsJobInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startRestoreAzureNativeVirtualMachineJob(input: StartRestoreAzureNativeVirtualMachineJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to restore Azure Native virtual machine with the selected snapshot. When started, this will replace the original VM with the selected snapshot.
+                GraphQL operation: startRestoreAzureNativeVirtualMachineJob(input: StartRestoreAzureNativeVirtualMachineJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startRestoreNativeVirtualMachineJob { get; set; }
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startExportAzureNativeVirtualMachineJob(input: StartExportAzureNativeVirtualMachineJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to export the Azure native virtual machine for a specified snapshot to a specified destination.
+                GraphQL operation: startExportAzureNativeVirtualMachineJob(input: StartExportAzureNativeVirtualMachineJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startExportNativeVirtualMachineJob { get; set; }
@@ -92,7 +108,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: excludeAzureNativeManagedDisksFromSnapshot(input: ExcludeAzureNativeManagedDisksFromSnapshotInput!):Void",
+            HelpMessage =
+                @"
+                Exclude the Managed Disks from snapshots, for the specified virtual machines.
+                GraphQL operation: excludeAzureNativeManagedDisksFromSnapshot(input: ExcludeAzureNativeManagedDisksFromSnapshotInput!):Void
+                ",
             Position = 0
         )]
         public SwitchParameter excludeNativeManagedDisksFromSnapshot { get; set; }
@@ -108,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startCreateAzureNativeVirtualMachineSnapshotsJob(input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to create a snapshot for the Azure Native virtual machine identified by the IDs. When started, this will start taking an on-demand snapshot of the selected VMs as per the SLA Policy assigned to the respective VMs.
+                GraphQL operation: startCreateAzureNativeVirtualMachineSnapshotsJob(input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startCreateNativeVirtualMachineSnapshotsJob { get; set; }
@@ -124,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startDisableAzureNativeSubscriptionProtectionJob(input: StartDisableAzureNativeSubscriptionProtectionJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to disable protection for a specified Azure subscription.
+                GraphQL operation: startDisableAzureNativeSubscriptionProtectionJob(input: StartDisableAzureNativeSubscriptionProtectionJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startDisableNativeSubscriptionProtectionJob { get; set; }
@@ -140,7 +168,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startCreateAzureNativeManagedDiskSnapshotsJob(input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to create snapshots of the Azure Native Managed Disks identified by the given IDs. When started, this will start taking an on-demand snapshot of the selected disks as per the SLA Policy assigned to the respective disks.
+                GraphQL operation: startCreateAzureNativeManagedDiskSnapshotsJob(input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startCreateNativeManagedDiskSnapshotsJob { get; set; }
@@ -156,7 +188,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startExportAzureNativeManagedDiskJob(input: StartExportAzureNativeManagedDiskJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to export the specified Azure Native Managed Disks to the desired destination.
+                GraphQL operation: startExportAzureNativeManagedDiskJob(input: StartExportAzureNativeManagedDiskJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startExportNativeManagedDiskJob { get; set; }
@@ -172,7 +208,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startExportAzureSqlDatabaseDbJob(input: StartExportAzureSqlDatabaseDbJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to export Azure SQL Database. The job creates a new Azure SQL Database with the same properties as that of the instance that is exported.
+                GraphQL operation: startExportAzureSqlDatabaseDbJob(input: StartExportAzureSqlDatabaseDbJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startExportSqlDatabaseDbJob { get; set; }
@@ -188,7 +228,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startExportAzureSqlManagedInstanceDbJob(input: StartExportAzureSqlManagedInstanceDbJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to export Azure SQL Managed Instance database. The job creates a new Azure SQL Managed Instance database with the same properties as that of the instance that is exported.
+                GraphQL operation: startExportAzureSqlManagedInstanceDbJob(input: StartExportAzureSqlManagedInstanceDbJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startExportSqlManagedInstanceDbJob { get; set; }
@@ -204,7 +248,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAzureAccount(input: CreateAzureAccountInput!):CloudAccount!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: createAzureAccount(input: CreateAzureAccountInput!):CloudAccount!
+                ",
             Position = 0
         )]
         public SwitchParameter createAccount { get; set; }
@@ -220,7 +268,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAzureAccount(input: UpdateAzureAccountInput!):CloudAccount!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateAzureAccount(input: UpdateAzureAccountInput!):CloudAccount!
+                ",
             Position = 0
         )]
         public SwitchParameter updateAccount { get; set; }
@@ -236,7 +288,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAutomaticAzureTargetMapping(input: CreateAutomaticAzureTargetMappingInput!):TargetMapping!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: createAutomaticAzureTargetMapping(input: CreateAutomaticAzureTargetMappingInput!):TargetMapping!
+                ",
             Position = 0
         )]
         public SwitchParameter createAutomaticTargetMapping { get; set; }
@@ -252,7 +308,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createCloudNativeAzureStorageSetting(input: CreateCloudNativeAzureStorageSettingInput!):CreateCloudNativeAzureStorageSettingReply!",
+            HelpMessage =
+                @"
+                Creates Storage Settings for the archival of azure cloud native protected objects
+                GraphQL operation: createCloudNativeAzureStorageSetting(input: CreateCloudNativeAzureStorageSettingInput!):CreateCloudNativeAzureStorageSettingReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createCloudNativeStorageSetting { get; set; }
@@ -268,7 +328,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createCloudNativeRcvAzureStorageSetting(input: CreateCloudNativeRcvAzureStorageSettingInput!):CreateCloudNativeRcvAzureStorageSettingReply!",
+            HelpMessage =
+                @"
+                Create Rubrik Cloud Vault storage settings for archiving azure cloud native protected objects.
+                GraphQL operation: createCloudNativeRcvAzureStorageSetting(input: CreateCloudNativeRcvAzureStorageSettingInput!):CreateCloudNativeRcvAzureStorageSettingReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createCloudNativeRcvStorageSetting { get; set; }
@@ -284,7 +348,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAutomaticAzureTargetMapping(input: UpdateAutomaticAzureTargetMappingInput!):TargetMapping!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateAutomaticAzureTargetMapping(input: UpdateAutomaticAzureTargetMappingInput!):TargetMapping!
+                ",
             Position = 0
         )]
         public SwitchParameter updateAutomaticTargetMapping { get; set; }
@@ -300,7 +368,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateCloudNativeAzureStorageSetting(input: UpdateCloudNativeAzureStorageSettingInput!):UpdateCloudNativeAzureStorageSettingReply!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateCloudNativeAzureStorageSetting(input: UpdateCloudNativeAzureStorageSettingInput!):UpdateCloudNativeAzureStorageSettingReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateCloudNativeStorageSetting { get; set; }
@@ -316,7 +388,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateCloudNativeRcvAzureStorageSetting(input: UpdateCloudNativeRcvAzureStorageSettingInput!):UpdateCloudNativeRcvAzureStorageSettingReply!",
+            HelpMessage =
+                @"
+                Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azure cloud native protected objects.
+                GraphQL operation: updateCloudNativeRcvAzureStorageSetting(input: UpdateCloudNativeRcvAzureStorageSettingInput!):UpdateCloudNativeRcvAzureStorageSettingReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateCloudNativeRcvStorageSetting { get; set; }
@@ -332,7 +408,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAzureTarget(input: CreateAzureTargetInput!):Target!",
+            HelpMessage =
+                @"
+                Creates an Azure archival target on the Rubrik cluster.
+                GraphQL operation: createAzureTarget(input: CreateAzureTargetInput!):Target!
+                ",
             Position = 0
         )]
         public SwitchParameter createTarget { get; set; }
@@ -348,7 +428,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAzureTarget(input: UpdateAzureTargetInput!):Target!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateAzureTarget(input: UpdateAzureTargetInput!):Target!
+                ",
             Position = 0
         )]
         public SwitchParameter updateTarget { get; set; }
@@ -364,7 +448,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAzureReaderTarget(input: CreateAzureReaderTargetInput!):Target!",
+            HelpMessage =
+                @"
+                Creates reader type for Azure archival location on a CDM cluster.
+                GraphQL operation: createAzureReaderTarget(input: CreateAzureReaderTargetInput!):Target!
+                ",
             Position = 0
         )]
         public SwitchParameter createReaderTarget { get; set; }
@@ -380,7 +468,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startAzureCloudAccountOauth(input: StartAzureCloudAccountOauthInput!):StartAzureCloudAccountOauthReply!",
+            HelpMessage =
+                @"
+                Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
+                GraphQL operation: startAzureCloudAccountOauth(input: StartAzureCloudAccountOauthInput!):StartAzureCloudAccountOauthReply!
+                ",
             Position = 0
         )]
         public SwitchParameter startCloudAccountOauth { get; set; }
@@ -396,7 +488,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: completeAzureCloudAccountOauth(input: CompleteAzureCloudAccountOauthInput!):CompleteAzureCloudAccountOauthReply!",
+            HelpMessage =
+                @"
+                Complete the Azure OAuth flow and pass the authorization code.
+                GraphQL operation: completeAzureCloudAccountOauth(input: CompleteAzureCloudAccountOauthInput!):CompleteAzureCloudAccountOauthReply!
+                ",
             Position = 0
         )]
         public SwitchParameter completeCloudAccountOauth { get; set; }
@@ -412,7 +508,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: setAzureCloudAccountCustomerAppCredentials(input: SetAzureCloudAccountCustomerAppCredentialsInput!):Boolean!",
+            HelpMessage =
+                @"
+                Set credentials for the customer application, for the tenant domain name.
+                GraphQL operation: setAzureCloudAccountCustomerAppCredentials(input: SetAzureCloudAccountCustomerAppCredentialsInput!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter setCloudAccountCustomerAppCredential { get; set; }
@@ -428,7 +528,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: addAzureCloudAccount(input: AddAzureCloudAccountInput!):AddAzureCloudAccountReply!",
+            HelpMessage =
+                @"
+                Add the Azure Subscriptions cloud account for the given feature.
+                GraphQL operation: addAzureCloudAccount(input: AddAzureCloudAccountInput!):AddAzureCloudAccountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter addCloudAccount { get; set; }
@@ -444,7 +548,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: addAzureCloudAccountWithoutOauth(input: AddAzureCloudAccountWithoutOauthInput!):AddAzureCloudAccountWithoutOauthReply!",
+            HelpMessage =
+                @"
+                Add the Azure Subscription cloud account for the given feature without OAuth.
+                GraphQL operation: addAzureCloudAccountWithoutOauth(input: AddAzureCloudAccountWithoutOauthInput!):AddAzureCloudAccountWithoutOauthReply!
+                ",
             Position = 0
         )]
         public SwitchParameter addCloudAccountWithoutOauth { get; set; }
@@ -460,7 +568,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteAzureCloudAccount(input: DeleteAzureCloudAccountInput!):DeleteAzureCloudAccountReply!",
+            HelpMessage =
+                @"
+                Delete the Azure Subscriptions cloud account for the given feature.
+                GraphQL operation: deleteAzureCloudAccount(input: DeleteAzureCloudAccountInput!):DeleteAzureCloudAccountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteCloudAccount { get; set; }
@@ -476,7 +588,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteAzureCloudAccountWithoutOauth(input: DeleteAzureCloudAccountWithoutOauthInput!):DeleteAzureCloudAccountWithoutOauthReply!",
+            HelpMessage =
+                @"
+                Delete the Azure Subscriptions cloud account for the given feature without OAuth.
+                GraphQL operation: deleteAzureCloudAccountWithoutOauth(input: DeleteAzureCloudAccountWithoutOauthInput!):DeleteAzureCloudAccountWithoutOauthReply!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteCloudAccountWithoutOauth { get; set; }
@@ -492,7 +608,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: upgradeAzureCloudAccount(input: UpgradeAzureCloudAccountInput!):UpgradeAzureCloudAccountReply!",
+            HelpMessage =
+                @"
+                Update permissions of the Azure Subscriptions cloud account for given feature.
+                GraphQL operation: upgradeAzureCloudAccount(input: UpgradeAzureCloudAccountInput!):UpgradeAzureCloudAccountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter upgradeCloudAccount { get; set; }
@@ -508,7 +628,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateCustomerAppPermissionForAzureSql:Void",
+            HelpMessage =
+                @"
+                Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
+                GraphQL operation: updateCustomerAppPermissionForAzureSql:Void
+                ",
             Position = 0
         )]
         public SwitchParameter updateCustomerAppPermissionForSql { get; set; }
@@ -524,7 +648,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startDisableAzureCloudAccountJob(input: StartDisableAzureCloudAccountJobInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. When completed, the status of cloud account feature will change to Disabled and the feature will become eligible to be deleted.
+                GraphQL operation: startDisableAzureCloudAccountJob(input: StartDisableAzureCloudAccountJobInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startDisableCloudAccountJob { get; set; }
@@ -540,7 +668,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAzureCloudAccount(input: UpdateAzureCloudAccountInput!):UpdateAzureCloudAccountReply!",
+            HelpMessage =
+                @"
+                Update names of the Azure Subscriptions cloud account and regions for the given feature.
+                GraphQL operation: updateAzureCloudAccount(input: UpdateAzureCloudAccountInput!):UpdateAzureCloudAccountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateCloudAccount { get; set; }
@@ -556,7 +688,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mapAzureCloudAccountToPersistentStorageLocation(input: MapAzureCloudAccountToPersistentStorageLocationInput!):MapAzureCloudAccountToPersistentStorageLocationReply!",
+            HelpMessage =
+                @"
+                Map Azure cloud accounts to a persistent storage location.
+                GraphQL operation: mapAzureCloudAccountToPersistentStorageLocation(input: MapAzureCloudAccountToPersistentStorageLocationInput!):MapAzureCloudAccountToPersistentStorageLocationReply!
+                ",
             Position = 0
         )]
         public SwitchParameter mapCloudAccountToPersistentStorageLocation { get; set; }
@@ -572,7 +708,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: addAzureCloudAccountExocomputeConfigurations(input: AddAzureCloudAccountExocomputeConfigurationsInput!):AddAzureCloudAccountExocomputeConfigurationsReply!",
+            HelpMessage =
+                @"
+                Add Exocompute configurations for an Azure Cloud Account.
+                GraphQL operation: addAzureCloudAccountExocomputeConfigurations(input: AddAzureCloudAccountExocomputeConfigurationsInput!):AddAzureCloudAccountExocomputeConfigurationsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter addCloudAccountExocomputeConfiguration { get; set; }
@@ -588,7 +728,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteAzureCloudAccountExocomputeConfigurations(input: DeleteAzureCloudAccountExocomputeConfigurationsInput!):DeleteAzureCloudAccountExocomputeConfigurationsReply!",
+            HelpMessage =
+                @"
+                Delete Exocompute configurations for an Azure Cloud Account.
+                GraphQL operation: deleteAzureCloudAccountExocomputeConfigurations(input: DeleteAzureCloudAccountExocomputeConfigurationsInput!):DeleteAzureCloudAccountExocomputeConfigurationsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteCloudAccountExocomputeConfiguration { get; set; }
@@ -604,7 +748,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mapAzureCloudAccountExocomputeSubscription(input: MapAzureCloudAccountExocomputeSubscriptionInput!):MapAzureCloudAccountExocomputeSubscriptionReply!",
+            HelpMessage =
+                @"
+                Map Azure cloud accounts to an Exocompute subscription.
+                GraphQL operation: mapAzureCloudAccountExocomputeSubscription(input: MapAzureCloudAccountExocomputeSubscriptionInput!):MapAzureCloudAccountExocomputeSubscriptionReply!
+                ",
             Position = 0
         )]
         public SwitchParameter mapCloudAccountExocomputeSubscription { get; set; }
@@ -620,7 +768,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: unmapAzureCloudAccountExocomputeSubscription(input: UnmapAzureCloudAccountExocomputeSubscriptionInput!):UnmapAzureCloudAccountExocomputeSubscriptionReply!",
+            HelpMessage =
+                @"
+                Unmap Azure cloud accounts from the mapped Exocompute subscription.
+                GraphQL operation: unmapAzureCloudAccountExocomputeSubscription(input: UnmapAzureCloudAccountExocomputeSubscriptionInput!):UnmapAzureCloudAccountExocomputeSubscriptionReply!
+                ",
             Position = 0
         )]
         public SwitchParameter unmapCloudAccountExocomputeSubscription { get; set; }
@@ -636,7 +788,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: upgradeAzureCloudAccountPermissionsWithoutOauth(input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!):UpgradeAzureCloudAccountPermissionsWithoutOauthReply!",
+            HelpMessage =
+                @"
+                Set Azure Cloud Account feature status to Connected from Update Permissions state without any permission validation. It should be used by caution from cloud accounts which have been set up without using OAuth, only after adding the latest permissions that are required.
+                GraphQL operation: upgradeAzureCloudAccountPermissionsWithoutOauth(input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!):UpgradeAzureCloudAccountPermissionsWithoutOauthReply!
+                ",
             Position = 0
         )]
         public SwitchParameter upgradeCloudAccountPermissionsWithoutOauth { get; set; }
@@ -652,7 +808,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureOauthConsentKickoff:AzureOauthConsentKickoffReply!",
+            HelpMessage =
+                @"
+                Kicks off an OAuth consent flow for Azure resource access.
+                GraphQL operation: azureOauthConsentKickoff:AzureOauthConsentKickoffReply!
+                ",
             Position = 0
         )]
         public SwitchParameter OauthConsentKickoff { get; set; }
@@ -668,7 +828,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureOauthConsentComplete(input: AzureOauthConsentCompleteInput!):RequestStatus!",
+            HelpMessage =
+                @"
+                Completes an OAuth consent flow for Azure resource access.
+                GraphQL operation: azureOauthConsentComplete(input: AzureOauthConsentCompleteInput!):RequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter OauthConsentComplete { get; set; }
@@ -684,7 +848,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAzureSaasAppAad:CreateAzureSaasAppAadReply!",
+            HelpMessage =
+                @"
+                Create or get an Azure AAD application.
+                GraphQL operation: createAzureSaasAppAad:CreateAzureSaasAppAadReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createSaasAppAad { get; set; }
@@ -700,7 +868,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAzureCluster(input: CreateAzureClusterInput!):CcProvisionJobReply!",
+            HelpMessage =
+                @"
+                Create a Rubrik Cloud Cluster on Azure.
+                GraphQL operation: createAzureCluster(input: CreateAzureClusterInput!):CcProvisionJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createCluster { get; set; }
@@ -716,7 +888,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteAzureCluster(input: DeleteAzureClusterInput!):CcProvisionJobReply!",
+            HelpMessage =
+                @"
+                Delete a Rubrik Cloud Cluster on Azure.
+                GraphQL operation: deleteAzureCluster(input: DeleteAzureClusterInput!):CcProvisionJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteCluster { get; set; }

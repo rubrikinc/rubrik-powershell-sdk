@@ -10,12 +10,14 @@
              </summary>
              <description>
              The Connect-Rsc Cmdlet is used to connect to the Rubrik Security Cloud (RSC) API. RSC then returns a unique token to represent the user's credentials for subsequent calls.
-             The token is stored securly in a .NET object within this PowerShell session. 
-             The recommended authentication method is a Rsc Service Account. 
+             The token is stored securly in a .NET object within this PowerShell session.
+             The recommended authentication method is a Rsc Service Account.
              </description>
              <example>
-             Connct to Rubrik Security Cloud, using the service account file as downloaded from the Rsc Web UI:
-             <code>Connect-Rsc -ServiceAccountFile .\rubrik_service_account.json</code>
+             Connect to Rubrik Security Cloud, using the service account file as downloaded from the Rsc Web UI:
+             <code>
+            Connect-Rsc -ServiceAccountFile .\rubrik_service_account.json
+            </code>
              </example>
              <example>
              Connect to Rubrik Security Cloud, using the URL, Client Id and Client Secret
@@ -265,6 +267,32 @@
             An object to use as a field selector for the query.
             Values from the API for fields set to not-null values in this object
             will be returned. To be used only with -Id parameter.
+            </summary>
+        </member>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Invoke_Rsc">
+            <summary>
+            Send a custom GraphQL query to the Rubrik Security Cloud (RSC) API.
+            </summary>
+            <description>
+            The passed query is sent to the Rubrik Security Cloud API,
+            and the result is returned to the user.
+            </description>
+            <example>
+            Read GraphQL query from JSON file.
+            <code>
+            Get-Content -Path /Samples/GetVsphereVmList.query.json -Raw | Invoke-Rsc
+            </code>
+            </example>
+            <example>
+            Read GraphQL query from parameter.
+            <code>
+            Invoke-Rsc '{"query":"query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}"}'
+            </code>
+            </example>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Invoke_Rsc.OperationText">
+            <summary>
+            The GQL query to send to the Rubrik Security Cloud API.
             </summary>
         </member>
         <member name="P:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet.Op">

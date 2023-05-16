@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):HypervTopLevelDescendantTypeConnection!",
+            HelpMessage =
+                @"
+                Paginated list of the highest-level HyperV Objects accessible by the current user.
+                GraphQL operation: hypervTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):HypervTopLevelDescendantTypeConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter TopLevelDescendant { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -70,7 +86,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -78,7 +98,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
+            HelpMessage =
+                @"
+                Types of objects to include.
+                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
+                "
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         [Parameter(
@@ -86,7 +110,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -100,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervVirtualMachines(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):HyperVVirtualMachineConnection!",
+            HelpMessage =
+                @"
+                Paginated list of HyperV Virtual Machines.
+                GraphQL operation: hypervVirtualMachines(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):HyperVVirtualMachineConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter VirtualMachine { get; set; }
@@ -116,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervScvmm(fid: UUID!):HyperVSCVMM!",
+            HelpMessage =
+                @"
+                Details of the given Hyper-V SCVMM.
+                GraphQL operation: hypervScvmm(fid: UUID!):HyperVSCVMM!
+                ",
             Position = 0
         )]
         public SwitchParameter Scvmm { get; set; }
@@ -126,7 +162,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -140,7 +180,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervCluster(fid: UUID!):HyperVCluster!",
+            HelpMessage =
+                @"
+                Details of the given Hyper-V Cluster.
+                GraphQL operation: hypervCluster(fid: UUID!):HyperVCluster!
+                ",
             Position = 0
         )]
         public SwitchParameter Cluster { get; set; }
@@ -156,7 +200,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervServer(fid: UUID!):HypervServer!",
+            HelpMessage =
+                @"
+                Details of the given Hyper-V Server.
+                GraphQL operation: hypervServer(fid: UUID!):HypervServer!
+                ",
             Position = 0
         )]
         public SwitchParameter Server { get; set; }
@@ -172,7 +220,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: uniqueHypervServersCount(filter: [Filter!]):Int!",
+            HelpMessage =
+                @"
+                Count of unique HyperV Servers.
+                GraphQL operation: uniqueHypervServersCount(filter: [Filter!]):Int!
+                ",
             Position = 0
         )]
         public SwitchParameter uniqueServersCount { get; set; }
@@ -188,7 +240,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervMounts(,   first: Int,   after: String,   filters: [HypervLiveMountFilterInput!],   sortBy: HypervLiveMountSortByInput, ):HyperVLiveMountConnection!",
+            HelpMessage =
+                @"
+                HyperV Live Mount Connection.
+                GraphQL operation: hypervMounts(,   first: Int,   after: String,   filters: [HypervLiveMountFilterInput!],   sortBy: HypervLiveMountSortByInput, ):HyperVLiveMountConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Mount { get; set; }
@@ -198,7 +254,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filters: [HypervLiveMountFilterInput!]"
+            HelpMessage =
+                @"
+                Filter for hyper-v live mounts.
+                GraphQL argument filters: [HypervLiveMountFilterInput!]
+                "
         )]
         public List<HypervLiveMountFilterInput>? Filters { get; set; }
         
@@ -212,7 +272,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervVmDetail(input: GetHypervVirtualMachineInput!):HypervVirtualMachineDetail!",
+            HelpMessage =
+                @"
+                HyperV Virtual Machine detail from CDM.
+                GraphQL operation: hypervVmDetail(input: GetHypervVirtualMachineInput!):HypervVirtualMachineDetail!
+                ",
             Position = 0
         )]
         public SwitchParameter VmDetail { get; set; }
@@ -222,7 +286,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: GetHypervVirtualMachineInput!"
+            HelpMessage =
+                @"
+                Input for InternalGetHypervVirtualMachine.
+                GraphQL argument input: GetHypervVirtualMachineInput!
+                "
         )]
         public GetHypervVirtualMachineInput? Input { get; set; }
         
@@ -236,7 +304,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervHostAsyncRequestStatus(input: GetHypervHostAsyncRequestStatusInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Get Hyper-V host async request
+
+Supported in v5.0+
+Get details about a Hyper-V host related async request.
+                GraphQL operation: hypervHostAsyncRequestStatus(input: GetHypervHostAsyncRequestStatusInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter HostAsyncRequestStatus { get; set; }
@@ -252,7 +327,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervScvmmAsyncRequestStatus(input: GetHypervScvmmAsyncRequestStatusInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Get Hyper-V SCVMM async request
+
+Supported in v5.0+
+Get details about a Hyper-V SCVMM related async request.
+                GraphQL operation: hypervScvmmAsyncRequestStatus(input: GetHypervScvmmAsyncRequestStatusInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter ScvmmAsyncRequestStatus { get; set; }
@@ -268,7 +350,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervVirtualMachineAsyncRequestStatus(input: GetHypervVirtualMachineAsyncRequestStatusInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Get VM async request details
+
+Supported in v5.0+
+Get details about a Hyper-V vm related async request.
+                GraphQL operation: hypervVirtualMachineAsyncRequestStatus(input: GetHypervVirtualMachineAsyncRequestStatusInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter VirtualMachineAsyncRequestStatus { get; set; }

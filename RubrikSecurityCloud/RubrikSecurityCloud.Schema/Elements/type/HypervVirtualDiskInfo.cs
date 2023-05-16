@@ -33,6 +33,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("path")]
         public System.String? Path { get; set; }
 
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long (scalar)
+        [JsonProperty("size")]
+        public System.Int64? Size { get; set; }
+
         #endregion
 
     #region methods
@@ -40,7 +45,8 @@ namespace Rubrik.SecurityCloud.Types
     public HypervVirtualDiskInfo Set(
         System.String? Id = null,
         System.String? Name = null,
-        System.String? Path = null
+        System.String? Path = null,
+        System.Int64? Size = null
     ) 
     {
         if ( Id != null ) {
@@ -51,6 +57,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Path != null ) {
             this.Path = Path;
+        }
+        if ( Size != null ) {
+            this.Size = Size;
         }
         return this;
     }
@@ -83,6 +92,13 @@ namespace Rubrik.SecurityCloud.Types
                  s += ind + "path\n";
 
             }
+            //      C# -> System.Int64? Size
+            // GraphQL -> size: Long (scalar)
+            if (this.Size != null)
+            {
+                 s += ind + "size\n";
+
+            }
             return new string(s);
         }
 
@@ -108,6 +124,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Path == null && Exploration.Includes(parent + ".path$"))
             {
                 this.Path = new System.String("FETCH");
+            }
+            //      C# -> System.Int64? Size
+            // GraphQL -> size: Long (scalar)
+            if (this.Size == null && Exploration.Includes(parent + ".size$"))
+            {
+                this.Size = new System.Int64();
             }
         }
 

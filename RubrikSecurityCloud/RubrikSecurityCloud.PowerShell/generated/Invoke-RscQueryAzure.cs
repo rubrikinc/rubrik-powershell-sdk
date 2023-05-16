@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureNativeRoot:AzureNativeRoot!",
+            HelpMessage =
+                @"
+                Root of Azure native hierarchy.
+                GraphQL operation: azureNativeRoot:AzureNativeRoot!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeRoot { get; set; }
@@ -52,7 +56,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureNativeSubscription(azureSubscriptionRubrikId: UUID!):AzureNativeSubscription!",
+            HelpMessage =
+                @"
+                Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
+                GraphQL operation: azureNativeSubscription(azureSubscriptionRubrikId: UUID!):AzureNativeSubscription!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeSubscription { get; set; }
@@ -62,7 +70,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSubscriptionRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID of the Azure Subscription.
+                GraphQL argument azureSubscriptionRubrikId: UUID!
+                "
         )]
         public System.String? AzureSubscriptionRubrikId { get; set; }
         
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureNativeResourceGroup(resourceGroupId: UUID!):AzureNativeResourceGroup!",
+            HelpMessage =
+                @"
+                Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
+                GraphQL operation: azureNativeResourceGroup(resourceGroupId: UUID!):AzureNativeResourceGroup!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeResourceGroup { get; set; }
@@ -86,7 +102,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument resourceGroupId: UUID!"
+            HelpMessage =
+                @"
+                Resource Group ID of Virtual Machine (VM) or Disk.
+                GraphQL argument resourceGroupId: UUID!
+                "
         )]
         public System.String? ResourceGroupId { get; set; }
         
@@ -100,7 +120,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureNativeVirtualMachine(azureVirtualMachineRubrikId: UUID!):AzureNativeVirtualMachine!",
+            HelpMessage =
+                @"
+                Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
+                GraphQL operation: azureNativeVirtualMachine(azureVirtualMachineRubrikId: UUID!):AzureNativeVirtualMachine!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeVirtualMachine { get; set; }
@@ -110,7 +134,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureVirtualMachineRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID of the Azure Virtual Machine.
+                GraphQL argument azureVirtualMachineRubrikId: UUID!
+                "
         )]
         public System.String? AzureVirtualMachineRubrikId { get; set; }
         
@@ -124,7 +152,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureNativeManagedDisk(azureManagedDiskRubrikId: UUID!):AzureNativeManagedDisk!",
+            HelpMessage =
+                @"
+                Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
+                GraphQL operation: azureNativeManagedDisk(azureManagedDiskRubrikId: UUID!):AzureNativeManagedDisk!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeManagedDisk { get; set; }
@@ -134,7 +166,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureManagedDiskRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID of the Azure Managed Disk.
+                GraphQL argument azureManagedDiskRubrikId: UUID!
+                "
         )]
         public System.String? AzureManagedDiskRubrikId { get; set; }
         
@@ -148,7 +184,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeVirtualNetworks(azureSubscriptionRubrikId: UUID):[AzureNativeVirtualNetwork!]!",
+            HelpMessage =
+                @"
+                Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enables secure communication with other VNets, the internet, and on-premise networks. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview.
+                GraphQL operation: allAzureNativeVirtualNetworks(azureSubscriptionRubrikId: UUID):[AzureNativeVirtualNetwork!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeVirtualNetwork { get; set; }
@@ -164,7 +204,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeSubnetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeSubnet!]!",
+            HelpMessage =
+                @"
+                Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
+                GraphQL operation: allAzureNativeSubnetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeSubnet!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeSubnetsByRegionFromAzure { get; set; }
@@ -180,7 +224,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeSecurityGroupsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeSecurityGroup!]!",
+            HelpMessage =
+                @"
+                Retrieves all security groups in the specified region and subscription. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
+                GraphQL operation: allAzureNativeSecurityGroupsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeSecurityGroup!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeSecurityGroupsByRegionFromAzure { get; set; }
@@ -196,7 +244,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureDiskEncryptionSetsByRegion(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeDiskEncryptionSet!]!",
+            HelpMessage =
+                @"
+                List of all Azure Disk Encryption Sets in a region.
+                GraphQL operation: allAzureDiskEncryptionSetsByRegion(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeDiskEncryptionSet!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allDiskEncryptionSetsByRegion { get; set; }
@@ -212,7 +264,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeAvailabilitySetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, resourceGroupName: String!, region: AzureNativeRegion!):[AzureNativeAvailabilitySet!]!",
+            HelpMessage =
+                @"
+                Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
+                GraphQL operation: allAzureNativeAvailabilitySetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, resourceGroupName: String!, region: AzureNativeRegion!):[AzureNativeAvailabilitySet!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeAvailabilitySetsByRegionFromAzure { get; set; }
@@ -222,7 +278,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument resourceGroupName: String!"
+            HelpMessage =
+                @"
+                Resource Group Name.
+                GraphQL argument resourceGroupName: String!
+                "
         )]
         public System.String? ResourceGroupName { get; set; }
         
@@ -236,7 +296,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeExportCompatibleVmSizesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!, vmSnapshotId: UUID!):[AzureNativeExportCompatibleVmSizes!]!",
+            HelpMessage =
+                @"
+                Retrieves all supported virtual machine (VM) sizes when exporting a particular snapshot. Not all VM sizes are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
+                GraphQL operation: allAzureNativeExportCompatibleVmSizesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!, vmSnapshotId: UUID!):[AzureNativeExportCompatibleVmSizes!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeExportCompatibleVmSizesByRegionFromAzure { get; set; }
@@ -246,7 +310,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument vmSnapshotId: UUID!"
+            HelpMessage =
+                @"
+                Snapshot ID
+                GraphQL argument vmSnapshotId: UUID!
+                "
         )]
         public System.String? VmSnapshotId { get; set; }
         
@@ -260,7 +328,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeExportCompatibleDiskTypes!]!",
+            HelpMessage =
+                @"
+                Retrieves all supported disk types when exporting a specific snapshot. Not all disk types are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types.
+                GraphQL operation: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeExportCompatibleDiskTypes!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeExportCompatibleDiskTypesByRegionFromAzure { get; set; }
@@ -276,7 +348,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeVirtualMachineSizes(azureSubscriptionRubrikId: UUID):[String!]!",
+            HelpMessage =
+                @"
+                Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
+                GraphQL operation: allAzureNativeVirtualMachineSizes(azureSubscriptionRubrikId: UUID):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeVirtualMachineSize { get; set; }
@@ -292,7 +368,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: isAzureNativeManagedDiskSnapshotRestorable(azureSubscriptionRubrikId: UUID!, diskSnapshotId: UUID!):Boolean!",
+            HelpMessage =
+                @"
+                Specifies whether the Managed Disk snapshot is restorable or not. A managed disk is restorable when the restore settings of the Managed Disk are configured on the Azure portal and on the Rubrik platform. When the value is true, the managed disk snapshot is restorable.
+                GraphQL operation: isAzureNativeManagedDiskSnapshotRestorable(azureSubscriptionRubrikId: UUID!, diskSnapshotId: UUID!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter isNativeManagedDiskSnapshotRestorable { get; set; }
@@ -302,7 +382,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument diskSnapshotId: UUID!"
+            HelpMessage =
+                @"
+                Snapshot ID
+                GraphQL argument diskSnapshotId: UUID!
+                "
         )]
         public System.String? DiskSnapshotId { get; set; }
         
@@ -316,7 +400,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: isAzureStorageAccountNameAvailable(azureSubscriptionRubrikId: UUID!, storageAccountName: String!):Boolean!",
+            HelpMessage =
+                @"
+                Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure.
+                GraphQL operation: isAzureStorageAccountNameAvailable(azureSubscriptionRubrikId: UUID!, storageAccountName: String!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter isStorageAccountNameAvailable { get; set; }
@@ -326,7 +414,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument storageAccountName: String!"
+            HelpMessage =
+                @"
+                A unique name for the storage account. Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
+                GraphQL argument storageAccountName: String!
+                "
         )]
         public System.String? StorageAccountName { get; set; }
         
@@ -340,7 +432,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeStorageAccountsFromAzure(azureSubscriptionRubrikId: UUID!):[AzureNativeStorageAccount!]!",
+            HelpMessage =
+                @"
+                Retrieves list of all storage Accounts in a subscription.
+                GraphQL operation: allAzureNativeStorageAccountsFromAzure(azureSubscriptionRubrikId: UUID!):[AzureNativeStorageAccount!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeStorageAccountsFromAzure { get; set; }
@@ -356,7 +452,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureSqlDatabase(azureSqlDatabaseRubrikId: UUID!):AzureSqlDatabaseDb!",
+            HelpMessage =
+                @"
+                Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
+                GraphQL operation: azureSqlDatabase(azureSqlDatabaseRubrikId: UUID!):AzureSqlDatabaseDb!
+                ",
             Position = 0
         )]
         public SwitchParameter SqlDatabase { get; set; }
@@ -366,7 +466,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSqlDatabaseRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID of the Azure SQL Database.
+                GraphQL argument azureSqlDatabaseRubrikId: UUID!
+                "
         )]
         public System.String? AzureSqlDatabaseRubrikId { get; set; }
         
@@ -380,7 +484,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureSqlDatabaseServer(azureSqlDatabaseServerRubrikId: UUID!):AzureSqlDatabaseServer!",
+            HelpMessage =
+                @"
+                Retrieves an Azure SQL Database Server. Refers to the server that contains the Azure SQL Databases. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers.
+                GraphQL operation: azureSqlDatabaseServer(azureSqlDatabaseServerRubrikId: UUID!):AzureSqlDatabaseServer!
+                ",
             Position = 0
         )]
         public SwitchParameter SqlDatabaseServer { get; set; }
@@ -390,7 +498,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSqlDatabaseServerRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID of the Azure SQL Database Server.
+                GraphQL argument azureSqlDatabaseServerRubrikId: UUID!
+                "
         )]
         public System.String? AzureSqlDatabaseServerRubrikId { get; set; }
         
@@ -404,7 +516,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureSqlManagedInstanceDatabase(azureSqlManagedInstanceDatabaseRubrikId: UUID!):AzureSqlManagedInstanceDatabase!",
+            HelpMessage =
+                @"
+                Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
+                GraphQL operation: azureSqlManagedInstanceDatabase(azureSqlManagedInstanceDatabaseRubrikId: UUID!):AzureSqlManagedInstanceDatabase!
+                ",
             Position = 0
         )]
         public SwitchParameter SqlManagedInstanceDatabase { get; set; }
@@ -414,7 +530,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSqlManagedInstanceDatabaseRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID of the Azure SQL Managed Instance Database.
+                GraphQL argument azureSqlManagedInstanceDatabaseRubrikId: UUID!
+                "
         )]
         public System.String? AzureSqlManagedInstanceDatabaseRubrikId { get; set; }
         
@@ -428,7 +548,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureSqlManagedInstanceServer(azureSqlManagedInstanceServerRubrikId: UUID!):AzureSqlManagedInstanceServer!",
+            HelpMessage =
+                @"
+                Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of.
+                GraphQL operation: azureSqlManagedInstanceServer(azureSqlManagedInstanceServerRubrikId: UUID!):AzureSqlManagedInstanceServer!
+                ",
             Position = 0
         )]
         public SwitchParameter SqlManagedInstanceServer { get; set; }
@@ -438,7 +562,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSqlManagedInstanceServerRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID of the Azure SQL Managed Instance Server.
+                GraphQL argument azureSqlManagedInstanceServerRubrikId: UUID!
+                "
         )]
         public System.String? AzureSqlManagedInstanceServerRubrikId { get; set; }
         
@@ -452,7 +580,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlDatabaseServerName: String!,   azureSqlDatabaseName: String!, ):AzureNativeSqlDatabasePointInTimeRestoreWindow!",
+            HelpMessage =
+                @"
+                Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://azure.microsoft.com/en-in/blog/azure-sql-database-point-in-time-restore/.
+                GraphQL operation: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlDatabaseServerName: String!,   azureSqlDatabaseName: String!, ):AzureNativeSqlDatabasePointInTimeRestoreWindow!
+                ",
             Position = 0
         )]
         public SwitchParameter SqlDatabaseDbPointInTimeRestoreWindowFromAzure { get; set; }
@@ -462,7 +594,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subscriptionId: UUID!"
+            HelpMessage =
+                @"
+                Subscription ID.
+                GraphQL argument subscriptionId: UUID!
+                "
         )]
         public System.String? SubscriptionId { get; set; }
         [Parameter(
@@ -470,7 +606,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSqlDatabaseServerName: String!"
+            HelpMessage =
+                @"
+                Name of the Azure SQL Database server.
+                GraphQL argument azureSqlDatabaseServerName: String!
+                "
         )]
         public System.String? AzureSqlDatabaseServerName { get; set; }
         [Parameter(
@@ -478,7 +618,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSqlDatabaseName: String!"
+            HelpMessage =
+                @"
+                Name of the Azure SQL Database.
+                GraphQL argument azureSqlDatabaseName: String!
+                "
         )]
         public System.String? AzureSqlDatabaseName { get; set; }
         
@@ -492,7 +636,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlManagedInstanceName: String!,   azureSqlDatabaseName: String!, ):AzureNativeSqlDatabasePointInTimeRestoreWindow!",
+            HelpMessage =
+                @"
+                Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal.
+                GraphQL operation: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlManagedInstanceName: String!,   azureSqlDatabaseName: String!, ):AzureNativeSqlDatabasePointInTimeRestoreWindow!
+                ",
             Position = 0
         )]
         public SwitchParameter SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure { get; set; }
@@ -502,7 +650,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSqlManagedInstanceName: String!"
+            HelpMessage =
+                @"
+                Name of the Azure SQL Managed Instance.
+                GraphQL argument azureSqlManagedInstanceName: String!
+                "
         )]
         public System.String? AzureSqlManagedInstanceName { get; set; }
         
@@ -516,7 +668,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: validateAzureNativeSqlDatabaseDbNameForExport(azureSqlDatabaseName: String!, azureSqlDatabaseServerRubrikId: UUID!):ValidateAzureNativeSqlDatabaseDbNameForExportReply!",
+            HelpMessage =
+                @"
+                Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
+                GraphQL operation: validateAzureNativeSqlDatabaseDbNameForExport(azureSqlDatabaseName: String!, azureSqlDatabaseServerRubrikId: UUID!):ValidateAzureNativeSqlDatabaseDbNameForExportReply!
+                ",
             Position = 0
         )]
         public SwitchParameter validateNativeSqlDatabaseDbNameForExport { get; set; }
@@ -532,7 +688,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: validateAzureNativeSqlManagedInstanceDbNameForExport(azureSqlDatabaseName: String!, azureSqlManagedInstanceServerRubrikId: UUID!):ValidateAzureNativeSqlManagedInstanceDbNameForExportReply!",
+            HelpMessage =
+                @"
+                Validates the name used for an Managed Instance Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
+                GraphQL operation: validateAzureNativeSqlManagedInstanceDbNameForExport(azureSqlDatabaseName: String!, azureSqlManagedInstanceServerRubrikId: UUID!):ValidateAzureNativeSqlManagedInstanceDbNameForExportReply!
+                ",
             Position = 0
         )]
         public SwitchParameter validateNativeSqlManagedInstanceDbNameForExport { get; set; }
@@ -548,7 +708,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureSqlDatabaseServerElasticPools(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlDatabaseServerName: String!,   azureSqlDatabaseServerRubrikId: UUID!, ):[AzureSqlDatabaseServerElasticPool!]!",
+            HelpMessage =
+                @"
+                Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
+                GraphQL operation: allAzureSqlDatabaseServerElasticPools(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlDatabaseServerName: String!,   azureSqlDatabaseServerRubrikId: UUID!, ):[AzureSqlDatabaseServerElasticPool!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allSqlDatabaseServerElasticPool { get; set; }
@@ -564,7 +728,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: isAzureNativeSqlDatabaseSnapshotPersistent(snapshotId: UUID!):Boolean!",
+            HelpMessage =
+                @"
+                Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Database Snapshot is a persistent snapshot.
+                GraphQL operation: isAzureNativeSqlDatabaseSnapshotPersistent(snapshotId: UUID!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter isNativeSqlDatabaseSnapshotPersistent { get; set; }
@@ -574,7 +742,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument snapshotId: UUID!"
+            HelpMessage =
+                @"
+                Snapshot ID
+                GraphQL argument snapshotId: UUID!
+                "
         )]
         public System.String? SnapshotId { get; set; }
         
@@ -588,7 +760,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureKeyVaultsByRegion(azureKeyVaultsInput: AzureKeyVaultsInput!):[AzureKeyVault!]!",
+            HelpMessage =
+                @"
+                List of all Azure Key Vaults in a region.
+                GraphQL operation: allAzureKeyVaultsByRegion(azureKeyVaultsInput: AzureKeyVaultsInput!):[AzureKeyVault!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allKeyVaultsByRegion { get; set; }
@@ -598,7 +774,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureKeyVaultsInput: AzureKeyVaultsInput!"
+            HelpMessage =
+                @"
+                Input for fetching Key Vaults in an Azure region.
+                GraphQL argument azureKeyVaultsInput: AzureKeyVaultsInput!
+                "
         )]
         public AzureKeyVaultsInput? AzureKeyVaultsInput { get; set; }
         
@@ -612,7 +792,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureEncryptionKeys(azureEncryptionKeysInput: AzureEncryptionKeysInput!):[AzureEncryptionKey!]!",
+            HelpMessage =
+                @"
+                List of all Encryption Keys in an Azure Key Vault.
+                GraphQL operation: allAzureEncryptionKeys(azureEncryptionKeysInput: AzureEncryptionKeysInput!):[AzureEncryptionKey!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allEncryptionKey { get; set; }
@@ -622,7 +806,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureEncryptionKeysInput: AzureEncryptionKeysInput!"
+            HelpMessage =
+                @"
+                Input for fetching Encryption Keys in an Azure Key Vault.
+                GraphQL argument azureEncryptionKeysInput: AzureEncryptionKeysInput!
+                "
         )]
         public AzureEncryptionKeysInput? AzureEncryptionKeysInput { get; set; }
         
@@ -636,7 +824,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureCloudAccountTenant(,   tenantId: UUID!,   feature: CloudAccountFeature!,   subscriptionStatusFilters: [CloudAccountStatus!]!,   subscriptionSearchText: String!,   subscriptionIdsFilter: [UUID!], ):AzureCloudAccountTenant!",
+            HelpMessage =
+                @"
+                Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature.
+                GraphQL operation: azureCloudAccountTenant(,   tenantId: UUID!,   feature: CloudAccountFeature!,   subscriptionStatusFilters: [CloudAccountStatus!]!,   subscriptionSearchText: String!,   subscriptionIdsFilter: [UUID!], ):AzureCloudAccountTenant!
+                ",
             Position = 0
         )]
         public SwitchParameter CloudAccountTenant { get; set; }
@@ -646,7 +838,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument tenantId: UUID!"
+            HelpMessage =
+                @"
+                Tenant ID of the Azure tenant.
+                GraphQL argument tenantId: UUID!
+                "
         )]
         public System.String? TenantId { get; set; }
         [Parameter(
@@ -654,7 +850,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument feature: CloudAccountFeature!"
+            HelpMessage =
+                @"
+                A cloud account feature of Rubrik Security Cloud.
+                GraphQL argument feature: CloudAccountFeature!
+                "
         )]
         public CloudAccountFeature? Feature { get; set; }
         [Parameter(
@@ -662,7 +862,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subscriptionStatusFilters: [CloudAccountStatus!]!"
+            HelpMessage =
+                @"
+                List of subscription status filters to apply.
+                GraphQL argument subscriptionStatusFilters: [CloudAccountStatus!]!
+                "
         )]
         public List<CloudAccountStatus>? SubscriptionStatusFilters { get; set; }
         [Parameter(
@@ -670,7 +874,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subscriptionSearchText: String!"
+            HelpMessage =
+                @"
+                Search text for subscription name and native ID.
+                GraphQL argument subscriptionSearchText: String!
+                "
         )]
         public System.String? SubscriptionSearchText { get; set; }
         [Parameter(
@@ -678,7 +886,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subscriptionIdsFilter: [UUID!]"
+            HelpMessage =
+                @"
+                List of subscription IDs to filter on.
+                GraphQL argument subscriptionIdsFilter: [UUID!]
+                "
         )]
         public List<System.String>? SubscriptionIdsFilter { get; set; }
         
@@ -692,7 +904,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureCloudAccountTenantWithExoConfigs(,   tenantId: UUID!,   feature: CloudAccountFeature!,   subscriptionStatusFilters: [CloudAccountStatus!]!,   subscriptionSearchText: String!,   subscriptionIdsFilter: [UUID!], ):AzureCloudAccountTenantWithExoConfigs!",
+            HelpMessage =
+                @"
+                Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
+                GraphQL operation: azureCloudAccountTenantWithExoConfigs(,   tenantId: UUID!,   feature: CloudAccountFeature!,   subscriptionStatusFilters: [CloudAccountStatus!]!,   subscriptionSearchText: String!,   subscriptionIdsFilter: [UUID!], ):AzureCloudAccountTenantWithExoConfigs!
+                ",
             Position = 0
         )]
         public SwitchParameter CloudAccountTenantWithExoConfig { get; set; }
@@ -708,7 +924,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureCloudAccountTenants(features: [CloudAccountFeature!], feature: CloudAccountFeature!, includeSubscriptionDetails: Boolean!):[AzureCloudAccountTenant!]!",
+            HelpMessage =
+                @"
+                Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
+                GraphQL operation: allAzureCloudAccountTenants(features: [CloudAccountFeature!], feature: CloudAccountFeature!, includeSubscriptionDetails: Boolean!):[AzureCloudAccountTenant!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allCloudAccountTenant { get; set; }
@@ -718,7 +938,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument features: [CloudAccountFeature!]"
+            HelpMessage =
+                @"
+                Cloud account features. A feature refers to the Polaris feature that Rubrik provides.
+                GraphQL argument features: [CloudAccountFeature!]
+                "
         )]
         public List<CloudAccountFeature>? Features { get; set; }
         [Parameter(
@@ -726,7 +950,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument includeSubscriptionDetails: Boolean!"
+            HelpMessage =
+                @"
+                Specifies whether the details about the subscriptions in the tenants are included in the response or not.
+                GraphQL argument includeSubscriptionDetails: Boolean!
+                "
         )]
         public System.Boolean? IncludeSubscriptionDetails { get; set; }
         
@@ -740,7 +968,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureCloudAccountSubscriptionWithFeatures(cloudAccountId: UUID!):AzureCloudAccountSubscriptionWithFeatures!",
+            HelpMessage =
+                @"
+                Retrieves the details of the Azure cloud account.
+                GraphQL operation: azureCloudAccountSubscriptionWithFeatures(cloudAccountId: UUID!):AzureCloudAccountSubscriptionWithFeatures!
+                ",
             Position = 0
         )]
         public SwitchParameter CloudAccountSubscriptionWithFeature { get; set; }
@@ -750,7 +982,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument cloudAccountId: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik ID of the cloud account.
+                GraphQL argument cloudAccountId: UUID!
+                "
         )]
         public System.String? CloudAccountId { get; set; }
         
@@ -764,7 +1000,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureCloudAccountSubscriptionsByFeature(feature: CloudAccountFeature!, subscriptionStatusFilters: [CloudAccountStatus!]!):[AzureSubscriptionWithFeaturesType!]!",
+            HelpMessage =
+                @"
+                Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
+                GraphQL operation: allAzureCloudAccountSubscriptionsByFeature(feature: CloudAccountFeature!, subscriptionStatusFilters: [CloudAccountStatus!]!):[AzureSubscriptionWithFeaturesType!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allCloudAccountSubscriptionsByFeature { get; set; }
@@ -780,7 +1020,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureSubscriptionWithExocomputeMappings(features: [CloudAccountFeature!], exocomputeSubscriptionIdsFilter: [UUID!]):[AzureSubscriptionWithExocomputeMapping!]!",
+            HelpMessage =
+                @"
+                Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
+                GraphQL operation: allAzureSubscriptionWithExocomputeMappings(features: [CloudAccountFeature!], exocomputeSubscriptionIdsFilter: [UUID!]):[AzureSubscriptionWithExocomputeMapping!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allSubscriptionWithExocomputeMapping { get; set; }
@@ -790,7 +1034,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument exocomputeSubscriptionIdsFilter: [UUID!]"
+            HelpMessage =
+                @"
+                List of mapped Exocompute subscription IDs.
+                GraphQL argument exocomputeSubscriptionIdsFilter: [UUID!]
+                "
         )]
         public List<System.String>? ExocomputeSubscriptionIdsFilter { get; set; }
         
@@ -804,7 +1052,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allResourceGroupsFromAzure(cloudAccountId: UUID!, azureSubscriptionNativeId: UUID!, feature: CloudAccountFeature!):[AzureResourceGroup!]!",
+            HelpMessage =
+                @"
+                Retrieves a list og all resource groups in the specified account.
+                GraphQL operation: allResourceGroupsFromAzure(cloudAccountId: UUID!, azureSubscriptionNativeId: UUID!, feature: CloudAccountFeature!):[AzureResourceGroup!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allResourceGroupsFrom { get; set; }
@@ -814,7 +1066,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureSubscriptionNativeId: UUID!"
+            HelpMessage =
+                @"
+                The Native ID of the subscription.
+                GraphQL argument azureSubscriptionNativeId: UUID!
+                "
         )]
         public System.String? AzureSubscriptionNativeId { get; set; }
         
@@ -828,7 +1084,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: doesAzureNativeResourceGroupExist(,   cloudAccountId: UUID!,   azureSubscriptionNativeId: UUID!,   resourceGroupName: String!,   feature: CloudAccountFeature!, ):Boolean!",
+            HelpMessage =
+                @"
+                Checks if a resource group with the specified name exists in the specified account.
+                GraphQL operation: doesAzureNativeResourceGroupExist(,   cloudAccountId: UUID!,   azureSubscriptionNativeId: UUID!,   resourceGroupName: String!,   feature: CloudAccountFeature!, ):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter doesNativeResourceGroupExist { get; set; }
@@ -844,7 +1104,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNativeResourceGroupsInfoIfExist(input: AzureGetResourceGroupsInfoIfExistInput!):[AzureResourceGroupInfo!]!",
+            HelpMessage =
+                @"
+                Retrieves a list of resource groups with the specified names which exist in the specified account.
+                GraphQL operation: allAzureNativeResourceGroupsInfoIfExist(input: AzureGetResourceGroupsInfoIfExistInput!):[AzureResourceGroupInfo!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNativeResourceGroupsInfoIfExist { get; set; }
@@ -854,7 +1118,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: AzureGetResourceGroupsInfoIfExistInput!"
+            HelpMessage =
+                @"
+                Input to get Azure Resource Groups if they exist.
+                GraphQL argument input: AzureGetResourceGroupsInfoIfExistInput!
+                "
         )]
         public AzureGetResourceGroupsInfoIfExistInput? Input { get; set; }
         
@@ -868,7 +1136,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureCloudAccountMissingPermissions(sessionId: String!, subscriptionIds: [UUID!]!, cloudAccountAction: CloudAccountAction!):[AzureSubscriptionMissingPermissions!]!",
+            HelpMessage =
+                @"
+                Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
+                GraphQL operation: allAzureCloudAccountMissingPermissions(sessionId: String!, subscriptionIds: [UUID!]!, cloudAccountAction: CloudAccountAction!):[AzureSubscriptionMissingPermissions!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allCloudAccountMissingPermission { get; set; }
@@ -878,7 +1150,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sessionId: String!"
+            HelpMessage =
+                @"
+                Session ID of the current OAuth session.
+                GraphQL argument sessionId: String!
+                "
         )]
         public System.String? SessionId { get; set; }
         [Parameter(
@@ -886,7 +1162,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subscriptionIds: [UUID!]!"
+            HelpMessage =
+                @"
+                List of Azure subscription IDs.
+                GraphQL argument subscriptionIds: [UUID!]!
+                "
         )]
         public List<System.String>? SubscriptionIds { get; set; }
         [Parameter(
@@ -894,7 +1174,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument cloudAccountAction: CloudAccountAction!"
+            HelpMessage =
+                @"
+                The cloud account action to be performed. Some examples are: isCreate, isUpdateRegions, isDelete.
+                GraphQL argument cloudAccountAction: CloudAccountAction!
+                "
         )]
         public CloudAccountAction? CloudAccountAction { get; set; }
         
@@ -908,7 +1192,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureCloudAccountPermissionConfig(feature: CloudAccountFeature!):AzureCloudAccountPermissionConfigResponse!",
+            HelpMessage =
+                @"
+                Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
+                GraphQL operation: azureCloudAccountPermissionConfig(feature: CloudAccountFeature!):AzureCloudAccountPermissionConfigResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter CloudAccountPermissionConfig { get; set; }
@@ -924,7 +1212,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureExocomputeConfigsInAccount(azureExocomputeSearchQuery: String, cloudAccountIDs: [UUID!]):[AzureExocomputeConfigsInAccount!]!",
+            HelpMessage =
+                @"
+                Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
+                GraphQL operation: allAzureExocomputeConfigsInAccount(azureExocomputeSearchQuery: String, cloudAccountIDs: [UUID!]):[AzureExocomputeConfigsInAccount!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allExocomputeConfigsInAccount { get; set; }
@@ -934,7 +1226,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureExocomputeSearchQuery: String"
+            HelpMessage =
+                @"
+                A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
+                GraphQL argument azureExocomputeSearchQuery: String
+                "
         )]
         public System.String? AzureExocomputeSearchQuery { get; set; }
         [Parameter(
@@ -942,7 +1238,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument cloudAccountIDs: [UUID!]"
+            HelpMessage =
+                @"
+                IDs of cloud accounts.
+                GraphQL argument cloudAccountIDs: [UUID!]
+                "
         )]
         public List<System.String>? CloudAccountIds { get; set; }
         
@@ -956,7 +1256,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureCloudAccountSubnetsByRegion(cloudAccountId: UUID!, region: AzureCloudAccountRegion!):[AzureNativeSubnet!]!",
+            HelpMessage =
+                @"
+                Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
+                GraphQL operation: allAzureCloudAccountSubnetsByRegion(cloudAccountId: UUID!, region: AzureCloudAccountRegion!):[AzureNativeSubnet!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allCloudAccountSubnetsByRegion { get; set; }
@@ -972,7 +1276,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: validateAzureCloudAccountExocomputeConfigurations(input: ValidateAzureCloudAccountExocomputeConfigurationsInput!):ValidateAzureSubnetsForCloudAccountExocomputeReply!",
+            HelpMessage =
+                @"
+                Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
+                GraphQL operation: validateAzureCloudAccountExocomputeConfigurations(input: ValidateAzureCloudAccountExocomputeConfigurationsInput!):ValidateAzureSubnetsForCloudAccountExocomputeReply!
+                ",
             Position = 0
         )]
         public SwitchParameter validateCloudAccountExocomputeConfiguration { get; set; }
@@ -988,7 +1296,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureArmTemplatesByFeature(input: AzureArmTemplatesByFeatureInput!):[AzureArmTemplateByFeature!]!",
+            HelpMessage =
+                @"
+                Retrieve ARM templates for role definition and role assignment.
+                GraphQL operation: allAzureArmTemplatesByFeature(input: AzureArmTemplatesByFeatureInput!):[AzureArmTemplateByFeature!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allArmTemplatesByFeature { get; set; }
@@ -1004,7 +1316,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureSubscriptions(tenantId: String!):AzureSubscriptionConnection!",
+            HelpMessage =
+                @"
+                Gets the subscriptions for the given Azure tenant.
+                GraphQL operation: azureSubscriptions(tenantId: String!):AzureSubscriptionConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Subscription { get; set; }
@@ -1020,7 +1336,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureRegions(tenantId: String!, subscriptionId: UUID!):RegionConnection!",
+            HelpMessage =
+                @"
+                Gets the Azure regions for the given subscription.
+                GraphQL operation: azureRegions(tenantId: String!, subscriptionId: UUID!):RegionConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Region { get; set; }
@@ -1036,7 +1356,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureResourceGroups(tenantId: String!, subscriptionId: UUID!):ResourceGroupConnection!",
+            HelpMessage =
+                @"
+                Gets the Azure resource groups for the given subscription.
+                GraphQL operation: azureResourceGroups(tenantId: String!, subscriptionId: UUID!):ResourceGroupConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter ResourceGroup { get; set; }
@@ -1052,7 +1376,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureVNets(tenantId: String!, subscriptionId: UUID!, regionName: String!):VnetConnection!",
+            HelpMessage =
+                @"
+                Gets the VNets for the given subscription.
+                GraphQL operation: azureVNets(tenantId: String!, subscriptionId: UUID!, regionName: String!):VnetConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter VNet { get; set; }
@@ -1062,7 +1390,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument regionName: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument regionName: String!
+                "
         )]
         public System.String? RegionName { get; set; }
         
@@ -1076,7 +1408,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureSubnets(tenantId: String!, subscriptionId: UUID!, vNetId: String!):SubnetConnection!",
+            HelpMessage =
+                @"
+                Gets the subnets for the given subscription.
+                GraphQL operation: azureSubnets(tenantId: String!, subscriptionId: UUID!, vNetId: String!):SubnetConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Subnet { get; set; }
@@ -1086,7 +1422,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument vNetId: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument vNetId: String!
+                "
         )]
         public System.String? VnetId { get; set; }
         
@@ -1100,7 +1440,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureStorageAccounts(tenantId: String!, subscriptionId: UUID!, regionName: String!):StorageAccountConnection!",
+            HelpMessage =
+                @"
+                Gets the storage accounts for the given subscription.
+                GraphQL operation: azureStorageAccounts(tenantId: String!, subscriptionId: UUID!, regionName: String!):StorageAccountConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter StorageAccount { get; set; }
@@ -1116,7 +1460,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allHostedAzureRegions:AzureRegionsResp!",
+            HelpMessage =
+                @"
+                Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
+                GraphQL operation: allHostedAzureRegions:AzureRegionsResp!
+                ",
             Position = 0
         )]
         public SwitchParameter allHostedRegion { get; set; }
@@ -1132,7 +1480,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureResourceGroups(cloudAccountId: String!, azureRegion: String!):[String!]!",
+            HelpMessage =
+                @"
+                Get resource groups for a service principal in Azure.
+                GraphQL operation: allAzureResourceGroups(cloudAccountId: String!, azureRegion: String!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allResourceGroup { get; set; }
@@ -1142,7 +1494,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument azureRegion: String!"
+            HelpMessage =
+                @"
+                Region for Azure cloud account.
+                GraphQL argument azureRegion: String!
+                "
         )]
         public System.String? AzureRegion { get; set; }
         
@@ -1156,7 +1512,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureVnets(vnetRequest: AzureVnetReq!):[String!]!",
+            HelpMessage =
+                @"
+                Get VNets for a given account in Azure.
+                GraphQL operation: allAzureVnets(vnetRequest: AzureVnetReq!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allVnet { get; set; }
@@ -1166,7 +1526,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument vnetRequest: AzureVnetReq!"
+            HelpMessage =
+                @"
+                VNet request parameters for Azure.
+                GraphQL argument vnetRequest: AzureVnetReq!
+                "
         )]
         public AzureVnetReq? VnetRequest { get; set; }
         
@@ -1180,7 +1544,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureSubnets(subnetRequest: AzureSubnetReq!):[String!]!",
+            HelpMessage =
+                @"
+                Get subnets for a given account in Azure.
+                GraphQL operation: allAzureSubnets(subnetRequest: AzureSubnetReq!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allSubnet { get; set; }
@@ -1190,7 +1558,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subnetRequest: AzureSubnetReq!"
+            HelpMessage =
+                @"
+                Subnet request parameters for Azure.
+                GraphQL argument subnetRequest: AzureSubnetReq!
+                "
         )]
         public AzureSubnetReq? SubnetRequest { get; set; }
         
@@ -1204,7 +1576,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureCdmVersions(cdmVersionRequest: AzureCdmVersionReq!):[AzureCdmVersion!]!",
+            HelpMessage =
+                @"
+                Get all Rubrik CDM versions in the Azure marketplace.
+                GraphQL operation: allAzureCdmVersions(cdmVersionRequest: AzureCdmVersionReq!):[AzureCdmVersion!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allCdmVersion { get; set; }
@@ -1214,7 +1590,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument cdmVersionRequest: AzureCdmVersionReq!"
+            HelpMessage =
+                @"
+                Rubrik CDM version request parameters for Azure.
+                GraphQL argument cdmVersionRequest: AzureCdmVersionReq!
+                "
         )]
         public AzureCdmVersionReq? CdmVersionRequest { get; set; }
         
@@ -1228,7 +1608,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureRegions(cloudAccountId: String!):[AzureCloudAccountRegion!]!",
+            HelpMessage =
+                @"
+                Get all available regions for Azure.
+                GraphQL operation: allAzureRegions(cloudAccountId: String!):[AzureCloudAccountRegion!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allRegion { get; set; }
@@ -1244,7 +1628,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureNsgs(nsgRequest: AzureNsgRequest!):[String!]!",
+            HelpMessage =
+                @"
+                Get all available network security groups for Azure.
+                GraphQL operation: allAzureNsgs(nsgRequest: AzureNsgRequest!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNsg { get; set; }
@@ -1254,7 +1642,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument nsgRequest: AzureNsgRequest!"
+            HelpMessage =
+                @"
+                Nsg request parameters for Azure.
+                GraphQL argument nsgRequest: AzureNsgRequest!
+                "
         )]
         public AzureNsgRequest? NsgRequest { get; set; }
         
@@ -1268,7 +1660,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAzureStorageAccounts(storageAccountsRequest: AzureStorageAccountsReq!):[String!]!",
+            HelpMessage =
+                @"
+                List all storage accounts from Azure.
+                GraphQL operation: allAzureStorageAccounts(storageAccountsRequest: AzureStorageAccountsReq!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allStorageAccount { get; set; }
@@ -1278,7 +1674,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument storageAccountsRequest: AzureStorageAccountsReq!"
+            HelpMessage =
+                @"
+                Storage accounts request params for Azure.
+                GraphQL argument storageAccountsRequest: AzureStorageAccountsReq!
+                "
         )]
         public AzureStorageAccountsReq? StorageAccountsRequest { get; set; }
 

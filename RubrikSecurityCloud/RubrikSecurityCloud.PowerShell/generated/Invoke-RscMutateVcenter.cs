@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createVsphereVcenter(input: CreateVsphereVcenterInput!):CreateVsphereVcenterReply!",
+            HelpMessage =
+                @"
+                Add a vCenter server.
+                GraphQL operation: createVsphereVcenter(input: CreateVsphereVcenterInput!):CreateVsphereVcenterReply!
+                ",
             Position = 0
         )]
         public SwitchParameter Create { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: CreateVsphereVcenterInput!"
+            HelpMessage =
+                @"
+                Input for V2CreateVcenterV2.
+                GraphQL argument input: CreateVsphereVcenterInput!
+                "
         )]
         public CreateVsphereVcenterInput? Input { get; set; }
         
@@ -60,7 +68,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereDeleteVcenter(input: VsphereDeleteVcenterInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Remove vCenter Server
+
+Supported in v5.0+
+Initiates an asynchronous job to remove a vCenter Server object. The vCenter Server cannot have VMs mounted through the Rubrik cluster.
+                GraphQL operation: vsphereDeleteVcenter(input: VsphereDeleteVcenterInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter Delete { get; set; }
@@ -76,7 +91,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: refreshVsphereVcenter(input: RefreshVsphereVcenterInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Refresh vCenter Server metadata
+
+Supported in v5.0+
+Create a job to refresh the metadata for the specified vCenter Server.
+                GraphQL operation: refreshVsphereVcenter(input: RefreshVsphereVcenterInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter Refresh { get; set; }
@@ -92,7 +114,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateVcenter(input: UpdateVcenterInput!):UpdateVcenterReply!",
+            HelpMessage =
+                @"
+                Update vCenter Server
+
+Supported in v5.0+
+Update the address, username and password of the specified vCenter Server object.
+                GraphQL operation: updateVcenter(input: UpdateVcenterInput!):UpdateVcenterReply!
+                ",
             Position = 0
         )]
         public SwitchParameter update { get; set; }
@@ -108,7 +137,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateVcenterHotAddNetwork(input: UpdateVcenterHotAddNetworkInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Set the user-configured network for HotAdd backup and recovery
+
+Supported in v5.3+
+Set the user-configured network for HotAdd backup and recovery operations on VMware on AWS.
+                GraphQL operation: updateVcenterHotAddNetwork(input: UpdateVcenterHotAddNetworkInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter updateHotAddNetwork { get; set; }
@@ -124,7 +160,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateVcenterHotAddBandwidth(input: UpdateVcenterHotAddBandwidthInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Set the ingest and export bandwidth limits for HotAdd with the vCenter
+
+Supported in v5.3+
+Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vCenter. These limits are shared across all HotAdd proxies for the Center.
+                GraphQL operation: updateVcenterHotAddBandwidth(input: UpdateVcenterHotAddBandwidthInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter updateHotAddBandwidth { get; set; }

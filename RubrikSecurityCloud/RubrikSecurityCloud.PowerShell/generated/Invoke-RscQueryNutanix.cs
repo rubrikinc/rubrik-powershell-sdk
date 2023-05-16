@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):CdmHierarchyObjectConnection!",
+            HelpMessage =
+                @"
+                Paginated list of the highest-level Nutanix Objects accessible by the current user.
+                GraphQL operation: nutanixTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):CdmHierarchyObjectConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter TopLevelDescendant { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -70,7 +86,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -78,7 +98,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
+            HelpMessage =
+                @"
+                Types of objects to include.
+                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
+                "
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         [Parameter(
@@ -86,7 +110,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -100,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixCluster(fid: UUID!):NutanixCluster!",
+            HelpMessage =
+                @"
+                A Nutanix Cluster.
+                GraphQL operation: nutanixCluster(fid: UUID!):NutanixCluster!
+                ",
             Position = 0
         )]
         public SwitchParameter Cluster { get; set; }
@@ -110,7 +142,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -124,7 +160,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixVm(fid: UUID!):NutanixVm!",
+            HelpMessage =
+                @"
+                A Nutanix Virtual Machine.
+                GraphQL operation: nutanixVm(fid: UUID!):NutanixVm!
+                ",
             Position = 0
         )]
         public SwitchParameter Vm { get; set; }
@@ -140,7 +180,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixMounts(,   first: Int,   after: String,   filters: [NutanixLiveMountFilterInput!],   sortBy: NutanixLiveMountSortByInput, ):NutanixLiveMountConnection!",
+            HelpMessage =
+                @"
+                Nutanix Live Mount Connection.
+                GraphQL operation: nutanixMounts(,   first: Int,   after: String,   filters: [NutanixLiveMountFilterInput!],   sortBy: NutanixLiveMountSortByInput, ):NutanixLiveMountConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Mount { get; set; }
@@ -150,7 +194,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filters: [NutanixLiveMountFilterInput!]"
+            HelpMessage =
+                @"
+                Filter for Nutanix virtual machine live mounts.
+                GraphQL argument filters: [NutanixLiveMountFilterInput!]
+                "
         )]
         public List<NutanixLiveMountFilterInput>? Filters { get; set; }
         
@@ -164,7 +212,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixClusterContainers(input: GetContainersInput!):NutanixContainerListResponse!",
+            HelpMessage =
+                @"
+                Get list of containers on this cluster
+
+Supported in v5.0+
+Query the nutanix cluster to get the list of containers, used for export purposes.
+                GraphQL operation: nutanixClusterContainers(input: GetContainersInput!):NutanixContainerListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter ClusterContainer { get; set; }
@@ -174,7 +229,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: GetContainersInput!"
+            HelpMessage =
+                @"
+                Input for InternalGetContainers.
+                GraphQL argument input: GetContainersInput!
+                "
         )]
         public GetContainersInput? Input { get; set; }
         
@@ -188,7 +247,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixClusterNetworks(input: GetNutanixNetworksInput!):NutanixNetworkListResponse!",
+            HelpMessage =
+                @"
+                Get list of networks on this cluster
+
+Supported in v8.1+
+Retrieves the list of networks by querying the Nutanix cluster. The list of networks is used for restore purposes.
+                GraphQL operation: nutanixClusterNetworks(input: GetNutanixNetworksInput!):NutanixNetworkListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter ClusterNetwork { get; set; }
@@ -204,7 +270,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixClusterAsyncRequestStatus(input: GetNutanixClusterAsyncRequestStatusInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Get Nutanix cluster async request
+
+Supported in v5.0+
+Get details about a Nutanix cluster-related async request.
+                GraphQL operation: nutanixClusterAsyncRequestStatus(input: GetNutanixClusterAsyncRequestStatusInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter ClusterAsyncRequestStatus { get; set; }
@@ -220,7 +293,16 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixVmAsyncRequestStatus(input: GetNutanixVmAsyncRequestStatusInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Get VM async request details
+v8.1+: Get virtual machine async request details
+
+Supported in v5.0+
+v5.0-v8.0: Get details about a Nutanix VM-related async request.
+v8.1+: Get details about a Nutanix virtual machine-related async request.
+                GraphQL operation: nutanixVmAsyncRequestStatus(input: GetNutanixVmAsyncRequestStatusInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter VmAsyncRequestStatus { get; set; }
@@ -236,7 +318,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: searchNutanixVm(input: SearchNutanixVmInput!):SearchResponseListResponse!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Search for file in Nutanix VM
+v8.1+: Search for file in Nutanix virtual machine
+
+Supported in v5.0+
+Search for a file within the Nutanix Virtual Machine. Search via full path prefix or filename prefix.
+                GraphQL operation: searchNutanixVm(input: SearchNutanixVmInput!):SearchResponseListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter searchVm { get; set; }
@@ -252,7 +342,16 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixVmMissedSnapshots(input: NutanixMissedSnapshotsInput!):MissedSnapshotListResponse!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Get details about missed snapshots for a VM
+v8.1+: Get details about missed snapshots for a virtual machine
+
+Supported in v5.0+
+v5.0-v8.0: Retrieve the time of the day when the snapshots were missed specific to a vm.
+v8.1+: Retrieve the time of the day when the snapshots were missed specific to a virtual machine.
+                GraphQL operation: nutanixVmMissedSnapshots(input: NutanixMissedSnapshotsInput!):MissedSnapshotListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter VmMissedSnapshot { get; set; }
@@ -268,7 +367,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixBrowseSnapshot(input: BrowseNutanixSnapshotInput!):BrowseResponseListResponse!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Lists all files in VM snapshot
+v8.1+: Lists all files in virtual machine snapshot
+
+Supported in v5.0+
+Lists all files and directories in a given path.
+                GraphQL operation: nutanixBrowseSnapshot(input: BrowseNutanixSnapshotInput!):BrowseResponseListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter BrowseSnapshot { get; set; }
@@ -284,7 +391,12 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: nutanixSnapshotDetail(input: GetNutanixSnapshotDetailInput!):NutanixVmSnapshotDetail!",
+            HelpMessage =
+                @"
+                Supported in v5.0+. Get Nutanix virtual machine snapshot details.
+ Retrieve detailed information about a snapshot.
+                GraphQL operation: nutanixSnapshotDetail(input: GetNutanixSnapshotDetailInput!):NutanixVmSnapshotDetail!
+                ",
             Position = 0
         )]
         public SwitchParameter SnapshotDetail { get; set; }

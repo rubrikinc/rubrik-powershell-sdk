@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: browseMssqlDatabaseSnapshot(input: BrowseMssqlDatabaseSnapshotInput!):BrowseMssqlDatabaseSnapshotReply!",
+            HelpMessage =
+                @"
+                List snapshots and logs from a Mssql Database. This endpoint is only used to fetch data, but uses a mutation instead of a query due to limitations with the CDM API.
+                GraphQL operation: browseMssqlDatabaseSnapshot(input: BrowseMssqlDatabaseSnapshotInput!):BrowseMssqlDatabaseSnapshotReply!
+                ",
             Position = 0
         )]
         public SwitchParameter browseDatabaseSnapshot { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!"
+            HelpMessage =
+                @"
+                Input for V1BrowseMssqlBackupFiles.
+                GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!
+                "
         )]
         public BrowseMssqlDatabaseSnapshotInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: exportMssqlDatabase(input: ExportMssqlDatabaseInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a request to export a Microsoft SQL database.
+                GraphQL operation: exportMssqlDatabase(input: ExportMssqlDatabaseInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter exportDatabase { get; set; }
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: restoreMssqlDatabase(input: RestoreMssqlDatabaseInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a request to restore a Microsoft SQL database.
+                GraphQL operation: restoreMssqlDatabase(input: RestoreMssqlDatabaseInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter restoreDatabase { get; set; }
@@ -92,7 +108,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: bulkUpdateMssqlDbs(input: BulkUpdateMssqlDbsInput!):BulkUpdateMssqlDbsReply!",
+            HelpMessage =
+                @"
+                Update multiple Microsoft SQL databases with the specified properties.
+                GraphQL operation: bulkUpdateMssqlDbs(input: BulkUpdateMssqlDbsInput!):BulkUpdateMssqlDbsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter bulkUpdateDb { get; set; }
@@ -108,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: takeMssqlLogBackup(input: TakeMssqlLogBackupInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Take an on-demand log backup for a Microsoft SQL database.
+                GraphQL operation: takeMssqlLogBackup(input: TakeMssqlLogBackupInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter takeLogBackup { get; set; }
@@ -124,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createOnDemandMssqlBackup(input: CreateOnDemandMssqlBackupInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Take an on-demand backup of a Microsoft SQL Database
+                GraphQL operation: createOnDemandMssqlBackup(input: CreateOnDemandMssqlBackupInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter createOnDemandBackup { get; set; }
@@ -140,7 +168,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteMssqlDbSnapshots(input: DeleteMssqlDbSnapshotsInput!):ResponseSuccess!",
+            HelpMessage =
+                @"
+                Delete snapshots of a Microsoft SQL Database.
+                GraphQL operation: deleteMssqlDbSnapshots(input: DeleteMssqlDbSnapshotsInput!):ResponseSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteDbSnapshot { get; set; }
@@ -156,7 +188,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteMssqlLiveMount(input: DeleteMssqlLiveMountInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Delete a Live Mount of a SQL Server database
+
+Supported in v5.0+
+Create an async request to delete a Live Mount of a SQL Server database. Poll the task status by using /mssql/request/{id}.
+                GraphQL operation: deleteMssqlLiveMount(input: DeleteMssqlLiveMountInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteLiveMount { get; set; }
@@ -172,7 +211,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: bulkCreateOnDemandMssqlBackup(input: BulkCreateOnDemandMssqlBackupInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Take a bulk on-demand backup of a Microsoft SQL Database.
+                GraphQL operation: bulkCreateOnDemandMssqlBackup(input: BulkCreateOnDemandMssqlBackupInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter bulkCreateOnDemandBackup { get; set; }
@@ -188,7 +231,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createMssqlLiveMount(input: CreateMssqlLiveMountInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create live mount of a Microsoft SQL Database.
+                GraphQL operation: createMssqlLiveMount(input: CreateMssqlLiveMountInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter createLiveMount { get; set; }
@@ -204,7 +251,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateMssqlLogShippingConfiguration(input: UpdateMssqlLogShippingConfigurationInput!):UpdateMssqlLogShippingConfigurationReply!",
+            HelpMessage =
+                @"
+                Update log shipping configuration of a Microsoft SQL Database.
+                GraphQL operation: updateMssqlLogShippingConfiguration(input: UpdateMssqlLogShippingConfigurationInput!):UpdateMssqlLogShippingConfigurationReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateLogShippingConfiguration { get; set; }
@@ -220,7 +271,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadMssqlDatabaseFilesFromArchivalLocation(input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download Microsoft SQL Database backup files from archival location.
+                GraphQL operation: downloadMssqlDatabaseFilesFromArchivalLocation(input: DownloadMssqlDatabaseFilesFromArchivalLocationInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadDatabaseFilesFromArchivalLocation { get; set; }
@@ -236,7 +291,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadMssqlDatabaseBackupFiles(input: DownloadMssqlDatabaseBackupFilesInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Downloads a list of snapshot and log backups from a Microsoft SQL database
+
+Supported in v5.2+
+Downloads a list of snapshot and log backups from a Microsoft SQL database.
+                GraphQL operation: downloadMssqlDatabaseBackupFiles(input: DownloadMssqlDatabaseBackupFilesInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadDatabaseBackupFile { get; set; }
@@ -252,7 +314,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: assignMssqlSlaDomainProperties(input: AssignMssqlSlaDomainPropertiesInput!):ResponseSuccess!",
+            HelpMessage =
+                @"
+                Assign SLA domain properties to Mssql objects.
+                GraphQL operation: assignMssqlSlaDomainProperties(input: AssignMssqlSlaDomainPropertiesInput!):ResponseSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter assignSlaDomainPropertie { get; set; }
@@ -268,7 +334,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateMssqlDefaultProperties(input: UpdateMssqlDefaultPropertiesInput!):UpdateMssqlDefaultPropertiesReply!",
+            HelpMessage =
+                @"
+                Update the default properties for Microsoft SQL databases.
+                GraphQL operation: updateMssqlDefaultProperties(input: UpdateMssqlDefaultPropertiesInput!):UpdateMssqlDefaultPropertiesReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateDefaultPropertie { get; set; }
@@ -284,7 +354,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createMssqlLogShippingConfiguration(input: CreateMssqlLogShippingConfigurationInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create log shipping configuration of a Microsoft SQL Database.
+                GraphQL operation: createMssqlLogShippingConfiguration(input: CreateMssqlLogShippingConfigurationInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter createLogShippingConfiguration { get; set; }
@@ -300,7 +374,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: assignMssqlSlaDomainPropertiesAsync(input: AssignMssqlSlaDomainPropertiesAsyncInput!):AssignMssqlSlaDomainPropertiesAsyncReply!",
+            HelpMessage =
+                @"
+                Assign SLA domain properties to Mssql objects.
+                GraphQL operation: assignMssqlSlaDomainPropertiesAsync(input: AssignMssqlSlaDomainPropertiesAsyncInput!):AssignMssqlSlaDomainPropertiesAsyncReply!
+                ",
             Position = 0
         )]
         public SwitchParameter assignSlaDomainPropertiesAsync { get; set; }

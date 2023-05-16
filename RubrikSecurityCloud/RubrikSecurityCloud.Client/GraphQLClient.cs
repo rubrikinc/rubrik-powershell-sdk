@@ -208,10 +208,7 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 new NewtonsoftJsonSerializer(jsonSettings),
                 apiClient);
 
-            if (logger != null)
-            {
-                logger.Debug(this.GraphQLRequestToString(Request));
-            }
+            logger?.Debug(this.GraphQLRequestToString(Request));
             GraphQLResponse<T> response;
             try
             {
@@ -220,17 +217,13 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             catch (Exception ex)
             {
                 Console.WriteLine(
-                    $"ERROR: API Server responded: \"{ex.Message}\"\n" +
-                    $"  Query: {Request.Query}\n" +
-                    $"  Variables: {Request.Variables}\n\n" + 
+                    $"ERROR: API Server responded: \"{ex.Message}\"" +
+                    this.GraphQLRequestToString(Request) +
+                    "\n" +
                     loggingHandler.Message);
-                //return default;
-                throw ex;
+                throw;
             }
-            if (logger != null)
-            {
-                logger.Debug(this.GraphQLResponseToString<T>(response));
-            }
+            logger?.Debug(this.GraphQLResponseToString<T>(response));
             if (response.Data == null)
             {
                 var httpResp = response as GraphQLHttpResponse<T>;
@@ -246,10 +239,9 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         private string GraphQLRequestToString(GraphQLRequest request)
         {
             StringBuilder logContent = new StringBuilder();
-            logContent.Append(
-                request.GetType().ToString() + "\n\tQuery: " +
-                request.Query.Replace("\n", string.Empty).Replace("  ", " ") +
-                "\n\tVariables: ");
+            logContent.Append("\n  Query: ");
+            logContent.Append(request.Query.Replace("\n", string.Empty).Replace("  ", " "));
+            logContent.Append("\n  Variables: ");
 
             if (request.Variables == null)
             {
@@ -266,15 +258,15 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                     logContent.AppendLine("");
                     foreach (var variable in variablesDictionary)
                     {
-                        logContent.AppendLine($"\t\t{variable.Key}: " +
-                            JsonConvert.SerializeObject(variable.Value, Formatting.Indented));
+                        logContent.Append($"  {variable.Key}: ");
+                        logContent.AppendLine(JsonConvert.SerializeObject(variable.Value, Formatting.Indented));
                     }
                 }
             }
 
             if (!string.IsNullOrEmpty(request.OperationName))
             {
-                logContent.AppendLine("\tOperation Name: " + request.OperationName);
+                logContent.Append("  Operation Name: ").AppendLine(request.OperationName);
             }
 
             return logContent.ToString();

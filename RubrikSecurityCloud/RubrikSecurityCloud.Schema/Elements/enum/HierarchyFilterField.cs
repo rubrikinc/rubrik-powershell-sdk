@@ -561,6 +561,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT")]
         RUBRIK_NATIVE_HAS_UNINDEXED_OR_EXPIRED_SNAPSHOT,
 
+        [EnumMember(Value = "SAASAPPS_NATURAL_ID")]
+        SAASAPPS_NATURAL_ID,
+
         [EnumMember(Value = "SAP_HANA_DATABASE_CDM_ID")]
         SAP_HANA_DATABASE_CDM_ID,
 

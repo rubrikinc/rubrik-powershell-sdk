@@ -36,7 +36,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: bulkUpdateOracleHosts(input: BulkUpdateOracleHostsInput!):BulkUpdateOracleHostsReply!",
+            HelpMessage =
+                @"
+                Update Oracle Hosts
+
+Supported in v5.2+
+Update properties to Oracle Host objects.
+                GraphQL operation: bulkUpdateOracleHosts(input: BulkUpdateOracleHostsInput!):BulkUpdateOracleHostsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter bulkUpdateHost { get; set; }
@@ -46,7 +53,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: BulkUpdateOracleHostsInput!"
+            HelpMessage =
+                @"
+                Input for V1BulkUpdateOracleHost.
+                GraphQL argument input: BulkUpdateOracleHostsInput!
+                "
         )]
         public BulkUpdateOracleHostsInput? Input { get; set; }
         
@@ -60,7 +71,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: refreshOracleDatabase(input: RefreshOracleDatabaseInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Refresh an Oracle database
+
+Supported in v6.0+
+Starts an asynchronous job to refresh the Oracle database metadata by querying the database instances on all the underlying hosts.
+                GraphQL operation: refreshOracleDatabase(input: RefreshOracleDatabaseInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter refreshDatabase { get; set; }
@@ -76,7 +94,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateOracleDataGuardGroup(input: UpdateOracleDataGuardGroupInput!):OracleDbDetail!",
+            HelpMessage =
+                @"
+                Update an Oracle Data Guard group
+
+Supported in v6.0+
+Update properties of an Oracle Data Guard group object.
+                GraphQL operation: updateOracleDataGuardGroup(input: UpdateOracleDataGuardGroupInput!):OracleDbDetail!
+                ",
             Position = 0
         )]
         public SwitchParameter updateDataGuardGroup { get; set; }
@@ -92,7 +117,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteAllOracleDatabaseSnapshots(input: DeleteAllOracleDatabaseSnapshotsInput!):Void",
+            HelpMessage =
+                @"
+                Delete Oracle database snapshots
+
+Supported in v5.0+
+Delete all snapshots for a specified Oracle database object. For the operation to succeed the referenced database must not be assigned to an SLA Domain.
+                GraphQL operation: deleteAllOracleDatabaseSnapshots(input: DeleteAllOracleDatabaseSnapshotsInput!):Void
+                ",
             Position = 0
         )]
         public SwitchParameter deleteAllDatabaseSnapshot { get; set; }
@@ -108,7 +140,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: takeOnDemandOracleDatabaseSnapshot(input: TakeOnDemandOracleDatabaseSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                On-demand backup of an Oracle database
+
+Supported in v5.0+
+Create an asynchronous job for an on-demand snapshot of an Oracle database. The response includes an ID for the asynchronous job request. To see the status of the request, poll /oracle/request/{id}.
+                GraphQL operation: takeOnDemandOracleDatabaseSnapshot(input: TakeOnDemandOracleDatabaseSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter takeOnDemandDatabaseSnapshot { get; set; }
@@ -124,7 +163,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: takeOnDemandOracleLogSnapshot(input: TakeOnDemandOracleLogSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                On-demand log backup for an Oracle database log
+
+Supported in v5.0+
+Create an asynchronous job for an on-demand backup of an Oracle database log. The response includes an ID for the asynchronous job request.  To see the status of the request, poll /oracle/request/{id}.
+                GraphQL operation: takeOnDemandOracleLogSnapshot(input: TakeOnDemandOracleLogSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter takeOnDemandLogSnapshot { get; set; }
@@ -140,7 +186,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: bulkUpdateOracleRacs(input: BulkUpdateOracleRacsInput!):BulkUpdateOracleRacsReply!",
+            HelpMessage =
+                @"
+                Update Oracle RACs
+
+Supported in v5.2+
+Update the properties of the objects that represent the specified Oracle RAC.
+                GraphQL operation: bulkUpdateOracleRacs(input: BulkUpdateOracleRacsInput!):BulkUpdateOracleRacsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter bulkUpdateRac { get; set; }
@@ -156,7 +209,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: exportOracleTablespace(input: ExportOracleTablespaceInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Export an Oracle tablespace
+
+Supported in v5.0+
+Request an asynchronous job to export an Oracle tablespace from a specified snapshot or timestamp.
+                GraphQL operation: exportOracleTablespace(input: ExportOracleTablespaceInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter exportTablespace { get; set; }
@@ -172,7 +232,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: validateOracleAcoFile(input: ValidateOracleAcoFileInput!):ValidateOracleAcoFileReply!",
+            HelpMessage =
+                @"
+                Validate Oracle ACO file
+
+Supported in v6.0+
+Validate the provided Oracle ACO (Advanced Cloning Options) file.
+                GraphQL operation: validateOracleAcoFile(input: ValidateOracleAcoFileInput!):ValidateOracleAcoFileReply!
+                ",
             Position = 0
         )]
         public SwitchParameter validateAcoFile { get; set; }
@@ -188,7 +255,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: validateOracleDatabaseBackups(input: ValidateOracleDatabaseBackupsInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Validate Oracle database backups
+
+Supported in v5.3+
+Queue a job to validate Oracle backups for a database snapshot or a specified timestamp.
+                GraphQL operation: validateOracleDatabaseBackups(input: ValidateOracleDatabaseBackupsInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter validateDatabaseBackup { get; set; }
@@ -204,7 +278,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: bulkUpdateOracleDatabases(input: BulkUpdateOracleDatabasesInput!):BulkUpdateOracleDatabasesReply!",
+            HelpMessage =
+                @"
+                Update Oracle Databases
+
+Supported in v5.2+
+Update the properties of the objects that represent the specified Oracle Databases.
+                GraphQL operation: bulkUpdateOracleDatabases(input: BulkUpdateOracleDatabasesInput!):BulkUpdateOracleDatabasesReply!
+                ",
             Position = 0
         )]
         public SwitchParameter bulkUpdateDatabase { get; set; }
@@ -220,7 +301,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: instantRecoverOracleSnapshot(input: InstantRecoverOracleSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Instant recovery of a database
+
+Supported in v5.0+
+Creates an instant recover request that restores a target database from the given snapshot.
+                GraphQL operation: instantRecoverOracleSnapshot(input: InstantRecoverOracleSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter instantRecoverSnapshot { get; set; }
@@ -236,7 +324,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mountOracleDatabase(input: MountOracleDatabaseInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Live Mount an Oracle database snapshot
+
+Supported in v5.0+
+Create an asynchronous job to Live Mount an Oracle database from a snapshot.
+                GraphQL operation: mountOracleDatabase(input: MountOracleDatabaseInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter mountDatabase { get; set; }
@@ -252,7 +347,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: exportOracleDatabase(input: ExportOracleDatabaseInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Export an Oracle database
+
+Supported in v5.0+
+Request an asynchronous job to export an Oracle database from a specified snapshot or timestamp.
+                GraphQL operation: exportOracleDatabase(input: ExportOracleDatabaseInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter exportDatabase { get; set; }
@@ -268,7 +370,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createOraclePdbRestore(input: CreateOraclePdbRestoreInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Restore PDBs on an Oracle database
+
+Supported in v8.0+
+Initiates an asynchronous request to restore PDBs on an Oracle database from a specified snapshot or timestamp.
+                GraphQL operation: createOraclePdbRestore(input: CreateOraclePdbRestoreInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter createPdbRestore { get; set; }
@@ -284,7 +393,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadOracleDatabaseSnapshot(input: DownloadOracleDatabaseSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download Oracle snapshot from cloud
+
+Supported in v5.0+
+Create an asynchronous job to download an Oracle database snapshot and associated logs using the snapshot ID. The response includes the ID of the asynchronous job request. To see the status of the request, poll /oracle/request/{id}.
+                GraphQL operation: downloadOracleDatabaseSnapshot(input: DownloadOracleDatabaseSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadDatabaseSnapshot { get; set; }
@@ -300,7 +416,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteOracleMount(input: DeleteOracleMountInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Delete an Oracle database Live Mount
+
+Supported in v5.0+
+Request an asynchronous job to delete a specified Live Mount of an Oracle database snapshot. Poll the job status by using /oracle/request/{id}.
+                GraphQL operation: deleteOracleMount(input: DeleteOracleMountInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteMount { get; set; }
@@ -316,7 +439,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: restoreOracleLogs(input: RestoreOracleLogsInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Restore archive logs of an Oracle database
+
+Supported in v6.0+
+v6.0: Create an asynchronous job to restore archive logs of an Oracle database.
+v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
+                GraphQL operation: restoreOracleLogs(input: RestoreOracleLogsInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter restoreLog { get; set; }

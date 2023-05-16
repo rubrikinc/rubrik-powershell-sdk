@@ -1,0 +1,14 @@
+{
+  "vars": {
+    "input": {
+      "id": "bd7918a3-5c7b-5a19-a86f-659bdd3db14f",
+      "params": {
+        "isAsync": true,
+        "retentionConfig": {
+          "slaId": null
+        }
+      }
+    }
+  },
+  "query": "mutation ManagedVolumeOnDemandSnapshotMutation($input: EndManagedVolumeSnapshotInput!) {  endManagedVolumeSnapshot(input: $input) {    asyncRequestStatus {      id      __typename    }    __typename  }}"
+}

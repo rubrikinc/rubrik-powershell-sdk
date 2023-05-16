@@ -36,7 +36,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterNodes(input: GetNodesInput!):NodeStatusListResponse!",
+            HelpMessage =
+                @"
+                Get list of nodes in this Rubrik cluster
+
+Supported in v5.0+
+Returns the list of all Rubrik nodes.
+                GraphQL operation: clusterNodes(input: GetNodesInput!):NodeStatusListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter Node { get; set; }
@@ -46,7 +53,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: GetNodesInput!"
+            HelpMessage =
+                @"
+                Input for InternalGetNodes.
+                GraphQL argument input: GetNodesInput!
+                "
         )]
         public GetNodesInput? Input { get; set; }
         
@@ -60,7 +71,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterConnection(,   first: Int,   after: String,   last: Int,   before: String,   filter: ClusterFilterInput,   sortOrder: SortOrder = DESC,   sortBy: ClusterSortByEnum = ClusterType, ):ClusterConnection!",
+            HelpMessage =
+                @"
+                List of the available cluster objects.
+                GraphQL operation: clusterConnection(,   first: Int,   after: String,   last: Int,   before: String,   filter: ClusterFilterInput,   sortOrder: SortOrder = DESC,   sortBy: ClusterSortByEnum = ClusterType, ):ClusterConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter List { get; set; }
@@ -70,7 +85,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -78,7 +97,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -86,7 +109,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument last: Int"
+            HelpMessage =
+                @"
+                Returns the last n elements from the list.
+                GraphQL argument last: Int
+                "
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
@@ -94,7 +121,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument before: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come before the specified cursor.
+                GraphQL argument before: String
+                "
         )]
         public System.String? Before { get; set; }
         [Parameter(
@@ -102,7 +133,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: ClusterFilterInput"
+            HelpMessage =
+                @"
+                
+                GraphQL argument filter: ClusterFilterInput
+                "
         )]
         public ClusterFilterInput? Filter { get; set; }
         [Parameter(
@@ -110,7 +145,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Cluster sort order.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -118,7 +157,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: ClusterSortByEnum"
+            HelpMessage =
+                @"
+                Sort clusters by field.
+                GraphQL argument sortBy: ClusterSortByEnum
+                "
         )]
         public ClusterSortByEnum? SortBy { get; set; }
         
@@ -132,7 +175,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: cluster(clusterUuid: UUID!):Cluster!",
+            HelpMessage =
+                @"
+                A cluster object.
+                GraphQL operation: cluster(clusterUuid: UUID!):Cluster!
+                ",
             Position = 0
         )]
         public SwitchParameter Cluster { get; set; }
@@ -142,7 +189,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument clusterUuid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik cluster ID.
+                GraphQL argument clusterUuid: UUID!
+                "
         )]
         public System.String? ClusterUuid { get; set; }
         
@@ -156,7 +207,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterWithUpgradesInfo(,   first: Int,   after: String,   last: Int,   before: String,   upgradeFilter: CdmUpgradeInfoFilterInput,   sortOrder: SortOrder = DESC,   sortBy: UpgradeInfoSortByEnum = ClusterType, ):ClusterConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: clusterWithUpgradesInfo(,   first: Int,   after: String,   last: Int,   before: String,   upgradeFilter: CdmUpgradeInfoFilterInput,   sortOrder: SortOrder = DESC,   sortBy: UpgradeInfoSortByEnum = ClusterType, ):ClusterConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter WithUpgradesInfo { get; set; }
@@ -166,7 +221,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument upgradeFilter: CdmUpgradeInfoFilterInput"
+            HelpMessage =
+                @"
+                
+                GraphQL argument upgradeFilter: CdmUpgradeInfoFilterInput
+                "
         )]
         public CdmUpgradeInfoFilterInput? UpgradeFilter { get; set; }
         
@@ -180,7 +239,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterDns(clusterUuid: UUID!):ClusterDnsReply!",
+            HelpMessage =
+                @"
+                Rubrik cluster DNS information.
+                GraphQL operation: clusterDns(clusterUuid: UUID!):ClusterDnsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter Dns { get; set; }
@@ -196,7 +259,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterProxy(clusterUuid: UUID!):ClusterProxyReply!",
+            HelpMessage =
+                @"
+                Rubrik cluster proxy information.
+                GraphQL operation: clusterProxy(clusterUuid: UUID!):ClusterProxyReply!
+                ",
             Position = 0
         )]
         public SwitchParameter Proxy { get; set; }
@@ -212,7 +279,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterNtpServers(input: GetClusterNtpServersInput!):NtpServerConfigurationListResponse!",
+            HelpMessage =
+                @"
+                Get NTP Servers
+
+Supported in v5.0+
+Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption keys are not reported.
+                GraphQL operation: clusterNtpServers(input: GetClusterNtpServersInput!):NtpServerConfigurationListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter NtpServer { get; set; }
@@ -228,7 +302,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterNetworkInterfaces(input: GetNetworkInterfaceInput!):NetworkInterfaceListResponse!",
+            HelpMessage =
+                @"
+                Get network interfaces for a Rubrik Cluster cluster
+
+Supported in v5.0+
+Retrieves network interfaces(including VLANs) on bond0/bond1.
+                GraphQL operation: clusterNetworkInterfaces(input: GetNetworkInterfaceInput!):NetworkInterfaceListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter NetworkInterface { get; set; }
@@ -244,7 +325,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterFloatingIps(input: GetClusterIpsInput!):InternalGetClusterIpsResponse!",
+            HelpMessage =
+                @"
+                Get a list of a cluster's always-available Ips
+
+Supported in v5.0+
+Get a list of a cluster's always-available Ips.
+                GraphQL operation: clusterFloatingIps(input: GetClusterIpsInput!):InternalGetClusterIpsResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter FloatingIp { get; set; }
@@ -260,7 +348,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterVlans(input: GetVlanInput!):VlanConfigListResponse!",
+            HelpMessage =
+                @"
+                Rubrik cluster VLAN information.
+                GraphQL operation: clusterVlans(input: GetVlanInput!):VlanConfigListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter Vlan { get; set; }
@@ -276,7 +368,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterDefaultGateway(input: GetDefaultGatewayInput!):InternalGetDefaultGatewayResponse!",
+            HelpMessage =
+                @"
+                Get current default gateway
+
+Supported in v5.0+
+Get current default gateway.
+                GraphQL operation: clusterDefaultGateway(input: GetDefaultGatewayInput!):InternalGetDefaultGatewayResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter DefaultGateway { get; set; }
@@ -292,7 +391,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterWebSignedCertificate(input: ClusterWebSignedCertificateInput!):ClusterWebSignedCertificateReply!",
+            HelpMessage =
+                @"
+                Get the signed certificate for Web server
+
+Supported in v5.2+
+If the web server uses a signed certificate, fetch it.
+                GraphQL operation: clusterWebSignedCertificate(input: ClusterWebSignedCertificateInput!):ClusterWebSignedCertificateReply!
+                ",
             Position = 0
         )]
         public SwitchParameter WebSignedCertificate { get; set; }
@@ -308,7 +414,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterIpmi(input: GetIpmiInput!):ModifyIpmiReply!",
+            HelpMessage =
+                @"
+                Get IPMI details
+
+Supported in v5.0+
+get IPMI details of availability and enabled access in the cluster.
+                GraphQL operation: clusterIpmi(input: GetIpmiInput!):ModifyIpmiReply!
+                ",
             Position = 0
         )]
         public SwitchParameter Ipmi { get; set; }
@@ -324,7 +437,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterCertificates(input: QueryCertificatesInput!):CertificateSummaryListResponse!",
+            HelpMessage =
+                @"
+                Get all certificates
+
+Supported in v5.1+
+Get all certificates.
+                GraphQL operation: clusterCertificates(input: QueryCertificatesInput!):CertificateSummaryListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter Certificate { get; set; }
@@ -340,7 +460,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allClusterWebCertsAndIpmis(input: BulkClusterWebCertAndIpmiInput!):[ClusterWebCertAndIpmi!]!",
+            HelpMessage =
+                @"
+                Get web server certificate and IPMI details for multiple clusters.
+                GraphQL operation: allClusterWebCertsAndIpmis(input: BulkClusterWebCertAndIpmiInput!):[ClusterWebCertAndIpmi!]!
+                ",
             Position = 0
         )]
         public SwitchParameter WebCertsAndIpmi { get; set; }
@@ -356,7 +480,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterOperationJobProgress(input: ClusterOperationJobProgressInput!):ClusterOperationJobProgress!",
+            HelpMessage =
+                @"
+                Get updates on the job progress of the Rubrik cluster operation.
+                GraphQL operation: clusterOperationJobProgress(input: ClusterOperationJobProgressInput!):ClusterOperationJobProgress!
+                ",
             Position = 0
         )]
         public SwitchParameter OperationJobProgress { get; set; }
@@ -372,7 +500,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterCsr(input: GetClusterCsrInput!):ClusterCsr!",
+            HelpMessage =
+                @"
+                Get the cluster certificate signing request
+
+Supported in v7.0+
+Returns the certificate signing request generated from the private key of the Rubrik cluster.
+                GraphQL operation: clusterCsr(input: GetClusterCsrInput!):ClusterCsr!
+                ",
             Position = 0
         )]
         public SwitchParameter Csr { get; set; }
@@ -388,7 +523,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterTypeList:[GroupCount!]!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: clusterTypeList:[GroupCount!]!
+                ",
             Position = 0
         )]
         public SwitchParameter TypeList { get; set; }
@@ -404,7 +543,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterGroupByConnection(,   first: Int,   after: String,   last: Int,   before: String,   groupBy: ClusterGroupByEnum!,   filter: ClusterFilterInput,   timezoneOffset: Float = 0.0, ):ClusterGroupByConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: clusterGroupByConnection(,   first: Int,   after: String,   last: Int,   before: String,   groupBy: ClusterGroupByEnum!,   filter: ClusterFilterInput,   timezoneOffset: Float = 0.0, ):ClusterGroupByConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter GroupByList { get; set; }
@@ -414,7 +557,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument groupBy: ClusterGroupByEnum!"
+            HelpMessage =
+                @"
+                Group by field.
+                GraphQL argument groupBy: ClusterGroupByEnum!
+                "
         )]
         public ClusterGroupByEnum? GroupBy { get; set; }
         [Parameter(
@@ -422,7 +569,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument timezoneOffset: Float"
+            HelpMessage =
+                @"
+                Offset based on customer timezone.
+                GraphQL argument timezoneOffset: Float
+                "
         )]
         public System.Single? TimezoneOffset { get; set; }
         
@@ -436,7 +587,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allConnectedClusters(clusterFilterArg: ClusterTypeEnum):[DataLocationSupportedCluster!]!",
+            HelpMessage =
+                @"
+                List all connected clusters.
+                GraphQL operation: allConnectedClusters(clusterFilterArg: ClusterTypeEnum):[DataLocationSupportedCluster!]!
+                ",
             Position = 0
         )]
         public SwitchParameter Connected { get; set; }
@@ -446,7 +601,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument clusterFilterArg: ClusterTypeEnum"
+            HelpMessage =
+                @"
+                Specification to filter cluster based on type.
+                GraphQL argument clusterFilterArg: ClusterTypeEnum
+                "
         )]
         public ClusterTypeEnum? ClusterFilterArg { get; set; }
         
@@ -460,7 +619,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allClusterReplicationTargets(clusterUuid: UUID!):[ClusterReplicationTarget!]!",
+            HelpMessage =
+                @"
+                All replication targets for a cluster.
+                GraphQL operation: allClusterReplicationTargets(clusterUuid: UUID!):[ClusterReplicationTarget!]!
+                ",
             Position = 0
         )]
         public SwitchParameter ReplicationTarget { get; set; }
@@ -476,7 +639,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hostFailoverCluster(fid: UUID!):HostFailoverCluster!",
+            HelpMessage =
+                @"
+                Get details of the given host failover cluster.
+                GraphQL operation: hostFailoverCluster(fid: UUID!):HostFailoverCluster!
+                ",
             Position = 0
         )]
         public SwitchParameter HostFailover { get; set; }
@@ -486,7 +653,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -500,7 +671,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: k8sClusters(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):K8sClusterConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: k8sClusters(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):K8sClusterConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter K8s { get; set; }
@@ -516,7 +691,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: windowsCluster(fid: UUID!):WindowsCluster!",
+            HelpMessage =
+                @"
+                A Windows Cluster.
+                GraphQL operation: windowsCluster(fid: UUID!):WindowsCluster!
+                ",
             Position = 0
         )]
         public SwitchParameter Window { get; set; }
@@ -532,7 +711,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!",
+            HelpMessage =
+                @"
+                Global SLA Domains protecting at least one object on the specified Rubrik cluster.
+                GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!
+                ",
             Position = 0
         )]
         public SwitchParameter GlobalSla { get; set; }
@@ -542,7 +725,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument cdmClusterUUID: UUID!"
+            HelpMessage =
+                @"
+                UUID of the Rubrik cluster.
+                GraphQL argument cdmClusterUUID: UUID!
+                "
         )]
         public System.String? CdmClusterUuid { get; set; }
         
@@ -556,7 +743,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: clusterRegistrationProductInfo:ClusterRegistrationProductInfoType!",
+            HelpMessage =
+                @"
+                Info about the cluster product types the user is entitled to.
+                GraphQL operation: clusterRegistrationProductInfo:ClusterRegistrationProductInfoType!
+                ",
             Position = 0
         )]
         public SwitchParameter RegistrationProductInfo { get; set; }
@@ -572,7 +763,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: isTotpAckNecessaryForCluster(clusterUuid: UUID!):Boolean!",
+            HelpMessage =
+                @"
+                Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
+                GraphQL operation: isTotpAckNecessaryForCluster(clusterUuid: UUID!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter isTotpAckNecessary { get; set; }
@@ -588,7 +783,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allClustersTotpAckStatus(listClusterUuid: [UUID!]!):[Boolean!]!",
+            HelpMessage =
+                @"
+                Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
+                GraphQL operation: allClustersTotpAckStatus(listClusterUuid: [UUID!]!):[Boolean!]!
+                ",
             Position = 0
         )]
         public SwitchParameter TotpAckStatus { get; set; }
@@ -598,7 +797,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument listClusterUuid: [UUID!]!"
+            HelpMessage =
+                @"
+                Specifies the list of cluster UUIDs.
+                GraphQL argument listClusterUuid: [UUID!]!
+                "
         )]
         public List<System.String>? ListClusterUuid { get; set; }
 

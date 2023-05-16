@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365Exocompute(orgId: UUID!, exocomputeClusterId: String!):GetAzureO365ExocomputeResp!",
+            HelpMessage =
+                @"
+                Gets the exocompute details of the given cluster.
+                GraphQL operation: azureO365Exocompute(orgId: UUID!, exocomputeClusterId: String!):GetAzureO365ExocomputeResp!
+                ",
             Position = 0
         )]
         public SwitchParameter Exocompute { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument orgId: UUID!"
+            HelpMessage =
+                @"
+                Org UUID.
+                GraphQL argument orgId: UUID!
+                "
         )]
         public System.String? OrgId { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument exocomputeClusterId: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument exocomputeClusterId: String!
+                "
         )]
         public System.String? ExocomputeClusterId { get; set; }
         
@@ -68,7 +80,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365CheckStorageAccountName(tenantId: String!, subscriptionId: UUID!, storage_account_name: String!):AzureResourceAvailabilityResp!",
+            HelpMessage =
+                @"
+                Checks the storage account name.
+                GraphQL operation: azureO365CheckStorageAccountName(tenantId: String!, subscriptionId: UUID!, storage_account_name: String!):AzureResourceAvailabilityResp!
+                ",
             Position = 0
         )]
         public SwitchParameter CheckStorageAccountName { get; set; }
@@ -78,7 +94,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument tenantId: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument tenantId: String!
+                "
         )]
         public System.String? TenantId { get; set; }
         [Parameter(
@@ -86,7 +106,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subscriptionId: UUID!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument subscriptionId: UUID!
+                "
         )]
         public System.String? SubscriptionId { get; set; }
         [Parameter(
@@ -94,7 +118,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument storage_account_name: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument storage_account_name: String!
+                "
         )]
         public System.String? StorageAccountName { get; set; }
         
@@ -108,7 +136,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365CheckStorageAccountAccessibility(,   tenantId: String!,   subscriptionId: UUID!,   storage_account_name: String!,   groupName: String!, ):AzureResourceAvailabilityResp!",
+            HelpMessage =
+                @"
+                Checks the accessibility of the storage account.
+                GraphQL operation: azureO365CheckStorageAccountAccessibility(,   tenantId: String!,   subscriptionId: UUID!,   storage_account_name: String!,   groupName: String!, ):AzureResourceAvailabilityResp!
+                ",
             Position = 0
         )]
         public SwitchParameter CheckStorageAccountAccessibility { get; set; }
@@ -118,7 +150,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument groupName: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument groupName: String!
+                "
         )]
         public System.String? GroupName { get; set; }
         
@@ -132,7 +168,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365CheckSubscriptionQuota(tenantId: String!, subscriptionId: UUID!, regionName: String!):AzureResourceAvailabilityResp!",
+            HelpMessage =
+                @"
+                Checks the Azure subscription quota.
+                GraphQL operation: azureO365CheckSubscriptionQuota(tenantId: String!, subscriptionId: UUID!, regionName: String!):AzureResourceAvailabilityResp!
+                ",
             Position = 0
         )]
         public SwitchParameter CheckSubscriptionQuota { get; set; }
@@ -142,7 +182,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument regionName: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument regionName: String!
+                "
         )]
         public System.String? RegionName { get; set; }
         
@@ -156,7 +200,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365CheckResourceGroupName(tenantId: String!, subscriptionId: UUID!, groupName: String!):AzureResourceAvailabilityResp!",
+            HelpMessage =
+                @"
+                Checks the resource group name.
+                GraphQL operation: azureO365CheckResourceGroupName(tenantId: String!, subscriptionId: UUID!, groupName: String!):AzureResourceAvailabilityResp!
+                ",
             Position = 0
         )]
         public SwitchParameter CheckResourceGroupName { get; set; }
@@ -172,7 +220,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365CheckVirtualNetworkName(,   tenantId: String!,   subscriptionId: UUID!,   groupName: String!,   vnet_name: String!, ):AzureResourceAvailabilityResp!",
+            HelpMessage =
+                @"
+                Checks the virtual network name.
+                GraphQL operation: azureO365CheckVirtualNetworkName(,   tenantId: String!,   subscriptionId: UUID!,   groupName: String!,   vnet_name: String!, ):AzureResourceAvailabilityResp!
+                ",
             Position = 0
         )]
         public SwitchParameter CheckVirtualNetworkName { get; set; }
@@ -182,7 +234,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument vnet_name: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument vnet_name: String!
+                "
         )]
         public System.String? VnetName { get; set; }
         
@@ -196,7 +252,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365ValidateUserRoles(tenantId: String!, subscriptionId: UUID!):AzureUserRoleResp!",
+            HelpMessage =
+                @"
+                Validates the user roles in the subscription.
+                GraphQL operation: azureO365ValidateUserRoles(tenantId: String!, subscriptionId: UUID!):AzureUserRoleResp!
+                ",
             Position = 0
         )]
         public SwitchParameter ValidateUserRole { get; set; }
@@ -212,7 +272,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365CheckNSGOutboundRules(,   tenantId: String!,   subscriptionId: UUID!,   resourceGroupName: String!,   vnet_name: String!,   subnet_name: String!, ):AzureNetworkSecurityGroupResp!",
+            HelpMessage =
+                @"
+                Checks the NSG Outbound rules of the Azure resources.
+                GraphQL operation: azureO365CheckNSGOutboundRules(,   tenantId: String!,   subscriptionId: UUID!,   resourceGroupName: String!,   vnet_name: String!,   subnet_name: String!, ):AzureNetworkSecurityGroupResp!
+                ",
             Position = 0
         )]
         public SwitchParameter CheckNSGOutboundRule { get; set; }
@@ -222,7 +286,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument resourceGroupName: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument resourceGroupName: String!
+                "
         )]
         public System.String? ResourceGroupName { get; set; }
         [Parameter(
@@ -230,7 +298,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subnet_name: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument subnet_name: String!
+                "
         )]
         public System.String? SubnetName { get; set; }
         
@@ -244,7 +316,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365CheckNetworkSubnet(,   tenantId: String!,   subscriptionId: UUID!,   resourceGroupName: String!,   vnet_name: String!,   subnet_name: String!,   strict_addr_check: Boolean!, ):AzureNetworkSubnetResp!",
+            HelpMessage =
+                @"
+                Checks the network subnet of the Azure resources.
+                GraphQL operation: azureO365CheckNetworkSubnet(,   tenantId: String!,   subscriptionId: UUID!,   resourceGroupName: String!,   vnet_name: String!,   subnet_name: String!,   strict_addr_check: Boolean!, ):AzureNetworkSubnetResp!
+                ",
             Position = 0
         )]
         public SwitchParameter CheckNetworkSubnet { get; set; }
@@ -254,7 +330,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument strict_addr_check: Boolean!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument strict_addr_check: Boolean!
+                "
         )]
         public System.Boolean? StrictAddrCheck { get; set; }
         
@@ -268,7 +348,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365GetNetworkSubnetUnusedAddr(,   tenantId: String!,   subscriptionId: UUID!,   resourceGroupName: String!,   vnet_name: String!,   subnet_name: String!,   strict_addr_check: Boolean!, ):AzureNetworkSubnetUnusedAddrResp!",
+            HelpMessage =
+                @"
+                Retrieves the unused addresses available in a subnet.
+                GraphQL operation: azureO365GetNetworkSubnetUnusedAddr(,   tenantId: String!,   subscriptionId: UUID!,   resourceGroupName: String!,   vnet_name: String!,   subnet_name: String!,   strict_addr_check: Boolean!, ):AzureNetworkSubnetUnusedAddrResp!
+                ",
             Position = 0
         )]
         public SwitchParameter GetNetworkSubnetUnusedAddr { get; set; }
@@ -284,7 +368,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: azureO365GetAzureHostType:GetAzureHostTypeResp!",
+            HelpMessage =
+                @"
+                Retrieves the AzureHostType of the account.
+                GraphQL operation: azureO365GetAzureHostType:GetAzureHostTypeResp!
+                ",
             Position = 0
         )]
         public SwitchParameter GetAzureHostType { get; set; }

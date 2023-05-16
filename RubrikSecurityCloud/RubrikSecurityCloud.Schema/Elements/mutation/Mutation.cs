@@ -11917,6 +11917,28 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> SetDatastoreFreespaceThresholdsReply? SetDatastoreFreespaceThresholds
+        // GraphQL -> setDatastoreFreespaceThresholds: SetDatastoreFreespaceThresholdsReply! (type)
+        public static string SetDatastoreFreespaceThresholds(
+            ref SetDatastoreFreespaceThresholdsReply? cmdletReply
+        )
+        {
+            string args = "";
+            args += "\n(";
+            args += "\n";
+            args += String.Format("{0}: ${0}", "input"); 
+            args += "\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new SetDatastoreFreespaceThresholdsReply() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "setDatastoreFreespaceThresholds" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
         //      C# -> RequestSuccess? UpgradeIoFilter
         // GraphQL -> upgradeIoFilter: RequestSuccess! (type)
         public static string UpgradeIoFilter(
@@ -11979,28 +12001,6 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "uninstallIoFilter" + args + "{\n" +
-                cmdletReply.AsFragment(1) +
-                "}\n");
-        }
-
-        //      C# -> SetDatastoreFreespaceThresholdsReply? SetDatastoreFreespaceThresholds
-        // GraphQL -> setDatastoreFreespaceThresholds: SetDatastoreFreespaceThresholdsReply! (type)
-        public static string SetDatastoreFreespaceThresholds(
-            ref SetDatastoreFreespaceThresholdsReply? cmdletReply
-        )
-        {
-            string args = "";
-            args += "\n(";
-            args += "\n";
-            args += String.Format("{0}: ${0}", "input"); 
-            args += "\n)";
-            if (cmdletReply == null)
-            {
-                cmdletReply = new SetDatastoreFreespaceThresholdsReply() ;
-                cmdletReply.ApplyExploratoryFragment();
-            }
-            return new string(
-                "setDatastoreFreespaceThresholds" + args + "{\n" +
                 cmdletReply.AsFragment(1) +
                 "}\n");
         }

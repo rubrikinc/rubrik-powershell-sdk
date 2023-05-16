@@ -20,12 +20,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     ///  </summary>
     ///  <description>
     ///  The Connect-Rsc Cmdlet is used to connect to the Rubrik Security Cloud (RSC) API. RSC then returns a unique token to represent the user's credentials for subsequent calls.
-    ///  The token is stored securly in a .NET object within this PowerShell session. 
-    ///  The recommended authentication method is a Rsc Service Account. 
+    ///  The token is stored securly in a .NET object within this PowerShell session.
+    ///  The recommended authentication method is a Rsc Service Account.
     ///  </description>
     ///  <example>
-    ///  Connct to Rubrik Security Cloud, using the service account file as downloaded from the Rsc Web UI:
-    ///  <code>Connect-Rsc -ServiceAccountFile .\rubrik_service_account.json</code>
+    ///  Connect to Rubrik Security Cloud, using the service account file as downloaded from the Rsc Web UI:
+    ///  <code>
+    /// Connect-Rsc -ServiceAccountFile .\rubrik_service_account.json
+    /// </code>
     ///  </example>
     ///  <example>
     ///  Connect to Rubrik Security Cloud, using the URL, Client Id and Client Secret

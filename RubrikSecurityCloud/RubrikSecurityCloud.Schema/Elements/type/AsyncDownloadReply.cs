@@ -18,6 +18,11 @@ namespace Rubrik.SecurityCloud.Types
     public class AsyncDownloadReply: IFragment
     {
         #region members
+        //      C# -> System.Int64? DownloadId
+        // GraphQL -> downloadId: Long! (scalar)
+        [JsonProperty("downloadId")]
+        public System.Int64? DownloadId { get; set; }
+
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
         [JsonProperty("jobId")]
@@ -33,10 +38,14 @@ namespace Rubrik.SecurityCloud.Types
     #region methods
 
     public AsyncDownloadReply Set(
+        System.Int64? DownloadId = null,
         System.Int64? JobId = null,
         System.String? ReferenceId = null
     ) 
     {
+        if ( DownloadId != null ) {
+            this.DownloadId = DownloadId;
+        }
         if ( JobId != null ) {
             this.JobId = JobId;
         }
@@ -53,6 +62,13 @@ namespace Rubrik.SecurityCloud.Types
         {
             string ind = new string(' ', indent*2);
             string s = "";
+            //      C# -> System.Int64? DownloadId
+            // GraphQL -> downloadId: Long! (scalar)
+            if (this.DownloadId != null)
+            {
+                 s += ind + "downloadId\n";
+
+            }
             //      C# -> System.Int64? JobId
             // GraphQL -> jobId: Long! (scalar)
             if (this.JobId != null)
@@ -75,6 +91,12 @@ namespace Rubrik.SecurityCloud.Types
         //[JsonIgnore]
         public void ApplyExploratoryFragment(String parent = "")
         {
+            //      C# -> System.Int64? DownloadId
+            // GraphQL -> downloadId: Long! (scalar)
+            if (this.DownloadId == null && Exploration.Includes(parent + ".downloadId$"))
+            {
+                this.DownloadId = new System.Int64();
+            }
             //      C# -> System.Int64? JobId
             // GraphQL -> jobId: Long! (scalar)
             if (this.JobId == null && Exploration.Includes(parent + ".jobId$"))

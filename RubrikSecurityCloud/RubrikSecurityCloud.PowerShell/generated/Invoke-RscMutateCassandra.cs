@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: recoverCassandraSource(input: MosaicRestoreDataInput!):MosaicAsyncResponse!",
+            HelpMessage =
+                @"
+                Recover a cassandra source.
+                GraphQL operation: recoverCassandraSource(input: MosaicRestoreDataInput!):MosaicAsyncResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter recoverSource { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: MosaicRestoreDataInput!"
+            HelpMessage =
+                @"
+                Input for V2MosaicRestoreData.
+                GraphQL argument input: MosaicRestoreDataInput!
+                "
         )]
         public MosaicRestoreDataInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createCassandraSource(input: AddMosaicSourceInput!):MosaicAsyncResponse!",
+            HelpMessage =
+                @"
+                Create a cassandra source.
+                GraphQL operation: createCassandraSource(input: AddMosaicSourceInput!):MosaicAsyncResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter createSource { get; set; }
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateCassandraSource(input: ModifyMosaicSourceInput!):MosaicAsyncResponse!",
+            HelpMessage =
+                @"
+                Update a cassandra source.
+                GraphQL operation: updateCassandraSource(input: ModifyMosaicSourceInput!):MosaicAsyncResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter updateSource { get; set; }
@@ -92,7 +108,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteCassandraSource(input: DeleteMosaicSourceInput!):MosaicAsyncResponse!",
+            HelpMessage =
+                @"
+                Delete a cassandra source.
+                GraphQL operation: deleteCassandraSource(input: DeleteMosaicSourceInput!):MosaicAsyncResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteSource { get; set; }
@@ -108,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: bulkDeleteCassandraSources(input: BulkDeleteMosaicSourcesInput!):MosaicAsyncResponse!",
+            HelpMessage =
+                @"
+                Bulk Delete cassandra sources.
+                GraphQL operation: bulkDeleteCassandraSources(input: BulkDeleteMosaicSourcesInput!):MosaicAsyncResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter bulkDeleteSource { get; set; }

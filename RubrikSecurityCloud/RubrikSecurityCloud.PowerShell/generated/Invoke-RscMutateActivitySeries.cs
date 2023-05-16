@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: cancelActivitySeries(input: CancelActivitySeriesInput!):Boolean!",
+            HelpMessage =
+                @"
+                Cancel an activity series.
+                GraphQL operation: cancelActivitySeries(input: CancelActivitySeriesInput!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter cancel { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: CancelActivitySeriesInput!"
+            HelpMessage =
+                @"
+                Input for canceling an activity series.
+                GraphQL argument input: CancelActivitySeriesInput!
+                "
         )]
         public CancelActivitySeriesInput? Input { get; set; }
 

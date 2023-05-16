@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongoSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoSourceConnection!",
+            HelpMessage =
+                @"
+                Paginated list of MongoDB sources.
+                GraphQL operation: mongoSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoSourceConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Source { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -70,7 +86,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -78,7 +98,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -92,7 +116,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongoDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoDatabaseConnection!",
+            HelpMessage =
+                @"
+                Paginated list of MongoDB databases.
+                GraphQL operation: mongoDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoDatabaseConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Database { get; set; }
@@ -108,7 +136,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongoCollections(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoCollectionConnection!",
+            HelpMessage =
+                @"
+                Paginated list of MongoDB collections.
+                GraphQL operation: mongoCollections(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoCollectionConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Collection { get; set; }
@@ -124,7 +156,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongoRecoverableRanges(input: RecoverableRangeInput!):MongoRecoverableRanges!",
+            HelpMessage =
+                @"
+                Provides the range for recovery of MongoDB objects.
+                GraphQL operation: mongoRecoverableRanges(input: RecoverableRangeInput!):MongoRecoverableRanges!
+                ",
             Position = 0
         )]
         public SwitchParameter RecoverableRange { get; set; }
@@ -134,7 +170,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: RecoverableRangeInput!"
+            HelpMessage =
+                @"
+                Arguments for MongoDB recoverable range.
+                GraphQL argument input: RecoverableRangeInput!
+                "
         )]
         public RecoverableRangeInput? Input { get; set; }
         
@@ -148,7 +188,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongodbSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbSourceConnection!",
+            HelpMessage =
+                @"
+                Paginated list of MongoDB sources on NoSQL cluster.
+                GraphQL operation: mongodbSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbSourceConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter dbSource { get; set; }
@@ -164,7 +208,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongodbDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbDatabaseConnection!",
+            HelpMessage =
+                @"
+                Paginated list of MongoDB databases on NoSQL cluster.
+                GraphQL operation: mongodbDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbDatabaseConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter dbDatabase { get; set; }
@@ -180,7 +228,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongodbCollections(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbCollectionConnection!",
+            HelpMessage =
+                @"
+                Paginated list of MongoDB collections on NoSQL cluster.
+                GraphQL operation: mongodbCollections(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbCollectionConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter dbCollection { get; set; }
@@ -196,7 +248,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongodbCollectionRecoverableRange(input: GetMosaicRecoverableRangeInput!):GetMosaicRecoverableRangeResponse!",
+            HelpMessage =
+                @"
+                Recoverable Range of a MongoDB collection on NoSQL cluster.
+                GraphQL operation: mongodbCollectionRecoverableRange(input: GetMosaicRecoverableRangeInput!):GetMosaicRecoverableRangeResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter dbCollectionRecoverableRange { get; set; }
@@ -212,7 +268,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mongodbBulkRecoverableRange(input: MosaicBulkRecoveryRangeInput!):MosaicRecoveryRangeResponse!",
+            HelpMessage =
+                @"
+                Recoverable range for multiple Management Objects on NoSQL cluster.
+                GraphQL operation: mongodbBulkRecoverableRange(input: MosaicBulkRecoveryRangeInput!):MosaicRecoveryRangeResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter dbBulkRecoverableRange { get; set; }

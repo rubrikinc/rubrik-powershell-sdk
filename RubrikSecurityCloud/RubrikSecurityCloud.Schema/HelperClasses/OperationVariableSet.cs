@@ -65,29 +65,28 @@ namespace Rubrik.SecurityCloud.NetSDK.Library.HelperClasses
             {
                 foreach (var item in Variables)
                 {
-                    if (item.Value is string)
+                    Console.WriteLine($"item.Key: {item.Key}, item.Value: {item.Value} type: {item.Value.GetType()}");
+                    if (item.Value is string sVal)
                     {
-                        variables.Add(item.Key, (string)item.Value);
+                        variables.Add(item.Key, sVal);
                     }
-                    else if (item.Value is string[])
+                    else if (item.Value is string[] sarrVal)
                     {
-                        variables.Add(item.Key,
-                            new JArray((string[])item.Value));
+                        variables.Add(item.Key, new JArray(sarrVal));
                     }
-                    else if (item.Value is int)
+                    else if (item.Value is int iVal)
                     {
-                        variables.Add(item.Key, (int)item.Value);
+                        variables.Add(item.Key, iVal);
                     }
-                    else if (item.Value is bool)
+                    else if (item.Value is bool bVal)
                     {
-                        variables.Add(item.Key, (bool)item.Value);
+                        variables.Add(item.Key, bVal);
                     }
-                    else if (item.Value is DateTime)
+                    else if (item.Value is DateTime dtVal)
                     {
-                        DateTime datetime = (DateTime)item.Value;
                         variables.Add(
                             item.Key,
-                            datetime.ToString(
+                            dtVal.ToString(
                                 "yyyy-MM-ddTHH:mm:sszzz",
                                 System.Globalization.CultureInfo.InvariantCulture
                             )
@@ -108,14 +107,15 @@ namespace Rubrik.SecurityCloud.NetSDK.Library.HelperClasses
                         );
                     }
                 }
-            }           
+            }
 
-            if (Filters != null)
+            if (this.Filters != null)
             {
                 variables.Add("filter", JToken.FromObject(Filters, JsonSerializer.Create(_serializerSettings)));
             }
 
-            return JsonConvert.SerializeObject(variables,
+            return JsonConvert.SerializeObject(
+                variables,
                 new JsonSerializerSettings
                 {
                     NullValueHandling = NullValueHandling.Ignore,

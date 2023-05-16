@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):MssqlTopLevelDescendantTypeConnection!",
+            HelpMessage =
+                @"
+                Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
+                GraphQL operation: mssqlTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):MssqlTopLevelDescendantTypeConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter TopLevelDescendant { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -70,7 +86,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -78,7 +98,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
+            HelpMessage =
+                @"
+                Types of objects to include.
+                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
+                "
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         [Parameter(
@@ -86,7 +110,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -100,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MssqlDatabaseConnection!",
+            HelpMessage =
+                @"
+                Paginated list of Microsoft SQL Databases.
+                GraphQL operation: mssqlDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MssqlDatabaseConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Database { get; set; }
@@ -116,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlAvailabilityGroup(fid: UUID!):MssqlAvailabilityGroup!",
+            HelpMessage =
+                @"
+                A Microsoft SQL Availability Group.
+                GraphQL operation: mssqlAvailabilityGroup(fid: UUID!):MssqlAvailabilityGroup!
+                ",
             Position = 0
         )]
         public SwitchParameter AvailabilityGroup { get; set; }
@@ -126,7 +162,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -140,7 +180,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlInstance(fid: UUID!):MssqlInstance!",
+            HelpMessage =
+                @"
+                A Microsoft SQL Instance.
+                GraphQL operation: mssqlInstance(fid: UUID!):MssqlInstance!
+                ",
             Position = 0
         )]
         public SwitchParameter Instance { get; set; }
@@ -156,7 +200,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlRecoverableRanges(input: GetMssqlDbRecoverableRangesInput!):MssqlRecoverableRangeListResponse!",
+            HelpMessage =
+                @"
+                List of recoverable ranges for a Microsoft SQL Database.
+                GraphQL operation: mssqlRecoverableRanges(input: GetMssqlDbRecoverableRangesInput!):MssqlRecoverableRangeListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter RecoverableRange { get; set; }
@@ -166,7 +214,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: GetMssqlDbRecoverableRangesInput!"
+            HelpMessage =
+                @"
+                Input for V1GetMssqlDbRecoverableRanges.
+                GraphQL argument input: GetMssqlDbRecoverableRangesInput!
+                "
         )]
         public GetMssqlDbRecoverableRangesInput? Input { get; set; }
         
@@ -180,7 +232,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlDatabaseMissedSnapshots(input: GetMissedMssqlDbSnapshotsInput!):MissedSnapshotListResponse!",
+            HelpMessage =
+                @"
+                List of missed snapshots for a Microsoft SQL Database.
+                GraphQL operation: mssqlDatabaseMissedSnapshots(input: GetMissedMssqlDbSnapshotsInput!):MissedSnapshotListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter DatabaseMissedSnapshot { get; set; }
@@ -196,7 +252,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlCompatibleInstances(input: GetCompatibleMssqlInstancesV1Input!):MssqlInstanceSummaryListResponse!",
+            HelpMessage =
+                @"
+                Returns all compatible instances for export for the specified recovery time.
+                GraphQL operation: mssqlCompatibleInstances(input: GetCompatibleMssqlInstancesV1Input!):MssqlInstanceSummaryListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter CompatibleInstance { get; set; }
@@ -212,7 +272,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlDatabaseMissedRecoverableRanges(input: GetMssqlDbMissedRecoverableRangesInput!):MssqlMissedRecoverableRangeListResponse!",
+            HelpMessage =
+                @"
+                List of missed recoverable ranges for a Microsoft SQL Database.
+                GraphQL operation: mssqlDatabaseMissedRecoverableRanges(input: GetMssqlDbMissedRecoverableRangesInput!):MssqlMissedRecoverableRangeListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter DatabaseMissedRecoverableRange { get; set; }
@@ -228,7 +292,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allMssqlDatabaseRestoreFiles(input: MssqlGetRestoreFilesV1Input!):V1MssqlGetRestoreFilesV1Response!",
+            HelpMessage =
+                @"
+                Provides a list of database files to be restored for the specified restore or export operation.
+                GraphQL operation: allMssqlDatabaseRestoreFiles(input: MssqlGetRestoreFilesV1Input!):V1MssqlGetRestoreFilesV1Response!
+                ",
             Position = 0
         )]
         public SwitchParameter allDatabaseRestoreFile { get; set; }
@@ -244,7 +312,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlDatabaseLiveMounts(,   first: Int,   after: String,   sortBy: MssqlDatabaseLiveMountSortByInput,   filters: [MssqlDatabaseLiveMountFilterInput!], ):MssqlDatabaseLiveMountConnection!",
+            HelpMessage =
+                @"
+                Paginated list of Microsoft SQL Database live mounts.
+                GraphQL operation: mssqlDatabaseLiveMounts(,   first: Int,   after: String,   sortBy: MssqlDatabaseLiveMountSortByInput,   filters: [MssqlDatabaseLiveMountFilterInput!], ):MssqlDatabaseLiveMountConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter DatabaseLiveMount { get; set; }
@@ -254,7 +326,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
+            HelpMessage =
+                @"
+                Filters for Mssql database live mounts.
+                GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]
+                "
         )]
         public List<MssqlDatabaseLiveMountFilterInput>? Filters { get; set; }
         
@@ -268,7 +344,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlDefaultProperties(input: GetDefaultDbPropertiesV1Input!):UpdateMssqlDefaultPropertiesReply!",
+            HelpMessage =
+                @"
+                The current default properties for Microsoft SQL databases.
+                GraphQL operation: mssqlDefaultProperties(input: GetDefaultDbPropertiesV1Input!):UpdateMssqlDefaultPropertiesReply!
+                ",
             Position = 0
         )]
         public SwitchParameter DefaultPropertie { get; set; }
@@ -284,7 +364,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlDatabaseRestoreEstimate(input: MssqlRestoreEstimateV1Input!):MssqlRestoreEstimateResult!",
+            HelpMessage =
+                @"
+                Returns a size estimate for a restore, export, or mount.
+                GraphQL operation: mssqlDatabaseRestoreEstimate(input: MssqlRestoreEstimateV1Input!):MssqlRestoreEstimateResult!
+                ",
             Position = 0
         )]
         public SwitchParameter DatabaseRestoreEstimate { get; set; }
@@ -300,7 +384,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: cdmMssqlLogShippingTargets(,   first: Int,   after: String,   sortBy: MssqlLogShippingTargetSortByInput,   filters: [MssqlLogShippingTargetFilterInput!], ):MssqlLogShippingTargetConnection!",
+            HelpMessage =
+                @"
+                Paginated list of Microsoft SQL log shipping target.
+                GraphQL operation: cdmMssqlLogShippingTargets(,   first: Int,   after: String,   sortBy: MssqlLogShippingTargetSortByInput,   filters: [MssqlLogShippingTargetFilterInput!], ):MssqlLogShippingTargetConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter cdmLogShippingTarget { get; set; }
@@ -316,7 +404,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mssqlLogShippingTargets(input: QueryLogShippingConfigurationsV2Input!):MssqlLogShippingSummaryV2ListResponse",
+            HelpMessage =
+                @"
+                List of filtered Microsoft SQL log shipping targets.
+                GraphQL operation: mssqlLogShippingTargets(input: QueryLogShippingConfigurationsV2Input!):MssqlLogShippingSummaryV2ListResponse
+                ",
             Position = 0
         )]
         public SwitchParameter LogShippingTarget { get; set; }

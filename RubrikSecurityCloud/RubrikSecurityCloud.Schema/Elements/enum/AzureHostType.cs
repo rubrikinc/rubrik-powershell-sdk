@@ -15,9 +15,6 @@ namespace Rubrik.SecurityCloud.Types
 {
     public enum AzureHostType
     {
-        [EnumMember(Value = "BOTH_HOSTS")]
-        BOTH_HOSTS,
-
         [EnumMember(Value = "CUSTOMER_HOST")]
         CUSTOMER_HOST,
 

@@ -43,6 +43,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("featureDetail")]
         public AzureCloudAccountFeatureDetail? FeatureDetail { get; set; }
 
+        //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
+        // GraphQL -> mappedExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
+        [JsonProperty("mappedExocomputeConfigs")]
+        public List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs { get; set; }
+
         //      C# -> AzureMappedExocomputeSubscription? MappedExocomputeSubscription
         // GraphQL -> mappedExocomputeSubscription: AzureMappedExocomputeSubscription (type)
         [JsonProperty("mappedExocomputeSubscription")]
@@ -58,6 +63,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? SubscriptionName = null,
         List<AzureExocomputeConfigDetails>? ExocomputeConfigs = null,
         AzureCloudAccountFeatureDetail? FeatureDetail = null,
+        List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs = null,
         AzureMappedExocomputeSubscription? MappedExocomputeSubscription = null
     ) 
     {
@@ -75,6 +81,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( FeatureDetail != null ) {
             this.FeatureDetail = FeatureDetail;
+        }
+        if ( MappedExocomputeConfigs != null ) {
+            this.MappedExocomputeConfigs = MappedExocomputeConfigs;
         }
         if ( MappedExocomputeSubscription != null ) {
             this.MappedExocomputeSubscription = MappedExocomputeSubscription;
@@ -130,6 +139,16 @@ namespace Rubrik.SecurityCloud.Types
                  this.FeatureDetail.AsFragment(indent+1) + 
                  ind + "}\n";
             }
+            //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
+            // GraphQL -> mappedExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
+            if (this.MappedExocomputeConfigs != null)
+            {
+                 s += ind + "mappedExocomputeConfigs\n";
+
+                 s += ind + "{\n" + 
+                 this.MappedExocomputeConfigs.AsFragment(indent+1) + 
+                 ind + "}\n";
+            }
             //      C# -> AzureMappedExocomputeSubscription? MappedExocomputeSubscription
             // GraphQL -> mappedExocomputeSubscription: AzureMappedExocomputeSubscription (type)
             if (this.MappedExocomputeSubscription != null)
@@ -179,6 +198,13 @@ namespace Rubrik.SecurityCloud.Types
             {
                 this.FeatureDetail = new AzureCloudAccountFeatureDetail();
                 this.FeatureDetail.ApplyExploratoryFragment(parent + ".featureDetail");
+            }
+            //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
+            // GraphQL -> mappedExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
+            if (this.MappedExocomputeConfigs == null && Exploration.Includes(parent + ".mappedExocomputeConfigs"))
+            {
+                this.MappedExocomputeConfigs = new List<AzureExocomputeConfigDetails>();
+                this.MappedExocomputeConfigs.ApplyExploratoryFragment(parent + ".mappedExocomputeConfigs");
             }
             //      C# -> AzureMappedExocomputeSubscription? MappedExocomputeSubscription
             // GraphQL -> mappedExocomputeSubscription: AzureMappedExocomputeSubscription (type)

@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: slaDomains(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: SlaQuerySortByField,   sortOrder: SortOrder,   filter: [GlobalSlaFilterInput!],   contextFilter: ContextFilterTypeEnum,   contextFilterInput: [ContextFilterInputField!],   shouldShowSyncStatus: Boolean = false,   shouldShowProtectedObjectCount: Boolean = false,   shouldShowUpgradeInfo: Boolean = false,   showRemoteSlas: Boolean,   shouldShowPausedClusters: Boolean = false, ):SlaDomainConnection!",
+            HelpMessage =
+                @"
+                Retrieves a list of SLA Domains.
+                GraphQL operation: slaDomains(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: SlaQuerySortByField,   sortOrder: SortOrder,   filter: [GlobalSlaFilterInput!],   contextFilter: ContextFilterTypeEnum,   contextFilterInput: [ContextFilterInputField!],   shouldShowSyncStatus: Boolean = false,   shouldShowProtectedObjectCount: Boolean = false,   shouldShowUpgradeInfo: Boolean = false,   showRemoteSlas: Boolean,   shouldShowPausedClusters: Boolean = false, ):SlaDomainConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Domain { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument last: Int"
+            HelpMessage =
+                @"
+                Returns the last n elements from the list.
+                GraphQL argument last: Int
+                "
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
@@ -70,7 +86,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument before: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come before the specified cursor.
+                GraphQL argument before: String
+                "
         )]
         public System.String? Before { get; set; }
         [Parameter(
@@ -78,7 +98,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: SlaQuerySortByField"
+            HelpMessage =
+                @"
+                Field to sort the SLA Domains list.
+                GraphQL argument sortBy: SlaQuerySortByField
+                "
         )]
         public SlaQuerySortByField? SortBy { get; set; }
         [Parameter(
@@ -86,7 +110,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sort order for sorting the SLA Domains returned by the query.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -94,7 +122,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [GlobalSlaFilterInput!]"
+            HelpMessage =
+                @"
+                Filter for the SLA Domain query.
+                GraphQL argument filter: [GlobalSlaFilterInput!]
+                "
         )]
         public List<GlobalSlaFilterInput>? Filter { get; set; }
         [Parameter(
@@ -102,7 +134,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument contextFilter: ContextFilterTypeEnum"
+            HelpMessage =
+                @"
+                Specifies the context filter to use.
+                GraphQL argument contextFilter: ContextFilterTypeEnum
+                "
         )]
         public ContextFilterTypeEnum? ContextFilter { get; set; }
         [Parameter(
@@ -110,7 +146,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument contextFilterInput: [ContextFilterInputField!]"
+            HelpMessage =
+                @"
+                Specifies the context filter input to use.
+                GraphQL argument contextFilterInput: [ContextFilterInputField!]
+                "
         )]
         public List<ContextFilterInputField>? ContextFilterInput { get; set; }
         [Parameter(
@@ -118,7 +158,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument shouldShowSyncStatus: Boolean"
+            HelpMessage =
+                @"
+                Specifies whether to show the SLA Domain sync status on Rubrik CDM.
+                GraphQL argument shouldShowSyncStatus: Boolean
+                "
         )]
         public System.Boolean? ShouldShowSyncStatus { get; set; }
         [Parameter(
@@ -126,7 +170,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument shouldShowProtectedObjectCount: Boolean"
+            HelpMessage =
+                @"
+                Specifies whether to show the number of workloads protected by the SLA Domain.
+                GraphQL argument shouldShowProtectedObjectCount: Boolean
+                "
         )]
         public System.Boolean? ShouldShowProtectedObjectCount { get; set; }
         [Parameter(
@@ -134,7 +182,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument shouldShowUpgradeInfo: Boolean"
+            HelpMessage =
+                @"
+                Specifies whether to show the upgrade information for an SLA Domain or not.
+                GraphQL argument shouldShowUpgradeInfo: Boolean
+                "
         )]
         public System.Boolean? ShouldShowUpgradeInfo { get; set; }
         [Parameter(
@@ -142,7 +194,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument showRemoteSlas: Boolean"
+            HelpMessage =
+                @"
+                Specifies whether to retrieve the remote SLA Domains from Rubrik CDM. By default, remote SLA Domains are not retrieved.
+                GraphQL argument showRemoteSlas: Boolean
+                "
         )]
         public System.Boolean? ShowRemoteSlas { get; set; }
         [Parameter(
@@ -150,7 +206,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument shouldShowPausedClusters: Boolean"
+            HelpMessage =
+                @"
+                Specifies whether to show the Rubrik clusters where this SLA Domain is paused.
+                GraphQL argument shouldShowPausedClusters: Boolean
+                "
         )]
         public System.Boolean? ShouldShowPausedClusters { get; set; }
         
@@ -164,7 +224,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: countOfObjectsProtectedBySlas(,   rootOptionalFid: UUID,   slaIds: [UUID!]!,   filter: [Filter!],   typeFilter: [HierarchyObjectTypeEnum!], ):CountOfObjectsProtectedBySLAsResult!",
+            HelpMessage =
+                @"
+                The number of objects protected by the SLA Domains.
+                GraphQL operation: countOfObjectsProtectedBySlas(,   rootOptionalFid: UUID,   slaIds: [UUID!]!,   filter: [Filter!],   typeFilter: [HierarchyObjectTypeEnum!], ):CountOfObjectsProtectedBySLAsResult!
+                ",
             Position = 0
         )]
         public SwitchParameter countOfObjectsProtected { get; set; }
@@ -174,7 +238,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument rootOptionalFid: UUID"
+            HelpMessage =
+                @"
+                Forever UUID of the object root. The value of  `none` represents the global hierarchy root.
+                GraphQL argument rootOptionalFid: UUID
+                "
         )]
         public System.String? RootOptionalFid { get; set; }
         [Parameter(
@@ -182,7 +250,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument slaIds: [UUID!]!"
+            HelpMessage =
+                @"
+                A list of global SLA Domain IDs.
+                GraphQL argument slaIds: [UUID!]!
+                "
         )]
         public List<System.String>? SlaIds { get; set; }
         [Parameter(
@@ -190,7 +262,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
+            HelpMessage =
+                @"
+                Types of objects to include.
+                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
+                "
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         
@@ -204,7 +280,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: slaAuditDetail(,   first: Int,   after: String,   last: Int,   before: String,   SlaId: UUID!,   filter: [SLAAuditDetailFilterInput!],   timezone: String, ):[SlaAuditDetail!]!",
+            HelpMessage =
+                @"
+                List of audit details for a given SLA Domain.
+                GraphQL operation: slaAuditDetail(,   first: Int,   after: String,   last: Int,   before: String,   SlaId: UUID!,   filter: [SLAAuditDetailFilterInput!],   timezone: String, ):[SlaAuditDetail!]!
+                ",
             Position = 0
         )]
         public SwitchParameter AuditDetail { get; set; }
@@ -214,7 +294,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument SlaId: UUID!"
+            HelpMessage =
+                @"
+                SLA Domain ID for global SLA Domains and internal ID for SLA Domains created on Rubrik clusters.
+                GraphQL argument SlaId: UUID!
+                "
         )]
         public System.String? SlaId { get; set; }
         [Parameter(
@@ -222,7 +306,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument timezone: String"
+            HelpMessage =
+                @"
+                Timezone.
+                GraphQL argument timezone: String
+                "
         )]
         public System.String? Timezone { get; set; }
         
@@ -236,7 +324,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: slaConflictObjects(fids: [UUID!]!):[HierarchyObject!]!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: slaConflictObjects(fids: [UUID!]!):[HierarchyObject!]!
+                ",
             Position = 0
         )]
         public SwitchParameter ConflictObject { get; set; }
@@ -246,7 +338,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fids: [UUID!]!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument fids: [UUID!]!
+                "
         )]
         public List<System.String>? Fids { get; set; }
         
@@ -260,7 +356,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: slaManagedVolumes(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):ManagedVolumeConnection!",
+            HelpMessage =
+                @"
+                Paginated list of SLA Managed Volumes.
+                GraphQL operation: slaManagedVolumes(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):ManagedVolumeConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter ManagedVolume { get; set; }
@@ -276,7 +376,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!",
+            HelpMessage =
+                @"
+                Global SLA Domains protecting at least one object on the specified Rubrik cluster.
+                GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allClusterGlobal { get; set; }
@@ -286,7 +390,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument cdmClusterUUID: UUID!"
+            HelpMessage =
+                @"
+                UUID of the Rubrik cluster.
+                GraphQL argument cdmClusterUUID: UUID!
+                "
         )]
         public System.String? CdmClusterUuid { get; set; }
         
@@ -300,7 +408,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allNcdSlaComplianceData(clusters: [UUID!]!):[NcdSlaComplianceData!]!",
+            HelpMessage =
+                @"
+                NAS Cloud Direct SLA Domain compliance data for the requested clusters.
+                GraphQL operation: allNcdSlaComplianceData(clusters: [UUID!]!):[NcdSlaComplianceData!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allNcdComplianceData { get; set; }
@@ -310,7 +422,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument clusters: [UUID!]!"
+            HelpMessage =
+                @"
+                List of Rubrik clusters to filter.
+                GraphQL argument clusters: [UUID!]!
+                "
         )]
         public List<System.String>? Clusters { get; set; }
 

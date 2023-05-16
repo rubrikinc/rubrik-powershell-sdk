@@ -6564,7 +6564,7 @@ namespace Rubrik.SecurityCloud.Types
             ref OrgsForPrincipalReply? cmdletReply
         )
         {
-            string args = "";
+            string args = "\n(\norgSearchFilter: $orgSearchFilter\n)";
             if (cmdletReply == null)
             {
                 cmdletReply = new OrgsForPrincipalReply() ;
@@ -10798,42 +10798,6 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
-        //      C# -> BatchVmwareCdpLiveInfo? VsphereVmwareCdpLiveInfo
-        // GraphQL -> vsphereVmwareCdpLiveInfo: BatchVmwareCdpLiveInfo! (type)
-        public static string VsphereVmwareCdpLiveInfo(
-            ref BatchVmwareCdpLiveInfo? cmdletReply
-        )
-        {
-            string args = "\n(\nids: $ids\n)";
-            if (cmdletReply == null)
-            {
-                cmdletReply = new BatchVmwareCdpLiveInfo() ;
-                cmdletReply.ApplyExploratoryFragment();
-            }
-            return new string(
-                "vsphereVmwareCdpLiveInfo" + args + "{\n" +
-                cmdletReply.AsFragment(1) +
-                "}\n");
-        }
-
-        //      C# -> List<VmwareCdpStateInfo>? AllVmwareCdpStateInfos
-        // GraphQL -> allVmwareCdpStateInfos: [VmwareCdpStateInfo!]! (type)
-        public static string AllVmwareCdpStateInfos(
-            ref List<VmwareCdpStateInfo>? cmdletReply
-        )
-        {
-            string args = "\n(\nids: $ids\n)";
-            if (cmdletReply == null)
-            {
-                cmdletReply = new List<VmwareCdpStateInfo>() ;
-                cmdletReply.ApplyExploratoryFragment();
-            }
-            return new string(
-                "allVmwareCdpStateInfos" + args + "{\n" +
-                cmdletReply.AsFragment(1) +
-                "}\n");
-        }
-
         //      C# -> VsphereMount? VsphereMount
         // GraphQL -> vSphereMount: VsphereMount! (type)
         public static string VsphereMount(
@@ -11104,6 +11068,42 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "vcdVappVms" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
+        //      C# -> BatchVmwareCdpLiveInfo? VsphereVmwareCdpLiveInfo
+        // GraphQL -> vsphereVmwareCdpLiveInfo: BatchVmwareCdpLiveInfo! (type)
+        public static string VsphereVmwareCdpLiveInfo(
+            ref BatchVmwareCdpLiveInfo? cmdletReply
+        )
+        {
+            string args = "\n(\nids: $ids\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new BatchVmwareCdpLiveInfo() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "vsphereVmwareCdpLiveInfo" + args + "{\n" +
+                cmdletReply.AsFragment(1) +
+                "}\n");
+        }
+
+        //      C# -> List<VmwareCdpStateInfo>? AllVmwareCdpStateInfos
+        // GraphQL -> allVmwareCdpStateInfos: [VmwareCdpStateInfo!]! (type)
+        public static string AllVmwareCdpStateInfos(
+            ref List<VmwareCdpStateInfo>? cmdletReply
+        )
+        {
+            string args = "\n(\nids: $ids\n)";
+            if (cmdletReply == null)
+            {
+                cmdletReply = new List<VmwareCdpStateInfo>() ;
+                cmdletReply.ApplyExploratoryFragment();
+            }
+            return new string(
+                "allVmwareCdpStateInfos" + args + "{\n" +
                 cmdletReply.AsFragment(1) +
                 "}\n");
         }

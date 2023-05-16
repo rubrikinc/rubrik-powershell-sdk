@@ -36,7 +36,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createNutanixCluster(input: CreateNutanixClusterInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Add Nutanix cluster
+
+Supported in v5.0+
+Create a Nutanix cluster object by providing an address and account credentials for Prism. Initiates an asynchronous job to establish a connection with the cluster and retrieve all metadata. Use GET /nutanix_cluster/{id}/status to check status.
+                GraphQL operation: createNutanixCluster(input: CreateNutanixClusterInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter createCluster { get; set; }
@@ -46,7 +53,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: CreateNutanixClusterInput!"
+            HelpMessage =
+                @"
+                Input for InternalCreateNutanixCluster.
+                GraphQL argument input: CreateNutanixClusterInput!
+                "
         )]
         public CreateNutanixClusterInput? Input { get; set; }
         
@@ -60,7 +71,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: refreshNutanixCluster(input: RefreshNutanixClusterInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Refresh Nutanix cluster metadata
+
+Supported in v5.0+
+Create a job to refresh the metadata for the specified Nutanix cluster.
+                GraphQL operation: refreshNutanixCluster(input: RefreshNutanixClusterInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter refreshCluster { get; set; }
@@ -76,7 +94,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateNutanixCluster(input: UpdateNutanixClusterInput!):UpdateNutanixClusterReply!",
+            HelpMessage =
+                @"
+                Patch Nutanix cluster
+
+Supported in v5.0+
+Patch the host, credentials, and/or CA certs of the specified Nutanix cluster object.
+                GraphQL operation: updateNutanixCluster(input: UpdateNutanixClusterInput!):UpdateNutanixClusterReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateCluster { get; set; }
@@ -92,7 +117,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteNutanixCluster(input: DeleteNutanixClusterInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Remove Nutanix cluster
+
+Supported in v5.0+
+Initiates an asynchronous job to remove a Nutanix cluster object. The Nutanix cluster cannot have VMs mounted through the Rubrik cluster.
+                GraphQL operation: deleteNutanixCluster(input: DeleteNutanixClusterInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteCluster { get; set; }
@@ -108,7 +140,17 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: registerAgentNutanixVm(input: RegisterAgentNutanixVmInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Register the agent installed on the Nutanix VM
+v8.1+: Register the agent installed on the Nutanix virtual machine
+
+Supported in v5.0+
+v5.0-v5.3: Register the agent installed on the Nutanix VM
+v6.0-v8.0: Register the agent installed on the Nutanix VM.
+v8.1+: Register the agent installed on the Nutanix virtual machine.
+                GraphQL operation: registerAgentNutanixVm(input: RegisterAgentNutanixVmInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter registerAgentVm { get; set; }
@@ -124,7 +166,17 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateNutanixVm(input: UpdateNutanixVmInput!):Void",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Patch VM
+v8.1+: Patch virtual machine
+
+Supported in v5.0+
+v5.0-v5.3: Patch VM with specified properties
+v6.0-v8.0: Patch VM with specified properties.
+v8.1+: Patch virtual machine with specified properties.
+                GraphQL operation: updateNutanixVm(input: UpdateNutanixVmInput!):Void
+                ",
             Position = 0
         )]
         public SwitchParameter updateVm { get; set; }
@@ -140,7 +192,17 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createOnDemandNutanixBackup(input: CreateOnDemandNutanixBackupInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Create on-demand VM snapshot
+v8.1+: Create on-demand virtual machine snapshot
+
+Supported in v5.0+
+v5.0-v5.3: Create an on-demand snapshot for the given VM ID
+v6.0-v8.0: Create an on-demand snapshot for the given VM ID.
+v8.1+: Create an on-demand snapshot for the given virtual machine ID.
+                GraphQL operation: createOnDemandNutanixBackup(input: CreateOnDemandNutanixBackupInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter createOnDemandBackup { get; set; }
@@ -156,7 +218,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteNutanixSnapshots(input: DeleteNutanixSnapshotsInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Delete all snapshots of VM
+v8.1+: Delete all snapshots of virtual machine
+
+Supported in v5.0+
+Delete all snapshots of a virtual machine.
+                GraphQL operation: deleteNutanixSnapshots(input: DeleteNutanixSnapshotsInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteSnapshot { get; set; }
@@ -172,7 +242,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: mountNutanixSnapshotV1(input: MountNutanixSnapshotV1Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Initiate a Live Mount of a Nutanix virtual machine snapshot
+
+Supported in v6.0+
+Initiates a request to perform a Live Mount of a Nutanix virtual machine snapshot identified by the snapshot ID.
+                GraphQL operation: mountNutanixSnapshotV1(input: MountNutanixSnapshotV1Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter mountSnapshotV1 { get; set; }
@@ -188,7 +265,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: patchNutanixMountV1(input: PatchNutanixMountV1Input!):PatchNutanixMountV1Reply!",
+            HelpMessage =
+                @"
+                Change Nutanix Live Mount power status
+
+Supported in v6.0+
+Changes the power status of a mounted Nutanix virtual machine.
+                GraphQL operation: patchNutanixMountV1(input: PatchNutanixMountV1Input!):PatchNutanixMountV1Reply!
+                ",
             Position = 0
         )]
         public SwitchParameter patchMountV1 { get; set; }
@@ -204,7 +288,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteNutanixMountV1(input: DeleteNutanixMountV1Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Remove a Live Mount of a Nutanix virtual machine snapshot
+
+Supported in v6.0+
+Initiates a request to remove a Live Mount of a Nutanix virtual machine snapshot identified by the ID of the Live Mount.
+                GraphQL operation: deleteNutanixMountV1(input: DeleteNutanixMountV1Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteMountV1 { get; set; }
@@ -220,7 +311,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: migrateNutanixMountV1(input: MigrateNutanixMountV1Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Relocate a Nutanix virtual machine to another storage container
+
+Supported in v6.0+
+Initiate a request to migrate the virtual disks of a specified Nutanix Live Mount to another storage container. The destination storage container has been specified when the Live Mount was created. The Live Mount will be deleted when the relocation succeeds.
+                GraphQL operation: migrateNutanixMountV1(input: MigrateNutanixMountV1Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter migrateMountV1 { get; set; }
@@ -236,7 +334,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: restoreFilesNutanixSnapshot(input: RestoreFilesNutanixSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Restore files
+
+Supported in v5.0+
+Restore files from a snapshot to the source Nutanix virtual machine.
+                GraphQL operation: restoreFilesNutanixSnapshot(input: RestoreFilesNutanixSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter restoreFilesSnapshot { get; set; }
@@ -252,7 +357,16 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadFilesNutanixSnapshot(input: DownloadFilesNutanixSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Download files from a Nutanix VM backup
+v8.1+: Download files from a Nutanix virtual machine backup
+
+Supported in v5.0+
+v5.0-v8.0: Start an asynchronous job to download multiple files and folders from a specified Nutanix VM backup. The response returns an asynchronous request ID. Get the URL for downloading the zip file including the specific files/folders by sending a GET request to 'nutanix/vm/request/{id}'.
+v8.1+: Start an asynchronous job to download multiple files and folders from a specified Nutanix virtual machine backup. The response returns an asynchronous request ID. Get the URL for downloading the zip file including the specific files/folders by sending a GET request to 'nutanix/vm/request/{id}'.
+                GraphQL operation: downloadFilesNutanixSnapshot(input: DownloadFilesNutanixSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadFilesSnapshot { get; set; }
@@ -268,7 +382,16 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: exportNutanixSnapshot(input: ExportNutanixSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                v5.0-v8.0: Export VM snapshot
+v8.1+: Export virtual machine snapshot
+
+Supported in v5.0+
+v5.0-v8.0: Export snapshot of a vm.
+v8.1+: Export snapshot of a virtual machine.
+                GraphQL operation: exportNutanixSnapshot(input: ExportNutanixSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter exportSnapshot { get; set; }
@@ -284,7 +407,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadNutanixSnapshot(input: DownloadNutanixSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Creates a download from archival request
+
+Supported in v5.0+
+Download a snapshot from archival.
+                GraphQL operation: downloadNutanixSnapshot(input: DownloadNutanixSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadSnapshot { get; set; }
@@ -300,7 +430,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: batchExportNutanixVm(input: BatchExportNutanixVmInput!):BatchExportNutanixVmReply!",
+            HelpMessage =
+                @"
+                Exports a snapshot from each member of a set of virtual machines
+
+Supported in v7.0+
+Export a snapshot from each member of a set of virtual machines.
+                GraphQL operation: batchExportNutanixVm(input: BatchExportNutanixVmInput!):BatchExportNutanixVmReply!
+                ",
             Position = 0
         )]
         public SwitchParameter batchExportVm { get; set; }
@@ -316,7 +453,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: batchMountNutanixVm(input: BatchMountNutanixVmInput!):BatchMountNutanixVmReply!",
+            HelpMessage =
+                @"
+                Mount snapshots from multiple virtual machines
+
+Supported in v7.0+
+Mounts a batch of snapshots from a group of specified virtual machines.
+                GraphQL operation: batchMountNutanixVm(input: BatchMountNutanixVmInput!):BatchMountNutanixVmReply!
+                ",
             Position = 0
         )]
         public SwitchParameter batchMountVm { get; set; }
@@ -332,7 +476,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadNutanixVmFromLocation(input: DownloadNutanixVmFromLocationInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download a snapshot from a replication target
+
+Supported in v7.0+
+Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
+                GraphQL operation: downloadNutanixVmFromLocation(input: DownloadNutanixVmFromLocationInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadVmFromLocation { get; set; }
@@ -348,7 +499,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: bulkOnDemandSnapshotNutanixVm(input: BulkOnDemandSnapshotNutanixVmInput!):BulkOnDemandSnapshotNutanixVmReply!",
+            HelpMessage =
+                @"
+                Take an on-demand snapshot for selected Nutanix virtual machines
+
+Supported in v9.0
+Take bulk backups for multiple Nutanix virtual machines.
+                GraphQL operation: bulkOnDemandSnapshotNutanixVm(input: BulkOnDemandSnapshotNutanixVmInput!):BulkOnDemandSnapshotNutanixVmReply!
+                ",
             Position = 0
         )]
         public SwitchParameter bulkOnDemandSnapshotVm { get; set; }

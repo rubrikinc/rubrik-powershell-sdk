@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: accountSettings:AccountSetting!",
+            HelpMessage =
+                @"
+                This endpoint is deprecated.
+                GraphQL operation: accountSettings:AccountSetting!
+                ",
             Position = 0
         )]
         public SwitchParameter Setting { get; set; }
@@ -52,7 +56,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAccountProducts(,   nameFilter: [ProductName!]!,   typeFilter: [ProductType!]!,   stateFilter: [ProductState!]!,   startDateArg: DateTime,   endDateArg: DateTime, ):[AccountProduct!]!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: allAccountProducts(,   nameFilter: [ProductName!]!,   typeFilter: [ProductType!]!,   stateFilter: [ProductState!]!,   startDateArg: DateTime,   endDateArg: DateTime, ):[AccountProduct!]!
+                ",
             Position = 0
         )]
         public SwitchParameter Product { get; set; }
@@ -62,7 +70,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument nameFilter: [ProductName!]!"
+            HelpMessage =
+                @"
+                Name of product (Data Protection, Ransomware Investigation, etc.).
+                GraphQL argument nameFilter: [ProductName!]!
+                "
         )]
         public List<ProductName>? NameFilter { get; set; }
         [Parameter(
@@ -70,7 +82,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument typeFilter: [ProductType!]!"
+            HelpMessage =
+                @"
+                Type of product (Revenue, POC, etc.).
+                GraphQL argument typeFilter: [ProductType!]!
+                "
         )]
         public List<ProductType>? TypeFilter { get; set; }
         [Parameter(
@@ -78,7 +94,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument stateFilter: [ProductState!]!"
+            HelpMessage =
+                @"
+                State of product (Active, Expired, etc.).
+                GraphQL argument stateFilter: [ProductState!]!
+                "
         )]
         public List<ProductState>? StateFilter { get; set; }
         [Parameter(
@@ -86,7 +106,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument startDateArg: DateTime"
+            HelpMessage =
+                @"
+                Start date of product (yyyy-mm-dd).
+                GraphQL argument startDateArg: DateTime
+                "
         )]
         public DateTime? StartDateArg { get; set; }
         [Parameter(
@@ -94,7 +118,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument endDateArg: DateTime"
+            HelpMessage =
+                @"
+                End date of product (yyyy-mm-dd).
+                GraphQL argument endDateArg: DateTime
+                "
         )]
         public DateTime? EndDateArg { get; set; }
         
@@ -108,7 +136,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: accountId:String!",
+            HelpMessage =
+                @"
+                Account ID.
+                GraphQL operation: accountId:String!
+                ",
             Position = 0
         )]
         public SwitchParameter Id { get; set; }
@@ -124,7 +156,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAccountOwners:[User!]!",
+            HelpMessage =
+                @"
+                List of account owners.
+                GraphQL operation: allAccountOwners:[User!]!
+                ",
             Position = 0
         )]
         public SwitchParameter Owner { get; set; }

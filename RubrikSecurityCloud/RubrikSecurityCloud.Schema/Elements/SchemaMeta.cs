@@ -11,7 +11,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     public class SchemaMeta
     {
-        public static string GraphqlSchemaVersion = "v20230426-26" ;
+        public static string GraphqlSchemaVersion = "v20230503-40" ;
 
         public static HashSet<string> UnionMembership( string typeName )
         {

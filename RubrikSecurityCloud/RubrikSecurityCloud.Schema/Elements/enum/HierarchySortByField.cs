@@ -117,6 +117,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "AZURE_VNET_NAME")]
         AZURE_VNET_NAME,
 
+        [EnumMember(Value = "CDM_CLUSTER_NAME")]
+        CDM_CLUSTER_NAME,
+
         [EnumMember(Value = "CDP_IO_FILTER_STATUS")]
         CDP_IO_FILTER_STATUS,
 

@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: cassandraSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CassandraSourceConnection!",
+            HelpMessage =
+                @"
+                Paginated list of cassandra sources.
+                GraphQL operation: cassandraSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CassandraSourceConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Source { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -70,7 +86,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -78,7 +98,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -92,7 +116,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: cassandraKeyspaces(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CassandraKeyspaceConnection!",
+            HelpMessage =
+                @"
+                Paginated list of cassandra keyspaces.
+                GraphQL operation: cassandraKeyspaces(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CassandraKeyspaceConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Keyspace { get; set; }
@@ -108,7 +136,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: cassandraColumnFamilies(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CassandraColumnFamilyConnection!",
+            HelpMessage =
+                @"
+                Paginated list of cassandra column families.
+                GraphQL operation: cassandraColumnFamilies(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CassandraColumnFamilyConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter ColumnFamily { get; set; }
@@ -124,7 +156,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: cassandraColumnFamilyRecoverableRange(input: GetMosaicRecoverableRangeInput!):GetMosaicRecoverableRangeResponse!",
+            HelpMessage =
+                @"
+                Get Recoverable Range of a Cassandra Column Family.
+                GraphQL operation: cassandraColumnFamilyRecoverableRange(input: GetMosaicRecoverableRangeInput!):GetMosaicRecoverableRangeResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter ColumnFamilyRecoverableRange { get; set; }
@@ -134,7 +170,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: GetMosaicRecoverableRangeInput!"
+            HelpMessage =
+                @"
+                Input for V2GetMosaicRecoverableRange.
+                GraphQL argument input: GetMosaicRecoverableRangeInput!
+                "
         )]
         public GetMosaicRecoverableRangeInput? Input { get; set; }
         
@@ -148,7 +188,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: cassandraColumnFamilySchema(input: GetMosaicTableSchemaInput!):GetSchemaResponse!",
+            HelpMessage =
+                @"
+                Get Schema of a Cassandra Column Family.
+                GraphQL operation: cassandraColumnFamilySchema(input: GetMosaicTableSchemaInput!):GetSchemaResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter ColumnFamilySchema { get; set; }

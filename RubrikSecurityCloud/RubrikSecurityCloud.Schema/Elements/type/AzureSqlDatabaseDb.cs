@@ -39,6 +39,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsEligibleForPersistentBackups
+        // GraphQL -> isEligibleForPersistentBackups: Boolean! (scalar)
+        [JsonProperty("isEligibleForPersistentBackups")]
+        public System.Boolean? IsEligibleForPersistentBackups { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -213,6 +218,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? ElasticPoolName = null,
         System.Boolean? ExocomputeConfigured = null,
         System.String? Id = null,
+        System.Boolean? IsEligibleForPersistentBackups = null,
         System.Boolean? IsRelic = null,
         System.Int64? MaximumSizeInBytes = null,
         System.String? Name = null,
@@ -259,6 +265,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsEligibleForPersistentBackups != null ) {
+            this.IsEligibleForPersistentBackups = IsEligibleForPersistentBackups;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -395,6 +404,13 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Id != null)
             {
                  s += ind + "id\n";
+
+            }
+            //      C# -> System.Boolean? IsEligibleForPersistentBackups
+            // GraphQL -> isEligibleForPersistentBackups: Boolean! (scalar)
+            if (this.IsEligibleForPersistentBackups != null)
+            {
+                 s += ind + "isEligibleForPersistentBackups\n";
 
             }
             //      C# -> System.Boolean? IsRelic
@@ -743,6 +759,12 @@ namespace Rubrik.SecurityCloud.Types
             if (this.Id == null && Exploration.Includes(parent + ".id$"))
             {
                 this.Id = new System.String("FETCH");
+            }
+            //      C# -> System.Boolean? IsEligibleForPersistentBackups
+            // GraphQL -> isEligibleForPersistentBackups: Boolean! (scalar)
+            if (this.IsEligibleForPersistentBackups == null && Exploration.Includes(parent + ".isEligibleForPersistentBackups$"))
+            {
+                this.IsEligibleForPersistentBackups = new System.Boolean();
             }
             //      C# -> System.Boolean? IsRelic
             // GraphQL -> isRelic: Boolean! (scalar)

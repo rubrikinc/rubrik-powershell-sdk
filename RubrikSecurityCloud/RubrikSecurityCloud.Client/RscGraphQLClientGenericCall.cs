@@ -104,7 +104,7 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         )
         {
             // Verbose log request and variables:
-            String parentSelectorName = "";
+            string parentSelectorName = "";
             GraphQLDocument queryDocument = GraphQLParser.Parser.Parse(request.Query);
             if (queryDocument.Definitions != null)
             {
@@ -143,7 +143,7 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 metricsTags
             )
                 ?? throw new InvalidOperationException("server response is null");
-            String returnAsJson = "";
+            string returnAsJson;
             JObject parentSelectorObj = response[parentSelectorName] as JObject;
             if (parentSelectorObj == null)
             {
@@ -153,7 +153,8 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             returnAsJson = JsonConvert.SerializeObject(response[parentSelectorName]);
 
 
-            T responseData = JsonConvert.DeserializeObject<T>(returnAsJson,
+            T responseData = JsonConvert.DeserializeObject<T>(
+                returnAsJson,
                 new JsonSerializerSettings
                 {
                     NullValueHandling = NullValueHandling.Ignore,
@@ -169,12 +170,12 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         }
 
         /// <summary>
-        /// Request data from the Rubrik Security Cloud GraphQL API,
-        /// using a custom query. Data is returned as type Object
+        /// Send custom query to API server,
+        /// Data is returned as type Object
         /// </summary>
         /// <param name="content"></param>
         /// <returns></returns>
-        public async Task<Object> InvokeGenericCall(
+        public async Task<object> InvokeGenericCall(
             string content,
             Dictionary<string, string> metricsTags = null
         )

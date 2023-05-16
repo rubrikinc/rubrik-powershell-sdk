@@ -54,11 +54,6 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("hasDelta")]
         public System.Boolean? HasDelta { get; set; }
 
-        //      C# -> System.Boolean? HasImageConverted
-        // GraphQL -> hasImageConverted: Boolean! (scalar)
-        [JsonProperty("hasImageConverted")]
-        public System.Boolean? HasImageConverted { get; set; }
-
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -251,7 +246,6 @@ namespace Rubrik.SecurityCloud.Types
         System.Boolean? ExpiryHint = null,
         System.Int64? FileCount = null,
         System.Boolean? HasDelta = null,
-        System.Boolean? HasImageConverted = null,
         System.String? Id = null,
         System.Int64? IndexingAttempts = null,
         System.Boolean? IsAnomaly = null,
@@ -310,9 +304,6 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( HasDelta != null ) {
             this.HasDelta = HasDelta;
-        }
-        if ( HasImageConverted != null ) {
-            this.HasImageConverted = HasImageConverted;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -479,13 +470,6 @@ namespace Rubrik.SecurityCloud.Types
             if (this.HasDelta != null)
             {
                  s += ind + "hasDelta\n";
-
-            }
-            //      C# -> System.Boolean? HasImageConverted
-            // GraphQL -> hasImageConverted: Boolean! (scalar)
-            if (this.HasImageConverted != null)
-            {
-                 s += ind + "hasImageConverted\n";
 
             }
             //      C# -> System.String? Id
@@ -873,12 +857,6 @@ namespace Rubrik.SecurityCloud.Types
             if (this.HasDelta == null && Exploration.Includes(parent + ".hasDelta$"))
             {
                 this.HasDelta = new System.Boolean();
-            }
-            //      C# -> System.Boolean? HasImageConverted
-            // GraphQL -> hasImageConverted: Boolean! (scalar)
-            if (this.HasImageConverted == null && Exploration.Includes(parent + ".hasImageConverted$"))
-            {
-                this.HasImageConverted = new System.Boolean();
             }
             //      C# -> System.String? Id
             // GraphQL -> id: UUID! (scalar)

@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmRecoverFiles(input: VsphereVmRecoverFilesInput!):VsphereAsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Restores multiple files/directories from snapshot.
+                GraphQL operation: vsphereVmRecoverFiles(input: VsphereVmRecoverFilesInput!):VsphereAsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter RecoverFile { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: VsphereVmRecoverFilesInput!"
+            HelpMessage =
+                @"
+                Vsphere recover files input.
+                GraphQL argument input: VsphereVmRecoverFilesInput!
+                "
         )]
         public VsphereVmRecoverFilesInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmRecoverFilesNew(input: VsphereVmRecoverFilesNewInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Restores multiple files/directories from snapshot.
+                GraphQL operation: vsphereVmRecoverFilesNew(input: VsphereVmRecoverFilesNewInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter RecoverFilesNew { get; set; }
@@ -76,7 +88,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmRegisterAgent(input: VsphereVmRegisterAgentInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Register Rubrik Backup Service
+
+Supported in v5.0+
+Register the Rubrik Backup Service that is running on a specified host with the specified Rubrik cluster.
+                GraphQL operation: vsphereVmRegisterAgent(input: VsphereVmRegisterAgentInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter RegisterAgent { get; set; }
@@ -92,7 +111,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmDownloadSnapshot(input: VsphereVmDownloadSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download snapshot from archive
+
+Supported in v5.0+
+Provides a method for retrieving a snapshot, that is not available locally, from an archival location.
+                GraphQL operation: vsphereVmDownloadSnapshot(input: VsphereVmDownloadSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter DownloadSnapshot { get; set; }
@@ -108,7 +134,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmExportSnapshotV2(input: VsphereVmExportSnapshotV2Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a vSphere Export from a snapshot or a point-in-time.
+                GraphQL operation: vsphereVmExportSnapshotV2(input: VsphereVmExportSnapshotV2Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter ExportSnapshotV2 { get; set; }
@@ -124,7 +154,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmExportSnapshotV3(input: VsphereVmExportSnapshotV3Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a vSphere Export from a snapshot or a point-in-time with datastore cluster and virtual disk mapping support.
+                GraphQL operation: vsphereVmExportSnapshotV3(input: VsphereVmExportSnapshotV3Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter ExportSnapshotV3 { get; set; }
@@ -140,7 +174,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmBatchExport(input: VsphereVmBatchExportInput!):BatchAsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a mass export for a group of virtual machines.
+                GraphQL operation: vsphereVmBatchExport(input: VsphereVmBatchExportInput!):BatchAsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter BatchExport { get; set; }
@@ -156,7 +194,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmInitiateInPlaceRecovery(input: VsphereVmInitiateInPlaceRecoveryInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Trigger an in-place recovery from a snapshot or point-in-time.
+                GraphQL operation: vsphereVmInitiateInPlaceRecovery(input: VsphereVmInitiateInPlaceRecoveryInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter InitiateInPlaceRecovery { get; set; }
@@ -172,7 +214,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmExportSnapshotWithDownloadFromCloud(input: VsphereVmExportSnapshotWithDownloadFromCloudInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download a snapshot from an archival location, then export a virtual machine using the downloaded snapshot
+
+Supported in v5.3+
+Download a snapshot from an archival location and then export a virtual machine using the downloaded snapshot.
+                GraphQL operation: vsphereVmExportSnapshotWithDownloadFromCloud(input: VsphereVmExportSnapshotWithDownloadFromCloudInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter ExportSnapshotWithDownloadFromCloud { get; set; }
@@ -188,7 +237,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmBatchInPlaceRecovery(input: VsphereVmBatchInPlaceRecoveryInput!):BatchAsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Supported in v6.0+. Export a snapshot each from a set of virtual machines.
+                GraphQL operation: vsphereVmBatchInPlaceRecovery(input: VsphereVmBatchInPlaceRecoveryInput!):BatchAsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter BatchInPlaceRecovery { get; set; }
@@ -204,7 +257,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmDeleteSnapshot(input: VsphereVmDeleteSnapshotInput!):Void",
+            HelpMessage =
+                @"
+                Designate a snapshot as expired and available for garbage collection. The snapshot must be an on-demand snapshot or a snapshot from a virtual machine that is not assigned to an SLA Domain.
+                GraphQL operation: vsphereVmDeleteSnapshot(input: VsphereVmDeleteSnapshotInput!):Void
+                ",
             Position = 0
         )]
         public SwitchParameter DeleteSnapshot { get; set; }
@@ -220,7 +277,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmInitiateInstantRecoveryV2(input: VsphereVmInitiateInstantRecoveryV2Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
+                GraphQL operation: vsphereVmInitiateInstantRecoveryV2(input: VsphereVmInitiateInstantRecoveryV2Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter InitiateInstantRecoveryV2 { get; set; }
@@ -236,7 +297,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmInitiateBatchInstantRecovery(input: VsphereVmInitiateBatchInstantRecoveryInput!):BatchAsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Initiate a mass instant recovery for a group of VMs.
+                GraphQL operation: vsphereVmInitiateBatchInstantRecovery(input: VsphereVmInitiateBatchInstantRecoveryInput!):BatchAsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter InitiateBatchInstantRecovery { get; set; }
@@ -252,7 +317,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmInitiateDiskMount(input: VsphereVmInitiateDiskMountInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Attaching disks from a snapshot to an existing virtual machine
+
+Supported in v5.0+
+Requests a snapshot mount to attach disks to an existing virtual machine.
+                GraphQL operation: vsphereVmInitiateDiskMount(input: VsphereVmInitiateDiskMountInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter InitiateDiskMount { get; set; }
@@ -268,7 +340,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmInitiateLiveMountV2(input: VsphereVmInitiateLiveMountV2Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a vSphere Live Mount from a snapshot or point-in-time.
+                GraphQL operation: vsphereVmInitiateLiveMountV2(input: VsphereVmInitiateLiveMountV2Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter InitiateLiveMountV2 { get; set; }
@@ -284,7 +360,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmInitiateBatchLiveMountV2(input: VsphereVmInitiateBatchLiveMountV2Input!):BatchAsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Initiate a mass live mount for a group of VMs.
+                GraphQL operation: vsphereVmInitiateBatchLiveMountV2(input: VsphereVmInitiateBatchLiveMountV2Input!):BatchAsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter InitiateBatchLiveMountV2 { get; set; }
@@ -300,7 +380,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmPowerOnOffLiveMount(input: VsphereVmPowerOnOffLiveMountInput!):VsphereVmPowerOnOffLiveMountReply!",
+            HelpMessage =
+                @"
+                Power a Live Mount on and off
+
+Supported in v5.0+
+Power a specified Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
+                GraphQL operation: vsphereVmPowerOnOffLiveMount(input: VsphereVmPowerOnOffLiveMountInput!):VsphereVmPowerOnOffLiveMountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter PowerOnOffLiveMount { get; set; }
@@ -316,7 +403,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmListEsxiDatastores(input: VsphereVmListEsxiDatastoresInput!):VsphereVmListEsxiDatastoresReply!",
+            HelpMessage =
+                @"
+                List ESXi datastores
+
+Supported in v5.0+
+Retrieve a list of the datastores for a specified ESXi host.
+                GraphQL operation: vsphereVmListEsxiDatastores(input: VsphereVmListEsxiDatastoresInput!):VsphereVmListEsxiDatastoresReply!
+                ",
             Position = 0
         )]
         public SwitchParameter ListEsxiDatastore { get; set; }
@@ -332,7 +426,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmMountRelocate(input: VsphereVmMountRelocateInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Relocate a virtual machine to another datastore
+
+Supported in v5.0+
+Run storage VMotion to relocate a specified Live Mount into another data store.
+                GraphQL operation: vsphereVmMountRelocate(input: VsphereVmMountRelocateInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter MountRelocate { get; set; }
@@ -348,7 +449,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmMountRelocateV2(input: VsphereVmMountRelocateV2Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a Live Mount migration to a datastore or datastore cluster with virtual disk mapping support.
+                GraphQL operation: vsphereVmMountRelocateV2(input: VsphereVmMountRelocateV2Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter MountRelocateV2 { get; set; }
@@ -364,7 +469,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereExcludeVmDisks(input: [VsphereExcludeVmDisksInput!]!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Exclude or include virtual disks during snapshot.
+                GraphQL operation: vsphereExcludeVmDisks(input: [VsphereExcludeVmDisksInput!]!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter ExcludeVmDisk { get; set; }
@@ -380,7 +489,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmDownloadSnapshotFiles(input: VsphereVmDownloadSnapshotFilesInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download files from snapshot.
+                GraphQL operation: vsphereVmDownloadSnapshotFiles(input: VsphereVmDownloadSnapshotFilesInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter DownloadSnapshotFile { get; set; }
@@ -396,7 +509,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateVsphereVm(input: UpdateVsphereVmInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Update VM
+
+Supported in v5.0+
+Update a virtual machine with specified properties. Use the guestCredential field to update the guest credential for a specified virtual machine.
+                GraphQL operation: updateVsphereVm(input: UpdateVsphereVmInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter Update { get; set; }

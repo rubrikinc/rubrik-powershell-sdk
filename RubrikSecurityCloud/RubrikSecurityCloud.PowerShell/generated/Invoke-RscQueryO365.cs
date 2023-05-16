@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365Org(fid: UUID!):O365Org!",
+            HelpMessage =
+                @"
+                Details of the O365Org.
+                GraphQL operation: o365Org(fid: UUID!):O365Org!
+                ",
             Position = 0
         )]
         public SwitchParameter Org { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365OrgAtSnappableLevel(fid: UUID!, snappableType: SnappableType!):O365Org!",
+            HelpMessage =
+                @"
+                Details of the O365Org at snappable level, given the snappable type.
+                GraphQL operation: o365OrgAtSnappableLevel(fid: UUID!, snappableType: SnappableType!):O365Org!
+                ",
             Position = 0
         )]
         public SwitchParameter OrgAtSnappableLevel { get; set; }
@@ -70,7 +82,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument snappableType: SnappableType!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument snappableType: SnappableType!
+                "
         )]
         public SnappableType? SnappableType { get; set; }
         
@@ -84,7 +100,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allO365AdGroups(orgId: UUID!, adGroupSearchFilter: String!):[AdGroup!]!",
+            HelpMessage =
+                @"
+                All AD Groups belonging to the O365 organization.
+                GraphQL operation: allO365AdGroups(orgId: UUID!, adGroupSearchFilter: String!):[AdGroup!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allAdGroup { get; set; }
@@ -94,7 +114,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument orgId: UUID!"
+            HelpMessage =
+                @"
+                Org UUID.
+                GraphQL argument orgId: UUID!
+                "
         )]
         public System.String? OrgId { get; set; }
         [Parameter(
@@ -102,7 +126,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument adGroupSearchFilter: String!"
+            HelpMessage =
+                @"
+                AD group search filter.
+                GraphQL argument adGroupSearchFilter: String!
+                "
         )]
         public System.String? AdGroupSearchFilter { get; set; }
         
@@ -116,7 +144,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365User(fid: UUID!):O365User!",
+            HelpMessage =
+                @"
+                Details for the O365 user corresponding to the ID.
+                GraphQL operation: o365User(fid: UUID!):O365User!
+                ",
             Position = 0
         )]
         public SwitchParameter User { get; set; }
@@ -132,7 +164,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365Mailbox(snappableFid: UUID!):O365Mailbox!",
+            HelpMessage =
+                @"
+                Details for the Exchange mailbox corresponding to the snappable ID.
+                GraphQL operation: o365Mailbox(snappableFid: UUID!):O365Mailbox!
+                ",
             Position = 0
         )]
         public SwitchParameter Mailbox { get; set; }
@@ -142,7 +178,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument snappableFid: UUID!"
+            HelpMessage =
+                @"
+                The fid for the workload.
+                GraphQL argument snappableFid: UUID!
+                "
         )]
         public System.String? SnappableFid { get; set; }
         
@@ -156,7 +196,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365Groups(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   o365OrgId: UUID!,   snappableType: SnappableType!, ):O365GroupConnection!",
+            HelpMessage =
+                @"
+                List of O365 Groups in the O365Org.
+                GraphQL operation: o365Groups(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   o365OrgId: UUID!,   snappableType: SnappableType!, ):O365GroupConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Group { get; set; }
@@ -166,7 +210,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -174,7 +222,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -182,7 +234,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -190,7 +246,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -198,7 +258,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         [Parameter(
@@ -206,7 +270,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument o365OrgId: UUID!"
+            HelpMessage =
+                @"
+                The fid for the O365 organization.
+                GraphQL argument o365OrgId: UUID!
+                "
         )]
         public System.String? O365OrgId { get; set; }
         
@@ -220,7 +288,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365Mailboxes(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   o365OrgId: UUID!, ):O365MailboxConnection!",
+            HelpMessage =
+                @"
+                List of Mailboxes in the O365Org.
+                GraphQL operation: o365Mailboxes(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   o365OrgId: UUID!, ):O365MailboxConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Mailboxe { get; set; }
@@ -236,7 +308,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365Onedrive(snappableFid: UUID!):O365Onedrive!",
+            HelpMessage =
+                @"
+                Details for the OneDrive corresponding to the snappable ID.
+                GraphQL operation: o365Onedrive(snappableFid: UUID!):O365Onedrive!
+                ",
             Position = 0
         )]
         public SwitchParameter Onedrive { get; set; }
@@ -252,7 +328,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365Site(snappableFid: UUID!):O365Site!",
+            HelpMessage =
+                @"
+                Details for the SharePoint site corresponding to the snappable ID.
+                GraphQL operation: o365Site(snappableFid: UUID!):O365Site!
+                ",
             Position = 0
         )]
         public SwitchParameter Site { get; set; }
@@ -268,7 +348,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365SharepointDrive(snappableFid: UUID!):O365SharepointDrive!",
+            HelpMessage =
+                @"
+                Details for the SharePoint drive corresponding to the snappable ID.
+                GraphQL operation: o365SharepointDrive(snappableFid: UUID!):O365SharepointDrive!
+                ",
             Position = 0
         )]
         public SwitchParameter SharepointDrive { get; set; }
@@ -284,7 +368,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365SharepointList(snappableFid: UUID!):O365SharepointList!",
+            HelpMessage =
+                @"
+                Details for the SharePoint list corresponding to the snappable ID.
+                GraphQL operation: o365SharepointList(snappableFid: UUID!):O365SharepointList!
+                ",
             Position = 0
         )]
         public SwitchParameter SharepointList { get; set; }
@@ -300,7 +388,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365SharepointSite(siteFid: UUID!):O365Site!",
+            HelpMessage =
+                @"
+                Details for the SharePoint site corresponding to the site ID.
+                GraphQL operation: o365SharepointSite(siteFid: UUID!):O365Site!
+                ",
             Position = 0
         )]
         public SwitchParameter SharepointSite { get; set; }
@@ -310,7 +402,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument siteFid: UUID!"
+            HelpMessage =
+                @"
+                The fid for the site.
+                GraphQL argument siteFid: UUID!
+                "
         )]
         public System.String? SiteFid { get; set; }
         
@@ -324,7 +420,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365Team(snappableFid: UUID!):O365Teams!",
+            HelpMessage =
+                @"
+                Details for the team corresponding to the snappable ID.
+                GraphQL operation: o365Team(snappableFid: UUID!):O365Teams!
+                ",
             Position = 0
         )]
         public SwitchParameter Team { get; set; }
@@ -340,7 +440,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365TeamChannels(,   first: Int,   after: String,   snappableFid: UUID!,   excludeArchived: Boolean!,   channelMembershipTypeFilter: ChannelMembershipType!,   nameFilter: String, ):O365TeamsChannelConnection!",
+            HelpMessage =
+                @"
+                List of Channels for the O365Team.
+                GraphQL operation: o365TeamChannels(,   first: Int,   after: String,   snappableFid: UUID!,   excludeArchived: Boolean!,   channelMembershipTypeFilter: ChannelMembershipType!,   nameFilter: String, ):O365TeamsChannelConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter TeamChannel { get; set; }
@@ -350,7 +454,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument excludeArchived: Boolean!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument excludeArchived: Boolean!
+                "
         )]
         public System.Boolean? ExcludeArchived { get; set; }
         [Parameter(
@@ -358,7 +466,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument channelMembershipTypeFilter: ChannelMembershipType!"
+            HelpMessage =
+                @"
+                Filter on channel membership type.
+                GraphQL argument channelMembershipTypeFilter: ChannelMembershipType!
+                "
         )]
         public ChannelMembershipType? ChannelMembershipTypeFilter { get; set; }
         [Parameter(
@@ -366,7 +478,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument nameFilter: String"
+            HelpMessage =
+                @"
+                
+                GraphQL argument nameFilter: String
+                "
         )]
         public System.String? NameFilter { get; set; }
         
@@ -380,7 +496,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365TeamConversationsFolderID(snappableFid: UUID!, snapshotFid: UUID!, o365OrgId: UUID!):String!",
+            HelpMessage =
+                @"
+                ID for the conversations folder in the Team's Group Mailbox.
+                GraphQL operation: o365TeamConversationsFolderID(snappableFid: UUID!, snapshotFid: UUID!, o365OrgId: UUID!):String!
+                ",
             Position = 0
         )]
         public SwitchParameter TeamConversationsFolderID { get; set; }
@@ -390,7 +510,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument snapshotFid: UUID!"
+            HelpMessage =
+                @"
+                The ID of the snapshot.
+                GraphQL argument snapshotFid: UUID!
+                "
         )]
         public System.String? SnapshotFid { get; set; }
         
@@ -404,7 +528,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365TeamPostedBy(,   first: Int,   after: String,   snappableFid: UUID!,   o365OrgId: UUID!,   nameFilter: String, ):O365TeamConversationsSenderConnection!",
+            HelpMessage =
+                @"
+                Users who have posted in a team.
+                GraphQL operation: o365TeamPostedBy(,   first: Int,   after: String,   snappableFid: UUID!,   o365OrgId: UUID!,   nameFilter: String, ):O365TeamConversationsSenderConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter TeamPostedBy { get; set; }
@@ -420,7 +548,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365Calendar(snappableFid: UUID!):O365Calendar!",
+            HelpMessage =
+                @"
+                Details of the Exchange calendar pertaining to the snappable ID.
+                GraphQL operation: o365Calendar(snappableFid: UUID!):O365Calendar!
+                ",
             Position = 0
         )]
         public SwitchParameter Calendar { get; set; }
@@ -436,7 +568,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365SharepointObjectList(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   objectTypeFilter: [String!],   includeEntireHierarchy: Boolean!,   fid: UUID!, ):O365SharepointObjectConnection!",
+            HelpMessage =
+                @"
+                Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
+                GraphQL operation: o365SharepointObjectList(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   objectTypeFilter: [String!],   includeEntireHierarchy: Boolean!,   fid: UUID!, ):O365SharepointObjectConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter SharepointObjectList { get; set; }
@@ -446,7 +582,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument objectTypeFilter: [String!]"
+            HelpMessage =
+                @"
+                Types of objects to include.
+                GraphQL argument objectTypeFilter: [String!]
+                "
         )]
         public List<System.String>? ObjectTypeFilter { get; set; }
         [Parameter(
@@ -454,7 +594,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument includeEntireHierarchy: Boolean!"
+            HelpMessage =
+                @"
+                If true, the entire hierarchy will be searched.
+                GraphQL argument includeEntireHierarchy: Boolean!
+                "
         )]
         public System.Boolean? IncludeEntireHierarchy { get; set; }
         
@@ -468,7 +612,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365SharepointObjects(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   fid: UUID!, ):O365SharepointObjectConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: o365SharepointObjects(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   fid: UUID!, ):O365SharepointObjectConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter SharepointObject { get; set; }
@@ -484,7 +632,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365UserObjects(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   fid: UUID!, ):O365UserDescendantMetadataConnection!",
+            HelpMessage =
+                @"
+                Name, id, object type, and mail address of user descendant object.
+                GraphQL operation: o365UserObjects(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!],   fid: UUID!, ):O365UserDescendantMetadataConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter UserObject { get; set; }
@@ -500,7 +652,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365OrgSummaries:GetImplicitlyAuthorizedObjectSummariesResponse!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: o365OrgSummaries:GetImplicitlyAuthorizedObjectSummariesResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter OrgSummarie { get; set; }
@@ -516,7 +672,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365ObjectAncestors(snappableFid: UUID!):GetImplicitlyAuthorizedAncestorSummariesResponse!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: o365ObjectAncestors(snappableFid: UUID!):GetImplicitlyAuthorizedAncestorSummariesResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter ObjectAncestor { get; set; }
@@ -532,7 +692,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: browseO365TeamConvChannels(,   first: Int,   after: String,   snappableFid: UUID!,   snapshotFidOpt: UUID,   excludeArchived: Boolean!,   orgId: UUID!,   channelMembershipTypeFilter: ChannelMembershipType!,   nameFilter: String, ):O365TeamConvChannelConnection!",
+            HelpMessage =
+                @"
+                Browse channels in a Teams conversations snapshot.
+                GraphQL operation: browseO365TeamConvChannels(,   first: Int,   after: String,   snappableFid: UUID!,   snapshotFidOpt: UUID,   excludeArchived: Boolean!,   orgId: UUID!,   channelMembershipTypeFilter: ChannelMembershipType!,   nameFilter: String, ):O365TeamConvChannelConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter browseTeamConvChannel { get; set; }
@@ -542,7 +706,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument snapshotFidOpt: UUID"
+            HelpMessage =
+                @"
+                snapshotFid arg which is of optional type
+                GraphQL argument snapshotFidOpt: UUID
+                "
         )]
         public System.String? SnapshotFidOpt { get; set; }
         
@@ -556,7 +724,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365ServiceAccount(orgId: UUID!):O365ServiceAccountStatusResp!",
+            HelpMessage =
+                @"
+                Gets the service account for the given org.
+                GraphQL operation: o365ServiceAccount(orgId: UUID!):O365ServiceAccountStatusResp!
+                ",
             Position = 0
         )]
         public SwitchParameter ServiceAccount { get; set; }
@@ -572,7 +744,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allO365OrgStatuses:[O365OrgInfo!]!",
+            HelpMessage =
+                @"
+                Gets the status of each org in the account.
+                GraphQL operation: allO365OrgStatuses:[O365OrgInfo!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allOrgStatus { get; set; }
@@ -588,7 +764,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365License:O365License!",
+            HelpMessage =
+                @"
+                Retrieve o365 licence details.
+                GraphQL operation: o365License:O365License!
+                ",
             Position = 0
         )]
         public SwitchParameter License { get; set; }
@@ -604,7 +784,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: listO365Apps(,   first: Int,   after: String,   o365AppFilters: [AppFilter!]!,   o365AppSortByParam: AppSortByParam, ):O365AppConnection!",
+            HelpMessage =
+                @"
+                Lists the O365 apps.
+                GraphQL operation: listO365Apps(,   first: Int,   after: String,   o365AppFilters: [AppFilter!]!,   o365AppSortByParam: AppSortByParam, ):O365AppConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter listApp { get; set; }
@@ -614,7 +798,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument o365AppFilters: [AppFilter!]!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument o365AppFilters: [AppFilter!]!
+                "
         )]
         public List<AppFilter>? O365AppFilters { get; set; }
         [Parameter(
@@ -622,7 +810,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument o365AppSortByParam: AppSortByParam"
+            HelpMessage =
+                @"
+                
+                GraphQL argument o365AppSortByParam: AppSortByParam
+                "
         )]
         public AppSortByParam? O365AppSortByParam { get; set; }
         
@@ -636,7 +828,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allO365SubscriptionsAppTypeCounts:[O365SubscriptionAppTypeCounts!]!",
+            HelpMessage =
+                @"
+                Returns the total number of apps of each type, for each O365 org.
+                GraphQL operation: allO365SubscriptionsAppTypeCounts:[O365SubscriptionAppTypeCounts!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allSubscriptionsAppTypeCount { get; set; }
@@ -652,7 +848,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365StorageStats(orgID: UUID):GetO365StorageStatsResp!",
+            HelpMessage =
+                @"
+                Returns the storage stats of an O365 org.
+                GraphQL operation: o365StorageStats(orgID: UUID):GetO365StorageStatsResp!
+                ",
             Position = 0
         )]
         public SwitchParameter StorageStat { get; set; }
@@ -668,7 +868,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365ServiceStatus(orgID: UUID):GetO365ServiceStatusResp!",
+            HelpMessage =
+                @"
+                Returns the service status of the O365 service running on MSFT server.
+                GraphQL operation: o365ServiceStatus(orgID: UUID):GetO365ServiceStatusResp!
+                ",
             Position = 0
         )]
         public SwitchParameter ServiceStatus { get; set; }

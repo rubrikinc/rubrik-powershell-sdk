@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createGlobalSla(input: CreateGlobalSlaInput!):GlobalSlaReply!",
+            HelpMessage =
+                @"
+                Create SLA Domain.
+                GraphQL operation: createGlobalSla(input: CreateGlobalSlaInput!):GlobalSlaReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createGlobal { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: CreateGlobalSlaInput!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument input: CreateGlobalSlaInput!
+                "
         )]
         public CreateGlobalSlaInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateGlobalSla(input: UpdateGlobalSlaInput!):GlobalSlaReply!",
+            HelpMessage =
+                @"
+                Update SLA Domain.
+                GraphQL operation: updateGlobalSla(input: UpdateGlobalSlaInput!):GlobalSlaReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateGlobal { get; set; }
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: assignSla(input: AssignSlaInput!):SlaAssignResult!",
+            HelpMessage =
+                @"
+                Endpoint to assign SLA Domain.
+                GraphQL operation: assignSla(input: AssignSlaInput!):SlaAssignResult!
+                ",
             Position = 0
         )]
         public SwitchParameter assign { get; set; }
@@ -92,7 +108,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: exportSlaManagedVolumeSnapshot(input: ExportSlaManagedVolumeSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a request to export a snapshot and mount it on a host
+
+Supported in v5.3+
+Export a managed volume snapshot as a share and mount it on a given host.
+                GraphQL operation: exportSlaManagedVolumeSnapshot(input: ExportSlaManagedVolumeSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter exportManagedVolumeSnapshot { get; set; }

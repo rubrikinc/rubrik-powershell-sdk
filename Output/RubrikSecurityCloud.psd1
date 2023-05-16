@@ -27,7 +27,7 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: The word after "GraphQL schema version:" is generated.
-Description = 'RSC PowerShell SDK. GraphQL schema version: v20230426-26 .'
+Description = 'RSC PowerShell SDK. GraphQL schema version: v20230503-40 .'
 
 # Minimum version of the PowerShell engine required by this module
 #PowerShellVersion = '7.0.0'

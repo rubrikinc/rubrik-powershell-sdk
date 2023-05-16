@@ -24,8 +24,13 @@ Connect-Rsc
 It will retrieve an access token and store it in the session state.
 Any subsequent calls to `Connect-Rsc` will use the same token.
 
-You can then run any of the cmdlets in the SDK, for example,
-to retrieve the current account info:
+You can then run any of the cmdlets in the SDK
+
+```powershell
+Get-Command -Module RubrikSecurityCloud
+```
+
+For example, to retrieve the current account info:
 
 ```powershell
 Get-RscAccount

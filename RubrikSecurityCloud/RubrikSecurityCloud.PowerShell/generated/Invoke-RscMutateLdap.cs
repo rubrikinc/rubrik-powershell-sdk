@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateLdapIntegration(,   id: UUID,   name: String!,   bindUserName: String!,   bindUserPassword: String!,   baseDn: String,   trustedCerts: String,   dynamicDnsName: String,   ldapServers: [LdapServerInput!],   userSearchFilter: String,   userNameAttr: String,   groupMembershipAttr: String,   groupSearchFilter: String,   groupMemberAttr: String, ):String!",
+            HelpMessage =
+                @"
+                Mutate LDAP integration.
+                GraphQL operation: updateLdapIntegration(,   id: UUID,   name: String!,   bindUserName: String!,   bindUserPassword: String!,   baseDn: String,   trustedCerts: String,   dynamicDnsName: String,   ldapServers: [LdapServerInput!],   userSearchFilter: String,   userNameAttr: String,   groupMembershipAttr: String,   groupSearchFilter: String,   groupMemberAttr: String, ):String!
+                ",
             Position = 0
         )]
         public SwitchParameter updateIntegration { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument id: UUID"
+            HelpMessage =
+                @"
+                ID for your LDAP integration.
+                GraphQL argument id: UUID
+                "
         )]
         public System.String? Id { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument name: String!"
+            HelpMessage =
+                @"
+                Name for your LDAP integration.
+                GraphQL argument name: String!
+                "
         )]
         public System.String? Name { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument bindUserName: String!"
+            HelpMessage =
+                @"
+                BindUserName for your LDAP integration.
+                GraphQL argument bindUserName: String!
+                "
         )]
         public System.String? BindUserName { get; set; }
         [Parameter(
@@ -70,7 +86,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument bindUserPassword: String!"
+            HelpMessage =
+                @"
+                BindUserPassword for your LDAP integration.
+                GraphQL argument bindUserPassword: String!
+                "
         )]
         public System.String? BindUserPassword { get; set; }
         [Parameter(
@@ -78,7 +98,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument baseDn: String"
+            HelpMessage =
+                @"
+                BaseDn for your LDAP integration.
+                GraphQL argument baseDn: String
+                "
         )]
         public System.String? BaseDn { get; set; }
         [Parameter(
@@ -86,7 +110,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument trustedCerts: String"
+            HelpMessage =
+                @"
+                TrustedCerts for your LDAP integration.
+                GraphQL argument trustedCerts: String
+                "
         )]
         public System.String? TrustedCerts { get; set; }
         [Parameter(
@@ -94,7 +122,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument dynamicDnsName: String"
+            HelpMessage =
+                @"
+                Dynamic DNS name for your LDAP integration.
+                GraphQL argument dynamicDnsName: String
+                "
         )]
         public System.String? DynamicDnsName { get; set; }
         [Parameter(
@@ -102,7 +134,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument ldapServers: [LdapServerInput!]"
+            HelpMessage =
+                @"
+                LdapServers for your LDAP integration.
+                GraphQL argument ldapServers: [LdapServerInput!]
+                "
         )]
         public List<LdapServerInput>? LdapServers { get; set; }
         [Parameter(
@@ -110,7 +146,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument userSearchFilter: String"
+            HelpMessage =
+                @"
+                User search filter for your LDAP integration.
+                GraphQL argument userSearchFilter: String
+                "
         )]
         public System.String? UserSearchFilter { get; set; }
         [Parameter(
@@ -118,7 +158,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument userNameAttr: String"
+            HelpMessage =
+                @"
+                User name attribute for your LDAP integration.
+                GraphQL argument userNameAttr: String
+                "
         )]
         public System.String? UserNameAttr { get; set; }
         [Parameter(
@@ -126,7 +170,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument groupMembershipAttr: String"
+            HelpMessage =
+                @"
+                Group membership attribute for your LDAP integration.
+                GraphQL argument groupMembershipAttr: String
+                "
         )]
         public System.String? GroupMembershipAttr { get; set; }
         [Parameter(
@@ -134,7 +182,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument groupSearchFilter: String"
+            HelpMessage =
+                @"
+                Group search filter for your LDAP integration.
+                GraphQL argument groupSearchFilter: String
+                "
         )]
         public System.String? GroupSearchFilter { get; set; }
         [Parameter(
@@ -142,7 +194,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument groupMemberAttr: String"
+            HelpMessage =
+                @"
+                Group member attribute for your LDAP integration.
+                GraphQL argument groupMemberAttr: String
+                "
         )]
         public System.String? GroupMemberAttr { get; set; }
         
@@ -156,7 +212,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: removeLdapIntegration(id: UUID!):Boolean!",
+            HelpMessage =
+                @"
+                Remove LDAP integration.
+                GraphQL operation: removeLdapIntegration(id: UUID!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter removeIntegration { get; set; }
@@ -172,7 +232,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteLdapPrincipals(principalIds: [String!]!):Boolean!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: deleteLdapPrincipals(principalIds: [String!]!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter deletePrincipal { get; set; }
@@ -182,7 +246,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument principalIds: [String!]!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument principalIds: [String!]!
+                "
         )]
         public List<System.String>? PrincipalIds { get; set; }
         
@@ -196,7 +264,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: setLdapMfaSetting(input: SetLdapMfaSettingInput!):Boolean!",
+            HelpMessage =
+                @"
+                Update the MFA settings for the given LDAP integration. Return true when the operation succeeds.
+                GraphQL operation: setLdapMfaSetting(input: SetLdapMfaSettingInput!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter setMfaSetting { get; set; }
@@ -206,7 +278,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: SetLdapMfaSettingInput!"
+            HelpMessage =
+                @"
+                Input required for updating LDAP MFA settings.
+                GraphQL argument input: SetLdapMfaSettingInput!
+                "
         )]
         public SetLdapMfaSettingInput? Input { get; set; }
 

@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereVCenter(fid: UUID!):VsphereVcenter!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereVCenter(fid: UUID!):VsphereVcenter!
+                ",
             Position = 0
         )]
         public SwitchParameter Vcenter { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereVCenterConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereVcenterConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereVCenterConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereVcenterConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter List { get; set; }
@@ -70,7 +82,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -78,7 +94,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -86,7 +106,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -94,7 +118,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -102,7 +130,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -116,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vCenterPreAddInfo(input: PreAddVcenterInput!):VcenterPreAddInfo!",
+            HelpMessage =
+                @"
+                Get preAddInfo for a vcenter.
+                GraphQL operation: vCenterPreAddInfo(input: PreAddVcenterInput!):VcenterPreAddInfo!
+                ",
             Position = 0
         )]
         public SwitchParameter PreAddInfo { get; set; }
@@ -126,7 +162,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: PreAddVcenterInput!"
+            HelpMessage =
+                @"
+                Input for V1PreAddVcenter.
+                GraphQL argument input: PreAddVcenterInput!
+                "
         )]
         public PreAddVcenterInput? Input { get; set; }
         
@@ -140,7 +180,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vCenterNetworks(input: GetNetworksInput!):NetworkInfoListResponse!",
+            HelpMessage =
+                @"
+                Get the user-configured networks in the vCenter
+
+Supported in v5.3+
+Get the names and IDs of the user configured networks in the vCenter. This information enables users to choose a desired network for backups to go through for VMware Cloud on AWS setups.
+                GraphQL operation: vCenterNetworks(input: GetNetworksInput!):NetworkInfoListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter Network { get; set; }
@@ -156,7 +203,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vCenterHotAddNetwork(input: GetHotAddNetworkInput!):HotAddNetworkConfigWithName!",
+            HelpMessage =
+                @"
+                Retrieve the user-configured network for HotAdd operations
+
+Supported in v5.3+
+Retrieve the user-configured network for HotAdd backup and recovery operations on VMware on AWS.
+                GraphQL operation: vCenterHotAddNetwork(input: GetHotAddNetworkInput!):HotAddNetworkConfigWithName!
+                ",
             Position = 0
         )]
         public SwitchParameter HotAddNetwork { get; set; }
@@ -172,7 +226,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vCenterNumProxiesNeeded(input: GetNumProxiesNeededInput!):Int!",
+            HelpMessage =
+                @"
+                Get the number of HotAdd proxies needed for the vCenter
+
+Supported in v5.3+
+Get the number of HotAdd proxies that need to be deployed to the vCenter to support the maximum number of ingest jobs.
+                GraphQL operation: vCenterNumProxiesNeeded(input: GetNumProxiesNeededInput!):Int!
+                ",
             Position = 0
         )]
         public SwitchParameter NumProxiesNeeded { get; set; }
@@ -188,7 +249,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allVcenterHotAddProxyVms(clusterUuids: [UUID!]!):[VcenterHotAddProxyVmInfo!]!",
+            HelpMessage =
+                @"
+                Get a list of HotAdd proxy virtual machines
+
+Supported in v5.3+
+Retrieve summary information for all HotAdd proxy virtual machines.
+                GraphQL operation: allVcenterHotAddProxyVms(clusterUuids: [UUID!]!):[VcenterHotAddProxyVmInfo!]!
+                ",
             Position = 0
         )]
         public SwitchParameter HotAddProxy { get; set; }
@@ -198,7 +266,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument clusterUuids: [UUID!]!"
+            HelpMessage =
+                @"
+                List of cluster IDs.
+                GraphQL argument clusterUuids: [UUID!]!
+                "
         )]
         public List<System.String>? ClusterUuids { get; set; }
         
@@ -212,7 +284,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vCenterHotAddBandwidth(input: GetHotAddBandwidthInput!):HotAddBandwidthInfo!",
+            HelpMessage =
+                @"
+                Get the ingest and export bandwidth limits for HotAdd with the vCenter
+
+Supported in v5.3+
+Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vCenter. These limits are shared across all HotAdd proxies for the Center.
+                GraphQL operation: vCenterHotAddBandwidth(input: GetHotAddBandwidthInput!):HotAddBandwidthInfo!
+                ",
             Position = 0
         )]
         public SwitchParameter HotAddBandwidth { get; set; }
@@ -228,7 +307,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vCenterAdvancedTagPreview(input: PreviewFilterInput!):VcenterAdvancedTagPreviewReply!",
+            HelpMessage =
+                @"
+                Preview list of virtual machines of a proposed filter condition
+
+Supported in v7.0+
+Preview list of virtual machines of a proposed filter condition. The result might not be accurate if new virtual machines were added after last vCenter refresh.
+                GraphQL operation: vCenterAdvancedTagPreview(input: PreviewFilterInput!):VcenterAdvancedTagPreviewReply!
+                ",
             Position = 0
         )]
         public SwitchParameter AdvancedTagPreview { get; set; }

@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereOnDemandSnapshot(input: VsphereOnDemandSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vsphereOnDemandSnapshot(input: VsphereOnDemandSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter OnDemandSnapshot { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: VsphereOnDemandSnapshotInput!"
+            HelpMessage =
+                @"
+                Input for V1CreateOnDemandBackup.
+                GraphQL argument input: VsphereOnDemandSnapshotInput!
+                "
         )]
         public VsphereOnDemandSnapshotInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereBulkOnDemandSnapshot(input: VsphereBulkOnDemandSnapshotInput!):BatchAsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Trigger a bulk on demand snapshot.
+                GraphQL operation: vsphereBulkOnDemandSnapshot(input: VsphereBulkOnDemandSnapshotInput!):BatchAsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter BulkOnDemandSnapshot { get; set; }
@@ -76,7 +88,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteVsphereLiveMount(input: DeleteVsphereLiveMountInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Delete a Live Mount VM
+
+Supported in v5.0+
+Create a request to delete a Live Mount virtual machine.
+                GraphQL operation: deleteVsphereLiveMount(input: DeleteVsphereLiveMountInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteLiveMount { get; set; }
@@ -92,7 +111,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereExportSnapshotToStandaloneHostV2(input: VsphereExportSnapshotToStandaloneHostV2Input!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Export snapshot of a virtual machine to standalone ESXi server.
+                GraphQL operation: vsphereExportSnapshotToStandaloneHostV2(input: VsphereExportSnapshotToStandaloneHostV2Input!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter ExportSnapshotToStandaloneHostV2 { get; set; }
@@ -108,7 +131,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download Virtual Machine files from a snapshot
+
+Supported in v9.0
+Start an asynchronous job to download multiple Virtual Machine files, such as .vmdk, .vmx, and .nvram files, from the specified Virtual Machine snapshot.
+                GraphQL operation: downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadVirtualMachineFile { get; set; }
@@ -124,7 +154,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createVsphereAdvancedTag(input: CreateVsphereAdvancedTagInput!):CreateVsphereAdvancedTagReply!",
+            HelpMessage =
+                @"
+                Create a multi-tag filter for vSphere tags
+
+Supported in v7.0+
+Create a filter consisting of vSphere tags joined with logical operators.
+                GraphQL operation: createVsphereAdvancedTag(input: CreateVsphereAdvancedTagInput!):CreateVsphereAdvancedTagReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createAdvancedTag { get; set; }
@@ -140,7 +177,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteVsphereAdvancedTag(input: DeleteVsphereAdvancedTagInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Remove the multi-tag filter
+
+Supported in v7.0+
+Remove the multi-tag filter.
+                GraphQL operation: deleteVsphereAdvancedTag(input: DeleteVsphereAdvancedTagInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteAdvancedTag { get; set; }
@@ -156,7 +200,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateVsphereAdvancedTag(input: UpdateVsphereAdvancedTagInput!):UpdateVsphereAdvancedTagReply!",
+            HelpMessage =
+                @"
+                Update the multi-tag filter
+
+Supported in v7.0+
+Updates the name, condition, and description of the specified multi-tag filter.
+                GraphQL operation: updateVsphereAdvancedTag(input: UpdateVsphereAdvancedTagInput!):UpdateVsphereAdvancedTagReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateAdvancedTag { get; set; }

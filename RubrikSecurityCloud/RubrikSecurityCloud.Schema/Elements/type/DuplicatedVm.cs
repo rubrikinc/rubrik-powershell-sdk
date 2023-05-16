@@ -33,6 +33,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("effectiveSlaSourceObject")]
         public PathNode? EffectiveSlaSourceObject { get; set; }
 
+        //      C# -> Snappable? ReportWorkload
+        // GraphQL -> reportWorkload: Snappable (type)
+        [JsonProperty("reportWorkload")]
+        public Snappable? ReportWorkload { get; set; }
+
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         [JsonProperty("snapshotDistribution")]
@@ -56,6 +61,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? Fid = null,
         Cluster? Cluster = null,
         PathNode? EffectiveSlaSourceObject = null,
+        Snappable? ReportWorkload = null,
         SnapshotDistribution? SnapshotDistribution = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? EffectiveSlaDomain = null
@@ -69,6 +75,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
+        }
+        if ( ReportWorkload != null ) {
+            this.ReportWorkload = ReportWorkload;
         }
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
@@ -114,6 +123,16 @@ namespace Rubrik.SecurityCloud.Types
 
                  s += ind + "{\n" + 
                  this.EffectiveSlaSourceObject.AsFragment(indent+1) + 
+                 ind + "}\n";
+            }
+            //      C# -> Snappable? ReportWorkload
+            // GraphQL -> reportWorkload: Snappable (type)
+            if (this.ReportWorkload != null)
+            {
+                 s += ind + "reportWorkload\n";
+
+                 s += ind + "{\n" + 
+                 this.ReportWorkload.AsFragment(indent+1) + 
                  ind + "}\n";
             }
             //      C# -> SnapshotDistribution? SnapshotDistribution
@@ -179,6 +198,13 @@ namespace Rubrik.SecurityCloud.Types
             {
                 this.EffectiveSlaSourceObject = new PathNode();
                 this.EffectiveSlaSourceObject.ApplyExploratoryFragment(parent + ".effectiveSlaSourceObject");
+            }
+            //      C# -> Snappable? ReportWorkload
+            // GraphQL -> reportWorkload: Snappable (type)
+            if (this.ReportWorkload == null && Exploration.Includes(parent + ".reportWorkload"))
+            {
+                this.ReportWorkload = new Snappable();
+                this.ReportWorkload.ApplyExploratoryFragment(parent + ".reportWorkload");
             }
             //      C# -> SnapshotDistribution? SnapshotDistribution
             // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)

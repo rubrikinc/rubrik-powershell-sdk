@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: registerHypervScvmm(input: RegisterHypervScvmmInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Register HyperV SCVMM to Rubrik Cluster.
+                GraphQL operation: registerHypervScvmm(input: RegisterHypervScvmmInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter registerScvmm { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: RegisterHypervScvmmInput!"
+            HelpMessage =
+                @"
+                Input for register Hyper-V SCVMM.
+                GraphQL argument input: RegisterHypervScvmmInput!
+                "
         )]
         public RegisterHypervScvmmInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervScvmmUpdate(input: HypervScvmmUpdateInput!):HypervScvmmUpdateReply!",
+            HelpMessage =
+                @"
+                Update properties for a given HyperV SCVMM.
+                GraphQL operation: hypervScvmmUpdate(input: HypervScvmmUpdateInput!):HypervScvmmUpdateReply!
+                ",
             Position = 0
         )]
         public SwitchParameter ScvmmUpdate { get; set; }
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervScvmmDelete(input: HypervScvmmDeleteInput!):ResponseSuccess!",
+            HelpMessage =
+                @"
+                Delete a given HyperV SCVMM.
+                GraphQL operation: hypervScvmmDelete(input: HypervScvmmDeleteInput!):ResponseSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter ScvmmDelete { get; set; }
@@ -92,7 +108,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: refreshHypervScvmm(input: RefreshHypervScvmmInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Refresh a given HyperV SCVMM.
+                GraphQL operation: refreshHypervScvmm(input: RefreshHypervScvmmInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter refreshScvmm { get; set; }
@@ -108,7 +128,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervOnDemandSnapshot(input: HypervOnDemandSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create on-demand VM snapshot
+
+Supported in v5.0+
+Create an on-demand snapshot for the given VM ID.
+                GraphQL operation: hypervOnDemandSnapshot(input: HypervOnDemandSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter OnDemandSnapshot { get; set; }
@@ -124,7 +151,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: hypervDeleteAllSnapshots(input: HypervDeleteAllSnapshotsInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Delete all snapshots of VM
+
+Supported in v5.0+
+Delete all snapshots of a virtual machine.
+                GraphQL operation: hypervDeleteAllSnapshots(input: HypervDeleteAllSnapshotsInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter DeleteAllSnapshot { get; set; }
@@ -140,7 +174,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: exportHypervVirtualMachine(input: ExportHypervVirtualMachineInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Export VM snapshot
+
+Supported in v5.0+
+Export snapshot of a vm.
+                GraphQL operation: exportHypervVirtualMachine(input: ExportHypervVirtualMachineInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter exportVirtualMachine { get; set; }
@@ -156,7 +197,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadHypervVirtualMachineSnapshotFiles(input: DownloadHypervVirtualMachineSnapshotFilesInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download files from a Hyper-V VM backup
+
+Supported in v5.0+
+Start an asynchronous job to download multiple files and folders from a specified Hyper-V VM backup. The response returns an asynchrounous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'hyperv/vm/request/{id}'.
+                GraphQL operation: downloadHypervVirtualMachineSnapshotFiles(input: DownloadHypervVirtualMachineSnapshotFilesInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadVirtualMachineSnapshotFile { get; set; }
@@ -172,7 +220,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: instantRecoverHypervVirtualMachineSnapshot(input: InstantRecoverHypervVirtualMachineSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
+
+Supported in v5.0+
+The VM will be started with networking enabled. If the VM does not exist anymore, a new VM will be created.
+                GraphQL operation: instantRecoverHypervVirtualMachineSnapshot(input: InstantRecoverHypervVirtualMachineSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter instantRecoverVirtualMachineSnapshot { get; set; }
@@ -188,7 +243,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: restoreHypervVirtualMachineSnapshotFiles(input: RestoreHypervVirtualMachineSnapshotFilesInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Restore files from snapshot
+
+Supported in v5.0+
+Restore files from a snapshot to the original source location.
+                GraphQL operation: restoreHypervVirtualMachineSnapshotFiles(input: RestoreHypervVirtualMachineSnapshotFilesInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter restoreVirtualMachineSnapshotFile { get; set; }
@@ -204,7 +266,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: registerAgentHypervVirtualMachine(input: RegisterAgentHypervVirtualMachineInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Register the agent installed in VM
+
+Supported in v5.0+
+Register the agent that installed in VM.
+                GraphQL operation: registerAgentHypervVirtualMachine(input: RegisterAgentHypervVirtualMachineInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter registerAgentVirtualMachine { get; set; }
@@ -220,7 +289,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteHypervVirtualMachineSnapshot(input: DeleteHypervVirtualMachineSnapshotInput!):RequestSuccess!",
+            HelpMessage =
+                @"
+                Delete VM snapshot
+
+Supported in v5.0+
+Delete a snapshot by expiring it. Snapshot is expired only if it is a manual snapshot or a snapshot of an unprotected vm.
+                GraphQL operation: deleteHypervVirtualMachineSnapshot(input: DeleteHypervVirtualMachineSnapshotInput!):RequestSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteVirtualMachineSnapshot { get; set; }
@@ -236,7 +312,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadHypervVirtualMachineSnapshot(input: DownloadHypervVirtualMachineSnapshotInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Creates a download from archival request
+
+Supported in v5.0+
+Download a snapshot from archival.
+                GraphQL operation: downloadHypervVirtualMachineSnapshot(input: DownloadHypervVirtualMachineSnapshotInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadVirtualMachineSnapshot { get; set; }
@@ -252,7 +335,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createHypervVirtualMachineSnapshotMount(input: CreateHypervVirtualMachineSnapshotMountInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Create a live mount request
+
+Supported in v5.0+
+Create a live mount request with given configuration.
+                GraphQL operation: createHypervVirtualMachineSnapshotMount(input: CreateHypervVirtualMachineSnapshotMountInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter createVirtualMachineSnapshotMount { get; set; }
@@ -268,7 +358,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateHypervVirtualMachineSnapshotMount(input: UpdateHypervVirtualMachineSnapshotMountInput!):UpdateHypervVirtualMachineSnapshotMountReply!",
+            HelpMessage =
+                @"
+                Power a Live Mount on and off
+
+Supported in v5.0+
+Power a specified Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
+                GraphQL operation: updateHypervVirtualMachineSnapshotMount(input: UpdateHypervVirtualMachineSnapshotMountInput!):UpdateHypervVirtualMachineSnapshotMountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateVirtualMachineSnapshotMount { get; set; }
@@ -284,7 +381,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteHypervVirtualMachineSnapshotMount(input: DeleteHypervVirtualMachineSnapshotMountInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Requst to delete a live mount
+
+Supported in v5.0+
+Create a request to delete a live mount.
+                GraphQL operation: deleteHypervVirtualMachineSnapshotMount(input: DeleteHypervVirtualMachineSnapshotMountInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteVirtualMachineSnapshotMount { get; set; }
@@ -300,7 +404,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: refreshHypervServer(input: RefreshHypervServerInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Refresh Hyper-V host metadata
+
+Supported in v5.0+
+Create a job to refresh the metadata for the specified Hyper-V host.
+                GraphQL operation: refreshHypervServer(input: RefreshHypervServerInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter refreshServer { get; set; }
@@ -316,7 +427,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: batchOnDemandBackupHypervVm(input: BatchOnDemandBackupHypervVmInput!):BatchOnDemandBackupHypervVmReply!",
+            HelpMessage =
+                @"
+                Takes bulk on-demand backup of Hyper-V virtual machines
+
+Supported in v9.0
+Takes on-demand backup of multiple specified Hyper-V virtual machines.
+                GraphQL operation: batchOnDemandBackupHypervVm(input: BatchOnDemandBackupHypervVmInput!):BatchOnDemandBackupHypervVmReply!
+                ",
             Position = 0
         )]
         public SwitchParameter batchOnDemandBackupVm { get; set; }
@@ -332,7 +450,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: batchExportHypervVm(input: BatchExportHypervVmInput!):BatchExportHypervVmReply!",
+            HelpMessage =
+                @"
+                Exports a snapshot from each member of a set of virtual machines
+
+Supported in v7.0+
+Export a snapshot from each member of a set of virtual machines.
+                GraphQL operation: batchExportHypervVm(input: BatchExportHypervVmInput!):BatchExportHypervVmReply!
+                ",
             Position = 0
         )]
         public SwitchParameter batchExportVm { get; set; }
@@ -348,7 +473,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: batchMountHypervVm(input: BatchMountHypervVmInput!):BatchMountHypervVmReply!",
+            HelpMessage =
+                @"
+                Mount snapshots from multiple virtual machines
+
+Supported in v7.0+
+Mounts a batch of snapshots from a group of specified virtual machines.
+                GraphQL operation: batchMountHypervVm(input: BatchMountHypervVmInput!):BatchMountHypervVmReply!
+                ",
             Position = 0
         )]
         public SwitchParameter batchMountVm { get; set; }
@@ -364,7 +496,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: batchInstantRecoverHypervVm(input: BatchInstantRecoverHypervVmInput!):BatchInstantRecoverHypervVmReply!",
+            HelpMessage =
+                @"
+                Instantly recovers snapshots from multiple virtual machines
+
+Supported in v7.0+
+Instantly recovers a batch of snapshots from a group of specified virtual machines.
+                GraphQL operation: batchInstantRecoverHypervVm(input: BatchInstantRecoverHypervVmInput!):BatchInstantRecoverHypervVmReply!
+                ",
             Position = 0
         )]
         public SwitchParameter batchInstantRecoverVm { get; set; }
@@ -380,7 +519,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateHypervVirtualMachine(input: UpdateHypervVirtualMachineInput!):UpdateHypervVirtualMachineReply!",
+            HelpMessage =
+                @"
+                Update VM
+
+Supported in v5.0+
+Update VM with specified properties.
+                GraphQL operation: updateHypervVirtualMachine(input: UpdateHypervVirtualMachineInput!):UpdateHypervVirtualMachineReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateVirtualMachine { get; set; }
@@ -396,7 +542,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: downloadHypervSnapshotFromLocation(input: DownloadHypervSnapshotFromLocationInput!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                Download a snapshot from a replication target
+
+Supported in v7.0+
+Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
+                GraphQL operation: downloadHypervSnapshotFromLocation(input: DownloadHypervSnapshotFromLocationInput!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter downloadSnapshotFromLocation { get; set; }

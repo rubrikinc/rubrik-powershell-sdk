@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereVmNew(fid: UUID!):VsphereVm!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereVmNew(fid: UUID!):VsphereVm!
+                ",
             Position = 0
         )]
         public SwitchParameter New { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereVmNewConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereVmConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereVmNewConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereVmConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter NewList { get; set; }
@@ -70,7 +82,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -78,7 +94,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -86,7 +106,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -94,7 +118,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -102,7 +130,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -116,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime):RecoverableRangeResponse!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime):RecoverableRangeResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter RecoverableRange { get; set; }
@@ -126,7 +162,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument snappableFid: UUID!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument snappableFid: UUID!
+                "
         )]
         public System.String? SnappableFid { get; set; }
         [Parameter(
@@ -134,7 +174,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument beforeTime: DateTime"
+            HelpMessage =
+                @"
+                
+                GraphQL argument beforeTime: DateTime
+                "
         )]
         public DateTime? BeforeTime { get; set; }
         [Parameter(
@@ -142,7 +186,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument afterTime: DateTime"
+            HelpMessage =
+                @"
+                
+                GraphQL argument afterTime: DateTime
+                "
         )]
         public DateTime? AfterTime { get; set; }
         
@@ -156,7 +204,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVMRecoverableRangeInBatch(requestInfo: BatchVmwareVmRecoverableRangesRequestInput!):BatchVmwareVmRecoverableRanges!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vsphereVMRecoverableRangeInBatch(requestInfo: BatchVmwareVmRecoverableRangesRequestInput!):BatchVmwareVmRecoverableRanges!
+                ",
             Position = 0
         )]
         public SwitchParameter RecoverableRangeInBatch { get; set; }
@@ -166,7 +218,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument requestInfo: BatchVmwareVmRecoverableRangesRequestInput!"
+            HelpMessage =
+                @"
+                The batch request, which includes the ID of each CDP-enabled virtual machine for which recoverable ranges are being retrieved, and optionally the date ranges as a filter.
+                GraphQL argument requestInfo: BatchVmwareVmRecoverableRangesRequestInput!
+                "
         )]
         public BatchVmwareVmRecoverableRangesRequestInput? RequestInfo { get; set; }
         
@@ -180,7 +236,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime):RecoverableRangeResponse!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime):RecoverableRangeResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter MissedRecoverableRange { get; set; }
@@ -196,7 +256,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereVMAsyncRequestStatus(clusterUuid: UUID!, id: String!):AsyncRequestStatus!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereVMAsyncRequestStatus(clusterUuid: UUID!, id: String!):AsyncRequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter AsyncRequestStatus { get; set; }
@@ -206,7 +270,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument clusterUuid: UUID!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument clusterUuid: UUID!
+                "
         )]
         public System.String? ClusterUuid { get; set; }
         [Parameter(
@@ -214,7 +282,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument id: String!"
+            HelpMessage =
+                @"
+                ID of an asynchronous request.
+                GraphQL argument id: String!
+                "
         )]
         public System.String? Id { get; set; }
 

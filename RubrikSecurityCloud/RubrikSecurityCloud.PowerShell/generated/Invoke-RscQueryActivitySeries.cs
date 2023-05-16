@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: activitySeries(input: ActivitySeriesInput!):ActivitySeries!",
+            HelpMessage =
+                @"
+                Retrieve an activity series.
+                GraphQL operation: activitySeries(input: ActivitySeriesInput!):ActivitySeries!
+                ",
             Position = 0
         )]
         public SwitchParameter ActivitySeries { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: ActivitySeriesInput!"
+            HelpMessage =
+                @"
+                Input for retrieving an activity series.
+                GraphQL argument input: ActivitySeriesInput!
+                "
         )]
         public ActivitySeriesInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: activitySeriesConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: ActivitySeriesSortField,   filters: ActivitySeriesFilter, ):ActivitySeriesConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: activitySeriesConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: ActivitySeriesSortField,   filters: ActivitySeriesFilter, ):ActivitySeriesConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter List { get; set; }
@@ -70,7 +82,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -78,7 +94,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -86,7 +106,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument last: Int"
+            HelpMessage =
+                @"
+                Returns the last n elements from the list.
+                GraphQL argument last: Int
+                "
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
@@ -94,7 +118,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument before: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come before the specified cursor.
+                GraphQL argument before: String
+                "
         )]
         public System.String? Before { get; set; }
         [Parameter(
@@ -102,7 +130,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Activity sort order
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -110,7 +142,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: ActivitySeriesSortField"
+            HelpMessage =
+                @"
+                Sort activity series by field.
+                GraphQL argument sortBy: ActivitySeriesSortField
+                "
         )]
         public ActivitySeriesSortField? SortBy { get; set; }
         [Parameter(
@@ -118,7 +154,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filters: ActivitySeriesFilter"
+            HelpMessage =
+                @"
+                
+                GraphQL argument filters: ActivitySeriesFilter
+                "
         )]
         public ActivitySeriesFilter? Filters { get; set; }
 

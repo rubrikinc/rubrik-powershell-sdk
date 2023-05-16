@@ -41,31 +41,43 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
 
         private Object _jsonOk(Object obj)
         {
-            if ( 
-                obj == null || 
-                obj is String || 
-                obj is int || 
-                obj is bool || 
+            if (
+                obj == null ||
+                obj is string ||
+                obj is int ||
+                obj is bool ||
                 obj is IFragment ||
                 obj is IInput
             )
             {
                 return obj;
             }
+            if (obj is Hashtable hashtable)
+            {
+                var _arcDict = new Dictionary<string, object>();
+                foreach (DictionaryEntry entry in hashtable)
+                {
+                    if (entry.Value != null)
+                    {
+                        _arcDict.Add(
+                            (string)entry.Key, _jsonOk(entry.Value));
+                    }
+                }
+                return _arcDict;
+            }
+            // default:
             return obj.ToString();
         }
 
-        // make internal?
-        public Dictionary<String, object> GetArgDict(bool beJsonOk=true)
+        internal Dictionary<string, object> GetArgDict()
         {
-            var _arcDict = new Dictionary<String, Object>();
+            var _arcDict = new Dictionary<string, object>();
             foreach (DictionaryEntry entry in this.Arg)
             {
                 if (entry.Value != null)
                 {
                     _arcDict.Add(
-                        (String)entry.Key,
-                        beJsonOk ? _jsonOk(entry.Value) : entry.Value);
+                        (string)entry.Key, _jsonOk(entry.Value));
                 }
             }
             return _arcDict;
@@ -161,7 +173,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             _logger.Debug(
                 $"RscCmdletInput:\n" +
                 $"  Op   : {this.Op}\n" +
-                $"  Arg  : {this.ArgString()}\n" +
+                $"  Arg  : {this._argString()}\n" +
                 $"  Field: {FieldStr}"
             );
         }
@@ -205,7 +217,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             return (Hashtable)_parent.Arg;
         }
 
-        public String ArgString(bool withTypes=true)
+        internal String _argString()
         {
             List<String> args = new List<String>();
             foreach (var argDef in _argDefs)
@@ -216,12 +228,16 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 String valStr = "null";
                 if (val != null)
                 {
-                    valStr = val.ToString();
-                    if (withTypes)
+                    if( val is Hashtable hashTable)
                     {
-                        valStr += "(" + val.GetType().Name + ")";
+                        valStr = StringUtils.HashtableToString(hashTable);
                     }
-                    args.Add(argName + ": " + argType + "=" + valStr);
+                    else 
+                    {
+                        valStr = val.ToString();
+                    }
+                    valStr += "<" + val.GetType().Name + ">";
+                    args.Add(argName + "<" + argType + "> = " + valStr);
                 }
             }
             return String.Join(",", args);

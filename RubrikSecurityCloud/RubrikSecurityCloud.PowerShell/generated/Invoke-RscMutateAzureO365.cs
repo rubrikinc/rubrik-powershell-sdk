@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: setupAzureO365Exocompute(tenantId: String!, subscriptionId: UUID!, exocomputeConfig: AzureO365ExocomputeConfig!):SetupAzureO365ExocomputeResp!",
+            HelpMessage =
+                @"
+                Sets up Exocompute for an O365 subscription.
+                GraphQL operation: setupAzureO365Exocompute(tenantId: String!, subscriptionId: UUID!, exocomputeConfig: AzureO365ExocomputeConfig!):SetupAzureO365ExocomputeResp!
+                ",
             Position = 0
         )]
         public SwitchParameter setupExocompute { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument tenantId: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument tenantId: String!
+                "
         )]
         public System.String? TenantId { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument subscriptionId: UUID!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument subscriptionId: UUID!
+                "
         )]
         public System.String? SubscriptionId { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!
+                "
         )]
         public AzureO365ExocomputeConfig? ExocomputeConfig { get; set; }
 

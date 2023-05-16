@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startAwsNativeEc2InstanceSnapshotsJob(input: StartAwsNativeEc2InstanceSnapshotsJobInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
+                GraphQL operation: startAwsNativeEc2InstanceSnapshotsJob(input: StartAwsNativeEc2InstanceSnapshotsJobInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startNativeEc2InstanceSnapshotsJob { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
+            HelpMessage =
+                @"
+                Input for create AWS EC2 Instance snapshots job.
+                GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!
+                "
         )]
         public StartAwsNativeEc2InstanceSnapshotsJobInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startRestoreAwsNativeEc2InstanceSnapshotJob(input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
+                GraphQL operation: startRestoreAwsNativeEc2InstanceSnapshotJob(input: StartRestoreAwsNativeEc2InstanceSnapshotJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startRestoreNativeEc2InstanceSnapshotJob { get; set; }
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startRefreshAwsNativeAccountsJob(input: StartRefreshAwsNativeAccountsJobInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
+                GraphQL operation: startRefreshAwsNativeAccountsJob(input: StartRefreshAwsNativeAccountsJobInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startRefreshNativeAccountsJob { get; set; }
@@ -92,7 +108,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startCreateAwsNativeEbsVolumeSnapshotsJob(input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
+                GraphQL operation: startCreateAwsNativeEbsVolumeSnapshotsJob(input: StartCreateAwsNativeEbsVolumeSnapshotsJobInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startCreateNativeEbsVolumeSnapshotsJob { get; set; }
@@ -108,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startAwsNativeAccountDisableJob(input: StartAwsNativeAccountDisableJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
+                GraphQL operation: startAwsNativeAccountDisableJob(input: StartAwsNativeAccountDisableJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startNativeAccountDisableJob { get; set; }
@@ -124,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startExportAwsNativeEbsVolumeSnapshotJob(input: StartExportAwsNativeEbsVolumeSnapshotJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
+                GraphQL operation: startExportAwsNativeEbsVolumeSnapshotJob(input: StartExportAwsNativeEbsVolumeSnapshotJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startExportNativeEbsVolumeSnapshotJob { get; set; }
@@ -140,7 +168,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: excludeAwsNativeEbsVolumesFromSnapshot(input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!):Void",
+            HelpMessage =
+                @"
+                Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
+                GraphQL operation: excludeAwsNativeEbsVolumesFromSnapshot(input: ExcludeAwsNativeEbsVolumesFromSnapshotInput!):Void
+                ",
             Position = 0
         )]
         public SwitchParameter excludeNativeEbsVolumesFromSnapshot { get; set; }
@@ -156,7 +188,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startAwsNativeRdsInstanceSnapshotsJob(input: StartAwsNativeRdsInstanceSnapshotsJobInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
+                GraphQL operation: startAwsNativeRdsInstanceSnapshotsJob(input: StartAwsNativeRdsInstanceSnapshotsJobInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startNativeRdsInstanceSnapshotsJob { get; set; }
@@ -172,7 +208,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAwsAccount(input: CreateAwsAccountInput!):CloudAccount!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: createAwsAccount(input: CreateAwsAccountInput!):CloudAccount!
+                ",
             Position = 0
         )]
         public SwitchParameter createAccount { get; set; }
@@ -188,7 +228,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAwsAccount(input: UpdateAwsAccountInput!):CloudAccount!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateAwsAccount(input: UpdateAwsAccountInput!):CloudAccount!
+                ",
             Position = 0
         )]
         public SwitchParameter updateAccount { get; set; }
@@ -204,7 +248,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAutomaticAwsTargetMapping(input: CreateAutomaticAwsTargetMappingInput!):TargetMapping!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: createAutomaticAwsTargetMapping(input: CreateAutomaticAwsTargetMappingInput!):TargetMapping!
+                ",
             Position = 0
         )]
         public SwitchParameter createAutomaticTargetMapping { get; set; }
@@ -220,7 +268,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createCloudNativeAwsStorageSetting(input: CreateCloudNativeAwsStorageSettingInput!):CreateCloudNativeAwsStorageSettingReply!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: createCloudNativeAwsStorageSetting(input: CreateCloudNativeAwsStorageSettingInput!):CreateCloudNativeAwsStorageSettingReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createCloudNativeStorageSetting { get; set; }
@@ -236,7 +288,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAutomaticAwsTargetMapping(input: UpdateAutomaticAwsTargetMappingInput!):TargetMapping!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateAutomaticAwsTargetMapping(input: UpdateAutomaticAwsTargetMappingInput!):TargetMapping!
+                ",
             Position = 0
         )]
         public SwitchParameter updateAutomaticTargetMapping { get; set; }
@@ -252,7 +308,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateCloudNativeAwsStorageSetting(input: UpdateCloudNativeAwsStorageSettingInput!):UpdateCloudNativeAwsStorageSettingReply!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateCloudNativeAwsStorageSetting(input: UpdateCloudNativeAwsStorageSettingInput!):UpdateCloudNativeAwsStorageSettingReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateCloudNativeStorageSetting { get; set; }
@@ -268,7 +328,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAwsTarget(input: CreateAwsTargetInput!):Target!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: createAwsTarget(input: CreateAwsTargetInput!):Target!
+                ",
             Position = 0
         )]
         public SwitchParameter createTarget { get; set; }
@@ -284,7 +348,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAwsTarget(input: UpdateAwsTargetInput!):Target!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateAwsTarget(input: UpdateAwsTargetInput!):Target!
+                ",
             Position = 0
         )]
         public SwitchParameter updateTarget { get; set; }
@@ -300,7 +368,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAwsReaderTarget(input: CreateAwsReaderTargetInput!):Target!",
+            HelpMessage =
+                @"
+                Create a reader type for AWS archival location on a Rubrik cluster.
+                GraphQL operation: createAwsReaderTarget(input: CreateAwsReaderTargetInput!):Target!
+                ",
             Position = 0
         )]
         public SwitchParameter createReaderTarget { get; set; }
@@ -316,7 +388,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAwsComputeSetting(input: CreateAwsComputeSettingInput!):AwsComputeSettings!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: createAwsComputeSetting(input: CreateAwsComputeSettingInput!):AwsComputeSettings!
+                ",
             Position = 0
         )]
         public SwitchParameter createComputeSetting { get; set; }
@@ -332,7 +408,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAwsComputeSetting(input: UpdateAwsComputeSettingInput!):AwsComputeSettings!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: updateAwsComputeSetting(input: UpdateAwsComputeSettingInput!):AwsComputeSettings!
+                ",
             Position = 0
         )]
         public SwitchParameter updateComputeSetting { get; set; }
@@ -348,7 +428,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteAwsComputeSetting(input: DeleteAwsComputeSettingInput!):Void",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: deleteAwsComputeSetting(input: DeleteAwsComputeSettingInput!):Void
+                ",
             Position = 0
         )]
         public SwitchParameter deleteComputeSetting { get; set; }
@@ -364,7 +448,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: validateAndCreateAwsCloudAccount(input: ValidateAndCreateAwsCloudAccountInput!):ValidateAndCreateAwsCloudAccountReply!",
+            HelpMessage =
+                @"
+                Validate and create AWS cloud account. If validation fails, no error is returned and the cause is present in the ""message"" field of return object or within admin/child accounts of return object. In case validation succeeds, it initiates creation of AWS cloud account. This is the first step to set up native protection.
+                GraphQL operation: validateAndCreateAwsCloudAccount(input: ValidateAndCreateAwsCloudAccountInput!):ValidateAndCreateAwsCloudAccountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter validateAndCreateCloudAccount { get; set; }
@@ -380,7 +468,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: finalizeAwsCloudAccountProtection(input: FinalizeAwsCloudAccountProtectionInput!):FinalizeAwsCloudAccountProtectionReply!",
+            HelpMessage =
+                @"
+                Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step.
+                GraphQL operation: finalizeAwsCloudAccountProtection(input: FinalizeAwsCloudAccountProtectionInput!):FinalizeAwsCloudAccountProtectionReply!
+                ",
             Position = 0
         )]
         public SwitchParameter finalizeCloudAccountProtection { get; set; }
@@ -396,7 +488,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: prepareAwsCloudAccountDeletion(input: PrepareAwsCloudAccountDeletionInput!):PrepareAwsCloudAccountDeletionReply!",
+            HelpMessage =
+                @"
+                Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for deletion of cloud account and does not change any state of account.
+                GraphQL operation: prepareAwsCloudAccountDeletion(input: PrepareAwsCloudAccountDeletionInput!):PrepareAwsCloudAccountDeletionReply!
+                ",
             Position = 0
         )]
         public SwitchParameter prepareCloudAccountDeletion { get; set; }
@@ -412,7 +508,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: finalizeAwsCloudAccountDeletion(input: FinalizeAwsCloudAccountDeletionInput!):FinalizeAwsCloudAccountDeletionReply!",
+            HelpMessage =
+                @"
+                Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
+                GraphQL operation: finalizeAwsCloudAccountDeletion(input: FinalizeAwsCloudAccountDeletionInput!):FinalizeAwsCloudAccountDeletionReply!
+                ",
             Position = 0
         )]
         public SwitchParameter finalizeCloudAccountDeletion { get; set; }
@@ -428,7 +528,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAwsCloudAccountFeature(input: UpdateAwsCloudAccountFeatureInput!):UpdateAwsCloudAccountFeatureReply!",
+            HelpMessage =
+                @"
+                Updates regions, stack ARN, and role ARN for a feature for a given cloud account.
+                GraphQL operation: updateAwsCloudAccountFeature(input: UpdateAwsCloudAccountFeatureInput!):UpdateAwsCloudAccountFeatureReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateCloudAccountFeature { get; set; }
@@ -444,7 +548,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateAwsCloudAccount(input: UpdateAwsCloudAccountInput!):Void",
+            HelpMessage =
+                @"
+                Update properties for a given AWS cloud account.
+                GraphQL operation: updateAwsCloudAccount(input: UpdateAwsCloudAccountInput!):Void
+                ",
             Position = 0
         )]
         public SwitchParameter updateCloudAccount { get; set; }
@@ -460,7 +568,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: prepareFeatureUpdateForAwsCloudAccount(input: PrepareFeatureUpdateForAwsCloudAccountInput!):PrepareFeatureUpdateForAwsCloudAccountReply!",
+            HelpMessage =
+                @"
+                Prepare manual update features to latest version.
+                GraphQL operation: prepareFeatureUpdateForAwsCloudAccount(input: PrepareFeatureUpdateForAwsCloudAccountInput!):PrepareFeatureUpdateForAwsCloudAccountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter prepareFeatureUpdateForCloudAccount { get; set; }
@@ -476,7 +588,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAwsExocomputeConfigs(input: CreateAwsExocomputeConfigsInput!):CreateAwsExocomputeConfigsReply!",
+            HelpMessage =
+                @"
+                Create AWS Exocompute configs.
+                GraphQL operation: createAwsExocomputeConfigs(input: CreateAwsExocomputeConfigsInput!):CreateAwsExocomputeConfigsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createExocomputeConfig { get; set; }
@@ -492,7 +608,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteAwsExocomputeConfigs(input: DeleteAwsExocomputeConfigsInput!):DeleteAwsExocomputeConfigsReply!",
+            HelpMessage =
+                @"
+                Deletes AWS Exocompute configs.
+                GraphQL operation: deleteAwsExocomputeConfigs(input: DeleteAwsExocomputeConfigsInput!):DeleteAwsExocomputeConfigsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteExocomputeConfig { get; set; }
@@ -508,7 +628,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: startAwsExocomputeDisableJob(input: StartAwsExocomputeDisableJobInput!):AsyncJobStatus!",
+            HelpMessage =
+                @"
+                Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
+                GraphQL operation: startAwsExocomputeDisableJob(input: StartAwsExocomputeDisableJobInput!):AsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter startExocomputeDisableJob { get; set; }
@@ -524,7 +648,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: addAwsIamUserBasedCloudAccount(input: AddAwsIamUserBasedCloudAccountInput!):AddAwsIamUserBasedCloudAccountReply!",
+            HelpMessage =
+                @"
+                Adds an IAM user-based AWS cloud account and enables the features specified in the input after successful validation of the request.
+                GraphQL operation: addAwsIamUserBasedCloudAccount(input: AddAwsIamUserBasedCloudAccountInput!):AddAwsIamUserBasedCloudAccountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter addIamUserBasedCloudAccount { get; set; }
@@ -540,7 +668,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: upgradeAwsIamUserBasedCloudAccountPermissions(input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!):Boolean!",
+            HelpMessage =
+                @"
+                Set IAM user-based AWS account features status to Connected from Update Permissions state. It should be used by caution from cloud accounts only after latest required permissions are granted to authorized IAM user.
+                GraphQL operation: upgradeAwsIamUserBasedCloudAccountPermissions(input: UpgradeAwsIamUserBasedCloudAccountPermissionsInput!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter upgradeIamUserBasedCloudAccountPermission { get; set; }
@@ -556,7 +688,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: upgradeAwsCloudAccountFeaturesWithoutCft(input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!):Boolean!",
+            HelpMessage =
+                @"
+                Updates status of AWS cloud account features to connected if they are in update permissions state. This mutation should be used with caution. It should be invoked only after the latest required permissions are granted to the AWS cloud account user used by Rubrik. This mutation does not verify if the required permissions are actually granted to the user or not. Its usage is restricted to only IAM user-based and authentication server-based AWS cloud accounts.
+                GraphQL operation: upgradeAwsCloudAccountFeaturesWithoutCft(input: UpgradeAwsCloudAccountFeaturesWithoutCftInput!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter upgradeCloudAccountFeaturesWithoutCft { get; set; }
@@ -572,7 +708,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: addAwsAuthenticationServerBasedCloudAccount(input: AddAwsAuthenticationServerBasedCloudAccountInput!):AddAwsAuthenticationServerBasedCloudAccountReply!",
+            HelpMessage =
+                @"
+                Validates and adds an authentication server-based AWS cloud account. When validation succeeds, the AWS cloud account is added and the features specified in the request are enabled. When validation fails, an error is not returned, but the cause of the failure is specified in the ""message"" field of the response object.
+                GraphQL operation: addAwsAuthenticationServerBasedCloudAccount(input: AddAwsAuthenticationServerBasedCloudAccountInput!):AddAwsAuthenticationServerBasedCloudAccountReply!
+                ",
             Position = 0
         )]
         public SwitchParameter addAuthenticationServerBasedCloudAccount { get; set; }
@@ -588,7 +728,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: patchAwsAuthenticationServerBasedCloudAccount(input: PatchAwsAuthenticationServerBasedCloudAccountInput!):Boolean!",
+            HelpMessage =
+                @"
+                Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
+                GraphQL operation: patchAwsAuthenticationServerBasedCloudAccount(input: PatchAwsAuthenticationServerBasedCloudAccountInput!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter patchAuthenticationServerBasedCloudAccount { get; set; }
@@ -604,7 +748,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: patchAwsIamUserBasedCloudAccount(input: PatchAwsIamUserBasedCloudAccountInput!):Boolean!",
+            HelpMessage =
+                @"
+                Updates IAM user-based AWS cloud account. Use this mutation to update account details access/secret keys, role ARN and regions. All input fields except account ID are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
+                GraphQL operation: patchAwsIamUserBasedCloudAccount(input: PatchAwsIamUserBasedCloudAccountInput!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter patchIamUserBasedCloudAccount { get; set; }
@@ -620,7 +768,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createAwsCluster(input: CreateAwsClusterInput!):CcProvisionJobReply!",
+            HelpMessage =
+                @"
+                Create a Rubrik Cloud Cluster on AWS.
+                GraphQL operation: createAwsCluster(input: CreateAwsClusterInput!):CcProvisionJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter createCluster { get; set; }
@@ -636,7 +788,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteAwsCluster(input: DeleteAwsClusterInput!):CcProvisionJobReply!",
+            HelpMessage =
+                @"
+                Delete a Rubrik Cloud Cluster on AWS.
+                GraphQL operation: deleteAwsCluster(input: DeleteAwsClusterInput!):CcProvisionJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteCluster { get; set; }

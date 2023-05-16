@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365SaaSSetupKickoff:O365SaasSetupKickoffReply!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: o365SaaSSetupKickoff:O365SaasSetupKickoffReply!
+                ",
             Position = 0
         )]
         public SwitchParameter SaaSSetupKickoff { get; set; }
@@ -52,7 +56,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365PdlGroups(input: O365PdlGroupsInput!):O365PdlGroupsReply!",
+            HelpMessage =
+                @"
+                Retrieve or create the groups corresponding to the preferred data location and workload pairings for use in role creation.
+                GraphQL operation: o365PdlGroups(input: O365PdlGroupsInput!):O365PdlGroupsReply!
+                ",
             Position = 0
         )]
         public SwitchParameter PdlGroup { get; set; }
@@ -62,7 +70,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: O365PdlGroupsInput!"
+            HelpMessage =
+                @"
+                The input for the O365PdlGroups mutation.
+                GraphQL argument input: O365PdlGroupsInput!
+                "
         )]
         public O365PdlGroupsInput? Input { get; set; }
         
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365SaasSetupComplete(input: O365SaasSetupCompleteInput!):AddO365OrgResponse!",
+            HelpMessage =
+                @"
+                Completes a Rubrik-Hosted setup flow.
+                GraphQL operation: o365SaasSetupComplete(input: O365SaasSetupCompleteInput!):AddO365OrgResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter SaasSetupComplete { get; set; }
@@ -92,7 +108,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365SetupKickoff:O365SetupKickoffResp!",
+            HelpMessage =
+                @"
+                Kicks off an O365 subscription setup flow.
+                GraphQL operation: o365SetupKickoff:O365SetupKickoffResp!
+                ",
             Position = 0
         )]
         public SwitchParameter SetupKickoff { get; set; }
@@ -108,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: addO365Org(input: AddO365OrgInput!):AddO365OrgResponse!",
+            HelpMessage =
+                @"
+                Adds an O365 org to the account.
+                GraphQL operation: addO365Org(input: AddO365OrgInput!):AddO365OrgResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter addOrg { get; set; }
@@ -124,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365OauthConsentKickoff(input: O365OauthConsentKickoffInput!):O365OauthConsentKickoffReply!",
+            HelpMessage =
+                @"
+                Kicks off the OAuth consent flow for an O365 Azure AD App.
+                GraphQL operation: o365OauthConsentKickoff(input: O365OauthConsentKickoffInput!):O365OauthConsentKickoffReply!
+                ",
             Position = 0
         )]
         public SwitchParameter OauthConsentKickoff { get; set; }
@@ -140,7 +168,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: o365OauthConsentComplete(input: O365OauthConsentCompleteInput!):O365OauthConsentCompleteReply!",
+            HelpMessage =
+                @"
+                Completes the OAuth consent flow for an O365 Azure AD App.
+                GraphQL operation: o365OauthConsentComplete(input: O365OauthConsentCompleteInput!):O365OauthConsentCompleteReply!
+                ",
             Position = 0
         )]
         public SwitchParameter OauthConsentComplete { get; set; }
@@ -156,7 +188,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createO365AppKickoff(input: CreateO365AppKickoffInput!):CreateO365AppKickoffResp!",
+            HelpMessage =
+                @"
+                Kicks off the creation flow for an O365 Azure AD App.
+                GraphQL operation: createO365AppKickoff(input: CreateO365AppKickoffInput!):CreateO365AppKickoffResp!
+                ",
             Position = 0
         )]
         public SwitchParameter createAppKickoff { get; set; }
@@ -172,7 +208,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createO365AppComplete(input: CreateO365AppCompleteInput!):RequestStatus!",
+            HelpMessage =
+                @"
+                Completes the creation flow for an O365 Azure AD App.
+                GraphQL operation: createO365AppComplete(input: CreateO365AppCompleteInput!):RequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter createAppComplete { get; set; }
@@ -188,7 +228,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: insertCustomerO365App(input: InsertCustomerO365AppInput!):RequestStatus!",
+            HelpMessage =
+                @"
+                Inserts a Customer-hosted O365 Azure AD App.
+                GraphQL operation: insertCustomerO365App(input: InsertCustomerO365AppInput!):RequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter insertCustomerApp { get; set; }
@@ -204,7 +248,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateO365AppAuthStatus(input: UpdateO365AppAuthStatusInput!):UpdateO365AppAuthStatusReply!",
+            HelpMessage =
+                @"
+                Update O365 App authentication status to applicable app version.
+                GraphQL operation: updateO365AppAuthStatus(input: UpdateO365AppAuthStatusInput!):UpdateO365AppAuthStatusReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateAppAuthStatus { get; set; }
@@ -220,7 +268,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateO365AppPermissions(input: UpdateO365AppPermissionsInput!):Void",
+            HelpMessage =
+                @"
+                Update O365 Azure app permission in Azure AD portal.
+                GraphQL operation: updateO365AppPermissions(input: UpdateO365AppPermissionsInput!):Void
+                ",
             Position = 0
         )]
         public SwitchParameter updateAppPermission { get; set; }
@@ -236,7 +288,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteO365AzureApp(o365AppClientId: String!, o365AppType: String!):RequestStatus!",
+            HelpMessage =
+                @"
+                Deletes an O365 Azure AD App from the account.
+                GraphQL operation: deleteO365AzureApp(o365AppClientId: String!, o365AppType: String!):RequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteAzureApp { get; set; }
@@ -246,7 +302,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument o365AppClientId: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument o365AppClientId: String!
+                "
         )]
         public System.String? O365AppClientId { get; set; }
         [Parameter(
@@ -254,7 +314,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument o365AppType: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument o365AppType: String!
+                "
         )]
         public System.String? O365AppType { get; set; }
         
@@ -268,7 +332,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: backupO365Mailbox(mailboxIds: [UUID!]!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Backup mailbox workload.
+                GraphQL operation: backupO365Mailbox(mailboxIds: [UUID!]!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter backupMailbox { get; set; }
@@ -278,7 +346,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument mailboxIds: [UUID!]!"
+            HelpMessage =
+                @"
+                The list of mailbox UUIDs to backup.
+                GraphQL argument mailboxIds: [UUID!]!
+                "
         )]
         public List<System.String>? MailboxIds { get; set; }
         
@@ -292,7 +364,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: backupO365Onedrive(input: BackupO365OnedriveInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Take on-demand snapshot for Onedrive.
+                GraphQL operation: backupO365Onedrive(input: BackupO365OnedriveInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter backupOnedrive { get; set; }
@@ -308,7 +384,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: backupO365SharepointDrive(input: BackupO365SharepointDriveInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Take on-demand snapshot for Sharepoint drive.
+                GraphQL operation: backupO365SharepointDrive(input: BackupO365SharepointDriveInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter backupSharepointDrive { get; set; }
@@ -324,7 +404,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: backupO365SharepointList(input: BackupO365SharePointListInput!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Take on-demand snapshot for SharePoint list.
+                GraphQL operation: backupO365SharepointList(input: BackupO365SharePointListInput!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter backupSharepointList { get; set; }
@@ -340,7 +424,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: backupO365SharePointSite(input: BackupO365SharePointSiteInput!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Take on-demand snapshot for a SharePoint site.
+                GraphQL operation: backupO365SharePointSite(input: BackupO365SharePointSiteInput!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter backupSharePointSite { get; set; }
@@ -356,7 +444,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: backupO365Team(input: BackupO365TeamInput!):BatchAsyncJobStatus!",
+            HelpMessage =
+                @"
+                Take on-demand snapshot for Teams.
+                GraphQL operation: backupO365Team(input: BackupO365TeamInput!):BatchAsyncJobStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter backupTeam { get; set; }
@@ -372,7 +464,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: restoreO365TeamsFiles(input: RestoreO365TeamsFilesInput!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Restore Team files.
+                GraphQL operation: restoreO365TeamsFiles(input: RestoreO365TeamsFilesInput!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter restoreTeamsFile { get; set; }
@@ -388,7 +484,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: restoreO365TeamsConversations(input: RestoreO365TeamsConversationsInput!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Restore Team conversations.
+                GraphQL operation: restoreO365TeamsConversations(input: RestoreO365TeamsConversationsInput!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter restoreTeamsConversation { get; set; }
@@ -404,7 +504,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: restoreO365Snappable(input: RestoreO365SnappableInput!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Restores an O365 snappable.
+                GraphQL operation: restoreO365Snappable(input: RestoreO365SnappableInput!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter restoreSnappable { get; set; }
@@ -420,7 +524,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: refreshO365Org(orgId: UUID!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Refreshes an O365 org.
+                GraphQL operation: refreshO365Org(orgId: UUID!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter refreshOrg { get; set; }
@@ -430,7 +538,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument orgId: UUID!"
+            HelpMessage =
+                @"
+                Org UUID.
+                GraphQL argument orgId: UUID!
+                "
         )]
         public System.String? OrgId { get; set; }
         
@@ -444,7 +556,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteO365Org(orgId: UUID!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Deletes an O365 org from the account.
+                GraphQL operation: deleteO365Org(orgId: UUID!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteOrg { get; set; }
@@ -460,7 +576,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: restoreO365Mailbox(restoreConfig: RestoreO365MailboxInput!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Restores an Exchange mailbox.
+                GraphQL operation: restoreO365Mailbox(restoreConfig: RestoreO365MailboxInput!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter restoreMailbox { get; set; }
@@ -470,7 +590,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument restoreConfig: RestoreO365MailboxInput!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument restoreConfig: RestoreO365MailboxInput!
+                "
         )]
         public RestoreO365MailboxInput? RestoreConfig { get; set; }
         
@@ -484,7 +608,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: exportO365Mailbox(exportConfig: ExportO365MailboxInput!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Exports an Exchange mailbox.
+                GraphQL operation: exportO365Mailbox(exportConfig: ExportO365MailboxInput!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter exportMailbox { get; set; }
@@ -494,7 +622,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument exportConfig: ExportO365MailboxInput!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument exportConfig: ExportO365MailboxInput!
+                "
         )]
         public ExportO365MailboxInput? ExportConfig { get; set; }
         
@@ -508,7 +640,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: setO365ServiceAccount(username: String!, appPassword: String!, orgId: UUID!):RequestStatus!",
+            HelpMessage =
+                @"
+                Sets the service account for the org.
+                GraphQL operation: setO365ServiceAccount(username: String!, appPassword: String!, orgId: UUID!):RequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter setServiceAccount { get; set; }
@@ -518,7 +654,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument username: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument username: String!
+                "
         )]
         public System.String? Username { get; set; }
         [Parameter(
@@ -526,7 +666,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument appPassword: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument appPassword: String!
+                "
         )]
         public System.String? AppPassword { get; set; }
         
@@ -540,7 +684,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: enableO365SharePoint(input: EnableO365SharePointInput!):RequestStatus!",
+            HelpMessage =
+                @"
+                Enables SharePoint protection in the exocompute cluster.
+                GraphQL operation: enableO365SharePoint(input: EnableO365SharePointInput!):RequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter enableSharePoint { get; set; }
@@ -556,7 +704,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: enableO365Teams(exocomputeClusterId: String!):RequestStatus!",
+            HelpMessage =
+                @"
+                Enables Teams protection in the exocompute cluster.
+                GraphQL operation: enableO365Teams(exocomputeClusterId: String!):RequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter enableTeam { get; set; }
@@ -566,7 +718,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument exocomputeClusterId: String!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument exocomputeClusterId: String!
+                "
         )]
         public System.String? ExocomputeClusterId { get; set; }
         
@@ -580,7 +736,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteO365ServiceAccount(orgId: UUID!):RequestStatus!",
+            HelpMessage =
+                @"
+                Deletes the service account for an org.
+                GraphQL operation: deleteO365ServiceAccount(orgId: UUID!):RequestStatus!
+                ",
             Position = 0
         )]
         public SwitchParameter deleteServiceAccount { get; set; }
@@ -596,7 +756,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateO365OrgCustomName(input: UpdateO365OrgCustomNameInput!):UpdateO365OrgCustomNameReply!",
+            HelpMessage =
+                @"
+                Update the custom name for an O365 Organization.
+                GraphQL operation: updateO365OrgCustomName(input: UpdateO365OrgCustomNameInput!):UpdateO365OrgCustomNameReply!
+                ",
             Position = 0
         )]
         public SwitchParameter updateOrgCustomName { get; set; }

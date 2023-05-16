@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):OracleTopLevelDescendantTypeConnection!",
+            HelpMessage =
+                @"
+                Paginated list of the highest-level Oracle Objects accessible by the current user.
+                GraphQL operation: oracleTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):OracleTopLevelDescendantTypeConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter TopLevelDescendant { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -54,7 +62,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -62,7 +74,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -70,7 +86,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -78,7 +98,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
+            HelpMessage =
+                @"
+                Types of objects to include.
+                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
+                "
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         [Parameter(
@@ -86,7 +110,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -100,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):OracleDatabaseConnection!",
+            HelpMessage =
+                @"
+                Paginated list of Oracle Databases.
+                GraphQL operation: oracleDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):OracleDatabaseConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter Database { get; set; }
@@ -116,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleHost(fid: UUID!):OracleHost!",
+            HelpMessage =
+                @"
+                An Oracle Host.
+                GraphQL operation: oracleHost(fid: UUID!):OracleHost!
+                ",
             Position = 0
         )]
         public new SwitchParameter Host { get; set; }
@@ -126,7 +162,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -140,7 +180,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleRac(fid: UUID!):OracleRac!",
+            HelpMessage =
+                @"
+                An Oracle Real Application Cluster.
+                GraphQL operation: oracleRac(fid: UUID!):OracleRac!
+                ",
             Position = 0
         )]
         public SwitchParameter Rac { get; set; }
@@ -156,7 +200,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleDataGuardGroup(fid: UUID!):OracleDataGuardGroup!",
+            HelpMessage =
+                @"
+                An Oracle Data Guard Group.
+                GraphQL operation: oracleDataGuardGroup(fid: UUID!):OracleDataGuardGroup!
+                ",
             Position = 0
         )]
         public SwitchParameter DataGuardGroup { get; set; }
@@ -172,7 +220,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleLiveMounts(,   first: Int,   after: String,   filters: [OracleLiveMountFilterInput!],   sortBy: OracleLiveMountSortBy, ):OracleLiveMountConnection!",
+            HelpMessage =
+                @"
+                Paginated list of Oracle Live Mounts.
+                GraphQL operation: oracleLiveMounts(,   first: Int,   after: String,   filters: [OracleLiveMountFilterInput!],   sortBy: OracleLiveMountSortBy, ):OracleLiveMountConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter LiveMount { get; set; }
@@ -182,7 +234,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filters: [OracleLiveMountFilterInput!]"
+            HelpMessage =
+                @"
+                Filter for Oracle live mounts.
+                GraphQL argument filters: [OracleLiveMountFilterInput!]
+                "
         )]
         public List<OracleLiveMountFilterInput>? Filters { get; set; }
         
@@ -196,7 +252,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleAcoParameters(input: ClusterUuidWithDbIdInput!):OracleAcoParameterList!",
+            HelpMessage =
+                @"
+                List of supported Advanced Cloning Options
+
+Supported in v6.0+
+Get the list of supported Advanced Cloning Options (ACO) parameters.
+                GraphQL operation: oracleAcoParameters(input: ClusterUuidWithDbIdInput!):OracleAcoParameterList!
+                ",
             Position = 0
         )]
         public SwitchParameter AcoParameter { get; set; }
@@ -206,7 +269,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: ClusterUuidWithDbIdInput!"
+            HelpMessage =
+                @"
+                Specifies input for V1GetAcoParameterList including the Oracle database ID.
+                GraphQL argument input: ClusterUuidWithDbIdInput!
+                "
         )]
         public ClusterUuidWithDbIdInput? Input { get; set; }
         
@@ -220,7 +287,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleRecoverableRanges(input: GetOracleDbRecoverableRangesInput!):OracleRecoverableRangeListResponse!",
+            HelpMessage =
+                @"
+                Get recoverable ranges of a Oracle database
+
+Supported in v5.0+
+Retrieve the recoverable ranges for a specified Oracle database. A begin and/or end timestamp can be provided to retrieve only the ranges that fall within the window.
+                GraphQL operation: oracleRecoverableRanges(input: GetOracleDbRecoverableRangesInput!):OracleRecoverableRangeListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter RecoverableRange { get; set; }
@@ -236,7 +310,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleMissedRecoverableRanges(input: GetOracleDbMissedRecoverableRangesInput!):OracleMissedRecoverableRangeListResponse!",
+            HelpMessage =
+                @"
+                Get missed recoverable ranges of a Oracle database
+
+Supported in v5.0+
+Retrieve a list of missed recoverable ranges for a Oracle database. For each run of one type of error, the first and last occurrence of the error are given.
+                GraphQL operation: oracleMissedRecoverableRanges(input: GetOracleDbMissedRecoverableRangesInput!):OracleMissedRecoverableRangeListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter MissedRecoverableRange { get; set; }
@@ -252,7 +333,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleMissedSnapshots(input: GetMissedOracleDbSnapshotsInput!):MissedSnapshotListResponse!",
+            HelpMessage =
+                @"
+                Get missed snapshots for an Oracle database
+
+Supported in v5.0+
+Retrieve summary information about the missed snapshots of an Oracle database.
+                GraphQL operation: oracleMissedSnapshots(input: GetMissedOracleDbSnapshotsInput!):MissedSnapshotListResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter MissedSnapshot { get; set; }
@@ -268,7 +356,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleAcoExampleDownloadLink(input: ClusterUuidWithDbIdInput!):OracleFileDownloadLink!",
+            HelpMessage =
+                @"
+                Link to download the Advanced Recovery Options example file
+
+Supported in v5.3+
+Link to download the Advanced Recovery Options example file which can be used to customize Oracle recoveries.
+                GraphQL operation: oracleAcoExampleDownloadLink(input: ClusterUuidWithDbIdInput!):OracleFileDownloadLink!
+                ",
             Position = 0
         )]
         public SwitchParameter AcoExampleDownloadLink { get; set; }
@@ -284,7 +379,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oraclePdbDetails(input: OraclePdbDetailsInput!):OraclePdbDetails!",
+            HelpMessage =
+                @"
+                Get PDB details
+
+Supported in v8.0+
+Retrieves information about available pluggable databases (PDBs) for a given recovery point.
+                GraphQL operation: oraclePdbDetails(input: OraclePdbDetailsInput!):OraclePdbDetails!
+                ",
             Position = 0
         )]
         public SwitchParameter PdbDetail { get; set; }
@@ -300,7 +402,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleHostLogBackupConfig(input: OracleHostInput!):OracleLogBackupConfig!",
+            HelpMessage =
+                @"
+                Oracle Log backup configuration for Oracle Host.
+                GraphQL operation: oracleHostLogBackupConfig(input: OracleHostInput!):OracleLogBackupConfig!
+                ",
             Position = 0
         )]
         public SwitchParameter HostLogBackupConfig { get; set; }
@@ -316,7 +422,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleDatabaseLogBackupConfig(input: OracleDbInput!):OracleLogBackupConfig!",
+            HelpMessage =
+                @"
+                Oracle log backup configuration for an Oracle Database.
+                GraphQL operation: oracleDatabaseLogBackupConfig(input: OracleDbInput!):OracleLogBackupConfig!
+                ",
             Position = 0
         )]
         public SwitchParameter DatabaseLogBackupConfig { get; set; }
@@ -332,7 +442,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: oracleRacLogBackupConfig(input: OracleRacInput!):OracleLogBackupConfig!",
+            HelpMessage =
+                @"
+                Oracle log backup configuration for an Oracle RAC.
+                GraphQL operation: oracleRacLogBackupConfig(input: OracleRacInput!):OracleLogBackupConfig!
+                ",
             Position = 0
         )]
         public SwitchParameter RacLogBackupConfig { get; set; }

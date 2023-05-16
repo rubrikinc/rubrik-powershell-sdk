@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeRoot:AwsNativeRoot!",
+            HelpMessage =
+                @"
+                Root of AWS native hierarchy.
+                GraphQL operation: awsNativeRoot:AwsNativeRoot!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeRoot { get; set; }
@@ -52,7 +56,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!):AwsNativeAccount!",
+            HelpMessage =
+                @"
+                Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
+                GraphQL operation: awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!):AwsNativeAccount!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeAccount { get; set; }
@@ -62,7 +70,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument awsNativeAccountRubrikId: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik ID for the AWS Native account.
+                GraphQL argument awsNativeAccountRubrikId: UUID!
+                "
         )]
         public System.String? AwsNativeAccountRubrikId { get; set; }
         [Parameter(
@@ -70,7 +82,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument awsNativeProtectionFeature: AwsNativeProtectionFeature!"
+            HelpMessage =
+                @"
+                Cloud native protection feature.
+                GraphQL argument awsNativeProtectionFeature: AwsNativeProtectionFeature!
+                "
         )]
         public AwsNativeProtectionFeature? AwsNativeProtectionFeature { get; set; }
         
@@ -84,7 +100,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeEc2Instance(ec2InstanceRubrikId: UUID!):AwsNativeEc2Instance!",
+            HelpMessage =
+                @"
+                Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
+                GraphQL operation: awsNativeEc2Instance(ec2InstanceRubrikId: UUID!):AwsNativeEc2Instance!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeEc2Instance { get; set; }
@@ -94,7 +114,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument ec2InstanceRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID for the AWS EC2 Instance.
+                GraphQL argument ec2InstanceRubrikId: UUID!
+                "
         )]
         public System.String? Ec2InstanceRubrikId { get; set; }
         
@@ -108,7 +132,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeEbsVolume(ebsVolumeRubrikId: UUID!):AwsNativeEbsVolume!",
+            HelpMessage =
+                @"
+                Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
+                GraphQL operation: awsNativeEbsVolume(ebsVolumeRubrikId: UUID!):AwsNativeEbsVolume!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeEbsVolume { get; set; }
@@ -118,7 +146,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument ebsVolumeRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID for the AWS EBS Volume object.
+                GraphQL argument ebsVolumeRubrikId: UUID!
+                "
         )]
         public System.String? EbsVolumeRubrikId { get; set; }
         
@@ -132,7 +164,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeS3Bucket(s3BucketRubrikId: UUID!):AwsNativeS3Bucket!",
+            HelpMessage =
+                @"
+                Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
+                GraphQL operation: awsNativeS3Bucket(s3BucketRubrikId: UUID!):AwsNativeS3Bucket!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeS3Bucket { get; set; }
@@ -142,7 +178,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument s3BucketRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID for the AWS S3 bucket object.
+                GraphQL argument s3BucketRubrikId: UUID!
+                "
         )]
         public System.String? S3BucketRubrikId { get; set; }
         
@@ -156,7 +196,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeEc2InstancesByName(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: AwsNativeEc2InstanceSortFields,   sortOrder: SortOrder,   ec2InstanceName: String!, ):AwsNativeEc2InstanceConnection!",
+            HelpMessage =
+                @"
+                Paginated list of all AWS EC2 Instances by name or substring of name.
+                GraphQL operation: awsNativeEc2InstancesByName(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: AwsNativeEc2InstanceSortFields,   sortOrder: SortOrder,   ec2InstanceName: String!, ):AwsNativeEc2InstanceConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeEc2InstancesByName { get; set; }
@@ -166,7 +210,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -174,7 +222,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -182,7 +234,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument last: Int"
+            HelpMessage =
+                @"
+                Returns the last n elements from the list.
+                GraphQL argument last: Int
+                "
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
@@ -190,7 +246,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument before: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come before the specified cursor.
+                GraphQL argument before: String
+                "
         )]
         public System.String? Before { get; set; }
         [Parameter(
@@ -198,7 +258,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: AwsNativeEc2InstanceSortFields"
+            HelpMessage =
+                @"
+                Sort fields for list of AWS EC2 instances.
+                GraphQL argument sortBy: AwsNativeEc2InstanceSortFields
+                "
         )]
         public AwsNativeEc2InstanceSortFields? SortBy { get; set; }
         [Parameter(
@@ -206,7 +270,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -214,7 +282,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument ec2InstanceName: String!"
+            HelpMessage =
+                @"
+                Native name for the AWS EC2 Instance object.
+                GraphQL argument ec2InstanceName: String!
+                "
         )]
         public System.String? Ec2InstanceName { get; set; }
         
@@ -228,7 +300,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeEbsVolumesByName(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: AwsNativeEbsVolumeSortFields,   sortOrder: SortOrder,   ebsVolumeName: String!, ):AwsNativeEbsVolumeConnection!",
+            HelpMessage =
+                @"
+                Paginated list of all AWS EBS Volumes by name or substring of name.
+                GraphQL operation: awsNativeEbsVolumesByName(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: AwsNativeEbsVolumeSortFields,   sortOrder: SortOrder,   ebsVolumeName: String!, ):AwsNativeEbsVolumeConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeEbsVolumesByName { get; set; }
@@ -238,7 +314,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument ebsVolumeName: String!"
+            HelpMessage =
+                @"
+                The native name for the AWS EBS Volume object.
+                GraphQL argument ebsVolumeName: String!
+                "
         )]
         public System.String? EbsVolumeName { get; set; }
         
@@ -252,7 +332,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allVpcsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[AwsVpc!]!",
+            HelpMessage =
+                @"
+                List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
+                GraphQL operation: allVpcsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[AwsVpc!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allVpcsByRegion { get; set; }
@@ -262,7 +346,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument awsAccountRubrikId: UUID!"
+            HelpMessage =
+                @"
+                Rubrik ID for AWS account.
+                GraphQL argument awsAccountRubrikId: UUID!
+                "
         )]
         public System.String? AwsAccountRubrikId { get; set; }
         [Parameter(
@@ -270,7 +358,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument region: AwsNativeRegion!"
+            HelpMessage =
+                @"
+                Region in AWS.
+                GraphQL argument region: AwsNativeRegion!
+                "
         )]
         public AwsNativeRegion? Region { get; set; }
         
@@ -284,7 +376,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allVpcsFromAws(awsAccountRubrikId: UUID):[AwsVpc!]!",
+            HelpMessage =
+                @"
+                List of all Virtual Private Clouds (VPCs) in the AWS Native account.
+                GraphQL operation: allVpcsFromAws(awsAccountRubrikId: UUID):[AwsVpc!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allVpc { get; set; }
@@ -300,7 +396,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: isAwsNativeEbsVolumeSnapshotRestorable(snapshotId: String!):IsVolumeSnapshotRestorableReply!",
+            HelpMessage =
+                @"
+                Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
+                GraphQL operation: isAwsNativeEbsVolumeSnapshotRestorable(snapshotId: String!):IsVolumeSnapshotRestorableReply!
+                ",
             Position = 0
         )]
         public SwitchParameter isNativeEbsVolumeSnapshotRestorable { get; set; }
@@ -310,7 +410,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument snapshotId: String!"
+            HelpMessage =
+                @"
+                UUID of the snapshot
+                GraphQL argument snapshotId: String!
+                "
         )]
         public System.String? SnapshotId { get; set; }
         
@@ -324,7 +428,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAvailabilityZonesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[String!]!",
+            HelpMessage =
+                @"
+                List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
+                GraphQL operation: allAvailabilityZonesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allAvailabilityZonesByRegion { get; set; }
@@ -340,7 +448,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allKmsEncryptionKeysByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[KmsEncryptionKey!]!",
+            HelpMessage =
+                @"
+                List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
+                GraphQL operation: allKmsEncryptionKeysByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[KmsEncryptionKey!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allKmsEncryptionKeysByRegion { get; set; }
@@ -356,7 +468,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!):Boolean!",
+            HelpMessage =
+                @"
+                Specifies whether an S3 bucket name is available for use in AWS or not. When true, the bucket name is available for use.
+                GraphQL operation: isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter isS3BucketNameAvailable { get; set; }
@@ -366,7 +482,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument bucketName: String!"
+            HelpMessage =
+                @"
+                Name of the S3 bucket.
+                GraphQL argument bucketName: String!
+                "
         )]
         public System.String? BucketName { get; set; }
         
@@ -380,7 +500,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allS3BucketsFromAws(awsAccountRubrikId: UUID!):[String!]!",
+            HelpMessage =
+                @"
+                List of all S3 bucket names across regions for the AWS Native account.
+                GraphQL operation: allS3BucketsFromAws(awsAccountRubrikId: UUID!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allS3Bucket { get; set; }
@@ -396,7 +520,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!):[S3BucketDetails!]!",
+            HelpMessage =
+                @"
+                List of all S3 bucket details across regions for the AWS Native account.
+                GraphQL operation: allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!):[S3BucketDetails!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allS3BucketsDetail { get; set; }
@@ -412,7 +540,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeRdsInstance(rdsInstanceRubrikId: UUID!):AwsNativeRdsInstance!",
+            HelpMessage =
+                @"
+                Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
+                GraphQL operation: awsNativeRdsInstance(rdsInstanceRubrikId: UUID!):AwsNativeRdsInstance!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeRdsInstance { get; set; }
@@ -422,7 +554,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument rdsInstanceRubrikId: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik ID for the AWS RDS Instance.
+                GraphQL argument rdsInstanceRubrikId: UUID!
+                "
         )]
         public System.String? RdsInstanceRubrikId { get; set; }
         
@@ -436,7 +572,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):AwsNativeRdsPointInTimeRestoreWindow!",
+            HelpMessage =
+                @"
+                Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
+                GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):AwsNativeRdsPointInTimeRestoreWindow!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeRdsPointInTimeRestoreWindow { get; set; }
@@ -446,7 +586,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument rdsInstanceName: String!"
+            HelpMessage =
+                @"
+                Name of the RDS DB Instance
+                GraphQL argument rdsInstanceName: String!
+                "
         )]
         public System.String? RdsInstanceName { get; set; }
         [Parameter(
@@ -454,7 +598,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument rdsDatabaseRubrikId: UUID"
+            HelpMessage =
+                @"
+                The Rubrik ID for the AWS RDS database.
+                GraphQL argument rdsDatabaseRubrikId: UUID
+                "
         )]
         public System.String? RdsDatabaseRubrikId { get; set; }
         
@@ -468,7 +616,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: rdsInstanceDetailsFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):RdsInstanceDetailsFromAws!",
+            HelpMessage =
+                @"
+                Details of the RDS Instance in the AWS Native account.
+                GraphQL operation: rdsInstanceDetailsFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):RdsInstanceDetailsFromAws!
+                ",
             Position = 0
         )]
         public SwitchParameter rdsInstanceDetail { get; set; }
@@ -484,7 +636,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: isAwsNativeRdsInstanceLaunchConfigurationValid(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   dbClass: AwsNativeRdsDbInstanceClass!,   primaryAz: String,   storageType: AwsNativeRdsStorageType,   isMultiAz: Boolean!,   kmsKeyId: String,   iops: Int, ):Boolean!",
+            HelpMessage =
+                @"
+                Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
+                GraphQL operation: isAwsNativeRdsInstanceLaunchConfigurationValid(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   dbClass: AwsNativeRdsDbInstanceClass!,   primaryAz: String,   storageType: AwsNativeRdsStorageType,   isMultiAz: Boolean!,   kmsKeyId: String,   iops: Int, ):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter isNativeRdsInstanceLaunchConfigurationValid { get; set; }
@@ -494,7 +650,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument dbEngine: AwsNativeRdsDbEngine!"
+            HelpMessage =
+                @"
+                DB Engine of RDS Instance.
+                GraphQL argument dbEngine: AwsNativeRdsDbEngine!
+                "
         )]
         public AwsNativeRdsDbEngine? DbEngine { get; set; }
         [Parameter(
@@ -502,7 +662,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument dbEngineVersion: String!"
+            HelpMessage =
+                @"
+                Version of DB engine.
+                GraphQL argument dbEngineVersion: String!
+                "
         )]
         public System.String? DbEngineVersion { get; set; }
         [Parameter(
@@ -510,7 +674,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument dbClass: AwsNativeRdsDbInstanceClass!"
+            HelpMessage =
+                @"
+                DB class of the exported RDS DB instance.
+                GraphQL argument dbClass: AwsNativeRdsDbInstanceClass!
+                "
         )]
         public AwsNativeRdsDbInstanceClass? DbClass { get; set; }
         [Parameter(
@@ -518,7 +686,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument primaryAz: String"
+            HelpMessage =
+                @"
+                AZ in which the exported RDS DB instance must be launched.
+                GraphQL argument primaryAz: String
+                "
         )]
         public System.String? PrimaryAz { get; set; }
         [Parameter(
@@ -526,7 +698,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument storageType: AwsNativeRdsStorageType"
+            HelpMessage =
+                @"
+                Storage type of the exported RDS DB instance.
+                GraphQL argument storageType: AwsNativeRdsStorageType
+                "
         )]
         public AwsNativeRdsStorageType? StorageType { get; set; }
         [Parameter(
@@ -534,7 +710,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument isMultiAz: Boolean!"
+            HelpMessage =
+                @"
+                Whether the exported RDS DB instance is multi-AZ or not.
+                GraphQL argument isMultiAz: Boolean!
+                "
         )]
         public System.Boolean? IsMultiAz { get; set; }
         [Parameter(
@@ -542,7 +722,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument kmsKeyId: String"
+            HelpMessage =
+                @"
+                KMS Key ID of the exported RDS DB instance.
+                GraphQL argument kmsKeyId: String
+                "
         )]
         public System.String? KmsKeyId { get; set; }
         [Parameter(
@@ -550,7 +734,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument iops: Int"
+            HelpMessage =
+                @"
+                IOPs of the exported RDS DB instance.
+                GraphQL argument iops: Int
+                "
         )]
         public System.Int32? Iops { get; set; }
         
@@ -564,7 +752,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allOptionGroupsByRegionFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   majorEngineVersion: String!, ):[OptionGroup!]!",
+            HelpMessage =
+                @"
+                List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
+                GraphQL operation: allOptionGroupsByRegionFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   majorEngineVersion: String!, ):[OptionGroup!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allOptionGroupsByRegion { get; set; }
@@ -574,7 +766,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument majorEngineVersion: String!"
+            HelpMessage =
+                @"
+                Major version of the option group engine.
+                GraphQL argument majorEngineVersion: String!
+                "
         )]
         public System.String? MajorEngineVersion { get; set; }
         
@@ -588,7 +784,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allDbParameterGroupsByRegionFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   rdsType: AwsNativeRdsType, ):[DbParameterGroup!]!",
+            HelpMessage =
+                @"
+                List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
+                GraphQL operation: allDbParameterGroupsByRegionFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   rdsType: AwsNativeRdsType, ):[DbParameterGroup!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allDbParameterGroupsByRegion { get; set; }
@@ -598,7 +798,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument rdsType: AwsNativeRdsType"
+            HelpMessage =
+                @"
+                Type of RDS deployment.
+                GraphQL argument rdsType: AwsNativeRdsType
+                "
         )]
         public AwsNativeRdsType? RdsType { get; set; }
         
@@ -612,7 +816,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allDbSubnetGroupsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[SubnetGroup!]!",
+            HelpMessage =
+                @"
+                All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
+                GraphQL operation: allDbSubnetGroupsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[SubnetGroup!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allDbSubnetGroupsByRegion { get; set; }
@@ -628,7 +836,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: validateAwsNativeRdsInstanceNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):ValidateAwsNativeRdsInstanceNameForExportReply!",
+            HelpMessage =
+                @"
+                Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
+                GraphQL operation: validateAwsNativeRdsInstanceNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):ValidateAwsNativeRdsInstanceNameForExportReply!
+                ",
             Position = 0
         )]
         public SwitchParameter validateNativeRdsInstanceNameForExport { get; set; }
@@ -644,7 +856,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: validateAwsNativeRdsClusterNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsClusterName: String!):ValidateAwsNativeRdsClusterNameForExportReply!",
+            HelpMessage =
+                @"
+                Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
+                GraphQL operation: validateAwsNativeRdsClusterNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsClusterName: String!):ValidateAwsNativeRdsClusterNameForExportReply!
+                ",
             Position = 0
         )]
         public SwitchParameter validateNativeRdsClusterNameForExport { get; set; }
@@ -654,7 +870,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument rdsClusterName: String!"
+            HelpMessage =
+                @"
+                Name of the RDS DB Cluster.
+                GraphQL argument rdsClusterName: String!
+                "
         )]
         public System.String? RdsClusterName { get; set; }
         
@@ -668,7 +888,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsNativeRdsExportDefaults(rdsInstanceRubrikId: UUID!, snapshotId: String, isPointInTime: Boolean!):RdsInstanceExportDefaults!",
+            HelpMessage =
+                @"
+                Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
+                GraphQL operation: awsNativeRdsExportDefaults(rdsInstanceRubrikId: UUID!, snapshotId: String, isPointInTime: Boolean!):RdsInstanceExportDefaults!
+                ",
             Position = 0
         )]
         public SwitchParameter NativeRdsExportDefault { get; set; }
@@ -678,7 +902,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument isPointInTime: Boolean!"
+            HelpMessage =
+                @"
+                Specifies whether the export of the instance is manual or Point-in-Time.
+                GraphQL argument isPointInTime: Boolean!
+                "
         )]
         public System.Boolean? IsPointInTime { get; set; }
         
@@ -692,7 +920,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allEc2KeyPairsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[String!]!",
+            HelpMessage =
+                @"
+                List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
+                GraphQL operation: allEc2KeyPairsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allEc2KeyPairsByRegion { get; set; }
@@ -708,7 +940,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: amiTypeForAwsNativeArchivedSnapshotExport(input: AmiTypeForAwsNativeArchivedSnapshotExportInput!):AmiTypeForAwsNativeArchivedSnapshotExportReply!",
+            HelpMessage =
+                @"
+                Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
+                GraphQL operation: amiTypeForAwsNativeArchivedSnapshotExport(input: AmiTypeForAwsNativeArchivedSnapshotExportInput!):AmiTypeForAwsNativeArchivedSnapshotExportReply!
+                ",
             Position = 0
         )]
         public SwitchParameter amiTypeForNativeArchivedSnapshotExport { get; set; }
@@ -718,7 +954,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: AmiTypeForAwsNativeArchivedSnapshotExportInput!"
+            HelpMessage =
+                @"
+                Input for AmiTypeForAwsNativeArchivedSnapshotExport.
+                GraphQL argument input: AmiTypeForAwsNativeArchivedSnapshotExportInput!
+                "
         )]
         public AmiTypeForAwsNativeArchivedSnapshotExportInput? Input { get; set; }
         
@@ -732,7 +972,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsComputeSettings(computeSettingId: UUID!):AwsComputeSettings!",
+            HelpMessage =
+                @"
+                Retrieve aws compute settings.
+                GraphQL operation: awsComputeSettings(computeSettingId: UUID!):AwsComputeSettings!
+                ",
             Position = 0
         )]
         public SwitchParameter ComputeSetting { get; set; }
@@ -742,7 +986,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument computeSettingId: UUID!"
+            HelpMessage =
+                @"
+                Corresponds to Compute Setting Id in Rubrik tables
+                GraphQL argument computeSettingId: UUID!
+                "
         )]
         public System.String? ComputeSettingId { get; set; }
         
@@ -756,7 +1004,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAwsComputeSettings(,   sortBy: AwsCloudComputeSettingQuerySortByField,   sortOrder: SortOrder,   filter: [AwsCloudComputeSettingFilterInput!],   contextFilter: ContextFilterTypeEnum, ):[AwsComputeSettings!]!",
+            HelpMessage =
+                @"
+                List all aws compute settings.
+                GraphQL operation: allAwsComputeSettings(,   sortBy: AwsCloudComputeSettingQuerySortByField,   sortOrder: SortOrder,   filter: [AwsCloudComputeSettingFilterInput!],   contextFilter: ContextFilterTypeEnum, ):[AwsComputeSettings!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allComputeSetting { get; set; }
@@ -766,7 +1018,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [AwsCloudComputeSettingFilterInput!]"
+            HelpMessage =
+                @"
+                Specification on how to filter a list of compute settings.
+                GraphQL argument filter: [AwsCloudComputeSettingFilterInput!]
+                "
         )]
         public List<AwsCloudComputeSettingFilterInput>? Filter { get; set; }
         [Parameter(
@@ -774,7 +1030,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument contextFilter: ContextFilterTypeEnum"
+            HelpMessage =
+                @"
+                Specifies the context filter to use.
+                GraphQL argument contextFilter: ContextFilterTypeEnum
+                "
         )]
         public ContextFilterTypeEnum? ContextFilter { get; set; }
         
@@ -788,7 +1048,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAwsCloudAccountsWithFeatures(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!):[AwsCloudAccountWithFeatures!]!",
+            HelpMessage =
+                @"
+                List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
+                GraphQL operation: allAwsCloudAccountsWithFeatures(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!):[AwsCloudAccountWithFeatures!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allCloudAccountsWithFeature { get; set; }
@@ -798,7 +1062,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!"
+            HelpMessage =
+                @"
+                Arguments for get cloud accounts.
+                GraphQL argument awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!
+                "
         )]
         public AwsCloudAccountsWithFeaturesInput? AwsCloudAccountsArg { get; set; }
         
@@ -812,7 +1080,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsCloudAccountWithFeatures(cloudAccountId: UUID!, awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!):AwsCloudAccountWithFeatures!",
+            HelpMessage =
+                @"
+                List of AWS cloud accounts and the features for each account, classified by ID.
+                GraphQL operation: awsCloudAccountWithFeatures(cloudAccountId: UUID!, awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!):AwsCloudAccountWithFeatures!
+                ",
             Position = 0
         )]
         public SwitchParameter CloudAccountWithFeature { get; set; }
@@ -822,7 +1094,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument cloudAccountId: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik ID of the cloud account.
+                GraphQL argument cloudAccountId: UUID!
+                "
         )]
         public System.String? CloudAccountId { get; set; }
         [Parameter(
@@ -830,7 +1106,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!"
+            HelpMessage =
+                @"
+                Arguments for get cloud account.
+                GraphQL argument awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!
+                "
         )]
         public AwsCloudAccountWithFeaturesInput? AwsCloudAccountArg { get; set; }
         
@@ -844,7 +1124,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsCloudAccountListVpcs(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!):AwsCloudAccountListVpcResponse!",
+            HelpMessage =
+                @"
+                Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
+                GraphQL operation: awsCloudAccountListVpcs(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!):AwsCloudAccountListVpcResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter CloudAccountListVpc { get; set; }
@@ -854,7 +1138,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument cloudAccountUuid: UUID!"
+            HelpMessage =
+                @"
+                The ID of the cloud account.
+                GraphQL argument cloudAccountUuid: UUID!
+                "
         )]
         public System.String? CloudAccountUuid { get; set; }
         [Parameter(
@@ -862,7 +1150,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument feature: CloudAccountFeature!"
+            HelpMessage =
+                @"
+                A cloud account feature of Rubrik Security Cloud.
+                GraphQL argument feature: CloudAccountFeature!
+                "
         )]
         public CloudAccountFeature? Feature { get; set; }
         
@@ -876,7 +1168,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsCloudAccountListSubnets(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSubnetsResponse!",
+            HelpMessage =
+                @"
+                Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC).
+                GraphQL operation: awsCloudAccountListSubnets(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSubnetsResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter CloudAccountListSubnet { get; set; }
@@ -886,7 +1182,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument vpcID: String!"
+            HelpMessage =
+                @"
+                VPC native ID.
+                GraphQL argument vpcID: String!
+                "
         )]
         public System.String? VpcId { get; set; }
         
@@ -900,7 +1200,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: awsCloudAccountListSecurityGroups(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSecurityGroupsResponse!",
+            HelpMessage =
+                @"
+                Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
+                GraphQL operation: awsCloudAccountListSecurityGroups(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSecurityGroupsResponse!
+                ",
             Position = 0
         )]
         public SwitchParameter CloudAccountListSecurityGroup { get; set; }
@@ -916,7 +1220,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAwsExocomputeConfigs(awsNativeAccountIdOrNamePrefix: String!):[AwsExocomputeConfig!]!",
+            HelpMessage =
+                @"
+                List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
+                GraphQL operation: allAwsExocomputeConfigs(awsNativeAccountIdOrNamePrefix: String!):[AwsExocomputeConfig!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allExocomputeConfig { get; set; }
@@ -926,7 +1234,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
+            HelpMessage =
+                @"
+                A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
+                GraphQL argument awsNativeAccountIdOrNamePrefix: String!
+                "
         )]
         public System.String? AwsNativeAccountIdOrNamePrefix { get; set; }
         
@@ -940,7 +1252,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAwsCloudAccountConfigs(awsCloudAccountsArg: AwsCloudAccountConfigsInput!):[AwsFeatureConfig!]!",
+            HelpMessage =
+                @"
+                List of all AWS cloud account configurations with the given search query.
+                GraphQL operation: allAwsCloudAccountConfigs(awsCloudAccountsArg: AwsCloudAccountConfigsInput!):[AwsFeatureConfig!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allCloudAccountConfig { get; set; }
@@ -956,7 +1272,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAwsRegions(cloudAccountId: String!):[AwsCloudAccountRegion!]!",
+            HelpMessage =
+                @"
+                All valid AWS regions for this cloud account.
+                GraphQL operation: allAwsRegions(cloudAccountId: String!):[AwsCloudAccountRegion!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allRegion { get; set; }
@@ -972,7 +1292,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAwsCdmVersions(input: AwsCdmVersionRequest!):[AwsCdmVersion!]!",
+            HelpMessage =
+                @"
+                Get all Rubrik CDM versions in the AWS marketplace.
+                GraphQL operation: allAwsCdmVersions(input: AwsCdmVersionRequest!):[AwsCdmVersion!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allCdmVersion { get; set; }
@@ -988,7 +1312,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: allAwsInstanceProfileNames(cloudAccountId: String!, region: String!):[String!]!",
+            HelpMessage =
+                @"
+                All Rubrik CC-ES instance profiles in the AWS account.
+                GraphQL operation: allAwsInstanceProfileNames(cloudAccountId: String!, region: String!):[String!]!
+                ",
             Position = 0
         )]
         public SwitchParameter allInstanceProfileName { get; set; }

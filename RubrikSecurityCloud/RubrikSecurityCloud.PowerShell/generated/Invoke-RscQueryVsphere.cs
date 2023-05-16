@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereDatacenter(fid: UUID!):VsphereDatacenter!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereDatacenter(fid: UUID!):VsphereDatacenter!
+                ",
             Position = 0
         )]
         public SwitchParameter Datacenter { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fid: UUID!"
+            HelpMessage =
+                @"
+                The Rubrik UUID for the object.
+                GraphQL argument fid: UUID!
+                "
         )]
         public System.String? Fid { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereComputeCluster(fid: UUID!):VsphereComputeCluster!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereComputeCluster(fid: UUID!):VsphereComputeCluster!
+                ",
             Position = 0
         )]
         public SwitchParameter ComputeCluster { get; set; }
@@ -76,7 +88,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereResourcePool(fid: UUID!):VsphereResourcePool!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereResourcePool(fid: UUID!):VsphereResourcePool!
+                ",
             Position = 0
         )]
         public SwitchParameter ResourcePool { get; set; }
@@ -92,7 +108,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereFolder(fid: UUID!):VsphereFolder!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereFolder(fid: UUID!):VsphereFolder!
+                ",
             Position = 0
         )]
         public SwitchParameter Folder { get; set; }
@@ -108,7 +128,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereHost(fid: UUID!):VsphereHost!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereHost(fid: UUID!):VsphereHost!
+                ",
             Position = 0
         )]
         public new SwitchParameter Host { get; set; }
@@ -124,7 +148,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereDatastoreCluster(fid: UUID!):VsphereDatastoreCluster!",
+            HelpMessage =
+                @"
+                Vsphere datastore cluster based on id passed in.
+                GraphQL operation: vSphereDatastoreCluster(fid: UUID!):VsphereDatastoreCluster!
+                ",
             Position = 0
         )]
         public SwitchParameter DatastoreCluster { get; set; }
@@ -140,7 +168,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereDatastore(fid: UUID!):VsphereDatastore!",
+            HelpMessage =
+                @"
+                Vsphere datastore based on id passed in.
+                GraphQL operation: vSphereDatastore(fid: UUID!):VsphereDatastore!
+                ",
             Position = 0
         )]
         public SwitchParameter Datastore { get; set; }
@@ -156,7 +188,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereHostsByFids(fids: [UUID!]!):[VsphereHost!]!",
+            HelpMessage =
+                @"
+                All of the VSphere hosts based on fids passed in.
+                GraphQL operation: vSphereHostsByFids(fids: [UUID!]!):[VsphereHost!]!
+                ",
             Position = 0
         )]
         public SwitchParameter HostsByFid { get; set; }
@@ -166,7 +202,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument fids: [UUID!]!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument fids: [UUID!]!
+                "
         )]
         public List<System.String>? Fids { get; set; }
         
@@ -180,7 +220,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereTag(fid: UUID!):VsphereTag!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereTag(fid: UUID!):VsphereTag!
+                ",
             Position = 0
         )]
         public SwitchParameter Tag { get; set; }
@@ -196,7 +240,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereTagCategory(fid: UUID!):VsphereTagCategory!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereTagCategory(fid: UUID!):VsphereTagCategory!
+                ",
             Position = 0
         )]
         public SwitchParameter TagCategory { get; set; }
@@ -212,7 +260,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereNetwork(fid: UUID!):VsphereNetwork!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereNetwork(fid: UUID!):VsphereNetwork!
+                ",
             Position = 0
         )]
         public SwitchParameter Network { get; set; }
@@ -228,7 +280,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereTopLevelDescendantsConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):CdmHierarchyObjectConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereTopLevelDescendantsConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):CdmHierarchyObjectConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter TopLevelDescendantsList { get; set; }
@@ -238,7 +294,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument first: Int"
+            HelpMessage =
+                @"
+                Returns the first n elements from the list.
+                GraphQL argument first: Int
+                "
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -246,7 +306,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument after: String"
+            HelpMessage =
+                @"
+                Returns the elements in the list that come after the specified cursor.
+                GraphQL argument after: String
+                "
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -254,7 +318,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortBy: HierarchySortByField"
+            HelpMessage =
+                @"
+                Sort hierarchy objects by hierarchy field.
+                GraphQL argument sortBy: HierarchySortByField
+                "
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -262,7 +330,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument sortOrder: SortOrder"
+            HelpMessage =
+                @"
+                Sorting order for the results.
+                GraphQL argument sortOrder: SortOrder
+                "
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -270,7 +342,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
+            HelpMessage =
+                @"
+                Types of objects to include.
+                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
+                "
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         [Parameter(
@@ -278,7 +354,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument filter: [Filter!]"
+            HelpMessage =
+                @"
+                The hierarchy object filter.
+                GraphQL argument filter: [Filter!]
+                "
         )]
         public List<Filter>? Filter { get; set; }
         
@@ -292,7 +372,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereRootRecoveryHierarchy(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CdmHierarchyObjectConnection!",
+            HelpMessage =
+                @"
+                The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
+                GraphQL operation: vSphereRootRecoveryHierarchy(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CdmHierarchyObjectConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter RootRecoveryHierarchy { get; set; }
@@ -308,7 +392,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereHostConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereHostConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereHostConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereHostConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter HostList { get; set; }
@@ -324,7 +412,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereDatastoreConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereDatastoreConnection!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vSphereDatastoreConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereDatastoreConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter DatastoreList { get; set; }
@@ -340,7 +432,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereLiveMounts(,   first: Int,   after: String,   filter: [VsphereLiveMountFilterInput!],   sortBy: VsphereLiveMountSortBy, ):VsphereLiveMountConnection!",
+            HelpMessage =
+                @"
+                List of vSphere Live Mounts.
+                GraphQL operation: vSphereLiveMounts(,   first: Int,   after: String,   filter: [VsphereLiveMountFilterInput!],   sortBy: VsphereLiveMountSortBy, ):VsphereLiveMountConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter LiveMount { get; set; }
@@ -356,35 +452,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereMountConnection(,   first: Int,   after: String,   filter: VSphereMountFilter,   sortBy: VsphereMountSortBy,   sortOrder: SortOrder, ):VsphereMountConnection!",
+            HelpMessage =
+                @"
+                vSphere Live Mount Connection
+                GraphQL operation: vSphereMountConnection(,   first: Int,   after: String,   filter: VSphereMountFilter,   sortBy: VsphereMountSortBy,   sortOrder: SortOrder, ):VsphereMountConnection!
+                ",
             Position = 0
         )]
         public SwitchParameter MountList { get; set; }
 
-        
-        // -------------------------------------------------------------------
-        // VmwareCdpLiveInfo parameter set
-        //
-        // GraphQL operation: vsphereVmwareCdpLiveInfo(ids: [String!]!):BatchVmwareCdpLiveInfo!
-        //
-        [Parameter(
-            ParameterSetName = "VmwareCdpLiveInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vsphereVmwareCdpLiveInfo(ids: [String!]!):BatchVmwareCdpLiveInfo!",
-            Position = 0
-        )]
-        public SwitchParameter VmwareCdpLiveInfo { get; set; }
-
-        [Parameter(
-            ParameterSetName = "VmwareCdpLiveInfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument ids: [String!]!"
-        )]
-        public List<System.String>? Ids { get; set; }
         
         // -------------------------------------------------------------------
         // Mount parameter set
@@ -396,7 +472,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereMount(fid: UUID!):VsphereMount!",
+            HelpMessage =
+                @"
+                Get a vSphere Live Mount by id
+                GraphQL operation: vSphereMount(fid: UUID!):VsphereMount!
+                ",
             Position = 0
         )]
         public SwitchParameter Mount { get; set; }
@@ -412,7 +492,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: vSphereHostDetails(input: GetVmwareHostInput!):VmwareHostDetail!",
+            HelpMessage =
+                @"
+                Get details of a ESXi hypervisor
+
+Supported in v5.0+
+Get details of a ESXi hypervisor.
+                GraphQL operation: vSphereHostDetails(input: GetVmwareHostInput!):VmwareHostDetail!
+                ",
             Position = 0
         )]
         public SwitchParameter HostDetail { get; set; }
@@ -422,9 +509,45 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: GetVmwareHostInput!"
+            HelpMessage =
+                @"
+                Input for V1GetVmwareHost.
+                GraphQL argument input: GetVmwareHostInput!
+                "
         )]
         public GetVmwareHostInput? Input { get; set; }
+        
+        // -------------------------------------------------------------------
+        // VmwareCdpLiveInfo parameter set
+        //
+        // GraphQL operation: vsphereVmwareCdpLiveInfo(ids: [String!]!):BatchVmwareCdpLiveInfo!
+        //
+        [Parameter(
+            ParameterSetName = "VmwareCdpLiveInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vsphereVmwareCdpLiveInfo(ids: [String!]!):BatchVmwareCdpLiveInfo!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter VmwareCdpLiveInfo { get; set; }
+
+        [Parameter(
+            ParameterSetName = "VmwareCdpLiveInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                The ID of each CDP-enabled virtual machine for which live info is being retrieved.
+                GraphQL argument ids: [String!]!
+                "
+        )]
+        public List<System.String>? Ids { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -483,14 +606,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "MountList":
                         this.ProcessRecord_MountList();
                         break;
-                    case "VmwareCdpLiveInfo":
-                        this.ProcessRecord_VmwareCdpLiveInfo();
-                        break;
                     case "Mount":
                         this.ProcessRecord_Mount();
                         break;
                     case "HostDetail":
                         this.ProcessRecord_HostDetail();
+                        break;
+                    case "VmwareCdpLiveInfo":
+                        this.ProcessRecord_VmwareCdpLiveInfo();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -662,15 +785,6 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
-        // vsphereVmwareCdpLiveInfo.
-        protected void ProcessRecord_VmwareCdpLiveInfo()
-        {
-            this._logger.name += " -VmwareCdpLiveInfo";
-            // Invoke graphql operation vsphereVmwareCdpLiveInfo
-            InvokeQueryVsphereVmwareCdpLiveInfo();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // vSphereMount.
         protected void ProcessRecord_Mount()
         {
@@ -686,6 +800,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             this._logger.name += " -HostDetail";
             // Invoke graphql operation vSphereHostDetails
             InvokeQueryVsphereHostDetails();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereVmwareCdpLiveInfo.
+        protected void ProcessRecord_VmwareCdpLiveInfo()
+        {
+            this._logger.name += " -VmwareCdpLiveInfo";
+            // Invoke graphql operation vsphereVmwareCdpLiveInfo
+            InvokeQueryVsphereVmwareCdpLiveInfo();
         }
 
 
@@ -1396,44 +1519,6 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         }
 
         // Invoke GraphQL Query:
-        // vsphereVmwareCdpLiveInfo(ids: [String!]!): BatchVmwareCdpLiveInfo!
-        protected void InvokeQueryVsphereVmwareCdpLiveInfo()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("ids", "[String!]!"),
-            };
-            BatchVmwareCdpLiveInfo? fields = null ;
-            if (this.Field != null)
-            {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
-                    fields = (BatchVmwareCdpLiveInfo)psObject.BaseObject;
-                } else {
-                    fields = (BatchVmwareCdpLiveInfo)this.Field;
-                }
-            }
-            string document = Query.VsphereVmwareCdpLiveInfo(ref fields);
-            this._input.Initialize(argDefs, fields, "Query.VsphereVmwareCdpLiveInfo");
-            string parameters = "($ids: [String!]!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "query QueryVsphereVmwareCdpLiveInfo" + parameters + "{" + document + "}",
-                OperationName = "QueryVsphereVmwareCdpLiveInfo",
-            };
-            OperationVariableSet vars = new OperationVariableSet();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            Task<BatchVmwareCdpLiveInfo> task = this._rbkClient.InvokeGenericCallAsync<BatchVmwareCdpLiveInfo>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
-        }
-
-        // Invoke GraphQL Query:
         // vSphereMount(fid: UUID!): VsphereMount!
         protected void InvokeQueryVsphereMount()
         {
@@ -1504,6 +1589,44 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             vars.Variables = this._input.GetArgDict();
             Task<VmwareHostDetail> task = this._rbkClient.InvokeGenericCallAsync<VmwareHostDetail>(request, vars, this._logger, GetMetricTags());
+            task.Wait();
+            this._logger.Flush();
+            WriteObject(task.Result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // vsphereVmwareCdpLiveInfo(ids: [String!]!): BatchVmwareCdpLiveInfo!
+        protected void InvokeQueryVsphereVmwareCdpLiveInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("ids", "[String!]!"),
+            };
+            BatchVmwareCdpLiveInfo? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject) {
+                    var psObject = (PSObject)this.Field;
+                    fields = (BatchVmwareCdpLiveInfo)psObject.BaseObject;
+                } else {
+                    fields = (BatchVmwareCdpLiveInfo)this.Field;
+                }
+            }
+            string document = Query.VsphereVmwareCdpLiveInfo(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.VsphereVmwareCdpLiveInfo");
+            string parameters = "($ids: [String!]!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryVsphereVmwareCdpLiveInfo" + parameters + "{" + document + "}",
+                OperationName = "QueryVsphereVmwareCdpLiveInfo",
+            };
+            OperationVariableSet vars = new OperationVariableSet();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            Task<BatchVmwareCdpLiveInfo> task = this._rbkClient.InvokeGenericCallAsync<BatchVmwareCdpLiveInfo>(request, vars, this._logger, GetMetricTags());
             task.Wait();
             this._logger.Flush();
             WriteObject(task.Result, true);

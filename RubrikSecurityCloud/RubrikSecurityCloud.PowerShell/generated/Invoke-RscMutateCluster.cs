@@ -36,7 +36,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: addNodesToCloudCluster(input: AddNodesToCloudClusterInput!):CcProvisionJobReply!",
+            HelpMessage =
+                @"
+                Add nodes to cloud cluster.
+                GraphQL operation: addNodesToCloudCluster(input: AddNodesToCloudClusterInput!):CcProvisionJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter AddNodesToCloud { get; set; }
@@ -46,7 +50,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument input: AddNodesToCloudClusterInput!"
+            HelpMessage =
+                @"
+                Input for adding nodes to cloud cluster.
+                GraphQL argument input: AddNodesToCloudClusterInput!
+                "
         )]
         public AddNodesToCloudClusterInput? Input { get; set; }
         
@@ -60,7 +68,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: registerCloudCluster(input: RegisterCloudClusterInput!):RegisterCloudClusterReply!",
+            HelpMessage =
+                @"
+                Register a cloud cluster.
+                GraphQL operation: registerCloudCluster(input: RegisterCloudClusterInput!):RegisterCloudClusterReply!
+                ",
             Position = 0
         )]
         public SwitchParameter RegisterCloud { get; set; }
@@ -76,7 +88,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createFailoverCluster(input: CreateFailoverClusterInput!):CreateFailoverClusterReply!",
+            HelpMessage =
+                @"
+                Create a failover cluster
+
+Supported in v5.2+
+Create a failover cluster.
+                GraphQL operation: createFailoverCluster(input: CreateFailoverClusterInput!):CreateFailoverClusterReply!
+                ",
             Position = 0
         )]
         public SwitchParameter CreateFailover { get; set; }
@@ -92,7 +111,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: updateFailoverCluster(input: UpdateFailoverClusterInput!):UpdateFailoverClusterReply!",
+            HelpMessage =
+                @"
+                Update a failover cluster
+
+Supported in v5.2+
+Update failover cluster with specified properties.
+                GraphQL operation: updateFailoverCluster(input: UpdateFailoverClusterInput!):UpdateFailoverClusterReply!
+                ",
             Position = 0
         )]
         public SwitchParameter UpdateFailover { get; set; }
@@ -108,7 +134,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: deleteFailoverCluster(input: DeleteFailoverClusterInput!):ResponseSuccess!",
+            HelpMessage =
+                @"
+                Delete a failover cluster
+
+Supported in v5.2+
+Delete a failover cluster.
+                GraphQL operation: deleteFailoverCluster(input: DeleteFailoverClusterInput!):ResponseSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter DeleteFailover { get; set; }
@@ -124,7 +157,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: bulkDeleteFailoverCluster(input: BulkDeleteFailoverClusterInput!):ResponseSuccess!",
+            HelpMessage =
+                @"
+                Delete the provided failover clusters
+
+Supported in v5.3+
+Delete the provided failover clusters.
+                GraphQL operation: bulkDeleteFailoverCluster(input: BulkDeleteFailoverClusterInput!):ResponseSuccess!
+                ",
             Position = 0
         )]
         public SwitchParameter BulkDeleteFailover { get; set; }
@@ -140,7 +180,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: createK8sCluster(input: CreateK8sClusterInput!):CreateK8sClusterReply!",
+            HelpMessage =
+                @"
+                Add a Kubernetes cluster.
+                GraphQL operation: createK8sCluster(input: CreateK8sClusterInput!):CreateK8sClusterReply!
+                ",
             Position = 0
         )]
         public SwitchParameter CreateK8s { get; set; }
@@ -156,7 +200,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: refreshK8sCluster(input: RefreshK8sClusterInput!):CreateOnDemandJobReply!",
+            HelpMessage =
+                @"
+                Refresh resources of a Kubernetes cluster.
+                GraphQL operation: refreshK8sCluster(input: RefreshK8sClusterInput!):CreateOnDemandJobReply!
+                ",
             Position = 0
         )]
         public SwitchParameter RefreshK8s { get; set; }
@@ -172,7 +220,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: archiveK8sCluster(input: ArchiveK8sClusterInput!):ArchiveK8sClusterReply!",
+            HelpMessage =
+                @"
+                Archive a Kubernetes cluster.
+                GraphQL operation: archiveK8sCluster(input: ArchiveK8sClusterInput!):ArchiveK8sClusterReply!
+                ",
             Position = 0
         )]
         public SwitchParameter ArchiveK8s { get; set; }
@@ -188,7 +240,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL operation: removeCdmCluster(clusterUUID: UUID!, isForce: Boolean!, expireInDays: Long):Boolean!",
+            HelpMessage =
+                @"
+                
+                GraphQL operation: removeCdmCluster(clusterUUID: UUID!, isForce: Boolean!, expireInDays: Long):Boolean!
+                ",
             Position = 0
         )]
         public SwitchParameter RemoveCdm { get; set; }
@@ -198,7 +254,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument clusterUUID: UUID!"
+            HelpMessage =
+                @"
+                UUID of the Rubrik cluster.
+                GraphQL argument clusterUUID: UUID!
+                "
         )]
         public System.String? ClusterUuid { get; set; }
         [Parameter(
@@ -206,7 +266,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument isForce: Boolean!"
+            HelpMessage =
+                @"
+                
+                GraphQL argument isForce: Boolean!
+                "
         )]
         public System.Boolean? IsForce { get; set; }
         [Parameter(
@@ -214,7 +278,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
-            HelpMessage = "GraphQL argument expireInDays: Long"
+            HelpMessage =
+                @"
+                Number of days after which data from Rubrik is removed.
+                GraphQL argument expireInDays: Long
+                "
         )]
         public System.Int64? ExpireInDays { get; set; }
 
