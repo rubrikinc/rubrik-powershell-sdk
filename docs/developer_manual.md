@@ -70,7 +70,7 @@ $query = Get-Content -Path Samples/GetVsphereVmList.query.json -Raw
 Invoke-Rsc -OperationText $query
 ```
 
-## General Cmdlets
+## Cmdlets
 
 | Cmdlet | Description |
 | --- | --- |
@@ -84,11 +84,6 @@ Invoke-Rsc -OperationText $query
 | `Get-RscMssqlDatabase` | Get info about MSSQL databases |
 | `Get-RscSnapshot` | Get snapshots |
 | `Get-RscVsphereVm` | Get info about VSphere VMs |
-
-## Advanced Cmdlets
-
-| Cmdlet | Description |
-| --- | --- |
 | `Get-RscType` | Work with GraphQL schema types|
 | `Invoke-RscMutateActivitySeries` | Run an Activity Series related GraphQL mutation |
 | `Invoke-RscMutateAws` | Run an AWS-related GraphQL mutation |
