@@ -8,7 +8,7 @@ We rely on your feedback to improve the SDK !
 
 ### Powershell >= 6.0
 
-This Alpha release needs PowerShell 6.0 or later.
+This Beta release needs PowerShell 6.0 or later.
 Your default installation may be an older version,
 
 see:
