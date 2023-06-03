@@ -156,6 +156,33 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "DB_M6G_XLARGE")]
         DB_M6G_XLARGE,
 
+        [EnumMember(Value = "DB_M6I_12XLARGE")]
+        DB_M6I_12XLARGE,
+
+        [EnumMember(Value = "DB_M6I_16XLARGE")]
+        DB_M6I_16XLARGE,
+
+        [EnumMember(Value = "DB_M6I_24XLARGE")]
+        DB_M6I_24XLARGE,
+
+        [EnumMember(Value = "DB_M6I_2XLARGE")]
+        DB_M6I_2XLARGE,
+
+        [EnumMember(Value = "DB_M6I_32XLARGE")]
+        DB_M6I_32XLARGE,
+
+        [EnumMember(Value = "DB_M6I_4XLARGE")]
+        DB_M6I_4XLARGE,
+
+        [EnumMember(Value = "DB_M6I_8XLARGE")]
+        DB_M6I_8XLARGE,
+
+        [EnumMember(Value = "DB_M6I_LARGE")]
+        DB_M6I_LARGE,
+
+        [EnumMember(Value = "DB_M6I_XLARGE")]
+        DB_M6I_XLARGE,
+
         [EnumMember(Value = "DB_R3_2XLARGE")]
         DB_R3_2XLARGE,
 
@@ -284,6 +311,33 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "DB_R6G_XLARGE")]
         DB_R6G_XLARGE,
+
+        [EnumMember(Value = "DB_R6I_12XLARGE")]
+        DB_R6I_12XLARGE,
+
+        [EnumMember(Value = "DB_R6I_16XLARGE")]
+        DB_R6I_16XLARGE,
+
+        [EnumMember(Value = "DB_R6I_24XLARGE")]
+        DB_R6I_24XLARGE,
+
+        [EnumMember(Value = "DB_R6I_2XLARGE")]
+        DB_R6I_2XLARGE,
+
+        [EnumMember(Value = "DB_R6I_32XLARGE")]
+        DB_R6I_32XLARGE,
+
+        [EnumMember(Value = "DB_R6I_4XLARGE")]
+        DB_R6I_4XLARGE,
+
+        [EnumMember(Value = "DB_R6I_8XLARGE")]
+        DB_R6I_8XLARGE,
+
+        [EnumMember(Value = "DB_R6I_LARGE")]
+        DB_R6I_LARGE,
+
+        [EnumMember(Value = "DB_R6I_XLARGE")]
+        DB_R6I_XLARGE,
 
         [EnumMember(Value = "DB_T2_2XLARGE")]
         DB_T2_2XLARGE,

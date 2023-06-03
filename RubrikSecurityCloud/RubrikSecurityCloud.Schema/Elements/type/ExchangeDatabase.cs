@@ -11,14 +11,56 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ExchangeDatabase
  
-    public class ExchangeDatabase: IFragment, CdmHierarchyObject, CdmHierarchySnappableNew, ExchangeDagDescendantType, ExchangeServerDescendantType, HierarchyObject
+    public class ExchangeDatabase: BaseType, CdmHierarchyObject, CdmHierarchySnappableNew, ExchangeDagDescendantType, ExchangeServerDescendantType, HierarchyObject
     {
         #region members
+
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        [JsonProperty("authorizedOperations")]
+        public List<Operation>? AuthorizedOperations { get; set; }
+
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
+        [JsonProperty("objectType")]
+        public HierarchyObjectTypeEnum? ObjectType { get; set; }
+
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        [JsonProperty("slaAssignment")]
+        public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
+
+        //      C# -> SlaDomain? ConfiguredSlaDomain
+        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
+        [JsonProperty("configuredSlaDomain")]
+        public SlaDomain? ConfiguredSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
+        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
+        [JsonProperty("effectiveRetentionSlaDomain")]
+        public SlaDomain? EffectiveRetentionSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        [JsonProperty("effectiveSlaDomain")]
+        public SlaDomain? EffectiveSlaDomain { get; set; }
+
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        [JsonProperty("pendingSla")]
+        public SlaDomain? PendingSla { get; set; }
+
+        //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
+        // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
+        [JsonProperty("replicatedObjects")]
+        public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
+
         //      C# -> System.Int32? ActiveCopies
         // GraphQL -> activeCopies: Int! (scalar)
         [JsonProperty("activeCopies")]
@@ -174,51 +216,20 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshotGroupBySummary")]
         public CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary { get; set; }
 
-        //      C# -> List<Operation>? AuthorizedOperations
-        // GraphQL -> authorizedOperations: [Operation!]! (enum)
-        [JsonProperty("authorizedOperations")]
-        public List<Operation>? AuthorizedOperations { get; set; }
-
-        //      C# -> HierarchyObjectTypeEnum? ObjectType
-        // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-        [JsonProperty("objectType")]
-        public HierarchyObjectTypeEnum? ObjectType { get; set; }
-
-        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        [JsonProperty("slaAssignment")]
-        public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
-
-        //      C# -> SlaDomain? ConfiguredSlaDomain
-        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-        [JsonProperty("configuredSlaDomain")]
-        public SlaDomain? ConfiguredSlaDomain { get; set; }
-
-        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
-        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-        [JsonProperty("effectiveRetentionSlaDomain")]
-        public SlaDomain? EffectiveRetentionSlaDomain { get; set; }
-
-        //      C# -> SlaDomain? EffectiveSlaDomain
-        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        [JsonProperty("effectiveSlaDomain")]
-        public SlaDomain? EffectiveSlaDomain { get; set; }
-
-        //      C# -> SlaDomain? PendingSla
-        // GraphQL -> pendingSla: SlaDomain (interface)
-        [JsonProperty("pendingSla")]
-        public SlaDomain? PendingSla { get; set; }
-
-        //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
-        // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
-        [JsonProperty("replicatedObjects")]
-        public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
         #endregion
 
     #region methods
 
     public ExchangeDatabase Set(
+        List<Operation>? AuthorizedOperations = null,
+        HierarchyObjectTypeEnum? ObjectType = null,
+        SlaAssignmentTypeEnum? SlaAssignment = null,
+        SlaDomain? ConfiguredSlaDomain = null,
+        SlaDomain? EffectiveRetentionSlaDomain = null,
+        SlaDomain? EffectiveSlaDomain = null,
+        SlaDomain? PendingSla = null,
+        List<CdmHierarchyObject>? ReplicatedObjects = null,
         System.Int32? ActiveCopies = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
@@ -249,17 +260,33 @@ namespace Rubrik.SecurityCloud.Types
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
         CdmSnapshotGroupByConnection? SnapshotGroupByConnection = null,
-        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary = null,
-        List<Operation>? AuthorizedOperations = null,
-        HierarchyObjectTypeEnum? ObjectType = null,
-        SlaAssignmentTypeEnum? SlaAssignment = null,
-        SlaDomain? ConfiguredSlaDomain = null,
-        SlaDomain? EffectiveRetentionSlaDomain = null,
-        SlaDomain? EffectiveSlaDomain = null,
-        SlaDomain? PendingSla = null,
-        List<CdmHierarchyObject>? ReplicatedObjects = null
+        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary = null
     ) 
     {
+        if ( AuthorizedOperations != null ) {
+            this.AuthorizedOperations = AuthorizedOperations;
+        }
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
+        }
+        if ( SlaAssignment != null ) {
+            this.SlaAssignment = SlaAssignment;
+        }
+        if ( ConfiguredSlaDomain != null ) {
+            this.ConfiguredSlaDomain = ConfiguredSlaDomain;
+        }
+        if ( EffectiveRetentionSlaDomain != null ) {
+            this.EffectiveRetentionSlaDomain = EffectiveRetentionSlaDomain;
+        }
+        if ( EffectiveSlaDomain != null ) {
+            this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
+        if ( PendingSla != null ) {
+            this.PendingSla = PendingSla;
+        }
+        if ( ReplicatedObjects != null ) {
+            this.ReplicatedObjects = ReplicatedObjects;
+        }
         if ( ActiveCopies != null ) {
             this.ActiveCopies = ActiveCopies;
         }
@@ -353,723 +380,525 @@ namespace Rubrik.SecurityCloud.Types
         if ( SnapshotGroupBySummary != null ) {
             this.SnapshotGroupBySummary = SnapshotGroupBySummary;
         }
-        if ( AuthorizedOperations != null ) {
-            this.AuthorizedOperations = AuthorizedOperations;
-        }
-        if ( ObjectType != null ) {
-            this.ObjectType = ObjectType;
-        }
-        if ( SlaAssignment != null ) {
-            this.SlaAssignment = SlaAssignment;
-        }
-        if ( ConfiguredSlaDomain != null ) {
-            this.ConfiguredSlaDomain = ConfiguredSlaDomain;
-        }
-        if ( EffectiveRetentionSlaDomain != null ) {
-            this.EffectiveRetentionSlaDomain = EffectiveRetentionSlaDomain;
-        }
-        if ( EffectiveSlaDomain != null ) {
-            this.EffectiveSlaDomain = EffectiveSlaDomain;
-        }
-        if ( PendingSla != null ) {
-            this.PendingSla = PendingSla;
-        }
-        if ( ReplicatedObjects != null ) {
-            this.ReplicatedObjects = ReplicatedObjects;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? ActiveCopies
-            // GraphQL -> activeCopies: Int! (scalar)
-            if (this.ActiveCopies != null)
-            {
-                 s += ind + "activeCopies\n";
-
-            }
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId != null)
-            {
-                 s += ind + "cdmId\n";
-
-            }
-            //      C# -> System.String? CdmLink
-            // GraphQL -> cdmLink: String! (scalar)
-            if (this.CdmLink != null)
-            {
-                 s += ind + "cdmLink\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: UUID! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic != null)
-            {
-                 s += ind + "isRelic\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.Int32? NumWorkloadDescendants
-            // GraphQL -> numWorkloadDescendants: Int! (scalar)
-            if (this.NumWorkloadDescendants != null)
-            {
-                 s += ind + "numWorkloadDescendants\n";
-
-            }
-            //      C# -> System.Int32? OnDemandSnapshotCount
-            // GraphQL -> onDemandSnapshotCount: Int! (scalar)
-            if (this.OnDemandSnapshotCount != null)
-            {
-                 s += ind + "onDemandSnapshotCount\n";
-
-            }
-            //      C# -> System.String? PrimaryClusterUuid
-            // GraphQL -> primaryClusterUuid: UUID! (scalar)
-            if (this.PrimaryClusterUuid != null)
-            {
-                 s += ind + "primaryClusterUuid\n";
-
-            }
-            //      C# -> System.Int32? ReplicatedObjectCount
-            // GraphQL -> replicatedObjectCount: Int! (scalar)
-            if (this.ReplicatedObjectCount != null)
-            {
-                 s += ind + "replicatedObjectCount\n";
-
-            }
-            //      C# -> System.Boolean? SlaPauseStatus
-            // GraphQL -> slaPauseStatus: Boolean! (scalar)
-            if (this.SlaPauseStatus != null)
-            {
-                 s += ind + "slaPauseStatus\n";
-
-            }
-            //      C# -> System.Int32? TotalCopies
-            // GraphQL -> totalCopies: Int! (scalar)
-            if (this.TotalCopies != null)
-            {
-                 s += ind + "totalCopies\n";
-
-            }
-            //      C# -> List<Org>? AllOrgs
-            // GraphQL -> allOrgs: [Org!]! (type)
-            if (this.AllOrgs != null)
-            {
-                 s += ind + "allOrgs\n";
-
-                 s += ind + "{\n" + 
-                 this.AllOrgs.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PathNode? EffectiveSlaSourceObject
-            // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-            if (this.EffectiveSlaSourceObject != null)
-            {
-                 s += ind + "effectiveSlaSourceObject\n";
-
-                 s += ind + "{\n" + 
-                 this.EffectiveSlaSourceObject.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ExchangeServer? ExchangeServer
-            // GraphQL -> exchangeServer: ExchangeServer! (type)
-            if (this.ExchangeServer != null)
-            {
-                 s += ind + "exchangeServer\n";
-
-                 s += ind + "{\n" + 
-                 this.ExchangeServer.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> LatestUserNote? LatestUserNote
-            // GraphQL -> latestUserNote: LatestUserNote (type)
-            if (this.LatestUserNote != null)
-            {
-                 s += ind + "latestUserNote\n";
-
-                 s += ind + "{\n" + 
-                 this.LatestUserNote.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<PathNode>? LogicalPath
-            // GraphQL -> logicalPath: [PathNode!]! (type)
-            if (this.LogicalPath != null)
-            {
-                 s += ind + "logicalPath\n";
-
-                 s += ind + "{\n" + 
-                 this.LogicalPath.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
-            // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
-            if (this.MissedSnapshotConnection != null)
-            {
-                 s += ind + "missedSnapshotConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.MissedSnapshotConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
-            // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
-            if (this.MissedSnapshotGroupByConnection != null)
-            {
-                 s += ind + "missedSnapshotGroupByConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.MissedSnapshotGroupByConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? NewestArchivedSnapshot
-            // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
-            if (this.NewestArchivedSnapshot != null)
-            {
-                 s += ind + "newestArchivedSnapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.NewestArchivedSnapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? NewestReplicatedSnapshot
-            // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
-            if (this.NewestReplicatedSnapshot != null)
-            {
-                 s += ind + "newestReplicatedSnapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.NewestReplicatedSnapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? NewestSnapshot
-            // GraphQL -> newestSnapshot: CdmSnapshot (type)
-            if (this.NewestSnapshot != null)
-            {
-                 s += ind + "newestSnapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.NewestSnapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? OldestSnapshot
-            // GraphQL -> oldestSnapshot: CdmSnapshot (type)
-            if (this.OldestSnapshot != null)
-            {
-                 s += ind + "oldestSnapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.OldestSnapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
-            // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
-            if (this.PendingObjectDeletionStatus != null)
-            {
-                 s += ind + "pendingObjectDeletionStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.PendingObjectDeletionStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<PathNode>? PhysicalPath
-            // GraphQL -> physicalPath: [PathNode!]! (type)
-            if (this.PhysicalPath != null)
-            {
-                 s += ind + "physicalPath\n";
-
-                 s += ind + "{\n" + 
-                 this.PhysicalPath.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> DataLocation? PrimaryClusterLocation
-            // GraphQL -> primaryClusterLocation: DataLocation! (type)
-            if (this.PrimaryClusterLocation != null)
-            {
-                 s += ind + "primaryClusterLocation\n";
-
-                 s += ind + "{\n" + 
-                 this.PrimaryClusterLocation.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshotConnection? SnapshotConnection
-            // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
-            if (this.SnapshotConnection != null)
-            {
-                 s += ind + "snapshotConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.SnapshotConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SnapshotDistribution? SnapshotDistribution
-            // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-            if (this.SnapshotDistribution != null)
-            {
-                 s += ind + "snapshotDistribution\n";
-
-                 s += ind + "{\n" + 
-                 this.SnapshotDistribution.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
-            // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
-            if (this.SnapshotGroupByConnection != null)
-            {
-                 s += ind + "snapshotGroupByConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.SnapshotGroupByConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
-            // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
-            if (this.SnapshotGroupBySummary != null)
-            {
-                 s += ind + "snapshotGroupBySummary\n";
-
-                 s += ind + "{\n" + 
-                 this.SnapshotGroupBySummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<Operation>? AuthorizedOperations
-            // GraphQL -> authorizedOperations: [Operation!]! (enum)
-            if (this.AuthorizedOperations != null)
-            {
-                 s += ind + "authorizedOperations\n";
-
-            }
-            //      C# -> HierarchyObjectTypeEnum? ObjectType
-            // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-            if (this.ObjectType != null)
-            {
-                 s += ind + "objectType\n";
-
-            }
-            //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-            // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-            if (this.SlaAssignment != null)
-            {
-                 s += ind + "slaAssignment\n";
-
-            }
-                        //      C# -> SlaDomain? ConfiguredSlaDomain
-            // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-            if (this.ConfiguredSlaDomain != null)
-            {
-                s += ind + "configuredSlaDomain\n";
-                s += ind + "{\n";
-
-                string typename = this.ConfiguredSlaDomain.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.ConfiguredSlaDomain.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-                        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
-            // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-            if (this.EffectiveRetentionSlaDomain != null)
-            {
-                s += ind + "effectiveRetentionSlaDomain\n";
-                s += ind + "{\n";
-
-                string typename = this.EffectiveRetentionSlaDomain.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.EffectiveRetentionSlaDomain.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-                        //      C# -> SlaDomain? EffectiveSlaDomain
-            // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-            if (this.EffectiveSlaDomain != null)
-            {
-                s += ind + "effectiveSlaDomain\n";
-                s += ind + "{\n";
-
-                string typename = this.EffectiveSlaDomain.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.EffectiveSlaDomain.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-                        //      C# -> SlaDomain? PendingSla
-            // GraphQL -> pendingSla: SlaDomain (interface)
-            if (this.PendingSla != null)
-            {
-                s += ind + "pendingSla\n";
-                s += ind + "{\n";
-
-                string typename = this.PendingSla.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.PendingSla.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-                        //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
-            // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
-            if (this.ReplicatedObjects != null)
-            {
-                s += ind + "replicatedObjects\n";
-                s += ind + "{\n";
-
-                s += this.ReplicatedObjects.AsFragment(indent+1) +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        if (this.AuthorizedOperations != null) {
+            s += ind + "authorizedOperations\n" ;
         }
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
+        if (this.ObjectType != null) {
+            s += ind + "objectType\n" ;
+        }
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        if (this.SlaAssignment != null) {
+            s += ind + "slaAssignment\n" ;
+        }
+        //      C# -> SlaDomain? ConfiguredSlaDomain
+        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
+        if (this.ConfiguredSlaDomain != null) {
+            s += ind + "configuredSlaDomain {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
+        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
+        if (this.EffectiveRetentionSlaDomain != null) {
+            s += ind + "effectiveRetentionSlaDomain {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        if (this.EffectiveSlaDomain != null) {
+            s += ind + "effectiveSlaDomain {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (this.PendingSla != null) {
+            s += ind + "pendingSla {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
+        // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
+        if (this.ReplicatedObjects != null) {
+            s += ind + "replicatedObjects {\n" +
+                this.ReplicatedObjects.AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> System.Int32? ActiveCopies
+        // GraphQL -> activeCopies: Int! (scalar)
+        if (this.ActiveCopies != null) {
+            s += ind + "activeCopies\n" ;
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
+        }
+        //      C# -> System.String? CdmLink
+        // GraphQL -> cdmLink: String! (scalar)
+        if (this.CdmLink != null) {
+            s += ind + "cdmLink\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic != null) {
+            s += ind + "isRelic\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.Int32? NumWorkloadDescendants
+        // GraphQL -> numWorkloadDescendants: Int! (scalar)
+        if (this.NumWorkloadDescendants != null) {
+            s += ind + "numWorkloadDescendants\n" ;
+        }
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        if (this.OnDemandSnapshotCount != null) {
+            s += ind + "onDemandSnapshotCount\n" ;
+        }
+        //      C# -> System.String? PrimaryClusterUuid
+        // GraphQL -> primaryClusterUuid: UUID! (scalar)
+        if (this.PrimaryClusterUuid != null) {
+            s += ind + "primaryClusterUuid\n" ;
+        }
+        //      C# -> System.Int32? ReplicatedObjectCount
+        // GraphQL -> replicatedObjectCount: Int! (scalar)
+        if (this.ReplicatedObjectCount != null) {
+            s += ind + "replicatedObjectCount\n" ;
+        }
+        //      C# -> System.Boolean? SlaPauseStatus
+        // GraphQL -> slaPauseStatus: Boolean! (scalar)
+        if (this.SlaPauseStatus != null) {
+            s += ind + "slaPauseStatus\n" ;
+        }
+        //      C# -> System.Int32? TotalCopies
+        // GraphQL -> totalCopies: Int! (scalar)
+        if (this.TotalCopies != null) {
+            s += ind + "totalCopies\n" ;
+        }
+        //      C# -> List<Org>? AllOrgs
+        // GraphQL -> allOrgs: [Org!]! (type)
+        if (this.AllOrgs != null) {
+            s += ind + "allOrgs {\n" + this.AllOrgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PathNode? EffectiveSlaSourceObject
+        // GraphQL -> effectiveSlaSourceObject: PathNode (type)
+        if (this.EffectiveSlaSourceObject != null) {
+            s += ind + "effectiveSlaSourceObject {\n" + this.EffectiveSlaSourceObject.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ExchangeServer? ExchangeServer
+        // GraphQL -> exchangeServer: ExchangeServer! (type)
+        if (this.ExchangeServer != null) {
+            s += ind + "exchangeServer {\n" + this.ExchangeServer.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> LatestUserNote? LatestUserNote
+        // GraphQL -> latestUserNote: LatestUserNote (type)
+        if (this.LatestUserNote != null) {
+            s += ind + "latestUserNote {\n" + this.LatestUserNote.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<PathNode>? LogicalPath
+        // GraphQL -> logicalPath: [PathNode!]! (type)
+        if (this.LogicalPath != null) {
+            s += ind + "logicalPath {\n" + this.LogicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
+        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
+        if (this.MissedSnapshotConnection != null) {
+            s += ind + "missedSnapshotConnection {\n" + this.MissedSnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
+        if (this.MissedSnapshotGroupByConnection != null) {
+            s += ind + "missedSnapshotGroupByConnection {\n" + this.MissedSnapshotGroupByConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? NewestArchivedSnapshot
+        // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
+        if (this.NewestArchivedSnapshot != null) {
+            s += ind + "newestArchivedSnapshot {\n" + this.NewestArchivedSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? NewestReplicatedSnapshot
+        // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
+        if (this.NewestReplicatedSnapshot != null) {
+            s += ind + "newestReplicatedSnapshot {\n" + this.NewestReplicatedSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CdmSnapshot (type)
+        if (this.NewestSnapshot != null) {
+            s += ind + "newestSnapshot {\n" + this.NewestSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CdmSnapshot (type)
+        if (this.OldestSnapshot != null) {
+            s += ind + "oldestSnapshot {\n" + this.OldestSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
+        // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
+        if (this.PendingObjectDeletionStatus != null) {
+            s += ind + "pendingObjectDeletionStatus {\n" + this.PendingObjectDeletionStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<PathNode>? PhysicalPath
+        // GraphQL -> physicalPath: [PathNode!]! (type)
+        if (this.PhysicalPath != null) {
+            s += ind + "physicalPath {\n" + this.PhysicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> DataLocation? PrimaryClusterLocation
+        // GraphQL -> primaryClusterLocation: DataLocation! (type)
+        if (this.PrimaryClusterLocation != null) {
+            s += ind + "primaryClusterLocation {\n" + this.PrimaryClusterLocation.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
+        if (this.SnapshotConnection != null) {
+            s += ind + "snapshotConnection {\n" + this.SnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SnapshotDistribution? SnapshotDistribution
+        // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
+        if (this.SnapshotDistribution != null) {
+            s += ind + "snapshotDistribution {\n" + this.SnapshotDistribution.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
+        if (this.SnapshotGroupByConnection != null) {
+            s += ind + "snapshotGroupByConnection {\n" + this.SnapshotGroupByConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
+        // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
+        if (this.SnapshotGroupBySummary != null) {
+            s += ind + "snapshotGroupBySummary {\n" + this.SnapshotGroupBySummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<Operation>? AuthorizedOperations
+        // GraphQL -> authorizedOperations: [Operation!]! (enum)
+        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations", true))
         {
-            //      C# -> System.Int32? ActiveCopies
-            // GraphQL -> activeCopies: Int! (scalar)
-            if (this.ActiveCopies == null && Exploration.Includes(parent + ".activeCopies$"))
-            {
-                this.ActiveCopies = new System.Int32();
-            }
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
-            {
-                this.CdmId = new System.String("FETCH");
-            }
-            //      C# -> System.String? CdmLink
-            // GraphQL -> cdmLink: String! (scalar)
-            if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink$"))
-            {
-                this.CdmLink = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: UUID! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic$"))
-            {
-                this.IsRelic = new System.Boolean();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? NumWorkloadDescendants
-            // GraphQL -> numWorkloadDescendants: Int! (scalar)
-            if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants$"))
-            {
-                this.NumWorkloadDescendants = new System.Int32();
-            }
-            //      C# -> System.Int32? OnDemandSnapshotCount
-            // GraphQL -> onDemandSnapshotCount: Int! (scalar)
-            if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount$"))
-            {
-                this.OnDemandSnapshotCount = new System.Int32();
-            }
-            //      C# -> System.String? PrimaryClusterUuid
-            // GraphQL -> primaryClusterUuid: UUID! (scalar)
-            if (this.PrimaryClusterUuid == null && Exploration.Includes(parent + ".primaryClusterUuid$"))
-            {
-                this.PrimaryClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? ReplicatedObjectCount
-            // GraphQL -> replicatedObjectCount: Int! (scalar)
-            if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount$"))
-            {
-                this.ReplicatedObjectCount = new System.Int32();
-            }
-            //      C# -> System.Boolean? SlaPauseStatus
-            // GraphQL -> slaPauseStatus: Boolean! (scalar)
-            if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus$"))
-            {
-                this.SlaPauseStatus = new System.Boolean();
-            }
-            //      C# -> System.Int32? TotalCopies
-            // GraphQL -> totalCopies: Int! (scalar)
-            if (this.TotalCopies == null && Exploration.Includes(parent + ".totalCopies$"))
-            {
-                this.TotalCopies = new System.Int32();
-            }
-            //      C# -> List<Org>? AllOrgs
-            // GraphQL -> allOrgs: [Org!]! (type)
-            if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
-            {
-                this.AllOrgs = new List<Org>();
-                this.AllOrgs.ApplyExploratoryFragment(parent + ".allOrgs");
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> PathNode? EffectiveSlaSourceObject
-            // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-            if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
-            {
-                this.EffectiveSlaSourceObject = new PathNode();
-                this.EffectiveSlaSourceObject.ApplyExploratoryFragment(parent + ".effectiveSlaSourceObject");
-            }
-            //      C# -> ExchangeServer? ExchangeServer
-            // GraphQL -> exchangeServer: ExchangeServer! (type)
-            if (this.ExchangeServer == null && Exploration.Includes(parent + ".exchangeServer"))
-            {
-                this.ExchangeServer = new ExchangeServer();
-                this.ExchangeServer.ApplyExploratoryFragment(parent + ".exchangeServer");
-            }
-            //      C# -> LatestUserNote? LatestUserNote
-            // GraphQL -> latestUserNote: LatestUserNote (type)
-            if (this.LatestUserNote == null && Exploration.Includes(parent + ".latestUserNote"))
-            {
-                this.LatestUserNote = new LatestUserNote();
-                this.LatestUserNote.ApplyExploratoryFragment(parent + ".latestUserNote");
-            }
-            //      C# -> List<PathNode>? LogicalPath
-            // GraphQL -> logicalPath: [PathNode!]! (type)
-            if (this.LogicalPath == null && Exploration.Includes(parent + ".logicalPath"))
-            {
-                this.LogicalPath = new List<PathNode>();
-                this.LogicalPath.ApplyExploratoryFragment(parent + ".logicalPath");
-            }
-            //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
-            // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
-            if (this.MissedSnapshotConnection == null && Exploration.Includes(parent + ".missedSnapshotConnection"))
-            {
-                this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
-                this.MissedSnapshotConnection.ApplyExploratoryFragment(parent + ".missedSnapshotConnection");
-            }
-            //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
-            // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
-            if (this.MissedSnapshotGroupByConnection == null && Exploration.Includes(parent + ".missedSnapshotGroupByConnection"))
-            {
-                this.MissedSnapshotGroupByConnection = new MissedSnapshotGroupByConnection();
-                this.MissedSnapshotGroupByConnection.ApplyExploratoryFragment(parent + ".missedSnapshotGroupByConnection");
-            }
-            //      C# -> CdmSnapshot? NewestArchivedSnapshot
-            // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
-            if (this.NewestArchivedSnapshot == null && Exploration.Includes(parent + ".newestArchivedSnapshot"))
-            {
-                this.NewestArchivedSnapshot = new CdmSnapshot();
-                this.NewestArchivedSnapshot.ApplyExploratoryFragment(parent + ".newestArchivedSnapshot");
-            }
-            //      C# -> CdmSnapshot? NewestReplicatedSnapshot
-            // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
-            if (this.NewestReplicatedSnapshot == null && Exploration.Includes(parent + ".newestReplicatedSnapshot"))
-            {
-                this.NewestReplicatedSnapshot = new CdmSnapshot();
-                this.NewestReplicatedSnapshot.ApplyExploratoryFragment(parent + ".newestReplicatedSnapshot");
-            }
-            //      C# -> CdmSnapshot? NewestSnapshot
-            // GraphQL -> newestSnapshot: CdmSnapshot (type)
-            if (this.NewestSnapshot == null && Exploration.Includes(parent + ".newestSnapshot"))
-            {
-                this.NewestSnapshot = new CdmSnapshot();
-                this.NewestSnapshot.ApplyExploratoryFragment(parent + ".newestSnapshot");
-            }
-            //      C# -> CdmSnapshot? OldestSnapshot
-            // GraphQL -> oldestSnapshot: CdmSnapshot (type)
-            if (this.OldestSnapshot == null && Exploration.Includes(parent + ".oldestSnapshot"))
-            {
-                this.OldestSnapshot = new CdmSnapshot();
-                this.OldestSnapshot.ApplyExploratoryFragment(parent + ".oldestSnapshot");
-            }
-            //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
-            // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
-            if (this.PendingObjectDeletionStatus == null && Exploration.Includes(parent + ".pendingObjectDeletionStatus"))
-            {
-                this.PendingObjectDeletionStatus = new PendingSnapshotsOfObjectDeletion();
-                this.PendingObjectDeletionStatus.ApplyExploratoryFragment(parent + ".pendingObjectDeletionStatus");
-            }
-            //      C# -> List<PathNode>? PhysicalPath
-            // GraphQL -> physicalPath: [PathNode!]! (type)
-            if (this.PhysicalPath == null && Exploration.Includes(parent + ".physicalPath"))
-            {
-                this.PhysicalPath = new List<PathNode>();
-                this.PhysicalPath.ApplyExploratoryFragment(parent + ".physicalPath");
-            }
-            //      C# -> DataLocation? PrimaryClusterLocation
-            // GraphQL -> primaryClusterLocation: DataLocation! (type)
-            if (this.PrimaryClusterLocation == null && Exploration.Includes(parent + ".primaryClusterLocation"))
-            {
-                this.PrimaryClusterLocation = new DataLocation();
-                this.PrimaryClusterLocation.ApplyExploratoryFragment(parent + ".primaryClusterLocation");
-            }
-            //      C# -> CdmSnapshotConnection? SnapshotConnection
-            // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
-            if (this.SnapshotConnection == null && Exploration.Includes(parent + ".snapshotConnection"))
-            {
-                this.SnapshotConnection = new CdmSnapshotConnection();
-                this.SnapshotConnection.ApplyExploratoryFragment(parent + ".snapshotConnection");
-            }
-            //      C# -> SnapshotDistribution? SnapshotDistribution
-            // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-            if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
-            {
-                this.SnapshotDistribution = new SnapshotDistribution();
-                this.SnapshotDistribution.ApplyExploratoryFragment(parent + ".snapshotDistribution");
-            }
-            //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
-            // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
-            if (this.SnapshotGroupByConnection == null && Exploration.Includes(parent + ".snapshotGroupByConnection"))
-            {
-                this.SnapshotGroupByConnection = new CdmSnapshotGroupByConnection();
-                this.SnapshotGroupByConnection.ApplyExploratoryFragment(parent + ".snapshotGroupByConnection");
-            }
-            //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
-            // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
-            if (this.SnapshotGroupBySummary == null && Exploration.Includes(parent + ".snapshotGroupBySummary"))
-            {
-                this.SnapshotGroupBySummary = new CdmSnapshotGroupBySummaryConnection();
-                this.SnapshotGroupBySummary.ApplyExploratoryFragment(parent + ".snapshotGroupBySummary");
-            }
-            //      C# -> List<Operation>? AuthorizedOperations
-            // GraphQL -> authorizedOperations: [Operation!]! (enum)
-            if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations$"))
-            {
-                this.AuthorizedOperations = new List<Operation>();
-            }
-            //      C# -> HierarchyObjectTypeEnum? ObjectType
-            // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
-            if (this.ObjectType == null && Exploration.Includes(parent + ".objectType$"))
-            {
-                this.ObjectType = new HierarchyObjectTypeEnum();
-            }
-            //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-            // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-            if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment$"))
-            {
-                this.SlaAssignment = new SlaAssignmentTypeEnum();
-            }
-            //      C# -> SlaDomain? ConfiguredSlaDomain
-            // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
-            if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
-            {
-                this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.CreateInstanceOfFirstType(typeof(SlaDomain));
-                this.ConfiguredSlaDomain.ApplyExploratoryFragment(parent + ".configuredSlaDomain");
-            }
-            //      C# -> SlaDomain? EffectiveRetentionSlaDomain
-            // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
-            if (this.EffectiveRetentionSlaDomain == null && Exploration.Includes(parent + ".effectiveRetentionSlaDomain"))
-            {
-                this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.CreateInstanceOfFirstType(typeof(SlaDomain));
-                this.EffectiveRetentionSlaDomain.ApplyExploratoryFragment(parent + ".effectiveRetentionSlaDomain");
-            }
-            //      C# -> SlaDomain? EffectiveSlaDomain
-            // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-            if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
-            {
-                this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.CreateInstanceOfFirstType(typeof(SlaDomain));
-                this.EffectiveSlaDomain.ApplyExploratoryFragment(parent + ".effectiveSlaDomain");
-            }
-            //      C# -> SlaDomain? PendingSla
-            // GraphQL -> pendingSla: SlaDomain (interface)
-            if (this.PendingSla == null && Exploration.Includes(parent + ".pendingSla"))
-            {
-                this.PendingSla = (SlaDomain)InterfaceHelper.CreateInstanceOfFirstType(typeof(SlaDomain));
-                this.PendingSla.ApplyExploratoryFragment(parent + ".pendingSla");
-            }
-            //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
-            // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
-            if (this.ReplicatedObjects == null && Exploration.Includes(parent + ".replicatedObjects"))
-            {
-                this.ReplicatedObjects = new List<CdmHierarchyObject>();
-                this.ReplicatedObjects.ApplyExploratoryFragment(parent + ".replicatedObjects");
-            }
+            this.AuthorizedOperations = new List<Operation>();
         }
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum! (enum)
+        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        {
+            this.ObjectType = new HierarchyObjectTypeEnum();
+        }
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
+        {
+            this.SlaAssignment = new SlaAssignmentTypeEnum();
+        }
+        //      C# -> SlaDomain? ConfiguredSlaDomain
+        // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
+        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        {
+            var impls = new List<SlaDomain>();
+            impls.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+            this.ConfiguredSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+        //      C# -> SlaDomain? EffectiveRetentionSlaDomain
+        // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
+        if (this.EffectiveRetentionSlaDomain == null && Exploration.Includes(parent + ".effectiveRetentionSlaDomain"))
+        {
+            var impls = new List<SlaDomain>();
+            impls.ApplyExploratoryFieldSpec(parent + ".effectiveRetentionSlaDomain");
+            this.EffectiveRetentionSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        {
+            var impls = new List<SlaDomain>();
+            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+        //      C# -> SlaDomain? PendingSla
+        // GraphQL -> pendingSla: SlaDomain (interface)
+        if (this.PendingSla == null && Exploration.Includes(parent + ".pendingSla"))
+        {
+            var impls = new List<SlaDomain>();
+            impls.ApplyExploratoryFieldSpec(parent + ".pendingSla");
+            this.PendingSla = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+        //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
+        // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
+        if (this.ReplicatedObjects == null && Exploration.Includes(parent + ".replicatedObjects"))
+        {
+            this.ReplicatedObjects = new List<CdmHierarchyObject>();
+            this.ReplicatedObjects.ApplyExploratoryFieldSpec(parent + ".replicatedObjects");
+        }
+        //      C# -> System.Int32? ActiveCopies
+        // GraphQL -> activeCopies: Int! (scalar)
+        if (this.ActiveCopies == null && Exploration.Includes(parent + ".activeCopies", true))
+        {
+            this.ActiveCopies = new System.Int32();
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        {
+            this.CdmId = new System.String("FETCH");
+        }
+        //      C# -> System.String? CdmLink
+        // GraphQL -> cdmLink: String! (scalar)
+        if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink", true))
+        {
+            this.CdmLink = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        {
+            this.IsRelic = true;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? NumWorkloadDescendants
+        // GraphQL -> numWorkloadDescendants: Int! (scalar)
+        if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
+        {
+            this.NumWorkloadDescendants = new System.Int32();
+        }
+        //      C# -> System.Int32? OnDemandSnapshotCount
+        // GraphQL -> onDemandSnapshotCount: Int! (scalar)
+        if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
+        {
+            this.OnDemandSnapshotCount = new System.Int32();
+        }
+        //      C# -> System.String? PrimaryClusterUuid
+        // GraphQL -> primaryClusterUuid: UUID! (scalar)
+        if (this.PrimaryClusterUuid == null && Exploration.Includes(parent + ".primaryClusterUuid", true))
+        {
+            this.PrimaryClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? ReplicatedObjectCount
+        // GraphQL -> replicatedObjectCount: Int! (scalar)
+        if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
+        {
+            this.ReplicatedObjectCount = new System.Int32();
+        }
+        //      C# -> System.Boolean? SlaPauseStatus
+        // GraphQL -> slaPauseStatus: Boolean! (scalar)
+        if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
+        {
+            this.SlaPauseStatus = true;
+        }
+        //      C# -> System.Int32? TotalCopies
+        // GraphQL -> totalCopies: Int! (scalar)
+        if (this.TotalCopies == null && Exploration.Includes(parent + ".totalCopies", true))
+        {
+            this.TotalCopies = new System.Int32();
+        }
+        //      C# -> List<Org>? AllOrgs
+        // GraphQL -> allOrgs: [Org!]! (type)
+        if (this.AllOrgs == null && Exploration.Includes(parent + ".allOrgs"))
+        {
+            this.AllOrgs = new List<Org>();
+            this.AllOrgs.ApplyExploratoryFieldSpec(parent + ".allOrgs");
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> PathNode? EffectiveSlaSourceObject
+        // GraphQL -> effectiveSlaSourceObject: PathNode (type)
+        if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
+        {
+            this.EffectiveSlaSourceObject = new PathNode();
+            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+        }
+        //      C# -> ExchangeServer? ExchangeServer
+        // GraphQL -> exchangeServer: ExchangeServer! (type)
+        if (this.ExchangeServer == null && Exploration.Includes(parent + ".exchangeServer"))
+        {
+            this.ExchangeServer = new ExchangeServer();
+            this.ExchangeServer.ApplyExploratoryFieldSpec(parent + ".exchangeServer");
+        }
+        //      C# -> LatestUserNote? LatestUserNote
+        // GraphQL -> latestUserNote: LatestUserNote (type)
+        if (this.LatestUserNote == null && Exploration.Includes(parent + ".latestUserNote"))
+        {
+            this.LatestUserNote = new LatestUserNote();
+            this.LatestUserNote.ApplyExploratoryFieldSpec(parent + ".latestUserNote");
+        }
+        //      C# -> List<PathNode>? LogicalPath
+        // GraphQL -> logicalPath: [PathNode!]! (type)
+        if (this.LogicalPath == null && Exploration.Includes(parent + ".logicalPath"))
+        {
+            this.LogicalPath = new List<PathNode>();
+            this.LogicalPath.ApplyExploratoryFieldSpec(parent + ".logicalPath");
+        }
+        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
+        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection (type)
+        if (this.MissedSnapshotConnection == null && Exploration.Includes(parent + ".missedSnapshotConnection"))
+        {
+            this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
+            this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(parent + ".missedSnapshotConnection");
+        }
+        //      C# -> MissedSnapshotGroupByConnection? MissedSnapshotGroupByConnection
+        // GraphQL -> missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection (type)
+        if (this.MissedSnapshotGroupByConnection == null && Exploration.Includes(parent + ".missedSnapshotGroupByConnection"))
+        {
+            this.MissedSnapshotGroupByConnection = new MissedSnapshotGroupByConnection();
+            this.MissedSnapshotGroupByConnection.ApplyExploratoryFieldSpec(parent + ".missedSnapshotGroupByConnection");
+        }
+        //      C# -> CdmSnapshot? NewestArchivedSnapshot
+        // GraphQL -> newestArchivedSnapshot: CdmSnapshot (type)
+        if (this.NewestArchivedSnapshot == null && Exploration.Includes(parent + ".newestArchivedSnapshot"))
+        {
+            this.NewestArchivedSnapshot = new CdmSnapshot();
+            this.NewestArchivedSnapshot.ApplyExploratoryFieldSpec(parent + ".newestArchivedSnapshot");
+        }
+        //      C# -> CdmSnapshot? NewestReplicatedSnapshot
+        // GraphQL -> newestReplicatedSnapshot: CdmSnapshot (type)
+        if (this.NewestReplicatedSnapshot == null && Exploration.Includes(parent + ".newestReplicatedSnapshot"))
+        {
+            this.NewestReplicatedSnapshot = new CdmSnapshot();
+            this.NewestReplicatedSnapshot.ApplyExploratoryFieldSpec(parent + ".newestReplicatedSnapshot");
+        }
+        //      C# -> CdmSnapshot? NewestSnapshot
+        // GraphQL -> newestSnapshot: CdmSnapshot (type)
+        if (this.NewestSnapshot == null && Exploration.Includes(parent + ".newestSnapshot"))
+        {
+            this.NewestSnapshot = new CdmSnapshot();
+            this.NewestSnapshot.ApplyExploratoryFieldSpec(parent + ".newestSnapshot");
+        }
+        //      C# -> CdmSnapshot? OldestSnapshot
+        // GraphQL -> oldestSnapshot: CdmSnapshot (type)
+        if (this.OldestSnapshot == null && Exploration.Includes(parent + ".oldestSnapshot"))
+        {
+            this.OldestSnapshot = new CdmSnapshot();
+            this.OldestSnapshot.ApplyExploratoryFieldSpec(parent + ".oldestSnapshot");
+        }
+        //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
+        // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
+        if (this.PendingObjectDeletionStatus == null && Exploration.Includes(parent + ".pendingObjectDeletionStatus"))
+        {
+            this.PendingObjectDeletionStatus = new PendingSnapshotsOfObjectDeletion();
+            this.PendingObjectDeletionStatus.ApplyExploratoryFieldSpec(parent + ".pendingObjectDeletionStatus");
+        }
+        //      C# -> List<PathNode>? PhysicalPath
+        // GraphQL -> physicalPath: [PathNode!]! (type)
+        if (this.PhysicalPath == null && Exploration.Includes(parent + ".physicalPath"))
+        {
+            this.PhysicalPath = new List<PathNode>();
+            this.PhysicalPath.ApplyExploratoryFieldSpec(parent + ".physicalPath");
+        }
+        //      C# -> DataLocation? PrimaryClusterLocation
+        // GraphQL -> primaryClusterLocation: DataLocation! (type)
+        if (this.PrimaryClusterLocation == null && Exploration.Includes(parent + ".primaryClusterLocation"))
+        {
+            this.PrimaryClusterLocation = new DataLocation();
+            this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(parent + ".primaryClusterLocation");
+        }
+        //      C# -> CdmSnapshotConnection? SnapshotConnection
+        // GraphQL -> snapshotConnection: CdmSnapshotConnection (type)
+        if (this.SnapshotConnection == null && Exploration.Includes(parent + ".snapshotConnection"))
+        {
+            this.SnapshotConnection = new CdmSnapshotConnection();
+            this.SnapshotConnection.ApplyExploratoryFieldSpec(parent + ".snapshotConnection");
+        }
+        //      C# -> SnapshotDistribution? SnapshotDistribution
+        // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
+        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        {
+            this.SnapshotDistribution = new SnapshotDistribution();
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+        }
+        //      C# -> CdmSnapshotGroupByConnection? SnapshotGroupByConnection
+        // GraphQL -> snapshotGroupByConnection: CdmSnapshotGroupByConnection (type)
+        if (this.SnapshotGroupByConnection == null && Exploration.Includes(parent + ".snapshotGroupByConnection"))
+        {
+            this.SnapshotGroupByConnection = new CdmSnapshotGroupByConnection();
+            this.SnapshotGroupByConnection.ApplyExploratoryFieldSpec(parent + ".snapshotGroupByConnection");
+        }
+        //      C# -> CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary
+        // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
+        if (this.SnapshotGroupBySummary == null && Exploration.Includes(parent + ".snapshotGroupBySummary"))
+        {
+            this.SnapshotGroupBySummary = new CdmSnapshotGroupBySummaryConnection();
+            this.SnapshotGroupBySummary.ApplyExploratoryFieldSpec(parent + ".snapshotGroupBySummary");
+        }
+    }
 
 
     #endregion
 
     } // class ExchangeDatabase
+    
     #endregion
 
     public static class ListExchangeDatabaseExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ExchangeDatabase> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ExchangeDatabase> list, 
             String parent = "")
         {
-            var item = new ExchangeDatabase();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ExchangeDatabase());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

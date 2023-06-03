@@ -48,8 +48,8 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
-        [EnumMember(Value = "AZURE_AD_TENANT")]
-        AZURE_AD_TENANT,
+        [EnumMember(Value = "AZURE_AD_DIRECTORY")]
+        AZURE_AD_DIRECTORY,
 
         [EnumMember(Value = "AZURE_NATIVE_DISK")]
         AZURE_NATIVE_DISK,

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region HypervScvmmUpdate
-    public class HypervScvmmUpdate: IFragment
+    public class HypervScvmmUpdate: BaseType
     {
         #region members
+
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         [JsonProperty("configuredSlaDomainId")]
@@ -37,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> shouldDeployAgent: Boolean (scalar)
         [JsonProperty("shouldDeployAgent")]
         public System.Boolean? ShouldDeployAgent { get; set; }
+
 
         #endregion
 
@@ -64,108 +67,104 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ConfiguredSlaDomainId
-            // GraphQL -> configuredSlaDomainId: String (scalar)
-            if (this.ConfiguredSlaDomainId != null)
-            {
-                 s += ind + "configuredSlaDomainId\n";
-
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String (scalar)
-            if (this.Hostname != null)
-            {
-                 s += ind + "hostname\n";
-
-            }
-            //      C# -> System.String? RunAsAccount
-            // GraphQL -> runAsAccount: String (scalar)
-            if (this.RunAsAccount != null)
-            {
-                 s += ind + "runAsAccount\n";
-
-            }
-            //      C# -> System.Boolean? ShouldDeployAgent
-            // GraphQL -> shouldDeployAgent: Boolean (scalar)
-            if (this.ShouldDeployAgent != null)
-            {
-                 s += ind + "shouldDeployAgent\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? ConfiguredSlaDomainId
+        // GraphQL -> configuredSlaDomainId: String (scalar)
+        if (this.ConfiguredSlaDomainId != null) {
+            s += ind + "configuredSlaDomainId\n" ;
         }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        if (this.Hostname != null) {
+            s += ind + "hostname\n" ;
+        }
+        //      C# -> System.String? RunAsAccount
+        // GraphQL -> runAsAccount: String (scalar)
+        if (this.RunAsAccount != null) {
+            s += ind + "runAsAccount\n" ;
+        }
+        //      C# -> System.Boolean? ShouldDeployAgent
+        // GraphQL -> shouldDeployAgent: Boolean (scalar)
+        if (this.ShouldDeployAgent != null) {
+            s += ind + "shouldDeployAgent\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? ConfiguredSlaDomainId
+        // GraphQL -> configuredSlaDomainId: String (scalar)
+        if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            //      C# -> System.String? ConfiguredSlaDomainId
-            // GraphQL -> configuredSlaDomainId: String (scalar)
-            if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId$"))
-            {
-                this.ConfiguredSlaDomainId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String (scalar)
-            if (this.Hostname == null && Exploration.Includes(parent + ".hostname$"))
-            {
-                this.Hostname = new System.String("FETCH");
-            }
-            //      C# -> System.String? RunAsAccount
-            // GraphQL -> runAsAccount: String (scalar)
-            if (this.RunAsAccount == null && Exploration.Includes(parent + ".runAsAccount$"))
-            {
-                this.RunAsAccount = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? ShouldDeployAgent
-            // GraphQL -> shouldDeployAgent: Boolean (scalar)
-            if (this.ShouldDeployAgent == null && Exploration.Includes(parent + ".shouldDeployAgent$"))
-            {
-                this.ShouldDeployAgent = new System.Boolean();
-            }
+            this.ConfiguredSlaDomainId = new System.String("FETCH");
         }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        {
+            this.Hostname = new System.String("FETCH");
+        }
+        //      C# -> System.String? RunAsAccount
+        // GraphQL -> runAsAccount: String (scalar)
+        if (this.RunAsAccount == null && Exploration.Includes(parent + ".runAsAccount", true))
+        {
+            this.RunAsAccount = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? ShouldDeployAgent
+        // GraphQL -> shouldDeployAgent: Boolean (scalar)
+        if (this.ShouldDeployAgent == null && Exploration.Includes(parent + ".shouldDeployAgent", true))
+        {
+            this.ShouldDeployAgent = true;
+        }
+    }
 
 
     #endregion
 
     } // class HypervScvmmUpdate
+    
     #endregion
 
     public static class ListHypervScvmmUpdateExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<HypervScvmmUpdate> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<HypervScvmmUpdate> list, 
             String parent = "")
         {
-            var item = new HypervScvmmUpdate();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new HypervScvmmUpdate());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

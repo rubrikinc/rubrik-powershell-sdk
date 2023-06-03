@@ -363,6 +363,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "HOST_VENDOR_TYPE")]
         HOST_VENDOR_TYPE,
 
+        [EnumMember(Value = "HYPERV_VM_BY_AGENT_STATUS")]
+        HYPERV_VM_BY_AGENT_STATUS,
+
         [EnumMember(Value = "IS_ACTIVE")]
         IS_ACTIVE,
 

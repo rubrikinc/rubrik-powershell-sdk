@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -864,8 +864,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -873,23 +872,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.RegisterHypervScvmm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RegisterHypervScvmm");
-            string parameters = "($input: RegisterHypervScvmmInput!)\n";
+            var parameters = "($input: RegisterHypervScvmmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRegisterHypervScvmm" + parameters + "{" + document + "}",
                 OperationName = "MutationRegisterHypervScvmm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -902,8 +900,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             HypervScvmmUpdateReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (HypervScvmmUpdateReply)psObject.BaseObject;
                 } else {
                     fields = (HypervScvmmUpdateReply)this.Field;
@@ -911,23 +908,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.HypervScvmmUpdate(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.HypervScvmmUpdate");
-            string parameters = "($input: HypervScvmmUpdateInput!)\n";
+            var parameters = "($input: HypervScvmmUpdateInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationHypervScvmmUpdate" + parameters + "{" + document + "}",
                 OperationName = "MutationHypervScvmmUpdate",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<HypervScvmmUpdateReply> task = this._rbkClient.InvokeGenericCallAsync<HypervScvmmUpdateReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "HypervScvmmUpdateReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -940,8 +936,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             ResponseSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ResponseSuccess)psObject.BaseObject;
                 } else {
                     fields = (ResponseSuccess)this.Field;
@@ -949,23 +944,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.HypervScvmmDelete(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.HypervScvmmDelete");
-            string parameters = "($input: HypervScvmmDeleteInput!)\n";
+            var parameters = "($input: HypervScvmmDeleteInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationHypervScvmmDelete" + parameters + "{" + document + "}",
                 OperationName = "MutationHypervScvmmDelete",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ResponseSuccess> task = this._rbkClient.InvokeGenericCallAsync<ResponseSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ResponseSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -978,8 +972,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -987,23 +980,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.RefreshHypervScvmm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RefreshHypervScvmm");
-            string parameters = "($input: RefreshHypervScvmmInput!)\n";
+            var parameters = "($input: RefreshHypervScvmmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRefreshHypervScvmm" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshHypervScvmm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1016,8 +1008,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1025,23 +1016,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.HypervOnDemandSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.HypervOnDemandSnapshot");
-            string parameters = "($input: HypervOnDemandSnapshotInput!)\n";
+            var parameters = "($input: HypervOnDemandSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationHypervOnDemandSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationHypervOnDemandSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1054,8 +1044,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestSuccess)psObject.BaseObject;
                 } else {
                     fields = (RequestSuccess)this.Field;
@@ -1063,23 +1052,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.HypervDeleteAllSnapshots(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.HypervDeleteAllSnapshots");
-            string parameters = "($input: HypervDeleteAllSnapshotsInput!)\n";
+            var parameters = "($input: HypervDeleteAllSnapshotsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationHypervDeleteAllSnapshots" + parameters + "{" + document + "}",
                 OperationName = "MutationHypervDeleteAllSnapshots",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1092,8 +1080,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1101,23 +1088,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.ExportHypervVirtualMachine(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.ExportHypervVirtualMachine");
-            string parameters = "($input: ExportHypervVirtualMachineInput!)\n";
+            var parameters = "($input: ExportHypervVirtualMachineInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationExportHypervVirtualMachine" + parameters + "{" + document + "}",
                 OperationName = "MutationExportHypervVirtualMachine",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1130,8 +1116,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1139,23 +1124,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.DownloadHypervVirtualMachineSnapshotFiles(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DownloadHypervVirtualMachineSnapshotFiles");
-            string parameters = "($input: DownloadHypervVirtualMachineSnapshotFilesInput!)\n";
+            var parameters = "($input: DownloadHypervVirtualMachineSnapshotFilesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDownloadHypervVirtualMachineSnapshotFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadHypervVirtualMachineSnapshotFiles",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1168,8 +1152,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1177,23 +1160,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.InstantRecoverHypervVirtualMachineSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.InstantRecoverHypervVirtualMachineSnapshot");
-            string parameters = "($input: InstantRecoverHypervVirtualMachineSnapshotInput!)\n";
+            var parameters = "($input: InstantRecoverHypervVirtualMachineSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationInstantRecoverHypervVirtualMachineSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationInstantRecoverHypervVirtualMachineSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1206,8 +1188,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1215,23 +1196,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.RestoreHypervVirtualMachineSnapshotFiles(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RestoreHypervVirtualMachineSnapshotFiles");
-            string parameters = "($input: RestoreHypervVirtualMachineSnapshotFilesInput!)\n";
+            var parameters = "($input: RestoreHypervVirtualMachineSnapshotFilesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRestoreHypervVirtualMachineSnapshotFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreHypervVirtualMachineSnapshotFiles",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1244,8 +1224,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestSuccess)psObject.BaseObject;
                 } else {
                     fields = (RequestSuccess)this.Field;
@@ -1253,23 +1232,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.RegisterAgentHypervVirtualMachine(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RegisterAgentHypervVirtualMachine");
-            string parameters = "($input: RegisterAgentHypervVirtualMachineInput!)\n";
+            var parameters = "($input: RegisterAgentHypervVirtualMachineInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRegisterAgentHypervVirtualMachine" + parameters + "{" + document + "}",
                 OperationName = "MutationRegisterAgentHypervVirtualMachine",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1282,8 +1260,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestSuccess)psObject.BaseObject;
                 } else {
                     fields = (RequestSuccess)this.Field;
@@ -1291,23 +1268,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.DeleteHypervVirtualMachineSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteHypervVirtualMachineSnapshot");
-            string parameters = "($input: DeleteHypervVirtualMachineSnapshotInput!)\n";
+            var parameters = "($input: DeleteHypervVirtualMachineSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteHypervVirtualMachineSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteHypervVirtualMachineSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1320,8 +1296,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1329,23 +1304,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.DownloadHypervVirtualMachineSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DownloadHypervVirtualMachineSnapshot");
-            string parameters = "($input: DownloadHypervVirtualMachineSnapshotInput!)\n";
+            var parameters = "($input: DownloadHypervVirtualMachineSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDownloadHypervVirtualMachineSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadHypervVirtualMachineSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1358,8 +1332,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1367,23 +1340,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.CreateHypervVirtualMachineSnapshotMount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateHypervVirtualMachineSnapshotMount");
-            string parameters = "($input: CreateHypervVirtualMachineSnapshotMountInput!)\n";
+            var parameters = "($input: CreateHypervVirtualMachineSnapshotMountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateHypervVirtualMachineSnapshotMount" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateHypervVirtualMachineSnapshotMount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1396,8 +1368,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             UpdateHypervVirtualMachineSnapshotMountReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpdateHypervVirtualMachineSnapshotMountReply)psObject.BaseObject;
                 } else {
                     fields = (UpdateHypervVirtualMachineSnapshotMountReply)this.Field;
@@ -1405,23 +1376,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.UpdateHypervVirtualMachineSnapshotMount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateHypervVirtualMachineSnapshotMount");
-            string parameters = "($input: UpdateHypervVirtualMachineSnapshotMountInput!)\n";
+            var parameters = "($input: UpdateHypervVirtualMachineSnapshotMountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateHypervVirtualMachineSnapshotMount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateHypervVirtualMachineSnapshotMount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateHypervVirtualMachineSnapshotMountReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateHypervVirtualMachineSnapshotMountReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateHypervVirtualMachineSnapshotMountReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1434,8 +1404,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1443,23 +1412,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.DeleteHypervVirtualMachineSnapshotMount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteHypervVirtualMachineSnapshotMount");
-            string parameters = "($input: DeleteHypervVirtualMachineSnapshotMountInput!)\n";
+            var parameters = "($input: DeleteHypervVirtualMachineSnapshotMountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteHypervVirtualMachineSnapshotMount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteHypervVirtualMachineSnapshotMount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1472,8 +1440,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1481,23 +1448,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.RefreshHypervServer(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RefreshHypervServer");
-            string parameters = "($input: RefreshHypervServerInput!)\n";
+            var parameters = "($input: RefreshHypervServerInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRefreshHypervServer" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshHypervServer",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1510,8 +1476,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             BatchOnDemandBackupHypervVmReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchOnDemandBackupHypervVmReply)psObject.BaseObject;
                 } else {
                     fields = (BatchOnDemandBackupHypervVmReply)this.Field;
@@ -1519,23 +1484,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.BatchOnDemandBackupHypervVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.BatchOnDemandBackupHypervVm");
-            string parameters = "($input: BatchOnDemandBackupHypervVmInput!)\n";
+            var parameters = "($input: BatchOnDemandBackupHypervVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationBatchOnDemandBackupHypervVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchOnDemandBackupHypervVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchOnDemandBackupHypervVmReply> task = this._rbkClient.InvokeGenericCallAsync<BatchOnDemandBackupHypervVmReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchOnDemandBackupHypervVmReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1548,8 +1512,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             BatchExportHypervVmReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchExportHypervVmReply)psObject.BaseObject;
                 } else {
                     fields = (BatchExportHypervVmReply)this.Field;
@@ -1557,23 +1520,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.BatchExportHypervVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.BatchExportHypervVm");
-            string parameters = "($input: BatchExportHypervVmInput!)\n";
+            var parameters = "($input: BatchExportHypervVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationBatchExportHypervVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchExportHypervVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchExportHypervVmReply> task = this._rbkClient.InvokeGenericCallAsync<BatchExportHypervVmReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchExportHypervVmReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1586,8 +1548,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             BatchMountHypervVmReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchMountHypervVmReply)psObject.BaseObject;
                 } else {
                     fields = (BatchMountHypervVmReply)this.Field;
@@ -1595,23 +1556,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.BatchMountHypervVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.BatchMountHypervVm");
-            string parameters = "($input: BatchMountHypervVmInput!)\n";
+            var parameters = "($input: BatchMountHypervVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationBatchMountHypervVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchMountHypervVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchMountHypervVmReply> task = this._rbkClient.InvokeGenericCallAsync<BatchMountHypervVmReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchMountHypervVmReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1624,8 +1584,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             BatchInstantRecoverHypervVmReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchInstantRecoverHypervVmReply)psObject.BaseObject;
                 } else {
                     fields = (BatchInstantRecoverHypervVmReply)this.Field;
@@ -1633,23 +1592,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.BatchInstantRecoverHypervVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.BatchInstantRecoverHypervVm");
-            string parameters = "($input: BatchInstantRecoverHypervVmInput!)\n";
+            var parameters = "($input: BatchInstantRecoverHypervVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationBatchInstantRecoverHypervVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchInstantRecoverHypervVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchInstantRecoverHypervVmReply> task = this._rbkClient.InvokeGenericCallAsync<BatchInstantRecoverHypervVmReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchInstantRecoverHypervVmReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1662,8 +1620,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             UpdateHypervVirtualMachineReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpdateHypervVirtualMachineReply)psObject.BaseObject;
                 } else {
                     fields = (UpdateHypervVirtualMachineReply)this.Field;
@@ -1671,23 +1628,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.UpdateHypervVirtualMachine(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateHypervVirtualMachine");
-            string parameters = "($input: UpdateHypervVirtualMachineInput!)\n";
+            var parameters = "($input: UpdateHypervVirtualMachineInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateHypervVirtualMachine" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateHypervVirtualMachine",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateHypervVirtualMachineReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateHypervVirtualMachineReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateHypervVirtualMachineReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1700,8 +1656,7 @@ Initiates a job to download a snapshot from the specified location when the snap
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1709,23 +1664,22 @@ Initiates a job to download a snapshot from the specified location when the snap
             }
             string document = Mutation.DownloadHypervSnapshotFromLocation(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DownloadHypervSnapshotFromLocation");
-            string parameters = "($input: DownloadHypervSnapshotFromLocationInput!)\n";
+            var parameters = "($input: DownloadHypervSnapshotFromLocationInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDownloadHypervSnapshotFromLocation" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadHypervSnapshotFromLocation",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region EventDigest
-    public class EventDigest: IFragment
+    public class EventDigest: BaseType
     {
         #region members
+
         //      C# -> System.String? Account
         // GraphQL -> account: String! (scalar)
         [JsonProperty("account")]
@@ -67,6 +69,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recipientUserId: String! (scalar)
         [JsonProperty("recipientUserId")]
         public System.String? RecipientUserId { get; set; }
+
 
         #endregion
 
@@ -118,186 +121,170 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Account
-            // GraphQL -> account: String! (scalar)
-            if (this.Account != null)
-            {
-                 s += ind + "account\n";
-
-            }
-            //      C# -> List<System.String>? ClusterUuids
-            // GraphQL -> clusterUuids: [UUID!]! (scalar)
-            if (this.ClusterUuids != null)
-            {
-                 s += ind + "clusterUuids\n";
-
-            }
-            //      C# -> System.Int32? DigestId
-            // GraphQL -> digestId: Int! (scalar)
-            if (this.DigestId != null)
-            {
-                 s += ind + "digestId\n";
-
-            }
-            //      C# -> System.String? DigestName
-            // GraphQL -> digestName: String! (scalar)
-            if (this.DigestName != null)
-            {
-                 s += ind + "digestName\n";
-
-            }
-            //      C# -> System.String? EventDigestConfigJson
-            // GraphQL -> eventDigestConfigJson: String! (scalar)
-            if (this.EventDigestConfigJson != null)
-            {
-                 s += ind + "eventDigestConfigJson\n";
-
-            }
-            //      C# -> System.Int32? Frequency
-            // GraphQL -> frequency: Int! (scalar)
-            if (this.Frequency != null)
-            {
-                 s += ind + "frequency\n";
-
-            }
-            //      C# -> System.Boolean? IncludeAudits
-            // GraphQL -> includeAudits: Boolean! (scalar)
-            if (this.IncludeAudits != null)
-            {
-                 s += ind + "includeAudits\n";
-
-            }
-            //      C# -> System.Boolean? IncludeEvents
-            // GraphQL -> includeEvents: Boolean! (scalar)
-            if (this.IncludeEvents != null)
-            {
-                 s += ind + "includeEvents\n";
-
-            }
-            //      C# -> System.Boolean? IsImmediate
-            // GraphQL -> isImmediate: Boolean! (scalar)
-            if (this.IsImmediate != null)
-            {
-                 s += ind + "isImmediate\n";
-
-            }
-            //      C# -> System.String? RecipientUserId
-            // GraphQL -> recipientUserId: String! (scalar)
-            if (this.RecipientUserId != null)
-            {
-                 s += ind + "recipientUserId\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Account
+        // GraphQL -> account: String! (scalar)
+        if (this.Account != null) {
+            s += ind + "account\n" ;
         }
+        //      C# -> List<System.String>? ClusterUuids
+        // GraphQL -> clusterUuids: [UUID!]! (scalar)
+        if (this.ClusterUuids != null) {
+            s += ind + "clusterUuids\n" ;
+        }
+        //      C# -> System.Int32? DigestId
+        // GraphQL -> digestId: Int! (scalar)
+        if (this.DigestId != null) {
+            s += ind + "digestId\n" ;
+        }
+        //      C# -> System.String? DigestName
+        // GraphQL -> digestName: String! (scalar)
+        if (this.DigestName != null) {
+            s += ind + "digestName\n" ;
+        }
+        //      C# -> System.String? EventDigestConfigJson
+        // GraphQL -> eventDigestConfigJson: String! (scalar)
+        if (this.EventDigestConfigJson != null) {
+            s += ind + "eventDigestConfigJson\n" ;
+        }
+        //      C# -> System.Int32? Frequency
+        // GraphQL -> frequency: Int! (scalar)
+        if (this.Frequency != null) {
+            s += ind + "frequency\n" ;
+        }
+        //      C# -> System.Boolean? IncludeAudits
+        // GraphQL -> includeAudits: Boolean! (scalar)
+        if (this.IncludeAudits != null) {
+            s += ind + "includeAudits\n" ;
+        }
+        //      C# -> System.Boolean? IncludeEvents
+        // GraphQL -> includeEvents: Boolean! (scalar)
+        if (this.IncludeEvents != null) {
+            s += ind + "includeEvents\n" ;
+        }
+        //      C# -> System.Boolean? IsImmediate
+        // GraphQL -> isImmediate: Boolean! (scalar)
+        if (this.IsImmediate != null) {
+            s += ind + "isImmediate\n" ;
+        }
+        //      C# -> System.String? RecipientUserId
+        // GraphQL -> recipientUserId: String! (scalar)
+        if (this.RecipientUserId != null) {
+            s += ind + "recipientUserId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Account
+        // GraphQL -> account: String! (scalar)
+        if (this.Account == null && Exploration.Includes(parent + ".account", true))
         {
-            //      C# -> System.String? Account
-            // GraphQL -> account: String! (scalar)
-            if (this.Account == null && Exploration.Includes(parent + ".account$"))
-            {
-                this.Account = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? ClusterUuids
-            // GraphQL -> clusterUuids: [UUID!]! (scalar)
-            if (this.ClusterUuids == null && Exploration.Includes(parent + ".clusterUuids$"))
-            {
-                this.ClusterUuids = new List<System.String>();
-            }
-            //      C# -> System.Int32? DigestId
-            // GraphQL -> digestId: Int! (scalar)
-            if (this.DigestId == null && Exploration.Includes(parent + ".digestId$"))
-            {
-                this.DigestId = new System.Int32();
-            }
-            //      C# -> System.String? DigestName
-            // GraphQL -> digestName: String! (scalar)
-            if (this.DigestName == null && Exploration.Includes(parent + ".digestName$"))
-            {
-                this.DigestName = new System.String("FETCH");
-            }
-            //      C# -> System.String? EventDigestConfigJson
-            // GraphQL -> eventDigestConfigJson: String! (scalar)
-            if (this.EventDigestConfigJson == null && Exploration.Includes(parent + ".eventDigestConfigJson$"))
-            {
-                this.EventDigestConfigJson = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? Frequency
-            // GraphQL -> frequency: Int! (scalar)
-            if (this.Frequency == null && Exploration.Includes(parent + ".frequency$"))
-            {
-                this.Frequency = new System.Int32();
-            }
-            //      C# -> System.Boolean? IncludeAudits
-            // GraphQL -> includeAudits: Boolean! (scalar)
-            if (this.IncludeAudits == null && Exploration.Includes(parent + ".includeAudits$"))
-            {
-                this.IncludeAudits = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IncludeEvents
-            // GraphQL -> includeEvents: Boolean! (scalar)
-            if (this.IncludeEvents == null && Exploration.Includes(parent + ".includeEvents$"))
-            {
-                this.IncludeEvents = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsImmediate
-            // GraphQL -> isImmediate: Boolean! (scalar)
-            if (this.IsImmediate == null && Exploration.Includes(parent + ".isImmediate$"))
-            {
-                this.IsImmediate = new System.Boolean();
-            }
-            //      C# -> System.String? RecipientUserId
-            // GraphQL -> recipientUserId: String! (scalar)
-            if (this.RecipientUserId == null && Exploration.Includes(parent + ".recipientUserId$"))
-            {
-                this.RecipientUserId = new System.String("FETCH");
-            }
+            this.Account = new System.String("FETCH");
         }
+        //      C# -> List<System.String>? ClusterUuids
+        // GraphQL -> clusterUuids: [UUID!]! (scalar)
+        if (this.ClusterUuids == null && Exploration.Includes(parent + ".clusterUuids", true))
+        {
+            this.ClusterUuids = new List<System.String>();
+        }
+        //      C# -> System.Int32? DigestId
+        // GraphQL -> digestId: Int! (scalar)
+        if (this.DigestId == null && Exploration.Includes(parent + ".digestId", true))
+        {
+            this.DigestId = new System.Int32();
+        }
+        //      C# -> System.String? DigestName
+        // GraphQL -> digestName: String! (scalar)
+        if (this.DigestName == null && Exploration.Includes(parent + ".digestName", true))
+        {
+            this.DigestName = new System.String("FETCH");
+        }
+        //      C# -> System.String? EventDigestConfigJson
+        // GraphQL -> eventDigestConfigJson: String! (scalar)
+        if (this.EventDigestConfigJson == null && Exploration.Includes(parent + ".eventDigestConfigJson", true))
+        {
+            this.EventDigestConfigJson = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? Frequency
+        // GraphQL -> frequency: Int! (scalar)
+        if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
+        {
+            this.Frequency = new System.Int32();
+        }
+        //      C# -> System.Boolean? IncludeAudits
+        // GraphQL -> includeAudits: Boolean! (scalar)
+        if (this.IncludeAudits == null && Exploration.Includes(parent + ".includeAudits", true))
+        {
+            this.IncludeAudits = true;
+        }
+        //      C# -> System.Boolean? IncludeEvents
+        // GraphQL -> includeEvents: Boolean! (scalar)
+        if (this.IncludeEvents == null && Exploration.Includes(parent + ".includeEvents", true))
+        {
+            this.IncludeEvents = true;
+        }
+        //      C# -> System.Boolean? IsImmediate
+        // GraphQL -> isImmediate: Boolean! (scalar)
+        if (this.IsImmediate == null && Exploration.Includes(parent + ".isImmediate", true))
+        {
+            this.IsImmediate = true;
+        }
+        //      C# -> System.String? RecipientUserId
+        // GraphQL -> recipientUserId: String! (scalar)
+        if (this.RecipientUserId == null && Exploration.Includes(parent + ".recipientUserId", true))
+        {
+            this.RecipientUserId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class EventDigest
+    
     #endregion
 
     public static class ListEventDigestExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<EventDigest> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<EventDigest> list, 
             String parent = "")
         {
-            var item = new EventDigest();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new EventDigest());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

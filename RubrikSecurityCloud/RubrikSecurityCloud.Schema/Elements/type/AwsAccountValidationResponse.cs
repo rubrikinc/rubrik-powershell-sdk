@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AwsAccountValidationResponse
-    public class AwsAccountValidationResponse: IFragment
+    public class AwsAccountValidationResponse: BaseType
     {
         #region members
+
+        //      C# -> AwsCloudType? CloudType
+        // GraphQL -> cloudType: AwsCloudType! (enum)
+        [JsonProperty("cloudType")]
+        public AwsCloudType? CloudType { get; set; }
+
         //      C# -> System.String? AccountName
         // GraphQL -> accountName: String! (scalar)
         [JsonProperty("accountName")]
@@ -38,23 +45,22 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("seamlessFlowEnabled")]
         public System.Boolean? SeamlessFlowEnabled { get; set; }
 
-        //      C# -> AwsCloudType? CloudType
-        // GraphQL -> cloudType: AwsCloudType! (enum)
-        [JsonProperty("cloudType")]
-        public AwsCloudType? CloudType { get; set; }
 
         #endregion
 
     #region methods
 
     public AwsAccountValidationResponse Set(
+        AwsCloudType? CloudType = null,
         System.String? AccountName = null,
         System.String? Message = null,
         System.String? NativeId = null,
-        System.Boolean? SeamlessFlowEnabled = null,
-        AwsCloudType? CloudType = null
+        System.Boolean? SeamlessFlowEnabled = null
     ) 
     {
+        if ( CloudType != null ) {
+            this.CloudType = CloudType;
+        }
         if ( AccountName != null ) {
             this.AccountName = AccountName;
         }
@@ -67,127 +73,118 @@ namespace Rubrik.SecurityCloud.Types
         if ( SeamlessFlowEnabled != null ) {
             this.SeamlessFlowEnabled = SeamlessFlowEnabled;
         }
-        if ( CloudType != null ) {
-            this.CloudType = CloudType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AccountName
-            // GraphQL -> accountName: String! (scalar)
-            if (this.AccountName != null)
-            {
-                 s += ind + "accountName\n";
-
-            }
-            //      C# -> System.String? Message
-            // GraphQL -> message: String! (scalar)
-            if (this.Message != null)
-            {
-                 s += ind + "message\n";
-
-            }
-            //      C# -> System.String? NativeId
-            // GraphQL -> nativeId: String! (scalar)
-            if (this.NativeId != null)
-            {
-                 s += ind + "nativeId\n";
-
-            }
-            //      C# -> System.Boolean? SeamlessFlowEnabled
-            // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
-            if (this.SeamlessFlowEnabled != null)
-            {
-                 s += ind + "seamlessFlowEnabled\n";
-
-            }
-            //      C# -> AwsCloudType? CloudType
-            // GraphQL -> cloudType: AwsCloudType! (enum)
-            if (this.CloudType != null)
-            {
-                 s += ind + "cloudType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AwsCloudType? CloudType
+        // GraphQL -> cloudType: AwsCloudType! (enum)
+        if (this.CloudType != null) {
+            s += ind + "cloudType\n" ;
         }
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (this.AccountName != null) {
+            s += ind + "accountName\n" ;
+        }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        if (this.Message != null) {
+            s += ind + "message\n" ;
+        }
+        //      C# -> System.String? NativeId
+        // GraphQL -> nativeId: String! (scalar)
+        if (this.NativeId != null) {
+            s += ind + "nativeId\n" ;
+        }
+        //      C# -> System.Boolean? SeamlessFlowEnabled
+        // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
+        if (this.SeamlessFlowEnabled != null) {
+            s += ind + "seamlessFlowEnabled\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AwsCloudType? CloudType
+        // GraphQL -> cloudType: AwsCloudType! (enum)
+        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
         {
-            //      C# -> System.String? AccountName
-            // GraphQL -> accountName: String! (scalar)
-            if (this.AccountName == null && Exploration.Includes(parent + ".accountName$"))
-            {
-                this.AccountName = new System.String("FETCH");
-            }
-            //      C# -> System.String? Message
-            // GraphQL -> message: String! (scalar)
-            if (this.Message == null && Exploration.Includes(parent + ".message$"))
-            {
-                this.Message = new System.String("FETCH");
-            }
-            //      C# -> System.String? NativeId
-            // GraphQL -> nativeId: String! (scalar)
-            if (this.NativeId == null && Exploration.Includes(parent + ".nativeId$"))
-            {
-                this.NativeId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? SeamlessFlowEnabled
-            // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
-            if (this.SeamlessFlowEnabled == null && Exploration.Includes(parent + ".seamlessFlowEnabled$"))
-            {
-                this.SeamlessFlowEnabled = new System.Boolean();
-            }
-            //      C# -> AwsCloudType? CloudType
-            // GraphQL -> cloudType: AwsCloudType! (enum)
-            if (this.CloudType == null && Exploration.Includes(parent + ".cloudType$"))
-            {
-                this.CloudType = new AwsCloudType();
-            }
+            this.CloudType = new AwsCloudType();
         }
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (this.AccountName == null && Exploration.Includes(parent + ".accountName", true))
+        {
+            this.AccountName = new System.String("FETCH");
+        }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        {
+            this.Message = new System.String("FETCH");
+        }
+        //      C# -> System.String? NativeId
+        // GraphQL -> nativeId: String! (scalar)
+        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        {
+            this.NativeId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? SeamlessFlowEnabled
+        // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)
+        if (this.SeamlessFlowEnabled == null && Exploration.Includes(parent + ".seamlessFlowEnabled", true))
+        {
+            this.SeamlessFlowEnabled = true;
+        }
+    }
 
 
     #endregion
 
     } // class AwsAccountValidationResponse
+    
     #endregion
 
     public static class ListAwsAccountValidationResponseExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AwsAccountValidationResponse> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AwsAccountValidationResponse> list, 
             String parent = "")
         {
-            var item = new AwsAccountValidationResponse();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AwsAccountValidationResponse());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MongoSnapshotGroupBy
-    public class MongoSnapshotGroupBy: IFragment
+    public class MongoSnapshotGroupBy: BaseType
     {
         #region members
+
         //      C# -> CdmSnapshotConnection? MongoSnapshotConnection
         // GraphQL -> mongoSnapshotConnection: CdmSnapshotConnection! (type)
         [JsonProperty("mongoSnapshotConnection")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> groupByInfo: MongoSnapshotGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
         public MongoSnapshotGroupByInfo? GroupByInfo { get; set; }
+
 
         #endregion
 
@@ -55,107 +58,97 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> CdmSnapshotConnection? MongoSnapshotConnection
-            // GraphQL -> mongoSnapshotConnection: CdmSnapshotConnection! (type)
-            if (this.MongoSnapshotConnection != null)
-            {
-                 s += ind + "mongoSnapshotConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.MongoSnapshotConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<MongoSnapshotGroupBy>? MongoSnapshotGroupByField
-            // GraphQL -> mongoSnapshotGroupBy: [MongoSnapshotGroupBy!]! (type)
-            if (this.MongoSnapshotGroupByField != null)
-            {
-                 s += ind + "mongoSnapshotGroupBy\n";
-
-                 s += ind + "{\n" + 
-                 this.MongoSnapshotGroupByField.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MongoSnapshotGroupByInfo? GroupByInfo
-            // GraphQL -> groupByInfo: MongoSnapshotGroupByInfo! (union)
-            if (this.GroupByInfo != null)
-            {
-                 s += ind + "groupByInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.GroupByInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> CdmSnapshotConnection? MongoSnapshotConnection
+        // GraphQL -> mongoSnapshotConnection: CdmSnapshotConnection! (type)
+        if (this.MongoSnapshotConnection != null) {
+            s += ind + "mongoSnapshotConnection {\n" + this.MongoSnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> List<MongoSnapshotGroupBy>? MongoSnapshotGroupByField
+        // GraphQL -> mongoSnapshotGroupBy: [MongoSnapshotGroupBy!]! (type)
+        if (this.MongoSnapshotGroupByField != null) {
+            s += ind + "mongoSnapshotGroupBy {\n" + this.MongoSnapshotGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MongoSnapshotGroupByInfo? GroupByInfo
+        // GraphQL -> groupByInfo: MongoSnapshotGroupByInfo! (union)
+        if (this.GroupByInfo != null) {
+            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> CdmSnapshotConnection? MongoSnapshotConnection
+        // GraphQL -> mongoSnapshotConnection: CdmSnapshotConnection! (type)
+        if (this.MongoSnapshotConnection == null && Exploration.Includes(parent + ".mongoSnapshotConnection"))
         {
-            //      C# -> CdmSnapshotConnection? MongoSnapshotConnection
-            // GraphQL -> mongoSnapshotConnection: CdmSnapshotConnection! (type)
-            if (this.MongoSnapshotConnection == null && Exploration.Includes(parent + ".mongoSnapshotConnection"))
-            {
-                this.MongoSnapshotConnection = new CdmSnapshotConnection();
-                this.MongoSnapshotConnection.ApplyExploratoryFragment(parent + ".mongoSnapshotConnection");
-            }
-            //      C# -> List<MongoSnapshotGroupBy>? MongoSnapshotGroupByField
-            // GraphQL -> mongoSnapshotGroupBy: [MongoSnapshotGroupBy!]! (type)
-            if (this.MongoSnapshotGroupByField == null && Exploration.Includes(parent + ".mongoSnapshotGroupBy"))
-            {
-                this.MongoSnapshotGroupByField = new List<MongoSnapshotGroupBy>();
-                this.MongoSnapshotGroupByField.ApplyExploratoryFragment(parent + ".mongoSnapshotGroupBy");
-            }
-            //      C# -> MongoSnapshotGroupByInfo? GroupByInfo
-            // GraphQL -> groupByInfo: MongoSnapshotGroupByInfo! (union)
-            if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
-            {
-                this.GroupByInfo = (MongoSnapshotGroupByInfo)InterfaceHelper.CreateInstanceOfFirstType(typeof(MongoSnapshotGroupByInfo));
-                this.GroupByInfo.ApplyExploratoryFragment(parent + ".groupByInfo");
-            }
+            this.MongoSnapshotConnection = new CdmSnapshotConnection();
+            this.MongoSnapshotConnection.ApplyExploratoryFieldSpec(parent + ".mongoSnapshotConnection");
         }
+        //      C# -> List<MongoSnapshotGroupBy>? MongoSnapshotGroupByField
+        // GraphQL -> mongoSnapshotGroupBy: [MongoSnapshotGroupBy!]! (type)
+        if (this.MongoSnapshotGroupByField == null && Exploration.Includes(parent + ".mongoSnapshotGroupBy"))
+        {
+            this.MongoSnapshotGroupByField = new List<MongoSnapshotGroupBy>();
+            this.MongoSnapshotGroupByField.ApplyExploratoryFieldSpec(parent + ".mongoSnapshotGroupBy");
+        }
+        //      C# -> MongoSnapshotGroupByInfo? GroupByInfo
+        // GraphQL -> groupByInfo: MongoSnapshotGroupByInfo! (union)
+        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        {
+            var impls = new List<MongoSnapshotGroupByInfo>();
+            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            this.GroupByInfo = (MongoSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+    }
 
 
     #endregion
 
     } // class MongoSnapshotGroupBy
+    
     #endregion
 
     public static class ListMongoSnapshotGroupByExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MongoSnapshotGroupBy> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MongoSnapshotGroupBy> list, 
             String parent = "")
         {
-            var item = new MongoSnapshotGroupBy();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MongoSnapshotGroupBy());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

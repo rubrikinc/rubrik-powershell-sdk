@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -161,6 +161,50 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 "
         )]
         public ActivitySeriesFilter? Filters { get; set; }
+        
+        // -------------------------------------------------------------------
+        // GroupByList parameter set
+        //
+        // GraphQL operation: activitySeriesGroupByConnection(,   first: Int,   after: String,   last: Int,   before: String,   groupBy: ActivitySeriesGroupByEnum!,   filters: ActivitySeriesFilterInput,   timezoneOffset: Float = 0.0, ):ActivitySeriesGroupByConnection!
+        //
+        [Parameter(
+            ParameterSetName = "GroupByList",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: activitySeriesGroupByConnection(,   first: Int,   after: String,   last: Int,   before: String,   groupBy: ActivitySeriesGroupByEnum!,   filters: ActivitySeriesFilterInput,   timezoneOffset: Float = 0.0, ):ActivitySeriesGroupByConnection!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter GroupByList { get; set; }
+
+        [Parameter(
+            ParameterSetName = "GroupByList",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                group activity series by a field
+                GraphQL argument groupBy: ActivitySeriesGroupByEnum!
+                "
+        )]
+        public ActivitySeriesGroupByEnum? GroupBy { get; set; }
+        [Parameter(
+            ParameterSetName = "GroupByList",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Offset based on customer timezone.
+                GraphQL argument timezoneOffset: Float
+                "
+        )]
+        public System.Single? TimezoneOffset { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -173,6 +217,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         break;
                     case "List":
                         this.ProcessRecord_List();
+                        break;
+                    case "GroupByList":
+                        this.ProcessRecord_GroupByList();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -208,6 +255,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             InvokeQueryActivitySeriesConnection();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // activitySeriesGroupByConnection.
+        protected void ProcessRecord_GroupByList()
+        {
+            this._logger.name += " -GroupByList";
+            // Invoke graphql operation activitySeriesGroupByConnection
+            InvokeQueryActivitySeriesGroupByConnection();
+        }
+
 
         // Invoke GraphQL Query:
         // activitySeries(input: ActivitySeriesInput!): ActivitySeries!
@@ -219,8 +275,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ActivitySeries? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ActivitySeries)psObject.BaseObject;
                 } else {
                     fields = (ActivitySeries)this.Field;
@@ -228,23 +283,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.ActivitySeries(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ActivitySeries");
-            string parameters = "($input: ActivitySeriesInput!)\n";
+            var parameters = "($input: ActivitySeriesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryActivitySeries" + parameters + "{" + document + "}",
                 OperationName = "QueryActivitySeries",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ActivitySeries> task = this._rbkClient.InvokeGenericCallAsync<ActivitySeries>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ActivitySeries", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -271,8 +325,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ActivitySeriesConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ActivitySeriesConnection)psObject.BaseObject;
                 } else {
                     fields = (ActivitySeriesConnection)this.Field;
@@ -280,23 +333,72 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.ActivitySeriesConnection(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ActivitySeriesConnection");
-            string parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ActivitySeriesSortField,$filters: ActivitySeriesFilter)\n";
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$sortBy: ActivitySeriesSortField,$filters: ActivitySeriesFilter)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryActivitySeriesConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryActivitySeriesConnection",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ActivitySeriesConnection> task = this._rbkClient.InvokeGenericCallAsync<ActivitySeriesConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ActivitySeriesConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // activitySeriesGroupByConnection(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     groupBy: ActivitySeriesGroupByEnum!
+        //     filters: ActivitySeriesFilterInput
+        //     timezoneOffset: Float = 0.0
+        //   ): ActivitySeriesGroupByConnection!
+        protected void InvokeQueryActivitySeriesGroupByConnection()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("groupBy", "ActivitySeriesGroupByEnum!"),
+                Tuple.Create("filters", "ActivitySeriesFilterInput"),
+                Tuple.Create("timezoneOffset", "Float"),
+            };
+            ActivitySeriesGroupByConnection? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (ActivitySeriesGroupByConnection)psObject.BaseObject;
+                } else {
+                    fields = (ActivitySeriesGroupByConnection)this.Field;
+                }
+            }
+            string document = Query.ActivitySeriesGroupByConnection(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.ActivitySeriesGroupByConnection");
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ActivitySeriesGroupByEnum!,$filters: ActivitySeriesFilterInput,$timezoneOffset: Float)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryActivitySeriesGroupByConnection" + parameters + "{" + document + "}",
+                OperationName = "QueryActivitySeriesGroupByConnection",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "ActivitySeriesGroupByConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

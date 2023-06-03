@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ConfigProtectionInfo
-    public class ConfigProtectionInfo: IFragment
+    public class ConfigProtectionInfo: BaseType
     {
         #region members
+
+        //      C# -> ConfigProtectionStatus? ConfigProtectionStatus
+        // GraphQL -> configProtectionStatus: ConfigProtectionStatus! (enum)
+        [JsonProperty("configProtectionStatus")]
+        public ConfigProtectionStatus? ConfigProtectionStatus { get; set; }
+
+        //      C# -> UploadLocationType? UploadLocation
+        // GraphQL -> uploadLocation: UploadLocationType! (enum)
+        [JsonProperty("uploadLocation")]
+        public UploadLocationType? UploadLocation { get; set; }
+
         //      C# -> System.String? CaCertUuid
         // GraphQL -> caCertUuid: UUID (scalar)
         [JsonProperty("caCertUuid")]
@@ -38,29 +50,26 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("replicationTargetName")]
         public System.String? ReplicationTargetName { get; set; }
 
-        //      C# -> ConfigProtectionStatus? ConfigProtectionStatus
-        // GraphQL -> configProtectionStatus: ConfigProtectionStatus! (enum)
-        [JsonProperty("configProtectionStatus")]
-        public ConfigProtectionStatus? ConfigProtectionStatus { get; set; }
-
-        //      C# -> UploadLocationType? UploadLocation
-        // GraphQL -> uploadLocation: UploadLocationType! (enum)
-        [JsonProperty("uploadLocation")]
-        public UploadLocationType? UploadLocation { get; set; }
 
         #endregion
 
     #region methods
 
     public ConfigProtectionInfo Set(
+        ConfigProtectionStatus? ConfigProtectionStatus = null,
+        UploadLocationType? UploadLocation = null,
         System.String? CaCertUuid = null,
         System.String? ClusterUuid = null,
         DateTime? LastSuccessfulBackupTime = null,
-        System.String? ReplicationTargetName = null,
-        ConfigProtectionStatus? ConfigProtectionStatus = null,
-        UploadLocationType? UploadLocation = null
+        System.String? ReplicationTargetName = null
     ) 
     {
+        if ( ConfigProtectionStatus != null ) {
+            this.ConfigProtectionStatus = ConfigProtectionStatus;
+        }
+        if ( UploadLocation != null ) {
+            this.UploadLocation = UploadLocation;
+        }
         if ( CaCertUuid != null ) {
             this.CaCertUuid = CaCertUuid;
         }
@@ -73,143 +82,129 @@ namespace Rubrik.SecurityCloud.Types
         if ( ReplicationTargetName != null ) {
             this.ReplicationTargetName = ReplicationTargetName;
         }
-        if ( ConfigProtectionStatus != null ) {
-            this.ConfigProtectionStatus = ConfigProtectionStatus;
-        }
-        if ( UploadLocation != null ) {
-            this.UploadLocation = UploadLocation;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CaCertUuid
-            // GraphQL -> caCertUuid: UUID (scalar)
-            if (this.CaCertUuid != null)
-            {
-                 s += ind + "caCertUuid\n";
-
-            }
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid != null)
-            {
-                 s += ind + "clusterUuid\n";
-
-            }
-            //      C# -> DateTime? LastSuccessfulBackupTime
-            // GraphQL -> lastSuccessfulBackupTime: DateTime (scalar)
-            if (this.LastSuccessfulBackupTime != null)
-            {
-                 s += ind + "lastSuccessfulBackupTime\n";
-
-            }
-            //      C# -> System.String? ReplicationTargetName
-            // GraphQL -> replicationTargetName: String (scalar)
-            if (this.ReplicationTargetName != null)
-            {
-                 s += ind + "replicationTargetName\n";
-
-            }
-            //      C# -> ConfigProtectionStatus? ConfigProtectionStatus
-            // GraphQL -> configProtectionStatus: ConfigProtectionStatus! (enum)
-            if (this.ConfigProtectionStatus != null)
-            {
-                 s += ind + "configProtectionStatus\n";
-
-            }
-            //      C# -> UploadLocationType? UploadLocation
-            // GraphQL -> uploadLocation: UploadLocationType! (enum)
-            if (this.UploadLocation != null)
-            {
-                 s += ind + "uploadLocation\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ConfigProtectionStatus? ConfigProtectionStatus
+        // GraphQL -> configProtectionStatus: ConfigProtectionStatus! (enum)
+        if (this.ConfigProtectionStatus != null) {
+            s += ind + "configProtectionStatus\n" ;
         }
+        //      C# -> UploadLocationType? UploadLocation
+        // GraphQL -> uploadLocation: UploadLocationType! (enum)
+        if (this.UploadLocation != null) {
+            s += ind + "uploadLocation\n" ;
+        }
+        //      C# -> System.String? CaCertUuid
+        // GraphQL -> caCertUuid: UUID (scalar)
+        if (this.CaCertUuid != null) {
+            s += ind + "caCertUuid\n" ;
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid != null) {
+            s += ind + "clusterUuid\n" ;
+        }
+        //      C# -> DateTime? LastSuccessfulBackupTime
+        // GraphQL -> lastSuccessfulBackupTime: DateTime (scalar)
+        if (this.LastSuccessfulBackupTime != null) {
+            s += ind + "lastSuccessfulBackupTime\n" ;
+        }
+        //      C# -> System.String? ReplicationTargetName
+        // GraphQL -> replicationTargetName: String (scalar)
+        if (this.ReplicationTargetName != null) {
+            s += ind + "replicationTargetName\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ConfigProtectionStatus? ConfigProtectionStatus
+        // GraphQL -> configProtectionStatus: ConfigProtectionStatus! (enum)
+        if (this.ConfigProtectionStatus == null && Exploration.Includes(parent + ".configProtectionStatus", true))
         {
-            //      C# -> System.String? CaCertUuid
-            // GraphQL -> caCertUuid: UUID (scalar)
-            if (this.CaCertUuid == null && Exploration.Includes(parent + ".caCertUuid$"))
-            {
-                this.CaCertUuid = new System.String("FETCH");
-            }
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid$"))
-            {
-                this.ClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> DateTime? LastSuccessfulBackupTime
-            // GraphQL -> lastSuccessfulBackupTime: DateTime (scalar)
-            if (this.LastSuccessfulBackupTime == null && Exploration.Includes(parent + ".lastSuccessfulBackupTime$"))
-            {
-                this.LastSuccessfulBackupTime = new DateTime();
-            }
-            //      C# -> System.String? ReplicationTargetName
-            // GraphQL -> replicationTargetName: String (scalar)
-            if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName$"))
-            {
-                this.ReplicationTargetName = new System.String("FETCH");
-            }
-            //      C# -> ConfigProtectionStatus? ConfigProtectionStatus
-            // GraphQL -> configProtectionStatus: ConfigProtectionStatus! (enum)
-            if (this.ConfigProtectionStatus == null && Exploration.Includes(parent + ".configProtectionStatus$"))
-            {
-                this.ConfigProtectionStatus = new ConfigProtectionStatus();
-            }
-            //      C# -> UploadLocationType? UploadLocation
-            // GraphQL -> uploadLocation: UploadLocationType! (enum)
-            if (this.UploadLocation == null && Exploration.Includes(parent + ".uploadLocation$"))
-            {
-                this.UploadLocation = new UploadLocationType();
-            }
+            this.ConfigProtectionStatus = new ConfigProtectionStatus();
         }
+        //      C# -> UploadLocationType? UploadLocation
+        // GraphQL -> uploadLocation: UploadLocationType! (enum)
+        if (this.UploadLocation == null && Exploration.Includes(parent + ".uploadLocation", true))
+        {
+            this.UploadLocation = new UploadLocationType();
+        }
+        //      C# -> System.String? CaCertUuid
+        // GraphQL -> caCertUuid: UUID (scalar)
+        if (this.CaCertUuid == null && Exploration.Includes(parent + ".caCertUuid", true))
+        {
+            this.CaCertUuid = new System.String("FETCH");
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        {
+            this.ClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> DateTime? LastSuccessfulBackupTime
+        // GraphQL -> lastSuccessfulBackupTime: DateTime (scalar)
+        if (this.LastSuccessfulBackupTime == null && Exploration.Includes(parent + ".lastSuccessfulBackupTime", true))
+        {
+            this.LastSuccessfulBackupTime = new DateTime();
+        }
+        //      C# -> System.String? ReplicationTargetName
+        // GraphQL -> replicationTargetName: String (scalar)
+        if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
+        {
+            this.ReplicationTargetName = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class ConfigProtectionInfo
+    
     #endregion
 
     public static class ListConfigProtectionInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ConfigProtectionInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ConfigProtectionInfo> list, 
             String parent = "")
         {
-            var item = new ConfigProtectionInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ConfigProtectionInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeChannelConfig
-    public class ManagedVolumeChannelConfig: IFragment
+    public class ManagedVolumeChannelConfig: BaseType
     {
         #region members
+
         //      C# -> System.String? HostMountPoint
         // GraphQL -> hostMountPoint: String (scalar)
         [JsonProperty("hostMountPoint")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountPoint: String! (scalar)
         [JsonProperty("mountPoint")]
         public System.String? MountPoint { get; set; }
+
 
         #endregion
 
@@ -55,95 +58,93 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? HostMountPoint
-            // GraphQL -> hostMountPoint: String (scalar)
-            if (this.HostMountPoint != null)
-            {
-                 s += ind + "hostMountPoint\n";
-
-            }
-            //      C# -> System.String? IpAddress
-            // GraphQL -> ipAddress: String! (scalar)
-            if (this.IpAddress != null)
-            {
-                 s += ind + "ipAddress\n";
-
-            }
-            //      C# -> System.String? MountPoint
-            // GraphQL -> mountPoint: String! (scalar)
-            if (this.MountPoint != null)
-            {
-                 s += ind + "mountPoint\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? HostMountPoint
+        // GraphQL -> hostMountPoint: String (scalar)
+        if (this.HostMountPoint != null) {
+            s += ind + "hostMountPoint\n" ;
         }
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String! (scalar)
+        if (this.IpAddress != null) {
+            s += ind + "ipAddress\n" ;
+        }
+        //      C# -> System.String? MountPoint
+        // GraphQL -> mountPoint: String! (scalar)
+        if (this.MountPoint != null) {
+            s += ind + "mountPoint\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? HostMountPoint
+        // GraphQL -> hostMountPoint: String (scalar)
+        if (this.HostMountPoint == null && Exploration.Includes(parent + ".hostMountPoint", true))
         {
-            //      C# -> System.String? HostMountPoint
-            // GraphQL -> hostMountPoint: String (scalar)
-            if (this.HostMountPoint == null && Exploration.Includes(parent + ".hostMountPoint$"))
-            {
-                this.HostMountPoint = new System.String("FETCH");
-            }
-            //      C# -> System.String? IpAddress
-            // GraphQL -> ipAddress: String! (scalar)
-            if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress$"))
-            {
-                this.IpAddress = new System.String("FETCH");
-            }
-            //      C# -> System.String? MountPoint
-            // GraphQL -> mountPoint: String! (scalar)
-            if (this.MountPoint == null && Exploration.Includes(parent + ".mountPoint$"))
-            {
-                this.MountPoint = new System.String("FETCH");
-            }
+            this.HostMountPoint = new System.String("FETCH");
         }
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String! (scalar)
+        if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
+        {
+            this.IpAddress = new System.String("FETCH");
+        }
+        //      C# -> System.String? MountPoint
+        // GraphQL -> mountPoint: String! (scalar)
+        if (this.MountPoint == null && Exploration.Includes(parent + ".mountPoint", true))
+        {
+            this.MountPoint = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class ManagedVolumeChannelConfig
+    
     #endregion
 
     public static class ListManagedVolumeChannelConfigExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ManagedVolumeChannelConfig> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeChannelConfig> list, 
             String parent = "")
         {
-            var item = new ManagedVolumeChannelConfig();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ManagedVolumeChannelConfig());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

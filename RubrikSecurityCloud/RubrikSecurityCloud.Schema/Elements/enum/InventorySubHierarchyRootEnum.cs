@@ -21,6 +21,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "APPFLOWS_ROOT")]
         APPFLOWS_ROOT,
 
+        [EnumMember(Value = "ATLASSIAN_ROOT")]
+        ATLASSIAN_ROOT,
+
         [EnumMember(Value = "AWSNATIVE_ROOT")]
         AWSNATIVE_ROOT,
 
@@ -53,9 +56,6 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "HYPERV_ROOT")]
         HYPERV_ROOT,
-
-        [EnumMember(Value = "JIRA_ROOT")]
-        JIRA_ROOT,
 
         [EnumMember(Value = "KUPR_ROOT")]
         KUPR_ROOT,

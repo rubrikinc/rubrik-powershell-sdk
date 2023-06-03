@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AnomalyResult
-    public class AnomalyResult: IFragment
+    public class AnomalyResult: BaseType
     {
         #region members
+
+        //      C# -> ObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: ObjectTypeEnum (enum)
+        [JsonProperty("objectType")]
+        public ObjectTypeEnum? ObjectType { get; set; }
+
+        //      C# -> ActivitySeverityEnum? Severity
+        // GraphQL -> severity: ActivitySeverityEnum! (enum)
+        [JsonProperty("severity")]
+        public ActivitySeverityEnum? Severity { get; set; }
+
         //      C# -> System.Single? AnomalyProbability
         // GraphQL -> anomalyProbability: Float! (scalar)
         [JsonProperty("anomalyProbability")]
@@ -143,21 +155,14 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshot")]
         public CdmSnapshot? Snapshot { get; set; }
 
-        //      C# -> ObjectTypeEnum? ObjectType
-        // GraphQL -> objectType: ObjectTypeEnum (enum)
-        [JsonProperty("objectType")]
-        public ObjectTypeEnum? ObjectType { get; set; }
-
-        //      C# -> ActivitySeverityEnum? Severity
-        // GraphQL -> severity: ActivitySeverityEnum! (enum)
-        [JsonProperty("severity")]
-        public ActivitySeverityEnum? Severity { get; set; }
 
         #endregion
 
     #region methods
 
     public AnomalyResult Set(
+        ObjectTypeEnum? ObjectType = null,
+        ActivitySeverityEnum? Severity = null,
         System.Single? AnomalyProbability = null,
         System.Int64? BytesCreatedCount = null,
         System.Int64? BytesDeletedCount = null,
@@ -182,11 +187,15 @@ namespace Rubrik.SecurityCloud.Types
         System.String? WorkloadName = null,
         Cluster? Cluster = null,
         RansomwareResult? RansomwareResult = null,
-        CdmSnapshot? Snapshot = null,
-        ObjectTypeEnum? ObjectType = null,
-        ActivitySeverityEnum? Severity = null
+        CdmSnapshot? Snapshot = null
     ) 
     {
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
+        }
+        if ( Severity != null ) {
+            this.Severity = Severity;
+        }
         if ( AnomalyProbability != null ) {
             this.AnomalyProbability = AnomalyProbability;
         }
@@ -262,428 +271,363 @@ namespace Rubrik.SecurityCloud.Types
         if ( Snapshot != null ) {
             this.Snapshot = Snapshot;
         }
-        if ( ObjectType != null ) {
-            this.ObjectType = ObjectType;
-        }
-        if ( Severity != null ) {
-            this.Severity = Severity;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Single? AnomalyProbability
-            // GraphQL -> anomalyProbability: Float! (scalar)
-            if (this.AnomalyProbability != null)
-            {
-                 s += ind + "anomalyProbability\n";
-
-            }
-            //      C# -> System.Int64? BytesCreatedCount
-            // GraphQL -> bytesCreatedCount: Long (scalar)
-            if (this.BytesCreatedCount != null)
-            {
-                 s += ind + "bytesCreatedCount\n";
-
-            }
-            //      C# -> System.Int64? BytesDeletedCount
-            // GraphQL -> bytesDeletedCount: Long (scalar)
-            if (this.BytesDeletedCount != null)
-            {
-                 s += ind + "bytesDeletedCount\n";
-
-            }
-            //      C# -> System.Int64? BytesModifiedCount
-            // GraphQL -> bytesModifiedCount: Long (scalar)
-            if (this.BytesModifiedCount != null)
-            {
-                 s += ind + "bytesModifiedCount\n";
-
-            }
-            //      C# -> System.Int64? BytesNetChangedCount
-            // GraphQL -> bytesNetChangedCount: Long (scalar)
-            if (this.BytesNetChangedCount != null)
-            {
-                 s += ind + "bytesNetChangedCount\n";
-
-            }
-            //      C# -> System.Int64? FilesCreatedCount
-            // GraphQL -> filesCreatedCount: Long (scalar)
-            if (this.FilesCreatedCount != null)
-            {
-                 s += ind + "filesCreatedCount\n";
-
-            }
-            //      C# -> System.Int64? FilesDeletedCount
-            // GraphQL -> filesDeletedCount: Long (scalar)
-            if (this.FilesDeletedCount != null)
-            {
-                 s += ind + "filesDeletedCount\n";
-
-            }
-            //      C# -> System.Int64? FilesModifiedCount
-            // GraphQL -> filesModifiedCount: Long (scalar)
-            if (this.FilesModifiedCount != null)
-            {
-                 s += ind + "filesModifiedCount\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsAnomaly
-            // GraphQL -> isAnomaly: Boolean! (scalar)
-            if (this.IsAnomaly != null)
-            {
-                 s += ind + "isAnomaly\n";
-
-            }
-            //      C# -> System.Boolean? IsEncrypted
-            // GraphQL -> isEncrypted: Boolean (scalar)
-            if (this.IsEncrypted != null)
-            {
-                 s += ind + "isEncrypted\n";
-
-            }
-            //      C# -> System.String? Location
-            // GraphQL -> location: String! (scalar)
-            if (this.Location != null)
-            {
-                 s += ind + "location\n";
-
-            }
-            //      C# -> System.String? ManagedId
-            // GraphQL -> managedId: String! (scalar)
-            if (this.ManagedId != null)
-            {
-                 s += ind + "managedId\n";
-
-            }
-            //      C# -> DateTime? PreviousSnapshotDate
-            // GraphQL -> previousSnapshotDate: DateTime! (scalar)
-            if (this.PreviousSnapshotDate != null)
-            {
-                 s += ind + "previousSnapshotDate\n";
-
-            }
-            //      C# -> System.String? PreviousSnapshotId
-            // GraphQL -> previousSnapshotId: String! (scalar)
-            if (this.PreviousSnapshotId != null)
-            {
-                 s += ind + "previousSnapshotId\n";
-
-            }
-            //      C# -> DateTime? SnapshotDate
-            // GraphQL -> snapshotDate: DateTime! (scalar)
-            if (this.SnapshotDate != null)
-            {
-                 s += ind + "snapshotDate\n";
-
-            }
-            //      C# -> System.String? SnapshotFid
-            // GraphQL -> snapshotFid: UUID! (scalar)
-            if (this.SnapshotFid != null)
-            {
-                 s += ind + "snapshotFid\n";
-
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId != null)
-            {
-                 s += ind + "snapshotId\n";
-
-            }
-            //      C# -> System.Int64? SuspiciousFilesCount
-            // GraphQL -> suspiciousFilesCount: Long (scalar)
-            if (this.SuspiciousFilesCount != null)
-            {
-                 s += ind + "suspiciousFilesCount\n";
-
-            }
-            //      C# -> System.String? WorkloadFid
-            // GraphQL -> workloadFid: UUID! (scalar)
-            if (this.WorkloadFid != null)
-            {
-                 s += ind + "workloadFid\n";
-
-            }
-            //      C# -> System.String? WorkloadId
-            // GraphQL -> workloadId: String! (scalar)
-            if (this.WorkloadId != null)
-            {
-                 s += ind + "workloadId\n";
-
-            }
-            //      C# -> System.String? WorkloadName
-            // GraphQL -> workloadName: String (scalar)
-            if (this.WorkloadName != null)
-            {
-                 s += ind + "workloadName\n";
-
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> RansomwareResult? RansomwareResult
-            // GraphQL -> ransomwareResult: RansomwareResult (type)
-            if (this.RansomwareResult != null)
-            {
-                 s += ind + "ransomwareResult\n";
-
-                 s += ind + "{\n" + 
-                 this.RansomwareResult.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? Snapshot
-            // GraphQL -> snapshot: CdmSnapshot (type)
-            if (this.Snapshot != null)
-            {
-                 s += ind + "snapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.Snapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ObjectTypeEnum? ObjectType
-            // GraphQL -> objectType: ObjectTypeEnum (enum)
-            if (this.ObjectType != null)
-            {
-                 s += ind + "objectType\n";
-
-            }
-            //      C# -> ActivitySeverityEnum? Severity
-            // GraphQL -> severity: ActivitySeverityEnum! (enum)
-            if (this.Severity != null)
-            {
-                 s += ind + "severity\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: ObjectTypeEnum (enum)
+        if (this.ObjectType != null) {
+            s += ind + "objectType\n" ;
         }
+        //      C# -> ActivitySeverityEnum? Severity
+        // GraphQL -> severity: ActivitySeverityEnum! (enum)
+        if (this.Severity != null) {
+            s += ind + "severity\n" ;
+        }
+        //      C# -> System.Single? AnomalyProbability
+        // GraphQL -> anomalyProbability: Float! (scalar)
+        if (this.AnomalyProbability != null) {
+            s += ind + "anomalyProbability\n" ;
+        }
+        //      C# -> System.Int64? BytesCreatedCount
+        // GraphQL -> bytesCreatedCount: Long (scalar)
+        if (this.BytesCreatedCount != null) {
+            s += ind + "bytesCreatedCount\n" ;
+        }
+        //      C# -> System.Int64? BytesDeletedCount
+        // GraphQL -> bytesDeletedCount: Long (scalar)
+        if (this.BytesDeletedCount != null) {
+            s += ind + "bytesDeletedCount\n" ;
+        }
+        //      C# -> System.Int64? BytesModifiedCount
+        // GraphQL -> bytesModifiedCount: Long (scalar)
+        if (this.BytesModifiedCount != null) {
+            s += ind + "bytesModifiedCount\n" ;
+        }
+        //      C# -> System.Int64? BytesNetChangedCount
+        // GraphQL -> bytesNetChangedCount: Long (scalar)
+        if (this.BytesNetChangedCount != null) {
+            s += ind + "bytesNetChangedCount\n" ;
+        }
+        //      C# -> System.Int64? FilesCreatedCount
+        // GraphQL -> filesCreatedCount: Long (scalar)
+        if (this.FilesCreatedCount != null) {
+            s += ind + "filesCreatedCount\n" ;
+        }
+        //      C# -> System.Int64? FilesDeletedCount
+        // GraphQL -> filesDeletedCount: Long (scalar)
+        if (this.FilesDeletedCount != null) {
+            s += ind + "filesDeletedCount\n" ;
+        }
+        //      C# -> System.Int64? FilesModifiedCount
+        // GraphQL -> filesModifiedCount: Long (scalar)
+        if (this.FilesModifiedCount != null) {
+            s += ind + "filesModifiedCount\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        if (this.IsAnomaly != null) {
+            s += ind + "isAnomaly\n" ;
+        }
+        //      C# -> System.Boolean? IsEncrypted
+        // GraphQL -> isEncrypted: Boolean (scalar)
+        if (this.IsEncrypted != null) {
+            s += ind + "isEncrypted\n" ;
+        }
+        //      C# -> System.String? Location
+        // GraphQL -> location: String! (scalar)
+        if (this.Location != null) {
+            s += ind + "location\n" ;
+        }
+        //      C# -> System.String? ManagedId
+        // GraphQL -> managedId: String! (scalar)
+        if (this.ManagedId != null) {
+            s += ind + "managedId\n" ;
+        }
+        //      C# -> DateTime? PreviousSnapshotDate
+        // GraphQL -> previousSnapshotDate: DateTime! (scalar)
+        if (this.PreviousSnapshotDate != null) {
+            s += ind + "previousSnapshotDate\n" ;
+        }
+        //      C# -> System.String? PreviousSnapshotId
+        // GraphQL -> previousSnapshotId: String! (scalar)
+        if (this.PreviousSnapshotId != null) {
+            s += ind + "previousSnapshotId\n" ;
+        }
+        //      C# -> DateTime? SnapshotDate
+        // GraphQL -> snapshotDate: DateTime! (scalar)
+        if (this.SnapshotDate != null) {
+            s += ind + "snapshotDate\n" ;
+        }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: UUID! (scalar)
+        if (this.SnapshotFid != null) {
+            s += ind + "snapshotFid\n" ;
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId != null) {
+            s += ind + "snapshotId\n" ;
+        }
+        //      C# -> System.Int64? SuspiciousFilesCount
+        // GraphQL -> suspiciousFilesCount: Long (scalar)
+        if (this.SuspiciousFilesCount != null) {
+            s += ind + "suspiciousFilesCount\n" ;
+        }
+        //      C# -> System.String? WorkloadFid
+        // GraphQL -> workloadFid: UUID! (scalar)
+        if (this.WorkloadFid != null) {
+            s += ind + "workloadFid\n" ;
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId != null) {
+            s += ind + "workloadId\n" ;
+        }
+        //      C# -> System.String? WorkloadName
+        // GraphQL -> workloadName: String (scalar)
+        if (this.WorkloadName != null) {
+            s += ind + "workloadName\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> RansomwareResult? RansomwareResult
+        // GraphQL -> ransomwareResult: RansomwareResult (type)
+        if (this.RansomwareResult != null) {
+            s += ind + "ransomwareResult {\n" + this.RansomwareResult.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? Snapshot
+        // GraphQL -> snapshot: CdmSnapshot (type)
+        if (this.Snapshot != null) {
+            s += ind + "snapshot {\n" + this.Snapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: ObjectTypeEnum (enum)
+        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
         {
-            //      C# -> System.Single? AnomalyProbability
-            // GraphQL -> anomalyProbability: Float! (scalar)
-            if (this.AnomalyProbability == null && Exploration.Includes(parent + ".anomalyProbability$"))
-            {
-                this.AnomalyProbability = new System.Single();
-            }
-            //      C# -> System.Int64? BytesCreatedCount
-            // GraphQL -> bytesCreatedCount: Long (scalar)
-            if (this.BytesCreatedCount == null && Exploration.Includes(parent + ".bytesCreatedCount$"))
-            {
-                this.BytesCreatedCount = new System.Int64();
-            }
-            //      C# -> System.Int64? BytesDeletedCount
-            // GraphQL -> bytesDeletedCount: Long (scalar)
-            if (this.BytesDeletedCount == null && Exploration.Includes(parent + ".bytesDeletedCount$"))
-            {
-                this.BytesDeletedCount = new System.Int64();
-            }
-            //      C# -> System.Int64? BytesModifiedCount
-            // GraphQL -> bytesModifiedCount: Long (scalar)
-            if (this.BytesModifiedCount == null && Exploration.Includes(parent + ".bytesModifiedCount$"))
-            {
-                this.BytesModifiedCount = new System.Int64();
-            }
-            //      C# -> System.Int64? BytesNetChangedCount
-            // GraphQL -> bytesNetChangedCount: Long (scalar)
-            if (this.BytesNetChangedCount == null && Exploration.Includes(parent + ".bytesNetChangedCount$"))
-            {
-                this.BytesNetChangedCount = new System.Int64();
-            }
-            //      C# -> System.Int64? FilesCreatedCount
-            // GraphQL -> filesCreatedCount: Long (scalar)
-            if (this.FilesCreatedCount == null && Exploration.Includes(parent + ".filesCreatedCount$"))
-            {
-                this.FilesCreatedCount = new System.Int64();
-            }
-            //      C# -> System.Int64? FilesDeletedCount
-            // GraphQL -> filesDeletedCount: Long (scalar)
-            if (this.FilesDeletedCount == null && Exploration.Includes(parent + ".filesDeletedCount$"))
-            {
-                this.FilesDeletedCount = new System.Int64();
-            }
-            //      C# -> System.Int64? FilesModifiedCount
-            // GraphQL -> filesModifiedCount: Long (scalar)
-            if (this.FilesModifiedCount == null && Exploration.Includes(parent + ".filesModifiedCount$"))
-            {
-                this.FilesModifiedCount = new System.Int64();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsAnomaly
-            // GraphQL -> isAnomaly: Boolean! (scalar)
-            if (this.IsAnomaly == null && Exploration.Includes(parent + ".isAnomaly$"))
-            {
-                this.IsAnomaly = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsEncrypted
-            // GraphQL -> isEncrypted: Boolean (scalar)
-            if (this.IsEncrypted == null && Exploration.Includes(parent + ".isEncrypted$"))
-            {
-                this.IsEncrypted = new System.Boolean();
-            }
-            //      C# -> System.String? Location
-            // GraphQL -> location: String! (scalar)
-            if (this.Location == null && Exploration.Includes(parent + ".location$"))
-            {
-                this.Location = new System.String("FETCH");
-            }
-            //      C# -> System.String? ManagedId
-            // GraphQL -> managedId: String! (scalar)
-            if (this.ManagedId == null && Exploration.Includes(parent + ".managedId$"))
-            {
-                this.ManagedId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? PreviousSnapshotDate
-            // GraphQL -> previousSnapshotDate: DateTime! (scalar)
-            if (this.PreviousSnapshotDate == null && Exploration.Includes(parent + ".previousSnapshotDate$"))
-            {
-                this.PreviousSnapshotDate = new DateTime();
-            }
-            //      C# -> System.String? PreviousSnapshotId
-            // GraphQL -> previousSnapshotId: String! (scalar)
-            if (this.PreviousSnapshotId == null && Exploration.Includes(parent + ".previousSnapshotId$"))
-            {
-                this.PreviousSnapshotId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? SnapshotDate
-            // GraphQL -> snapshotDate: DateTime! (scalar)
-            if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate$"))
-            {
-                this.SnapshotDate = new DateTime();
-            }
-            //      C# -> System.String? SnapshotFid
-            // GraphQL -> snapshotFid: UUID! (scalar)
-            if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid$"))
-            {
-                this.SnapshotFid = new System.String("FETCH");
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId$"))
-            {
-                this.SnapshotId = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? SuspiciousFilesCount
-            // GraphQL -> suspiciousFilesCount: Long (scalar)
-            if (this.SuspiciousFilesCount == null && Exploration.Includes(parent + ".suspiciousFilesCount$"))
-            {
-                this.SuspiciousFilesCount = new System.Int64();
-            }
-            //      C# -> System.String? WorkloadFid
-            // GraphQL -> workloadFid: UUID! (scalar)
-            if (this.WorkloadFid == null && Exploration.Includes(parent + ".workloadFid$"))
-            {
-                this.WorkloadFid = new System.String("FETCH");
-            }
-            //      C# -> System.String? WorkloadId
-            // GraphQL -> workloadId: String! (scalar)
-            if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId$"))
-            {
-                this.WorkloadId = new System.String("FETCH");
-            }
-            //      C# -> System.String? WorkloadName
-            // GraphQL -> workloadName: String (scalar)
-            if (this.WorkloadName == null && Exploration.Includes(parent + ".workloadName$"))
-            {
-                this.WorkloadName = new System.String("FETCH");
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> RansomwareResult? RansomwareResult
-            // GraphQL -> ransomwareResult: RansomwareResult (type)
-            if (this.RansomwareResult == null && Exploration.Includes(parent + ".ransomwareResult"))
-            {
-                this.RansomwareResult = new RansomwareResult();
-                this.RansomwareResult.ApplyExploratoryFragment(parent + ".ransomwareResult");
-            }
-            //      C# -> CdmSnapshot? Snapshot
-            // GraphQL -> snapshot: CdmSnapshot (type)
-            if (this.Snapshot == null && Exploration.Includes(parent + ".snapshot"))
-            {
-                this.Snapshot = new CdmSnapshot();
-                this.Snapshot.ApplyExploratoryFragment(parent + ".snapshot");
-            }
-            //      C# -> ObjectTypeEnum? ObjectType
-            // GraphQL -> objectType: ObjectTypeEnum (enum)
-            if (this.ObjectType == null && Exploration.Includes(parent + ".objectType$"))
-            {
-                this.ObjectType = new ObjectTypeEnum();
-            }
-            //      C# -> ActivitySeverityEnum? Severity
-            // GraphQL -> severity: ActivitySeverityEnum! (enum)
-            if (this.Severity == null && Exploration.Includes(parent + ".severity$"))
-            {
-                this.Severity = new ActivitySeverityEnum();
-            }
+            this.ObjectType = new ObjectTypeEnum();
         }
+        //      C# -> ActivitySeverityEnum? Severity
+        // GraphQL -> severity: ActivitySeverityEnum! (enum)
+        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        {
+            this.Severity = new ActivitySeverityEnum();
+        }
+        //      C# -> System.Single? AnomalyProbability
+        // GraphQL -> anomalyProbability: Float! (scalar)
+        if (this.AnomalyProbability == null && Exploration.Includes(parent + ".anomalyProbability", true))
+        {
+            this.AnomalyProbability = new System.Single();
+        }
+        //      C# -> System.Int64? BytesCreatedCount
+        // GraphQL -> bytesCreatedCount: Long (scalar)
+        if (this.BytesCreatedCount == null && Exploration.Includes(parent + ".bytesCreatedCount", true))
+        {
+            this.BytesCreatedCount = new System.Int64();
+        }
+        //      C# -> System.Int64? BytesDeletedCount
+        // GraphQL -> bytesDeletedCount: Long (scalar)
+        if (this.BytesDeletedCount == null && Exploration.Includes(parent + ".bytesDeletedCount", true))
+        {
+            this.BytesDeletedCount = new System.Int64();
+        }
+        //      C# -> System.Int64? BytesModifiedCount
+        // GraphQL -> bytesModifiedCount: Long (scalar)
+        if (this.BytesModifiedCount == null && Exploration.Includes(parent + ".bytesModifiedCount", true))
+        {
+            this.BytesModifiedCount = new System.Int64();
+        }
+        //      C# -> System.Int64? BytesNetChangedCount
+        // GraphQL -> bytesNetChangedCount: Long (scalar)
+        if (this.BytesNetChangedCount == null && Exploration.Includes(parent + ".bytesNetChangedCount", true))
+        {
+            this.BytesNetChangedCount = new System.Int64();
+        }
+        //      C# -> System.Int64? FilesCreatedCount
+        // GraphQL -> filesCreatedCount: Long (scalar)
+        if (this.FilesCreatedCount == null && Exploration.Includes(parent + ".filesCreatedCount", true))
+        {
+            this.FilesCreatedCount = new System.Int64();
+        }
+        //      C# -> System.Int64? FilesDeletedCount
+        // GraphQL -> filesDeletedCount: Long (scalar)
+        if (this.FilesDeletedCount == null && Exploration.Includes(parent + ".filesDeletedCount", true))
+        {
+            this.FilesDeletedCount = new System.Int64();
+        }
+        //      C# -> System.Int64? FilesModifiedCount
+        // GraphQL -> filesModifiedCount: Long (scalar)
+        if (this.FilesModifiedCount == null && Exploration.Includes(parent + ".filesModifiedCount", true))
+        {
+            this.FilesModifiedCount = new System.Int64();
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsAnomaly
+        // GraphQL -> isAnomaly: Boolean! (scalar)
+        if (this.IsAnomaly == null && Exploration.Includes(parent + ".isAnomaly", true))
+        {
+            this.IsAnomaly = true;
+        }
+        //      C# -> System.Boolean? IsEncrypted
+        // GraphQL -> isEncrypted: Boolean (scalar)
+        if (this.IsEncrypted == null && Exploration.Includes(parent + ".isEncrypted", true))
+        {
+            this.IsEncrypted = true;
+        }
+        //      C# -> System.String? Location
+        // GraphQL -> location: String! (scalar)
+        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        {
+            this.Location = new System.String("FETCH");
+        }
+        //      C# -> System.String? ManagedId
+        // GraphQL -> managedId: String! (scalar)
+        if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
+        {
+            this.ManagedId = new System.String("FETCH");
+        }
+        //      C# -> DateTime? PreviousSnapshotDate
+        // GraphQL -> previousSnapshotDate: DateTime! (scalar)
+        if (this.PreviousSnapshotDate == null && Exploration.Includes(parent + ".previousSnapshotDate", true))
+        {
+            this.PreviousSnapshotDate = new DateTime();
+        }
+        //      C# -> System.String? PreviousSnapshotId
+        // GraphQL -> previousSnapshotId: String! (scalar)
+        if (this.PreviousSnapshotId == null && Exploration.Includes(parent + ".previousSnapshotId", true))
+        {
+            this.PreviousSnapshotId = new System.String("FETCH");
+        }
+        //      C# -> DateTime? SnapshotDate
+        // GraphQL -> snapshotDate: DateTime! (scalar)
+        if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate", true))
+        {
+            this.SnapshotDate = new DateTime();
+        }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: UUID! (scalar)
+        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        {
+            this.SnapshotFid = new System.String("FETCH");
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        {
+            this.SnapshotId = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? SuspiciousFilesCount
+        // GraphQL -> suspiciousFilesCount: Long (scalar)
+        if (this.SuspiciousFilesCount == null && Exploration.Includes(parent + ".suspiciousFilesCount", true))
+        {
+            this.SuspiciousFilesCount = new System.Int64();
+        }
+        //      C# -> System.String? WorkloadFid
+        // GraphQL -> workloadFid: UUID! (scalar)
+        if (this.WorkloadFid == null && Exploration.Includes(parent + ".workloadFid", true))
+        {
+            this.WorkloadFid = new System.String("FETCH");
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        {
+            this.WorkloadId = new System.String("FETCH");
+        }
+        //      C# -> System.String? WorkloadName
+        // GraphQL -> workloadName: String (scalar)
+        if (this.WorkloadName == null && Exploration.Includes(parent + ".workloadName", true))
+        {
+            this.WorkloadName = new System.String("FETCH");
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> RansomwareResult? RansomwareResult
+        // GraphQL -> ransomwareResult: RansomwareResult (type)
+        if (this.RansomwareResult == null && Exploration.Includes(parent + ".ransomwareResult"))
+        {
+            this.RansomwareResult = new RansomwareResult();
+            this.RansomwareResult.ApplyExploratoryFieldSpec(parent + ".ransomwareResult");
+        }
+        //      C# -> CdmSnapshot? Snapshot
+        // GraphQL -> snapshot: CdmSnapshot (type)
+        if (this.Snapshot == null && Exploration.Includes(parent + ".snapshot"))
+        {
+            this.Snapshot = new CdmSnapshot();
+            this.Snapshot.ApplyExploratoryFieldSpec(parent + ".snapshot");
+        }
+    }
 
 
     #endregion
 
     } // class AnomalyResult
+    
     #endregion
 
     public static class ListAnomalyResultExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AnomalyResult> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AnomalyResult> list, 
             String parent = "")
         {
-            var item = new AnomalyResult();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AnomalyResult());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

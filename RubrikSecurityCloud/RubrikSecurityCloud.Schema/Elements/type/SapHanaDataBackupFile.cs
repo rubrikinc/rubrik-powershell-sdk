@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaDataBackupFile
-    public class SapHanaDataBackupFile: IFragment
+    public class SapHanaDataBackupFile: BaseType
     {
         #region members
+
         //      C# -> System.Int64? BackupFileSizeInBytes
         // GraphQL -> backupFileSizeInBytes: Long! (scalar)
         [JsonProperty("backupFileSizeInBytes")]
@@ -52,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sourceType: String! (scalar)
         [JsonProperty("sourceType")]
         public System.String? SourceType { get; set; }
+
 
         #endregion
 
@@ -91,147 +94,137 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? BackupFileSizeInBytes
-            // GraphQL -> backupFileSizeInBytes: Long! (scalar)
-            if (this.BackupFileSizeInBytes != null)
-            {
-                 s += ind + "backupFileSizeInBytes\n";
-
-            }
-            //      C# -> System.String? DestinationPath
-            // GraphQL -> destinationPath: String! (scalar)
-            if (this.DestinationPath != null)
-            {
-                 s += ind + "destinationPath\n";
-
-            }
-            //      C# -> System.String? ExternalBackupId
-            // GraphQL -> externalBackupId: String! (scalar)
-            if (this.ExternalBackupId != null)
-            {
-                 s += ind + "externalBackupId\n";
-
-            }
-            //      C# -> System.Int64? RedoLogPositionOpt
-            // GraphQL -> redoLogPositionOpt: Long (scalar)
-            if (this.RedoLogPositionOpt != null)
-            {
-                 s += ind + "redoLogPositionOpt\n";
-
-            }
-            //      C# -> System.String? ServiceType
-            // GraphQL -> serviceType: String! (scalar)
-            if (this.ServiceType != null)
-            {
-                 s += ind + "serviceType\n";
-
-            }
-            //      C# -> System.Int64? SourceId
-            // GraphQL -> sourceId: Long! (scalar)
-            if (this.SourceId != null)
-            {
-                 s += ind + "sourceId\n";
-
-            }
-            //      C# -> System.String? SourceType
-            // GraphQL -> sourceType: String! (scalar)
-            if (this.SourceType != null)
-            {
-                 s += ind + "sourceType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? BackupFileSizeInBytes
+        // GraphQL -> backupFileSizeInBytes: Long! (scalar)
+        if (this.BackupFileSizeInBytes != null) {
+            s += ind + "backupFileSizeInBytes\n" ;
         }
+        //      C# -> System.String? DestinationPath
+        // GraphQL -> destinationPath: String! (scalar)
+        if (this.DestinationPath != null) {
+            s += ind + "destinationPath\n" ;
+        }
+        //      C# -> System.String? ExternalBackupId
+        // GraphQL -> externalBackupId: String! (scalar)
+        if (this.ExternalBackupId != null) {
+            s += ind + "externalBackupId\n" ;
+        }
+        //      C# -> System.Int64? RedoLogPositionOpt
+        // GraphQL -> redoLogPositionOpt: Long (scalar)
+        if (this.RedoLogPositionOpt != null) {
+            s += ind + "redoLogPositionOpt\n" ;
+        }
+        //      C# -> System.String? ServiceType
+        // GraphQL -> serviceType: String! (scalar)
+        if (this.ServiceType != null) {
+            s += ind + "serviceType\n" ;
+        }
+        //      C# -> System.Int64? SourceId
+        // GraphQL -> sourceId: Long! (scalar)
+        if (this.SourceId != null) {
+            s += ind + "sourceId\n" ;
+        }
+        //      C# -> System.String? SourceType
+        // GraphQL -> sourceType: String! (scalar)
+        if (this.SourceType != null) {
+            s += ind + "sourceType\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? BackupFileSizeInBytes
+        // GraphQL -> backupFileSizeInBytes: Long! (scalar)
+        if (this.BackupFileSizeInBytes == null && Exploration.Includes(parent + ".backupFileSizeInBytes", true))
         {
-            //      C# -> System.Int64? BackupFileSizeInBytes
-            // GraphQL -> backupFileSizeInBytes: Long! (scalar)
-            if (this.BackupFileSizeInBytes == null && Exploration.Includes(parent + ".backupFileSizeInBytes$"))
-            {
-                this.BackupFileSizeInBytes = new System.Int64();
-            }
-            //      C# -> System.String? DestinationPath
-            // GraphQL -> destinationPath: String! (scalar)
-            if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath$"))
-            {
-                this.DestinationPath = new System.String("FETCH");
-            }
-            //      C# -> System.String? ExternalBackupId
-            // GraphQL -> externalBackupId: String! (scalar)
-            if (this.ExternalBackupId == null && Exploration.Includes(parent + ".externalBackupId$"))
-            {
-                this.ExternalBackupId = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? RedoLogPositionOpt
-            // GraphQL -> redoLogPositionOpt: Long (scalar)
-            if (this.RedoLogPositionOpt == null && Exploration.Includes(parent + ".redoLogPositionOpt$"))
-            {
-                this.RedoLogPositionOpt = new System.Int64();
-            }
-            //      C# -> System.String? ServiceType
-            // GraphQL -> serviceType: String! (scalar)
-            if (this.ServiceType == null && Exploration.Includes(parent + ".serviceType$"))
-            {
-                this.ServiceType = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? SourceId
-            // GraphQL -> sourceId: Long! (scalar)
-            if (this.SourceId == null && Exploration.Includes(parent + ".sourceId$"))
-            {
-                this.SourceId = new System.Int64();
-            }
-            //      C# -> System.String? SourceType
-            // GraphQL -> sourceType: String! (scalar)
-            if (this.SourceType == null && Exploration.Includes(parent + ".sourceType$"))
-            {
-                this.SourceType = new System.String("FETCH");
-            }
+            this.BackupFileSizeInBytes = new System.Int64();
         }
+        //      C# -> System.String? DestinationPath
+        // GraphQL -> destinationPath: String! (scalar)
+        if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
+        {
+            this.DestinationPath = new System.String("FETCH");
+        }
+        //      C# -> System.String? ExternalBackupId
+        // GraphQL -> externalBackupId: String! (scalar)
+        if (this.ExternalBackupId == null && Exploration.Includes(parent + ".externalBackupId", true))
+        {
+            this.ExternalBackupId = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? RedoLogPositionOpt
+        // GraphQL -> redoLogPositionOpt: Long (scalar)
+        if (this.RedoLogPositionOpt == null && Exploration.Includes(parent + ".redoLogPositionOpt", true))
+        {
+            this.RedoLogPositionOpt = new System.Int64();
+        }
+        //      C# -> System.String? ServiceType
+        // GraphQL -> serviceType: String! (scalar)
+        if (this.ServiceType == null && Exploration.Includes(parent + ".serviceType", true))
+        {
+            this.ServiceType = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? SourceId
+        // GraphQL -> sourceId: Long! (scalar)
+        if (this.SourceId == null && Exploration.Includes(parent + ".sourceId", true))
+        {
+            this.SourceId = new System.Int64();
+        }
+        //      C# -> System.String? SourceType
+        // GraphQL -> sourceType: String! (scalar)
+        if (this.SourceType == null && Exploration.Includes(parent + ".sourceType", true))
+        {
+            this.SourceType = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class SapHanaDataBackupFile
+    
     #endregion
 
     public static class ListSapHanaDataBackupFileExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SapHanaDataBackupFile> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SapHanaDataBackupFile> list, 
             String parent = "")
         {
-            var item = new SapHanaDataBackupFile();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SapHanaDataBackupFile());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

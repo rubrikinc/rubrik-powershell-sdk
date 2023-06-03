@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region PrecheckFailure
-    public class PrecheckFailure: IFragment
+    public class PrecheckFailure: BaseType
     {
         #region members
+
         //      C# -> System.String? Cause
         // GraphQL -> cause: String! (scalar)
         [JsonProperty("cause")]
@@ -37,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> upgradeBlocker: Boolean! (scalar)
         [JsonProperty("upgradeBlocker")]
         public System.Boolean? UpgradeBlocker { get; set; }
+
 
         #endregion
 
@@ -64,108 +67,104 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Cause
-            // GraphQL -> cause: String! (scalar)
-            if (this.Cause != null)
-            {
-                 s += ind + "cause\n";
-
-            }
-            //      C# -> System.String? PrecheckName
-            // GraphQL -> precheckName: String! (scalar)
-            if (this.PrecheckName != null)
-            {
-                 s += ind + "precheckName\n";
-
-            }
-            //      C# -> System.String? Remedy
-            // GraphQL -> remedy: String! (scalar)
-            if (this.Remedy != null)
-            {
-                 s += ind + "remedy\n";
-
-            }
-            //      C# -> System.Boolean? UpgradeBlocker
-            // GraphQL -> upgradeBlocker: Boolean! (scalar)
-            if (this.UpgradeBlocker != null)
-            {
-                 s += ind + "upgradeBlocker\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Cause
+        // GraphQL -> cause: String! (scalar)
+        if (this.Cause != null) {
+            s += ind + "cause\n" ;
         }
+        //      C# -> System.String? PrecheckName
+        // GraphQL -> precheckName: String! (scalar)
+        if (this.PrecheckName != null) {
+            s += ind + "precheckName\n" ;
+        }
+        //      C# -> System.String? Remedy
+        // GraphQL -> remedy: String! (scalar)
+        if (this.Remedy != null) {
+            s += ind + "remedy\n" ;
+        }
+        //      C# -> System.Boolean? UpgradeBlocker
+        // GraphQL -> upgradeBlocker: Boolean! (scalar)
+        if (this.UpgradeBlocker != null) {
+            s += ind + "upgradeBlocker\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Cause
+        // GraphQL -> cause: String! (scalar)
+        if (this.Cause == null && Exploration.Includes(parent + ".cause", true))
         {
-            //      C# -> System.String? Cause
-            // GraphQL -> cause: String! (scalar)
-            if (this.Cause == null && Exploration.Includes(parent + ".cause$"))
-            {
-                this.Cause = new System.String("FETCH");
-            }
-            //      C# -> System.String? PrecheckName
-            // GraphQL -> precheckName: String! (scalar)
-            if (this.PrecheckName == null && Exploration.Includes(parent + ".precheckName$"))
-            {
-                this.PrecheckName = new System.String("FETCH");
-            }
-            //      C# -> System.String? Remedy
-            // GraphQL -> remedy: String! (scalar)
-            if (this.Remedy == null && Exploration.Includes(parent + ".remedy$"))
-            {
-                this.Remedy = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? UpgradeBlocker
-            // GraphQL -> upgradeBlocker: Boolean! (scalar)
-            if (this.UpgradeBlocker == null && Exploration.Includes(parent + ".upgradeBlocker$"))
-            {
-                this.UpgradeBlocker = new System.Boolean();
-            }
+            this.Cause = new System.String("FETCH");
         }
+        //      C# -> System.String? PrecheckName
+        // GraphQL -> precheckName: String! (scalar)
+        if (this.PrecheckName == null && Exploration.Includes(parent + ".precheckName", true))
+        {
+            this.PrecheckName = new System.String("FETCH");
+        }
+        //      C# -> System.String? Remedy
+        // GraphQL -> remedy: String! (scalar)
+        if (this.Remedy == null && Exploration.Includes(parent + ".remedy", true))
+        {
+            this.Remedy = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? UpgradeBlocker
+        // GraphQL -> upgradeBlocker: Boolean! (scalar)
+        if (this.UpgradeBlocker == null && Exploration.Includes(parent + ".upgradeBlocker", true))
+        {
+            this.UpgradeBlocker = true;
+        }
+    }
 
 
     #endregion
 
     } // class PrecheckFailure
+    
     #endregion
 
     public static class ListPrecheckFailureExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<PrecheckFailure> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<PrecheckFailure> list, 
             String parent = "")
         {
-            var item = new PrecheckFailure();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new PrecheckFailure());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

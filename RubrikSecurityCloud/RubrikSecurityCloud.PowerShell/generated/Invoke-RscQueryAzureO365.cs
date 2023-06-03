@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -544,8 +544,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             GetAzureO365ExocomputeResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (GetAzureO365ExocomputeResp)psObject.BaseObject;
                 } else {
                     fields = (GetAzureO365ExocomputeResp)this.Field;
@@ -553,23 +552,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365Exocompute(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365Exocompute");
-            string parameters = "($orgId: UUID!,$exocomputeClusterId: String!)\n";
+            var parameters = "($orgId: UUID!,$exocomputeClusterId: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365Exocompute" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365Exocompute",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<GetAzureO365ExocomputeResp> task = this._rbkClient.InvokeGenericCallAsync<GetAzureO365ExocomputeResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "GetAzureO365ExocomputeResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -584,8 +582,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureResourceAvailabilityResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureResourceAvailabilityResp)psObject.BaseObject;
                 } else {
                     fields = (AzureResourceAvailabilityResp)this.Field;
@@ -593,23 +590,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365CheckStorageAccountName(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365CheckStorageAccountName");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365CheckStorageAccountName" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckStorageAccountName",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureResourceAvailabilityResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -630,8 +626,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureResourceAvailabilityResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureResourceAvailabilityResp)psObject.BaseObject;
                 } else {
                     fields = (AzureResourceAvailabilityResp)this.Field;
@@ -639,23 +634,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365CheckStorageAccountAccessibility(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365CheckStorageAccountAccessibility");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!,$groupName: String!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$storage_account_name: String!,$groupName: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365CheckStorageAccountAccessibility" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckStorageAccountAccessibility",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureResourceAvailabilityResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -670,8 +664,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureResourceAvailabilityResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureResourceAvailabilityResp)psObject.BaseObject;
                 } else {
                     fields = (AzureResourceAvailabilityResp)this.Field;
@@ -679,23 +672,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365CheckSubscriptionQuota(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365CheckSubscriptionQuota");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$regionName: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365CheckSubscriptionQuota" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckSubscriptionQuota",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureResourceAvailabilityResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -710,8 +702,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureResourceAvailabilityResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureResourceAvailabilityResp)psObject.BaseObject;
                 } else {
                     fields = (AzureResourceAvailabilityResp)this.Field;
@@ -719,23 +710,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365CheckResourceGroupName(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365CheckResourceGroupName");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365CheckResourceGroupName" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckResourceGroupName",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureResourceAvailabilityResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -756,8 +746,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureResourceAvailabilityResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureResourceAvailabilityResp)psObject.BaseObject;
                 } else {
                     fields = (AzureResourceAvailabilityResp)this.Field;
@@ -765,23 +754,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365CheckVirtualNetworkName(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365CheckVirtualNetworkName");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!,$vnet_name: String!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$groupName: String!,$vnet_name: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365CheckVirtualNetworkName" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckVirtualNetworkName",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureResourceAvailabilityResp> task = this._rbkClient.InvokeGenericCallAsync<AzureResourceAvailabilityResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureResourceAvailabilityResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -795,8 +783,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureUserRoleResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureUserRoleResp)psObject.BaseObject;
                 } else {
                     fields = (AzureUserRoleResp)this.Field;
@@ -804,23 +791,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365ValidateUserRoles(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365ValidateUserRoles");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365ValidateUserRoles" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365ValidateUserRoles",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureUserRoleResp> task = this._rbkClient.InvokeGenericCallAsync<AzureUserRoleResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureUserRoleResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -843,8 +829,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureNetworkSecurityGroupResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureNetworkSecurityGroupResp)psObject.BaseObject;
                 } else {
                     fields = (AzureNetworkSecurityGroupResp)this.Field;
@@ -852,23 +837,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365CheckNsgOutboundRules(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365CheckNsgOutboundRules");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365CheckNsgOutboundRules" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckNsgOutboundRules",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureNetworkSecurityGroupResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSecurityGroupResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureNetworkSecurityGroupResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -893,8 +877,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureNetworkSubnetResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureNetworkSubnetResp)psObject.BaseObject;
                 } else {
                     fields = (AzureNetworkSubnetResp)this.Field;
@@ -902,23 +885,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365CheckNetworkSubnet(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365CheckNetworkSubnet");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!,$strict_addr_check: Boolean!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!,$strict_addr_check: Boolean!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365CheckNetworkSubnet" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckNetworkSubnet",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureNetworkSubnetResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSubnetResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureNetworkSubnetResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -943,8 +925,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureNetworkSubnetUnusedAddrResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureNetworkSubnetUnusedAddrResp)psObject.BaseObject;
                 } else {
                     fields = (AzureNetworkSubnetUnusedAddrResp)this.Field;
@@ -952,23 +933,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365GetNetworkSubnetUnusedAddr(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365GetNetworkSubnetUnusedAddr");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!,$strict_addr_check: Boolean!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$resourceGroupName: String!,$vnet_name: String!,$subnet_name: String!,$strict_addr_check: Boolean!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365GetNetworkSubnetUnusedAddr" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365GetNetworkSubnetUnusedAddr",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AzureNetworkSubnetUnusedAddrResp> task = this._rbkClient.InvokeGenericCallAsync<AzureNetworkSubnetUnusedAddrResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureNetworkSubnetUnusedAddrResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -980,8 +960,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             GetAzureHostTypeResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (GetAzureHostTypeResp)psObject.BaseObject;
                 } else {
                     fields = (GetAzureHostTypeResp)this.Field;
@@ -989,22 +968,21 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AzureO365GetAzureHostType(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AzureO365GetAzureHostType");
-            string parameters = "";
+            var parameters = "";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAzureO365GetAzureHostType" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365GetAzureHostType",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
-            Task<GetAzureHostTypeResp> task = this._rbkClient.InvokeGenericCallAsync<GetAzureHostTypeResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "GetAzureHostTypeResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

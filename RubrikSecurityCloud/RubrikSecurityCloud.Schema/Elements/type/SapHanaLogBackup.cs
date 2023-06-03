@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaLogBackup
-    public class SapHanaLogBackup: IFragment
+    public class SapHanaLogBackup: BaseType
     {
         #region members
+
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
         [JsonProperty("backupId")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> files: [SapHanaLogBackupFiles!] (type)
         [JsonProperty("files")]
         public List<SapHanaLogBackupFiles>? Files { get; set; }
+
 
         #endregion
 
@@ -82,138 +85,127 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? BackupId
-            // GraphQL -> backupId: Long (scalar)
-            if (this.BackupId != null)
-            {
-                 s += ind + "backupId\n";
-
-            }
-            //      C# -> System.Int64? BytesTransferred
-            // GraphQL -> bytesTransferred: Long (scalar)
-            if (this.BytesTransferred != null)
-            {
-                 s += ind + "bytesTransferred\n";
-
-            }
-            //      C# -> System.Boolean? DoesContainCatalogFile
-            // GraphQL -> doesContainCatalogFile: Boolean (scalar)
-            if (this.DoesContainCatalogFile != null)
-            {
-                 s += ind + "doesContainCatalogFile\n";
-
-            }
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime (scalar)
-            if (this.EndTime != null)
-            {
-                 s += ind + "endTime\n";
-
-            }
-            //      C# -> DateTime? StartTime
-            // GraphQL -> startTime: DateTime (scalar)
-            if (this.StartTime != null)
-            {
-                 s += ind + "startTime\n";
-
-            }
-            //      C# -> List<SapHanaLogBackupFiles>? Files
-            // GraphQL -> files: [SapHanaLogBackupFiles!] (type)
-            if (this.Files != null)
-            {
-                 s += ind + "files\n";
-
-                 s += ind + "{\n" + 
-                 this.Files.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? BackupId
+        // GraphQL -> backupId: Long (scalar)
+        if (this.BackupId != null) {
+            s += ind + "backupId\n" ;
         }
+        //      C# -> System.Int64? BytesTransferred
+        // GraphQL -> bytesTransferred: Long (scalar)
+        if (this.BytesTransferred != null) {
+            s += ind + "bytesTransferred\n" ;
+        }
+        //      C# -> System.Boolean? DoesContainCatalogFile
+        // GraphQL -> doesContainCatalogFile: Boolean (scalar)
+        if (this.DoesContainCatalogFile != null) {
+            s += ind + "doesContainCatalogFile\n" ;
+        }
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime (scalar)
+        if (this.EndTime != null) {
+            s += ind + "endTime\n" ;
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        if (this.StartTime != null) {
+            s += ind + "startTime\n" ;
+        }
+        //      C# -> List<SapHanaLogBackupFiles>? Files
+        // GraphQL -> files: [SapHanaLogBackupFiles!] (type)
+        if (this.Files != null) {
+            s += ind + "files {\n" + this.Files.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? BackupId
+        // GraphQL -> backupId: Long (scalar)
+        if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
         {
-            //      C# -> System.Int64? BackupId
-            // GraphQL -> backupId: Long (scalar)
-            if (this.BackupId == null && Exploration.Includes(parent + ".backupId$"))
-            {
-                this.BackupId = new System.Int64();
-            }
-            //      C# -> System.Int64? BytesTransferred
-            // GraphQL -> bytesTransferred: Long (scalar)
-            if (this.BytesTransferred == null && Exploration.Includes(parent + ".bytesTransferred$"))
-            {
-                this.BytesTransferred = new System.Int64();
-            }
-            //      C# -> System.Boolean? DoesContainCatalogFile
-            // GraphQL -> doesContainCatalogFile: Boolean (scalar)
-            if (this.DoesContainCatalogFile == null && Exploration.Includes(parent + ".doesContainCatalogFile$"))
-            {
-                this.DoesContainCatalogFile = new System.Boolean();
-            }
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime (scalar)
-            if (this.EndTime == null && Exploration.Includes(parent + ".endTime$"))
-            {
-                this.EndTime = new DateTime();
-            }
-            //      C# -> DateTime? StartTime
-            // GraphQL -> startTime: DateTime (scalar)
-            if (this.StartTime == null && Exploration.Includes(parent + ".startTime$"))
-            {
-                this.StartTime = new DateTime();
-            }
-            //      C# -> List<SapHanaLogBackupFiles>? Files
-            // GraphQL -> files: [SapHanaLogBackupFiles!] (type)
-            if (this.Files == null && Exploration.Includes(parent + ".files"))
-            {
-                this.Files = new List<SapHanaLogBackupFiles>();
-                this.Files.ApplyExploratoryFragment(parent + ".files");
-            }
+            this.BackupId = new System.Int64();
         }
+        //      C# -> System.Int64? BytesTransferred
+        // GraphQL -> bytesTransferred: Long (scalar)
+        if (this.BytesTransferred == null && Exploration.Includes(parent + ".bytesTransferred", true))
+        {
+            this.BytesTransferred = new System.Int64();
+        }
+        //      C# -> System.Boolean? DoesContainCatalogFile
+        // GraphQL -> doesContainCatalogFile: Boolean (scalar)
+        if (this.DoesContainCatalogFile == null && Exploration.Includes(parent + ".doesContainCatalogFile", true))
+        {
+            this.DoesContainCatalogFile = true;
+        }
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime (scalar)
+        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        {
+            this.EndTime = new DateTime();
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        {
+            this.StartTime = new DateTime();
+        }
+        //      C# -> List<SapHanaLogBackupFiles>? Files
+        // GraphQL -> files: [SapHanaLogBackupFiles!] (type)
+        if (this.Files == null && Exploration.Includes(parent + ".files"))
+        {
+            this.Files = new List<SapHanaLogBackupFiles>();
+            this.Files.ApplyExploratoryFieldSpec(parent + ".files");
+        }
+    }
 
 
     #endregion
 
     } // class SapHanaLogBackup
+    
     #endregion
 
     public static class ListSapHanaLogBackupExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SapHanaLogBackup> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogBackup> list, 
             String parent = "")
         {
-            var item = new SapHanaLogBackup();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SapHanaLogBackup());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -18,14 +18,14 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "TYPE_AAD")]
         TYPE_AAD,
 
-        [EnumMember(Value = "TYPE_ATLASSIAN")]
-        TYPE_ATLASSIAN,
-
         [EnumMember(Value = "TYPE_CLOUD_DIRECT_HOSTED")]
         TYPE_CLOUD_DIRECT_HOSTED,
 
         [EnumMember(Value = "TYPE_M365")]
-        TYPE_M365
+        TYPE_M365,
+
+        [EnumMember(Value = "TYPE_SAAS_PROTECTION")]
+        TYPE_SAAS_PROTECTION
 
 
     } // enum SaasFeature

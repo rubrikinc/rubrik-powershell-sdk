@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlBackup
-    public class MssqlBackup: IFragment
+    public class MssqlBackup: BaseType
     {
         #region members
+
+        //      C# -> MssqlBackupType? BackupType
+        // GraphQL -> backupType: MssqlBackupType! (enum)
+        [JsonProperty("backupType")]
+        public MssqlBackupType? BackupType { get; set; }
+
         //      C# -> System.String? BackupId
         // GraphQL -> backupId: String! (scalar)
         [JsonProperty("backupId")]
@@ -48,25 +55,24 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("recoveryForkGuid")]
         public System.String? RecoveryForkGuid { get; set; }
 
-        //      C# -> MssqlBackupType? BackupType
-        // GraphQL -> backupType: MssqlBackupType! (enum)
-        [JsonProperty("backupType")]
-        public MssqlBackupType? BackupType { get; set; }
 
         #endregion
 
     #region methods
 
     public MssqlBackup Set(
+        MssqlBackupType? BackupType = null,
         System.String? BackupId = null,
         System.Int64? BackupSize = null,
         DateTime? Date = null,
         System.String? Lsn = null,
         System.String? Path = null,
-        System.String? RecoveryForkGuid = null,
-        MssqlBackupType? BackupType = null
+        System.String? RecoveryForkGuid = null
     ) 
     {
+        if ( BackupType != null ) {
+            this.BackupType = BackupType;
+        }
         if ( BackupId != null ) {
             this.BackupId = BackupId;
         }
@@ -85,153 +91,140 @@ namespace Rubrik.SecurityCloud.Types
         if ( RecoveryForkGuid != null ) {
             this.RecoveryForkGuid = RecoveryForkGuid;
         }
-        if ( BackupType != null ) {
-            this.BackupType = BackupType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? BackupId
-            // GraphQL -> backupId: String! (scalar)
-            if (this.BackupId != null)
-            {
-                 s += ind + "backupId\n";
-
-            }
-            //      C# -> System.Int64? BackupSize
-            // GraphQL -> backupSize: Long! (scalar)
-            if (this.BackupSize != null)
-            {
-                 s += ind + "backupSize\n";
-
-            }
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date != null)
-            {
-                 s += ind + "date\n";
-
-            }
-            //      C# -> System.String? Lsn
-            // GraphQL -> lsn: String! (scalar)
-            if (this.Lsn != null)
-            {
-                 s += ind + "lsn\n";
-
-            }
-            //      C# -> System.String? Path
-            // GraphQL -> path: String! (scalar)
-            if (this.Path != null)
-            {
-                 s += ind + "path\n";
-
-            }
-            //      C# -> System.String? RecoveryForkGuid
-            // GraphQL -> recoveryForkGuid: String! (scalar)
-            if (this.RecoveryForkGuid != null)
-            {
-                 s += ind + "recoveryForkGuid\n";
-
-            }
-            //      C# -> MssqlBackupType? BackupType
-            // GraphQL -> backupType: MssqlBackupType! (enum)
-            if (this.BackupType != null)
-            {
-                 s += ind + "backupType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> MssqlBackupType? BackupType
+        // GraphQL -> backupType: MssqlBackupType! (enum)
+        if (this.BackupType != null) {
+            s += ind + "backupType\n" ;
         }
+        //      C# -> System.String? BackupId
+        // GraphQL -> backupId: String! (scalar)
+        if (this.BackupId != null) {
+            s += ind + "backupId\n" ;
+        }
+        //      C# -> System.Int64? BackupSize
+        // GraphQL -> backupSize: Long! (scalar)
+        if (this.BackupSize != null) {
+            s += ind + "backupSize\n" ;
+        }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date != null) {
+            s += ind + "date\n" ;
+        }
+        //      C# -> System.String? Lsn
+        // GraphQL -> lsn: String! (scalar)
+        if (this.Lsn != null) {
+            s += ind + "lsn\n" ;
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        if (this.Path != null) {
+            s += ind + "path\n" ;
+        }
+        //      C# -> System.String? RecoveryForkGuid
+        // GraphQL -> recoveryForkGuid: String! (scalar)
+        if (this.RecoveryForkGuid != null) {
+            s += ind + "recoveryForkGuid\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> MssqlBackupType? BackupType
+        // GraphQL -> backupType: MssqlBackupType! (enum)
+        if (this.BackupType == null && Exploration.Includes(parent + ".backupType", true))
         {
-            //      C# -> System.String? BackupId
-            // GraphQL -> backupId: String! (scalar)
-            if (this.BackupId == null && Exploration.Includes(parent + ".backupId$"))
-            {
-                this.BackupId = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? BackupSize
-            // GraphQL -> backupSize: Long! (scalar)
-            if (this.BackupSize == null && Exploration.Includes(parent + ".backupSize$"))
-            {
-                this.BackupSize = new System.Int64();
-            }
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date == null && Exploration.Includes(parent + ".date$"))
-            {
-                this.Date = new DateTime();
-            }
-            //      C# -> System.String? Lsn
-            // GraphQL -> lsn: String! (scalar)
-            if (this.Lsn == null && Exploration.Includes(parent + ".lsn$"))
-            {
-                this.Lsn = new System.String("FETCH");
-            }
-            //      C# -> System.String? Path
-            // GraphQL -> path: String! (scalar)
-            if (this.Path == null && Exploration.Includes(parent + ".path$"))
-            {
-                this.Path = new System.String("FETCH");
-            }
-            //      C# -> System.String? RecoveryForkGuid
-            // GraphQL -> recoveryForkGuid: String! (scalar)
-            if (this.RecoveryForkGuid == null && Exploration.Includes(parent + ".recoveryForkGuid$"))
-            {
-                this.RecoveryForkGuid = new System.String("FETCH");
-            }
-            //      C# -> MssqlBackupType? BackupType
-            // GraphQL -> backupType: MssqlBackupType! (enum)
-            if (this.BackupType == null && Exploration.Includes(parent + ".backupType$"))
-            {
-                this.BackupType = new MssqlBackupType();
-            }
+            this.BackupType = new MssqlBackupType();
         }
+        //      C# -> System.String? BackupId
+        // GraphQL -> backupId: String! (scalar)
+        if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
+        {
+            this.BackupId = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? BackupSize
+        // GraphQL -> backupSize: Long! (scalar)
+        if (this.BackupSize == null && Exploration.Includes(parent + ".backupSize", true))
+        {
+            this.BackupSize = new System.Int64();
+        }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        {
+            this.Date = new DateTime();
+        }
+        //      C# -> System.String? Lsn
+        // GraphQL -> lsn: String! (scalar)
+        if (this.Lsn == null && Exploration.Includes(parent + ".lsn", true))
+        {
+            this.Lsn = new System.String("FETCH");
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        {
+            this.Path = new System.String("FETCH");
+        }
+        //      C# -> System.String? RecoveryForkGuid
+        // GraphQL -> recoveryForkGuid: String! (scalar)
+        if (this.RecoveryForkGuid == null && Exploration.Includes(parent + ".recoveryForkGuid", true))
+        {
+            this.RecoveryForkGuid = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class MssqlBackup
+    
     #endregion
 
     public static class ListMssqlBackupExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MssqlBackup> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MssqlBackup> list, 
             String parent = "")
         {
-            var item = new MssqlBackup();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MssqlBackup());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

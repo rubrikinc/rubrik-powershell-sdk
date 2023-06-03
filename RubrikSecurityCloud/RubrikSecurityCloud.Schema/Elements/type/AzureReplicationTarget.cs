@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureReplicationTarget
-    public class AzureReplicationTarget: IFragment
+    public class AzureReplicationTarget: BaseType
     {
         #region members
+
+        //      C# -> AzureNativeRegionForReplication? Region
+        // GraphQL -> region: AzureNativeRegionForReplication! (enum)
+        [JsonProperty("region")]
+        public AzureNativeRegionForReplication? Region { get; set; }
+
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
         [JsonProperty("subscriptionId")]
@@ -28,122 +35,116 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("subscriptionName")]
         public System.String? SubscriptionName { get; set; }
 
-        //      C# -> AzureNativeRegionForReplication? Region
-        // GraphQL -> region: AzureNativeRegionForReplication! (enum)
-        [JsonProperty("region")]
-        public AzureNativeRegionForReplication? Region { get; set; }
 
         #endregion
 
     #region methods
 
     public AzureReplicationTarget Set(
+        AzureNativeRegionForReplication? Region = null,
         System.String? SubscriptionId = null,
-        System.String? SubscriptionName = null,
-        AzureNativeRegionForReplication? Region = null
+        System.String? SubscriptionName = null
     ) 
     {
+        if ( Region != null ) {
+            this.Region = Region;
+        }
         if ( SubscriptionId != null ) {
             this.SubscriptionId = SubscriptionId;
         }
         if ( SubscriptionName != null ) {
             this.SubscriptionName = SubscriptionName;
         }
-        if ( Region != null ) {
-            this.Region = Region;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? SubscriptionId
-            // GraphQL -> subscriptionId: String! (scalar)
-            if (this.SubscriptionId != null)
-            {
-                 s += ind + "subscriptionId\n";
-
-            }
-            //      C# -> System.String? SubscriptionName
-            // GraphQL -> subscriptionName: String! (scalar)
-            if (this.SubscriptionName != null)
-            {
-                 s += ind + "subscriptionName\n";
-
-            }
-            //      C# -> AzureNativeRegionForReplication? Region
-            // GraphQL -> region: AzureNativeRegionForReplication! (enum)
-            if (this.Region != null)
-            {
-                 s += ind + "region\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AzureNativeRegionForReplication? Region
+        // GraphQL -> region: AzureNativeRegionForReplication! (enum)
+        if (this.Region != null) {
+            s += ind + "region\n" ;
         }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (this.SubscriptionId != null) {
+            s += ind + "subscriptionId\n" ;
+        }
+        //      C# -> System.String? SubscriptionName
+        // GraphQL -> subscriptionName: String! (scalar)
+        if (this.SubscriptionName != null) {
+            s += ind + "subscriptionName\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AzureNativeRegionForReplication? Region
+        // GraphQL -> region: AzureNativeRegionForReplication! (enum)
+        if (this.Region == null && Exploration.Includes(parent + ".region", true))
         {
-            //      C# -> System.String? SubscriptionId
-            // GraphQL -> subscriptionId: String! (scalar)
-            if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId$"))
-            {
-                this.SubscriptionId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SubscriptionName
-            // GraphQL -> subscriptionName: String! (scalar)
-            if (this.SubscriptionName == null && Exploration.Includes(parent + ".subscriptionName$"))
-            {
-                this.SubscriptionName = new System.String("FETCH");
-            }
-            //      C# -> AzureNativeRegionForReplication? Region
-            // GraphQL -> region: AzureNativeRegionForReplication! (enum)
-            if (this.Region == null && Exploration.Includes(parent + ".region$"))
-            {
-                this.Region = new AzureNativeRegionForReplication();
-            }
+            this.Region = new AzureNativeRegionForReplication();
         }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId", true))
+        {
+            this.SubscriptionId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SubscriptionName
+        // GraphQL -> subscriptionName: String! (scalar)
+        if (this.SubscriptionName == null && Exploration.Includes(parent + ".subscriptionName", true))
+        {
+            this.SubscriptionName = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AzureReplicationTarget
+    
     #endregion
 
     public static class ListAzureReplicationTargetExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureReplicationTarget> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureReplicationTarget> list, 
             String parent = "")
         {
-            var item = new AzureReplicationTarget();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureReplicationTarget());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

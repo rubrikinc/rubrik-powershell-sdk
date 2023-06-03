@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VmAppConsistentSpecsInternal
-    public class VmAppConsistentSpecsInternal: IFragment
+    public class VmAppConsistentSpecsInternal: BaseType
     {
         #region members
+
+        //      C# -> CloudNativeRbaStatusType? RbaStatus
+        // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
+        [JsonProperty("rbaStatus")]
+        public CloudNativeRbaStatusType? RbaStatus { get; set; }
+
         //      C# -> System.Boolean? CancelBackupIfPreScriptFails
         // GraphQL -> cancelBackupIfPreScriptFails: Boolean! (scalar)
         [JsonProperty("cancelBackupIfPreScriptFails")]
@@ -43,24 +50,23 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("preSnapshotScriptPath")]
         public System.String? PreSnapshotScriptPath { get; set; }
 
-        //      C# -> CloudNativeRbaStatusType? RbaStatus
-        // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
-        [JsonProperty("rbaStatus")]
-        public CloudNativeRbaStatusType? RbaStatus { get; set; }
 
         #endregion
 
     #region methods
 
     public VmAppConsistentSpecsInternal Set(
+        CloudNativeRbaStatusType? RbaStatus = null,
         System.Boolean? CancelBackupIfPreScriptFails = null,
         System.Int32? PostScriptTimeoutInSeconds = null,
         System.String? PostSnapshotScriptPath = null,
         System.Int32? PreScriptTimeoutInSeconds = null,
-        System.String? PreSnapshotScriptPath = null,
-        CloudNativeRbaStatusType? RbaStatus = null
+        System.String? PreSnapshotScriptPath = null
     ) 
     {
+        if ( RbaStatus != null ) {
+            this.RbaStatus = RbaStatus;
+        }
         if ( CancelBackupIfPreScriptFails != null ) {
             this.CancelBackupIfPreScriptFails = CancelBackupIfPreScriptFails;
         }
@@ -76,140 +82,129 @@ namespace Rubrik.SecurityCloud.Types
         if ( PreSnapshotScriptPath != null ) {
             this.PreSnapshotScriptPath = PreSnapshotScriptPath;
         }
-        if ( RbaStatus != null ) {
-            this.RbaStatus = RbaStatus;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? CancelBackupIfPreScriptFails
-            // GraphQL -> cancelBackupIfPreScriptFails: Boolean! (scalar)
-            if (this.CancelBackupIfPreScriptFails != null)
-            {
-                 s += ind + "cancelBackupIfPreScriptFails\n";
-
-            }
-            //      C# -> System.Int32? PostScriptTimeoutInSeconds
-            // GraphQL -> postScriptTimeoutInSeconds: Int! (scalar)
-            if (this.PostScriptTimeoutInSeconds != null)
-            {
-                 s += ind + "postScriptTimeoutInSeconds\n";
-
-            }
-            //      C# -> System.String? PostSnapshotScriptPath
-            // GraphQL -> postSnapshotScriptPath: String! (scalar)
-            if (this.PostSnapshotScriptPath != null)
-            {
-                 s += ind + "postSnapshotScriptPath\n";
-
-            }
-            //      C# -> System.Int32? PreScriptTimeoutInSeconds
-            // GraphQL -> preScriptTimeoutInSeconds: Int! (scalar)
-            if (this.PreScriptTimeoutInSeconds != null)
-            {
-                 s += ind + "preScriptTimeoutInSeconds\n";
-
-            }
-            //      C# -> System.String? PreSnapshotScriptPath
-            // GraphQL -> preSnapshotScriptPath: String! (scalar)
-            if (this.PreSnapshotScriptPath != null)
-            {
-                 s += ind + "preSnapshotScriptPath\n";
-
-            }
-            //      C# -> CloudNativeRbaStatusType? RbaStatus
-            // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
-            if (this.RbaStatus != null)
-            {
-                 s += ind + "rbaStatus\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> CloudNativeRbaStatusType? RbaStatus
+        // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
+        if (this.RbaStatus != null) {
+            s += ind + "rbaStatus\n" ;
         }
+        //      C# -> System.Boolean? CancelBackupIfPreScriptFails
+        // GraphQL -> cancelBackupIfPreScriptFails: Boolean! (scalar)
+        if (this.CancelBackupIfPreScriptFails != null) {
+            s += ind + "cancelBackupIfPreScriptFails\n" ;
+        }
+        //      C# -> System.Int32? PostScriptTimeoutInSeconds
+        // GraphQL -> postScriptTimeoutInSeconds: Int! (scalar)
+        if (this.PostScriptTimeoutInSeconds != null) {
+            s += ind + "postScriptTimeoutInSeconds\n" ;
+        }
+        //      C# -> System.String? PostSnapshotScriptPath
+        // GraphQL -> postSnapshotScriptPath: String! (scalar)
+        if (this.PostSnapshotScriptPath != null) {
+            s += ind + "postSnapshotScriptPath\n" ;
+        }
+        //      C# -> System.Int32? PreScriptTimeoutInSeconds
+        // GraphQL -> preScriptTimeoutInSeconds: Int! (scalar)
+        if (this.PreScriptTimeoutInSeconds != null) {
+            s += ind + "preScriptTimeoutInSeconds\n" ;
+        }
+        //      C# -> System.String? PreSnapshotScriptPath
+        // GraphQL -> preSnapshotScriptPath: String! (scalar)
+        if (this.PreSnapshotScriptPath != null) {
+            s += ind + "preSnapshotScriptPath\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> CloudNativeRbaStatusType? RbaStatus
+        // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
+        if (this.RbaStatus == null && Exploration.Includes(parent + ".rbaStatus", true))
         {
-            //      C# -> System.Boolean? CancelBackupIfPreScriptFails
-            // GraphQL -> cancelBackupIfPreScriptFails: Boolean! (scalar)
-            if (this.CancelBackupIfPreScriptFails == null && Exploration.Includes(parent + ".cancelBackupIfPreScriptFails$"))
-            {
-                this.CancelBackupIfPreScriptFails = new System.Boolean();
-            }
-            //      C# -> System.Int32? PostScriptTimeoutInSeconds
-            // GraphQL -> postScriptTimeoutInSeconds: Int! (scalar)
-            if (this.PostScriptTimeoutInSeconds == null && Exploration.Includes(parent + ".postScriptTimeoutInSeconds$"))
-            {
-                this.PostScriptTimeoutInSeconds = new System.Int32();
-            }
-            //      C# -> System.String? PostSnapshotScriptPath
-            // GraphQL -> postSnapshotScriptPath: String! (scalar)
-            if (this.PostSnapshotScriptPath == null && Exploration.Includes(parent + ".postSnapshotScriptPath$"))
-            {
-                this.PostSnapshotScriptPath = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? PreScriptTimeoutInSeconds
-            // GraphQL -> preScriptTimeoutInSeconds: Int! (scalar)
-            if (this.PreScriptTimeoutInSeconds == null && Exploration.Includes(parent + ".preScriptTimeoutInSeconds$"))
-            {
-                this.PreScriptTimeoutInSeconds = new System.Int32();
-            }
-            //      C# -> System.String? PreSnapshotScriptPath
-            // GraphQL -> preSnapshotScriptPath: String! (scalar)
-            if (this.PreSnapshotScriptPath == null && Exploration.Includes(parent + ".preSnapshotScriptPath$"))
-            {
-                this.PreSnapshotScriptPath = new System.String("FETCH");
-            }
-            //      C# -> CloudNativeRbaStatusType? RbaStatus
-            // GraphQL -> rbaStatus: CloudNativeRbaStatusType! (enum)
-            if (this.RbaStatus == null && Exploration.Includes(parent + ".rbaStatus$"))
-            {
-                this.RbaStatus = new CloudNativeRbaStatusType();
-            }
+            this.RbaStatus = new CloudNativeRbaStatusType();
         }
+        //      C# -> System.Boolean? CancelBackupIfPreScriptFails
+        // GraphQL -> cancelBackupIfPreScriptFails: Boolean! (scalar)
+        if (this.CancelBackupIfPreScriptFails == null && Exploration.Includes(parent + ".cancelBackupIfPreScriptFails", true))
+        {
+            this.CancelBackupIfPreScriptFails = true;
+        }
+        //      C# -> System.Int32? PostScriptTimeoutInSeconds
+        // GraphQL -> postScriptTimeoutInSeconds: Int! (scalar)
+        if (this.PostScriptTimeoutInSeconds == null && Exploration.Includes(parent + ".postScriptTimeoutInSeconds", true))
+        {
+            this.PostScriptTimeoutInSeconds = new System.Int32();
+        }
+        //      C# -> System.String? PostSnapshotScriptPath
+        // GraphQL -> postSnapshotScriptPath: String! (scalar)
+        if (this.PostSnapshotScriptPath == null && Exploration.Includes(parent + ".postSnapshotScriptPath", true))
+        {
+            this.PostSnapshotScriptPath = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? PreScriptTimeoutInSeconds
+        // GraphQL -> preScriptTimeoutInSeconds: Int! (scalar)
+        if (this.PreScriptTimeoutInSeconds == null && Exploration.Includes(parent + ".preScriptTimeoutInSeconds", true))
+        {
+            this.PreScriptTimeoutInSeconds = new System.Int32();
+        }
+        //      C# -> System.String? PreSnapshotScriptPath
+        // GraphQL -> preSnapshotScriptPath: String! (scalar)
+        if (this.PreSnapshotScriptPath == null && Exploration.Includes(parent + ".preSnapshotScriptPath", true))
+        {
+            this.PreSnapshotScriptPath = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class VmAppConsistentSpecsInternal
+    
     #endregion
 
     public static class ListVmAppConsistentSpecsInternalExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VmAppConsistentSpecsInternal> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VmAppConsistentSpecsInternal> list, 
             String parent = "")
         {
-            var item = new VmAppConsistentSpecsInternal();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VmAppConsistentSpecsInternal());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

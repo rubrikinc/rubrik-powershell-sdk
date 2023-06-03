@@ -11,117 +11,120 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region GetO365ServiceStatusResp
-    public class GetO365ServiceStatusResp: IFragment
+    public class GetO365ServiceStatusResp: BaseType
     {
         #region members
-        //      C# -> DateTime? LastUpdated
-        // GraphQL -> lastUpdated: DateTime (scalar)
-        [JsonProperty("lastUpdated")]
-        public DateTime? LastUpdated { get; set; }
 
         //      C# -> O365ServiceStatusIndication? Status
         // GraphQL -> status: O365ServiceStatusIndication! (enum)
         [JsonProperty("status")]
         public O365ServiceStatusIndication? Status { get; set; }
 
+        //      C# -> DateTime? LastUpdated
+        // GraphQL -> lastUpdated: DateTime (scalar)
+        [JsonProperty("lastUpdated")]
+        public DateTime? LastUpdated { get; set; }
+
+
         #endregion
 
     #region methods
 
     public GetO365ServiceStatusResp Set(
-        DateTime? LastUpdated = null,
-        O365ServiceStatusIndication? Status = null
+        O365ServiceStatusIndication? Status = null,
+        DateTime? LastUpdated = null
     ) 
     {
-        if ( LastUpdated != null ) {
-            this.LastUpdated = LastUpdated;
-        }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( LastUpdated != null ) {
+            this.LastUpdated = LastUpdated;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? LastUpdated
-            // GraphQL -> lastUpdated: DateTime (scalar)
-            if (this.LastUpdated != null)
-            {
-                 s += ind + "lastUpdated\n";
-
-            }
-            //      C# -> O365ServiceStatusIndication? Status
-            // GraphQL -> status: O365ServiceStatusIndication! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> O365ServiceStatusIndication? Status
+        // GraphQL -> status: O365ServiceStatusIndication! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
+        //      C# -> DateTime? LastUpdated
+        // GraphQL -> lastUpdated: DateTime (scalar)
+        if (this.LastUpdated != null) {
+            s += ind + "lastUpdated\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> O365ServiceStatusIndication? Status
+        // GraphQL -> status: O365ServiceStatusIndication! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            //      C# -> DateTime? LastUpdated
-            // GraphQL -> lastUpdated: DateTime (scalar)
-            if (this.LastUpdated == null && Exploration.Includes(parent + ".lastUpdated$"))
-            {
-                this.LastUpdated = new DateTime();
-            }
-            //      C# -> O365ServiceStatusIndication? Status
-            // GraphQL -> status: O365ServiceStatusIndication! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new O365ServiceStatusIndication();
-            }
+            this.Status = new O365ServiceStatusIndication();
         }
+        //      C# -> DateTime? LastUpdated
+        // GraphQL -> lastUpdated: DateTime (scalar)
+        if (this.LastUpdated == null && Exploration.Includes(parent + ".lastUpdated", true))
+        {
+            this.LastUpdated = new DateTime();
+        }
+    }
 
 
     #endregion
 
     } // class GetO365ServiceStatusResp
+    
     #endregion
 
     public static class ListGetO365ServiceStatusRespExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<GetO365ServiceStatusResp> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<GetO365ServiceStatusResp> list, 
             String parent = "")
         {
-            var item = new GetO365ServiceStatusResp();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new GetO365ServiceStatusResp());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaLogSnapshot
-    public class SapHanaLogSnapshot: IFragment
+    public class SapHanaLogSnapshot: BaseType
     {
         #region members
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -67,6 +69,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appMetadata: SapHanaLogSnapshotAppMetadata (type)
         [JsonProperty("appMetadata")]
         public SapHanaLogSnapshotAppMetadata? AppMetadata { get; set; }
+
 
         #endregion
 
@@ -118,190 +121,171 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId != null)
-            {
-                 s += ind + "cdmId\n";
-
-            }
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid != null)
-            {
-                 s += ind + "clusterUuid\n";
-
-            }
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date != null)
-            {
-                 s += ind + "date\n";
-
-            }
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: String! (scalar)
-            if (this.Fid != null)
-            {
-                 s += ind + "fid\n";
-
-            }
-            //      C# -> System.Int64? InternalTimestamp
-            // GraphQL -> internalTimestamp: Long! (scalar)
-            if (this.InternalTimestamp != null)
-            {
-                 s += ind + "internalTimestamp\n";
-
-            }
-            //      C# -> System.Boolean? IsArchived
-            // GraphQL -> isArchived: Boolean! (scalar)
-            if (this.IsArchived != null)
-            {
-                 s += ind + "isArchived\n";
-
-            }
-            //      C# -> System.String? LocationMap
-            // GraphQL -> locationMap: String (scalar)
-            if (this.LocationMap != null)
-            {
-                 s += ind + "locationMap\n";
-
-            }
-            //      C# -> System.String? WorkloadId
-            // GraphQL -> workloadId: String! (scalar)
-            if (this.WorkloadId != null)
-            {
-                 s += ind + "workloadId\n";
-
-            }
-            //      C# -> System.String? WorkloadType
-            // GraphQL -> workloadType: String! (scalar)
-            if (this.WorkloadType != null)
-            {
-                 s += ind + "workloadType\n";
-
-            }
-            //      C# -> SapHanaLogSnapshotAppMetadata? AppMetadata
-            // GraphQL -> appMetadata: SapHanaLogSnapshotAppMetadata (type)
-            if (this.AppMetadata != null)
-            {
-                 s += ind + "appMetadata\n";
-
-                 s += ind + "{\n" + 
-                 this.AppMetadata.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
         }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid != null) {
+            s += ind + "clusterUuid\n" ;
+        }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date != null) {
+            s += ind + "date\n" ;
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: String! (scalar)
+        if (this.Fid != null) {
+            s += ind + "fid\n" ;
+        }
+        //      C# -> System.Int64? InternalTimestamp
+        // GraphQL -> internalTimestamp: Long! (scalar)
+        if (this.InternalTimestamp != null) {
+            s += ind + "internalTimestamp\n" ;
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (this.IsArchived != null) {
+            s += ind + "isArchived\n" ;
+        }
+        //      C# -> System.String? LocationMap
+        // GraphQL -> locationMap: String (scalar)
+        if (this.LocationMap != null) {
+            s += ind + "locationMap\n" ;
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId != null) {
+            s += ind + "workloadId\n" ;
+        }
+        //      C# -> System.String? WorkloadType
+        // GraphQL -> workloadType: String! (scalar)
+        if (this.WorkloadType != null) {
+            s += ind + "workloadType\n" ;
+        }
+        //      C# -> SapHanaLogSnapshotAppMetadata? AppMetadata
+        // GraphQL -> appMetadata: SapHanaLogSnapshotAppMetadata (type)
+        if (this.AppMetadata != null) {
+            s += ind + "appMetadata {\n" + this.AppMetadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
-            {
-                this.CdmId = new System.String("FETCH");
-            }
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid$"))
-            {
-                this.ClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date == null && Exploration.Includes(parent + ".date$"))
-            {
-                this.Date = new DateTime();
-            }
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: String! (scalar)
-            if (this.Fid == null && Exploration.Includes(parent + ".fid$"))
-            {
-                this.Fid = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? InternalTimestamp
-            // GraphQL -> internalTimestamp: Long! (scalar)
-            if (this.InternalTimestamp == null && Exploration.Includes(parent + ".internalTimestamp$"))
-            {
-                this.InternalTimestamp = new System.Int64();
-            }
-            //      C# -> System.Boolean? IsArchived
-            // GraphQL -> isArchived: Boolean! (scalar)
-            if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived$"))
-            {
-                this.IsArchived = new System.Boolean();
-            }
-            //      C# -> System.String? LocationMap
-            // GraphQL -> locationMap: String (scalar)
-            if (this.LocationMap == null && Exploration.Includes(parent + ".locationMap$"))
-            {
-                this.LocationMap = new System.String("FETCH");
-            }
-            //      C# -> System.String? WorkloadId
-            // GraphQL -> workloadId: String! (scalar)
-            if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId$"))
-            {
-                this.WorkloadId = new System.String("FETCH");
-            }
-            //      C# -> System.String? WorkloadType
-            // GraphQL -> workloadType: String! (scalar)
-            if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType$"))
-            {
-                this.WorkloadType = new System.String("FETCH");
-            }
-            //      C# -> SapHanaLogSnapshotAppMetadata? AppMetadata
-            // GraphQL -> appMetadata: SapHanaLogSnapshotAppMetadata (type)
-            if (this.AppMetadata == null && Exploration.Includes(parent + ".appMetadata"))
-            {
-                this.AppMetadata = new SapHanaLogSnapshotAppMetadata();
-                this.AppMetadata.ApplyExploratoryFragment(parent + ".appMetadata");
-            }
+            this.CdmId = new System.String("FETCH");
         }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        {
+            this.ClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        {
+            this.Date = new DateTime();
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: String! (scalar)
+        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        {
+            this.Fid = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? InternalTimestamp
+        // GraphQL -> internalTimestamp: Long! (scalar)
+        if (this.InternalTimestamp == null && Exploration.Includes(parent + ".internalTimestamp", true))
+        {
+            this.InternalTimestamp = new System.Int64();
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        {
+            this.IsArchived = true;
+        }
+        //      C# -> System.String? LocationMap
+        // GraphQL -> locationMap: String (scalar)
+        if (this.LocationMap == null && Exploration.Includes(parent + ".locationMap", true))
+        {
+            this.LocationMap = new System.String("FETCH");
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        {
+            this.WorkloadId = new System.String("FETCH");
+        }
+        //      C# -> System.String? WorkloadType
+        // GraphQL -> workloadType: String! (scalar)
+        if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
+        {
+            this.WorkloadType = new System.String("FETCH");
+        }
+        //      C# -> SapHanaLogSnapshotAppMetadata? AppMetadata
+        // GraphQL -> appMetadata: SapHanaLogSnapshotAppMetadata (type)
+        if (this.AppMetadata == null && Exploration.Includes(parent + ".appMetadata"))
+        {
+            this.AppMetadata = new SapHanaLogSnapshotAppMetadata();
+            this.AppMetadata.ApplyExploratoryFieldSpec(parent + ".appMetadata");
+        }
+    }
 
 
     #endregion
 
     } // class SapHanaLogSnapshot
+    
     #endregion
 
     public static class ListSapHanaLogSnapshotExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SapHanaLogSnapshot> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogSnapshot> list, 
             String parent = "")
         {
-            var item = new SapHanaLogSnapshot();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SapHanaLogSnapshot());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

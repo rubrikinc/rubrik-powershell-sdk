@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region BaseSnapshotSummary
-    public class BaseSnapshotSummary: IFragment
+    public class BaseSnapshotSummary: BaseType
     {
         #region members
+
+        //      C# -> SnapshotCloudStorageTier? CloudStorageTier
+        // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
+        [JsonProperty("cloudStorageTier")]
+        public SnapshotCloudStorageTier? CloudStorageTier { get; set; }
+
         //      C# -> List<System.String>? ArchivalLocationIds
         // GraphQL -> archivalLocationIds: [String!]! (scalar)
         [JsonProperty("archivalLocationIds")]
@@ -108,16 +115,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshotRetentionInfo")]
         public SnapshotRetentionInfo? SnapshotRetentionInfo { get; set; }
 
-        //      C# -> SnapshotCloudStorageTier? CloudStorageTier
-        // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
-        [JsonProperty("cloudStorageTier")]
-        public SnapshotCloudStorageTier? CloudStorageTier { get; set; }
 
         #endregion
 
     #region methods
 
     public BaseSnapshotSummary Set(
+        SnapshotCloudStorageTier? CloudStorageTier = null,
         List<System.String>? ArchivalLocationIds = null,
         System.Int64? CloudState = null,
         System.String? ConsistencyLevel = null,
@@ -135,10 +139,12 @@ namespace Rubrik.SecurityCloud.Types
         System.String? SlaName = null,
         System.String? SourceObjectType = null,
         List<PerLocationCloudStorageTier>? CloudStorageTiers = null,
-        SnapshotRetentionInfo? SnapshotRetentionInfo = null,
-        SnapshotCloudStorageTier? CloudStorageTier = null
+        SnapshotRetentionInfo? SnapshotRetentionInfo = null
     ) 
     {
+        if ( CloudStorageTier != null ) {
+            this.CloudStorageTier = CloudStorageTier;
+        }
         if ( ArchivalLocationIds != null ) {
             this.ArchivalLocationIds = ArchivalLocationIds;
         }
@@ -193,317 +199,274 @@ namespace Rubrik.SecurityCloud.Types
         if ( SnapshotRetentionInfo != null ) {
             this.SnapshotRetentionInfo = SnapshotRetentionInfo;
         }
-        if ( CloudStorageTier != null ) {
-            this.CloudStorageTier = CloudStorageTier;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<System.String>? ArchivalLocationIds
-            // GraphQL -> archivalLocationIds: [String!]! (scalar)
-            if (this.ArchivalLocationIds != null)
-            {
-                 s += ind + "archivalLocationIds\n";
-
-            }
-            //      C# -> System.Int64? CloudState
-            // GraphQL -> cloudState: Long (scalar)
-            if (this.CloudState != null)
-            {
-                 s += ind + "cloudState\n";
-
-            }
-            //      C# -> System.String? ConsistencyLevel
-            // GraphQL -> consistencyLevel: String (scalar)
-            if (this.ConsistencyLevel != null)
-            {
-                 s += ind + "consistencyLevel\n";
-
-            }
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date != null)
-            {
-                 s += ind + "date\n";
-
-            }
-            //      C# -> DateTime? ExpirationDate
-            // GraphQL -> expirationDate: DateTime (scalar)
-            if (this.ExpirationDate != null)
-            {
-                 s += ind + "expirationDate\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Int64? IndexState
-            // GraphQL -> indexState: Long (scalar)
-            if (this.IndexState != null)
-            {
-                 s += ind + "indexState\n";
-
-            }
-            //      C# -> System.Boolean? IsCustomRetentionApplied
-            // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
-            if (this.IsCustomRetentionApplied != null)
-            {
-                 s += ind + "isCustomRetentionApplied\n";
-
-            }
-            //      C# -> System.Boolean? IsOnDemandSnapshot
-            // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
-            if (this.IsOnDemandSnapshot != null)
-            {
-                 s += ind + "isOnDemandSnapshot\n";
-
-            }
-            //      C# -> System.Boolean? IsPlacedOnLegalHold
-            // GraphQL -> isPlacedOnLegalHold: Boolean (scalar)
-            if (this.IsPlacedOnLegalHold != null)
-            {
-                 s += ind + "isPlacedOnLegalHold\n";
-
-            }
-            //      C# -> System.Boolean? IsRetainedByRetentionLockSla
-            // GraphQL -> isRetainedByRetentionLockSla: Boolean (scalar)
-            if (this.IsRetainedByRetentionLockSla != null)
-            {
-                 s += ind + "isRetainedByRetentionLockSla\n";
-
-            }
-            //      C# -> System.String? ParentSnapshotId
-            // GraphQL -> parentSnapshotId: String (scalar)
-            if (this.ParentSnapshotId != null)
-            {
-                 s += ind + "parentSnapshotId\n";
-
-            }
-            //      C# -> List<System.String>? ReplicationLocationIds
-            // GraphQL -> replicationLocationIds: [String!]! (scalar)
-            if (this.ReplicationLocationIds != null)
-            {
-                 s += ind + "replicationLocationIds\n";
-
-            }
-            //      C# -> System.String? SlaId
-            // GraphQL -> slaId: String! (scalar)
-            if (this.SlaId != null)
-            {
-                 s += ind + "slaId\n";
-
-            }
-            //      C# -> System.String? SlaName
-            // GraphQL -> slaName: String! (scalar)
-            if (this.SlaName != null)
-            {
-                 s += ind + "slaName\n";
-
-            }
-            //      C# -> System.String? SourceObjectType
-            // GraphQL -> sourceObjectType: String (scalar)
-            if (this.SourceObjectType != null)
-            {
-                 s += ind + "sourceObjectType\n";
-
-            }
-            //      C# -> List<PerLocationCloudStorageTier>? CloudStorageTiers
-            // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)
-            if (this.CloudStorageTiers != null)
-            {
-                 s += ind + "cloudStorageTiers\n";
-
-                 s += ind + "{\n" + 
-                 this.CloudStorageTiers.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
-            // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
-            if (this.SnapshotRetentionInfo != null)
-            {
-                 s += ind + "snapshotRetentionInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.SnapshotRetentionInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SnapshotCloudStorageTier? CloudStorageTier
-            // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
-            if (this.CloudStorageTier != null)
-            {
-                 s += ind + "cloudStorageTier\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> SnapshotCloudStorageTier? CloudStorageTier
+        // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
+        if (this.CloudStorageTier != null) {
+            s += ind + "cloudStorageTier\n" ;
         }
+        //      C# -> List<System.String>? ArchivalLocationIds
+        // GraphQL -> archivalLocationIds: [String!]! (scalar)
+        if (this.ArchivalLocationIds != null) {
+            s += ind + "archivalLocationIds\n" ;
+        }
+        //      C# -> System.Int64? CloudState
+        // GraphQL -> cloudState: Long (scalar)
+        if (this.CloudState != null) {
+            s += ind + "cloudState\n" ;
+        }
+        //      C# -> System.String? ConsistencyLevel
+        // GraphQL -> consistencyLevel: String (scalar)
+        if (this.ConsistencyLevel != null) {
+            s += ind + "consistencyLevel\n" ;
+        }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date != null) {
+            s += ind + "date\n" ;
+        }
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        if (this.ExpirationDate != null) {
+            s += ind + "expirationDate\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Int64? IndexState
+        // GraphQL -> indexState: Long (scalar)
+        if (this.IndexState != null) {
+            s += ind + "indexState\n" ;
+        }
+        //      C# -> System.Boolean? IsCustomRetentionApplied
+        // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
+        if (this.IsCustomRetentionApplied != null) {
+            s += ind + "isCustomRetentionApplied\n" ;
+        }
+        //      C# -> System.Boolean? IsOnDemandSnapshot
+        // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
+        if (this.IsOnDemandSnapshot != null) {
+            s += ind + "isOnDemandSnapshot\n" ;
+        }
+        //      C# -> System.Boolean? IsPlacedOnLegalHold
+        // GraphQL -> isPlacedOnLegalHold: Boolean (scalar)
+        if (this.IsPlacedOnLegalHold != null) {
+            s += ind + "isPlacedOnLegalHold\n" ;
+        }
+        //      C# -> System.Boolean? IsRetainedByRetentionLockSla
+        // GraphQL -> isRetainedByRetentionLockSla: Boolean (scalar)
+        if (this.IsRetainedByRetentionLockSla != null) {
+            s += ind + "isRetainedByRetentionLockSla\n" ;
+        }
+        //      C# -> System.String? ParentSnapshotId
+        // GraphQL -> parentSnapshotId: String (scalar)
+        if (this.ParentSnapshotId != null) {
+            s += ind + "parentSnapshotId\n" ;
+        }
+        //      C# -> List<System.String>? ReplicationLocationIds
+        // GraphQL -> replicationLocationIds: [String!]! (scalar)
+        if (this.ReplicationLocationIds != null) {
+            s += ind + "replicationLocationIds\n" ;
+        }
+        //      C# -> System.String? SlaId
+        // GraphQL -> slaId: String! (scalar)
+        if (this.SlaId != null) {
+            s += ind + "slaId\n" ;
+        }
+        //      C# -> System.String? SlaName
+        // GraphQL -> slaName: String! (scalar)
+        if (this.SlaName != null) {
+            s += ind + "slaName\n" ;
+        }
+        //      C# -> System.String? SourceObjectType
+        // GraphQL -> sourceObjectType: String (scalar)
+        if (this.SourceObjectType != null) {
+            s += ind + "sourceObjectType\n" ;
+        }
+        //      C# -> List<PerLocationCloudStorageTier>? CloudStorageTiers
+        // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)
+        if (this.CloudStorageTiers != null) {
+            s += ind + "cloudStorageTiers {\n" + this.CloudStorageTiers.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
+        if (this.SnapshotRetentionInfo != null) {
+            s += ind + "snapshotRetentionInfo {\n" + this.SnapshotRetentionInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> SnapshotCloudStorageTier? CloudStorageTier
+        // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
+        if (this.CloudStorageTier == null && Exploration.Includes(parent + ".cloudStorageTier", true))
         {
-            //      C# -> List<System.String>? ArchivalLocationIds
-            // GraphQL -> archivalLocationIds: [String!]! (scalar)
-            if (this.ArchivalLocationIds == null && Exploration.Includes(parent + ".archivalLocationIds$"))
-            {
-                this.ArchivalLocationIds = new List<System.String>();
-            }
-            //      C# -> System.Int64? CloudState
-            // GraphQL -> cloudState: Long (scalar)
-            if (this.CloudState == null && Exploration.Includes(parent + ".cloudState$"))
-            {
-                this.CloudState = new System.Int64();
-            }
-            //      C# -> System.String? ConsistencyLevel
-            // GraphQL -> consistencyLevel: String (scalar)
-            if (this.ConsistencyLevel == null && Exploration.Includes(parent + ".consistencyLevel$"))
-            {
-                this.ConsistencyLevel = new System.String("FETCH");
-            }
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date == null && Exploration.Includes(parent + ".date$"))
-            {
-                this.Date = new DateTime();
-            }
-            //      C# -> DateTime? ExpirationDate
-            // GraphQL -> expirationDate: DateTime (scalar)
-            if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate$"))
-            {
-                this.ExpirationDate = new DateTime();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? IndexState
-            // GraphQL -> indexState: Long (scalar)
-            if (this.IndexState == null && Exploration.Includes(parent + ".indexState$"))
-            {
-                this.IndexState = new System.Int64();
-            }
-            //      C# -> System.Boolean? IsCustomRetentionApplied
-            // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
-            if (this.IsCustomRetentionApplied == null && Exploration.Includes(parent + ".isCustomRetentionApplied$"))
-            {
-                this.IsCustomRetentionApplied = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsOnDemandSnapshot
-            // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
-            if (this.IsOnDemandSnapshot == null && Exploration.Includes(parent + ".isOnDemandSnapshot$"))
-            {
-                this.IsOnDemandSnapshot = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsPlacedOnLegalHold
-            // GraphQL -> isPlacedOnLegalHold: Boolean (scalar)
-            if (this.IsPlacedOnLegalHold == null && Exploration.Includes(parent + ".isPlacedOnLegalHold$"))
-            {
-                this.IsPlacedOnLegalHold = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsRetainedByRetentionLockSla
-            // GraphQL -> isRetainedByRetentionLockSla: Boolean (scalar)
-            if (this.IsRetainedByRetentionLockSla == null && Exploration.Includes(parent + ".isRetainedByRetentionLockSla$"))
-            {
-                this.IsRetainedByRetentionLockSla = new System.Boolean();
-            }
-            //      C# -> System.String? ParentSnapshotId
-            // GraphQL -> parentSnapshotId: String (scalar)
-            if (this.ParentSnapshotId == null && Exploration.Includes(parent + ".parentSnapshotId$"))
-            {
-                this.ParentSnapshotId = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? ReplicationLocationIds
-            // GraphQL -> replicationLocationIds: [String!]! (scalar)
-            if (this.ReplicationLocationIds == null && Exploration.Includes(parent + ".replicationLocationIds$"))
-            {
-                this.ReplicationLocationIds = new List<System.String>();
-            }
-            //      C# -> System.String? SlaId
-            // GraphQL -> slaId: String! (scalar)
-            if (this.SlaId == null && Exploration.Includes(parent + ".slaId$"))
-            {
-                this.SlaId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SlaName
-            // GraphQL -> slaName: String! (scalar)
-            if (this.SlaName == null && Exploration.Includes(parent + ".slaName$"))
-            {
-                this.SlaName = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceObjectType
-            // GraphQL -> sourceObjectType: String (scalar)
-            if (this.SourceObjectType == null && Exploration.Includes(parent + ".sourceObjectType$"))
-            {
-                this.SourceObjectType = new System.String("FETCH");
-            }
-            //      C# -> List<PerLocationCloudStorageTier>? CloudStorageTiers
-            // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)
-            if (this.CloudStorageTiers == null && Exploration.Includes(parent + ".cloudStorageTiers"))
-            {
-                this.CloudStorageTiers = new List<PerLocationCloudStorageTier>();
-                this.CloudStorageTiers.ApplyExploratoryFragment(parent + ".cloudStorageTiers");
-            }
-            //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
-            // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
-            if (this.SnapshotRetentionInfo == null && Exploration.Includes(parent + ".snapshotRetentionInfo"))
-            {
-                this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
-                this.SnapshotRetentionInfo.ApplyExploratoryFragment(parent + ".snapshotRetentionInfo");
-            }
-            //      C# -> SnapshotCloudStorageTier? CloudStorageTier
-            // GraphQL -> cloudStorageTier: SnapshotCloudStorageTier (enum)
-            if (this.CloudStorageTier == null && Exploration.Includes(parent + ".cloudStorageTier$"))
-            {
-                this.CloudStorageTier = new SnapshotCloudStorageTier();
-            }
+            this.CloudStorageTier = new SnapshotCloudStorageTier();
         }
+        //      C# -> List<System.String>? ArchivalLocationIds
+        // GraphQL -> archivalLocationIds: [String!]! (scalar)
+        if (this.ArchivalLocationIds == null && Exploration.Includes(parent + ".archivalLocationIds", true))
+        {
+            this.ArchivalLocationIds = new List<System.String>();
+        }
+        //      C# -> System.Int64? CloudState
+        // GraphQL -> cloudState: Long (scalar)
+        if (this.CloudState == null && Exploration.Includes(parent + ".cloudState", true))
+        {
+            this.CloudState = new System.Int64();
+        }
+        //      C# -> System.String? ConsistencyLevel
+        // GraphQL -> consistencyLevel: String (scalar)
+        if (this.ConsistencyLevel == null && Exploration.Includes(parent + ".consistencyLevel", true))
+        {
+            this.ConsistencyLevel = new System.String("FETCH");
+        }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        {
+            this.Date = new DateTime();
+        }
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        {
+            this.ExpirationDate = new DateTime();
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? IndexState
+        // GraphQL -> indexState: Long (scalar)
+        if (this.IndexState == null && Exploration.Includes(parent + ".indexState", true))
+        {
+            this.IndexState = new System.Int64();
+        }
+        //      C# -> System.Boolean? IsCustomRetentionApplied
+        // GraphQL -> isCustomRetentionApplied: Boolean (scalar)
+        if (this.IsCustomRetentionApplied == null && Exploration.Includes(parent + ".isCustomRetentionApplied", true))
+        {
+            this.IsCustomRetentionApplied = true;
+        }
+        //      C# -> System.Boolean? IsOnDemandSnapshot
+        // GraphQL -> isOnDemandSnapshot: Boolean! (scalar)
+        if (this.IsOnDemandSnapshot == null && Exploration.Includes(parent + ".isOnDemandSnapshot", true))
+        {
+            this.IsOnDemandSnapshot = true;
+        }
+        //      C# -> System.Boolean? IsPlacedOnLegalHold
+        // GraphQL -> isPlacedOnLegalHold: Boolean (scalar)
+        if (this.IsPlacedOnLegalHold == null && Exploration.Includes(parent + ".isPlacedOnLegalHold", true))
+        {
+            this.IsPlacedOnLegalHold = true;
+        }
+        //      C# -> System.Boolean? IsRetainedByRetentionLockSla
+        // GraphQL -> isRetainedByRetentionLockSla: Boolean (scalar)
+        if (this.IsRetainedByRetentionLockSla == null && Exploration.Includes(parent + ".isRetainedByRetentionLockSla", true))
+        {
+            this.IsRetainedByRetentionLockSla = true;
+        }
+        //      C# -> System.String? ParentSnapshotId
+        // GraphQL -> parentSnapshotId: String (scalar)
+        if (this.ParentSnapshotId == null && Exploration.Includes(parent + ".parentSnapshotId", true))
+        {
+            this.ParentSnapshotId = new System.String("FETCH");
+        }
+        //      C# -> List<System.String>? ReplicationLocationIds
+        // GraphQL -> replicationLocationIds: [String!]! (scalar)
+        if (this.ReplicationLocationIds == null && Exploration.Includes(parent + ".replicationLocationIds", true))
+        {
+            this.ReplicationLocationIds = new List<System.String>();
+        }
+        //      C# -> System.String? SlaId
+        // GraphQL -> slaId: String! (scalar)
+        if (this.SlaId == null && Exploration.Includes(parent + ".slaId", true))
+        {
+            this.SlaId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SlaName
+        // GraphQL -> slaName: String! (scalar)
+        if (this.SlaName == null && Exploration.Includes(parent + ".slaName", true))
+        {
+            this.SlaName = new System.String("FETCH");
+        }
+        //      C# -> System.String? SourceObjectType
+        // GraphQL -> sourceObjectType: String (scalar)
+        if (this.SourceObjectType == null && Exploration.Includes(parent + ".sourceObjectType", true))
+        {
+            this.SourceObjectType = new System.String("FETCH");
+        }
+        //      C# -> List<PerLocationCloudStorageTier>? CloudStorageTiers
+        // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)
+        if (this.CloudStorageTiers == null && Exploration.Includes(parent + ".cloudStorageTiers"))
+        {
+            this.CloudStorageTiers = new List<PerLocationCloudStorageTier>();
+            this.CloudStorageTiers.ApplyExploratoryFieldSpec(parent + ".cloudStorageTiers");
+        }
+        //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
+        if (this.SnapshotRetentionInfo == null && Exploration.Includes(parent + ".snapshotRetentionInfo"))
+        {
+            this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
+            this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(parent + ".snapshotRetentionInfo");
+        }
+    }
 
 
     #endregion
 
     } // class BaseSnapshotSummary
+    
     #endregion
 
     public static class ListBaseSnapshotSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<BaseSnapshotSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<BaseSnapshotSummary> list, 
             String parent = "")
         {
-            var item = new BaseSnapshotSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new BaseSnapshotSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

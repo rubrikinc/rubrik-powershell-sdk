@@ -11,14 +11,21 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region O365App
  
-    public class O365App: IFragment, O365AppObject
+    public class O365App: BaseType, O365AppObject
     {
         #region members
+
+        //      C# -> AppAuthStatus? AppAuthStatus
+        // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
+        [JsonProperty("appAuthStatus")]
+        public AppAuthStatus? AppAuthStatus { get; set; }
+
         //      C# -> DateTime? AddedAt
         // GraphQL -> addedAt: DateTime! (scalar)
         [JsonProperty("addedAt")]
@@ -59,16 +66,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("subscriptionId")]
         public System.String? SubscriptionId { get; set; }
 
-        //      C# -> AppAuthStatus? AppAuthStatus
-        // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
-        [JsonProperty("appAuthStatus")]
-        public AppAuthStatus? AppAuthStatus { get; set; }
 
         #endregion
 
     #region methods
 
     public O365App Set(
+        AppAuthStatus? AppAuthStatus = null,
         DateTime? AddedAt = null,
         System.Int32? AppAuthVersion = null,
         System.String? AppId = null,
@@ -76,10 +80,12 @@ namespace Rubrik.SecurityCloud.Types
         System.String? AppType = null,
         System.Boolean? IsAuthenticated = null,
         System.String? Subscription = null,
-        System.String? SubscriptionId = null,
-        AppAuthStatus? AppAuthStatus = null
+        System.String? SubscriptionId = null
     ) 
     {
+        if ( AppAuthStatus != null ) {
+            this.AppAuthStatus = AppAuthStatus;
+        }
         if ( AddedAt != null ) {
             this.AddedAt = AddedAt;
         }
@@ -104,179 +110,162 @@ namespace Rubrik.SecurityCloud.Types
         if ( SubscriptionId != null ) {
             this.SubscriptionId = SubscriptionId;
         }
-        if ( AppAuthStatus != null ) {
-            this.AppAuthStatus = AppAuthStatus;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? AddedAt
-            // GraphQL -> addedAt: DateTime! (scalar)
-            if (this.AddedAt != null)
-            {
-                 s += ind + "addedAt\n";
-
-            }
-            //      C# -> System.Int32? AppAuthVersion
-            // GraphQL -> appAuthVersion: Int! (scalar)
-            if (this.AppAuthVersion != null)
-            {
-                 s += ind + "appAuthVersion\n";
-
-            }
-            //      C# -> System.String? AppId
-            // GraphQL -> appId: String! (scalar)
-            if (this.AppId != null)
-            {
-                 s += ind + "appId\n";
-
-            }
-            //      C# -> System.String? AppOwner
-            // GraphQL -> appOwner: String! (scalar)
-            if (this.AppOwner != null)
-            {
-                 s += ind + "appOwner\n";
-
-            }
-            //      C# -> System.String? AppType
-            // GraphQL -> appType: String! (scalar)
-            if (this.AppType != null)
-            {
-                 s += ind + "appType\n";
-
-            }
-            //      C# -> System.Boolean? IsAuthenticated
-            // GraphQL -> isAuthenticated: Boolean! (scalar)
-            if (this.IsAuthenticated != null)
-            {
-                 s += ind + "isAuthenticated\n";
-
-            }
-            //      C# -> System.String? Subscription
-            // GraphQL -> subscription: String! (scalar)
-            if (this.Subscription != null)
-            {
-                 s += ind + "subscription\n";
-
-            }
-            //      C# -> System.String? SubscriptionId
-            // GraphQL -> subscriptionId: String! (scalar)
-            if (this.SubscriptionId != null)
-            {
-                 s += ind + "subscriptionId\n";
-
-            }
-            //      C# -> AppAuthStatus? AppAuthStatus
-            // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
-            if (this.AppAuthStatus != null)
-            {
-                 s += ind + "appAuthStatus\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AppAuthStatus? AppAuthStatus
+        // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
+        if (this.AppAuthStatus != null) {
+            s += ind + "appAuthStatus\n" ;
         }
+        //      C# -> DateTime? AddedAt
+        // GraphQL -> addedAt: DateTime! (scalar)
+        if (this.AddedAt != null) {
+            s += ind + "addedAt\n" ;
+        }
+        //      C# -> System.Int32? AppAuthVersion
+        // GraphQL -> appAuthVersion: Int! (scalar)
+        if (this.AppAuthVersion != null) {
+            s += ind + "appAuthVersion\n" ;
+        }
+        //      C# -> System.String? AppId
+        // GraphQL -> appId: String! (scalar)
+        if (this.AppId != null) {
+            s += ind + "appId\n" ;
+        }
+        //      C# -> System.String? AppOwner
+        // GraphQL -> appOwner: String! (scalar)
+        if (this.AppOwner != null) {
+            s += ind + "appOwner\n" ;
+        }
+        //      C# -> System.String? AppType
+        // GraphQL -> appType: String! (scalar)
+        if (this.AppType != null) {
+            s += ind + "appType\n" ;
+        }
+        //      C# -> System.Boolean? IsAuthenticated
+        // GraphQL -> isAuthenticated: Boolean! (scalar)
+        if (this.IsAuthenticated != null) {
+            s += ind + "isAuthenticated\n" ;
+        }
+        //      C# -> System.String? Subscription
+        // GraphQL -> subscription: String! (scalar)
+        if (this.Subscription != null) {
+            s += ind + "subscription\n" ;
+        }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (this.SubscriptionId != null) {
+            s += ind + "subscriptionId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AppAuthStatus? AppAuthStatus
+        // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
+        if (this.AppAuthStatus == null && Exploration.Includes(parent + ".appAuthStatus", true))
         {
-            //      C# -> DateTime? AddedAt
-            // GraphQL -> addedAt: DateTime! (scalar)
-            if (this.AddedAt == null && Exploration.Includes(parent + ".addedAt$"))
-            {
-                this.AddedAt = new DateTime();
-            }
-            //      C# -> System.Int32? AppAuthVersion
-            // GraphQL -> appAuthVersion: Int! (scalar)
-            if (this.AppAuthVersion == null && Exploration.Includes(parent + ".appAuthVersion$"))
-            {
-                this.AppAuthVersion = new System.Int32();
-            }
-            //      C# -> System.String? AppId
-            // GraphQL -> appId: String! (scalar)
-            if (this.AppId == null && Exploration.Includes(parent + ".appId$"))
-            {
-                this.AppId = new System.String("FETCH");
-            }
-            //      C# -> System.String? AppOwner
-            // GraphQL -> appOwner: String! (scalar)
-            if (this.AppOwner == null && Exploration.Includes(parent + ".appOwner$"))
-            {
-                this.AppOwner = new System.String("FETCH");
-            }
-            //      C# -> System.String? AppType
-            // GraphQL -> appType: String! (scalar)
-            if (this.AppType == null && Exploration.Includes(parent + ".appType$"))
-            {
-                this.AppType = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsAuthenticated
-            // GraphQL -> isAuthenticated: Boolean! (scalar)
-            if (this.IsAuthenticated == null && Exploration.Includes(parent + ".isAuthenticated$"))
-            {
-                this.IsAuthenticated = new System.Boolean();
-            }
-            //      C# -> System.String? Subscription
-            // GraphQL -> subscription: String! (scalar)
-            if (this.Subscription == null && Exploration.Includes(parent + ".subscription$"))
-            {
-                this.Subscription = new System.String("FETCH");
-            }
-            //      C# -> System.String? SubscriptionId
-            // GraphQL -> subscriptionId: String! (scalar)
-            if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId$"))
-            {
-                this.SubscriptionId = new System.String("FETCH");
-            }
-            //      C# -> AppAuthStatus? AppAuthStatus
-            // GraphQL -> appAuthStatus: AppAuthStatus! (enum)
-            if (this.AppAuthStatus == null && Exploration.Includes(parent + ".appAuthStatus$"))
-            {
-                this.AppAuthStatus = new AppAuthStatus();
-            }
+            this.AppAuthStatus = new AppAuthStatus();
         }
+        //      C# -> DateTime? AddedAt
+        // GraphQL -> addedAt: DateTime! (scalar)
+        if (this.AddedAt == null && Exploration.Includes(parent + ".addedAt", true))
+        {
+            this.AddedAt = new DateTime();
+        }
+        //      C# -> System.Int32? AppAuthVersion
+        // GraphQL -> appAuthVersion: Int! (scalar)
+        if (this.AppAuthVersion == null && Exploration.Includes(parent + ".appAuthVersion", true))
+        {
+            this.AppAuthVersion = new System.Int32();
+        }
+        //      C# -> System.String? AppId
+        // GraphQL -> appId: String! (scalar)
+        if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
+        {
+            this.AppId = new System.String("FETCH");
+        }
+        //      C# -> System.String? AppOwner
+        // GraphQL -> appOwner: String! (scalar)
+        if (this.AppOwner == null && Exploration.Includes(parent + ".appOwner", true))
+        {
+            this.AppOwner = new System.String("FETCH");
+        }
+        //      C# -> System.String? AppType
+        // GraphQL -> appType: String! (scalar)
+        if (this.AppType == null && Exploration.Includes(parent + ".appType", true))
+        {
+            this.AppType = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsAuthenticated
+        // GraphQL -> isAuthenticated: Boolean! (scalar)
+        if (this.IsAuthenticated == null && Exploration.Includes(parent + ".isAuthenticated", true))
+        {
+            this.IsAuthenticated = true;
+        }
+        //      C# -> System.String? Subscription
+        // GraphQL -> subscription: String! (scalar)
+        if (this.Subscription == null && Exploration.Includes(parent + ".subscription", true))
+        {
+            this.Subscription = new System.String("FETCH");
+        }
+        //      C# -> System.String? SubscriptionId
+        // GraphQL -> subscriptionId: String! (scalar)
+        if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId", true))
+        {
+            this.SubscriptionId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class O365App
+    
     #endregion
 
     public static class ListO365AppExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<O365App> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<O365App> list, 
             String parent = "")
         {
-            var item = new O365App();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new O365App());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

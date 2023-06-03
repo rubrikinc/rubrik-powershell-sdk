@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VcenterSummary
-    public class VcenterSummary: IFragment
+    public class VcenterSummary: BaseType
     {
         #region members
+
+        //      C# -> VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz
+        // GraphQL -> conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz (enum)
+        [JsonProperty("conflictResolutionAuthz")]
+        public VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz { get; set; }
+
         //      C# -> System.String? ConfiguredSlaDomainPolarisManagedId
         // GraphQL -> configuredSlaDomainPolarisManagedId: String (scalar)
         [JsonProperty("configuredSlaDomainPolarisManagedId")]
@@ -83,16 +90,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("vcenterPatch")]
         public VcenterPatch? VcenterPatch { get; set; }
 
-        //      C# -> VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz
-        // GraphQL -> conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz (enum)
-        [JsonProperty("conflictResolutionAuthz")]
-        public VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz { get; set; }
 
         #endregion
 
     #region methods
 
     public VcenterSummary Set(
+        VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz = null,
         System.String? ConfiguredSlaDomainPolarisManagedId = null,
         System.String? Hostname = null,
         System.Boolean? IsHotAddProxyEnabledForOnPremVcenter = null,
@@ -105,10 +109,12 @@ namespace Rubrik.SecurityCloud.Types
         List<ClusterVisibilityInfo>? ComputeVisibilityFilter = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,
         SlaAssignable? SlaAssignable = null,
-        VcenterPatch? VcenterPatch = null,
-        VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz = null
+        VcenterPatch? VcenterPatch = null
     ) 
     {
+        if ( ConflictResolutionAuthz != null ) {
+            this.ConflictResolutionAuthz = ConflictResolutionAuthz;
+        }
         if ( ConfiguredSlaDomainPolarisManagedId != null ) {
             this.ConfiguredSlaDomainPolarisManagedId = ConfiguredSlaDomainPolarisManagedId;
         }
@@ -148,260 +154,221 @@ namespace Rubrik.SecurityCloud.Types
         if ( VcenterPatch != null ) {
             this.VcenterPatch = VcenterPatch;
         }
-        if ( ConflictResolutionAuthz != null ) {
-            this.ConflictResolutionAuthz = ConflictResolutionAuthz;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ConfiguredSlaDomainPolarisManagedId
-            // GraphQL -> configuredSlaDomainPolarisManagedId: String (scalar)
-            if (this.ConfiguredSlaDomainPolarisManagedId != null)
-            {
-                 s += ind + "configuredSlaDomainPolarisManagedId\n";
-
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String! (scalar)
-            if (this.Hostname != null)
-            {
-                 s += ind + "hostname\n";
-
-            }
-            //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
-            // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
-            if (this.IsHotAddProxyEnabledForOnPremVcenter != null)
-            {
-                 s += ind + "isHotAddProxyEnabledForOnPremVcenter\n";
-
-            }
-            //      C# -> System.Boolean? IsIoFilterInstalled
-            // GraphQL -> isIoFilterInstalled: Boolean (scalar)
-            if (this.IsIoFilterInstalled != null)
-            {
-                 s += ind + "isIoFilterInstalled\n";
-
-            }
-            //      C# -> System.Boolean? IsVmc
-            // GraphQL -> isVmc: Boolean (scalar)
-            if (this.IsVmc != null)
-            {
-                 s += ind + "isVmc\n";
-
-            }
-            //      C# -> DateTime? LastRefreshTime
-            // GraphQL -> lastRefreshTime: DateTime (scalar)
-            if (this.LastRefreshTime != null)
-            {
-                 s += ind + "lastRefreshTime\n";
-
-            }
-            //      C# -> System.String? Username
-            // GraphQL -> username: String! (scalar)
-            if (this.Username != null)
-            {
-                 s += ind + "username\n";
-
-            }
-            //      C# -> System.String? VcenterUuid
-            // GraphQL -> vcenterUuid: String (scalar)
-            if (this.VcenterUuid != null)
-            {
-                 s += ind + "vcenterUuid\n";
-
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String (scalar)
-            if (this.Version != null)
-            {
-                 s += ind + "version\n";
-
-            }
-            //      C# -> List<ClusterVisibilityInfo>? ComputeVisibilityFilter
-            // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)
-            if (this.ComputeVisibilityFilter != null)
-            {
-                 s += ind + "computeVisibilityFilter\n";
-
-                 s += ind + "{\n" + 
-                 this.ComputeVisibilityFilter.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
-            // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
-            if (this.ConnectionStatus != null)
-            {
-                 s += ind + "connectionStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.ConnectionStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable != null)
-            {
-                 s += ind + "slaAssignable\n";
-
-                 s += ind + "{\n" + 
-                 this.SlaAssignable.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VcenterPatch? VcenterPatch
-            // GraphQL -> vcenterPatch: VcenterPatch (type)
-            if (this.VcenterPatch != null)
-            {
-                 s += ind + "vcenterPatch\n";
-
-                 s += ind + "{\n" + 
-                 this.VcenterPatch.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz
-            // GraphQL -> conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz (enum)
-            if (this.ConflictResolutionAuthz != null)
-            {
-                 s += ind + "conflictResolutionAuthz\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz
+        // GraphQL -> conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz (enum)
+        if (this.ConflictResolutionAuthz != null) {
+            s += ind + "conflictResolutionAuthz\n" ;
         }
+        //      C# -> System.String? ConfiguredSlaDomainPolarisManagedId
+        // GraphQL -> configuredSlaDomainPolarisManagedId: String (scalar)
+        if (this.ConfiguredSlaDomainPolarisManagedId != null) {
+            s += ind + "configuredSlaDomainPolarisManagedId\n" ;
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        if (this.Hostname != null) {
+            s += ind + "hostname\n" ;
+        }
+        //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
+        // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
+        if (this.IsHotAddProxyEnabledForOnPremVcenter != null) {
+            s += ind + "isHotAddProxyEnabledForOnPremVcenter\n" ;
+        }
+        //      C# -> System.Boolean? IsIoFilterInstalled
+        // GraphQL -> isIoFilterInstalled: Boolean (scalar)
+        if (this.IsIoFilterInstalled != null) {
+            s += ind + "isIoFilterInstalled\n" ;
+        }
+        //      C# -> System.Boolean? IsVmc
+        // GraphQL -> isVmc: Boolean (scalar)
+        if (this.IsVmc != null) {
+            s += ind + "isVmc\n" ;
+        }
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        if (this.LastRefreshTime != null) {
+            s += ind + "lastRefreshTime\n" ;
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username != null) {
+            s += ind + "username\n" ;
+        }
+        //      C# -> System.String? VcenterUuid
+        // GraphQL -> vcenterUuid: String (scalar)
+        if (this.VcenterUuid != null) {
+            s += ind + "vcenterUuid\n" ;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (this.Version != null) {
+            s += ind + "version\n" ;
+        }
+        //      C# -> List<ClusterVisibilityInfo>? ComputeVisibilityFilter
+        // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)
+        if (this.ComputeVisibilityFilter != null) {
+            s += ind + "computeVisibilityFilter {\n" + this.ComputeVisibilityFilter.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
+        if (this.ConnectionStatus != null) {
+            s += ind + "connectionStatus {\n" + this.ConnectionStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable != null) {
+            s += ind + "slaAssignable {\n" + this.SlaAssignable.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> VcenterPatch? VcenterPatch
+        // GraphQL -> vcenterPatch: VcenterPatch (type)
+        if (this.VcenterPatch != null) {
+            s += ind + "vcenterPatch {\n" + this.VcenterPatch.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz
+        // GraphQL -> conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz (enum)
+        if (this.ConflictResolutionAuthz == null && Exploration.Includes(parent + ".conflictResolutionAuthz", true))
         {
-            //      C# -> System.String? ConfiguredSlaDomainPolarisManagedId
-            // GraphQL -> configuredSlaDomainPolarisManagedId: String (scalar)
-            if (this.ConfiguredSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".configuredSlaDomainPolarisManagedId$"))
-            {
-                this.ConfiguredSlaDomainPolarisManagedId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String! (scalar)
-            if (this.Hostname == null && Exploration.Includes(parent + ".hostname$"))
-            {
-                this.Hostname = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
-            // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
-            if (this.IsHotAddProxyEnabledForOnPremVcenter == null && Exploration.Includes(parent + ".isHotAddProxyEnabledForOnPremVcenter$"))
-            {
-                this.IsHotAddProxyEnabledForOnPremVcenter = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsIoFilterInstalled
-            // GraphQL -> isIoFilterInstalled: Boolean (scalar)
-            if (this.IsIoFilterInstalled == null && Exploration.Includes(parent + ".isIoFilterInstalled$"))
-            {
-                this.IsIoFilterInstalled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsVmc
-            // GraphQL -> isVmc: Boolean (scalar)
-            if (this.IsVmc == null && Exploration.Includes(parent + ".isVmc$"))
-            {
-                this.IsVmc = new System.Boolean();
-            }
-            //      C# -> DateTime? LastRefreshTime
-            // GraphQL -> lastRefreshTime: DateTime (scalar)
-            if (this.LastRefreshTime == null && Exploration.Includes(parent + ".lastRefreshTime$"))
-            {
-                this.LastRefreshTime = new DateTime();
-            }
-            //      C# -> System.String? Username
-            // GraphQL -> username: String! (scalar)
-            if (this.Username == null && Exploration.Includes(parent + ".username$"))
-            {
-                this.Username = new System.String("FETCH");
-            }
-            //      C# -> System.String? VcenterUuid
-            // GraphQL -> vcenterUuid: String (scalar)
-            if (this.VcenterUuid == null && Exploration.Includes(parent + ".vcenterUuid$"))
-            {
-                this.VcenterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String (scalar)
-            if (this.Version == null && Exploration.Includes(parent + ".version$"))
-            {
-                this.Version = new System.String("FETCH");
-            }
-            //      C# -> List<ClusterVisibilityInfo>? ComputeVisibilityFilter
-            // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)
-            if (this.ComputeVisibilityFilter == null && Exploration.Includes(parent + ".computeVisibilityFilter"))
-            {
-                this.ComputeVisibilityFilter = new List<ClusterVisibilityInfo>();
-                this.ComputeVisibilityFilter.ApplyExploratoryFragment(parent + ".computeVisibilityFilter");
-            }
-            //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
-            // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
-            if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
-            {
-                this.ConnectionStatus = new RefreshableObjectConnectionStatus();
-                this.ConnectionStatus.ApplyExploratoryFragment(parent + ".connectionStatus");
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
-            {
-                this.SlaAssignable = new SlaAssignable();
-                this.SlaAssignable.ApplyExploratoryFragment(parent + ".slaAssignable");
-            }
-            //      C# -> VcenterPatch? VcenterPatch
-            // GraphQL -> vcenterPatch: VcenterPatch (type)
-            if (this.VcenterPatch == null && Exploration.Includes(parent + ".vcenterPatch"))
-            {
-                this.VcenterPatch = new VcenterPatch();
-                this.VcenterPatch.ApplyExploratoryFragment(parent + ".vcenterPatch");
-            }
-            //      C# -> VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz
-            // GraphQL -> conflictResolutionAuthz: VcenterSummaryConflictResolutionAuthz (enum)
-            if (this.ConflictResolutionAuthz == null && Exploration.Includes(parent + ".conflictResolutionAuthz$"))
-            {
-                this.ConflictResolutionAuthz = new VcenterSummaryConflictResolutionAuthz();
-            }
+            this.ConflictResolutionAuthz = new VcenterSummaryConflictResolutionAuthz();
         }
+        //      C# -> System.String? ConfiguredSlaDomainPolarisManagedId
+        // GraphQL -> configuredSlaDomainPolarisManagedId: String (scalar)
+        if (this.ConfiguredSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".configuredSlaDomainPolarisManagedId", true))
+        {
+            this.ConfiguredSlaDomainPolarisManagedId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        {
+            this.Hostname = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
+        // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
+        if (this.IsHotAddProxyEnabledForOnPremVcenter == null && Exploration.Includes(parent + ".isHotAddProxyEnabledForOnPremVcenter", true))
+        {
+            this.IsHotAddProxyEnabledForOnPremVcenter = true;
+        }
+        //      C# -> System.Boolean? IsIoFilterInstalled
+        // GraphQL -> isIoFilterInstalled: Boolean (scalar)
+        if (this.IsIoFilterInstalled == null && Exploration.Includes(parent + ".isIoFilterInstalled", true))
+        {
+            this.IsIoFilterInstalled = true;
+        }
+        //      C# -> System.Boolean? IsVmc
+        // GraphQL -> isVmc: Boolean (scalar)
+        if (this.IsVmc == null && Exploration.Includes(parent + ".isVmc", true))
+        {
+            this.IsVmc = true;
+        }
+        //      C# -> DateTime? LastRefreshTime
+        // GraphQL -> lastRefreshTime: DateTime (scalar)
+        if (this.LastRefreshTime == null && Exploration.Includes(parent + ".lastRefreshTime", true))
+        {
+            this.LastRefreshTime = new DateTime();
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        {
+            this.Username = new System.String("FETCH");
+        }
+        //      C# -> System.String? VcenterUuid
+        // GraphQL -> vcenterUuid: String (scalar)
+        if (this.VcenterUuid == null && Exploration.Includes(parent + ".vcenterUuid", true))
+        {
+            this.VcenterUuid = new System.String("FETCH");
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        {
+            this.Version = new System.String("FETCH");
+        }
+        //      C# -> List<ClusterVisibilityInfo>? ComputeVisibilityFilter
+        // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)
+        if (this.ComputeVisibilityFilter == null && Exploration.Includes(parent + ".computeVisibilityFilter"))
+        {
+            this.ComputeVisibilityFilter = new List<ClusterVisibilityInfo>();
+            this.ComputeVisibilityFilter.ApplyExploratoryFieldSpec(parent + ".computeVisibilityFilter");
+        }
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
+        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
+        {
+            this.ConnectionStatus = new RefreshableObjectConnectionStatus();
+            this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        {
+            this.SlaAssignable = new SlaAssignable();
+            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+        }
+        //      C# -> VcenterPatch? VcenterPatch
+        // GraphQL -> vcenterPatch: VcenterPatch (type)
+        if (this.VcenterPatch == null && Exploration.Includes(parent + ".vcenterPatch"))
+        {
+            this.VcenterPatch = new VcenterPatch();
+            this.VcenterPatch.ApplyExploratoryFieldSpec(parent + ".vcenterPatch");
+        }
+    }
 
 
     #endregion
 
     } // class VcenterSummary
+    
     #endregion
 
     public static class ListVcenterSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VcenterSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VcenterSummary> list, 
             String parent = "")
         {
-            var item = new VcenterSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VcenterSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

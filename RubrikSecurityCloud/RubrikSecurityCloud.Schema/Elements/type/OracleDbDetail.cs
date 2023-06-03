@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region OracleDbDetail
-    public class OracleDbDetail: IFragment
+    public class OracleDbDetail: BaseType
     {
         #region members
+
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String (scalar)
         [JsonProperty("dbUniqueName")]
@@ -178,6 +180,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("pendingSlaDomain")]
         public ManagedObjectPendingSlaInfo? PendingSlaDomain { get; set; }
 
+
         #endregion
 
     #region methods
@@ -316,496 +319,418 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? DbUniqueName
-            // GraphQL -> dbUniqueName: String (scalar)
-            if (this.DbUniqueName != null)
-            {
-                 s += ind + "dbUniqueName\n";
-
-            }
-            //      C# -> System.Boolean? IsLiveMount
-            // GraphQL -> isLiveMount: Boolean (scalar)
-            if (this.IsLiveMount != null)
-            {
-                 s += ind + "isLiveMount\n";
-
-            }
-            //      C# -> System.String? LatestRecoveryPointV50
-            // GraphQL -> latestRecoveryPointV50: String (scalar)
-            if (this.LatestRecoveryPointV50 != null)
-            {
-                 s += ind + "latestRecoveryPointV50\n";
-
-            }
-            //      C# -> System.String? LatestRecoveryPointV51
-            // GraphQL -> latestRecoveryPointV51: String (scalar)
-            if (this.LatestRecoveryPointV51 != null)
-            {
-                 s += ind + "latestRecoveryPointV51\n";
-
-            }
-            //      C# -> System.String? LatestRecoveryPointV52
-            // GraphQL -> latestRecoveryPointV52: String (scalar)
-            if (this.LatestRecoveryPointV52 != null)
-            {
-                 s += ind + "latestRecoveryPointV52\n";
-
-            }
-            //      C# -> System.String? LatestRecoveryPointV53
-            // GraphQL -> latestRecoveryPointV53: String (scalar)
-            if (this.LatestRecoveryPointV53 != null)
-            {
-                 s += ind + "latestRecoveryPointV53\n";
-
-            }
-            //      C# -> DateTime? LatestRecoveryPointV60
-            // GraphQL -> latestRecoveryPointV60: DateTime (scalar)
-            if (this.LatestRecoveryPointV60 != null)
-            {
-                 s += ind + "latestRecoveryPointV60\n";
-
-            }
-            //      C# -> DateTime? LatestRecoveryPointV70
-            // GraphQL -> latestRecoveryPointV70: DateTime (scalar)
-            if (this.LatestRecoveryPointV70 != null)
-            {
-                 s += ind + "latestRecoveryPointV70\n";
-
-            }
-            //      C# -> DateTime? LatestRecoveryPointV80
-            // GraphQL -> latestRecoveryPointV80: DateTime (scalar)
-            if (this.LatestRecoveryPointV80 != null)
-            {
-                 s += ind + "latestRecoveryPointV80\n";
-
-            }
-            //      C# -> DateTime? LatestRecoveryPointV81
-            // GraphQL -> latestRecoveryPointV81: DateTime (scalar)
-            if (this.LatestRecoveryPointV81 != null)
-            {
-                 s += ind + "latestRecoveryPointV81\n";
-
-            }
-            //      C# -> DateTime? LatestRecoveryPointV90
-            // GraphQL -> latestRecoveryPointV90: DateTime (scalar)
-            if (this.LatestRecoveryPointV90 != null)
-            {
-                 s += ind + "latestRecoveryPointV90\n";
-
-            }
-            //      C# -> System.String? OldestRecoveryPointV50
-            // GraphQL -> oldestRecoveryPointV50: String (scalar)
-            if (this.OldestRecoveryPointV50 != null)
-            {
-                 s += ind + "oldestRecoveryPointV50\n";
-
-            }
-            //      C# -> System.String? OldestRecoveryPointV51
-            // GraphQL -> oldestRecoveryPointV51: String (scalar)
-            if (this.OldestRecoveryPointV51 != null)
-            {
-                 s += ind + "oldestRecoveryPointV51\n";
-
-            }
-            //      C# -> System.String? OldestRecoveryPointV52
-            // GraphQL -> oldestRecoveryPointV52: String (scalar)
-            if (this.OldestRecoveryPointV52 != null)
-            {
-                 s += ind + "oldestRecoveryPointV52\n";
-
-            }
-            //      C# -> System.String? OldestRecoveryPointV53
-            // GraphQL -> oldestRecoveryPointV53: String (scalar)
-            if (this.OldestRecoveryPointV53 != null)
-            {
-                 s += ind + "oldestRecoveryPointV53\n";
-
-            }
-            //      C# -> DateTime? OldestRecoveryPointV60
-            // GraphQL -> oldestRecoveryPointV60: DateTime (scalar)
-            if (this.OldestRecoveryPointV60 != null)
-            {
-                 s += ind + "oldestRecoveryPointV60\n";
-
-            }
-            //      C# -> DateTime? OldestRecoveryPointV70
-            // GraphQL -> oldestRecoveryPointV70: DateTime (scalar)
-            if (this.OldestRecoveryPointV70 != null)
-            {
-                 s += ind + "oldestRecoveryPointV70\n";
-
-            }
-            //      C# -> DateTime? OldestRecoveryPointV80
-            // GraphQL -> oldestRecoveryPointV80: DateTime (scalar)
-            if (this.OldestRecoveryPointV80 != null)
-            {
-                 s += ind + "oldestRecoveryPointV80\n";
-
-            }
-            //      C# -> DateTime? OldestRecoveryPointV81
-            // GraphQL -> oldestRecoveryPointV81: DateTime (scalar)
-            if (this.OldestRecoveryPointV81 != null)
-            {
-                 s += ind + "oldestRecoveryPointV81\n";
-
-            }
-            //      C# -> DateTime? OldestRecoveryPointV90
-            // GraphQL -> oldestRecoveryPointV90: DateTime (scalar)
-            if (this.OldestRecoveryPointV90 != null)
-            {
-                 s += ind + "oldestRecoveryPointV90\n";
-
-            }
-            //      C# -> System.String? OracleHome
-            // GraphQL -> oracleHome: String (scalar)
-            if (this.OracleHome != null)
-            {
-                 s += ind + "oracleHome\n";
-
-            }
-            //      C# -> List<System.String>? PreferredDgMemberUniqueNames
-            // GraphQL -> preferredDgMemberUniqueNames: [String!]! (scalar)
-            if (this.PreferredDgMemberUniqueNames != null)
-            {
-                 s += ind + "preferredDgMemberUniqueNames\n";
-
-            }
-            //      C# -> System.Int32? SectionSizeInGb
-            // GraphQL -> sectionSizeInGb: Int (scalar)
-            if (this.SectionSizeInGb != null)
-            {
-                 s += ind + "sectionSizeInGb\n";
-
-            }
-            //      C# -> System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly
-            // GraphQL -> shouldBackupFromPrimaryDgGroupMemberOnly: Boolean (scalar)
-            if (this.ShouldBackupFromPrimaryDgGroupMemberOnly != null)
-            {
-                 s += ind + "shouldBackupFromPrimaryDgGroupMemberOnly\n";
-
-            }
-            //      C# -> System.Int32? SnapshotCount
-            // GraphQL -> snapshotCount: Int! (scalar)
-            if (this.SnapshotCount != null)
-            {
-                 s += ind + "snapshotCount\n";
-
-            }
-            //      C# -> List<System.String>? Tablespaces
-            // GraphQL -> tablespaces: [String!]! (scalar)
-            if (this.Tablespaces != null)
-            {
-                 s += ind + "tablespaces\n";
-
-            }
-            //      C# -> List<HostInfo>? HostsInfo
-            // GraphQL -> hostsInfo: [HostInfo!]! (type)
-            if (this.HostsInfo != null)
-            {
-                 s += ind + "hostsInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.HostsInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleLastValidationResult? LastValidationResult
-            // GraphQL -> lastValidationResult: OracleLastValidationResult (type)
-            if (this.LastValidationResult != null)
-            {
-                 s += ind + "lastValidationResult\n";
-
-                 s += ind + "{\n" + 
-                 this.LastValidationResult.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleDbSummary? OracleDbSummary
-            // GraphQL -> oracleDbSummary: OracleDbSummary (type)
-            if (this.OracleDbSummary != null)
-            {
-                 s += ind + "oracleDbSummary\n";
-
-                 s += ind + "{\n" + 
-                 this.OracleDbSummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
-            // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
-            if (this.OracleNonSlaProperties != null)
-            {
-                 s += ind + "oracleNonSlaProperties\n";
-
-                 s += ind + "{\n" + 
-                 this.OracleNonSlaProperties.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OraclePdbDetails? PdbDetails
-            // GraphQL -> pdbDetails: OraclePdbDetails (type)
-            if (this.PdbDetails != null)
-            {
-                 s += ind + "pdbDetails\n";
-
-                 s += ind + "{\n" + 
-                 this.PdbDetails.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
-            // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-            if (this.PendingSlaDomain != null)
-            {
-                 s += ind + "pendingSlaDomain\n";
-
-                 s += ind + "{\n" + 
-                 this.PendingSlaDomain.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? DbUniqueName
+        // GraphQL -> dbUniqueName: String (scalar)
+        if (this.DbUniqueName != null) {
+            s += ind + "dbUniqueName\n" ;
         }
+        //      C# -> System.Boolean? IsLiveMount
+        // GraphQL -> isLiveMount: Boolean (scalar)
+        if (this.IsLiveMount != null) {
+            s += ind + "isLiveMount\n" ;
+        }
+        //      C# -> System.String? LatestRecoveryPointV50
+        // GraphQL -> latestRecoveryPointV50: String (scalar)
+        if (this.LatestRecoveryPointV50 != null) {
+            s += ind + "latestRecoveryPointV50\n" ;
+        }
+        //      C# -> System.String? LatestRecoveryPointV51
+        // GraphQL -> latestRecoveryPointV51: String (scalar)
+        if (this.LatestRecoveryPointV51 != null) {
+            s += ind + "latestRecoveryPointV51\n" ;
+        }
+        //      C# -> System.String? LatestRecoveryPointV52
+        // GraphQL -> latestRecoveryPointV52: String (scalar)
+        if (this.LatestRecoveryPointV52 != null) {
+            s += ind + "latestRecoveryPointV52\n" ;
+        }
+        //      C# -> System.String? LatestRecoveryPointV53
+        // GraphQL -> latestRecoveryPointV53: String (scalar)
+        if (this.LatestRecoveryPointV53 != null) {
+            s += ind + "latestRecoveryPointV53\n" ;
+        }
+        //      C# -> DateTime? LatestRecoveryPointV60
+        // GraphQL -> latestRecoveryPointV60: DateTime (scalar)
+        if (this.LatestRecoveryPointV60 != null) {
+            s += ind + "latestRecoveryPointV60\n" ;
+        }
+        //      C# -> DateTime? LatestRecoveryPointV70
+        // GraphQL -> latestRecoveryPointV70: DateTime (scalar)
+        if (this.LatestRecoveryPointV70 != null) {
+            s += ind + "latestRecoveryPointV70\n" ;
+        }
+        //      C# -> DateTime? LatestRecoveryPointV80
+        // GraphQL -> latestRecoveryPointV80: DateTime (scalar)
+        if (this.LatestRecoveryPointV80 != null) {
+            s += ind + "latestRecoveryPointV80\n" ;
+        }
+        //      C# -> DateTime? LatestRecoveryPointV81
+        // GraphQL -> latestRecoveryPointV81: DateTime (scalar)
+        if (this.LatestRecoveryPointV81 != null) {
+            s += ind + "latestRecoveryPointV81\n" ;
+        }
+        //      C# -> DateTime? LatestRecoveryPointV90
+        // GraphQL -> latestRecoveryPointV90: DateTime (scalar)
+        if (this.LatestRecoveryPointV90 != null) {
+            s += ind + "latestRecoveryPointV90\n" ;
+        }
+        //      C# -> System.String? OldestRecoveryPointV50
+        // GraphQL -> oldestRecoveryPointV50: String (scalar)
+        if (this.OldestRecoveryPointV50 != null) {
+            s += ind + "oldestRecoveryPointV50\n" ;
+        }
+        //      C# -> System.String? OldestRecoveryPointV51
+        // GraphQL -> oldestRecoveryPointV51: String (scalar)
+        if (this.OldestRecoveryPointV51 != null) {
+            s += ind + "oldestRecoveryPointV51\n" ;
+        }
+        //      C# -> System.String? OldestRecoveryPointV52
+        // GraphQL -> oldestRecoveryPointV52: String (scalar)
+        if (this.OldestRecoveryPointV52 != null) {
+            s += ind + "oldestRecoveryPointV52\n" ;
+        }
+        //      C# -> System.String? OldestRecoveryPointV53
+        // GraphQL -> oldestRecoveryPointV53: String (scalar)
+        if (this.OldestRecoveryPointV53 != null) {
+            s += ind + "oldestRecoveryPointV53\n" ;
+        }
+        //      C# -> DateTime? OldestRecoveryPointV60
+        // GraphQL -> oldestRecoveryPointV60: DateTime (scalar)
+        if (this.OldestRecoveryPointV60 != null) {
+            s += ind + "oldestRecoveryPointV60\n" ;
+        }
+        //      C# -> DateTime? OldestRecoveryPointV70
+        // GraphQL -> oldestRecoveryPointV70: DateTime (scalar)
+        if (this.OldestRecoveryPointV70 != null) {
+            s += ind + "oldestRecoveryPointV70\n" ;
+        }
+        //      C# -> DateTime? OldestRecoveryPointV80
+        // GraphQL -> oldestRecoveryPointV80: DateTime (scalar)
+        if (this.OldestRecoveryPointV80 != null) {
+            s += ind + "oldestRecoveryPointV80\n" ;
+        }
+        //      C# -> DateTime? OldestRecoveryPointV81
+        // GraphQL -> oldestRecoveryPointV81: DateTime (scalar)
+        if (this.OldestRecoveryPointV81 != null) {
+            s += ind + "oldestRecoveryPointV81\n" ;
+        }
+        //      C# -> DateTime? OldestRecoveryPointV90
+        // GraphQL -> oldestRecoveryPointV90: DateTime (scalar)
+        if (this.OldestRecoveryPointV90 != null) {
+            s += ind + "oldestRecoveryPointV90\n" ;
+        }
+        //      C# -> System.String? OracleHome
+        // GraphQL -> oracleHome: String (scalar)
+        if (this.OracleHome != null) {
+            s += ind + "oracleHome\n" ;
+        }
+        //      C# -> List<System.String>? PreferredDgMemberUniqueNames
+        // GraphQL -> preferredDgMemberUniqueNames: [String!]! (scalar)
+        if (this.PreferredDgMemberUniqueNames != null) {
+            s += ind + "preferredDgMemberUniqueNames\n" ;
+        }
+        //      C# -> System.Int32? SectionSizeInGb
+        // GraphQL -> sectionSizeInGb: Int (scalar)
+        if (this.SectionSizeInGb != null) {
+            s += ind + "sectionSizeInGb\n" ;
+        }
+        //      C# -> System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly
+        // GraphQL -> shouldBackupFromPrimaryDgGroupMemberOnly: Boolean (scalar)
+        if (this.ShouldBackupFromPrimaryDgGroupMemberOnly != null) {
+            s += ind + "shouldBackupFromPrimaryDgGroupMemberOnly\n" ;
+        }
+        //      C# -> System.Int32? SnapshotCount
+        // GraphQL -> snapshotCount: Int! (scalar)
+        if (this.SnapshotCount != null) {
+            s += ind + "snapshotCount\n" ;
+        }
+        //      C# -> List<System.String>? Tablespaces
+        // GraphQL -> tablespaces: [String!]! (scalar)
+        if (this.Tablespaces != null) {
+            s += ind + "tablespaces\n" ;
+        }
+        //      C# -> List<HostInfo>? HostsInfo
+        // GraphQL -> hostsInfo: [HostInfo!]! (type)
+        if (this.HostsInfo != null) {
+            s += ind + "hostsInfo {\n" + this.HostsInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OracleLastValidationResult? LastValidationResult
+        // GraphQL -> lastValidationResult: OracleLastValidationResult (type)
+        if (this.LastValidationResult != null) {
+            s += ind + "lastValidationResult {\n" + this.LastValidationResult.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OracleDbSummary? OracleDbSummary
+        // GraphQL -> oracleDbSummary: OracleDbSummary (type)
+        if (this.OracleDbSummary != null) {
+            s += ind + "oracleDbSummary {\n" + this.OracleDbSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
+        // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
+        if (this.OracleNonSlaProperties != null) {
+            s += ind + "oracleNonSlaProperties {\n" + this.OracleNonSlaProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OraclePdbDetails? PdbDetails
+        // GraphQL -> pdbDetails: OraclePdbDetails (type)
+        if (this.PdbDetails != null) {
+            s += ind + "pdbDetails {\n" + this.PdbDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
+        // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
+        if (this.PendingSlaDomain != null) {
+            s += ind + "pendingSlaDomain {\n" + this.PendingSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? DbUniqueName
+        // GraphQL -> dbUniqueName: String (scalar)
+        if (this.DbUniqueName == null && Exploration.Includes(parent + ".dbUniqueName", true))
         {
-            //      C# -> System.String? DbUniqueName
-            // GraphQL -> dbUniqueName: String (scalar)
-            if (this.DbUniqueName == null && Exploration.Includes(parent + ".dbUniqueName$"))
-            {
-                this.DbUniqueName = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsLiveMount
-            // GraphQL -> isLiveMount: Boolean (scalar)
-            if (this.IsLiveMount == null && Exploration.Includes(parent + ".isLiveMount$"))
-            {
-                this.IsLiveMount = new System.Boolean();
-            }
-            //      C# -> System.String? LatestRecoveryPointV50
-            // GraphQL -> latestRecoveryPointV50: String (scalar)
-            if (this.LatestRecoveryPointV50 == null && Exploration.Includes(parent + ".latestRecoveryPointV50$"))
-            {
-                this.LatestRecoveryPointV50 = new System.String("FETCH");
-            }
-            //      C# -> System.String? LatestRecoveryPointV51
-            // GraphQL -> latestRecoveryPointV51: String (scalar)
-            if (this.LatestRecoveryPointV51 == null && Exploration.Includes(parent + ".latestRecoveryPointV51$"))
-            {
-                this.LatestRecoveryPointV51 = new System.String("FETCH");
-            }
-            //      C# -> System.String? LatestRecoveryPointV52
-            // GraphQL -> latestRecoveryPointV52: String (scalar)
-            if (this.LatestRecoveryPointV52 == null && Exploration.Includes(parent + ".latestRecoveryPointV52$"))
-            {
-                this.LatestRecoveryPointV52 = new System.String("FETCH");
-            }
-            //      C# -> System.String? LatestRecoveryPointV53
-            // GraphQL -> latestRecoveryPointV53: String (scalar)
-            if (this.LatestRecoveryPointV53 == null && Exploration.Includes(parent + ".latestRecoveryPointV53$"))
-            {
-                this.LatestRecoveryPointV53 = new System.String("FETCH");
-            }
-            //      C# -> DateTime? LatestRecoveryPointV60
-            // GraphQL -> latestRecoveryPointV60: DateTime (scalar)
-            if (this.LatestRecoveryPointV60 == null && Exploration.Includes(parent + ".latestRecoveryPointV60$"))
-            {
-                this.LatestRecoveryPointV60 = new DateTime();
-            }
-            //      C# -> DateTime? LatestRecoveryPointV70
-            // GraphQL -> latestRecoveryPointV70: DateTime (scalar)
-            if (this.LatestRecoveryPointV70 == null && Exploration.Includes(parent + ".latestRecoveryPointV70$"))
-            {
-                this.LatestRecoveryPointV70 = new DateTime();
-            }
-            //      C# -> DateTime? LatestRecoveryPointV80
-            // GraphQL -> latestRecoveryPointV80: DateTime (scalar)
-            if (this.LatestRecoveryPointV80 == null && Exploration.Includes(parent + ".latestRecoveryPointV80$"))
-            {
-                this.LatestRecoveryPointV80 = new DateTime();
-            }
-            //      C# -> DateTime? LatestRecoveryPointV81
-            // GraphQL -> latestRecoveryPointV81: DateTime (scalar)
-            if (this.LatestRecoveryPointV81 == null && Exploration.Includes(parent + ".latestRecoveryPointV81$"))
-            {
-                this.LatestRecoveryPointV81 = new DateTime();
-            }
-            //      C# -> DateTime? LatestRecoveryPointV90
-            // GraphQL -> latestRecoveryPointV90: DateTime (scalar)
-            if (this.LatestRecoveryPointV90 == null && Exploration.Includes(parent + ".latestRecoveryPointV90$"))
-            {
-                this.LatestRecoveryPointV90 = new DateTime();
-            }
-            //      C# -> System.String? OldestRecoveryPointV50
-            // GraphQL -> oldestRecoveryPointV50: String (scalar)
-            if (this.OldestRecoveryPointV50 == null && Exploration.Includes(parent + ".oldestRecoveryPointV50$"))
-            {
-                this.OldestRecoveryPointV50 = new System.String("FETCH");
-            }
-            //      C# -> System.String? OldestRecoveryPointV51
-            // GraphQL -> oldestRecoveryPointV51: String (scalar)
-            if (this.OldestRecoveryPointV51 == null && Exploration.Includes(parent + ".oldestRecoveryPointV51$"))
-            {
-                this.OldestRecoveryPointV51 = new System.String("FETCH");
-            }
-            //      C# -> System.String? OldestRecoveryPointV52
-            // GraphQL -> oldestRecoveryPointV52: String (scalar)
-            if (this.OldestRecoveryPointV52 == null && Exploration.Includes(parent + ".oldestRecoveryPointV52$"))
-            {
-                this.OldestRecoveryPointV52 = new System.String("FETCH");
-            }
-            //      C# -> System.String? OldestRecoveryPointV53
-            // GraphQL -> oldestRecoveryPointV53: String (scalar)
-            if (this.OldestRecoveryPointV53 == null && Exploration.Includes(parent + ".oldestRecoveryPointV53$"))
-            {
-                this.OldestRecoveryPointV53 = new System.String("FETCH");
-            }
-            //      C# -> DateTime? OldestRecoveryPointV60
-            // GraphQL -> oldestRecoveryPointV60: DateTime (scalar)
-            if (this.OldestRecoveryPointV60 == null && Exploration.Includes(parent + ".oldestRecoveryPointV60$"))
-            {
-                this.OldestRecoveryPointV60 = new DateTime();
-            }
-            //      C# -> DateTime? OldestRecoveryPointV70
-            // GraphQL -> oldestRecoveryPointV70: DateTime (scalar)
-            if (this.OldestRecoveryPointV70 == null && Exploration.Includes(parent + ".oldestRecoveryPointV70$"))
-            {
-                this.OldestRecoveryPointV70 = new DateTime();
-            }
-            //      C# -> DateTime? OldestRecoveryPointV80
-            // GraphQL -> oldestRecoveryPointV80: DateTime (scalar)
-            if (this.OldestRecoveryPointV80 == null && Exploration.Includes(parent + ".oldestRecoveryPointV80$"))
-            {
-                this.OldestRecoveryPointV80 = new DateTime();
-            }
-            //      C# -> DateTime? OldestRecoveryPointV81
-            // GraphQL -> oldestRecoveryPointV81: DateTime (scalar)
-            if (this.OldestRecoveryPointV81 == null && Exploration.Includes(parent + ".oldestRecoveryPointV81$"))
-            {
-                this.OldestRecoveryPointV81 = new DateTime();
-            }
-            //      C# -> DateTime? OldestRecoveryPointV90
-            // GraphQL -> oldestRecoveryPointV90: DateTime (scalar)
-            if (this.OldestRecoveryPointV90 == null && Exploration.Includes(parent + ".oldestRecoveryPointV90$"))
-            {
-                this.OldestRecoveryPointV90 = new DateTime();
-            }
-            //      C# -> System.String? OracleHome
-            // GraphQL -> oracleHome: String (scalar)
-            if (this.OracleHome == null && Exploration.Includes(parent + ".oracleHome$"))
-            {
-                this.OracleHome = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? PreferredDgMemberUniqueNames
-            // GraphQL -> preferredDgMemberUniqueNames: [String!]! (scalar)
-            if (this.PreferredDgMemberUniqueNames == null && Exploration.Includes(parent + ".preferredDgMemberUniqueNames$"))
-            {
-                this.PreferredDgMemberUniqueNames = new List<System.String>();
-            }
-            //      C# -> System.Int32? SectionSizeInGb
-            // GraphQL -> sectionSizeInGb: Int (scalar)
-            if (this.SectionSizeInGb == null && Exploration.Includes(parent + ".sectionSizeInGb$"))
-            {
-                this.SectionSizeInGb = new System.Int32();
-            }
-            //      C# -> System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly
-            // GraphQL -> shouldBackupFromPrimaryDgGroupMemberOnly: Boolean (scalar)
-            if (this.ShouldBackupFromPrimaryDgGroupMemberOnly == null && Exploration.Includes(parent + ".shouldBackupFromPrimaryDgGroupMemberOnly$"))
-            {
-                this.ShouldBackupFromPrimaryDgGroupMemberOnly = new System.Boolean();
-            }
-            //      C# -> System.Int32? SnapshotCount
-            // GraphQL -> snapshotCount: Int! (scalar)
-            if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount$"))
-            {
-                this.SnapshotCount = new System.Int32();
-            }
-            //      C# -> List<System.String>? Tablespaces
-            // GraphQL -> tablespaces: [String!]! (scalar)
-            if (this.Tablespaces == null && Exploration.Includes(parent + ".tablespaces$"))
-            {
-                this.Tablespaces = new List<System.String>();
-            }
-            //      C# -> List<HostInfo>? HostsInfo
-            // GraphQL -> hostsInfo: [HostInfo!]! (type)
-            if (this.HostsInfo == null && Exploration.Includes(parent + ".hostsInfo"))
-            {
-                this.HostsInfo = new List<HostInfo>();
-                this.HostsInfo.ApplyExploratoryFragment(parent + ".hostsInfo");
-            }
-            //      C# -> OracleLastValidationResult? LastValidationResult
-            // GraphQL -> lastValidationResult: OracleLastValidationResult (type)
-            if (this.LastValidationResult == null && Exploration.Includes(parent + ".lastValidationResult"))
-            {
-                this.LastValidationResult = new OracleLastValidationResult();
-                this.LastValidationResult.ApplyExploratoryFragment(parent + ".lastValidationResult");
-            }
-            //      C# -> OracleDbSummary? OracleDbSummary
-            // GraphQL -> oracleDbSummary: OracleDbSummary (type)
-            if (this.OracleDbSummary == null && Exploration.Includes(parent + ".oracleDbSummary"))
-            {
-                this.OracleDbSummary = new OracleDbSummary();
-                this.OracleDbSummary.ApplyExploratoryFragment(parent + ".oracleDbSummary");
-            }
-            //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
-            // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
-            if (this.OracleNonSlaProperties == null && Exploration.Includes(parent + ".oracleNonSlaProperties"))
-            {
-                this.OracleNonSlaProperties = new OracleNonSlaProperties();
-                this.OracleNonSlaProperties.ApplyExploratoryFragment(parent + ".oracleNonSlaProperties");
-            }
-            //      C# -> OraclePdbDetails? PdbDetails
-            // GraphQL -> pdbDetails: OraclePdbDetails (type)
-            if (this.PdbDetails == null && Exploration.Includes(parent + ".pdbDetails"))
-            {
-                this.PdbDetails = new OraclePdbDetails();
-                this.PdbDetails.ApplyExploratoryFragment(parent + ".pdbDetails");
-            }
-            //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
-            // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-            if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
-            {
-                this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-                this.PendingSlaDomain.ApplyExploratoryFragment(parent + ".pendingSlaDomain");
-            }
+            this.DbUniqueName = new System.String("FETCH");
         }
+        //      C# -> System.Boolean? IsLiveMount
+        // GraphQL -> isLiveMount: Boolean (scalar)
+        if (this.IsLiveMount == null && Exploration.Includes(parent + ".isLiveMount", true))
+        {
+            this.IsLiveMount = true;
+        }
+        //      C# -> System.String? LatestRecoveryPointV50
+        // GraphQL -> latestRecoveryPointV50: String (scalar)
+        if (this.LatestRecoveryPointV50 == null && Exploration.Includes(parent + ".latestRecoveryPointV50", true))
+        {
+            this.LatestRecoveryPointV50 = new System.String("FETCH");
+        }
+        //      C# -> System.String? LatestRecoveryPointV51
+        // GraphQL -> latestRecoveryPointV51: String (scalar)
+        if (this.LatestRecoveryPointV51 == null && Exploration.Includes(parent + ".latestRecoveryPointV51", true))
+        {
+            this.LatestRecoveryPointV51 = new System.String("FETCH");
+        }
+        //      C# -> System.String? LatestRecoveryPointV52
+        // GraphQL -> latestRecoveryPointV52: String (scalar)
+        if (this.LatestRecoveryPointV52 == null && Exploration.Includes(parent + ".latestRecoveryPointV52", true))
+        {
+            this.LatestRecoveryPointV52 = new System.String("FETCH");
+        }
+        //      C# -> System.String? LatestRecoveryPointV53
+        // GraphQL -> latestRecoveryPointV53: String (scalar)
+        if (this.LatestRecoveryPointV53 == null && Exploration.Includes(parent + ".latestRecoveryPointV53", true))
+        {
+            this.LatestRecoveryPointV53 = new System.String("FETCH");
+        }
+        //      C# -> DateTime? LatestRecoveryPointV60
+        // GraphQL -> latestRecoveryPointV60: DateTime (scalar)
+        if (this.LatestRecoveryPointV60 == null && Exploration.Includes(parent + ".latestRecoveryPointV60", true))
+        {
+            this.LatestRecoveryPointV60 = new DateTime();
+        }
+        //      C# -> DateTime? LatestRecoveryPointV70
+        // GraphQL -> latestRecoveryPointV70: DateTime (scalar)
+        if (this.LatestRecoveryPointV70 == null && Exploration.Includes(parent + ".latestRecoveryPointV70", true))
+        {
+            this.LatestRecoveryPointV70 = new DateTime();
+        }
+        //      C# -> DateTime? LatestRecoveryPointV80
+        // GraphQL -> latestRecoveryPointV80: DateTime (scalar)
+        if (this.LatestRecoveryPointV80 == null && Exploration.Includes(parent + ".latestRecoveryPointV80", true))
+        {
+            this.LatestRecoveryPointV80 = new DateTime();
+        }
+        //      C# -> DateTime? LatestRecoveryPointV81
+        // GraphQL -> latestRecoveryPointV81: DateTime (scalar)
+        if (this.LatestRecoveryPointV81 == null && Exploration.Includes(parent + ".latestRecoveryPointV81", true))
+        {
+            this.LatestRecoveryPointV81 = new DateTime();
+        }
+        //      C# -> DateTime? LatestRecoveryPointV90
+        // GraphQL -> latestRecoveryPointV90: DateTime (scalar)
+        if (this.LatestRecoveryPointV90 == null && Exploration.Includes(parent + ".latestRecoveryPointV90", true))
+        {
+            this.LatestRecoveryPointV90 = new DateTime();
+        }
+        //      C# -> System.String? OldestRecoveryPointV50
+        // GraphQL -> oldestRecoveryPointV50: String (scalar)
+        if (this.OldestRecoveryPointV50 == null && Exploration.Includes(parent + ".oldestRecoveryPointV50", true))
+        {
+            this.OldestRecoveryPointV50 = new System.String("FETCH");
+        }
+        //      C# -> System.String? OldestRecoveryPointV51
+        // GraphQL -> oldestRecoveryPointV51: String (scalar)
+        if (this.OldestRecoveryPointV51 == null && Exploration.Includes(parent + ".oldestRecoveryPointV51", true))
+        {
+            this.OldestRecoveryPointV51 = new System.String("FETCH");
+        }
+        //      C# -> System.String? OldestRecoveryPointV52
+        // GraphQL -> oldestRecoveryPointV52: String (scalar)
+        if (this.OldestRecoveryPointV52 == null && Exploration.Includes(parent + ".oldestRecoveryPointV52", true))
+        {
+            this.OldestRecoveryPointV52 = new System.String("FETCH");
+        }
+        //      C# -> System.String? OldestRecoveryPointV53
+        // GraphQL -> oldestRecoveryPointV53: String (scalar)
+        if (this.OldestRecoveryPointV53 == null && Exploration.Includes(parent + ".oldestRecoveryPointV53", true))
+        {
+            this.OldestRecoveryPointV53 = new System.String("FETCH");
+        }
+        //      C# -> DateTime? OldestRecoveryPointV60
+        // GraphQL -> oldestRecoveryPointV60: DateTime (scalar)
+        if (this.OldestRecoveryPointV60 == null && Exploration.Includes(parent + ".oldestRecoveryPointV60", true))
+        {
+            this.OldestRecoveryPointV60 = new DateTime();
+        }
+        //      C# -> DateTime? OldestRecoveryPointV70
+        // GraphQL -> oldestRecoveryPointV70: DateTime (scalar)
+        if (this.OldestRecoveryPointV70 == null && Exploration.Includes(parent + ".oldestRecoveryPointV70", true))
+        {
+            this.OldestRecoveryPointV70 = new DateTime();
+        }
+        //      C# -> DateTime? OldestRecoveryPointV80
+        // GraphQL -> oldestRecoveryPointV80: DateTime (scalar)
+        if (this.OldestRecoveryPointV80 == null && Exploration.Includes(parent + ".oldestRecoveryPointV80", true))
+        {
+            this.OldestRecoveryPointV80 = new DateTime();
+        }
+        //      C# -> DateTime? OldestRecoveryPointV81
+        // GraphQL -> oldestRecoveryPointV81: DateTime (scalar)
+        if (this.OldestRecoveryPointV81 == null && Exploration.Includes(parent + ".oldestRecoveryPointV81", true))
+        {
+            this.OldestRecoveryPointV81 = new DateTime();
+        }
+        //      C# -> DateTime? OldestRecoveryPointV90
+        // GraphQL -> oldestRecoveryPointV90: DateTime (scalar)
+        if (this.OldestRecoveryPointV90 == null && Exploration.Includes(parent + ".oldestRecoveryPointV90", true))
+        {
+            this.OldestRecoveryPointV90 = new DateTime();
+        }
+        //      C# -> System.String? OracleHome
+        // GraphQL -> oracleHome: String (scalar)
+        if (this.OracleHome == null && Exploration.Includes(parent + ".oracleHome", true))
+        {
+            this.OracleHome = new System.String("FETCH");
+        }
+        //      C# -> List<System.String>? PreferredDgMemberUniqueNames
+        // GraphQL -> preferredDgMemberUniqueNames: [String!]! (scalar)
+        if (this.PreferredDgMemberUniqueNames == null && Exploration.Includes(parent + ".preferredDgMemberUniqueNames", true))
+        {
+            this.PreferredDgMemberUniqueNames = new List<System.String>();
+        }
+        //      C# -> System.Int32? SectionSizeInGb
+        // GraphQL -> sectionSizeInGb: Int (scalar)
+        if (this.SectionSizeInGb == null && Exploration.Includes(parent + ".sectionSizeInGb", true))
+        {
+            this.SectionSizeInGb = new System.Int32();
+        }
+        //      C# -> System.Boolean? ShouldBackupFromPrimaryDgGroupMemberOnly
+        // GraphQL -> shouldBackupFromPrimaryDgGroupMemberOnly: Boolean (scalar)
+        if (this.ShouldBackupFromPrimaryDgGroupMemberOnly == null && Exploration.Includes(parent + ".shouldBackupFromPrimaryDgGroupMemberOnly", true))
+        {
+            this.ShouldBackupFromPrimaryDgGroupMemberOnly = true;
+        }
+        //      C# -> System.Int32? SnapshotCount
+        // GraphQL -> snapshotCount: Int! (scalar)
+        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        {
+            this.SnapshotCount = new System.Int32();
+        }
+        //      C# -> List<System.String>? Tablespaces
+        // GraphQL -> tablespaces: [String!]! (scalar)
+        if (this.Tablespaces == null && Exploration.Includes(parent + ".tablespaces", true))
+        {
+            this.Tablespaces = new List<System.String>();
+        }
+        //      C# -> List<HostInfo>? HostsInfo
+        // GraphQL -> hostsInfo: [HostInfo!]! (type)
+        if (this.HostsInfo == null && Exploration.Includes(parent + ".hostsInfo"))
+        {
+            this.HostsInfo = new List<HostInfo>();
+            this.HostsInfo.ApplyExploratoryFieldSpec(parent + ".hostsInfo");
+        }
+        //      C# -> OracleLastValidationResult? LastValidationResult
+        // GraphQL -> lastValidationResult: OracleLastValidationResult (type)
+        if (this.LastValidationResult == null && Exploration.Includes(parent + ".lastValidationResult"))
+        {
+            this.LastValidationResult = new OracleLastValidationResult();
+            this.LastValidationResult.ApplyExploratoryFieldSpec(parent + ".lastValidationResult");
+        }
+        //      C# -> OracleDbSummary? OracleDbSummary
+        // GraphQL -> oracleDbSummary: OracleDbSummary (type)
+        if (this.OracleDbSummary == null && Exploration.Includes(parent + ".oracleDbSummary"))
+        {
+            this.OracleDbSummary = new OracleDbSummary();
+            this.OracleDbSummary.ApplyExploratoryFieldSpec(parent + ".oracleDbSummary");
+        }
+        //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
+        // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
+        if (this.OracleNonSlaProperties == null && Exploration.Includes(parent + ".oracleNonSlaProperties"))
+        {
+            this.OracleNonSlaProperties = new OracleNonSlaProperties();
+            this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(parent + ".oracleNonSlaProperties");
+        }
+        //      C# -> OraclePdbDetails? PdbDetails
+        // GraphQL -> pdbDetails: OraclePdbDetails (type)
+        if (this.PdbDetails == null && Exploration.Includes(parent + ".pdbDetails"))
+        {
+            this.PdbDetails = new OraclePdbDetails();
+            this.PdbDetails.ApplyExploratoryFieldSpec(parent + ".pdbDetails");
+        }
+        //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
+        // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
+        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        {
+            this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+        }
+    }
 
 
     #endregion
 
     } // class OracleDbDetail
+    
     #endregion
 
     public static class ListOracleDbDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<OracleDbDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<OracleDbDetail> list, 
             String parent = "")
         {
-            var item = new OracleDbDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new OracleDbDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region BootstrappableNodeInfo
-    public class BootstrappableNodeInfo: IFragment
+    public class BootstrappableNodeInfo: BaseType
     {
         #region members
+
         //      C# -> System.Int64? CapacityInBytes
         // GraphQL -> capacityInBytes: Long (scalar)
         [JsonProperty("capacityInBytes")]
@@ -83,6 +85,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("version")]
         public System.String? Version { get; set; }
 
+
         #endregion
 
     #region methods
@@ -145,225 +148,203 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? CapacityInBytes
-            // GraphQL -> capacityInBytes: Long (scalar)
-            if (this.CapacityInBytes != null)
-            {
-                 s += ind + "capacityInBytes\n";
-
-            }
-            //      C# -> System.String? ChassisId
-            // GraphQL -> chassisId: String (scalar)
-            if (this.ChassisId != null)
-            {
-                 s += ind + "chassisId\n";
-
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String! (scalar)
-            if (this.Hostname != null)
-            {
-                 s += ind + "hostname\n";
-
-            }
-            //      C# -> System.String? Ipv6
-            // GraphQL -> ipv6: String! (scalar)
-            if (this.Ipv6 != null)
-            {
-                 s += ind + "ipv6\n";
-
-            }
-            //      C# -> System.Boolean? IsAllCopper
-            // GraphQL -> isAllCopper: Boolean (scalar)
-            if (this.IsAllCopper != null)
-            {
-                 s += ind + "isAllCopper\n";
-
-            }
-            //      C# -> System.Boolean? IsBond0Eth0Enabled
-            // GraphQL -> isBond0Eth0Enabled: Boolean (scalar)
-            if (this.IsBond0Eth0Enabled != null)
-            {
-                 s += ind + "isBond0Eth0Enabled\n";
-
-            }
-            //      C# -> System.Boolean? IsBond0Eth1Enabled
-            // GraphQL -> isBond0Eth1Enabled: Boolean (scalar)
-            if (this.IsBond0Eth1Enabled != null)
-            {
-                 s += ind + "isBond0Eth1Enabled\n";
-
-            }
-            //      C# -> System.Boolean? IsBond0Reachable
-            // GraphQL -> isBond0Reachable: Boolean (scalar)
-            if (this.IsBond0Reachable != null)
-            {
-                 s += ind + "isBond0Reachable\n";
-
-            }
-            //      C# -> System.Boolean? IsBond1Eth2Enabled
-            // GraphQL -> isBond1Eth2Enabled: Boolean (scalar)
-            if (this.IsBond1Eth2Enabled != null)
-            {
-                 s += ind + "isBond1Eth2Enabled\n";
-
-            }
-            //      C# -> System.Boolean? IsBond1Eth3Enabled
-            // GraphQL -> isBond1Eth3Enabled: Boolean (scalar)
-            if (this.IsBond1Eth3Enabled != null)
-            {
-                 s += ind + "isBond1Eth3Enabled\n";
-
-            }
-            //      C# -> System.String? NodePosition
-            // GraphQL -> nodePosition: String (scalar)
-            if (this.NodePosition != null)
-            {
-                 s += ind + "nodePosition\n";
-
-            }
-            //      C# -> System.String? PlatformName
-            // GraphQL -> platformName: String (scalar)
-            if (this.PlatformName != null)
-            {
-                 s += ind + "platformName\n";
-
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String (scalar)
-            if (this.Version != null)
-            {
-                 s += ind + "version\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? CapacityInBytes
+        // GraphQL -> capacityInBytes: Long (scalar)
+        if (this.CapacityInBytes != null) {
+            s += ind + "capacityInBytes\n" ;
         }
+        //      C# -> System.String? ChassisId
+        // GraphQL -> chassisId: String (scalar)
+        if (this.ChassisId != null) {
+            s += ind + "chassisId\n" ;
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        if (this.Hostname != null) {
+            s += ind + "hostname\n" ;
+        }
+        //      C# -> System.String? Ipv6
+        // GraphQL -> ipv6: String! (scalar)
+        if (this.Ipv6 != null) {
+            s += ind + "ipv6\n" ;
+        }
+        //      C# -> System.Boolean? IsAllCopper
+        // GraphQL -> isAllCopper: Boolean (scalar)
+        if (this.IsAllCopper != null) {
+            s += ind + "isAllCopper\n" ;
+        }
+        //      C# -> System.Boolean? IsBond0Eth0Enabled
+        // GraphQL -> isBond0Eth0Enabled: Boolean (scalar)
+        if (this.IsBond0Eth0Enabled != null) {
+            s += ind + "isBond0Eth0Enabled\n" ;
+        }
+        //      C# -> System.Boolean? IsBond0Eth1Enabled
+        // GraphQL -> isBond0Eth1Enabled: Boolean (scalar)
+        if (this.IsBond0Eth1Enabled != null) {
+            s += ind + "isBond0Eth1Enabled\n" ;
+        }
+        //      C# -> System.Boolean? IsBond0Reachable
+        // GraphQL -> isBond0Reachable: Boolean (scalar)
+        if (this.IsBond0Reachable != null) {
+            s += ind + "isBond0Reachable\n" ;
+        }
+        //      C# -> System.Boolean? IsBond1Eth2Enabled
+        // GraphQL -> isBond1Eth2Enabled: Boolean (scalar)
+        if (this.IsBond1Eth2Enabled != null) {
+            s += ind + "isBond1Eth2Enabled\n" ;
+        }
+        //      C# -> System.Boolean? IsBond1Eth3Enabled
+        // GraphQL -> isBond1Eth3Enabled: Boolean (scalar)
+        if (this.IsBond1Eth3Enabled != null) {
+            s += ind + "isBond1Eth3Enabled\n" ;
+        }
+        //      C# -> System.String? NodePosition
+        // GraphQL -> nodePosition: String (scalar)
+        if (this.NodePosition != null) {
+            s += ind + "nodePosition\n" ;
+        }
+        //      C# -> System.String? PlatformName
+        // GraphQL -> platformName: String (scalar)
+        if (this.PlatformName != null) {
+            s += ind + "platformName\n" ;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (this.Version != null) {
+            s += ind + "version\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? CapacityInBytes
+        // GraphQL -> capacityInBytes: Long (scalar)
+        if (this.CapacityInBytes == null && Exploration.Includes(parent + ".capacityInBytes", true))
         {
-            //      C# -> System.Int64? CapacityInBytes
-            // GraphQL -> capacityInBytes: Long (scalar)
-            if (this.CapacityInBytes == null && Exploration.Includes(parent + ".capacityInBytes$"))
-            {
-                this.CapacityInBytes = new System.Int64();
-            }
-            //      C# -> System.String? ChassisId
-            // GraphQL -> chassisId: String (scalar)
-            if (this.ChassisId == null && Exploration.Includes(parent + ".chassisId$"))
-            {
-                this.ChassisId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String! (scalar)
-            if (this.Hostname == null && Exploration.Includes(parent + ".hostname$"))
-            {
-                this.Hostname = new System.String("FETCH");
-            }
-            //      C# -> System.String? Ipv6
-            // GraphQL -> ipv6: String! (scalar)
-            if (this.Ipv6 == null && Exploration.Includes(parent + ".ipv6$"))
-            {
-                this.Ipv6 = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsAllCopper
-            // GraphQL -> isAllCopper: Boolean (scalar)
-            if (this.IsAllCopper == null && Exploration.Includes(parent + ".isAllCopper$"))
-            {
-                this.IsAllCopper = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsBond0Eth0Enabled
-            // GraphQL -> isBond0Eth0Enabled: Boolean (scalar)
-            if (this.IsBond0Eth0Enabled == null && Exploration.Includes(parent + ".isBond0Eth0Enabled$"))
-            {
-                this.IsBond0Eth0Enabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsBond0Eth1Enabled
-            // GraphQL -> isBond0Eth1Enabled: Boolean (scalar)
-            if (this.IsBond0Eth1Enabled == null && Exploration.Includes(parent + ".isBond0Eth1Enabled$"))
-            {
-                this.IsBond0Eth1Enabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsBond0Reachable
-            // GraphQL -> isBond0Reachable: Boolean (scalar)
-            if (this.IsBond0Reachable == null && Exploration.Includes(parent + ".isBond0Reachable$"))
-            {
-                this.IsBond0Reachable = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsBond1Eth2Enabled
-            // GraphQL -> isBond1Eth2Enabled: Boolean (scalar)
-            if (this.IsBond1Eth2Enabled == null && Exploration.Includes(parent + ".isBond1Eth2Enabled$"))
-            {
-                this.IsBond1Eth2Enabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsBond1Eth3Enabled
-            // GraphQL -> isBond1Eth3Enabled: Boolean (scalar)
-            if (this.IsBond1Eth3Enabled == null && Exploration.Includes(parent + ".isBond1Eth3Enabled$"))
-            {
-                this.IsBond1Eth3Enabled = new System.Boolean();
-            }
-            //      C# -> System.String? NodePosition
-            // GraphQL -> nodePosition: String (scalar)
-            if (this.NodePosition == null && Exploration.Includes(parent + ".nodePosition$"))
-            {
-                this.NodePosition = new System.String("FETCH");
-            }
-            //      C# -> System.String? PlatformName
-            // GraphQL -> platformName: String (scalar)
-            if (this.PlatformName == null && Exploration.Includes(parent + ".platformName$"))
-            {
-                this.PlatformName = new System.String("FETCH");
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String (scalar)
-            if (this.Version == null && Exploration.Includes(parent + ".version$"))
-            {
-                this.Version = new System.String("FETCH");
-            }
+            this.CapacityInBytes = new System.Int64();
         }
+        //      C# -> System.String? ChassisId
+        // GraphQL -> chassisId: String (scalar)
+        if (this.ChassisId == null && Exploration.Includes(parent + ".chassisId", true))
+        {
+            this.ChassisId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        {
+            this.Hostname = new System.String("FETCH");
+        }
+        //      C# -> System.String? Ipv6
+        // GraphQL -> ipv6: String! (scalar)
+        if (this.Ipv6 == null && Exploration.Includes(parent + ".ipv6", true))
+        {
+            this.Ipv6 = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsAllCopper
+        // GraphQL -> isAllCopper: Boolean (scalar)
+        if (this.IsAllCopper == null && Exploration.Includes(parent + ".isAllCopper", true))
+        {
+            this.IsAllCopper = true;
+        }
+        //      C# -> System.Boolean? IsBond0Eth0Enabled
+        // GraphQL -> isBond0Eth0Enabled: Boolean (scalar)
+        if (this.IsBond0Eth0Enabled == null && Exploration.Includes(parent + ".isBond0Eth0Enabled", true))
+        {
+            this.IsBond0Eth0Enabled = true;
+        }
+        //      C# -> System.Boolean? IsBond0Eth1Enabled
+        // GraphQL -> isBond0Eth1Enabled: Boolean (scalar)
+        if (this.IsBond0Eth1Enabled == null && Exploration.Includes(parent + ".isBond0Eth1Enabled", true))
+        {
+            this.IsBond0Eth1Enabled = true;
+        }
+        //      C# -> System.Boolean? IsBond0Reachable
+        // GraphQL -> isBond0Reachable: Boolean (scalar)
+        if (this.IsBond0Reachable == null && Exploration.Includes(parent + ".isBond0Reachable", true))
+        {
+            this.IsBond0Reachable = true;
+        }
+        //      C# -> System.Boolean? IsBond1Eth2Enabled
+        // GraphQL -> isBond1Eth2Enabled: Boolean (scalar)
+        if (this.IsBond1Eth2Enabled == null && Exploration.Includes(parent + ".isBond1Eth2Enabled", true))
+        {
+            this.IsBond1Eth2Enabled = true;
+        }
+        //      C# -> System.Boolean? IsBond1Eth3Enabled
+        // GraphQL -> isBond1Eth3Enabled: Boolean (scalar)
+        if (this.IsBond1Eth3Enabled == null && Exploration.Includes(parent + ".isBond1Eth3Enabled", true))
+        {
+            this.IsBond1Eth3Enabled = true;
+        }
+        //      C# -> System.String? NodePosition
+        // GraphQL -> nodePosition: String (scalar)
+        if (this.NodePosition == null && Exploration.Includes(parent + ".nodePosition", true))
+        {
+            this.NodePosition = new System.String("FETCH");
+        }
+        //      C# -> System.String? PlatformName
+        // GraphQL -> platformName: String (scalar)
+        if (this.PlatformName == null && Exploration.Includes(parent + ".platformName", true))
+        {
+            this.PlatformName = new System.String("FETCH");
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String (scalar)
+        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        {
+            this.Version = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class BootstrappableNodeInfo
+    
     #endregion
 
     public static class ListBootstrappableNodeInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<BootstrappableNodeInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<BootstrappableNodeInfo> list, 
             String parent = "")
         {
-            var item = new BootstrappableNodeInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new BootstrappableNodeInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

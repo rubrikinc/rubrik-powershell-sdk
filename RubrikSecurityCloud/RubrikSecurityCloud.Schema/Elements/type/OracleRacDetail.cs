@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region OracleRacDetail
-    public class OracleRacDetail: IFragment
+    public class OracleRacDetail: BaseType
     {
         #region members
+
         //      C# -> System.String? Scan
         // GraphQL -> scan: String! (scalar)
         [JsonProperty("scan")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> oracleRacSummary: OracleRacSummary (type)
         [JsonProperty("oracleRacSummary")]
         public OracleRacSummary? OracleRacSummary { get; set; }
+
 
         #endregion
 
@@ -55,103 +58,95 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Scan
-            // GraphQL -> scan: String! (scalar)
-            if (this.Scan != null)
-            {
-                 s += ind + "scan\n";
-
-            }
-            //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
-            // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
-            if (this.OracleNonSlaProperties != null)
-            {
-                 s += ind + "oracleNonSlaProperties\n";
-
-                 s += ind + "{\n" + 
-                 this.OracleNonSlaProperties.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleRacSummary? OracleRacSummary
-            // GraphQL -> oracleRacSummary: OracleRacSummary (type)
-            if (this.OracleRacSummary != null)
-            {
-                 s += ind + "oracleRacSummary\n";
-
-                 s += ind + "{\n" + 
-                 this.OracleRacSummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Scan
+        // GraphQL -> scan: String! (scalar)
+        if (this.Scan != null) {
+            s += ind + "scan\n" ;
         }
+        //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
+        // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
+        if (this.OracleNonSlaProperties != null) {
+            s += ind + "oracleNonSlaProperties {\n" + this.OracleNonSlaProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OracleRacSummary? OracleRacSummary
+        // GraphQL -> oracleRacSummary: OracleRacSummary (type)
+        if (this.OracleRacSummary != null) {
+            s += ind + "oracleRacSummary {\n" + this.OracleRacSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Scan
+        // GraphQL -> scan: String! (scalar)
+        if (this.Scan == null && Exploration.Includes(parent + ".scan", true))
         {
-            //      C# -> System.String? Scan
-            // GraphQL -> scan: String! (scalar)
-            if (this.Scan == null && Exploration.Includes(parent + ".scan$"))
-            {
-                this.Scan = new System.String("FETCH");
-            }
-            //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
-            // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
-            if (this.OracleNonSlaProperties == null && Exploration.Includes(parent + ".oracleNonSlaProperties"))
-            {
-                this.OracleNonSlaProperties = new OracleNonSlaProperties();
-                this.OracleNonSlaProperties.ApplyExploratoryFragment(parent + ".oracleNonSlaProperties");
-            }
-            //      C# -> OracleRacSummary? OracleRacSummary
-            // GraphQL -> oracleRacSummary: OracleRacSummary (type)
-            if (this.OracleRacSummary == null && Exploration.Includes(parent + ".oracleRacSummary"))
-            {
-                this.OracleRacSummary = new OracleRacSummary();
-                this.OracleRacSummary.ApplyExploratoryFragment(parent + ".oracleRacSummary");
-            }
+            this.Scan = new System.String("FETCH");
         }
+        //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
+        // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
+        if (this.OracleNonSlaProperties == null && Exploration.Includes(parent + ".oracleNonSlaProperties"))
+        {
+            this.OracleNonSlaProperties = new OracleNonSlaProperties();
+            this.OracleNonSlaProperties.ApplyExploratoryFieldSpec(parent + ".oracleNonSlaProperties");
+        }
+        //      C# -> OracleRacSummary? OracleRacSummary
+        // GraphQL -> oracleRacSummary: OracleRacSummary (type)
+        if (this.OracleRacSummary == null && Exploration.Includes(parent + ".oracleRacSummary"))
+        {
+            this.OracleRacSummary = new OracleRacSummary();
+            this.OracleRacSummary.ApplyExploratoryFieldSpec(parent + ".oracleRacSummary");
+        }
+    }
 
 
     #endregion
 
     } // class OracleRacDetail
+    
     #endregion
 
     public static class ListOracleRacDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<OracleRacDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<OracleRacDetail> list, 
             String parent = "")
         {
-            var item = new OracleRacDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new OracleRacDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

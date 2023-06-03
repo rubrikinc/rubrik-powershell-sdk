@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region O365PdlGroup
-    public class O365PdlGroup: IFragment
+    public class O365PdlGroup: BaseType
     {
         #region members
+
         //      C# -> System.String? GroupId
         // GraphQL -> groupId: UUID! (scalar)
         [JsonProperty("groupId")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
         [JsonProperty("pdlAndWorkload")]
         public O365PdlAndWorkloadPair? PdlAndWorkload { get; set; }
+
 
         #endregion
 
@@ -46,86 +49,83 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? GroupId
-            // GraphQL -> groupId: UUID! (scalar)
-            if (this.GroupId != null)
-            {
-                 s += ind + "groupId\n";
-
-            }
-            //      C# -> O365PdlAndWorkloadPair? PdlAndWorkload
-            // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
-            if (this.PdlAndWorkload != null)
-            {
-                 s += ind + "pdlAndWorkload\n";
-
-                 s += ind + "{\n" + 
-                 this.PdlAndWorkload.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? GroupId
+        // GraphQL -> groupId: UUID! (scalar)
+        if (this.GroupId != null) {
+            s += ind + "groupId\n" ;
         }
+        //      C# -> O365PdlAndWorkloadPair? PdlAndWorkload
+        // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
+        if (this.PdlAndWorkload != null) {
+            s += ind + "pdlAndWorkload {\n" + this.PdlAndWorkload.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? GroupId
+        // GraphQL -> groupId: UUID! (scalar)
+        if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
         {
-            //      C# -> System.String? GroupId
-            // GraphQL -> groupId: UUID! (scalar)
-            if (this.GroupId == null && Exploration.Includes(parent + ".groupId$"))
-            {
-                this.GroupId = new System.String("FETCH");
-            }
-            //      C# -> O365PdlAndWorkloadPair? PdlAndWorkload
-            // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
-            if (this.PdlAndWorkload == null && Exploration.Includes(parent + ".pdlAndWorkload"))
-            {
-                this.PdlAndWorkload = new O365PdlAndWorkloadPair();
-                this.PdlAndWorkload.ApplyExploratoryFragment(parent + ".pdlAndWorkload");
-            }
+            this.GroupId = new System.String("FETCH");
         }
+        //      C# -> O365PdlAndWorkloadPair? PdlAndWorkload
+        // GraphQL -> pdlAndWorkload: O365PdlAndWorkloadPair! (type)
+        if (this.PdlAndWorkload == null && Exploration.Includes(parent + ".pdlAndWorkload"))
+        {
+            this.PdlAndWorkload = new O365PdlAndWorkloadPair();
+            this.PdlAndWorkload.ApplyExploratoryFieldSpec(parent + ".pdlAndWorkload");
+        }
+    }
 
 
     #endregion
 
     } // class O365PdlGroup
+    
     #endregion
 
     public static class ListO365PdlGroupExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<O365PdlGroup> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<O365PdlGroup> list, 
             String parent = "")
         {
-            var item = new O365PdlGroup();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new O365PdlGroup());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -103,8 +103,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             System.Boolean? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.Boolean)psObject.BaseObject;
                 } else {
                     fields = (System.Boolean)this.Field;
@@ -112,23 +111,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CancelActivitySeries(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CancelActivitySeries");
-            string parameters = "($input: CancelActivitySeriesInput!)\n";
+            var parameters = "($input: CancelActivitySeriesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCancelActivitySeries" + parameters + "{" + document + "}",
                 OperationName = "MutationCancelActivitySeries",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.Boolean", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

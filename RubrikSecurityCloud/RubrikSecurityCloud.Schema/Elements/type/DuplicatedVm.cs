@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region DuplicatedVm
-    public class DuplicatedVm: IFragment
+    public class DuplicatedVm: BaseType
     {
         #region members
+
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        [JsonProperty("slaAssignment")]
+        public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
+
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        [JsonProperty("effectiveSlaDomain")]
+        public SlaDomain? EffectiveSlaDomain { get; set; }
+
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
         [JsonProperty("fid")]
@@ -43,30 +55,27 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshotDistribution")]
         public SnapshotDistribution? SnapshotDistribution { get; set; }
 
-        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        [JsonProperty("slaAssignment")]
-        public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
-
-        //      C# -> SlaDomain? EffectiveSlaDomain
-        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-        [JsonProperty("effectiveSlaDomain")]
-        public SlaDomain? EffectiveSlaDomain { get; set; }
 
         #endregion
 
     #region methods
 
     public DuplicatedVm Set(
+        SlaAssignmentTypeEnum? SlaAssignment = null,
+        SlaDomain? EffectiveSlaDomain = null,
         System.String? Fid = null,
         Cluster? Cluster = null,
         PathNode? EffectiveSlaSourceObject = null,
         Snappable? ReportWorkload = null,
-        SnapshotDistribution? SnapshotDistribution = null,
-        SlaAssignmentTypeEnum? SlaAssignment = null,
-        SlaDomain? EffectiveSlaDomain = null
+        SnapshotDistribution? SnapshotDistribution = null
     ) 
     {
+        if ( SlaAssignment != null ) {
+            this.SlaAssignment = SlaAssignment;
+        }
+        if ( EffectiveSlaDomain != null ) {
+            this.EffectiveSlaDomain = EffectiveSlaDomain;
+        }
         if ( Fid != null ) {
             this.Fid = Fid;
         }
@@ -82,185 +91,147 @@ namespace Rubrik.SecurityCloud.Types
         if ( SnapshotDistribution != null ) {
             this.SnapshotDistribution = SnapshotDistribution;
         }
-        if ( SlaAssignment != null ) {
-            this.SlaAssignment = SlaAssignment;
-        }
-        if ( EffectiveSlaDomain != null ) {
-            this.EffectiveSlaDomain = EffectiveSlaDomain;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: UUID! (scalar)
-            if (this.Fid != null)
-            {
-                 s += ind + "fid\n";
-
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PathNode? EffectiveSlaSourceObject
-            // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-            if (this.EffectiveSlaSourceObject != null)
-            {
-                 s += ind + "effectiveSlaSourceObject\n";
-
-                 s += ind + "{\n" + 
-                 this.EffectiveSlaSourceObject.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> Snappable? ReportWorkload
-            // GraphQL -> reportWorkload: Snappable (type)
-            if (this.ReportWorkload != null)
-            {
-                 s += ind + "reportWorkload\n";
-
-                 s += ind + "{\n" + 
-                 this.ReportWorkload.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SnapshotDistribution? SnapshotDistribution
-            // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-            if (this.SnapshotDistribution != null)
-            {
-                 s += ind + "snapshotDistribution\n";
-
-                 s += ind + "{\n" + 
-                 this.SnapshotDistribution.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-            // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-            if (this.SlaAssignment != null)
-            {
-                 s += ind + "slaAssignment\n";
-
-            }
-                        //      C# -> SlaDomain? EffectiveSlaDomain
-            // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-            if (this.EffectiveSlaDomain != null)
-            {
-                s += ind + "effectiveSlaDomain\n";
-                s += ind + "{\n";
-
-                string typename = this.EffectiveSlaDomain.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.EffectiveSlaDomain.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        if (this.SlaAssignment != null) {
+            s += ind + "slaAssignment\n" ;
         }
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        if (this.EffectiveSlaDomain != null) {
+            s += ind + "effectiveSlaDomain {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid != null) {
+            s += ind + "fid\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PathNode? EffectiveSlaSourceObject
+        // GraphQL -> effectiveSlaSourceObject: PathNode (type)
+        if (this.EffectiveSlaSourceObject != null) {
+            s += ind + "effectiveSlaSourceObject {\n" + this.EffectiveSlaSourceObject.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> Snappable? ReportWorkload
+        // GraphQL -> reportWorkload: Snappable (type)
+        if (this.ReportWorkload != null) {
+            s += ind + "reportWorkload {\n" + this.ReportWorkload.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SnapshotDistribution? SnapshotDistribution
+        // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
+        if (this.SnapshotDistribution != null) {
+            s += ind + "snapshotDistribution {\n" + this.SnapshotDistribution.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
         {
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: UUID! (scalar)
-            if (this.Fid == null && Exploration.Includes(parent + ".fid$"))
-            {
-                this.Fid = new System.String("FETCH");
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> PathNode? EffectiveSlaSourceObject
-            // GraphQL -> effectiveSlaSourceObject: PathNode (type)
-            if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
-            {
-                this.EffectiveSlaSourceObject = new PathNode();
-                this.EffectiveSlaSourceObject.ApplyExploratoryFragment(parent + ".effectiveSlaSourceObject");
-            }
-            //      C# -> Snappable? ReportWorkload
-            // GraphQL -> reportWorkload: Snappable (type)
-            if (this.ReportWorkload == null && Exploration.Includes(parent + ".reportWorkload"))
-            {
-                this.ReportWorkload = new Snappable();
-                this.ReportWorkload.ApplyExploratoryFragment(parent + ".reportWorkload");
-            }
-            //      C# -> SnapshotDistribution? SnapshotDistribution
-            // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
-            if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
-            {
-                this.SnapshotDistribution = new SnapshotDistribution();
-                this.SnapshotDistribution.ApplyExploratoryFragment(parent + ".snapshotDistribution");
-            }
-            //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-            // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-            if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment$"))
-            {
-                this.SlaAssignment = new SlaAssignmentTypeEnum();
-            }
-            //      C# -> SlaDomain? EffectiveSlaDomain
-            // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
-            if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
-            {
-                this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.CreateInstanceOfFirstType(typeof(SlaDomain));
-                this.EffectiveSlaDomain.ApplyExploratoryFragment(parent + ".effectiveSlaDomain");
-            }
+            this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
+        //      C# -> SlaDomain? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
+        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        {
+            var impls = new List<SlaDomain>();
+            impls.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+            this.EffectiveSlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        {
+            this.Fid = new System.String("FETCH");
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> PathNode? EffectiveSlaSourceObject
+        // GraphQL -> effectiveSlaSourceObject: PathNode (type)
+        if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
+        {
+            this.EffectiveSlaSourceObject = new PathNode();
+            this.EffectiveSlaSourceObject.ApplyExploratoryFieldSpec(parent + ".effectiveSlaSourceObject");
+        }
+        //      C# -> Snappable? ReportWorkload
+        // GraphQL -> reportWorkload: Snappable (type)
+        if (this.ReportWorkload == null && Exploration.Includes(parent + ".reportWorkload"))
+        {
+            this.ReportWorkload = new Snappable();
+            this.ReportWorkload.ApplyExploratoryFieldSpec(parent + ".reportWorkload");
+        }
+        //      C# -> SnapshotDistribution? SnapshotDistribution
+        // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
+        if (this.SnapshotDistribution == null && Exploration.Includes(parent + ".snapshotDistribution"))
+        {
+            this.SnapshotDistribution = new SnapshotDistribution();
+            this.SnapshotDistribution.ApplyExploratoryFieldSpec(parent + ".snapshotDistribution");
+        }
+    }
 
 
     #endregion
 
     } // class DuplicatedVm
+    
     #endregion
 
     public static class ListDuplicatedVmExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<DuplicatedVm> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<DuplicatedVm> list, 
             String parent = "")
         {
-            var item = new DuplicatedVm();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new DuplicatedVm());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

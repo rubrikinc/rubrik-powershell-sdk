@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region DhrcScore
-    public class DhrcScore: IFragment
+    public class DhrcScore: BaseType
     {
         #region members
+
+        //      C# -> DhrcCategory? Category
+        // GraphQL -> category: DhrcCategory! (enum)
+        [JsonProperty("category")]
+        public DhrcCategory? Category { get; set; }
+
         //      C# -> DateTime? CalculatedAt
         // GraphQL -> calculatedAt: DateTime (scalar)
         [JsonProperty("calculatedAt")]
@@ -43,24 +50,23 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("context")]
         public DhrcScoreContext? Context { get; set; }
 
-        //      C# -> DhrcCategory? Category
-        // GraphQL -> category: DhrcCategory! (enum)
-        [JsonProperty("category")]
-        public DhrcCategory? Category { get; set; }
 
         #endregion
 
     #region methods
 
     public DhrcScore Set(
+        DhrcCategory? Category = null,
         DateTime? CalculatedAt = null,
         DateTime? Date = null,
         DateTime? EarliestMetric = null,
         System.Single? Value = null,
-        DhrcScoreContext? Context = null,
-        DhrcCategory? Category = null
+        DhrcScoreContext? Context = null
     ) 
     {
+        if ( Category != null ) {
+            this.Category = Category;
+        }
         if ( CalculatedAt != null ) {
             this.CalculatedAt = CalculatedAt;
         }
@@ -76,144 +82,130 @@ namespace Rubrik.SecurityCloud.Types
         if ( Context != null ) {
             this.Context = Context;
         }
-        if ( Category != null ) {
-            this.Category = Category;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? CalculatedAt
-            // GraphQL -> calculatedAt: DateTime (scalar)
-            if (this.CalculatedAt != null)
-            {
-                 s += ind + "calculatedAt\n";
-
-            }
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date != null)
-            {
-                 s += ind + "date\n";
-
-            }
-            //      C# -> DateTime? EarliestMetric
-            // GraphQL -> earliestMetric: DateTime (scalar)
-            if (this.EarliestMetric != null)
-            {
-                 s += ind + "earliestMetric\n";
-
-            }
-            //      C# -> System.Single? Value
-            // GraphQL -> value: Float! (scalar)
-            if (this.Value != null)
-            {
-                 s += ind + "value\n";
-
-            }
-            //      C# -> DhrcScoreContext? Context
-            // GraphQL -> context: DhrcScoreContext (type)
-            if (this.Context != null)
-            {
-                 s += ind + "context\n";
-
-                 s += ind + "{\n" + 
-                 this.Context.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> DhrcCategory? Category
-            // GraphQL -> category: DhrcCategory! (enum)
-            if (this.Category != null)
-            {
-                 s += ind + "category\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> DhrcCategory? Category
+        // GraphQL -> category: DhrcCategory! (enum)
+        if (this.Category != null) {
+            s += ind + "category\n" ;
         }
+        //      C# -> DateTime? CalculatedAt
+        // GraphQL -> calculatedAt: DateTime (scalar)
+        if (this.CalculatedAt != null) {
+            s += ind + "calculatedAt\n" ;
+        }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date != null) {
+            s += ind + "date\n" ;
+        }
+        //      C# -> DateTime? EarliestMetric
+        // GraphQL -> earliestMetric: DateTime (scalar)
+        if (this.EarliestMetric != null) {
+            s += ind + "earliestMetric\n" ;
+        }
+        //      C# -> System.Single? Value
+        // GraphQL -> value: Float! (scalar)
+        if (this.Value != null) {
+            s += ind + "value\n" ;
+        }
+        //      C# -> DhrcScoreContext? Context
+        // GraphQL -> context: DhrcScoreContext (type)
+        if (this.Context != null) {
+            s += ind + "context {\n" + this.Context.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> DhrcCategory? Category
+        // GraphQL -> category: DhrcCategory! (enum)
+        if (this.Category == null && Exploration.Includes(parent + ".category", true))
         {
-            //      C# -> DateTime? CalculatedAt
-            // GraphQL -> calculatedAt: DateTime (scalar)
-            if (this.CalculatedAt == null && Exploration.Includes(parent + ".calculatedAt$"))
-            {
-                this.CalculatedAt = new DateTime();
-            }
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date == null && Exploration.Includes(parent + ".date$"))
-            {
-                this.Date = new DateTime();
-            }
-            //      C# -> DateTime? EarliestMetric
-            // GraphQL -> earliestMetric: DateTime (scalar)
-            if (this.EarliestMetric == null && Exploration.Includes(parent + ".earliestMetric$"))
-            {
-                this.EarliestMetric = new DateTime();
-            }
-            //      C# -> System.Single? Value
-            // GraphQL -> value: Float! (scalar)
-            if (this.Value == null && Exploration.Includes(parent + ".value$"))
-            {
-                this.Value = new System.Single();
-            }
-            //      C# -> DhrcScoreContext? Context
-            // GraphQL -> context: DhrcScoreContext (type)
-            if (this.Context == null && Exploration.Includes(parent + ".context"))
-            {
-                this.Context = new DhrcScoreContext();
-                this.Context.ApplyExploratoryFragment(parent + ".context");
-            }
-            //      C# -> DhrcCategory? Category
-            // GraphQL -> category: DhrcCategory! (enum)
-            if (this.Category == null && Exploration.Includes(parent + ".category$"))
-            {
-                this.Category = new DhrcCategory();
-            }
+            this.Category = new DhrcCategory();
         }
+        //      C# -> DateTime? CalculatedAt
+        // GraphQL -> calculatedAt: DateTime (scalar)
+        if (this.CalculatedAt == null && Exploration.Includes(parent + ".calculatedAt", true))
+        {
+            this.CalculatedAt = new DateTime();
+        }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        {
+            this.Date = new DateTime();
+        }
+        //      C# -> DateTime? EarliestMetric
+        // GraphQL -> earliestMetric: DateTime (scalar)
+        if (this.EarliestMetric == null && Exploration.Includes(parent + ".earliestMetric", true))
+        {
+            this.EarliestMetric = new DateTime();
+        }
+        //      C# -> System.Single? Value
+        // GraphQL -> value: Float! (scalar)
+        if (this.Value == null && Exploration.Includes(parent + ".value", true))
+        {
+            this.Value = new System.Single();
+        }
+        //      C# -> DhrcScoreContext? Context
+        // GraphQL -> context: DhrcScoreContext (type)
+        if (this.Context == null && Exploration.Includes(parent + ".context"))
+        {
+            this.Context = new DhrcScoreContext();
+            this.Context.ApplyExploratoryFieldSpec(parent + ".context");
+        }
+    }
 
 
     #endregion
 
     } // class DhrcScore
+    
     #endregion
 
     public static class ListDhrcScoreExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<DhrcScore> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<DhrcScore> list, 
             String parent = "")
         {
-            var item = new DhrcScore();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new DhrcScore());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

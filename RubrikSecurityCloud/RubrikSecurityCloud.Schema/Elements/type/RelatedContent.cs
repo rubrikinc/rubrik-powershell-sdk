@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region RelatedContent
-    public class RelatedContent: IFragment
+    public class RelatedContent: BaseType
     {
         #region members
+
+        //      C# -> ProductDocumentationType? Type
+        // GraphQL -> type: ProductDocumentationType! (enum)
+        [JsonProperty("type")]
+        public ProductDocumentationType? Type { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -38,23 +45,22 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("title")]
         public System.String? Title { get; set; }
 
-        //      C# -> ProductDocumentationType? Type
-        // GraphQL -> type: ProductDocumentationType! (enum)
-        [JsonProperty("type")]
-        public ProductDocumentationType? Type { get; set; }
 
         #endregion
 
     #region methods
 
     public RelatedContent Set(
+        ProductDocumentationType? Type = null,
         System.String? Description = null,
         System.String? Id = null,
         System.String? Link = null,
-        System.String? Title = null,
-        ProductDocumentationType? Type = null
+        System.String? Title = null
     ) 
     {
+        if ( Type != null ) {
+            this.Type = Type;
+        }
         if ( Description != null ) {
             this.Description = Description;
         }
@@ -67,127 +73,118 @@ namespace Rubrik.SecurityCloud.Types
         if ( Title != null ) {
             this.Title = Title;
         }
-        if ( Type != null ) {
-            this.Type = Type;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description != null)
-            {
-                 s += ind + "description\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? Link
-            // GraphQL -> link: URL (scalar)
-            if (this.Link != null)
-            {
-                 s += ind + "link\n";
-
-            }
-            //      C# -> System.String? Title
-            // GraphQL -> title: String! (scalar)
-            if (this.Title != null)
-            {
-                 s += ind + "title\n";
-
-            }
-            //      C# -> ProductDocumentationType? Type
-            // GraphQL -> type: ProductDocumentationType! (enum)
-            if (this.Type != null)
-            {
-                 s += ind + "type\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ProductDocumentationType? Type
+        // GraphQL -> type: ProductDocumentationType! (enum)
+        if (this.Type != null) {
+            s += ind + "type\n" ;
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            s += ind + "description\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? Link
+        // GraphQL -> link: URL (scalar)
+        if (this.Link != null) {
+            s += ind + "link\n" ;
+        }
+        //      C# -> System.String? Title
+        // GraphQL -> title: String! (scalar)
+        if (this.Title != null) {
+            s += ind + "title\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ProductDocumentationType? Type
+        // GraphQL -> type: ProductDocumentationType! (enum)
+        if (this.Type == null && Exploration.Includes(parent + ".type", true))
         {
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description == null && Exploration.Includes(parent + ".description$"))
-            {
-                this.Description = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? Link
-            // GraphQL -> link: URL (scalar)
-            if (this.Link == null && Exploration.Includes(parent + ".link$"))
-            {
-                this.Link = new System.String("FETCH");
-            }
-            //      C# -> System.String? Title
-            // GraphQL -> title: String! (scalar)
-            if (this.Title == null && Exploration.Includes(parent + ".title$"))
-            {
-                this.Title = new System.String("FETCH");
-            }
-            //      C# -> ProductDocumentationType? Type
-            // GraphQL -> type: ProductDocumentationType! (enum)
-            if (this.Type == null && Exploration.Includes(parent + ".type$"))
-            {
-                this.Type = new ProductDocumentationType();
-            }
+            this.Type = new ProductDocumentationType();
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        {
+            this.Description = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? Link
+        // GraphQL -> link: URL (scalar)
+        if (this.Link == null && Exploration.Includes(parent + ".link", true))
+        {
+            this.Link = new System.String("FETCH");
+        }
+        //      C# -> System.String? Title
+        // GraphQL -> title: String! (scalar)
+        if (this.Title == null && Exploration.Includes(parent + ".title", true))
+        {
+            this.Title = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class RelatedContent
+    
     #endregion
 
     public static class ListRelatedContentExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<RelatedContent> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<RelatedContent> list, 
             String parent = "")
         {
-            var item = new RelatedContent();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new RelatedContent());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

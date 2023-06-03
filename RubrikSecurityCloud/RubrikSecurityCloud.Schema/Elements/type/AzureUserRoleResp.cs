@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureUserRoleResp
-    public class AzureUserRoleResp: IFragment
+    public class AzureUserRoleResp: BaseType
     {
         #region members
+
         //      C# -> RoleStatus? GlobalAdministrator
         // GraphQL -> globalAdministrator: RoleStatus (type)
         [JsonProperty("globalAdministrator")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subscriptionOwner: RoleStatus (type)
         [JsonProperty("subscriptionOwner")]
         public RoleStatus? SubscriptionOwner { get; set; }
+
 
         #endregion
 
@@ -46,90 +49,84 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> RoleStatus? GlobalAdministrator
-            // GraphQL -> globalAdministrator: RoleStatus (type)
-            if (this.GlobalAdministrator != null)
-            {
-                 s += ind + "globalAdministrator\n";
-
-                 s += ind + "{\n" + 
-                 this.GlobalAdministrator.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> RoleStatus? SubscriptionOwner
-            // GraphQL -> subscriptionOwner: RoleStatus (type)
-            if (this.SubscriptionOwner != null)
-            {
-                 s += ind + "subscriptionOwner\n";
-
-                 s += ind + "{\n" + 
-                 this.SubscriptionOwner.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> RoleStatus? GlobalAdministrator
+        // GraphQL -> globalAdministrator: RoleStatus (type)
+        if (this.GlobalAdministrator != null) {
+            s += ind + "globalAdministrator {\n" + this.GlobalAdministrator.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> RoleStatus? SubscriptionOwner
+        // GraphQL -> subscriptionOwner: RoleStatus (type)
+        if (this.SubscriptionOwner != null) {
+            s += ind + "subscriptionOwner {\n" + this.SubscriptionOwner.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> RoleStatus? GlobalAdministrator
+        // GraphQL -> globalAdministrator: RoleStatus (type)
+        if (this.GlobalAdministrator == null && Exploration.Includes(parent + ".globalAdministrator"))
         {
-            //      C# -> RoleStatus? GlobalAdministrator
-            // GraphQL -> globalAdministrator: RoleStatus (type)
-            if (this.GlobalAdministrator == null && Exploration.Includes(parent + ".globalAdministrator"))
-            {
-                this.GlobalAdministrator = new RoleStatus();
-                this.GlobalAdministrator.ApplyExploratoryFragment(parent + ".globalAdministrator");
-            }
-            //      C# -> RoleStatus? SubscriptionOwner
-            // GraphQL -> subscriptionOwner: RoleStatus (type)
-            if (this.SubscriptionOwner == null && Exploration.Includes(parent + ".subscriptionOwner"))
-            {
-                this.SubscriptionOwner = new RoleStatus();
-                this.SubscriptionOwner.ApplyExploratoryFragment(parent + ".subscriptionOwner");
-            }
+            this.GlobalAdministrator = new RoleStatus();
+            this.GlobalAdministrator.ApplyExploratoryFieldSpec(parent + ".globalAdministrator");
         }
+        //      C# -> RoleStatus? SubscriptionOwner
+        // GraphQL -> subscriptionOwner: RoleStatus (type)
+        if (this.SubscriptionOwner == null && Exploration.Includes(parent + ".subscriptionOwner"))
+        {
+            this.SubscriptionOwner = new RoleStatus();
+            this.SubscriptionOwner.ApplyExploratoryFieldSpec(parent + ".subscriptionOwner");
+        }
+    }
 
 
     #endregion
 
     } // class AzureUserRoleResp
+    
     #endregion
 
     public static class ListAzureUserRoleRespExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureUserRoleResp> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureUserRoleResp> list, 
             String parent = "")
         {
-            var item = new AzureUserRoleResp();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureUserRoleResp());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VsphereLiveMount
-    public class VsphereLiveMount: IFragment
+    public class VsphereLiveMount: BaseType
     {
         #region members
+
+        //      C# -> VsphereLiveMountStatus? VmStatus
+        // GraphQL -> vmStatus: VsphereLiveMountStatus! (enum)
+        [JsonProperty("vmStatus")]
+        public VsphereLiveMountStatus? VmStatus { get; set; }
+
         //      C# -> System.Int32? AttachingDiskCount
         // GraphQL -> attachingDiskCount: Int! (scalar)
         [JsonProperty("attachingDiskCount")]
@@ -88,16 +95,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("sourceVm")]
         public VsphereVm? SourceVm { get; set; }
 
-        //      C# -> VsphereLiveMountStatus? VmStatus
-        // GraphQL -> vmStatus: VsphereLiveMountStatus! (enum)
-        [JsonProperty("vmStatus")]
-        public VsphereLiveMountStatus? VmStatus { get; set; }
 
         #endregion
 
     #region methods
 
     public VsphereLiveMount Set(
+        VsphereLiveMountStatus? VmStatus = null,
         System.Int32? AttachingDiskCount = null,
         System.String? CdmId = null,
         System.Boolean? HasAttachingDisk = null,
@@ -111,10 +115,12 @@ namespace Rubrik.SecurityCloud.Types
         VsphereHost? Host = null,
         VsphereVm? MountedVm = null,
         CdmSnapshot? SourceSnapshot = null,
-        VsphereVm? SourceVm = null,
-        VsphereLiveMountStatus? VmStatus = null
+        VsphereVm? SourceVm = null
     ) 
     {
+        if ( VmStatus != null ) {
+            this.VmStatus = VmStatus;
+        }
         if ( AttachingDiskCount != null ) {
             this.AttachingDiskCount = AttachingDiskCount;
         }
@@ -157,277 +163,233 @@ namespace Rubrik.SecurityCloud.Types
         if ( SourceVm != null ) {
             this.SourceVm = SourceVm;
         }
-        if ( VmStatus != null ) {
-            this.VmStatus = VmStatus;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? AttachingDiskCount
-            // GraphQL -> attachingDiskCount: Int! (scalar)
-            if (this.AttachingDiskCount != null)
-            {
-                 s += ind + "attachingDiskCount\n";
-
-            }
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId != null)
-            {
-                 s += ind + "cdmId\n";
-
-            }
-            //      C# -> System.Boolean? HasAttachingDisk
-            // GraphQL -> hasAttachingDisk: Boolean! (scalar)
-            if (this.HasAttachingDisk != null)
-            {
-                 s += ind + "hasAttachingDisk\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsReady
-            // GraphQL -> isReady: Boolean! (scalar)
-            if (this.IsReady != null)
-            {
-                 s += ind + "isReady\n";
-
-            }
-            //      C# -> System.String? MigrateDatastoreRequestId
-            // GraphQL -> migrateDatastoreRequestId: String! (scalar)
-            if (this.MigrateDatastoreRequestId != null)
-            {
-                 s += ind + "migrateDatastoreRequestId\n";
-
-            }
-            //      C# -> DateTime? MountTimestamp
-            // GraphQL -> mountTimestamp: DateTime (scalar)
-            if (this.MountTimestamp != null)
-            {
-                 s += ind + "mountTimestamp\n";
-
-            }
-            //      C# -> System.String? NewVmName
-            // GraphQL -> newVmName: String (scalar)
-            if (this.NewVmName != null)
-            {
-                 s += ind + "newVmName\n";
-
-            }
-            //      C# -> System.String? VcenterId
-            // GraphQL -> vcenterId: String! (scalar)
-            if (this.VcenterId != null)
-            {
-                 s += ind + "vcenterId\n";
-
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VsphereHost? Host
-            // GraphQL -> host: VsphereHost (type)
-            if (this.Host != null)
-            {
-                 s += ind + "host\n";
-
-                 s += ind + "{\n" + 
-                 this.Host.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VsphereVm? MountedVm
-            // GraphQL -> mountedVm: VsphereVm (type)
-            if (this.MountedVm != null)
-            {
-                 s += ind + "mountedVm\n";
-
-                 s += ind + "{\n" + 
-                 this.MountedVm.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? SourceSnapshot
-            // GraphQL -> sourceSnapshot: CdmSnapshot (type)
-            if (this.SourceSnapshot != null)
-            {
-                 s += ind + "sourceSnapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceSnapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VsphereVm? SourceVm
-            // GraphQL -> sourceVm: VsphereVm (type)
-            if (this.SourceVm != null)
-            {
-                 s += ind + "sourceVm\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceVm.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VsphereLiveMountStatus? VmStatus
-            // GraphQL -> vmStatus: VsphereLiveMountStatus! (enum)
-            if (this.VmStatus != null)
-            {
-                 s += ind + "vmStatus\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> VsphereLiveMountStatus? VmStatus
+        // GraphQL -> vmStatus: VsphereLiveMountStatus! (enum)
+        if (this.VmStatus != null) {
+            s += ind + "vmStatus\n" ;
         }
+        //      C# -> System.Int32? AttachingDiskCount
+        // GraphQL -> attachingDiskCount: Int! (scalar)
+        if (this.AttachingDiskCount != null) {
+            s += ind + "attachingDiskCount\n" ;
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
+        }
+        //      C# -> System.Boolean? HasAttachingDisk
+        // GraphQL -> hasAttachingDisk: Boolean! (scalar)
+        if (this.HasAttachingDisk != null) {
+            s += ind + "hasAttachingDisk\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsReady
+        // GraphQL -> isReady: Boolean! (scalar)
+        if (this.IsReady != null) {
+            s += ind + "isReady\n" ;
+        }
+        //      C# -> System.String? MigrateDatastoreRequestId
+        // GraphQL -> migrateDatastoreRequestId: String! (scalar)
+        if (this.MigrateDatastoreRequestId != null) {
+            s += ind + "migrateDatastoreRequestId\n" ;
+        }
+        //      C# -> DateTime? MountTimestamp
+        // GraphQL -> mountTimestamp: DateTime (scalar)
+        if (this.MountTimestamp != null) {
+            s += ind + "mountTimestamp\n" ;
+        }
+        //      C# -> System.String? NewVmName
+        // GraphQL -> newVmName: String (scalar)
+        if (this.NewVmName != null) {
+            s += ind + "newVmName\n" ;
+        }
+        //      C# -> System.String? VcenterId
+        // GraphQL -> vcenterId: String! (scalar)
+        if (this.VcenterId != null) {
+            s += ind + "vcenterId\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> VsphereHost? Host
+        // GraphQL -> host: VsphereHost (type)
+        if (this.Host != null) {
+            s += ind + "host {\n" + this.Host.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> VsphereVm? MountedVm
+        // GraphQL -> mountedVm: VsphereVm (type)
+        if (this.MountedVm != null) {
+            s += ind + "mountedVm {\n" + this.MountedVm.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? SourceSnapshot
+        // GraphQL -> sourceSnapshot: CdmSnapshot (type)
+        if (this.SourceSnapshot != null) {
+            s += ind + "sourceSnapshot {\n" + this.SourceSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> VsphereVm? SourceVm
+        // GraphQL -> sourceVm: VsphereVm (type)
+        if (this.SourceVm != null) {
+            s += ind + "sourceVm {\n" + this.SourceVm.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> VsphereLiveMountStatus? VmStatus
+        // GraphQL -> vmStatus: VsphereLiveMountStatus! (enum)
+        if (this.VmStatus == null && Exploration.Includes(parent + ".vmStatus", true))
         {
-            //      C# -> System.Int32? AttachingDiskCount
-            // GraphQL -> attachingDiskCount: Int! (scalar)
-            if (this.AttachingDiskCount == null && Exploration.Includes(parent + ".attachingDiskCount$"))
-            {
-                this.AttachingDiskCount = new System.Int32();
-            }
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
-            {
-                this.CdmId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? HasAttachingDisk
-            // GraphQL -> hasAttachingDisk: Boolean! (scalar)
-            if (this.HasAttachingDisk == null && Exploration.Includes(parent + ".hasAttachingDisk$"))
-            {
-                this.HasAttachingDisk = new System.Boolean();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsReady
-            // GraphQL -> isReady: Boolean! (scalar)
-            if (this.IsReady == null && Exploration.Includes(parent + ".isReady$"))
-            {
-                this.IsReady = new System.Boolean();
-            }
-            //      C# -> System.String? MigrateDatastoreRequestId
-            // GraphQL -> migrateDatastoreRequestId: String! (scalar)
-            if (this.MigrateDatastoreRequestId == null && Exploration.Includes(parent + ".migrateDatastoreRequestId$"))
-            {
-                this.MigrateDatastoreRequestId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? MountTimestamp
-            // GraphQL -> mountTimestamp: DateTime (scalar)
-            if (this.MountTimestamp == null && Exploration.Includes(parent + ".mountTimestamp$"))
-            {
-                this.MountTimestamp = new DateTime();
-            }
-            //      C# -> System.String? NewVmName
-            // GraphQL -> newVmName: String (scalar)
-            if (this.NewVmName == null && Exploration.Includes(parent + ".newVmName$"))
-            {
-                this.NewVmName = new System.String("FETCH");
-            }
-            //      C# -> System.String? VcenterId
-            // GraphQL -> vcenterId: String! (scalar)
-            if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId$"))
-            {
-                this.VcenterId = new System.String("FETCH");
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> VsphereHost? Host
-            // GraphQL -> host: VsphereHost (type)
-            if (this.Host == null && Exploration.Includes(parent + ".host"))
-            {
-                this.Host = new VsphereHost();
-                this.Host.ApplyExploratoryFragment(parent + ".host");
-            }
-            //      C# -> VsphereVm? MountedVm
-            // GraphQL -> mountedVm: VsphereVm (type)
-            if (this.MountedVm == null && Exploration.Includes(parent + ".mountedVm"))
-            {
-                this.MountedVm = new VsphereVm();
-                this.MountedVm.ApplyExploratoryFragment(parent + ".mountedVm");
-            }
-            //      C# -> CdmSnapshot? SourceSnapshot
-            // GraphQL -> sourceSnapshot: CdmSnapshot (type)
-            if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
-            {
-                this.SourceSnapshot = new CdmSnapshot();
-                this.SourceSnapshot.ApplyExploratoryFragment(parent + ".sourceSnapshot");
-            }
-            //      C# -> VsphereVm? SourceVm
-            // GraphQL -> sourceVm: VsphereVm (type)
-            if (this.SourceVm == null && Exploration.Includes(parent + ".sourceVm"))
-            {
-                this.SourceVm = new VsphereVm();
-                this.SourceVm.ApplyExploratoryFragment(parent + ".sourceVm");
-            }
-            //      C# -> VsphereLiveMountStatus? VmStatus
-            // GraphQL -> vmStatus: VsphereLiveMountStatus! (enum)
-            if (this.VmStatus == null && Exploration.Includes(parent + ".vmStatus$"))
-            {
-                this.VmStatus = new VsphereLiveMountStatus();
-            }
+            this.VmStatus = new VsphereLiveMountStatus();
         }
+        //      C# -> System.Int32? AttachingDiskCount
+        // GraphQL -> attachingDiskCount: Int! (scalar)
+        if (this.AttachingDiskCount == null && Exploration.Includes(parent + ".attachingDiskCount", true))
+        {
+            this.AttachingDiskCount = new System.Int32();
+        }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        {
+            this.CdmId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? HasAttachingDisk
+        // GraphQL -> hasAttachingDisk: Boolean! (scalar)
+        if (this.HasAttachingDisk == null && Exploration.Includes(parent + ".hasAttachingDisk", true))
+        {
+            this.HasAttachingDisk = true;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsReady
+        // GraphQL -> isReady: Boolean! (scalar)
+        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        {
+            this.IsReady = true;
+        }
+        //      C# -> System.String? MigrateDatastoreRequestId
+        // GraphQL -> migrateDatastoreRequestId: String! (scalar)
+        if (this.MigrateDatastoreRequestId == null && Exploration.Includes(parent + ".migrateDatastoreRequestId", true))
+        {
+            this.MigrateDatastoreRequestId = new System.String("FETCH");
+        }
+        //      C# -> DateTime? MountTimestamp
+        // GraphQL -> mountTimestamp: DateTime (scalar)
+        if (this.MountTimestamp == null && Exploration.Includes(parent + ".mountTimestamp", true))
+        {
+            this.MountTimestamp = new DateTime();
+        }
+        //      C# -> System.String? NewVmName
+        // GraphQL -> newVmName: String (scalar)
+        if (this.NewVmName == null && Exploration.Includes(parent + ".newVmName", true))
+        {
+            this.NewVmName = new System.String("FETCH");
+        }
+        //      C# -> System.String? VcenterId
+        // GraphQL -> vcenterId: String! (scalar)
+        if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
+        {
+            this.VcenterId = new System.String("FETCH");
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> VsphereHost? Host
+        // GraphQL -> host: VsphereHost (type)
+        if (this.Host == null && Exploration.Includes(parent + ".host"))
+        {
+            this.Host = new VsphereHost();
+            this.Host.ApplyExploratoryFieldSpec(parent + ".host");
+        }
+        //      C# -> VsphereVm? MountedVm
+        // GraphQL -> mountedVm: VsphereVm (type)
+        if (this.MountedVm == null && Exploration.Includes(parent + ".mountedVm"))
+        {
+            this.MountedVm = new VsphereVm();
+            this.MountedVm.ApplyExploratoryFieldSpec(parent + ".mountedVm");
+        }
+        //      C# -> CdmSnapshot? SourceSnapshot
+        // GraphQL -> sourceSnapshot: CdmSnapshot (type)
+        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        {
+            this.SourceSnapshot = new CdmSnapshot();
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+        }
+        //      C# -> VsphereVm? SourceVm
+        // GraphQL -> sourceVm: VsphereVm (type)
+        if (this.SourceVm == null && Exploration.Includes(parent + ".sourceVm"))
+        {
+            this.SourceVm = new VsphereVm();
+            this.SourceVm.ApplyExploratoryFieldSpec(parent + ".sourceVm");
+        }
+    }
 
 
     #endregion
 
     } // class VsphereLiveMount
+    
     #endregion
 
     public static class ListVsphereLiveMountExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VsphereLiveMount> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VsphereLiveMount> list, 
             String parent = "")
         {
-            var item = new VsphereLiveMount();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VsphereLiveMount());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

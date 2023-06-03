@@ -33,6 +33,20 @@ Describe 'Get-RscType' {
             $authInfo = Get-RscType -Name "AuthInfoInput" -InitialValues @{"UserCredentials" = $userCredentials}
             $authInfo.UserCredentials.Username | Should -Be "admin"
             $authInfo.UserCredentials.Password | Should -Be "pass"
-          }
+        }
+    }
+
+    Context 'When the -InitialProperties param contains a field that is of type List<Interface>'{
+        It -Name 'Should return a list of types for an interface list' -Test {
+            $result = Get-RscType -Name MssqlTopLevelDescendantTypeConnection -InitialProperties @("nodes.id")
+            $result.nodes.Count -gt 0
+            $typeList = (Get-RscType -Interface "MssqlTopLevelDescendantType").Name
+            foreach ($resultNode in $result.nodes)
+            {
+                $typeList -Contains $resultNode.GetType().Name | Should -Be $true
+                $resultNode.Id | Should -Be "FETCH"
+                $resultNode.Name | Should -Be $null
+            }           
+        }
     }
 }

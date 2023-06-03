@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AwsAuthServerDetail
-    public class AwsAuthServerDetail: IFragment
+    public class AwsAuthServerDetail: BaseType
     {
         #region members
+
+        //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions
+        // GraphQL -> authServerAwsRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
+        [JsonProperty("authServerAwsRegions")]
+        public List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions { get; set; }
+
         //      C# -> System.String? Agency
         // GraphQL -> agency: String! (scalar)
         [JsonProperty("agency")]
@@ -43,24 +50,23 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("roleName")]
         public System.String? RoleName { get; set; }
 
-        //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions
-        // GraphQL -> authServerAwsRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
-        [JsonProperty("authServerAwsRegions")]
-        public List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions { get; set; }
 
         #endregion
 
     #region methods
 
     public AwsAuthServerDetail Set(
+        List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions = null,
         System.String? Agency = null,
         System.Int64? AuthServerCaCertId = null,
         System.String? AuthServerHostName = null,
         System.Int64? AuthServerUserClientCertId = null,
-        System.String? RoleName = null,
-        List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions = null
+        System.String? RoleName = null
     ) 
     {
+        if ( AuthServerAwsRegions != null ) {
+            this.AuthServerAwsRegions = AuthServerAwsRegions;
+        }
         if ( Agency != null ) {
             this.Agency = Agency;
         }
@@ -76,140 +82,129 @@ namespace Rubrik.SecurityCloud.Types
         if ( RoleName != null ) {
             this.RoleName = RoleName;
         }
-        if ( AuthServerAwsRegions != null ) {
-            this.AuthServerAwsRegions = AuthServerAwsRegions;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Agency
-            // GraphQL -> agency: String! (scalar)
-            if (this.Agency != null)
-            {
-                 s += ind + "agency\n";
-
-            }
-            //      C# -> System.Int64? AuthServerCaCertId
-            // GraphQL -> authServerCaCertId: Long! (scalar)
-            if (this.AuthServerCaCertId != null)
-            {
-                 s += ind + "authServerCaCertId\n";
-
-            }
-            //      C# -> System.String? AuthServerHostName
-            // GraphQL -> authServerHostName: String! (scalar)
-            if (this.AuthServerHostName != null)
-            {
-                 s += ind + "authServerHostName\n";
-
-            }
-            //      C# -> System.Int64? AuthServerUserClientCertId
-            // GraphQL -> authServerUserClientCertId: Long! (scalar)
-            if (this.AuthServerUserClientCertId != null)
-            {
-                 s += ind + "authServerUserClientCertId\n";
-
-            }
-            //      C# -> System.String? RoleName
-            // GraphQL -> roleName: String! (scalar)
-            if (this.RoleName != null)
-            {
-                 s += ind + "roleName\n";
-
-            }
-            //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions
-            // GraphQL -> authServerAwsRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
-            if (this.AuthServerAwsRegions != null)
-            {
-                 s += ind + "authServerAwsRegions\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions
+        // GraphQL -> authServerAwsRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
+        if (this.AuthServerAwsRegions != null) {
+            s += ind + "authServerAwsRegions\n" ;
         }
+        //      C# -> System.String? Agency
+        // GraphQL -> agency: String! (scalar)
+        if (this.Agency != null) {
+            s += ind + "agency\n" ;
+        }
+        //      C# -> System.Int64? AuthServerCaCertId
+        // GraphQL -> authServerCaCertId: Long! (scalar)
+        if (this.AuthServerCaCertId != null) {
+            s += ind + "authServerCaCertId\n" ;
+        }
+        //      C# -> System.String? AuthServerHostName
+        // GraphQL -> authServerHostName: String! (scalar)
+        if (this.AuthServerHostName != null) {
+            s += ind + "authServerHostName\n" ;
+        }
+        //      C# -> System.Int64? AuthServerUserClientCertId
+        // GraphQL -> authServerUserClientCertId: Long! (scalar)
+        if (this.AuthServerUserClientCertId != null) {
+            s += ind + "authServerUserClientCertId\n" ;
+        }
+        //      C# -> System.String? RoleName
+        // GraphQL -> roleName: String! (scalar)
+        if (this.RoleName != null) {
+            s += ind + "roleName\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions
+        // GraphQL -> authServerAwsRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
+        if (this.AuthServerAwsRegions == null && Exploration.Includes(parent + ".authServerAwsRegions", true))
         {
-            //      C# -> System.String? Agency
-            // GraphQL -> agency: String! (scalar)
-            if (this.Agency == null && Exploration.Includes(parent + ".agency$"))
-            {
-                this.Agency = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? AuthServerCaCertId
-            // GraphQL -> authServerCaCertId: Long! (scalar)
-            if (this.AuthServerCaCertId == null && Exploration.Includes(parent + ".authServerCaCertId$"))
-            {
-                this.AuthServerCaCertId = new System.Int64();
-            }
-            //      C# -> System.String? AuthServerHostName
-            // GraphQL -> authServerHostName: String! (scalar)
-            if (this.AuthServerHostName == null && Exploration.Includes(parent + ".authServerHostName$"))
-            {
-                this.AuthServerHostName = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? AuthServerUserClientCertId
-            // GraphQL -> authServerUserClientCertId: Long! (scalar)
-            if (this.AuthServerUserClientCertId == null && Exploration.Includes(parent + ".authServerUserClientCertId$"))
-            {
-                this.AuthServerUserClientCertId = new System.Int64();
-            }
-            //      C# -> System.String? RoleName
-            // GraphQL -> roleName: String! (scalar)
-            if (this.RoleName == null && Exploration.Includes(parent + ".roleName$"))
-            {
-                this.RoleName = new System.String("FETCH");
-            }
-            //      C# -> List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions
-            // GraphQL -> authServerAwsRegions: [AwsAuthServerBasedCloudAccountRegion!]! (enum)
-            if (this.AuthServerAwsRegions == null && Exploration.Includes(parent + ".authServerAwsRegions$"))
-            {
-                this.AuthServerAwsRegions = new List<AwsAuthServerBasedCloudAccountRegion>();
-            }
+            this.AuthServerAwsRegions = new List<AwsAuthServerBasedCloudAccountRegion>();
         }
+        //      C# -> System.String? Agency
+        // GraphQL -> agency: String! (scalar)
+        if (this.Agency == null && Exploration.Includes(parent + ".agency", true))
+        {
+            this.Agency = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? AuthServerCaCertId
+        // GraphQL -> authServerCaCertId: Long! (scalar)
+        if (this.AuthServerCaCertId == null && Exploration.Includes(parent + ".authServerCaCertId", true))
+        {
+            this.AuthServerCaCertId = new System.Int64();
+        }
+        //      C# -> System.String? AuthServerHostName
+        // GraphQL -> authServerHostName: String! (scalar)
+        if (this.AuthServerHostName == null && Exploration.Includes(parent + ".authServerHostName", true))
+        {
+            this.AuthServerHostName = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? AuthServerUserClientCertId
+        // GraphQL -> authServerUserClientCertId: Long! (scalar)
+        if (this.AuthServerUserClientCertId == null && Exploration.Includes(parent + ".authServerUserClientCertId", true))
+        {
+            this.AuthServerUserClientCertId = new System.Int64();
+        }
+        //      C# -> System.String? RoleName
+        // GraphQL -> roleName: String! (scalar)
+        if (this.RoleName == null && Exploration.Includes(parent + ".roleName", true))
+        {
+            this.RoleName = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AwsAuthServerDetail
+    
     #endregion
 
     public static class ListAwsAuthServerDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AwsAuthServerDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AwsAuthServerDetail> list, 
             String parent = "")
         {
-            var item = new AwsAuthServerDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AwsAuthServerDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

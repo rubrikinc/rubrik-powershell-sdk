@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -395,8 +395,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             VsphereVm? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (VsphereVm)psObject.BaseObject;
                 } else {
                     fields = (VsphereVm)this.Field;
@@ -404,23 +403,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.VsphereVmNew(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VsphereVmNew");
-            string parameters = "($fid: UUID!)\n";
+            var parameters = "($fid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVsphereVmNew" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmNew",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VsphereVm> task = this._rbkClient.InvokeGenericCallAsync<VsphereVm>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "VsphereVm", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -443,8 +441,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             VsphereVmConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (VsphereVmConnection)psObject.BaseObject;
                 } else {
                     fields = (VsphereVmConnection)this.Field;
@@ -452,23 +449,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.VsphereVmNewConnection(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VsphereVmNewConnection");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVsphereVmNewConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmNewConnection",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VsphereVmConnection> task = this._rbkClient.InvokeGenericCallAsync<VsphereVmConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "VsphereVmConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -483,8 +479,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             RecoverableRangeResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RecoverableRangeResponse)psObject.BaseObject;
                 } else {
                     fields = (RecoverableRangeResponse)this.Field;
@@ -492,23 +487,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.VsphereVmRecoverableRange(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VsphereVmRecoverableRange");
-            string parameters = "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)\n";
+            var parameters = "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVsphereVmRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmRecoverableRange",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<RecoverableRangeResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RecoverableRangeResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -521,8 +515,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             BatchVmwareVmRecoverableRanges? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchVmwareVmRecoverableRanges)psObject.BaseObject;
                 } else {
                     fields = (BatchVmwareVmRecoverableRanges)this.Field;
@@ -530,23 +523,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.VsphereVmRecoverableRangeInBatch(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VsphereVmRecoverableRangeInBatch");
-            string parameters = "($requestInfo: BatchVmwareVmRecoverableRangesRequestInput!)\n";
+            var parameters = "($requestInfo: BatchVmwareVmRecoverableRangesRequestInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVsphereVmRecoverableRangeInBatch" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmRecoverableRangeInBatch",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchVmwareVmRecoverableRanges> task = this._rbkClient.InvokeGenericCallAsync<BatchVmwareVmRecoverableRanges>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchVmwareVmRecoverableRanges", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -561,8 +553,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             RecoverableRangeResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RecoverableRangeResponse)psObject.BaseObject;
                 } else {
                     fields = (RecoverableRangeResponse)this.Field;
@@ -570,23 +561,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.VsphereVmMissedRecoverableRange(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VsphereVmMissedRecoverableRange");
-            string parameters = "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)\n";
+            var parameters = "($snappableFid: UUID!,$beforeTime: DateTime,$afterTime: DateTime)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVsphereVmMissedRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmMissedRecoverableRange",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<RecoverableRangeResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RecoverableRangeResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -600,8 +590,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -609,23 +598,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.VsphereVmAsyncRequestStatus(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VsphereVmAsyncRequestStatus");
-            string parameters = "($clusterUuid: UUID!,$id: String!)\n";
+            var parameters = "($clusterUuid: UUID!,$id: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVsphereVmAsyncRequestStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmAsyncRequestStatus",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

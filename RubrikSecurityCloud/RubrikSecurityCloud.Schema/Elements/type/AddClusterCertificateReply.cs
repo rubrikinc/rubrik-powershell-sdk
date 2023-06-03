@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AddClusterCertificateReply
-    public class AddClusterCertificateReply: IFragment
+    public class AddClusterCertificateReply: BaseType
     {
         #region members
+
         //      C# -> System.String? CertId
         // GraphQL -> certId: String! (scalar)
         [JsonProperty("certId")]
@@ -57,6 +59,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> usedBy: String! (scalar)
         [JsonProperty("usedBy")]
         public System.String? UsedBy { get; set; }
+
 
         #endregion
 
@@ -100,160 +103,148 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CertId
-            // GraphQL -> certId: String! (scalar)
-            if (this.CertId != null)
-            {
-                 s += ind + "certId\n";
-
-            }
-            //      C# -> System.String? Description
-            // GraphQL -> description: String (scalar)
-            if (this.Description != null)
-            {
-                 s += ind + "description\n";
-
-            }
-            //      C# -> DateTime? Expiration
-            // GraphQL -> expiration: DateTime (scalar)
-            if (this.Expiration != null)
-            {
-                 s += ind + "expiration\n";
-
-            }
-            //      C# -> System.Boolean? HasKey
-            // GraphQL -> hasKey: Boolean! (scalar)
-            if (this.HasKey != null)
-            {
-                 s += ind + "hasKey\n";
-
-            }
-            //      C# -> System.Boolean? IsTrusted
-            // GraphQL -> isTrusted: Boolean (scalar)
-            if (this.IsTrusted != null)
-            {
-                 s += ind + "isTrusted\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? PemFile
-            // GraphQL -> pemFile: String! (scalar)
-            if (this.PemFile != null)
-            {
-                 s += ind + "pemFile\n";
-
-            }
-            //      C# -> System.String? UsedBy
-            // GraphQL -> usedBy: String! (scalar)
-            if (this.UsedBy != null)
-            {
-                 s += ind + "usedBy\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? CertId
+        // GraphQL -> certId: String! (scalar)
+        if (this.CertId != null) {
+            s += ind + "certId\n" ;
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        if (this.Description != null) {
+            s += ind + "description\n" ;
+        }
+        //      C# -> DateTime? Expiration
+        // GraphQL -> expiration: DateTime (scalar)
+        if (this.Expiration != null) {
+            s += ind + "expiration\n" ;
+        }
+        //      C# -> System.Boolean? HasKey
+        // GraphQL -> hasKey: Boolean! (scalar)
+        if (this.HasKey != null) {
+            s += ind + "hasKey\n" ;
+        }
+        //      C# -> System.Boolean? IsTrusted
+        // GraphQL -> isTrusted: Boolean (scalar)
+        if (this.IsTrusted != null) {
+            s += ind + "isTrusted\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? PemFile
+        // GraphQL -> pemFile: String! (scalar)
+        if (this.PemFile != null) {
+            s += ind + "pemFile\n" ;
+        }
+        //      C# -> System.String? UsedBy
+        // GraphQL -> usedBy: String! (scalar)
+        if (this.UsedBy != null) {
+            s += ind + "usedBy\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? CertId
+        // GraphQL -> certId: String! (scalar)
+        if (this.CertId == null && Exploration.Includes(parent + ".certId", true))
         {
-            //      C# -> System.String? CertId
-            // GraphQL -> certId: String! (scalar)
-            if (this.CertId == null && Exploration.Includes(parent + ".certId$"))
-            {
-                this.CertId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Description
-            // GraphQL -> description: String (scalar)
-            if (this.Description == null && Exploration.Includes(parent + ".description$"))
-            {
-                this.Description = new System.String("FETCH");
-            }
-            //      C# -> DateTime? Expiration
-            // GraphQL -> expiration: DateTime (scalar)
-            if (this.Expiration == null && Exploration.Includes(parent + ".expiration$"))
-            {
-                this.Expiration = new DateTime();
-            }
-            //      C# -> System.Boolean? HasKey
-            // GraphQL -> hasKey: Boolean! (scalar)
-            if (this.HasKey == null && Exploration.Includes(parent + ".hasKey$"))
-            {
-                this.HasKey = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsTrusted
-            // GraphQL -> isTrusted: Boolean (scalar)
-            if (this.IsTrusted == null && Exploration.Includes(parent + ".isTrusted$"))
-            {
-                this.IsTrusted = new System.Boolean();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? PemFile
-            // GraphQL -> pemFile: String! (scalar)
-            if (this.PemFile == null && Exploration.Includes(parent + ".pemFile$"))
-            {
-                this.PemFile = new System.String("FETCH");
-            }
-            //      C# -> System.String? UsedBy
-            // GraphQL -> usedBy: String! (scalar)
-            if (this.UsedBy == null && Exploration.Includes(parent + ".usedBy$"))
-            {
-                this.UsedBy = new System.String("FETCH");
-            }
+            this.CertId = new System.String("FETCH");
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String (scalar)
+        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        {
+            this.Description = new System.String("FETCH");
+        }
+        //      C# -> DateTime? Expiration
+        // GraphQL -> expiration: DateTime (scalar)
+        if (this.Expiration == null && Exploration.Includes(parent + ".expiration", true))
+        {
+            this.Expiration = new DateTime();
+        }
+        //      C# -> System.Boolean? HasKey
+        // GraphQL -> hasKey: Boolean! (scalar)
+        if (this.HasKey == null && Exploration.Includes(parent + ".hasKey", true))
+        {
+            this.HasKey = true;
+        }
+        //      C# -> System.Boolean? IsTrusted
+        // GraphQL -> isTrusted: Boolean (scalar)
+        if (this.IsTrusted == null && Exploration.Includes(parent + ".isTrusted", true))
+        {
+            this.IsTrusted = true;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? PemFile
+        // GraphQL -> pemFile: String! (scalar)
+        if (this.PemFile == null && Exploration.Includes(parent + ".pemFile", true))
+        {
+            this.PemFile = new System.String("FETCH");
+        }
+        //      C# -> System.String? UsedBy
+        // GraphQL -> usedBy: String! (scalar)
+        if (this.UsedBy == null && Exploration.Includes(parent + ".usedBy", true))
+        {
+            this.UsedBy = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AddClusterCertificateReply
+    
     #endregion
 
     public static class ListAddClusterCertificateReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AddClusterCertificateReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AddClusterCertificateReply> list, 
             String parent = "")
         {
-            var item = new AddClusterCertificateReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AddClusterCertificateReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

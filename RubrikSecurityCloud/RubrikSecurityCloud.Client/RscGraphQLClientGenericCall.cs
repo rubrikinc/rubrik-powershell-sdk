@@ -1,59 +1,22 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GraphQL;
 using GraphQLParser.AST;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using System.Management.Automation;
 using RubrikSecurityCloud.Client;
-
-public class GraphQLInterfaceConverter : JsonConverter
-{
-    public override bool CanConvert(Type objectType)
-    {
-        return objectType.AssemblyQualifiedName.StartsWith("Rubrik")
-            && objectType.BaseType == null;
-    }
-
-    public override object ReadJson(
-        JsonReader reader,
-        Type objectType,
-        object existingValue,
-        JsonSerializer serializer
-    )
-    {
-        JObject jsonObject = JObject.Load(reader);
-
-        var gqlTypeName = jsonObject.Last.First.Value<string>();
-        var gqlType = Type.GetType(
-            String.Format(
-                "Rubrik.SecurityCloud.Types.{0}, RubrikSecurityCloud.Schema",
-                gqlTypeName
-            )
-        );
-        object gqlObject = Activator.CreateInstance(gqlType);
-        serializer.Populate(jsonObject.CreateReader(), gqlObject);
-
-        return gqlObject;
-    }
-
-    public override void WriteJson(
-        JsonWriter writer,
-        object value,
-        JsonSerializer serializer
-    )
-    {
-        throw new NotImplementedException();
-    }
-}
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Rubrik.SecurityCloud.NetSDK.Client
 {
     public partial class RscGraphQLClient
     {
-
         /// <summary>
         /// Overloaded method that be used to get an GraphQL query document
         /// from an embedded resource .graphql file.
@@ -62,30 +25,68 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         /// <param name="operationName"></param>
         /// <param name="variables"></param>
         /// <returns></returns>
-        public async Task<T> InvokeGenericCallAsync<T>(
+        public Task<T> InvokeGenericCallAsync<T>(
             string operationString,
             OperationVariableSet variables = null,
             IRscLogger logger = null,
             Dictionary<string, string> metricsTags = null
         )
         {
-            //var request = new GraphQLRequest
-            //{
-            //    Query = Library.LibraryHelper.GetEmbeddedGrahQLOperation(operationName)
-            //};
+            var request = new GraphQLRequest { Query = operationString };
 
-
-            var request = new GraphQLRequest
-            {
-                Query = operationString
-            };
-
-            return await InvokeGenericCallAsync<T>(
+            return InvokeGenericCallAsync<T>(
                 request,
                 variables,
                 logger,
-                metricsTags
-            );
+                metricsTags);
+        }
+
+        public dynamic Invoke(
+            GraphQLRequest request,
+            OperationVariableSet variables = null,
+            string fieldTypeName = null,
+            IRscLogger logger = null,
+            Dictionary<string, string> metricsTags = null
+        )
+        {
+            // Get the Type from the string
+            Type t = ReflectionUtils.GetType(fieldTypeName);
+
+            // Get method info for generic method
+            MethodInfo genericMethod = this.GetType()
+                .GetMethod("InvokeGenericCallSync");
+
+            // Make the generic method with the correct type
+            MethodInfo method = genericMethod.MakeGenericMethod(t);
+
+            // Prepare the parameters for the method invocation
+            object[] parameters = new object[] {
+                request,
+                variables,
+                logger,
+                metricsTags };
+
+            // call this.InvokeGenericCallAsync<T>()
+            dynamic result = method.Invoke(this, parameters);
+
+            logger?.Flush();
+            return result;
+        }
+
+        public dynamic InvokeGenericCallSync<T>(
+            GraphQLRequest request,
+            OperationVariableSet variables = null,
+            IRscLogger logger = null,
+            Dictionary<string, string> metricsTags = null
+)
+        {
+            dynamic task = InvokeGenericCallAsync<T>(
+                request,
+                variables,
+                logger,
+                metricsTags);
+            task.Wait();
+            return task.Result;
         }
 
         /// <summary>
@@ -105,13 +106,19 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         {
             // Verbose log request and variables:
             string parentSelectorName = "";
-            GraphQLDocument queryDocument = GraphQLParser.Parser.Parse(request.Query);
+            GraphQLDocument queryDocument = GraphQLParser.Parser
+                .Parse(request.Query);
             if (queryDocument.Definitions != null)
             {
-                var parent = (ASTNode)(((GraphQLOperationDefinition)queryDocument.Definitions[0]).SelectionSet.Selections[0]);
+                var parent = (ASTNode)(
+                    ((GraphQLOperationDefinition)queryDocument.Definitions[0])
+                        .SelectionSet
+                        .Selections[0]
+                );
                 var parentJson = JsonConvert.SerializeObject(parent);
                 JObject parentJObject = JObject.Parse(parentJson);
-                parentSelectorName = parentJObject["Name"]["StringValue"].ToString();
+                parentSelectorName = parentJObject["Name"]["StringValue"]
+                    .ToString();
             }
 
             if (variables != null)
@@ -120,29 +127,30 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 {
                     request.Variables = variables.AsJson();
                 }
-                catch ( Exception ex )
+                catch (Exception ex)
                 {
                     throw new ArgumentException(
-                        $"Could not serialize variables {request.Variables}" +
-                        $": {ex}");
+                        $"Could not serialize variables {request.Variables}"
+                            + $": {ex}"
+                    );
                 }
             }
 
             // inserting __typename field into all response objects
             const string typename = "__typename";
+            // this regex pattern ensures that we are only inserting
+            // __typename where character '}' is part of the query
+            // body. i.e. there are no commas or closing parenthesis
+            // that follow
+            string pattern = @"}(?!\s*[\),])";
+            string replacement = string.Format(" {0} }}", typename);
             request.Query = request.Query.Replace(typename, String.Empty);
-            request.Query = request.Query.Replace(
-                "}",
-                string.Format(" {0}}}", typename)
-            );
-            
+            request.Query = Regex.Replace(request.Query, pattern, replacement);
 
-            JObject response = await InvokeGraphQLQuery<JObject>(
-                request,
-                logger,
-                metricsTags
-            )
-                ?? throw new InvalidOperationException("server response is null");
+            JObject response =
+                await InvokeGraphQLQuery<JObject>(request, logger, metricsTags)
+                ?? throw new InvalidOperationException(
+                    "server response is null");
             string returnAsJson;
             JObject parentSelectorObj = response[parentSelectorName] as JObject;
             if (parentSelectorObj == null)
@@ -150,8 +158,8 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 parentSelectorObj = response as JObject;
             }
 
-            returnAsJson = JsonConvert.SerializeObject(response[parentSelectorName]);
-
+            returnAsJson = JsonConvert.SerializeObject(
+                response[parentSelectorName]);
 
             T responseData = JsonConvert.DeserializeObject<T>(
                 returnAsJson,
@@ -175,30 +183,61 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         /// </summary>
         /// <param name="content"></param>
         /// <returns></returns>
-        public async Task<object> InvokeGenericCall(
-            string content,
+        public object InvokeRawQuery(
+            string queryStr,
+            Hashtable variables,
+            IRscLogger logger = null,
             Dictionary<string, string> metricsTags = null
         )
         {
-            JObject contentAsJson = JObject.Parse(content);
-            if (!contentAsJson.ContainsKey("query"))
-            {
-                return "Input content should have a 'query' key.";
+
+            Type queryType = null;
+            queryStr = queryStr.Trim();
+            if (queryStr.StartsWith("query")) {
+                queryType = typeof(Rubrik.SecurityCloud.Types.Query);
+            } else if (queryStr.StartsWith("mutation")) {
+                queryType = typeof(Rubrik.SecurityCloud.Types.Mutation);
+
+            } else {
+                throw new InvalidOperationException(
+                    "query must start with 'query' or 'mutation'");
             }
 
-            var request = new GraphQLRequest
+            var queryName = "";
+            for (int i = queryStr.IndexOf('{') + 1; i < queryStr.Length; ++i) {
+                if (
+                    !Char.IsLetter(queryStr[i]) &&
+                    !Char.IsWhiteSpace(queryStr[i])
+                ) {
+                    break;
+                }
+                queryName += queryStr[i];
+            }
+            queryName = queryName.Trim();
+            // converting to pascal case
+            queryName = StringUtils.StrictPascalCase(queryName);
+
+            MethodInfo methodInfo = queryType.GetMethod(queryName);
+            ParameterInfo gqlReplyType = methodInfo.GetParameters()[0];
+            var gqlReplyTypeStr = gqlReplyType.ParameterType.ToString();
+
+            // removing the & at the end of the type
+            gqlReplyTypeStr = gqlReplyTypeStr.Remove(gqlReplyTypeStr.Length - 1);
+            if (!gqlReplyTypeStr.StartsWith("System"))
             {
-                Query = contentAsJson.GetValue("query").ToString()
+                gqlReplyTypeStr = gqlReplyTypeStr.Split('.').Last();
+            }
+
+            var request = new GraphQLRequest {
+                Query = queryStr,
+                Variables = SerializeVariables(variables)
             };
 
-            if (contentAsJson.ContainsKey("vars"))
-            {
-                request.Variables = SerializeVariables(contentAsJson.GetValue("vars"));
-            }
-
-            var response = await InvokeGraphQLQuery<Object>(
+            var response = Invoke(
                 request,
-                null, // logger
+                null, // variables
+                gqlReplyTypeStr,
+                logger,
                 metricsTags
             );
 

@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureSubscriptionWithFeaturesType
-    public class AzureSubscriptionWithFeaturesType: IFragment
+    public class AzureSubscriptionWithFeaturesType: BaseType
     {
         #region members
+
+        //      C# -> AzureCloudType? CloudType
+        // GraphQL -> cloudType: AzureCloudType! (enum)
+        [JsonProperty("cloudType")]
+        public AzureCloudType? CloudType { get; set; }
+
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
         [JsonProperty("customerTenantId")]
@@ -43,24 +50,23 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("featureDetails")]
         public List<AzureCloudAccountFeatureDetail>? FeatureDetails { get; set; }
 
-        //      C# -> AzureCloudType? CloudType
-        // GraphQL -> cloudType: AzureCloudType! (enum)
-        [JsonProperty("cloudType")]
-        public AzureCloudType? CloudType { get; set; }
 
         #endregion
 
     #region methods
 
     public AzureSubscriptionWithFeaturesType Set(
+        AzureCloudType? CloudType = null,
         System.String? CustomerTenantId = null,
         System.String? Id = null,
         System.String? Name = null,
         System.String? NativeId = null,
-        List<AzureCloudAccountFeatureDetail>? FeatureDetails = null,
-        AzureCloudType? CloudType = null
+        List<AzureCloudAccountFeatureDetail>? FeatureDetails = null
     ) 
     {
+        if ( CloudType != null ) {
+            this.CloudType = CloudType;
+        }
         if ( CustomerTenantId != null ) {
             this.CustomerTenantId = CustomerTenantId;
         }
@@ -76,144 +82,130 @@ namespace Rubrik.SecurityCloud.Types
         if ( FeatureDetails != null ) {
             this.FeatureDetails = FeatureDetails;
         }
-        if ( CloudType != null ) {
-            this.CloudType = CloudType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CustomerTenantId
-            // GraphQL -> customerTenantId: String! (scalar)
-            if (this.CustomerTenantId != null)
-            {
-                 s += ind + "customerTenantId\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? NativeId
-            // GraphQL -> nativeId: String! (scalar)
-            if (this.NativeId != null)
-            {
-                 s += ind + "nativeId\n";
-
-            }
-            //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
-            // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
-            if (this.FeatureDetails != null)
-            {
-                 s += ind + "featureDetails\n";
-
-                 s += ind + "{\n" + 
-                 this.FeatureDetails.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> AzureCloudType? CloudType
-            // GraphQL -> cloudType: AzureCloudType! (enum)
-            if (this.CloudType != null)
-            {
-                 s += ind + "cloudType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AzureCloudType? CloudType
+        // GraphQL -> cloudType: AzureCloudType! (enum)
+        if (this.CloudType != null) {
+            s += ind + "cloudType\n" ;
         }
+        //      C# -> System.String? CustomerTenantId
+        // GraphQL -> customerTenantId: String! (scalar)
+        if (this.CustomerTenantId != null) {
+            s += ind + "customerTenantId\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? NativeId
+        // GraphQL -> nativeId: String! (scalar)
+        if (this.NativeId != null) {
+            s += ind + "nativeId\n" ;
+        }
+        //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
+        // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
+        if (this.FeatureDetails != null) {
+            s += ind + "featureDetails {\n" + this.FeatureDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AzureCloudType? CloudType
+        // GraphQL -> cloudType: AzureCloudType! (enum)
+        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
         {
-            //      C# -> System.String? CustomerTenantId
-            // GraphQL -> customerTenantId: String! (scalar)
-            if (this.CustomerTenantId == null && Exploration.Includes(parent + ".customerTenantId$"))
-            {
-                this.CustomerTenantId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? NativeId
-            // GraphQL -> nativeId: String! (scalar)
-            if (this.NativeId == null && Exploration.Includes(parent + ".nativeId$"))
-            {
-                this.NativeId = new System.String("FETCH");
-            }
-            //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
-            // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
-            if (this.FeatureDetails == null && Exploration.Includes(parent + ".featureDetails"))
-            {
-                this.FeatureDetails = new List<AzureCloudAccountFeatureDetail>();
-                this.FeatureDetails.ApplyExploratoryFragment(parent + ".featureDetails");
-            }
-            //      C# -> AzureCloudType? CloudType
-            // GraphQL -> cloudType: AzureCloudType! (enum)
-            if (this.CloudType == null && Exploration.Includes(parent + ".cloudType$"))
-            {
-                this.CloudType = new AzureCloudType();
-            }
+            this.CloudType = new AzureCloudType();
         }
+        //      C# -> System.String? CustomerTenantId
+        // GraphQL -> customerTenantId: String! (scalar)
+        if (this.CustomerTenantId == null && Exploration.Includes(parent + ".customerTenantId", true))
+        {
+            this.CustomerTenantId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? NativeId
+        // GraphQL -> nativeId: String! (scalar)
+        if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
+        {
+            this.NativeId = new System.String("FETCH");
+        }
+        //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
+        // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
+        if (this.FeatureDetails == null && Exploration.Includes(parent + ".featureDetails"))
+        {
+            this.FeatureDetails = new List<AzureCloudAccountFeatureDetail>();
+            this.FeatureDetails.ApplyExploratoryFieldSpec(parent + ".featureDetails");
+        }
+    }
 
 
     #endregion
 
     } // class AzureSubscriptionWithFeaturesType
+    
     #endregion
 
     public static class ListAzureSubscriptionWithFeaturesTypeExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureSubscriptionWithFeaturesType> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureSubscriptionWithFeaturesType> list, 
             String parent = "")
         {
-            var item = new AzureSubscriptionWithFeaturesType();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureSubscriptionWithFeaturesType());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region DiskInfo
-    public class DiskInfo: IFragment
+    public class DiskInfo: BaseType
     {
         #region members
+
         //      C# -> System.Int64? CapacityBytes
         // GraphQL -> capacityBytes: Long! (scalar)
         [JsonProperty("capacityBytes")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> diskStatus: DiskStatus (type)
         [JsonProperty("diskStatus")]
         public DiskStatus? DiskStatus { get; set; }
+
 
         #endregion
 
@@ -82,138 +85,127 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? CapacityBytes
-            // GraphQL -> capacityBytes: Long! (scalar)
-            if (this.CapacityBytes != null)
-            {
-                 s += ind + "capacityBytes\n";
-
-            }
-            //      C# -> System.Boolean? IsResizable
-            // GraphQL -> isResizable: Boolean (scalar)
-            if (this.IsResizable != null)
-            {
-                 s += ind + "isResizable\n";
-
-            }
-            //      C# -> System.String? Path
-            // GraphQL -> path: String! (scalar)
-            if (this.Path != null)
-            {
-                 s += ind + "path\n";
-
-            }
-            //      C# -> System.Int64? UnallocatedBytes
-            // GraphQL -> unallocatedBytes: Long (scalar)
-            if (this.UnallocatedBytes != null)
-            {
-                 s += ind + "unallocatedBytes\n";
-
-            }
-            //      C# -> System.Int64? UsableBytes
-            // GraphQL -> usableBytes: Long (scalar)
-            if (this.UsableBytes != null)
-            {
-                 s += ind + "usableBytes\n";
-
-            }
-            //      C# -> DiskStatus? DiskStatus
-            // GraphQL -> diskStatus: DiskStatus (type)
-            if (this.DiskStatus != null)
-            {
-                 s += ind + "diskStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.DiskStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? CapacityBytes
+        // GraphQL -> capacityBytes: Long! (scalar)
+        if (this.CapacityBytes != null) {
+            s += ind + "capacityBytes\n" ;
         }
+        //      C# -> System.Boolean? IsResizable
+        // GraphQL -> isResizable: Boolean (scalar)
+        if (this.IsResizable != null) {
+            s += ind + "isResizable\n" ;
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        if (this.Path != null) {
+            s += ind + "path\n" ;
+        }
+        //      C# -> System.Int64? UnallocatedBytes
+        // GraphQL -> unallocatedBytes: Long (scalar)
+        if (this.UnallocatedBytes != null) {
+            s += ind + "unallocatedBytes\n" ;
+        }
+        //      C# -> System.Int64? UsableBytes
+        // GraphQL -> usableBytes: Long (scalar)
+        if (this.UsableBytes != null) {
+            s += ind + "usableBytes\n" ;
+        }
+        //      C# -> DiskStatus? DiskStatus
+        // GraphQL -> diskStatus: DiskStatus (type)
+        if (this.DiskStatus != null) {
+            s += ind + "diskStatus {\n" + this.DiskStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? CapacityBytes
+        // GraphQL -> capacityBytes: Long! (scalar)
+        if (this.CapacityBytes == null && Exploration.Includes(parent + ".capacityBytes", true))
         {
-            //      C# -> System.Int64? CapacityBytes
-            // GraphQL -> capacityBytes: Long! (scalar)
-            if (this.CapacityBytes == null && Exploration.Includes(parent + ".capacityBytes$"))
-            {
-                this.CapacityBytes = new System.Int64();
-            }
-            //      C# -> System.Boolean? IsResizable
-            // GraphQL -> isResizable: Boolean (scalar)
-            if (this.IsResizable == null && Exploration.Includes(parent + ".isResizable$"))
-            {
-                this.IsResizable = new System.Boolean();
-            }
-            //      C# -> System.String? Path
-            // GraphQL -> path: String! (scalar)
-            if (this.Path == null && Exploration.Includes(parent + ".path$"))
-            {
-                this.Path = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? UnallocatedBytes
-            // GraphQL -> unallocatedBytes: Long (scalar)
-            if (this.UnallocatedBytes == null && Exploration.Includes(parent + ".unallocatedBytes$"))
-            {
-                this.UnallocatedBytes = new System.Int64();
-            }
-            //      C# -> System.Int64? UsableBytes
-            // GraphQL -> usableBytes: Long (scalar)
-            if (this.UsableBytes == null && Exploration.Includes(parent + ".usableBytes$"))
-            {
-                this.UsableBytes = new System.Int64();
-            }
-            //      C# -> DiskStatus? DiskStatus
-            // GraphQL -> diskStatus: DiskStatus (type)
-            if (this.DiskStatus == null && Exploration.Includes(parent + ".diskStatus"))
-            {
-                this.DiskStatus = new DiskStatus();
-                this.DiskStatus.ApplyExploratoryFragment(parent + ".diskStatus");
-            }
+            this.CapacityBytes = new System.Int64();
         }
+        //      C# -> System.Boolean? IsResizable
+        // GraphQL -> isResizable: Boolean (scalar)
+        if (this.IsResizable == null && Exploration.Includes(parent + ".isResizable", true))
+        {
+            this.IsResizable = true;
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        {
+            this.Path = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? UnallocatedBytes
+        // GraphQL -> unallocatedBytes: Long (scalar)
+        if (this.UnallocatedBytes == null && Exploration.Includes(parent + ".unallocatedBytes", true))
+        {
+            this.UnallocatedBytes = new System.Int64();
+        }
+        //      C# -> System.Int64? UsableBytes
+        // GraphQL -> usableBytes: Long (scalar)
+        if (this.UsableBytes == null && Exploration.Includes(parent + ".usableBytes", true))
+        {
+            this.UsableBytes = new System.Int64();
+        }
+        //      C# -> DiskStatus? DiskStatus
+        // GraphQL -> diskStatus: DiskStatus (type)
+        if (this.DiskStatus == null && Exploration.Includes(parent + ".diskStatus"))
+        {
+            this.DiskStatus = new DiskStatus();
+            this.DiskStatus.ApplyExploratoryFieldSpec(parent + ".diskStatus");
+        }
+    }
 
 
     #endregion
 
     } // class DiskInfo
+    
     #endregion
 
     public static class ListDiskInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<DiskInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<DiskInfo> list, 
             String parent = "")
         {
-            var item = new DiskInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new DiskInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

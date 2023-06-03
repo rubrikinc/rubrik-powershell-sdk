@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region HierarchySnappableFileVersion
-    public class HierarchySnappableFileVersion: IFragment
+    public class HierarchySnappableFileVersion: BaseType
     {
         #region members
+
+        //      C# -> FileModeEnum? FileMode
+        // GraphQL -> fileMode: FileModeEnum! (enum)
+        [JsonProperty("fileMode")]
+        public FileModeEnum? FileMode { get; set; }
+
+        //      C# -> FileVersionSourceEnum? Source
+        // GraphQL -> source: FileVersionSourceEnum! (enum)
+        [JsonProperty("source")]
+        public FileVersionSourceEnum? Source { get; set; }
+
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
         [JsonProperty("lastModified")]
@@ -43,30 +55,27 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshot")]
         public CdmSnapshot? Snapshot { get; set; }
 
-        //      C# -> FileModeEnum? FileMode
-        // GraphQL -> fileMode: FileModeEnum! (enum)
-        [JsonProperty("fileMode")]
-        public FileModeEnum? FileMode { get; set; }
-
-        //      C# -> FileVersionSourceEnum? Source
-        // GraphQL -> source: FileVersionSourceEnum! (enum)
-        [JsonProperty("source")]
-        public FileVersionSourceEnum? Source { get; set; }
 
         #endregion
 
     #region methods
 
     public HierarchySnappableFileVersion Set(
+        FileModeEnum? FileMode = null,
+        FileVersionSourceEnum? Source = null,
         DateTime? LastModified = null,
         System.Int64? Size = null,
         System.String? SnapshotId = null,
         QuarantineInfo? QuarantineInfo = null,
-        CdmSnapshot? Snapshot = null,
-        FileModeEnum? FileMode = null,
-        FileVersionSourceEnum? Source = null
+        CdmSnapshot? Snapshot = null
     ) 
     {
+        if ( FileMode != null ) {
+            this.FileMode = FileMode;
+        }
+        if ( Source != null ) {
+            this.Source = Source;
+        }
         if ( LastModified != null ) {
             this.LastModified = LastModified;
         }
@@ -82,164 +91,142 @@ namespace Rubrik.SecurityCloud.Types
         if ( Snapshot != null ) {
             this.Snapshot = Snapshot;
         }
-        if ( FileMode != null ) {
-            this.FileMode = FileMode;
-        }
-        if ( Source != null ) {
-            this.Source = Source;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? LastModified
-            // GraphQL -> lastModified: DateTime! (scalar)
-            if (this.LastModified != null)
-            {
-                 s += ind + "lastModified\n";
-
-            }
-            //      C# -> System.Int64? Size
-            // GraphQL -> size: Long! (scalar)
-            if (this.Size != null)
-            {
-                 s += ind + "size\n";
-
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId != null)
-            {
-                 s += ind + "snapshotId\n";
-
-            }
-            //      C# -> QuarantineInfo? QuarantineInfo
-            // GraphQL -> quarantineInfo: QuarantineInfo (type)
-            if (this.QuarantineInfo != null)
-            {
-                 s += ind + "quarantineInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.QuarantineInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? Snapshot
-            // GraphQL -> snapshot: CdmSnapshot (type)
-            if (this.Snapshot != null)
-            {
-                 s += ind + "snapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.Snapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> FileModeEnum? FileMode
-            // GraphQL -> fileMode: FileModeEnum! (enum)
-            if (this.FileMode != null)
-            {
-                 s += ind + "fileMode\n";
-
-            }
-            //      C# -> FileVersionSourceEnum? Source
-            // GraphQL -> source: FileVersionSourceEnum! (enum)
-            if (this.Source != null)
-            {
-                 s += ind + "source\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> FileModeEnum? FileMode
+        // GraphQL -> fileMode: FileModeEnum! (enum)
+        if (this.FileMode != null) {
+            s += ind + "fileMode\n" ;
         }
+        //      C# -> FileVersionSourceEnum? Source
+        // GraphQL -> source: FileVersionSourceEnum! (enum)
+        if (this.Source != null) {
+            s += ind + "source\n" ;
+        }
+        //      C# -> DateTime? LastModified
+        // GraphQL -> lastModified: DateTime! (scalar)
+        if (this.LastModified != null) {
+            s += ind + "lastModified\n" ;
+        }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long! (scalar)
+        if (this.Size != null) {
+            s += ind + "size\n" ;
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId != null) {
+            s += ind + "snapshotId\n" ;
+        }
+        //      C# -> QuarantineInfo? QuarantineInfo
+        // GraphQL -> quarantineInfo: QuarantineInfo (type)
+        if (this.QuarantineInfo != null) {
+            s += ind + "quarantineInfo {\n" + this.QuarantineInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? Snapshot
+        // GraphQL -> snapshot: CdmSnapshot (type)
+        if (this.Snapshot != null) {
+            s += ind + "snapshot {\n" + this.Snapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> FileModeEnum? FileMode
+        // GraphQL -> fileMode: FileModeEnum! (enum)
+        if (this.FileMode == null && Exploration.Includes(parent + ".fileMode", true))
         {
-            //      C# -> DateTime? LastModified
-            // GraphQL -> lastModified: DateTime! (scalar)
-            if (this.LastModified == null && Exploration.Includes(parent + ".lastModified$"))
-            {
-                this.LastModified = new DateTime();
-            }
-            //      C# -> System.Int64? Size
-            // GraphQL -> size: Long! (scalar)
-            if (this.Size == null && Exploration.Includes(parent + ".size$"))
-            {
-                this.Size = new System.Int64();
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId$"))
-            {
-                this.SnapshotId = new System.String("FETCH");
-            }
-            //      C# -> QuarantineInfo? QuarantineInfo
-            // GraphQL -> quarantineInfo: QuarantineInfo (type)
-            if (this.QuarantineInfo == null && Exploration.Includes(parent + ".quarantineInfo"))
-            {
-                this.QuarantineInfo = new QuarantineInfo();
-                this.QuarantineInfo.ApplyExploratoryFragment(parent + ".quarantineInfo");
-            }
-            //      C# -> CdmSnapshot? Snapshot
-            // GraphQL -> snapshot: CdmSnapshot (type)
-            if (this.Snapshot == null && Exploration.Includes(parent + ".snapshot"))
-            {
-                this.Snapshot = new CdmSnapshot();
-                this.Snapshot.ApplyExploratoryFragment(parent + ".snapshot");
-            }
-            //      C# -> FileModeEnum? FileMode
-            // GraphQL -> fileMode: FileModeEnum! (enum)
-            if (this.FileMode == null && Exploration.Includes(parent + ".fileMode$"))
-            {
-                this.FileMode = new FileModeEnum();
-            }
-            //      C# -> FileVersionSourceEnum? Source
-            // GraphQL -> source: FileVersionSourceEnum! (enum)
-            if (this.Source == null && Exploration.Includes(parent + ".source$"))
-            {
-                this.Source = new FileVersionSourceEnum();
-            }
+            this.FileMode = new FileModeEnum();
         }
+        //      C# -> FileVersionSourceEnum? Source
+        // GraphQL -> source: FileVersionSourceEnum! (enum)
+        if (this.Source == null && Exploration.Includes(parent + ".source", true))
+        {
+            this.Source = new FileVersionSourceEnum();
+        }
+        //      C# -> DateTime? LastModified
+        // GraphQL -> lastModified: DateTime! (scalar)
+        if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
+        {
+            this.LastModified = new DateTime();
+        }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long! (scalar)
+        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        {
+            this.Size = new System.Int64();
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        {
+            this.SnapshotId = new System.String("FETCH");
+        }
+        //      C# -> QuarantineInfo? QuarantineInfo
+        // GraphQL -> quarantineInfo: QuarantineInfo (type)
+        if (this.QuarantineInfo == null && Exploration.Includes(parent + ".quarantineInfo"))
+        {
+            this.QuarantineInfo = new QuarantineInfo();
+            this.QuarantineInfo.ApplyExploratoryFieldSpec(parent + ".quarantineInfo");
+        }
+        //      C# -> CdmSnapshot? Snapshot
+        // GraphQL -> snapshot: CdmSnapshot (type)
+        if (this.Snapshot == null && Exploration.Includes(parent + ".snapshot"))
+        {
+            this.Snapshot = new CdmSnapshot();
+            this.Snapshot.ApplyExploratoryFieldSpec(parent + ".snapshot");
+        }
+    }
 
 
     #endregion
 
     } // class HierarchySnappableFileVersion
+    
     #endregion
 
     public static class ListHierarchySnappableFileVersionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<HierarchySnappableFileVersion> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<HierarchySnappableFileVersion> list, 
             String parent = "")
         {
-            var item = new HierarchySnappableFileVersion();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new HierarchySnappableFileVersion());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

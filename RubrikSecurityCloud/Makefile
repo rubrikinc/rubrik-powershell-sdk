@@ -4,10 +4,14 @@
 default: build
 
 OUTPUT = ../Output
+PSGALLERY_ROOT = ../../PSGallery
 DOTNET_CLIENT_DIR = RubrikSecurityCloud.Client
 DOTNET_SCHEMA_DIR = RubrikSecurityCloud.Schema
 DOTNET_SCHEMA_TESTS_DIR = RubrikSecurityCloud.Schema.Tests
 DOTNET_CMDLETS_DIR = RubrikSecurityCloud.PowerShell
+DOTNET_CMDLETS_RELEASE_BUILD_DIR = $(DOTNET_CMDLETS_DIR)/bin/Release/net6.0
+SDK_VERSION = $(shell pwsh -Command "(Import-PowerShellDataFile $(DOTNET_CMDLETS_DIR)/RubrikSecurityCloud.psd1).ModuleVersion")
+PSGALLERY_PUBLISH_DIR = $(PSGALLERY_ROOT)/RubrikSecurityCloud/$(SDK_VERSION)
 
 build: build-client build-schema build-cmdlets
 
@@ -27,8 +31,14 @@ build-cmdlets:
 	cp -a $(DOTNET_CMDLETS_DIR)/bin/Debug/net6.0/* $(OUTPUT)
 	cp $(DOTNET_CMDLETS_DIR)/RubrikSecurityCloud.psd1 $(OUTPUT)
 
+build-release:
+	dotnet build $(DOTNET_CMDLETS_DIR)/*.csproj --configuration Release
+	mkdir -p $(PSGALLERY_PUBLISH_DIR)
+	cp -a $(DOTNET_CMDLETS_RELEASE_BUILD_DIR)/* $(PSGALLERY_PUBLISH_DIR)
+
 clean:
 	rm -rf $(OUTPUT)
+	rm -rf $(PSGALLERY_PUBLISH_DIR)
 	rm -rf $(DOTNET_SCHEMA_DIR)/bin
 	rm -rf $(DOTNET_SCHEMA_DIR)/obj
 	rm -rf $(DOTNET_SCHEMA_TESTS_DIR)/bin

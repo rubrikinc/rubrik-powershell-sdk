@@ -11,117 +11,120 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SnappableTypeSummary
-    public class SnappableTypeSummary: IFragment
+    public class SnappableTypeSummary: BaseType
     {
         #region members
-        //      C# -> System.Int32? Count
-        // GraphQL -> count: Int! (scalar)
-        [JsonProperty("count")]
-        public System.Int32? Count { get; set; }
 
         //      C# -> HierarchyObjectTypeEnum? SnappableType
         // GraphQL -> snappableType: HierarchyObjectTypeEnum! (enum)
         [JsonProperty("snappableType")]
         public HierarchyObjectTypeEnum? SnappableType { get; set; }
 
+        //      C# -> System.Int32? Count
+        // GraphQL -> count: Int! (scalar)
+        [JsonProperty("count")]
+        public System.Int32? Count { get; set; }
+
+
         #endregion
 
     #region methods
 
     public SnappableTypeSummary Set(
-        System.Int32? Count = null,
-        HierarchyObjectTypeEnum? SnappableType = null
+        HierarchyObjectTypeEnum? SnappableType = null,
+        System.Int32? Count = null
     ) 
     {
-        if ( Count != null ) {
-            this.Count = Count;
-        }
         if ( SnappableType != null ) {
             this.SnappableType = SnappableType;
+        }
+        if ( Count != null ) {
+            this.Count = Count;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? Count
-            // GraphQL -> count: Int! (scalar)
-            if (this.Count != null)
-            {
-                 s += ind + "count\n";
-
-            }
-            //      C# -> HierarchyObjectTypeEnum? SnappableType
-            // GraphQL -> snappableType: HierarchyObjectTypeEnum! (enum)
-            if (this.SnappableType != null)
-            {
-                 s += ind + "snappableType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> HierarchyObjectTypeEnum? SnappableType
+        // GraphQL -> snappableType: HierarchyObjectTypeEnum! (enum)
+        if (this.SnappableType != null) {
+            s += ind + "snappableType\n" ;
         }
+        //      C# -> System.Int32? Count
+        // GraphQL -> count: Int! (scalar)
+        if (this.Count != null) {
+            s += ind + "count\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> HierarchyObjectTypeEnum? SnappableType
+        // GraphQL -> snappableType: HierarchyObjectTypeEnum! (enum)
+        if (this.SnappableType == null && Exploration.Includes(parent + ".snappableType", true))
         {
-            //      C# -> System.Int32? Count
-            // GraphQL -> count: Int! (scalar)
-            if (this.Count == null && Exploration.Includes(parent + ".count$"))
-            {
-                this.Count = new System.Int32();
-            }
-            //      C# -> HierarchyObjectTypeEnum? SnappableType
-            // GraphQL -> snappableType: HierarchyObjectTypeEnum! (enum)
-            if (this.SnappableType == null && Exploration.Includes(parent + ".snappableType$"))
-            {
-                this.SnappableType = new HierarchyObjectTypeEnum();
-            }
+            this.SnappableType = new HierarchyObjectTypeEnum();
         }
+        //      C# -> System.Int32? Count
+        // GraphQL -> count: Int! (scalar)
+        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        {
+            this.Count = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class SnappableTypeSummary
+    
     #endregion
 
     public static class ListSnappableTypeSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SnappableTypeSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SnappableTypeSummary> list, 
             String parent = "")
         {
-            var item = new SnappableTypeSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SnappableTypeSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

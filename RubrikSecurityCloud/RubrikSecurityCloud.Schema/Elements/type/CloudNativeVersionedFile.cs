@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CloudNativeVersionedFile
-    public class CloudNativeVersionedFile: IFragment
+    public class CloudNativeVersionedFile: BaseType
     {
         #region members
+
         //      C# -> System.String? AbsolutePath
         // GraphQL -> absolutePath: String! (scalar)
         [JsonProperty("absolutePath")]
@@ -42,6 +44,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fileVersions: [CloudNativeFileVersion!]! (type)
         [JsonProperty("fileVersions")]
         public List<CloudNativeFileVersion>? FileVersions { get; set; }
+
 
         #endregion
 
@@ -73,125 +76,116 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AbsolutePath
-            // GraphQL -> absolutePath: String! (scalar)
-            if (this.AbsolutePath != null)
-            {
-                 s += ind + "absolutePath\n";
-
-            }
-            //      C# -> System.String? DisplayPath
-            // GraphQL -> displayPath: String! (scalar)
-            if (this.DisplayPath != null)
-            {
-                 s += ind + "displayPath\n";
-
-            }
-            //      C# -> System.String? Filename
-            // GraphQL -> filename: String! (scalar)
-            if (this.Filename != null)
-            {
-                 s += ind + "filename\n";
-
-            }
-            //      C# -> System.String? Path
-            // GraphQL -> path: String! (scalar)
-            if (this.Path != null)
-            {
-                 s += ind + "path\n";
-
-            }
-            //      C# -> List<CloudNativeFileVersion>? FileVersions
-            // GraphQL -> fileVersions: [CloudNativeFileVersion!]! (type)
-            if (this.FileVersions != null)
-            {
-                 s += ind + "fileVersions\n";
-
-                 s += ind + "{\n" + 
-                 this.FileVersions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? AbsolutePath
+        // GraphQL -> absolutePath: String! (scalar)
+        if (this.AbsolutePath != null) {
+            s += ind + "absolutePath\n" ;
         }
+        //      C# -> System.String? DisplayPath
+        // GraphQL -> displayPath: String! (scalar)
+        if (this.DisplayPath != null) {
+            s += ind + "displayPath\n" ;
+        }
+        //      C# -> System.String? Filename
+        // GraphQL -> filename: String! (scalar)
+        if (this.Filename != null) {
+            s += ind + "filename\n" ;
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        if (this.Path != null) {
+            s += ind + "path\n" ;
+        }
+        //      C# -> List<CloudNativeFileVersion>? FileVersions
+        // GraphQL -> fileVersions: [CloudNativeFileVersion!]! (type)
+        if (this.FileVersions != null) {
+            s += ind + "fileVersions {\n" + this.FileVersions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? AbsolutePath
+        // GraphQL -> absolutePath: String! (scalar)
+        if (this.AbsolutePath == null && Exploration.Includes(parent + ".absolutePath", true))
         {
-            //      C# -> System.String? AbsolutePath
-            // GraphQL -> absolutePath: String! (scalar)
-            if (this.AbsolutePath == null && Exploration.Includes(parent + ".absolutePath$"))
-            {
-                this.AbsolutePath = new System.String("FETCH");
-            }
-            //      C# -> System.String? DisplayPath
-            // GraphQL -> displayPath: String! (scalar)
-            if (this.DisplayPath == null && Exploration.Includes(parent + ".displayPath$"))
-            {
-                this.DisplayPath = new System.String("FETCH");
-            }
-            //      C# -> System.String? Filename
-            // GraphQL -> filename: String! (scalar)
-            if (this.Filename == null && Exploration.Includes(parent + ".filename$"))
-            {
-                this.Filename = new System.String("FETCH");
-            }
-            //      C# -> System.String? Path
-            // GraphQL -> path: String! (scalar)
-            if (this.Path == null && Exploration.Includes(parent + ".path$"))
-            {
-                this.Path = new System.String("FETCH");
-            }
-            //      C# -> List<CloudNativeFileVersion>? FileVersions
-            // GraphQL -> fileVersions: [CloudNativeFileVersion!]! (type)
-            if (this.FileVersions == null && Exploration.Includes(parent + ".fileVersions"))
-            {
-                this.FileVersions = new List<CloudNativeFileVersion>();
-                this.FileVersions.ApplyExploratoryFragment(parent + ".fileVersions");
-            }
+            this.AbsolutePath = new System.String("FETCH");
         }
+        //      C# -> System.String? DisplayPath
+        // GraphQL -> displayPath: String! (scalar)
+        if (this.DisplayPath == null && Exploration.Includes(parent + ".displayPath", true))
+        {
+            this.DisplayPath = new System.String("FETCH");
+        }
+        //      C# -> System.String? Filename
+        // GraphQL -> filename: String! (scalar)
+        if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
+        {
+            this.Filename = new System.String("FETCH");
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        {
+            this.Path = new System.String("FETCH");
+        }
+        //      C# -> List<CloudNativeFileVersion>? FileVersions
+        // GraphQL -> fileVersions: [CloudNativeFileVersion!]! (type)
+        if (this.FileVersions == null && Exploration.Includes(parent + ".fileVersions"))
+        {
+            this.FileVersions = new List<CloudNativeFileVersion>();
+            this.FileVersions.ApplyExploratoryFieldSpec(parent + ".fileVersions");
+        }
+    }
 
 
     #endregion
 
     } // class CloudNativeVersionedFile
+    
     #endregion
 
     public static class ListCloudNativeVersionedFileExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CloudNativeVersionedFile> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeVersionedFile> list, 
             String parent = "")
         {
-            var item = new CloudNativeVersionedFile();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CloudNativeVersionedFile());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

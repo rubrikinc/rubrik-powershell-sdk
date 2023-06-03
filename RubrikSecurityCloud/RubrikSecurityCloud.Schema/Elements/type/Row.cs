@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region Row
-    public class Row: IFragment
+    public class Row: BaseType
     {
         #region members
+
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
         [JsonProperty("metadata")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> values: [CellData!]! (type)
         [JsonProperty("values")]
         public List<CellData>? Values { get; set; }
+
 
         #endregion
 
@@ -46,90 +49,84 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<Metadata>? Metadata
-            // GraphQL -> metadata: [Metadata!]! (type)
-            if (this.Metadata != null)
-            {
-                 s += ind + "metadata\n";
-
-                 s += ind + "{\n" + 
-                 this.Metadata.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<CellData>? Values
-            // GraphQL -> values: [CellData!]! (type)
-            if (this.Values != null)
-            {
-                 s += ind + "values\n";
-
-                 s += ind + "{\n" + 
-                 this.Values.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<Metadata>? Metadata
+        // GraphQL -> metadata: [Metadata!]! (type)
+        if (this.Metadata != null) {
+            s += ind + "metadata {\n" + this.Metadata.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> List<CellData>? Values
+        // GraphQL -> values: [CellData!]! (type)
+        if (this.Values != null) {
+            s += ind + "values {\n" + this.Values.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<Metadata>? Metadata
+        // GraphQL -> metadata: [Metadata!]! (type)
+        if (this.Metadata == null && Exploration.Includes(parent + ".metadata"))
         {
-            //      C# -> List<Metadata>? Metadata
-            // GraphQL -> metadata: [Metadata!]! (type)
-            if (this.Metadata == null && Exploration.Includes(parent + ".metadata"))
-            {
-                this.Metadata = new List<Metadata>();
-                this.Metadata.ApplyExploratoryFragment(parent + ".metadata");
-            }
-            //      C# -> List<CellData>? Values
-            // GraphQL -> values: [CellData!]! (type)
-            if (this.Values == null && Exploration.Includes(parent + ".values"))
-            {
-                this.Values = new List<CellData>();
-                this.Values.ApplyExploratoryFragment(parent + ".values");
-            }
+            this.Metadata = new List<Metadata>();
+            this.Metadata.ApplyExploratoryFieldSpec(parent + ".metadata");
         }
+        //      C# -> List<CellData>? Values
+        // GraphQL -> values: [CellData!]! (type)
+        if (this.Values == null && Exploration.Includes(parent + ".values"))
+        {
+            this.Values = new List<CellData>();
+            this.Values.ApplyExploratoryFieldSpec(parent + ".values");
+        }
+    }
 
 
     #endregion
 
     } // class Row
+    
     #endregion
 
     public static class ListRowExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<Row> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<Row> list, 
             String parent = "")
         {
-            var item = new Row();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new Row());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

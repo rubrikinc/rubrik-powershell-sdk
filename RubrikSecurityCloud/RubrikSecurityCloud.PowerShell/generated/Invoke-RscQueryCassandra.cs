@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -301,8 +301,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CassandraSourceConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CassandraSourceConnection)psObject.BaseObject;
                 } else {
                     fields = (CassandraSourceConnection)this.Field;
@@ -310,23 +309,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.CassandraSources(ref fields);
             this._input.Initialize(argDefs, fields, "Query.CassandraSources");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryCassandraSources" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraSources",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CassandraSourceConnection> task = this._rbkClient.InvokeGenericCallAsync<CassandraSourceConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CassandraSourceConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -349,8 +347,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CassandraKeyspaceConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CassandraKeyspaceConnection)psObject.BaseObject;
                 } else {
                     fields = (CassandraKeyspaceConnection)this.Field;
@@ -358,23 +355,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.CassandraKeyspaces(ref fields);
             this._input.Initialize(argDefs, fields, "Query.CassandraKeyspaces");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryCassandraKeyspaces" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraKeyspaces",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CassandraKeyspaceConnection> task = this._rbkClient.InvokeGenericCallAsync<CassandraKeyspaceConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CassandraKeyspaceConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -397,8 +393,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CassandraColumnFamilyConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CassandraColumnFamilyConnection)psObject.BaseObject;
                 } else {
                     fields = (CassandraColumnFamilyConnection)this.Field;
@@ -406,23 +401,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.CassandraColumnFamilies(ref fields);
             this._input.Initialize(argDefs, fields, "Query.CassandraColumnFamilies");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryCassandraColumnFamilies" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraColumnFamilies",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CassandraColumnFamilyConnection> task = this._rbkClient.InvokeGenericCallAsync<CassandraColumnFamilyConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CassandraColumnFamilyConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -435,8 +429,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             GetMosaicRecoverableRangeResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (GetMosaicRecoverableRangeResponse)psObject.BaseObject;
                 } else {
                     fields = (GetMosaicRecoverableRangeResponse)this.Field;
@@ -444,23 +437,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.CassandraColumnFamilyRecoverableRange(ref fields);
             this._input.Initialize(argDefs, fields, "Query.CassandraColumnFamilyRecoverableRange");
-            string parameters = "($input: GetMosaicRecoverableRangeInput!)\n";
+            var parameters = "($input: GetMosaicRecoverableRangeInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryCassandraColumnFamilyRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraColumnFamilyRecoverableRange",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<GetMosaicRecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<GetMosaicRecoverableRangeResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "GetMosaicRecoverableRangeResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -473,8 +465,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             GetSchemaResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (GetSchemaResponse)psObject.BaseObject;
                 } else {
                     fields = (GetSchemaResponse)this.Field;
@@ -482,23 +473,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.CassandraColumnFamilySchema(ref fields);
             this._input.Initialize(argDefs, fields, "Query.CassandraColumnFamilySchema");
-            string parameters = "($input: GetMosaicTableSchemaInput!)\n";
+            var parameters = "($input: GetMosaicTableSchemaInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryCassandraColumnFamilySchema" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraColumnFamilySchema",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<GetSchemaResponse> task = this._rbkClient.InvokeGenericCallAsync<GetSchemaResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "GetSchemaResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

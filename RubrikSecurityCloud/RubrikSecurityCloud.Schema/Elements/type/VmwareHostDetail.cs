@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VmwareHostDetail
-    public class VmwareHostDetail: IFragment
+    public class VmwareHostDetail: BaseType
     {
         #region members
+
         //      C# -> System.String? ComputeClusterId
         // GraphQL -> computeClusterId: String (scalar)
         [JsonProperty("computeClusterId")]
@@ -52,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
         [JsonProperty("vmwareHostUpdate")]
         public VmwareHostUpdate? VmwareHostUpdate { get; set; }
+
 
         #endregion
 
@@ -91,167 +94,142 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ComputeClusterId
-            // GraphQL -> computeClusterId: String (scalar)
-            if (this.ComputeClusterId != null)
-            {
-                 s += ind + "computeClusterId\n";
-
-            }
-            //      C# -> System.String? Moid
-            // GraphQL -> moid: String (scalar)
-            if (this.Moid != null)
-            {
-                 s += ind + "moid\n";
-
-            }
-            //      C# -> DataCenterSummary? Datacenter
-            // GraphQL -> datacenter: DataCenterSummary (type)
-            if (this.Datacenter != null)
-            {
-                 s += ind + "datacenter\n";
-
-                 s += ind + "{\n" + 
-                 this.Datacenter.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<DataStoreSummary>? Datastores
-            // GraphQL -> datastores: [DataStoreSummary!]! (type)
-            if (this.Datastores != null)
-            {
-                 s += ind + "datastores\n";
-
-                 s += ind + "{\n" + 
-                 this.Datastores.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<VirtualMachineSummary>? VirtualMachines
-            // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
-            if (this.VirtualMachines != null)
-            {
-                 s += ind + "virtualMachines\n";
-
-                 s += ind + "{\n" + 
-                 this.VirtualMachines.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VmwareHostSummary? VmwareHostSummary
-            // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
-            if (this.VmwareHostSummary != null)
-            {
-                 s += ind + "vmwareHostSummary\n";
-
-                 s += ind + "{\n" + 
-                 this.VmwareHostSummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VmwareHostUpdate? VmwareHostUpdate
-            // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
-            if (this.VmwareHostUpdate != null)
-            {
-                 s += ind + "vmwareHostUpdate\n";
-
-                 s += ind + "{\n" + 
-                 this.VmwareHostUpdate.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? ComputeClusterId
+        // GraphQL -> computeClusterId: String (scalar)
+        if (this.ComputeClusterId != null) {
+            s += ind + "computeClusterId\n" ;
         }
+        //      C# -> System.String? Moid
+        // GraphQL -> moid: String (scalar)
+        if (this.Moid != null) {
+            s += ind + "moid\n" ;
+        }
+        //      C# -> DataCenterSummary? Datacenter
+        // GraphQL -> datacenter: DataCenterSummary (type)
+        if (this.Datacenter != null) {
+            s += ind + "datacenter {\n" + this.Datacenter.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<DataStoreSummary>? Datastores
+        // GraphQL -> datastores: [DataStoreSummary!]! (type)
+        if (this.Datastores != null) {
+            s += ind + "datastores {\n" + this.Datastores.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<VirtualMachineSummary>? VirtualMachines
+        // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
+        if (this.VirtualMachines != null) {
+            s += ind + "virtualMachines {\n" + this.VirtualMachines.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> VmwareHostSummary? VmwareHostSummary
+        // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
+        if (this.VmwareHostSummary != null) {
+            s += ind + "vmwareHostSummary {\n" + this.VmwareHostSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> VmwareHostUpdate? VmwareHostUpdate
+        // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
+        if (this.VmwareHostUpdate != null) {
+            s += ind + "vmwareHostUpdate {\n" + this.VmwareHostUpdate.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? ComputeClusterId
+        // GraphQL -> computeClusterId: String (scalar)
+        if (this.ComputeClusterId == null && Exploration.Includes(parent + ".computeClusterId", true))
         {
-            //      C# -> System.String? ComputeClusterId
-            // GraphQL -> computeClusterId: String (scalar)
-            if (this.ComputeClusterId == null && Exploration.Includes(parent + ".computeClusterId$"))
-            {
-                this.ComputeClusterId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Moid
-            // GraphQL -> moid: String (scalar)
-            if (this.Moid == null && Exploration.Includes(parent + ".moid$"))
-            {
-                this.Moid = new System.String("FETCH");
-            }
-            //      C# -> DataCenterSummary? Datacenter
-            // GraphQL -> datacenter: DataCenterSummary (type)
-            if (this.Datacenter == null && Exploration.Includes(parent + ".datacenter"))
-            {
-                this.Datacenter = new DataCenterSummary();
-                this.Datacenter.ApplyExploratoryFragment(parent + ".datacenter");
-            }
-            //      C# -> List<DataStoreSummary>? Datastores
-            // GraphQL -> datastores: [DataStoreSummary!]! (type)
-            if (this.Datastores == null && Exploration.Includes(parent + ".datastores"))
-            {
-                this.Datastores = new List<DataStoreSummary>();
-                this.Datastores.ApplyExploratoryFragment(parent + ".datastores");
-            }
-            //      C# -> List<VirtualMachineSummary>? VirtualMachines
-            // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
-            if (this.VirtualMachines == null && Exploration.Includes(parent + ".virtualMachines"))
-            {
-                this.VirtualMachines = new List<VirtualMachineSummary>();
-                this.VirtualMachines.ApplyExploratoryFragment(parent + ".virtualMachines");
-            }
-            //      C# -> VmwareHostSummary? VmwareHostSummary
-            // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
-            if (this.VmwareHostSummary == null && Exploration.Includes(parent + ".vmwareHostSummary"))
-            {
-                this.VmwareHostSummary = new VmwareHostSummary();
-                this.VmwareHostSummary.ApplyExploratoryFragment(parent + ".vmwareHostSummary");
-            }
-            //      C# -> VmwareHostUpdate? VmwareHostUpdate
-            // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
-            if (this.VmwareHostUpdate == null && Exploration.Includes(parent + ".vmwareHostUpdate"))
-            {
-                this.VmwareHostUpdate = new VmwareHostUpdate();
-                this.VmwareHostUpdate.ApplyExploratoryFragment(parent + ".vmwareHostUpdate");
-            }
+            this.ComputeClusterId = new System.String("FETCH");
         }
+        //      C# -> System.String? Moid
+        // GraphQL -> moid: String (scalar)
+        if (this.Moid == null && Exploration.Includes(parent + ".moid", true))
+        {
+            this.Moid = new System.String("FETCH");
+        }
+        //      C# -> DataCenterSummary? Datacenter
+        // GraphQL -> datacenter: DataCenterSummary (type)
+        if (this.Datacenter == null && Exploration.Includes(parent + ".datacenter"))
+        {
+            this.Datacenter = new DataCenterSummary();
+            this.Datacenter.ApplyExploratoryFieldSpec(parent + ".datacenter");
+        }
+        //      C# -> List<DataStoreSummary>? Datastores
+        // GraphQL -> datastores: [DataStoreSummary!]! (type)
+        if (this.Datastores == null && Exploration.Includes(parent + ".datastores"))
+        {
+            this.Datastores = new List<DataStoreSummary>();
+            this.Datastores.ApplyExploratoryFieldSpec(parent + ".datastores");
+        }
+        //      C# -> List<VirtualMachineSummary>? VirtualMachines
+        // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
+        if (this.VirtualMachines == null && Exploration.Includes(parent + ".virtualMachines"))
+        {
+            this.VirtualMachines = new List<VirtualMachineSummary>();
+            this.VirtualMachines.ApplyExploratoryFieldSpec(parent + ".virtualMachines");
+        }
+        //      C# -> VmwareHostSummary? VmwareHostSummary
+        // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
+        if (this.VmwareHostSummary == null && Exploration.Includes(parent + ".vmwareHostSummary"))
+        {
+            this.VmwareHostSummary = new VmwareHostSummary();
+            this.VmwareHostSummary.ApplyExploratoryFieldSpec(parent + ".vmwareHostSummary");
+        }
+        //      C# -> VmwareHostUpdate? VmwareHostUpdate
+        // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
+        if (this.VmwareHostUpdate == null && Exploration.Includes(parent + ".vmwareHostUpdate"))
+        {
+            this.VmwareHostUpdate = new VmwareHostUpdate();
+            this.VmwareHostUpdate.ApplyExploratoryFieldSpec(parent + ".vmwareHostUpdate");
+        }
+    }
 
 
     #endregion
 
     } // class VmwareHostDetail
+    
     #endregion
 
     public static class ListVmwareHostDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VmwareHostDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VmwareHostDetail> list, 
             String parent = "")
         {
-            var item = new VmwareHostDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VmwareHostDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

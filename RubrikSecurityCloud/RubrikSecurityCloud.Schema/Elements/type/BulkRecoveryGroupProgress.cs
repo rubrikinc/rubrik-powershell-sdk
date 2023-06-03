@@ -1,0 +1,273 @@
+// BulkRecoveryGroupProgress.cs
+//
+// This generated file is part of the Rubrik PowerShell SDK.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    #region BulkRecoveryGroupProgress
+    public class BulkRecoveryGroupProgress: BaseType
+    {
+        #region members
+
+        //      C# -> BulkRecoveryGroupStatus? Status
+        // GraphQL -> status: BulkRecoveryGroupStatus! (enum)
+        [JsonProperty("status")]
+        public BulkRecoveryGroupStatus? Status { get; set; }
+
+        //      C# -> System.Int64? ElapsedTime
+        // GraphQL -> elapsedTime: Long! (scalar)
+        [JsonProperty("elapsedTime")]
+        public System.Int64? ElapsedTime { get; set; }
+
+        //      C# -> System.Int64? EndTime
+        // GraphQL -> endTime: Long (scalar)
+        [JsonProperty("endTime")]
+        public System.Int64? EndTime { get; set; }
+
+        //      C# -> System.String? GroupId
+        // GraphQL -> groupId: UUID! (scalar)
+        [JsonProperty("groupId")]
+        public System.String? GroupId { get; set; }
+
+        //      C# -> System.String? GroupName
+        // GraphQL -> groupName: String! (scalar)
+        [JsonProperty("groupName")]
+        public System.String? GroupName { get; set; }
+
+        //      C# -> System.String? GroupType
+        // GraphQL -> groupType: String! (scalar)
+        [JsonProperty("groupType")]
+        public System.String? GroupType { get; set; }
+
+        //      C# -> System.Int32? Seq
+        // GraphQL -> seq: Int! (scalar)
+        [JsonProperty("seq")]
+        public System.Int32? Seq { get; set; }
+
+        //      C# -> System.Int64? StartTime
+        // GraphQL -> startTime: Long! (scalar)
+        [JsonProperty("startTime")]
+        public System.Int64? StartTime { get; set; }
+
+        //      C# -> List<BulkRecoveryGroupWorkloadProgress>? WorkloadProgresses
+        // GraphQL -> workloadProgresses: [BulkRecoveryGroupWorkloadProgress!]! (type)
+        [JsonProperty("workloadProgresses")]
+        public List<BulkRecoveryGroupWorkloadProgress>? WorkloadProgresses { get; set; }
+
+
+        #endregion
+
+    #region methods
+
+    public BulkRecoveryGroupProgress Set(
+        BulkRecoveryGroupStatus? Status = null,
+        System.Int64? ElapsedTime = null,
+        System.Int64? EndTime = null,
+        System.String? GroupId = null,
+        System.String? GroupName = null,
+        System.String? GroupType = null,
+        System.Int32? Seq = null,
+        System.Int64? StartTime = null,
+        List<BulkRecoveryGroupWorkloadProgress>? WorkloadProgresses = null
+    ) 
+    {
+        if ( Status != null ) {
+            this.Status = Status;
+        }
+        if ( ElapsedTime != null ) {
+            this.ElapsedTime = ElapsedTime;
+        }
+        if ( EndTime != null ) {
+            this.EndTime = EndTime;
+        }
+        if ( GroupId != null ) {
+            this.GroupId = GroupId;
+        }
+        if ( GroupName != null ) {
+            this.GroupName = GroupName;
+        }
+        if ( GroupType != null ) {
+            this.GroupType = GroupType;
+        }
+        if ( Seq != null ) {
+            this.Seq = Seq;
+        }
+        if ( StartTime != null ) {
+            this.StartTime = StartTime;
+        }
+        if ( WorkloadProgresses != null ) {
+            this.WorkloadProgresses = WorkloadProgresses;
+        }
+        return this;
+    }
+
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> BulkRecoveryGroupStatus? Status
+        // GraphQL -> status: BulkRecoveryGroupStatus! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
+        }
+        //      C# -> System.Int64? ElapsedTime
+        // GraphQL -> elapsedTime: Long! (scalar)
+        if (this.ElapsedTime != null) {
+            s += ind + "elapsedTime\n" ;
+        }
+        //      C# -> System.Int64? EndTime
+        // GraphQL -> endTime: Long (scalar)
+        if (this.EndTime != null) {
+            s += ind + "endTime\n" ;
+        }
+        //      C# -> System.String? GroupId
+        // GraphQL -> groupId: UUID! (scalar)
+        if (this.GroupId != null) {
+            s += ind + "groupId\n" ;
+        }
+        //      C# -> System.String? GroupName
+        // GraphQL -> groupName: String! (scalar)
+        if (this.GroupName != null) {
+            s += ind + "groupName\n" ;
+        }
+        //      C# -> System.String? GroupType
+        // GraphQL -> groupType: String! (scalar)
+        if (this.GroupType != null) {
+            s += ind + "groupType\n" ;
+        }
+        //      C# -> System.Int32? Seq
+        // GraphQL -> seq: Int! (scalar)
+        if (this.Seq != null) {
+            s += ind + "seq\n" ;
+        }
+        //      C# -> System.Int64? StartTime
+        // GraphQL -> startTime: Long! (scalar)
+        if (this.StartTime != null) {
+            s += ind + "startTime\n" ;
+        }
+        //      C# -> List<BulkRecoveryGroupWorkloadProgress>? WorkloadProgresses
+        // GraphQL -> workloadProgresses: [BulkRecoveryGroupWorkloadProgress!]! (type)
+        if (this.WorkloadProgresses != null) {
+            s += ind + "workloadProgresses {\n" + this.WorkloadProgresses.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
+
+
+    
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> BulkRecoveryGroupStatus? Status
+        // GraphQL -> status: BulkRecoveryGroupStatus! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        {
+            this.Status = new BulkRecoveryGroupStatus();
+        }
+        //      C# -> System.Int64? ElapsedTime
+        // GraphQL -> elapsedTime: Long! (scalar)
+        if (this.ElapsedTime == null && Exploration.Includes(parent + ".elapsedTime", true))
+        {
+            this.ElapsedTime = new System.Int64();
+        }
+        //      C# -> System.Int64? EndTime
+        // GraphQL -> endTime: Long (scalar)
+        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        {
+            this.EndTime = new System.Int64();
+        }
+        //      C# -> System.String? GroupId
+        // GraphQL -> groupId: UUID! (scalar)
+        if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
+        {
+            this.GroupId = new System.String("FETCH");
+        }
+        //      C# -> System.String? GroupName
+        // GraphQL -> groupName: String! (scalar)
+        if (this.GroupName == null && Exploration.Includes(parent + ".groupName", true))
+        {
+            this.GroupName = new System.String("FETCH");
+        }
+        //      C# -> System.String? GroupType
+        // GraphQL -> groupType: String! (scalar)
+        if (this.GroupType == null && Exploration.Includes(parent + ".groupType", true))
+        {
+            this.GroupType = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? Seq
+        // GraphQL -> seq: Int! (scalar)
+        if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
+        {
+            this.Seq = new System.Int32();
+        }
+        //      C# -> System.Int64? StartTime
+        // GraphQL -> startTime: Long! (scalar)
+        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        {
+            this.StartTime = new System.Int64();
+        }
+        //      C# -> List<BulkRecoveryGroupWorkloadProgress>? WorkloadProgresses
+        // GraphQL -> workloadProgresses: [BulkRecoveryGroupWorkloadProgress!]! (type)
+        if (this.WorkloadProgresses == null && Exploration.Includes(parent + ".workloadProgresses"))
+        {
+            this.WorkloadProgresses = new List<BulkRecoveryGroupWorkloadProgress>();
+            this.WorkloadProgresses.ApplyExploratoryFieldSpec(parent + ".workloadProgresses");
+        }
+    }
+
+
+    #endregion
+
+    } // class BulkRecoveryGroupProgress
+    
+    #endregion
+
+    public static class ListBulkRecoveryGroupProgressExtensions
+    {
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
+        // all fields (including nested objects) that are not null are
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
+            this List<BulkRecoveryGroupProgress> list,
+            int indent=0)
+        {
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
+        }
+
+        public static void ApplyExploratoryFieldSpec(
+            this List<BulkRecoveryGroupProgress> list, 
+            String parent = "")
+        {
+            if ( list.Count == 0 ) {
+                list.Add(new BulkRecoveryGroupProgress());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
+        }
+    }
+
+
+} // namespace Rubrik.SecurityCloud.Types

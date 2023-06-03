@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using Rubrik.SecurityCloud.PowerShell.Private;
 using Rubrik.SecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Private;
@@ -323,7 +323,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         string queryText =
                             $"query FilesetByIdQuery($fid: UUID!){{\n" +
                             $"{queryName}(fid: $fid){{\n" +
-                            $"{requestFields.PhysicalChildConnection.Nodes[0].AsFragment(1)}\n" +
+                            $"{requestFields.PhysicalChildConnection.Nodes[0].AsFieldSpec(1)}\n" +
                             $"}}\n}}";
 
                         // Initialize the variableset

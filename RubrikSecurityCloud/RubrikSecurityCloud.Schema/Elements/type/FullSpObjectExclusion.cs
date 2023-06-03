@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region FullSpObjectExclusion
-    public class FullSpObjectExclusion: IFragment
+    public class FullSpObjectExclusion: BaseType
     {
         #region members
+
+        //      C# -> SharePointDescendantType? ObjectType
+        // GraphQL -> objectType: SharePointDescendantType! (enum)
+        [JsonProperty("objectType")]
+        public SharePointDescendantType? ObjectType { get; set; }
+
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         [JsonProperty("fid")]
@@ -33,22 +40,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("url")]
         public System.String? Url { get; set; }
 
-        //      C# -> SharePointDescendantType? ObjectType
-        // GraphQL -> objectType: SharePointDescendantType! (enum)
-        [JsonProperty("objectType")]
-        public SharePointDescendantType? ObjectType { get; set; }
 
         #endregion
 
     #region methods
 
     public FullSpObjectExclusion Set(
+        SharePointDescendantType? ObjectType = null,
         System.String? Fid = null,
         System.String? Name = null,
-        System.String? Url = null,
-        SharePointDescendantType? ObjectType = null
+        System.String? Url = null
     ) 
     {
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
+        }
         if ( Fid != null ) {
             this.Fid = Fid;
         }
@@ -58,114 +64,107 @@ namespace Rubrik.SecurityCloud.Types
         if ( Url != null ) {
             this.Url = Url;
         }
-        if ( ObjectType != null ) {
-            this.ObjectType = ObjectType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: String! (scalar)
-            if (this.Fid != null)
-            {
-                 s += ind + "fid\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? Url
-            // GraphQL -> url: URL! (scalar)
-            if (this.Url != null)
-            {
-                 s += ind + "url\n";
-
-            }
-            //      C# -> SharePointDescendantType? ObjectType
-            // GraphQL -> objectType: SharePointDescendantType! (enum)
-            if (this.ObjectType != null)
-            {
-                 s += ind + "objectType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> SharePointDescendantType? ObjectType
+        // GraphQL -> objectType: SharePointDescendantType! (enum)
+        if (this.ObjectType != null) {
+            s += ind + "objectType\n" ;
         }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: String! (scalar)
+        if (this.Fid != null) {
+            s += ind + "fid\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? Url
+        // GraphQL -> url: URL! (scalar)
+        if (this.Url != null) {
+            s += ind + "url\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> SharePointDescendantType? ObjectType
+        // GraphQL -> objectType: SharePointDescendantType! (enum)
+        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
         {
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: String! (scalar)
-            if (this.Fid == null && Exploration.Includes(parent + ".fid$"))
-            {
-                this.Fid = new System.String("FETCH");
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? Url
-            // GraphQL -> url: URL! (scalar)
-            if (this.Url == null && Exploration.Includes(parent + ".url$"))
-            {
-                this.Url = new System.String("FETCH");
-            }
-            //      C# -> SharePointDescendantType? ObjectType
-            // GraphQL -> objectType: SharePointDescendantType! (enum)
-            if (this.ObjectType == null && Exploration.Includes(parent + ".objectType$"))
-            {
-                this.ObjectType = new SharePointDescendantType();
-            }
+            this.ObjectType = new SharePointDescendantType();
         }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: String! (scalar)
+        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        {
+            this.Fid = new System.String("FETCH");
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? Url
+        // GraphQL -> url: URL! (scalar)
+        if (this.Url == null && Exploration.Includes(parent + ".url", true))
+        {
+            this.Url = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class FullSpObjectExclusion
+    
     #endregion
 
     public static class ListFullSpObjectExclusionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<FullSpObjectExclusion> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<FullSpObjectExclusion> list, 
             String parent = "")
         {
-            var item = new FullSpObjectExclusion();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new FullSpObjectExclusion());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ThreatHuntSummaryReply
-    public class ThreatHuntSummaryReply: IFragment
+    public class ThreatHuntSummaryReply: BaseType
     {
         #region members
+
+        //      C# -> ThreatHuntStatus? Status
+        // GraphQL -> status: ThreatHuntStatus! (enum)
+        [JsonProperty("status")]
+        public ThreatHuntStatus? Status { get; set; }
+
         //      C# -> System.String? HuntId
         // GraphQL -> huntId: String! (scalar)
         [JsonProperty("huntId")]
@@ -38,23 +45,22 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("stats")]
         public ThreatHuntStats? Stats { get; set; }
 
-        //      C# -> ThreatHuntStatus? Status
-        // GraphQL -> status: ThreatHuntStatus! (enum)
-        [JsonProperty("status")]
-        public ThreatHuntStatus? Status { get; set; }
 
         #endregion
 
     #region methods
 
     public ThreatHuntSummaryReply Set(
+        ThreatHuntStatus? Status = null,
         System.String? HuntId = null,
         ThreatHuntConfig? Config = null,
         List<ThreatHuntResultObjectsSummary>? ObjectsSummary = null,
-        ThreatHuntStats? Stats = null,
-        ThreatHuntStatus? Status = null
+        ThreatHuntStats? Stats = null
     ) 
     {
+        if ( Status != null ) {
+            this.Status = Status;
+        }
         if ( HuntId != null ) {
             this.HuntId = HuntId;
         }
@@ -67,139 +73,121 @@ namespace Rubrik.SecurityCloud.Types
         if ( Stats != null ) {
             this.Stats = Stats;
         }
-        if ( Status != null ) {
-            this.Status = Status;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? HuntId
-            // GraphQL -> huntId: String! (scalar)
-            if (this.HuntId != null)
-            {
-                 s += ind + "huntId\n";
-
-            }
-            //      C# -> ThreatHuntConfig? Config
-            // GraphQL -> config: ThreatHuntConfig (type)
-            if (this.Config != null)
-            {
-                 s += ind + "config\n";
-
-                 s += ind + "{\n" + 
-                 this.Config.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<ThreatHuntResultObjectsSummary>? ObjectsSummary
-            // GraphQL -> objectsSummary: [ThreatHuntResultObjectsSummary!]! (type)
-            if (this.ObjectsSummary != null)
-            {
-                 s += ind + "objectsSummary\n";
-
-                 s += ind + "{\n" + 
-                 this.ObjectsSummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ThreatHuntStats? Stats
-            // GraphQL -> stats: ThreatHuntStats (type)
-            if (this.Stats != null)
-            {
-                 s += ind + "stats\n";
-
-                 s += ind + "{\n" + 
-                 this.Stats.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ThreatHuntStatus? Status
-            // GraphQL -> status: ThreatHuntStatus! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ThreatHuntStatus? Status
+        // GraphQL -> status: ThreatHuntStatus! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
+        //      C# -> System.String? HuntId
+        // GraphQL -> huntId: String! (scalar)
+        if (this.HuntId != null) {
+            s += ind + "huntId\n" ;
+        }
+        //      C# -> ThreatHuntConfig? Config
+        // GraphQL -> config: ThreatHuntConfig (type)
+        if (this.Config != null) {
+            s += ind + "config {\n" + this.Config.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ThreatHuntResultObjectsSummary>? ObjectsSummary
+        // GraphQL -> objectsSummary: [ThreatHuntResultObjectsSummary!]! (type)
+        if (this.ObjectsSummary != null) {
+            s += ind + "objectsSummary {\n" + this.ObjectsSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ThreatHuntStats? Stats
+        // GraphQL -> stats: ThreatHuntStats (type)
+        if (this.Stats != null) {
+            s += ind + "stats {\n" + this.Stats.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ThreatHuntStatus? Status
+        // GraphQL -> status: ThreatHuntStatus! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            //      C# -> System.String? HuntId
-            // GraphQL -> huntId: String! (scalar)
-            if (this.HuntId == null && Exploration.Includes(parent + ".huntId$"))
-            {
-                this.HuntId = new System.String("FETCH");
-            }
-            //      C# -> ThreatHuntConfig? Config
-            // GraphQL -> config: ThreatHuntConfig (type)
-            if (this.Config == null && Exploration.Includes(parent + ".config"))
-            {
-                this.Config = new ThreatHuntConfig();
-                this.Config.ApplyExploratoryFragment(parent + ".config");
-            }
-            //      C# -> List<ThreatHuntResultObjectsSummary>? ObjectsSummary
-            // GraphQL -> objectsSummary: [ThreatHuntResultObjectsSummary!]! (type)
-            if (this.ObjectsSummary == null && Exploration.Includes(parent + ".objectsSummary"))
-            {
-                this.ObjectsSummary = new List<ThreatHuntResultObjectsSummary>();
-                this.ObjectsSummary.ApplyExploratoryFragment(parent + ".objectsSummary");
-            }
-            //      C# -> ThreatHuntStats? Stats
-            // GraphQL -> stats: ThreatHuntStats (type)
-            if (this.Stats == null && Exploration.Includes(parent + ".stats"))
-            {
-                this.Stats = new ThreatHuntStats();
-                this.Stats.ApplyExploratoryFragment(parent + ".stats");
-            }
-            //      C# -> ThreatHuntStatus? Status
-            // GraphQL -> status: ThreatHuntStatus! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new ThreatHuntStatus();
-            }
+            this.Status = new ThreatHuntStatus();
         }
+        //      C# -> System.String? HuntId
+        // GraphQL -> huntId: String! (scalar)
+        if (this.HuntId == null && Exploration.Includes(parent + ".huntId", true))
+        {
+            this.HuntId = new System.String("FETCH");
+        }
+        //      C# -> ThreatHuntConfig? Config
+        // GraphQL -> config: ThreatHuntConfig (type)
+        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        {
+            this.Config = new ThreatHuntConfig();
+            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+        }
+        //      C# -> List<ThreatHuntResultObjectsSummary>? ObjectsSummary
+        // GraphQL -> objectsSummary: [ThreatHuntResultObjectsSummary!]! (type)
+        if (this.ObjectsSummary == null && Exploration.Includes(parent + ".objectsSummary"))
+        {
+            this.ObjectsSummary = new List<ThreatHuntResultObjectsSummary>();
+            this.ObjectsSummary.ApplyExploratoryFieldSpec(parent + ".objectsSummary");
+        }
+        //      C# -> ThreatHuntStats? Stats
+        // GraphQL -> stats: ThreatHuntStats (type)
+        if (this.Stats == null && Exploration.Includes(parent + ".stats"))
+        {
+            this.Stats = new ThreatHuntStats();
+            this.Stats.ApplyExploratoryFieldSpec(parent + ".stats");
+        }
+    }
 
 
     #endregion
 
     } // class ThreatHuntSummaryReply
+    
     #endregion
 
     public static class ListThreatHuntSummaryReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ThreatHuntSummaryReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntSummaryReply> list, 
             String parent = "")
         {
-            var item = new ThreatHuntSummaryReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ThreatHuntSummaryReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

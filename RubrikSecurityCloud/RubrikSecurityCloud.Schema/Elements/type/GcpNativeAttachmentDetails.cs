@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region GcpNativeAttachmentDetails
-    public class GcpNativeAttachmentDetails: IFragment
+    public class GcpNativeAttachmentDetails: BaseType
     {
         #region members
+
         //      C# -> System.String? DeviceName
         // GraphQL -> deviceName: String! (scalar)
         [JsonProperty("deviceName")]
@@ -62,6 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sizeInGiBs: Int! (scalar)
         [JsonProperty("sizeInGiBs")]
         public System.Int32? SizeInGiBs { get; set; }
+
 
         #endregion
 
@@ -109,173 +112,159 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? DeviceName
-            // GraphQL -> deviceName: String! (scalar)
-            if (this.DeviceName != null)
-            {
-                 s += ind + "deviceName\n";
-
-            }
-            //      C# -> System.String? DiskId
-            // GraphQL -> diskId: String! (scalar)
-            if (this.DiskId != null)
-            {
-                 s += ind + "diskId\n";
-
-            }
-            //      C# -> System.String? DiskName
-            // GraphQL -> diskName: String! (scalar)
-            if (this.DiskName != null)
-            {
-                 s += ind + "diskName\n";
-
-            }
-            //      C# -> System.String? InstanceId
-            // GraphQL -> instanceId: String! (scalar)
-            if (this.InstanceId != null)
-            {
-                 s += ind + "instanceId\n";
-
-            }
-            //      C# -> System.String? InstanceName
-            // GraphQL -> instanceName: String! (scalar)
-            if (this.InstanceName != null)
-            {
-                 s += ind + "instanceName\n";
-
-            }
-            //      C# -> System.String? InstanceZone
-            // GraphQL -> instanceZone: String! (scalar)
-            if (this.InstanceZone != null)
-            {
-                 s += ind + "instanceZone\n";
-
-            }
-            //      C# -> System.Boolean? IsBootDisk
-            // GraphQL -> isBootDisk: Boolean! (scalar)
-            if (this.IsBootDisk != null)
-            {
-                 s += ind + "isBootDisk\n";
-
-            }
-            //      C# -> System.Boolean? IsExcluded
-            // GraphQL -> isExcluded: Boolean! (scalar)
-            if (this.IsExcluded != null)
-            {
-                 s += ind + "isExcluded\n";
-
-            }
-            //      C# -> System.Int32? SizeInGiBs
-            // GraphQL -> sizeInGiBs: Int! (scalar)
-            if (this.SizeInGiBs != null)
-            {
-                 s += ind + "sizeInGiBs\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? DeviceName
+        // GraphQL -> deviceName: String! (scalar)
+        if (this.DeviceName != null) {
+            s += ind + "deviceName\n" ;
         }
+        //      C# -> System.String? DiskId
+        // GraphQL -> diskId: String! (scalar)
+        if (this.DiskId != null) {
+            s += ind + "diskId\n" ;
+        }
+        //      C# -> System.String? DiskName
+        // GraphQL -> diskName: String! (scalar)
+        if (this.DiskName != null) {
+            s += ind + "diskName\n" ;
+        }
+        //      C# -> System.String? InstanceId
+        // GraphQL -> instanceId: String! (scalar)
+        if (this.InstanceId != null) {
+            s += ind + "instanceId\n" ;
+        }
+        //      C# -> System.String? InstanceName
+        // GraphQL -> instanceName: String! (scalar)
+        if (this.InstanceName != null) {
+            s += ind + "instanceName\n" ;
+        }
+        //      C# -> System.String? InstanceZone
+        // GraphQL -> instanceZone: String! (scalar)
+        if (this.InstanceZone != null) {
+            s += ind + "instanceZone\n" ;
+        }
+        //      C# -> System.Boolean? IsBootDisk
+        // GraphQL -> isBootDisk: Boolean! (scalar)
+        if (this.IsBootDisk != null) {
+            s += ind + "isBootDisk\n" ;
+        }
+        //      C# -> System.Boolean? IsExcluded
+        // GraphQL -> isExcluded: Boolean! (scalar)
+        if (this.IsExcluded != null) {
+            s += ind + "isExcluded\n" ;
+        }
+        //      C# -> System.Int32? SizeInGiBs
+        // GraphQL -> sizeInGiBs: Int! (scalar)
+        if (this.SizeInGiBs != null) {
+            s += ind + "sizeInGiBs\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? DeviceName
+        // GraphQL -> deviceName: String! (scalar)
+        if (this.DeviceName == null && Exploration.Includes(parent + ".deviceName", true))
         {
-            //      C# -> System.String? DeviceName
-            // GraphQL -> deviceName: String! (scalar)
-            if (this.DeviceName == null && Exploration.Includes(parent + ".deviceName$"))
-            {
-                this.DeviceName = new System.String("FETCH");
-            }
-            //      C# -> System.String? DiskId
-            // GraphQL -> diskId: String! (scalar)
-            if (this.DiskId == null && Exploration.Includes(parent + ".diskId$"))
-            {
-                this.DiskId = new System.String("FETCH");
-            }
-            //      C# -> System.String? DiskName
-            // GraphQL -> diskName: String! (scalar)
-            if (this.DiskName == null && Exploration.Includes(parent + ".diskName$"))
-            {
-                this.DiskName = new System.String("FETCH");
-            }
-            //      C# -> System.String? InstanceId
-            // GraphQL -> instanceId: String! (scalar)
-            if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId$"))
-            {
-                this.InstanceId = new System.String("FETCH");
-            }
-            //      C# -> System.String? InstanceName
-            // GraphQL -> instanceName: String! (scalar)
-            if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName$"))
-            {
-                this.InstanceName = new System.String("FETCH");
-            }
-            //      C# -> System.String? InstanceZone
-            // GraphQL -> instanceZone: String! (scalar)
-            if (this.InstanceZone == null && Exploration.Includes(parent + ".instanceZone$"))
-            {
-                this.InstanceZone = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsBootDisk
-            // GraphQL -> isBootDisk: Boolean! (scalar)
-            if (this.IsBootDisk == null && Exploration.Includes(parent + ".isBootDisk$"))
-            {
-                this.IsBootDisk = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsExcluded
-            // GraphQL -> isExcluded: Boolean! (scalar)
-            if (this.IsExcluded == null && Exploration.Includes(parent + ".isExcluded$"))
-            {
-                this.IsExcluded = new System.Boolean();
-            }
-            //      C# -> System.Int32? SizeInGiBs
-            // GraphQL -> sizeInGiBs: Int! (scalar)
-            if (this.SizeInGiBs == null && Exploration.Includes(parent + ".sizeInGiBs$"))
-            {
-                this.SizeInGiBs = new System.Int32();
-            }
+            this.DeviceName = new System.String("FETCH");
         }
+        //      C# -> System.String? DiskId
+        // GraphQL -> diskId: String! (scalar)
+        if (this.DiskId == null && Exploration.Includes(parent + ".diskId", true))
+        {
+            this.DiskId = new System.String("FETCH");
+        }
+        //      C# -> System.String? DiskName
+        // GraphQL -> diskName: String! (scalar)
+        if (this.DiskName == null && Exploration.Includes(parent + ".diskName", true))
+        {
+            this.DiskName = new System.String("FETCH");
+        }
+        //      C# -> System.String? InstanceId
+        // GraphQL -> instanceId: String! (scalar)
+        if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
+        {
+            this.InstanceId = new System.String("FETCH");
+        }
+        //      C# -> System.String? InstanceName
+        // GraphQL -> instanceName: String! (scalar)
+        if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
+        {
+            this.InstanceName = new System.String("FETCH");
+        }
+        //      C# -> System.String? InstanceZone
+        // GraphQL -> instanceZone: String! (scalar)
+        if (this.InstanceZone == null && Exploration.Includes(parent + ".instanceZone", true))
+        {
+            this.InstanceZone = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsBootDisk
+        // GraphQL -> isBootDisk: Boolean! (scalar)
+        if (this.IsBootDisk == null && Exploration.Includes(parent + ".isBootDisk", true))
+        {
+            this.IsBootDisk = true;
+        }
+        //      C# -> System.Boolean? IsExcluded
+        // GraphQL -> isExcluded: Boolean! (scalar)
+        if (this.IsExcluded == null && Exploration.Includes(parent + ".isExcluded", true))
+        {
+            this.IsExcluded = true;
+        }
+        //      C# -> System.Int32? SizeInGiBs
+        // GraphQL -> sizeInGiBs: Int! (scalar)
+        if (this.SizeInGiBs == null && Exploration.Includes(parent + ".sizeInGiBs", true))
+        {
+            this.SizeInGiBs = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class GcpNativeAttachmentDetails
+    
     #endregion
 
     public static class ListGcpNativeAttachmentDetailsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<GcpNativeAttachmentDetails> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<GcpNativeAttachmentDetails> list, 
             String parent = "")
         {
-            var item = new GcpNativeAttachmentDetails();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new GcpNativeAttachmentDetails());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

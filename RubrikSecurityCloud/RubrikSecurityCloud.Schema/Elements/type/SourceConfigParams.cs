@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SourceConfigParams
-    public class SourceConfigParams: IFragment
+    public class SourceConfigParams: BaseType
     {
         #region members
+
         //      C# -> List<System.String>? CassandraYaml
         // GraphQL -> cassandraYaml: [String!]! (scalar)
         [JsonProperty("cassandraYaml")]
@@ -62,6 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sslOptions: CassandraSslOptions (type)
         [JsonProperty("sslOptions")]
         public CassandraSslOptions? SslOptions { get; set; }
+
 
         #endregion
 
@@ -109,177 +112,160 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<System.String>? CassandraYaml
-            // GraphQL -> cassandraYaml: [String!]! (scalar)
-            if (this.CassandraYaml != null)
-            {
-                 s += ind + "cassandraYaml\n";
-
-            }
-            //      C# -> List<System.String>? DseYaml
-            // GraphQL -> dseYaml: [String!]! (scalar)
-            if (this.DseYaml != null)
-            {
-                 s += ind + "dseYaml\n";
-
-            }
-            //      C# -> System.String? HttpsCertificate
-            // GraphQL -> httpsCertificate: String! (scalar)
-            if (this.HttpsCertificate != null)
-            {
-                 s += ind + "httpsCertificate\n";
-
-            }
-            //      C# -> System.String? JmxUser
-            // GraphQL -> jmxUser: String! (scalar)
-            if (this.JmxUser != null)
-            {
-                 s += ind + "jmxUser\n";
-
-            }
-            //      C# -> System.String? SourceDbUser
-            // GraphQL -> sourceDbUser: String! (scalar)
-            if (this.SourceDbUser != null)
-            {
-                 s += ind + "sourceDbUser\n";
-
-            }
-            //      C# -> System.Int32? SourceHttpsPort
-            // GraphQL -> sourceHttpsPort: Int! (scalar)
-            if (this.SourceHttpsPort != null)
-            {
-                 s += ind + "sourceHttpsPort\n";
-
-            }
-            //      C# -> System.Int32? SourcePort
-            // GraphQL -> sourcePort: Int! (scalar)
-            if (this.SourcePort != null)
-            {
-                 s += ind + "sourcePort\n";
-
-            }
-            //      C# -> System.Int32? SourceRpcPort
-            // GraphQL -> sourceRpcPort: Int! (scalar)
-            if (this.SourceRpcPort != null)
-            {
-                 s += ind + "sourceRpcPort\n";
-
-            }
-            //      C# -> CassandraSslOptions? SslOptions
-            // GraphQL -> sslOptions: CassandraSslOptions (type)
-            if (this.SslOptions != null)
-            {
-                 s += ind + "sslOptions\n";
-
-                 s += ind + "{\n" + 
-                 this.SslOptions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<System.String>? CassandraYaml
+        // GraphQL -> cassandraYaml: [String!]! (scalar)
+        if (this.CassandraYaml != null) {
+            s += ind + "cassandraYaml\n" ;
         }
+        //      C# -> List<System.String>? DseYaml
+        // GraphQL -> dseYaml: [String!]! (scalar)
+        if (this.DseYaml != null) {
+            s += ind + "dseYaml\n" ;
+        }
+        //      C# -> System.String? HttpsCertificate
+        // GraphQL -> httpsCertificate: String! (scalar)
+        if (this.HttpsCertificate != null) {
+            s += ind + "httpsCertificate\n" ;
+        }
+        //      C# -> System.String? JmxUser
+        // GraphQL -> jmxUser: String! (scalar)
+        if (this.JmxUser != null) {
+            s += ind + "jmxUser\n" ;
+        }
+        //      C# -> System.String? SourceDbUser
+        // GraphQL -> sourceDbUser: String! (scalar)
+        if (this.SourceDbUser != null) {
+            s += ind + "sourceDbUser\n" ;
+        }
+        //      C# -> System.Int32? SourceHttpsPort
+        // GraphQL -> sourceHttpsPort: Int! (scalar)
+        if (this.SourceHttpsPort != null) {
+            s += ind + "sourceHttpsPort\n" ;
+        }
+        //      C# -> System.Int32? SourcePort
+        // GraphQL -> sourcePort: Int! (scalar)
+        if (this.SourcePort != null) {
+            s += ind + "sourcePort\n" ;
+        }
+        //      C# -> System.Int32? SourceRpcPort
+        // GraphQL -> sourceRpcPort: Int! (scalar)
+        if (this.SourceRpcPort != null) {
+            s += ind + "sourceRpcPort\n" ;
+        }
+        //      C# -> CassandraSslOptions? SslOptions
+        // GraphQL -> sslOptions: CassandraSslOptions (type)
+        if (this.SslOptions != null) {
+            s += ind + "sslOptions {\n" + this.SslOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<System.String>? CassandraYaml
+        // GraphQL -> cassandraYaml: [String!]! (scalar)
+        if (this.CassandraYaml == null && Exploration.Includes(parent + ".cassandraYaml", true))
         {
-            //      C# -> List<System.String>? CassandraYaml
-            // GraphQL -> cassandraYaml: [String!]! (scalar)
-            if (this.CassandraYaml == null && Exploration.Includes(parent + ".cassandraYaml$"))
-            {
-                this.CassandraYaml = new List<System.String>();
-            }
-            //      C# -> List<System.String>? DseYaml
-            // GraphQL -> dseYaml: [String!]! (scalar)
-            if (this.DseYaml == null && Exploration.Includes(parent + ".dseYaml$"))
-            {
-                this.DseYaml = new List<System.String>();
-            }
-            //      C# -> System.String? HttpsCertificate
-            // GraphQL -> httpsCertificate: String! (scalar)
-            if (this.HttpsCertificate == null && Exploration.Includes(parent + ".httpsCertificate$"))
-            {
-                this.HttpsCertificate = new System.String("FETCH");
-            }
-            //      C# -> System.String? JmxUser
-            // GraphQL -> jmxUser: String! (scalar)
-            if (this.JmxUser == null && Exploration.Includes(parent + ".jmxUser$"))
-            {
-                this.JmxUser = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceDbUser
-            // GraphQL -> sourceDbUser: String! (scalar)
-            if (this.SourceDbUser == null && Exploration.Includes(parent + ".sourceDbUser$"))
-            {
-                this.SourceDbUser = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? SourceHttpsPort
-            // GraphQL -> sourceHttpsPort: Int! (scalar)
-            if (this.SourceHttpsPort == null && Exploration.Includes(parent + ".sourceHttpsPort$"))
-            {
-                this.SourceHttpsPort = new System.Int32();
-            }
-            //      C# -> System.Int32? SourcePort
-            // GraphQL -> sourcePort: Int! (scalar)
-            if (this.SourcePort == null && Exploration.Includes(parent + ".sourcePort$"))
-            {
-                this.SourcePort = new System.Int32();
-            }
-            //      C# -> System.Int32? SourceRpcPort
-            // GraphQL -> sourceRpcPort: Int! (scalar)
-            if (this.SourceRpcPort == null && Exploration.Includes(parent + ".sourceRpcPort$"))
-            {
-                this.SourceRpcPort = new System.Int32();
-            }
-            //      C# -> CassandraSslOptions? SslOptions
-            // GraphQL -> sslOptions: CassandraSslOptions (type)
-            if (this.SslOptions == null && Exploration.Includes(parent + ".sslOptions"))
-            {
-                this.SslOptions = new CassandraSslOptions();
-                this.SslOptions.ApplyExploratoryFragment(parent + ".sslOptions");
-            }
+            this.CassandraYaml = new List<System.String>();
         }
+        //      C# -> List<System.String>? DseYaml
+        // GraphQL -> dseYaml: [String!]! (scalar)
+        if (this.DseYaml == null && Exploration.Includes(parent + ".dseYaml", true))
+        {
+            this.DseYaml = new List<System.String>();
+        }
+        //      C# -> System.String? HttpsCertificate
+        // GraphQL -> httpsCertificate: String! (scalar)
+        if (this.HttpsCertificate == null && Exploration.Includes(parent + ".httpsCertificate", true))
+        {
+            this.HttpsCertificate = new System.String("FETCH");
+        }
+        //      C# -> System.String? JmxUser
+        // GraphQL -> jmxUser: String! (scalar)
+        if (this.JmxUser == null && Exploration.Includes(parent + ".jmxUser", true))
+        {
+            this.JmxUser = new System.String("FETCH");
+        }
+        //      C# -> System.String? SourceDbUser
+        // GraphQL -> sourceDbUser: String! (scalar)
+        if (this.SourceDbUser == null && Exploration.Includes(parent + ".sourceDbUser", true))
+        {
+            this.SourceDbUser = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? SourceHttpsPort
+        // GraphQL -> sourceHttpsPort: Int! (scalar)
+        if (this.SourceHttpsPort == null && Exploration.Includes(parent + ".sourceHttpsPort", true))
+        {
+            this.SourceHttpsPort = new System.Int32();
+        }
+        //      C# -> System.Int32? SourcePort
+        // GraphQL -> sourcePort: Int! (scalar)
+        if (this.SourcePort == null && Exploration.Includes(parent + ".sourcePort", true))
+        {
+            this.SourcePort = new System.Int32();
+        }
+        //      C# -> System.Int32? SourceRpcPort
+        // GraphQL -> sourceRpcPort: Int! (scalar)
+        if (this.SourceRpcPort == null && Exploration.Includes(parent + ".sourceRpcPort", true))
+        {
+            this.SourceRpcPort = new System.Int32();
+        }
+        //      C# -> CassandraSslOptions? SslOptions
+        // GraphQL -> sslOptions: CassandraSslOptions (type)
+        if (this.SslOptions == null && Exploration.Includes(parent + ".sslOptions"))
+        {
+            this.SslOptions = new CassandraSslOptions();
+            this.SslOptions.ApplyExploratoryFieldSpec(parent + ".sslOptions");
+        }
+    }
 
 
     #endregion
 
     } // class SourceConfigParams
+    
     #endregion
 
     public static class ListSourceConfigParamsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SourceConfigParams> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SourceConfigParams> list, 
             String parent = "")
         {
-            var item = new SourceConfigParams();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SourceConfigParams());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region DownloadJobInfo
-    public class DownloadJobInfo: IFragment
+    public class DownloadJobInfo: BaseType
     {
         #region members
+
         //      C# -> System.String? EventId
         // GraphQL -> eventId: String! (scalar)
         [JsonProperty("eventId")]
@@ -42,6 +44,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         [JsonProperty("status")]
         public System.String? Status { get; set; }
+
 
         #endregion
 
@@ -73,121 +76,115 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? EventId
-            // GraphQL -> eventId: String! (scalar)
-            if (this.EventId != null)
-            {
-                 s += ind + "eventId\n";
-
-            }
-            //      C# -> System.String? JobInstanceId
-            // GraphQL -> jobInstanceId: String! (scalar)
-            if (this.JobInstanceId != null)
-            {
-                 s += ind + "jobInstanceId\n";
-
-            }
-            //      C# -> System.Single? Progress
-            // GraphQL -> progress: Float! (scalar)
-            if (this.Progress != null)
-            {
-                 s += ind + "progress\n";
-
-            }
-            //      C# -> System.Int64? RemainingTimeEstimateInSeconds
-            // GraphQL -> remainingTimeEstimateInSeconds: Long! (scalar)
-            if (this.RemainingTimeEstimateInSeconds != null)
-            {
-                 s += ind + "remainingTimeEstimateInSeconds\n";
-
-            }
-            //      C# -> System.String? Status
-            // GraphQL -> status: String! (scalar)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? EventId
+        // GraphQL -> eventId: String! (scalar)
+        if (this.EventId != null) {
+            s += ind + "eventId\n" ;
         }
+        //      C# -> System.String? JobInstanceId
+        // GraphQL -> jobInstanceId: String! (scalar)
+        if (this.JobInstanceId != null) {
+            s += ind + "jobInstanceId\n" ;
+        }
+        //      C# -> System.Single? Progress
+        // GraphQL -> progress: Float! (scalar)
+        if (this.Progress != null) {
+            s += ind + "progress\n" ;
+        }
+        //      C# -> System.Int64? RemainingTimeEstimateInSeconds
+        // GraphQL -> remainingTimeEstimateInSeconds: Long! (scalar)
+        if (this.RemainingTimeEstimateInSeconds != null) {
+            s += ind + "remainingTimeEstimateInSeconds\n" ;
+        }
+        //      C# -> System.String? Status
+        // GraphQL -> status: String! (scalar)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? EventId
+        // GraphQL -> eventId: String! (scalar)
+        if (this.EventId == null && Exploration.Includes(parent + ".eventId", true))
         {
-            //      C# -> System.String? EventId
-            // GraphQL -> eventId: String! (scalar)
-            if (this.EventId == null && Exploration.Includes(parent + ".eventId$"))
-            {
-                this.EventId = new System.String("FETCH");
-            }
-            //      C# -> System.String? JobInstanceId
-            // GraphQL -> jobInstanceId: String! (scalar)
-            if (this.JobInstanceId == null && Exploration.Includes(parent + ".jobInstanceId$"))
-            {
-                this.JobInstanceId = new System.String("FETCH");
-            }
-            //      C# -> System.Single? Progress
-            // GraphQL -> progress: Float! (scalar)
-            if (this.Progress == null && Exploration.Includes(parent + ".progress$"))
-            {
-                this.Progress = new System.Single();
-            }
-            //      C# -> System.Int64? RemainingTimeEstimateInSeconds
-            // GraphQL -> remainingTimeEstimateInSeconds: Long! (scalar)
-            if (this.RemainingTimeEstimateInSeconds == null && Exploration.Includes(parent + ".remainingTimeEstimateInSeconds$"))
-            {
-                this.RemainingTimeEstimateInSeconds = new System.Int64();
-            }
-            //      C# -> System.String? Status
-            // GraphQL -> status: String! (scalar)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new System.String("FETCH");
-            }
+            this.EventId = new System.String("FETCH");
         }
+        //      C# -> System.String? JobInstanceId
+        // GraphQL -> jobInstanceId: String! (scalar)
+        if (this.JobInstanceId == null && Exploration.Includes(parent + ".jobInstanceId", true))
+        {
+            this.JobInstanceId = new System.String("FETCH");
+        }
+        //      C# -> System.Single? Progress
+        // GraphQL -> progress: Float! (scalar)
+        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        {
+            this.Progress = new System.Single();
+        }
+        //      C# -> System.Int64? RemainingTimeEstimateInSeconds
+        // GraphQL -> remainingTimeEstimateInSeconds: Long! (scalar)
+        if (this.RemainingTimeEstimateInSeconds == null && Exploration.Includes(parent + ".remainingTimeEstimateInSeconds", true))
+        {
+            this.RemainingTimeEstimateInSeconds = new System.Int64();
+        }
+        //      C# -> System.String? Status
+        // GraphQL -> status: String! (scalar)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        {
+            this.Status = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class DownloadJobInfo
+    
     #endregion
 
     public static class ListDownloadJobInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<DownloadJobInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<DownloadJobInfo> list, 
             String parent = "")
         {
-            var item = new DownloadJobInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new DownloadJobInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

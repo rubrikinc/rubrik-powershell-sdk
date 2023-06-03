@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeSlaClientConfig
-    public class ManagedVolumeSlaClientConfig: IFragment
+    public class ManagedVolumeSlaClientConfig: BaseType
     {
         #region members
+
         //      C# -> List<System.String>? ChannelHostMountPaths
         // GraphQL -> channelHostMountPaths: [String!]! (scalar)
         [JsonProperty("channelHostMountPaths")]
@@ -57,6 +59,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> successfulPostBackupScript: ManagedVolumeSlaScriptConfig (type)
         [JsonProperty("successfulPostBackupScript")]
         public ManagedVolumeSlaScriptConfig? SuccessfulPostBackupScript { get; set; }
+
 
         #endregion
 
@@ -100,176 +103,152 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<System.String>? ChannelHostMountPaths
-            // GraphQL -> channelHostMountPaths: [String!]! (scalar)
-            if (this.ChannelHostMountPaths != null)
-            {
-                 s += ind + "channelHostMountPaths\n";
-
-            }
-            //      C# -> System.String? HostId
-            // GraphQL -> hostId: String! (scalar)
-            if (this.HostId != null)
-            {
-                 s += ind + "hostId\n";
-
-            }
-            //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
-            // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean! (scalar)
-            if (this.ShouldCancelBackupOnPreBackupScriptFailure != null)
-            {
-                 s += ind + "shouldCancelBackupOnPreBackupScriptFailure\n";
-
-            }
-            //      C# -> System.String? Username
-            // GraphQL -> username: String! (scalar)
-            if (this.Username != null)
-            {
-                 s += ind + "username\n";
-
-            }
-            //      C# -> ManagedVolumeSlaScriptConfig? BackupScript
-            // GraphQL -> backupScript: ManagedVolumeSlaScriptConfig! (type)
-            if (this.BackupScript != null)
-            {
-                 s += ind + "backupScript\n";
-
-                 s += ind + "{\n" + 
-                 this.BackupScript.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ManagedVolumeSlaScriptConfig? FailedPostBackupScript
-            // GraphQL -> failedPostBackupScript: ManagedVolumeSlaScriptConfig (type)
-            if (this.FailedPostBackupScript != null)
-            {
-                 s += ind + "failedPostBackupScript\n";
-
-                 s += ind + "{\n" + 
-                 this.FailedPostBackupScript.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ManagedVolumeSlaScriptConfig? PreBackupScript
-            // GraphQL -> preBackupScript: ManagedVolumeSlaScriptConfig (type)
-            if (this.PreBackupScript != null)
-            {
-                 s += ind + "preBackupScript\n";
-
-                 s += ind + "{\n" + 
-                 this.PreBackupScript.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ManagedVolumeSlaScriptConfig? SuccessfulPostBackupScript
-            // GraphQL -> successfulPostBackupScript: ManagedVolumeSlaScriptConfig (type)
-            if (this.SuccessfulPostBackupScript != null)
-            {
-                 s += ind + "successfulPostBackupScript\n";
-
-                 s += ind + "{\n" + 
-                 this.SuccessfulPostBackupScript.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<System.String>? ChannelHostMountPaths
+        // GraphQL -> channelHostMountPaths: [String!]! (scalar)
+        if (this.ChannelHostMountPaths != null) {
+            s += ind + "channelHostMountPaths\n" ;
         }
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String! (scalar)
+        if (this.HostId != null) {
+            s += ind + "hostId\n" ;
+        }
+        //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
+        // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean! (scalar)
+        if (this.ShouldCancelBackupOnPreBackupScriptFailure != null) {
+            s += ind + "shouldCancelBackupOnPreBackupScriptFailure\n" ;
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username != null) {
+            s += ind + "username\n" ;
+        }
+        //      C# -> ManagedVolumeSlaScriptConfig? BackupScript
+        // GraphQL -> backupScript: ManagedVolumeSlaScriptConfig! (type)
+        if (this.BackupScript != null) {
+            s += ind + "backupScript {\n" + this.BackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ManagedVolumeSlaScriptConfig? FailedPostBackupScript
+        // GraphQL -> failedPostBackupScript: ManagedVolumeSlaScriptConfig (type)
+        if (this.FailedPostBackupScript != null) {
+            s += ind + "failedPostBackupScript {\n" + this.FailedPostBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ManagedVolumeSlaScriptConfig? PreBackupScript
+        // GraphQL -> preBackupScript: ManagedVolumeSlaScriptConfig (type)
+        if (this.PreBackupScript != null) {
+            s += ind + "preBackupScript {\n" + this.PreBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ManagedVolumeSlaScriptConfig? SuccessfulPostBackupScript
+        // GraphQL -> successfulPostBackupScript: ManagedVolumeSlaScriptConfig (type)
+        if (this.SuccessfulPostBackupScript != null) {
+            s += ind + "successfulPostBackupScript {\n" + this.SuccessfulPostBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<System.String>? ChannelHostMountPaths
+        // GraphQL -> channelHostMountPaths: [String!]! (scalar)
+        if (this.ChannelHostMountPaths == null && Exploration.Includes(parent + ".channelHostMountPaths", true))
         {
-            //      C# -> List<System.String>? ChannelHostMountPaths
-            // GraphQL -> channelHostMountPaths: [String!]! (scalar)
-            if (this.ChannelHostMountPaths == null && Exploration.Includes(parent + ".channelHostMountPaths$"))
-            {
-                this.ChannelHostMountPaths = new List<System.String>();
-            }
-            //      C# -> System.String? HostId
-            // GraphQL -> hostId: String! (scalar)
-            if (this.HostId == null && Exploration.Includes(parent + ".hostId$"))
-            {
-                this.HostId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
-            // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean! (scalar)
-            if (this.ShouldCancelBackupOnPreBackupScriptFailure == null && Exploration.Includes(parent + ".shouldCancelBackupOnPreBackupScriptFailure$"))
-            {
-                this.ShouldCancelBackupOnPreBackupScriptFailure = new System.Boolean();
-            }
-            //      C# -> System.String? Username
-            // GraphQL -> username: String! (scalar)
-            if (this.Username == null && Exploration.Includes(parent + ".username$"))
-            {
-                this.Username = new System.String("FETCH");
-            }
-            //      C# -> ManagedVolumeSlaScriptConfig? BackupScript
-            // GraphQL -> backupScript: ManagedVolumeSlaScriptConfig! (type)
-            if (this.BackupScript == null && Exploration.Includes(parent + ".backupScript"))
-            {
-                this.BackupScript = new ManagedVolumeSlaScriptConfig();
-                this.BackupScript.ApplyExploratoryFragment(parent + ".backupScript");
-            }
-            //      C# -> ManagedVolumeSlaScriptConfig? FailedPostBackupScript
-            // GraphQL -> failedPostBackupScript: ManagedVolumeSlaScriptConfig (type)
-            if (this.FailedPostBackupScript == null && Exploration.Includes(parent + ".failedPostBackupScript"))
-            {
-                this.FailedPostBackupScript = new ManagedVolumeSlaScriptConfig();
-                this.FailedPostBackupScript.ApplyExploratoryFragment(parent + ".failedPostBackupScript");
-            }
-            //      C# -> ManagedVolumeSlaScriptConfig? PreBackupScript
-            // GraphQL -> preBackupScript: ManagedVolumeSlaScriptConfig (type)
-            if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript"))
-            {
-                this.PreBackupScript = new ManagedVolumeSlaScriptConfig();
-                this.PreBackupScript.ApplyExploratoryFragment(parent + ".preBackupScript");
-            }
-            //      C# -> ManagedVolumeSlaScriptConfig? SuccessfulPostBackupScript
-            // GraphQL -> successfulPostBackupScript: ManagedVolumeSlaScriptConfig (type)
-            if (this.SuccessfulPostBackupScript == null && Exploration.Includes(parent + ".successfulPostBackupScript"))
-            {
-                this.SuccessfulPostBackupScript = new ManagedVolumeSlaScriptConfig();
-                this.SuccessfulPostBackupScript.ApplyExploratoryFragment(parent + ".successfulPostBackupScript");
-            }
+            this.ChannelHostMountPaths = new List<System.String>();
         }
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String! (scalar)
+        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        {
+            this.HostId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
+        // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean! (scalar)
+        if (this.ShouldCancelBackupOnPreBackupScriptFailure == null && Exploration.Includes(parent + ".shouldCancelBackupOnPreBackupScriptFailure", true))
+        {
+            this.ShouldCancelBackupOnPreBackupScriptFailure = true;
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        {
+            this.Username = new System.String("FETCH");
+        }
+        //      C# -> ManagedVolumeSlaScriptConfig? BackupScript
+        // GraphQL -> backupScript: ManagedVolumeSlaScriptConfig! (type)
+        if (this.BackupScript == null && Exploration.Includes(parent + ".backupScript"))
+        {
+            this.BackupScript = new ManagedVolumeSlaScriptConfig();
+            this.BackupScript.ApplyExploratoryFieldSpec(parent + ".backupScript");
+        }
+        //      C# -> ManagedVolumeSlaScriptConfig? FailedPostBackupScript
+        // GraphQL -> failedPostBackupScript: ManagedVolumeSlaScriptConfig (type)
+        if (this.FailedPostBackupScript == null && Exploration.Includes(parent + ".failedPostBackupScript"))
+        {
+            this.FailedPostBackupScript = new ManagedVolumeSlaScriptConfig();
+            this.FailedPostBackupScript.ApplyExploratoryFieldSpec(parent + ".failedPostBackupScript");
+        }
+        //      C# -> ManagedVolumeSlaScriptConfig? PreBackupScript
+        // GraphQL -> preBackupScript: ManagedVolumeSlaScriptConfig (type)
+        if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript"))
+        {
+            this.PreBackupScript = new ManagedVolumeSlaScriptConfig();
+            this.PreBackupScript.ApplyExploratoryFieldSpec(parent + ".preBackupScript");
+        }
+        //      C# -> ManagedVolumeSlaScriptConfig? SuccessfulPostBackupScript
+        // GraphQL -> successfulPostBackupScript: ManagedVolumeSlaScriptConfig (type)
+        if (this.SuccessfulPostBackupScript == null && Exploration.Includes(parent + ".successfulPostBackupScript"))
+        {
+            this.SuccessfulPostBackupScript = new ManagedVolumeSlaScriptConfig();
+            this.SuccessfulPostBackupScript.ApplyExploratoryFieldSpec(parent + ".successfulPostBackupScript");
+        }
+    }
 
 
     #endregion
 
     } // class ManagedVolumeSlaClientConfig
+    
     #endregion
 
     public static class ListManagedVolumeSlaClientConfigExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ManagedVolumeSlaClientConfig> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeSlaClientConfig> list, 
             String parent = "")
         {
-            var item = new ManagedVolumeSlaClientConfig();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ManagedVolumeSlaClientConfig());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

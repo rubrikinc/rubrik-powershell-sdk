@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ThreatHuntDetails
-    public class ThreatHuntDetails: IFragment
+    public class ThreatHuntDetails: BaseType
     {
         #region members
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
         [JsonProperty("snapshots")]
         public List<WorkloadIdToSnapshotIds>? Snapshots { get; set; }
+
 
         #endregion
 
@@ -82,146 +85,129 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId != null)
-            {
-                 s += ind + "cdmId\n";
-
-            }
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime (scalar)
-            if (this.EndTime != null)
-            {
-                 s += ind + "endTime\n";
-
-            }
-            //      C# -> DateTime? StartTime
-            // GraphQL -> startTime: DateTime (scalar)
-            if (this.StartTime != null)
-            {
-                 s += ind + "startTime\n";
-
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ThreatHuntConfig? Config
-            // GraphQL -> config: ThreatHuntConfig! (type)
-            if (this.Config != null)
-            {
-                 s += ind + "config\n";
-
-                 s += ind + "{\n" + 
-                 this.Config.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<WorkloadIdToSnapshotIds>? Snapshots
-            // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
-            if (this.Snapshots != null)
-            {
-                 s += ind + "snapshots\n";
-
-                 s += ind + "{\n" + 
-                 this.Snapshots.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
         }
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime (scalar)
+        if (this.EndTime != null) {
+            s += ind + "endTime\n" ;
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        if (this.StartTime != null) {
+            s += ind + "startTime\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ThreatHuntConfig? Config
+        // GraphQL -> config: ThreatHuntConfig! (type)
+        if (this.Config != null) {
+            s += ind + "config {\n" + this.Config.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<WorkloadIdToSnapshotIds>? Snapshots
+        // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
+        if (this.Snapshots != null) {
+            s += ind + "snapshots {\n" + this.Snapshots.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
-            {
-                this.CdmId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime (scalar)
-            if (this.EndTime == null && Exploration.Includes(parent + ".endTime$"))
-            {
-                this.EndTime = new DateTime();
-            }
-            //      C# -> DateTime? StartTime
-            // GraphQL -> startTime: DateTime (scalar)
-            if (this.StartTime == null && Exploration.Includes(parent + ".startTime$"))
-            {
-                this.StartTime = new DateTime();
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> ThreatHuntConfig? Config
-            // GraphQL -> config: ThreatHuntConfig! (type)
-            if (this.Config == null && Exploration.Includes(parent + ".config"))
-            {
-                this.Config = new ThreatHuntConfig();
-                this.Config.ApplyExploratoryFragment(parent + ".config");
-            }
-            //      C# -> List<WorkloadIdToSnapshotIds>? Snapshots
-            // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
-            if (this.Snapshots == null && Exploration.Includes(parent + ".snapshots"))
-            {
-                this.Snapshots = new List<WorkloadIdToSnapshotIds>();
-                this.Snapshots.ApplyExploratoryFragment(parent + ".snapshots");
-            }
+            this.CdmId = new System.String("FETCH");
         }
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime (scalar)
+        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        {
+            this.EndTime = new DateTime();
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        {
+            this.StartTime = new DateTime();
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> ThreatHuntConfig? Config
+        // GraphQL -> config: ThreatHuntConfig! (type)
+        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        {
+            this.Config = new ThreatHuntConfig();
+            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+        }
+        //      C# -> List<WorkloadIdToSnapshotIds>? Snapshots
+        // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
+        if (this.Snapshots == null && Exploration.Includes(parent + ".snapshots"))
+        {
+            this.Snapshots = new List<WorkloadIdToSnapshotIds>();
+            this.Snapshots.ApplyExploratoryFieldSpec(parent + ".snapshots");
+        }
+    }
 
 
     #endregion
 
     } // class ThreatHuntDetails
+    
     #endregion
 
     public static class ListThreatHuntDetailsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ThreatHuntDetails> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ThreatHuntDetails> list, 
             String parent = "")
         {
-            var item = new ThreatHuntDetails();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ThreatHuntDetails());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

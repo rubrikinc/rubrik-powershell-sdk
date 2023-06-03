@@ -11,121 +11,121 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ProtectedObjectTypeToSla
-    public class ProtectedObjectTypeToSla: IFragment
+    public class ProtectedObjectTypeToSla: BaseType
     {
         #region members
-        //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
-        // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
-        [JsonProperty("slaAssignment")]
-        public AzureNativeResourceGroupSlaAssignment? SlaAssignment { get; set; }
 
         //      C# -> WorkloadLevelHierarchy? ProtectedObjectType
         // GraphQL -> protectedObjectType: WorkloadLevelHierarchy! (enum)
         [JsonProperty("protectedObjectType")]
         public WorkloadLevelHierarchy? ProtectedObjectType { get; set; }
 
+        //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
+        // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
+        [JsonProperty("slaAssignment")]
+        public AzureNativeResourceGroupSlaAssignment? SlaAssignment { get; set; }
+
+
         #endregion
 
     #region methods
 
     public ProtectedObjectTypeToSla Set(
-        AzureNativeResourceGroupSlaAssignment? SlaAssignment = null,
-        WorkloadLevelHierarchy? ProtectedObjectType = null
+        WorkloadLevelHierarchy? ProtectedObjectType = null,
+        AzureNativeResourceGroupSlaAssignment? SlaAssignment = null
     ) 
     {
-        if ( SlaAssignment != null ) {
-            this.SlaAssignment = SlaAssignment;
-        }
         if ( ProtectedObjectType != null ) {
             this.ProtectedObjectType = ProtectedObjectType;
+        }
+        if ( SlaAssignment != null ) {
+            this.SlaAssignment = SlaAssignment;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
-            // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
-            if (this.SlaAssignment != null)
-            {
-                 s += ind + "slaAssignment\n";
-
-                 s += ind + "{\n" + 
-                 this.SlaAssignment.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> WorkloadLevelHierarchy? ProtectedObjectType
-            // GraphQL -> protectedObjectType: WorkloadLevelHierarchy! (enum)
-            if (this.ProtectedObjectType != null)
-            {
-                 s += ind + "protectedObjectType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> WorkloadLevelHierarchy? ProtectedObjectType
+        // GraphQL -> protectedObjectType: WorkloadLevelHierarchy! (enum)
+        if (this.ProtectedObjectType != null) {
+            s += ind + "protectedObjectType\n" ;
         }
+        //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
+        // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
+        if (this.SlaAssignment != null) {
+            s += ind + "slaAssignment {\n" + this.SlaAssignment.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> WorkloadLevelHierarchy? ProtectedObjectType
+        // GraphQL -> protectedObjectType: WorkloadLevelHierarchy! (enum)
+        if (this.ProtectedObjectType == null && Exploration.Includes(parent + ".protectedObjectType", true))
         {
-            //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
-            // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
-            if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment"))
-            {
-                this.SlaAssignment = new AzureNativeResourceGroupSlaAssignment();
-                this.SlaAssignment.ApplyExploratoryFragment(parent + ".slaAssignment");
-            }
-            //      C# -> WorkloadLevelHierarchy? ProtectedObjectType
-            // GraphQL -> protectedObjectType: WorkloadLevelHierarchy! (enum)
-            if (this.ProtectedObjectType == null && Exploration.Includes(parent + ".protectedObjectType$"))
-            {
-                this.ProtectedObjectType = new WorkloadLevelHierarchy();
-            }
+            this.ProtectedObjectType = new WorkloadLevelHierarchy();
         }
+        //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
+        // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
+        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment"))
+        {
+            this.SlaAssignment = new AzureNativeResourceGroupSlaAssignment();
+            this.SlaAssignment.ApplyExploratoryFieldSpec(parent + ".slaAssignment");
+        }
+    }
 
 
     #endregion
 
     } // class ProtectedObjectTypeToSla
+    
     #endregion
 
     public static class ListProtectedObjectTypeToSlaExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ProtectedObjectTypeToSla> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ProtectedObjectTypeToSla> list, 
             String parent = "")
         {
-            var item = new ProtectedObjectTypeToSla();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ProtectedObjectTypeToSla());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

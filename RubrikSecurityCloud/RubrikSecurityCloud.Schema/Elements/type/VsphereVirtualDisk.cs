@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VsphereVirtualDisk
-    public class VsphereVirtualDisk: IFragment
+    public class VsphereVirtualDisk: BaseType
     {
         #region members
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -73,6 +75,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("datastore")]
         public VsphereDatastore? Datastore { get; set; }
 
+
         #endregion
 
     #region methods
@@ -127,203 +130,182 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId != null)
-            {
-                 s += ind + "cdmId\n";
-
-            }
-            //      C# -> System.String? CdmVersion
-            // GraphQL -> cdmVersion: String! (scalar)
-            if (this.CdmVersion != null)
-            {
-                 s += ind + "cdmVersion\n";
-
-            }
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid != null)
-            {
-                 s += ind + "clusterUuid\n";
-
-            }
-            //      C# -> System.String? DatastoreFid
-            // GraphQL -> datastoreFid: String (scalar)
-            if (this.DatastoreFid != null)
-            {
-                 s += ind + "datastoreFid\n";
-
-            }
-            //      C# -> System.Int32? DeviceKey
-            // GraphQL -> deviceKey: Int (scalar)
-            if (this.DeviceKey != null)
-            {
-                 s += ind + "deviceKey\n";
-
-            }
-            //      C# -> System.Boolean? ExcludeFromSnapshots
-            // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
-            if (this.ExcludeFromSnapshots != null)
-            {
-                 s += ind + "excludeFromSnapshots\n";
-
-            }
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: UUID! (scalar)
-            if (this.Fid != null)
-            {
-                 s += ind + "fid\n";
-
-            }
-            //      C# -> System.String? FileName
-            // GraphQL -> fileName: String! (scalar)
-            if (this.FileName != null)
-            {
-                 s += ind + "fileName\n";
-
-            }
-            //      C# -> System.Int64? Size
-            // GraphQL -> size: Long (scalar)
-            if (this.Size != null)
-            {
-                 s += ind + "size\n";
-
-            }
-            //      C# -> System.String? VirtualMachineId
-            // GraphQL -> virtualMachineId: String! (scalar)
-            if (this.VirtualMachineId != null)
-            {
-                 s += ind + "virtualMachineId\n";
-
-            }
-            //      C# -> VsphereDatastore? Datastore
-            // GraphQL -> datastore: VsphereDatastore (type)
-            if (this.Datastore != null)
-            {
-                 s += ind + "datastore\n";
-
-                 s += ind + "{\n" + 
-                 this.Datastore.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
         }
+        //      C# -> System.String? CdmVersion
+        // GraphQL -> cdmVersion: String! (scalar)
+        if (this.CdmVersion != null) {
+            s += ind + "cdmVersion\n" ;
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid != null) {
+            s += ind + "clusterUuid\n" ;
+        }
+        //      C# -> System.String? DatastoreFid
+        // GraphQL -> datastoreFid: String (scalar)
+        if (this.DatastoreFid != null) {
+            s += ind + "datastoreFid\n" ;
+        }
+        //      C# -> System.Int32? DeviceKey
+        // GraphQL -> deviceKey: Int (scalar)
+        if (this.DeviceKey != null) {
+            s += ind + "deviceKey\n" ;
+        }
+        //      C# -> System.Boolean? ExcludeFromSnapshots
+        // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
+        if (this.ExcludeFromSnapshots != null) {
+            s += ind + "excludeFromSnapshots\n" ;
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid != null) {
+            s += ind + "fid\n" ;
+        }
+        //      C# -> System.String? FileName
+        // GraphQL -> fileName: String! (scalar)
+        if (this.FileName != null) {
+            s += ind + "fileName\n" ;
+        }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long (scalar)
+        if (this.Size != null) {
+            s += ind + "size\n" ;
+        }
+        //      C# -> System.String? VirtualMachineId
+        // GraphQL -> virtualMachineId: String! (scalar)
+        if (this.VirtualMachineId != null) {
+            s += ind + "virtualMachineId\n" ;
+        }
+        //      C# -> VsphereDatastore? Datastore
+        // GraphQL -> datastore: VsphereDatastore (type)
+        if (this.Datastore != null) {
+            s += ind + "datastore {\n" + this.Datastore.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
-            {
-                this.CdmId = new System.String("FETCH");
-            }
-            //      C# -> System.String? CdmVersion
-            // GraphQL -> cdmVersion: String! (scalar)
-            if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion$"))
-            {
-                this.CdmVersion = new System.String("FETCH");
-            }
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid$"))
-            {
-                this.ClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.String? DatastoreFid
-            // GraphQL -> datastoreFid: String (scalar)
-            if (this.DatastoreFid == null && Exploration.Includes(parent + ".datastoreFid$"))
-            {
-                this.DatastoreFid = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? DeviceKey
-            // GraphQL -> deviceKey: Int (scalar)
-            if (this.DeviceKey == null && Exploration.Includes(parent + ".deviceKey$"))
-            {
-                this.DeviceKey = new System.Int32();
-            }
-            //      C# -> System.Boolean? ExcludeFromSnapshots
-            // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
-            if (this.ExcludeFromSnapshots == null && Exploration.Includes(parent + ".excludeFromSnapshots$"))
-            {
-                this.ExcludeFromSnapshots = new System.Boolean();
-            }
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: UUID! (scalar)
-            if (this.Fid == null && Exploration.Includes(parent + ".fid$"))
-            {
-                this.Fid = new System.String("FETCH");
-            }
-            //      C# -> System.String? FileName
-            // GraphQL -> fileName: String! (scalar)
-            if (this.FileName == null && Exploration.Includes(parent + ".fileName$"))
-            {
-                this.FileName = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? Size
-            // GraphQL -> size: Long (scalar)
-            if (this.Size == null && Exploration.Includes(parent + ".size$"))
-            {
-                this.Size = new System.Int64();
-            }
-            //      C# -> System.String? VirtualMachineId
-            // GraphQL -> virtualMachineId: String! (scalar)
-            if (this.VirtualMachineId == null && Exploration.Includes(parent + ".virtualMachineId$"))
-            {
-                this.VirtualMachineId = new System.String("FETCH");
-            }
-            //      C# -> VsphereDatastore? Datastore
-            // GraphQL -> datastore: VsphereDatastore (type)
-            if (this.Datastore == null && Exploration.Includes(parent + ".datastore"))
-            {
-                this.Datastore = new VsphereDatastore();
-                this.Datastore.ApplyExploratoryFragment(parent + ".datastore");
-            }
+            this.CdmId = new System.String("FETCH");
         }
+        //      C# -> System.String? CdmVersion
+        // GraphQL -> cdmVersion: String! (scalar)
+        if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
+        {
+            this.CdmVersion = new System.String("FETCH");
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        {
+            this.ClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> System.String? DatastoreFid
+        // GraphQL -> datastoreFid: String (scalar)
+        if (this.DatastoreFid == null && Exploration.Includes(parent + ".datastoreFid", true))
+        {
+            this.DatastoreFid = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? DeviceKey
+        // GraphQL -> deviceKey: Int (scalar)
+        if (this.DeviceKey == null && Exploration.Includes(parent + ".deviceKey", true))
+        {
+            this.DeviceKey = new System.Int32();
+        }
+        //      C# -> System.Boolean? ExcludeFromSnapshots
+        // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
+        if (this.ExcludeFromSnapshots == null && Exploration.Includes(parent + ".excludeFromSnapshots", true))
+        {
+            this.ExcludeFromSnapshots = true;
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: UUID! (scalar)
+        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        {
+            this.Fid = new System.String("FETCH");
+        }
+        //      C# -> System.String? FileName
+        // GraphQL -> fileName: String! (scalar)
+        if (this.FileName == null && Exploration.Includes(parent + ".fileName", true))
+        {
+            this.FileName = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long (scalar)
+        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        {
+            this.Size = new System.Int64();
+        }
+        //      C# -> System.String? VirtualMachineId
+        // GraphQL -> virtualMachineId: String! (scalar)
+        if (this.VirtualMachineId == null && Exploration.Includes(parent + ".virtualMachineId", true))
+        {
+            this.VirtualMachineId = new System.String("FETCH");
+        }
+        //      C# -> VsphereDatastore? Datastore
+        // GraphQL -> datastore: VsphereDatastore (type)
+        if (this.Datastore == null && Exploration.Includes(parent + ".datastore"))
+        {
+            this.Datastore = new VsphereDatastore();
+            this.Datastore.ApplyExploratoryFieldSpec(parent + ".datastore");
+        }
+    }
 
 
     #endregion
 
     } // class VsphereVirtualDisk
+    
     #endregion
 
     public static class ListVsphereVirtualDiskExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VsphereVirtualDisk> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VsphereVirtualDisk> list, 
             String parent = "")
         {
-            var item = new VsphereVirtualDisk();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VsphereVirtualDisk());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

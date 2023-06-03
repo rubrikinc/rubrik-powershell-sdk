@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VolumeGroupLiveMount
-    public class VolumeGroupLiveMount: IFragment
+    public class VolumeGroupLiveMount: BaseType
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -113,6 +115,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("sourceSnapshot")]
         public CdmSnapshot? SourceSnapshot { get; set; }
 
+
         #endregion
 
     #region methods
@@ -199,323 +202,274 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsReady
-            // GraphQL -> isReady: Boolean! (scalar)
-            if (this.IsReady != null)
-            {
-                 s += ind + "isReady\n";
-
-            }
-            //      C# -> System.String? MountPath
-            // GraphQL -> mountPath: String (scalar)
-            if (this.MountPath != null)
-            {
-                 s += ind + "mountPath\n";
-
-            }
-            //      C# -> System.String? MountRequestId
-            // GraphQL -> mountRequestId: String (scalar)
-            if (this.MountRequestId != null)
-            {
-                 s += ind + "mountRequestId\n";
-
-            }
-            //      C# -> DateTime? MountTimestamp
-            // GraphQL -> mountTimestamp: DateTime (scalar)
-            if (this.MountTimestamp != null)
-            {
-                 s += ind + "mountTimestamp\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? NodeCompositeId
-            // GraphQL -> nodeCompositeId: String (scalar)
-            if (this.NodeCompositeId != null)
-            {
-                 s += ind + "nodeCompositeId\n";
-
-            }
-            //      C# -> System.String? NodeIp
-            // GraphQL -> nodeIp: String (scalar)
-            if (this.NodeIp != null)
-            {
-                 s += ind + "nodeIp\n";
-
-            }
-            //      C# -> System.String? RestoreScriptPath
-            // GraphQL -> restoreScriptPath: String (scalar)
-            if (this.RestoreScriptPath != null)
-            {
-                 s += ind + "restoreScriptPath\n";
-
-            }
-            //      C# -> System.String? SmbShareName
-            // GraphQL -> smbShareName: String (scalar)
-            if (this.SmbShareName != null)
-            {
-                 s += ind + "smbShareName\n";
-
-            }
-            //      C# -> System.String? SourceVolumeGroupId
-            // GraphQL -> sourceVolumeGroupId: String! (scalar)
-            if (this.SourceVolumeGroupId != null)
-            {
-                 s += ind + "sourceVolumeGroupId\n";
-
-            }
-            //      C# -> System.String? TargetHostId
-            // GraphQL -> targetHostId: String (scalar)
-            if (this.TargetHostId != null)
-            {
-                 s += ind + "targetHostId\n";
-
-            }
-            //      C# -> System.String? TargetHostName
-            // GraphQL -> targetHostName: String (scalar)
-            if (this.TargetHostName != null)
-            {
-                 s += ind + "targetHostName\n";
-
-            }
-            //      C# -> System.String? UnmountRequestId
-            // GraphQL -> unmountRequestId: String (scalar)
-            if (this.UnmountRequestId != null)
-            {
-                 s += ind + "unmountRequestId\n";
-
-            }
-            //      C# -> AuthorizedOperations? AuthorizedOperations
-            // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
-            if (this.AuthorizedOperations != null)
-            {
-                 s += ind + "authorizedOperations\n";
-
-                 s += ind + "{\n" + 
-                 this.AuthorizedOperations.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<MountedVolume>? MountedVolumes
-            // GraphQL -> mountedVolumes: [MountedVolume!]! (type)
-            if (this.MountedVolumes != null)
-            {
-                 s += ind + "mountedVolumes\n";
-
-                 s += ind + "{\n" + 
-                 this.MountedVolumes.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PhysicalHost? SourceHost
-            // GraphQL -> sourceHost: PhysicalHost! (type)
-            if (this.SourceHost != null)
-            {
-                 s += ind + "sourceHost\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceHost.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? SourceSnapshot
-            // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-            if (this.SourceSnapshot != null)
-            {
-                 s += ind + "sourceSnapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceSnapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
         }
+        //      C# -> System.Boolean? IsReady
+        // GraphQL -> isReady: Boolean! (scalar)
+        if (this.IsReady != null) {
+            s += ind + "isReady\n" ;
+        }
+        //      C# -> System.String? MountPath
+        // GraphQL -> mountPath: String (scalar)
+        if (this.MountPath != null) {
+            s += ind + "mountPath\n" ;
+        }
+        //      C# -> System.String? MountRequestId
+        // GraphQL -> mountRequestId: String (scalar)
+        if (this.MountRequestId != null) {
+            s += ind + "mountRequestId\n" ;
+        }
+        //      C# -> DateTime? MountTimestamp
+        // GraphQL -> mountTimestamp: DateTime (scalar)
+        if (this.MountTimestamp != null) {
+            s += ind + "mountTimestamp\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? NodeCompositeId
+        // GraphQL -> nodeCompositeId: String (scalar)
+        if (this.NodeCompositeId != null) {
+            s += ind + "nodeCompositeId\n" ;
+        }
+        //      C# -> System.String? NodeIp
+        // GraphQL -> nodeIp: String (scalar)
+        if (this.NodeIp != null) {
+            s += ind + "nodeIp\n" ;
+        }
+        //      C# -> System.String? RestoreScriptPath
+        // GraphQL -> restoreScriptPath: String (scalar)
+        if (this.RestoreScriptPath != null) {
+            s += ind + "restoreScriptPath\n" ;
+        }
+        //      C# -> System.String? SmbShareName
+        // GraphQL -> smbShareName: String (scalar)
+        if (this.SmbShareName != null) {
+            s += ind + "smbShareName\n" ;
+        }
+        //      C# -> System.String? SourceVolumeGroupId
+        // GraphQL -> sourceVolumeGroupId: String! (scalar)
+        if (this.SourceVolumeGroupId != null) {
+            s += ind + "sourceVolumeGroupId\n" ;
+        }
+        //      C# -> System.String? TargetHostId
+        // GraphQL -> targetHostId: String (scalar)
+        if (this.TargetHostId != null) {
+            s += ind + "targetHostId\n" ;
+        }
+        //      C# -> System.String? TargetHostName
+        // GraphQL -> targetHostName: String (scalar)
+        if (this.TargetHostName != null) {
+            s += ind + "targetHostName\n" ;
+        }
+        //      C# -> System.String? UnmountRequestId
+        // GraphQL -> unmountRequestId: String (scalar)
+        if (this.UnmountRequestId != null) {
+            s += ind + "unmountRequestId\n" ;
+        }
+        //      C# -> AuthorizedOperations? AuthorizedOperations
+        // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
+        if (this.AuthorizedOperations != null) {
+            s += ind + "authorizedOperations {\n" + this.AuthorizedOperations.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<MountedVolume>? MountedVolumes
+        // GraphQL -> mountedVolumes: [MountedVolume!]! (type)
+        if (this.MountedVolumes != null) {
+            s += ind + "mountedVolumes {\n" + this.MountedVolumes.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PhysicalHost? SourceHost
+        // GraphQL -> sourceHost: PhysicalHost! (type)
+        if (this.SourceHost != null) {
+            s += ind + "sourceHost {\n" + this.SourceHost.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? SourceSnapshot
+        // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
+        if (this.SourceSnapshot != null) {
+            s += ind + "sourceSnapshot {\n" + this.SourceSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsReady
-            // GraphQL -> isReady: Boolean! (scalar)
-            if (this.IsReady == null && Exploration.Includes(parent + ".isReady$"))
-            {
-                this.IsReady = new System.Boolean();
-            }
-            //      C# -> System.String? MountPath
-            // GraphQL -> mountPath: String (scalar)
-            if (this.MountPath == null && Exploration.Includes(parent + ".mountPath$"))
-            {
-                this.MountPath = new System.String("FETCH");
-            }
-            //      C# -> System.String? MountRequestId
-            // GraphQL -> mountRequestId: String (scalar)
-            if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId$"))
-            {
-                this.MountRequestId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? MountTimestamp
-            // GraphQL -> mountTimestamp: DateTime (scalar)
-            if (this.MountTimestamp == null && Exploration.Includes(parent + ".mountTimestamp$"))
-            {
-                this.MountTimestamp = new DateTime();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? NodeCompositeId
-            // GraphQL -> nodeCompositeId: String (scalar)
-            if (this.NodeCompositeId == null && Exploration.Includes(parent + ".nodeCompositeId$"))
-            {
-                this.NodeCompositeId = new System.String("FETCH");
-            }
-            //      C# -> System.String? NodeIp
-            // GraphQL -> nodeIp: String (scalar)
-            if (this.NodeIp == null && Exploration.Includes(parent + ".nodeIp$"))
-            {
-                this.NodeIp = new System.String("FETCH");
-            }
-            //      C# -> System.String? RestoreScriptPath
-            // GraphQL -> restoreScriptPath: String (scalar)
-            if (this.RestoreScriptPath == null && Exploration.Includes(parent + ".restoreScriptPath$"))
-            {
-                this.RestoreScriptPath = new System.String("FETCH");
-            }
-            //      C# -> System.String? SmbShareName
-            // GraphQL -> smbShareName: String (scalar)
-            if (this.SmbShareName == null && Exploration.Includes(parent + ".smbShareName$"))
-            {
-                this.SmbShareName = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceVolumeGroupId
-            // GraphQL -> sourceVolumeGroupId: String! (scalar)
-            if (this.SourceVolumeGroupId == null && Exploration.Includes(parent + ".sourceVolumeGroupId$"))
-            {
-                this.SourceVolumeGroupId = new System.String("FETCH");
-            }
-            //      C# -> System.String? TargetHostId
-            // GraphQL -> targetHostId: String (scalar)
-            if (this.TargetHostId == null && Exploration.Includes(parent + ".targetHostId$"))
-            {
-                this.TargetHostId = new System.String("FETCH");
-            }
-            //      C# -> System.String? TargetHostName
-            // GraphQL -> targetHostName: String (scalar)
-            if (this.TargetHostName == null && Exploration.Includes(parent + ".targetHostName$"))
-            {
-                this.TargetHostName = new System.String("FETCH");
-            }
-            //      C# -> System.String? UnmountRequestId
-            // GraphQL -> unmountRequestId: String (scalar)
-            if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId$"))
-            {
-                this.UnmountRequestId = new System.String("FETCH");
-            }
-            //      C# -> AuthorizedOperations? AuthorizedOperations
-            // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
-            if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations"))
-            {
-                this.AuthorizedOperations = new AuthorizedOperations();
-                this.AuthorizedOperations.ApplyExploratoryFragment(parent + ".authorizedOperations");
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> List<MountedVolume>? MountedVolumes
-            // GraphQL -> mountedVolumes: [MountedVolume!]! (type)
-            if (this.MountedVolumes == null && Exploration.Includes(parent + ".mountedVolumes"))
-            {
-                this.MountedVolumes = new List<MountedVolume>();
-                this.MountedVolumes.ApplyExploratoryFragment(parent + ".mountedVolumes");
-            }
-            //      C# -> PhysicalHost? SourceHost
-            // GraphQL -> sourceHost: PhysicalHost! (type)
-            if (this.SourceHost == null && Exploration.Includes(parent + ".sourceHost"))
-            {
-                this.SourceHost = new PhysicalHost();
-                this.SourceHost.ApplyExploratoryFragment(parent + ".sourceHost");
-            }
-            //      C# -> CdmSnapshot? SourceSnapshot
-            // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-            if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
-            {
-                this.SourceSnapshot = new CdmSnapshot();
-                this.SourceSnapshot.ApplyExploratoryFragment(parent + ".sourceSnapshot");
-            }
+            this.Id = new System.String("FETCH");
         }
+        //      C# -> System.Boolean? IsReady
+        // GraphQL -> isReady: Boolean! (scalar)
+        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        {
+            this.IsReady = true;
+        }
+        //      C# -> System.String? MountPath
+        // GraphQL -> mountPath: String (scalar)
+        if (this.MountPath == null && Exploration.Includes(parent + ".mountPath", true))
+        {
+            this.MountPath = new System.String("FETCH");
+        }
+        //      C# -> System.String? MountRequestId
+        // GraphQL -> mountRequestId: String (scalar)
+        if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
+        {
+            this.MountRequestId = new System.String("FETCH");
+        }
+        //      C# -> DateTime? MountTimestamp
+        // GraphQL -> mountTimestamp: DateTime (scalar)
+        if (this.MountTimestamp == null && Exploration.Includes(parent + ".mountTimestamp", true))
+        {
+            this.MountTimestamp = new DateTime();
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? NodeCompositeId
+        // GraphQL -> nodeCompositeId: String (scalar)
+        if (this.NodeCompositeId == null && Exploration.Includes(parent + ".nodeCompositeId", true))
+        {
+            this.NodeCompositeId = new System.String("FETCH");
+        }
+        //      C# -> System.String? NodeIp
+        // GraphQL -> nodeIp: String (scalar)
+        if (this.NodeIp == null && Exploration.Includes(parent + ".nodeIp", true))
+        {
+            this.NodeIp = new System.String("FETCH");
+        }
+        //      C# -> System.String? RestoreScriptPath
+        // GraphQL -> restoreScriptPath: String (scalar)
+        if (this.RestoreScriptPath == null && Exploration.Includes(parent + ".restoreScriptPath", true))
+        {
+            this.RestoreScriptPath = new System.String("FETCH");
+        }
+        //      C# -> System.String? SmbShareName
+        // GraphQL -> smbShareName: String (scalar)
+        if (this.SmbShareName == null && Exploration.Includes(parent + ".smbShareName", true))
+        {
+            this.SmbShareName = new System.String("FETCH");
+        }
+        //      C# -> System.String? SourceVolumeGroupId
+        // GraphQL -> sourceVolumeGroupId: String! (scalar)
+        if (this.SourceVolumeGroupId == null && Exploration.Includes(parent + ".sourceVolumeGroupId", true))
+        {
+            this.SourceVolumeGroupId = new System.String("FETCH");
+        }
+        //      C# -> System.String? TargetHostId
+        // GraphQL -> targetHostId: String (scalar)
+        if (this.TargetHostId == null && Exploration.Includes(parent + ".targetHostId", true))
+        {
+            this.TargetHostId = new System.String("FETCH");
+        }
+        //      C# -> System.String? TargetHostName
+        // GraphQL -> targetHostName: String (scalar)
+        if (this.TargetHostName == null && Exploration.Includes(parent + ".targetHostName", true))
+        {
+            this.TargetHostName = new System.String("FETCH");
+        }
+        //      C# -> System.String? UnmountRequestId
+        // GraphQL -> unmountRequestId: String (scalar)
+        if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
+        {
+            this.UnmountRequestId = new System.String("FETCH");
+        }
+        //      C# -> AuthorizedOperations? AuthorizedOperations
+        // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
+        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations"))
+        {
+            this.AuthorizedOperations = new AuthorizedOperations();
+            this.AuthorizedOperations.ApplyExploratoryFieldSpec(parent + ".authorizedOperations");
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> List<MountedVolume>? MountedVolumes
+        // GraphQL -> mountedVolumes: [MountedVolume!]! (type)
+        if (this.MountedVolumes == null && Exploration.Includes(parent + ".mountedVolumes"))
+        {
+            this.MountedVolumes = new List<MountedVolume>();
+            this.MountedVolumes.ApplyExploratoryFieldSpec(parent + ".mountedVolumes");
+        }
+        //      C# -> PhysicalHost? SourceHost
+        // GraphQL -> sourceHost: PhysicalHost! (type)
+        if (this.SourceHost == null && Exploration.Includes(parent + ".sourceHost"))
+        {
+            this.SourceHost = new PhysicalHost();
+            this.SourceHost.ApplyExploratoryFieldSpec(parent + ".sourceHost");
+        }
+        //      C# -> CdmSnapshot? SourceSnapshot
+        // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
+        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        {
+            this.SourceSnapshot = new CdmSnapshot();
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+        }
+    }
 
 
     #endregion
 
     } // class VolumeGroupLiveMount
+    
     #endregion
 
     public static class ListVolumeGroupLiveMountExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VolumeGroupLiveMount> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VolumeGroupLiveMount> list, 
             String parent = "")
         {
-            var item = new VolumeGroupLiveMount();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VolumeGroupLiveMount());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

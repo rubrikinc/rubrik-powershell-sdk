@@ -11,17 +11,14 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region RcvEntitlement
-    public class RcvEntitlement: IFragment
+    public class RcvEntitlement: BaseType
     {
         #region members
-        //      C# -> System.Single? Capacity
-        // GraphQL -> capacity: Float! (scalar)
-        [JsonProperty("capacity")]
-        public System.Single? Capacity { get; set; }
 
         //      C# -> RcvRegionBundle? Bundle
         // GraphQL -> bundle: RcvRegionBundle! (enum)
@@ -33,117 +30,121 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("tier")]
         public RcvTier? Tier { get; set; }
 
+        //      C# -> System.Single? Capacity
+        // GraphQL -> capacity: Float! (scalar)
+        [JsonProperty("capacity")]
+        public System.Single? Capacity { get; set; }
+
+
         #endregion
 
     #region methods
 
     public RcvEntitlement Set(
-        System.Single? Capacity = null,
         RcvRegionBundle? Bundle = null,
-        RcvTier? Tier = null
+        RcvTier? Tier = null,
+        System.Single? Capacity = null
     ) 
     {
-        if ( Capacity != null ) {
-            this.Capacity = Capacity;
-        }
         if ( Bundle != null ) {
             this.Bundle = Bundle;
         }
         if ( Tier != null ) {
             this.Tier = Tier;
         }
+        if ( Capacity != null ) {
+            this.Capacity = Capacity;
+        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Single? Capacity
-            // GraphQL -> capacity: Float! (scalar)
-            if (this.Capacity != null)
-            {
-                 s += ind + "capacity\n";
-
-            }
-            //      C# -> RcvRegionBundle? Bundle
-            // GraphQL -> bundle: RcvRegionBundle! (enum)
-            if (this.Bundle != null)
-            {
-                 s += ind + "bundle\n";
-
-            }
-            //      C# -> RcvTier? Tier
-            // GraphQL -> tier: RcvTier! (enum)
-            if (this.Tier != null)
-            {
-                 s += ind + "tier\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> RcvRegionBundle? Bundle
+        // GraphQL -> bundle: RcvRegionBundle! (enum)
+        if (this.Bundle != null) {
+            s += ind + "bundle\n" ;
         }
+        //      C# -> RcvTier? Tier
+        // GraphQL -> tier: RcvTier! (enum)
+        if (this.Tier != null) {
+            s += ind + "tier\n" ;
+        }
+        //      C# -> System.Single? Capacity
+        // GraphQL -> capacity: Float! (scalar)
+        if (this.Capacity != null) {
+            s += ind + "capacity\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> RcvRegionBundle? Bundle
+        // GraphQL -> bundle: RcvRegionBundle! (enum)
+        if (this.Bundle == null && Exploration.Includes(parent + ".bundle", true))
         {
-            //      C# -> System.Single? Capacity
-            // GraphQL -> capacity: Float! (scalar)
-            if (this.Capacity == null && Exploration.Includes(parent + ".capacity$"))
-            {
-                this.Capacity = new System.Single();
-            }
-            //      C# -> RcvRegionBundle? Bundle
-            // GraphQL -> bundle: RcvRegionBundle! (enum)
-            if (this.Bundle == null && Exploration.Includes(parent + ".bundle$"))
-            {
-                this.Bundle = new RcvRegionBundle();
-            }
-            //      C# -> RcvTier? Tier
-            // GraphQL -> tier: RcvTier! (enum)
-            if (this.Tier == null && Exploration.Includes(parent + ".tier$"))
-            {
-                this.Tier = new RcvTier();
-            }
+            this.Bundle = new RcvRegionBundle();
         }
+        //      C# -> RcvTier? Tier
+        // GraphQL -> tier: RcvTier! (enum)
+        if (this.Tier == null && Exploration.Includes(parent + ".tier", true))
+        {
+            this.Tier = new RcvTier();
+        }
+        //      C# -> System.Single? Capacity
+        // GraphQL -> capacity: Float! (scalar)
+        if (this.Capacity == null && Exploration.Includes(parent + ".capacity", true))
+        {
+            this.Capacity = new System.Single();
+        }
+    }
 
 
     #endregion
 
     } // class RcvEntitlement
+    
     #endregion
 
     public static class ListRcvEntitlementExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<RcvEntitlement> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<RcvEntitlement> list, 
             String parent = "")
         {
-            var item = new RcvEntitlement();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new RcvEntitlement());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

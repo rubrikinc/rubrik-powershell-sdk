@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region BackupTaskDiagnosticInfo
-    public class BackupTaskDiagnosticInfo: IFragment
+    public class BackupTaskDiagnosticInfo: BaseType
     {
         #region members
+
+        //      C# -> DiagnosticTaskStatus? TaskStatus
+        // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
+        [JsonProperty("taskStatus")]
+        public DiagnosticTaskStatus? TaskStatus { get; set; }
+
         //      C# -> DateTime? ExpectedEndTime
         // GraphQL -> expectedEndTime: DateTime (scalar)
         [JsonProperty("expectedEndTime")]
@@ -28,122 +35,116 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("queueTime")]
         public DateTime? QueueTime { get; set; }
 
-        //      C# -> DiagnosticTaskStatus? TaskStatus
-        // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
-        [JsonProperty("taskStatus")]
-        public DiagnosticTaskStatus? TaskStatus { get; set; }
 
         #endregion
 
     #region methods
 
     public BackupTaskDiagnosticInfo Set(
+        DiagnosticTaskStatus? TaskStatus = null,
         DateTime? ExpectedEndTime = null,
-        DateTime? QueueTime = null,
-        DiagnosticTaskStatus? TaskStatus = null
+        DateTime? QueueTime = null
     ) 
     {
+        if ( TaskStatus != null ) {
+            this.TaskStatus = TaskStatus;
+        }
         if ( ExpectedEndTime != null ) {
             this.ExpectedEndTime = ExpectedEndTime;
         }
         if ( QueueTime != null ) {
             this.QueueTime = QueueTime;
         }
-        if ( TaskStatus != null ) {
-            this.TaskStatus = TaskStatus;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? ExpectedEndTime
-            // GraphQL -> expectedEndTime: DateTime (scalar)
-            if (this.ExpectedEndTime != null)
-            {
-                 s += ind + "expectedEndTime\n";
-
-            }
-            //      C# -> DateTime? QueueTime
-            // GraphQL -> queueTime: DateTime (scalar)
-            if (this.QueueTime != null)
-            {
-                 s += ind + "queueTime\n";
-
-            }
-            //      C# -> DiagnosticTaskStatus? TaskStatus
-            // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
-            if (this.TaskStatus != null)
-            {
-                 s += ind + "taskStatus\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> DiagnosticTaskStatus? TaskStatus
+        // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
+        if (this.TaskStatus != null) {
+            s += ind + "taskStatus\n" ;
         }
+        //      C# -> DateTime? ExpectedEndTime
+        // GraphQL -> expectedEndTime: DateTime (scalar)
+        if (this.ExpectedEndTime != null) {
+            s += ind + "expectedEndTime\n" ;
+        }
+        //      C# -> DateTime? QueueTime
+        // GraphQL -> queueTime: DateTime (scalar)
+        if (this.QueueTime != null) {
+            s += ind + "queueTime\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> DiagnosticTaskStatus? TaskStatus
+        // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
+        if (this.TaskStatus == null && Exploration.Includes(parent + ".taskStatus", true))
         {
-            //      C# -> DateTime? ExpectedEndTime
-            // GraphQL -> expectedEndTime: DateTime (scalar)
-            if (this.ExpectedEndTime == null && Exploration.Includes(parent + ".expectedEndTime$"))
-            {
-                this.ExpectedEndTime = new DateTime();
-            }
-            //      C# -> DateTime? QueueTime
-            // GraphQL -> queueTime: DateTime (scalar)
-            if (this.QueueTime == null && Exploration.Includes(parent + ".queueTime$"))
-            {
-                this.QueueTime = new DateTime();
-            }
-            //      C# -> DiagnosticTaskStatus? TaskStatus
-            // GraphQL -> taskStatus: DiagnosticTaskStatus! (enum)
-            if (this.TaskStatus == null && Exploration.Includes(parent + ".taskStatus$"))
-            {
-                this.TaskStatus = new DiagnosticTaskStatus();
-            }
+            this.TaskStatus = new DiagnosticTaskStatus();
         }
+        //      C# -> DateTime? ExpectedEndTime
+        // GraphQL -> expectedEndTime: DateTime (scalar)
+        if (this.ExpectedEndTime == null && Exploration.Includes(parent + ".expectedEndTime", true))
+        {
+            this.ExpectedEndTime = new DateTime();
+        }
+        //      C# -> DateTime? QueueTime
+        // GraphQL -> queueTime: DateTime (scalar)
+        if (this.QueueTime == null && Exploration.Includes(parent + ".queueTime", true))
+        {
+            this.QueueTime = new DateTime();
+        }
+    }
 
 
     #endregion
 
     } // class BackupTaskDiagnosticInfo
+    
     #endregion
 
     public static class ListBackupTaskDiagnosticInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<BackupTaskDiagnosticInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<BackupTaskDiagnosticInfo> list, 
             String parent = "")
         {
-            var item = new BackupTaskDiagnosticInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new BackupTaskDiagnosticInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

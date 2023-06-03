@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region HypervVirtualMachineSummary
-    public class HypervVirtualMachineSummary: IFragment
+    public class HypervVirtualMachineSummary: BaseType
     {
         #region members
+
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         [JsonProperty("forceFull")]
@@ -67,6 +69,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snappable: CdmWorkload (type)
         [JsonProperty("snappable")]
         public CdmWorkload? Snappable { get; set; }
+
 
         #endregion
 
@@ -118,206 +121,175 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? ForceFull
-            // GraphQL -> forceFull: Boolean (scalar)
-            if (this.ForceFull != null)
-            {
-                 s += ind + "forceFull\n";
-
-            }
-            //      C# -> System.String? HostId
-            // GraphQL -> hostId: String! (scalar)
-            if (this.HostId != null)
-            {
-                 s += ind + "hostId\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic != null)
-            {
-                 s += ind + "isRelic\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> CdmAgentStatus? AgentStatus
-            // GraphQL -> agentStatus: CdmAgentStatus (type)
-            if (this.AgentStatus != null)
-            {
-                 s += ind + "agentStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.AgentStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
-            // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
-            if (this.CloudInstantiationSpec != null)
-            {
-                 s += ind + "cloudInstantiationSpec\n";
-
-                 s += ind + "{\n" + 
-                 this.CloudInstantiationSpec.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
-            // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
-            if (this.InfraPath != null)
-            {
-                 s += ind + "infraPath\n";
-
-                 s += ind + "{\n" + 
-                 this.InfraPath.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
-            // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-            if (this.PendingSlaDomain != null)
-            {
-                 s += ind + "pendingSlaDomain\n";
-
-                 s += ind + "{\n" + 
-                 this.PendingSlaDomain.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmWorkload? Snappable
-            // GraphQL -> snappable: CdmWorkload (type)
-            if (this.Snappable != null)
-            {
-                 s += ind + "snappable\n";
-
-                 s += ind + "{\n" + 
-                 this.Snappable.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Boolean? ForceFull
+        // GraphQL -> forceFull: Boolean (scalar)
+        if (this.ForceFull != null) {
+            s += ind + "forceFull\n" ;
         }
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String! (scalar)
+        if (this.HostId != null) {
+            s += ind + "hostId\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic != null) {
+            s += ind + "isRelic\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> CdmAgentStatus? AgentStatus
+        // GraphQL -> agentStatus: CdmAgentStatus (type)
+        if (this.AgentStatus != null) {
+            s += ind + "agentStatus {\n" + this.AgentStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
+        // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
+        if (this.CloudInstantiationSpec != null) {
+            s += ind + "cloudInstantiationSpec {\n" + this.CloudInstantiationSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
+        // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
+        if (this.InfraPath != null) {
+            s += ind + "infraPath {\n" + this.InfraPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
+        // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
+        if (this.PendingSlaDomain != null) {
+            s += ind + "pendingSlaDomain {\n" + this.PendingSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmWorkload? Snappable
+        // GraphQL -> snappable: CdmWorkload (type)
+        if (this.Snappable != null) {
+            s += ind + "snappable {\n" + this.Snappable.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Boolean? ForceFull
+        // GraphQL -> forceFull: Boolean (scalar)
+        if (this.ForceFull == null && Exploration.Includes(parent + ".forceFull", true))
         {
-            //      C# -> System.Boolean? ForceFull
-            // GraphQL -> forceFull: Boolean (scalar)
-            if (this.ForceFull == null && Exploration.Includes(parent + ".forceFull$"))
-            {
-                this.ForceFull = new System.Boolean();
-            }
-            //      C# -> System.String? HostId
-            // GraphQL -> hostId: String! (scalar)
-            if (this.HostId == null && Exploration.Includes(parent + ".hostId$"))
-            {
-                this.HostId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic$"))
-            {
-                this.IsRelic = new System.Boolean();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> CdmAgentStatus? AgentStatus
-            // GraphQL -> agentStatus: CdmAgentStatus (type)
-            if (this.AgentStatus == null && Exploration.Includes(parent + ".agentStatus"))
-            {
-                this.AgentStatus = new CdmAgentStatus();
-                this.AgentStatus.ApplyExploratoryFragment(parent + ".agentStatus");
-            }
-            //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
-            // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
-            if (this.CloudInstantiationSpec == null && Exploration.Includes(parent + ".cloudInstantiationSpec"))
-            {
-                this.CloudInstantiationSpec = new CloudInstantiationSpec();
-                this.CloudInstantiationSpec.ApplyExploratoryFragment(parent + ".cloudInstantiationSpec");
-            }
-            //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
-            // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
-            if (this.InfraPath == null && Exploration.Includes(parent + ".infraPath"))
-            {
-                this.InfraPath = new List<ManagedHierarchyObjectAncestor>();
-                this.InfraPath.ApplyExploratoryFragment(parent + ".infraPath");
-            }
-            //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
-            // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-            if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
-            {
-                this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-                this.PendingSlaDomain.ApplyExploratoryFragment(parent + ".pendingSlaDomain");
-            }
-            //      C# -> CdmWorkload? Snappable
-            // GraphQL -> snappable: CdmWorkload (type)
-            if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
-            {
-                this.Snappable = new CdmWorkload();
-                this.Snappable.ApplyExploratoryFragment(parent + ".snappable");
-            }
+            this.ForceFull = true;
         }
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String! (scalar)
+        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        {
+            this.HostId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        {
+            this.IsRelic = true;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> CdmAgentStatus? AgentStatus
+        // GraphQL -> agentStatus: CdmAgentStatus (type)
+        if (this.AgentStatus == null && Exploration.Includes(parent + ".agentStatus"))
+        {
+            this.AgentStatus = new CdmAgentStatus();
+            this.AgentStatus.ApplyExploratoryFieldSpec(parent + ".agentStatus");
+        }
+        //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
+        // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
+        if (this.CloudInstantiationSpec == null && Exploration.Includes(parent + ".cloudInstantiationSpec"))
+        {
+            this.CloudInstantiationSpec = new CloudInstantiationSpec();
+            this.CloudInstantiationSpec.ApplyExploratoryFieldSpec(parent + ".cloudInstantiationSpec");
+        }
+        //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
+        // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
+        if (this.InfraPath == null && Exploration.Includes(parent + ".infraPath"))
+        {
+            this.InfraPath = new List<ManagedHierarchyObjectAncestor>();
+            this.InfraPath.ApplyExploratoryFieldSpec(parent + ".infraPath");
+        }
+        //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
+        // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
+        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        {
+            this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+        }
+        //      C# -> CdmWorkload? Snappable
+        // GraphQL -> snappable: CdmWorkload (type)
+        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        {
+            this.Snappable = new CdmWorkload();
+            this.Snappable.ApplyExploratoryFieldSpec(parent + ".snappable");
+        }
+    }
 
 
     #endregion
 
     } // class HypervVirtualMachineSummary
+    
     #endregion
 
     public static class ListHypervVirtualMachineSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<HypervVirtualMachineSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<HypervVirtualMachineSummary> list, 
             String parent = "")
         {
-            var item = new HypervVirtualMachineSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new HypervVirtualMachineSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

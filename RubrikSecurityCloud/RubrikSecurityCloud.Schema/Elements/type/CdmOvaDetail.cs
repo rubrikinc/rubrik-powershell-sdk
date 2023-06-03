@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CdmOvaDetail
-    public class CdmOvaDetail: IFragment
+    public class CdmOvaDetail: BaseType
     {
         #region members
+
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
         [JsonProperty("cdmVersion")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ovaSize: String! (scalar)
         [JsonProperty("ovaSize")]
         public System.String? OvaSize { get; set; }
+
 
         #endregion
 
@@ -55,95 +58,93 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CdmVersion
-            // GraphQL -> cdmVersion: String! (scalar)
-            if (this.CdmVersion != null)
-            {
-                 s += ind + "cdmVersion\n";
-
-            }
-            //      C# -> System.String? OvaDownloadLink
-            // GraphQL -> ovaDownloadLink: String! (scalar)
-            if (this.OvaDownloadLink != null)
-            {
-                 s += ind + "ovaDownloadLink\n";
-
-            }
-            //      C# -> System.String? OvaSize
-            // GraphQL -> ovaSize: String! (scalar)
-            if (this.OvaSize != null)
-            {
-                 s += ind + "ovaSize\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? CdmVersion
+        // GraphQL -> cdmVersion: String! (scalar)
+        if (this.CdmVersion != null) {
+            s += ind + "cdmVersion\n" ;
         }
+        //      C# -> System.String? OvaDownloadLink
+        // GraphQL -> ovaDownloadLink: String! (scalar)
+        if (this.OvaDownloadLink != null) {
+            s += ind + "ovaDownloadLink\n" ;
+        }
+        //      C# -> System.String? OvaSize
+        // GraphQL -> ovaSize: String! (scalar)
+        if (this.OvaSize != null) {
+            s += ind + "ovaSize\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? CdmVersion
+        // GraphQL -> cdmVersion: String! (scalar)
+        if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
         {
-            //      C# -> System.String? CdmVersion
-            // GraphQL -> cdmVersion: String! (scalar)
-            if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion$"))
-            {
-                this.CdmVersion = new System.String("FETCH");
-            }
-            //      C# -> System.String? OvaDownloadLink
-            // GraphQL -> ovaDownloadLink: String! (scalar)
-            if (this.OvaDownloadLink == null && Exploration.Includes(parent + ".ovaDownloadLink$"))
-            {
-                this.OvaDownloadLink = new System.String("FETCH");
-            }
-            //      C# -> System.String? OvaSize
-            // GraphQL -> ovaSize: String! (scalar)
-            if (this.OvaSize == null && Exploration.Includes(parent + ".ovaSize$"))
-            {
-                this.OvaSize = new System.String("FETCH");
-            }
+            this.CdmVersion = new System.String("FETCH");
         }
+        //      C# -> System.String? OvaDownloadLink
+        // GraphQL -> ovaDownloadLink: String! (scalar)
+        if (this.OvaDownloadLink == null && Exploration.Includes(parent + ".ovaDownloadLink", true))
+        {
+            this.OvaDownloadLink = new System.String("FETCH");
+        }
+        //      C# -> System.String? OvaSize
+        // GraphQL -> ovaSize: String! (scalar)
+        if (this.OvaSize == null && Exploration.Includes(parent + ".ovaSize", true))
+        {
+            this.OvaSize = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class CdmOvaDetail
+    
     #endregion
 
     public static class ListCdmOvaDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CdmOvaDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CdmOvaDetail> list, 
             String parent = "")
         {
-            var item = new CdmOvaDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CdmOvaDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

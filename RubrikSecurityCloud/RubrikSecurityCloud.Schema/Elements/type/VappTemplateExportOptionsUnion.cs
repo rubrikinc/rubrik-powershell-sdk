@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VappTemplateExportOptionsUnion
-    public class VappTemplateExportOptionsUnion: IFragment
+    public class VappTemplateExportOptionsUnion: BaseType
     {
         #region members
+
         //      C# -> VappTemplateExportOptions? AdvancedExportOptions
         // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
         [JsonProperty("advancedExportOptions")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> originalVdcExportOptions: VappTemplateExportOptions (type)
         [JsonProperty("originalVdcExportOptions")]
         public VappTemplateExportOptions? OriginalVdcExportOptions { get; set; }
+
 
         #endregion
 
@@ -55,107 +58,96 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> VappTemplateExportOptions? AdvancedExportOptions
-            // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
-            if (this.AdvancedExportOptions != null)
-            {
-                 s += ind + "advancedExportOptions\n";
-
-                 s += ind + "{\n" + 
-                 this.AdvancedExportOptions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VappTemplateExportOptions? DefaultCatalogExportOptions
-            // GraphQL -> defaultCatalogExportOptions: VappTemplateExportOptions (type)
-            if (this.DefaultCatalogExportOptions != null)
-            {
-                 s += ind + "defaultCatalogExportOptions\n";
-
-                 s += ind + "{\n" + 
-                 this.DefaultCatalogExportOptions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VappTemplateExportOptions? OriginalVdcExportOptions
-            // GraphQL -> originalVdcExportOptions: VappTemplateExportOptions (type)
-            if (this.OriginalVdcExportOptions != null)
-            {
-                 s += ind + "originalVdcExportOptions\n";
-
-                 s += ind + "{\n" + 
-                 this.OriginalVdcExportOptions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> VappTemplateExportOptions? AdvancedExportOptions
+        // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
+        if (this.AdvancedExportOptions != null) {
+            s += ind + "advancedExportOptions {\n" + this.AdvancedExportOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> VappTemplateExportOptions? DefaultCatalogExportOptions
+        // GraphQL -> defaultCatalogExportOptions: VappTemplateExportOptions (type)
+        if (this.DefaultCatalogExportOptions != null) {
+            s += ind + "defaultCatalogExportOptions {\n" + this.DefaultCatalogExportOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> VappTemplateExportOptions? OriginalVdcExportOptions
+        // GraphQL -> originalVdcExportOptions: VappTemplateExportOptions (type)
+        if (this.OriginalVdcExportOptions != null) {
+            s += ind + "originalVdcExportOptions {\n" + this.OriginalVdcExportOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> VappTemplateExportOptions? AdvancedExportOptions
+        // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
+        if (this.AdvancedExportOptions == null && Exploration.Includes(parent + ".advancedExportOptions"))
         {
-            //      C# -> VappTemplateExportOptions? AdvancedExportOptions
-            // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
-            if (this.AdvancedExportOptions == null && Exploration.Includes(parent + ".advancedExportOptions"))
-            {
-                this.AdvancedExportOptions = new VappTemplateExportOptions();
-                this.AdvancedExportOptions.ApplyExploratoryFragment(parent + ".advancedExportOptions");
-            }
-            //      C# -> VappTemplateExportOptions? DefaultCatalogExportOptions
-            // GraphQL -> defaultCatalogExportOptions: VappTemplateExportOptions (type)
-            if (this.DefaultCatalogExportOptions == null && Exploration.Includes(parent + ".defaultCatalogExportOptions"))
-            {
-                this.DefaultCatalogExportOptions = new VappTemplateExportOptions();
-                this.DefaultCatalogExportOptions.ApplyExploratoryFragment(parent + ".defaultCatalogExportOptions");
-            }
-            //      C# -> VappTemplateExportOptions? OriginalVdcExportOptions
-            // GraphQL -> originalVdcExportOptions: VappTemplateExportOptions (type)
-            if (this.OriginalVdcExportOptions == null && Exploration.Includes(parent + ".originalVdcExportOptions"))
-            {
-                this.OriginalVdcExportOptions = new VappTemplateExportOptions();
-                this.OriginalVdcExportOptions.ApplyExploratoryFragment(parent + ".originalVdcExportOptions");
-            }
+            this.AdvancedExportOptions = new VappTemplateExportOptions();
+            this.AdvancedExportOptions.ApplyExploratoryFieldSpec(parent + ".advancedExportOptions");
         }
+        //      C# -> VappTemplateExportOptions? DefaultCatalogExportOptions
+        // GraphQL -> defaultCatalogExportOptions: VappTemplateExportOptions (type)
+        if (this.DefaultCatalogExportOptions == null && Exploration.Includes(parent + ".defaultCatalogExportOptions"))
+        {
+            this.DefaultCatalogExportOptions = new VappTemplateExportOptions();
+            this.DefaultCatalogExportOptions.ApplyExploratoryFieldSpec(parent + ".defaultCatalogExportOptions");
+        }
+        //      C# -> VappTemplateExportOptions? OriginalVdcExportOptions
+        // GraphQL -> originalVdcExportOptions: VappTemplateExportOptions (type)
+        if (this.OriginalVdcExportOptions == null && Exploration.Includes(parent + ".originalVdcExportOptions"))
+        {
+            this.OriginalVdcExportOptions = new VappTemplateExportOptions();
+            this.OriginalVdcExportOptions.ApplyExploratoryFieldSpec(parent + ".originalVdcExportOptions");
+        }
+    }
 
 
     #endregion
 
     } // class VappTemplateExportOptionsUnion
+    
     #endregion
 
     public static class ListVappTemplateExportOptionsUnionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VappTemplateExportOptionsUnion> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VappTemplateExportOptionsUnion> list, 
             String parent = "")
         {
-            var item = new VappTemplateExportOptionsUnion();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VappTemplateExportOptionsUnion());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

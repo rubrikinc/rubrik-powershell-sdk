@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SnapshotSummary
-    public class SnapshotSummary: IFragment
+    public class SnapshotSummary: BaseType
     {
         #region members
+
+        //      C# -> UnmanagedSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
+        [JsonProperty("snapshotType")]
+        public UnmanagedSnapshotType? SnapshotType { get; set; }
+
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
         [JsonProperty("date")]
@@ -43,24 +50,23 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshotRetentionInfo")]
         public SnapshotRetentionInfo? SnapshotRetentionInfo { get; set; }
 
-        //      C# -> UnmanagedSnapshotType? SnapshotType
-        // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
-        [JsonProperty("snapshotType")]
-        public UnmanagedSnapshotType? SnapshotType { get; set; }
 
         #endregion
 
     #region methods
 
     public SnapshotSummary Set(
+        UnmanagedSnapshotType? SnapshotType = null,
         DateTime? Date = null,
         System.String? Id = null,
         System.Boolean? IsCustomRetentionApplied = null,
         System.Boolean? IsRetentionLockApplied = null,
-        SnapshotRetentionInfo? SnapshotRetentionInfo = null,
-        UnmanagedSnapshotType? SnapshotType = null
+        SnapshotRetentionInfo? SnapshotRetentionInfo = null
     ) 
     {
+        if ( SnapshotType != null ) {
+            this.SnapshotType = SnapshotType;
+        }
         if ( Date != null ) {
             this.Date = Date;
         }
@@ -76,144 +82,130 @@ namespace Rubrik.SecurityCloud.Types
         if ( SnapshotRetentionInfo != null ) {
             this.SnapshotRetentionInfo = SnapshotRetentionInfo;
         }
-        if ( SnapshotType != null ) {
-            this.SnapshotType = SnapshotType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date != null)
-            {
-                 s += ind + "date\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsCustomRetentionApplied
-            // GraphQL -> isCustomRetentionApplied: Boolean! (scalar)
-            if (this.IsCustomRetentionApplied != null)
-            {
-                 s += ind + "isCustomRetentionApplied\n";
-
-            }
-            //      C# -> System.Boolean? IsRetentionLockApplied
-            // GraphQL -> isRetentionLockApplied: Boolean! (scalar)
-            if (this.IsRetentionLockApplied != null)
-            {
-                 s += ind + "isRetentionLockApplied\n";
-
-            }
-            //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
-            // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
-            if (this.SnapshotRetentionInfo != null)
-            {
-                 s += ind + "snapshotRetentionInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.SnapshotRetentionInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> UnmanagedSnapshotType? SnapshotType
-            // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
-            if (this.SnapshotType != null)
-            {
-                 s += ind + "snapshotType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> UnmanagedSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
+        if (this.SnapshotType != null) {
+            s += ind + "snapshotType\n" ;
         }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date != null) {
+            s += ind + "date\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsCustomRetentionApplied
+        // GraphQL -> isCustomRetentionApplied: Boolean! (scalar)
+        if (this.IsCustomRetentionApplied != null) {
+            s += ind + "isCustomRetentionApplied\n" ;
+        }
+        //      C# -> System.Boolean? IsRetentionLockApplied
+        // GraphQL -> isRetentionLockApplied: Boolean! (scalar)
+        if (this.IsRetentionLockApplied != null) {
+            s += ind + "isRetentionLockApplied\n" ;
+        }
+        //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
+        if (this.SnapshotRetentionInfo != null) {
+            s += ind + "snapshotRetentionInfo {\n" + this.SnapshotRetentionInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> UnmanagedSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
+        if (this.SnapshotType == null && Exploration.Includes(parent + ".snapshotType", true))
         {
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime (scalar)
-            if (this.Date == null && Exploration.Includes(parent + ".date$"))
-            {
-                this.Date = new DateTime();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsCustomRetentionApplied
-            // GraphQL -> isCustomRetentionApplied: Boolean! (scalar)
-            if (this.IsCustomRetentionApplied == null && Exploration.Includes(parent + ".isCustomRetentionApplied$"))
-            {
-                this.IsCustomRetentionApplied = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsRetentionLockApplied
-            // GraphQL -> isRetentionLockApplied: Boolean! (scalar)
-            if (this.IsRetentionLockApplied == null && Exploration.Includes(parent + ".isRetentionLockApplied$"))
-            {
-                this.IsRetentionLockApplied = new System.Boolean();
-            }
-            //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
-            // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
-            if (this.SnapshotRetentionInfo == null && Exploration.Includes(parent + ".snapshotRetentionInfo"))
-            {
-                this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
-                this.SnapshotRetentionInfo.ApplyExploratoryFragment(parent + ".snapshotRetentionInfo");
-            }
-            //      C# -> UnmanagedSnapshotType? SnapshotType
-            // GraphQL -> snapshotType: UnmanagedSnapshotType! (enum)
-            if (this.SnapshotType == null && Exploration.Includes(parent + ".snapshotType$"))
-            {
-                this.SnapshotType = new UnmanagedSnapshotType();
-            }
+            this.SnapshotType = new UnmanagedSnapshotType();
         }
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime (scalar)
+        if (this.Date == null && Exploration.Includes(parent + ".date", true))
+        {
+            this.Date = new DateTime();
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsCustomRetentionApplied
+        // GraphQL -> isCustomRetentionApplied: Boolean! (scalar)
+        if (this.IsCustomRetentionApplied == null && Exploration.Includes(parent + ".isCustomRetentionApplied", true))
+        {
+            this.IsCustomRetentionApplied = true;
+        }
+        //      C# -> System.Boolean? IsRetentionLockApplied
+        // GraphQL -> isRetentionLockApplied: Boolean! (scalar)
+        if (this.IsRetentionLockApplied == null && Exploration.Includes(parent + ".isRetentionLockApplied", true))
+        {
+            this.IsRetentionLockApplied = true;
+        }
+        //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
+        // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
+        if (this.SnapshotRetentionInfo == null && Exploration.Includes(parent + ".snapshotRetentionInfo"))
+        {
+            this.SnapshotRetentionInfo = new SnapshotRetentionInfo();
+            this.SnapshotRetentionInfo.ApplyExploratoryFieldSpec(parent + ".snapshotRetentionInfo");
+        }
+    }
 
 
     #endregion
 
     } // class SnapshotSummary
+    
     #endregion
 
     public static class ListSnapshotSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SnapshotSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SnapshotSummary> list, 
             String parent = "")
         {
-            var item = new SnapshotSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SnapshotSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

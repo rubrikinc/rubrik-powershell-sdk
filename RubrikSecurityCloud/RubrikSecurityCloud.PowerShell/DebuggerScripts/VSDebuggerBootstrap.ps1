@@ -40,7 +40,8 @@ try{
 		$sa_file = $envConfig.filePath
 		Import-Module '.\bin\Debug\net6.0\RubrikSecurityCloud.psd1'
 		Write-Output("Connecting to Rubrik Security Cloud using `"Connect-Rsc`"...")
-		Connect-Rsc -ServiceAccountFile $sa_file
+		Set-RscServiceAccountFile -InputFilePath $sa_file
+		Connect-Rsc
 		Set-Location \
 	} 
 	else

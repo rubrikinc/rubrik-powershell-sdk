@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AttachmentSpecsForVirtualMachine
-    public class AttachmentSpecsForVirtualMachine: IFragment
+    public class AttachmentSpecsForVirtualMachine: BaseType
     {
         #region members
+
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
         [JsonProperty("isExcludedFromSnapshot")]
@@ -37,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> managedDiskId: String! (scalar)
         [JsonProperty("managedDiskId")]
         public System.String? ManagedDiskId { get; set; }
+
 
         #endregion
 
@@ -64,108 +67,104 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? IsExcludedFromSnapshot
-            // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-            if (this.IsExcludedFromSnapshot != null)
-            {
-                 s += ind + "isExcludedFromSnapshot\n";
-
-            }
-            //      C# -> System.Boolean? IsOsDisk
-            // GraphQL -> isOsDisk: Boolean! (scalar)
-            if (this.IsOsDisk != null)
-            {
-                 s += ind + "isOsDisk\n";
-
-            }
-            //      C# -> System.Int32? Lun
-            // GraphQL -> lun: Int! (scalar)
-            if (this.Lun != null)
-            {
-                 s += ind + "lun\n";
-
-            }
-            //      C# -> System.String? ManagedDiskId
-            // GraphQL -> managedDiskId: String! (scalar)
-            if (this.ManagedDiskId != null)
-            {
-                 s += ind + "managedDiskId\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Boolean? IsExcludedFromSnapshot
+        // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
+        if (this.IsExcludedFromSnapshot != null) {
+            s += ind + "isExcludedFromSnapshot\n" ;
         }
+        //      C# -> System.Boolean? IsOsDisk
+        // GraphQL -> isOsDisk: Boolean! (scalar)
+        if (this.IsOsDisk != null) {
+            s += ind + "isOsDisk\n" ;
+        }
+        //      C# -> System.Int32? Lun
+        // GraphQL -> lun: Int! (scalar)
+        if (this.Lun != null) {
+            s += ind + "lun\n" ;
+        }
+        //      C# -> System.String? ManagedDiskId
+        // GraphQL -> managedDiskId: String! (scalar)
+        if (this.ManagedDiskId != null) {
+            s += ind + "managedDiskId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Boolean? IsExcludedFromSnapshot
+        // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
+        if (this.IsExcludedFromSnapshot == null && Exploration.Includes(parent + ".isExcludedFromSnapshot", true))
         {
-            //      C# -> System.Boolean? IsExcludedFromSnapshot
-            // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-            if (this.IsExcludedFromSnapshot == null && Exploration.Includes(parent + ".isExcludedFromSnapshot$"))
-            {
-                this.IsExcludedFromSnapshot = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsOsDisk
-            // GraphQL -> isOsDisk: Boolean! (scalar)
-            if (this.IsOsDisk == null && Exploration.Includes(parent + ".isOsDisk$"))
-            {
-                this.IsOsDisk = new System.Boolean();
-            }
-            //      C# -> System.Int32? Lun
-            // GraphQL -> lun: Int! (scalar)
-            if (this.Lun == null && Exploration.Includes(parent + ".lun$"))
-            {
-                this.Lun = new System.Int32();
-            }
-            //      C# -> System.String? ManagedDiskId
-            // GraphQL -> managedDiskId: String! (scalar)
-            if (this.ManagedDiskId == null && Exploration.Includes(parent + ".managedDiskId$"))
-            {
-                this.ManagedDiskId = new System.String("FETCH");
-            }
+            this.IsExcludedFromSnapshot = true;
         }
+        //      C# -> System.Boolean? IsOsDisk
+        // GraphQL -> isOsDisk: Boolean! (scalar)
+        if (this.IsOsDisk == null && Exploration.Includes(parent + ".isOsDisk", true))
+        {
+            this.IsOsDisk = true;
+        }
+        //      C# -> System.Int32? Lun
+        // GraphQL -> lun: Int! (scalar)
+        if (this.Lun == null && Exploration.Includes(parent + ".lun", true))
+        {
+            this.Lun = new System.Int32();
+        }
+        //      C# -> System.String? ManagedDiskId
+        // GraphQL -> managedDiskId: String! (scalar)
+        if (this.ManagedDiskId == null && Exploration.Includes(parent + ".managedDiskId", true))
+        {
+            this.ManagedDiskId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AttachmentSpecsForVirtualMachine
+    
     #endregion
 
     public static class ListAttachmentSpecsForVirtualMachineExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AttachmentSpecsForVirtualMachine> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AttachmentSpecsForVirtualMachine> list, 
             String parent = "")
         {
-            var item = new AttachmentSpecsForVirtualMachine();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AttachmentSpecsForVirtualMachine());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MissedSnapshot
-    public class MissedSnapshot: IFragment
+    public class MissedSnapshot: BaseType
     {
         #region members
+
         //      C# -> List<System.String>? ArchivalLocationType
         // GraphQL -> archivalLocationType: [String!]! (scalar)
         [JsonProperty("archivalLocationType")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> missedSnapshotTimeUnits: [MissedSnapshotTimeUnitConfig!]! (type)
         [JsonProperty("missedSnapshotTimeUnits")]
         public List<MissedSnapshotTimeUnitConfig>? MissedSnapshotTimeUnits { get; set; }
+
 
         #endregion
 
@@ -55,99 +58,94 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<System.String>? ArchivalLocationType
-            // GraphQL -> archivalLocationType: [String!]! (scalar)
-            if (this.ArchivalLocationType != null)
-            {
-                 s += ind + "archivalLocationType\n";
-
-            }
-            //      C# -> DateTime? MissedSnapshotTime
-            // GraphQL -> missedSnapshotTime: DateTime (scalar)
-            if (this.MissedSnapshotTime != null)
-            {
-                 s += ind + "missedSnapshotTime\n";
-
-            }
-            //      C# -> List<MissedSnapshotTimeUnitConfig>? MissedSnapshotTimeUnits
-            // GraphQL -> missedSnapshotTimeUnits: [MissedSnapshotTimeUnitConfig!]! (type)
-            if (this.MissedSnapshotTimeUnits != null)
-            {
-                 s += ind + "missedSnapshotTimeUnits\n";
-
-                 s += ind + "{\n" + 
-                 this.MissedSnapshotTimeUnits.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<System.String>? ArchivalLocationType
+        // GraphQL -> archivalLocationType: [String!]! (scalar)
+        if (this.ArchivalLocationType != null) {
+            s += ind + "archivalLocationType\n" ;
         }
+        //      C# -> DateTime? MissedSnapshotTime
+        // GraphQL -> missedSnapshotTime: DateTime (scalar)
+        if (this.MissedSnapshotTime != null) {
+            s += ind + "missedSnapshotTime\n" ;
+        }
+        //      C# -> List<MissedSnapshotTimeUnitConfig>? MissedSnapshotTimeUnits
+        // GraphQL -> missedSnapshotTimeUnits: [MissedSnapshotTimeUnitConfig!]! (type)
+        if (this.MissedSnapshotTimeUnits != null) {
+            s += ind + "missedSnapshotTimeUnits {\n" + this.MissedSnapshotTimeUnits.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<System.String>? ArchivalLocationType
+        // GraphQL -> archivalLocationType: [String!]! (scalar)
+        if (this.ArchivalLocationType == null && Exploration.Includes(parent + ".archivalLocationType", true))
         {
-            //      C# -> List<System.String>? ArchivalLocationType
-            // GraphQL -> archivalLocationType: [String!]! (scalar)
-            if (this.ArchivalLocationType == null && Exploration.Includes(parent + ".archivalLocationType$"))
-            {
-                this.ArchivalLocationType = new List<System.String>();
-            }
-            //      C# -> DateTime? MissedSnapshotTime
-            // GraphQL -> missedSnapshotTime: DateTime (scalar)
-            if (this.MissedSnapshotTime == null && Exploration.Includes(parent + ".missedSnapshotTime$"))
-            {
-                this.MissedSnapshotTime = new DateTime();
-            }
-            //      C# -> List<MissedSnapshotTimeUnitConfig>? MissedSnapshotTimeUnits
-            // GraphQL -> missedSnapshotTimeUnits: [MissedSnapshotTimeUnitConfig!]! (type)
-            if (this.MissedSnapshotTimeUnits == null && Exploration.Includes(parent + ".missedSnapshotTimeUnits"))
-            {
-                this.MissedSnapshotTimeUnits = new List<MissedSnapshotTimeUnitConfig>();
-                this.MissedSnapshotTimeUnits.ApplyExploratoryFragment(parent + ".missedSnapshotTimeUnits");
-            }
+            this.ArchivalLocationType = new List<System.String>();
         }
+        //      C# -> DateTime? MissedSnapshotTime
+        // GraphQL -> missedSnapshotTime: DateTime (scalar)
+        if (this.MissedSnapshotTime == null && Exploration.Includes(parent + ".missedSnapshotTime", true))
+        {
+            this.MissedSnapshotTime = new DateTime();
+        }
+        //      C# -> List<MissedSnapshotTimeUnitConfig>? MissedSnapshotTimeUnits
+        // GraphQL -> missedSnapshotTimeUnits: [MissedSnapshotTimeUnitConfig!]! (type)
+        if (this.MissedSnapshotTimeUnits == null && Exploration.Includes(parent + ".missedSnapshotTimeUnits"))
+        {
+            this.MissedSnapshotTimeUnits = new List<MissedSnapshotTimeUnitConfig>();
+            this.MissedSnapshotTimeUnits.ApplyExploratoryFieldSpec(parent + ".missedSnapshotTimeUnits");
+        }
+    }
 
 
     #endregion
 
     } // class MissedSnapshot
+    
     #endregion
 
     public static class ListMissedSnapshotExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MissedSnapshot> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MissedSnapshot> list, 
             String parent = "")
         {
-            var item = new MissedSnapshot();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MissedSnapshot());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

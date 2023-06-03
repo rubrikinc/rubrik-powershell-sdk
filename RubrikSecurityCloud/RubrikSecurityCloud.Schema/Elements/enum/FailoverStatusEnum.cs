@@ -45,6 +45,15 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "ISOLATED_RECOVERY_PAUSED")]
         ISOLATED_RECOVERY_PAUSED,
 
+        [EnumMember(Value = "ISOLATED_RECOVERY_PROMOTION_FAILED")]
+        ISOLATED_RECOVERY_PROMOTION_FAILED,
+
+        [EnumMember(Value = "ISOLATED_RECOVERY_PROMOTION_STARTED")]
+        ISOLATED_RECOVERY_PROMOTION_STARTED,
+
+        [EnumMember(Value = "ISOLATED_RECOVERY_PROMOTION_SUCCEEDED")]
+        ISOLATED_RECOVERY_PROMOTION_SUCCEEDED,
+
         [EnumMember(Value = "ISOLATED_RECOVERY_QUEUED")]
         ISOLATED_RECOVERY_QUEUED,
 
@@ -56,6 +65,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "LOCAL_RECOVERY_SUCCEEDED")]
         LOCAL_RECOVERY_SUCCEEDED,
+
+        [EnumMember(Value = "NOT_SUPPORTED")]
+        NOT_SUPPORTED,
 
         [EnumMember(Value = "ONGOING")]
         ONGOING,

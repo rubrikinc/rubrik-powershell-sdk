@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region O365OrgInfo
-    public class O365OrgInfo: IFragment
+    public class O365OrgInfo: BaseType
     {
         #region members
+
+        //      C# -> ProvisionStatus? Status
+        // GraphQL -> status: ProvisionStatus! (enum)
+        [JsonProperty("status")]
+        public ProvisionStatus? Status { get; set; }
+
         //      C# -> System.Boolean? ExchangeOnColossus
         // GraphQL -> exchangeOnColossus: Boolean! (scalar)
         [JsonProperty("exchangeOnColossus")]
@@ -78,16 +85,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("past1DayTeamsOutOfComplianceCount")]
         public System.Int32? Past1DayTeamsOutOfComplianceCount { get; set; }
 
-        //      C# -> ProvisionStatus? Status
-        // GraphQL -> status: ProvisionStatus! (enum)
-        [JsonProperty("status")]
-        public ProvisionStatus? Status { get; set; }
 
         #endregion
 
     #region methods
 
     public O365OrgInfo Set(
+        ProvisionStatus? Status = null,
         System.Boolean? ExchangeOnColossus = null,
         System.String? OrgId = null,
         System.Int32? Past1DayMailboxComplianceCount = null,
@@ -99,10 +103,12 @@ namespace Rubrik.SecurityCloud.Types
         System.Int32? Past1DaySpListComplianceCount = null,
         System.Int32? Past1DaySpListOutOfComplianceCount = null,
         System.Int32? Past1DayTeamsComplianceCount = null,
-        System.Int32? Past1DayTeamsOutOfComplianceCount = null,
-        ProvisionStatus? Status = null
+        System.Int32? Past1DayTeamsOutOfComplianceCount = null
     ) 
     {
+        if ( Status != null ) {
+            this.Status = Status;
+        }
         if ( ExchangeOnColossus != null ) {
             this.ExchangeOnColossus = ExchangeOnColossus;
         }
@@ -139,231 +145,206 @@ namespace Rubrik.SecurityCloud.Types
         if ( Past1DayTeamsOutOfComplianceCount != null ) {
             this.Past1DayTeamsOutOfComplianceCount = Past1DayTeamsOutOfComplianceCount;
         }
-        if ( Status != null ) {
-            this.Status = Status;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? ExchangeOnColossus
-            // GraphQL -> exchangeOnColossus: Boolean! (scalar)
-            if (this.ExchangeOnColossus != null)
-            {
-                 s += ind + "exchangeOnColossus\n";
-
-            }
-            //      C# -> System.String? OrgId
-            // GraphQL -> orgId: String! (scalar)
-            if (this.OrgId != null)
-            {
-                 s += ind + "orgId\n";
-
-            }
-            //      C# -> System.Int32? Past1DayMailboxComplianceCount
-            // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
-            if (this.Past1DayMailboxComplianceCount != null)
-            {
-                 s += ind + "past1DayMailboxComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
-            // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DayMailboxOutOfComplianceCount != null)
-            {
-                 s += ind + "past1DayMailboxOutOfComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DayOnedriveComplianceCount
-            // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
-            if (this.Past1DayOnedriveComplianceCount != null)
-            {
-                 s += ind + "past1DayOnedriveComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
-            // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DayOnedriveOutOfComplianceCount != null)
-            {
-                 s += ind + "past1DayOnedriveOutOfComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DaySharepointComplianceCount
-            // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
-            if (this.Past1DaySharepointComplianceCount != null)
-            {
-                 s += ind + "past1DaySharepointComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
-            // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DaySharepointOutOfComplianceCount != null)
-            {
-                 s += ind + "past1DaySharepointOutOfComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DaySpListComplianceCount
-            // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
-            if (this.Past1DaySpListComplianceCount != null)
-            {
-                 s += ind + "past1DaySpListComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
-            // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DaySpListOutOfComplianceCount != null)
-            {
-                 s += ind + "past1DaySpListOutOfComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DayTeamsComplianceCount
-            // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
-            if (this.Past1DayTeamsComplianceCount != null)
-            {
-                 s += ind + "past1DayTeamsComplianceCount\n";
-
-            }
-            //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
-            // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DayTeamsOutOfComplianceCount != null)
-            {
-                 s += ind + "past1DayTeamsOutOfComplianceCount\n";
-
-            }
-            //      C# -> ProvisionStatus? Status
-            // GraphQL -> status: ProvisionStatus! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ProvisionStatus? Status
+        // GraphQL -> status: ProvisionStatus! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
+        //      C# -> System.Boolean? ExchangeOnColossus
+        // GraphQL -> exchangeOnColossus: Boolean! (scalar)
+        if (this.ExchangeOnColossus != null) {
+            s += ind + "exchangeOnColossus\n" ;
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        if (this.OrgId != null) {
+            s += ind + "orgId\n" ;
+        }
+        //      C# -> System.Int32? Past1DayMailboxComplianceCount
+        // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
+        if (this.Past1DayMailboxComplianceCount != null) {
+            s += ind + "past1DayMailboxComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
+        // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DayMailboxOutOfComplianceCount != null) {
+            s += ind + "past1DayMailboxOutOfComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DayOnedriveComplianceCount
+        // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
+        if (this.Past1DayOnedriveComplianceCount != null) {
+            s += ind + "past1DayOnedriveComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
+        // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DayOnedriveOutOfComplianceCount != null) {
+            s += ind + "past1DayOnedriveOutOfComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DaySharepointComplianceCount
+        // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
+        if (this.Past1DaySharepointComplianceCount != null) {
+            s += ind + "past1DaySharepointComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
+        // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DaySharepointOutOfComplianceCount != null) {
+            s += ind + "past1DaySharepointOutOfComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DaySpListComplianceCount
+        // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
+        if (this.Past1DaySpListComplianceCount != null) {
+            s += ind + "past1DaySpListComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
+        // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DaySpListOutOfComplianceCount != null) {
+            s += ind + "past1DaySpListOutOfComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DayTeamsComplianceCount
+        // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
+        if (this.Past1DayTeamsComplianceCount != null) {
+            s += ind + "past1DayTeamsComplianceCount\n" ;
+        }
+        //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
+        // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DayTeamsOutOfComplianceCount != null) {
+            s += ind + "past1DayTeamsOutOfComplianceCount\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ProvisionStatus? Status
+        // GraphQL -> status: ProvisionStatus! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            //      C# -> System.Boolean? ExchangeOnColossus
-            // GraphQL -> exchangeOnColossus: Boolean! (scalar)
-            if (this.ExchangeOnColossus == null && Exploration.Includes(parent + ".exchangeOnColossus$"))
-            {
-                this.ExchangeOnColossus = new System.Boolean();
-            }
-            //      C# -> System.String? OrgId
-            // GraphQL -> orgId: String! (scalar)
-            if (this.OrgId == null && Exploration.Includes(parent + ".orgId$"))
-            {
-                this.OrgId = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? Past1DayMailboxComplianceCount
-            // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
-            if (this.Past1DayMailboxComplianceCount == null && Exploration.Includes(parent + ".past1DayMailboxComplianceCount$"))
-            {
-                this.Past1DayMailboxComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
-            // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DayMailboxOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayMailboxOutOfComplianceCount$"))
-            {
-                this.Past1DayMailboxOutOfComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DayOnedriveComplianceCount
-            // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
-            if (this.Past1DayOnedriveComplianceCount == null && Exploration.Includes(parent + ".past1DayOnedriveComplianceCount$"))
-            {
-                this.Past1DayOnedriveComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
-            // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DayOnedriveOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayOnedriveOutOfComplianceCount$"))
-            {
-                this.Past1DayOnedriveOutOfComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DaySharepointComplianceCount
-            // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
-            if (this.Past1DaySharepointComplianceCount == null && Exploration.Includes(parent + ".past1DaySharepointComplianceCount$"))
-            {
-                this.Past1DaySharepointComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
-            // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DaySharepointOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySharepointOutOfComplianceCount$"))
-            {
-                this.Past1DaySharepointOutOfComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DaySpListComplianceCount
-            // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
-            if (this.Past1DaySpListComplianceCount == null && Exploration.Includes(parent + ".past1DaySpListComplianceCount$"))
-            {
-                this.Past1DaySpListComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
-            // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DaySpListOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySpListOutOfComplianceCount$"))
-            {
-                this.Past1DaySpListOutOfComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DayTeamsComplianceCount
-            // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
-            if (this.Past1DayTeamsComplianceCount == null && Exploration.Includes(parent + ".past1DayTeamsComplianceCount$"))
-            {
-                this.Past1DayTeamsComplianceCount = new System.Int32();
-            }
-            //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
-            // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
-            if (this.Past1DayTeamsOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayTeamsOutOfComplianceCount$"))
-            {
-                this.Past1DayTeamsOutOfComplianceCount = new System.Int32();
-            }
-            //      C# -> ProvisionStatus? Status
-            // GraphQL -> status: ProvisionStatus! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new ProvisionStatus();
-            }
+            this.Status = new ProvisionStatus();
         }
+        //      C# -> System.Boolean? ExchangeOnColossus
+        // GraphQL -> exchangeOnColossus: Boolean! (scalar)
+        if (this.ExchangeOnColossus == null && Exploration.Includes(parent + ".exchangeOnColossus", true))
+        {
+            this.ExchangeOnColossus = true;
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        {
+            this.OrgId = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? Past1DayMailboxComplianceCount
+        // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
+        if (this.Past1DayMailboxComplianceCount == null && Exploration.Includes(parent + ".past1DayMailboxComplianceCount", true))
+        {
+            this.Past1DayMailboxComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
+        // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DayMailboxOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayMailboxOutOfComplianceCount", true))
+        {
+            this.Past1DayMailboxOutOfComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DayOnedriveComplianceCount
+        // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
+        if (this.Past1DayOnedriveComplianceCount == null && Exploration.Includes(parent + ".past1DayOnedriveComplianceCount", true))
+        {
+            this.Past1DayOnedriveComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
+        // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DayOnedriveOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayOnedriveOutOfComplianceCount", true))
+        {
+            this.Past1DayOnedriveOutOfComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DaySharepointComplianceCount
+        // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
+        if (this.Past1DaySharepointComplianceCount == null && Exploration.Includes(parent + ".past1DaySharepointComplianceCount", true))
+        {
+            this.Past1DaySharepointComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
+        // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DaySharepointOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySharepointOutOfComplianceCount", true))
+        {
+            this.Past1DaySharepointOutOfComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DaySpListComplianceCount
+        // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
+        if (this.Past1DaySpListComplianceCount == null && Exploration.Includes(parent + ".past1DaySpListComplianceCount", true))
+        {
+            this.Past1DaySpListComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
+        // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DaySpListOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySpListOutOfComplianceCount", true))
+        {
+            this.Past1DaySpListOutOfComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DayTeamsComplianceCount
+        // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
+        if (this.Past1DayTeamsComplianceCount == null && Exploration.Includes(parent + ".past1DayTeamsComplianceCount", true))
+        {
+            this.Past1DayTeamsComplianceCount = new System.Int32();
+        }
+        //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
+        // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
+        if (this.Past1DayTeamsOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayTeamsOutOfComplianceCount", true))
+        {
+            this.Past1DayTeamsOutOfComplianceCount = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class O365OrgInfo
+    
     #endregion
 
     public static class ListO365OrgInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<O365OrgInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<O365OrgInfo> list, 
             String parent = "")
         {
-            var item = new O365OrgInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new O365OrgInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

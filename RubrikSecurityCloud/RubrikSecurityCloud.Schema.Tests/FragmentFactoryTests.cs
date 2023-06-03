@@ -12,10 +12,14 @@ namespace Rubrik.SecurityCloud.Schema.Tests
         public void GetFragment_ReturnsNonEmptyString()
         {
             // Arrange
-            var inputObject = new AccountSetting { IsEmailNotificationEnabled = false, IsEulaAccepted = true };
+            var inputObject = new AccountSetting
+            {
+                IsEmailNotificationEnabled = false,
+                IsEulaAccepted = true
+            };
 
             // Act
-            var result = inputObject.AsFragment();
+            var result = inputObject.AsFieldSpec();
 
             // Assert
             Assert.IsNotNull(result);
@@ -29,83 +33,71 @@ namespace Rubrik.SecurityCloud.Schema.Tests
             var inputObject = new AccountSetting();
 
             // Act
-            var result = inputObject.AsFragment();
+            var result = inputObject.AsFieldSpec();
 
             // Assert
 
             Assert.IsNotNull(result);
             Assert.IsEmpty(result);
-
         }
 
         [Test]
         public void GetFragment_ReturnsListOfNotNullSimpleProperties()
         {
             // Arrange
-            string ind = new string(' ', 0 * 2);
-            var inputObject = new AccountSetting { IsEulaAccepted = true};
+            string ind = new(' ', 0 * 2);
+            var inputObject = new AccountSetting { IsEulaAccepted = true };
             string expected = ind + "isEulaAccepted\n";
             // Act
-            var result = inputObject.AsFragment();
+            var result = inputObject.AsFieldSpec();
 
             // Assert
 
             Assert.IsNotNull(result);
             Assert.IsNotEmpty(result);
             Assert.That(result, Is.EqualTo(expected));
-
         }
 
         [Test]
         public void GetFragment_ReturnsListOfNotNullNestedProperties()
         {
             // Arrange
-            string ind = new string(' ', 0 * 2);
-            var inputObject = new VsphereVm {
+            var inputObject = new VsphereVm
+            {
                 Id = "FETCH",
                 Name = "FETCH",
-                Cluster = new Cluster
-                {
-                    Id = "FETCH",
-                    Name = "FETCH"
-                }
+                Cluster = new Cluster { Id = "FETCH", Name = "FETCH" }
             };
 
-            string expected = "id\nname\ncluster\n{\n  id\n  name\n}\n";
+            const string expected = "id\nname\ncluster {\n  id\n  name\n}\n";
 
             // Act
-            var result = inputObject.AsFragment();
+            var result = inputObject.AsFieldSpec();
 
             // Assert
 
             Assert.IsNotNull(result);
             Assert.IsNotEmpty(result);
             Assert.That(result, Is.EqualTo(expected));
-
         }
 
         [Test]
         public void InitializeToDefaultValues_ReturnsPopulatedSimpleObject()
         {
             // Arrange
-            AccountSetting inputObject = new AccountSetting();
+            AccountSetting inputObject = new();
 
+            AccountSetting expected =
+                new() { IsEmailNotificationEnabled = true, IsEulaAccepted = true };
 
-            AccountSetting expected = new AccountSetting
-            {
-                IsEmailNotificationEnabled = false,
-                IsEulaAccepted = false
-            };
-
-            var expectedProps = expected.GetType().GetProperties();
             var inputObjectProps = inputObject.GetType().GetProperties();
 
             // Act
-            inputObject.ApplyExploratoryFragment();
+            inputObject.ApplyExploratoryFieldSpec();
 
             // Assert
             Assert.IsNotNull(inputObject);
-            
+
             foreach (PropertyInfo prop in inputObjectProps)
             {
                 var expectedVal = prop.GetValue(expected);
@@ -119,25 +111,25 @@ namespace Rubrik.SecurityCloud.Schema.Tests
         public void GetFragment_ReturnInterfaceFragment()
         {
             // Arrange
-            VsphereVm inputObject = new VsphereVm
-            {
-                Name = "FETCH",
-                Id = "FETCH",
-                EffectiveSlaDomain = new ClusterSlaDomain
+            VsphereVm inputObject =
+                new()
                 {
+                    Name = "FETCH",
                     Id = "FETCH",
-                    Name = "FETCH"
-                }
-            };
-            string ind = new string(' ', 2);
+                    EffectiveSlaDomain = new ClusterSlaDomain { Id = "FETCH", Name = "FETCH" }
+                };
+            var ind = new string(' ', 2);
 
-            string expected = "id\nname\neffectiveSlaDomain\n" +
-                "{\n... on ClusterSlaDomain\n{\n" +
-                ind + "id\n" +
-                ind + "name\n}\n}\n";
+            string expected =
+                "id\nname\neffectiveSlaDomain\n"
+                + "{\n ... on ClusterSlaDomain\n{\n"
+                + ind
+                + "id\n"
+                + ind
+                + "name\n}\n}\n";
 
             //Act
-            string result = inputObject.AsFragment();
+            string result = inputObject.AsFieldSpec();
 
             // Assert
 
@@ -149,22 +141,14 @@ namespace Rubrik.SecurityCloud.Schema.Tests
         public void InitializeToDefaultValues_ReturnsPopulatedComplexObject()
         {
             // Arrange
-            VsphereVm inputObject = new VsphereVm();
+            VsphereVm inputObject = new();
 
-
-            VsphereVm expected = new VsphereVm
-            {
-                Id = "FETCH",
-                Name = "FETCH",
-                Cluster = new Cluster(),
-                EffectiveSlaDomain = new ClusterSlaDomain()
-            };
+            VsphereVm expected = new() { Id = "FETCH", Name = "FETCH", };
 
             var expectedProps = expected.GetType().GetProperties();
-            var inputObjectProps = inputObject.GetType().GetProperties();
 
             // Act
-            inputObject.ApplyExploratoryFragment();
+            inputObject.ApplyExploratoryFieldSpec();
 
             // Assert
             Assert.IsNotNull(inputObject);
@@ -179,8 +163,10 @@ namespace Rubrik.SecurityCloud.Schema.Tests
                     if (prop.PropertyType.IsClass || prop.PropertyType.IsInterface)
                     {
                         Assert.IsNotNull(inputObjectVal);
-                        Assert.That(inputObjectVal.GetType().Name,
-                            Is.EqualTo(expectedVal.GetType().Name));
+                        Assert.That(
+                            inputObjectVal.GetType().Name,
+                            Is.EqualTo(expectedVal.GetType().Name)
+                        );
                     }
                     else
                     {
@@ -189,6 +175,5 @@ namespace Rubrik.SecurityCloud.Schema.Tests
                 }
             }
         }
-
     }
 }

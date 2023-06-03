@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region PrechecksStatusReply
-    public class PrechecksStatusReply: IFragment
+    public class PrechecksStatusReply: BaseType
     {
         #region members
+
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
         [JsonProperty("endTime")]
@@ -42,6 +44,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
         [JsonProperty("nextRunInfo")]
         public PrecheckStatusNextRunInfo? NextRunInfo { get; set; }
+
 
         #endregion
 
@@ -73,129 +76,117 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? EndTime
-            // GraphQL -> endTime: Long! (scalar)
-            if (this.EndTime != null)
-            {
-                 s += ind + "endTime\n";
-
-            }
-            //      C# -> System.Int32? NumPrechecks
-            // GraphQL -> numPrechecks: Int! (scalar)
-            if (this.NumPrechecks != null)
-            {
-                 s += ind + "numPrechecks\n";
-
-            }
-            //      C# -> System.Int32? RunPeriodInMinutes
-            // GraphQL -> runPeriodInMinutes: Int! (scalar)
-            if (this.RunPeriodInMinutes != null)
-            {
-                 s += ind + "runPeriodInMinutes\n";
-
-            }
-            //      C# -> List<PrecheckFailure>? FailureResults
-            // GraphQL -> failureResults: [PrecheckFailure!]! (type)
-            if (this.FailureResults != null)
-            {
-                 s += ind + "failureResults\n";
-
-                 s += ind + "{\n" + 
-                 this.FailureResults.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PrecheckStatusNextRunInfo? NextRunInfo
-            // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
-            if (this.NextRunInfo != null)
-            {
-                 s += ind + "nextRunInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.NextRunInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? EndTime
+        // GraphQL -> endTime: Long! (scalar)
+        if (this.EndTime != null) {
+            s += ind + "endTime\n" ;
         }
+        //      C# -> System.Int32? NumPrechecks
+        // GraphQL -> numPrechecks: Int! (scalar)
+        if (this.NumPrechecks != null) {
+            s += ind + "numPrechecks\n" ;
+        }
+        //      C# -> System.Int32? RunPeriodInMinutes
+        // GraphQL -> runPeriodInMinutes: Int! (scalar)
+        if (this.RunPeriodInMinutes != null) {
+            s += ind + "runPeriodInMinutes\n" ;
+        }
+        //      C# -> List<PrecheckFailure>? FailureResults
+        // GraphQL -> failureResults: [PrecheckFailure!]! (type)
+        if (this.FailureResults != null) {
+            s += ind + "failureResults {\n" + this.FailureResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PrecheckStatusNextRunInfo? NextRunInfo
+        // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
+        if (this.NextRunInfo != null) {
+            s += ind + "nextRunInfo {\n" + this.NextRunInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? EndTime
+        // GraphQL -> endTime: Long! (scalar)
+        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
         {
-            //      C# -> System.Int64? EndTime
-            // GraphQL -> endTime: Long! (scalar)
-            if (this.EndTime == null && Exploration.Includes(parent + ".endTime$"))
-            {
-                this.EndTime = new System.Int64();
-            }
-            //      C# -> System.Int32? NumPrechecks
-            // GraphQL -> numPrechecks: Int! (scalar)
-            if (this.NumPrechecks == null && Exploration.Includes(parent + ".numPrechecks$"))
-            {
-                this.NumPrechecks = new System.Int32();
-            }
-            //      C# -> System.Int32? RunPeriodInMinutes
-            // GraphQL -> runPeriodInMinutes: Int! (scalar)
-            if (this.RunPeriodInMinutes == null && Exploration.Includes(parent + ".runPeriodInMinutes$"))
-            {
-                this.RunPeriodInMinutes = new System.Int32();
-            }
-            //      C# -> List<PrecheckFailure>? FailureResults
-            // GraphQL -> failureResults: [PrecheckFailure!]! (type)
-            if (this.FailureResults == null && Exploration.Includes(parent + ".failureResults"))
-            {
-                this.FailureResults = new List<PrecheckFailure>();
-                this.FailureResults.ApplyExploratoryFragment(parent + ".failureResults");
-            }
-            //      C# -> PrecheckStatusNextRunInfo? NextRunInfo
-            // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
-            if (this.NextRunInfo == null && Exploration.Includes(parent + ".nextRunInfo"))
-            {
-                this.NextRunInfo = new PrecheckStatusNextRunInfo();
-                this.NextRunInfo.ApplyExploratoryFragment(parent + ".nextRunInfo");
-            }
+            this.EndTime = new System.Int64();
         }
+        //      C# -> System.Int32? NumPrechecks
+        // GraphQL -> numPrechecks: Int! (scalar)
+        if (this.NumPrechecks == null && Exploration.Includes(parent + ".numPrechecks", true))
+        {
+            this.NumPrechecks = new System.Int32();
+        }
+        //      C# -> System.Int32? RunPeriodInMinutes
+        // GraphQL -> runPeriodInMinutes: Int! (scalar)
+        if (this.RunPeriodInMinutes == null && Exploration.Includes(parent + ".runPeriodInMinutes", true))
+        {
+            this.RunPeriodInMinutes = new System.Int32();
+        }
+        //      C# -> List<PrecheckFailure>? FailureResults
+        // GraphQL -> failureResults: [PrecheckFailure!]! (type)
+        if (this.FailureResults == null && Exploration.Includes(parent + ".failureResults"))
+        {
+            this.FailureResults = new List<PrecheckFailure>();
+            this.FailureResults.ApplyExploratoryFieldSpec(parent + ".failureResults");
+        }
+        //      C# -> PrecheckStatusNextRunInfo? NextRunInfo
+        // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
+        if (this.NextRunInfo == null && Exploration.Includes(parent + ".nextRunInfo"))
+        {
+            this.NextRunInfo = new PrecheckStatusNextRunInfo();
+            this.NextRunInfo.ApplyExploratoryFieldSpec(parent + ".nextRunInfo");
+        }
+    }
 
 
     #endregion
 
     } // class PrechecksStatusReply
+    
     #endregion
 
     public static class ListPrechecksStatusReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<PrechecksStatusReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<PrechecksStatusReply> list, 
             String parent = "")
         {
-            var item = new PrechecksStatusReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new PrechecksStatusReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

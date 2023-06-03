@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MosaicStoreObject
-    public class MosaicStoreObject: IFragment
+    public class MosaicStoreObject: BaseType
     {
         #region members
+
+        //      C# -> MosaicStoreObjectStoreType? StoreType
+        // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
+        [JsonProperty("storeType")]
+        public MosaicStoreObjectStoreType? StoreType { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -43,24 +50,23 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("storeMetadata")]
         public StoreMetadata? StoreMetadata { get; set; }
 
-        //      C# -> MosaicStoreObjectStoreType? StoreType
-        // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
-        [JsonProperty("storeType")]
-        public MosaicStoreObjectStoreType? StoreType { get; set; }
 
         #endregion
 
     #region methods
 
     public MosaicStoreObject Set(
+        MosaicStoreObjectStoreType? StoreType = null,
         System.String? Id = null,
         System.String? StoreName = null,
         System.String? StoreUrl = null,
         System.String? SurlNfs = null,
-        StoreMetadata? StoreMetadata = null,
-        MosaicStoreObjectStoreType? StoreType = null
+        StoreMetadata? StoreMetadata = null
     ) 
     {
+        if ( StoreType != null ) {
+            this.StoreType = StoreType;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -76,144 +82,130 @@ namespace Rubrik.SecurityCloud.Types
         if ( StoreMetadata != null ) {
             this.StoreMetadata = StoreMetadata;
         }
-        if ( StoreType != null ) {
-            this.StoreType = StoreType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? StoreName
-            // GraphQL -> storeName: String! (scalar)
-            if (this.StoreName != null)
-            {
-                 s += ind + "storeName\n";
-
-            }
-            //      C# -> System.String? StoreUrl
-            // GraphQL -> storeUrl: String! (scalar)
-            if (this.StoreUrl != null)
-            {
-                 s += ind + "storeUrl\n";
-
-            }
-            //      C# -> System.String? SurlNfs
-            // GraphQL -> surlNfs: String (scalar)
-            if (this.SurlNfs != null)
-            {
-                 s += ind + "surlNfs\n";
-
-            }
-            //      C# -> StoreMetadata? StoreMetadata
-            // GraphQL -> storeMetadata: StoreMetadata (type)
-            if (this.StoreMetadata != null)
-            {
-                 s += ind + "storeMetadata\n";
-
-                 s += ind + "{\n" + 
-                 this.StoreMetadata.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MosaicStoreObjectStoreType? StoreType
-            // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
-            if (this.StoreType != null)
-            {
-                 s += ind + "storeType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> MosaicStoreObjectStoreType? StoreType
+        // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
+        if (this.StoreType != null) {
+            s += ind + "storeType\n" ;
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? StoreName
+        // GraphQL -> storeName: String! (scalar)
+        if (this.StoreName != null) {
+            s += ind + "storeName\n" ;
+        }
+        //      C# -> System.String? StoreUrl
+        // GraphQL -> storeUrl: String! (scalar)
+        if (this.StoreUrl != null) {
+            s += ind + "storeUrl\n" ;
+        }
+        //      C# -> System.String? SurlNfs
+        // GraphQL -> surlNfs: String (scalar)
+        if (this.SurlNfs != null) {
+            s += ind + "surlNfs\n" ;
+        }
+        //      C# -> StoreMetadata? StoreMetadata
+        // GraphQL -> storeMetadata: StoreMetadata (type)
+        if (this.StoreMetadata != null) {
+            s += ind + "storeMetadata {\n" + this.StoreMetadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> MosaicStoreObjectStoreType? StoreType
+        // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
+        if (this.StoreType == null && Exploration.Includes(parent + ".storeType", true))
         {
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? StoreName
-            // GraphQL -> storeName: String! (scalar)
-            if (this.StoreName == null && Exploration.Includes(parent + ".storeName$"))
-            {
-                this.StoreName = new System.String("FETCH");
-            }
-            //      C# -> System.String? StoreUrl
-            // GraphQL -> storeUrl: String! (scalar)
-            if (this.StoreUrl == null && Exploration.Includes(parent + ".storeUrl$"))
-            {
-                this.StoreUrl = new System.String("FETCH");
-            }
-            //      C# -> System.String? SurlNfs
-            // GraphQL -> surlNfs: String (scalar)
-            if (this.SurlNfs == null && Exploration.Includes(parent + ".surlNfs$"))
-            {
-                this.SurlNfs = new System.String("FETCH");
-            }
-            //      C# -> StoreMetadata? StoreMetadata
-            // GraphQL -> storeMetadata: StoreMetadata (type)
-            if (this.StoreMetadata == null && Exploration.Includes(parent + ".storeMetadata"))
-            {
-                this.StoreMetadata = new StoreMetadata();
-                this.StoreMetadata.ApplyExploratoryFragment(parent + ".storeMetadata");
-            }
-            //      C# -> MosaicStoreObjectStoreType? StoreType
-            // GraphQL -> storeType: MosaicStoreObjectStoreType! (enum)
-            if (this.StoreType == null && Exploration.Includes(parent + ".storeType$"))
-            {
-                this.StoreType = new MosaicStoreObjectStoreType();
-            }
+            this.StoreType = new MosaicStoreObjectStoreType();
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? StoreName
+        // GraphQL -> storeName: String! (scalar)
+        if (this.StoreName == null && Exploration.Includes(parent + ".storeName", true))
+        {
+            this.StoreName = new System.String("FETCH");
+        }
+        //      C# -> System.String? StoreUrl
+        // GraphQL -> storeUrl: String! (scalar)
+        if (this.StoreUrl == null && Exploration.Includes(parent + ".storeUrl", true))
+        {
+            this.StoreUrl = new System.String("FETCH");
+        }
+        //      C# -> System.String? SurlNfs
+        // GraphQL -> surlNfs: String (scalar)
+        if (this.SurlNfs == null && Exploration.Includes(parent + ".surlNfs", true))
+        {
+            this.SurlNfs = new System.String("FETCH");
+        }
+        //      C# -> StoreMetadata? StoreMetadata
+        // GraphQL -> storeMetadata: StoreMetadata (type)
+        if (this.StoreMetadata == null && Exploration.Includes(parent + ".storeMetadata"))
+        {
+            this.StoreMetadata = new StoreMetadata();
+            this.StoreMetadata.ApplyExploratoryFieldSpec(parent + ".storeMetadata");
+        }
+    }
 
 
     #endregion
 
     } // class MosaicStoreObject
+    
     #endregion
 
     public static class ListMosaicStoreObjectExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MosaicStoreObject> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MosaicStoreObject> list, 
             String parent = "")
         {
-            var item = new MosaicStoreObject();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MosaicStoreObject());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

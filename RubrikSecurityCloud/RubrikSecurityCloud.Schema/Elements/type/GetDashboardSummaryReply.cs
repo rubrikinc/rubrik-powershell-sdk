@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region GetDashboardSummaryReply
-    public class GetDashboardSummaryReply: IFragment
+    public class GetDashboardSummaryReply: BaseType
     {
         #region members
+
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         [JsonProperty("analyzerResults")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
         [JsonProperty("policyResults")]
         public List<AnalyzerGroupResult>? PolicyResults { get; set; }
+
 
         #endregion
 
@@ -46,90 +49,84 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<AnalyzerResult>? AnalyzerResults
-            // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-            if (this.AnalyzerResults != null)
-            {
-                 s += ind + "analyzerResults\n";
-
-                 s += ind + "{\n" + 
-                 this.AnalyzerResults.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<AnalyzerGroupResult>? PolicyResults
-            // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
-            if (this.PolicyResults != null)
-            {
-                 s += ind + "policyResults\n";
-
-                 s += ind + "{\n" + 
-                 this.PolicyResults.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<AnalyzerResult>? AnalyzerResults
+        // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
+        if (this.AnalyzerResults != null) {
+            s += ind + "analyzerResults {\n" + this.AnalyzerResults.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> List<AnalyzerGroupResult>? PolicyResults
+        // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
+        if (this.PolicyResults != null) {
+            s += ind + "policyResults {\n" + this.PolicyResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<AnalyzerResult>? AnalyzerResults
+        // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
+        if (this.AnalyzerResults == null && Exploration.Includes(parent + ".analyzerResults"))
         {
-            //      C# -> List<AnalyzerResult>? AnalyzerResults
-            // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-            if (this.AnalyzerResults == null && Exploration.Includes(parent + ".analyzerResults"))
-            {
-                this.AnalyzerResults = new List<AnalyzerResult>();
-                this.AnalyzerResults.ApplyExploratoryFragment(parent + ".analyzerResults");
-            }
-            //      C# -> List<AnalyzerGroupResult>? PolicyResults
-            // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
-            if (this.PolicyResults == null && Exploration.Includes(parent + ".policyResults"))
-            {
-                this.PolicyResults = new List<AnalyzerGroupResult>();
-                this.PolicyResults.ApplyExploratoryFragment(parent + ".policyResults");
-            }
+            this.AnalyzerResults = new List<AnalyzerResult>();
+            this.AnalyzerResults.ApplyExploratoryFieldSpec(parent + ".analyzerResults");
         }
+        //      C# -> List<AnalyzerGroupResult>? PolicyResults
+        // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
+        if (this.PolicyResults == null && Exploration.Includes(parent + ".policyResults"))
+        {
+            this.PolicyResults = new List<AnalyzerGroupResult>();
+            this.PolicyResults.ApplyExploratoryFieldSpec(parent + ".policyResults");
+        }
+    }
 
 
     #endregion
 
     } // class GetDashboardSummaryReply
+    
     #endregion
 
     public static class ListGetDashboardSummaryReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<GetDashboardSummaryReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<GetDashboardSummaryReply> list, 
             String parent = "")
         {
-            var item = new GetDashboardSummaryReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new GetDashboardSummaryReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

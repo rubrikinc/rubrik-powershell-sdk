@@ -15,6 +15,9 @@ namespace Rubrik.SecurityCloud.Types
 {
     public enum UserAuditStatusEnum
     {
+        [EnumMember(Value = "Canceled")]
+        CANCELED,
+
         [EnumMember(Value = "Failure")]
         FAILURE,
 

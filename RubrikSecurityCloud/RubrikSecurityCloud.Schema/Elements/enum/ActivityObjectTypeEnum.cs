@@ -15,11 +15,17 @@ namespace Rubrik.SecurityCloud.Types
 {
     public enum ActivityObjectTypeEnum
     {
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN")]
+        ACTIVE_DIRECTORY_DOMAIN,
+
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
+        ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
-        [EnumMember(Value = "AZURE_AD_TENANT")]
-        AZURE_AD_TENANT,
+        [EnumMember(Value = "AZURE_AD_DIRECTORY")]
+        AZURE_AD_DIRECTORY,
 
         [EnumMember(Value = "AZURE_STORAGE_ACCOUNT")]
         AZURE_STORAGE_ACCOUNT,
@@ -206,6 +212,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "NAS_FILESET")]
         NAS_FILESET,
+
+        [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
+        NUTANIX_PRISM_CENTRAL,
 
         [EnumMember(Value = "NasHost")]
         NAS_HOST,

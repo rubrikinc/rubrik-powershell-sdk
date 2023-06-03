@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AccessUser
-    public class AccessUser: IFragment
+    public class AccessUser: BaseType
     {
         #region members
+
         //      C# -> System.Int64? ActivityDelta
         // GraphQL -> activityDelta: Long! (scalar)
         [JsonProperty("activityDelta")]
@@ -52,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> username: String! (scalar)
         [JsonProperty("username")]
         public System.String? Username { get; set; }
+
 
         #endregion
 
@@ -91,147 +94,137 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? ActivityDelta
-            // GraphQL -> activityDelta: Long! (scalar)
-            if (this.ActivityDelta != null)
-            {
-                 s += ind + "activityDelta\n";
-
-            }
-            //      C# -> System.String? Email
-            // GraphQL -> email: String! (scalar)
-            if (this.Email != null)
-            {
-                 s += ind + "email\n";
-
-            }
-            //      C# -> System.Int64? LastAccessTime
-            // GraphQL -> lastAccessTime: Long! (scalar)
-            if (this.LastAccessTime != null)
-            {
-                 s += ind + "lastAccessTime\n";
-
-            }
-            //      C# -> System.Int64? NumActivities
-            // GraphQL -> numActivities: Long! (scalar)
-            if (this.NumActivities != null)
-            {
-                 s += ind + "numActivities\n";
-
-            }
-            //      C# -> System.String? SubjectName
-            // GraphQL -> subjectName: String! (scalar)
-            if (this.SubjectName != null)
-            {
-                 s += ind + "subjectName\n";
-
-            }
-            //      C# -> System.String? UserSid
-            // GraphQL -> userSid: String! (scalar)
-            if (this.UserSid != null)
-            {
-                 s += ind + "userSid\n";
-
-            }
-            //      C# -> System.String? Username
-            // GraphQL -> username: String! (scalar)
-            if (this.Username != null)
-            {
-                 s += ind + "username\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? ActivityDelta
+        // GraphQL -> activityDelta: Long! (scalar)
+        if (this.ActivityDelta != null) {
+            s += ind + "activityDelta\n" ;
         }
+        //      C# -> System.String? Email
+        // GraphQL -> email: String! (scalar)
+        if (this.Email != null) {
+            s += ind + "email\n" ;
+        }
+        //      C# -> System.Int64? LastAccessTime
+        // GraphQL -> lastAccessTime: Long! (scalar)
+        if (this.LastAccessTime != null) {
+            s += ind + "lastAccessTime\n" ;
+        }
+        //      C# -> System.Int64? NumActivities
+        // GraphQL -> numActivities: Long! (scalar)
+        if (this.NumActivities != null) {
+            s += ind + "numActivities\n" ;
+        }
+        //      C# -> System.String? SubjectName
+        // GraphQL -> subjectName: String! (scalar)
+        if (this.SubjectName != null) {
+            s += ind + "subjectName\n" ;
+        }
+        //      C# -> System.String? UserSid
+        // GraphQL -> userSid: String! (scalar)
+        if (this.UserSid != null) {
+            s += ind + "userSid\n" ;
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username != null) {
+            s += ind + "username\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? ActivityDelta
+        // GraphQL -> activityDelta: Long! (scalar)
+        if (this.ActivityDelta == null && Exploration.Includes(parent + ".activityDelta", true))
         {
-            //      C# -> System.Int64? ActivityDelta
-            // GraphQL -> activityDelta: Long! (scalar)
-            if (this.ActivityDelta == null && Exploration.Includes(parent + ".activityDelta$"))
-            {
-                this.ActivityDelta = new System.Int64();
-            }
-            //      C# -> System.String? Email
-            // GraphQL -> email: String! (scalar)
-            if (this.Email == null && Exploration.Includes(parent + ".email$"))
-            {
-                this.Email = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? LastAccessTime
-            // GraphQL -> lastAccessTime: Long! (scalar)
-            if (this.LastAccessTime == null && Exploration.Includes(parent + ".lastAccessTime$"))
-            {
-                this.LastAccessTime = new System.Int64();
-            }
-            //      C# -> System.Int64? NumActivities
-            // GraphQL -> numActivities: Long! (scalar)
-            if (this.NumActivities == null && Exploration.Includes(parent + ".numActivities$"))
-            {
-                this.NumActivities = new System.Int64();
-            }
-            //      C# -> System.String? SubjectName
-            // GraphQL -> subjectName: String! (scalar)
-            if (this.SubjectName == null && Exploration.Includes(parent + ".subjectName$"))
-            {
-                this.SubjectName = new System.String("FETCH");
-            }
-            //      C# -> System.String? UserSid
-            // GraphQL -> userSid: String! (scalar)
-            if (this.UserSid == null && Exploration.Includes(parent + ".userSid$"))
-            {
-                this.UserSid = new System.String("FETCH");
-            }
-            //      C# -> System.String? Username
-            // GraphQL -> username: String! (scalar)
-            if (this.Username == null && Exploration.Includes(parent + ".username$"))
-            {
-                this.Username = new System.String("FETCH");
-            }
+            this.ActivityDelta = new System.Int64();
         }
+        //      C# -> System.String? Email
+        // GraphQL -> email: String! (scalar)
+        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        {
+            this.Email = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? LastAccessTime
+        // GraphQL -> lastAccessTime: Long! (scalar)
+        if (this.LastAccessTime == null && Exploration.Includes(parent + ".lastAccessTime", true))
+        {
+            this.LastAccessTime = new System.Int64();
+        }
+        //      C# -> System.Int64? NumActivities
+        // GraphQL -> numActivities: Long! (scalar)
+        if (this.NumActivities == null && Exploration.Includes(parent + ".numActivities", true))
+        {
+            this.NumActivities = new System.Int64();
+        }
+        //      C# -> System.String? SubjectName
+        // GraphQL -> subjectName: String! (scalar)
+        if (this.SubjectName == null && Exploration.Includes(parent + ".subjectName", true))
+        {
+            this.SubjectName = new System.String("FETCH");
+        }
+        //      C# -> System.String? UserSid
+        // GraphQL -> userSid: String! (scalar)
+        if (this.UserSid == null && Exploration.Includes(parent + ".userSid", true))
+        {
+            this.UserSid = new System.String("FETCH");
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        {
+            this.Username = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AccessUser
+    
     #endregion
 
     public static class ListAccessUserExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AccessUser> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AccessUser> list, 
             String parent = "")
         {
-            var item = new AccessUser();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AccessUser());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AwsComputeSettings
-    public class AwsComputeSettings: IFragment
+    public class AwsComputeSettings: BaseType
     {
         #region members
+
+        //      C# -> AwsRegion? Region
+        // GraphQL -> region: AwsRegion! (enum)
+        [JsonProperty("region")]
+        public AwsRegion? Region { get; set; }
+
+        //      C# -> CloudAccount? CloudAccount
+        // GraphQL -> cloudAccount: CloudAccount (interface)
+        [JsonProperty("cloudAccount")]
+        public CloudAccount? CloudAccount { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -63,21 +75,14 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("proxySettings")]
         public ProxySettings? ProxySettings { get; set; }
 
-        //      C# -> AwsRegion? Region
-        // GraphQL -> region: AwsRegion! (enum)
-        [JsonProperty("region")]
-        public AwsRegion? Region { get; set; }
-
-        //      C# -> CloudAccount? CloudAccount
-        // GraphQL -> cloudAccount: CloudAccount (interface)
-        [JsonProperty("cloudAccount")]
-        public CloudAccount? CloudAccount { get; set; }
 
         #endregion
 
     #region methods
 
     public AwsComputeSettings Set(
+        AwsRegion? Region = null,
+        CloudAccount? CloudAccount = null,
         System.String? Id = null,
         System.Boolean? IsArchived = null,
         System.Boolean? IsRscManaged = null,
@@ -86,11 +91,15 @@ namespace Rubrik.SecurityCloud.Types
         System.String? SubnetId = null,
         System.String? VpcId = null,
         List<ClusterInfCidrs>? ClusterInterfaceCidrs = null,
-        ProxySettings? ProxySettings = null,
-        AwsRegion? Region = null,
-        CloudAccount? CloudAccount = null
+        ProxySettings? ProxySettings = null
     ) 
     {
+        if ( Region != null ) {
+            this.Region = Region;
+        }
+        if ( CloudAccount != null ) {
+            this.CloudAccount = CloudAccount;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -118,229 +127,189 @@ namespace Rubrik.SecurityCloud.Types
         if ( ProxySettings != null ) {
             this.ProxySettings = ProxySettings;
         }
-        if ( Region != null ) {
-            this.Region = Region;
-        }
-        if ( CloudAccount != null ) {
-            this.CloudAccount = CloudAccount;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsArchived
-            // GraphQL -> isArchived: Boolean! (scalar)
-            if (this.IsArchived != null)
-            {
-                 s += ind + "isArchived\n";
-
-            }
-            //      C# -> System.Boolean? IsRscManaged
-            // GraphQL -> isRscManaged: Boolean! (scalar)
-            if (this.IsRscManaged != null)
-            {
-                 s += ind + "isRscManaged\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? SecurityGroupId
-            // GraphQL -> securityGroupId: String! (scalar)
-            if (this.SecurityGroupId != null)
-            {
-                 s += ind + "securityGroupId\n";
-
-            }
-            //      C# -> System.String? SubnetId
-            // GraphQL -> subnetId: String! (scalar)
-            if (this.SubnetId != null)
-            {
-                 s += ind + "subnetId\n";
-
-            }
-            //      C# -> System.String? VpcId
-            // GraphQL -> vpcId: String! (scalar)
-            if (this.VpcId != null)
-            {
-                 s += ind + "vpcId\n";
-
-            }
-            //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
-            // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
-            if (this.ClusterInterfaceCidrs != null)
-            {
-                 s += ind + "clusterInterfaceCidrs\n";
-
-                 s += ind + "{\n" + 
-                 this.ClusterInterfaceCidrs.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ProxySettings? ProxySettings
-            // GraphQL -> proxySettings: ProxySettings (type)
-            if (this.ProxySettings != null)
-            {
-                 s += ind + "proxySettings\n";
-
-                 s += ind + "{\n" + 
-                 this.ProxySettings.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> AwsRegion? Region
-            // GraphQL -> region: AwsRegion! (enum)
-            if (this.Region != null)
-            {
-                 s += ind + "region\n";
-
-            }
-                        //      C# -> CloudAccount? CloudAccount
-            // GraphQL -> cloudAccount: CloudAccount (interface)
-            if (this.CloudAccount != null)
-            {
-                s += ind + "cloudAccount\n";
-                s += ind + "{\n";
-
-                string typename = this.CloudAccount.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.CloudAccount.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AwsRegion? Region
+        // GraphQL -> region: AwsRegion! (enum)
+        if (this.Region != null) {
+            s += ind + "region\n" ;
         }
+        //      C# -> CloudAccount? CloudAccount
+        // GraphQL -> cloudAccount: CloudAccount (interface)
+        if (this.CloudAccount != null) {
+            s += ind + "cloudAccount {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.CloudAccount).AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (this.IsArchived != null) {
+            s += ind + "isArchived\n" ;
+        }
+        //      C# -> System.Boolean? IsRscManaged
+        // GraphQL -> isRscManaged: Boolean! (scalar)
+        if (this.IsRscManaged != null) {
+            s += ind + "isRscManaged\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? SecurityGroupId
+        // GraphQL -> securityGroupId: String! (scalar)
+        if (this.SecurityGroupId != null) {
+            s += ind + "securityGroupId\n" ;
+        }
+        //      C# -> System.String? SubnetId
+        // GraphQL -> subnetId: String! (scalar)
+        if (this.SubnetId != null) {
+            s += ind + "subnetId\n" ;
+        }
+        //      C# -> System.String? VpcId
+        // GraphQL -> vpcId: String! (scalar)
+        if (this.VpcId != null) {
+            s += ind + "vpcId\n" ;
+        }
+        //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
+        // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
+        if (this.ClusterInterfaceCidrs != null) {
+            s += ind + "clusterInterfaceCidrs {\n" + this.ClusterInterfaceCidrs.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        if (this.ProxySettings != null) {
+            s += ind + "proxySettings {\n" + this.ProxySettings.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AwsRegion? Region
+        // GraphQL -> region: AwsRegion! (enum)
+        if (this.Region == null && Exploration.Includes(parent + ".region", true))
         {
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsArchived
-            // GraphQL -> isArchived: Boolean! (scalar)
-            if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived$"))
-            {
-                this.IsArchived = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsRscManaged
-            // GraphQL -> isRscManaged: Boolean! (scalar)
-            if (this.IsRscManaged == null && Exploration.Includes(parent + ".isRscManaged$"))
-            {
-                this.IsRscManaged = new System.Boolean();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? SecurityGroupId
-            // GraphQL -> securityGroupId: String! (scalar)
-            if (this.SecurityGroupId == null && Exploration.Includes(parent + ".securityGroupId$"))
-            {
-                this.SecurityGroupId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SubnetId
-            // GraphQL -> subnetId: String! (scalar)
-            if (this.SubnetId == null && Exploration.Includes(parent + ".subnetId$"))
-            {
-                this.SubnetId = new System.String("FETCH");
-            }
-            //      C# -> System.String? VpcId
-            // GraphQL -> vpcId: String! (scalar)
-            if (this.VpcId == null && Exploration.Includes(parent + ".vpcId$"))
-            {
-                this.VpcId = new System.String("FETCH");
-            }
-            //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
-            // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
-            if (this.ClusterInterfaceCidrs == null && Exploration.Includes(parent + ".clusterInterfaceCidrs"))
-            {
-                this.ClusterInterfaceCidrs = new List<ClusterInfCidrs>();
-                this.ClusterInterfaceCidrs.ApplyExploratoryFragment(parent + ".clusterInterfaceCidrs");
-            }
-            //      C# -> ProxySettings? ProxySettings
-            // GraphQL -> proxySettings: ProxySettings (type)
-            if (this.ProxySettings == null && Exploration.Includes(parent + ".proxySettings"))
-            {
-                this.ProxySettings = new ProxySettings();
-                this.ProxySettings.ApplyExploratoryFragment(parent + ".proxySettings");
-            }
-            //      C# -> AwsRegion? Region
-            // GraphQL -> region: AwsRegion! (enum)
-            if (this.Region == null && Exploration.Includes(parent + ".region$"))
-            {
-                this.Region = new AwsRegion();
-            }
-            //      C# -> CloudAccount? CloudAccount
-            // GraphQL -> cloudAccount: CloudAccount (interface)
-            if (this.CloudAccount == null && Exploration.Includes(parent + ".cloudAccount"))
-            {
-                this.CloudAccount = (CloudAccount)InterfaceHelper.CreateInstanceOfFirstType(typeof(CloudAccount));
-                this.CloudAccount.ApplyExploratoryFragment(parent + ".cloudAccount");
-            }
+            this.Region = new AwsRegion();
         }
+        //      C# -> CloudAccount? CloudAccount
+        // GraphQL -> cloudAccount: CloudAccount (interface)
+        if (this.CloudAccount == null && Exploration.Includes(parent + ".cloudAccount"))
+        {
+            var impls = new List<CloudAccount>();
+            impls.ApplyExploratoryFieldSpec(parent + ".cloudAccount");
+            this.CloudAccount = (CloudAccount)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsArchived
+        // GraphQL -> isArchived: Boolean! (scalar)
+        if (this.IsArchived == null && Exploration.Includes(parent + ".isArchived", true))
+        {
+            this.IsArchived = true;
+        }
+        //      C# -> System.Boolean? IsRscManaged
+        // GraphQL -> isRscManaged: Boolean! (scalar)
+        if (this.IsRscManaged == null && Exploration.Includes(parent + ".isRscManaged", true))
+        {
+            this.IsRscManaged = true;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? SecurityGroupId
+        // GraphQL -> securityGroupId: String! (scalar)
+        if (this.SecurityGroupId == null && Exploration.Includes(parent + ".securityGroupId", true))
+        {
+            this.SecurityGroupId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SubnetId
+        // GraphQL -> subnetId: String! (scalar)
+        if (this.SubnetId == null && Exploration.Includes(parent + ".subnetId", true))
+        {
+            this.SubnetId = new System.String("FETCH");
+        }
+        //      C# -> System.String? VpcId
+        // GraphQL -> vpcId: String! (scalar)
+        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        {
+            this.VpcId = new System.String("FETCH");
+        }
+        //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
+        // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
+        if (this.ClusterInterfaceCidrs == null && Exploration.Includes(parent + ".clusterInterfaceCidrs"))
+        {
+            this.ClusterInterfaceCidrs = new List<ClusterInfCidrs>();
+            this.ClusterInterfaceCidrs.ApplyExploratoryFieldSpec(parent + ".clusterInterfaceCidrs");
+        }
+        //      C# -> ProxySettings? ProxySettings
+        // GraphQL -> proxySettings: ProxySettings (type)
+        if (this.ProxySettings == null && Exploration.Includes(parent + ".proxySettings"))
+        {
+            this.ProxySettings = new ProxySettings();
+            this.ProxySettings.ApplyExploratoryFieldSpec(parent + ".proxySettings");
+        }
+    }
 
 
     #endregion
 
     } // class AwsComputeSettings
+    
     #endregion
 
     public static class ListAwsComputeSettingsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AwsComputeSettings> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AwsComputeSettings> list, 
             String parent = "")
         {
-            var item = new AwsComputeSettings();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AwsComputeSettings());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

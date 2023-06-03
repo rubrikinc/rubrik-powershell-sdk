@@ -11,130 +11,123 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MongoCollectionSetPhysicalChildTypeEdge
-    public class MongoCollectionSetPhysicalChildTypeEdge: IFragment
+    public class MongoCollectionSetPhysicalChildTypeEdge: BaseType
     {
         #region members
-        //      C# -> System.String? Cursor
-        // GraphQL -> cursor: String! (scalar)
-        [JsonProperty("cursor")]
-        public System.String? Cursor { get; set; }
 
         //      C# -> MongoCollectionSetPhysicalChildType? Node
         // GraphQL -> node: MongoCollectionSetPhysicalChildType! (interface)
         [JsonProperty("node")]
         public MongoCollectionSetPhysicalChildType? Node { get; set; }
 
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        [JsonProperty("cursor")]
+        public System.String? Cursor { get; set; }
+
+
         #endregion
 
     #region methods
 
     public MongoCollectionSetPhysicalChildTypeEdge Set(
-        System.String? Cursor = null,
-        MongoCollectionSetPhysicalChildType? Node = null
+        MongoCollectionSetPhysicalChildType? Node = null,
+        System.String? Cursor = null
     ) 
     {
-        if ( Cursor != null ) {
-            this.Cursor = Cursor;
-        }
         if ( Node != null ) {
             this.Node = Node;
+        }
+        if ( Cursor != null ) {
+            this.Cursor = Cursor;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Cursor
-            // GraphQL -> cursor: String! (scalar)
-            if (this.Cursor != null)
-            {
-                 s += ind + "cursor\n";
-
-            }
-                        //      C# -> MongoCollectionSetPhysicalChildType? Node
-            // GraphQL -> node: MongoCollectionSetPhysicalChildType! (interface)
-            if (this.Node != null)
-            {
-                s += ind + "node\n";
-                s += ind + "{\n";
-
-                string typename = this.Node.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.Node.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> MongoCollectionSetPhysicalChildType? Node
+        // GraphQL -> node: MongoCollectionSetPhysicalChildType! (interface)
+        if (this.Node != null) {
+            s += ind + "node {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.Node).AsFieldSpec(indent+1) + ind + "}\n";
         }
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        if (this.Cursor != null) {
+            s += ind + "cursor\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> MongoCollectionSetPhysicalChildType? Node
+        // GraphQL -> node: MongoCollectionSetPhysicalChildType! (interface)
+        if (this.Node == null && Exploration.Includes(parent + ".node"))
         {
-            //      C# -> System.String? Cursor
-            // GraphQL -> cursor: String! (scalar)
-            if (this.Cursor == null && Exploration.Includes(parent + ".cursor$"))
-            {
-                this.Cursor = new System.String("FETCH");
-            }
-            //      C# -> MongoCollectionSetPhysicalChildType? Node
-            // GraphQL -> node: MongoCollectionSetPhysicalChildType! (interface)
-            if (this.Node == null && Exploration.Includes(parent + ".node"))
-            {
-                this.Node = (MongoCollectionSetPhysicalChildType)InterfaceHelper.CreateInstanceOfFirstType(typeof(MongoCollectionSetPhysicalChildType));
-                this.Node.ApplyExploratoryFragment(parent + ".node");
-            }
+            var impls = new List<MongoCollectionSetPhysicalChildType>();
+            impls.ApplyExploratoryFieldSpec(parent + ".node");
+            this.Node = (MongoCollectionSetPhysicalChildType)InterfaceHelper.MakeCompositeFromList(impls);
         }
+        //      C# -> System.String? Cursor
+        // GraphQL -> cursor: String! (scalar)
+        if (this.Cursor == null && Exploration.Includes(parent + ".cursor", true))
+        {
+            this.Cursor = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class MongoCollectionSetPhysicalChildTypeEdge
+    
     #endregion
 
     public static class ListMongoCollectionSetPhysicalChildTypeEdgeExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MongoCollectionSetPhysicalChildTypeEdge> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MongoCollectionSetPhysicalChildTypeEdge> list, 
             String parent = "")
         {
-            var item = new MongoCollectionSetPhysicalChildTypeEdge();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MongoCollectionSetPhysicalChildTypeEdge());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

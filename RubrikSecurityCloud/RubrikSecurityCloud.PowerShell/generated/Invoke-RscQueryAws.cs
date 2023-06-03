@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -484,7 +484,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
                 @"
-                Name of the S3 bucket.
+                Name of the AWS S3 bucket.
                 GraphQL argument bucketName: String!
                 "
         )]
@@ -963,6 +963,26 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         public AmiTypeForAwsNativeArchivedSnapshotExportInput? Input { get; set; }
         
         // -------------------------------------------------------------------
+        // allRdsAuroraInstanceClass parameter set
+        //
+        // GraphQL operation: allAwsRdsAuroraInstanceClasses:AwsNativeRdsAuroraInstanceClassesReply!
+        //
+        [Parameter(
+            ParameterSetName = "allRdsAuroraInstanceClass",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                List of all the database instance classes supported by AWS RDS Aurora databases.
+                GraphQL operation: allAwsRdsAuroraInstanceClasses:AwsNativeRdsAuroraInstanceClassesReply!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter allRdsAuroraInstanceClass { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // ComputeSetting parameter set
         //
         // GraphQL operation: awsComputeSettings(computeSettingId: UUID!):AwsComputeSettings!
@@ -1211,6 +1231,26 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
+        // CloudAccountListKMSKey parameter set
+        //
+        // GraphQL operation: AwsCloudAccountListKMSKeys(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!):AwsCloudAccountListKMSKeysResponse!
+        //
+        [Parameter(
+            ParameterSetName = "CloudAccountListKMSKey",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: AwsCloudAccountListKMSKeys(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!):AwsCloudAccountListKMSKeysResponse!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter CloudAccountListKMSKey { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // allExocomputeConfig parameter set
         //
         // GraphQL operation: allAwsExocomputeConfigs(awsNativeAccountIdOrNamePrefix: String!):[AwsExocomputeConfig!]!
@@ -1409,6 +1449,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "amiTypeForNativeArchivedSnapshotExport":
                         this.ProcessRecord_amiTypeForNativeArchivedSnapshotExport();
                         break;
+                    case "allRdsAuroraInstanceClass":
+                        this.ProcessRecord_allRdsAuroraInstanceClass();
+                        break;
                     case "ComputeSetting":
                         this.ProcessRecord_ComputeSetting();
                         break;
@@ -1429,6 +1472,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         break;
                     case "CloudAccountListSecurityGroup":
                         this.ProcessRecord_CloudAccountListSecurityGroup();
+                        break;
+                    case "CloudAccountListKMSKey":
+                        this.ProcessRecord_CloudAccountListKMSKey();
                         break;
                     case "allExocomputeConfig":
                         this.ProcessRecord_allExocomputeConfig();
@@ -1705,6 +1751,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // allAwsRdsAuroraInstanceClasses.
+        protected void ProcessRecord_allRdsAuroraInstanceClass()
+        {
+            this._logger.name += " -allRdsAuroraInstanceClass";
+            // Invoke graphql operation allAwsRdsAuroraInstanceClasses
+            InvokeQueryAllAwsRdsAuroraInstanceClasses();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // awsComputeSettings.
         protected void ProcessRecord_ComputeSetting()
         {
@@ -1768,6 +1823,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         }
 
         // This parameter set invokes a single graphql operation:
+        // AwsCloudAccountListKMSKeys.
+        protected void ProcessRecord_CloudAccountListKMSKey()
+        {
+            this._logger.name += " -CloudAccountListKMSKey";
+            // Invoke graphql operation AwsCloudAccountListKMSKeys
+            InvokeQueryAwsCloudAccountListKmsKeys();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allAwsExocomputeConfigs.
         protected void ProcessRecord_allExocomputeConfig()
         {
@@ -1822,8 +1886,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeRoot? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeRoot)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeRoot)this.Field;
@@ -1831,22 +1894,21 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeRoot(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeRoot");
-            string parameters = "";
+            var parameters = "";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeRoot" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeRoot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
-            Task<AwsNativeRoot> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRoot>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeRoot", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1860,8 +1922,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeAccount? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeAccount)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeAccount)this.Field;
@@ -1869,23 +1930,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeAccount(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeAccount");
-            string parameters = "($awsNativeAccountRubrikId: UUID!,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)\n";
+            var parameters = "($awsNativeAccountRubrikId: UUID!,$awsNativeProtectionFeature: AwsNativeProtectionFeature!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeAccount" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeAccount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeAccount> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeAccount>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeAccount", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1898,8 +1958,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeEc2Instance? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeEc2Instance)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeEc2Instance)this.Field;
@@ -1907,23 +1966,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeEc2Instance(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeEc2Instance");
-            string parameters = "($ec2InstanceRubrikId: UUID!)\n";
+            var parameters = "($ec2InstanceRubrikId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeEc2Instance" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeEc2Instance",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeEc2Instance> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEc2Instance>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeEc2Instance", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1936,8 +1994,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeEbsVolume? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeEbsVolume)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeEbsVolume)this.Field;
@@ -1945,23 +2002,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeEbsVolume(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeEbsVolume");
-            string parameters = "($ebsVolumeRubrikId: UUID!)\n";
+            var parameters = "($ebsVolumeRubrikId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeEbsVolume" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeEbsVolume",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeEbsVolume> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEbsVolume>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeEbsVolume", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1974,8 +2030,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeS3Bucket? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeS3Bucket)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeS3Bucket)this.Field;
@@ -1983,23 +2038,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeS3Bucket(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeS3Bucket");
-            string parameters = "($s3BucketRubrikId: UUID!)\n";
+            var parameters = "($s3BucketRubrikId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeS3Bucket" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeS3Bucket",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeS3Bucket> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeS3Bucket>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeS3Bucket", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2026,8 +2080,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeEc2InstanceConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeEc2InstanceConnection)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeEc2InstanceConnection)this.Field;
@@ -2035,23 +2088,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeEc2InstancesByName(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeEc2InstancesByName");
-            string parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$ec2InstanceName: String!)\n";
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEc2InstanceSortFields,$sortOrder: SortOrder,$ec2InstanceName: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeEc2InstancesByName" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeEc2InstancesByName",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeEc2InstanceConnection> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEc2InstanceConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeEc2InstanceConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2078,8 +2130,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeEbsVolumeConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeEbsVolumeConnection)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeEbsVolumeConnection)this.Field;
@@ -2087,23 +2138,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeEbsVolumesByName(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeEbsVolumesByName");
-            string parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeName: String!)\n";
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortBy: AwsNativeEbsVolumeSortFields,$sortOrder: SortOrder,$ebsVolumeName: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeEbsVolumesByName" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeEbsVolumesByName",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeEbsVolumeConnection> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeEbsVolumeConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeEbsVolumeConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2117,8 +2167,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<AwsVpc>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<AwsVpc>)psObject.BaseObject;
                 } else {
                     fields = (List<AwsVpc>)this.Field;
@@ -2126,23 +2175,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllVpcsByRegionFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllVpcsByRegionFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllVpcsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllVpcsByRegionFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsVpc>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsVpc>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsVpc>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2155,8 +2203,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<AwsVpc>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<AwsVpc>)psObject.BaseObject;
                 } else {
                     fields = (List<AwsVpc>)this.Field;
@@ -2164,23 +2211,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllVpcsFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllVpcsFromAws");
-            string parameters = "($awsAccountRubrikId: UUID)\n";
+            var parameters = "($awsAccountRubrikId: UUID)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllVpcsFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllVpcsFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsVpc>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsVpc>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsVpc>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2193,8 +2239,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             IsVolumeSnapshotRestorableReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (IsVolumeSnapshotRestorableReply)psObject.BaseObject;
                 } else {
                     fields = (IsVolumeSnapshotRestorableReply)this.Field;
@@ -2202,23 +2247,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.IsAwsNativeEbsVolumeSnapshotRestorable(ref fields);
             this._input.Initialize(argDefs, fields, "Query.IsAwsNativeEbsVolumeSnapshotRestorable");
-            string parameters = "($snapshotId: String!)\n";
+            var parameters = "($snapshotId: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryIsAwsNativeEbsVolumeSnapshotRestorable" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAwsNativeEbsVolumeSnapshotRestorable",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<IsVolumeSnapshotRestorableReply> task = this._rbkClient.InvokeGenericCallAsync<IsVolumeSnapshotRestorableReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "IsVolumeSnapshotRestorableReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2232,8 +2276,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<System.String>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<System.String>)psObject.BaseObject;
                 } else {
                     fields = (List<System.String>)this.Field;
@@ -2241,23 +2284,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllAvailabilityZonesByRegionFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllAvailabilityZonesByRegionFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllAvailabilityZonesByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAvailabilityZonesByRegionFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<System.String>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2271,8 +2313,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<KmsEncryptionKey>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<KmsEncryptionKey>)psObject.BaseObject;
                 } else {
                     fields = (List<KmsEncryptionKey>)this.Field;
@@ -2280,23 +2321,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllKmsEncryptionKeysByRegionFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllKmsEncryptionKeysByRegionFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllKmsEncryptionKeysByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllKmsEncryptionKeysByRegionFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<KmsEncryptionKey>> task = this._rbkClient.InvokeGenericCallAsync<List<KmsEncryptionKey>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<KmsEncryptionKey>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2310,8 +2350,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             System.Boolean? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.Boolean)psObject.BaseObject;
                 } else {
                     fields = (System.Boolean)this.Field;
@@ -2319,23 +2358,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.IsAwsS3BucketNameAvailable(ref fields);
             this._input.Initialize(argDefs, fields, "Query.IsAwsS3BucketNameAvailable");
-            string parameters = "($bucketName: String!,$awsAccountRubrikId: UUID!)\n";
+            var parameters = "($bucketName: String!,$awsAccountRubrikId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryIsAwsS3BucketNameAvailable" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAwsS3BucketNameAvailable",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.Boolean", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2348,8 +2386,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<System.String>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<System.String>)psObject.BaseObject;
                 } else {
                     fields = (List<System.String>)this.Field;
@@ -2357,23 +2394,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllS3BucketsFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllS3BucketsFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllS3BucketsFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllS3BucketsFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<System.String>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2386,8 +2422,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<S3BucketDetails>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<S3BucketDetails>)psObject.BaseObject;
                 } else {
                     fields = (List<S3BucketDetails>)this.Field;
@@ -2395,23 +2430,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllS3BucketsDetailsFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllS3BucketsDetailsFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllS3BucketsDetailsFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllS3BucketsDetailsFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<S3BucketDetails>> task = this._rbkClient.InvokeGenericCallAsync<List<S3BucketDetails>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<S3BucketDetails>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2424,8 +2458,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeRdsInstance? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeRdsInstance)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeRdsInstance)this.Field;
@@ -2433,23 +2466,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeRdsInstance(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeRdsInstance");
-            string parameters = "($rdsInstanceRubrikId: UUID!)\n";
+            var parameters = "($rdsInstanceRubrikId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeRdsInstance" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeRdsInstance",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeRdsInstance> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRdsInstance>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeRdsInstance", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2470,8 +2502,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsNativeRdsPointInTimeRestoreWindow? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsNativeRdsPointInTimeRestoreWindow)psObject.BaseObject;
                 } else {
                     fields = (AwsNativeRdsPointInTimeRestoreWindow)this.Field;
@@ -2479,23 +2510,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeRdsPointInTimeRestoreWindow(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeRdsPointInTimeRestoreWindow");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeRdsPointInTimeRestoreWindow" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeRdsPointInTimeRestoreWindow",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsNativeRdsPointInTimeRestoreWindow> task = this._rbkClient.InvokeGenericCallAsync<AwsNativeRdsPointInTimeRestoreWindow>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeRdsPointInTimeRestoreWindow", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2516,8 +2546,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             RdsInstanceDetailsFromAws? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RdsInstanceDetailsFromAws)psObject.BaseObject;
                 } else {
                     fields = (RdsInstanceDetailsFromAws)this.Field;
@@ -2525,23 +2554,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.RdsInstanceDetailsFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.RdsInstanceDetailsFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!,$rdsDatabaseRubrikId: UUID)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryRdsInstanceDetailsFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryRdsInstanceDetailsFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RdsInstanceDetailsFromAws> task = this._rbkClient.InvokeGenericCallAsync<RdsInstanceDetailsFromAws>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RdsInstanceDetailsFromAws", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2574,8 +2602,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             System.Boolean? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.Boolean)psObject.BaseObject;
                 } else {
                     fields = (System.Boolean)this.Field;
@@ -2583,23 +2610,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.IsAwsNativeRdsInstanceLaunchConfigurationValid(ref fields);
             this._input.Initialize(argDefs, fields, "Query.IsAwsNativeRdsInstanceLaunchConfigurationValid");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$dbClass: AwsNativeRdsDbInstanceClass!,$primaryAz: String,$storageType: AwsNativeRdsStorageType,$isMultiAz: Boolean!,$kmsKeyId: String,$iops: Int)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$dbClass: AwsNativeRdsDbInstanceClass!,$primaryAz: String,$storageType: AwsNativeRdsStorageType,$isMultiAz: Boolean!,$kmsKeyId: String,$iops: Int)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryIsAwsNativeRdsInstanceLaunchConfigurationValid" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAwsNativeRdsInstanceLaunchConfigurationValid",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.Boolean", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2622,8 +2648,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<OptionGroup>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<OptionGroup>)psObject.BaseObject;
                 } else {
                     fields = (List<OptionGroup>)this.Field;
@@ -2631,23 +2656,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllOptionGroupsByRegionFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllOptionGroupsByRegionFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$majorEngineVersion: String!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$majorEngineVersion: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllOptionGroupsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllOptionGroupsByRegionFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<OptionGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<OptionGroup>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<OptionGroup>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2670,8 +2694,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<DbParameterGroup>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<DbParameterGroup>)psObject.BaseObject;
                 } else {
                     fields = (List<DbParameterGroup>)this.Field;
@@ -2679,23 +2702,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllDbParameterGroupsByRegionFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllDbParameterGroupsByRegionFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$rdsType: AwsNativeRdsType)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String!,$rdsType: AwsNativeRdsType)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllDbParameterGroupsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllDbParameterGroupsByRegionFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<DbParameterGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<DbParameterGroup>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<DbParameterGroup>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2709,8 +2731,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<SubnetGroup>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<SubnetGroup>)psObject.BaseObject;
                 } else {
                     fields = (List<SubnetGroup>)this.Field;
@@ -2718,23 +2739,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllDbSubnetGroupsByRegionFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllDbSubnetGroupsByRegionFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllDbSubnetGroupsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllDbSubnetGroupsByRegionFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<SubnetGroup>> task = this._rbkClient.InvokeGenericCallAsync<List<SubnetGroup>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<SubnetGroup>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2749,8 +2769,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValidateAwsNativeRdsInstanceNameForExportReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ValidateAwsNativeRdsInstanceNameForExportReply)psObject.BaseObject;
                 } else {
                     fields = (ValidateAwsNativeRdsInstanceNameForExportReply)this.Field;
@@ -2758,23 +2777,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.ValidateAwsNativeRdsInstanceNameForExport(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ValidateAwsNativeRdsInstanceNameForExport");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsInstanceName: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryValidateAwsNativeRdsInstanceNameForExport" + parameters + "{" + document + "}",
                 OperationName = "QueryValidateAwsNativeRdsInstanceNameForExport",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ValidateAwsNativeRdsInstanceNameForExportReply> task = this._rbkClient.InvokeGenericCallAsync<ValidateAwsNativeRdsInstanceNameForExportReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ValidateAwsNativeRdsInstanceNameForExportReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2789,8 +2807,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValidateAwsNativeRdsClusterNameForExportReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ValidateAwsNativeRdsClusterNameForExportReply)psObject.BaseObject;
                 } else {
                     fields = (ValidateAwsNativeRdsClusterNameForExportReply)this.Field;
@@ -2798,23 +2815,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.ValidateAwsNativeRdsClusterNameForExport(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ValidateAwsNativeRdsClusterNameForExport");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsClusterName: String!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$rdsClusterName: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryValidateAwsNativeRdsClusterNameForExport" + parameters + "{" + document + "}",
                 OperationName = "QueryValidateAwsNativeRdsClusterNameForExport",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ValidateAwsNativeRdsClusterNameForExportReply> task = this._rbkClient.InvokeGenericCallAsync<ValidateAwsNativeRdsClusterNameForExportReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ValidateAwsNativeRdsClusterNameForExportReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2829,8 +2845,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             RdsInstanceExportDefaults? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RdsInstanceExportDefaults)psObject.BaseObject;
                 } else {
                     fields = (RdsInstanceExportDefaults)this.Field;
@@ -2838,23 +2853,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsNativeRdsExportDefaults(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsNativeRdsExportDefaults");
-            string parameters = "($rdsInstanceRubrikId: UUID!,$snapshotId: String,$isPointInTime: Boolean!)\n";
+            var parameters = "($rdsInstanceRubrikId: UUID!,$snapshotId: String,$isPointInTime: Boolean!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsNativeRdsExportDefaults" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeRdsExportDefaults",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RdsInstanceExportDefaults> task = this._rbkClient.InvokeGenericCallAsync<RdsInstanceExportDefaults>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RdsInstanceExportDefaults", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2868,8 +2882,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<System.String>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<System.String>)psObject.BaseObject;
                 } else {
                     fields = (List<System.String>)this.Field;
@@ -2877,23 +2890,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllEc2KeyPairsByRegionFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllEc2KeyPairsByRegionFromAws");
-            string parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllEc2KeyPairsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllEc2KeyPairsByRegionFromAws",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<System.String>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2906,8 +2918,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AmiTypeForAwsNativeArchivedSnapshotExportReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AmiTypeForAwsNativeArchivedSnapshotExportReply)psObject.BaseObject;
                 } else {
                     fields = (AmiTypeForAwsNativeArchivedSnapshotExportReply)this.Field;
@@ -2915,23 +2926,56 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AmiTypeForAwsNativeArchivedSnapshotExport(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AmiTypeForAwsNativeArchivedSnapshotExport");
-            string parameters = "($input: AmiTypeForAwsNativeArchivedSnapshotExportInput!)\n";
+            var parameters = "($input: AmiTypeForAwsNativeArchivedSnapshotExportInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAmiTypeForAwsNativeArchivedSnapshotExport" + parameters + "{" + document + "}",
                 OperationName = "QueryAmiTypeForAwsNativeArchivedSnapshotExport",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AmiTypeForAwsNativeArchivedSnapshotExportReply> task = this._rbkClient.InvokeGenericCallAsync<AmiTypeForAwsNativeArchivedSnapshotExportReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AmiTypeForAwsNativeArchivedSnapshotExportReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // allAwsRdsAuroraInstanceClasses: AwsNativeRdsAuroraInstanceClassesReply!
+        protected void InvokeQueryAllAwsRdsAuroraInstanceClasses()
+        {
+            Tuple<string, string>[] argDefs = {
+            };
+            AwsNativeRdsAuroraInstanceClassesReply? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (AwsNativeRdsAuroraInstanceClassesReply)psObject.BaseObject;
+                } else {
+                    fields = (AwsNativeRdsAuroraInstanceClassesReply)this.Field;
+                }
+            }
+            string document = Query.AllAwsRdsAuroraInstanceClasses(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.AllAwsRdsAuroraInstanceClasses");
+            var parameters = "";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryAllAwsRdsAuroraInstanceClasses" + parameters + "{" + document + "}",
+                OperationName = "QueryAllAwsRdsAuroraInstanceClasses",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsNativeRdsAuroraInstanceClassesReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2944,8 +2988,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsComputeSettings? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsComputeSettings)psObject.BaseObject;
                 } else {
                     fields = (AwsComputeSettings)this.Field;
@@ -2953,23 +2996,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsComputeSettings(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsComputeSettings");
-            string parameters = "($computeSettingId: UUID!)\n";
+            var parameters = "($computeSettingId: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsComputeSettings" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsComputeSettings",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsComputeSettings> task = this._rbkClient.InvokeGenericCallAsync<AwsComputeSettings>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsComputeSettings", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2990,8 +3032,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<AwsComputeSettings>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<AwsComputeSettings>)psObject.BaseObject;
                 } else {
                     fields = (List<AwsComputeSettings>)this.Field;
@@ -2999,23 +3040,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllAwsComputeSettings(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllAwsComputeSettings");
-            string parameters = "($sortBy: AwsCloudComputeSettingQuerySortByField,$sortOrder: SortOrder,$filter: [AwsCloudComputeSettingFilterInput!],$contextFilter: ContextFilterTypeEnum)\n";
+            var parameters = "($sortBy: AwsCloudComputeSettingQuerySortByField,$sortOrder: SortOrder,$filter: [AwsCloudComputeSettingFilterInput!],$contextFilter: ContextFilterTypeEnum)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllAwsComputeSettings" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsComputeSettings",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsComputeSettings>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsComputeSettings>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsComputeSettings>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3028,8 +3068,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<AwsCloudAccountWithFeatures>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<AwsCloudAccountWithFeatures>)psObject.BaseObject;
                 } else {
                     fields = (List<AwsCloudAccountWithFeatures>)this.Field;
@@ -3037,23 +3076,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllAwsCloudAccountsWithFeatures(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllAwsCloudAccountsWithFeatures");
-            string parameters = "($awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!)\n";
+            var parameters = "($awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllAwsCloudAccountsWithFeatures" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsCloudAccountsWithFeatures",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsCloudAccountWithFeatures>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCloudAccountWithFeatures>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsCloudAccountWithFeatures>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3067,8 +3105,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsCloudAccountWithFeatures? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsCloudAccountWithFeatures)psObject.BaseObject;
                 } else {
                     fields = (AwsCloudAccountWithFeatures)this.Field;
@@ -3076,23 +3113,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsCloudAccountWithFeatures(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsCloudAccountWithFeatures");
-            string parameters = "($cloudAccountId: UUID!,$awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!)\n";
+            var parameters = "($cloudAccountId: UUID!,$awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsCloudAccountWithFeatures" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountWithFeatures",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsCloudAccountWithFeatures> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountWithFeatures>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsCloudAccountWithFeatures", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3107,8 +3143,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsCloudAccountListVpcResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsCloudAccountListVpcResponse)psObject.BaseObject;
                 } else {
                     fields = (AwsCloudAccountListVpcResponse)this.Field;
@@ -3116,23 +3151,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsCloudAccountListVpcs(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsCloudAccountListVpcs");
-            string parameters = "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)\n";
+            var parameters = "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsCloudAccountListVpcs" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountListVpcs",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsCloudAccountListVpcResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListVpcResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsCloudAccountListVpcResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3153,8 +3187,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsCloudAccountListSubnetsResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsCloudAccountListSubnetsResponse)psObject.BaseObject;
                 } else {
                     fields = (AwsCloudAccountListSubnetsResponse)this.Field;
@@ -3162,23 +3195,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsCloudAccountListSubnets(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsCloudAccountListSubnets");
-            string parameters = "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)\n";
+            var parameters = "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsCloudAccountListSubnets" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountListSubnets",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsCloudAccountListSubnetsResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListSubnetsResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsCloudAccountListSubnetsResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3199,8 +3231,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AwsCloudAccountListSecurityGroupsResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AwsCloudAccountListSecurityGroupsResponse)psObject.BaseObject;
                 } else {
                     fields = (AwsCloudAccountListSecurityGroupsResponse)this.Field;
@@ -3208,23 +3239,60 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AwsCloudAccountListSecurityGroups(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AwsCloudAccountListSecurityGroups");
-            string parameters = "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)\n";
+            var parameters = "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!,$vpcID: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAwsCloudAccountListSecurityGroups" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountListSecurityGroups",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AwsCloudAccountListSecurityGroupsResponse> task = this._rbkClient.InvokeGenericCallAsync<AwsCloudAccountListSecurityGroupsResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsCloudAccountListSecurityGroupsResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // AwsCloudAccountListKMSKeys(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!): AwsCloudAccountListKMSKeysResponse!
+        protected void InvokeQueryAwsCloudAccountListKmsKeys()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudAccountUuid", "UUID!"),
+                Tuple.Create("feature", "CloudAccountFeature!"),
+                Tuple.Create("region", "AwsRegion!"),
+            };
+            AwsCloudAccountListKmsKeysResponse? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (AwsCloudAccountListKmsKeysResponse)psObject.BaseObject;
+                } else {
+                    fields = (AwsCloudAccountListKmsKeysResponse)this.Field;
+                }
+            }
+            string document = Query.AwsCloudAccountListKmsKeys(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.AwsCloudAccountListKmsKeys");
+            var parameters = "($cloudAccountUuid: UUID!,$feature: CloudAccountFeature!,$region: AwsRegion!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryAwsCloudAccountListKmsKeys" + parameters + "{" + document + "}",
+                OperationName = "QueryAwsCloudAccountListKmsKeys",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "AwsCloudAccountListKmsKeysResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3237,8 +3305,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<AwsExocomputeConfig>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<AwsExocomputeConfig>)psObject.BaseObject;
                 } else {
                     fields = (List<AwsExocomputeConfig>)this.Field;
@@ -3246,23 +3313,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllAwsExocomputeConfigs(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllAwsExocomputeConfigs");
-            string parameters = "($awsNativeAccountIdOrNamePrefix: String!)\n";
+            var parameters = "($awsNativeAccountIdOrNamePrefix: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllAwsExocomputeConfigs" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsExocomputeConfigs",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsExocomputeConfig>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsExocomputeConfig>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsExocomputeConfig>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3275,8 +3341,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<AwsFeatureConfig>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<AwsFeatureConfig>)psObject.BaseObject;
                 } else {
                     fields = (List<AwsFeatureConfig>)this.Field;
@@ -3284,23 +3349,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllAwsCloudAccountConfigs(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllAwsCloudAccountConfigs");
-            string parameters = "($awsCloudAccountsArg: AwsCloudAccountConfigsInput!)\n";
+            var parameters = "($awsCloudAccountsArg: AwsCloudAccountConfigsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllAwsCloudAccountConfigs" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsCloudAccountConfigs",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsFeatureConfig>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsFeatureConfig>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsFeatureConfig>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3313,8 +3377,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<AwsCloudAccountRegion>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<AwsCloudAccountRegion>)psObject.BaseObject;
                 } else {
                     fields = (List<AwsCloudAccountRegion>)this.Field;
@@ -3322,23 +3385,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllAwsRegions(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllAwsRegions");
-            string parameters = "($cloudAccountId: String!)\n";
+            var parameters = "($cloudAccountId: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllAwsRegions" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsRegions",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsCloudAccountRegion>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCloudAccountRegion>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsCloudAccountRegion>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3351,8 +3413,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<AwsCdmVersion>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<AwsCdmVersion>)psObject.BaseObject;
                 } else {
                     fields = (List<AwsCdmVersion>)this.Field;
@@ -3360,23 +3421,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllAwsCdmVersions(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllAwsCdmVersions");
-            string parameters = "($input: AwsCdmVersionRequest!)\n";
+            var parameters = "($input: AwsCdmVersionRequest!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllAwsCdmVersions" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsCdmVersions",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<AwsCdmVersion>> task = this._rbkClient.InvokeGenericCallAsync<List<AwsCdmVersion>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsCdmVersion>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -3390,8 +3450,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             List<System.String>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<System.String>)psObject.BaseObject;
                 } else {
                     fields = (List<System.String>)this.Field;
@@ -3399,23 +3458,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.AllAwsInstanceProfileNames(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllAwsInstanceProfileNames");
-            string parameters = "($cloudAccountId: String!,$region: String!)\n";
+            var parameters = "($cloudAccountId: String!,$region: String!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllAwsInstanceProfileNames" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsInstanceProfileNames",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.String>> task = this._rbkClient.InvokeGenericCallAsync<List<System.String>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<System.String>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

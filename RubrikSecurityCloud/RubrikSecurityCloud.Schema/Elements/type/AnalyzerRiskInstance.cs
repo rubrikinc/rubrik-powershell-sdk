@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AnalyzerRiskInstance
-    public class AnalyzerRiskInstance: IFragment
+    public class AnalyzerRiskInstance: BaseType
     {
         #region members
+
+        //      C# -> RiskLevelType? Risk
+        // GraphQL -> risk: RiskLevelType! (enum)
+        [JsonProperty("risk")]
+        public RiskLevelType? Risk { get; set; }
+
         //      C# -> System.String? AnalyzerId
         // GraphQL -> analyzerId: String! (scalar)
         [JsonProperty("analyzerId")]
@@ -28,122 +35,116 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("riskVersion")]
         public System.Int32? RiskVersion { get; set; }
 
-        //      C# -> RiskLevelType? Risk
-        // GraphQL -> risk: RiskLevelType! (enum)
-        [JsonProperty("risk")]
-        public RiskLevelType? Risk { get; set; }
 
         #endregion
 
     #region methods
 
     public AnalyzerRiskInstance Set(
+        RiskLevelType? Risk = null,
         System.String? AnalyzerId = null,
-        System.Int32? RiskVersion = null,
-        RiskLevelType? Risk = null
+        System.Int32? RiskVersion = null
     ) 
     {
+        if ( Risk != null ) {
+            this.Risk = Risk;
+        }
         if ( AnalyzerId != null ) {
             this.AnalyzerId = AnalyzerId;
         }
         if ( RiskVersion != null ) {
             this.RiskVersion = RiskVersion;
         }
-        if ( Risk != null ) {
-            this.Risk = Risk;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AnalyzerId
-            // GraphQL -> analyzerId: String! (scalar)
-            if (this.AnalyzerId != null)
-            {
-                 s += ind + "analyzerId\n";
-
-            }
-            //      C# -> System.Int32? RiskVersion
-            // GraphQL -> riskVersion: Int! (scalar)
-            if (this.RiskVersion != null)
-            {
-                 s += ind + "riskVersion\n";
-
-            }
-            //      C# -> RiskLevelType? Risk
-            // GraphQL -> risk: RiskLevelType! (enum)
-            if (this.Risk != null)
-            {
-                 s += ind + "risk\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> RiskLevelType? Risk
+        // GraphQL -> risk: RiskLevelType! (enum)
+        if (this.Risk != null) {
+            s += ind + "risk\n" ;
         }
+        //      C# -> System.String? AnalyzerId
+        // GraphQL -> analyzerId: String! (scalar)
+        if (this.AnalyzerId != null) {
+            s += ind + "analyzerId\n" ;
+        }
+        //      C# -> System.Int32? RiskVersion
+        // GraphQL -> riskVersion: Int! (scalar)
+        if (this.RiskVersion != null) {
+            s += ind + "riskVersion\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> RiskLevelType? Risk
+        // GraphQL -> risk: RiskLevelType! (enum)
+        if (this.Risk == null && Exploration.Includes(parent + ".risk", true))
         {
-            //      C# -> System.String? AnalyzerId
-            // GraphQL -> analyzerId: String! (scalar)
-            if (this.AnalyzerId == null && Exploration.Includes(parent + ".analyzerId$"))
-            {
-                this.AnalyzerId = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? RiskVersion
-            // GraphQL -> riskVersion: Int! (scalar)
-            if (this.RiskVersion == null && Exploration.Includes(parent + ".riskVersion$"))
-            {
-                this.RiskVersion = new System.Int32();
-            }
-            //      C# -> RiskLevelType? Risk
-            // GraphQL -> risk: RiskLevelType! (enum)
-            if (this.Risk == null && Exploration.Includes(parent + ".risk$"))
-            {
-                this.Risk = new RiskLevelType();
-            }
+            this.Risk = new RiskLevelType();
         }
+        //      C# -> System.String? AnalyzerId
+        // GraphQL -> analyzerId: String! (scalar)
+        if (this.AnalyzerId == null && Exploration.Includes(parent + ".analyzerId", true))
+        {
+            this.AnalyzerId = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? RiskVersion
+        // GraphQL -> riskVersion: Int! (scalar)
+        if (this.RiskVersion == null && Exploration.Includes(parent + ".riskVersion", true))
+        {
+            this.RiskVersion = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class AnalyzerRiskInstance
+    
     #endregion
 
     public static class ListAnalyzerRiskInstanceExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AnalyzerRiskInstance> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AnalyzerRiskInstance> list, 
             String parent = "")
         {
-            var item = new AnalyzerRiskInstance();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AnalyzerRiskInstance());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

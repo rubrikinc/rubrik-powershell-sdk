@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SnapshotFileDeltaV2
-    public class SnapshotFileDeltaV2: IFragment
+    public class SnapshotFileDeltaV2: BaseType
     {
         #region members
+
         //      C# -> List<SnapshotDelta>? ChildrenDeltas
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
         [JsonProperty("childrenDeltas")]
@@ -37,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
         [JsonProperty("selfDeltas")]
         public List<SnapshotDelta>? SelfDeltas { get; set; }
+
 
         #endregion
 
@@ -64,124 +67,108 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<SnapshotDelta>? ChildrenDeltas
-            // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
-            if (this.ChildrenDeltas != null)
-            {
-                 s += ind + "childrenDeltas\n";
-
-                 s += ind + "{\n" + 
-                 this.ChildrenDeltas.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SnapshotFile? File
-            // GraphQL -> file: SnapshotFile! (type)
-            if (this.File != null)
-            {
-                 s += ind + "file\n";
-
-                 s += ind + "{\n" + 
-                 this.File.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> QuarantineInfo? PreviousSnapshotQuarantineInfo
-            // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
-            if (this.PreviousSnapshotQuarantineInfo != null)
-            {
-                 s += ind + "previousSnapshotQuarantineInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.PreviousSnapshotQuarantineInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<SnapshotDelta>? SelfDeltas
-            // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
-            if (this.SelfDeltas != null)
-            {
-                 s += ind + "selfDeltas\n";
-
-                 s += ind + "{\n" + 
-                 this.SelfDeltas.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<SnapshotDelta>? ChildrenDeltas
+        // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
+        if (this.ChildrenDeltas != null) {
+            s += ind + "childrenDeltas {\n" + this.ChildrenDeltas.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> SnapshotFile? File
+        // GraphQL -> file: SnapshotFile! (type)
+        if (this.File != null) {
+            s += ind + "file {\n" + this.File.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> QuarantineInfo? PreviousSnapshotQuarantineInfo
+        // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
+        if (this.PreviousSnapshotQuarantineInfo != null) {
+            s += ind + "previousSnapshotQuarantineInfo {\n" + this.PreviousSnapshotQuarantineInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<SnapshotDelta>? SelfDeltas
+        // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
+        if (this.SelfDeltas != null) {
+            s += ind + "selfDeltas {\n" + this.SelfDeltas.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<SnapshotDelta>? ChildrenDeltas
+        // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
+        if (this.ChildrenDeltas == null && Exploration.Includes(parent + ".childrenDeltas"))
         {
-            //      C# -> List<SnapshotDelta>? ChildrenDeltas
-            // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
-            if (this.ChildrenDeltas == null && Exploration.Includes(parent + ".childrenDeltas"))
-            {
-                this.ChildrenDeltas = new List<SnapshotDelta>();
-                this.ChildrenDeltas.ApplyExploratoryFragment(parent + ".childrenDeltas");
-            }
-            //      C# -> SnapshotFile? File
-            // GraphQL -> file: SnapshotFile! (type)
-            if (this.File == null && Exploration.Includes(parent + ".file"))
-            {
-                this.File = new SnapshotFile();
-                this.File.ApplyExploratoryFragment(parent + ".file");
-            }
-            //      C# -> QuarantineInfo? PreviousSnapshotQuarantineInfo
-            // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
-            if (this.PreviousSnapshotQuarantineInfo == null && Exploration.Includes(parent + ".previousSnapshotQuarantineInfo"))
-            {
-                this.PreviousSnapshotQuarantineInfo = new QuarantineInfo();
-                this.PreviousSnapshotQuarantineInfo.ApplyExploratoryFragment(parent + ".previousSnapshotQuarantineInfo");
-            }
-            //      C# -> List<SnapshotDelta>? SelfDeltas
-            // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
-            if (this.SelfDeltas == null && Exploration.Includes(parent + ".selfDeltas"))
-            {
-                this.SelfDeltas = new List<SnapshotDelta>();
-                this.SelfDeltas.ApplyExploratoryFragment(parent + ".selfDeltas");
-            }
+            this.ChildrenDeltas = new List<SnapshotDelta>();
+            this.ChildrenDeltas.ApplyExploratoryFieldSpec(parent + ".childrenDeltas");
         }
+        //      C# -> SnapshotFile? File
+        // GraphQL -> file: SnapshotFile! (type)
+        if (this.File == null && Exploration.Includes(parent + ".file"))
+        {
+            this.File = new SnapshotFile();
+            this.File.ApplyExploratoryFieldSpec(parent + ".file");
+        }
+        //      C# -> QuarantineInfo? PreviousSnapshotQuarantineInfo
+        // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
+        if (this.PreviousSnapshotQuarantineInfo == null && Exploration.Includes(parent + ".previousSnapshotQuarantineInfo"))
+        {
+            this.PreviousSnapshotQuarantineInfo = new QuarantineInfo();
+            this.PreviousSnapshotQuarantineInfo.ApplyExploratoryFieldSpec(parent + ".previousSnapshotQuarantineInfo");
+        }
+        //      C# -> List<SnapshotDelta>? SelfDeltas
+        // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
+        if (this.SelfDeltas == null && Exploration.Includes(parent + ".selfDeltas"))
+        {
+            this.SelfDeltas = new List<SnapshotDelta>();
+            this.SelfDeltas.ApplyExploratoryFieldSpec(parent + ".selfDeltas");
+        }
+    }
 
 
     #endregion
 
     } // class SnapshotFileDeltaV2
+    
     #endregion
 
     public static class ListSnapshotFileDeltaV2Extensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SnapshotFileDeltaV2> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SnapshotFileDeltaV2> list, 
             String parent = "")
         {
-            var item = new SnapshotFileDeltaV2();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SnapshotFileDeltaV2());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

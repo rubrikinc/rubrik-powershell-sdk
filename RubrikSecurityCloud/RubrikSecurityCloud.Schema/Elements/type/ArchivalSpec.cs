@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ArchivalSpec
-    public class ArchivalSpec: IFragment
+    public class ArchivalSpec: BaseType
     {
         #region members
+
+        //      C# -> List<RetentionUnit>? Frequencies
+        // GraphQL -> frequencies: [RetentionUnit!]! (enum)
+        [JsonProperty("frequencies")]
+        public List<RetentionUnit>? Frequencies { get; set; }
+
+        //      C# -> RetentionUnit? ThresholdUnit
+        // GraphQL -> thresholdUnit: RetentionUnit! (enum)
+        [JsonProperty("thresholdUnit")]
+        public RetentionUnit? ThresholdUnit { get; set; }
+
         //      C# -> System.Int32? Threshold
         // GraphQL -> threshold: Int! (scalar)
         [JsonProperty("threshold")]
@@ -38,29 +50,26 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("storageSetting")]
         public TargetMapping? StorageSetting { get; set; }
 
-        //      C# -> List<RetentionUnit>? Frequencies
-        // GraphQL -> frequencies: [RetentionUnit!]! (enum)
-        [JsonProperty("frequencies")]
-        public List<RetentionUnit>? Frequencies { get; set; }
-
-        //      C# -> RetentionUnit? ThresholdUnit
-        // GraphQL -> thresholdUnit: RetentionUnit! (enum)
-        [JsonProperty("thresholdUnit")]
-        public RetentionUnit? ThresholdUnit { get; set; }
 
         #endregion
 
     #region methods
 
     public ArchivalSpec Set(
+        List<RetentionUnit>? Frequencies = null,
+        RetentionUnit? ThresholdUnit = null,
         System.Int32? Threshold = null,
         List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping = null,
         ArchivalTieringSpec? ArchivalTieringSpec = null,
-        TargetMapping? StorageSetting = null,
-        List<RetentionUnit>? Frequencies = null,
-        RetentionUnit? ThresholdUnit = null
+        TargetMapping? StorageSetting = null
     ) 
     {
+        if ( Frequencies != null ) {
+            this.Frequencies = Frequencies;
+        }
+        if ( ThresholdUnit != null ) {
+            this.ThresholdUnit = ThresholdUnit;
+        }
         if ( Threshold != null ) {
             this.Threshold = Threshold;
         }
@@ -73,155 +82,132 @@ namespace Rubrik.SecurityCloud.Types
         if ( StorageSetting != null ) {
             this.StorageSetting = StorageSetting;
         }
-        if ( Frequencies != null ) {
-            this.Frequencies = Frequencies;
-        }
-        if ( ThresholdUnit != null ) {
-            this.ThresholdUnit = ThresholdUnit;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? Threshold
-            // GraphQL -> threshold: Int! (scalar)
-            if (this.Threshold != null)
-            {
-                 s += ind + "threshold\n";
-
-            }
-            //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
-            // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)
-            if (this.ArchivalLocationToClusterMapping != null)
-            {
-                 s += ind + "archivalLocationToClusterMapping\n";
-
-                 s += ind + "{\n" + 
-                 this.ArchivalLocationToClusterMapping.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
-            // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
-            if (this.ArchivalTieringSpec != null)
-            {
-                 s += ind + "archivalTieringSpec\n";
-
-                 s += ind + "{\n" + 
-                 this.ArchivalTieringSpec.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> TargetMapping? StorageSetting
-            // GraphQL -> storageSetting: TargetMapping (type)
-            if (this.StorageSetting != null)
-            {
-                 s += ind + "storageSetting\n";
-
-                 s += ind + "{\n" + 
-                 this.StorageSetting.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<RetentionUnit>? Frequencies
-            // GraphQL -> frequencies: [RetentionUnit!]! (enum)
-            if (this.Frequencies != null)
-            {
-                 s += ind + "frequencies\n";
-
-            }
-            //      C# -> RetentionUnit? ThresholdUnit
-            // GraphQL -> thresholdUnit: RetentionUnit! (enum)
-            if (this.ThresholdUnit != null)
-            {
-                 s += ind + "thresholdUnit\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<RetentionUnit>? Frequencies
+        // GraphQL -> frequencies: [RetentionUnit!]! (enum)
+        if (this.Frequencies != null) {
+            s += ind + "frequencies\n" ;
         }
+        //      C# -> RetentionUnit? ThresholdUnit
+        // GraphQL -> thresholdUnit: RetentionUnit! (enum)
+        if (this.ThresholdUnit != null) {
+            s += ind + "thresholdUnit\n" ;
+        }
+        //      C# -> System.Int32? Threshold
+        // GraphQL -> threshold: Int! (scalar)
+        if (this.Threshold != null) {
+            s += ind + "threshold\n" ;
+        }
+        //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
+        // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)
+        if (this.ArchivalLocationToClusterMapping != null) {
+            s += ind + "archivalLocationToClusterMapping {\n" + this.ArchivalLocationToClusterMapping.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
+        // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
+        if (this.ArchivalTieringSpec != null) {
+            s += ind + "archivalTieringSpec {\n" + this.ArchivalTieringSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> TargetMapping? StorageSetting
+        // GraphQL -> storageSetting: TargetMapping (type)
+        if (this.StorageSetting != null) {
+            s += ind + "storageSetting {\n" + this.StorageSetting.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<RetentionUnit>? Frequencies
+        // GraphQL -> frequencies: [RetentionUnit!]! (enum)
+        if (this.Frequencies == null && Exploration.Includes(parent + ".frequencies", true))
         {
-            //      C# -> System.Int32? Threshold
-            // GraphQL -> threshold: Int! (scalar)
-            if (this.Threshold == null && Exploration.Includes(parent + ".threshold$"))
-            {
-                this.Threshold = new System.Int32();
-            }
-            //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
-            // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)
-            if (this.ArchivalLocationToClusterMapping == null && Exploration.Includes(parent + ".archivalLocationToClusterMapping"))
-            {
-                this.ArchivalLocationToClusterMapping = new List<ArchivalLocationToClusterMapping>();
-                this.ArchivalLocationToClusterMapping.ApplyExploratoryFragment(parent + ".archivalLocationToClusterMapping");
-            }
-            //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
-            // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
-            if (this.ArchivalTieringSpec == null && Exploration.Includes(parent + ".archivalTieringSpec"))
-            {
-                this.ArchivalTieringSpec = new ArchivalTieringSpec();
-                this.ArchivalTieringSpec.ApplyExploratoryFragment(parent + ".archivalTieringSpec");
-            }
-            //      C# -> TargetMapping? StorageSetting
-            // GraphQL -> storageSetting: TargetMapping (type)
-            if (this.StorageSetting == null && Exploration.Includes(parent + ".storageSetting"))
-            {
-                this.StorageSetting = new TargetMapping();
-                this.StorageSetting.ApplyExploratoryFragment(parent + ".storageSetting");
-            }
-            //      C# -> List<RetentionUnit>? Frequencies
-            // GraphQL -> frequencies: [RetentionUnit!]! (enum)
-            if (this.Frequencies == null && Exploration.Includes(parent + ".frequencies$"))
-            {
-                this.Frequencies = new List<RetentionUnit>();
-            }
-            //      C# -> RetentionUnit? ThresholdUnit
-            // GraphQL -> thresholdUnit: RetentionUnit! (enum)
-            if (this.ThresholdUnit == null && Exploration.Includes(parent + ".thresholdUnit$"))
-            {
-                this.ThresholdUnit = new RetentionUnit();
-            }
+            this.Frequencies = new List<RetentionUnit>();
         }
+        //      C# -> RetentionUnit? ThresholdUnit
+        // GraphQL -> thresholdUnit: RetentionUnit! (enum)
+        if (this.ThresholdUnit == null && Exploration.Includes(parent + ".thresholdUnit", true))
+        {
+            this.ThresholdUnit = new RetentionUnit();
+        }
+        //      C# -> System.Int32? Threshold
+        // GraphQL -> threshold: Int! (scalar)
+        if (this.Threshold == null && Exploration.Includes(parent + ".threshold", true))
+        {
+            this.Threshold = new System.Int32();
+        }
+        //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
+        // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)
+        if (this.ArchivalLocationToClusterMapping == null && Exploration.Includes(parent + ".archivalLocationToClusterMapping"))
+        {
+            this.ArchivalLocationToClusterMapping = new List<ArchivalLocationToClusterMapping>();
+            this.ArchivalLocationToClusterMapping.ApplyExploratoryFieldSpec(parent + ".archivalLocationToClusterMapping");
+        }
+        //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
+        // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
+        if (this.ArchivalTieringSpec == null && Exploration.Includes(parent + ".archivalTieringSpec"))
+        {
+            this.ArchivalTieringSpec = new ArchivalTieringSpec();
+            this.ArchivalTieringSpec.ApplyExploratoryFieldSpec(parent + ".archivalTieringSpec");
+        }
+        //      C# -> TargetMapping? StorageSetting
+        // GraphQL -> storageSetting: TargetMapping (type)
+        if (this.StorageSetting == null && Exploration.Includes(parent + ".storageSetting"))
+        {
+            this.StorageSetting = new TargetMapping();
+            this.StorageSetting.ApplyExploratoryFieldSpec(parent + ".storageSetting");
+        }
+    }
 
 
     #endregion
 
     } // class ArchivalSpec
+    
     #endregion
 
     public static class ListArchivalSpecExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ArchivalSpec> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ArchivalSpec> list, 
             String parent = "")
         {
-            var item = new ArchivalSpec();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ArchivalSpec());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

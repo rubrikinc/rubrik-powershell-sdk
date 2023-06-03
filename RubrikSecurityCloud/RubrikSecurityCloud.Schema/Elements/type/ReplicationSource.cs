@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ReplicationSource
-    public class ReplicationSource: IFragment
+    public class ReplicationSource: BaseType
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -42,6 +44,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totalStorage: Long (scalar)
         [JsonProperty("totalStorage")]
         public System.Int64? TotalStorage { get; set; }
+
 
         #endregion
 
@@ -73,121 +76,115 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? SourceClusterAddress
-            // GraphQL -> sourceClusterAddress: String (scalar)
-            if (this.SourceClusterAddress != null)
-            {
-                 s += ind + "sourceClusterAddress\n";
-
-            }
-            //      C# -> System.String? SourceClusterName
-            // GraphQL -> sourceClusterName: String! (scalar)
-            if (this.SourceClusterName != null)
-            {
-                 s += ind + "sourceClusterName\n";
-
-            }
-            //      C# -> System.String? SourceClusterUuid
-            // GraphQL -> sourceClusterUuid: UUID! (scalar)
-            if (this.SourceClusterUuid != null)
-            {
-                 s += ind + "sourceClusterUuid\n";
-
-            }
-            //      C# -> System.Int64? TotalStorage
-            // GraphQL -> totalStorage: Long (scalar)
-            if (this.TotalStorage != null)
-            {
-                 s += ind + "totalStorage\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
         }
+        //      C# -> System.String? SourceClusterAddress
+        // GraphQL -> sourceClusterAddress: String (scalar)
+        if (this.SourceClusterAddress != null) {
+            s += ind + "sourceClusterAddress\n" ;
+        }
+        //      C# -> System.String? SourceClusterName
+        // GraphQL -> sourceClusterName: String! (scalar)
+        if (this.SourceClusterName != null) {
+            s += ind + "sourceClusterName\n" ;
+        }
+        //      C# -> System.String? SourceClusterUuid
+        // GraphQL -> sourceClusterUuid: UUID! (scalar)
+        if (this.SourceClusterUuid != null) {
+            s += ind + "sourceClusterUuid\n" ;
+        }
+        //      C# -> System.Int64? TotalStorage
+        // GraphQL -> totalStorage: Long (scalar)
+        if (this.TotalStorage != null) {
+            s += ind + "totalStorage\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceClusterAddress
-            // GraphQL -> sourceClusterAddress: String (scalar)
-            if (this.SourceClusterAddress == null && Exploration.Includes(parent + ".sourceClusterAddress$"))
-            {
-                this.SourceClusterAddress = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceClusterName
-            // GraphQL -> sourceClusterName: String! (scalar)
-            if (this.SourceClusterName == null && Exploration.Includes(parent + ".sourceClusterName$"))
-            {
-                this.SourceClusterName = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceClusterUuid
-            // GraphQL -> sourceClusterUuid: UUID! (scalar)
-            if (this.SourceClusterUuid == null && Exploration.Includes(parent + ".sourceClusterUuid$"))
-            {
-                this.SourceClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? TotalStorage
-            // GraphQL -> totalStorage: Long (scalar)
-            if (this.TotalStorage == null && Exploration.Includes(parent + ".totalStorage$"))
-            {
-                this.TotalStorage = new System.Int64();
-            }
+            this.Id = new System.String("FETCH");
         }
+        //      C# -> System.String? SourceClusterAddress
+        // GraphQL -> sourceClusterAddress: String (scalar)
+        if (this.SourceClusterAddress == null && Exploration.Includes(parent + ".sourceClusterAddress", true))
+        {
+            this.SourceClusterAddress = new System.String("FETCH");
+        }
+        //      C# -> System.String? SourceClusterName
+        // GraphQL -> sourceClusterName: String! (scalar)
+        if (this.SourceClusterName == null && Exploration.Includes(parent + ".sourceClusterName", true))
+        {
+            this.SourceClusterName = new System.String("FETCH");
+        }
+        //      C# -> System.String? SourceClusterUuid
+        // GraphQL -> sourceClusterUuid: UUID! (scalar)
+        if (this.SourceClusterUuid == null && Exploration.Includes(parent + ".sourceClusterUuid", true))
+        {
+            this.SourceClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? TotalStorage
+        // GraphQL -> totalStorage: Long (scalar)
+        if (this.TotalStorage == null && Exploration.Includes(parent + ".totalStorage", true))
+        {
+            this.TotalStorage = new System.Int64();
+        }
+    }
 
 
     #endregion
 
     } // class ReplicationSource
+    
     #endregion
 
     public static class ListReplicationSourceExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ReplicationSource> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ReplicationSource> list, 
             String parent = "")
         {
-            var item = new ReplicationSource();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ReplicationSource());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

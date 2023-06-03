@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateNetworkThrottleReply
-    public class UpdateNetworkThrottleReply: IFragment
+    public class UpdateNetworkThrottleReply: BaseType
     {
         #region members
+
+        //      C# -> NetworkThrottleResourceId? ResourceId
+        // GraphQL -> resourceId: NetworkThrottleResourceId! (enum)
+        [JsonProperty("resourceId")]
+        public NetworkThrottleResourceId? ResourceId { get; set; }
+
         //      C# -> System.Int32? ArchivalThrottlePort
         // GraphQL -> archivalThrottlePort: Int (scalar)
         [JsonProperty("archivalThrottlePort")]
@@ -43,24 +50,23 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("scheduledThrottles")]
         public List<NetworkThrottleScheduleSummary>? ScheduledThrottles { get; set; }
 
-        //      C# -> NetworkThrottleResourceId? ResourceId
-        // GraphQL -> resourceId: NetworkThrottleResourceId! (enum)
-        [JsonProperty("resourceId")]
-        public NetworkThrottleResourceId? ResourceId { get; set; }
 
         #endregion
 
     #region methods
 
     public UpdateNetworkThrottleReply Set(
+        NetworkThrottleResourceId? ResourceId = null,
         System.Int32? ArchivalThrottlePort = null,
         System.Single? DefaultThrottleLimit = null,
         System.Boolean? IsEnabled = null,
         System.String? NetworkInterface = null,
-        List<NetworkThrottleScheduleSummary>? ScheduledThrottles = null,
-        NetworkThrottleResourceId? ResourceId = null
+        List<NetworkThrottleScheduleSummary>? ScheduledThrottles = null
     ) 
     {
+        if ( ResourceId != null ) {
+            this.ResourceId = ResourceId;
+        }
         if ( ArchivalThrottlePort != null ) {
             this.ArchivalThrottlePort = ArchivalThrottlePort;
         }
@@ -76,144 +82,130 @@ namespace Rubrik.SecurityCloud.Types
         if ( ScheduledThrottles != null ) {
             this.ScheduledThrottles = ScheduledThrottles;
         }
-        if ( ResourceId != null ) {
-            this.ResourceId = ResourceId;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? ArchivalThrottlePort
-            // GraphQL -> archivalThrottlePort: Int (scalar)
-            if (this.ArchivalThrottlePort != null)
-            {
-                 s += ind + "archivalThrottlePort\n";
-
-            }
-            //      C# -> System.Single? DefaultThrottleLimit
-            // GraphQL -> defaultThrottleLimit: Float (scalar)
-            if (this.DefaultThrottleLimit != null)
-            {
-                 s += ind + "defaultThrottleLimit\n";
-
-            }
-            //      C# -> System.Boolean? IsEnabled
-            // GraphQL -> isEnabled: Boolean! (scalar)
-            if (this.IsEnabled != null)
-            {
-                 s += ind + "isEnabled\n";
-
-            }
-            //      C# -> System.String? NetworkInterface
-            // GraphQL -> networkInterface: String (scalar)
-            if (this.NetworkInterface != null)
-            {
-                 s += ind + "networkInterface\n";
-
-            }
-            //      C# -> List<NetworkThrottleScheduleSummary>? ScheduledThrottles
-            // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)
-            if (this.ScheduledThrottles != null)
-            {
-                 s += ind + "scheduledThrottles\n";
-
-                 s += ind + "{\n" + 
-                 this.ScheduledThrottles.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> NetworkThrottleResourceId? ResourceId
-            // GraphQL -> resourceId: NetworkThrottleResourceId! (enum)
-            if (this.ResourceId != null)
-            {
-                 s += ind + "resourceId\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> NetworkThrottleResourceId? ResourceId
+        // GraphQL -> resourceId: NetworkThrottleResourceId! (enum)
+        if (this.ResourceId != null) {
+            s += ind + "resourceId\n" ;
         }
+        //      C# -> System.Int32? ArchivalThrottlePort
+        // GraphQL -> archivalThrottlePort: Int (scalar)
+        if (this.ArchivalThrottlePort != null) {
+            s += ind + "archivalThrottlePort\n" ;
+        }
+        //      C# -> System.Single? DefaultThrottleLimit
+        // GraphQL -> defaultThrottleLimit: Float (scalar)
+        if (this.DefaultThrottleLimit != null) {
+            s += ind + "defaultThrottleLimit\n" ;
+        }
+        //      C# -> System.Boolean? IsEnabled
+        // GraphQL -> isEnabled: Boolean! (scalar)
+        if (this.IsEnabled != null) {
+            s += ind + "isEnabled\n" ;
+        }
+        //      C# -> System.String? NetworkInterface
+        // GraphQL -> networkInterface: String (scalar)
+        if (this.NetworkInterface != null) {
+            s += ind + "networkInterface\n" ;
+        }
+        //      C# -> List<NetworkThrottleScheduleSummary>? ScheduledThrottles
+        // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)
+        if (this.ScheduledThrottles != null) {
+            s += ind + "scheduledThrottles {\n" + this.ScheduledThrottles.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> NetworkThrottleResourceId? ResourceId
+        // GraphQL -> resourceId: NetworkThrottleResourceId! (enum)
+        if (this.ResourceId == null && Exploration.Includes(parent + ".resourceId", true))
         {
-            //      C# -> System.Int32? ArchivalThrottlePort
-            // GraphQL -> archivalThrottlePort: Int (scalar)
-            if (this.ArchivalThrottlePort == null && Exploration.Includes(parent + ".archivalThrottlePort$"))
-            {
-                this.ArchivalThrottlePort = new System.Int32();
-            }
-            //      C# -> System.Single? DefaultThrottleLimit
-            // GraphQL -> defaultThrottleLimit: Float (scalar)
-            if (this.DefaultThrottleLimit == null && Exploration.Includes(parent + ".defaultThrottleLimit$"))
-            {
-                this.DefaultThrottleLimit = new System.Single();
-            }
-            //      C# -> System.Boolean? IsEnabled
-            // GraphQL -> isEnabled: Boolean! (scalar)
-            if (this.IsEnabled == null && Exploration.Includes(parent + ".isEnabled$"))
-            {
-                this.IsEnabled = new System.Boolean();
-            }
-            //      C# -> System.String? NetworkInterface
-            // GraphQL -> networkInterface: String (scalar)
-            if (this.NetworkInterface == null && Exploration.Includes(parent + ".networkInterface$"))
-            {
-                this.NetworkInterface = new System.String("FETCH");
-            }
-            //      C# -> List<NetworkThrottleScheduleSummary>? ScheduledThrottles
-            // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)
-            if (this.ScheduledThrottles == null && Exploration.Includes(parent + ".scheduledThrottles"))
-            {
-                this.ScheduledThrottles = new List<NetworkThrottleScheduleSummary>();
-                this.ScheduledThrottles.ApplyExploratoryFragment(parent + ".scheduledThrottles");
-            }
-            //      C# -> NetworkThrottleResourceId? ResourceId
-            // GraphQL -> resourceId: NetworkThrottleResourceId! (enum)
-            if (this.ResourceId == null && Exploration.Includes(parent + ".resourceId$"))
-            {
-                this.ResourceId = new NetworkThrottleResourceId();
-            }
+            this.ResourceId = new NetworkThrottleResourceId();
         }
+        //      C# -> System.Int32? ArchivalThrottlePort
+        // GraphQL -> archivalThrottlePort: Int (scalar)
+        if (this.ArchivalThrottlePort == null && Exploration.Includes(parent + ".archivalThrottlePort", true))
+        {
+            this.ArchivalThrottlePort = new System.Int32();
+        }
+        //      C# -> System.Single? DefaultThrottleLimit
+        // GraphQL -> defaultThrottleLimit: Float (scalar)
+        if (this.DefaultThrottleLimit == null && Exploration.Includes(parent + ".defaultThrottleLimit", true))
+        {
+            this.DefaultThrottleLimit = new System.Single();
+        }
+        //      C# -> System.Boolean? IsEnabled
+        // GraphQL -> isEnabled: Boolean! (scalar)
+        if (this.IsEnabled == null && Exploration.Includes(parent + ".isEnabled", true))
+        {
+            this.IsEnabled = true;
+        }
+        //      C# -> System.String? NetworkInterface
+        // GraphQL -> networkInterface: String (scalar)
+        if (this.NetworkInterface == null && Exploration.Includes(parent + ".networkInterface", true))
+        {
+            this.NetworkInterface = new System.String("FETCH");
+        }
+        //      C# -> List<NetworkThrottleScheduleSummary>? ScheduledThrottles
+        // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)
+        if (this.ScheduledThrottles == null && Exploration.Includes(parent + ".scheduledThrottles"))
+        {
+            this.ScheduledThrottles = new List<NetworkThrottleScheduleSummary>();
+            this.ScheduledThrottles.ApplyExploratoryFieldSpec(parent + ".scheduledThrottles");
+        }
+    }
 
 
     #endregion
 
     } // class UpdateNetworkThrottleReply
+    
     #endregion
 
     public static class ListUpdateNetworkThrottleReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<UpdateNetworkThrottleReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<UpdateNetworkThrottleReply> list, 
             String parent = "")
         {
-            var item = new UpdateNetworkThrottleReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new UpdateNetworkThrottleReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

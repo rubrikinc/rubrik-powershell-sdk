@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ReplicationPair
-    public class ReplicationPair: IFragment
+    public class ReplicationPair: BaseType
     {
         #region members
+
+        //      C# -> ReplicationPairConnectionStatus? Status
+        // GraphQL -> status: ReplicationPairConnectionStatus! (enum)
+        [JsonProperty("status")]
+        public ReplicationPairConnectionStatus? Status { get; set; }
+
         //      C# -> System.Int64? FailedTasks
         // GraphQL -> failedTasks: Long (scalar)
         [JsonProperty("failedTasks")]
@@ -63,16 +70,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("targetCluster")]
         public ReplicationCluster? TargetCluster { get; set; }
 
-        //      C# -> ReplicationPairConnectionStatus? Status
-        // GraphQL -> status: ReplicationPairConnectionStatus! (enum)
-        [JsonProperty("status")]
-        public ReplicationPairConnectionStatus? Status { get; set; }
 
         #endregion
 
     #region methods
 
     public ReplicationPair Set(
+        ReplicationPairConnectionStatus? Status = null,
         System.Int64? FailedTasks = null,
         System.Boolean? IsPaused = null,
         System.Int64? RunningTasks = null,
@@ -81,10 +85,12 @@ namespace Rubrik.SecurityCloud.Types
         ConnectionStatusDetails? ConnectionDetails = null,
         NetworkThrottle? NetworkThrottle = null,
         ReplicationCluster? SourceCluster = null,
-        ReplicationCluster? TargetCluster = null,
-        ReplicationPairConnectionStatus? Status = null
+        ReplicationCluster? TargetCluster = null
     ) 
     {
+        if ( Status != null ) {
+            this.Status = Status;
+        }
         if ( FailedTasks != null ) {
             this.FailedTasks = FailedTasks;
         }
@@ -112,212 +118,178 @@ namespace Rubrik.SecurityCloud.Types
         if ( TargetCluster != null ) {
             this.TargetCluster = TargetCluster;
         }
-        if ( Status != null ) {
-            this.Status = Status;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? FailedTasks
-            // GraphQL -> failedTasks: Long (scalar)
-            if (this.FailedTasks != null)
-            {
-                 s += ind + "failedTasks\n";
-
-            }
-            //      C# -> System.Boolean? IsPaused
-            // GraphQL -> isPaused: Boolean! (scalar)
-            if (this.IsPaused != null)
-            {
-                 s += ind + "isPaused\n";
-
-            }
-            //      C# -> System.Int64? RunningTasks
-            // GraphQL -> runningTasks: Long (scalar)
-            if (this.RunningTasks != null)
-            {
-                 s += ind + "runningTasks\n";
-
-            }
-            //      C# -> System.Int64? Storage
-            // GraphQL -> storage: Long! (scalar)
-            if (this.Storage != null)
-            {
-                 s += ind + "storage\n";
-
-            }
-            //      C# -> ReplicationPairConfigDetails? ConfigDetails
-            // GraphQL -> configDetails: ReplicationPairConfigDetails (type)
-            if (this.ConfigDetails != null)
-            {
-                 s += ind + "configDetails\n";
-
-                 s += ind + "{\n" + 
-                 this.ConfigDetails.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ConnectionStatusDetails? ConnectionDetails
-            // GraphQL -> connectionDetails: ConnectionStatusDetails! (type)
-            if (this.ConnectionDetails != null)
-            {
-                 s += ind + "connectionDetails\n";
-
-                 s += ind + "{\n" + 
-                 this.ConnectionDetails.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> NetworkThrottle? NetworkThrottle
-            // GraphQL -> networkThrottle: NetworkThrottle (type)
-            if (this.NetworkThrottle != null)
-            {
-                 s += ind + "networkThrottle\n";
-
-                 s += ind + "{\n" + 
-                 this.NetworkThrottle.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ReplicationCluster? SourceCluster
-            // GraphQL -> sourceCluster: ReplicationCluster! (type)
-            if (this.SourceCluster != null)
-            {
-                 s += ind + "sourceCluster\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceCluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ReplicationCluster? TargetCluster
-            // GraphQL -> targetCluster: ReplicationCluster! (type)
-            if (this.TargetCluster != null)
-            {
-                 s += ind + "targetCluster\n";
-
-                 s += ind + "{\n" + 
-                 this.TargetCluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ReplicationPairConnectionStatus? Status
-            // GraphQL -> status: ReplicationPairConnectionStatus! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ReplicationPairConnectionStatus? Status
+        // GraphQL -> status: ReplicationPairConnectionStatus! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
+        //      C# -> System.Int64? FailedTasks
+        // GraphQL -> failedTasks: Long (scalar)
+        if (this.FailedTasks != null) {
+            s += ind + "failedTasks\n" ;
+        }
+        //      C# -> System.Boolean? IsPaused
+        // GraphQL -> isPaused: Boolean! (scalar)
+        if (this.IsPaused != null) {
+            s += ind + "isPaused\n" ;
+        }
+        //      C# -> System.Int64? RunningTasks
+        // GraphQL -> runningTasks: Long (scalar)
+        if (this.RunningTasks != null) {
+            s += ind + "runningTasks\n" ;
+        }
+        //      C# -> System.Int64? Storage
+        // GraphQL -> storage: Long! (scalar)
+        if (this.Storage != null) {
+            s += ind + "storage\n" ;
+        }
+        //      C# -> ReplicationPairConfigDetails? ConfigDetails
+        // GraphQL -> configDetails: ReplicationPairConfigDetails (type)
+        if (this.ConfigDetails != null) {
+            s += ind + "configDetails {\n" + this.ConfigDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ConnectionStatusDetails? ConnectionDetails
+        // GraphQL -> connectionDetails: ConnectionStatusDetails! (type)
+        if (this.ConnectionDetails != null) {
+            s += ind + "connectionDetails {\n" + this.ConnectionDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> NetworkThrottle? NetworkThrottle
+        // GraphQL -> networkThrottle: NetworkThrottle (type)
+        if (this.NetworkThrottle != null) {
+            s += ind + "networkThrottle {\n" + this.NetworkThrottle.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ReplicationCluster? SourceCluster
+        // GraphQL -> sourceCluster: ReplicationCluster! (type)
+        if (this.SourceCluster != null) {
+            s += ind + "sourceCluster {\n" + this.SourceCluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ReplicationCluster? TargetCluster
+        // GraphQL -> targetCluster: ReplicationCluster! (type)
+        if (this.TargetCluster != null) {
+            s += ind + "targetCluster {\n" + this.TargetCluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ReplicationPairConnectionStatus? Status
+        // GraphQL -> status: ReplicationPairConnectionStatus! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            //      C# -> System.Int64? FailedTasks
-            // GraphQL -> failedTasks: Long (scalar)
-            if (this.FailedTasks == null && Exploration.Includes(parent + ".failedTasks$"))
-            {
-                this.FailedTasks = new System.Int64();
-            }
-            //      C# -> System.Boolean? IsPaused
-            // GraphQL -> isPaused: Boolean! (scalar)
-            if (this.IsPaused == null && Exploration.Includes(parent + ".isPaused$"))
-            {
-                this.IsPaused = new System.Boolean();
-            }
-            //      C# -> System.Int64? RunningTasks
-            // GraphQL -> runningTasks: Long (scalar)
-            if (this.RunningTasks == null && Exploration.Includes(parent + ".runningTasks$"))
-            {
-                this.RunningTasks = new System.Int64();
-            }
-            //      C# -> System.Int64? Storage
-            // GraphQL -> storage: Long! (scalar)
-            if (this.Storage == null && Exploration.Includes(parent + ".storage$"))
-            {
-                this.Storage = new System.Int64();
-            }
-            //      C# -> ReplicationPairConfigDetails? ConfigDetails
-            // GraphQL -> configDetails: ReplicationPairConfigDetails (type)
-            if (this.ConfigDetails == null && Exploration.Includes(parent + ".configDetails"))
-            {
-                this.ConfigDetails = new ReplicationPairConfigDetails();
-                this.ConfigDetails.ApplyExploratoryFragment(parent + ".configDetails");
-            }
-            //      C# -> ConnectionStatusDetails? ConnectionDetails
-            // GraphQL -> connectionDetails: ConnectionStatusDetails! (type)
-            if (this.ConnectionDetails == null && Exploration.Includes(parent + ".connectionDetails"))
-            {
-                this.ConnectionDetails = new ConnectionStatusDetails();
-                this.ConnectionDetails.ApplyExploratoryFragment(parent + ".connectionDetails");
-            }
-            //      C# -> NetworkThrottle? NetworkThrottle
-            // GraphQL -> networkThrottle: NetworkThrottle (type)
-            if (this.NetworkThrottle == null && Exploration.Includes(parent + ".networkThrottle"))
-            {
-                this.NetworkThrottle = new NetworkThrottle();
-                this.NetworkThrottle.ApplyExploratoryFragment(parent + ".networkThrottle");
-            }
-            //      C# -> ReplicationCluster? SourceCluster
-            // GraphQL -> sourceCluster: ReplicationCluster! (type)
-            if (this.SourceCluster == null && Exploration.Includes(parent + ".sourceCluster"))
-            {
-                this.SourceCluster = new ReplicationCluster();
-                this.SourceCluster.ApplyExploratoryFragment(parent + ".sourceCluster");
-            }
-            //      C# -> ReplicationCluster? TargetCluster
-            // GraphQL -> targetCluster: ReplicationCluster! (type)
-            if (this.TargetCluster == null && Exploration.Includes(parent + ".targetCluster"))
-            {
-                this.TargetCluster = new ReplicationCluster();
-                this.TargetCluster.ApplyExploratoryFragment(parent + ".targetCluster");
-            }
-            //      C# -> ReplicationPairConnectionStatus? Status
-            // GraphQL -> status: ReplicationPairConnectionStatus! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new ReplicationPairConnectionStatus();
-            }
+            this.Status = new ReplicationPairConnectionStatus();
         }
+        //      C# -> System.Int64? FailedTasks
+        // GraphQL -> failedTasks: Long (scalar)
+        if (this.FailedTasks == null && Exploration.Includes(parent + ".failedTasks", true))
+        {
+            this.FailedTasks = new System.Int64();
+        }
+        //      C# -> System.Boolean? IsPaused
+        // GraphQL -> isPaused: Boolean! (scalar)
+        if (this.IsPaused == null && Exploration.Includes(parent + ".isPaused", true))
+        {
+            this.IsPaused = true;
+        }
+        //      C# -> System.Int64? RunningTasks
+        // GraphQL -> runningTasks: Long (scalar)
+        if (this.RunningTasks == null && Exploration.Includes(parent + ".runningTasks", true))
+        {
+            this.RunningTasks = new System.Int64();
+        }
+        //      C# -> System.Int64? Storage
+        // GraphQL -> storage: Long! (scalar)
+        if (this.Storage == null && Exploration.Includes(parent + ".storage", true))
+        {
+            this.Storage = new System.Int64();
+        }
+        //      C# -> ReplicationPairConfigDetails? ConfigDetails
+        // GraphQL -> configDetails: ReplicationPairConfigDetails (type)
+        if (this.ConfigDetails == null && Exploration.Includes(parent + ".configDetails"))
+        {
+            this.ConfigDetails = new ReplicationPairConfigDetails();
+            this.ConfigDetails.ApplyExploratoryFieldSpec(parent + ".configDetails");
+        }
+        //      C# -> ConnectionStatusDetails? ConnectionDetails
+        // GraphQL -> connectionDetails: ConnectionStatusDetails! (type)
+        if (this.ConnectionDetails == null && Exploration.Includes(parent + ".connectionDetails"))
+        {
+            this.ConnectionDetails = new ConnectionStatusDetails();
+            this.ConnectionDetails.ApplyExploratoryFieldSpec(parent + ".connectionDetails");
+        }
+        //      C# -> NetworkThrottle? NetworkThrottle
+        // GraphQL -> networkThrottle: NetworkThrottle (type)
+        if (this.NetworkThrottle == null && Exploration.Includes(parent + ".networkThrottle"))
+        {
+            this.NetworkThrottle = new NetworkThrottle();
+            this.NetworkThrottle.ApplyExploratoryFieldSpec(parent + ".networkThrottle");
+        }
+        //      C# -> ReplicationCluster? SourceCluster
+        // GraphQL -> sourceCluster: ReplicationCluster! (type)
+        if (this.SourceCluster == null && Exploration.Includes(parent + ".sourceCluster"))
+        {
+            this.SourceCluster = new ReplicationCluster();
+            this.SourceCluster.ApplyExploratoryFieldSpec(parent + ".sourceCluster");
+        }
+        //      C# -> ReplicationCluster? TargetCluster
+        // GraphQL -> targetCluster: ReplicationCluster! (type)
+        if (this.TargetCluster == null && Exploration.Includes(parent + ".targetCluster"))
+        {
+            this.TargetCluster = new ReplicationCluster();
+            this.TargetCluster.ApplyExploratoryFieldSpec(parent + ".targetCluster");
+        }
+    }
 
 
     #endregion
 
     } // class ReplicationPair
+    
     #endregion
 
     public static class ListReplicationPairExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ReplicationPair> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ReplicationPair> list, 
             String parent = "")
         {
-            var item = new ReplicationPair();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ReplicationPair());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

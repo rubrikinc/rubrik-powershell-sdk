@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region StrainInfo
-    public class StrainInfo: IFragment
+    public class StrainInfo: BaseType
     {
         #region members
+
         //      C# -> List<System.String>? SampleAffectedFiles
         // GraphQL -> sampleAffectedFiles: [String!]! (scalar)
         [JsonProperty("sampleAffectedFiles")]
@@ -52,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
         [JsonProperty("sampleRansomwareNoteFilesInfo")]
         public List<SuspiciousFileInfo>? SampleRansomwareNoteFilesInfo { get; set; }
+
 
         #endregion
 
@@ -91,155 +94,139 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<System.String>? SampleAffectedFiles
-            // GraphQL -> sampleAffectedFiles: [String!]! (scalar)
-            if (this.SampleAffectedFiles != null)
-            {
-                 s += ind + "sampleAffectedFiles\n";
-
-            }
-            //      C# -> List<System.String>? SampleRansomwareNotes
-            // GraphQL -> sampleRansomwareNotes: [String!]! (scalar)
-            if (this.SampleRansomwareNotes != null)
-            {
-                 s += ind + "sampleRansomwareNotes\n";
-
-            }
-            //      C# -> System.String? StrainId
-            // GraphQL -> strainId: String! (scalar)
-            if (this.StrainId != null)
-            {
-                 s += ind + "strainId\n";
-
-            }
-            //      C# -> System.Int64? TotalAffectedFiles
-            // GraphQL -> totalAffectedFiles: Long! (scalar)
-            if (this.TotalAffectedFiles != null)
-            {
-                 s += ind + "totalAffectedFiles\n";
-
-            }
-            //      C# -> System.Int64? TotalRansomwareNotes
-            // GraphQL -> totalRansomwareNotes: Long! (scalar)
-            if (this.TotalRansomwareNotes != null)
-            {
-                 s += ind + "totalRansomwareNotes\n";
-
-            }
-            //      C# -> List<SuspiciousFileInfo>? SampleAffectedFilesInfo
-            // GraphQL -> sampleAffectedFilesInfo: [SuspiciousFileInfo!]! (type)
-            if (this.SampleAffectedFilesInfo != null)
-            {
-                 s += ind + "sampleAffectedFilesInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.SampleAffectedFilesInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<SuspiciousFileInfo>? SampleRansomwareNoteFilesInfo
-            // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
-            if (this.SampleRansomwareNoteFilesInfo != null)
-            {
-                 s += ind + "sampleRansomwareNoteFilesInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.SampleRansomwareNoteFilesInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<System.String>? SampleAffectedFiles
+        // GraphQL -> sampleAffectedFiles: [String!]! (scalar)
+        if (this.SampleAffectedFiles != null) {
+            s += ind + "sampleAffectedFiles\n" ;
         }
+        //      C# -> List<System.String>? SampleRansomwareNotes
+        // GraphQL -> sampleRansomwareNotes: [String!]! (scalar)
+        if (this.SampleRansomwareNotes != null) {
+            s += ind + "sampleRansomwareNotes\n" ;
+        }
+        //      C# -> System.String? StrainId
+        // GraphQL -> strainId: String! (scalar)
+        if (this.StrainId != null) {
+            s += ind + "strainId\n" ;
+        }
+        //      C# -> System.Int64? TotalAffectedFiles
+        // GraphQL -> totalAffectedFiles: Long! (scalar)
+        if (this.TotalAffectedFiles != null) {
+            s += ind + "totalAffectedFiles\n" ;
+        }
+        //      C# -> System.Int64? TotalRansomwareNotes
+        // GraphQL -> totalRansomwareNotes: Long! (scalar)
+        if (this.TotalRansomwareNotes != null) {
+            s += ind + "totalRansomwareNotes\n" ;
+        }
+        //      C# -> List<SuspiciousFileInfo>? SampleAffectedFilesInfo
+        // GraphQL -> sampleAffectedFilesInfo: [SuspiciousFileInfo!]! (type)
+        if (this.SampleAffectedFilesInfo != null) {
+            s += ind + "sampleAffectedFilesInfo {\n" + this.SampleAffectedFilesInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<SuspiciousFileInfo>? SampleRansomwareNoteFilesInfo
+        // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
+        if (this.SampleRansomwareNoteFilesInfo != null) {
+            s += ind + "sampleRansomwareNoteFilesInfo {\n" + this.SampleRansomwareNoteFilesInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<System.String>? SampleAffectedFiles
+        // GraphQL -> sampleAffectedFiles: [String!]! (scalar)
+        if (this.SampleAffectedFiles == null && Exploration.Includes(parent + ".sampleAffectedFiles", true))
         {
-            //      C# -> List<System.String>? SampleAffectedFiles
-            // GraphQL -> sampleAffectedFiles: [String!]! (scalar)
-            if (this.SampleAffectedFiles == null && Exploration.Includes(parent + ".sampleAffectedFiles$"))
-            {
-                this.SampleAffectedFiles = new List<System.String>();
-            }
-            //      C# -> List<System.String>? SampleRansomwareNotes
-            // GraphQL -> sampleRansomwareNotes: [String!]! (scalar)
-            if (this.SampleRansomwareNotes == null && Exploration.Includes(parent + ".sampleRansomwareNotes$"))
-            {
-                this.SampleRansomwareNotes = new List<System.String>();
-            }
-            //      C# -> System.String? StrainId
-            // GraphQL -> strainId: String! (scalar)
-            if (this.StrainId == null && Exploration.Includes(parent + ".strainId$"))
-            {
-                this.StrainId = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? TotalAffectedFiles
-            // GraphQL -> totalAffectedFiles: Long! (scalar)
-            if (this.TotalAffectedFiles == null && Exploration.Includes(parent + ".totalAffectedFiles$"))
-            {
-                this.TotalAffectedFiles = new System.Int64();
-            }
-            //      C# -> System.Int64? TotalRansomwareNotes
-            // GraphQL -> totalRansomwareNotes: Long! (scalar)
-            if (this.TotalRansomwareNotes == null && Exploration.Includes(parent + ".totalRansomwareNotes$"))
-            {
-                this.TotalRansomwareNotes = new System.Int64();
-            }
-            //      C# -> List<SuspiciousFileInfo>? SampleAffectedFilesInfo
-            // GraphQL -> sampleAffectedFilesInfo: [SuspiciousFileInfo!]! (type)
-            if (this.SampleAffectedFilesInfo == null && Exploration.Includes(parent + ".sampleAffectedFilesInfo"))
-            {
-                this.SampleAffectedFilesInfo = new List<SuspiciousFileInfo>();
-                this.SampleAffectedFilesInfo.ApplyExploratoryFragment(parent + ".sampleAffectedFilesInfo");
-            }
-            //      C# -> List<SuspiciousFileInfo>? SampleRansomwareNoteFilesInfo
-            // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
-            if (this.SampleRansomwareNoteFilesInfo == null && Exploration.Includes(parent + ".sampleRansomwareNoteFilesInfo"))
-            {
-                this.SampleRansomwareNoteFilesInfo = new List<SuspiciousFileInfo>();
-                this.SampleRansomwareNoteFilesInfo.ApplyExploratoryFragment(parent + ".sampleRansomwareNoteFilesInfo");
-            }
+            this.SampleAffectedFiles = new List<System.String>();
         }
+        //      C# -> List<System.String>? SampleRansomwareNotes
+        // GraphQL -> sampleRansomwareNotes: [String!]! (scalar)
+        if (this.SampleRansomwareNotes == null && Exploration.Includes(parent + ".sampleRansomwareNotes", true))
+        {
+            this.SampleRansomwareNotes = new List<System.String>();
+        }
+        //      C# -> System.String? StrainId
+        // GraphQL -> strainId: String! (scalar)
+        if (this.StrainId == null && Exploration.Includes(parent + ".strainId", true))
+        {
+            this.StrainId = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? TotalAffectedFiles
+        // GraphQL -> totalAffectedFiles: Long! (scalar)
+        if (this.TotalAffectedFiles == null && Exploration.Includes(parent + ".totalAffectedFiles", true))
+        {
+            this.TotalAffectedFiles = new System.Int64();
+        }
+        //      C# -> System.Int64? TotalRansomwareNotes
+        // GraphQL -> totalRansomwareNotes: Long! (scalar)
+        if (this.TotalRansomwareNotes == null && Exploration.Includes(parent + ".totalRansomwareNotes", true))
+        {
+            this.TotalRansomwareNotes = new System.Int64();
+        }
+        //      C# -> List<SuspiciousFileInfo>? SampleAffectedFilesInfo
+        // GraphQL -> sampleAffectedFilesInfo: [SuspiciousFileInfo!]! (type)
+        if (this.SampleAffectedFilesInfo == null && Exploration.Includes(parent + ".sampleAffectedFilesInfo"))
+        {
+            this.SampleAffectedFilesInfo = new List<SuspiciousFileInfo>();
+            this.SampleAffectedFilesInfo.ApplyExploratoryFieldSpec(parent + ".sampleAffectedFilesInfo");
+        }
+        //      C# -> List<SuspiciousFileInfo>? SampleRansomwareNoteFilesInfo
+        // GraphQL -> sampleRansomwareNoteFilesInfo: [SuspiciousFileInfo!]! (type)
+        if (this.SampleRansomwareNoteFilesInfo == null && Exploration.Includes(parent + ".sampleRansomwareNoteFilesInfo"))
+        {
+            this.SampleRansomwareNoteFilesInfo = new List<SuspiciousFileInfo>();
+            this.SampleRansomwareNoteFilesInfo.ApplyExploratoryFieldSpec(parent + ".sampleRansomwareNoteFilesInfo");
+        }
+    }
 
 
     #endregion
 
     } // class StrainInfo
+    
     #endregion
 
     public static class ListStrainInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<StrainInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<StrainInfo> list, 
             String parent = "")
         {
-            var item = new StrainInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new StrainInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

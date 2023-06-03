@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VappInstantRecoveryOptions
-    public class VappInstantRecoveryOptions: IFragment
+    public class VappInstantRecoveryOptions: BaseType
     {
         #region members
+
         //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
         // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
         [JsonProperty("availableVappNetworks")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
         [JsonProperty("restorableVms")]
         public List<VappVmRestoreSpec>? RestorableVms { get; set; }
+
 
         #endregion
 
@@ -46,90 +49,84 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
-            // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
-            if (this.AvailableVappNetworks != null)
-            {
-                 s += ind + "availableVappNetworks\n";
-
-                 s += ind + "{\n" + 
-                 this.AvailableVappNetworks.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<VappVmRestoreSpec>? RestorableVms
-            // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
-            if (this.RestorableVms != null)
-            {
-                 s += ind + "restorableVms\n";
-
-                 s += ind + "{\n" + 
-                 this.RestorableVms.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
+        // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
+        if (this.AvailableVappNetworks != null) {
+            s += ind + "availableVappNetworks {\n" + this.AvailableVappNetworks.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> List<VappVmRestoreSpec>? RestorableVms
+        // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
+        if (this.RestorableVms != null) {
+            s += ind + "restorableVms {\n" + this.RestorableVms.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
+        // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
+        if (this.AvailableVappNetworks == null && Exploration.Includes(parent + ".availableVappNetworks"))
         {
-            //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
-            // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
-            if (this.AvailableVappNetworks == null && Exploration.Includes(parent + ".availableVappNetworks"))
-            {
-                this.AvailableVappNetworks = new List<VappNetworkSummary>();
-                this.AvailableVappNetworks.ApplyExploratoryFragment(parent + ".availableVappNetworks");
-            }
-            //      C# -> List<VappVmRestoreSpec>? RestorableVms
-            // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
-            if (this.RestorableVms == null && Exploration.Includes(parent + ".restorableVms"))
-            {
-                this.RestorableVms = new List<VappVmRestoreSpec>();
-                this.RestorableVms.ApplyExploratoryFragment(parent + ".restorableVms");
-            }
+            this.AvailableVappNetworks = new List<VappNetworkSummary>();
+            this.AvailableVappNetworks.ApplyExploratoryFieldSpec(parent + ".availableVappNetworks");
         }
+        //      C# -> List<VappVmRestoreSpec>? RestorableVms
+        // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
+        if (this.RestorableVms == null && Exploration.Includes(parent + ".restorableVms"))
+        {
+            this.RestorableVms = new List<VappVmRestoreSpec>();
+            this.RestorableVms.ApplyExploratoryFieldSpec(parent + ".restorableVms");
+        }
+    }
 
 
     #endregion
 
     } // class VappInstantRecoveryOptions
+    
     #endregion
 
     public static class ListVappInstantRecoveryOptionsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VappInstantRecoveryOptions> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VappInstantRecoveryOptions> list, 
             String parent = "")
         {
-            var item = new VappInstantRecoveryOptions();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VappInstantRecoveryOptions());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

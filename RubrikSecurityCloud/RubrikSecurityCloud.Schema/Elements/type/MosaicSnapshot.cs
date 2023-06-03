@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MosaicSnapshot
-    public class MosaicSnapshot: IFragment
+    public class MosaicSnapshot: BaseType
     {
         #region members
+
+        //      C# -> MosaicSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: MosaicSnapshotType! (enum)
+        [JsonProperty("snapshotType")]
+        public MosaicSnapshotType? SnapshotType { get; set; }
+
+        //      C# -> SlaDomain? SlaDomain
+        // GraphQL -> slaDomain: SlaDomain (interface)
+        [JsonProperty("slaDomain")]
+        public SlaDomain? SlaDomain { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [JsonProperty("clusterUuid")]
@@ -58,21 +70,14 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("workloadId")]
         public System.String? WorkloadId { get; set; }
 
-        //      C# -> MosaicSnapshotType? SnapshotType
-        // GraphQL -> snapshotType: MosaicSnapshotType! (enum)
-        [JsonProperty("snapshotType")]
-        public MosaicSnapshotType? SnapshotType { get; set; }
-
-        //      C# -> SlaDomain? SlaDomain
-        // GraphQL -> slaDomain: SlaDomain (interface)
-        [JsonProperty("slaDomain")]
-        public SlaDomain? SlaDomain { get; set; }
 
         #endregion
 
     #region methods
 
     public MosaicSnapshot Set(
+        MosaicSnapshotType? SnapshotType = null,
+        SlaDomain? SlaDomain = null,
         System.String? ClusterUuid = null,
         System.String? DbInfo = null,
         DateTime? ExpirationTime = null,
@@ -80,11 +85,15 @@ namespace Rubrik.SecurityCloud.Types
         System.Int32? JobDuration = null,
         DateTime? Version = null,
         System.String? VersionState = null,
-        System.String? WorkloadId = null,
-        MosaicSnapshotType? SnapshotType = null,
-        SlaDomain? SlaDomain = null
+        System.String? WorkloadId = null
     ) 
     {
+        if ( SnapshotType != null ) {
+            this.SnapshotType = SnapshotType;
+        }
+        if ( SlaDomain != null ) {
+            this.SlaDomain = SlaDomain;
+        }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
         }
@@ -109,208 +118,176 @@ namespace Rubrik.SecurityCloud.Types
         if ( WorkloadId != null ) {
             this.WorkloadId = WorkloadId;
         }
-        if ( SnapshotType != null ) {
-            this.SnapshotType = SnapshotType;
-        }
-        if ( SlaDomain != null ) {
-            this.SlaDomain = SlaDomain;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid != null)
-            {
-                 s += ind + "clusterUuid\n";
-
-            }
-            //      C# -> System.String? DbInfo
-            // GraphQL -> dbInfo: String (scalar)
-            if (this.DbInfo != null)
-            {
-                 s += ind + "dbInfo\n";
-
-            }
-            //      C# -> DateTime? ExpirationTime
-            // GraphQL -> expirationTime: DateTime (scalar)
-            if (this.ExpirationTime != null)
-            {
-                 s += ind + "expirationTime\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Int32? JobDuration
-            // GraphQL -> jobDuration: Int (scalar)
-            if (this.JobDuration != null)
-            {
-                 s += ind + "jobDuration\n";
-
-            }
-            //      C# -> DateTime? Version
-            // GraphQL -> version: DateTime! (scalar)
-            if (this.Version != null)
-            {
-                 s += ind + "version\n";
-
-            }
-            //      C# -> System.String? VersionState
-            // GraphQL -> versionState: String (scalar)
-            if (this.VersionState != null)
-            {
-                 s += ind + "versionState\n";
-
-            }
-            //      C# -> System.String? WorkloadId
-            // GraphQL -> workloadId: String! (scalar)
-            if (this.WorkloadId != null)
-            {
-                 s += ind + "workloadId\n";
-
-            }
-            //      C# -> MosaicSnapshotType? SnapshotType
-            // GraphQL -> snapshotType: MosaicSnapshotType! (enum)
-            if (this.SnapshotType != null)
-            {
-                 s += ind + "snapshotType\n";
-
-            }
-                        //      C# -> SlaDomain? SlaDomain
-            // GraphQL -> slaDomain: SlaDomain (interface)
-            if (this.SlaDomain != null)
-            {
-                s += ind + "slaDomain\n";
-                s += ind + "{\n";
-
-                string typename = this.SlaDomain.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.SlaDomain.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> MosaicSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: MosaicSnapshotType! (enum)
+        if (this.SnapshotType != null) {
+            s += ind + "snapshotType\n" ;
         }
+        //      C# -> SlaDomain? SlaDomain
+        // GraphQL -> slaDomain: SlaDomain (interface)
+        if (this.SlaDomain != null) {
+            s += ind + "slaDomain {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid != null) {
+            s += ind + "clusterUuid\n" ;
+        }
+        //      C# -> System.String? DbInfo
+        // GraphQL -> dbInfo: String (scalar)
+        if (this.DbInfo != null) {
+            s += ind + "dbInfo\n" ;
+        }
+        //      C# -> DateTime? ExpirationTime
+        // GraphQL -> expirationTime: DateTime (scalar)
+        if (this.ExpirationTime != null) {
+            s += ind + "expirationTime\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Int32? JobDuration
+        // GraphQL -> jobDuration: Int (scalar)
+        if (this.JobDuration != null) {
+            s += ind + "jobDuration\n" ;
+        }
+        //      C# -> DateTime? Version
+        // GraphQL -> version: DateTime! (scalar)
+        if (this.Version != null) {
+            s += ind + "version\n" ;
+        }
+        //      C# -> System.String? VersionState
+        // GraphQL -> versionState: String (scalar)
+        if (this.VersionState != null) {
+            s += ind + "versionState\n" ;
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId != null) {
+            s += ind + "workloadId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> MosaicSnapshotType? SnapshotType
+        // GraphQL -> snapshotType: MosaicSnapshotType! (enum)
+        if (this.SnapshotType == null && Exploration.Includes(parent + ".snapshotType", true))
         {
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid$"))
-            {
-                this.ClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.String? DbInfo
-            // GraphQL -> dbInfo: String (scalar)
-            if (this.DbInfo == null && Exploration.Includes(parent + ".dbInfo$"))
-            {
-                this.DbInfo = new System.String("FETCH");
-            }
-            //      C# -> DateTime? ExpirationTime
-            // GraphQL -> expirationTime: DateTime (scalar)
-            if (this.ExpirationTime == null && Exploration.Includes(parent + ".expirationTime$"))
-            {
-                this.ExpirationTime = new DateTime();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? JobDuration
-            // GraphQL -> jobDuration: Int (scalar)
-            if (this.JobDuration == null && Exploration.Includes(parent + ".jobDuration$"))
-            {
-                this.JobDuration = new System.Int32();
-            }
-            //      C# -> DateTime? Version
-            // GraphQL -> version: DateTime! (scalar)
-            if (this.Version == null && Exploration.Includes(parent + ".version$"))
-            {
-                this.Version = new DateTime();
-            }
-            //      C# -> System.String? VersionState
-            // GraphQL -> versionState: String (scalar)
-            if (this.VersionState == null && Exploration.Includes(parent + ".versionState$"))
-            {
-                this.VersionState = new System.String("FETCH");
-            }
-            //      C# -> System.String? WorkloadId
-            // GraphQL -> workloadId: String! (scalar)
-            if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId$"))
-            {
-                this.WorkloadId = new System.String("FETCH");
-            }
-            //      C# -> MosaicSnapshotType? SnapshotType
-            // GraphQL -> snapshotType: MosaicSnapshotType! (enum)
-            if (this.SnapshotType == null && Exploration.Includes(parent + ".snapshotType$"))
-            {
-                this.SnapshotType = new MosaicSnapshotType();
-            }
-            //      C# -> SlaDomain? SlaDomain
-            // GraphQL -> slaDomain: SlaDomain (interface)
-            if (this.SlaDomain == null && Exploration.Includes(parent + ".slaDomain"))
-            {
-                this.SlaDomain = (SlaDomain)InterfaceHelper.CreateInstanceOfFirstType(typeof(SlaDomain));
-                this.SlaDomain.ApplyExploratoryFragment(parent + ".slaDomain");
-            }
+            this.SnapshotType = new MosaicSnapshotType();
         }
+        //      C# -> SlaDomain? SlaDomain
+        // GraphQL -> slaDomain: SlaDomain (interface)
+        if (this.SlaDomain == null && Exploration.Includes(parent + ".slaDomain"))
+        {
+            var impls = new List<SlaDomain>();
+            impls.ApplyExploratoryFieldSpec(parent + ".slaDomain");
+            this.SlaDomain = (SlaDomain)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        {
+            this.ClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> System.String? DbInfo
+        // GraphQL -> dbInfo: String (scalar)
+        if (this.DbInfo == null && Exploration.Includes(parent + ".dbInfo", true))
+        {
+            this.DbInfo = new System.String("FETCH");
+        }
+        //      C# -> DateTime? ExpirationTime
+        // GraphQL -> expirationTime: DateTime (scalar)
+        if (this.ExpirationTime == null && Exploration.Includes(parent + ".expirationTime", true))
+        {
+            this.ExpirationTime = new DateTime();
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? JobDuration
+        // GraphQL -> jobDuration: Int (scalar)
+        if (this.JobDuration == null && Exploration.Includes(parent + ".jobDuration", true))
+        {
+            this.JobDuration = new System.Int32();
+        }
+        //      C# -> DateTime? Version
+        // GraphQL -> version: DateTime! (scalar)
+        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        {
+            this.Version = new DateTime();
+        }
+        //      C# -> System.String? VersionState
+        // GraphQL -> versionState: String (scalar)
+        if (this.VersionState == null && Exploration.Includes(parent + ".versionState", true))
+        {
+            this.VersionState = new System.String("FETCH");
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        {
+            this.WorkloadId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class MosaicSnapshot
+    
     #endregion
 
     public static class ListMosaicSnapshotExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MosaicSnapshot> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MosaicSnapshot> list, 
             String parent = "")
         {
-            var item = new MosaicSnapshot();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MosaicSnapshot());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

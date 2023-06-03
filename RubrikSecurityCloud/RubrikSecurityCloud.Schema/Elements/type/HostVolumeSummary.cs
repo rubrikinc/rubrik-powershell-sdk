@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region HostVolumeSummary
-    public class HostVolumeSummary: IFragment
+    public class HostVolumeSummary: BaseType
     {
         #region members
+
         //      C# -> System.Boolean? IsCurrentlyPresentOnSystem
         // GraphQL -> isCurrentlyPresentOnSystem: Boolean! (scalar)
         [JsonProperty("isCurrentlyPresentOnSystem")]
@@ -37,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
         [JsonProperty("volumeGroupSnapshotVolumeSummary")]
         public VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary { get; set; }
+
 
         #endregion
 
@@ -64,112 +67,105 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? IsCurrentlyPresentOnSystem
-            // GraphQL -> isCurrentlyPresentOnSystem: Boolean! (scalar)
-            if (this.IsCurrentlyPresentOnSystem != null)
-            {
-                 s += ind + "isCurrentlyPresentOnSystem\n";
-
-            }
-            //      C# -> System.String? NaturalId
-            // GraphQL -> naturalId: String! (scalar)
-            if (this.NaturalId != null)
-            {
-                 s += ind + "naturalId\n";
-
-            }
-            //      C# -> System.String? VolumeGroupId
-            // GraphQL -> volumeGroupId: String (scalar)
-            if (this.VolumeGroupId != null)
-            {
-                 s += ind + "volumeGroupId\n";
-
-            }
-            //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
-            // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
-            if (this.VolumeGroupSnapshotVolumeSummary != null)
-            {
-                 s += ind + "volumeGroupSnapshotVolumeSummary\n";
-
-                 s += ind + "{\n" + 
-                 this.VolumeGroupSnapshotVolumeSummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Boolean? IsCurrentlyPresentOnSystem
+        // GraphQL -> isCurrentlyPresentOnSystem: Boolean! (scalar)
+        if (this.IsCurrentlyPresentOnSystem != null) {
+            s += ind + "isCurrentlyPresentOnSystem\n" ;
         }
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String! (scalar)
+        if (this.NaturalId != null) {
+            s += ind + "naturalId\n" ;
+        }
+        //      C# -> System.String? VolumeGroupId
+        // GraphQL -> volumeGroupId: String (scalar)
+        if (this.VolumeGroupId != null) {
+            s += ind + "volumeGroupId\n" ;
+        }
+        //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
+        // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
+        if (this.VolumeGroupSnapshotVolumeSummary != null) {
+            s += ind + "volumeGroupSnapshotVolumeSummary {\n" + this.VolumeGroupSnapshotVolumeSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Boolean? IsCurrentlyPresentOnSystem
+        // GraphQL -> isCurrentlyPresentOnSystem: Boolean! (scalar)
+        if (this.IsCurrentlyPresentOnSystem == null && Exploration.Includes(parent + ".isCurrentlyPresentOnSystem", true))
         {
-            //      C# -> System.Boolean? IsCurrentlyPresentOnSystem
-            // GraphQL -> isCurrentlyPresentOnSystem: Boolean! (scalar)
-            if (this.IsCurrentlyPresentOnSystem == null && Exploration.Includes(parent + ".isCurrentlyPresentOnSystem$"))
-            {
-                this.IsCurrentlyPresentOnSystem = new System.Boolean();
-            }
-            //      C# -> System.String? NaturalId
-            // GraphQL -> naturalId: String! (scalar)
-            if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId$"))
-            {
-                this.NaturalId = new System.String("FETCH");
-            }
-            //      C# -> System.String? VolumeGroupId
-            // GraphQL -> volumeGroupId: String (scalar)
-            if (this.VolumeGroupId == null && Exploration.Includes(parent + ".volumeGroupId$"))
-            {
-                this.VolumeGroupId = new System.String("FETCH");
-            }
-            //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
-            // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
-            if (this.VolumeGroupSnapshotVolumeSummary == null && Exploration.Includes(parent + ".volumeGroupSnapshotVolumeSummary"))
-            {
-                this.VolumeGroupSnapshotVolumeSummary = new VolumeGroupSnapshotVolumeSummary();
-                this.VolumeGroupSnapshotVolumeSummary.ApplyExploratoryFragment(parent + ".volumeGroupSnapshotVolumeSummary");
-            }
+            this.IsCurrentlyPresentOnSystem = true;
         }
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String! (scalar)
+        if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
+        {
+            this.NaturalId = new System.String("FETCH");
+        }
+        //      C# -> System.String? VolumeGroupId
+        // GraphQL -> volumeGroupId: String (scalar)
+        if (this.VolumeGroupId == null && Exploration.Includes(parent + ".volumeGroupId", true))
+        {
+            this.VolumeGroupId = new System.String("FETCH");
+        }
+        //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
+        // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
+        if (this.VolumeGroupSnapshotVolumeSummary == null && Exploration.Includes(parent + ".volumeGroupSnapshotVolumeSummary"))
+        {
+            this.VolumeGroupSnapshotVolumeSummary = new VolumeGroupSnapshotVolumeSummary();
+            this.VolumeGroupSnapshotVolumeSummary.ApplyExploratoryFieldSpec(parent + ".volumeGroupSnapshotVolumeSummary");
+        }
+    }
 
 
     #endregion
 
     } // class HostVolumeSummary
+    
     #endregion
 
     public static class ListHostVolumeSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<HostVolumeSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<HostVolumeSummary> list, 
             String parent = "")
         {
-            var item = new HostVolumeSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new HostVolumeSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

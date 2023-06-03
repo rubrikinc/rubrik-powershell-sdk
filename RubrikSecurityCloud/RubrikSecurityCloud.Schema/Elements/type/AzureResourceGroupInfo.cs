@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureResourceGroupInfo
-    public class AzureResourceGroupInfo: IFragment
+    public class AzureResourceGroupInfo: BaseType
     {
         #region members
+
+        //      C# -> AzureCloudAccountRegion? Region
+        // GraphQL -> region: AzureCloudAccountRegion! (enum)
+        [JsonProperty("region")]
+        public AzureCloudAccountRegion? Region { get; set; }
+
         //      C# -> System.String? ResourceGroupName
         // GraphQL -> resourceGroupName: String! (scalar)
         [JsonProperty("resourceGroupName")]
@@ -33,22 +40,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("tags")]
         public List<TagObject>? Tags { get; set; }
 
-        //      C# -> AzureCloudAccountRegion? Region
-        // GraphQL -> region: AzureCloudAccountRegion! (enum)
-        [JsonProperty("region")]
-        public AzureCloudAccountRegion? Region { get; set; }
 
         #endregion
 
     #region methods
 
     public AzureResourceGroupInfo Set(
+        AzureCloudAccountRegion? Region = null,
         System.String? ResourceGroupName = null,
         System.String? SubscriptionNativeId = null,
-        List<TagObject>? Tags = null,
-        AzureCloudAccountRegion? Region = null
+        List<TagObject>? Tags = null
     ) 
     {
+        if ( Region != null ) {
+            this.Region = Region;
+        }
         if ( ResourceGroupName != null ) {
             this.ResourceGroupName = ResourceGroupName;
         }
@@ -58,118 +64,108 @@ namespace Rubrik.SecurityCloud.Types
         if ( Tags != null ) {
             this.Tags = Tags;
         }
-        if ( Region != null ) {
-            this.Region = Region;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ResourceGroupName
-            // GraphQL -> resourceGroupName: String! (scalar)
-            if (this.ResourceGroupName != null)
-            {
-                 s += ind + "resourceGroupName\n";
-
-            }
-            //      C# -> System.String? SubscriptionNativeId
-            // GraphQL -> subscriptionNativeId: UUID! (scalar)
-            if (this.SubscriptionNativeId != null)
-            {
-                 s += ind + "subscriptionNativeId\n";
-
-            }
-            //      C# -> List<TagObject>? Tags
-            // GraphQL -> tags: [TagObject!]! (type)
-            if (this.Tags != null)
-            {
-                 s += ind + "tags\n";
-
-                 s += ind + "{\n" + 
-                 this.Tags.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> AzureCloudAccountRegion? Region
-            // GraphQL -> region: AzureCloudAccountRegion! (enum)
-            if (this.Region != null)
-            {
-                 s += ind + "region\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AzureCloudAccountRegion? Region
+        // GraphQL -> region: AzureCloudAccountRegion! (enum)
+        if (this.Region != null) {
+            s += ind + "region\n" ;
         }
+        //      C# -> System.String? ResourceGroupName
+        // GraphQL -> resourceGroupName: String! (scalar)
+        if (this.ResourceGroupName != null) {
+            s += ind + "resourceGroupName\n" ;
+        }
+        //      C# -> System.String? SubscriptionNativeId
+        // GraphQL -> subscriptionNativeId: UUID! (scalar)
+        if (this.SubscriptionNativeId != null) {
+            s += ind + "subscriptionNativeId\n" ;
+        }
+        //      C# -> List<TagObject>? Tags
+        // GraphQL -> tags: [TagObject!]! (type)
+        if (this.Tags != null) {
+            s += ind + "tags {\n" + this.Tags.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AzureCloudAccountRegion? Region
+        // GraphQL -> region: AzureCloudAccountRegion! (enum)
+        if (this.Region == null && Exploration.Includes(parent + ".region", true))
         {
-            //      C# -> System.String? ResourceGroupName
-            // GraphQL -> resourceGroupName: String! (scalar)
-            if (this.ResourceGroupName == null && Exploration.Includes(parent + ".resourceGroupName$"))
-            {
-                this.ResourceGroupName = new System.String("FETCH");
-            }
-            //      C# -> System.String? SubscriptionNativeId
-            // GraphQL -> subscriptionNativeId: UUID! (scalar)
-            if (this.SubscriptionNativeId == null && Exploration.Includes(parent + ".subscriptionNativeId$"))
-            {
-                this.SubscriptionNativeId = new System.String("FETCH");
-            }
-            //      C# -> List<TagObject>? Tags
-            // GraphQL -> tags: [TagObject!]! (type)
-            if (this.Tags == null && Exploration.Includes(parent + ".tags"))
-            {
-                this.Tags = new List<TagObject>();
-                this.Tags.ApplyExploratoryFragment(parent + ".tags");
-            }
-            //      C# -> AzureCloudAccountRegion? Region
-            // GraphQL -> region: AzureCloudAccountRegion! (enum)
-            if (this.Region == null && Exploration.Includes(parent + ".region$"))
-            {
-                this.Region = new AzureCloudAccountRegion();
-            }
+            this.Region = new AzureCloudAccountRegion();
         }
+        //      C# -> System.String? ResourceGroupName
+        // GraphQL -> resourceGroupName: String! (scalar)
+        if (this.ResourceGroupName == null && Exploration.Includes(parent + ".resourceGroupName", true))
+        {
+            this.ResourceGroupName = new System.String("FETCH");
+        }
+        //      C# -> System.String? SubscriptionNativeId
+        // GraphQL -> subscriptionNativeId: UUID! (scalar)
+        if (this.SubscriptionNativeId == null && Exploration.Includes(parent + ".subscriptionNativeId", true))
+        {
+            this.SubscriptionNativeId = new System.String("FETCH");
+        }
+        //      C# -> List<TagObject>? Tags
+        // GraphQL -> tags: [TagObject!]! (type)
+        if (this.Tags == null && Exploration.Includes(parent + ".tags"))
+        {
+            this.Tags = new List<TagObject>();
+            this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+        }
+    }
 
 
     #endregion
 
     } // class AzureResourceGroupInfo
+    
     #endregion
 
     public static class ListAzureResourceGroupInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureResourceGroupInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureResourceGroupInfo> list, 
             String parent = "")
         {
-            var item = new AzureResourceGroupInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureResourceGroupInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using RubrikSecurityCloud.PowerShell.Models;
 using System.Collections.Generic;
 using System.Reflection;
@@ -6,6 +7,7 @@ using System.Collections;
 using System.Management.Automation;
 using Rubrik.SecurityCloud.Types;
 using RubrikSecurityCloud.Client;
+using RubrikSecurityCloud.Schema.Utils;
 using Rubrik.SecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Private
@@ -37,45 +39,78 @@ namespace RubrikSecurityCloud.PowerShell.Private
             else return propertyInfo.PropertyType;
         }
 
-        public static List<RscTypeSummary> GetAllTypeNames(string namefilter = null)
+        public static List<RscTypeSummary> GetAllTypeNames(
+               string namefilter = null,
+               bool interfaces = false)
         {
             List<RscTypeSummary> types = new List<RscTypeSummary>();
             var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
-            if (assembly != null)
+            if (assembly == null)
             {
-                foreach (var type in assembly.GetTypes())
+                throw new Exception(
+                    "Unable to load RubrikSecurityCloud.Schema");
+            }
+
+            Type baseType = assembly.GetTypes().FirstOrDefault(t => t.Name == "BaseType" && t.IsClass);
+            Type fieldSpecInterface = assembly.GetTypes().FirstOrDefault(t => t.Name == "IFieldSpec" && t.IsInterface);
+
+            foreach (var type in assembly.GetTypes())
+            {
+                if (type.Namespace != "Rubrik.SecurityCloud.Types")
                 {
-                    if (type.Namespace == "Rubrik.SecurityCloud.Types")
-                    {
-                        if (namefilter != null)
+                    continue;
+                }
+                if (namefilter != null
+                    && !type.Name.ToLower().Contains(namefilter.ToLower()))
+                {
+                    continue;
+                }
+                if ((!interfaces && type.IsClass && type.IsSubclassOf(baseType))
+                    || 
+                    (interfaces && type.IsInterface && fieldSpecInterface.IsAssignableFrom(type)))
+                {
+                    types.Add(new RscTypeSummary
                         {
-                            if (type.Name.ToLower().Contains(namefilter.ToLower()))
-                            {
-                                if (type.IsClass)
-                                {
-                                    types.Add(new RscTypeSummary
-                                    {
-                                        Name = type.Name
-                                    });
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if (type.IsClass)
-                            {
-                                types.Add(new RscTypeSummary
-                                {
-                                    Name = type.Name
-                                });
-                            }
-                        }
-                    }
+                            Name = type.Name
+                        });
                 }
             }
 
-            return types;
+            return types.OrderBy(type => type.Name).ToList();
         }
+
+        public static List<RscTypeSummary> GetTypesImplementingInterface(string interfaceName)
+        {
+            var typesList = new List<RscTypeSummary>();
+            var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
+
+            if (assembly == null)
+            {
+                throw new Exception("Unable to load RubrikSecurityCloud.Schema");
+            }
+
+            // Get the type of the specified interface
+            Type interfaceType = assembly.GetTypes().FirstOrDefault(t => t.Name == interfaceName && t.IsInterface);
+
+            if (interfaceType == null)
+            {
+                throw new Exception($"Interface {interfaceName} not found.");
+            }
+
+            foreach (var type in assembly.GetTypes())
+            {
+                if (interfaceType.IsAssignableFrom(type) && !type.IsInterface)
+                {
+                    typesList.Add(new RscTypeSummary
+                    {
+                        Name = type.Name
+                    });
+                }
+            }
+
+            return typesList.OrderBy(type => type.Name).ToList();
+        }
+
 
         public static Type GetTypeByName(string name)
         {
@@ -223,7 +258,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             continue;
                         }
 
-                        //If current property is a a string
+                        //If current property is a string
                         if (currentProperty.PropertyType == typeof(string))
                         {
                             currentProperty.SetValue(currentObject, "FETCH");
@@ -234,10 +269,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
                         if (currentProperty.PropertyType.IsGenericType &&
                             currentProperty.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
                         {
-                            /*Console.WriteLine($"Property {currentProperty.Name} " +
-                                $"is a list of type" +
-                                $" {currentProperty.PropertyType.GetGenericArguments()[0]}");
-                            */
                             Type genericArgumentType = currentProperty.PropertyType
                                 .GetGenericArguments()[0];
 
@@ -247,25 +278,56 @@ namespace RubrikSecurityCloud.PowerShell.Private
                                     BindingFlags.Instance |
                                     BindingFlags.Public).GetValue(returnInstance) == null)
                             {
-                                // If the list if of an interface type,
-                                // instantiate a compatible class to
-                                // avoid a runtime exception
+                                // Reassign genericArgumentType to currentPropertyType
+                                // to make the code easier to read later on.
                                 Type currentPropertyType = genericArgumentType;
+
+                                // If the LIST is of an INTERFACE type,
+                                // instantiate a list of all types that implement
+                                // the interface, ensuring correct GQL fields in
+                                // query fragments
                                 if (genericArgumentType.IsInterface)
                                 {
-                                    currentPropertyType = 
-                                        InterfaceHelper.CreateInstanceOfFirstType
-                                        (genericArgumentType).GetType();
+                                    // Get a list of concrete class instances
+                                    MethodInfo typeInstancesMethod =
+                                        typeof(InterfaceHelper)
+                                        .GetMethod("CreateInstancesOfImplementingTypes");
+                                    MethodInfo getInstancesMethod =
+                                        typeInstancesMethod
+                                        .MakeGenericMethod(genericArgumentType);
+
+                                    object[] parameters = new object[] { genericArgumentType };
+
+                                    IList value = (IList)getInstancesMethod.Invoke(null, parameters);
+
+                                    IList implementingInstances =
+                                        InterfaceHelper
+                                        .CreateInstancesOfImplementingTypes<object>(genericArgumentType);
+
+                                    IList rtnObjs = CopyList(value);
+                                    rtnObjs.Clear();
+
+                                    foreach (var item in value)
+                                    {
+                                        rtnObjs.Add(InitializeTypeWithSelectedProperties(
+                                            item.GetType().Name,
+                                            requestedProperties));
+                                    }
+
+                                    currentProperty.SetValue(currentObject, rtnObjs);
+                                    currentObject = rtnObjs[0];
                                 }
+                                else //It's not an interface, just init a type
+                                {
+                                    IList value = (IList)Activator.
+                                        CreateInstance(currentProperty.PropertyType)
+                                        ?? new List<object>();
+                                    value.Add(Activator.
+                                        CreateInstance(currentPropertyType));
 
-                                IList value = (IList)Activator.
-                                    CreateInstance(currentProperty.PropertyType)
-                                    ?? new List<object>();
-                                value.Add(Activator.
-                                    CreateInstance(currentPropertyType));
-
-                                currentProperty.SetValue(currentObject, value);
-                                currentObject = value[0];
+                                    currentProperty.SetValue(currentObject, value);
+                                    currentObject = value[0];
+                                }
                             }
                             else
                             {
@@ -381,6 +443,16 @@ namespace RubrikSecurityCloud.PowerShell.Private
                 throw new Exception($"No type found matching: '{ objectClassName }'");
             }
 		}
-	}
+
+        private static IList CopyList(IList source)
+        {
+            IList copy = (IList)Activator.CreateInstance(source.GetType());
+            foreach (var item in source)
+            {
+                copy.Add(item);
+            }
+            return copy;
+        }
+    }
 }
 

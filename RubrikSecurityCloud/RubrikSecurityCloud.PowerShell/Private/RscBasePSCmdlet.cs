@@ -9,11 +9,14 @@ using System.Xml.Linq;
 using Newtonsoft.Json;
 using Rubrik.SecurityCloud.NetSDK.Client;
 using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using Rubrik.SecurityCloud.Types;
 
 namespace Rubrik.SecurityCloud.PowerShell.Private
 {
+    /// <summary>
+    /// Base class for all Rubrik Security Cloud PowerShell cmdlets.
+    /// </summary>
     public class RscBasePSCmdlet : PSCmdlet
     {
         /// <summary>
@@ -24,7 +27,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             Position = 1,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public String Op { get; set; }
+        public string Op { get; set; }
 
         /// <summary>
         /// Input: Arguments to the operation. Overridden by argument parameters.
@@ -34,7 +37,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             Position = 2,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public Object Arg { get; set; }
+        public object Arg { get; set; }
 
         /// <summary>
         /// An object that represents the fields that need to be returned
@@ -47,7 +50,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             Position = 3,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
-        public Object Field { get; set; }
+        public object Field { get; set; }
 
         /// <summary>
         /// Returns an object that contains the Op, Arg and Field inputs
@@ -72,6 +75,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
 
         internal RscLogger _logger = null;
 
+        /// <summary>
+        /// Create a new Rubrik Security Cloud PowerShell cmdlet.
+        /// </summary>
         public RscBasePSCmdlet()
         {
             this._logger = new RscLogger(this);
@@ -97,14 +103,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
         // For debugging purposes,
         // Create a report of all inputs with their types and values,
         // using introspection to get the names of the parameters.
-        internal String CmdletParametersReport(int indent = 0)
+        internal string CmdletParametersReport(int indent = 0)
         {
-            List<string> lines = new List<string>();
-            var indentStr = new String(' ', indent);
+            List<string> lines = new();
+            var indentStr = new string(' ', indent);
             lines.Add($"{indentStr}Cmdlet Inputs:");
             Type cmdletType = this.GetType();
-            String cmdletName = cmdletType.Name;
-            System.Reflection.PropertyInfo[] cmdletProperties = cmdletType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            string cmdletName = cmdletType.Name;
+            System.Reflection.PropertyInfo[] cmdletProperties = cmdletType
+                .GetProperties(BindingFlags.Public | BindingFlags.Instance);
             foreach (var prop in cmdletProperties)
             {
                 // filter for parameters only
@@ -132,10 +139,12 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                     if (propVal is Hashtable)
                     {
                         // If a Hashtable, print the keys and values
-                        paramValueStr = StringUtils.HashtableToString((Hashtable)propVal);
-                    } else if (propVal is IFragment) {
-                        // If a IFragment, print the fragment
-                        paramValueStr = ((IFragment)propVal).AsFragment().Replace("\n", " ");
+                        paramValueStr = StringUtils.HashtableToString(
+                            (Hashtable)propVal);
+                    } else if (propVal is IFieldSpec) {
+                        // If a IFieldSpec, print the field spec
+                        paramValueStr = ((IFieldSpec)propVal).AsFieldSpec()
+                            .Replace("\n", " ");
                     }
 
                     // Display actual type for Object:
@@ -151,7 +160,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                     lines.Add($"{indentStr}  Exception: {e}");
                 }
             }
-            return String.Join("\n", lines);
+            return string.Join("\n", lines);
         }
 
     }

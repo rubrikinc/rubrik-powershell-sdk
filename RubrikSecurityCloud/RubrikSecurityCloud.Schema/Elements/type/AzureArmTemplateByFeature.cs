@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureArmTemplateByFeature
-    public class AzureArmTemplateByFeature: IFragment
+    public class AzureArmTemplateByFeature: BaseType
     {
         #region members
+
+        //      C# -> CloudAccountFeature? Feature
+        // GraphQL -> feature: CloudAccountFeature! (enum)
+        [JsonProperty("feature")]
+        public CloudAccountFeature? Feature { get; set; }
+
         //      C# -> System.String? RoleDefinitionAssignmentTemplate
         // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
         [JsonProperty("roleDefinitionAssignmentTemplate")]
@@ -28,122 +35,116 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("version")]
         public System.Int32? Version { get; set; }
 
-        //      C# -> CloudAccountFeature? Feature
-        // GraphQL -> feature: CloudAccountFeature! (enum)
-        [JsonProperty("feature")]
-        public CloudAccountFeature? Feature { get; set; }
 
         #endregion
 
     #region methods
 
     public AzureArmTemplateByFeature Set(
+        CloudAccountFeature? Feature = null,
         System.String? RoleDefinitionAssignmentTemplate = null,
-        System.Int32? Version = null,
-        CloudAccountFeature? Feature = null
+        System.Int32? Version = null
     ) 
     {
+        if ( Feature != null ) {
+            this.Feature = Feature;
+        }
         if ( RoleDefinitionAssignmentTemplate != null ) {
             this.RoleDefinitionAssignmentTemplate = RoleDefinitionAssignmentTemplate;
         }
         if ( Version != null ) {
             this.Version = Version;
         }
-        if ( Feature != null ) {
-            this.Feature = Feature;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? RoleDefinitionAssignmentTemplate
-            // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
-            if (this.RoleDefinitionAssignmentTemplate != null)
-            {
-                 s += ind + "roleDefinitionAssignmentTemplate\n";
-
-            }
-            //      C# -> System.Int32? Version
-            // GraphQL -> version: Int! (scalar)
-            if (this.Version != null)
-            {
-                 s += ind + "version\n";
-
-            }
-            //      C# -> CloudAccountFeature? Feature
-            // GraphQL -> feature: CloudAccountFeature! (enum)
-            if (this.Feature != null)
-            {
-                 s += ind + "feature\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> CloudAccountFeature? Feature
+        // GraphQL -> feature: CloudAccountFeature! (enum)
+        if (this.Feature != null) {
+            s += ind + "feature\n" ;
         }
+        //      C# -> System.String? RoleDefinitionAssignmentTemplate
+        // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
+        if (this.RoleDefinitionAssignmentTemplate != null) {
+            s += ind + "roleDefinitionAssignmentTemplate\n" ;
+        }
+        //      C# -> System.Int32? Version
+        // GraphQL -> version: Int! (scalar)
+        if (this.Version != null) {
+            s += ind + "version\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> CloudAccountFeature? Feature
+        // GraphQL -> feature: CloudAccountFeature! (enum)
+        if (this.Feature == null && Exploration.Includes(parent + ".feature", true))
         {
-            //      C# -> System.String? RoleDefinitionAssignmentTemplate
-            // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
-            if (this.RoleDefinitionAssignmentTemplate == null && Exploration.Includes(parent + ".roleDefinitionAssignmentTemplate$"))
-            {
-                this.RoleDefinitionAssignmentTemplate = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? Version
-            // GraphQL -> version: Int! (scalar)
-            if (this.Version == null && Exploration.Includes(parent + ".version$"))
-            {
-                this.Version = new System.Int32();
-            }
-            //      C# -> CloudAccountFeature? Feature
-            // GraphQL -> feature: CloudAccountFeature! (enum)
-            if (this.Feature == null && Exploration.Includes(parent + ".feature$"))
-            {
-                this.Feature = new CloudAccountFeature();
-            }
+            this.Feature = new CloudAccountFeature();
         }
+        //      C# -> System.String? RoleDefinitionAssignmentTemplate
+        // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
+        if (this.RoleDefinitionAssignmentTemplate == null && Exploration.Includes(parent + ".roleDefinitionAssignmentTemplate", true))
+        {
+            this.RoleDefinitionAssignmentTemplate = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? Version
+        // GraphQL -> version: Int! (scalar)
+        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        {
+            this.Version = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class AzureArmTemplateByFeature
+    
     #endregion
 
     public static class ListAzureArmTemplateByFeatureExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureArmTemplateByFeature> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureArmTemplateByFeature> list, 
             String parent = "")
         {
-            var item = new AzureArmTemplateByFeature();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureArmTemplateByFeature());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

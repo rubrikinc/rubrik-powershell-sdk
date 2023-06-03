@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region NasBaseConfig
-    public class NasBaseConfig: IFragment
+    public class NasBaseConfig: BaseType
     {
         #region members
+
         //      C# -> System.String? ApiCertificate
         // GraphQL -> apiCertificate: String (scalar)
         [JsonProperty("apiCertificate")]
@@ -73,6 +75,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("zoneName")]
         public System.String? ZoneName { get; set; }
 
+
         #endregion
 
     #region methods
@@ -127,199 +130,181 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ApiCertificate
-            // GraphQL -> apiCertificate: String (scalar)
-            if (this.ApiCertificate != null)
-            {
-                 s += ind + "apiCertificate\n";
-
-            }
-            //      C# -> System.String? ApiEndpoint
-            // GraphQL -> apiEndpoint: String (scalar)
-            if (this.ApiEndpoint != null)
-            {
-                 s += ind + "apiEndpoint\n";
-
-            }
-            //      C# -> System.String? ApiHostname
-            // GraphQL -> apiHostname: String (scalar)
-            if (this.ApiHostname != null)
-            {
-                 s += ind + "apiHostname\n";
-
-            }
-            //      C# -> System.String? ApiUsername
-            // GraphQL -> apiUsername: String (scalar)
-            if (this.ApiUsername != null)
-            {
-                 s += ind + "apiUsername\n";
-
-            }
-            //      C# -> System.Boolean? IsIsilonChangelistEnabled
-            // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
-            if (this.IsIsilonChangelistEnabled != null)
-            {
-                 s += ind + "isIsilonChangelistEnabled\n";
-
-            }
-            //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
-            // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
-            if (this.IsNetAppSnapDiffEnabled != null)
-            {
-                 s += ind + "isNetAppSnapDiffEnabled\n";
-
-            }
-            //      C# -> System.Boolean? IsNutanixCftEnabled
-            // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
-            if (this.IsNutanixCftEnabled != null)
-            {
-                 s += ind + "isNutanixCftEnabled\n";
-
-            }
-            //      C# -> System.Boolean? IsShareAutoDiscoveryEnabled
-            // GraphQL -> isShareAutoDiscoveryEnabled: Boolean (scalar)
-            if (this.IsShareAutoDiscoveryEnabled != null)
-            {
-                 s += ind + "isShareAutoDiscoveryEnabled\n";
-
-            }
-            //      C# -> System.Boolean? IsSnapdiffEnabled
-            // GraphQL -> isSnapdiffEnabled: Boolean (scalar)
-            if (this.IsSnapdiffEnabled != null)
-            {
-                 s += ind + "isSnapdiffEnabled\n";
-
-            }
-            //      C# -> System.String? VendorType
-            // GraphQL -> vendorType: String! (scalar)
-            if (this.VendorType != null)
-            {
-                 s += ind + "vendorType\n";
-
-            }
-            //      C# -> System.String? ZoneName
-            // GraphQL -> zoneName: String (scalar)
-            if (this.ZoneName != null)
-            {
-                 s += ind + "zoneName\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? ApiCertificate
+        // GraphQL -> apiCertificate: String (scalar)
+        if (this.ApiCertificate != null) {
+            s += ind + "apiCertificate\n" ;
         }
+        //      C# -> System.String? ApiEndpoint
+        // GraphQL -> apiEndpoint: String (scalar)
+        if (this.ApiEndpoint != null) {
+            s += ind + "apiEndpoint\n" ;
+        }
+        //      C# -> System.String? ApiHostname
+        // GraphQL -> apiHostname: String (scalar)
+        if (this.ApiHostname != null) {
+            s += ind + "apiHostname\n" ;
+        }
+        //      C# -> System.String? ApiUsername
+        // GraphQL -> apiUsername: String (scalar)
+        if (this.ApiUsername != null) {
+            s += ind + "apiUsername\n" ;
+        }
+        //      C# -> System.Boolean? IsIsilonChangelistEnabled
+        // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
+        if (this.IsIsilonChangelistEnabled != null) {
+            s += ind + "isIsilonChangelistEnabled\n" ;
+        }
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        if (this.IsNetAppSnapDiffEnabled != null) {
+            s += ind + "isNetAppSnapDiffEnabled\n" ;
+        }
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        if (this.IsNutanixCftEnabled != null) {
+            s += ind + "isNutanixCftEnabled\n" ;
+        }
+        //      C# -> System.Boolean? IsShareAutoDiscoveryEnabled
+        // GraphQL -> isShareAutoDiscoveryEnabled: Boolean (scalar)
+        if (this.IsShareAutoDiscoveryEnabled != null) {
+            s += ind + "isShareAutoDiscoveryEnabled\n" ;
+        }
+        //      C# -> System.Boolean? IsSnapdiffEnabled
+        // GraphQL -> isSnapdiffEnabled: Boolean (scalar)
+        if (this.IsSnapdiffEnabled != null) {
+            s += ind + "isSnapdiffEnabled\n" ;
+        }
+        //      C# -> System.String? VendorType
+        // GraphQL -> vendorType: String! (scalar)
+        if (this.VendorType != null) {
+            s += ind + "vendorType\n" ;
+        }
+        //      C# -> System.String? ZoneName
+        // GraphQL -> zoneName: String (scalar)
+        if (this.ZoneName != null) {
+            s += ind + "zoneName\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? ApiCertificate
+        // GraphQL -> apiCertificate: String (scalar)
+        if (this.ApiCertificate == null && Exploration.Includes(parent + ".apiCertificate", true))
         {
-            //      C# -> System.String? ApiCertificate
-            // GraphQL -> apiCertificate: String (scalar)
-            if (this.ApiCertificate == null && Exploration.Includes(parent + ".apiCertificate$"))
-            {
-                this.ApiCertificate = new System.String("FETCH");
-            }
-            //      C# -> System.String? ApiEndpoint
-            // GraphQL -> apiEndpoint: String (scalar)
-            if (this.ApiEndpoint == null && Exploration.Includes(parent + ".apiEndpoint$"))
-            {
-                this.ApiEndpoint = new System.String("FETCH");
-            }
-            //      C# -> System.String? ApiHostname
-            // GraphQL -> apiHostname: String (scalar)
-            if (this.ApiHostname == null && Exploration.Includes(parent + ".apiHostname$"))
-            {
-                this.ApiHostname = new System.String("FETCH");
-            }
-            //      C# -> System.String? ApiUsername
-            // GraphQL -> apiUsername: String (scalar)
-            if (this.ApiUsername == null && Exploration.Includes(parent + ".apiUsername$"))
-            {
-                this.ApiUsername = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsIsilonChangelistEnabled
-            // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
-            if (this.IsIsilonChangelistEnabled == null && Exploration.Includes(parent + ".isIsilonChangelistEnabled$"))
-            {
-                this.IsIsilonChangelistEnabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
-            // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
-            if (this.IsNetAppSnapDiffEnabled == null && Exploration.Includes(parent + ".isNetAppSnapDiffEnabled$"))
-            {
-                this.IsNetAppSnapDiffEnabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsNutanixCftEnabled
-            // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
-            if (this.IsNutanixCftEnabled == null && Exploration.Includes(parent + ".isNutanixCftEnabled$"))
-            {
-                this.IsNutanixCftEnabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsShareAutoDiscoveryEnabled
-            // GraphQL -> isShareAutoDiscoveryEnabled: Boolean (scalar)
-            if (this.IsShareAutoDiscoveryEnabled == null && Exploration.Includes(parent + ".isShareAutoDiscoveryEnabled$"))
-            {
-                this.IsShareAutoDiscoveryEnabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsSnapdiffEnabled
-            // GraphQL -> isSnapdiffEnabled: Boolean (scalar)
-            if (this.IsSnapdiffEnabled == null && Exploration.Includes(parent + ".isSnapdiffEnabled$"))
-            {
-                this.IsSnapdiffEnabled = new System.Boolean();
-            }
-            //      C# -> System.String? VendorType
-            // GraphQL -> vendorType: String! (scalar)
-            if (this.VendorType == null && Exploration.Includes(parent + ".vendorType$"))
-            {
-                this.VendorType = new System.String("FETCH");
-            }
-            //      C# -> System.String? ZoneName
-            // GraphQL -> zoneName: String (scalar)
-            if (this.ZoneName == null && Exploration.Includes(parent + ".zoneName$"))
-            {
-                this.ZoneName = new System.String("FETCH");
-            }
+            this.ApiCertificate = new System.String("FETCH");
         }
+        //      C# -> System.String? ApiEndpoint
+        // GraphQL -> apiEndpoint: String (scalar)
+        if (this.ApiEndpoint == null && Exploration.Includes(parent + ".apiEndpoint", true))
+        {
+            this.ApiEndpoint = new System.String("FETCH");
+        }
+        //      C# -> System.String? ApiHostname
+        // GraphQL -> apiHostname: String (scalar)
+        if (this.ApiHostname == null && Exploration.Includes(parent + ".apiHostname", true))
+        {
+            this.ApiHostname = new System.String("FETCH");
+        }
+        //      C# -> System.String? ApiUsername
+        // GraphQL -> apiUsername: String (scalar)
+        if (this.ApiUsername == null && Exploration.Includes(parent + ".apiUsername", true))
+        {
+            this.ApiUsername = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsIsilonChangelistEnabled
+        // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
+        if (this.IsIsilonChangelistEnabled == null && Exploration.Includes(parent + ".isIsilonChangelistEnabled", true))
+        {
+            this.IsIsilonChangelistEnabled = true;
+        }
+        //      C# -> System.Boolean? IsNetAppSnapDiffEnabled
+        // GraphQL -> isNetAppSnapDiffEnabled: Boolean (scalar)
+        if (this.IsNetAppSnapDiffEnabled == null && Exploration.Includes(parent + ".isNetAppSnapDiffEnabled", true))
+        {
+            this.IsNetAppSnapDiffEnabled = true;
+        }
+        //      C# -> System.Boolean? IsNutanixCftEnabled
+        // GraphQL -> isNutanixCftEnabled: Boolean (scalar)
+        if (this.IsNutanixCftEnabled == null && Exploration.Includes(parent + ".isNutanixCftEnabled", true))
+        {
+            this.IsNutanixCftEnabled = true;
+        }
+        //      C# -> System.Boolean? IsShareAutoDiscoveryEnabled
+        // GraphQL -> isShareAutoDiscoveryEnabled: Boolean (scalar)
+        if (this.IsShareAutoDiscoveryEnabled == null && Exploration.Includes(parent + ".isShareAutoDiscoveryEnabled", true))
+        {
+            this.IsShareAutoDiscoveryEnabled = true;
+        }
+        //      C# -> System.Boolean? IsSnapdiffEnabled
+        // GraphQL -> isSnapdiffEnabled: Boolean (scalar)
+        if (this.IsSnapdiffEnabled == null && Exploration.Includes(parent + ".isSnapdiffEnabled", true))
+        {
+            this.IsSnapdiffEnabled = true;
+        }
+        //      C# -> System.String? VendorType
+        // GraphQL -> vendorType: String! (scalar)
+        if (this.VendorType == null && Exploration.Includes(parent + ".vendorType", true))
+        {
+            this.VendorType = new System.String("FETCH");
+        }
+        //      C# -> System.String? ZoneName
+        // GraphQL -> zoneName: String (scalar)
+        if (this.ZoneName == null && Exploration.Includes(parent + ".zoneName", true))
+        {
+            this.ZoneName = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class NasBaseConfig
+    
     #endregion
 
     public static class ListNasBaseConfigExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<NasBaseConfig> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<NasBaseConfig> list, 
             String parent = "")
         {
-            var item = new NasBaseConfig();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new NasBaseConfig());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

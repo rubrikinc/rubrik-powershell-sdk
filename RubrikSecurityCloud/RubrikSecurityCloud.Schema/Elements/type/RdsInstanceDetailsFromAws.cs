@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region RdsInstanceDetailsFromAws
-    public class RdsInstanceDetailsFromAws: IFragment
+    public class RdsInstanceDetailsFromAws: BaseType
     {
         #region members
+
         //      C# -> System.Int64? AllocatedStorageInGb
         // GraphQL -> allocatedStorageInGb: Long! (scalar)
         [JsonProperty("allocatedStorageInGb")]
@@ -108,6 +110,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("vpcId")]
         public System.String? VpcId { get; set; }
 
+
         #endregion
 
     #region methods
@@ -190,290 +193,258 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? AllocatedStorageInGb
-            // GraphQL -> allocatedStorageInGb: Long! (scalar)
-            if (this.AllocatedStorageInGb != null)
-            {
-                 s += ind + "allocatedStorageInGb\n";
-
-            }
-            //      C# -> System.Int64? BackupRetentionPeriod
-            // GraphQL -> backupRetentionPeriod: Long! (scalar)
-            if (this.BackupRetentionPeriod != null)
-            {
-                 s += ind + "backupRetentionPeriod\n";
-
-            }
-            //      C# -> System.String? DbEngine
-            // GraphQL -> dbEngine: String! (scalar)
-            if (this.DbEngine != null)
-            {
-                 s += ind + "dbEngine\n";
-
-            }
-            //      C# -> System.String? DbInstanceClass
-            // GraphQL -> dbInstanceClass: String! (scalar)
-            if (this.DbInstanceClass != null)
-            {
-                 s += ind + "dbInstanceClass\n";
-
-            }
-            //      C# -> System.String? DbInstanceStatus
-            // GraphQL -> dbInstanceStatus: String! (scalar)
-            if (this.DbInstanceStatus != null)
-            {
-                 s += ind + "dbInstanceStatus\n";
-
-            }
-            //      C# -> System.String? DbMaintenanceWindow
-            // GraphQL -> dbMaintenanceWindow: String! (scalar)
-            if (this.DbMaintenanceWindow != null)
-            {
-                 s += ind + "dbMaintenanceWindow\n";
-
-            }
-            //      C# -> System.String? DbParameterGroupName
-            // GraphQL -> dbParameterGroupName: String! (scalar)
-            if (this.DbParameterGroupName != null)
-            {
-                 s += ind + "dbParameterGroupName\n";
-
-            }
-            //      C# -> System.String? DbSubnetGroupName
-            // GraphQL -> dbSubnetGroupName: String! (scalar)
-            if (this.DbSubnetGroupName != null)
-            {
-                 s += ind + "dbSubnetGroupName\n";
-
-            }
-            //      C# -> System.String? EngineVersion
-            // GraphQL -> engineVersion: String! (scalar)
-            if (this.EngineVersion != null)
-            {
-                 s += ind + "engineVersion\n";
-
-            }
-            //      C# -> System.Int64? Iops
-            // GraphQL -> iops: Long! (scalar)
-            if (this.Iops != null)
-            {
-                 s += ind + "iops\n";
-
-            }
-            //      C# -> System.Boolean? IsMultiAz
-            // GraphQL -> isMultiAz: Boolean! (scalar)
-            if (this.IsMultiAz != null)
-            {
-                 s += ind + "isMultiAz\n";
-
-            }
-            //      C# -> System.String? KmsKeyId
-            // GraphQL -> kmsKeyId: String! (scalar)
-            if (this.KmsKeyId != null)
-            {
-                 s += ind + "kmsKeyId\n";
-
-            }
-            //      C# -> System.String? OptionGroupName
-            // GraphQL -> optionGroupName: String! (scalar)
-            if (this.OptionGroupName != null)
-            {
-                 s += ind + "optionGroupName\n";
-
-            }
-            //      C# -> System.Int64? Port
-            // GraphQL -> port: Long! (scalar)
-            if (this.Port != null)
-            {
-                 s += ind + "port\n";
-
-            }
-            //      C# -> System.String? PrimaryAz
-            // GraphQL -> primaryAz: String! (scalar)
-            if (this.PrimaryAz != null)
-            {
-                 s += ind + "primaryAz\n";
-
-            }
-            //      C# -> System.String? RdsInstanceArn
-            // GraphQL -> rdsInstanceArn: String! (scalar)
-            if (this.RdsInstanceArn != null)
-            {
-                 s += ind + "rdsInstanceArn\n";
-
-            }
-            //      C# -> System.String? StorageType
-            // GraphQL -> storageType: String! (scalar)
-            if (this.StorageType != null)
-            {
-                 s += ind + "storageType\n";
-
-            }
-            //      C# -> System.String? VpcId
-            // GraphQL -> vpcId: String! (scalar)
-            if (this.VpcId != null)
-            {
-                 s += ind + "vpcId\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? AllocatedStorageInGb
+        // GraphQL -> allocatedStorageInGb: Long! (scalar)
+        if (this.AllocatedStorageInGb != null) {
+            s += ind + "allocatedStorageInGb\n" ;
         }
+        //      C# -> System.Int64? BackupRetentionPeriod
+        // GraphQL -> backupRetentionPeriod: Long! (scalar)
+        if (this.BackupRetentionPeriod != null) {
+            s += ind + "backupRetentionPeriod\n" ;
+        }
+        //      C# -> System.String? DbEngine
+        // GraphQL -> dbEngine: String! (scalar)
+        if (this.DbEngine != null) {
+            s += ind + "dbEngine\n" ;
+        }
+        //      C# -> System.String? DbInstanceClass
+        // GraphQL -> dbInstanceClass: String! (scalar)
+        if (this.DbInstanceClass != null) {
+            s += ind + "dbInstanceClass\n" ;
+        }
+        //      C# -> System.String? DbInstanceStatus
+        // GraphQL -> dbInstanceStatus: String! (scalar)
+        if (this.DbInstanceStatus != null) {
+            s += ind + "dbInstanceStatus\n" ;
+        }
+        //      C# -> System.String? DbMaintenanceWindow
+        // GraphQL -> dbMaintenanceWindow: String! (scalar)
+        if (this.DbMaintenanceWindow != null) {
+            s += ind + "dbMaintenanceWindow\n" ;
+        }
+        //      C# -> System.String? DbParameterGroupName
+        // GraphQL -> dbParameterGroupName: String! (scalar)
+        if (this.DbParameterGroupName != null) {
+            s += ind + "dbParameterGroupName\n" ;
+        }
+        //      C# -> System.String? DbSubnetGroupName
+        // GraphQL -> dbSubnetGroupName: String! (scalar)
+        if (this.DbSubnetGroupName != null) {
+            s += ind + "dbSubnetGroupName\n" ;
+        }
+        //      C# -> System.String? EngineVersion
+        // GraphQL -> engineVersion: String! (scalar)
+        if (this.EngineVersion != null) {
+            s += ind + "engineVersion\n" ;
+        }
+        //      C# -> System.Int64? Iops
+        // GraphQL -> iops: Long! (scalar)
+        if (this.Iops != null) {
+            s += ind + "iops\n" ;
+        }
+        //      C# -> System.Boolean? IsMultiAz
+        // GraphQL -> isMultiAz: Boolean! (scalar)
+        if (this.IsMultiAz != null) {
+            s += ind + "isMultiAz\n" ;
+        }
+        //      C# -> System.String? KmsKeyId
+        // GraphQL -> kmsKeyId: String! (scalar)
+        if (this.KmsKeyId != null) {
+            s += ind + "kmsKeyId\n" ;
+        }
+        //      C# -> System.String? OptionGroupName
+        // GraphQL -> optionGroupName: String! (scalar)
+        if (this.OptionGroupName != null) {
+            s += ind + "optionGroupName\n" ;
+        }
+        //      C# -> System.Int64? Port
+        // GraphQL -> port: Long! (scalar)
+        if (this.Port != null) {
+            s += ind + "port\n" ;
+        }
+        //      C# -> System.String? PrimaryAz
+        // GraphQL -> primaryAz: String! (scalar)
+        if (this.PrimaryAz != null) {
+            s += ind + "primaryAz\n" ;
+        }
+        //      C# -> System.String? RdsInstanceArn
+        // GraphQL -> rdsInstanceArn: String! (scalar)
+        if (this.RdsInstanceArn != null) {
+            s += ind + "rdsInstanceArn\n" ;
+        }
+        //      C# -> System.String? StorageType
+        // GraphQL -> storageType: String! (scalar)
+        if (this.StorageType != null) {
+            s += ind + "storageType\n" ;
+        }
+        //      C# -> System.String? VpcId
+        // GraphQL -> vpcId: String! (scalar)
+        if (this.VpcId != null) {
+            s += ind + "vpcId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? AllocatedStorageInGb
+        // GraphQL -> allocatedStorageInGb: Long! (scalar)
+        if (this.AllocatedStorageInGb == null && Exploration.Includes(parent + ".allocatedStorageInGb", true))
         {
-            //      C# -> System.Int64? AllocatedStorageInGb
-            // GraphQL -> allocatedStorageInGb: Long! (scalar)
-            if (this.AllocatedStorageInGb == null && Exploration.Includes(parent + ".allocatedStorageInGb$"))
-            {
-                this.AllocatedStorageInGb = new System.Int64();
-            }
-            //      C# -> System.Int64? BackupRetentionPeriod
-            // GraphQL -> backupRetentionPeriod: Long! (scalar)
-            if (this.BackupRetentionPeriod == null && Exploration.Includes(parent + ".backupRetentionPeriod$"))
-            {
-                this.BackupRetentionPeriod = new System.Int64();
-            }
-            //      C# -> System.String? DbEngine
-            // GraphQL -> dbEngine: String! (scalar)
-            if (this.DbEngine == null && Exploration.Includes(parent + ".dbEngine$"))
-            {
-                this.DbEngine = new System.String("FETCH");
-            }
-            //      C# -> System.String? DbInstanceClass
-            // GraphQL -> dbInstanceClass: String! (scalar)
-            if (this.DbInstanceClass == null && Exploration.Includes(parent + ".dbInstanceClass$"))
-            {
-                this.DbInstanceClass = new System.String("FETCH");
-            }
-            //      C# -> System.String? DbInstanceStatus
-            // GraphQL -> dbInstanceStatus: String! (scalar)
-            if (this.DbInstanceStatus == null && Exploration.Includes(parent + ".dbInstanceStatus$"))
-            {
-                this.DbInstanceStatus = new System.String("FETCH");
-            }
-            //      C# -> System.String? DbMaintenanceWindow
-            // GraphQL -> dbMaintenanceWindow: String! (scalar)
-            if (this.DbMaintenanceWindow == null && Exploration.Includes(parent + ".dbMaintenanceWindow$"))
-            {
-                this.DbMaintenanceWindow = new System.String("FETCH");
-            }
-            //      C# -> System.String? DbParameterGroupName
-            // GraphQL -> dbParameterGroupName: String! (scalar)
-            if (this.DbParameterGroupName == null && Exploration.Includes(parent + ".dbParameterGroupName$"))
-            {
-                this.DbParameterGroupName = new System.String("FETCH");
-            }
-            //      C# -> System.String? DbSubnetGroupName
-            // GraphQL -> dbSubnetGroupName: String! (scalar)
-            if (this.DbSubnetGroupName == null && Exploration.Includes(parent + ".dbSubnetGroupName$"))
-            {
-                this.DbSubnetGroupName = new System.String("FETCH");
-            }
-            //      C# -> System.String? EngineVersion
-            // GraphQL -> engineVersion: String! (scalar)
-            if (this.EngineVersion == null && Exploration.Includes(parent + ".engineVersion$"))
-            {
-                this.EngineVersion = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? Iops
-            // GraphQL -> iops: Long! (scalar)
-            if (this.Iops == null && Exploration.Includes(parent + ".iops$"))
-            {
-                this.Iops = new System.Int64();
-            }
-            //      C# -> System.Boolean? IsMultiAz
-            // GraphQL -> isMultiAz: Boolean! (scalar)
-            if (this.IsMultiAz == null && Exploration.Includes(parent + ".isMultiAz$"))
-            {
-                this.IsMultiAz = new System.Boolean();
-            }
-            //      C# -> System.String? KmsKeyId
-            // GraphQL -> kmsKeyId: String! (scalar)
-            if (this.KmsKeyId == null && Exploration.Includes(parent + ".kmsKeyId$"))
-            {
-                this.KmsKeyId = new System.String("FETCH");
-            }
-            //      C# -> System.String? OptionGroupName
-            // GraphQL -> optionGroupName: String! (scalar)
-            if (this.OptionGroupName == null && Exploration.Includes(parent + ".optionGroupName$"))
-            {
-                this.OptionGroupName = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? Port
-            // GraphQL -> port: Long! (scalar)
-            if (this.Port == null && Exploration.Includes(parent + ".port$"))
-            {
-                this.Port = new System.Int64();
-            }
-            //      C# -> System.String? PrimaryAz
-            // GraphQL -> primaryAz: String! (scalar)
-            if (this.PrimaryAz == null && Exploration.Includes(parent + ".primaryAz$"))
-            {
-                this.PrimaryAz = new System.String("FETCH");
-            }
-            //      C# -> System.String? RdsInstanceArn
-            // GraphQL -> rdsInstanceArn: String! (scalar)
-            if (this.RdsInstanceArn == null && Exploration.Includes(parent + ".rdsInstanceArn$"))
-            {
-                this.RdsInstanceArn = new System.String("FETCH");
-            }
-            //      C# -> System.String? StorageType
-            // GraphQL -> storageType: String! (scalar)
-            if (this.StorageType == null && Exploration.Includes(parent + ".storageType$"))
-            {
-                this.StorageType = new System.String("FETCH");
-            }
-            //      C# -> System.String? VpcId
-            // GraphQL -> vpcId: String! (scalar)
-            if (this.VpcId == null && Exploration.Includes(parent + ".vpcId$"))
-            {
-                this.VpcId = new System.String("FETCH");
-            }
+            this.AllocatedStorageInGb = new System.Int64();
         }
+        //      C# -> System.Int64? BackupRetentionPeriod
+        // GraphQL -> backupRetentionPeriod: Long! (scalar)
+        if (this.BackupRetentionPeriod == null && Exploration.Includes(parent + ".backupRetentionPeriod", true))
+        {
+            this.BackupRetentionPeriod = new System.Int64();
+        }
+        //      C# -> System.String? DbEngine
+        // GraphQL -> dbEngine: String! (scalar)
+        if (this.DbEngine == null && Exploration.Includes(parent + ".dbEngine", true))
+        {
+            this.DbEngine = new System.String("FETCH");
+        }
+        //      C# -> System.String? DbInstanceClass
+        // GraphQL -> dbInstanceClass: String! (scalar)
+        if (this.DbInstanceClass == null && Exploration.Includes(parent + ".dbInstanceClass", true))
+        {
+            this.DbInstanceClass = new System.String("FETCH");
+        }
+        //      C# -> System.String? DbInstanceStatus
+        // GraphQL -> dbInstanceStatus: String! (scalar)
+        if (this.DbInstanceStatus == null && Exploration.Includes(parent + ".dbInstanceStatus", true))
+        {
+            this.DbInstanceStatus = new System.String("FETCH");
+        }
+        //      C# -> System.String? DbMaintenanceWindow
+        // GraphQL -> dbMaintenanceWindow: String! (scalar)
+        if (this.DbMaintenanceWindow == null && Exploration.Includes(parent + ".dbMaintenanceWindow", true))
+        {
+            this.DbMaintenanceWindow = new System.String("FETCH");
+        }
+        //      C# -> System.String? DbParameterGroupName
+        // GraphQL -> dbParameterGroupName: String! (scalar)
+        if (this.DbParameterGroupName == null && Exploration.Includes(parent + ".dbParameterGroupName", true))
+        {
+            this.DbParameterGroupName = new System.String("FETCH");
+        }
+        //      C# -> System.String? DbSubnetGroupName
+        // GraphQL -> dbSubnetGroupName: String! (scalar)
+        if (this.DbSubnetGroupName == null && Exploration.Includes(parent + ".dbSubnetGroupName", true))
+        {
+            this.DbSubnetGroupName = new System.String("FETCH");
+        }
+        //      C# -> System.String? EngineVersion
+        // GraphQL -> engineVersion: String! (scalar)
+        if (this.EngineVersion == null && Exploration.Includes(parent + ".engineVersion", true))
+        {
+            this.EngineVersion = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? Iops
+        // GraphQL -> iops: Long! (scalar)
+        if (this.Iops == null && Exploration.Includes(parent + ".iops", true))
+        {
+            this.Iops = new System.Int64();
+        }
+        //      C# -> System.Boolean? IsMultiAz
+        // GraphQL -> isMultiAz: Boolean! (scalar)
+        if (this.IsMultiAz == null && Exploration.Includes(parent + ".isMultiAz", true))
+        {
+            this.IsMultiAz = true;
+        }
+        //      C# -> System.String? KmsKeyId
+        // GraphQL -> kmsKeyId: String! (scalar)
+        if (this.KmsKeyId == null && Exploration.Includes(parent + ".kmsKeyId", true))
+        {
+            this.KmsKeyId = new System.String("FETCH");
+        }
+        //      C# -> System.String? OptionGroupName
+        // GraphQL -> optionGroupName: String! (scalar)
+        if (this.OptionGroupName == null && Exploration.Includes(parent + ".optionGroupName", true))
+        {
+            this.OptionGroupName = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? Port
+        // GraphQL -> port: Long! (scalar)
+        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        {
+            this.Port = new System.Int64();
+        }
+        //      C# -> System.String? PrimaryAz
+        // GraphQL -> primaryAz: String! (scalar)
+        if (this.PrimaryAz == null && Exploration.Includes(parent + ".primaryAz", true))
+        {
+            this.PrimaryAz = new System.String("FETCH");
+        }
+        //      C# -> System.String? RdsInstanceArn
+        // GraphQL -> rdsInstanceArn: String! (scalar)
+        if (this.RdsInstanceArn == null && Exploration.Includes(parent + ".rdsInstanceArn", true))
+        {
+            this.RdsInstanceArn = new System.String("FETCH");
+        }
+        //      C# -> System.String? StorageType
+        // GraphQL -> storageType: String! (scalar)
+        if (this.StorageType == null && Exploration.Includes(parent + ".storageType", true))
+        {
+            this.StorageType = new System.String("FETCH");
+        }
+        //      C# -> System.String? VpcId
+        // GraphQL -> vpcId: String! (scalar)
+        if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
+        {
+            this.VpcId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class RdsInstanceDetailsFromAws
+    
     #endregion
 
     public static class ListRdsInstanceDetailsFromAwsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<RdsInstanceDetailsFromAws> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<RdsInstanceDetailsFromAws> list, 
             String parent = "")
         {
-            var item = new RdsInstanceDetailsFromAws();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new RdsInstanceDetailsFromAws());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

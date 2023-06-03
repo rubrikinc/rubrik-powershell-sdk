@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region Role
-    public class Role: IFragment
+    public class Role: BaseType
     {
         #region members
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -58,6 +60,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("effectivePermissions")]
         public List<Permission>? EffectivePermissions { get; set; }
 
+        //      C# -> List<RbacPermission>? EffectiveRbacPermissions
+        // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)
+        [JsonProperty("effectiveRbacPermissions")]
+        public List<RbacPermission>? EffectiveRbacPermissions { get; set; }
+
         //      C# -> List<Permission>? ExplicitlyAssignedPermissions
         // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
         [JsonProperty("explicitlyAssignedPermissions")]
@@ -67,6 +74,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> permissions: [Permission!]! (type)
         [JsonProperty("permissions")]
         public List<Permission>? Permissions { get; set; }
+
 
         #endregion
 
@@ -81,6 +89,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? OrgId = null,
         List<System.String>? ProtectableClusters = null,
         List<Permission>? EffectivePermissions = null,
+        List<RbacPermission>? EffectiveRbacPermissions = null,
         List<Permission>? ExplicitlyAssignedPermissions = null,
         List<Permission>? Permissions = null
     ) 
@@ -109,6 +118,9 @@ namespace Rubrik.SecurityCloud.Types
         if ( EffectivePermissions != null ) {
             this.EffectivePermissions = EffectivePermissions;
         }
+        if ( EffectiveRbacPermissions != null ) {
+            this.EffectiveRbacPermissions = EffectiveRbacPermissions;
+        }
         if ( ExplicitlyAssignedPermissions != null ) {
             this.ExplicitlyAssignedPermissions = ExplicitlyAssignedPermissions;
         }
@@ -118,198 +130,185 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description != null)
-            {
-                 s += ind + "description\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsOrgAdmin
-            // GraphQL -> isOrgAdmin: Boolean! (scalar)
-            if (this.IsOrgAdmin != null)
-            {
-                 s += ind + "isOrgAdmin\n";
-
-            }
-            //      C# -> System.Boolean? IsReadOnly
-            // GraphQL -> isReadOnly: Boolean! (scalar)
-            if (this.IsReadOnly != null)
-            {
-                 s += ind + "isReadOnly\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? OrgId
-            // GraphQL -> orgId: String! (scalar)
-            if (this.OrgId != null)
-            {
-                 s += ind + "orgId\n";
-
-            }
-            //      C# -> List<System.String>? ProtectableClusters
-            // GraphQL -> protectableClusters: [String!]! (scalar)
-            if (this.ProtectableClusters != null)
-            {
-                 s += ind + "protectableClusters\n";
-
-            }
-            //      C# -> List<Permission>? EffectivePermissions
-            // GraphQL -> effectivePermissions: [Permission!]! (type)
-            if (this.EffectivePermissions != null)
-            {
-                 s += ind + "effectivePermissions\n";
-
-                 s += ind + "{\n" + 
-                 this.EffectivePermissions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<Permission>? ExplicitlyAssignedPermissions
-            // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
-            if (this.ExplicitlyAssignedPermissions != null)
-            {
-                 s += ind + "explicitlyAssignedPermissions\n";
-
-                 s += ind + "{\n" + 
-                 this.ExplicitlyAssignedPermissions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<Permission>? Permissions
-            // GraphQL -> permissions: [Permission!]! (type)
-            if (this.Permissions != null)
-            {
-                 s += ind + "permissions\n";
-
-                 s += ind + "{\n" + 
-                 this.Permissions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            s += ind + "description\n" ;
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsOrgAdmin
+        // GraphQL -> isOrgAdmin: Boolean! (scalar)
+        if (this.IsOrgAdmin != null) {
+            s += ind + "isOrgAdmin\n" ;
+        }
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean! (scalar)
+        if (this.IsReadOnly != null) {
+            s += ind + "isReadOnly\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        if (this.OrgId != null) {
+            s += ind + "orgId\n" ;
+        }
+        //      C# -> List<System.String>? ProtectableClusters
+        // GraphQL -> protectableClusters: [String!]! (scalar)
+        if (this.ProtectableClusters != null) {
+            s += ind + "protectableClusters\n" ;
+        }
+        //      C# -> List<Permission>? EffectivePermissions
+        // GraphQL -> effectivePermissions: [Permission!]! (type)
+        if (this.EffectivePermissions != null) {
+            s += ind + "effectivePermissions {\n" + this.EffectivePermissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<RbacPermission>? EffectiveRbacPermissions
+        // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)
+        if (this.EffectiveRbacPermissions != null) {
+            s += ind + "effectiveRbacPermissions {\n" + this.EffectiveRbacPermissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<Permission>? ExplicitlyAssignedPermissions
+        // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
+        if (this.ExplicitlyAssignedPermissions != null) {
+            s += ind + "explicitlyAssignedPermissions {\n" + this.ExplicitlyAssignedPermissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<Permission>? Permissions
+        // GraphQL -> permissions: [Permission!]! (type)
+        if (this.Permissions != null) {
+            s += ind + "permissions {\n" + this.Permissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description == null && Exploration.Includes(parent + ".description$"))
-            {
-                this.Description = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsOrgAdmin
-            // GraphQL -> isOrgAdmin: Boolean! (scalar)
-            if (this.IsOrgAdmin == null && Exploration.Includes(parent + ".isOrgAdmin$"))
-            {
-                this.IsOrgAdmin = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsReadOnly
-            // GraphQL -> isReadOnly: Boolean! (scalar)
-            if (this.IsReadOnly == null && Exploration.Includes(parent + ".isReadOnly$"))
-            {
-                this.IsReadOnly = new System.Boolean();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? OrgId
-            // GraphQL -> orgId: String! (scalar)
-            if (this.OrgId == null && Exploration.Includes(parent + ".orgId$"))
-            {
-                this.OrgId = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? ProtectableClusters
-            // GraphQL -> protectableClusters: [String!]! (scalar)
-            if (this.ProtectableClusters == null && Exploration.Includes(parent + ".protectableClusters$"))
-            {
-                this.ProtectableClusters = new List<System.String>();
-            }
-            //      C# -> List<Permission>? EffectivePermissions
-            // GraphQL -> effectivePermissions: [Permission!]! (type)
-            if (this.EffectivePermissions == null && Exploration.Includes(parent + ".effectivePermissions"))
-            {
-                this.EffectivePermissions = new List<Permission>();
-                this.EffectivePermissions.ApplyExploratoryFragment(parent + ".effectivePermissions");
-            }
-            //      C# -> List<Permission>? ExplicitlyAssignedPermissions
-            // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
-            if (this.ExplicitlyAssignedPermissions == null && Exploration.Includes(parent + ".explicitlyAssignedPermissions"))
-            {
-                this.ExplicitlyAssignedPermissions = new List<Permission>();
-                this.ExplicitlyAssignedPermissions.ApplyExploratoryFragment(parent + ".explicitlyAssignedPermissions");
-            }
-            //      C# -> List<Permission>? Permissions
-            // GraphQL -> permissions: [Permission!]! (type)
-            if (this.Permissions == null && Exploration.Includes(parent + ".permissions"))
-            {
-                this.Permissions = new List<Permission>();
-                this.Permissions.ApplyExploratoryFragment(parent + ".permissions");
-            }
+            this.Description = new System.String("FETCH");
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsOrgAdmin
+        // GraphQL -> isOrgAdmin: Boolean! (scalar)
+        if (this.IsOrgAdmin == null && Exploration.Includes(parent + ".isOrgAdmin", true))
+        {
+            this.IsOrgAdmin = true;
+        }
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean! (scalar)
+        if (this.IsReadOnly == null && Exploration.Includes(parent + ".isReadOnly", true))
+        {
+            this.IsReadOnly = true;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? OrgId
+        // GraphQL -> orgId: String! (scalar)
+        if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
+        {
+            this.OrgId = new System.String("FETCH");
+        }
+        //      C# -> List<System.String>? ProtectableClusters
+        // GraphQL -> protectableClusters: [String!]! (scalar)
+        if (this.ProtectableClusters == null && Exploration.Includes(parent + ".protectableClusters", true))
+        {
+            this.ProtectableClusters = new List<System.String>();
+        }
+        //      C# -> List<Permission>? EffectivePermissions
+        // GraphQL -> effectivePermissions: [Permission!]! (type)
+        if (this.EffectivePermissions == null && Exploration.Includes(parent + ".effectivePermissions"))
+        {
+            this.EffectivePermissions = new List<Permission>();
+            this.EffectivePermissions.ApplyExploratoryFieldSpec(parent + ".effectivePermissions");
+        }
+        //      C# -> List<RbacPermission>? EffectiveRbacPermissions
+        // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)
+        if (this.EffectiveRbacPermissions == null && Exploration.Includes(parent + ".effectiveRbacPermissions"))
+        {
+            this.EffectiveRbacPermissions = new List<RbacPermission>();
+            this.EffectiveRbacPermissions.ApplyExploratoryFieldSpec(parent + ".effectiveRbacPermissions");
+        }
+        //      C# -> List<Permission>? ExplicitlyAssignedPermissions
+        // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
+        if (this.ExplicitlyAssignedPermissions == null && Exploration.Includes(parent + ".explicitlyAssignedPermissions"))
+        {
+            this.ExplicitlyAssignedPermissions = new List<Permission>();
+            this.ExplicitlyAssignedPermissions.ApplyExploratoryFieldSpec(parent + ".explicitlyAssignedPermissions");
+        }
+        //      C# -> List<Permission>? Permissions
+        // GraphQL -> permissions: [Permission!]! (type)
+        if (this.Permissions == null && Exploration.Includes(parent + ".permissions"))
+        {
+            this.Permissions = new List<Permission>();
+            this.Permissions.ApplyExploratoryFieldSpec(parent + ".permissions");
+        }
+    }
 
 
     #endregion
 
     } // class Role
+    
     #endregion
 
     public static class ListRoleExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<Role> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<Role> list, 
             String parent = "")
         {
-            var item = new Role();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new Role());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

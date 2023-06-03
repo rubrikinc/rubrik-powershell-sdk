@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SensitiveFiles
-    public class SensitiveFiles: IFragment
+    public class SensitiveFiles: BaseType
     {
         #region members
+
         //      C# -> SummaryCount? HighRiskFileCount
         // GraphQL -> highRiskFileCount: SummaryCount (type)
         [JsonProperty("highRiskFileCount")]
@@ -37,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totalFileCount: SummaryCount (type)
         [JsonProperty("totalFileCount")]
         public SummaryCount? TotalFileCount { get; set; }
+
 
         #endregion
 
@@ -64,124 +67,108 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> SummaryCount? HighRiskFileCount
-            // GraphQL -> highRiskFileCount: SummaryCount (type)
-            if (this.HighRiskFileCount != null)
-            {
-                 s += ind + "highRiskFileCount\n";
-
-                 s += ind + "{\n" + 
-                 this.HighRiskFileCount.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SummaryCount? LowRiskFileCount
-            // GraphQL -> lowRiskFileCount: SummaryCount (type)
-            if (this.LowRiskFileCount != null)
-            {
-                 s += ind + "lowRiskFileCount\n";
-
-                 s += ind + "{\n" + 
-                 this.LowRiskFileCount.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SummaryCount? MediumRiskFileCount
-            // GraphQL -> mediumRiskFileCount: SummaryCount (type)
-            if (this.MediumRiskFileCount != null)
-            {
-                 s += ind + "mediumRiskFileCount\n";
-
-                 s += ind + "{\n" + 
-                 this.MediumRiskFileCount.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SummaryCount? TotalFileCount
-            // GraphQL -> totalFileCount: SummaryCount (type)
-            if (this.TotalFileCount != null)
-            {
-                 s += ind + "totalFileCount\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalFileCount.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> SummaryCount? HighRiskFileCount
+        // GraphQL -> highRiskFileCount: SummaryCount (type)
+        if (this.HighRiskFileCount != null) {
+            s += ind + "highRiskFileCount {\n" + this.HighRiskFileCount.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> SummaryCount? LowRiskFileCount
+        // GraphQL -> lowRiskFileCount: SummaryCount (type)
+        if (this.LowRiskFileCount != null) {
+            s += ind + "lowRiskFileCount {\n" + this.LowRiskFileCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SummaryCount? MediumRiskFileCount
+        // GraphQL -> mediumRiskFileCount: SummaryCount (type)
+        if (this.MediumRiskFileCount != null) {
+            s += ind + "mediumRiskFileCount {\n" + this.MediumRiskFileCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SummaryCount? TotalFileCount
+        // GraphQL -> totalFileCount: SummaryCount (type)
+        if (this.TotalFileCount != null) {
+            s += ind + "totalFileCount {\n" + this.TotalFileCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> SummaryCount? HighRiskFileCount
+        // GraphQL -> highRiskFileCount: SummaryCount (type)
+        if (this.HighRiskFileCount == null && Exploration.Includes(parent + ".highRiskFileCount"))
         {
-            //      C# -> SummaryCount? HighRiskFileCount
-            // GraphQL -> highRiskFileCount: SummaryCount (type)
-            if (this.HighRiskFileCount == null && Exploration.Includes(parent + ".highRiskFileCount"))
-            {
-                this.HighRiskFileCount = new SummaryCount();
-                this.HighRiskFileCount.ApplyExploratoryFragment(parent + ".highRiskFileCount");
-            }
-            //      C# -> SummaryCount? LowRiskFileCount
-            // GraphQL -> lowRiskFileCount: SummaryCount (type)
-            if (this.LowRiskFileCount == null && Exploration.Includes(parent + ".lowRiskFileCount"))
-            {
-                this.LowRiskFileCount = new SummaryCount();
-                this.LowRiskFileCount.ApplyExploratoryFragment(parent + ".lowRiskFileCount");
-            }
-            //      C# -> SummaryCount? MediumRiskFileCount
-            // GraphQL -> mediumRiskFileCount: SummaryCount (type)
-            if (this.MediumRiskFileCount == null && Exploration.Includes(parent + ".mediumRiskFileCount"))
-            {
-                this.MediumRiskFileCount = new SummaryCount();
-                this.MediumRiskFileCount.ApplyExploratoryFragment(parent + ".mediumRiskFileCount");
-            }
-            //      C# -> SummaryCount? TotalFileCount
-            // GraphQL -> totalFileCount: SummaryCount (type)
-            if (this.TotalFileCount == null && Exploration.Includes(parent + ".totalFileCount"))
-            {
-                this.TotalFileCount = new SummaryCount();
-                this.TotalFileCount.ApplyExploratoryFragment(parent + ".totalFileCount");
-            }
+            this.HighRiskFileCount = new SummaryCount();
+            this.HighRiskFileCount.ApplyExploratoryFieldSpec(parent + ".highRiskFileCount");
         }
+        //      C# -> SummaryCount? LowRiskFileCount
+        // GraphQL -> lowRiskFileCount: SummaryCount (type)
+        if (this.LowRiskFileCount == null && Exploration.Includes(parent + ".lowRiskFileCount"))
+        {
+            this.LowRiskFileCount = new SummaryCount();
+            this.LowRiskFileCount.ApplyExploratoryFieldSpec(parent + ".lowRiskFileCount");
+        }
+        //      C# -> SummaryCount? MediumRiskFileCount
+        // GraphQL -> mediumRiskFileCount: SummaryCount (type)
+        if (this.MediumRiskFileCount == null && Exploration.Includes(parent + ".mediumRiskFileCount"))
+        {
+            this.MediumRiskFileCount = new SummaryCount();
+            this.MediumRiskFileCount.ApplyExploratoryFieldSpec(parent + ".mediumRiskFileCount");
+        }
+        //      C# -> SummaryCount? TotalFileCount
+        // GraphQL -> totalFileCount: SummaryCount (type)
+        if (this.TotalFileCount == null && Exploration.Includes(parent + ".totalFileCount"))
+        {
+            this.TotalFileCount = new SummaryCount();
+            this.TotalFileCount.ApplyExploratoryFieldSpec(parent + ".totalFileCount");
+        }
+    }
 
 
     #endregion
 
     } // class SensitiveFiles
+    
     #endregion
 
     public static class ListSensitiveFilesExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SensitiveFiles> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SensitiveFiles> list, 
             String parent = "")
         {
-            var item = new SensitiveFiles();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SensitiveFiles());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

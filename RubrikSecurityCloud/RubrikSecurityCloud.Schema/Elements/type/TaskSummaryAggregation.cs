@@ -1,0 +1,172 @@
+// TaskSummaryAggregation.cs
+//
+// This generated file is part of the Rubrik PowerShell SDK.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    #region TaskSummaryAggregation
+    public class TaskSummaryAggregation: BaseType
+    {
+        #region members
+
+        //      C# -> System.Int32? NumOfCanceled
+        // GraphQL -> NumOfCanceled: Int! (scalar)
+        [JsonProperty("NumOfCanceled")]
+        public System.Int32? NumOfCanceled { get; set; }
+
+        //      C# -> System.Int32? NumOfExpected
+        // GraphQL -> NumOfExpected: Int! (scalar)
+        [JsonProperty("NumOfExpected")]
+        public System.Int32? NumOfExpected { get; set; }
+
+        //      C# -> System.Int32? NumOfFailed
+        // GraphQL -> NumOfFailed: Int! (scalar)
+        [JsonProperty("NumOfFailed")]
+        public System.Int32? NumOfFailed { get; set; }
+
+        //      C# -> System.Int32? NumOfSucceeded
+        // GraphQL -> NumOfSucceeded: Int! (scalar)
+        [JsonProperty("NumOfSucceeded")]
+        public System.Int32? NumOfSucceeded { get; set; }
+
+
+        #endregion
+
+    #region methods
+
+    public TaskSummaryAggregation Set(
+        System.Int32? NumOfCanceled = null,
+        System.Int32? NumOfExpected = null,
+        System.Int32? NumOfFailed = null,
+        System.Int32? NumOfSucceeded = null
+    ) 
+    {
+        if ( NumOfCanceled != null ) {
+            this.NumOfCanceled = NumOfCanceled;
+        }
+        if ( NumOfExpected != null ) {
+            this.NumOfExpected = NumOfExpected;
+        }
+        if ( NumOfFailed != null ) {
+            this.NumOfFailed = NumOfFailed;
+        }
+        if ( NumOfSucceeded != null ) {
+            this.NumOfSucceeded = NumOfSucceeded;
+        }
+        return this;
+    }
+
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int32? NumOfCanceled
+        // GraphQL -> NumOfCanceled: Int! (scalar)
+        if (this.NumOfCanceled != null) {
+            s += ind + "NumOfCanceled\n" ;
+        }
+        //      C# -> System.Int32? NumOfExpected
+        // GraphQL -> NumOfExpected: Int! (scalar)
+        if (this.NumOfExpected != null) {
+            s += ind + "NumOfExpected\n" ;
+        }
+        //      C# -> System.Int32? NumOfFailed
+        // GraphQL -> NumOfFailed: Int! (scalar)
+        if (this.NumOfFailed != null) {
+            s += ind + "NumOfFailed\n" ;
+        }
+        //      C# -> System.Int32? NumOfSucceeded
+        // GraphQL -> NumOfSucceeded: Int! (scalar)
+        if (this.NumOfSucceeded != null) {
+            s += ind + "NumOfSucceeded\n" ;
+        }
+        return s;
+    }
+
+
+    
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int32? NumOfCanceled
+        // GraphQL -> NumOfCanceled: Int! (scalar)
+        if (this.NumOfCanceled == null && Exploration.Includes(parent + ".NumOfCanceled", true))
+        {
+            this.NumOfCanceled = new System.Int32();
+        }
+        //      C# -> System.Int32? NumOfExpected
+        // GraphQL -> NumOfExpected: Int! (scalar)
+        if (this.NumOfExpected == null && Exploration.Includes(parent + ".NumOfExpected", true))
+        {
+            this.NumOfExpected = new System.Int32();
+        }
+        //      C# -> System.Int32? NumOfFailed
+        // GraphQL -> NumOfFailed: Int! (scalar)
+        if (this.NumOfFailed == null && Exploration.Includes(parent + ".NumOfFailed", true))
+        {
+            this.NumOfFailed = new System.Int32();
+        }
+        //      C# -> System.Int32? NumOfSucceeded
+        // GraphQL -> NumOfSucceeded: Int! (scalar)
+        if (this.NumOfSucceeded == null && Exploration.Includes(parent + ".NumOfSucceeded", true))
+        {
+            this.NumOfSucceeded = new System.Int32();
+        }
+    }
+
+
+    #endregion
+
+    } // class TaskSummaryAggregation
+    
+    #endregion
+
+    public static class ListTaskSummaryAggregationExtensions
+    {
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
+        // all fields (including nested objects) that are not null are
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
+            this List<TaskSummaryAggregation> list,
+            int indent=0)
+        {
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
+        }
+
+        public static void ApplyExploratoryFieldSpec(
+            this List<TaskSummaryAggregation> list, 
+            String parent = "")
+        {
+            if ( list.Count == 0 ) {
+                list.Add(new TaskSummaryAggregation());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
+        }
+    }
+
+
+} // namespace Rubrik.SecurityCloud.Types

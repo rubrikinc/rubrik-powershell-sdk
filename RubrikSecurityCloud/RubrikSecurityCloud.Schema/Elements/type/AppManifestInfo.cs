@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AppManifestInfo
-    public class AppManifestInfo: IFragment
+    public class AppManifestInfo: BaseType
     {
         #region members
+
+        //      C# -> K8sContentType? ManifestContentType
+        // GraphQL -> manifestContentType: K8sContentType! (enum)
+        [JsonProperty("manifestContentType")]
+        public K8sContentType? ManifestContentType { get; set; }
+
         //      C# -> System.String? Manifest
         // GraphQL -> manifest: String! (scalar)
         [JsonProperty("manifest")]
@@ -33,22 +40,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("shaChecksum")]
         public System.String? ShaChecksum { get; set; }
 
-        //      C# -> K8sContentType? ManifestContentType
-        // GraphQL -> manifestContentType: K8sContentType! (enum)
-        [JsonProperty("manifestContentType")]
-        public K8sContentType? ManifestContentType { get; set; }
 
         #endregion
 
     #region methods
 
     public AppManifestInfo Set(
+        K8sContentType? ManifestContentType = null,
         System.String? Manifest = null,
         System.String? ShaAlgorithm = null,
-        System.String? ShaChecksum = null,
-        K8sContentType? ManifestContentType = null
+        System.String? ShaChecksum = null
     ) 
     {
+        if ( ManifestContentType != null ) {
+            this.ManifestContentType = ManifestContentType;
+        }
         if ( Manifest != null ) {
             this.Manifest = Manifest;
         }
@@ -58,114 +64,107 @@ namespace Rubrik.SecurityCloud.Types
         if ( ShaChecksum != null ) {
             this.ShaChecksum = ShaChecksum;
         }
-        if ( ManifestContentType != null ) {
-            this.ManifestContentType = ManifestContentType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Manifest
-            // GraphQL -> manifest: String! (scalar)
-            if (this.Manifest != null)
-            {
-                 s += ind + "manifest\n";
-
-            }
-            //      C# -> System.String? ShaAlgorithm
-            // GraphQL -> shaAlgorithm: String! (scalar)
-            if (this.ShaAlgorithm != null)
-            {
-                 s += ind + "shaAlgorithm\n";
-
-            }
-            //      C# -> System.String? ShaChecksum
-            // GraphQL -> shaChecksum: String! (scalar)
-            if (this.ShaChecksum != null)
-            {
-                 s += ind + "shaChecksum\n";
-
-            }
-            //      C# -> K8sContentType? ManifestContentType
-            // GraphQL -> manifestContentType: K8sContentType! (enum)
-            if (this.ManifestContentType != null)
-            {
-                 s += ind + "manifestContentType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> K8sContentType? ManifestContentType
+        // GraphQL -> manifestContentType: K8sContentType! (enum)
+        if (this.ManifestContentType != null) {
+            s += ind + "manifestContentType\n" ;
         }
+        //      C# -> System.String? Manifest
+        // GraphQL -> manifest: String! (scalar)
+        if (this.Manifest != null) {
+            s += ind + "manifest\n" ;
+        }
+        //      C# -> System.String? ShaAlgorithm
+        // GraphQL -> shaAlgorithm: String! (scalar)
+        if (this.ShaAlgorithm != null) {
+            s += ind + "shaAlgorithm\n" ;
+        }
+        //      C# -> System.String? ShaChecksum
+        // GraphQL -> shaChecksum: String! (scalar)
+        if (this.ShaChecksum != null) {
+            s += ind + "shaChecksum\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> K8sContentType? ManifestContentType
+        // GraphQL -> manifestContentType: K8sContentType! (enum)
+        if (this.ManifestContentType == null && Exploration.Includes(parent + ".manifestContentType", true))
         {
-            //      C# -> System.String? Manifest
-            // GraphQL -> manifest: String! (scalar)
-            if (this.Manifest == null && Exploration.Includes(parent + ".manifest$"))
-            {
-                this.Manifest = new System.String("FETCH");
-            }
-            //      C# -> System.String? ShaAlgorithm
-            // GraphQL -> shaAlgorithm: String! (scalar)
-            if (this.ShaAlgorithm == null && Exploration.Includes(parent + ".shaAlgorithm$"))
-            {
-                this.ShaAlgorithm = new System.String("FETCH");
-            }
-            //      C# -> System.String? ShaChecksum
-            // GraphQL -> shaChecksum: String! (scalar)
-            if (this.ShaChecksum == null && Exploration.Includes(parent + ".shaChecksum$"))
-            {
-                this.ShaChecksum = new System.String("FETCH");
-            }
-            //      C# -> K8sContentType? ManifestContentType
-            // GraphQL -> manifestContentType: K8sContentType! (enum)
-            if (this.ManifestContentType == null && Exploration.Includes(parent + ".manifestContentType$"))
-            {
-                this.ManifestContentType = new K8sContentType();
-            }
+            this.ManifestContentType = new K8sContentType();
         }
+        //      C# -> System.String? Manifest
+        // GraphQL -> manifest: String! (scalar)
+        if (this.Manifest == null && Exploration.Includes(parent + ".manifest", true))
+        {
+            this.Manifest = new System.String("FETCH");
+        }
+        //      C# -> System.String? ShaAlgorithm
+        // GraphQL -> shaAlgorithm: String! (scalar)
+        if (this.ShaAlgorithm == null && Exploration.Includes(parent + ".shaAlgorithm", true))
+        {
+            this.ShaAlgorithm = new System.String("FETCH");
+        }
+        //      C# -> System.String? ShaChecksum
+        // GraphQL -> shaChecksum: String! (scalar)
+        if (this.ShaChecksum == null && Exploration.Includes(parent + ".shaChecksum", true))
+        {
+            this.ShaChecksum = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AppManifestInfo
+    
     #endregion
 
     public static class ListAppManifestInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AppManifestInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AppManifestInfo> list, 
             String parent = "")
         {
-            var item = new AppManifestInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AppManifestInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

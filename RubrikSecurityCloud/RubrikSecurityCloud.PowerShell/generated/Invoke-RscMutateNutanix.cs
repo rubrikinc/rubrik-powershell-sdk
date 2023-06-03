@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -490,6 +490,98 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         
         // -------------------------------------------------------------------
+        // createPrismCentral parameter set
+        //
+        // GraphQL operation: createNutanixPrismCentral(input: CreateNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+        //
+        [Parameter(
+            ParameterSetName = "createPrismCentral",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Add Nutanix Prism Central and it's corresponding Prism Elements
+
+Supported in v9.0
+Create a Nutanix Prism Central object and refresh the Prism Elements present in it.
+                GraphQL operation: createNutanixPrismCentral(input: CreateNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter createPrismCentral { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // updatePrismCentral parameter set
+        //
+        // GraphQL operation: updateNutanixPrismCentral(input: UpdateNutanixPrismCentralInput!):UpdateNutanixPrismCentralReply!
+        //
+        [Parameter(
+            ParameterSetName = "updatePrismCentral",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Patch Nutanix Prism Central
+
+Supported in v9.0
+Patch the host and credentials of Nutanix Prism Central.
+                GraphQL operation: updateNutanixPrismCentral(input: UpdateNutanixPrismCentralInput!):UpdateNutanixPrismCentralReply!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter updatePrismCentral { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // deletePrismCentral parameter set
+        //
+        // GraphQL operation: deleteNutanixPrismCentral(input: DeleteNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+        //
+        [Parameter(
+            ParameterSetName = "deletePrismCentral",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Remove Nutanix Prism Central
+
+Supported in v9.0
+Initiates an asynchronous job to remove a Nutanix Prism Central object. The Nutanix Clusters attached to the Prism Central cannot have Virtual Machines mounted through the Rubrik cluster.
+                GraphQL operation: deleteNutanixPrismCentral(input: DeleteNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter deletePrismCentral { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // refreshPrismCentral parameter set
+        //
+        // GraphQL operation: refreshNutanixPrismCentral(input: RefreshNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+        //
+        [Parameter(
+            ParameterSetName = "refreshPrismCentral",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Refresh Nutanix Prism Central metadata
+
+Supported in v9.0
+Initiates a job to refresh the metadata for the specified Nutanix Prism Central and all its associated clusters.
+                GraphQL operation: refreshNutanixPrismCentral(input: RefreshNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter refreshPrismCentral { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // bulkOnDemandSnapshotVm parameter set
         //
         // GraphQL operation: bulkOnDemandSnapshotNutanixVm(input: BulkOnDemandSnapshotNutanixVmInput!):BulkOnDemandSnapshotNutanixVmReply!
@@ -574,6 +666,18 @@ Take bulk backups for multiple Nutanix virtual machines.
                         break;
                     case "downloadVmFromLocation":
                         this.ProcessRecord_downloadVmFromLocation();
+                        break;
+                    case "createPrismCentral":
+                        this.ProcessRecord_createPrismCentral();
+                        break;
+                    case "updatePrismCentral":
+                        this.ProcessRecord_updatePrismCentral();
+                        break;
+                    case "deletePrismCentral":
+                        this.ProcessRecord_deletePrismCentral();
+                        break;
+                    case "refreshPrismCentral":
+                        this.ProcessRecord_refreshPrismCentral();
                         break;
                     case "bulkOnDemandSnapshotVm":
                         this.ProcessRecord_bulkOnDemandSnapshotVm();
@@ -766,6 +870,42 @@ Take bulk backups for multiple Nutanix virtual machines.
         }
 
         // This parameter set invokes a single graphql operation:
+        // createNutanixPrismCentral.
+        protected void ProcessRecord_createPrismCentral()
+        {
+            this._logger.name += " -createPrismCentral";
+            // Invoke graphql operation createNutanixPrismCentral
+            InvokeMutationCreateNutanixPrismCentral();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // updateNutanixPrismCentral.
+        protected void ProcessRecord_updatePrismCentral()
+        {
+            this._logger.name += " -updatePrismCentral";
+            // Invoke graphql operation updateNutanixPrismCentral
+            InvokeMutationUpdateNutanixPrismCentral();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteNutanixPrismCentral.
+        protected void ProcessRecord_deletePrismCentral()
+        {
+            this._logger.name += " -deletePrismCentral";
+            // Invoke graphql operation deleteNutanixPrismCentral
+            InvokeMutationDeleteNutanixPrismCentral();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // refreshNutanixPrismCentral.
+        protected void ProcessRecord_refreshPrismCentral()
+        {
+            this._logger.name += " -refreshPrismCentral";
+            // Invoke graphql operation refreshNutanixPrismCentral
+            InvokeMutationRefreshNutanixPrismCentral();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // bulkOnDemandSnapshotNutanixVm.
         protected void ProcessRecord_bulkOnDemandSnapshotVm()
         {
@@ -785,8 +925,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -794,23 +933,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.CreateNutanixCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateNutanixCluster");
-            string parameters = "($input: CreateNutanixClusterInput!)\n";
+            var parameters = "($input: CreateNutanixClusterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateNutanixCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -823,8 +961,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -832,23 +969,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.RefreshNutanixCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RefreshNutanixCluster");
-            string parameters = "($input: RefreshNutanixClusterInput!)\n";
+            var parameters = "($input: RefreshNutanixClusterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRefreshNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshNutanixCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -861,8 +997,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             UpdateNutanixClusterReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpdateNutanixClusterReply)psObject.BaseObject;
                 } else {
                     fields = (UpdateNutanixClusterReply)this.Field;
@@ -870,23 +1005,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.UpdateNutanixCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateNutanixCluster");
-            string parameters = "($input: UpdateNutanixClusterInput!)\n";
+            var parameters = "($input: UpdateNutanixClusterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateNutanixCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateNutanixClusterReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateNutanixClusterReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateNutanixClusterReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -899,8 +1033,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -908,23 +1041,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.DeleteNutanixCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteNutanixCluster");
-            string parameters = "($input: DeleteNutanixClusterInput!)\n";
+            var parameters = "($input: DeleteNutanixClusterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteNutanixCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -937,8 +1069,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestSuccess)psObject.BaseObject;
                 } else {
                     fields = (RequestSuccess)this.Field;
@@ -946,23 +1077,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.RegisterAgentNutanixVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RegisterAgentNutanixVm");
-            string parameters = "($input: RegisterAgentNutanixVmInput!)\n";
+            var parameters = "($input: RegisterAgentNutanixVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRegisterAgentNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationRegisterAgentNutanixVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -975,8 +1105,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             System.String? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.String)psObject.BaseObject;
                 } else {
                     fields = (System.String)this.Field;
@@ -984,23 +1113,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.UpdateNutanixVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateNutanixVm");
-            string parameters = "($input: UpdateNutanixVmInput!)\n";
+            var parameters = "($input: UpdateNutanixVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateNutanixVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.String> task = this._rbkClient.InvokeGenericCallAsync<System.String>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.String", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1013,8 +1141,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1022,23 +1149,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.CreateOnDemandNutanixBackup(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateOnDemandNutanixBackup");
-            string parameters = "($input: CreateOnDemandNutanixBackupInput!)\n";
+            var parameters = "($input: CreateOnDemandNutanixBackupInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateOnDemandNutanixBackup" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateOnDemandNutanixBackup",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1051,8 +1177,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestSuccess)psObject.BaseObject;
                 } else {
                     fields = (RequestSuccess)this.Field;
@@ -1060,23 +1185,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.DeleteNutanixSnapshots(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteNutanixSnapshots");
-            string parameters = "($input: DeleteNutanixSnapshotsInput!)\n";
+            var parameters = "($input: DeleteNutanixSnapshotsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteNutanixSnapshots" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteNutanixSnapshots",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1089,8 +1213,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1098,23 +1221,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.MountNutanixSnapshotV1(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.MountNutanixSnapshotV1");
-            string parameters = "($input: MountNutanixSnapshotV1Input!)\n";
+            var parameters = "($input: MountNutanixSnapshotV1Input!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationMountNutanixSnapshotV1" + parameters + "{" + document + "}",
                 OperationName = "MutationMountNutanixSnapshotV1",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1127,8 +1249,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             PatchNutanixMountV1Reply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (PatchNutanixMountV1Reply)psObject.BaseObject;
                 } else {
                     fields = (PatchNutanixMountV1Reply)this.Field;
@@ -1136,23 +1257,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.PatchNutanixMountV1(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.PatchNutanixMountV1");
-            string parameters = "($input: PatchNutanixMountV1Input!)\n";
+            var parameters = "($input: PatchNutanixMountV1Input!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationPatchNutanixMountV1" + parameters + "{" + document + "}",
                 OperationName = "MutationPatchNutanixMountV1",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<PatchNutanixMountV1Reply> task = this._rbkClient.InvokeGenericCallAsync<PatchNutanixMountV1Reply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "PatchNutanixMountV1Reply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1165,8 +1285,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1174,23 +1293,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.DeleteNutanixMountV1(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteNutanixMountV1");
-            string parameters = "($input: DeleteNutanixMountV1Input!)\n";
+            var parameters = "($input: DeleteNutanixMountV1Input!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteNutanixMountV1" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteNutanixMountV1",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1203,8 +1321,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1212,23 +1329,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.MigrateNutanixMountV1(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.MigrateNutanixMountV1");
-            string parameters = "($input: MigrateNutanixMountV1Input!)\n";
+            var parameters = "($input: MigrateNutanixMountV1Input!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationMigrateNutanixMountV1" + parameters + "{" + document + "}",
                 OperationName = "MutationMigrateNutanixMountV1",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1241,8 +1357,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1250,23 +1365,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.RestoreFilesNutanixSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RestoreFilesNutanixSnapshot");
-            string parameters = "($input: RestoreFilesNutanixSnapshotInput!)\n";
+            var parameters = "($input: RestoreFilesNutanixSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRestoreFilesNutanixSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreFilesNutanixSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1279,8 +1393,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1288,23 +1401,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.DownloadFilesNutanixSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DownloadFilesNutanixSnapshot");
-            string parameters = "($input: DownloadFilesNutanixSnapshotInput!)\n";
+            var parameters = "($input: DownloadFilesNutanixSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDownloadFilesNutanixSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadFilesNutanixSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1317,8 +1429,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1326,23 +1437,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.ExportNutanixSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.ExportNutanixSnapshot");
-            string parameters = "($input: ExportNutanixSnapshotInput!)\n";
+            var parameters = "($input: ExportNutanixSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationExportNutanixSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationExportNutanixSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1355,8 +1465,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1364,23 +1473,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.DownloadNutanixSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DownloadNutanixSnapshot");
-            string parameters = "($input: DownloadNutanixSnapshotInput!)\n";
+            var parameters = "($input: DownloadNutanixSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDownloadNutanixSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadNutanixSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1393,8 +1501,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             BatchExportNutanixVmReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchExportNutanixVmReply)psObject.BaseObject;
                 } else {
                     fields = (BatchExportNutanixVmReply)this.Field;
@@ -1402,23 +1509,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.BatchExportNutanixVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.BatchExportNutanixVm");
-            string parameters = "($input: BatchExportNutanixVmInput!)\n";
+            var parameters = "($input: BatchExportNutanixVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationBatchExportNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchExportNutanixVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchExportNutanixVmReply> task = this._rbkClient.InvokeGenericCallAsync<BatchExportNutanixVmReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchExportNutanixVmReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1431,8 +1537,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             BatchMountNutanixVmReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchMountNutanixVmReply)psObject.BaseObject;
                 } else {
                     fields = (BatchMountNutanixVmReply)this.Field;
@@ -1440,23 +1545,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.BatchMountNutanixVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.BatchMountNutanixVm");
-            string parameters = "($input: BatchMountNutanixVmInput!)\n";
+            var parameters = "($input: BatchMountNutanixVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationBatchMountNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchMountNutanixVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchMountNutanixVmReply> task = this._rbkClient.InvokeGenericCallAsync<BatchMountNutanixVmReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchMountNutanixVmReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1469,8 +1573,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -1478,23 +1581,166 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.DownloadNutanixVmFromLocation(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DownloadNutanixVmFromLocation");
-            string parameters = "($input: DownloadNutanixVmFromLocationInput!)\n";
+            var parameters = "($input: DownloadNutanixVmFromLocationInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDownloadNutanixVmFromLocation" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadNutanixVmFromLocation",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // createNutanixPrismCentral(input: CreateNutanixPrismCentralInput!): BatchAsyncRequestStatus!
+        protected void InvokeMutationCreateNutanixPrismCentral()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CreateNutanixPrismCentralInput!"),
+            };
+            BatchAsyncRequestStatus? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (BatchAsyncRequestStatus)psObject.BaseObject;
+                } else {
+                    fields = (BatchAsyncRequestStatus)this.Field;
+                }
+            }
+            string document = Mutation.CreateNutanixPrismCentral(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.CreateNutanixPrismCentral");
+            var parameters = "($input: CreateNutanixPrismCentralInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationCreateNutanixPrismCentral" + parameters + "{" + document + "}",
+                OperationName = "MutationCreateNutanixPrismCentral",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchAsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // updateNutanixPrismCentral(input: UpdateNutanixPrismCentralInput!): UpdateNutanixPrismCentralReply!
+        protected void InvokeMutationUpdateNutanixPrismCentral()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "UpdateNutanixPrismCentralInput!"),
+            };
+            UpdateNutanixPrismCentralReply? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (UpdateNutanixPrismCentralReply)psObject.BaseObject;
+                } else {
+                    fields = (UpdateNutanixPrismCentralReply)this.Field;
+                }
+            }
+            string document = Mutation.UpdateNutanixPrismCentral(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.UpdateNutanixPrismCentral");
+            var parameters = "($input: UpdateNutanixPrismCentralInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationUpdateNutanixPrismCentral" + parameters + "{" + document + "}",
+                OperationName = "MutationUpdateNutanixPrismCentral",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateNutanixPrismCentralReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // deleteNutanixPrismCentral(input: DeleteNutanixPrismCentralInput!): BatchAsyncRequestStatus!
+        protected void InvokeMutationDeleteNutanixPrismCentral()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "DeleteNutanixPrismCentralInput!"),
+            };
+            BatchAsyncRequestStatus? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (BatchAsyncRequestStatus)psObject.BaseObject;
+                } else {
+                    fields = (BatchAsyncRequestStatus)this.Field;
+                }
+            }
+            string document = Mutation.DeleteNutanixPrismCentral(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.DeleteNutanixPrismCentral");
+            var parameters = "($input: DeleteNutanixPrismCentralInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationDeleteNutanixPrismCentral" + parameters + "{" + document + "}",
+                OperationName = "MutationDeleteNutanixPrismCentral",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchAsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // refreshNutanixPrismCentral(input: RefreshNutanixPrismCentralInput!): BatchAsyncRequestStatus!
+        protected void InvokeMutationRefreshNutanixPrismCentral()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "RefreshNutanixPrismCentralInput!"),
+            };
+            BatchAsyncRequestStatus? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (BatchAsyncRequestStatus)psObject.BaseObject;
+                } else {
+                    fields = (BatchAsyncRequestStatus)this.Field;
+                }
+            }
+            string document = Mutation.RefreshNutanixPrismCentral(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.RefreshNutanixPrismCentral");
+            var parameters = "($input: RefreshNutanixPrismCentralInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationRefreshNutanixPrismCentral" + parameters + "{" + document + "}",
+                OperationName = "MutationRefreshNutanixPrismCentral",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchAsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1507,8 +1753,7 @@ Take bulk backups for multiple Nutanix virtual machines.
             BulkOnDemandSnapshotNutanixVmReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BulkOnDemandSnapshotNutanixVmReply)psObject.BaseObject;
                 } else {
                     fields = (BulkOnDemandSnapshotNutanixVmReply)this.Field;
@@ -1516,23 +1761,22 @@ Take bulk backups for multiple Nutanix virtual machines.
             }
             string document = Mutation.BulkOnDemandSnapshotNutanixVm(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.BulkOnDemandSnapshotNutanixVm");
-            string parameters = "($input: BulkOnDemandSnapshotNutanixVmInput!)\n";
+            var parameters = "($input: BulkOnDemandSnapshotNutanixVmInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationBulkOnDemandSnapshotNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkOnDemandSnapshotNutanixVm",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BulkOnDemandSnapshotNutanixVmReply> task = this._rbkClient.InvokeGenericCallAsync<BulkOnDemandSnapshotNutanixVmReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BulkOnDemandSnapshotNutanixVmReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

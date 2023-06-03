@@ -11,13 +11,30 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ClusterNode
-    public class ClusterNode: IFragment
+    public class ClusterNode: BaseType
     {
         #region members
+
+        //      C# -> ClusterNodePlatformType? PlatformType
+        // GraphQL -> platformType: ClusterNodePlatformType (enum)
+        [JsonProperty("platformType")]
+        public ClusterNodePlatformType? PlatformType { get; set; }
+
+        //      C# -> ClusterNodePosition? Position
+        // GraphQL -> position: ClusterNodePosition (enum)
+        [JsonProperty("position")]
+        public ClusterNodePosition? Position { get; set; }
+
+        //      C# -> ClusterNodeStatus? Status
+        // GraphQL -> status: ClusterNodeStatus (enum)
+        [JsonProperty("status")]
+        public ClusterNodeStatus? Status { get; set; }
+
         //      C# -> System.String? BrikId
         // GraphQL -> brikId: String! (scalar)
         [JsonProperty("brikId")]
@@ -73,26 +90,15 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("interfaceCidrs")]
         public List<ClusterNodeInterfaceCidr>? InterfaceCidrs { get; set; }
 
-        //      C# -> ClusterNodePlatformType? PlatformType
-        // GraphQL -> platformType: ClusterNodePlatformType (enum)
-        [JsonProperty("platformType")]
-        public ClusterNodePlatformType? PlatformType { get; set; }
-
-        //      C# -> ClusterNodePosition? Position
-        // GraphQL -> position: ClusterNodePosition (enum)
-        [JsonProperty("position")]
-        public ClusterNodePosition? Position { get; set; }
-
-        //      C# -> ClusterNodeStatus? Status
-        // GraphQL -> status: ClusterNodeStatus (enum)
-        [JsonProperty("status")]
-        public ClusterNodeStatus? Status { get; set; }
 
         #endregion
 
     #region methods
 
     public ClusterNode Set(
+        ClusterNodePlatformType? PlatformType = null,
+        ClusterNodePosition? Position = null,
+        ClusterNodeStatus? Status = null,
         System.String? BrikId = null,
         System.String? ClusterId = null,
         System.Int32? CpuCores = null,
@@ -103,12 +109,18 @@ namespace Rubrik.SecurityCloud.Types
         System.String? NetworkSpeed = null,
         System.Int64? Ram = null,
         List<HealthPolicyStatus>? HardwareHealth = null,
-        List<ClusterNodeInterfaceCidr>? InterfaceCidrs = null,
-        ClusterNodePlatformType? PlatformType = null,
-        ClusterNodePosition? Position = null,
-        ClusterNodeStatus? Status = null
+        List<ClusterNodeInterfaceCidr>? InterfaceCidrs = null
     ) 
     {
+        if ( PlatformType != null ) {
+            this.PlatformType = PlatformType;
+        }
+        if ( Position != null ) {
+            this.Position = Position;
+        }
+        if ( Status != null ) {
+            this.Status = Status;
+        }
         if ( BrikId != null ) {
             this.BrikId = BrikId;
         }
@@ -142,258 +154,219 @@ namespace Rubrik.SecurityCloud.Types
         if ( InterfaceCidrs != null ) {
             this.InterfaceCidrs = InterfaceCidrs;
         }
-        if ( PlatformType != null ) {
-            this.PlatformType = PlatformType;
-        }
-        if ( Position != null ) {
-            this.Position = Position;
-        }
-        if ( Status != null ) {
-            this.Status = Status;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? BrikId
-            // GraphQL -> brikId: String! (scalar)
-            if (this.BrikId != null)
-            {
-                 s += ind + "brikId\n";
-
-            }
-            //      C# -> System.String? ClusterId
-            // GraphQL -> clusterId: UUID! (scalar)
-            if (this.ClusterId != null)
-            {
-                 s += ind + "clusterId\n";
-
-            }
-            //      C# -> System.Int32? CpuCores
-            // GraphQL -> cpuCores: Int (scalar)
-            if (this.CpuCores != null)
-            {
-                 s += ind + "cpuCores\n";
-
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String (scalar)
-            if (this.Hostname != null)
-            {
-                 s += ind + "hostname\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? IpAddress
-            // GraphQL -> ipAddress: String (scalar)
-            if (this.IpAddress != null)
-            {
-                 s += ind + "ipAddress\n";
-
-            }
-            //      C# -> System.Boolean? NeedsInspection
-            // GraphQL -> needsInspection: Boolean (scalar)
-            if (this.NeedsInspection != null)
-            {
-                 s += ind + "needsInspection\n";
-
-            }
-            //      C# -> System.String? NetworkSpeed
-            // GraphQL -> networkSpeed: String (scalar)
-            if (this.NetworkSpeed != null)
-            {
-                 s += ind + "networkSpeed\n";
-
-            }
-            //      C# -> System.Int64? Ram
-            // GraphQL -> ram: Long (scalar)
-            if (this.Ram != null)
-            {
-                 s += ind + "ram\n";
-
-            }
-            //      C# -> List<HealthPolicyStatus>? HardwareHealth
-            // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
-            if (this.HardwareHealth != null)
-            {
-                 s += ind + "hardwareHealth\n";
-
-                 s += ind + "{\n" + 
-                 this.HardwareHealth.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<ClusterNodeInterfaceCidr>? InterfaceCidrs
-            // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
-            if (this.InterfaceCidrs != null)
-            {
-                 s += ind + "interfaceCidrs\n";
-
-                 s += ind + "{\n" + 
-                 this.InterfaceCidrs.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ClusterNodePlatformType? PlatformType
-            // GraphQL -> platformType: ClusterNodePlatformType (enum)
-            if (this.PlatformType != null)
-            {
-                 s += ind + "platformType\n";
-
-            }
-            //      C# -> ClusterNodePosition? Position
-            // GraphQL -> position: ClusterNodePosition (enum)
-            if (this.Position != null)
-            {
-                 s += ind + "position\n";
-
-            }
-            //      C# -> ClusterNodeStatus? Status
-            // GraphQL -> status: ClusterNodeStatus (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ClusterNodePlatformType? PlatformType
+        // GraphQL -> platformType: ClusterNodePlatformType (enum)
+        if (this.PlatformType != null) {
+            s += ind + "platformType\n" ;
         }
+        //      C# -> ClusterNodePosition? Position
+        // GraphQL -> position: ClusterNodePosition (enum)
+        if (this.Position != null) {
+            s += ind + "position\n" ;
+        }
+        //      C# -> ClusterNodeStatus? Status
+        // GraphQL -> status: ClusterNodeStatus (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
+        }
+        //      C# -> System.String? BrikId
+        // GraphQL -> brikId: String! (scalar)
+        if (this.BrikId != null) {
+            s += ind + "brikId\n" ;
+        }
+        //      C# -> System.String? ClusterId
+        // GraphQL -> clusterId: UUID! (scalar)
+        if (this.ClusterId != null) {
+            s += ind + "clusterId\n" ;
+        }
+        //      C# -> System.Int32? CpuCores
+        // GraphQL -> cpuCores: Int (scalar)
+        if (this.CpuCores != null) {
+            s += ind + "cpuCores\n" ;
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        if (this.Hostname != null) {
+            s += ind + "hostname\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String (scalar)
+        if (this.IpAddress != null) {
+            s += ind + "ipAddress\n" ;
+        }
+        //      C# -> System.Boolean? NeedsInspection
+        // GraphQL -> needsInspection: Boolean (scalar)
+        if (this.NeedsInspection != null) {
+            s += ind + "needsInspection\n" ;
+        }
+        //      C# -> System.String? NetworkSpeed
+        // GraphQL -> networkSpeed: String (scalar)
+        if (this.NetworkSpeed != null) {
+            s += ind + "networkSpeed\n" ;
+        }
+        //      C# -> System.Int64? Ram
+        // GraphQL -> ram: Long (scalar)
+        if (this.Ram != null) {
+            s += ind + "ram\n" ;
+        }
+        //      C# -> List<HealthPolicyStatus>? HardwareHealth
+        // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
+        if (this.HardwareHealth != null) {
+            s += ind + "hardwareHealth {\n" + this.HardwareHealth.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ClusterNodeInterfaceCidr>? InterfaceCidrs
+        // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
+        if (this.InterfaceCidrs != null) {
+            s += ind + "interfaceCidrs {\n" + this.InterfaceCidrs.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ClusterNodePlatformType? PlatformType
+        // GraphQL -> platformType: ClusterNodePlatformType (enum)
+        if (this.PlatformType == null && Exploration.Includes(parent + ".platformType", true))
         {
-            //      C# -> System.String? BrikId
-            // GraphQL -> brikId: String! (scalar)
-            if (this.BrikId == null && Exploration.Includes(parent + ".brikId$"))
-            {
-                this.BrikId = new System.String("FETCH");
-            }
-            //      C# -> System.String? ClusterId
-            // GraphQL -> clusterId: UUID! (scalar)
-            if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId$"))
-            {
-                this.ClusterId = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? CpuCores
-            // GraphQL -> cpuCores: Int (scalar)
-            if (this.CpuCores == null && Exploration.Includes(parent + ".cpuCores$"))
-            {
-                this.CpuCores = new System.Int32();
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String (scalar)
-            if (this.Hostname == null && Exploration.Includes(parent + ".hostname$"))
-            {
-                this.Hostname = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? IpAddress
-            // GraphQL -> ipAddress: String (scalar)
-            if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress$"))
-            {
-                this.IpAddress = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? NeedsInspection
-            // GraphQL -> needsInspection: Boolean (scalar)
-            if (this.NeedsInspection == null && Exploration.Includes(parent + ".needsInspection$"))
-            {
-                this.NeedsInspection = new System.Boolean();
-            }
-            //      C# -> System.String? NetworkSpeed
-            // GraphQL -> networkSpeed: String (scalar)
-            if (this.NetworkSpeed == null && Exploration.Includes(parent + ".networkSpeed$"))
-            {
-                this.NetworkSpeed = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? Ram
-            // GraphQL -> ram: Long (scalar)
-            if (this.Ram == null && Exploration.Includes(parent + ".ram$"))
-            {
-                this.Ram = new System.Int64();
-            }
-            //      C# -> List<HealthPolicyStatus>? HardwareHealth
-            // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
-            if (this.HardwareHealth == null && Exploration.Includes(parent + ".hardwareHealth"))
-            {
-                this.HardwareHealth = new List<HealthPolicyStatus>();
-                this.HardwareHealth.ApplyExploratoryFragment(parent + ".hardwareHealth");
-            }
-            //      C# -> List<ClusterNodeInterfaceCidr>? InterfaceCidrs
-            // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
-            if (this.InterfaceCidrs == null && Exploration.Includes(parent + ".interfaceCidrs"))
-            {
-                this.InterfaceCidrs = new List<ClusterNodeInterfaceCidr>();
-                this.InterfaceCidrs.ApplyExploratoryFragment(parent + ".interfaceCidrs");
-            }
-            //      C# -> ClusterNodePlatformType? PlatformType
-            // GraphQL -> platformType: ClusterNodePlatformType (enum)
-            if (this.PlatformType == null && Exploration.Includes(parent + ".platformType$"))
-            {
-                this.PlatformType = new ClusterNodePlatformType();
-            }
-            //      C# -> ClusterNodePosition? Position
-            // GraphQL -> position: ClusterNodePosition (enum)
-            if (this.Position == null && Exploration.Includes(parent + ".position$"))
-            {
-                this.Position = new ClusterNodePosition();
-            }
-            //      C# -> ClusterNodeStatus? Status
-            // GraphQL -> status: ClusterNodeStatus (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new ClusterNodeStatus();
-            }
+            this.PlatformType = new ClusterNodePlatformType();
         }
+        //      C# -> ClusterNodePosition? Position
+        // GraphQL -> position: ClusterNodePosition (enum)
+        if (this.Position == null && Exploration.Includes(parent + ".position", true))
+        {
+            this.Position = new ClusterNodePosition();
+        }
+        //      C# -> ClusterNodeStatus? Status
+        // GraphQL -> status: ClusterNodeStatus (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        {
+            this.Status = new ClusterNodeStatus();
+        }
+        //      C# -> System.String? BrikId
+        // GraphQL -> brikId: String! (scalar)
+        if (this.BrikId == null && Exploration.Includes(parent + ".brikId", true))
+        {
+            this.BrikId = new System.String("FETCH");
+        }
+        //      C# -> System.String? ClusterId
+        // GraphQL -> clusterId: UUID! (scalar)
+        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        {
+            this.ClusterId = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? CpuCores
+        // GraphQL -> cpuCores: Int (scalar)
+        if (this.CpuCores == null && Exploration.Includes(parent + ".cpuCores", true))
+        {
+            this.CpuCores = new System.Int32();
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        {
+            this.Hostname = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String (scalar)
+        if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
+        {
+            this.IpAddress = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? NeedsInspection
+        // GraphQL -> needsInspection: Boolean (scalar)
+        if (this.NeedsInspection == null && Exploration.Includes(parent + ".needsInspection", true))
+        {
+            this.NeedsInspection = true;
+        }
+        //      C# -> System.String? NetworkSpeed
+        // GraphQL -> networkSpeed: String (scalar)
+        if (this.NetworkSpeed == null && Exploration.Includes(parent + ".networkSpeed", true))
+        {
+            this.NetworkSpeed = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? Ram
+        // GraphQL -> ram: Long (scalar)
+        if (this.Ram == null && Exploration.Includes(parent + ".ram", true))
+        {
+            this.Ram = new System.Int64();
+        }
+        //      C# -> List<HealthPolicyStatus>? HardwareHealth
+        // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
+        if (this.HardwareHealth == null && Exploration.Includes(parent + ".hardwareHealth"))
+        {
+            this.HardwareHealth = new List<HealthPolicyStatus>();
+            this.HardwareHealth.ApplyExploratoryFieldSpec(parent + ".hardwareHealth");
+        }
+        //      C# -> List<ClusterNodeInterfaceCidr>? InterfaceCidrs
+        // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
+        if (this.InterfaceCidrs == null && Exploration.Includes(parent + ".interfaceCidrs"))
+        {
+            this.InterfaceCidrs = new List<ClusterNodeInterfaceCidr>();
+            this.InterfaceCidrs.ApplyExploratoryFieldSpec(parent + ".interfaceCidrs");
+        }
+    }
 
 
     #endregion
 
     } // class ClusterNode
+    
     #endregion
 
     public static class ListClusterNodeExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ClusterNode> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ClusterNode> list, 
             String parent = "")
         {
-            var item = new ClusterNode();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ClusterNode());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

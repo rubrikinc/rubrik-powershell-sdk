@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region RbaInstallerUrls
-    public class RbaInstallerUrls: IFragment
+    public class RbaInstallerUrls: BaseType
     {
         #region members
+
         //      C# -> System.String? DebianHashSha256
         // GraphQL -> debianHashSha256: String! (scalar)
         [JsonProperty("debianHashSha256")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> windowsUrl: String! (scalar)
         [JsonProperty("windowsUrl")]
         public System.String? WindowsUrl { get; set; }
+
 
         #endregion
 
@@ -82,134 +85,126 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? DebianHashSha256
-            // GraphQL -> debianHashSha256: String! (scalar)
-            if (this.DebianHashSha256 != null)
-            {
-                 s += ind + "debianHashSha256\n";
-
-            }
-            //      C# -> System.String? DebianUrl
-            // GraphQL -> debianUrl: String! (scalar)
-            if (this.DebianUrl != null)
-            {
-                 s += ind + "debianUrl\n";
-
-            }
-            //      C# -> System.String? RpmHashSha256
-            // GraphQL -> rpmHashSha256: String! (scalar)
-            if (this.RpmHashSha256 != null)
-            {
-                 s += ind + "rpmHashSha256\n";
-
-            }
-            //      C# -> System.String? RpmUrl
-            // GraphQL -> rpmUrl: String! (scalar)
-            if (this.RpmUrl != null)
-            {
-                 s += ind + "rpmUrl\n";
-
-            }
-            //      C# -> System.String? WindowsHashSha256
-            // GraphQL -> windowsHashSha256: String! (scalar)
-            if (this.WindowsHashSha256 != null)
-            {
-                 s += ind + "windowsHashSha256\n";
-
-            }
-            //      C# -> System.String? WindowsUrl
-            // GraphQL -> windowsUrl: String! (scalar)
-            if (this.WindowsUrl != null)
-            {
-                 s += ind + "windowsUrl\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? DebianHashSha256
+        // GraphQL -> debianHashSha256: String! (scalar)
+        if (this.DebianHashSha256 != null) {
+            s += ind + "debianHashSha256\n" ;
         }
+        //      C# -> System.String? DebianUrl
+        // GraphQL -> debianUrl: String! (scalar)
+        if (this.DebianUrl != null) {
+            s += ind + "debianUrl\n" ;
+        }
+        //      C# -> System.String? RpmHashSha256
+        // GraphQL -> rpmHashSha256: String! (scalar)
+        if (this.RpmHashSha256 != null) {
+            s += ind + "rpmHashSha256\n" ;
+        }
+        //      C# -> System.String? RpmUrl
+        // GraphQL -> rpmUrl: String! (scalar)
+        if (this.RpmUrl != null) {
+            s += ind + "rpmUrl\n" ;
+        }
+        //      C# -> System.String? WindowsHashSha256
+        // GraphQL -> windowsHashSha256: String! (scalar)
+        if (this.WindowsHashSha256 != null) {
+            s += ind + "windowsHashSha256\n" ;
+        }
+        //      C# -> System.String? WindowsUrl
+        // GraphQL -> windowsUrl: String! (scalar)
+        if (this.WindowsUrl != null) {
+            s += ind + "windowsUrl\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? DebianHashSha256
+        // GraphQL -> debianHashSha256: String! (scalar)
+        if (this.DebianHashSha256 == null && Exploration.Includes(parent + ".debianHashSha256", true))
         {
-            //      C# -> System.String? DebianHashSha256
-            // GraphQL -> debianHashSha256: String! (scalar)
-            if (this.DebianHashSha256 == null && Exploration.Includes(parent + ".debianHashSha256$"))
-            {
-                this.DebianHashSha256 = new System.String("FETCH");
-            }
-            //      C# -> System.String? DebianUrl
-            // GraphQL -> debianUrl: String! (scalar)
-            if (this.DebianUrl == null && Exploration.Includes(parent + ".debianUrl$"))
-            {
-                this.DebianUrl = new System.String("FETCH");
-            }
-            //      C# -> System.String? RpmHashSha256
-            // GraphQL -> rpmHashSha256: String! (scalar)
-            if (this.RpmHashSha256 == null && Exploration.Includes(parent + ".rpmHashSha256$"))
-            {
-                this.RpmHashSha256 = new System.String("FETCH");
-            }
-            //      C# -> System.String? RpmUrl
-            // GraphQL -> rpmUrl: String! (scalar)
-            if (this.RpmUrl == null && Exploration.Includes(parent + ".rpmUrl$"))
-            {
-                this.RpmUrl = new System.String("FETCH");
-            }
-            //      C# -> System.String? WindowsHashSha256
-            // GraphQL -> windowsHashSha256: String! (scalar)
-            if (this.WindowsHashSha256 == null && Exploration.Includes(parent + ".windowsHashSha256$"))
-            {
-                this.WindowsHashSha256 = new System.String("FETCH");
-            }
-            //      C# -> System.String? WindowsUrl
-            // GraphQL -> windowsUrl: String! (scalar)
-            if (this.WindowsUrl == null && Exploration.Includes(parent + ".windowsUrl$"))
-            {
-                this.WindowsUrl = new System.String("FETCH");
-            }
+            this.DebianHashSha256 = new System.String("FETCH");
         }
+        //      C# -> System.String? DebianUrl
+        // GraphQL -> debianUrl: String! (scalar)
+        if (this.DebianUrl == null && Exploration.Includes(parent + ".debianUrl", true))
+        {
+            this.DebianUrl = new System.String("FETCH");
+        }
+        //      C# -> System.String? RpmHashSha256
+        // GraphQL -> rpmHashSha256: String! (scalar)
+        if (this.RpmHashSha256 == null && Exploration.Includes(parent + ".rpmHashSha256", true))
+        {
+            this.RpmHashSha256 = new System.String("FETCH");
+        }
+        //      C# -> System.String? RpmUrl
+        // GraphQL -> rpmUrl: String! (scalar)
+        if (this.RpmUrl == null && Exploration.Includes(parent + ".rpmUrl", true))
+        {
+            this.RpmUrl = new System.String("FETCH");
+        }
+        //      C# -> System.String? WindowsHashSha256
+        // GraphQL -> windowsHashSha256: String! (scalar)
+        if (this.WindowsHashSha256 == null && Exploration.Includes(parent + ".windowsHashSha256", true))
+        {
+            this.WindowsHashSha256 = new System.String("FETCH");
+        }
+        //      C# -> System.String? WindowsUrl
+        // GraphQL -> windowsUrl: String! (scalar)
+        if (this.WindowsUrl == null && Exploration.Includes(parent + ".windowsUrl", true))
+        {
+            this.WindowsUrl = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class RbaInstallerUrls
+    
     #endregion
 
     public static class ListRbaInstallerUrlsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<RbaInstallerUrls> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<RbaInstallerUrls> list, 
             String parent = "")
         {
-            var item = new RbaInstallerUrls();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new RbaInstallerUrls());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

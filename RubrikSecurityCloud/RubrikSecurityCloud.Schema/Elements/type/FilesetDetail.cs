@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region FilesetDetail
-    public class FilesetDetail: IFragment
+    public class FilesetDetail: BaseType
     {
         #region members
+
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
         [JsonProperty("archiveStorage")]
@@ -78,6 +80,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshots")]
         public List<FilesetSnapshotSummary>? Snapshots { get; set; }
 
+
         #endregion
 
     #region methods
@@ -136,224 +139,195 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? ArchiveStorage
-            // GraphQL -> archiveStorage: Long (scalar)
-            if (this.ArchiveStorage != null)
-            {
-                 s += ind + "archiveStorage\n";
-
-            }
-            //      C# -> System.Int32? ArchivedSnapshotCount
-            // GraphQL -> archivedSnapshotCount: Int (scalar)
-            if (this.ArchivedSnapshotCount != null)
-            {
-                 s += ind + "archivedSnapshotCount\n";
-
-            }
-            //      C# -> System.String? BackupScriptErrorHandling
-            // GraphQL -> backupScriptErrorHandling: String (scalar)
-            if (this.BackupScriptErrorHandling != null)
-            {
-                 s += ind + "backupScriptErrorHandling\n";
-
-            }
-            //      C# -> System.Int64? BackupScriptTimeout
-            // GraphQL -> backupScriptTimeout: Long (scalar)
-            if (this.BackupScriptTimeout != null)
-            {
-                 s += ind + "backupScriptTimeout\n";
-
-            }
-            //      C# -> System.Int64? LocalStorage
-            // GraphQL -> localStorage: Long (scalar)
-            if (this.LocalStorage != null)
-            {
-                 s += ind + "localStorage\n";
-
-            }
-            //      C# -> System.String? PostBackupScript
-            // GraphQL -> postBackupScript: String (scalar)
-            if (this.PostBackupScript != null)
-            {
-                 s += ind + "postBackupScript\n";
-
-            }
-            //      C# -> System.String? PreBackupScript
-            // GraphQL -> preBackupScript: String (scalar)
-            if (this.PreBackupScript != null)
-            {
-                 s += ind + "preBackupScript\n";
-
-            }
-            //      C# -> DateTime? ProtectionDate
-            // GraphQL -> protectionDate: DateTime (scalar)
-            if (this.ProtectionDate != null)
-            {
-                 s += ind + "protectionDate\n";
-
-            }
-            //      C# -> System.Int32? SnapshotCount
-            // GraphQL -> snapshotCount: Int! (scalar)
-            if (this.SnapshotCount != null)
-            {
-                 s += ind + "snapshotCount\n";
-
-            }
-            //      C# -> FilesetSummary? FilesetSummary
-            // GraphQL -> filesetSummary: FilesetSummary (type)
-            if (this.FilesetSummary != null)
-            {
-                 s += ind + "filesetSummary\n";
-
-                 s += ind + "{\n" + 
-                 this.FilesetSummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> FilesetUpdate? FilesetUpdate
-            // GraphQL -> filesetUpdate: FilesetUpdate (type)
-            if (this.FilesetUpdate != null)
-            {
-                 s += ind + "filesetUpdate\n";
-
-                 s += ind + "{\n" + 
-                 this.FilesetUpdate.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<FilesetSnapshotSummary>? Snapshots
-            // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
-            if (this.Snapshots != null)
-            {
-                 s += ind + "snapshots\n";
-
-                 s += ind + "{\n" + 
-                 this.Snapshots.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? ArchiveStorage
+        // GraphQL -> archiveStorage: Long (scalar)
+        if (this.ArchiveStorage != null) {
+            s += ind + "archiveStorage\n" ;
         }
+        //      C# -> System.Int32? ArchivedSnapshotCount
+        // GraphQL -> archivedSnapshotCount: Int (scalar)
+        if (this.ArchivedSnapshotCount != null) {
+            s += ind + "archivedSnapshotCount\n" ;
+        }
+        //      C# -> System.String? BackupScriptErrorHandling
+        // GraphQL -> backupScriptErrorHandling: String (scalar)
+        if (this.BackupScriptErrorHandling != null) {
+            s += ind + "backupScriptErrorHandling\n" ;
+        }
+        //      C# -> System.Int64? BackupScriptTimeout
+        // GraphQL -> backupScriptTimeout: Long (scalar)
+        if (this.BackupScriptTimeout != null) {
+            s += ind + "backupScriptTimeout\n" ;
+        }
+        //      C# -> System.Int64? LocalStorage
+        // GraphQL -> localStorage: Long (scalar)
+        if (this.LocalStorage != null) {
+            s += ind + "localStorage\n" ;
+        }
+        //      C# -> System.String? PostBackupScript
+        // GraphQL -> postBackupScript: String (scalar)
+        if (this.PostBackupScript != null) {
+            s += ind + "postBackupScript\n" ;
+        }
+        //      C# -> System.String? PreBackupScript
+        // GraphQL -> preBackupScript: String (scalar)
+        if (this.PreBackupScript != null) {
+            s += ind + "preBackupScript\n" ;
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (this.ProtectionDate != null) {
+            s += ind + "protectionDate\n" ;
+        }
+        //      C# -> System.Int32? SnapshotCount
+        // GraphQL -> snapshotCount: Int! (scalar)
+        if (this.SnapshotCount != null) {
+            s += ind + "snapshotCount\n" ;
+        }
+        //      C# -> FilesetSummary? FilesetSummary
+        // GraphQL -> filesetSummary: FilesetSummary (type)
+        if (this.FilesetSummary != null) {
+            s += ind + "filesetSummary {\n" + this.FilesetSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> FilesetUpdate? FilesetUpdate
+        // GraphQL -> filesetUpdate: FilesetUpdate (type)
+        if (this.FilesetUpdate != null) {
+            s += ind + "filesetUpdate {\n" + this.FilesetUpdate.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<FilesetSnapshotSummary>? Snapshots
+        // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
+        if (this.Snapshots != null) {
+            s += ind + "snapshots {\n" + this.Snapshots.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? ArchiveStorage
+        // GraphQL -> archiveStorage: Long (scalar)
+        if (this.ArchiveStorage == null && Exploration.Includes(parent + ".archiveStorage", true))
         {
-            //      C# -> System.Int64? ArchiveStorage
-            // GraphQL -> archiveStorage: Long (scalar)
-            if (this.ArchiveStorage == null && Exploration.Includes(parent + ".archiveStorage$"))
-            {
-                this.ArchiveStorage = new System.Int64();
-            }
-            //      C# -> System.Int32? ArchivedSnapshotCount
-            // GraphQL -> archivedSnapshotCount: Int (scalar)
-            if (this.ArchivedSnapshotCount == null && Exploration.Includes(parent + ".archivedSnapshotCount$"))
-            {
-                this.ArchivedSnapshotCount = new System.Int32();
-            }
-            //      C# -> System.String? BackupScriptErrorHandling
-            // GraphQL -> backupScriptErrorHandling: String (scalar)
-            if (this.BackupScriptErrorHandling == null && Exploration.Includes(parent + ".backupScriptErrorHandling$"))
-            {
-                this.BackupScriptErrorHandling = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? BackupScriptTimeout
-            // GraphQL -> backupScriptTimeout: Long (scalar)
-            if (this.BackupScriptTimeout == null && Exploration.Includes(parent + ".backupScriptTimeout$"))
-            {
-                this.BackupScriptTimeout = new System.Int64();
-            }
-            //      C# -> System.Int64? LocalStorage
-            // GraphQL -> localStorage: Long (scalar)
-            if (this.LocalStorage == null && Exploration.Includes(parent + ".localStorage$"))
-            {
-                this.LocalStorage = new System.Int64();
-            }
-            //      C# -> System.String? PostBackupScript
-            // GraphQL -> postBackupScript: String (scalar)
-            if (this.PostBackupScript == null && Exploration.Includes(parent + ".postBackupScript$"))
-            {
-                this.PostBackupScript = new System.String("FETCH");
-            }
-            //      C# -> System.String? PreBackupScript
-            // GraphQL -> preBackupScript: String (scalar)
-            if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript$"))
-            {
-                this.PreBackupScript = new System.String("FETCH");
-            }
-            //      C# -> DateTime? ProtectionDate
-            // GraphQL -> protectionDate: DateTime (scalar)
-            if (this.ProtectionDate == null && Exploration.Includes(parent + ".protectionDate$"))
-            {
-                this.ProtectionDate = new DateTime();
-            }
-            //      C# -> System.Int32? SnapshotCount
-            // GraphQL -> snapshotCount: Int! (scalar)
-            if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount$"))
-            {
-                this.SnapshotCount = new System.Int32();
-            }
-            //      C# -> FilesetSummary? FilesetSummary
-            // GraphQL -> filesetSummary: FilesetSummary (type)
-            if (this.FilesetSummary == null && Exploration.Includes(parent + ".filesetSummary"))
-            {
-                this.FilesetSummary = new FilesetSummary();
-                this.FilesetSummary.ApplyExploratoryFragment(parent + ".filesetSummary");
-            }
-            //      C# -> FilesetUpdate? FilesetUpdate
-            // GraphQL -> filesetUpdate: FilesetUpdate (type)
-            if (this.FilesetUpdate == null && Exploration.Includes(parent + ".filesetUpdate"))
-            {
-                this.FilesetUpdate = new FilesetUpdate();
-                this.FilesetUpdate.ApplyExploratoryFragment(parent + ".filesetUpdate");
-            }
-            //      C# -> List<FilesetSnapshotSummary>? Snapshots
-            // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
-            if (this.Snapshots == null && Exploration.Includes(parent + ".snapshots"))
-            {
-                this.Snapshots = new List<FilesetSnapshotSummary>();
-                this.Snapshots.ApplyExploratoryFragment(parent + ".snapshots");
-            }
+            this.ArchiveStorage = new System.Int64();
         }
+        //      C# -> System.Int32? ArchivedSnapshotCount
+        // GraphQL -> archivedSnapshotCount: Int (scalar)
+        if (this.ArchivedSnapshotCount == null && Exploration.Includes(parent + ".archivedSnapshotCount", true))
+        {
+            this.ArchivedSnapshotCount = new System.Int32();
+        }
+        //      C# -> System.String? BackupScriptErrorHandling
+        // GraphQL -> backupScriptErrorHandling: String (scalar)
+        if (this.BackupScriptErrorHandling == null && Exploration.Includes(parent + ".backupScriptErrorHandling", true))
+        {
+            this.BackupScriptErrorHandling = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? BackupScriptTimeout
+        // GraphQL -> backupScriptTimeout: Long (scalar)
+        if (this.BackupScriptTimeout == null && Exploration.Includes(parent + ".backupScriptTimeout", true))
+        {
+            this.BackupScriptTimeout = new System.Int64();
+        }
+        //      C# -> System.Int64? LocalStorage
+        // GraphQL -> localStorage: Long (scalar)
+        if (this.LocalStorage == null && Exploration.Includes(parent + ".localStorage", true))
+        {
+            this.LocalStorage = new System.Int64();
+        }
+        //      C# -> System.String? PostBackupScript
+        // GraphQL -> postBackupScript: String (scalar)
+        if (this.PostBackupScript == null && Exploration.Includes(parent + ".postBackupScript", true))
+        {
+            this.PostBackupScript = new System.String("FETCH");
+        }
+        //      C# -> System.String? PreBackupScript
+        // GraphQL -> preBackupScript: String (scalar)
+        if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript", true))
+        {
+            this.PreBackupScript = new System.String("FETCH");
+        }
+        //      C# -> DateTime? ProtectionDate
+        // GraphQL -> protectionDate: DateTime (scalar)
+        if (this.ProtectionDate == null && Exploration.Includes(parent + ".protectionDate", true))
+        {
+            this.ProtectionDate = new DateTime();
+        }
+        //      C# -> System.Int32? SnapshotCount
+        // GraphQL -> snapshotCount: Int! (scalar)
+        if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
+        {
+            this.SnapshotCount = new System.Int32();
+        }
+        //      C# -> FilesetSummary? FilesetSummary
+        // GraphQL -> filesetSummary: FilesetSummary (type)
+        if (this.FilesetSummary == null && Exploration.Includes(parent + ".filesetSummary"))
+        {
+            this.FilesetSummary = new FilesetSummary();
+            this.FilesetSummary.ApplyExploratoryFieldSpec(parent + ".filesetSummary");
+        }
+        //      C# -> FilesetUpdate? FilesetUpdate
+        // GraphQL -> filesetUpdate: FilesetUpdate (type)
+        if (this.FilesetUpdate == null && Exploration.Includes(parent + ".filesetUpdate"))
+        {
+            this.FilesetUpdate = new FilesetUpdate();
+            this.FilesetUpdate.ApplyExploratoryFieldSpec(parent + ".filesetUpdate");
+        }
+        //      C# -> List<FilesetSnapshotSummary>? Snapshots
+        // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
+        if (this.Snapshots == null && Exploration.Includes(parent + ".snapshots"))
+        {
+            this.Snapshots = new List<FilesetSnapshotSummary>();
+            this.Snapshots.ApplyExploratoryFieldSpec(parent + ".snapshots");
+        }
+    }
 
 
     #endregion
 
     } // class FilesetDetail
+    
     #endregion
 
     public static class ListFilesetDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<FilesetDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<FilesetDetail> list, 
             String parent = "")
         {
-            var item = new FilesetDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new FilesetDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

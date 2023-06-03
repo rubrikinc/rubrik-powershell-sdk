@@ -56,6 +56,26 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     /// PS C:\> Get-RscType -Name "AccountSetting" -InitialValues @{"IsEulaAccepted"= $false}
     /// </code>
     /// </example>
+    /// <example>
+    /// Get a list of all available Rsc .NET Interfaces
+    /// <code>
+    /// PS C:\> Get-RscType -ListAvailable -Interfaces
+    /// </code>
+    /// </example>
+    /// <example>
+    /// Get a list of all available Rsc .NET Interfaces filtered by name
+    /// <code>
+    /// PS C:\> Get-RscType -ListAvailable -Interfaces -FilterByName "mssql"
+    /// </code>
+    /// </example>
+    /// <example>
+    /// Get a list of all Rsc .NET types that implement the
+    /// MssqlTopLevelDescendantType interface
+    /// <code>
+    /// PS C:\> Get-RscType -Interface MssqlTopLevelDescendantType
+    /// </code>
+    /// </example>
+
     [Cmdlet(VerbsCommon.Get, "RscType", DefaultParameterSetName = "GetTypeList")]
     public class Get_RscType : PSCmdlet
     {
@@ -113,6 +133,25 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         [ValidateNotNullOrEmpty]
         public string FilterByName { get; set; }
 
+        /// <summary>
+        /// Flag to specify if interfaces should be returned.
+        /// </summary>
+        [Parameter(
+            Mandatory = false,
+            Position = 3,
+            ParameterSetName = "GetTypeList")]
+        public SwitchParameter Interfaces { get; set; }
+
+        /// <summary>
+        /// Used to request a list of types implementing a given interface.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ParameterSetName = "ListImplementingTypes")]
+        [ValidateNotNullOrEmpty]
+        public string Interface { get; set; }
+
         //cmdlet code
         protected override void ProcessRecord()
         {
@@ -120,8 +159,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch (ParameterSetName)
                 {
+                    case "ListImplementingTypes":
+                        WriteObject(
+                            RscTypeInitializer
+                                .GetTypesImplementingInterface(Interface)
+                        );
+                        break;
+
                     case "GetTypeList":
-                        WriteObject(RscTypeInitializer.GetAllTypeNames(FilterByName));
+                        WriteObject(RscTypeInitializer.GetAllTypeNames(FilterByName, Interfaces));
                         break;
 
                     case "GetType":

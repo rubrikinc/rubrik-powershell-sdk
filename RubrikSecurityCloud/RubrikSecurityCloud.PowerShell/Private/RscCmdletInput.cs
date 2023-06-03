@@ -46,7 +46,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 obj is string ||
                 obj is int ||
                 obj is bool ||
-                obj is IFragment ||
+                obj is IFieldSpec ||
                 obj is IInput
             )
             {
@@ -167,8 +167,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 }
             }
             var FieldStr = this.Field == null ? "null" : this.Field.ToString();
-            if ( this.Field != null && this.Field is IFragment ) {
-                FieldStr = ((IFragment)this.Field).AsFragment().Replace("\n"," ");
+            if ( this.Field != null && this.Field is IFieldSpec ) {
+                FieldStr = ((IFieldSpec)this.Field).AsFieldSpec()
+                    .Replace("\n"," ");
             }
             _logger.Debug(
                 $"RscCmdletInput:\n" +
@@ -196,14 +197,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 args = new Hashtable(StringComparer.OrdinalIgnoreCase);
                 // split the String into key-value pairs
                 // separated by commas: key1=value1,key2=value2
-                String[] pairs = ((String)_parent.Arg).Split(',');
-                foreach (String pair in pairs)
+                string[] pairs = ((string)_parent.Arg).Split(',');
+                foreach (string pair in pairs)
                 {
-                    String[] kv = pair.Split('=');
+                    string[] kv = pair.Split('=');
                     if (kv.Length != 2)
                     {
                         throw new ArgumentException(
-                            String.Format(
+                            string.Format(
                                 "Invalid argument {0}. Expected key=value pairs separated by commas.",
                                 _parent.Arg
                             )
@@ -217,15 +218,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             return (Hashtable)_parent.Arg;
         }
 
-        internal String _argString()
+        internal string _argString()
         {
-            List<String> args = new List<String>();
+            List<string> args = new();
             foreach (var argDef in _argDefs)
             {
-                String argName = argDef.Item1;
-                String argType = argDef.Item2;
-                Object val = this.Arg[argName];
-                String valStr = "null";
+                string argName = argDef.Item1;
+                string argType = argDef.Item2;
+                object val = this.Arg[argName];
+                string valStr = "null";
                 if (val != null)
                 {
                     if( val is Hashtable hashTable)
@@ -240,12 +241,12 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                     args.Add(argName + "<" + argType + "> = " + valStr);
                 }
             }
-            return String.Join(",", args);
+            return string.Join(",", args);
         }
 
-        private Object getValueFromParameterSet(String argName)
+        private object getValueFromParameterSet(string argName)
         {
-            String fieldName = StringUtils.Capitalize(argName);
+            string fieldName = StringUtils.Capitalize(argName);
             Type parentType = _parent.GetType();
             PropertyInfo propertyInfo = parentType.GetProperty(fieldName, BindingFlags.Public | BindingFlags.Instance);
             if (propertyInfo == null)
@@ -255,7 +256,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             }
             // there is a public field with the same name
             // but is it a parameter?
-            ParameterAttribute parameterAttribute = propertyInfo.GetCustomAttributes(typeof(ParameterAttribute), true).FirstOrDefault() as ParameterAttribute;
+            ParameterAttribute parameterAttribute = 
+                propertyInfo.GetCustomAttributes(typeof(ParameterAttribute), true).FirstOrDefault() as ParameterAttribute;
 
             if (parameterAttribute == null )
             {
@@ -263,7 +265,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 return null ;
             }
             // but is it part of the current parameter set?
-            if ( parameterAttribute.ParameterSetName != _parent.ParameterSetName)
+            if ( parameterAttribute.ParameterSetName != _parent
+                .ParameterSetName)
             {
                 // _logger.Debug($"Parameter attribute for field {fieldName} is not in the current parameter set");
                 return null;

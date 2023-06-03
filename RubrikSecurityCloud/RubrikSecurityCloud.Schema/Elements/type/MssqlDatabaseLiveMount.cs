@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlDatabaseLiveMount
-    public class MssqlDatabaseLiveMount: IFragment
+    public class MssqlDatabaseLiveMount: BaseType
     {
         #region members
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -83,6 +85,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("targetInstance")]
         public MssqlInstance? TargetInstance { get; set; }
 
+
         #endregion
 
     #region methods
@@ -145,237 +148,206 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId != null)
-            {
-                 s += ind + "cdmId\n";
-
-            }
-            //      C# -> DateTime? CreationDate
-            // GraphQL -> creationDate: DateTime (scalar)
-            if (this.CreationDate != null)
-            {
-                 s += ind + "creationDate\n";
-
-            }
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: String! (scalar)
-            if (this.Fid != null)
-            {
-                 s += ind + "fid\n";
-
-            }
-            //      C# -> System.Boolean? IsReady
-            // GraphQL -> isReady: Boolean! (scalar)
-            if (this.IsReady != null)
-            {
-                 s += ind + "isReady\n";
-
-            }
-            //      C# -> System.String? MountRequestId
-            // GraphQL -> mountRequestId: String! (scalar)
-            if (this.MountRequestId != null)
-            {
-                 s += ind + "mountRequestId\n";
-
-            }
-            //      C# -> System.String? MountedDatabaseId
-            // GraphQL -> mountedDatabaseId: String! (scalar)
-            if (this.MountedDatabaseId != null)
-            {
-                 s += ind + "mountedDatabaseId\n";
-
-            }
-            //      C# -> System.String? MountedDatabaseName
-            // GraphQL -> mountedDatabaseName: String! (scalar)
-            if (this.MountedDatabaseName != null)
-            {
-                 s += ind + "mountedDatabaseName\n";
-
-            }
-            //      C# -> System.String? OwnerId
-            // GraphQL -> ownerId: String! (scalar)
-            if (this.OwnerId != null)
-            {
-                 s += ind + "ownerId\n";
-
-            }
-            //      C# -> DateTime? RecoveryPoint
-            // GraphQL -> recoveryPoint: DateTime (scalar)
-            if (this.RecoveryPoint != null)
-            {
-                 s += ind + "recoveryPoint\n";
-
-            }
-            //      C# -> System.String? UnmountRequestId
-            // GraphQL -> unmountRequestId: String! (scalar)
-            if (this.UnmountRequestId != null)
-            {
-                 s += ind + "unmountRequestId\n";
-
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MssqlDatabase? SourceDatabase
-            // GraphQL -> sourceDatabase: MssqlDatabase (type)
-            if (this.SourceDatabase != null)
-            {
-                 s += ind + "sourceDatabase\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceDatabase.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MssqlInstance? TargetInstance
-            // GraphQL -> targetInstance: MssqlInstance (type)
-            if (this.TargetInstance != null)
-            {
-                 s += ind + "targetInstance\n";
-
-                 s += ind + "{\n" + 
-                 this.TargetInstance.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
         }
+        //      C# -> DateTime? CreationDate
+        // GraphQL -> creationDate: DateTime (scalar)
+        if (this.CreationDate != null) {
+            s += ind + "creationDate\n" ;
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: String! (scalar)
+        if (this.Fid != null) {
+            s += ind + "fid\n" ;
+        }
+        //      C# -> System.Boolean? IsReady
+        // GraphQL -> isReady: Boolean! (scalar)
+        if (this.IsReady != null) {
+            s += ind + "isReady\n" ;
+        }
+        //      C# -> System.String? MountRequestId
+        // GraphQL -> mountRequestId: String! (scalar)
+        if (this.MountRequestId != null) {
+            s += ind + "mountRequestId\n" ;
+        }
+        //      C# -> System.String? MountedDatabaseId
+        // GraphQL -> mountedDatabaseId: String! (scalar)
+        if (this.MountedDatabaseId != null) {
+            s += ind + "mountedDatabaseId\n" ;
+        }
+        //      C# -> System.String? MountedDatabaseName
+        // GraphQL -> mountedDatabaseName: String! (scalar)
+        if (this.MountedDatabaseName != null) {
+            s += ind + "mountedDatabaseName\n" ;
+        }
+        //      C# -> System.String? OwnerId
+        // GraphQL -> ownerId: String! (scalar)
+        if (this.OwnerId != null) {
+            s += ind + "ownerId\n" ;
+        }
+        //      C# -> DateTime? RecoveryPoint
+        // GraphQL -> recoveryPoint: DateTime (scalar)
+        if (this.RecoveryPoint != null) {
+            s += ind + "recoveryPoint\n" ;
+        }
+        //      C# -> System.String? UnmountRequestId
+        // GraphQL -> unmountRequestId: String! (scalar)
+        if (this.UnmountRequestId != null) {
+            s += ind + "unmountRequestId\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MssqlDatabase? SourceDatabase
+        // GraphQL -> sourceDatabase: MssqlDatabase (type)
+        if (this.SourceDatabase != null) {
+            s += ind + "sourceDatabase {\n" + this.SourceDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MssqlInstance? TargetInstance
+        // GraphQL -> targetInstance: MssqlInstance (type)
+        if (this.TargetInstance != null) {
+            s += ind + "targetInstance {\n" + this.TargetInstance.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
-            {
-                this.CdmId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? CreationDate
-            // GraphQL -> creationDate: DateTime (scalar)
-            if (this.CreationDate == null && Exploration.Includes(parent + ".creationDate$"))
-            {
-                this.CreationDate = new DateTime();
-            }
-            //      C# -> System.String? Fid
-            // GraphQL -> fid: String! (scalar)
-            if (this.Fid == null && Exploration.Includes(parent + ".fid$"))
-            {
-                this.Fid = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsReady
-            // GraphQL -> isReady: Boolean! (scalar)
-            if (this.IsReady == null && Exploration.Includes(parent + ".isReady$"))
-            {
-                this.IsReady = new System.Boolean();
-            }
-            //      C# -> System.String? MountRequestId
-            // GraphQL -> mountRequestId: String! (scalar)
-            if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId$"))
-            {
-                this.MountRequestId = new System.String("FETCH");
-            }
-            //      C# -> System.String? MountedDatabaseId
-            // GraphQL -> mountedDatabaseId: String! (scalar)
-            if (this.MountedDatabaseId == null && Exploration.Includes(parent + ".mountedDatabaseId$"))
-            {
-                this.MountedDatabaseId = new System.String("FETCH");
-            }
-            //      C# -> System.String? MountedDatabaseName
-            // GraphQL -> mountedDatabaseName: String! (scalar)
-            if (this.MountedDatabaseName == null && Exploration.Includes(parent + ".mountedDatabaseName$"))
-            {
-                this.MountedDatabaseName = new System.String("FETCH");
-            }
-            //      C# -> System.String? OwnerId
-            // GraphQL -> ownerId: String! (scalar)
-            if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId$"))
-            {
-                this.OwnerId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? RecoveryPoint
-            // GraphQL -> recoveryPoint: DateTime (scalar)
-            if (this.RecoveryPoint == null && Exploration.Includes(parent + ".recoveryPoint$"))
-            {
-                this.RecoveryPoint = new DateTime();
-            }
-            //      C# -> System.String? UnmountRequestId
-            // GraphQL -> unmountRequestId: String! (scalar)
-            if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId$"))
-            {
-                this.UnmountRequestId = new System.String("FETCH");
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> MssqlDatabase? SourceDatabase
-            // GraphQL -> sourceDatabase: MssqlDatabase (type)
-            if (this.SourceDatabase == null && Exploration.Includes(parent + ".sourceDatabase"))
-            {
-                this.SourceDatabase = new MssqlDatabase();
-                this.SourceDatabase.ApplyExploratoryFragment(parent + ".sourceDatabase");
-            }
-            //      C# -> MssqlInstance? TargetInstance
-            // GraphQL -> targetInstance: MssqlInstance (type)
-            if (this.TargetInstance == null && Exploration.Includes(parent + ".targetInstance"))
-            {
-                this.TargetInstance = new MssqlInstance();
-                this.TargetInstance.ApplyExploratoryFragment(parent + ".targetInstance");
-            }
+            this.CdmId = new System.String("FETCH");
         }
+        //      C# -> DateTime? CreationDate
+        // GraphQL -> creationDate: DateTime (scalar)
+        if (this.CreationDate == null && Exploration.Includes(parent + ".creationDate", true))
+        {
+            this.CreationDate = new DateTime();
+        }
+        //      C# -> System.String? Fid
+        // GraphQL -> fid: String! (scalar)
+        if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
+        {
+            this.Fid = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsReady
+        // GraphQL -> isReady: Boolean! (scalar)
+        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        {
+            this.IsReady = true;
+        }
+        //      C# -> System.String? MountRequestId
+        // GraphQL -> mountRequestId: String! (scalar)
+        if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
+        {
+            this.MountRequestId = new System.String("FETCH");
+        }
+        //      C# -> System.String? MountedDatabaseId
+        // GraphQL -> mountedDatabaseId: String! (scalar)
+        if (this.MountedDatabaseId == null && Exploration.Includes(parent + ".mountedDatabaseId", true))
+        {
+            this.MountedDatabaseId = new System.String("FETCH");
+        }
+        //      C# -> System.String? MountedDatabaseName
+        // GraphQL -> mountedDatabaseName: String! (scalar)
+        if (this.MountedDatabaseName == null && Exploration.Includes(parent + ".mountedDatabaseName", true))
+        {
+            this.MountedDatabaseName = new System.String("FETCH");
+        }
+        //      C# -> System.String? OwnerId
+        // GraphQL -> ownerId: String! (scalar)
+        if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId", true))
+        {
+            this.OwnerId = new System.String("FETCH");
+        }
+        //      C# -> DateTime? RecoveryPoint
+        // GraphQL -> recoveryPoint: DateTime (scalar)
+        if (this.RecoveryPoint == null && Exploration.Includes(parent + ".recoveryPoint", true))
+        {
+            this.RecoveryPoint = new DateTime();
+        }
+        //      C# -> System.String? UnmountRequestId
+        // GraphQL -> unmountRequestId: String! (scalar)
+        if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
+        {
+            this.UnmountRequestId = new System.String("FETCH");
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> MssqlDatabase? SourceDatabase
+        // GraphQL -> sourceDatabase: MssqlDatabase (type)
+        if (this.SourceDatabase == null && Exploration.Includes(parent + ".sourceDatabase"))
+        {
+            this.SourceDatabase = new MssqlDatabase();
+            this.SourceDatabase.ApplyExploratoryFieldSpec(parent + ".sourceDatabase");
+        }
+        //      C# -> MssqlInstance? TargetInstance
+        // GraphQL -> targetInstance: MssqlInstance (type)
+        if (this.TargetInstance == null && Exploration.Includes(parent + ".targetInstance"))
+        {
+            this.TargetInstance = new MssqlInstance();
+            this.TargetInstance.ApplyExploratoryFieldSpec(parent + ".targetInstance");
+        }
+    }
 
 
     #endregion
 
     } // class MssqlDatabaseLiveMount
+    
     #endregion
 
     public static class ListMssqlDatabaseLiveMountExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MssqlDatabaseLiveMount> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MssqlDatabaseLiveMount> list, 
             String parent = "")
         {
-            var item = new MssqlDatabaseLiveMount();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MssqlDatabaseLiveMount());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,17 +11,29 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ThreatMonitoringFileMatchDetailsReply
-    public class ThreatMonitoringFileMatchDetailsReply: IFragment
+    public class ThreatMonitoringFileMatchDetailsReply: BaseType
     {
         #region members
+
+        //      C# -> IndicatorOfCompromiseKind? MatchType
+        // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
+        [JsonProperty("matchType")]
+        public IndicatorOfCompromiseKind? MatchType { get; set; }
+
         //      C# -> DateTime? DetectedSnapshotDate
         // GraphQL -> detectedSnapshotDate: DateTime (scalar)
         [JsonProperty("detectedSnapshotDate")]
         public DateTime? DetectedSnapshotDate { get; set; }
+
+        //      C# -> System.String? FirstDetectedSnapshotFid
+        // GraphQL -> firstDetectedSnapshotFid: String! (scalar)
+        [JsonProperty("firstDetectedSnapshotFid")]
+        public System.String? FirstDetectedSnapshotFid { get; set; }
 
         //      C# -> System.String? IntelSource
         // GraphQL -> intelSource: String! (scalar)
@@ -38,31 +50,28 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("isQuarantined")]
         public System.Boolean? IsQuarantined { get; set; }
 
-        //      C# -> List<SnapshotData>? SnapshotList
-        // GraphQL -> snapshotList: [SnapshotData!]! (type)
-        [JsonProperty("snapshotList")]
-        public List<SnapshotData>? SnapshotList { get; set; }
-
-        //      C# -> IndicatorOfCompromiseKind? MatchType
-        // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
-        [JsonProperty("matchType")]
-        public IndicatorOfCompromiseKind? MatchType { get; set; }
 
         #endregion
 
     #region methods
 
     public ThreatMonitoringFileMatchDetailsReply Set(
+        IndicatorOfCompromiseKind? MatchType = null,
         DateTime? DetectedSnapshotDate = null,
+        System.String? FirstDetectedSnapshotFid = null,
         System.String? IntelSource = null,
         System.String? IocAttribute = null,
-        System.Boolean? IsQuarantined = null,
-        List<SnapshotData>? SnapshotList = null,
-        IndicatorOfCompromiseKind? MatchType = null
+        System.Boolean? IsQuarantined = null
     ) 
     {
+        if ( MatchType != null ) {
+            this.MatchType = MatchType;
+        }
         if ( DetectedSnapshotDate != null ) {
             this.DetectedSnapshotDate = DetectedSnapshotDate;
+        }
+        if ( FirstDetectedSnapshotFid != null ) {
+            this.FirstDetectedSnapshotFid = FirstDetectedSnapshotFid;
         }
         if ( IntelSource != null ) {
             this.IntelSource = IntelSource;
@@ -73,147 +82,129 @@ namespace Rubrik.SecurityCloud.Types
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
         }
-        if ( SnapshotList != null ) {
-            this.SnapshotList = SnapshotList;
-        }
-        if ( MatchType != null ) {
-            this.MatchType = MatchType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? DetectedSnapshotDate
-            // GraphQL -> detectedSnapshotDate: DateTime (scalar)
-            if (this.DetectedSnapshotDate != null)
-            {
-                 s += ind + "detectedSnapshotDate\n";
-
-            }
-            //      C# -> System.String? IntelSource
-            // GraphQL -> intelSource: String! (scalar)
-            if (this.IntelSource != null)
-            {
-                 s += ind + "intelSource\n";
-
-            }
-            //      C# -> System.String? IocAttribute
-            // GraphQL -> iocAttribute: String! (scalar)
-            if (this.IocAttribute != null)
-            {
-                 s += ind + "iocAttribute\n";
-
-            }
-            //      C# -> System.Boolean? IsQuarantined
-            // GraphQL -> isQuarantined: Boolean! (scalar)
-            if (this.IsQuarantined != null)
-            {
-                 s += ind + "isQuarantined\n";
-
-            }
-            //      C# -> List<SnapshotData>? SnapshotList
-            // GraphQL -> snapshotList: [SnapshotData!]! (type)
-            if (this.SnapshotList != null)
-            {
-                 s += ind + "snapshotList\n";
-
-                 s += ind + "{\n" + 
-                 this.SnapshotList.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> IndicatorOfCompromiseKind? MatchType
-            // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
-            if (this.MatchType != null)
-            {
-                 s += ind + "matchType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> IndicatorOfCompromiseKind? MatchType
+        // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
+        if (this.MatchType != null) {
+            s += ind + "matchType\n" ;
         }
+        //      C# -> DateTime? DetectedSnapshotDate
+        // GraphQL -> detectedSnapshotDate: DateTime (scalar)
+        if (this.DetectedSnapshotDate != null) {
+            s += ind + "detectedSnapshotDate\n" ;
+        }
+        //      C# -> System.String? FirstDetectedSnapshotFid
+        // GraphQL -> firstDetectedSnapshotFid: String! (scalar)
+        if (this.FirstDetectedSnapshotFid != null) {
+            s += ind + "firstDetectedSnapshotFid\n" ;
+        }
+        //      C# -> System.String? IntelSource
+        // GraphQL -> intelSource: String! (scalar)
+        if (this.IntelSource != null) {
+            s += ind + "intelSource\n" ;
+        }
+        //      C# -> System.String? IocAttribute
+        // GraphQL -> iocAttribute: String! (scalar)
+        if (this.IocAttribute != null) {
+            s += ind + "iocAttribute\n" ;
+        }
+        //      C# -> System.Boolean? IsQuarantined
+        // GraphQL -> isQuarantined: Boolean! (scalar)
+        if (this.IsQuarantined != null) {
+            s += ind + "isQuarantined\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> IndicatorOfCompromiseKind? MatchType
+        // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
+        if (this.MatchType == null && Exploration.Includes(parent + ".matchType", true))
         {
-            //      C# -> DateTime? DetectedSnapshotDate
-            // GraphQL -> detectedSnapshotDate: DateTime (scalar)
-            if (this.DetectedSnapshotDate == null && Exploration.Includes(parent + ".detectedSnapshotDate$"))
-            {
-                this.DetectedSnapshotDate = new DateTime();
-            }
-            //      C# -> System.String? IntelSource
-            // GraphQL -> intelSource: String! (scalar)
-            if (this.IntelSource == null && Exploration.Includes(parent + ".intelSource$"))
-            {
-                this.IntelSource = new System.String("FETCH");
-            }
-            //      C# -> System.String? IocAttribute
-            // GraphQL -> iocAttribute: String! (scalar)
-            if (this.IocAttribute == null && Exploration.Includes(parent + ".iocAttribute$"))
-            {
-                this.IocAttribute = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsQuarantined
-            // GraphQL -> isQuarantined: Boolean! (scalar)
-            if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined$"))
-            {
-                this.IsQuarantined = new System.Boolean();
-            }
-            //      C# -> List<SnapshotData>? SnapshotList
-            // GraphQL -> snapshotList: [SnapshotData!]! (type)
-            if (this.SnapshotList == null && Exploration.Includes(parent + ".snapshotList"))
-            {
-                this.SnapshotList = new List<SnapshotData>();
-                this.SnapshotList.ApplyExploratoryFragment(parent + ".snapshotList");
-            }
-            //      C# -> IndicatorOfCompromiseKind? MatchType
-            // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
-            if (this.MatchType == null && Exploration.Includes(parent + ".matchType$"))
-            {
-                this.MatchType = new IndicatorOfCompromiseKind();
-            }
+            this.MatchType = new IndicatorOfCompromiseKind();
         }
+        //      C# -> DateTime? DetectedSnapshotDate
+        // GraphQL -> detectedSnapshotDate: DateTime (scalar)
+        if (this.DetectedSnapshotDate == null && Exploration.Includes(parent + ".detectedSnapshotDate", true))
+        {
+            this.DetectedSnapshotDate = new DateTime();
+        }
+        //      C# -> System.String? FirstDetectedSnapshotFid
+        // GraphQL -> firstDetectedSnapshotFid: String! (scalar)
+        if (this.FirstDetectedSnapshotFid == null && Exploration.Includes(parent + ".firstDetectedSnapshotFid", true))
+        {
+            this.FirstDetectedSnapshotFid = new System.String("FETCH");
+        }
+        //      C# -> System.String? IntelSource
+        // GraphQL -> intelSource: String! (scalar)
+        if (this.IntelSource == null && Exploration.Includes(parent + ".intelSource", true))
+        {
+            this.IntelSource = new System.String("FETCH");
+        }
+        //      C# -> System.String? IocAttribute
+        // GraphQL -> iocAttribute: String! (scalar)
+        if (this.IocAttribute == null && Exploration.Includes(parent + ".iocAttribute", true))
+        {
+            this.IocAttribute = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsQuarantined
+        // GraphQL -> isQuarantined: Boolean! (scalar)
+        if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined", true))
+        {
+            this.IsQuarantined = true;
+        }
+    }
 
 
     #endregion
 
     } // class ThreatMonitoringFileMatchDetailsReply
+    
     #endregion
 
     public static class ListThreatMonitoringFileMatchDetailsReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ThreatMonitoringFileMatchDetailsReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ThreatMonitoringFileMatchDetailsReply> list, 
             String parent = "")
         {
-            var item = new ThreatMonitoringFileMatchDetailsReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ThreatMonitoringFileMatchDetailsReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

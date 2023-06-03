@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SnapshotSchedule
-    public class SnapshotSchedule: IFragment
+    public class SnapshotSchedule: BaseType
     {
         #region members
+
         //      C# -> DailySnapshotSchedule? Daily
         // GraphQL -> daily: DailySnapshotSchedule (type)
         [JsonProperty("daily")]
@@ -52,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> yearly: YearlySnapshotSchedule (type)
         [JsonProperty("yearly")]
         public YearlySnapshotSchedule? Yearly { get; set; }
+
 
         #endregion
 
@@ -91,175 +94,144 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DailySnapshotSchedule? Daily
-            // GraphQL -> daily: DailySnapshotSchedule (type)
-            if (this.Daily != null)
-            {
-                 s += ind + "daily\n";
-
-                 s += ind + "{\n" + 
-                 this.Daily.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> HourlySnapshotSchedule? Hourly
-            // GraphQL -> hourly: HourlySnapshotSchedule (type)
-            if (this.Hourly != null)
-            {
-                 s += ind + "hourly\n";
-
-                 s += ind + "{\n" + 
-                 this.Hourly.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MinuteSnapshotSchedule? Minute
-            // GraphQL -> minute: MinuteSnapshotSchedule (type)
-            if (this.Minute != null)
-            {
-                 s += ind + "minute\n";
-
-                 s += ind + "{\n" + 
-                 this.Minute.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MonthlySnapshotSchedule? Monthly
-            // GraphQL -> monthly: MonthlySnapshotSchedule (type)
-            if (this.Monthly != null)
-            {
-                 s += ind + "monthly\n";
-
-                 s += ind + "{\n" + 
-                 this.Monthly.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> QuarterlySnapshotSchedule? Quarterly
-            // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
-            if (this.Quarterly != null)
-            {
-                 s += ind + "quarterly\n";
-
-                 s += ind + "{\n" + 
-                 this.Quarterly.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> WeeklySnapshotSchedule? Weekly
-            // GraphQL -> weekly: WeeklySnapshotSchedule (type)
-            if (this.Weekly != null)
-            {
-                 s += ind + "weekly\n";
-
-                 s += ind + "{\n" + 
-                 this.Weekly.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> YearlySnapshotSchedule? Yearly
-            // GraphQL -> yearly: YearlySnapshotSchedule (type)
-            if (this.Yearly != null)
-            {
-                 s += ind + "yearly\n";
-
-                 s += ind + "{\n" + 
-                 this.Yearly.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> DailySnapshotSchedule? Daily
+        // GraphQL -> daily: DailySnapshotSchedule (type)
+        if (this.Daily != null) {
+            s += ind + "daily {\n" + this.Daily.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> HourlySnapshotSchedule? Hourly
+        // GraphQL -> hourly: HourlySnapshotSchedule (type)
+        if (this.Hourly != null) {
+            s += ind + "hourly {\n" + this.Hourly.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MinuteSnapshotSchedule? Minute
+        // GraphQL -> minute: MinuteSnapshotSchedule (type)
+        if (this.Minute != null) {
+            s += ind + "minute {\n" + this.Minute.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MonthlySnapshotSchedule? Monthly
+        // GraphQL -> monthly: MonthlySnapshotSchedule (type)
+        if (this.Monthly != null) {
+            s += ind + "monthly {\n" + this.Monthly.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> QuarterlySnapshotSchedule? Quarterly
+        // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
+        if (this.Quarterly != null) {
+            s += ind + "quarterly {\n" + this.Quarterly.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> WeeklySnapshotSchedule? Weekly
+        // GraphQL -> weekly: WeeklySnapshotSchedule (type)
+        if (this.Weekly != null) {
+            s += ind + "weekly {\n" + this.Weekly.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> YearlySnapshotSchedule? Yearly
+        // GraphQL -> yearly: YearlySnapshotSchedule (type)
+        if (this.Yearly != null) {
+            s += ind + "yearly {\n" + this.Yearly.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> DailySnapshotSchedule? Daily
+        // GraphQL -> daily: DailySnapshotSchedule (type)
+        if (this.Daily == null && Exploration.Includes(parent + ".daily"))
         {
-            //      C# -> DailySnapshotSchedule? Daily
-            // GraphQL -> daily: DailySnapshotSchedule (type)
-            if (this.Daily == null && Exploration.Includes(parent + ".daily"))
-            {
-                this.Daily = new DailySnapshotSchedule();
-                this.Daily.ApplyExploratoryFragment(parent + ".daily");
-            }
-            //      C# -> HourlySnapshotSchedule? Hourly
-            // GraphQL -> hourly: HourlySnapshotSchedule (type)
-            if (this.Hourly == null && Exploration.Includes(parent + ".hourly"))
-            {
-                this.Hourly = new HourlySnapshotSchedule();
-                this.Hourly.ApplyExploratoryFragment(parent + ".hourly");
-            }
-            //      C# -> MinuteSnapshotSchedule? Minute
-            // GraphQL -> minute: MinuteSnapshotSchedule (type)
-            if (this.Minute == null && Exploration.Includes(parent + ".minute"))
-            {
-                this.Minute = new MinuteSnapshotSchedule();
-                this.Minute.ApplyExploratoryFragment(parent + ".minute");
-            }
-            //      C# -> MonthlySnapshotSchedule? Monthly
-            // GraphQL -> monthly: MonthlySnapshotSchedule (type)
-            if (this.Monthly == null && Exploration.Includes(parent + ".monthly"))
-            {
-                this.Monthly = new MonthlySnapshotSchedule();
-                this.Monthly.ApplyExploratoryFragment(parent + ".monthly");
-            }
-            //      C# -> QuarterlySnapshotSchedule? Quarterly
-            // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
-            if (this.Quarterly == null && Exploration.Includes(parent + ".quarterly"))
-            {
-                this.Quarterly = new QuarterlySnapshotSchedule();
-                this.Quarterly.ApplyExploratoryFragment(parent + ".quarterly");
-            }
-            //      C# -> WeeklySnapshotSchedule? Weekly
-            // GraphQL -> weekly: WeeklySnapshotSchedule (type)
-            if (this.Weekly == null && Exploration.Includes(parent + ".weekly"))
-            {
-                this.Weekly = new WeeklySnapshotSchedule();
-                this.Weekly.ApplyExploratoryFragment(parent + ".weekly");
-            }
-            //      C# -> YearlySnapshotSchedule? Yearly
-            // GraphQL -> yearly: YearlySnapshotSchedule (type)
-            if (this.Yearly == null && Exploration.Includes(parent + ".yearly"))
-            {
-                this.Yearly = new YearlySnapshotSchedule();
-                this.Yearly.ApplyExploratoryFragment(parent + ".yearly");
-            }
+            this.Daily = new DailySnapshotSchedule();
+            this.Daily.ApplyExploratoryFieldSpec(parent + ".daily");
         }
+        //      C# -> HourlySnapshotSchedule? Hourly
+        // GraphQL -> hourly: HourlySnapshotSchedule (type)
+        if (this.Hourly == null && Exploration.Includes(parent + ".hourly"))
+        {
+            this.Hourly = new HourlySnapshotSchedule();
+            this.Hourly.ApplyExploratoryFieldSpec(parent + ".hourly");
+        }
+        //      C# -> MinuteSnapshotSchedule? Minute
+        // GraphQL -> minute: MinuteSnapshotSchedule (type)
+        if (this.Minute == null && Exploration.Includes(parent + ".minute"))
+        {
+            this.Minute = new MinuteSnapshotSchedule();
+            this.Minute.ApplyExploratoryFieldSpec(parent + ".minute");
+        }
+        //      C# -> MonthlySnapshotSchedule? Monthly
+        // GraphQL -> monthly: MonthlySnapshotSchedule (type)
+        if (this.Monthly == null && Exploration.Includes(parent + ".monthly"))
+        {
+            this.Monthly = new MonthlySnapshotSchedule();
+            this.Monthly.ApplyExploratoryFieldSpec(parent + ".monthly");
+        }
+        //      C# -> QuarterlySnapshotSchedule? Quarterly
+        // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
+        if (this.Quarterly == null && Exploration.Includes(parent + ".quarterly"))
+        {
+            this.Quarterly = new QuarterlySnapshotSchedule();
+            this.Quarterly.ApplyExploratoryFieldSpec(parent + ".quarterly");
+        }
+        //      C# -> WeeklySnapshotSchedule? Weekly
+        // GraphQL -> weekly: WeeklySnapshotSchedule (type)
+        if (this.Weekly == null && Exploration.Includes(parent + ".weekly"))
+        {
+            this.Weekly = new WeeklySnapshotSchedule();
+            this.Weekly.ApplyExploratoryFieldSpec(parent + ".weekly");
+        }
+        //      C# -> YearlySnapshotSchedule? Yearly
+        // GraphQL -> yearly: YearlySnapshotSchedule (type)
+        if (this.Yearly == null && Exploration.Includes(parent + ".yearly"))
+        {
+            this.Yearly = new YearlySnapshotSchedule();
+            this.Yearly.ApplyExploratoryFieldSpec(parent + ".yearly");
+        }
+    }
 
 
     #endregion
 
     } // class SnapshotSchedule
+    
     #endregion
 
     public static class ListSnapshotScheduleExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SnapshotSchedule> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SnapshotSchedule> list, 
             String parent = "")
         {
-            var item = new SnapshotSchedule();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SnapshotSchedule());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

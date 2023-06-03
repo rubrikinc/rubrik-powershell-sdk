@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlRootProperties
-    public class MssqlRootProperties: IFragment
+    public class MssqlRootProperties: BaseType
     {
         #region members
+
+        //      C# -> MssqlRootPropertiesRootType? RootType
+        // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
+        [JsonProperty("rootType")]
+        public MssqlRootPropertiesRootType? RootType { get; set; }
+
         //      C# -> System.String? RootId
         // GraphQL -> rootId: String (scalar)
         [JsonProperty("rootId")]
@@ -33,22 +40,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("rootRole")]
         public System.String? RootRole { get; set; }
 
-        //      C# -> MssqlRootPropertiesRootType? RootType
-        // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
-        [JsonProperty("rootType")]
-        public MssqlRootPropertiesRootType? RootType { get; set; }
 
         #endregion
 
     #region methods
 
     public MssqlRootProperties Set(
+        MssqlRootPropertiesRootType? RootType = null,
         System.String? RootId = null,
         System.String? RootName = null,
-        System.String? RootRole = null,
-        MssqlRootPropertiesRootType? RootType = null
+        System.String? RootRole = null
     ) 
     {
+        if ( RootType != null ) {
+            this.RootType = RootType;
+        }
         if ( RootId != null ) {
             this.RootId = RootId;
         }
@@ -58,114 +64,107 @@ namespace Rubrik.SecurityCloud.Types
         if ( RootRole != null ) {
             this.RootRole = RootRole;
         }
-        if ( RootType != null ) {
-            this.RootType = RootType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? RootId
-            // GraphQL -> rootId: String (scalar)
-            if (this.RootId != null)
-            {
-                 s += ind + "rootId\n";
-
-            }
-            //      C# -> System.String? RootName
-            // GraphQL -> rootName: String! (scalar)
-            if (this.RootName != null)
-            {
-                 s += ind + "rootName\n";
-
-            }
-            //      C# -> System.String? RootRole
-            // GraphQL -> rootRole: String (scalar)
-            if (this.RootRole != null)
-            {
-                 s += ind + "rootRole\n";
-
-            }
-            //      C# -> MssqlRootPropertiesRootType? RootType
-            // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
-            if (this.RootType != null)
-            {
-                 s += ind + "rootType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> MssqlRootPropertiesRootType? RootType
+        // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
+        if (this.RootType != null) {
+            s += ind + "rootType\n" ;
         }
+        //      C# -> System.String? RootId
+        // GraphQL -> rootId: String (scalar)
+        if (this.RootId != null) {
+            s += ind + "rootId\n" ;
+        }
+        //      C# -> System.String? RootName
+        // GraphQL -> rootName: String! (scalar)
+        if (this.RootName != null) {
+            s += ind + "rootName\n" ;
+        }
+        //      C# -> System.String? RootRole
+        // GraphQL -> rootRole: String (scalar)
+        if (this.RootRole != null) {
+            s += ind + "rootRole\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> MssqlRootPropertiesRootType? RootType
+        // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
+        if (this.RootType == null && Exploration.Includes(parent + ".rootType", true))
         {
-            //      C# -> System.String? RootId
-            // GraphQL -> rootId: String (scalar)
-            if (this.RootId == null && Exploration.Includes(parent + ".rootId$"))
-            {
-                this.RootId = new System.String("FETCH");
-            }
-            //      C# -> System.String? RootName
-            // GraphQL -> rootName: String! (scalar)
-            if (this.RootName == null && Exploration.Includes(parent + ".rootName$"))
-            {
-                this.RootName = new System.String("FETCH");
-            }
-            //      C# -> System.String? RootRole
-            // GraphQL -> rootRole: String (scalar)
-            if (this.RootRole == null && Exploration.Includes(parent + ".rootRole$"))
-            {
-                this.RootRole = new System.String("FETCH");
-            }
-            //      C# -> MssqlRootPropertiesRootType? RootType
-            // GraphQL -> rootType: MssqlRootPropertiesRootType! (enum)
-            if (this.RootType == null && Exploration.Includes(parent + ".rootType$"))
-            {
-                this.RootType = new MssqlRootPropertiesRootType();
-            }
+            this.RootType = new MssqlRootPropertiesRootType();
         }
+        //      C# -> System.String? RootId
+        // GraphQL -> rootId: String (scalar)
+        if (this.RootId == null && Exploration.Includes(parent + ".rootId", true))
+        {
+            this.RootId = new System.String("FETCH");
+        }
+        //      C# -> System.String? RootName
+        // GraphQL -> rootName: String! (scalar)
+        if (this.RootName == null && Exploration.Includes(parent + ".rootName", true))
+        {
+            this.RootName = new System.String("FETCH");
+        }
+        //      C# -> System.String? RootRole
+        // GraphQL -> rootRole: String (scalar)
+        if (this.RootRole == null && Exploration.Includes(parent + ".rootRole", true))
+        {
+            this.RootRole = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class MssqlRootProperties
+    
     #endregion
 
     public static class ListMssqlRootPropertiesExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MssqlRootProperties> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MssqlRootProperties> list, 
             String parent = "")
         {
-            var item = new MssqlRootProperties();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MssqlRootProperties());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

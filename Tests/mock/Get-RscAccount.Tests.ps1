@@ -29,26 +29,8 @@ BeforeAll {
 Describe -Name 'Connect to API' -Fixture {
     It "Returns <expected> (for <name>)" -ForEach @(
         @{
-            Query         =
-            "{
-                    'query':
-                        'query QueryAccountSettings{
-                            accountSettings{
-                                isEmailNotificationEnabled
-                                isEulaAccepted
-                            }
-                        }'
-                }"
-            ExpectedReply =
-            "{
-                    'accountSettings': {
-                        'isEmailNotificationEnabled': true,
-                        'isEulaAccepted': false
-                    }
-                }"
         }
     ) {
-        Update-MockApiServerCache -Query $Query -Reply $ExpectedReply
         Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
         $accountSetting = Invoke-RscQueryAccount -Setting -Debug
         $accountSetting | Should -Not -BeNullOrEmpty

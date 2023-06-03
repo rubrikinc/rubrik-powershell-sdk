@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -897,6 +897,98 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter deleteCluster { get; set; }
 
+        
+        // -------------------------------------------------------------------
+        // kickoffAdAppSetup parameter set
+        //
+        // GraphQL operation: kickoffAzureAdAppSetup(input: KickoffAzureAdAppSetupInput!):KickoffAzureAdAppSetupReply!
+        //
+        [Parameter(
+            ParameterSetName = "kickoffAdAppSetup",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Initiates the Azure AD app creation flow.
+                GraphQL operation: kickoffAzureAdAppSetup(input: KickoffAzureAdAppSetupInput!):KickoffAzureAdAppSetupReply!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter kickoffAdAppSetup { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // completeAdAppSetup parameter set
+        //
+        // GraphQL operation: completeAzureAdAppSetup(input: CompleteAzureAdAppSetupInput!):CompleteAzureAdAppSetupReply!
+        //
+        [Parameter(
+            ParameterSetName = "completeAdAppSetup",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Completes the creation flow for an Azure AD app.
+                GraphQL operation: completeAzureAdAppSetup(input: CompleteAzureAdAppSetupInput!):CompleteAzureAdAppSetupReply!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter completeAdAppSetup { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // deleteAdDirectory parameter set
+        //
+        // GraphQL operation: deleteAzureAdDirectory(workloadFid: UUID!):CreateOnDemandJobReply!
+        //
+        [Parameter(
+            ParameterSetName = "deleteAdDirectory",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Deletes an Azure AD directory.
+                GraphQL operation: deleteAzureAdDirectory(workloadFid: UUID!):CreateOnDemandJobReply!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter deleteAdDirectory { get; set; }
+
+        [Parameter(
+            ParameterSetName = "deleteAdDirectory",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                The FID of the workload.
+                GraphQL argument workloadFid: UUID!
+                "
+        )]
+        public System.String? WorkloadFid { get; set; }
+        
+        // -------------------------------------------------------------------
+        // backupAdDirectory parameter set
+        //
+        // GraphQL operation: backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!):[CreateOnDemandJobReply!]!
+        //
+        [Parameter(
+            ParameterSetName = "backupAdDirectory",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Backs up the Azure AD directory.
+                GraphQL operation: backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!):[CreateOnDemandJobReply!]!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter backupAdDirectory { get; set; }
+
 
         protected override void ProcessRecord()
         {
@@ -1032,6 +1124,18 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         break;
                     case "deleteCluster":
                         this.ProcessRecord_deleteCluster();
+                        break;
+                    case "kickoffAdAppSetup":
+                        this.ProcessRecord_kickoffAdAppSetup();
+                        break;
+                    case "completeAdAppSetup":
+                        this.ProcessRecord_completeAdAppSetup();
+                        break;
+                    case "deleteAdDirectory":
+                        this.ProcessRecord_deleteAdDirectory();
+                        break;
+                    case "backupAdDirectory":
+                        this.ProcessRecord_backupAdDirectory();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1436,6 +1540,42 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             InvokeMutationDeleteAzureCluster();
         }
 
+        // This parameter set invokes a single graphql operation:
+        // kickoffAzureAdAppSetup.
+        protected void ProcessRecord_kickoffAdAppSetup()
+        {
+            this._logger.name += " -kickoffAdAppSetup";
+            // Invoke graphql operation kickoffAzureAdAppSetup
+            InvokeMutationKickoffAzureAdAppSetup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // completeAzureAdAppSetup.
+        protected void ProcessRecord_completeAdAppSetup()
+        {
+            this._logger.name += " -completeAdAppSetup";
+            // Invoke graphql operation completeAzureAdAppSetup
+            InvokeMutationCompleteAzureAdAppSetup();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // deleteAzureAdDirectory.
+        protected void ProcessRecord_deleteAdDirectory()
+        {
+            this._logger.name += " -deleteAdDirectory";
+            // Invoke graphql operation deleteAzureAdDirectory
+            InvokeMutationDeleteAzureAdDirectory();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // backupAzureAdDirectory.
+        protected void ProcessRecord_backupAdDirectory()
+        {
+            this._logger.name += " -backupAdDirectory";
+            // Invoke graphql operation backupAzureAdDirectory
+            InvokeMutationBackupAzureAdDirectory();
+        }
+
 
         // Invoke GraphQL Mutation:
         // startRefreshAzureNativeSubscriptionsJob(input: StartRefreshAzureNativeSubscriptionsJobInput!): BatchAsyncJobStatus!
@@ -1447,8 +1587,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             BatchAsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchAsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (BatchAsyncJobStatus)this.Field;
@@ -1456,23 +1595,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartRefreshAzureNativeSubscriptionsJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartRefreshAzureNativeSubscriptionsJob");
-            string parameters = "($input: StartRefreshAzureNativeSubscriptionsJobInput!)\n";
+            var parameters = "($input: StartRefreshAzureNativeSubscriptionsJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartRefreshAzureNativeSubscriptionsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartRefreshAzureNativeSubscriptionsJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchAsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<BatchAsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchAsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1485,8 +1623,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncJobStatus)this.Field;
@@ -1494,23 +1631,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartRestoreAzureNativeVirtualMachineJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartRestoreAzureNativeVirtualMachineJob");
-            string parameters = "($input: StartRestoreAzureNativeVirtualMachineJobInput!)\n";
+            var parameters = "($input: StartRestoreAzureNativeVirtualMachineJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartRestoreAzureNativeVirtualMachineJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartRestoreAzureNativeVirtualMachineJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1523,8 +1659,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncJobStatus)this.Field;
@@ -1532,23 +1667,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartExportAzureNativeVirtualMachineJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartExportAzureNativeVirtualMachineJob");
-            string parameters = "($input: StartExportAzureNativeVirtualMachineJobInput!)\n";
+            var parameters = "($input: StartExportAzureNativeVirtualMachineJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartExportAzureNativeVirtualMachineJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAzureNativeVirtualMachineJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1561,8 +1695,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             System.String? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.String)psObject.BaseObject;
                 } else {
                     fields = (System.String)this.Field;
@@ -1570,23 +1703,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.ExcludeAzureNativeManagedDisksFromSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.ExcludeAzureNativeManagedDisksFromSnapshot");
-            string parameters = "($input: ExcludeAzureNativeManagedDisksFromSnapshotInput!)\n";
+            var parameters = "($input: ExcludeAzureNativeManagedDisksFromSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationExcludeAzureNativeManagedDisksFromSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationExcludeAzureNativeManagedDisksFromSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.String> task = this._rbkClient.InvokeGenericCallAsync<System.String>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.String", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1599,8 +1731,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             BatchAsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchAsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (BatchAsyncJobStatus)this.Field;
@@ -1608,23 +1739,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartCreateAzureNativeVirtualMachineSnapshotsJob");
-            string parameters = "($input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!)\n";
+            var parameters = "($input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartCreateAzureNativeVirtualMachineSnapshotsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartCreateAzureNativeVirtualMachineSnapshotsJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchAsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<BatchAsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchAsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1637,8 +1767,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncJobStatus)this.Field;
@@ -1646,23 +1775,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartDisableAzureNativeSubscriptionProtectionJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartDisableAzureNativeSubscriptionProtectionJob");
-            string parameters = "($input: StartDisableAzureNativeSubscriptionProtectionJobInput!)\n";
+            var parameters = "($input: StartDisableAzureNativeSubscriptionProtectionJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartDisableAzureNativeSubscriptionProtectionJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartDisableAzureNativeSubscriptionProtectionJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1675,8 +1803,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             BatchAsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchAsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (BatchAsyncJobStatus)this.Field;
@@ -1684,23 +1811,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartCreateAzureNativeManagedDiskSnapshotsJob");
-            string parameters = "($input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!)\n";
+            var parameters = "($input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartCreateAzureNativeManagedDiskSnapshotsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartCreateAzureNativeManagedDiskSnapshotsJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchAsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<BatchAsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchAsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1713,8 +1839,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncJobStatus)this.Field;
@@ -1722,23 +1847,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartExportAzureNativeManagedDiskJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartExportAzureNativeManagedDiskJob");
-            string parameters = "($input: StartExportAzureNativeManagedDiskJobInput!)\n";
+            var parameters = "($input: StartExportAzureNativeManagedDiskJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartExportAzureNativeManagedDiskJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAzureNativeManagedDiskJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1751,8 +1875,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncJobStatus)this.Field;
@@ -1760,23 +1883,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartExportAzureSqlDatabaseDbJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartExportAzureSqlDatabaseDbJob");
-            string parameters = "($input: StartExportAzureSqlDatabaseDbJobInput!)\n";
+            var parameters = "($input: StartExportAzureSqlDatabaseDbJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartExportAzureSqlDatabaseDbJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAzureSqlDatabaseDbJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1789,8 +1911,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncJobStatus)this.Field;
@@ -1798,23 +1919,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartExportAzureSqlManagedInstanceDbJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartExportAzureSqlManagedInstanceDbJob");
-            string parameters = "($input: StartExportAzureSqlManagedInstanceDbJobInput!)\n";
+            var parameters = "($input: StartExportAzureSqlManagedInstanceDbJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartExportAzureSqlManagedInstanceDbJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAzureSqlManagedInstanceDbJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1827,8 +1947,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CloudAccount? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CloudAccount)psObject.BaseObject;
                 } else {
                     fields = (CloudAccount)this.Field;
@@ -1836,23 +1955,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateAzureAccount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateAzureAccount");
-            string parameters = "($input: CreateAzureAccountInput!)\n";
+            var parameters = "($input: CreateAzureAccountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateAzureAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureAccount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CloudAccount> task = this._rbkClient.InvokeGenericCallAsync<CloudAccount>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CloudAccount", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1865,8 +1983,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CloudAccount? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CloudAccount)psObject.BaseObject;
                 } else {
                     fields = (CloudAccount)this.Field;
@@ -1874,23 +1991,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpdateAzureAccount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateAzureAccount");
-            string parameters = "($input: UpdateAzureAccountInput!)\n";
+            var parameters = "($input: UpdateAzureAccountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateAzureAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAzureAccount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CloudAccount> task = this._rbkClient.InvokeGenericCallAsync<CloudAccount>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CloudAccount", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1903,8 +2019,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             TargetMapping? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (TargetMapping)psObject.BaseObject;
                 } else {
                     fields = (TargetMapping)this.Field;
@@ -1912,23 +2027,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateAutomaticAzureTargetMapping(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateAutomaticAzureTargetMapping");
-            string parameters = "($input: CreateAutomaticAzureTargetMappingInput!)\n";
+            var parameters = "($input: CreateAutomaticAzureTargetMappingInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateAutomaticAzureTargetMapping" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAutomaticAzureTargetMapping",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<TargetMapping> task = this._rbkClient.InvokeGenericCallAsync<TargetMapping>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "TargetMapping", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1941,8 +2055,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CreateCloudNativeAzureStorageSettingReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CreateCloudNativeAzureStorageSettingReply)psObject.BaseObject;
                 } else {
                     fields = (CreateCloudNativeAzureStorageSettingReply)this.Field;
@@ -1950,23 +2063,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateCloudNativeAzureStorageSetting(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateCloudNativeAzureStorageSetting");
-            string parameters = "($input: CreateCloudNativeAzureStorageSettingInput!)\n";
+            var parameters = "($input: CreateCloudNativeAzureStorageSettingInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateCloudNativeAzureStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateCloudNativeAzureStorageSetting",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CreateCloudNativeAzureStorageSettingReply> task = this._rbkClient.InvokeGenericCallAsync<CreateCloudNativeAzureStorageSettingReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CreateCloudNativeAzureStorageSettingReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -1979,8 +2091,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CreateCloudNativeRcvAzureStorageSettingReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CreateCloudNativeRcvAzureStorageSettingReply)psObject.BaseObject;
                 } else {
                     fields = (CreateCloudNativeRcvAzureStorageSettingReply)this.Field;
@@ -1988,23 +2099,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateCloudNativeRcvAzureStorageSetting(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateCloudNativeRcvAzureStorageSetting");
-            string parameters = "($input: CreateCloudNativeRcvAzureStorageSettingInput!)\n";
+            var parameters = "($input: CreateCloudNativeRcvAzureStorageSettingInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateCloudNativeRcvAzureStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateCloudNativeRcvAzureStorageSetting",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CreateCloudNativeRcvAzureStorageSettingReply> task = this._rbkClient.InvokeGenericCallAsync<CreateCloudNativeRcvAzureStorageSettingReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CreateCloudNativeRcvAzureStorageSettingReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2017,8 +2127,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             TargetMapping? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (TargetMapping)psObject.BaseObject;
                 } else {
                     fields = (TargetMapping)this.Field;
@@ -2026,23 +2135,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpdateAutomaticAzureTargetMapping(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateAutomaticAzureTargetMapping");
-            string parameters = "($input: UpdateAutomaticAzureTargetMappingInput!)\n";
+            var parameters = "($input: UpdateAutomaticAzureTargetMappingInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateAutomaticAzureTargetMapping" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAutomaticAzureTargetMapping",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<TargetMapping> task = this._rbkClient.InvokeGenericCallAsync<TargetMapping>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "TargetMapping", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2055,8 +2163,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             UpdateCloudNativeAzureStorageSettingReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpdateCloudNativeAzureStorageSettingReply)psObject.BaseObject;
                 } else {
                     fields = (UpdateCloudNativeAzureStorageSettingReply)this.Field;
@@ -2064,23 +2171,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpdateCloudNativeAzureStorageSetting(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateCloudNativeAzureStorageSetting");
-            string parameters = "($input: UpdateCloudNativeAzureStorageSettingInput!)\n";
+            var parameters = "($input: UpdateCloudNativeAzureStorageSettingInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateCloudNativeAzureStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCloudNativeAzureStorageSetting",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateCloudNativeAzureStorageSettingReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateCloudNativeAzureStorageSettingReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateCloudNativeAzureStorageSettingReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2093,8 +2199,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             UpdateCloudNativeRcvAzureStorageSettingReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpdateCloudNativeRcvAzureStorageSettingReply)psObject.BaseObject;
                 } else {
                     fields = (UpdateCloudNativeRcvAzureStorageSettingReply)this.Field;
@@ -2102,23 +2207,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpdateCloudNativeRcvAzureStorageSetting(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateCloudNativeRcvAzureStorageSetting");
-            string parameters = "($input: UpdateCloudNativeRcvAzureStorageSettingInput!)\n";
+            var parameters = "($input: UpdateCloudNativeRcvAzureStorageSettingInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateCloudNativeRcvAzureStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCloudNativeRcvAzureStorageSetting",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateCloudNativeRcvAzureStorageSettingReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateCloudNativeRcvAzureStorageSettingReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateCloudNativeRcvAzureStorageSettingReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2131,8 +2235,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Target? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (Target)psObject.BaseObject;
                 } else {
                     fields = (Target)this.Field;
@@ -2140,23 +2243,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateAzureTarget(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateAzureTarget");
-            string parameters = "($input: CreateAzureTargetInput!)\n";
+            var parameters = "($input: CreateAzureTargetInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateAzureTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureTarget",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<Target> task = this._rbkClient.InvokeGenericCallAsync<Target>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "Target", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2169,8 +2271,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Target? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (Target)psObject.BaseObject;
                 } else {
                     fields = (Target)this.Field;
@@ -2178,23 +2279,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpdateAzureTarget(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateAzureTarget");
-            string parameters = "($input: UpdateAzureTargetInput!)\n";
+            var parameters = "($input: UpdateAzureTargetInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateAzureTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAzureTarget",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<Target> task = this._rbkClient.InvokeGenericCallAsync<Target>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "Target", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2207,8 +2307,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             Target? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (Target)psObject.BaseObject;
                 } else {
                     fields = (Target)this.Field;
@@ -2216,23 +2315,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateAzureReaderTarget(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateAzureReaderTarget");
-            string parameters = "($input: CreateAzureReaderTargetInput!)\n";
+            var parameters = "($input: CreateAzureReaderTargetInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateAzureReaderTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureReaderTarget",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<Target> task = this._rbkClient.InvokeGenericCallAsync<Target>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "Target", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2245,8 +2343,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             StartAzureCloudAccountOauthReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (StartAzureCloudAccountOauthReply)psObject.BaseObject;
                 } else {
                     fields = (StartAzureCloudAccountOauthReply)this.Field;
@@ -2254,23 +2351,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartAzureCloudAccountOauth(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartAzureCloudAccountOauth");
-            string parameters = "($input: StartAzureCloudAccountOauthInput!)\n";
+            var parameters = "($input: StartAzureCloudAccountOauthInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartAzureCloudAccountOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationStartAzureCloudAccountOauth",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<StartAzureCloudAccountOauthReply> task = this._rbkClient.InvokeGenericCallAsync<StartAzureCloudAccountOauthReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "StartAzureCloudAccountOauthReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2283,8 +2379,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CompleteAzureCloudAccountOauthReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CompleteAzureCloudAccountOauthReply)psObject.BaseObject;
                 } else {
                     fields = (CompleteAzureCloudAccountOauthReply)this.Field;
@@ -2292,23 +2387,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CompleteAzureCloudAccountOauth(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CompleteAzureCloudAccountOauth");
-            string parameters = "($input: CompleteAzureCloudAccountOauthInput!)\n";
+            var parameters = "($input: CompleteAzureCloudAccountOauthInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCompleteAzureCloudAccountOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationCompleteAzureCloudAccountOauth",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CompleteAzureCloudAccountOauthReply> task = this._rbkClient.InvokeGenericCallAsync<CompleteAzureCloudAccountOauthReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CompleteAzureCloudAccountOauthReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2321,8 +2415,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             System.Boolean? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.Boolean)psObject.BaseObject;
                 } else {
                     fields = (System.Boolean)this.Field;
@@ -2330,23 +2423,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.SetAzureCloudAccountCustomerAppCredentials(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.SetAzureCloudAccountCustomerAppCredentials");
-            string parameters = "($input: SetAzureCloudAccountCustomerAppCredentialsInput!)\n";
+            var parameters = "($input: SetAzureCloudAccountCustomerAppCredentialsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationSetAzureCloudAccountCustomerAppCredentials" + parameters + "{" + document + "}",
                 OperationName = "MutationSetAzureCloudAccountCustomerAppCredentials",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.Boolean", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2359,8 +2451,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AddAzureCloudAccountReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AddAzureCloudAccountReply)psObject.BaseObject;
                 } else {
                     fields = (AddAzureCloudAccountReply)this.Field;
@@ -2368,23 +2459,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.AddAzureCloudAccount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.AddAzureCloudAccount");
-            string parameters = "($input: AddAzureCloudAccountInput!)\n";
+            var parameters = "($input: AddAzureCloudAccountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationAddAzureCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationAddAzureCloudAccount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AddAzureCloudAccountReply> task = this._rbkClient.InvokeGenericCallAsync<AddAzureCloudAccountReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AddAzureCloudAccountReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2397,8 +2487,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AddAzureCloudAccountWithoutOauthReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AddAzureCloudAccountWithoutOauthReply)psObject.BaseObject;
                 } else {
                     fields = (AddAzureCloudAccountWithoutOauthReply)this.Field;
@@ -2406,23 +2495,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.AddAzureCloudAccountWithoutOauth(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.AddAzureCloudAccountWithoutOauth");
-            string parameters = "($input: AddAzureCloudAccountWithoutOauthInput!)\n";
+            var parameters = "($input: AddAzureCloudAccountWithoutOauthInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationAddAzureCloudAccountWithoutOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationAddAzureCloudAccountWithoutOauth",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AddAzureCloudAccountWithoutOauthReply> task = this._rbkClient.InvokeGenericCallAsync<AddAzureCloudAccountWithoutOauthReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AddAzureCloudAccountWithoutOauthReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2435,8 +2523,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             DeleteAzureCloudAccountReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (DeleteAzureCloudAccountReply)psObject.BaseObject;
                 } else {
                     fields = (DeleteAzureCloudAccountReply)this.Field;
@@ -2444,23 +2531,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.DeleteAzureCloudAccount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteAzureCloudAccount");
-            string parameters = "($input: DeleteAzureCloudAccountInput!)\n";
+            var parameters = "($input: DeleteAzureCloudAccountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteAzureCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureCloudAccount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<DeleteAzureCloudAccountReply> task = this._rbkClient.InvokeGenericCallAsync<DeleteAzureCloudAccountReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "DeleteAzureCloudAccountReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2473,8 +2559,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             DeleteAzureCloudAccountWithoutOauthReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (DeleteAzureCloudAccountWithoutOauthReply)psObject.BaseObject;
                 } else {
                     fields = (DeleteAzureCloudAccountWithoutOauthReply)this.Field;
@@ -2482,23 +2567,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.DeleteAzureCloudAccountWithoutOauth(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteAzureCloudAccountWithoutOauth");
-            string parameters = "($input: DeleteAzureCloudAccountWithoutOauthInput!)\n";
+            var parameters = "($input: DeleteAzureCloudAccountWithoutOauthInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteAzureCloudAccountWithoutOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureCloudAccountWithoutOauth",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<DeleteAzureCloudAccountWithoutOauthReply> task = this._rbkClient.InvokeGenericCallAsync<DeleteAzureCloudAccountWithoutOauthReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "DeleteAzureCloudAccountWithoutOauthReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2511,8 +2595,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             UpgradeAzureCloudAccountReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpgradeAzureCloudAccountReply)psObject.BaseObject;
                 } else {
                     fields = (UpgradeAzureCloudAccountReply)this.Field;
@@ -2520,23 +2603,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpgradeAzureCloudAccount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpgradeAzureCloudAccount");
-            string parameters = "($input: UpgradeAzureCloudAccountInput!)\n";
+            var parameters = "($input: UpgradeAzureCloudAccountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpgradeAzureCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpgradeAzureCloudAccount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpgradeAzureCloudAccountReply> task = this._rbkClient.InvokeGenericCallAsync<UpgradeAzureCloudAccountReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpgradeAzureCloudAccountReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2548,8 +2630,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             System.String? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.String)psObject.BaseObject;
                 } else {
                     fields = (System.String)this.Field;
@@ -2557,22 +2638,21 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpdateCustomerAppPermissionForAzureSql(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateCustomerAppPermissionForAzureSql");
-            string parameters = "";
+            var parameters = "";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateCustomerAppPermissionForAzureSql" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCustomerAppPermissionForAzureSql",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
-            Task<System.String> task = this._rbkClient.InvokeGenericCallAsync<System.String>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.String", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2585,8 +2665,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             BatchAsyncJobStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchAsyncJobStatus)psObject.BaseObject;
                 } else {
                     fields = (BatchAsyncJobStatus)this.Field;
@@ -2594,23 +2673,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.StartDisableAzureCloudAccountJob(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.StartDisableAzureCloudAccountJob");
-            string parameters = "($input: StartDisableAzureCloudAccountJobInput!)\n";
+            var parameters = "($input: StartDisableAzureCloudAccountJobInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationStartDisableAzureCloudAccountJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartDisableAzureCloudAccountJob",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchAsyncJobStatus> task = this._rbkClient.InvokeGenericCallAsync<BatchAsyncJobStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchAsyncJobStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2623,8 +2701,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             UpdateAzureCloudAccountReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpdateAzureCloudAccountReply)psObject.BaseObject;
                 } else {
                     fields = (UpdateAzureCloudAccountReply)this.Field;
@@ -2632,23 +2709,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpdateAzureCloudAccount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateAzureCloudAccount");
-            string parameters = "($input: UpdateAzureCloudAccountInput!)\n";
+            var parameters = "($input: UpdateAzureCloudAccountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateAzureCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAzureCloudAccount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateAzureCloudAccountReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateAzureCloudAccountReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateAzureCloudAccountReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2661,8 +2737,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MapAzureCloudAccountToPersistentStorageLocationReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MapAzureCloudAccountToPersistentStorageLocationReply)psObject.BaseObject;
                 } else {
                     fields = (MapAzureCloudAccountToPersistentStorageLocationReply)this.Field;
@@ -2670,23 +2745,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.MapAzureCloudAccountToPersistentStorageLocation(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.MapAzureCloudAccountToPersistentStorageLocation");
-            string parameters = "($input: MapAzureCloudAccountToPersistentStorageLocationInput!)\n";
+            var parameters = "($input: MapAzureCloudAccountToPersistentStorageLocationInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationMapAzureCloudAccountToPersistentStorageLocation" + parameters + "{" + document + "}",
                 OperationName = "MutationMapAzureCloudAccountToPersistentStorageLocation",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MapAzureCloudAccountToPersistentStorageLocationReply> task = this._rbkClient.InvokeGenericCallAsync<MapAzureCloudAccountToPersistentStorageLocationReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MapAzureCloudAccountToPersistentStorageLocationReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2699,8 +2773,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AddAzureCloudAccountExocomputeConfigurationsReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AddAzureCloudAccountExocomputeConfigurationsReply)psObject.BaseObject;
                 } else {
                     fields = (AddAzureCloudAccountExocomputeConfigurationsReply)this.Field;
@@ -2708,23 +2781,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.AddAzureCloudAccountExocomputeConfigurations(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.AddAzureCloudAccountExocomputeConfigurations");
-            string parameters = "($input: AddAzureCloudAccountExocomputeConfigurationsInput!)\n";
+            var parameters = "($input: AddAzureCloudAccountExocomputeConfigurationsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationAddAzureCloudAccountExocomputeConfigurations" + parameters + "{" + document + "}",
                 OperationName = "MutationAddAzureCloudAccountExocomputeConfigurations",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AddAzureCloudAccountExocomputeConfigurationsReply> task = this._rbkClient.InvokeGenericCallAsync<AddAzureCloudAccountExocomputeConfigurationsReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AddAzureCloudAccountExocomputeConfigurationsReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2737,8 +2809,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             DeleteAzureCloudAccountExocomputeConfigurationsReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (DeleteAzureCloudAccountExocomputeConfigurationsReply)psObject.BaseObject;
                 } else {
                     fields = (DeleteAzureCloudAccountExocomputeConfigurationsReply)this.Field;
@@ -2746,23 +2817,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.DeleteAzureCloudAccountExocomputeConfigurations(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteAzureCloudAccountExocomputeConfigurations");
-            string parameters = "($input: DeleteAzureCloudAccountExocomputeConfigurationsInput!)\n";
+            var parameters = "($input: DeleteAzureCloudAccountExocomputeConfigurationsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteAzureCloudAccountExocomputeConfigurations" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureCloudAccountExocomputeConfigurations",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<DeleteAzureCloudAccountExocomputeConfigurationsReply> task = this._rbkClient.InvokeGenericCallAsync<DeleteAzureCloudAccountExocomputeConfigurationsReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "DeleteAzureCloudAccountExocomputeConfigurationsReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2775,8 +2845,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MapAzureCloudAccountExocomputeSubscriptionReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MapAzureCloudAccountExocomputeSubscriptionReply)psObject.BaseObject;
                 } else {
                     fields = (MapAzureCloudAccountExocomputeSubscriptionReply)this.Field;
@@ -2784,23 +2853,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.MapAzureCloudAccountExocomputeSubscription(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.MapAzureCloudAccountExocomputeSubscription");
-            string parameters = "($input: MapAzureCloudAccountExocomputeSubscriptionInput!)\n";
+            var parameters = "($input: MapAzureCloudAccountExocomputeSubscriptionInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationMapAzureCloudAccountExocomputeSubscription" + parameters + "{" + document + "}",
                 OperationName = "MutationMapAzureCloudAccountExocomputeSubscription",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MapAzureCloudAccountExocomputeSubscriptionReply> task = this._rbkClient.InvokeGenericCallAsync<MapAzureCloudAccountExocomputeSubscriptionReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MapAzureCloudAccountExocomputeSubscriptionReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2813,8 +2881,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             UnmapAzureCloudAccountExocomputeSubscriptionReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UnmapAzureCloudAccountExocomputeSubscriptionReply)psObject.BaseObject;
                 } else {
                     fields = (UnmapAzureCloudAccountExocomputeSubscriptionReply)this.Field;
@@ -2822,23 +2889,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UnmapAzureCloudAccountExocomputeSubscription(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UnmapAzureCloudAccountExocomputeSubscription");
-            string parameters = "($input: UnmapAzureCloudAccountExocomputeSubscriptionInput!)\n";
+            var parameters = "($input: UnmapAzureCloudAccountExocomputeSubscriptionInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUnmapAzureCloudAccountExocomputeSubscription" + parameters + "{" + document + "}",
                 OperationName = "MutationUnmapAzureCloudAccountExocomputeSubscription",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UnmapAzureCloudAccountExocomputeSubscriptionReply> task = this._rbkClient.InvokeGenericCallAsync<UnmapAzureCloudAccountExocomputeSubscriptionReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UnmapAzureCloudAccountExocomputeSubscriptionReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2851,8 +2917,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             UpgradeAzureCloudAccountPermissionsWithoutOauthReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpgradeAzureCloudAccountPermissionsWithoutOauthReply)psObject.BaseObject;
                 } else {
                     fields = (UpgradeAzureCloudAccountPermissionsWithoutOauthReply)this.Field;
@@ -2860,23 +2925,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauth(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpgradeAzureCloudAccountPermissionsWithoutOauth");
-            string parameters = "($input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!)\n";
+            var parameters = "($input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpgradeAzureCloudAccountPermissionsWithoutOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationUpgradeAzureCloudAccountPermissionsWithoutOauth",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpgradeAzureCloudAccountPermissionsWithoutOauthReply> task = this._rbkClient.InvokeGenericCallAsync<UpgradeAzureCloudAccountPermissionsWithoutOauthReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpgradeAzureCloudAccountPermissionsWithoutOauthReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2888,8 +2952,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             AzureOauthConsentKickoffReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AzureOauthConsentKickoffReply)psObject.BaseObject;
                 } else {
                     fields = (AzureOauthConsentKickoffReply)this.Field;
@@ -2897,22 +2960,21 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.AzureOauthConsentKickoff(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.AzureOauthConsentKickoff");
-            string parameters = "";
+            var parameters = "";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationAzureOauthConsentKickoff" + parameters + "{" + document + "}",
                 OperationName = "MutationAzureOauthConsentKickoff",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
-            Task<AzureOauthConsentKickoffReply> task = this._rbkClient.InvokeGenericCallAsync<AzureOauthConsentKickoffReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AzureOauthConsentKickoffReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2925,8 +2987,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             RequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestStatus)psObject.BaseObject;
                 } else {
                     fields = (RequestStatus)this.Field;
@@ -2934,23 +2995,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.AzureOauthConsentComplete(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.AzureOauthConsentComplete");
-            string parameters = "($input: AzureOauthConsentCompleteInput!)\n";
+            var parameters = "($input: AzureOauthConsentCompleteInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationAzureOauthConsentComplete" + parameters + "{" + document + "}",
                 OperationName = "MutationAzureOauthConsentComplete",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestStatus> task = this._rbkClient.InvokeGenericCallAsync<RequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2962,8 +3022,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CreateAzureSaasAppAadReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CreateAzureSaasAppAadReply)psObject.BaseObject;
                 } else {
                     fields = (CreateAzureSaasAppAadReply)this.Field;
@@ -2971,22 +3030,21 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateAzureSaasAppAad(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateAzureSaasAppAad");
-            string parameters = "";
+            var parameters = "";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateAzureSaasAppAad" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureSaasAppAad",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
-            Task<CreateAzureSaasAppAadReply> task = this._rbkClient.InvokeGenericCallAsync<CreateAzureSaasAppAadReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CreateAzureSaasAppAadReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -2999,8 +3057,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CcProvisionJobReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CcProvisionJobReply)psObject.BaseObject;
                 } else {
                     fields = (CcProvisionJobReply)this.Field;
@@ -3008,23 +3065,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateAzureCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateAzureCluster");
-            string parameters = "($input: CreateAzureClusterInput!)\n";
+            var parameters = "($input: CreateAzureClusterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateAzureCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CcProvisionJobReply> task = this._rbkClient.InvokeGenericCallAsync<CcProvisionJobReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CcProvisionJobReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -3037,8 +3093,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             CcProvisionJobReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CcProvisionJobReply)psObject.BaseObject;
                 } else {
                     fields = (CcProvisionJobReply)this.Field;
@@ -3046,23 +3101,166 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.DeleteAzureCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteAzureCluster");
-            string parameters = "($input: DeleteAzureClusterInput!)\n";
+            var parameters = "($input: DeleteAzureClusterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteAzureCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CcProvisionJobReply> task = this._rbkClient.InvokeGenericCallAsync<CcProvisionJobReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CcProvisionJobReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // kickoffAzureAdAppSetup(input: KickoffAzureAdAppSetupInput!): KickoffAzureAdAppSetupReply!
+        protected void InvokeMutationKickoffAzureAdAppSetup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "KickoffAzureAdAppSetupInput!"),
+            };
+            KickoffAzureAdAppSetupReply? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (KickoffAzureAdAppSetupReply)psObject.BaseObject;
+                } else {
+                    fields = (KickoffAzureAdAppSetupReply)this.Field;
+                }
+            }
+            string document = Mutation.KickoffAzureAdAppSetup(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.KickoffAzureAdAppSetup");
+            var parameters = "($input: KickoffAzureAdAppSetupInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationKickoffAzureAdAppSetup" + parameters + "{" + document + "}",
+                OperationName = "MutationKickoffAzureAdAppSetup",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "KickoffAzureAdAppSetupReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // completeAzureAdAppSetup(input: CompleteAzureAdAppSetupInput!): CompleteAzureAdAppSetupReply!
+        protected void InvokeMutationCompleteAzureAdAppSetup()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CompleteAzureAdAppSetupInput!"),
+            };
+            CompleteAzureAdAppSetupReply? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (CompleteAzureAdAppSetupReply)psObject.BaseObject;
+                } else {
+                    fields = (CompleteAzureAdAppSetupReply)this.Field;
+                }
+            }
+            string document = Mutation.CompleteAzureAdAppSetup(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.CompleteAzureAdAppSetup");
+            var parameters = "($input: CompleteAzureAdAppSetupInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationCompleteAzureAdAppSetup" + parameters + "{" + document + "}",
+                OperationName = "MutationCompleteAzureAdAppSetup",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "CompleteAzureAdAppSetupReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // deleteAzureAdDirectory(workloadFid: UUID!): CreateOnDemandJobReply!
+        protected void InvokeMutationDeleteAzureAdDirectory()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("workloadFid", "UUID!"),
+            };
+            CreateOnDemandJobReply? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (CreateOnDemandJobReply)psObject.BaseObject;
+                } else {
+                    fields = (CreateOnDemandJobReply)this.Field;
+                }
+            }
+            string document = Mutation.DeleteAzureAdDirectory(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.DeleteAzureAdDirectory");
+            var parameters = "($workloadFid: UUID!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationDeleteAzureAdDirectory" + parameters + "{" + document + "}",
+                OperationName = "MutationDeleteAzureAdDirectory",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "CreateOnDemandJobReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!): [CreateOnDemandJobReply!]!
+        protected void InvokeMutationBackupAzureAdDirectory()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "BackupAzureAdDirectoryInput!"),
+            };
+            List<CreateOnDemandJobReply>? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (List<CreateOnDemandJobReply>)psObject.BaseObject;
+                } else {
+                    fields = (List<CreateOnDemandJobReply>)this.Field;
+                }
+            }
+            string document = Mutation.BackupAzureAdDirectory(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.BackupAzureAdDirectory");
+            var parameters = "($input: BackupAzureAdDirectoryInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationBackupAzureAdDirectory" + parameters + "{" + document + "}",
+                OperationName = "MutationBackupAzureAdDirectory",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<CreateOnDemandJobReply>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

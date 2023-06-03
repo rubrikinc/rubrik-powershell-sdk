@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -137,6 +137,26 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 "
         )]
         public List<Filter>? Filter { get; set; }
+        
+        // -------------------------------------------------------------------
+        // uniqueCount parameter set
+        //
+        // GraphQL operation: uniqueVSphereVCenterCount(filter: [Filter!]):Int!
+        //
+        [Parameter(
+            ParameterSetName = "uniqueCount",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: uniqueVSphereVCenterCount(filter: [Filter!]):Int!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter uniqueCount { get; set; }
+
         
         // -------------------------------------------------------------------
         // PreAddInfo parameter set
@@ -332,6 +352,9 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                     case "List":
                         this.ProcessRecord_List();
                         break;
+                    case "uniqueCount":
+                        this.ProcessRecord_uniqueCount();
+                        break;
                     case "PreAddInfo":
                         this.ProcessRecord_PreAddInfo();
                         break;
@@ -385,6 +408,15 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             this._logger.name += " -List";
             // Invoke graphql operation vSphereVCenterConnection
             InvokeQueryVsphereVcenterConnection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // uniqueVSphereVCenterCount.
+        protected void ProcessRecord_uniqueCount()
+        {
+            this._logger.name += " -uniqueCount";
+            // Invoke graphql operation uniqueVSphereVCenterCount
+            InvokeQueryUniqueVsphereVcenterCount();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -461,8 +493,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             VsphereVcenter? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (VsphereVcenter)psObject.BaseObject;
                 } else {
                     fields = (VsphereVcenter)this.Field;
@@ -470,23 +501,22 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.VsphereVcenter(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VsphereVcenter");
-            string parameters = "($fid: UUID!)\n";
+            var parameters = "($fid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVsphereVcenter" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVcenter",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VsphereVcenter> task = this._rbkClient.InvokeGenericCallAsync<VsphereVcenter>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "VsphereVcenter", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -509,8 +539,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             VsphereVcenterConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (VsphereVcenterConnection)psObject.BaseObject;
                 } else {
                     fields = (VsphereVcenterConnection)this.Field;
@@ -518,23 +547,58 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.VsphereVcenterConnection(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VsphereVcenterConnection");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVsphereVcenterConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVcenterConnection",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VsphereVcenterConnection> task = this._rbkClient.InvokeGenericCallAsync<VsphereVcenterConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "VsphereVcenterConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // uniqueVSphereVCenterCount(filter: [Filter!]): Int!
+        protected void InvokeQueryUniqueVsphereVcenterCount()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("filter", "[Filter!]"),
+            };
+            System.Int32? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (System.Int32)psObject.BaseObject;
+                } else {
+                    fields = (System.Int32)this.Field;
+                }
+            }
+            string document = Query.UniqueVsphereVcenterCount(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.UniqueVsphereVcenterCount");
+            var parameters = "($filter: [Filter!])\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryUniqueVsphereVcenterCount" + parameters + "{" + document + "}",
+                OperationName = "QueryUniqueVsphereVcenterCount",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.Int32", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -547,8 +611,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             VcenterPreAddInfo? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (VcenterPreAddInfo)psObject.BaseObject;
                 } else {
                     fields = (VcenterPreAddInfo)this.Field;
@@ -556,23 +619,22 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.VcenterPreAddInfo(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VcenterPreAddInfo");
-            string parameters = "($input: PreAddVcenterInput!)\n";
+            var parameters = "($input: PreAddVcenterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVcenterPreAddInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterPreAddInfo",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VcenterPreAddInfo> task = this._rbkClient.InvokeGenericCallAsync<VcenterPreAddInfo>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "VcenterPreAddInfo", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -585,8 +647,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             NetworkInfoListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (NetworkInfoListResponse)psObject.BaseObject;
                 } else {
                     fields = (NetworkInfoListResponse)this.Field;
@@ -594,23 +655,22 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.VcenterNetworks(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VcenterNetworks");
-            string parameters = "($input: GetNetworksInput!)\n";
+            var parameters = "($input: GetNetworksInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVcenterNetworks" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterNetworks",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<NetworkInfoListResponse> task = this._rbkClient.InvokeGenericCallAsync<NetworkInfoListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "NetworkInfoListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -623,8 +683,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             HotAddNetworkConfigWithName? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (HotAddNetworkConfigWithName)psObject.BaseObject;
                 } else {
                     fields = (HotAddNetworkConfigWithName)this.Field;
@@ -632,23 +691,22 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.VcenterHotAddNetwork(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VcenterHotAddNetwork");
-            string parameters = "($input: GetHotAddNetworkInput!)\n";
+            var parameters = "($input: GetHotAddNetworkInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVcenterHotAddNetwork" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterHotAddNetwork",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<HotAddNetworkConfigWithName> task = this._rbkClient.InvokeGenericCallAsync<HotAddNetworkConfigWithName>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "HotAddNetworkConfigWithName", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -661,8 +719,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             System.Int32? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.Int32)psObject.BaseObject;
                 } else {
                     fields = (System.Int32)this.Field;
@@ -670,23 +727,22 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.VcenterNumProxiesNeeded(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VcenterNumProxiesNeeded");
-            string parameters = "($input: GetNumProxiesNeededInput!)\n";
+            var parameters = "($input: GetNumProxiesNeededInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVcenterNumProxiesNeeded" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterNumProxiesNeeded",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Int32> task = this._rbkClient.InvokeGenericCallAsync<System.Int32>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.Int32", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -699,8 +755,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             List<VcenterHotAddProxyVmInfo>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<VcenterHotAddProxyVmInfo>)psObject.BaseObject;
                 } else {
                     fields = (List<VcenterHotAddProxyVmInfo>)this.Field;
@@ -708,23 +763,22 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.AllVcenterHotAddProxyVms(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllVcenterHotAddProxyVms");
-            string parameters = "($clusterUuids: [UUID!]!)\n";
+            var parameters = "($clusterUuids: [UUID!]!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllVcenterHotAddProxyVms" + parameters + "{" + document + "}",
                 OperationName = "QueryAllVcenterHotAddProxyVms",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<VcenterHotAddProxyVmInfo>> task = this._rbkClient.InvokeGenericCallAsync<List<VcenterHotAddProxyVmInfo>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<VcenterHotAddProxyVmInfo>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -737,8 +791,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             HotAddBandwidthInfo? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (HotAddBandwidthInfo)psObject.BaseObject;
                 } else {
                     fields = (HotAddBandwidthInfo)this.Field;
@@ -746,23 +799,22 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.VcenterHotAddBandwidth(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VcenterHotAddBandwidth");
-            string parameters = "($input: GetHotAddBandwidthInput!)\n";
+            var parameters = "($input: GetHotAddBandwidthInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVcenterHotAddBandwidth" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterHotAddBandwidth",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<HotAddBandwidthInfo> task = this._rbkClient.InvokeGenericCallAsync<HotAddBandwidthInfo>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "HotAddBandwidthInfo", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -775,8 +827,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             VcenterAdvancedTagPreviewReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (VcenterAdvancedTagPreviewReply)psObject.BaseObject;
                 } else {
                     fields = (VcenterAdvancedTagPreviewReply)this.Field;
@@ -784,23 +835,22 @@ Preview list of virtual machines of a proposed filter condition. The result migh
             }
             string document = Query.VcenterAdvancedTagPreview(ref fields);
             this._input.Initialize(argDefs, fields, "Query.VcenterAdvancedTagPreview");
-            string parameters = "($input: PreviewFilterInput!)\n";
+            var parameters = "($input: PreviewFilterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryVcenterAdvancedTagPreview" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterAdvancedTagPreview",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VcenterAdvancedTagPreviewReply> task = this._rbkClient.InvokeGenericCallAsync<VcenterAdvancedTagPreviewReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "VcenterAdvancedTagPreviewReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

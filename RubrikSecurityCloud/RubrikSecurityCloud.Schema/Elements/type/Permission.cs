@@ -11,121 +11,121 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region Permission
-    public class Permission: IFragment
+    public class Permission: BaseType
     {
         #region members
-        //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
-        // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
-        [JsonProperty("objectsForHierarchyTypes")]
-        public List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes { get; set; }
 
         //      C# -> Operation? Operation
         // GraphQL -> operation: Operation! (enum)
         [JsonProperty("operation")]
         public Operation? Operation { get; set; }
 
+        //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
+        // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
+        [JsonProperty("objectsForHierarchyTypes")]
+        public List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes { get; set; }
+
+
         #endregion
 
     #region methods
 
     public Permission Set(
-        List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes = null,
-        Operation? Operation = null
+        Operation? Operation = null,
+        List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes = null
     ) 
     {
-        if ( ObjectsForHierarchyTypes != null ) {
-            this.ObjectsForHierarchyTypes = ObjectsForHierarchyTypes;
-        }
         if ( Operation != null ) {
             this.Operation = Operation;
+        }
+        if ( ObjectsForHierarchyTypes != null ) {
+            this.ObjectsForHierarchyTypes = ObjectsForHierarchyTypes;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
-            // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
-            if (this.ObjectsForHierarchyTypes != null)
-            {
-                 s += ind + "objectsForHierarchyTypes\n";
-
-                 s += ind + "{\n" + 
-                 this.ObjectsForHierarchyTypes.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> Operation? Operation
-            // GraphQL -> operation: Operation! (enum)
-            if (this.Operation != null)
-            {
-                 s += ind + "operation\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> Operation? Operation
+        // GraphQL -> operation: Operation! (enum)
+        if (this.Operation != null) {
+            s += ind + "operation\n" ;
         }
+        //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
+        // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
+        if (this.ObjectsForHierarchyTypes != null) {
+            s += ind + "objectsForHierarchyTypes {\n" + this.ObjectsForHierarchyTypes.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> Operation? Operation
+        // GraphQL -> operation: Operation! (enum)
+        if (this.Operation == null && Exploration.Includes(parent + ".operation", true))
         {
-            //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
-            // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
-            if (this.ObjectsForHierarchyTypes == null && Exploration.Includes(parent + ".objectsForHierarchyTypes"))
-            {
-                this.ObjectsForHierarchyTypes = new List<ObjectIdsForHierarchyType>();
-                this.ObjectsForHierarchyTypes.ApplyExploratoryFragment(parent + ".objectsForHierarchyTypes");
-            }
-            //      C# -> Operation? Operation
-            // GraphQL -> operation: Operation! (enum)
-            if (this.Operation == null && Exploration.Includes(parent + ".operation$"))
-            {
-                this.Operation = new Operation();
-            }
+            this.Operation = new Operation();
         }
+        //      C# -> List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes
+        // GraphQL -> objectsForHierarchyTypes: [ObjectIdsForHierarchyType!]! (type)
+        if (this.ObjectsForHierarchyTypes == null && Exploration.Includes(parent + ".objectsForHierarchyTypes"))
+        {
+            this.ObjectsForHierarchyTypes = new List<ObjectIdsForHierarchyType>();
+            this.ObjectsForHierarchyTypes.ApplyExploratoryFieldSpec(parent + ".objectsForHierarchyTypes");
+        }
+    }
 
 
     #endregion
 
     } // class Permission
+    
     #endregion
 
     public static class ListPermissionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<Permission> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<Permission> list, 
             String parent = "")
         {
-            var item = new Permission();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new Permission());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

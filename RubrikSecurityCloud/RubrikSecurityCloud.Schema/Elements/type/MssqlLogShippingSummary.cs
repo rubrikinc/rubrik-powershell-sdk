@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlLogShippingSummary
-    public class MssqlLogShippingSummary: IFragment
+    public class MssqlLogShippingSummary: BaseType
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -73,6 +75,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("status")]
         public MssqlLogShippingStatusInfo? Status { get; set; }
 
+
         #endregion
 
     #region methods
@@ -127,203 +130,182 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Int64? LagTime
-            // GraphQL -> lagTime: Long (scalar)
-            if (this.LagTime != null)
-            {
-                 s += ind + "lagTime\n";
-
-            }
-            //      C# -> DateTime? LastAppliedPoint
-            // GraphQL -> lastAppliedPoint: DateTime (scalar)
-            if (this.LastAppliedPoint != null)
-            {
-                 s += ind + "lastAppliedPoint\n";
-
-            }
-            //      C# -> System.String? Location
-            // GraphQL -> location: String! (scalar)
-            if (this.Location != null)
-            {
-                 s += ind + "location\n";
-
-            }
-            //      C# -> System.String? PrimaryDatabaseId
-            // GraphQL -> primaryDatabaseId: String! (scalar)
-            if (this.PrimaryDatabaseId != null)
-            {
-                 s += ind + "primaryDatabaseId\n";
-
-            }
-            //      C# -> System.Int64? PrimaryDatabaseLogBackupFrequency
-            // GraphQL -> primaryDatabaseLogBackupFrequency: Long (scalar)
-            if (this.PrimaryDatabaseLogBackupFrequency != null)
-            {
-                 s += ind + "primaryDatabaseLogBackupFrequency\n";
-
-            }
-            //      C# -> System.String? PrimaryDatabaseName
-            // GraphQL -> primaryDatabaseName: String! (scalar)
-            if (this.PrimaryDatabaseName != null)
-            {
-                 s += ind + "primaryDatabaseName\n";
-
-            }
-            //      C# -> System.String? SecondaryDatabaseId
-            // GraphQL -> secondaryDatabaseId: String (scalar)
-            if (this.SecondaryDatabaseId != null)
-            {
-                 s += ind + "secondaryDatabaseId\n";
-
-            }
-            //      C# -> System.String? SecondaryDatabaseName
-            // GraphQL -> secondaryDatabaseName: String! (scalar)
-            if (this.SecondaryDatabaseName != null)
-            {
-                 s += ind + "secondaryDatabaseName\n";
-
-            }
-            //      C# -> System.String? State
-            // GraphQL -> state: String (scalar)
-            if (this.State != null)
-            {
-                 s += ind + "state\n";
-
-            }
-            //      C# -> MssqlLogShippingStatusInfo? Status
-            // GraphQL -> status: MssqlLogShippingStatusInfo (type)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-                 s += ind + "{\n" + 
-                 this.Status.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
         }
+        //      C# -> System.Int64? LagTime
+        // GraphQL -> lagTime: Long (scalar)
+        if (this.LagTime != null) {
+            s += ind + "lagTime\n" ;
+        }
+        //      C# -> DateTime? LastAppliedPoint
+        // GraphQL -> lastAppliedPoint: DateTime (scalar)
+        if (this.LastAppliedPoint != null) {
+            s += ind + "lastAppliedPoint\n" ;
+        }
+        //      C# -> System.String? Location
+        // GraphQL -> location: String! (scalar)
+        if (this.Location != null) {
+            s += ind + "location\n" ;
+        }
+        //      C# -> System.String? PrimaryDatabaseId
+        // GraphQL -> primaryDatabaseId: String! (scalar)
+        if (this.PrimaryDatabaseId != null) {
+            s += ind + "primaryDatabaseId\n" ;
+        }
+        //      C# -> System.Int64? PrimaryDatabaseLogBackupFrequency
+        // GraphQL -> primaryDatabaseLogBackupFrequency: Long (scalar)
+        if (this.PrimaryDatabaseLogBackupFrequency != null) {
+            s += ind + "primaryDatabaseLogBackupFrequency\n" ;
+        }
+        //      C# -> System.String? PrimaryDatabaseName
+        // GraphQL -> primaryDatabaseName: String! (scalar)
+        if (this.PrimaryDatabaseName != null) {
+            s += ind + "primaryDatabaseName\n" ;
+        }
+        //      C# -> System.String? SecondaryDatabaseId
+        // GraphQL -> secondaryDatabaseId: String (scalar)
+        if (this.SecondaryDatabaseId != null) {
+            s += ind + "secondaryDatabaseId\n" ;
+        }
+        //      C# -> System.String? SecondaryDatabaseName
+        // GraphQL -> secondaryDatabaseName: String! (scalar)
+        if (this.SecondaryDatabaseName != null) {
+            s += ind + "secondaryDatabaseName\n" ;
+        }
+        //      C# -> System.String? State
+        // GraphQL -> state: String (scalar)
+        if (this.State != null) {
+            s += ind + "state\n" ;
+        }
+        //      C# -> MssqlLogShippingStatusInfo? Status
+        // GraphQL -> status: MssqlLogShippingStatusInfo (type)
+        if (this.Status != null) {
+            s += ind + "status {\n" + this.Status.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? LagTime
-            // GraphQL -> lagTime: Long (scalar)
-            if (this.LagTime == null && Exploration.Includes(parent + ".lagTime$"))
-            {
-                this.LagTime = new System.Int64();
-            }
-            //      C# -> DateTime? LastAppliedPoint
-            // GraphQL -> lastAppliedPoint: DateTime (scalar)
-            if (this.LastAppliedPoint == null && Exploration.Includes(parent + ".lastAppliedPoint$"))
-            {
-                this.LastAppliedPoint = new DateTime();
-            }
-            //      C# -> System.String? Location
-            // GraphQL -> location: String! (scalar)
-            if (this.Location == null && Exploration.Includes(parent + ".location$"))
-            {
-                this.Location = new System.String("FETCH");
-            }
-            //      C# -> System.String? PrimaryDatabaseId
-            // GraphQL -> primaryDatabaseId: String! (scalar)
-            if (this.PrimaryDatabaseId == null && Exploration.Includes(parent + ".primaryDatabaseId$"))
-            {
-                this.PrimaryDatabaseId = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? PrimaryDatabaseLogBackupFrequency
-            // GraphQL -> primaryDatabaseLogBackupFrequency: Long (scalar)
-            if (this.PrimaryDatabaseLogBackupFrequency == null && Exploration.Includes(parent + ".primaryDatabaseLogBackupFrequency$"))
-            {
-                this.PrimaryDatabaseLogBackupFrequency = new System.Int64();
-            }
-            //      C# -> System.String? PrimaryDatabaseName
-            // GraphQL -> primaryDatabaseName: String! (scalar)
-            if (this.PrimaryDatabaseName == null && Exploration.Includes(parent + ".primaryDatabaseName$"))
-            {
-                this.PrimaryDatabaseName = new System.String("FETCH");
-            }
-            //      C# -> System.String? SecondaryDatabaseId
-            // GraphQL -> secondaryDatabaseId: String (scalar)
-            if (this.SecondaryDatabaseId == null && Exploration.Includes(parent + ".secondaryDatabaseId$"))
-            {
-                this.SecondaryDatabaseId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SecondaryDatabaseName
-            // GraphQL -> secondaryDatabaseName: String! (scalar)
-            if (this.SecondaryDatabaseName == null && Exploration.Includes(parent + ".secondaryDatabaseName$"))
-            {
-                this.SecondaryDatabaseName = new System.String("FETCH");
-            }
-            //      C# -> System.String? State
-            // GraphQL -> state: String (scalar)
-            if (this.State == null && Exploration.Includes(parent + ".state$"))
-            {
-                this.State = new System.String("FETCH");
-            }
-            //      C# -> MssqlLogShippingStatusInfo? Status
-            // GraphQL -> status: MssqlLogShippingStatusInfo (type)
-            if (this.Status == null && Exploration.Includes(parent + ".status"))
-            {
-                this.Status = new MssqlLogShippingStatusInfo();
-                this.Status.ApplyExploratoryFragment(parent + ".status");
-            }
+            this.Id = new System.String("FETCH");
         }
+        //      C# -> System.Int64? LagTime
+        // GraphQL -> lagTime: Long (scalar)
+        if (this.LagTime == null && Exploration.Includes(parent + ".lagTime", true))
+        {
+            this.LagTime = new System.Int64();
+        }
+        //      C# -> DateTime? LastAppliedPoint
+        // GraphQL -> lastAppliedPoint: DateTime (scalar)
+        if (this.LastAppliedPoint == null && Exploration.Includes(parent + ".lastAppliedPoint", true))
+        {
+            this.LastAppliedPoint = new DateTime();
+        }
+        //      C# -> System.String? Location
+        // GraphQL -> location: String! (scalar)
+        if (this.Location == null && Exploration.Includes(parent + ".location", true))
+        {
+            this.Location = new System.String("FETCH");
+        }
+        //      C# -> System.String? PrimaryDatabaseId
+        // GraphQL -> primaryDatabaseId: String! (scalar)
+        if (this.PrimaryDatabaseId == null && Exploration.Includes(parent + ".primaryDatabaseId", true))
+        {
+            this.PrimaryDatabaseId = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? PrimaryDatabaseLogBackupFrequency
+        // GraphQL -> primaryDatabaseLogBackupFrequency: Long (scalar)
+        if (this.PrimaryDatabaseLogBackupFrequency == null && Exploration.Includes(parent + ".primaryDatabaseLogBackupFrequency", true))
+        {
+            this.PrimaryDatabaseLogBackupFrequency = new System.Int64();
+        }
+        //      C# -> System.String? PrimaryDatabaseName
+        // GraphQL -> primaryDatabaseName: String! (scalar)
+        if (this.PrimaryDatabaseName == null && Exploration.Includes(parent + ".primaryDatabaseName", true))
+        {
+            this.PrimaryDatabaseName = new System.String("FETCH");
+        }
+        //      C# -> System.String? SecondaryDatabaseId
+        // GraphQL -> secondaryDatabaseId: String (scalar)
+        if (this.SecondaryDatabaseId == null && Exploration.Includes(parent + ".secondaryDatabaseId", true))
+        {
+            this.SecondaryDatabaseId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SecondaryDatabaseName
+        // GraphQL -> secondaryDatabaseName: String! (scalar)
+        if (this.SecondaryDatabaseName == null && Exploration.Includes(parent + ".secondaryDatabaseName", true))
+        {
+            this.SecondaryDatabaseName = new System.String("FETCH");
+        }
+        //      C# -> System.String? State
+        // GraphQL -> state: String (scalar)
+        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        {
+            this.State = new System.String("FETCH");
+        }
+        //      C# -> MssqlLogShippingStatusInfo? Status
+        // GraphQL -> status: MssqlLogShippingStatusInfo (type)
+        if (this.Status == null && Exploration.Includes(parent + ".status"))
+        {
+            this.Status = new MssqlLogShippingStatusInfo();
+            this.Status.ApplyExploratoryFieldSpec(parent + ".status");
+        }
+    }
 
 
     #endregion
 
     } // class MssqlLogShippingSummary
+    
     #endregion
 
     public static class ListMssqlLogShippingSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MssqlLogShippingSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MssqlLogShippingSummary> list, 
             String parent = "")
         {
-            var item = new MssqlLogShippingSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MssqlLogShippingSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

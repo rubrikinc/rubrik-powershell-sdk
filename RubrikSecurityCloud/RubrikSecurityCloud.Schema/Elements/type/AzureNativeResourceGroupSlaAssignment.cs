@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureNativeResourceGroupSlaAssignment
-    public class AzureNativeResourceGroupSlaAssignment: IFragment
+    public class AzureNativeResourceGroupSlaAssignment: BaseType
     {
         #region members
+
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        [JsonProperty("slaAssignment")]
+        public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
+
         //      C# -> GlobalSlaReply? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: GlobalSlaReply! (type)
         [JsonProperty("configuredSlaDomain")]
@@ -28,130 +35,118 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("effectiveSlaDomain")]
         public GlobalSlaReply? EffectiveSlaDomain { get; set; }
 
-        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-        [JsonProperty("slaAssignment")]
-        public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
         #endregion
 
     #region methods
 
     public AzureNativeResourceGroupSlaAssignment Set(
+        SlaAssignmentTypeEnum? SlaAssignment = null,
         GlobalSlaReply? ConfiguredSlaDomain = null,
-        GlobalSlaReply? EffectiveSlaDomain = null,
-        SlaAssignmentTypeEnum? SlaAssignment = null
+        GlobalSlaReply? EffectiveSlaDomain = null
     ) 
     {
+        if ( SlaAssignment != null ) {
+            this.SlaAssignment = SlaAssignment;
+        }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
         }
         if ( EffectiveSlaDomain != null ) {
             this.EffectiveSlaDomain = EffectiveSlaDomain;
         }
-        if ( SlaAssignment != null ) {
-            this.SlaAssignment = SlaAssignment;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> GlobalSlaReply? ConfiguredSlaDomain
-            // GraphQL -> configuredSlaDomain: GlobalSlaReply! (type)
-            if (this.ConfiguredSlaDomain != null)
-            {
-                 s += ind + "configuredSlaDomain\n";
-
-                 s += ind + "{\n" + 
-                 this.ConfiguredSlaDomain.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> GlobalSlaReply? EffectiveSlaDomain
-            // GraphQL -> effectiveSlaDomain: GlobalSlaReply! (type)
-            if (this.EffectiveSlaDomain != null)
-            {
-                 s += ind + "effectiveSlaDomain\n";
-
-                 s += ind + "{\n" + 
-                 this.EffectiveSlaDomain.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-            // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-            if (this.SlaAssignment != null)
-            {
-                 s += ind + "slaAssignment\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        if (this.SlaAssignment != null) {
+            s += ind + "slaAssignment\n" ;
         }
+        //      C# -> GlobalSlaReply? ConfiguredSlaDomain
+        // GraphQL -> configuredSlaDomain: GlobalSlaReply! (type)
+        if (this.ConfiguredSlaDomain != null) {
+            s += ind + "configuredSlaDomain {\n" + this.ConfiguredSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> GlobalSlaReply? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: GlobalSlaReply! (type)
+        if (this.EffectiveSlaDomain != null) {
+            s += ind + "effectiveSlaDomain {\n" + this.EffectiveSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> SlaAssignmentTypeEnum? SlaAssignment
+        // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
+        if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment", true))
         {
-            //      C# -> GlobalSlaReply? ConfiguredSlaDomain
-            // GraphQL -> configuredSlaDomain: GlobalSlaReply! (type)
-            if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
-            {
-                this.ConfiguredSlaDomain = new GlobalSlaReply();
-                this.ConfiguredSlaDomain.ApplyExploratoryFragment(parent + ".configuredSlaDomain");
-            }
-            //      C# -> GlobalSlaReply? EffectiveSlaDomain
-            // GraphQL -> effectiveSlaDomain: GlobalSlaReply! (type)
-            if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
-            {
-                this.EffectiveSlaDomain = new GlobalSlaReply();
-                this.EffectiveSlaDomain.ApplyExploratoryFragment(parent + ".effectiveSlaDomain");
-            }
-            //      C# -> SlaAssignmentTypeEnum? SlaAssignment
-            // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
-            if (this.SlaAssignment == null && Exploration.Includes(parent + ".slaAssignment$"))
-            {
-                this.SlaAssignment = new SlaAssignmentTypeEnum();
-            }
+            this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
+        //      C# -> GlobalSlaReply? ConfiguredSlaDomain
+        // GraphQL -> configuredSlaDomain: GlobalSlaReply! (type)
+        if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
+        {
+            this.ConfiguredSlaDomain = new GlobalSlaReply();
+            this.ConfiguredSlaDomain.ApplyExploratoryFieldSpec(parent + ".configuredSlaDomain");
+        }
+        //      C# -> GlobalSlaReply? EffectiveSlaDomain
+        // GraphQL -> effectiveSlaDomain: GlobalSlaReply! (type)
+        if (this.EffectiveSlaDomain == null && Exploration.Includes(parent + ".effectiveSlaDomain"))
+        {
+            this.EffectiveSlaDomain = new GlobalSlaReply();
+            this.EffectiveSlaDomain.ApplyExploratoryFieldSpec(parent + ".effectiveSlaDomain");
+        }
+    }
 
 
     #endregion
 
     } // class AzureNativeResourceGroupSlaAssignment
+    
     #endregion
 
     public static class ListAzureNativeResourceGroupSlaAssignmentExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureNativeResourceGroupSlaAssignment> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureNativeResourceGroupSlaAssignment> list, 
             String parent = "")
         {
-            var item = new AzureNativeResourceGroupSlaAssignment();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureNativeResourceGroupSlaAssignment());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

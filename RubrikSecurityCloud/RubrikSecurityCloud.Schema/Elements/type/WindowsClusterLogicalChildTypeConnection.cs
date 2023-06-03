@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region WindowsClusterLogicalChildTypeConnection
-    public class WindowsClusterLogicalChildTypeConnection: IFragment
+    public class WindowsClusterLogicalChildTypeConnection: BaseType
     {
         #region members
+
+        //      C# -> List<WindowsClusterLogicalChildType>? Nodes
+        // GraphQL -> nodes: [WindowsClusterLogicalChildType!]! (interface)
+        [JsonProperty("nodes")]
+        public List<WindowsClusterLogicalChildType>? Nodes { get; set; }
+
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
         [JsonProperty("count")]
@@ -33,22 +40,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("pageInfo")]
         public PageInfo? PageInfo { get; set; }
 
-        //      C# -> List<WindowsClusterLogicalChildType>? Nodes
-        // GraphQL -> nodes: [WindowsClusterLogicalChildType!]! (interface)
-        [JsonProperty("nodes")]
-        public List<WindowsClusterLogicalChildType>? Nodes { get; set; }
 
         #endregion
 
     #region methods
 
     public WindowsClusterLogicalChildTypeConnection Set(
+        List<WindowsClusterLogicalChildType>? Nodes = null,
         System.Int32? Count = null,
         List<WindowsClusterLogicalChildTypeEdge>? Edges = null,
-        PageInfo? PageInfo = null,
-        List<WindowsClusterLogicalChildType>? Nodes = null
+        PageInfo? PageInfo = null
     ) 
     {
+        if ( Nodes != null ) {
+            this.Nodes = Nodes;
+        }
         if ( Count != null ) {
             this.Count = Count;
         }
@@ -58,127 +64,111 @@ namespace Rubrik.SecurityCloud.Types
         if ( PageInfo != null ) {
             this.PageInfo = PageInfo;
         }
-        if ( Nodes != null ) {
-            this.Nodes = Nodes;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? Count
-            // GraphQL -> count: Int! (scalar)
-            if (this.Count != null)
-            {
-                 s += ind + "count\n";
-
-            }
-            //      C# -> List<WindowsClusterLogicalChildTypeEdge>? Edges
-            // GraphQL -> edges: [WindowsClusterLogicalChildTypeEdge!]! (type)
-            if (this.Edges != null)
-            {
-                 s += ind + "edges\n";
-
-                 s += ind + "{\n" + 
-                 this.Edges.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PageInfo? PageInfo
-            // GraphQL -> pageInfo: PageInfo! (type)
-            if (this.PageInfo != null)
-            {
-                 s += ind + "pageInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.PageInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-                        //      C# -> List<WindowsClusterLogicalChildType>? Nodes
-            // GraphQL -> nodes: [WindowsClusterLogicalChildType!]! (interface)
-            if (this.Nodes != null)
-            {
-                s += ind + "nodes\n";
-                s += ind + "{\n";
-
-                s += this.Nodes.AsFragment(indent+1) +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<WindowsClusterLogicalChildType>? Nodes
+        // GraphQL -> nodes: [WindowsClusterLogicalChildType!]! (interface)
+        if (this.Nodes != null) {
+            s += ind + "nodes {\n" +
+                this.Nodes.AsFieldSpec(indent+1) + ind + "}\n";
         }
+        //      C# -> System.Int32? Count
+        // GraphQL -> count: Int! (scalar)
+        if (this.Count != null) {
+            s += ind + "count\n" ;
+        }
+        //      C# -> List<WindowsClusterLogicalChildTypeEdge>? Edges
+        // GraphQL -> edges: [WindowsClusterLogicalChildTypeEdge!]! (type)
+        if (this.Edges != null) {
+            s += ind + "edges {\n" + this.Edges.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PageInfo? PageInfo
+        // GraphQL -> pageInfo: PageInfo! (type)
+        if (this.PageInfo != null) {
+            s += ind + "pageInfo {\n" + this.PageInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<WindowsClusterLogicalChildType>? Nodes
+        // GraphQL -> nodes: [WindowsClusterLogicalChildType!]! (interface)
+        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
         {
-            //      C# -> System.Int32? Count
-            // GraphQL -> count: Int! (scalar)
-            if (this.Count == null && Exploration.Includes(parent + ".count$"))
-            {
-                this.Count = new System.Int32();
-            }
-            //      C# -> List<WindowsClusterLogicalChildTypeEdge>? Edges
-            // GraphQL -> edges: [WindowsClusterLogicalChildTypeEdge!]! (type)
-            if (this.Edges == null && Exploration.Includes(parent + ".edges"))
-            {
-                this.Edges = new List<WindowsClusterLogicalChildTypeEdge>();
-                this.Edges.ApplyExploratoryFragment(parent + ".edges");
-            }
-            //      C# -> PageInfo? PageInfo
-            // GraphQL -> pageInfo: PageInfo! (type)
-            if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
-            {
-                this.PageInfo = new PageInfo();
-                this.PageInfo.ApplyExploratoryFragment(parent + ".pageInfo");
-            }
-            //      C# -> List<WindowsClusterLogicalChildType>? Nodes
-            // GraphQL -> nodes: [WindowsClusterLogicalChildType!]! (interface)
-            if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
-            {
-                this.Nodes = new List<WindowsClusterLogicalChildType>();
-                this.Nodes.ApplyExploratoryFragment(parent + ".nodes");
-            }
+            this.Nodes = new List<WindowsClusterLogicalChildType>();
+            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
         }
+        //      C# -> System.Int32? Count
+        // GraphQL -> count: Int! (scalar)
+        if (this.Count == null && Exploration.Includes(parent + ".count", true))
+        {
+            this.Count = new System.Int32();
+        }
+        //      C# -> List<WindowsClusterLogicalChildTypeEdge>? Edges
+        // GraphQL -> edges: [WindowsClusterLogicalChildTypeEdge!]! (type)
+        if (this.Edges == null && Exploration.Includes(parent + ".edges"))
+        {
+            this.Edges = new List<WindowsClusterLogicalChildTypeEdge>();
+            this.Edges.ApplyExploratoryFieldSpec(parent + ".edges");
+        }
+        //      C# -> PageInfo? PageInfo
+        // GraphQL -> pageInfo: PageInfo! (type)
+        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        {
+            this.PageInfo = new PageInfo();
+            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+        }
+    }
 
 
     #endregion
 
     } // class WindowsClusterLogicalChildTypeConnection
+    
     #endregion
 
     public static class ListWindowsClusterLogicalChildTypeConnectionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<WindowsClusterLogicalChildTypeConnection> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<WindowsClusterLogicalChildTypeConnection> list, 
             String parent = "")
         {
-            var item = new WindowsClusterLogicalChildTypeConnection();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new WindowsClusterLogicalChildTypeConnection());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

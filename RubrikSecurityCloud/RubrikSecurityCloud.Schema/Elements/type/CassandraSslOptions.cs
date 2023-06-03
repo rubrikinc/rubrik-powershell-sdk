@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CassandraSslOptions
-    public class CassandraSslOptions: IFragment
+    public class CassandraSslOptions: BaseType
     {
         #region members
+
+        //      C# -> SourceSslCertReqs? SslCertRequirements
+        // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
+        [JsonProperty("sslCertRequirements")]
+        public SourceSslCertReqs? SslCertRequirements { get; set; }
+
         //      C# -> System.Boolean? Ssl
         // GraphQL -> ssl: Boolean! (scalar)
         [JsonProperty("ssl")]
@@ -38,23 +45,22 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("sslKeyfile")]
         public System.String? SslKeyfile { get; set; }
 
-        //      C# -> SourceSslCertReqs? SslCertRequirements
-        // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
-        [JsonProperty("sslCertRequirements")]
-        public SourceSslCertReqs? SslCertRequirements { get; set; }
 
         #endregion
 
     #region methods
 
     public CassandraSslOptions Set(
+        SourceSslCertReqs? SslCertRequirements = null,
         System.Boolean? Ssl = null,
         System.String? SslCaCerts = null,
         System.String? SslCertfile = null,
-        System.String? SslKeyfile = null,
-        SourceSslCertReqs? SslCertRequirements = null
+        System.String? SslKeyfile = null
     ) 
     {
+        if ( SslCertRequirements != null ) {
+            this.SslCertRequirements = SslCertRequirements;
+        }
         if ( Ssl != null ) {
             this.Ssl = Ssl;
         }
@@ -67,127 +73,118 @@ namespace Rubrik.SecurityCloud.Types
         if ( SslKeyfile != null ) {
             this.SslKeyfile = SslKeyfile;
         }
-        if ( SslCertRequirements != null ) {
-            this.SslCertRequirements = SslCertRequirements;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? Ssl
-            // GraphQL -> ssl: Boolean! (scalar)
-            if (this.Ssl != null)
-            {
-                 s += ind + "ssl\n";
-
-            }
-            //      C# -> System.String? SslCaCerts
-            // GraphQL -> sslCaCerts: String! (scalar)
-            if (this.SslCaCerts != null)
-            {
-                 s += ind + "sslCaCerts\n";
-
-            }
-            //      C# -> System.String? SslCertfile
-            // GraphQL -> sslCertfile: String! (scalar)
-            if (this.SslCertfile != null)
-            {
-                 s += ind + "sslCertfile\n";
-
-            }
-            //      C# -> System.String? SslKeyfile
-            // GraphQL -> sslKeyfile: String! (scalar)
-            if (this.SslKeyfile != null)
-            {
-                 s += ind + "sslKeyfile\n";
-
-            }
-            //      C# -> SourceSslCertReqs? SslCertRequirements
-            // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
-            if (this.SslCertRequirements != null)
-            {
-                 s += ind + "sslCertRequirements\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> SourceSslCertReqs? SslCertRequirements
+        // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
+        if (this.SslCertRequirements != null) {
+            s += ind + "sslCertRequirements\n" ;
         }
+        //      C# -> System.Boolean? Ssl
+        // GraphQL -> ssl: Boolean! (scalar)
+        if (this.Ssl != null) {
+            s += ind + "ssl\n" ;
+        }
+        //      C# -> System.String? SslCaCerts
+        // GraphQL -> sslCaCerts: String! (scalar)
+        if (this.SslCaCerts != null) {
+            s += ind + "sslCaCerts\n" ;
+        }
+        //      C# -> System.String? SslCertfile
+        // GraphQL -> sslCertfile: String! (scalar)
+        if (this.SslCertfile != null) {
+            s += ind + "sslCertfile\n" ;
+        }
+        //      C# -> System.String? SslKeyfile
+        // GraphQL -> sslKeyfile: String! (scalar)
+        if (this.SslKeyfile != null) {
+            s += ind + "sslKeyfile\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> SourceSslCertReqs? SslCertRequirements
+        // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
+        if (this.SslCertRequirements == null && Exploration.Includes(parent + ".sslCertRequirements", true))
         {
-            //      C# -> System.Boolean? Ssl
-            // GraphQL -> ssl: Boolean! (scalar)
-            if (this.Ssl == null && Exploration.Includes(parent + ".ssl$"))
-            {
-                this.Ssl = new System.Boolean();
-            }
-            //      C# -> System.String? SslCaCerts
-            // GraphQL -> sslCaCerts: String! (scalar)
-            if (this.SslCaCerts == null && Exploration.Includes(parent + ".sslCaCerts$"))
-            {
-                this.SslCaCerts = new System.String("FETCH");
-            }
-            //      C# -> System.String? SslCertfile
-            // GraphQL -> sslCertfile: String! (scalar)
-            if (this.SslCertfile == null && Exploration.Includes(parent + ".sslCertfile$"))
-            {
-                this.SslCertfile = new System.String("FETCH");
-            }
-            //      C# -> System.String? SslKeyfile
-            // GraphQL -> sslKeyfile: String! (scalar)
-            if (this.SslKeyfile == null && Exploration.Includes(parent + ".sslKeyfile$"))
-            {
-                this.SslKeyfile = new System.String("FETCH");
-            }
-            //      C# -> SourceSslCertReqs? SslCertRequirements
-            // GraphQL -> sslCertRequirements: SourceSslCertReqs! (enum)
-            if (this.SslCertRequirements == null && Exploration.Includes(parent + ".sslCertRequirements$"))
-            {
-                this.SslCertRequirements = new SourceSslCertReqs();
-            }
+            this.SslCertRequirements = new SourceSslCertReqs();
         }
+        //      C# -> System.Boolean? Ssl
+        // GraphQL -> ssl: Boolean! (scalar)
+        if (this.Ssl == null && Exploration.Includes(parent + ".ssl", true))
+        {
+            this.Ssl = true;
+        }
+        //      C# -> System.String? SslCaCerts
+        // GraphQL -> sslCaCerts: String! (scalar)
+        if (this.SslCaCerts == null && Exploration.Includes(parent + ".sslCaCerts", true))
+        {
+            this.SslCaCerts = new System.String("FETCH");
+        }
+        //      C# -> System.String? SslCertfile
+        // GraphQL -> sslCertfile: String! (scalar)
+        if (this.SslCertfile == null && Exploration.Includes(parent + ".sslCertfile", true))
+        {
+            this.SslCertfile = new System.String("FETCH");
+        }
+        //      C# -> System.String? SslKeyfile
+        // GraphQL -> sslKeyfile: String! (scalar)
+        if (this.SslKeyfile == null && Exploration.Includes(parent + ".sslKeyfile", true))
+        {
+            this.SslKeyfile = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class CassandraSslOptions
+    
     #endregion
 
     public static class ListCassandraSslOptionsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CassandraSslOptions> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CassandraSslOptions> list, 
             String parent = "")
         {
-            var item = new CassandraSslOptions();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CassandraSslOptions());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

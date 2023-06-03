@@ -186,6 +186,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "MANAGE_DATA_SOURCE")]
         MANAGE_DATA_SOURCE,
 
+        [EnumMember(Value = "MANAGE_GPS_TO_RSC_UPGRADE")]
+        MANAGE_GPS_TO_RSC_UPGRADE,
+
         [EnumMember(Value = "MANAGE_LEGAL_HOLD")]
         MANAGE_LEGAL_HOLD,
 

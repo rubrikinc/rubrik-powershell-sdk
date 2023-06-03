@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -231,8 +231,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MosaicAsyncResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
                     fields = (MosaicAsyncResponse)this.Field;
@@ -240,23 +239,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.RecoverCassandraSource(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.RecoverCassandraSource");
-            string parameters = "($input: MosaicRestoreDataInput!)\n";
+            var parameters = "($input: MosaicRestoreDataInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationRecoverCassandraSource" + parameters + "{" + document + "}",
                 OperationName = "MutationRecoverCassandraSource",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -269,8 +267,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MosaicAsyncResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
                     fields = (MosaicAsyncResponse)this.Field;
@@ -278,23 +275,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.CreateCassandraSource(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateCassandraSource");
-            string parameters = "($input: AddMosaicSourceInput!)\n";
+            var parameters = "($input: AddMosaicSourceInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateCassandraSource" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateCassandraSource",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -307,8 +303,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MosaicAsyncResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
                     fields = (MosaicAsyncResponse)this.Field;
@@ -316,23 +311,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.UpdateCassandraSource(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateCassandraSource");
-            string parameters = "($input: ModifyMosaicSourceInput!)\n";
+            var parameters = "($input: ModifyMosaicSourceInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateCassandraSource" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCassandraSource",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -345,8 +339,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MosaicAsyncResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
                     fields = (MosaicAsyncResponse)this.Field;
@@ -354,23 +347,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.DeleteCassandraSource(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteCassandraSource");
-            string parameters = "($input: DeleteMosaicSourceInput!)\n";
+            var parameters = "($input: DeleteMosaicSourceInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteCassandraSource" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteCassandraSource",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -383,8 +375,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MosaicAsyncResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MosaicAsyncResponse)psObject.BaseObject;
                 } else {
                     fields = (MosaicAsyncResponse)this.Field;
@@ -392,23 +383,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.BulkDeleteCassandraSources(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.BulkDeleteCassandraSources");
-            string parameters = "($input: BulkDeleteMosaicSourcesInput!)\n";
+            var parameters = "($input: BulkDeleteMosaicSourcesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationBulkDeleteCassandraSources" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkDeleteCassandraSources",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicAsyncResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicAsyncResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MosaicAsyncResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

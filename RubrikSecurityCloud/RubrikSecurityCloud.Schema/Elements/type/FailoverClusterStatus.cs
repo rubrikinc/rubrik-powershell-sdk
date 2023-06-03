@@ -11,117 +11,120 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region FailoverClusterStatus
-    public class FailoverClusterStatus: IFragment
+    public class FailoverClusterStatus: BaseType
     {
         #region members
-        //      C# -> DateTime? TimestampMillis
-        // GraphQL -> timestampMillis: DateTime (scalar)
-        [JsonProperty("timestampMillis")]
-        public DateTime? TimestampMillis { get; set; }
 
         //      C# -> FailoverClusterConnectivityStatus? Connectivity
         // GraphQL -> connectivity: FailoverClusterConnectivityStatus! (enum)
         [JsonProperty("connectivity")]
         public FailoverClusterConnectivityStatus? Connectivity { get; set; }
 
+        //      C# -> DateTime? TimestampMillis
+        // GraphQL -> timestampMillis: DateTime (scalar)
+        [JsonProperty("timestampMillis")]
+        public DateTime? TimestampMillis { get; set; }
+
+
         #endregion
 
     #region methods
 
     public FailoverClusterStatus Set(
-        DateTime? TimestampMillis = null,
-        FailoverClusterConnectivityStatus? Connectivity = null
+        FailoverClusterConnectivityStatus? Connectivity = null,
+        DateTime? TimestampMillis = null
     ) 
     {
-        if ( TimestampMillis != null ) {
-            this.TimestampMillis = TimestampMillis;
-        }
         if ( Connectivity != null ) {
             this.Connectivity = Connectivity;
+        }
+        if ( TimestampMillis != null ) {
+            this.TimestampMillis = TimestampMillis;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? TimestampMillis
-            // GraphQL -> timestampMillis: DateTime (scalar)
-            if (this.TimestampMillis != null)
-            {
-                 s += ind + "timestampMillis\n";
-
-            }
-            //      C# -> FailoverClusterConnectivityStatus? Connectivity
-            // GraphQL -> connectivity: FailoverClusterConnectivityStatus! (enum)
-            if (this.Connectivity != null)
-            {
-                 s += ind + "connectivity\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> FailoverClusterConnectivityStatus? Connectivity
+        // GraphQL -> connectivity: FailoverClusterConnectivityStatus! (enum)
+        if (this.Connectivity != null) {
+            s += ind + "connectivity\n" ;
         }
+        //      C# -> DateTime? TimestampMillis
+        // GraphQL -> timestampMillis: DateTime (scalar)
+        if (this.TimestampMillis != null) {
+            s += ind + "timestampMillis\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> FailoverClusterConnectivityStatus? Connectivity
+        // GraphQL -> connectivity: FailoverClusterConnectivityStatus! (enum)
+        if (this.Connectivity == null && Exploration.Includes(parent + ".connectivity", true))
         {
-            //      C# -> DateTime? TimestampMillis
-            // GraphQL -> timestampMillis: DateTime (scalar)
-            if (this.TimestampMillis == null && Exploration.Includes(parent + ".timestampMillis$"))
-            {
-                this.TimestampMillis = new DateTime();
-            }
-            //      C# -> FailoverClusterConnectivityStatus? Connectivity
-            // GraphQL -> connectivity: FailoverClusterConnectivityStatus! (enum)
-            if (this.Connectivity == null && Exploration.Includes(parent + ".connectivity$"))
-            {
-                this.Connectivity = new FailoverClusterConnectivityStatus();
-            }
+            this.Connectivity = new FailoverClusterConnectivityStatus();
         }
+        //      C# -> DateTime? TimestampMillis
+        // GraphQL -> timestampMillis: DateTime (scalar)
+        if (this.TimestampMillis == null && Exploration.Includes(parent + ".timestampMillis", true))
+        {
+            this.TimestampMillis = new DateTime();
+        }
+    }
 
 
     #endregion
 
     } // class FailoverClusterStatus
+    
     #endregion
 
     public static class ListFailoverClusterStatusExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<FailoverClusterStatus> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<FailoverClusterStatus> list, 
             String parent = "")
         {
-            var item = new FailoverClusterStatus();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new FailoverClusterStatus());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,17 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region RefreshStorageArraysReply
-    public class RefreshStorageArraysReply: IFragment
+    public class RefreshStorageArraysReply: BaseType
     {
         #region members
+
         //      C# -> List<StorageArrayOperationOutputType>? Responses
         // GraphQL -> responses: [StorageArrayOperationOutputType!]! (type)
         [JsonProperty("responses")]
         public List<StorageArrayOperationOutputType>? Responses { get; set; }
+
 
         #endregion
 
@@ -37,73 +40,72 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<StorageArrayOperationOutputType>? Responses
-            // GraphQL -> responses: [StorageArrayOperationOutputType!]! (type)
-            if (this.Responses != null)
-            {
-                 s += ind + "responses\n";
-
-                 s += ind + "{\n" + 
-                 this.Responses.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<StorageArrayOperationOutputType>? Responses
+        // GraphQL -> responses: [StorageArrayOperationOutputType!]! (type)
+        if (this.Responses != null) {
+            s += ind + "responses {\n" + this.Responses.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<StorageArrayOperationOutputType>? Responses
+        // GraphQL -> responses: [StorageArrayOperationOutputType!]! (type)
+        if (this.Responses == null && Exploration.Includes(parent + ".responses"))
         {
-            //      C# -> List<StorageArrayOperationOutputType>? Responses
-            // GraphQL -> responses: [StorageArrayOperationOutputType!]! (type)
-            if (this.Responses == null && Exploration.Includes(parent + ".responses"))
-            {
-                this.Responses = new List<StorageArrayOperationOutputType>();
-                this.Responses.ApplyExploratoryFragment(parent + ".responses");
-            }
+            this.Responses = new List<StorageArrayOperationOutputType>();
+            this.Responses.ApplyExploratoryFieldSpec(parent + ".responses");
         }
+    }
 
 
     #endregion
 
     } // class RefreshStorageArraysReply
+    
     #endregion
 
     public static class ListRefreshStorageArraysReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<RefreshStorageArraysReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<RefreshStorageArraysReply> list, 
             String parent = "")
         {
-            var item = new RefreshStorageArraysReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new RefreshStorageArraysReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

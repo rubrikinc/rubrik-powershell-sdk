@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region UnidirectionalReplicationSpec
-    public class UnidirectionalReplicationSpec: IFragment
+    public class UnidirectionalReplicationSpec: BaseType
     {
         #region members
+
+        //      C# -> RetentionUnit? RetentionUnit
+        // GraphQL -> retentionUnit: RetentionUnit! (enum)
+        [JsonProperty("retentionUnit")]
+        public RetentionUnit? RetentionUnit { get; set; }
+
         //      C# -> System.String? ReplicationTargetId
         // GraphQL -> replicationTargetId: String! (scalar)
         [JsonProperty("replicationTargetId")]
@@ -38,23 +45,22 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("targetCluster")]
         public Cluster? TargetCluster { get; set; }
 
-        //      C# -> RetentionUnit? RetentionUnit
-        // GraphQL -> retentionUnit: RetentionUnit! (enum)
-        [JsonProperty("retentionUnit")]
-        public RetentionUnit? RetentionUnit { get; set; }
 
         #endregion
 
     #region methods
 
     public UnidirectionalReplicationSpec Set(
+        RetentionUnit? RetentionUnit = null,
         System.String? ReplicationTargetId = null,
         System.String? ReplicationTargetName = null,
         System.Int32? Retention = null,
-        Cluster? TargetCluster = null,
-        RetentionUnit? RetentionUnit = null
+        Cluster? TargetCluster = null
     ) 
     {
+        if ( RetentionUnit != null ) {
+            this.RetentionUnit = RetentionUnit;
+        }
         if ( ReplicationTargetId != null ) {
             this.ReplicationTargetId = ReplicationTargetId;
         }
@@ -67,131 +73,119 @@ namespace Rubrik.SecurityCloud.Types
         if ( TargetCluster != null ) {
             this.TargetCluster = TargetCluster;
         }
-        if ( RetentionUnit != null ) {
-            this.RetentionUnit = RetentionUnit;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ReplicationTargetId
-            // GraphQL -> replicationTargetId: String! (scalar)
-            if (this.ReplicationTargetId != null)
-            {
-                 s += ind + "replicationTargetId\n";
-
-            }
-            //      C# -> System.String? ReplicationTargetName
-            // GraphQL -> replicationTargetName: String! (scalar)
-            if (this.ReplicationTargetName != null)
-            {
-                 s += ind + "replicationTargetName\n";
-
-            }
-            //      C# -> System.Int32? Retention
-            // GraphQL -> retention: Int! (scalar)
-            if (this.Retention != null)
-            {
-                 s += ind + "retention\n";
-
-            }
-            //      C# -> Cluster? TargetCluster
-            // GraphQL -> targetCluster: Cluster (type)
-            if (this.TargetCluster != null)
-            {
-                 s += ind + "targetCluster\n";
-
-                 s += ind + "{\n" + 
-                 this.TargetCluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> RetentionUnit? RetentionUnit
-            // GraphQL -> retentionUnit: RetentionUnit! (enum)
-            if (this.RetentionUnit != null)
-            {
-                 s += ind + "retentionUnit\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> RetentionUnit? RetentionUnit
+        // GraphQL -> retentionUnit: RetentionUnit! (enum)
+        if (this.RetentionUnit != null) {
+            s += ind + "retentionUnit\n" ;
         }
+        //      C# -> System.String? ReplicationTargetId
+        // GraphQL -> replicationTargetId: String! (scalar)
+        if (this.ReplicationTargetId != null) {
+            s += ind + "replicationTargetId\n" ;
+        }
+        //      C# -> System.String? ReplicationTargetName
+        // GraphQL -> replicationTargetName: String! (scalar)
+        if (this.ReplicationTargetName != null) {
+            s += ind + "replicationTargetName\n" ;
+        }
+        //      C# -> System.Int32? Retention
+        // GraphQL -> retention: Int! (scalar)
+        if (this.Retention != null) {
+            s += ind + "retention\n" ;
+        }
+        //      C# -> Cluster? TargetCluster
+        // GraphQL -> targetCluster: Cluster (type)
+        if (this.TargetCluster != null) {
+            s += ind + "targetCluster {\n" + this.TargetCluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> RetentionUnit? RetentionUnit
+        // GraphQL -> retentionUnit: RetentionUnit! (enum)
+        if (this.RetentionUnit == null && Exploration.Includes(parent + ".retentionUnit", true))
         {
-            //      C# -> System.String? ReplicationTargetId
-            // GraphQL -> replicationTargetId: String! (scalar)
-            if (this.ReplicationTargetId == null && Exploration.Includes(parent + ".replicationTargetId$"))
-            {
-                this.ReplicationTargetId = new System.String("FETCH");
-            }
-            //      C# -> System.String? ReplicationTargetName
-            // GraphQL -> replicationTargetName: String! (scalar)
-            if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName$"))
-            {
-                this.ReplicationTargetName = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? Retention
-            // GraphQL -> retention: Int! (scalar)
-            if (this.Retention == null && Exploration.Includes(parent + ".retention$"))
-            {
-                this.Retention = new System.Int32();
-            }
-            //      C# -> Cluster? TargetCluster
-            // GraphQL -> targetCluster: Cluster (type)
-            if (this.TargetCluster == null && Exploration.Includes(parent + ".targetCluster"))
-            {
-                this.TargetCluster = new Cluster();
-                this.TargetCluster.ApplyExploratoryFragment(parent + ".targetCluster");
-            }
-            //      C# -> RetentionUnit? RetentionUnit
-            // GraphQL -> retentionUnit: RetentionUnit! (enum)
-            if (this.RetentionUnit == null && Exploration.Includes(parent + ".retentionUnit$"))
-            {
-                this.RetentionUnit = new RetentionUnit();
-            }
+            this.RetentionUnit = new RetentionUnit();
         }
+        //      C# -> System.String? ReplicationTargetId
+        // GraphQL -> replicationTargetId: String! (scalar)
+        if (this.ReplicationTargetId == null && Exploration.Includes(parent + ".replicationTargetId", true))
+        {
+            this.ReplicationTargetId = new System.String("FETCH");
+        }
+        //      C# -> System.String? ReplicationTargetName
+        // GraphQL -> replicationTargetName: String! (scalar)
+        if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
+        {
+            this.ReplicationTargetName = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? Retention
+        // GraphQL -> retention: Int! (scalar)
+        if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
+        {
+            this.Retention = new System.Int32();
+        }
+        //      C# -> Cluster? TargetCluster
+        // GraphQL -> targetCluster: Cluster (type)
+        if (this.TargetCluster == null && Exploration.Includes(parent + ".targetCluster"))
+        {
+            this.TargetCluster = new Cluster();
+            this.TargetCluster.ApplyExploratoryFieldSpec(parent + ".targetCluster");
+        }
+    }
 
 
     #endregion
 
     } // class UnidirectionalReplicationSpec
+    
     #endregion
 
     public static class ListUnidirectionalReplicationSpecExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<UnidirectionalReplicationSpec> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<UnidirectionalReplicationSpec> list, 
             String parent = "")
         {
-            var item = new UnidirectionalReplicationSpec();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new UnidirectionalReplicationSpec());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

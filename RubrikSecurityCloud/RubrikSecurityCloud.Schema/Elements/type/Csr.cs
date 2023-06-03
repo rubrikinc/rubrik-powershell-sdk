@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region Csr
-    public class Csr: IFragment
+    public class Csr: BaseType
     {
         #region members
+
         //      C# -> System.String? City
         // GraphQL -> city: String! (scalar)
         [JsonProperty("city")]
@@ -88,6 +90,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("userId")]
         public System.String? UserId { get; set; }
 
+
         #endregion
 
     #region methods
@@ -154,238 +157,214 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? City
-            // GraphQL -> city: String! (scalar)
-            if (this.City != null)
-            {
-                 s += ind + "city\n";
-
-            }
-            //      C# -> System.String? Country
-            // GraphQL -> country: String! (scalar)
-            if (this.Country != null)
-            {
-                 s += ind + "country\n";
-
-            }
-            //      C# -> DateTime? CreatedAt
-            // GraphQL -> createdAt: DateTime (scalar)
-            if (this.CreatedAt != null)
-            {
-                 s += ind + "createdAt\n";
-
-            }
-            //      C# -> System.String? CreatorEmail
-            // GraphQL -> creatorEmail: String! (scalar)
-            if (this.CreatorEmail != null)
-            {
-                 s += ind + "creatorEmail\n";
-
-            }
-            //      C# -> System.String? CsrField
-            // GraphQL -> csr: String! (scalar)
-            if (this.CsrField != null)
-            {
-                 s += ind + "csr\n";
-
-            }
-            //      C# -> System.Int64? CsrId
-            // GraphQL -> csrId: Long! (scalar)
-            if (this.CsrId != null)
-            {
-                 s += ind + "csrId\n";
-
-            }
-            //      C# -> System.String? Email
-            // GraphQL -> email: String! (scalar)
-            if (this.Email != null)
-            {
-                 s += ind + "email\n";
-
-            }
-            //      C# -> List<System.String>? Hostnames
-            // GraphQL -> hostnames: [String!]! (scalar)
-            if (this.Hostnames != null)
-            {
-                 s += ind + "hostnames\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? Organization
-            // GraphQL -> organization: String! (scalar)
-            if (this.Organization != null)
-            {
-                 s += ind + "organization\n";
-
-            }
-            //      C# -> System.String? OrganizationUnit
-            // GraphQL -> organizationUnit: String! (scalar)
-            if (this.OrganizationUnit != null)
-            {
-                 s += ind + "organizationUnit\n";
-
-            }
-            //      C# -> System.String? State
-            // GraphQL -> state: String! (scalar)
-            if (this.State != null)
-            {
-                 s += ind + "state\n";
-
-            }
-            //      C# -> System.String? Surname
-            // GraphQL -> surname: String! (scalar)
-            if (this.Surname != null)
-            {
-                 s += ind + "surname\n";
-
-            }
-            //      C# -> System.String? UserId
-            // GraphQL -> userId: String! (scalar)
-            if (this.UserId != null)
-            {
-                 s += ind + "userId\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? City
+        // GraphQL -> city: String! (scalar)
+        if (this.City != null) {
+            s += ind + "city\n" ;
         }
+        //      C# -> System.String? Country
+        // GraphQL -> country: String! (scalar)
+        if (this.Country != null) {
+            s += ind + "country\n" ;
+        }
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime (scalar)
+        if (this.CreatedAt != null) {
+            s += ind + "createdAt\n" ;
+        }
+        //      C# -> System.String? CreatorEmail
+        // GraphQL -> creatorEmail: String! (scalar)
+        if (this.CreatorEmail != null) {
+            s += ind + "creatorEmail\n" ;
+        }
+        //      C# -> System.String? CsrField
+        // GraphQL -> csr: String! (scalar)
+        if (this.CsrField != null) {
+            s += ind + "csr\n" ;
+        }
+        //      C# -> System.Int64? CsrId
+        // GraphQL -> csrId: Long! (scalar)
+        if (this.CsrId != null) {
+            s += ind + "csrId\n" ;
+        }
+        //      C# -> System.String? Email
+        // GraphQL -> email: String! (scalar)
+        if (this.Email != null) {
+            s += ind + "email\n" ;
+        }
+        //      C# -> List<System.String>? Hostnames
+        // GraphQL -> hostnames: [String!]! (scalar)
+        if (this.Hostnames != null) {
+            s += ind + "hostnames\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? Organization
+        // GraphQL -> organization: String! (scalar)
+        if (this.Organization != null) {
+            s += ind + "organization\n" ;
+        }
+        //      C# -> System.String? OrganizationUnit
+        // GraphQL -> organizationUnit: String! (scalar)
+        if (this.OrganizationUnit != null) {
+            s += ind + "organizationUnit\n" ;
+        }
+        //      C# -> System.String? State
+        // GraphQL -> state: String! (scalar)
+        if (this.State != null) {
+            s += ind + "state\n" ;
+        }
+        //      C# -> System.String? Surname
+        // GraphQL -> surname: String! (scalar)
+        if (this.Surname != null) {
+            s += ind + "surname\n" ;
+        }
+        //      C# -> System.String? UserId
+        // GraphQL -> userId: String! (scalar)
+        if (this.UserId != null) {
+            s += ind + "userId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? City
+        // GraphQL -> city: String! (scalar)
+        if (this.City == null && Exploration.Includes(parent + ".city", true))
         {
-            //      C# -> System.String? City
-            // GraphQL -> city: String! (scalar)
-            if (this.City == null && Exploration.Includes(parent + ".city$"))
-            {
-                this.City = new System.String("FETCH");
-            }
-            //      C# -> System.String? Country
-            // GraphQL -> country: String! (scalar)
-            if (this.Country == null && Exploration.Includes(parent + ".country$"))
-            {
-                this.Country = new System.String("FETCH");
-            }
-            //      C# -> DateTime? CreatedAt
-            // GraphQL -> createdAt: DateTime (scalar)
-            if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt$"))
-            {
-                this.CreatedAt = new DateTime();
-            }
-            //      C# -> System.String? CreatorEmail
-            // GraphQL -> creatorEmail: String! (scalar)
-            if (this.CreatorEmail == null && Exploration.Includes(parent + ".creatorEmail$"))
-            {
-                this.CreatorEmail = new System.String("FETCH");
-            }
-            //      C# -> System.String? CsrField
-            // GraphQL -> csr: String! (scalar)
-            if (this.CsrField == null && Exploration.Includes(parent + ".csr$"))
-            {
-                this.CsrField = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? CsrId
-            // GraphQL -> csrId: Long! (scalar)
-            if (this.CsrId == null && Exploration.Includes(parent + ".csrId$"))
-            {
-                this.CsrId = new System.Int64();
-            }
-            //      C# -> System.String? Email
-            // GraphQL -> email: String! (scalar)
-            if (this.Email == null && Exploration.Includes(parent + ".email$"))
-            {
-                this.Email = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? Hostnames
-            // GraphQL -> hostnames: [String!]! (scalar)
-            if (this.Hostnames == null && Exploration.Includes(parent + ".hostnames$"))
-            {
-                this.Hostnames = new List<System.String>();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? Organization
-            // GraphQL -> organization: String! (scalar)
-            if (this.Organization == null && Exploration.Includes(parent + ".organization$"))
-            {
-                this.Organization = new System.String("FETCH");
-            }
-            //      C# -> System.String? OrganizationUnit
-            // GraphQL -> organizationUnit: String! (scalar)
-            if (this.OrganizationUnit == null && Exploration.Includes(parent + ".organizationUnit$"))
-            {
-                this.OrganizationUnit = new System.String("FETCH");
-            }
-            //      C# -> System.String? State
-            // GraphQL -> state: String! (scalar)
-            if (this.State == null && Exploration.Includes(parent + ".state$"))
-            {
-                this.State = new System.String("FETCH");
-            }
-            //      C# -> System.String? Surname
-            // GraphQL -> surname: String! (scalar)
-            if (this.Surname == null && Exploration.Includes(parent + ".surname$"))
-            {
-                this.Surname = new System.String("FETCH");
-            }
-            //      C# -> System.String? UserId
-            // GraphQL -> userId: String! (scalar)
-            if (this.UserId == null && Exploration.Includes(parent + ".userId$"))
-            {
-                this.UserId = new System.String("FETCH");
-            }
+            this.City = new System.String("FETCH");
         }
+        //      C# -> System.String? Country
+        // GraphQL -> country: String! (scalar)
+        if (this.Country == null && Exploration.Includes(parent + ".country", true))
+        {
+            this.Country = new System.String("FETCH");
+        }
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime (scalar)
+        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        {
+            this.CreatedAt = new DateTime();
+        }
+        //      C# -> System.String? CreatorEmail
+        // GraphQL -> creatorEmail: String! (scalar)
+        if (this.CreatorEmail == null && Exploration.Includes(parent + ".creatorEmail", true))
+        {
+            this.CreatorEmail = new System.String("FETCH");
+        }
+        //      C# -> System.String? CsrField
+        // GraphQL -> csr: String! (scalar)
+        if (this.CsrField == null && Exploration.Includes(parent + ".csr", true))
+        {
+            this.CsrField = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? CsrId
+        // GraphQL -> csrId: Long! (scalar)
+        if (this.CsrId == null && Exploration.Includes(parent + ".csrId", true))
+        {
+            this.CsrId = new System.Int64();
+        }
+        //      C# -> System.String? Email
+        // GraphQL -> email: String! (scalar)
+        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        {
+            this.Email = new System.String("FETCH");
+        }
+        //      C# -> List<System.String>? Hostnames
+        // GraphQL -> hostnames: [String!]! (scalar)
+        if (this.Hostnames == null && Exploration.Includes(parent + ".hostnames", true))
+        {
+            this.Hostnames = new List<System.String>();
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? Organization
+        // GraphQL -> organization: String! (scalar)
+        if (this.Organization == null && Exploration.Includes(parent + ".organization", true))
+        {
+            this.Organization = new System.String("FETCH");
+        }
+        //      C# -> System.String? OrganizationUnit
+        // GraphQL -> organizationUnit: String! (scalar)
+        if (this.OrganizationUnit == null && Exploration.Includes(parent + ".organizationUnit", true))
+        {
+            this.OrganizationUnit = new System.String("FETCH");
+        }
+        //      C# -> System.String? State
+        // GraphQL -> state: String! (scalar)
+        if (this.State == null && Exploration.Includes(parent + ".state", true))
+        {
+            this.State = new System.String("FETCH");
+        }
+        //      C# -> System.String? Surname
+        // GraphQL -> surname: String! (scalar)
+        if (this.Surname == null && Exploration.Includes(parent + ".surname", true))
+        {
+            this.Surname = new System.String("FETCH");
+        }
+        //      C# -> System.String? UserId
+        // GraphQL -> userId: String! (scalar)
+        if (this.UserId == null && Exploration.Includes(parent + ".userId", true))
+        {
+            this.UserId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class Csr
+    
     #endregion
 
     public static class ListCsrExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<Csr> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<Csr> list, 
             String parent = "")
         {
-            var item = new Csr();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new Csr());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

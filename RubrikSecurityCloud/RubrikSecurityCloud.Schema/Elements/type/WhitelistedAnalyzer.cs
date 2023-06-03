@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region WhitelistedAnalyzer
-    public class WhitelistedAnalyzer: IFragment
+    public class WhitelistedAnalyzer: BaseType
     {
         #region members
+
         //      C# -> System.Boolean? IsExplicit
         // GraphQL -> isExplicit: Boolean! (scalar)
         [JsonProperty("isExplicit")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> whitelistedPath: String! (scalar)
         [JsonProperty("whitelistedPath")]
         public System.String? WhitelistedPath { get; set; }
+
 
         #endregion
 
@@ -55,95 +58,93 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? IsExplicit
-            // GraphQL -> isExplicit: Boolean! (scalar)
-            if (this.IsExplicit != null)
-            {
-                 s += ind + "isExplicit\n";
-
-            }
-            //      C# -> System.String? WhitelistedAnalyzerId
-            // GraphQL -> whitelistedAnalyzerId: String! (scalar)
-            if (this.WhitelistedAnalyzerId != null)
-            {
-                 s += ind + "whitelistedAnalyzerId\n";
-
-            }
-            //      C# -> System.String? WhitelistedPath
-            // GraphQL -> whitelistedPath: String! (scalar)
-            if (this.WhitelistedPath != null)
-            {
-                 s += ind + "whitelistedPath\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Boolean? IsExplicit
+        // GraphQL -> isExplicit: Boolean! (scalar)
+        if (this.IsExplicit != null) {
+            s += ind + "isExplicit\n" ;
         }
+        //      C# -> System.String? WhitelistedAnalyzerId
+        // GraphQL -> whitelistedAnalyzerId: String! (scalar)
+        if (this.WhitelistedAnalyzerId != null) {
+            s += ind + "whitelistedAnalyzerId\n" ;
+        }
+        //      C# -> System.String? WhitelistedPath
+        // GraphQL -> whitelistedPath: String! (scalar)
+        if (this.WhitelistedPath != null) {
+            s += ind + "whitelistedPath\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Boolean? IsExplicit
+        // GraphQL -> isExplicit: Boolean! (scalar)
+        if (this.IsExplicit == null && Exploration.Includes(parent + ".isExplicit", true))
         {
-            //      C# -> System.Boolean? IsExplicit
-            // GraphQL -> isExplicit: Boolean! (scalar)
-            if (this.IsExplicit == null && Exploration.Includes(parent + ".isExplicit$"))
-            {
-                this.IsExplicit = new System.Boolean();
-            }
-            //      C# -> System.String? WhitelistedAnalyzerId
-            // GraphQL -> whitelistedAnalyzerId: String! (scalar)
-            if (this.WhitelistedAnalyzerId == null && Exploration.Includes(parent + ".whitelistedAnalyzerId$"))
-            {
-                this.WhitelistedAnalyzerId = new System.String("FETCH");
-            }
-            //      C# -> System.String? WhitelistedPath
-            // GraphQL -> whitelistedPath: String! (scalar)
-            if (this.WhitelistedPath == null && Exploration.Includes(parent + ".whitelistedPath$"))
-            {
-                this.WhitelistedPath = new System.String("FETCH");
-            }
+            this.IsExplicit = true;
         }
+        //      C# -> System.String? WhitelistedAnalyzerId
+        // GraphQL -> whitelistedAnalyzerId: String! (scalar)
+        if (this.WhitelistedAnalyzerId == null && Exploration.Includes(parent + ".whitelistedAnalyzerId", true))
+        {
+            this.WhitelistedAnalyzerId = new System.String("FETCH");
+        }
+        //      C# -> System.String? WhitelistedPath
+        // GraphQL -> whitelistedPath: String! (scalar)
+        if (this.WhitelistedPath == null && Exploration.Includes(parent + ".whitelistedPath", true))
+        {
+            this.WhitelistedPath = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class WhitelistedAnalyzer
+    
     #endregion
 
     public static class ListWhitelistedAnalyzerExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<WhitelistedAnalyzer> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<WhitelistedAnalyzer> list, 
             String parent = "")
         {
-            var item = new WhitelistedAnalyzer();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new WhitelistedAnalyzer());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

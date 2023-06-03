@@ -11,27 +11,14 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SddlPermission
-    public class SddlPermission: IFragment
+    public class SddlPermission: BaseType
     {
         #region members
-        //      C# -> System.String? Access
-        // GraphQL -> access: String! (scalar)
-        [JsonProperty("access")]
-        public System.String? Access { get; set; }
-
-        //      C# -> System.String? Cn
-        // GraphQL -> cn: String! (scalar)
-        [JsonProperty("cn")]
-        public System.String? Cn { get; set; }
-
-        //      C# -> System.String? Dn
-        // GraphQL -> dn: String! (scalar)
-        [JsonProperty("dn")]
-        public System.String? Dn { get; set; }
 
         //      C# -> AceQualifier? AccessType
         // GraphQL -> accessType: AceQualifier! (enum)
@@ -48,28 +35,35 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("resolutionType")]
         public ResolutionType? ResolutionType { get; set; }
 
+        //      C# -> System.String? Access
+        // GraphQL -> access: String! (scalar)
+        [JsonProperty("access")]
+        public System.String? Access { get; set; }
+
+        //      C# -> System.String? Cn
+        // GraphQL -> cn: String! (scalar)
+        [JsonProperty("cn")]
+        public System.String? Cn { get; set; }
+
+        //      C# -> System.String? Dn
+        // GraphQL -> dn: String! (scalar)
+        [JsonProperty("dn")]
+        public System.String? Dn { get; set; }
+
+
         #endregion
 
     #region methods
 
     public SddlPermission Set(
-        System.String? Access = null,
-        System.String? Cn = null,
-        System.String? Dn = null,
         AceQualifier? AccessType = null,
         List<AceFlags>? Flags = null,
-        ResolutionType? ResolutionType = null
+        ResolutionType? ResolutionType = null,
+        System.String? Access = null,
+        System.String? Cn = null,
+        System.String? Dn = null
     ) 
     {
-        if ( Access != null ) {
-            this.Access = Access;
-        }
-        if ( Cn != null ) {
-            this.Cn = Cn;
-        }
-        if ( Dn != null ) {
-            this.Dn = Dn;
-        }
         if ( AccessType != null ) {
             this.AccessType = AccessType;
         }
@@ -79,137 +73,138 @@ namespace Rubrik.SecurityCloud.Types
         if ( ResolutionType != null ) {
             this.ResolutionType = ResolutionType;
         }
+        if ( Access != null ) {
+            this.Access = Access;
+        }
+        if ( Cn != null ) {
+            this.Cn = Cn;
+        }
+        if ( Dn != null ) {
+            this.Dn = Dn;
+        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Access
-            // GraphQL -> access: String! (scalar)
-            if (this.Access != null)
-            {
-                 s += ind + "access\n";
-
-            }
-            //      C# -> System.String? Cn
-            // GraphQL -> cn: String! (scalar)
-            if (this.Cn != null)
-            {
-                 s += ind + "cn\n";
-
-            }
-            //      C# -> System.String? Dn
-            // GraphQL -> dn: String! (scalar)
-            if (this.Dn != null)
-            {
-                 s += ind + "dn\n";
-
-            }
-            //      C# -> AceQualifier? AccessType
-            // GraphQL -> accessType: AceQualifier! (enum)
-            if (this.AccessType != null)
-            {
-                 s += ind + "accessType\n";
-
-            }
-            //      C# -> List<AceFlags>? Flags
-            // GraphQL -> flags: [AceFlags!]! (enum)
-            if (this.Flags != null)
-            {
-                 s += ind + "flags\n";
-
-            }
-            //      C# -> ResolutionType? ResolutionType
-            // GraphQL -> resolutionType: ResolutionType! (enum)
-            if (this.ResolutionType != null)
-            {
-                 s += ind + "resolutionType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AceQualifier? AccessType
+        // GraphQL -> accessType: AceQualifier! (enum)
+        if (this.AccessType != null) {
+            s += ind + "accessType\n" ;
         }
+        //      C# -> List<AceFlags>? Flags
+        // GraphQL -> flags: [AceFlags!]! (enum)
+        if (this.Flags != null) {
+            s += ind + "flags\n" ;
+        }
+        //      C# -> ResolutionType? ResolutionType
+        // GraphQL -> resolutionType: ResolutionType! (enum)
+        if (this.ResolutionType != null) {
+            s += ind + "resolutionType\n" ;
+        }
+        //      C# -> System.String? Access
+        // GraphQL -> access: String! (scalar)
+        if (this.Access != null) {
+            s += ind + "access\n" ;
+        }
+        //      C# -> System.String? Cn
+        // GraphQL -> cn: String! (scalar)
+        if (this.Cn != null) {
+            s += ind + "cn\n" ;
+        }
+        //      C# -> System.String? Dn
+        // GraphQL -> dn: String! (scalar)
+        if (this.Dn != null) {
+            s += ind + "dn\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AceQualifier? AccessType
+        // GraphQL -> accessType: AceQualifier! (enum)
+        if (this.AccessType == null && Exploration.Includes(parent + ".accessType", true))
         {
-            //      C# -> System.String? Access
-            // GraphQL -> access: String! (scalar)
-            if (this.Access == null && Exploration.Includes(parent + ".access$"))
-            {
-                this.Access = new System.String("FETCH");
-            }
-            //      C# -> System.String? Cn
-            // GraphQL -> cn: String! (scalar)
-            if (this.Cn == null && Exploration.Includes(parent + ".cn$"))
-            {
-                this.Cn = new System.String("FETCH");
-            }
-            //      C# -> System.String? Dn
-            // GraphQL -> dn: String! (scalar)
-            if (this.Dn == null && Exploration.Includes(parent + ".dn$"))
-            {
-                this.Dn = new System.String("FETCH");
-            }
-            //      C# -> AceQualifier? AccessType
-            // GraphQL -> accessType: AceQualifier! (enum)
-            if (this.AccessType == null && Exploration.Includes(parent + ".accessType$"))
-            {
-                this.AccessType = new AceQualifier();
-            }
-            //      C# -> List<AceFlags>? Flags
-            // GraphQL -> flags: [AceFlags!]! (enum)
-            if (this.Flags == null && Exploration.Includes(parent + ".flags$"))
-            {
-                this.Flags = new List<AceFlags>();
-            }
-            //      C# -> ResolutionType? ResolutionType
-            // GraphQL -> resolutionType: ResolutionType! (enum)
-            if (this.ResolutionType == null && Exploration.Includes(parent + ".resolutionType$"))
-            {
-                this.ResolutionType = new ResolutionType();
-            }
+            this.AccessType = new AceQualifier();
         }
+        //      C# -> List<AceFlags>? Flags
+        // GraphQL -> flags: [AceFlags!]! (enum)
+        if (this.Flags == null && Exploration.Includes(parent + ".flags", true))
+        {
+            this.Flags = new List<AceFlags>();
+        }
+        //      C# -> ResolutionType? ResolutionType
+        // GraphQL -> resolutionType: ResolutionType! (enum)
+        if (this.ResolutionType == null && Exploration.Includes(parent + ".resolutionType", true))
+        {
+            this.ResolutionType = new ResolutionType();
+        }
+        //      C# -> System.String? Access
+        // GraphQL -> access: String! (scalar)
+        if (this.Access == null && Exploration.Includes(parent + ".access", true))
+        {
+            this.Access = new System.String("FETCH");
+        }
+        //      C# -> System.String? Cn
+        // GraphQL -> cn: String! (scalar)
+        if (this.Cn == null && Exploration.Includes(parent + ".cn", true))
+        {
+            this.Cn = new System.String("FETCH");
+        }
+        //      C# -> System.String? Dn
+        // GraphQL -> dn: String! (scalar)
+        if (this.Dn == null && Exploration.Includes(parent + ".dn", true))
+        {
+            this.Dn = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class SddlPermission
+    
     #endregion
 
     public static class ListSddlPermissionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SddlPermission> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SddlPermission> list, 
             String parent = "")
         {
-            var item = new SddlPermission();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SddlPermission());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

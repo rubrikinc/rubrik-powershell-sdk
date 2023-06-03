@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region FileAccessResult
-    public class FileAccessResult: IFragment
+    public class FileAccessResult: BaseType
     {
         #region members
+
+        //      C# -> ActivityAccessType? AccessType
+        // GraphQL -> accessType: ActivityAccessType! (enum)
+        [JsonProperty("accessType")]
+        public ActivityAccessType? AccessType { get; set; }
+
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
         [JsonProperty("directory")]
@@ -38,23 +45,22 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("numAccesses")]
         public System.Int32? NumAccesses { get; set; }
 
-        //      C# -> ActivityAccessType? AccessType
-        // GraphQL -> accessType: ActivityAccessType! (enum)
-        [JsonProperty("accessType")]
-        public ActivityAccessType? AccessType { get; set; }
 
         #endregion
 
     #region methods
 
     public FileAccessResult Set(
+        ActivityAccessType? AccessType = null,
         System.String? Directory = null,
         System.String? Filename = null,
         System.String? NativePath = null,
-        System.Int32? NumAccesses = null,
-        ActivityAccessType? AccessType = null
+        System.Int32? NumAccesses = null
     ) 
     {
+        if ( AccessType != null ) {
+            this.AccessType = AccessType;
+        }
         if ( Directory != null ) {
             this.Directory = Directory;
         }
@@ -67,127 +73,118 @@ namespace Rubrik.SecurityCloud.Types
         if ( NumAccesses != null ) {
             this.NumAccesses = NumAccesses;
         }
-        if ( AccessType != null ) {
-            this.AccessType = AccessType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Directory
-            // GraphQL -> directory: String! (scalar)
-            if (this.Directory != null)
-            {
-                 s += ind + "directory\n";
-
-            }
-            //      C# -> System.String? Filename
-            // GraphQL -> filename: String! (scalar)
-            if (this.Filename != null)
-            {
-                 s += ind + "filename\n";
-
-            }
-            //      C# -> System.String? NativePath
-            // GraphQL -> nativePath: String! (scalar)
-            if (this.NativePath != null)
-            {
-                 s += ind + "nativePath\n";
-
-            }
-            //      C# -> System.Int32? NumAccesses
-            // GraphQL -> numAccesses: Int! (scalar)
-            if (this.NumAccesses != null)
-            {
-                 s += ind + "numAccesses\n";
-
-            }
-            //      C# -> ActivityAccessType? AccessType
-            // GraphQL -> accessType: ActivityAccessType! (enum)
-            if (this.AccessType != null)
-            {
-                 s += ind + "accessType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ActivityAccessType? AccessType
+        // GraphQL -> accessType: ActivityAccessType! (enum)
+        if (this.AccessType != null) {
+            s += ind + "accessType\n" ;
         }
+        //      C# -> System.String? Directory
+        // GraphQL -> directory: String! (scalar)
+        if (this.Directory != null) {
+            s += ind + "directory\n" ;
+        }
+        //      C# -> System.String? Filename
+        // GraphQL -> filename: String! (scalar)
+        if (this.Filename != null) {
+            s += ind + "filename\n" ;
+        }
+        //      C# -> System.String? NativePath
+        // GraphQL -> nativePath: String! (scalar)
+        if (this.NativePath != null) {
+            s += ind + "nativePath\n" ;
+        }
+        //      C# -> System.Int32? NumAccesses
+        // GraphQL -> numAccesses: Int! (scalar)
+        if (this.NumAccesses != null) {
+            s += ind + "numAccesses\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ActivityAccessType? AccessType
+        // GraphQL -> accessType: ActivityAccessType! (enum)
+        if (this.AccessType == null && Exploration.Includes(parent + ".accessType", true))
         {
-            //      C# -> System.String? Directory
-            // GraphQL -> directory: String! (scalar)
-            if (this.Directory == null && Exploration.Includes(parent + ".directory$"))
-            {
-                this.Directory = new System.String("FETCH");
-            }
-            //      C# -> System.String? Filename
-            // GraphQL -> filename: String! (scalar)
-            if (this.Filename == null && Exploration.Includes(parent + ".filename$"))
-            {
-                this.Filename = new System.String("FETCH");
-            }
-            //      C# -> System.String? NativePath
-            // GraphQL -> nativePath: String! (scalar)
-            if (this.NativePath == null && Exploration.Includes(parent + ".nativePath$"))
-            {
-                this.NativePath = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? NumAccesses
-            // GraphQL -> numAccesses: Int! (scalar)
-            if (this.NumAccesses == null && Exploration.Includes(parent + ".numAccesses$"))
-            {
-                this.NumAccesses = new System.Int32();
-            }
-            //      C# -> ActivityAccessType? AccessType
-            // GraphQL -> accessType: ActivityAccessType! (enum)
-            if (this.AccessType == null && Exploration.Includes(parent + ".accessType$"))
-            {
-                this.AccessType = new ActivityAccessType();
-            }
+            this.AccessType = new ActivityAccessType();
         }
+        //      C# -> System.String? Directory
+        // GraphQL -> directory: String! (scalar)
+        if (this.Directory == null && Exploration.Includes(parent + ".directory", true))
+        {
+            this.Directory = new System.String("FETCH");
+        }
+        //      C# -> System.String? Filename
+        // GraphQL -> filename: String! (scalar)
+        if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
+        {
+            this.Filename = new System.String("FETCH");
+        }
+        //      C# -> System.String? NativePath
+        // GraphQL -> nativePath: String! (scalar)
+        if (this.NativePath == null && Exploration.Includes(parent + ".nativePath", true))
+        {
+            this.NativePath = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? NumAccesses
+        // GraphQL -> numAccesses: Int! (scalar)
+        if (this.NumAccesses == null && Exploration.Includes(parent + ".numAccesses", true))
+        {
+            this.NumAccesses = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class FileAccessResult
+    
     #endregion
 
     public static class ListFileAccessResultExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<FileAccessResult> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<FileAccessResult> list, 
             String parent = "")
         {
-            var item = new FileAccessResult();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new FileAccessResult());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

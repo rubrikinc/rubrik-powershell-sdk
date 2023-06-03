@@ -12,6 +12,9 @@ using Rubrik.SecurityCloud.PowerShell.Models;
 using RubrikSecurityCloud.PowerShell.Models;
 using RubrikSecurityCloud.PowerShell.Private;
 using Rubrik.SecurityCloud.PowerShell.Private;
+using System.Xml.Linq;
+using System.Management.Automation.Runspaces;
+using System.Collections;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 {
@@ -19,21 +22,45 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     ///  Establishes a user session with Rubrik Security Cloud
     ///  </summary>
     ///  <description>
-    ///  The Connect-Rsc Cmdlet is used to connect to the Rubrik Security Cloud (RSC) API. RSC then returns a unique token to represent the user's credentials for subsequent calls.
+    ///  The Connect-Rsc Cmdlet is used to connect to the Rubrik Security Cloud (RSC) API.
+    ///  RSC then returns a unique token to represent the user's credentials for subsequent calls.
     ///  The token is stored securly in a .NET object within this PowerShell session.
     ///  The recommended authentication method is a Rsc Service Account.
+    ///  Service Account credentials may be provided as parameters, or stored
+    ///  in an encrypted credential file, using Set-RscServiceAccountFile.
+    ///  Service Account .json files (unencryped) are not supported.
     ///  </description>
-    ///  <example>
-    ///  Connect to Rubrik Security Cloud, using the service account file as downloaded from the Rsc Web UI:
-    ///  <code>
-    /// Connect-Rsc -ServiceAccountFile .\rubrik_service_account.json
-    /// </code>
-    ///  </example>
     ///  <example>
     ///  Connect to Rubrik Security Cloud, using the URL, Client Id and Client Secret
     ///  <code>Connect-Rsc -Server mycompany.my.rubrik.com -ClientId xxxxxxxxx -ClientSecret xxxxxxxxx</code>
     ///  </example>
-    ///  
+    ///  <example>
+    ///  Connect to Rubrik Security Cloud, using a service account file,
+    ///  stored in the default RSC credential store in the user profile
+    ///  The service account file can be downloaded from the Rsc Web UI.
+    ///  <code>
+    ///  Set-RscServiceAccountFile -InputFilePath rubrik_service_account.json
+    ///  Connect-Rsc
+    ///  </code>
+    ///  </example>
+    ///  <example>
+    ///  Connect to Rubrik Security Cloud, using a service account file,
+    ///  stored in a location other than the default RSC credential store.
+    ///  The service account file can be downloaded from the Rsc Web UI.
+    ///  <code>
+    ///  Set-RscServiceAccountFile -InputFilePath rubrik_service_account.json -OutputFilePath rubrik_service_account.xml
+    ///  Connect-Rsc -ServiceAccountFile rubrik_service_account.xml
+    ///  </code>
+    ///  </example>
+    ///  <example>
+    ///  Connect to Rubrik Security Cloud, using a service account file,
+    ///  stored in a location held in the OS environment variable RSC_SERVICE_ACCOUNT_FILE
+    ///  The service account file can be downloaded from the Rsc Web UI.
+    ///  <code>
+    ///  Set-RscServiceAccountFile -InputFilePath rubrik_service_account.json -OutputFilePath $ENV:RSC_SERVICE_ACCOUNT_FILE
+    ///  Connect-Rsc -FromEnv
+    ///  </code>
+    ///  </example>
     [Cmdlet(
         VerbsCommunications.Connect,
         "Rsc",
@@ -125,7 +152,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         if (sessionClient == null ||
                             sessionClient.AuthenticationState != AuthenticationState.AUTHORIZED)
                         {
-                            goto case "ServiceAccountFileFromEnv";
+                            goto case "ServiceAccountFile";
                         }
                         this._rbkClient = sessionClient;
                         this._doConnect = false;
@@ -155,22 +182,76 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     {
                         try
                         {
-                            using StreamReader r = new(ServiceAccountFile);
-                            string json = r.ReadToEnd();
-                            ServiceAcoountDetails sa = JsonConvert.DeserializeObject<ServiceAcoountDetails>(json);
+                            if (String.IsNullOrEmpty(ServiceAccountFile))
+                            {
+                                //ServiceAccountFile option specified, but no file given
+                                //Set the default service account file now
 
-                            _server = sa.AccessTokenUri;
-                            _clientId = sa.ClientId;
-                            _clientSecret = sa.ClientSecret;
+                                string psProfilePath = this.SessionState.PSVariable.Get("PROFILE").Value.ToString();
+                                string psProfileDir = Path.GetDirectoryName(psProfilePath);
+                                ServiceAccountFile = Path.Combine(psProfileDir,
+                                                                  "rubrik-powershell-sdk",
+                                                                  "rsc_service_account_default.xml");
+
+                            }
+
+                            using (Runspace runspace = RunspaceFactory.CreateRunspace())
+                            {
+                                runspace.Open();
+
+                                using (System.Management.Automation.PowerShell powerShell = System.Management.Automation.PowerShell.Create())
+                                {
+                                    powerShell.Runspace = runspace;
+
+                                    powerShell.AddCommand("Import-CliXml").AddParameter("Path", ServiceAccountFile);
+                                    var saContent = powerShell.Invoke();
+
+                                    foreach(DictionaryEntry entry in saContent[0].BaseObject as Hashtable)
+                                    {
+                                        switch (entry.Key)
+                                        {
+                                            case "client_id":
+                                                PSCredential clientIdCred = new PSCredential("clientId", (SecureString)entry.Value);
+                                                this._clientId = clientIdCred.GetNetworkCredential().Password;
+                                                break;
+
+                                            case "client_secret":
+                                                PSCredential clientSecretCred = new PSCredential("clientSecret", (SecureString)entry.Value);
+                                                this._clientSecret = clientSecretCred.GetNetworkCredential().Password;
+                                                break;
+
+                                            case "access_token_uri":
+                                                this._server = entry.Value.ToString();
+                                                break;
+                                        }
+                                    }
+                                }
+                            }
                         }
                         catch (Exception ex)
                         {
-                            var error = new ErrorRecord(
-                                ex,
-                                "CannotOpenOrParseServiceAccountFile",
-                                ErrorCategory.InvalidData,
-                                ServiceAccountFile);
-                            ThrowTerminatingError(error);
+                            if (ex.HResult == -2146233087)
+                            {
+                                var error = new ErrorRecord(ex,
+                                    "InvalidServiceAccountFileFormat",
+                                    ErrorCategory.InvalidData,
+                                    ServiceAccountFile);
+                                Console.WriteLine("Connect-Rsc does not support unencrypted JSON files " +
+                                    "for service accounts. " +
+                                    "Please use the \'Set-RscServiceAccountFile\' cmdlet " +
+                                    "to create a valid credential file.");
+                                ThrowTerminatingError(error);
+                            }
+                            else
+                            {
+                                var error = new ErrorRecord(
+                                        ex,
+                                        "CannotOpenOrParseServiceAccountFile",
+                                        ErrorCategory.InvalidData,
+                                        ServiceAccountFile);
+                                ThrowTerminatingError(error);
+                            }
+
                         }
                         break;
                     }

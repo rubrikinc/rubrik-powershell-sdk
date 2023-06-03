@@ -9,13 +9,16 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region O365FullSpObject
-    public interface O365FullSpObject: IFragment
+
+    public interface O365FullSpObject: IFieldSpec
     {
         #region members
+
         //      C# -> System.String? SharepointId
         // GraphQL -> sharepointId: String! (scalar)
         [JsonProperty("sharepointId")]
@@ -61,51 +64,57 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshotNum")]
         System.Int32? SnapshotNum { get; set; }
 
+
         #endregion
 
-    } // class O365FullSpObject
+    } // interface O365FullSpObject
+
     #endregion
+
+
 
     public static class ListO365FullSpObjectExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<O365FullSpObject> list,
             int indent=0)
         {
-            string fragments = "";
+            string ind = new string(' ', indent*2);
+            string fieldspecs = "";
             foreach (O365FullSpObject item in list) 
             {
-                string typename = item.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-
-                fragments += String.Format("... on {0}\n", typename);
-
-                fragments += "{\n" +
-                item.AsFragment(indent+1) +
-                "}\n";
+                fieldspecs += ind + " ... on " + item.GetType().Name + " {\n" + item.AsFieldSpec(indent+1) + ind + "}\n";
             }
-            return fragments;
+            return fieldspecs;
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<O365FullSpObject> list, 
             String parent = "")
         {
-            var item = (O365FullSpObject)InterfaceHelper.CreateInstanceOfFirstType(typeof(O365FullSpObject));
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                InterfaceHelper
+                    .AddInstancesOfImplementingTypes<O365FullSpObject>(
+                        ref list, 
+                        instance => instance.ApplyExploratoryFieldSpec(parent));
+            } else {
+                foreach (O365FullSpObject item in list) {
+                    item.ApplyExploratoryFieldSpec(parent);
+                }
+            }
+
         }
     }
 

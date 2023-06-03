@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AwsCloudAccountCreateResponse
-    public class AwsCloudAccountCreateResponse: IFragment
+    public class AwsCloudAccountCreateResponse: BaseType
     {
         #region members
+
+        //      C# -> List<AwsCloudAccountRegion>? AwsRegions
+        // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
+        [JsonProperty("awsRegions")]
+        public List<AwsCloudAccountRegion>? AwsRegions { get; set; }
+
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
         [JsonProperty("cloudFormationUrl")]
@@ -53,26 +60,25 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("featureVersions")]
         public List<AwsCloudAccountFeatureVersion>? FeatureVersions { get; set; }
 
-        //      C# -> List<AwsCloudAccountRegion>? AwsRegions
-        // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
-        [JsonProperty("awsRegions")]
-        public List<AwsCloudAccountRegion>? AwsRegions { get; set; }
 
         #endregion
 
     #region methods
 
     public AwsCloudAccountCreateResponse Set(
+        List<AwsCloudAccountRegion>? AwsRegions = null,
         System.String? CloudFormationUrl = null,
         System.String? ExternalId = null,
         System.String? RoleArn = null,
         System.String? StackName = null,
         System.String? StackSetName = null,
         System.String? TemplateUrl = null,
-        List<AwsCloudAccountFeatureVersion>? FeatureVersions = null,
-        List<AwsCloudAccountRegion>? AwsRegions = null
+        List<AwsCloudAccountFeatureVersion>? FeatureVersions = null
     ) 
     {
+        if ( AwsRegions != null ) {
+            this.AwsRegions = AwsRegions;
+        }
         if ( CloudFormationUrl != null ) {
             this.CloudFormationUrl = CloudFormationUrl;
         }
@@ -94,170 +100,152 @@ namespace Rubrik.SecurityCloud.Types
         if ( FeatureVersions != null ) {
             this.FeatureVersions = FeatureVersions;
         }
-        if ( AwsRegions != null ) {
-            this.AwsRegions = AwsRegions;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CloudFormationUrl
-            // GraphQL -> cloudFormationUrl: String! (scalar)
-            if (this.CloudFormationUrl != null)
-            {
-                 s += ind + "cloudFormationUrl\n";
-
-            }
-            //      C# -> System.String? ExternalId
-            // GraphQL -> externalId: String! (scalar)
-            if (this.ExternalId != null)
-            {
-                 s += ind + "externalId\n";
-
-            }
-            //      C# -> System.String? RoleArn
-            // GraphQL -> roleArn: String! (scalar)
-            if (this.RoleArn != null)
-            {
-                 s += ind + "roleArn\n";
-
-            }
-            //      C# -> System.String? StackName
-            // GraphQL -> stackName: String (scalar)
-            if (this.StackName != null)
-            {
-                 s += ind + "stackName\n";
-
-            }
-            //      C# -> System.String? StackSetName
-            // GraphQL -> stackSetName: String (scalar)
-            if (this.StackSetName != null)
-            {
-                 s += ind + "stackSetName\n";
-
-            }
-            //      C# -> System.String? TemplateUrl
-            // GraphQL -> templateUrl: String! (scalar)
-            if (this.TemplateUrl != null)
-            {
-                 s += ind + "templateUrl\n";
-
-            }
-            //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureVersions
-            // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)
-            if (this.FeatureVersions != null)
-            {
-                 s += ind + "featureVersions\n";
-
-                 s += ind + "{\n" + 
-                 this.FeatureVersions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<AwsCloudAccountRegion>? AwsRegions
-            // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
-            if (this.AwsRegions != null)
-            {
-                 s += ind + "awsRegions\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<AwsCloudAccountRegion>? AwsRegions
+        // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
+        if (this.AwsRegions != null) {
+            s += ind + "awsRegions\n" ;
         }
+        //      C# -> System.String? CloudFormationUrl
+        // GraphQL -> cloudFormationUrl: String! (scalar)
+        if (this.CloudFormationUrl != null) {
+            s += ind + "cloudFormationUrl\n" ;
+        }
+        //      C# -> System.String? ExternalId
+        // GraphQL -> externalId: String! (scalar)
+        if (this.ExternalId != null) {
+            s += ind + "externalId\n" ;
+        }
+        //      C# -> System.String? RoleArn
+        // GraphQL -> roleArn: String! (scalar)
+        if (this.RoleArn != null) {
+            s += ind + "roleArn\n" ;
+        }
+        //      C# -> System.String? StackName
+        // GraphQL -> stackName: String (scalar)
+        if (this.StackName != null) {
+            s += ind + "stackName\n" ;
+        }
+        //      C# -> System.String? StackSetName
+        // GraphQL -> stackSetName: String (scalar)
+        if (this.StackSetName != null) {
+            s += ind + "stackSetName\n" ;
+        }
+        //      C# -> System.String? TemplateUrl
+        // GraphQL -> templateUrl: String! (scalar)
+        if (this.TemplateUrl != null) {
+            s += ind + "templateUrl\n" ;
+        }
+        //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureVersions
+        // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)
+        if (this.FeatureVersions != null) {
+            s += ind + "featureVersions {\n" + this.FeatureVersions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<AwsCloudAccountRegion>? AwsRegions
+        // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
+        if (this.AwsRegions == null && Exploration.Includes(parent + ".awsRegions", true))
         {
-            //      C# -> System.String? CloudFormationUrl
-            // GraphQL -> cloudFormationUrl: String! (scalar)
-            if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl$"))
-            {
-                this.CloudFormationUrl = new System.String("FETCH");
-            }
-            //      C# -> System.String? ExternalId
-            // GraphQL -> externalId: String! (scalar)
-            if (this.ExternalId == null && Exploration.Includes(parent + ".externalId$"))
-            {
-                this.ExternalId = new System.String("FETCH");
-            }
-            //      C# -> System.String? RoleArn
-            // GraphQL -> roleArn: String! (scalar)
-            if (this.RoleArn == null && Exploration.Includes(parent + ".roleArn$"))
-            {
-                this.RoleArn = new System.String("FETCH");
-            }
-            //      C# -> System.String? StackName
-            // GraphQL -> stackName: String (scalar)
-            if (this.StackName == null && Exploration.Includes(parent + ".stackName$"))
-            {
-                this.StackName = new System.String("FETCH");
-            }
-            //      C# -> System.String? StackSetName
-            // GraphQL -> stackSetName: String (scalar)
-            if (this.StackSetName == null && Exploration.Includes(parent + ".stackSetName$"))
-            {
-                this.StackSetName = new System.String("FETCH");
-            }
-            //      C# -> System.String? TemplateUrl
-            // GraphQL -> templateUrl: String! (scalar)
-            if (this.TemplateUrl == null && Exploration.Includes(parent + ".templateUrl$"))
-            {
-                this.TemplateUrl = new System.String("FETCH");
-            }
-            //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureVersions
-            // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)
-            if (this.FeatureVersions == null && Exploration.Includes(parent + ".featureVersions"))
-            {
-                this.FeatureVersions = new List<AwsCloudAccountFeatureVersion>();
-                this.FeatureVersions.ApplyExploratoryFragment(parent + ".featureVersions");
-            }
-            //      C# -> List<AwsCloudAccountRegion>? AwsRegions
-            // GraphQL -> awsRegions: [AwsCloudAccountRegion!] (enum)
-            if (this.AwsRegions == null && Exploration.Includes(parent + ".awsRegions$"))
-            {
-                this.AwsRegions = new List<AwsCloudAccountRegion>();
-            }
+            this.AwsRegions = new List<AwsCloudAccountRegion>();
         }
+        //      C# -> System.String? CloudFormationUrl
+        // GraphQL -> cloudFormationUrl: String! (scalar)
+        if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl", true))
+        {
+            this.CloudFormationUrl = new System.String("FETCH");
+        }
+        //      C# -> System.String? ExternalId
+        // GraphQL -> externalId: String! (scalar)
+        if (this.ExternalId == null && Exploration.Includes(parent + ".externalId", true))
+        {
+            this.ExternalId = new System.String("FETCH");
+        }
+        //      C# -> System.String? RoleArn
+        // GraphQL -> roleArn: String! (scalar)
+        if (this.RoleArn == null && Exploration.Includes(parent + ".roleArn", true))
+        {
+            this.RoleArn = new System.String("FETCH");
+        }
+        //      C# -> System.String? StackName
+        // GraphQL -> stackName: String (scalar)
+        if (this.StackName == null && Exploration.Includes(parent + ".stackName", true))
+        {
+            this.StackName = new System.String("FETCH");
+        }
+        //      C# -> System.String? StackSetName
+        // GraphQL -> stackSetName: String (scalar)
+        if (this.StackSetName == null && Exploration.Includes(parent + ".stackSetName", true))
+        {
+            this.StackSetName = new System.String("FETCH");
+        }
+        //      C# -> System.String? TemplateUrl
+        // GraphQL -> templateUrl: String! (scalar)
+        if (this.TemplateUrl == null && Exploration.Includes(parent + ".templateUrl", true))
+        {
+            this.TemplateUrl = new System.String("FETCH");
+        }
+        //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureVersions
+        // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)
+        if (this.FeatureVersions == null && Exploration.Includes(parent + ".featureVersions"))
+        {
+            this.FeatureVersions = new List<AwsCloudAccountFeatureVersion>();
+            this.FeatureVersions.ApplyExploratoryFieldSpec(parent + ".featureVersions");
+        }
+    }
 
 
     #endregion
 
     } // class AwsCloudAccountCreateResponse
+    
     #endregion
 
     public static class ListAwsCloudAccountCreateResponseExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AwsCloudAccountCreateResponse> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AwsCloudAccountCreateResponse> list, 
             String parent = "")
         {
-            var item = new AwsCloudAccountCreateResponse();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AwsCloudAccountCreateResponse());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

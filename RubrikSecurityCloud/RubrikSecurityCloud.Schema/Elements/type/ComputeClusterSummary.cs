@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ComputeClusterSummary
-    public class ComputeClusterSummary: IFragment
+    public class ComputeClusterSummary: BaseType
     {
         #region members
+
+        //      C# -> IoFilterStatus? IoFilterStatus
+        // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
+        [JsonProperty("ioFilterStatus")]
+        public IoFilterStatus? IoFilterStatus { get; set; }
+
         //      C# -> System.String? DatacenterId
         // GraphQL -> datacenterId: String! (scalar)
         [JsonProperty("datacenterId")]
@@ -73,16 +80,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("slaAssignable")]
         public SlaAssignable? SlaAssignable { get; set; }
 
-        //      C# -> IoFilterStatus? IoFilterStatus
-        // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
-        [JsonProperty("ioFilterStatus")]
-        public IoFilterStatus? IoFilterStatus { get; set; }
 
         #endregion
 
     #region methods
 
     public ComputeClusterSummary Set(
+        IoFilterStatus? IoFilterStatus = null,
         System.String? DatacenterId = null,
         System.Boolean? DrsStatus = null,
         System.String? EffectiveSlaDomainId = null,
@@ -93,10 +97,12 @@ namespace Rubrik.SecurityCloud.Types
         List<System.String>? HostVersions = null,
         System.String? LastUsedFqdn = null,
         EffectiveSlaHolder? EffectiveSlaHolder = null,
-        SlaAssignable? SlaAssignable = null,
-        IoFilterStatus? IoFilterStatus = null
+        SlaAssignable? SlaAssignable = null
     ) 
     {
+        if ( IoFilterStatus != null ) {
+            this.IoFilterStatus = IoFilterStatus;
+        }
         if ( DatacenterId != null ) {
             this.DatacenterId = DatacenterId;
         }
@@ -130,226 +136,197 @@ namespace Rubrik.SecurityCloud.Types
         if ( SlaAssignable != null ) {
             this.SlaAssignable = SlaAssignable;
         }
-        if ( IoFilterStatus != null ) {
-            this.IoFilterStatus = IoFilterStatus;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? DatacenterId
-            // GraphQL -> datacenterId: String! (scalar)
-            if (this.DatacenterId != null)
-            {
-                 s += ind + "datacenterId\n";
-
-            }
-            //      C# -> System.Boolean? DrsStatus
-            // GraphQL -> drsStatus: Boolean (scalar)
-            if (this.DrsStatus != null)
-            {
-                 s += ind + "drsStatus\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaDomainId
-            // GraphQL -> effectiveSlaDomainId: String (scalar)
-            if (this.EffectiveSlaDomainId != null)
-            {
-                 s += ind + "effectiveSlaDomainId\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaDomainName
-            // GraphQL -> effectiveSlaDomainName: String (scalar)
-            if (this.EffectiveSlaDomainName != null)
-            {
-                 s += ind + "effectiveSlaDomainName\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
-            // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-            if (this.EffectiveSlaDomainPolarisManagedId != null)
-            {
-                 s += ind + "effectiveSlaDomainPolarisManagedId\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaSourceObjectId
-            // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
-            if (this.EffectiveSlaSourceObjectId != null)
-            {
-                 s += ind + "effectiveSlaSourceObjectId\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaSourceObjectName
-            // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
-            if (this.EffectiveSlaSourceObjectName != null)
-            {
-                 s += ind + "effectiveSlaSourceObjectName\n";
-
-            }
-            //      C# -> List<System.String>? HostVersions
-            // GraphQL -> hostVersions: [String!]! (scalar)
-            if (this.HostVersions != null)
-            {
-                 s += ind + "hostVersions\n";
-
-            }
-            //      C# -> System.String? LastUsedFqdn
-            // GraphQL -> lastUsedFqdn: String (scalar)
-            if (this.LastUsedFqdn != null)
-            {
-                 s += ind + "lastUsedFqdn\n";
-
-            }
-            //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
-            // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
-            if (this.EffectiveSlaHolder != null)
-            {
-                 s += ind + "effectiveSlaHolder\n";
-
-                 s += ind + "{\n" + 
-                 this.EffectiveSlaHolder.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable != null)
-            {
-                 s += ind + "slaAssignable\n";
-
-                 s += ind + "{\n" + 
-                 this.SlaAssignable.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> IoFilterStatus? IoFilterStatus
-            // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
-            if (this.IoFilterStatus != null)
-            {
-                 s += ind + "ioFilterStatus\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> IoFilterStatus? IoFilterStatus
+        // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
+        if (this.IoFilterStatus != null) {
+            s += ind + "ioFilterStatus\n" ;
         }
+        //      C# -> System.String? DatacenterId
+        // GraphQL -> datacenterId: String! (scalar)
+        if (this.DatacenterId != null) {
+            s += ind + "datacenterId\n" ;
+        }
+        //      C# -> System.Boolean? DrsStatus
+        // GraphQL -> drsStatus: Boolean (scalar)
+        if (this.DrsStatus != null) {
+            s += ind + "drsStatus\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaDomainId
+        // GraphQL -> effectiveSlaDomainId: String (scalar)
+        if (this.EffectiveSlaDomainId != null) {
+            s += ind + "effectiveSlaDomainId\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaDomainName
+        // GraphQL -> effectiveSlaDomainName: String (scalar)
+        if (this.EffectiveSlaDomainName != null) {
+            s += ind + "effectiveSlaDomainName\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
+        // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
+        if (this.EffectiveSlaDomainPolarisManagedId != null) {
+            s += ind + "effectiveSlaDomainPolarisManagedId\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaSourceObjectId
+        // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
+        if (this.EffectiveSlaSourceObjectId != null) {
+            s += ind + "effectiveSlaSourceObjectId\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaSourceObjectName
+        // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
+        if (this.EffectiveSlaSourceObjectName != null) {
+            s += ind + "effectiveSlaSourceObjectName\n" ;
+        }
+        //      C# -> List<System.String>? HostVersions
+        // GraphQL -> hostVersions: [String!]! (scalar)
+        if (this.HostVersions != null) {
+            s += ind + "hostVersions\n" ;
+        }
+        //      C# -> System.String? LastUsedFqdn
+        // GraphQL -> lastUsedFqdn: String (scalar)
+        if (this.LastUsedFqdn != null) {
+            s += ind + "lastUsedFqdn\n" ;
+        }
+        //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
+        // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
+        if (this.EffectiveSlaHolder != null) {
+            s += ind + "effectiveSlaHolder {\n" + this.EffectiveSlaHolder.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable != null) {
+            s += ind + "slaAssignable {\n" + this.SlaAssignable.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> IoFilterStatus? IoFilterStatus
+        // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
+        if (this.IoFilterStatus == null && Exploration.Includes(parent + ".ioFilterStatus", true))
         {
-            //      C# -> System.String? DatacenterId
-            // GraphQL -> datacenterId: String! (scalar)
-            if (this.DatacenterId == null && Exploration.Includes(parent + ".datacenterId$"))
-            {
-                this.DatacenterId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? DrsStatus
-            // GraphQL -> drsStatus: Boolean (scalar)
-            if (this.DrsStatus == null && Exploration.Includes(parent + ".drsStatus$"))
-            {
-                this.DrsStatus = new System.Boolean();
-            }
-            //      C# -> System.String? EffectiveSlaDomainId
-            // GraphQL -> effectiveSlaDomainId: String (scalar)
-            if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId$"))
-            {
-                this.EffectiveSlaDomainId = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaDomainName
-            // GraphQL -> effectiveSlaDomainName: String (scalar)
-            if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName$"))
-            {
-                this.EffectiveSlaDomainName = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
-            // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-            if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId$"))
-            {
-                this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaSourceObjectId
-            // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
-            if (this.EffectiveSlaSourceObjectId == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectId$"))
-            {
-                this.EffectiveSlaSourceObjectId = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaSourceObjectName
-            // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
-            if (this.EffectiveSlaSourceObjectName == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectName$"))
-            {
-                this.EffectiveSlaSourceObjectName = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? HostVersions
-            // GraphQL -> hostVersions: [String!]! (scalar)
-            if (this.HostVersions == null && Exploration.Includes(parent + ".hostVersions$"))
-            {
-                this.HostVersions = new List<System.String>();
-            }
-            //      C# -> System.String? LastUsedFqdn
-            // GraphQL -> lastUsedFqdn: String (scalar)
-            if (this.LastUsedFqdn == null && Exploration.Includes(parent + ".lastUsedFqdn$"))
-            {
-                this.LastUsedFqdn = new System.String("FETCH");
-            }
-            //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
-            // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
-            if (this.EffectiveSlaHolder == null && Exploration.Includes(parent + ".effectiveSlaHolder"))
-            {
-                this.EffectiveSlaHolder = new EffectiveSlaHolder();
-                this.EffectiveSlaHolder.ApplyExploratoryFragment(parent + ".effectiveSlaHolder");
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
-            {
-                this.SlaAssignable = new SlaAssignable();
-                this.SlaAssignable.ApplyExploratoryFragment(parent + ".slaAssignable");
-            }
-            //      C# -> IoFilterStatus? IoFilterStatus
-            // GraphQL -> ioFilterStatus: IoFilterStatus (enum)
-            if (this.IoFilterStatus == null && Exploration.Includes(parent + ".ioFilterStatus$"))
-            {
-                this.IoFilterStatus = new IoFilterStatus();
-            }
+            this.IoFilterStatus = new IoFilterStatus();
         }
+        //      C# -> System.String? DatacenterId
+        // GraphQL -> datacenterId: String! (scalar)
+        if (this.DatacenterId == null && Exploration.Includes(parent + ".datacenterId", true))
+        {
+            this.DatacenterId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? DrsStatus
+        // GraphQL -> drsStatus: Boolean (scalar)
+        if (this.DrsStatus == null && Exploration.Includes(parent + ".drsStatus", true))
+        {
+            this.DrsStatus = true;
+        }
+        //      C# -> System.String? EffectiveSlaDomainId
+        // GraphQL -> effectiveSlaDomainId: String (scalar)
+        if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
+        {
+            this.EffectiveSlaDomainId = new System.String("FETCH");
+        }
+        //      C# -> System.String? EffectiveSlaDomainName
+        // GraphQL -> effectiveSlaDomainName: String (scalar)
+        if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
+        {
+            this.EffectiveSlaDomainName = new System.String("FETCH");
+        }
+        //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
+        // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
+        if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
+        {
+            this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
+        }
+        //      C# -> System.String? EffectiveSlaSourceObjectId
+        // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
+        if (this.EffectiveSlaSourceObjectId == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectId", true))
+        {
+            this.EffectiveSlaSourceObjectId = new System.String("FETCH");
+        }
+        //      C# -> System.String? EffectiveSlaSourceObjectName
+        // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
+        if (this.EffectiveSlaSourceObjectName == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectName", true))
+        {
+            this.EffectiveSlaSourceObjectName = new System.String("FETCH");
+        }
+        //      C# -> List<System.String>? HostVersions
+        // GraphQL -> hostVersions: [String!]! (scalar)
+        if (this.HostVersions == null && Exploration.Includes(parent + ".hostVersions", true))
+        {
+            this.HostVersions = new List<System.String>();
+        }
+        //      C# -> System.String? LastUsedFqdn
+        // GraphQL -> lastUsedFqdn: String (scalar)
+        if (this.LastUsedFqdn == null && Exploration.Includes(parent + ".lastUsedFqdn", true))
+        {
+            this.LastUsedFqdn = new System.String("FETCH");
+        }
+        //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
+        // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
+        if (this.EffectiveSlaHolder == null && Exploration.Includes(parent + ".effectiveSlaHolder"))
+        {
+            this.EffectiveSlaHolder = new EffectiveSlaHolder();
+            this.EffectiveSlaHolder.ApplyExploratoryFieldSpec(parent + ".effectiveSlaHolder");
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        {
+            this.SlaAssignable = new SlaAssignable();
+            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+        }
+    }
 
 
     #endregion
 
     } // class ComputeClusterSummary
+    
     #endregion
 
     public static class ListComputeClusterSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ComputeClusterSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ComputeClusterSummary> list, 
             String parent = "")
         {
-            var item = new ComputeClusterSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ComputeClusterSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

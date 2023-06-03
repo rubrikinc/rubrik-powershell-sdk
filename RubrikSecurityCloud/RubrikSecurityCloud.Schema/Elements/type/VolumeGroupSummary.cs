@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VolumeGroupSummary
-    public class VolumeGroupSummary: IFragment
+    public class VolumeGroupSummary: BaseType
     {
         #region members
+
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
         [JsonProperty("forceFull")]
@@ -57,6 +59,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snappable: CdmWorkload (type)
         [JsonProperty("snappable")]
         public CdmWorkload? Snappable { get; set; }
+
 
         #endregion
 
@@ -100,164 +103,149 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? ForceFull
-            // GraphQL -> forceFull: Boolean (scalar)
-            if (this.ForceFull != null)
-            {
-                 s += ind + "forceFull\n";
-
-            }
-            //      C# -> System.String? HostId
-            // GraphQL -> hostId: String (scalar)
-            if (this.HostId != null)
-            {
-                 s += ind + "hostId\n";
-
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String (scalar)
-            if (this.Hostname != null)
-            {
-                 s += ind + "hostname\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic != null)
-            {
-                 s += ind + "isRelic\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.Boolean? NeedsMigration
-            // GraphQL -> needsMigration: Boolean (scalar)
-            if (this.NeedsMigration != null)
-            {
-                 s += ind + "needsMigration\n";
-
-            }
-            //      C# -> CdmWorkload? Snappable
-            // GraphQL -> snappable: CdmWorkload (type)
-            if (this.Snappable != null)
-            {
-                 s += ind + "snappable\n";
-
-                 s += ind + "{\n" + 
-                 this.Snappable.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Boolean? ForceFull
+        // GraphQL -> forceFull: Boolean (scalar)
+        if (this.ForceFull != null) {
+            s += ind + "forceFull\n" ;
         }
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String (scalar)
+        if (this.HostId != null) {
+            s += ind + "hostId\n" ;
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        if (this.Hostname != null) {
+            s += ind + "hostname\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic != null) {
+            s += ind + "isRelic\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.Boolean? NeedsMigration
+        // GraphQL -> needsMigration: Boolean (scalar)
+        if (this.NeedsMigration != null) {
+            s += ind + "needsMigration\n" ;
+        }
+        //      C# -> CdmWorkload? Snappable
+        // GraphQL -> snappable: CdmWorkload (type)
+        if (this.Snappable != null) {
+            s += ind + "snappable {\n" + this.Snappable.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Boolean? ForceFull
+        // GraphQL -> forceFull: Boolean (scalar)
+        if (this.ForceFull == null && Exploration.Includes(parent + ".forceFull", true))
         {
-            //      C# -> System.Boolean? ForceFull
-            // GraphQL -> forceFull: Boolean (scalar)
-            if (this.ForceFull == null && Exploration.Includes(parent + ".forceFull$"))
-            {
-                this.ForceFull = new System.Boolean();
-            }
-            //      C# -> System.String? HostId
-            // GraphQL -> hostId: String (scalar)
-            if (this.HostId == null && Exploration.Includes(parent + ".hostId$"))
-            {
-                this.HostId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String (scalar)
-            if (this.Hostname == null && Exploration.Includes(parent + ".hostname$"))
-            {
-                this.Hostname = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic$"))
-            {
-                this.IsRelic = new System.Boolean();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? NeedsMigration
-            // GraphQL -> needsMigration: Boolean (scalar)
-            if (this.NeedsMigration == null && Exploration.Includes(parent + ".needsMigration$"))
-            {
-                this.NeedsMigration = new System.Boolean();
-            }
-            //      C# -> CdmWorkload? Snappable
-            // GraphQL -> snappable: CdmWorkload (type)
-            if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
-            {
-                this.Snappable = new CdmWorkload();
-                this.Snappable.ApplyExploratoryFragment(parent + ".snappable");
-            }
+            this.ForceFull = true;
         }
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String (scalar)
+        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        {
+            this.HostId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String (scalar)
+        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
+        {
+            this.Hostname = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        {
+            this.IsRelic = true;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? NeedsMigration
+        // GraphQL -> needsMigration: Boolean (scalar)
+        if (this.NeedsMigration == null && Exploration.Includes(parent + ".needsMigration", true))
+        {
+            this.NeedsMigration = true;
+        }
+        //      C# -> CdmWorkload? Snappable
+        // GraphQL -> snappable: CdmWorkload (type)
+        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        {
+            this.Snappable = new CdmWorkload();
+            this.Snappable.ApplyExploratoryFieldSpec(parent + ".snappable");
+        }
+    }
 
 
     #endregion
 
     } // class VolumeGroupSummary
+    
     #endregion
 
     public static class ListVolumeGroupSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VolumeGroupSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VolumeGroupSummary> list, 
             String parent = "")
         {
-            var item = new VolumeGroupSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VolumeGroupSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

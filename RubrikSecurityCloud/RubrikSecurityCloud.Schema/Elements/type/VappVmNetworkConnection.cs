@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region VappVmNetworkConnection
-    public class VappVmNetworkConnection: IFragment
+    public class VappVmNetworkConnection: BaseType
     {
         #region members
+
+        //      C# -> VappVmIpAddressingMode? AddressingMode
+        // GraphQL -> addressingMode: VappVmIpAddressingMode! (enum)
+        [JsonProperty("addressingMode")]
+        public VappVmIpAddressingMode? AddressingMode { get; set; }
+
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
         [JsonProperty("ipAddress")]
@@ -53,26 +60,25 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("pageInfo")]
         public PageInfo? PageInfo { get; set; }
 
-        //      C# -> VappVmIpAddressingMode? AddressingMode
-        // GraphQL -> addressingMode: VappVmIpAddressingMode! (enum)
-        [JsonProperty("addressingMode")]
-        public VappVmIpAddressingMode? AddressingMode { get; set; }
 
         #endregion
 
     #region methods
 
     public VappVmNetworkConnection Set(
+        VappVmIpAddressingMode? AddressingMode = null,
         System.String? IpAddress = null,
         System.Boolean? IsConnected = null,
         System.String? MacAddress = null,
         System.String? NetworkAdapterType = null,
         System.Int32? NicIndex = null,
         System.String? VappNetworkName = null,
-        PageInfo? PageInfo = null,
-        VappVmIpAddressingMode? AddressingMode = null
+        PageInfo? PageInfo = null
     ) 
     {
+        if ( AddressingMode != null ) {
+            this.AddressingMode = AddressingMode;
+        }
         if ( IpAddress != null ) {
             this.IpAddress = IpAddress;
         }
@@ -94,170 +100,152 @@ namespace Rubrik.SecurityCloud.Types
         if ( PageInfo != null ) {
             this.PageInfo = PageInfo;
         }
-        if ( AddressingMode != null ) {
-            this.AddressingMode = AddressingMode;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? IpAddress
-            // GraphQL -> ipAddress: String (scalar)
-            if (this.IpAddress != null)
-            {
-                 s += ind + "ipAddress\n";
-
-            }
-            //      C# -> System.Boolean? IsConnected
-            // GraphQL -> isConnected: Boolean! (scalar)
-            if (this.IsConnected != null)
-            {
-                 s += ind + "isConnected\n";
-
-            }
-            //      C# -> System.String? MacAddress
-            // GraphQL -> macAddress: String (scalar)
-            if (this.MacAddress != null)
-            {
-                 s += ind + "macAddress\n";
-
-            }
-            //      C# -> System.String? NetworkAdapterType
-            // GraphQL -> networkAdapterType: String (scalar)
-            if (this.NetworkAdapterType != null)
-            {
-                 s += ind + "networkAdapterType\n";
-
-            }
-            //      C# -> System.Int32? NicIndex
-            // GraphQL -> nicIndex: Int! (scalar)
-            if (this.NicIndex != null)
-            {
-                 s += ind + "nicIndex\n";
-
-            }
-            //      C# -> System.String? VappNetworkName
-            // GraphQL -> vappNetworkName: String (scalar)
-            if (this.VappNetworkName != null)
-            {
-                 s += ind + "vappNetworkName\n";
-
-            }
-            //      C# -> PageInfo? PageInfo
-            // GraphQL -> pageInfo: PageInfo! (type)
-            if (this.PageInfo != null)
-            {
-                 s += ind + "pageInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.PageInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> VappVmIpAddressingMode? AddressingMode
-            // GraphQL -> addressingMode: VappVmIpAddressingMode! (enum)
-            if (this.AddressingMode != null)
-            {
-                 s += ind + "addressingMode\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> VappVmIpAddressingMode? AddressingMode
+        // GraphQL -> addressingMode: VappVmIpAddressingMode! (enum)
+        if (this.AddressingMode != null) {
+            s += ind + "addressingMode\n" ;
         }
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String (scalar)
+        if (this.IpAddress != null) {
+            s += ind + "ipAddress\n" ;
+        }
+        //      C# -> System.Boolean? IsConnected
+        // GraphQL -> isConnected: Boolean! (scalar)
+        if (this.IsConnected != null) {
+            s += ind + "isConnected\n" ;
+        }
+        //      C# -> System.String? MacAddress
+        // GraphQL -> macAddress: String (scalar)
+        if (this.MacAddress != null) {
+            s += ind + "macAddress\n" ;
+        }
+        //      C# -> System.String? NetworkAdapterType
+        // GraphQL -> networkAdapterType: String (scalar)
+        if (this.NetworkAdapterType != null) {
+            s += ind + "networkAdapterType\n" ;
+        }
+        //      C# -> System.Int32? NicIndex
+        // GraphQL -> nicIndex: Int! (scalar)
+        if (this.NicIndex != null) {
+            s += ind + "nicIndex\n" ;
+        }
+        //      C# -> System.String? VappNetworkName
+        // GraphQL -> vappNetworkName: String (scalar)
+        if (this.VappNetworkName != null) {
+            s += ind + "vappNetworkName\n" ;
+        }
+        //      C# -> PageInfo? PageInfo
+        // GraphQL -> pageInfo: PageInfo! (type)
+        if (this.PageInfo != null) {
+            s += ind + "pageInfo {\n" + this.PageInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> VappVmIpAddressingMode? AddressingMode
+        // GraphQL -> addressingMode: VappVmIpAddressingMode! (enum)
+        if (this.AddressingMode == null && Exploration.Includes(parent + ".addressingMode", true))
         {
-            //      C# -> System.String? IpAddress
-            // GraphQL -> ipAddress: String (scalar)
-            if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress$"))
-            {
-                this.IpAddress = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsConnected
-            // GraphQL -> isConnected: Boolean! (scalar)
-            if (this.IsConnected == null && Exploration.Includes(parent + ".isConnected$"))
-            {
-                this.IsConnected = new System.Boolean();
-            }
-            //      C# -> System.String? MacAddress
-            // GraphQL -> macAddress: String (scalar)
-            if (this.MacAddress == null && Exploration.Includes(parent + ".macAddress$"))
-            {
-                this.MacAddress = new System.String("FETCH");
-            }
-            //      C# -> System.String? NetworkAdapterType
-            // GraphQL -> networkAdapterType: String (scalar)
-            if (this.NetworkAdapterType == null && Exploration.Includes(parent + ".networkAdapterType$"))
-            {
-                this.NetworkAdapterType = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? NicIndex
-            // GraphQL -> nicIndex: Int! (scalar)
-            if (this.NicIndex == null && Exploration.Includes(parent + ".nicIndex$"))
-            {
-                this.NicIndex = new System.Int32();
-            }
-            //      C# -> System.String? VappNetworkName
-            // GraphQL -> vappNetworkName: String (scalar)
-            if (this.VappNetworkName == null && Exploration.Includes(parent + ".vappNetworkName$"))
-            {
-                this.VappNetworkName = new System.String("FETCH");
-            }
-            //      C# -> PageInfo? PageInfo
-            // GraphQL -> pageInfo: PageInfo! (type)
-            if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
-            {
-                this.PageInfo = new PageInfo();
-                this.PageInfo.ApplyExploratoryFragment(parent + ".pageInfo");
-            }
-            //      C# -> VappVmIpAddressingMode? AddressingMode
-            // GraphQL -> addressingMode: VappVmIpAddressingMode! (enum)
-            if (this.AddressingMode == null && Exploration.Includes(parent + ".addressingMode$"))
-            {
-                this.AddressingMode = new VappVmIpAddressingMode();
-            }
+            this.AddressingMode = new VappVmIpAddressingMode();
         }
+        //      C# -> System.String? IpAddress
+        // GraphQL -> ipAddress: String (scalar)
+        if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
+        {
+            this.IpAddress = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsConnected
+        // GraphQL -> isConnected: Boolean! (scalar)
+        if (this.IsConnected == null && Exploration.Includes(parent + ".isConnected", true))
+        {
+            this.IsConnected = true;
+        }
+        //      C# -> System.String? MacAddress
+        // GraphQL -> macAddress: String (scalar)
+        if (this.MacAddress == null && Exploration.Includes(parent + ".macAddress", true))
+        {
+            this.MacAddress = new System.String("FETCH");
+        }
+        //      C# -> System.String? NetworkAdapterType
+        // GraphQL -> networkAdapterType: String (scalar)
+        if (this.NetworkAdapterType == null && Exploration.Includes(parent + ".networkAdapterType", true))
+        {
+            this.NetworkAdapterType = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? NicIndex
+        // GraphQL -> nicIndex: Int! (scalar)
+        if (this.NicIndex == null && Exploration.Includes(parent + ".nicIndex", true))
+        {
+            this.NicIndex = new System.Int32();
+        }
+        //      C# -> System.String? VappNetworkName
+        // GraphQL -> vappNetworkName: String (scalar)
+        if (this.VappNetworkName == null && Exploration.Includes(parent + ".vappNetworkName", true))
+        {
+            this.VappNetworkName = new System.String("FETCH");
+        }
+        //      C# -> PageInfo? PageInfo
+        // GraphQL -> pageInfo: PageInfo! (type)
+        if (this.PageInfo == null && Exploration.Includes(parent + ".pageInfo"))
+        {
+            this.PageInfo = new PageInfo();
+            this.PageInfo.ApplyExploratoryFieldSpec(parent + ".pageInfo");
+        }
+    }
 
 
     #endregion
 
     } // class VappVmNetworkConnection
+    
     #endregion
 
     public static class ListVappVmNetworkConnectionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<VappVmNetworkConnection> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<VappVmNetworkConnection> list, 
             String parent = "")
         {
-            var item = new VappVmNetworkConnection();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new VappVmNetworkConnection());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

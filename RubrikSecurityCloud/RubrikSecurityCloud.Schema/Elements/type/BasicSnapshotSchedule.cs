@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region BasicSnapshotSchedule
-    public class BasicSnapshotSchedule: IFragment
+    public class BasicSnapshotSchedule: BaseType
     {
         #region members
+
+        //      C# -> RetentionUnit? RetentionUnit
+        // GraphQL -> retentionUnit: RetentionUnit! (enum)
+        [JsonProperty("retentionUnit")]
+        public RetentionUnit? RetentionUnit { get; set; }
+
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
         [JsonProperty("frequency")]
@@ -28,122 +35,116 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("retention")]
         public System.Int32? Retention { get; set; }
 
-        //      C# -> RetentionUnit? RetentionUnit
-        // GraphQL -> retentionUnit: RetentionUnit! (enum)
-        [JsonProperty("retentionUnit")]
-        public RetentionUnit? RetentionUnit { get; set; }
 
         #endregion
 
     #region methods
 
     public BasicSnapshotSchedule Set(
+        RetentionUnit? RetentionUnit = null,
         System.Int32? Frequency = null,
-        System.Int32? Retention = null,
-        RetentionUnit? RetentionUnit = null
+        System.Int32? Retention = null
     ) 
     {
+        if ( RetentionUnit != null ) {
+            this.RetentionUnit = RetentionUnit;
+        }
         if ( Frequency != null ) {
             this.Frequency = Frequency;
         }
         if ( Retention != null ) {
             this.Retention = Retention;
         }
-        if ( RetentionUnit != null ) {
-            this.RetentionUnit = RetentionUnit;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? Frequency
-            // GraphQL -> frequency: Int! (scalar)
-            if (this.Frequency != null)
-            {
-                 s += ind + "frequency\n";
-
-            }
-            //      C# -> System.Int32? Retention
-            // GraphQL -> retention: Int! (scalar)
-            if (this.Retention != null)
-            {
-                 s += ind + "retention\n";
-
-            }
-            //      C# -> RetentionUnit? RetentionUnit
-            // GraphQL -> retentionUnit: RetentionUnit! (enum)
-            if (this.RetentionUnit != null)
-            {
-                 s += ind + "retentionUnit\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> RetentionUnit? RetentionUnit
+        // GraphQL -> retentionUnit: RetentionUnit! (enum)
+        if (this.RetentionUnit != null) {
+            s += ind + "retentionUnit\n" ;
         }
+        //      C# -> System.Int32? Frequency
+        // GraphQL -> frequency: Int! (scalar)
+        if (this.Frequency != null) {
+            s += ind + "frequency\n" ;
+        }
+        //      C# -> System.Int32? Retention
+        // GraphQL -> retention: Int! (scalar)
+        if (this.Retention != null) {
+            s += ind + "retention\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> RetentionUnit? RetentionUnit
+        // GraphQL -> retentionUnit: RetentionUnit! (enum)
+        if (this.RetentionUnit == null && Exploration.Includes(parent + ".retentionUnit", true))
         {
-            //      C# -> System.Int32? Frequency
-            // GraphQL -> frequency: Int! (scalar)
-            if (this.Frequency == null && Exploration.Includes(parent + ".frequency$"))
-            {
-                this.Frequency = new System.Int32();
-            }
-            //      C# -> System.Int32? Retention
-            // GraphQL -> retention: Int! (scalar)
-            if (this.Retention == null && Exploration.Includes(parent + ".retention$"))
-            {
-                this.Retention = new System.Int32();
-            }
-            //      C# -> RetentionUnit? RetentionUnit
-            // GraphQL -> retentionUnit: RetentionUnit! (enum)
-            if (this.RetentionUnit == null && Exploration.Includes(parent + ".retentionUnit$"))
-            {
-                this.RetentionUnit = new RetentionUnit();
-            }
+            this.RetentionUnit = new RetentionUnit();
         }
+        //      C# -> System.Int32? Frequency
+        // GraphQL -> frequency: Int! (scalar)
+        if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
+        {
+            this.Frequency = new System.Int32();
+        }
+        //      C# -> System.Int32? Retention
+        // GraphQL -> retention: Int! (scalar)
+        if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
+        {
+            this.Retention = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class BasicSnapshotSchedule
+    
     #endregion
 
     public static class ListBasicSnapshotScheduleExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<BasicSnapshotSchedule> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<BasicSnapshotSchedule> list, 
             String parent = "")
         {
-            var item = new BasicSnapshotSchedule();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new BasicSnapshotSchedule());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

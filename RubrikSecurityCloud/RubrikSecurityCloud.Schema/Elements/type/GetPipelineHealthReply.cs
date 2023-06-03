@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region GetPipelineHealthReply
-    public class GetPipelineHealthReply: IFragment
+    public class GetPipelineHealthReply: BaseType
     {
         #region members
+
         //      C# -> System.Int64? FailedAnalysis
         // GraphQL -> failedAnalysis: Long! (scalar)
         [JsonProperty("failedAnalysis")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totalIndexing: Long! (scalar)
         [JsonProperty("totalIndexing")]
         public System.Int64? TotalIndexing { get; set; }
+
 
         #endregion
 
@@ -82,134 +85,126 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? FailedAnalysis
-            // GraphQL -> failedAnalysis: Long! (scalar)
-            if (this.FailedAnalysis != null)
-            {
-                 s += ind + "failedAnalysis\n";
-
-            }
-            //      C# -> System.Int64? FailedBackup
-            // GraphQL -> failedBackup: Long! (scalar)
-            if (this.FailedBackup != null)
-            {
-                 s += ind + "failedBackup\n";
-
-            }
-            //      C# -> System.Int64? FailedIndexing
-            // GraphQL -> failedIndexing: Long! (scalar)
-            if (this.FailedIndexing != null)
-            {
-                 s += ind + "failedIndexing\n";
-
-            }
-            //      C# -> System.Int64? TotalAnalysis
-            // GraphQL -> totalAnalysis: Long! (scalar)
-            if (this.TotalAnalysis != null)
-            {
-                 s += ind + "totalAnalysis\n";
-
-            }
-            //      C# -> System.Int64? TotalBackup
-            // GraphQL -> totalBackup: Long! (scalar)
-            if (this.TotalBackup != null)
-            {
-                 s += ind + "totalBackup\n";
-
-            }
-            //      C# -> System.Int64? TotalIndexing
-            // GraphQL -> totalIndexing: Long! (scalar)
-            if (this.TotalIndexing != null)
-            {
-                 s += ind + "totalIndexing\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? FailedAnalysis
+        // GraphQL -> failedAnalysis: Long! (scalar)
+        if (this.FailedAnalysis != null) {
+            s += ind + "failedAnalysis\n" ;
         }
+        //      C# -> System.Int64? FailedBackup
+        // GraphQL -> failedBackup: Long! (scalar)
+        if (this.FailedBackup != null) {
+            s += ind + "failedBackup\n" ;
+        }
+        //      C# -> System.Int64? FailedIndexing
+        // GraphQL -> failedIndexing: Long! (scalar)
+        if (this.FailedIndexing != null) {
+            s += ind + "failedIndexing\n" ;
+        }
+        //      C# -> System.Int64? TotalAnalysis
+        // GraphQL -> totalAnalysis: Long! (scalar)
+        if (this.TotalAnalysis != null) {
+            s += ind + "totalAnalysis\n" ;
+        }
+        //      C# -> System.Int64? TotalBackup
+        // GraphQL -> totalBackup: Long! (scalar)
+        if (this.TotalBackup != null) {
+            s += ind + "totalBackup\n" ;
+        }
+        //      C# -> System.Int64? TotalIndexing
+        // GraphQL -> totalIndexing: Long! (scalar)
+        if (this.TotalIndexing != null) {
+            s += ind + "totalIndexing\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? FailedAnalysis
+        // GraphQL -> failedAnalysis: Long! (scalar)
+        if (this.FailedAnalysis == null && Exploration.Includes(parent + ".failedAnalysis", true))
         {
-            //      C# -> System.Int64? FailedAnalysis
-            // GraphQL -> failedAnalysis: Long! (scalar)
-            if (this.FailedAnalysis == null && Exploration.Includes(parent + ".failedAnalysis$"))
-            {
-                this.FailedAnalysis = new System.Int64();
-            }
-            //      C# -> System.Int64? FailedBackup
-            // GraphQL -> failedBackup: Long! (scalar)
-            if (this.FailedBackup == null && Exploration.Includes(parent + ".failedBackup$"))
-            {
-                this.FailedBackup = new System.Int64();
-            }
-            //      C# -> System.Int64? FailedIndexing
-            // GraphQL -> failedIndexing: Long! (scalar)
-            if (this.FailedIndexing == null && Exploration.Includes(parent + ".failedIndexing$"))
-            {
-                this.FailedIndexing = new System.Int64();
-            }
-            //      C# -> System.Int64? TotalAnalysis
-            // GraphQL -> totalAnalysis: Long! (scalar)
-            if (this.TotalAnalysis == null && Exploration.Includes(parent + ".totalAnalysis$"))
-            {
-                this.TotalAnalysis = new System.Int64();
-            }
-            //      C# -> System.Int64? TotalBackup
-            // GraphQL -> totalBackup: Long! (scalar)
-            if (this.TotalBackup == null && Exploration.Includes(parent + ".totalBackup$"))
-            {
-                this.TotalBackup = new System.Int64();
-            }
-            //      C# -> System.Int64? TotalIndexing
-            // GraphQL -> totalIndexing: Long! (scalar)
-            if (this.TotalIndexing == null && Exploration.Includes(parent + ".totalIndexing$"))
-            {
-                this.TotalIndexing = new System.Int64();
-            }
+            this.FailedAnalysis = new System.Int64();
         }
+        //      C# -> System.Int64? FailedBackup
+        // GraphQL -> failedBackup: Long! (scalar)
+        if (this.FailedBackup == null && Exploration.Includes(parent + ".failedBackup", true))
+        {
+            this.FailedBackup = new System.Int64();
+        }
+        //      C# -> System.Int64? FailedIndexing
+        // GraphQL -> failedIndexing: Long! (scalar)
+        if (this.FailedIndexing == null && Exploration.Includes(parent + ".failedIndexing", true))
+        {
+            this.FailedIndexing = new System.Int64();
+        }
+        //      C# -> System.Int64? TotalAnalysis
+        // GraphQL -> totalAnalysis: Long! (scalar)
+        if (this.TotalAnalysis == null && Exploration.Includes(parent + ".totalAnalysis", true))
+        {
+            this.TotalAnalysis = new System.Int64();
+        }
+        //      C# -> System.Int64? TotalBackup
+        // GraphQL -> totalBackup: Long! (scalar)
+        if (this.TotalBackup == null && Exploration.Includes(parent + ".totalBackup", true))
+        {
+            this.TotalBackup = new System.Int64();
+        }
+        //      C# -> System.Int64? TotalIndexing
+        // GraphQL -> totalIndexing: Long! (scalar)
+        if (this.TotalIndexing == null && Exploration.Includes(parent + ".totalIndexing", true))
+        {
+            this.TotalIndexing = new System.Int64();
+        }
+    }
 
 
     #endregion
 
     } // class GetPipelineHealthReply
+    
     #endregion
 
     public static class ListGetPipelineHealthReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<GetPipelineHealthReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<GetPipelineHealthReply> list, 
             String parent = "")
         {
-            var item = new GetPipelineHealthReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new GetPipelineHealthReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

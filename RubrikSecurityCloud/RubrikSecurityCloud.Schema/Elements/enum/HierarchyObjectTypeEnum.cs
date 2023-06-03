@@ -21,11 +21,14 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
         ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
 
+        [EnumMember(Value = "ATLASSIAN_SITE")]
+        ATLASSIAN_SITE,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
-        [EnumMember(Value = "AZURE_AD_TENANT")]
-        AZURE_AD_TENANT,
+        [EnumMember(Value = "AZURE_AD_DIRECTORY")]
+        AZURE_AD_DIRECTORY,
 
         [EnumMember(Value = "AZURE_SQL_DATABASE_DB")]
         AZURE_SQL_DATABASE_DB,
@@ -150,6 +153,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "HypervVirtualMachine")]
         HYPERV_VIRTUAL_MACHINE,
 
+        [EnumMember(Value = "JIRA_FIXED_OBJECT")]
+        JIRA_FIXED_OBJECT,
+
         [EnumMember(Value = "JIRA_PROJECT")]
         JIRA_PROJECT,
 
@@ -206,6 +212,12 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "NAS_FILESET")]
         NAS_FILESET,
+
+        [EnumMember(Value = "NUTANIX_CATEGORY")]
+        NUTANIX_CATEGORY,
+
+        [EnumMember(Value = "NUTANIX_CATEGORY_VALUE")]
+        NUTANIX_CATEGORY_VALUE,
 
         [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
         NUTANIX_PRISM_CENTRAL,

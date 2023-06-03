@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AuthorizedPrincipal
-    public class AuthorizedPrincipal: IFragment
+    public class AuthorizedPrincipal: BaseType
     {
         #region members
+
+        //      C# -> PrincipalTypeEnum? PrincipalType
+        // GraphQL -> principalType: PrincipalTypeEnum! (enum)
+        [JsonProperty("principalType")]
+        public PrincipalTypeEnum? PrincipalType { get; set; }
+
         //      C# -> System.String? AuthDomainId
         // GraphQL -> authDomainId: String! (scalar)
         [JsonProperty("authDomainId")]
@@ -58,16 +65,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("totpStatus")]
         public LdapTotpStatus? TotpStatus { get; set; }
 
-        //      C# -> PrincipalTypeEnum? PrincipalType
-        // GraphQL -> principalType: PrincipalTypeEnum! (enum)
-        [JsonProperty("principalType")]
-        public PrincipalTypeEnum? PrincipalType { get; set; }
 
         #endregion
 
     #region methods
 
     public AuthorizedPrincipal Set(
+        PrincipalTypeEnum? PrincipalType = null,
         System.String? AuthDomainId = null,
         System.String? AuthDomainName = null,
         System.String? Email = null,
@@ -75,10 +79,12 @@ namespace Rubrik.SecurityCloud.Types
         DateTime? LastLogin = null,
         System.String? Name = null,
         List<Role>? Roles = null,
-        LdapTotpStatus? TotpStatus = null,
-        PrincipalTypeEnum? PrincipalType = null
+        LdapTotpStatus? TotpStatus = null
     ) 
     {
+        if ( PrincipalType != null ) {
+            this.PrincipalType = PrincipalType;
+        }
         if ( AuthDomainId != null ) {
             this.AuthDomainId = AuthDomainId;
         }
@@ -103,187 +109,164 @@ namespace Rubrik.SecurityCloud.Types
         if ( TotpStatus != null ) {
             this.TotpStatus = TotpStatus;
         }
-        if ( PrincipalType != null ) {
-            this.PrincipalType = PrincipalType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AuthDomainId
-            // GraphQL -> authDomainId: String! (scalar)
-            if (this.AuthDomainId != null)
-            {
-                 s += ind + "authDomainId\n";
-
-            }
-            //      C# -> System.String? AuthDomainName
-            // GraphQL -> authDomainName: String! (scalar)
-            if (this.AuthDomainName != null)
-            {
-                 s += ind + "authDomainName\n";
-
-            }
-            //      C# -> System.String? Email
-            // GraphQL -> email: String (scalar)
-            if (this.Email != null)
-            {
-                 s += ind + "email\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> DateTime? LastLogin
-            // GraphQL -> lastLogin: DateTime (scalar)
-            if (this.LastLogin != null)
-            {
-                 s += ind + "lastLogin\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> List<Role>? Roles
-            // GraphQL -> roles: [Role!]! (type)
-            if (this.Roles != null)
-            {
-                 s += ind + "roles\n";
-
-                 s += ind + "{\n" + 
-                 this.Roles.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> LdapTotpStatus? TotpStatus
-            // GraphQL -> totpStatus: LdapTotpStatus (type)
-            if (this.TotpStatus != null)
-            {
-                 s += ind + "totpStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.TotpStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PrincipalTypeEnum? PrincipalType
-            // GraphQL -> principalType: PrincipalTypeEnum! (enum)
-            if (this.PrincipalType != null)
-            {
-                 s += ind + "principalType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> PrincipalTypeEnum? PrincipalType
+        // GraphQL -> principalType: PrincipalTypeEnum! (enum)
+        if (this.PrincipalType != null) {
+            s += ind + "principalType\n" ;
         }
+        //      C# -> System.String? AuthDomainId
+        // GraphQL -> authDomainId: String! (scalar)
+        if (this.AuthDomainId != null) {
+            s += ind + "authDomainId\n" ;
+        }
+        //      C# -> System.String? AuthDomainName
+        // GraphQL -> authDomainName: String! (scalar)
+        if (this.AuthDomainName != null) {
+            s += ind + "authDomainName\n" ;
+        }
+        //      C# -> System.String? Email
+        // GraphQL -> email: String (scalar)
+        if (this.Email != null) {
+            s += ind + "email\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> DateTime? LastLogin
+        // GraphQL -> lastLogin: DateTime (scalar)
+        if (this.LastLogin != null) {
+            s += ind + "lastLogin\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> List<Role>? Roles
+        // GraphQL -> roles: [Role!]! (type)
+        if (this.Roles != null) {
+            s += ind + "roles {\n" + this.Roles.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> LdapTotpStatus? TotpStatus
+        // GraphQL -> totpStatus: LdapTotpStatus (type)
+        if (this.TotpStatus != null) {
+            s += ind + "totpStatus {\n" + this.TotpStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> PrincipalTypeEnum? PrincipalType
+        // GraphQL -> principalType: PrincipalTypeEnum! (enum)
+        if (this.PrincipalType == null && Exploration.Includes(parent + ".principalType", true))
         {
-            //      C# -> System.String? AuthDomainId
-            // GraphQL -> authDomainId: String! (scalar)
-            if (this.AuthDomainId == null && Exploration.Includes(parent + ".authDomainId$"))
-            {
-                this.AuthDomainId = new System.String("FETCH");
-            }
-            //      C# -> System.String? AuthDomainName
-            // GraphQL -> authDomainName: String! (scalar)
-            if (this.AuthDomainName == null && Exploration.Includes(parent + ".authDomainName$"))
-            {
-                this.AuthDomainName = new System.String("FETCH");
-            }
-            //      C# -> System.String? Email
-            // GraphQL -> email: String (scalar)
-            if (this.Email == null && Exploration.Includes(parent + ".email$"))
-            {
-                this.Email = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> DateTime? LastLogin
-            // GraphQL -> lastLogin: DateTime (scalar)
-            if (this.LastLogin == null && Exploration.Includes(parent + ".lastLogin$"))
-            {
-                this.LastLogin = new DateTime();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> List<Role>? Roles
-            // GraphQL -> roles: [Role!]! (type)
-            if (this.Roles == null && Exploration.Includes(parent + ".roles"))
-            {
-                this.Roles = new List<Role>();
-                this.Roles.ApplyExploratoryFragment(parent + ".roles");
-            }
-            //      C# -> LdapTotpStatus? TotpStatus
-            // GraphQL -> totpStatus: LdapTotpStatus (type)
-            if (this.TotpStatus == null && Exploration.Includes(parent + ".totpStatus"))
-            {
-                this.TotpStatus = new LdapTotpStatus();
-                this.TotpStatus.ApplyExploratoryFragment(parent + ".totpStatus");
-            }
-            //      C# -> PrincipalTypeEnum? PrincipalType
-            // GraphQL -> principalType: PrincipalTypeEnum! (enum)
-            if (this.PrincipalType == null && Exploration.Includes(parent + ".principalType$"))
-            {
-                this.PrincipalType = new PrincipalTypeEnum();
-            }
+            this.PrincipalType = new PrincipalTypeEnum();
         }
+        //      C# -> System.String? AuthDomainId
+        // GraphQL -> authDomainId: String! (scalar)
+        if (this.AuthDomainId == null && Exploration.Includes(parent + ".authDomainId", true))
+        {
+            this.AuthDomainId = new System.String("FETCH");
+        }
+        //      C# -> System.String? AuthDomainName
+        // GraphQL -> authDomainName: String! (scalar)
+        if (this.AuthDomainName == null && Exploration.Includes(parent + ".authDomainName", true))
+        {
+            this.AuthDomainName = new System.String("FETCH");
+        }
+        //      C# -> System.String? Email
+        // GraphQL -> email: String (scalar)
+        if (this.Email == null && Exploration.Includes(parent + ".email", true))
+        {
+            this.Email = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> DateTime? LastLogin
+        // GraphQL -> lastLogin: DateTime (scalar)
+        if (this.LastLogin == null && Exploration.Includes(parent + ".lastLogin", true))
+        {
+            this.LastLogin = new DateTime();
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> List<Role>? Roles
+        // GraphQL -> roles: [Role!]! (type)
+        if (this.Roles == null && Exploration.Includes(parent + ".roles"))
+        {
+            this.Roles = new List<Role>();
+            this.Roles.ApplyExploratoryFieldSpec(parent + ".roles");
+        }
+        //      C# -> LdapTotpStatus? TotpStatus
+        // GraphQL -> totpStatus: LdapTotpStatus (type)
+        if (this.TotpStatus == null && Exploration.Includes(parent + ".totpStatus"))
+        {
+            this.TotpStatus = new LdapTotpStatus();
+            this.TotpStatus.ApplyExploratoryFieldSpec(parent + ".totpStatus");
+        }
+    }
 
 
     #endregion
 
     } // class AuthorizedPrincipal
+    
     #endregion
 
     public static class ListAuthorizedPrincipalExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AuthorizedPrincipal> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AuthorizedPrincipal> list, 
             String parent = "")
         {
-            var item = new AuthorizedPrincipal();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AuthorizedPrincipal());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

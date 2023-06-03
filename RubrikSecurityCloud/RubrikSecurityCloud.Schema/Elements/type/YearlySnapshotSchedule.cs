@@ -11,17 +11,14 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region YearlySnapshotSchedule
-    public class YearlySnapshotSchedule: IFragment
+    public class YearlySnapshotSchedule: BaseType
     {
         #region members
-        //      C# -> BasicSnapshotSchedule? BasicSchedule
-        // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
-        [JsonProperty("basicSchedule")]
-        public BasicSnapshotSchedule? BasicSchedule { get; set; }
 
         //      C# -> DayOfYear? DayOfYear
         // GraphQL -> dayOfYear: DayOfYear! (enum)
@@ -33,121 +30,122 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("yearStartMonth")]
         public Month? YearStartMonth { get; set; }
 
+        //      C# -> BasicSnapshotSchedule? BasicSchedule
+        // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
+        [JsonProperty("basicSchedule")]
+        public BasicSnapshotSchedule? BasicSchedule { get; set; }
+
+
         #endregion
 
     #region methods
 
     public YearlySnapshotSchedule Set(
-        BasicSnapshotSchedule? BasicSchedule = null,
         DayOfYear? DayOfYear = null,
-        Month? YearStartMonth = null
+        Month? YearStartMonth = null,
+        BasicSnapshotSchedule? BasicSchedule = null
     ) 
     {
-        if ( BasicSchedule != null ) {
-            this.BasicSchedule = BasicSchedule;
-        }
         if ( DayOfYear != null ) {
             this.DayOfYear = DayOfYear;
         }
         if ( YearStartMonth != null ) {
             this.YearStartMonth = YearStartMonth;
         }
+        if ( BasicSchedule != null ) {
+            this.BasicSchedule = BasicSchedule;
+        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> BasicSnapshotSchedule? BasicSchedule
-            // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
-            if (this.BasicSchedule != null)
-            {
-                 s += ind + "basicSchedule\n";
-
-                 s += ind + "{\n" + 
-                 this.BasicSchedule.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> DayOfYear? DayOfYear
-            // GraphQL -> dayOfYear: DayOfYear! (enum)
-            if (this.DayOfYear != null)
-            {
-                 s += ind + "dayOfYear\n";
-
-            }
-            //      C# -> Month? YearStartMonth
-            // GraphQL -> yearStartMonth: Month! (enum)
-            if (this.YearStartMonth != null)
-            {
-                 s += ind + "yearStartMonth\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> DayOfYear? DayOfYear
+        // GraphQL -> dayOfYear: DayOfYear! (enum)
+        if (this.DayOfYear != null) {
+            s += ind + "dayOfYear\n" ;
         }
+        //      C# -> Month? YearStartMonth
+        // GraphQL -> yearStartMonth: Month! (enum)
+        if (this.YearStartMonth != null) {
+            s += ind + "yearStartMonth\n" ;
+        }
+        //      C# -> BasicSnapshotSchedule? BasicSchedule
+        // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
+        if (this.BasicSchedule != null) {
+            s += ind + "basicSchedule {\n" + this.BasicSchedule.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> DayOfYear? DayOfYear
+        // GraphQL -> dayOfYear: DayOfYear! (enum)
+        if (this.DayOfYear == null && Exploration.Includes(parent + ".dayOfYear", true))
         {
-            //      C# -> BasicSnapshotSchedule? BasicSchedule
-            // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
-            if (this.BasicSchedule == null && Exploration.Includes(parent + ".basicSchedule"))
-            {
-                this.BasicSchedule = new BasicSnapshotSchedule();
-                this.BasicSchedule.ApplyExploratoryFragment(parent + ".basicSchedule");
-            }
-            //      C# -> DayOfYear? DayOfYear
-            // GraphQL -> dayOfYear: DayOfYear! (enum)
-            if (this.DayOfYear == null && Exploration.Includes(parent + ".dayOfYear$"))
-            {
-                this.DayOfYear = new DayOfYear();
-            }
-            //      C# -> Month? YearStartMonth
-            // GraphQL -> yearStartMonth: Month! (enum)
-            if (this.YearStartMonth == null && Exploration.Includes(parent + ".yearStartMonth$"))
-            {
-                this.YearStartMonth = new Month();
-            }
+            this.DayOfYear = new DayOfYear();
         }
+        //      C# -> Month? YearStartMonth
+        // GraphQL -> yearStartMonth: Month! (enum)
+        if (this.YearStartMonth == null && Exploration.Includes(parent + ".yearStartMonth", true))
+        {
+            this.YearStartMonth = new Month();
+        }
+        //      C# -> BasicSnapshotSchedule? BasicSchedule
+        // GraphQL -> basicSchedule: BasicSnapshotSchedule (type)
+        if (this.BasicSchedule == null && Exploration.Includes(parent + ".basicSchedule"))
+        {
+            this.BasicSchedule = new BasicSnapshotSchedule();
+            this.BasicSchedule.ApplyExploratoryFieldSpec(parent + ".basicSchedule");
+        }
+    }
 
 
     #endregion
 
     } // class YearlySnapshotSchedule
+    
     #endregion
 
     public static class ListYearlySnapshotScheduleExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<YearlySnapshotSchedule> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<YearlySnapshotSchedule> list, 
             String parent = "")
         {
-            var item = new YearlySnapshotSchedule();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new YearlySnapshotSchedule());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

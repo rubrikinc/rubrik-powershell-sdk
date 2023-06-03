@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CdmGuestCredential
-    public class CdmGuestCredential: IFragment
+    public class CdmGuestCredential: BaseType
     {
         #region members
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> detail: CreateGuestCredentialReply! (type)
         [JsonProperty("detail")]
         public CreateGuestCredentialReply? Detail { get; set; }
+
 
         #endregion
 
@@ -46,90 +49,84 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CreateGuestCredentialReply? Detail
-            // GraphQL -> detail: CreateGuestCredentialReply! (type)
-            if (this.Detail != null)
-            {
-                 s += ind + "detail\n";
-
-                 s += ind + "{\n" + 
-                 this.Detail.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> CreateGuestCredentialReply? Detail
+        // GraphQL -> detail: CreateGuestCredentialReply! (type)
+        if (this.Detail != null) {
+            s += ind + "detail {\n" + this.Detail.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
         {
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> CreateGuestCredentialReply? Detail
-            // GraphQL -> detail: CreateGuestCredentialReply! (type)
-            if (this.Detail == null && Exploration.Includes(parent + ".detail"))
-            {
-                this.Detail = new CreateGuestCredentialReply();
-                this.Detail.ApplyExploratoryFragment(parent + ".detail");
-            }
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
         }
+        //      C# -> CreateGuestCredentialReply? Detail
+        // GraphQL -> detail: CreateGuestCredentialReply! (type)
+        if (this.Detail == null && Exploration.Includes(parent + ".detail"))
+        {
+            this.Detail = new CreateGuestCredentialReply();
+            this.Detail.ApplyExploratoryFieldSpec(parent + ".detail");
+        }
+    }
 
 
     #endregion
 
     } // class CdmGuestCredential
+    
     #endregion
 
     public static class ListCdmGuestCredentialExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CdmGuestCredential> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CdmGuestCredential> list, 
             String parent = "")
         {
-            var item = new CdmGuestCredential();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CdmGuestCredential());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

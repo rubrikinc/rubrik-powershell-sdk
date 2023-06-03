@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SupportUserAccess
-    public class SupportUserAccess: IFragment
+    public class SupportUserAccess: BaseType
     {
         #region members
+
+        //      C# -> SupportUserAccessStatus? AccessStatus
+        // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
+        [JsonProperty("accessStatus")]
+        public SupportUserAccessStatus? AccessStatus { get; set; }
+
         //      C# -> System.Int32? DurationInHours
         // GraphQL -> durationInHours: Int! (scalar)
         [JsonProperty("durationInHours")]
@@ -53,26 +60,25 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("impersonatedUser")]
         public User? ImpersonatedUser { get; set; }
 
-        //      C# -> SupportUserAccessStatus? AccessStatus
-        // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
-        [JsonProperty("accessStatus")]
-        public SupportUserAccessStatus? AccessStatus { get; set; }
 
         #endregion
 
     #region methods
 
     public SupportUserAccess Set(
+        SupportUserAccessStatus? AccessStatus = null,
         System.Int32? DurationInHours = null,
         DateTime? EndTime = null,
         System.Int32? Id = null,
         DateTime? StartTime = null,
         System.String? TicketNumber = null,
         User? AccessProviderUser = null,
-        User? ImpersonatedUser = null,
-        SupportUserAccessStatus? AccessStatus = null
+        User? ImpersonatedUser = null
     ) 
     {
+        if ( AccessStatus != null ) {
+            this.AccessStatus = AccessStatus;
+        }
         if ( DurationInHours != null ) {
             this.DurationInHours = DurationInHours;
         }
@@ -94,174 +100,153 @@ namespace Rubrik.SecurityCloud.Types
         if ( ImpersonatedUser != null ) {
             this.ImpersonatedUser = ImpersonatedUser;
         }
-        if ( AccessStatus != null ) {
-            this.AccessStatus = AccessStatus;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? DurationInHours
-            // GraphQL -> durationInHours: Int! (scalar)
-            if (this.DurationInHours != null)
-            {
-                 s += ind + "durationInHours\n";
-
-            }
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime! (scalar)
-            if (this.EndTime != null)
-            {
-                 s += ind + "endTime\n";
-
-            }
-            //      C# -> System.Int32? Id
-            // GraphQL -> id: Int! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> DateTime? StartTime
-            // GraphQL -> startTime: DateTime! (scalar)
-            if (this.StartTime != null)
-            {
-                 s += ind + "startTime\n";
-
-            }
-            //      C# -> System.String? TicketNumber
-            // GraphQL -> ticketNumber: String! (scalar)
-            if (this.TicketNumber != null)
-            {
-                 s += ind + "ticketNumber\n";
-
-            }
-            //      C# -> User? AccessProviderUser
-            // GraphQL -> accessProviderUser: User (type)
-            if (this.AccessProviderUser != null)
-            {
-                 s += ind + "accessProviderUser\n";
-
-                 s += ind + "{\n" + 
-                 this.AccessProviderUser.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> User? ImpersonatedUser
-            // GraphQL -> impersonatedUser: User (type)
-            if (this.ImpersonatedUser != null)
-            {
-                 s += ind + "impersonatedUser\n";
-
-                 s += ind + "{\n" + 
-                 this.ImpersonatedUser.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SupportUserAccessStatus? AccessStatus
-            // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
-            if (this.AccessStatus != null)
-            {
-                 s += ind + "accessStatus\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> SupportUserAccessStatus? AccessStatus
+        // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
+        if (this.AccessStatus != null) {
+            s += ind + "accessStatus\n" ;
         }
+        //      C# -> System.Int32? DurationInHours
+        // GraphQL -> durationInHours: Int! (scalar)
+        if (this.DurationInHours != null) {
+            s += ind + "durationInHours\n" ;
+        }
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime! (scalar)
+        if (this.EndTime != null) {
+            s += ind + "endTime\n" ;
+        }
+        //      C# -> System.Int32? Id
+        // GraphQL -> id: Int! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime! (scalar)
+        if (this.StartTime != null) {
+            s += ind + "startTime\n" ;
+        }
+        //      C# -> System.String? TicketNumber
+        // GraphQL -> ticketNumber: String! (scalar)
+        if (this.TicketNumber != null) {
+            s += ind + "ticketNumber\n" ;
+        }
+        //      C# -> User? AccessProviderUser
+        // GraphQL -> accessProviderUser: User (type)
+        if (this.AccessProviderUser != null) {
+            s += ind + "accessProviderUser {\n" + this.AccessProviderUser.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> User? ImpersonatedUser
+        // GraphQL -> impersonatedUser: User (type)
+        if (this.ImpersonatedUser != null) {
+            s += ind + "impersonatedUser {\n" + this.ImpersonatedUser.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> SupportUserAccessStatus? AccessStatus
+        // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
+        if (this.AccessStatus == null && Exploration.Includes(parent + ".accessStatus", true))
         {
-            //      C# -> System.Int32? DurationInHours
-            // GraphQL -> durationInHours: Int! (scalar)
-            if (this.DurationInHours == null && Exploration.Includes(parent + ".durationInHours$"))
-            {
-                this.DurationInHours = new System.Int32();
-            }
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime! (scalar)
-            if (this.EndTime == null && Exploration.Includes(parent + ".endTime$"))
-            {
-                this.EndTime = new DateTime();
-            }
-            //      C# -> System.Int32? Id
-            // GraphQL -> id: Int! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.Int32();
-            }
-            //      C# -> DateTime? StartTime
-            // GraphQL -> startTime: DateTime! (scalar)
-            if (this.StartTime == null && Exploration.Includes(parent + ".startTime$"))
-            {
-                this.StartTime = new DateTime();
-            }
-            //      C# -> System.String? TicketNumber
-            // GraphQL -> ticketNumber: String! (scalar)
-            if (this.TicketNumber == null && Exploration.Includes(parent + ".ticketNumber$"))
-            {
-                this.TicketNumber = new System.String("FETCH");
-            }
-            //      C# -> User? AccessProviderUser
-            // GraphQL -> accessProviderUser: User (type)
-            if (this.AccessProviderUser == null && Exploration.Includes(parent + ".accessProviderUser"))
-            {
-                this.AccessProviderUser = new User();
-                this.AccessProviderUser.ApplyExploratoryFragment(parent + ".accessProviderUser");
-            }
-            //      C# -> User? ImpersonatedUser
-            // GraphQL -> impersonatedUser: User (type)
-            if (this.ImpersonatedUser == null && Exploration.Includes(parent + ".impersonatedUser"))
-            {
-                this.ImpersonatedUser = new User();
-                this.ImpersonatedUser.ApplyExploratoryFragment(parent + ".impersonatedUser");
-            }
-            //      C# -> SupportUserAccessStatus? AccessStatus
-            // GraphQL -> accessStatus: SupportUserAccessStatus! (enum)
-            if (this.AccessStatus == null && Exploration.Includes(parent + ".accessStatus$"))
-            {
-                this.AccessStatus = new SupportUserAccessStatus();
-            }
+            this.AccessStatus = new SupportUserAccessStatus();
         }
+        //      C# -> System.Int32? DurationInHours
+        // GraphQL -> durationInHours: Int! (scalar)
+        if (this.DurationInHours == null && Exploration.Includes(parent + ".durationInHours", true))
+        {
+            this.DurationInHours = new System.Int32();
+        }
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime! (scalar)
+        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        {
+            this.EndTime = new DateTime();
+        }
+        //      C# -> System.Int32? Id
+        // GraphQL -> id: Int! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.Int32();
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime! (scalar)
+        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        {
+            this.StartTime = new DateTime();
+        }
+        //      C# -> System.String? TicketNumber
+        // GraphQL -> ticketNumber: String! (scalar)
+        if (this.TicketNumber == null && Exploration.Includes(parent + ".ticketNumber", true))
+        {
+            this.TicketNumber = new System.String("FETCH");
+        }
+        //      C# -> User? AccessProviderUser
+        // GraphQL -> accessProviderUser: User (type)
+        if (this.AccessProviderUser == null && Exploration.Includes(parent + ".accessProviderUser"))
+        {
+            this.AccessProviderUser = new User();
+            this.AccessProviderUser.ApplyExploratoryFieldSpec(parent + ".accessProviderUser");
+        }
+        //      C# -> User? ImpersonatedUser
+        // GraphQL -> impersonatedUser: User (type)
+        if (this.ImpersonatedUser == null && Exploration.Includes(parent + ".impersonatedUser"))
+        {
+            this.ImpersonatedUser = new User();
+            this.ImpersonatedUser.ApplyExploratoryFieldSpec(parent + ".impersonatedUser");
+        }
+    }
 
 
     #endregion
 
     } // class SupportUserAccess
+    
     #endregion
 
     public static class ListSupportUserAccessExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SupportUserAccess> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SupportUserAccess> list, 
             String parent = "")
         {
-            var item = new SupportUserAccess();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SupportUserAccess());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

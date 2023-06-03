@@ -165,6 +165,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "THREAT_HUNT")]
         THREAT_HUNT,
 
+        [EnumMember(Value = "THREAT_MONITORING")]
+        THREAT_MONITORING,
+
         [EnumMember(Value = "TPR")]
         TPR,
 

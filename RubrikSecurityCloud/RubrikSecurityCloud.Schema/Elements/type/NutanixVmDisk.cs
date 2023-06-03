@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region NutanixVmDisk
-    public class NutanixVmDisk: IFragment
+    public class NutanixVmDisk: BaseType
     {
         #region members
+
         //      C# -> System.String? DeviceType
         // GraphQL -> deviceType: String! (scalar)
         [JsonProperty("deviceType")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmDiskUuid: String! (scalar)
         [JsonProperty("vmDiskUuid")]
         public System.String? VmDiskUuid { get; set; }
+
 
         #endregion
 
@@ -82,134 +85,126 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? DeviceType
-            // GraphQL -> deviceType: String! (scalar)
-            if (this.DeviceType != null)
-            {
-                 s += ind + "deviceType\n";
-
-            }
-            //      C# -> System.Boolean? IsSnapshottable
-            // GraphQL -> isSnapshottable: Boolean! (scalar)
-            if (this.IsSnapshottable != null)
-            {
-                 s += ind + "isSnapshottable\n";
-
-            }
-            //      C# -> System.String? Label
-            // GraphQL -> label: String! (scalar)
-            if (this.Label != null)
-            {
-                 s += ind + "label\n";
-
-            }
-            //      C# -> System.Int64? SizeInBytes
-            // GraphQL -> sizeInBytes: Long! (scalar)
-            if (this.SizeInBytes != null)
-            {
-                 s += ind + "sizeInBytes\n";
-
-            }
-            //      C# -> System.String? Uuid
-            // GraphQL -> uuid: String! (scalar)
-            if (this.Uuid != null)
-            {
-                 s += ind + "uuid\n";
-
-            }
-            //      C# -> System.String? VmDiskUuid
-            // GraphQL -> vmDiskUuid: String! (scalar)
-            if (this.VmDiskUuid != null)
-            {
-                 s += ind + "vmDiskUuid\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? DeviceType
+        // GraphQL -> deviceType: String! (scalar)
+        if (this.DeviceType != null) {
+            s += ind + "deviceType\n" ;
         }
+        //      C# -> System.Boolean? IsSnapshottable
+        // GraphQL -> isSnapshottable: Boolean! (scalar)
+        if (this.IsSnapshottable != null) {
+            s += ind + "isSnapshottable\n" ;
+        }
+        //      C# -> System.String? Label
+        // GraphQL -> label: String! (scalar)
+        if (this.Label != null) {
+            s += ind + "label\n" ;
+        }
+        //      C# -> System.Int64? SizeInBytes
+        // GraphQL -> sizeInBytes: Long! (scalar)
+        if (this.SizeInBytes != null) {
+            s += ind + "sizeInBytes\n" ;
+        }
+        //      C# -> System.String? Uuid
+        // GraphQL -> uuid: String! (scalar)
+        if (this.Uuid != null) {
+            s += ind + "uuid\n" ;
+        }
+        //      C# -> System.String? VmDiskUuid
+        // GraphQL -> vmDiskUuid: String! (scalar)
+        if (this.VmDiskUuid != null) {
+            s += ind + "vmDiskUuid\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? DeviceType
+        // GraphQL -> deviceType: String! (scalar)
+        if (this.DeviceType == null && Exploration.Includes(parent + ".deviceType", true))
         {
-            //      C# -> System.String? DeviceType
-            // GraphQL -> deviceType: String! (scalar)
-            if (this.DeviceType == null && Exploration.Includes(parent + ".deviceType$"))
-            {
-                this.DeviceType = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsSnapshottable
-            // GraphQL -> isSnapshottable: Boolean! (scalar)
-            if (this.IsSnapshottable == null && Exploration.Includes(parent + ".isSnapshottable$"))
-            {
-                this.IsSnapshottable = new System.Boolean();
-            }
-            //      C# -> System.String? Label
-            // GraphQL -> label: String! (scalar)
-            if (this.Label == null && Exploration.Includes(parent + ".label$"))
-            {
-                this.Label = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? SizeInBytes
-            // GraphQL -> sizeInBytes: Long! (scalar)
-            if (this.SizeInBytes == null && Exploration.Includes(parent + ".sizeInBytes$"))
-            {
-                this.SizeInBytes = new System.Int64();
-            }
-            //      C# -> System.String? Uuid
-            // GraphQL -> uuid: String! (scalar)
-            if (this.Uuid == null && Exploration.Includes(parent + ".uuid$"))
-            {
-                this.Uuid = new System.String("FETCH");
-            }
-            //      C# -> System.String? VmDiskUuid
-            // GraphQL -> vmDiskUuid: String! (scalar)
-            if (this.VmDiskUuid == null && Exploration.Includes(parent + ".vmDiskUuid$"))
-            {
-                this.VmDiskUuid = new System.String("FETCH");
-            }
+            this.DeviceType = new System.String("FETCH");
         }
+        //      C# -> System.Boolean? IsSnapshottable
+        // GraphQL -> isSnapshottable: Boolean! (scalar)
+        if (this.IsSnapshottable == null && Exploration.Includes(parent + ".isSnapshottable", true))
+        {
+            this.IsSnapshottable = true;
+        }
+        //      C# -> System.String? Label
+        // GraphQL -> label: String! (scalar)
+        if (this.Label == null && Exploration.Includes(parent + ".label", true))
+        {
+            this.Label = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? SizeInBytes
+        // GraphQL -> sizeInBytes: Long! (scalar)
+        if (this.SizeInBytes == null && Exploration.Includes(parent + ".sizeInBytes", true))
+        {
+            this.SizeInBytes = new System.Int64();
+        }
+        //      C# -> System.String? Uuid
+        // GraphQL -> uuid: String! (scalar)
+        if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
+        {
+            this.Uuid = new System.String("FETCH");
+        }
+        //      C# -> System.String? VmDiskUuid
+        // GraphQL -> vmDiskUuid: String! (scalar)
+        if (this.VmDiskUuid == null && Exploration.Includes(parent + ".vmDiskUuid", true))
+        {
+            this.VmDiskUuid = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class NutanixVmDisk
+    
     #endregion
 
     public static class ListNutanixVmDiskExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<NutanixVmDisk> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<NutanixVmDisk> list, 
             String parent = "")
         {
-            var item = new NutanixVmDisk();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new NutanixVmDisk());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

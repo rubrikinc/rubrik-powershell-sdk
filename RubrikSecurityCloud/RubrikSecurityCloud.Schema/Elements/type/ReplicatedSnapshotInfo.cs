@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ReplicatedSnapshotInfo
-    public class ReplicatedSnapshotInfo: IFragment
+    public class ReplicatedSnapshotInfo: BaseType
     {
         #region members
+
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
         [JsonProperty("date")]
@@ -42,6 +44,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> associatedCdm: Cluster (type)
         [JsonProperty("associatedCdm")]
         public Cluster? AssociatedCdm { get; set; }
+
 
         #endregion
 
@@ -73,125 +76,116 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime! (scalar)
-            if (this.Date != null)
-            {
-                 s += ind + "date\n";
-
-            }
-            //      C# -> DateTime? ExpirationDate
-            // GraphQL -> expirationDate: DateTime (scalar)
-            if (this.ExpirationDate != null)
-            {
-                 s += ind + "expirationDate\n";
-
-            }
-            //      C# -> System.String? SnappableId
-            // GraphQL -> snappableId: String! (scalar)
-            if (this.SnappableId != null)
-            {
-                 s += ind + "snappableId\n";
-
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId != null)
-            {
-                 s += ind + "snapshotId\n";
-
-            }
-            //      C# -> Cluster? AssociatedCdm
-            // GraphQL -> associatedCdm: Cluster (type)
-            if (this.AssociatedCdm != null)
-            {
-                 s += ind + "associatedCdm\n";
-
-                 s += ind + "{\n" + 
-                 this.AssociatedCdm.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime! (scalar)
+        if (this.Date != null) {
+            s += ind + "date\n" ;
         }
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        if (this.ExpirationDate != null) {
+            s += ind + "expirationDate\n" ;
+        }
+        //      C# -> System.String? SnappableId
+        // GraphQL -> snappableId: String! (scalar)
+        if (this.SnappableId != null) {
+            s += ind + "snappableId\n" ;
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId != null) {
+            s += ind + "snapshotId\n" ;
+        }
+        //      C# -> Cluster? AssociatedCdm
+        // GraphQL -> associatedCdm: Cluster (type)
+        if (this.AssociatedCdm != null) {
+            s += ind + "associatedCdm {\n" + this.AssociatedCdm.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> DateTime? Date
+        // GraphQL -> date: DateTime! (scalar)
+        if (this.Date == null && Exploration.Includes(parent + ".date", true))
         {
-            //      C# -> DateTime? Date
-            // GraphQL -> date: DateTime! (scalar)
-            if (this.Date == null && Exploration.Includes(parent + ".date$"))
-            {
-                this.Date = new DateTime();
-            }
-            //      C# -> DateTime? ExpirationDate
-            // GraphQL -> expirationDate: DateTime (scalar)
-            if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate$"))
-            {
-                this.ExpirationDate = new DateTime();
-            }
-            //      C# -> System.String? SnappableId
-            // GraphQL -> snappableId: String! (scalar)
-            if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId$"))
-            {
-                this.SnappableId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId$"))
-            {
-                this.SnapshotId = new System.String("FETCH");
-            }
-            //      C# -> Cluster? AssociatedCdm
-            // GraphQL -> associatedCdm: Cluster (type)
-            if (this.AssociatedCdm == null && Exploration.Includes(parent + ".associatedCdm"))
-            {
-                this.AssociatedCdm = new Cluster();
-                this.AssociatedCdm.ApplyExploratoryFragment(parent + ".associatedCdm");
-            }
+            this.Date = new DateTime();
         }
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        {
+            this.ExpirationDate = new DateTime();
+        }
+        //      C# -> System.String? SnappableId
+        // GraphQL -> snappableId: String! (scalar)
+        if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
+        {
+            this.SnappableId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        {
+            this.SnapshotId = new System.String("FETCH");
+        }
+        //      C# -> Cluster? AssociatedCdm
+        // GraphQL -> associatedCdm: Cluster (type)
+        if (this.AssociatedCdm == null && Exploration.Includes(parent + ".associatedCdm"))
+        {
+            this.AssociatedCdm = new Cluster();
+            this.AssociatedCdm.ApplyExploratoryFieldSpec(parent + ".associatedCdm");
+        }
+    }
 
 
     #endregion
 
     } // class ReplicatedSnapshotInfo
+    
     #endregion
 
     public static class ListReplicatedSnapshotInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ReplicatedSnapshotInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ReplicatedSnapshotInfo> list, 
             String parent = "")
         {
-            var item = new ReplicatedSnapshotInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ReplicatedSnapshotInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

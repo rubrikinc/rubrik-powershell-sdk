@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using Rubrik.SecurityCloud.PowerShell.Private;
 using Rubrik.SecurityCloud.Types;
 

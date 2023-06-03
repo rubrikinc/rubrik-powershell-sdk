@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region FailoverClusterDetail
-    public class FailoverClusterDetail: IFragment
+    public class FailoverClusterDetail: BaseType
     {
         #region members
+
         //      C# -> System.Int32? NumApps
         // GraphQL -> numApps: Int! (scalar)
         [JsonProperty("numApps")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
         [JsonProperty("failoverClusterSummary")]
         public FailoverClusterSummary? FailoverClusterSummary { get; set; }
+
 
         #endregion
 
@@ -55,99 +58,94 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? NumApps
-            // GraphQL -> numApps: Int! (scalar)
-            if (this.NumApps != null)
-            {
-                 s += ind + "numApps\n";
-
-            }
-            //      C# -> System.Int32? NumNodes
-            // GraphQL -> numNodes: Int! (scalar)
-            if (this.NumNodes != null)
-            {
-                 s += ind + "numNodes\n";
-
-            }
-            //      C# -> FailoverClusterSummary? FailoverClusterSummary
-            // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
-            if (this.FailoverClusterSummary != null)
-            {
-                 s += ind + "failoverClusterSummary\n";
-
-                 s += ind + "{\n" + 
-                 this.FailoverClusterSummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int32? NumApps
+        // GraphQL -> numApps: Int! (scalar)
+        if (this.NumApps != null) {
+            s += ind + "numApps\n" ;
         }
+        //      C# -> System.Int32? NumNodes
+        // GraphQL -> numNodes: Int! (scalar)
+        if (this.NumNodes != null) {
+            s += ind + "numNodes\n" ;
+        }
+        //      C# -> FailoverClusterSummary? FailoverClusterSummary
+        // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
+        if (this.FailoverClusterSummary != null) {
+            s += ind + "failoverClusterSummary {\n" + this.FailoverClusterSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int32? NumApps
+        // GraphQL -> numApps: Int! (scalar)
+        if (this.NumApps == null && Exploration.Includes(parent + ".numApps", true))
         {
-            //      C# -> System.Int32? NumApps
-            // GraphQL -> numApps: Int! (scalar)
-            if (this.NumApps == null && Exploration.Includes(parent + ".numApps$"))
-            {
-                this.NumApps = new System.Int32();
-            }
-            //      C# -> System.Int32? NumNodes
-            // GraphQL -> numNodes: Int! (scalar)
-            if (this.NumNodes == null && Exploration.Includes(parent + ".numNodes$"))
-            {
-                this.NumNodes = new System.Int32();
-            }
-            //      C# -> FailoverClusterSummary? FailoverClusterSummary
-            // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
-            if (this.FailoverClusterSummary == null && Exploration.Includes(parent + ".failoverClusterSummary"))
-            {
-                this.FailoverClusterSummary = new FailoverClusterSummary();
-                this.FailoverClusterSummary.ApplyExploratoryFragment(parent + ".failoverClusterSummary");
-            }
+            this.NumApps = new System.Int32();
         }
+        //      C# -> System.Int32? NumNodes
+        // GraphQL -> numNodes: Int! (scalar)
+        if (this.NumNodes == null && Exploration.Includes(parent + ".numNodes", true))
+        {
+            this.NumNodes = new System.Int32();
+        }
+        //      C# -> FailoverClusterSummary? FailoverClusterSummary
+        // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)
+        if (this.FailoverClusterSummary == null && Exploration.Includes(parent + ".failoverClusterSummary"))
+        {
+            this.FailoverClusterSummary = new FailoverClusterSummary();
+            this.FailoverClusterSummary.ApplyExploratoryFieldSpec(parent + ".failoverClusterSummary");
+        }
+    }
 
 
     #endregion
 
     } // class FailoverClusterDetail
+    
     #endregion
 
     public static class ListFailoverClusterDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<FailoverClusterDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<FailoverClusterDetail> list, 
             String parent = "")
         {
-            var item = new FailoverClusterDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new FailoverClusterDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

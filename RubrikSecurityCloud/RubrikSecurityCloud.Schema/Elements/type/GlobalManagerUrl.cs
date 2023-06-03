@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region GlobalManagerUrl
-    public class GlobalManagerUrl: IFragment
+    public class GlobalManagerUrl: BaseType
     {
         #region members
+
         //      C# -> System.Boolean? IsReachable
         // GraphQL -> isReachable: Boolean! (scalar)
         [JsonProperty("isReachable")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> url: String! (scalar)
         [JsonProperty("url")]
         public System.String? Url { get; set; }
+
 
         #endregion
 
@@ -46,82 +49,82 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? IsReachable
-            // GraphQL -> isReachable: Boolean! (scalar)
-            if (this.IsReachable != null)
-            {
-                 s += ind + "isReachable\n";
-
-            }
-            //      C# -> System.String? Url
-            // GraphQL -> url: String! (scalar)
-            if (this.Url != null)
-            {
-                 s += ind + "url\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Boolean? IsReachable
+        // GraphQL -> isReachable: Boolean! (scalar)
+        if (this.IsReachable != null) {
+            s += ind + "isReachable\n" ;
         }
+        //      C# -> System.String? Url
+        // GraphQL -> url: String! (scalar)
+        if (this.Url != null) {
+            s += ind + "url\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Boolean? IsReachable
+        // GraphQL -> isReachable: Boolean! (scalar)
+        if (this.IsReachable == null && Exploration.Includes(parent + ".isReachable", true))
         {
-            //      C# -> System.Boolean? IsReachable
-            // GraphQL -> isReachable: Boolean! (scalar)
-            if (this.IsReachable == null && Exploration.Includes(parent + ".isReachable$"))
-            {
-                this.IsReachable = new System.Boolean();
-            }
-            //      C# -> System.String? Url
-            // GraphQL -> url: String! (scalar)
-            if (this.Url == null && Exploration.Includes(parent + ".url$"))
-            {
-                this.Url = new System.String("FETCH");
-            }
+            this.IsReachable = true;
         }
+        //      C# -> System.String? Url
+        // GraphQL -> url: String! (scalar)
+        if (this.Url == null && Exploration.Includes(parent + ".url", true))
+        {
+            this.Url = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class GlobalManagerUrl
+    
     #endregion
 
     public static class ListGlobalManagerUrlExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<GlobalManagerUrl> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<GlobalManagerUrl> list, 
             String parent = "")
         {
-            var item = new GlobalManagerUrl();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new GlobalManagerUrl());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

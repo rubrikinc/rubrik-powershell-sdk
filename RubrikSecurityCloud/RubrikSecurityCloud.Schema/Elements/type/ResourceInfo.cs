@@ -1,0 +1,132 @@
+// ResourceInfo.cs
+//
+// This generated file is part of the Rubrik PowerShell SDK.
+// Manual changes to this file may be lost.
+
+#nullable enable
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
+
+namespace Rubrik.SecurityCloud.Types
+{
+    #region ResourceInfo
+    public class ResourceInfo: BaseType
+    {
+        #region members
+
+        //      C# -> ResourceType? ResourceType
+        // GraphQL -> resourceType: ResourceType! (enum)
+        [JsonProperty("resourceType")]
+        public ResourceType? ResourceType { get; set; }
+
+        //      C# -> System.String? ResourceId
+        // GraphQL -> resourceId: String! (scalar)
+        [JsonProperty("resourceId")]
+        public System.String? ResourceId { get; set; }
+
+
+        #endregion
+
+    #region methods
+
+    public ResourceInfo Set(
+        ResourceType? ResourceType = null,
+        System.String? ResourceId = null
+    ) 
+    {
+        if ( ResourceType != null ) {
+            this.ResourceType = ResourceType;
+        }
+        if ( ResourceId != null ) {
+            this.ResourceId = ResourceId;
+        }
+        return this;
+    }
+
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ResourceType? ResourceType
+        // GraphQL -> resourceType: ResourceType! (enum)
+        if (this.ResourceType != null) {
+            s += ind + "resourceType\n" ;
+        }
+        //      C# -> System.String? ResourceId
+        // GraphQL -> resourceId: String! (scalar)
+        if (this.ResourceId != null) {
+            s += ind + "resourceId\n" ;
+        }
+        return s;
+    }
+
+
+    
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ResourceType? ResourceType
+        // GraphQL -> resourceType: ResourceType! (enum)
+        if (this.ResourceType == null && Exploration.Includes(parent + ".resourceType", true))
+        {
+            this.ResourceType = new ResourceType();
+        }
+        //      C# -> System.String? ResourceId
+        // GraphQL -> resourceId: String! (scalar)
+        if (this.ResourceId == null && Exploration.Includes(parent + ".resourceId", true))
+        {
+            this.ResourceId = new System.String("FETCH");
+        }
+    }
+
+
+    #endregion
+
+    } // class ResourceInfo
+    
+    #endregion
+
+    public static class ListResourceInfoExtensions
+    {
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
+        // all fields (including nested objects) that are not null are
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
+            this List<ResourceInfo> list,
+            int indent=0)
+        {
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
+        }
+
+        public static void ApplyExploratoryFieldSpec(
+            this List<ResourceInfo> list, 
+            String parent = "")
+        {
+            if ( list.Count == 0 ) {
+                list.Add(new ResourceInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
+        }
+    }
+
+
+} // namespace Rubrik.SecurityCloud.Types

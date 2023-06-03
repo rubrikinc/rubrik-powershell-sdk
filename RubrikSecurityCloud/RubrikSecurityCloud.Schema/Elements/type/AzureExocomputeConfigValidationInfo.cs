@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureExocomputeConfigValidationInfo
-    public class AzureExocomputeConfigValidationInfo: IFragment
+    public class AzureExocomputeConfigValidationInfo: BaseType
     {
         #region members
+
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String! (scalar)
         [JsonProperty("errorMessage")]
@@ -62,6 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> config: AzureExocomputeRegionConfig (type)
         [JsonProperty("config")]
         public AzureExocomputeRegionConfig? Config { get; set; }
+
 
         #endregion
 
@@ -109,177 +112,160 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ErrorMessage
-            // GraphQL -> errorMessage: String! (scalar)
-            if (this.ErrorMessage != null)
-            {
-                 s += ind + "errorMessage\n";
-
-            }
-            //      C# -> System.Boolean? HasBlockedSecurityRules
-            // GraphQL -> hasBlockedSecurityRules: Boolean! (scalar)
-            if (this.HasBlockedSecurityRules != null)
-            {
-                 s += ind + "hasBlockedSecurityRules\n";
-
-            }
-            //      C# -> System.Boolean? HasRestrictedAddressRangeOverlap
-            // GraphQL -> hasRestrictedAddressRangeOverlap: Boolean! (scalar)
-            if (this.HasRestrictedAddressRangeOverlap != null)
-            {
-                 s += ind + "hasRestrictedAddressRangeOverlap\n";
-
-            }
-            //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
-            // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)
-            if (this.IsClusterSubnetSizeTooSmall != null)
-            {
-                 s += ind + "isClusterSubnetSizeTooSmall\n";
-
-            }
-            //      C# -> System.Boolean? IsPodAndClusterSubnetSame
-            // GraphQL -> isPodAndClusterSubnetSame: Boolean! (scalar)
-            if (this.IsPodAndClusterSubnetSame != null)
-            {
-                 s += ind + "isPodAndClusterSubnetSame\n";
-
-            }
-            //      C# -> System.Boolean? IsPodAndClusterVnetDifferent
-            // GraphQL -> isPodAndClusterVnetDifferent: Boolean! (scalar)
-            if (this.IsPodAndClusterVnetDifferent != null)
-            {
-                 s += ind + "isPodAndClusterVnetDifferent\n";
-
-            }
-            //      C# -> System.Boolean? IsPodSubnetSizeTooSmall
-            // GraphQL -> isPodSubnetSizeTooSmall: Boolean! (scalar)
-            if (this.IsPodSubnetSizeTooSmall != null)
-            {
-                 s += ind + "isPodSubnetSizeTooSmall\n";
-
-            }
-            //      C# -> System.Boolean? IsSubnetDelegated
-            // GraphQL -> isSubnetDelegated: Boolean! (scalar)
-            if (this.IsSubnetDelegated != null)
-            {
-                 s += ind + "isSubnetDelegated\n";
-
-            }
-            //      C# -> AzureExocomputeRegionConfig? Config
-            // GraphQL -> config: AzureExocomputeRegionConfig (type)
-            if (this.Config != null)
-            {
-                 s += ind + "config\n";
-
-                 s += ind + "{\n" + 
-                 this.Config.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? ErrorMessage
+        // GraphQL -> errorMessage: String! (scalar)
+        if (this.ErrorMessage != null) {
+            s += ind + "errorMessage\n" ;
         }
+        //      C# -> System.Boolean? HasBlockedSecurityRules
+        // GraphQL -> hasBlockedSecurityRules: Boolean! (scalar)
+        if (this.HasBlockedSecurityRules != null) {
+            s += ind + "hasBlockedSecurityRules\n" ;
+        }
+        //      C# -> System.Boolean? HasRestrictedAddressRangeOverlap
+        // GraphQL -> hasRestrictedAddressRangeOverlap: Boolean! (scalar)
+        if (this.HasRestrictedAddressRangeOverlap != null) {
+            s += ind + "hasRestrictedAddressRangeOverlap\n" ;
+        }
+        //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
+        // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)
+        if (this.IsClusterSubnetSizeTooSmall != null) {
+            s += ind + "isClusterSubnetSizeTooSmall\n" ;
+        }
+        //      C# -> System.Boolean? IsPodAndClusterSubnetSame
+        // GraphQL -> isPodAndClusterSubnetSame: Boolean! (scalar)
+        if (this.IsPodAndClusterSubnetSame != null) {
+            s += ind + "isPodAndClusterSubnetSame\n" ;
+        }
+        //      C# -> System.Boolean? IsPodAndClusterVnetDifferent
+        // GraphQL -> isPodAndClusterVnetDifferent: Boolean! (scalar)
+        if (this.IsPodAndClusterVnetDifferent != null) {
+            s += ind + "isPodAndClusterVnetDifferent\n" ;
+        }
+        //      C# -> System.Boolean? IsPodSubnetSizeTooSmall
+        // GraphQL -> isPodSubnetSizeTooSmall: Boolean! (scalar)
+        if (this.IsPodSubnetSizeTooSmall != null) {
+            s += ind + "isPodSubnetSizeTooSmall\n" ;
+        }
+        //      C# -> System.Boolean? IsSubnetDelegated
+        // GraphQL -> isSubnetDelegated: Boolean! (scalar)
+        if (this.IsSubnetDelegated != null) {
+            s += ind + "isSubnetDelegated\n" ;
+        }
+        //      C# -> AzureExocomputeRegionConfig? Config
+        // GraphQL -> config: AzureExocomputeRegionConfig (type)
+        if (this.Config != null) {
+            s += ind + "config {\n" + this.Config.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? ErrorMessage
+        // GraphQL -> errorMessage: String! (scalar)
+        if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
         {
-            //      C# -> System.String? ErrorMessage
-            // GraphQL -> errorMessage: String! (scalar)
-            if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage$"))
-            {
-                this.ErrorMessage = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? HasBlockedSecurityRules
-            // GraphQL -> hasBlockedSecurityRules: Boolean! (scalar)
-            if (this.HasBlockedSecurityRules == null && Exploration.Includes(parent + ".hasBlockedSecurityRules$"))
-            {
-                this.HasBlockedSecurityRules = new System.Boolean();
-            }
-            //      C# -> System.Boolean? HasRestrictedAddressRangeOverlap
-            // GraphQL -> hasRestrictedAddressRangeOverlap: Boolean! (scalar)
-            if (this.HasRestrictedAddressRangeOverlap == null && Exploration.Includes(parent + ".hasRestrictedAddressRangeOverlap$"))
-            {
-                this.HasRestrictedAddressRangeOverlap = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
-            // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)
-            if (this.IsClusterSubnetSizeTooSmall == null && Exploration.Includes(parent + ".isClusterSubnetSizeTooSmall$"))
-            {
-                this.IsClusterSubnetSizeTooSmall = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsPodAndClusterSubnetSame
-            // GraphQL -> isPodAndClusterSubnetSame: Boolean! (scalar)
-            if (this.IsPodAndClusterSubnetSame == null && Exploration.Includes(parent + ".isPodAndClusterSubnetSame$"))
-            {
-                this.IsPodAndClusterSubnetSame = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsPodAndClusterVnetDifferent
-            // GraphQL -> isPodAndClusterVnetDifferent: Boolean! (scalar)
-            if (this.IsPodAndClusterVnetDifferent == null && Exploration.Includes(parent + ".isPodAndClusterVnetDifferent$"))
-            {
-                this.IsPodAndClusterVnetDifferent = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsPodSubnetSizeTooSmall
-            // GraphQL -> isPodSubnetSizeTooSmall: Boolean! (scalar)
-            if (this.IsPodSubnetSizeTooSmall == null && Exploration.Includes(parent + ".isPodSubnetSizeTooSmall$"))
-            {
-                this.IsPodSubnetSizeTooSmall = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsSubnetDelegated
-            // GraphQL -> isSubnetDelegated: Boolean! (scalar)
-            if (this.IsSubnetDelegated == null && Exploration.Includes(parent + ".isSubnetDelegated$"))
-            {
-                this.IsSubnetDelegated = new System.Boolean();
-            }
-            //      C# -> AzureExocomputeRegionConfig? Config
-            // GraphQL -> config: AzureExocomputeRegionConfig (type)
-            if (this.Config == null && Exploration.Includes(parent + ".config"))
-            {
-                this.Config = new AzureExocomputeRegionConfig();
-                this.Config.ApplyExploratoryFragment(parent + ".config");
-            }
+            this.ErrorMessage = new System.String("FETCH");
         }
+        //      C# -> System.Boolean? HasBlockedSecurityRules
+        // GraphQL -> hasBlockedSecurityRules: Boolean! (scalar)
+        if (this.HasBlockedSecurityRules == null && Exploration.Includes(parent + ".hasBlockedSecurityRules", true))
+        {
+            this.HasBlockedSecurityRules = true;
+        }
+        //      C# -> System.Boolean? HasRestrictedAddressRangeOverlap
+        // GraphQL -> hasRestrictedAddressRangeOverlap: Boolean! (scalar)
+        if (this.HasRestrictedAddressRangeOverlap == null && Exploration.Includes(parent + ".hasRestrictedAddressRangeOverlap", true))
+        {
+            this.HasRestrictedAddressRangeOverlap = true;
+        }
+        //      C# -> System.Boolean? IsClusterSubnetSizeTooSmall
+        // GraphQL -> isClusterSubnetSizeTooSmall: Boolean! (scalar)
+        if (this.IsClusterSubnetSizeTooSmall == null && Exploration.Includes(parent + ".isClusterSubnetSizeTooSmall", true))
+        {
+            this.IsClusterSubnetSizeTooSmall = true;
+        }
+        //      C# -> System.Boolean? IsPodAndClusterSubnetSame
+        // GraphQL -> isPodAndClusterSubnetSame: Boolean! (scalar)
+        if (this.IsPodAndClusterSubnetSame == null && Exploration.Includes(parent + ".isPodAndClusterSubnetSame", true))
+        {
+            this.IsPodAndClusterSubnetSame = true;
+        }
+        //      C# -> System.Boolean? IsPodAndClusterVnetDifferent
+        // GraphQL -> isPodAndClusterVnetDifferent: Boolean! (scalar)
+        if (this.IsPodAndClusterVnetDifferent == null && Exploration.Includes(parent + ".isPodAndClusterVnetDifferent", true))
+        {
+            this.IsPodAndClusterVnetDifferent = true;
+        }
+        //      C# -> System.Boolean? IsPodSubnetSizeTooSmall
+        // GraphQL -> isPodSubnetSizeTooSmall: Boolean! (scalar)
+        if (this.IsPodSubnetSizeTooSmall == null && Exploration.Includes(parent + ".isPodSubnetSizeTooSmall", true))
+        {
+            this.IsPodSubnetSizeTooSmall = true;
+        }
+        //      C# -> System.Boolean? IsSubnetDelegated
+        // GraphQL -> isSubnetDelegated: Boolean! (scalar)
+        if (this.IsSubnetDelegated == null && Exploration.Includes(parent + ".isSubnetDelegated", true))
+        {
+            this.IsSubnetDelegated = true;
+        }
+        //      C# -> AzureExocomputeRegionConfig? Config
+        // GraphQL -> config: AzureExocomputeRegionConfig (type)
+        if (this.Config == null && Exploration.Includes(parent + ".config"))
+        {
+            this.Config = new AzureExocomputeRegionConfig();
+            this.Config.ApplyExploratoryFieldSpec(parent + ".config");
+        }
+    }
 
 
     #endregion
 
     } // class AzureExocomputeConfigValidationInfo
+    
     #endregion
 
     public static class ListAzureExocomputeConfigValidationInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureExocomputeConfigValidationInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureExocomputeConfigValidationInfo> list, 
             String parent = "")
         {
-            var item = new AzureExocomputeConfigValidationInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureExocomputeConfigValidationInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

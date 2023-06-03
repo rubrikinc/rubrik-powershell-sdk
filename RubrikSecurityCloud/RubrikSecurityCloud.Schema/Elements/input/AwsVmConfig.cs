@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
@@ -62,6 +63,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> securityGroups: [String!] (scalar)
         [JsonProperty("securityGroups")]
         public List<System.String>? SecurityGroups { get; set; }
+
+        //      C# -> AwsInstanceType? InstanceType
+        // GraphQL -> instanceType: AwsInstanceType (enum)
+        [JsonProperty("instanceType")]
+        public AwsInstanceType? InstanceType { get; set; }
 
 
         #endregion

@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -25,6 +25,38 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     ]
     public class Invoke_RscQueryCluster : RscPSCmdlet
     {
+        
+        // -------------------------------------------------------------------
+        // Cloud parameter set
+        //
+        // GraphQL operation: allCloudClusters(cloudVendorType: CcpVendorType!):[CcWithCloudInfo!]!
+        //
+        [Parameter(
+            ParameterSetName = "Cloud",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                List of Cloud Clusters with cloud information.
+                GraphQL operation: allCloudClusters(cloudVendorType: CcpVendorType!):[CcWithCloudInfo!]!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter Cloud { get; set; }
+
+        [Parameter(
+            ParameterSetName = "Cloud",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Cloud vendor name.
+                GraphQL argument cloudVendorType: CcpVendorType!
+                "
+        )]
+        public CcpVendorType? CloudVendorType { get; set; }
         
         // -------------------------------------------------------------------
         // Node parameter set
@@ -491,6 +523,26 @@ Get all certificates.
 
         
         // -------------------------------------------------------------------
+        // Ipv6Mode parameter set
+        //
+        // GraphQL operation: clusterIpv6Mode(input: ClusterIpv6ModeInput!):ClusterIpv6ModeReply!
+        //
+        [Parameter(
+            ParameterSetName = "Ipv6Mode",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Rubrik cluster IPv6 mode.
+                GraphQL operation: clusterIpv6Mode(input: ClusterIpv6ModeInput!):ClusterIpv6ModeReply!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter Ipv6Mode { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // Csr parameter set
         //
         // GraphQL operation: clusterCsr(input: GetClusterCsrInput!):ClusterCsr!
@@ -578,6 +630,70 @@ Returns the certificate signing request generated from the private key of the Ru
         public System.Single? TimezoneOffset { get; set; }
         
         // -------------------------------------------------------------------
+        // WithConfigProtectionInfo parameter set
+        //
+        // GraphQL operation: clusterWithConfigProtectionInfo(,   first: Int,   after: String,   last: Int,   before: String,   configProtectionFilter: ConfigProtectionInfoFilterInput,   sortOrder: SortOrder = DESC,   sortBy: ConfigProtectionInfoSortBy = CLUSTER_NAME, ):ClusterConnection!
+        //
+        [Parameter(
+            ParameterSetName = "WithConfigProtectionInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                A cluster object with config protection information.
+                GraphQL operation: clusterWithConfigProtectionInfo(,   first: Int,   after: String,   last: Int,   before: String,   configProtectionFilter: ConfigProtectionInfoFilterInput,   sortOrder: SortOrder = DESC,   sortBy: ConfigProtectionInfoSortBy = CLUSTER_NAME, ):ClusterConnection!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter WithConfigProtectionInfo { get; set; }
+
+        [Parameter(
+            ParameterSetName = "WithConfigProtectionInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Filters for the Configuration Protection page.
+                GraphQL argument configProtectionFilter: ConfigProtectionInfoFilterInput
+                "
+        )]
+        public ConfigProtectionInfoFilterInput? ConfigProtectionFilter { get; set; }
+        
+        // -------------------------------------------------------------------
+        // RcvLocation parameter set
+        //
+        // GraphQL operation: clusterRcvLocations(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   cdmClusterUUID: UUID!, ):RcvLocationBasicInfoConnection!
+        //
+        [Parameter(
+            ParameterSetName = "RcvLocation",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                List Rubrik Cloud Vault locations of the cluster.
+                GraphQL operation: clusterRcvLocations(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   cdmClusterUUID: UUID!, ):RcvLocationBasicInfoConnection!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter RcvLocation { get; set; }
+
+        [Parameter(
+            ParameterSetName = "RcvLocation",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                UUID of the Rubrik cluster.
+                GraphQL argument cdmClusterUUID: UUID!
+                "
+        )]
+        public System.String? CdmClusterUuid { get; set; }
+        
+        // -------------------------------------------------------------------
         // Connected parameter set
         //
         // GraphQL operation: allConnectedClusters(clusterFilterArg: ClusterTypeEnum):[DataLocationSupportedCluster!]!
@@ -630,6 +746,86 @@ Returns the certificate signing request generated from the private key of the Ru
 
         
         // -------------------------------------------------------------------
+        // EncryptionInfo parameter set
+        //
+        // GraphQL operation: clusterEncryptionInfo(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   clusterName: String,   encryptionStatusFilter: [ClusterEncryptionStatusFilter!]! = [],   keyProtection: [ClusterKeyProtection!]! = [],   clusters: [UUID!]! = [],   encryptionTypes: [ClusterEncryptionType!]! = [], ):ClusterEncryptionInfoConnection!
+        //
+        [Parameter(
+            ParameterSetName = "EncryptionInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Filter clusters by encryption information.
+                GraphQL operation: clusterEncryptionInfo(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   clusterName: String,   encryptionStatusFilter: [ClusterEncryptionStatusFilter!]! = [],   keyProtection: [ClusterKeyProtection!]! = [],   clusters: [UUID!]! = [],   encryptionTypes: [ClusterEncryptionType!]! = [], ):ClusterEncryptionInfoConnection!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter EncryptionInfo { get; set; }
+
+        [Parameter(
+            ParameterSetName = "EncryptionInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                The prefix of the name of the Rubrik cluster.
+                GraphQL argument clusterName: String
+                "
+        )]
+        public System.String? ClusterName { get; set; }
+        [Parameter(
+            ParameterSetName = "EncryptionInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                The encryption status of the Rubrik cluster.
+                GraphQL argument encryptionStatusFilter: [ClusterEncryptionStatusFilter!]!
+                "
+        )]
+        public List<ClusterEncryptionStatusFilter>? EncryptionStatusFilter { get; set; }
+        [Parameter(
+            ParameterSetName = "EncryptionInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                The key type used for the most recent key rotation.
+                GraphQL argument keyProtection: [ClusterKeyProtection!]!
+                "
+        )]
+        public List<ClusterKeyProtection>? KeyProtection { get; set; }
+        [Parameter(
+            ParameterSetName = "EncryptionInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                The IDs of the Rubrik clusters to select.
+                GraphQL argument clusters: [UUID!]!
+                "
+        )]
+        public List<System.String>? Clusters { get; set; }
+        [Parameter(
+            ParameterSetName = "EncryptionInfo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                The types of encryption.
+                GraphQL argument encryptionTypes: [ClusterEncryptionType!]!
+                "
+        )]
+        public List<ClusterEncryptionType>? EncryptionTypes { get; set; }
+        
+        // -------------------------------------------------------------------
         // HostFailover parameter set
         //
         // GraphQL operation: hostFailoverCluster(fid: UUID!):HostFailoverCluster!
@@ -660,6 +856,38 @@ Returns the certificate signing request generated from the private key of the Ru
                 "
         )]
         public System.String? Fid { get; set; }
+        
+        // -------------------------------------------------------------------
+        // GlobalFileSearchMultiple parameter set
+        //
+        // GraphQL operation: allGlobalFileSearchMultipleClusters(clusters: [UUID!]! = [], regex: String!):GlobalFileSearchReplyType!
+        //
+        [Parameter(
+            ParameterSetName = "GlobalFileSearchMultiple",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                All files and folders matching input filters.
+                GraphQL operation: allGlobalFileSearchMultipleClusters(clusters: [UUID!]! = [], regex: String!):GlobalFileSearchReplyType!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter GlobalFileSearchMultiple { get; set; }
+
+        [Parameter(
+            ParameterSetName = "GlobalFileSearchMultiple",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                The regular expression used to filter the files and folders.
+                GraphQL argument regex: String!
+                "
+        )]
+        public System.String? Regex { get; set; }
         
         // -------------------------------------------------------------------
         // K8s parameter set
@@ -702,6 +930,78 @@ Returns the certificate signing request generated from the private key of the Ru
 
         
         // -------------------------------------------------------------------
+        // laDomainList parameter set
+        //
+        // GraphQL operation: clusterSlaDomainConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainConnection!
+        //
+        [Parameter(
+            ParameterSetName = "laDomainList",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: clusterSlaDomainConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainConnection!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter laDomainList { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // laDomainFilterList parameter set
+        //
+        // GraphQL operation: clusterSlaDomainFilterConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainForFilterConnection!
+        //
+        [Parameter(
+            ParameterSetName = "laDomainFilterList",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: clusterSlaDomainFilterConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainForFilterConnection!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter laDomainFilterList { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // VerifySlaWithReplicationTo parameter set
+        //
+        // GraphQL operation: verifySLAWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!):VerifySLAWithReplicationToClusterResp!
+        //
+        [Parameter(
+            ParameterSetName = "VerifySlaWithReplicationTo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: verifySLAWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!):VerifySLAWithReplicationToClusterResp!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter VerifySlaWithReplicationTo { get; set; }
+
+        [Parameter(
+            ParameterSetName = "VerifySlaWithReplicationTo",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Include Archived SLA.
+                GraphQL argument includeArchived: Boolean!
+                "
+        )]
+        public System.Boolean? IncludeArchived { get; set; }
+        
+        // -------------------------------------------------------------------
         // GlobalSla parameter set
         //
         // GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!
@@ -720,18 +1020,6 @@ Returns the certificate signing request generated from the private key of the Ru
         )]
         public SwitchParameter GlobalSla { get; set; }
 
-        [Parameter(
-            ParameterSetName = "GlobalSla",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-                @"
-                UUID of the Rubrik cluster.
-                GraphQL argument cdmClusterUUID: UUID!
-                "
-        )]
-        public System.String? CdmClusterUuid { get; set; }
         
         // -------------------------------------------------------------------
         // RegistrationProductInfo parameter set
@@ -751,6 +1039,26 @@ Returns the certificate signing request generated from the private key of the Ru
             Position = 0
         )]
         public SwitchParameter RegistrationProductInfo { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Vcd parameter set
+        //
+        // GraphQL operation: vcdClusters(input: QueryVcdClusterInput!):VcdClusterSummaryListResponse!
+        //
+        [Parameter(
+            ParameterSetName = "Vcd",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                List of vCloud Director clusters.
+                GraphQL operation: vcdClusters(input: QueryVcdClusterInput!):VcdClusterSummaryListResponse!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter Vcd { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -811,6 +1119,9 @@ Returns the certificate signing request generated from the private key of the Ru
             {
                 switch(Op)
                 {
+                    case "Cloud":
+                        this.ProcessRecord_Cloud();
+                        break;
                     case "Node":
                         this.ProcessRecord_Node();
                         break;
@@ -859,6 +1170,9 @@ Returns the certificate signing request generated from the private key of the Ru
                     case "OperationJobProgress":
                         this.ProcessRecord_OperationJobProgress();
                         break;
+                    case "Ipv6Mode":
+                        this.ProcessRecord_Ipv6Mode();
+                        break;
                     case "Csr":
                         this.ProcessRecord_Csr();
                         break;
@@ -868,14 +1182,26 @@ Returns the certificate signing request generated from the private key of the Ru
                     case "GroupByList":
                         this.ProcessRecord_GroupByList();
                         break;
+                    case "WithConfigProtectionInfo":
+                        this.ProcessRecord_WithConfigProtectionInfo();
+                        break;
+                    case "RcvLocation":
+                        this.ProcessRecord_RcvLocation();
+                        break;
                     case "Connected":
                         this.ProcessRecord_Connected();
                         break;
                     case "ReplicationTarget":
                         this.ProcessRecord_ReplicationTarget();
                         break;
+                    case "EncryptionInfo":
+                        this.ProcessRecord_EncryptionInfo();
+                        break;
                     case "HostFailover":
                         this.ProcessRecord_HostFailover();
+                        break;
+                    case "GlobalFileSearchMultiple":
+                        this.ProcessRecord_GlobalFileSearchMultiple();
                         break;
                     case "K8s":
                         this.ProcessRecord_K8s();
@@ -883,11 +1209,23 @@ Returns the certificate signing request generated from the private key of the Ru
                     case "Window":
                         this.ProcessRecord_Window();
                         break;
+                    case "laDomainList":
+                        this.ProcessRecord_laDomainList();
+                        break;
+                    case "laDomainFilterList":
+                        this.ProcessRecord_laDomainFilterList();
+                        break;
+                    case "VerifySlaWithReplicationTo":
+                        this.ProcessRecord_VerifySlaWithReplicationTo();
+                        break;
                     case "GlobalSla":
                         this.ProcessRecord_GlobalSla();
                         break;
                     case "RegistrationProductInfo":
                         this.ProcessRecord_RegistrationProductInfo();
+                        break;
+                    case "Vcd":
+                        this.ProcessRecord_Vcd();
                         break;
                     case "isTotpAckNecessary":
                         this.ProcessRecord_isTotpAckNecessary();
@@ -909,6 +1247,15 @@ Returns the certificate signing request generated from the private key of the Ru
                     null);
                 ThrowTerminatingError(error);
            }
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allCloudClusters.
+        protected void ProcessRecord_Cloud()
+        {
+            this._logger.name += " -Cloud";
+            // Invoke graphql operation allCloudClusters
+            InvokeQueryAllCloudClusters();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1056,6 +1403,15 @@ Returns the certificate signing request generated from the private key of the Ru
         }
 
         // This parameter set invokes a single graphql operation:
+        // clusterIpv6Mode.
+        protected void ProcessRecord_Ipv6Mode()
+        {
+            this._logger.name += " -Ipv6Mode";
+            // Invoke graphql operation clusterIpv6Mode
+            InvokeQueryClusterIpv6Mode();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // clusterCsr.
         protected void ProcessRecord_Csr()
         {
@@ -1083,6 +1439,24 @@ Returns the certificate signing request generated from the private key of the Ru
         }
 
         // This parameter set invokes a single graphql operation:
+        // clusterWithConfigProtectionInfo.
+        protected void ProcessRecord_WithConfigProtectionInfo()
+        {
+            this._logger.name += " -WithConfigProtectionInfo";
+            // Invoke graphql operation clusterWithConfigProtectionInfo
+            InvokeQueryClusterWithConfigProtectionInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // clusterRcvLocations.
+        protected void ProcessRecord_RcvLocation()
+        {
+            this._logger.name += " -RcvLocation";
+            // Invoke graphql operation clusterRcvLocations
+            InvokeQueryClusterRcvLocations();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allConnectedClusters.
         protected void ProcessRecord_Connected()
         {
@@ -1101,12 +1475,30 @@ Returns the certificate signing request generated from the private key of the Ru
         }
 
         // This parameter set invokes a single graphql operation:
+        // clusterEncryptionInfo.
+        protected void ProcessRecord_EncryptionInfo()
+        {
+            this._logger.name += " -EncryptionInfo";
+            // Invoke graphql operation clusterEncryptionInfo
+            InvokeQueryClusterEncryptionInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // hostFailoverCluster.
         protected void ProcessRecord_HostFailover()
         {
             this._logger.name += " -HostFailover";
             // Invoke graphql operation hostFailoverCluster
             InvokeQueryHostFailoverCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allGlobalFileSearchMultipleClusters.
+        protected void ProcessRecord_GlobalFileSearchMultiple()
+        {
+            this._logger.name += " -GlobalFileSearchMultiple";
+            // Invoke graphql operation allGlobalFileSearchMultipleClusters
+            InvokeQueryAllGlobalFileSearchMultipleClusters();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1128,6 +1520,33 @@ Returns the certificate signing request generated from the private key of the Ru
         }
 
         // This parameter set invokes a single graphql operation:
+        // clusterSlaDomainConnection.
+        protected void ProcessRecord_laDomainList()
+        {
+            this._logger.name += " -laDomainList";
+            // Invoke graphql operation clusterSlaDomainConnection
+            InvokeQueryClusterSlaDomainConnection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // clusterSlaDomainFilterConnection.
+        protected void ProcessRecord_laDomainFilterList()
+        {
+            this._logger.name += " -laDomainFilterList";
+            // Invoke graphql operation clusterSlaDomainFilterConnection
+            InvokeQueryClusterSlaDomainFilterConnection();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // verifySLAWithReplicationToCluster.
+        protected void ProcessRecord_VerifySlaWithReplicationTo()
+        {
+            this._logger.name += " -VerifySlaWithReplicationTo";
+            // Invoke graphql operation verifySLAWithReplicationToCluster
+            InvokeQueryVerifySlaWithReplicationToCluster();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // allClusterGlobalSlas.
         protected void ProcessRecord_GlobalSla()
         {
@@ -1143,6 +1562,15 @@ Returns the certificate signing request generated from the private key of the Ru
             this._logger.name += " -RegistrationProductInfo";
             // Invoke graphql operation clusterRegistrationProductInfo
             InvokeQueryClusterRegistrationProductInfo();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vcdClusters.
+        protected void ProcessRecord_Vcd()
+        {
+            this._logger.name += " -Vcd";
+            // Invoke graphql operation vcdClusters
+            InvokeQueryVcdClusters();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -1165,6 +1593,42 @@ Returns the certificate signing request generated from the private key of the Ru
 
 
         // Invoke GraphQL Query:
+        // allCloudClusters(cloudVendorType: CcpVendorType!): [CcWithCloudInfo!]!
+        protected void InvokeQueryAllCloudClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cloudVendorType", "CcpVendorType!"),
+            };
+            List<CcWithCloudInfo>? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (List<CcWithCloudInfo>)psObject.BaseObject;
+                } else {
+                    fields = (List<CcWithCloudInfo>)this.Field;
+                }
+            }
+            string document = Query.AllCloudClusters(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.AllCloudClusters");
+            var parameters = "($cloudVendorType: CcpVendorType!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryAllCloudClusters" + parameters + "{" + document + "}",
+                OperationName = "QueryAllCloudClusters",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<CcWithCloudInfo>", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
         // clusterNodes(input: GetNodesInput!): NodeStatusListResponse!
         protected void InvokeQueryClusterNodes()
         {
@@ -1174,8 +1638,7 @@ Returns the certificate signing request generated from the private key of the Ru
             NodeStatusListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (NodeStatusListResponse)psObject.BaseObject;
                 } else {
                     fields = (NodeStatusListResponse)this.Field;
@@ -1183,23 +1646,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterNodes(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterNodes");
-            string parameters = "($input: GetNodesInput!)\n";
+            var parameters = "($input: GetNodesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterNodes" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterNodes",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<NodeStatusListResponse> task = this._rbkClient.InvokeGenericCallAsync<NodeStatusListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "NodeStatusListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1226,8 +1688,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterConnection)psObject.BaseObject;
                 } else {
                     fields = (ClusterConnection)this.Field;
@@ -1235,23 +1696,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterConnection(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterConnection");
-            string parameters = "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)\n";
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$filter: ClusterFilterInput,$sortOrder: SortOrder,$sortBy: ClusterSortByEnum)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterConnection",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1264,8 +1724,7 @@ Returns the certificate signing request generated from the private key of the Ru
             Cluster? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (Cluster)psObject.BaseObject;
                 } else {
                     fields = (Cluster)this.Field;
@@ -1273,23 +1732,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.Cluster(ref fields);
             this._input.Initialize(argDefs, fields, "Query.Cluster");
-            string parameters = "($clusterUuid: UUID!)\n";
+            var parameters = "($clusterUuid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<Cluster> task = this._rbkClient.InvokeGenericCallAsync<Cluster>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "Cluster", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1316,8 +1774,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterConnection)psObject.BaseObject;
                 } else {
                     fields = (ClusterConnection)this.Field;
@@ -1325,23 +1782,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterWithUpgradesInfo(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterWithUpgradesInfo");
-            string parameters = "($first: Int,$after: String,$last: Int,$before: String,$upgradeFilter: CdmUpgradeInfoFilterInput,$sortOrder: SortOrder,$sortBy: UpgradeInfoSortByEnum)\n";
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$upgradeFilter: CdmUpgradeInfoFilterInput,$sortOrder: SortOrder,$sortBy: UpgradeInfoSortByEnum)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterWithUpgradesInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterWithUpgradesInfo",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1354,8 +1810,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterDnsReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterDnsReply)psObject.BaseObject;
                 } else {
                     fields = (ClusterDnsReply)this.Field;
@@ -1363,23 +1818,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterDns(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterDns");
-            string parameters = "($clusterUuid: UUID!)\n";
+            var parameters = "($clusterUuid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterDns" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterDns",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterDnsReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterDnsReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterDnsReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1392,8 +1846,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterProxyReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterProxyReply)psObject.BaseObject;
                 } else {
                     fields = (ClusterProxyReply)this.Field;
@@ -1401,23 +1854,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterProxy(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterProxy");
-            string parameters = "($clusterUuid: UUID!)\n";
+            var parameters = "($clusterUuid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterProxy" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterProxy",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterProxyReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterProxyReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterProxyReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1430,8 +1882,7 @@ Returns the certificate signing request generated from the private key of the Ru
             NtpServerConfigurationListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (NtpServerConfigurationListResponse)psObject.BaseObject;
                 } else {
                     fields = (NtpServerConfigurationListResponse)this.Field;
@@ -1439,23 +1890,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterNtpServers(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterNtpServers");
-            string parameters = "($input: GetClusterNtpServersInput!)\n";
+            var parameters = "($input: GetClusterNtpServersInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterNtpServers" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterNtpServers",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<NtpServerConfigurationListResponse> task = this._rbkClient.InvokeGenericCallAsync<NtpServerConfigurationListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "NtpServerConfigurationListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1468,8 +1918,7 @@ Returns the certificate signing request generated from the private key of the Ru
             NetworkInterfaceListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (NetworkInterfaceListResponse)psObject.BaseObject;
                 } else {
                     fields = (NetworkInterfaceListResponse)this.Field;
@@ -1477,23 +1926,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterNetworkInterfaces(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterNetworkInterfaces");
-            string parameters = "($input: GetNetworkInterfaceInput!)\n";
+            var parameters = "($input: GetNetworkInterfaceInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterNetworkInterfaces" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterNetworkInterfaces",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<NetworkInterfaceListResponse> task = this._rbkClient.InvokeGenericCallAsync<NetworkInterfaceListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "NetworkInterfaceListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1506,8 +1954,7 @@ Returns the certificate signing request generated from the private key of the Ru
             InternalGetClusterIpsResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (InternalGetClusterIpsResponse)psObject.BaseObject;
                 } else {
                     fields = (InternalGetClusterIpsResponse)this.Field;
@@ -1515,23 +1962,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterFloatingIps(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterFloatingIps");
-            string parameters = "($input: GetClusterIpsInput!)\n";
+            var parameters = "($input: GetClusterIpsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterFloatingIps" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterFloatingIps",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<InternalGetClusterIpsResponse> task = this._rbkClient.InvokeGenericCallAsync<InternalGetClusterIpsResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "InternalGetClusterIpsResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1544,8 +1990,7 @@ Returns the certificate signing request generated from the private key of the Ru
             VlanConfigListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (VlanConfigListResponse)psObject.BaseObject;
                 } else {
                     fields = (VlanConfigListResponse)this.Field;
@@ -1553,23 +1998,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterVlans(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterVlans");
-            string parameters = "($input: GetVlanInput!)\n";
+            var parameters = "($input: GetVlanInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterVlans" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterVlans",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<VlanConfigListResponse> task = this._rbkClient.InvokeGenericCallAsync<VlanConfigListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "VlanConfigListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1582,8 +2026,7 @@ Returns the certificate signing request generated from the private key of the Ru
             InternalGetDefaultGatewayResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (InternalGetDefaultGatewayResponse)psObject.BaseObject;
                 } else {
                     fields = (InternalGetDefaultGatewayResponse)this.Field;
@@ -1591,23 +2034,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterDefaultGateway(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterDefaultGateway");
-            string parameters = "($input: GetDefaultGatewayInput!)\n";
+            var parameters = "($input: GetDefaultGatewayInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterDefaultGateway" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterDefaultGateway",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<InternalGetDefaultGatewayResponse> task = this._rbkClient.InvokeGenericCallAsync<InternalGetDefaultGatewayResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "InternalGetDefaultGatewayResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1620,8 +2062,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterWebSignedCertificateReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterWebSignedCertificateReply)psObject.BaseObject;
                 } else {
                     fields = (ClusterWebSignedCertificateReply)this.Field;
@@ -1629,23 +2070,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterWebSignedCertificate(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterWebSignedCertificate");
-            string parameters = "($input: ClusterWebSignedCertificateInput!)\n";
+            var parameters = "($input: ClusterWebSignedCertificateInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterWebSignedCertificate" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterWebSignedCertificate",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterWebSignedCertificateReply> task = this._rbkClient.InvokeGenericCallAsync<ClusterWebSignedCertificateReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterWebSignedCertificateReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1658,8 +2098,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ModifyIpmiReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ModifyIpmiReply)psObject.BaseObject;
                 } else {
                     fields = (ModifyIpmiReply)this.Field;
@@ -1667,23 +2106,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterIpmi(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterIpmi");
-            string parameters = "($input: GetIpmiInput!)\n";
+            var parameters = "($input: GetIpmiInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterIpmi" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterIpmi",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ModifyIpmiReply> task = this._rbkClient.InvokeGenericCallAsync<ModifyIpmiReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ModifyIpmiReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1696,8 +2134,7 @@ Returns the certificate signing request generated from the private key of the Ru
             CertificateSummaryListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CertificateSummaryListResponse)psObject.BaseObject;
                 } else {
                     fields = (CertificateSummaryListResponse)this.Field;
@@ -1705,23 +2142,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterCertificates(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterCertificates");
-            string parameters = "($input: QueryCertificatesInput!)\n";
+            var parameters = "($input: QueryCertificatesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterCertificates" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterCertificates",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CertificateSummaryListResponse> task = this._rbkClient.InvokeGenericCallAsync<CertificateSummaryListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CertificateSummaryListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1734,8 +2170,7 @@ Returns the certificate signing request generated from the private key of the Ru
             List<ClusterWebCertAndIpmi>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<ClusterWebCertAndIpmi>)psObject.BaseObject;
                 } else {
                     fields = (List<ClusterWebCertAndIpmi>)this.Field;
@@ -1743,23 +2178,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.AllClusterWebCertsAndIpmis(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllClusterWebCertsAndIpmis");
-            string parameters = "($input: BulkClusterWebCertAndIpmiInput!)\n";
+            var parameters = "($input: BulkClusterWebCertAndIpmiInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllClusterWebCertsAndIpmis" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClusterWebCertsAndIpmis",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<ClusterWebCertAndIpmi>> task = this._rbkClient.InvokeGenericCallAsync<List<ClusterWebCertAndIpmi>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<ClusterWebCertAndIpmi>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1772,8 +2206,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterOperationJobProgress? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterOperationJobProgress)psObject.BaseObject;
                 } else {
                     fields = (ClusterOperationJobProgress)this.Field;
@@ -1781,23 +2214,58 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterOperationJobProgress(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterOperationJobProgress");
-            string parameters = "($input: ClusterOperationJobProgressInput!)\n";
+            var parameters = "($input: ClusterOperationJobProgressInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterOperationJobProgress" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterOperationJobProgress",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterOperationJobProgress> task = this._rbkClient.InvokeGenericCallAsync<ClusterOperationJobProgress>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterOperationJobProgress", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // clusterIpv6Mode(input: ClusterIpv6ModeInput!): ClusterIpv6ModeReply!
+        protected void InvokeQueryClusterIpv6Mode()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "ClusterIpv6ModeInput!"),
+            };
+            ClusterIpv6ModeReply? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (ClusterIpv6ModeReply)psObject.BaseObject;
+                } else {
+                    fields = (ClusterIpv6ModeReply)this.Field;
+                }
+            }
+            string document = Query.ClusterIpv6Mode(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.ClusterIpv6Mode");
+            var parameters = "($input: ClusterIpv6ModeInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryClusterIpv6Mode" + parameters + "{" + document + "}",
+                OperationName = "QueryClusterIpv6Mode",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterIpv6ModeReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1810,8 +2278,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterCsr? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterCsr)psObject.BaseObject;
                 } else {
                     fields = (ClusterCsr)this.Field;
@@ -1819,23 +2286,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterCsr(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterCsr");
-            string parameters = "($input: GetClusterCsrInput!)\n";
+            var parameters = "($input: GetClusterCsrInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterCsr" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterCsr",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterCsr> task = this._rbkClient.InvokeGenericCallAsync<ClusterCsr>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterCsr", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1847,8 +2313,7 @@ Returns the certificate signing request generated from the private key of the Ru
             List<GroupCount>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<GroupCount>)psObject.BaseObject;
                 } else {
                     fields = (List<GroupCount>)this.Field;
@@ -1856,22 +2321,21 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterTypeList(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterTypeList");
-            string parameters = "";
+            var parameters = "";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterTypeList" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterTypeList",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
-            Task<List<GroupCount>> task = this._rbkClient.InvokeGenericCallAsync<List<GroupCount>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<GroupCount>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1898,8 +2362,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterGroupByConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterGroupByConnection)psObject.BaseObject;
                 } else {
                     fields = (ClusterGroupByConnection)this.Field;
@@ -1907,23 +2370,120 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterGroupByConnection(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterGroupByConnection");
-            string parameters = "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ClusterGroupByEnum!,$filter: ClusterFilterInput,$timezoneOffset: Float)\n";
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$groupBy: ClusterGroupByEnum!,$filter: ClusterFilterInput,$timezoneOffset: Float)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterGroupByConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterGroupByConnection",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<ClusterGroupByConnection> task = this._rbkClient.InvokeGenericCallAsync<ClusterGroupByConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterGroupByConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // clusterWithConfigProtectionInfo(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     configProtectionFilter: ConfigProtectionInfoFilterInput
+        //     sortOrder: SortOrder = DESC
+        //     sortBy: ConfigProtectionInfoSortBy = CLUSTER_NAME
+        //   ): ClusterConnection!
+        protected void InvokeQueryClusterWithConfigProtectionInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("configProtectionFilter", "ConfigProtectionInfoFilterInput"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("sortBy", "ConfigProtectionInfoSortBy"),
+            };
+            ClusterConnection? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (ClusterConnection)psObject.BaseObject;
+                } else {
+                    fields = (ClusterConnection)this.Field;
+                }
+            }
+            string document = Query.ClusterWithConfigProtectionInfo(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.ClusterWithConfigProtectionInfo");
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$configProtectionFilter: ConfigProtectionInfoFilterInput,$sortOrder: SortOrder,$sortBy: ConfigProtectionInfoSortBy)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryClusterWithConfigProtectionInfo" + parameters + "{" + document + "}",
+                OperationName = "QueryClusterWithConfigProtectionInfo",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // clusterRcvLocations(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortOrder: SortOrder
+        //     cdmClusterUUID: UUID!
+        //   ): RcvLocationBasicInfoConnection!
+        protected void InvokeQueryClusterRcvLocations()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("cdmClusterUUID", "UUID!"),
+            };
+            RcvLocationBasicInfoConnection? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (RcvLocationBasicInfoConnection)psObject.BaseObject;
+                } else {
+                    fields = (RcvLocationBasicInfoConnection)this.Field;
+                }
+            }
+            string document = Query.ClusterRcvLocations(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.ClusterRcvLocations");
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$cdmClusterUUID: UUID!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryClusterRcvLocations" + parameters + "{" + document + "}",
+                OperationName = "QueryClusterRcvLocations",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "RcvLocationBasicInfoConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1936,8 +2496,7 @@ Returns the certificate signing request generated from the private key of the Ru
             List<DataLocationSupportedCluster>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<DataLocationSupportedCluster>)psObject.BaseObject;
                 } else {
                     fields = (List<DataLocationSupportedCluster>)this.Field;
@@ -1945,23 +2504,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.AllConnectedClusters(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllConnectedClusters");
-            string parameters = "($clusterFilterArg: ClusterTypeEnum)\n";
+            var parameters = "($clusterFilterArg: ClusterTypeEnum)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllConnectedClusters" + parameters + "{" + document + "}",
                 OperationName = "QueryAllConnectedClusters",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<DataLocationSupportedCluster>> task = this._rbkClient.InvokeGenericCallAsync<List<DataLocationSupportedCluster>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<DataLocationSupportedCluster>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1974,8 +2532,7 @@ Returns the certificate signing request generated from the private key of the Ru
             List<ClusterReplicationTarget>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<ClusterReplicationTarget>)psObject.BaseObject;
                 } else {
                     fields = (List<ClusterReplicationTarget>)this.Field;
@@ -1983,23 +2540,78 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.AllClusterReplicationTargets(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllClusterReplicationTargets");
-            string parameters = "($clusterUuid: UUID!)\n";
+            var parameters = "($clusterUuid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllClusterReplicationTargets" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClusterReplicationTargets",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<ClusterReplicationTarget>> task = this._rbkClient.InvokeGenericCallAsync<List<ClusterReplicationTarget>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<ClusterReplicationTarget>", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // clusterEncryptionInfo(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //     sortOrder: SortOrder
+        //     clusterName: String
+        //     encryptionStatusFilter: [ClusterEncryptionStatusFilter!]! = []
+        //     keyProtection: [ClusterKeyProtection!]! = []
+        //     clusters: [UUID!]! = []
+        //     encryptionTypes: [ClusterEncryptionType!]! = []
+        //   ): ClusterEncryptionInfoConnection!
+        protected void InvokeQueryClusterEncryptionInfo()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+                Tuple.Create("sortOrder", "SortOrder"),
+                Tuple.Create("clusterName", "String"),
+                Tuple.Create("encryptionStatusFilter", "[ClusterEncryptionStatusFilter!]!"),
+                Tuple.Create("keyProtection", "[ClusterKeyProtection!]!"),
+                Tuple.Create("clusters", "[UUID!]!"),
+                Tuple.Create("encryptionTypes", "[ClusterEncryptionType!]!"),
+            };
+            ClusterEncryptionInfoConnection? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (ClusterEncryptionInfoConnection)psObject.BaseObject;
+                } else {
+                    fields = (ClusterEncryptionInfoConnection)this.Field;
+                }
+            }
+            string document = Query.ClusterEncryptionInfo(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.ClusterEncryptionInfo");
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String,$sortOrder: SortOrder,$clusterName: String,$encryptionStatusFilter: [ClusterEncryptionStatusFilter!]!,$keyProtection: [ClusterKeyProtection!]!,$clusters: [UUID!]!,$encryptionTypes: [ClusterEncryptionType!]!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryClusterEncryptionInfo" + parameters + "{" + document + "}",
+                OperationName = "QueryClusterEncryptionInfo",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterEncryptionInfoConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2012,8 +2624,7 @@ Returns the certificate signing request generated from the private key of the Ru
             HostFailoverCluster? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (HostFailoverCluster)psObject.BaseObject;
                 } else {
                     fields = (HostFailoverCluster)this.Field;
@@ -2021,23 +2632,59 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.HostFailoverCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Query.HostFailoverCluster");
-            string parameters = "($fid: UUID!)\n";
+            var parameters = "($fid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryHostFailoverCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryHostFailoverCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<HostFailoverCluster> task = this._rbkClient.InvokeGenericCallAsync<HostFailoverCluster>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "HostFailoverCluster", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // allGlobalFileSearchMultipleClusters(clusters: [UUID!]! = [], regex: String!): GlobalFileSearchReplyType!
+        protected void InvokeQueryAllGlobalFileSearchMultipleClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("clusters", "[UUID!]!"),
+                Tuple.Create("regex", "String!"),
+            };
+            GlobalFileSearchReplyType? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (GlobalFileSearchReplyType)psObject.BaseObject;
+                } else {
+                    fields = (GlobalFileSearchReplyType)this.Field;
+                }
+            }
+            string document = Query.AllGlobalFileSearchMultipleClusters(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.AllGlobalFileSearchMultipleClusters");
+            var parameters = "($clusters: [UUID!]!,$regex: String!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryAllGlobalFileSearchMultipleClusters" + parameters + "{" + document + "}",
+                OperationName = "QueryAllGlobalFileSearchMultipleClusters",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "GlobalFileSearchReplyType", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2060,8 +2707,7 @@ Returns the certificate signing request generated from the private key of the Ru
             K8sClusterConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (K8sClusterConnection)psObject.BaseObject;
                 } else {
                     fields = (K8sClusterConnection)this.Field;
@@ -2069,23 +2715,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.K8sClusters(ref fields);
             this._input.Initialize(argDefs, fields, "Query.K8sClusters");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryK8sClusters" + parameters + "{" + document + "}",
                 OperationName = "QueryK8sClusters",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<K8sClusterConnection> task = this._rbkClient.InvokeGenericCallAsync<K8sClusterConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "K8sClusterConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2098,8 +2743,7 @@ Returns the certificate signing request generated from the private key of the Ru
             WindowsCluster? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (WindowsCluster)psObject.BaseObject;
                 } else {
                     fields = (WindowsCluster)this.Field;
@@ -2107,23 +2751,147 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.WindowsCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Query.WindowsCluster");
-            string parameters = "($fid: UUID!)\n";
+            var parameters = "($fid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryWindowsCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryWindowsCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<WindowsCluster> task = this._rbkClient.InvokeGenericCallAsync<WindowsCluster>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "WindowsCluster", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // clusterSlaDomainConnection(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //   ): ClusterSlaDomainConnection!
+        protected void InvokeQueryClusterSlaDomainConnection()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+            };
+            ClusterSlaDomainConnection? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (ClusterSlaDomainConnection)psObject.BaseObject;
+                } else {
+                    fields = (ClusterSlaDomainConnection)this.Field;
+                }
+            }
+            string document = Query.ClusterSlaDomainConnection(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.ClusterSlaDomainConnection");
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryClusterSlaDomainConnection" + parameters + "{" + document + "}",
+                OperationName = "QueryClusterSlaDomainConnection",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterSlaDomainConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // clusterSlaDomainFilterConnection(
+        //     first: Int
+        //     after: String
+        //     last: Int
+        //     before: String
+        //   ): ClusterSlaDomainForFilterConnection!
+        protected void InvokeQueryClusterSlaDomainFilterConnection()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("first", "Int"),
+                Tuple.Create("after", "String"),
+                Tuple.Create("last", "Int"),
+                Tuple.Create("before", "String"),
+            };
+            ClusterSlaDomainForFilterConnection? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (ClusterSlaDomainForFilterConnection)psObject.BaseObject;
+                } else {
+                    fields = (ClusterSlaDomainForFilterConnection)this.Field;
+                }
+            }
+            string document = Query.ClusterSlaDomainFilterConnection(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.ClusterSlaDomainFilterConnection");
+            var parameters = "($first: Int,$after: String,$last: Int,$before: String)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryClusterSlaDomainFilterConnection" + parameters + "{" + document + "}",
+                OperationName = "QueryClusterSlaDomainFilterConnection",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterSlaDomainForFilterConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // verifySLAWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!): VerifySLAWithReplicationToClusterResp!
+        protected void InvokeQueryVerifySlaWithReplicationToCluster()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("cdmClusterUUID", "UUID!"),
+                Tuple.Create("includeArchived", "Boolean!"),
+            };
+            VerifySlaWithReplicationToClusterResp? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (VerifySlaWithReplicationToClusterResp)psObject.BaseObject;
+                } else {
+                    fields = (VerifySlaWithReplicationToClusterResp)this.Field;
+                }
+            }
+            string document = Query.VerifySlaWithReplicationToCluster(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.VerifySlaWithReplicationToCluster");
+            var parameters = "($cdmClusterUUID: UUID!,$includeArchived: Boolean!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryVerifySlaWithReplicationToCluster" + parameters + "{" + document + "}",
+                OperationName = "QueryVerifySlaWithReplicationToCluster",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "VerifySlaWithReplicationToClusterResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2136,8 +2904,7 @@ Returns the certificate signing request generated from the private key of the Ru
             List<SlaInfo>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<SlaInfo>)psObject.BaseObject;
                 } else {
                     fields = (List<SlaInfo>)this.Field;
@@ -2145,23 +2912,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.AllClusterGlobalSlas(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllClusterGlobalSlas");
-            string parameters = "($cdmClusterUUID: UUID!)\n";
+            var parameters = "($cdmClusterUUID: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllClusterGlobalSlas" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClusterGlobalSlas",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<SlaInfo>> task = this._rbkClient.InvokeGenericCallAsync<List<SlaInfo>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<SlaInfo>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2173,8 +2939,7 @@ Returns the certificate signing request generated from the private key of the Ru
             ClusterRegistrationProductInfoType? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (ClusterRegistrationProductInfoType)psObject.BaseObject;
                 } else {
                     fields = (ClusterRegistrationProductInfoType)this.Field;
@@ -2182,22 +2947,57 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.ClusterRegistrationProductInfo(ref fields);
             this._input.Initialize(argDefs, fields, "Query.ClusterRegistrationProductInfo");
-            string parameters = "";
+            var parameters = "";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryClusterRegistrationProductInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterRegistrationProductInfo",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
-            Task<ClusterRegistrationProductInfoType> task = this._rbkClient.InvokeGenericCallAsync<ClusterRegistrationProductInfoType>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "ClusterRegistrationProductInfoType", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // vcdClusters(input: QueryVcdClusterInput!): VcdClusterSummaryListResponse!
+        protected void InvokeQueryVcdClusters()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "QueryVcdClusterInput!"),
+            };
+            VcdClusterSummaryListResponse? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (VcdClusterSummaryListResponse)psObject.BaseObject;
+                } else {
+                    fields = (VcdClusterSummaryListResponse)this.Field;
+                }
+            }
+            string document = Query.VcdClusters(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.VcdClusters");
+            var parameters = "($input: QueryVcdClusterInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryVcdClusters" + parameters + "{" + document + "}",
+                OperationName = "QueryVcdClusters",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "VcdClusterSummaryListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2210,8 +3010,7 @@ Returns the certificate signing request generated from the private key of the Ru
             System.Boolean? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (System.Boolean)psObject.BaseObject;
                 } else {
                     fields = (System.Boolean)this.Field;
@@ -2219,23 +3018,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.IsTotpAckNecessaryForCluster(ref fields);
             this._input.Initialize(argDefs, fields, "Query.IsTotpAckNecessaryForCluster");
-            string parameters = "($clusterUuid: UUID!)\n";
+            var parameters = "($clusterUuid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryIsTotpAckNecessaryForCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryIsTotpAckNecessaryForCluster",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<System.Boolean> task = this._rbkClient.InvokeGenericCallAsync<System.Boolean>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.Boolean", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -2248,8 +3046,7 @@ Returns the certificate signing request generated from the private key of the Ru
             List<System.Boolean>? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (List<System.Boolean>)psObject.BaseObject;
                 } else {
                     fields = (List<System.Boolean>)this.Field;
@@ -2257,23 +3054,22 @@ Returns the certificate signing request generated from the private key of the Ru
             }
             string document = Query.AllClustersTotpAckStatus(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllClustersTotpAckStatus");
-            string parameters = "($listClusterUuid: [UUID!]!)\n";
+            var parameters = "($listClusterUuid: [UUID!]!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllClustersTotpAckStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClustersTotpAckStatus",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<List<System.Boolean>> task = this._rbkClient.InvokeGenericCallAsync<List<System.Boolean>>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<System.Boolean>", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

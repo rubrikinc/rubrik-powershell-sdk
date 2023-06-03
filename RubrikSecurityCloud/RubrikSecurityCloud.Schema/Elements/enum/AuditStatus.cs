@@ -18,6 +18,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "AUDIT_STATUS_UNSPECIFIED")]
         AUDIT_STATUS_UNSPECIFIED,
 
+        [EnumMember(Value = "CANCELED")]
+        CANCELED,
+
         [EnumMember(Value = "FAILURE")]
         FAILURE,
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region RansomwareResult
-    public class RansomwareResult: IFragment
+    public class RansomwareResult: BaseType
     {
         #region members
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [JsonProperty("clusterUuid")]
@@ -62,6 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> workloadId: String! (scalar)
         [JsonProperty("workloadId")]
         public System.String? WorkloadId { get; set; }
+
 
         #endregion
 
@@ -109,173 +112,159 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid != null)
-            {
-                 s += ind + "clusterUuid\n";
-
-            }
-            //      C# -> System.Single? EncryptionProbability
-            // GraphQL -> encryptionProbability: Float! (scalar)
-            if (this.EncryptionProbability != null)
-            {
-                 s += ind + "encryptionProbability\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsEncrypted
-            // GraphQL -> isEncrypted: Boolean! (scalar)
-            if (this.IsEncrypted != null)
-            {
-                 s += ind + "isEncrypted\n";
-
-            }
-            //      C# -> System.String? ManagedId
-            // GraphQL -> managedId: String! (scalar)
-            if (this.ManagedId != null)
-            {
-                 s += ind + "managedId\n";
-
-            }
-            //      C# -> DateTime? SnapshotData
-            // GraphQL -> snapshotData: DateTime! (scalar)
-            if (this.SnapshotData != null)
-            {
-                 s += ind + "snapshotData\n";
-
-            }
-            //      C# -> System.String? SnapshotFid
-            // GraphQL -> snapshotFid: String! (scalar)
-            if (this.SnapshotFid != null)
-            {
-                 s += ind + "snapshotFid\n";
-
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId != null)
-            {
-                 s += ind + "snapshotId\n";
-
-            }
-            //      C# -> System.String? WorkloadId
-            // GraphQL -> workloadId: String! (scalar)
-            if (this.WorkloadId != null)
-            {
-                 s += ind + "workloadId\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid != null) {
+            s += ind + "clusterUuid\n" ;
         }
+        //      C# -> System.Single? EncryptionProbability
+        // GraphQL -> encryptionProbability: Float! (scalar)
+        if (this.EncryptionProbability != null) {
+            s += ind + "encryptionProbability\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsEncrypted
+        // GraphQL -> isEncrypted: Boolean! (scalar)
+        if (this.IsEncrypted != null) {
+            s += ind + "isEncrypted\n" ;
+        }
+        //      C# -> System.String? ManagedId
+        // GraphQL -> managedId: String! (scalar)
+        if (this.ManagedId != null) {
+            s += ind + "managedId\n" ;
+        }
+        //      C# -> DateTime? SnapshotData
+        // GraphQL -> snapshotData: DateTime! (scalar)
+        if (this.SnapshotData != null) {
+            s += ind + "snapshotData\n" ;
+        }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: String! (scalar)
+        if (this.SnapshotFid != null) {
+            s += ind + "snapshotFid\n" ;
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId != null) {
+            s += ind + "snapshotId\n" ;
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId != null) {
+            s += ind + "workloadId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid$"))
-            {
-                this.ClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.Single? EncryptionProbability
-            // GraphQL -> encryptionProbability: Float! (scalar)
-            if (this.EncryptionProbability == null && Exploration.Includes(parent + ".encryptionProbability$"))
-            {
-                this.EncryptionProbability = new System.Single();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsEncrypted
-            // GraphQL -> isEncrypted: Boolean! (scalar)
-            if (this.IsEncrypted == null && Exploration.Includes(parent + ".isEncrypted$"))
-            {
-                this.IsEncrypted = new System.Boolean();
-            }
-            //      C# -> System.String? ManagedId
-            // GraphQL -> managedId: String! (scalar)
-            if (this.ManagedId == null && Exploration.Includes(parent + ".managedId$"))
-            {
-                this.ManagedId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? SnapshotData
-            // GraphQL -> snapshotData: DateTime! (scalar)
-            if (this.SnapshotData == null && Exploration.Includes(parent + ".snapshotData$"))
-            {
-                this.SnapshotData = new DateTime();
-            }
-            //      C# -> System.String? SnapshotFid
-            // GraphQL -> snapshotFid: String! (scalar)
-            if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid$"))
-            {
-                this.SnapshotFid = new System.String("FETCH");
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId$"))
-            {
-                this.SnapshotId = new System.String("FETCH");
-            }
-            //      C# -> System.String? WorkloadId
-            // GraphQL -> workloadId: String! (scalar)
-            if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId$"))
-            {
-                this.WorkloadId = new System.String("FETCH");
-            }
+            this.ClusterUuid = new System.String("FETCH");
         }
+        //      C# -> System.Single? EncryptionProbability
+        // GraphQL -> encryptionProbability: Float! (scalar)
+        if (this.EncryptionProbability == null && Exploration.Includes(parent + ".encryptionProbability", true))
+        {
+            this.EncryptionProbability = new System.Single();
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsEncrypted
+        // GraphQL -> isEncrypted: Boolean! (scalar)
+        if (this.IsEncrypted == null && Exploration.Includes(parent + ".isEncrypted", true))
+        {
+            this.IsEncrypted = true;
+        }
+        //      C# -> System.String? ManagedId
+        // GraphQL -> managedId: String! (scalar)
+        if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
+        {
+            this.ManagedId = new System.String("FETCH");
+        }
+        //      C# -> DateTime? SnapshotData
+        // GraphQL -> snapshotData: DateTime! (scalar)
+        if (this.SnapshotData == null && Exploration.Includes(parent + ".snapshotData", true))
+        {
+            this.SnapshotData = new DateTime();
+        }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: String! (scalar)
+        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        {
+            this.SnapshotFid = new System.String("FETCH");
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        {
+            this.SnapshotId = new System.String("FETCH");
+        }
+        //      C# -> System.String? WorkloadId
+        // GraphQL -> workloadId: String! (scalar)
+        if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
+        {
+            this.WorkloadId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class RansomwareResult
+    
     #endregion
 
     public static class ListRansomwareResultExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<RansomwareResult> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<RansomwareResult> list, 
             String parent = "")
         {
-            var item = new RansomwareResult();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new RansomwareResult());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

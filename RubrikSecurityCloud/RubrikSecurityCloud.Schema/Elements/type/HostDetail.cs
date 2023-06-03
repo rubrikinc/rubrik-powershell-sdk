@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region HostDetail
-    public class HostDetail: IFragment
+    public class HostDetail: BaseType
     {
         #region members
+
+        //      C# -> HostVfdState? HostVfdDriverState
+        // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
+        [JsonProperty("hostVfdDriverState")]
+        public HostVfdState? HostVfdDriverState { get; set; }
+
+        //      C# -> HostVfdInstallConfig? HostVfdEnabled
+        // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
+        [JsonProperty("hostVfdEnabled")]
+        public HostVfdInstallConfig? HostVfdEnabled { get; set; }
+
         //      C# -> System.String? AgentId
         // GraphQL -> agentId: String (scalar)
         [JsonProperty("agentId")]
@@ -58,21 +70,14 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("hostSummary")]
         public HostSummary? HostSummary { get; set; }
 
-        //      C# -> HostVfdState? HostVfdDriverState
-        // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
-        [JsonProperty("hostVfdDriverState")]
-        public HostVfdState? HostVfdDriverState { get; set; }
-
-        //      C# -> HostVfdInstallConfig? HostVfdEnabled
-        // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
-        [JsonProperty("hostVfdEnabled")]
-        public HostVfdInstallConfig? HostVfdEnabled { get; set; }
 
         #endregion
 
     #region methods
 
     public HostDetail Set(
+        HostVfdState? HostVfdDriverState = null,
+        HostVfdInstallConfig? HostVfdEnabled = null,
         System.String? AgentId = null,
         System.Boolean? CompressionEnabled = null,
         System.Boolean? IsOracleHost = null,
@@ -80,11 +85,15 @@ namespace Rubrik.SecurityCloud.Types
         System.Boolean? MssqlCbtDriverInstalled = null,
         System.String? OracleQueryUser = null,
         System.String? OracleSysDbaUser = null,
-        HostSummary? HostSummary = null,
-        HostVfdState? HostVfdDriverState = null,
-        HostVfdInstallConfig? HostVfdEnabled = null
+        HostSummary? HostSummary = null
     ) 
     {
+        if ( HostVfdDriverState != null ) {
+            this.HostVfdDriverState = HostVfdDriverState;
+        }
+        if ( HostVfdEnabled != null ) {
+            this.HostVfdEnabled = HostVfdEnabled;
+        }
         if ( AgentId != null ) {
             this.AgentId = AgentId;
         }
@@ -109,199 +118,174 @@ namespace Rubrik.SecurityCloud.Types
         if ( HostSummary != null ) {
             this.HostSummary = HostSummary;
         }
-        if ( HostVfdDriverState != null ) {
-            this.HostVfdDriverState = HostVfdDriverState;
-        }
-        if ( HostVfdEnabled != null ) {
-            this.HostVfdEnabled = HostVfdEnabled;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AgentId
-            // GraphQL -> agentId: String (scalar)
-            if (this.AgentId != null)
-            {
-                 s += ind + "agentId\n";
-
-            }
-            //      C# -> System.Boolean? CompressionEnabled
-            // GraphQL -> compressionEnabled: Boolean (scalar)
-            if (this.CompressionEnabled != null)
-            {
-                 s += ind + "compressionEnabled\n";
-
-            }
-            //      C# -> System.Boolean? IsOracleHost
-            // GraphQL -> isOracleHost: Boolean (scalar)
-            if (this.IsOracleHost != null)
-            {
-                 s += ind + "isOracleHost\n";
-
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic != null)
-            {
-                 s += ind + "isRelic\n";
-
-            }
-            //      C# -> System.Boolean? MssqlCbtDriverInstalled
-            // GraphQL -> mssqlCbtDriverInstalled: Boolean! (scalar)
-            if (this.MssqlCbtDriverInstalled != null)
-            {
-                 s += ind + "mssqlCbtDriverInstalled\n";
-
-            }
-            //      C# -> System.String? OracleQueryUser
-            // GraphQL -> oracleQueryUser: String (scalar)
-            if (this.OracleQueryUser != null)
-            {
-                 s += ind + "oracleQueryUser\n";
-
-            }
-            //      C# -> System.String? OracleSysDbaUser
-            // GraphQL -> oracleSysDbaUser: String (scalar)
-            if (this.OracleSysDbaUser != null)
-            {
-                 s += ind + "oracleSysDbaUser\n";
-
-            }
-            //      C# -> HostSummary? HostSummary
-            // GraphQL -> hostSummary: HostSummary (type)
-            if (this.HostSummary != null)
-            {
-                 s += ind + "hostSummary\n";
-
-                 s += ind + "{\n" + 
-                 this.HostSummary.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> HostVfdState? HostVfdDriverState
-            // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
-            if (this.HostVfdDriverState != null)
-            {
-                 s += ind + "hostVfdDriverState\n";
-
-            }
-            //      C# -> HostVfdInstallConfig? HostVfdEnabled
-            // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
-            if (this.HostVfdEnabled != null)
-            {
-                 s += ind + "hostVfdEnabled\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> HostVfdState? HostVfdDriverState
+        // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
+        if (this.HostVfdDriverState != null) {
+            s += ind + "hostVfdDriverState\n" ;
         }
+        //      C# -> HostVfdInstallConfig? HostVfdEnabled
+        // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
+        if (this.HostVfdEnabled != null) {
+            s += ind + "hostVfdEnabled\n" ;
+        }
+        //      C# -> System.String? AgentId
+        // GraphQL -> agentId: String (scalar)
+        if (this.AgentId != null) {
+            s += ind + "agentId\n" ;
+        }
+        //      C# -> System.Boolean? CompressionEnabled
+        // GraphQL -> compressionEnabled: Boolean (scalar)
+        if (this.CompressionEnabled != null) {
+            s += ind + "compressionEnabled\n" ;
+        }
+        //      C# -> System.Boolean? IsOracleHost
+        // GraphQL -> isOracleHost: Boolean (scalar)
+        if (this.IsOracleHost != null) {
+            s += ind + "isOracleHost\n" ;
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic != null) {
+            s += ind + "isRelic\n" ;
+        }
+        //      C# -> System.Boolean? MssqlCbtDriverInstalled
+        // GraphQL -> mssqlCbtDriverInstalled: Boolean! (scalar)
+        if (this.MssqlCbtDriverInstalled != null) {
+            s += ind + "mssqlCbtDriverInstalled\n" ;
+        }
+        //      C# -> System.String? OracleQueryUser
+        // GraphQL -> oracleQueryUser: String (scalar)
+        if (this.OracleQueryUser != null) {
+            s += ind + "oracleQueryUser\n" ;
+        }
+        //      C# -> System.String? OracleSysDbaUser
+        // GraphQL -> oracleSysDbaUser: String (scalar)
+        if (this.OracleSysDbaUser != null) {
+            s += ind + "oracleSysDbaUser\n" ;
+        }
+        //      C# -> HostSummary? HostSummary
+        // GraphQL -> hostSummary: HostSummary (type)
+        if (this.HostSummary != null) {
+            s += ind + "hostSummary {\n" + this.HostSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> HostVfdState? HostVfdDriverState
+        // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
+        if (this.HostVfdDriverState == null && Exploration.Includes(parent + ".hostVfdDriverState", true))
         {
-            //      C# -> System.String? AgentId
-            // GraphQL -> agentId: String (scalar)
-            if (this.AgentId == null && Exploration.Includes(parent + ".agentId$"))
-            {
-                this.AgentId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? CompressionEnabled
-            // GraphQL -> compressionEnabled: Boolean (scalar)
-            if (this.CompressionEnabled == null && Exploration.Includes(parent + ".compressionEnabled$"))
-            {
-                this.CompressionEnabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsOracleHost
-            // GraphQL -> isOracleHost: Boolean (scalar)
-            if (this.IsOracleHost == null && Exploration.Includes(parent + ".isOracleHost$"))
-            {
-                this.IsOracleHost = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic$"))
-            {
-                this.IsRelic = new System.Boolean();
-            }
-            //      C# -> System.Boolean? MssqlCbtDriverInstalled
-            // GraphQL -> mssqlCbtDriverInstalled: Boolean! (scalar)
-            if (this.MssqlCbtDriverInstalled == null && Exploration.Includes(parent + ".mssqlCbtDriverInstalled$"))
-            {
-                this.MssqlCbtDriverInstalled = new System.Boolean();
-            }
-            //      C# -> System.String? OracleQueryUser
-            // GraphQL -> oracleQueryUser: String (scalar)
-            if (this.OracleQueryUser == null && Exploration.Includes(parent + ".oracleQueryUser$"))
-            {
-                this.OracleQueryUser = new System.String("FETCH");
-            }
-            //      C# -> System.String? OracleSysDbaUser
-            // GraphQL -> oracleSysDbaUser: String (scalar)
-            if (this.OracleSysDbaUser == null && Exploration.Includes(parent + ".oracleSysDbaUser$"))
-            {
-                this.OracleSysDbaUser = new System.String("FETCH");
-            }
-            //      C# -> HostSummary? HostSummary
-            // GraphQL -> hostSummary: HostSummary (type)
-            if (this.HostSummary == null && Exploration.Includes(parent + ".hostSummary"))
-            {
-                this.HostSummary = new HostSummary();
-                this.HostSummary.ApplyExploratoryFragment(parent + ".hostSummary");
-            }
-            //      C# -> HostVfdState? HostVfdDriverState
-            // GraphQL -> hostVfdDriverState: HostVfdState! (enum)
-            if (this.HostVfdDriverState == null && Exploration.Includes(parent + ".hostVfdDriverState$"))
-            {
-                this.HostVfdDriverState = new HostVfdState();
-            }
-            //      C# -> HostVfdInstallConfig? HostVfdEnabled
-            // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
-            if (this.HostVfdEnabled == null && Exploration.Includes(parent + ".hostVfdEnabled$"))
-            {
-                this.HostVfdEnabled = new HostVfdInstallConfig();
-            }
+            this.HostVfdDriverState = new HostVfdState();
         }
+        //      C# -> HostVfdInstallConfig? HostVfdEnabled
+        // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
+        if (this.HostVfdEnabled == null && Exploration.Includes(parent + ".hostVfdEnabled", true))
+        {
+            this.HostVfdEnabled = new HostVfdInstallConfig();
+        }
+        //      C# -> System.String? AgentId
+        // GraphQL -> agentId: String (scalar)
+        if (this.AgentId == null && Exploration.Includes(parent + ".agentId", true))
+        {
+            this.AgentId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? CompressionEnabled
+        // GraphQL -> compressionEnabled: Boolean (scalar)
+        if (this.CompressionEnabled == null && Exploration.Includes(parent + ".compressionEnabled", true))
+        {
+            this.CompressionEnabled = true;
+        }
+        //      C# -> System.Boolean? IsOracleHost
+        // GraphQL -> isOracleHost: Boolean (scalar)
+        if (this.IsOracleHost == null && Exploration.Includes(parent + ".isOracleHost", true))
+        {
+            this.IsOracleHost = true;
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        {
+            this.IsRelic = true;
+        }
+        //      C# -> System.Boolean? MssqlCbtDriverInstalled
+        // GraphQL -> mssqlCbtDriverInstalled: Boolean! (scalar)
+        if (this.MssqlCbtDriverInstalled == null && Exploration.Includes(parent + ".mssqlCbtDriverInstalled", true))
+        {
+            this.MssqlCbtDriverInstalled = true;
+        }
+        //      C# -> System.String? OracleQueryUser
+        // GraphQL -> oracleQueryUser: String (scalar)
+        if (this.OracleQueryUser == null && Exploration.Includes(parent + ".oracleQueryUser", true))
+        {
+            this.OracleQueryUser = new System.String("FETCH");
+        }
+        //      C# -> System.String? OracleSysDbaUser
+        // GraphQL -> oracleSysDbaUser: String (scalar)
+        if (this.OracleSysDbaUser == null && Exploration.Includes(parent + ".oracleSysDbaUser", true))
+        {
+            this.OracleSysDbaUser = new System.String("FETCH");
+        }
+        //      C# -> HostSummary? HostSummary
+        // GraphQL -> hostSummary: HostSummary (type)
+        if (this.HostSummary == null && Exploration.Includes(parent + ".hostSummary"))
+        {
+            this.HostSummary = new HostSummary();
+            this.HostSummary.ApplyExploratoryFieldSpec(parent + ".hostSummary");
+        }
+    }
 
 
     #endregion
 
     } // class HostDetail
+    
     #endregion
 
     public static class ListHostDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<HostDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<HostDetail> list, 
             String parent = "")
         {
-            var item = new HostDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new HostDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

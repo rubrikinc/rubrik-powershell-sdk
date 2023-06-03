@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateMssqlLogShippingConfigurationReply
-    public class UpdateMssqlLogShippingConfigurationReply: IFragment
+    public class UpdateMssqlLogShippingConfigurationReply: BaseType
     {
         #region members
+
         //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
         // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
         [JsonProperty("shouldDisconnectStandbyUsers")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
         [JsonProperty("mssqlLogShippingSummaryV2")]
         public MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2 { get; set; }
+
 
         #endregion
 
@@ -55,103 +58,95 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
-            // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
-            if (this.ShouldDisconnectStandbyUsers != null)
-            {
-                 s += ind + "shouldDisconnectStandbyUsers\n";
-
-            }
-            //      C# -> MssqlLogShippingLinks? Links
-            // GraphQL -> links: MssqlLogShippingLinks (type)
-            if (this.Links != null)
-            {
-                 s += ind + "links\n";
-
-                 s += ind + "{\n" + 
-                 this.Links.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2
-            // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
-            if (this.MssqlLogShippingSummaryV2 != null)
-            {
-                 s += ind + "mssqlLogShippingSummaryV2\n";
-
-                 s += ind + "{\n" + 
-                 this.MssqlLogShippingSummaryV2.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
+        // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
+        if (this.ShouldDisconnectStandbyUsers != null) {
+            s += ind + "shouldDisconnectStandbyUsers\n" ;
         }
+        //      C# -> MssqlLogShippingLinks? Links
+        // GraphQL -> links: MssqlLogShippingLinks (type)
+        if (this.Links != null) {
+            s += ind + "links {\n" + this.Links.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2
+        // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
+        if (this.MssqlLogShippingSummaryV2 != null) {
+            s += ind + "mssqlLogShippingSummaryV2 {\n" + this.MssqlLogShippingSummaryV2.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
+        // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
+        if (this.ShouldDisconnectStandbyUsers == null && Exploration.Includes(parent + ".shouldDisconnectStandbyUsers", true))
         {
-            //      C# -> System.Boolean? ShouldDisconnectStandbyUsers
-            // GraphQL -> shouldDisconnectStandbyUsers: Boolean (scalar)
-            if (this.ShouldDisconnectStandbyUsers == null && Exploration.Includes(parent + ".shouldDisconnectStandbyUsers$"))
-            {
-                this.ShouldDisconnectStandbyUsers = new System.Boolean();
-            }
-            //      C# -> MssqlLogShippingLinks? Links
-            // GraphQL -> links: MssqlLogShippingLinks (type)
-            if (this.Links == null && Exploration.Includes(parent + ".links"))
-            {
-                this.Links = new MssqlLogShippingLinks();
-                this.Links.ApplyExploratoryFragment(parent + ".links");
-            }
-            //      C# -> MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2
-            // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
-            if (this.MssqlLogShippingSummaryV2 == null && Exploration.Includes(parent + ".mssqlLogShippingSummaryV2"))
-            {
-                this.MssqlLogShippingSummaryV2 = new MssqlLogShippingSummaryV2();
-                this.MssqlLogShippingSummaryV2.ApplyExploratoryFragment(parent + ".mssqlLogShippingSummaryV2");
-            }
+            this.ShouldDisconnectStandbyUsers = true;
         }
+        //      C# -> MssqlLogShippingLinks? Links
+        // GraphQL -> links: MssqlLogShippingLinks (type)
+        if (this.Links == null && Exploration.Includes(parent + ".links"))
+        {
+            this.Links = new MssqlLogShippingLinks();
+            this.Links.ApplyExploratoryFieldSpec(parent + ".links");
+        }
+        //      C# -> MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2
+        // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
+        if (this.MssqlLogShippingSummaryV2 == null && Exploration.Includes(parent + ".mssqlLogShippingSummaryV2"))
+        {
+            this.MssqlLogShippingSummaryV2 = new MssqlLogShippingSummaryV2();
+            this.MssqlLogShippingSummaryV2.ApplyExploratoryFieldSpec(parent + ".mssqlLogShippingSummaryV2");
+        }
+    }
 
 
     #endregion
 
     } // class UpdateMssqlLogShippingConfigurationReply
+    
     #endregion
 
     public static class ListUpdateMssqlLogShippingConfigurationReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<UpdateMssqlLogShippingConfigurationReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<UpdateMssqlLogShippingConfigurationReply> list, 
             String parent = "")
         {
-            var item = new UpdateMssqlLogShippingConfigurationReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new UpdateMssqlLogShippingConfigurationReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

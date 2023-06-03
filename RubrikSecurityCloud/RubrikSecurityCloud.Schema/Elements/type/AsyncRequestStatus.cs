@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AsyncRequestStatus
-    public class AsyncRequestStatus: IFragment
+    public class AsyncRequestStatus: BaseType
     {
         #region members
+
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
         [JsonProperty("endTime")]
@@ -57,6 +59,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> links: [Link!]! (type)
         [JsonProperty("links")]
         public List<Link>? Links { get; set; }
+
 
         #endregion
 
@@ -100,168 +103,150 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime (scalar)
-            if (this.EndTime != null)
-            {
-                 s += ind + "endTime\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? NodeId
-            // GraphQL -> nodeId: String (scalar)
-            if (this.NodeId != null)
-            {
-                 s += ind + "nodeId\n";
-
-            }
-            //      C# -> System.Single? Progress
-            // GraphQL -> progress: Float (scalar)
-            if (this.Progress != null)
-            {
-                 s += ind + "progress\n";
-
-            }
-            //      C# -> DateTime? StartTime
-            // GraphQL -> startTime: DateTime (scalar)
-            if (this.StartTime != null)
-            {
-                 s += ind + "startTime\n";
-
-            }
-            //      C# -> System.String? Status
-            // GraphQL -> status: String! (scalar)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            //      C# -> RequestErrorInfo? Error
-            // GraphQL -> error: RequestErrorInfo (type)
-            if (this.Error != null)
-            {
-                 s += ind + "error\n";
-
-                 s += ind + "{\n" + 
-                 this.Error.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<Link>? Links
-            // GraphQL -> links: [Link!]! (type)
-            if (this.Links != null)
-            {
-                 s += ind + "links\n";
-
-                 s += ind + "{\n" + 
-                 this.Links.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime (scalar)
+        if (this.EndTime != null) {
+            s += ind + "endTime\n" ;
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? NodeId
+        // GraphQL -> nodeId: String (scalar)
+        if (this.NodeId != null) {
+            s += ind + "nodeId\n" ;
+        }
+        //      C# -> System.Single? Progress
+        // GraphQL -> progress: Float (scalar)
+        if (this.Progress != null) {
+            s += ind + "progress\n" ;
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        if (this.StartTime != null) {
+            s += ind + "startTime\n" ;
+        }
+        //      C# -> System.String? Status
+        // GraphQL -> status: String! (scalar)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
+        }
+        //      C# -> RequestErrorInfo? Error
+        // GraphQL -> error: RequestErrorInfo (type)
+        if (this.Error != null) {
+            s += ind + "error {\n" + this.Error.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<Link>? Links
+        // GraphQL -> links: [Link!]! (type)
+        if (this.Links != null) {
+            s += ind + "links {\n" + this.Links.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime (scalar)
+        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
         {
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime (scalar)
-            if (this.EndTime == null && Exploration.Includes(parent + ".endTime$"))
-            {
-                this.EndTime = new DateTime();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? NodeId
-            // GraphQL -> nodeId: String (scalar)
-            if (this.NodeId == null && Exploration.Includes(parent + ".nodeId$"))
-            {
-                this.NodeId = new System.String("FETCH");
-            }
-            //      C# -> System.Single? Progress
-            // GraphQL -> progress: Float (scalar)
-            if (this.Progress == null && Exploration.Includes(parent + ".progress$"))
-            {
-                this.Progress = new System.Single();
-            }
-            //      C# -> DateTime? StartTime
-            // GraphQL -> startTime: DateTime (scalar)
-            if (this.StartTime == null && Exploration.Includes(parent + ".startTime$"))
-            {
-                this.StartTime = new DateTime();
-            }
-            //      C# -> System.String? Status
-            // GraphQL -> status: String! (scalar)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new System.String("FETCH");
-            }
-            //      C# -> RequestErrorInfo? Error
-            // GraphQL -> error: RequestErrorInfo (type)
-            if (this.Error == null && Exploration.Includes(parent + ".error"))
-            {
-                this.Error = new RequestErrorInfo();
-                this.Error.ApplyExploratoryFragment(parent + ".error");
-            }
-            //      C# -> List<Link>? Links
-            // GraphQL -> links: [Link!]! (type)
-            if (this.Links == null && Exploration.Includes(parent + ".links"))
-            {
-                this.Links = new List<Link>();
-                this.Links.ApplyExploratoryFragment(parent + ".links");
-            }
+            this.EndTime = new DateTime();
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? NodeId
+        // GraphQL -> nodeId: String (scalar)
+        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        {
+            this.NodeId = new System.String("FETCH");
+        }
+        //      C# -> System.Single? Progress
+        // GraphQL -> progress: Float (scalar)
+        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        {
+            this.Progress = new System.Single();
+        }
+        //      C# -> DateTime? StartTime
+        // GraphQL -> startTime: DateTime (scalar)
+        if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
+        {
+            this.StartTime = new DateTime();
+        }
+        //      C# -> System.String? Status
+        // GraphQL -> status: String! (scalar)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        {
+            this.Status = new System.String("FETCH");
+        }
+        //      C# -> RequestErrorInfo? Error
+        // GraphQL -> error: RequestErrorInfo (type)
+        if (this.Error == null && Exploration.Includes(parent + ".error"))
+        {
+            this.Error = new RequestErrorInfo();
+            this.Error.ApplyExploratoryFieldSpec(parent + ".error");
+        }
+        //      C# -> List<Link>? Links
+        // GraphQL -> links: [Link!]! (type)
+        if (this.Links == null && Exploration.Includes(parent + ".links"))
+        {
+            this.Links = new List<Link>();
+            this.Links.ApplyExploratoryFieldSpec(parent + ".links");
+        }
+    }
 
 
     #endregion
 
     } // class AsyncRequestStatus
+    
     #endregion
 
     public static class ListAsyncRequestStatusExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AsyncRequestStatus> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AsyncRequestStatus> list, 
             String parent = "")
         {
-            var item = new AsyncRequestStatus();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AsyncRequestStatus());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

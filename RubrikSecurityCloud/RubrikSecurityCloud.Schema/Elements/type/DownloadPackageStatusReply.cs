@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region DownloadPackageStatusReply
-    public class DownloadPackageStatusReply: IFragment
+    public class DownloadPackageStatusReply: BaseType
     {
         #region members
+
         //      C# -> System.String? Availability
         // GraphQL -> availability: String! (scalar)
         [JsonProperty("availability")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
         [JsonProperty("downloadJobInfo")]
         public DownloadJobInfo? DownloadJobInfo { get; set; }
+
 
         #endregion
 
@@ -82,138 +85,127 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Availability
-            // GraphQL -> availability: String! (scalar)
-            if (this.Availability != null)
-            {
-                 s += ind + "availability\n";
-
-            }
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description != null)
-            {
-                 s += ind + "description\n";
-
-            }
-            //      C# -> System.String? Md5Sum
-            // GraphQL -> md5Sum: String! (scalar)
-            if (this.Md5Sum != null)
-            {
-                 s += ind + "md5Sum\n";
-
-            }
-            //      C# -> System.Int64? Size
-            // GraphQL -> size: Long! (scalar)
-            if (this.Size != null)
-            {
-                 s += ind + "size\n";
-
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String! (scalar)
-            if (this.Version != null)
-            {
-                 s += ind + "version\n";
-
-            }
-            //      C# -> DownloadJobInfo? DownloadJobInfo
-            // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
-            if (this.DownloadJobInfo != null)
-            {
-                 s += ind + "downloadJobInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.DownloadJobInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Availability
+        // GraphQL -> availability: String! (scalar)
+        if (this.Availability != null) {
+            s += ind + "availability\n" ;
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            s += ind + "description\n" ;
+        }
+        //      C# -> System.String? Md5Sum
+        // GraphQL -> md5Sum: String! (scalar)
+        if (this.Md5Sum != null) {
+            s += ind + "md5Sum\n" ;
+        }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long! (scalar)
+        if (this.Size != null) {
+            s += ind + "size\n" ;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version != null) {
+            s += ind + "version\n" ;
+        }
+        //      C# -> DownloadJobInfo? DownloadJobInfo
+        // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
+        if (this.DownloadJobInfo != null) {
+            s += ind + "downloadJobInfo {\n" + this.DownloadJobInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Availability
+        // GraphQL -> availability: String! (scalar)
+        if (this.Availability == null && Exploration.Includes(parent + ".availability", true))
         {
-            //      C# -> System.String? Availability
-            // GraphQL -> availability: String! (scalar)
-            if (this.Availability == null && Exploration.Includes(parent + ".availability$"))
-            {
-                this.Availability = new System.String("FETCH");
-            }
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description == null && Exploration.Includes(parent + ".description$"))
-            {
-                this.Description = new System.String("FETCH");
-            }
-            //      C# -> System.String? Md5Sum
-            // GraphQL -> md5Sum: String! (scalar)
-            if (this.Md5Sum == null && Exploration.Includes(parent + ".md5Sum$"))
-            {
-                this.Md5Sum = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? Size
-            // GraphQL -> size: Long! (scalar)
-            if (this.Size == null && Exploration.Includes(parent + ".size$"))
-            {
-                this.Size = new System.Int64();
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String! (scalar)
-            if (this.Version == null && Exploration.Includes(parent + ".version$"))
-            {
-                this.Version = new System.String("FETCH");
-            }
-            //      C# -> DownloadJobInfo? DownloadJobInfo
-            // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
-            if (this.DownloadJobInfo == null && Exploration.Includes(parent + ".downloadJobInfo"))
-            {
-                this.DownloadJobInfo = new DownloadJobInfo();
-                this.DownloadJobInfo.ApplyExploratoryFragment(parent + ".downloadJobInfo");
-            }
+            this.Availability = new System.String("FETCH");
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        {
+            this.Description = new System.String("FETCH");
+        }
+        //      C# -> System.String? Md5Sum
+        // GraphQL -> md5Sum: String! (scalar)
+        if (this.Md5Sum == null && Exploration.Includes(parent + ".md5Sum", true))
+        {
+            this.Md5Sum = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long! (scalar)
+        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        {
+            this.Size = new System.Int64();
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        {
+            this.Version = new System.String("FETCH");
+        }
+        //      C# -> DownloadJobInfo? DownloadJobInfo
+        // GraphQL -> downloadJobInfo: DownloadJobInfo (type)
+        if (this.DownloadJobInfo == null && Exploration.Includes(parent + ".downloadJobInfo"))
+        {
+            this.DownloadJobInfo = new DownloadJobInfo();
+            this.DownloadJobInfo.ApplyExploratoryFieldSpec(parent + ".downloadJobInfo");
+        }
+    }
 
 
     #endregion
 
     } // class DownloadPackageStatusReply
+    
     #endregion
 
     public static class ListDownloadPackageStatusReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<DownloadPackageStatusReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<DownloadPackageStatusReply> list, 
             String parent = "")
         {
-            var item = new DownloadPackageStatusReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new DownloadPackageStatusReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

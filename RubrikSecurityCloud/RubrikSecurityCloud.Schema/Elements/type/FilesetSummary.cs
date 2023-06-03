@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region FilesetSummary
-    public class FilesetSummary: IFragment
+    public class FilesetSummary: BaseType
     {
         #region members
+
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
         [JsonProperty("effectiveSlaDomainId")]
@@ -143,6 +145,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("slaAssignable")]
         public SlaAssignable? SlaAssignable { get; set; }
 
+
         #endregion
 
     #region methods
@@ -253,397 +256,339 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? EffectiveSlaDomainId
-            // GraphQL -> effectiveSlaDomainId: String (scalar)
-            if (this.EffectiveSlaDomainId != null)
-            {
-                 s += ind + "effectiveSlaDomainId\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaDomainName
-            // GraphQL -> effectiveSlaDomainName: String (scalar)
-            if (this.EffectiveSlaDomainName != null)
-            {
-                 s += ind + "effectiveSlaDomainName\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
-            // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-            if (this.EffectiveSlaDomainPolarisManagedId != null)
-            {
-                 s += ind + "effectiveSlaDomainPolarisManagedId\n";
-
-            }
-            //      C# -> System.Boolean? EnableHardlinkSupport
-            // GraphQL -> enableHardlinkSupport: Boolean (scalar)
-            if (this.EnableHardlinkSupport != null)
-            {
-                 s += ind + "enableHardlinkSupport\n";
-
-            }
-            //      C# -> System.Boolean? EnableSymlinkResolution
-            // GraphQL -> enableSymlinkResolution: Boolean (scalar)
-            if (this.EnableSymlinkResolution != null)
-            {
-                 s += ind + "enableSymlinkResolution\n";
-
-            }
-            //      C# -> List<System.String>? Exceptions
-            // GraphQL -> exceptions: [String!]! (scalar)
-            if (this.Exceptions != null)
-            {
-                 s += ind + "exceptions\n";
-
-            }
-            //      C# -> List<System.String>? Excludes
-            // GraphQL -> excludes: [String!]! (scalar)
-            if (this.Excludes != null)
-            {
-                 s += ind + "excludes\n";
-
-            }
-            //      C# -> System.String? FailoverClusterAppId
-            // GraphQL -> failoverClusterAppId: String (scalar)
-            if (this.FailoverClusterAppId != null)
-            {
-                 s += ind + "failoverClusterAppId\n";
-
-            }
-            //      C# -> System.String? FailoverClusterAppName
-            // GraphQL -> failoverClusterAppName: String (scalar)
-            if (this.FailoverClusterAppName != null)
-            {
-                 s += ind + "failoverClusterAppName\n";
-
-            }
-            //      C# -> System.String? HostId
-            // GraphQL -> hostId: String (scalar)
-            if (this.HostId != null)
-            {
-                 s += ind + "hostId\n";
-
-            }
-            //      C# -> System.String? HostName
-            // GraphQL -> hostName: String! (scalar)
-            if (this.HostName != null)
-            {
-                 s += ind + "hostName\n";
-
-            }
-            //      C# -> List<System.String>? Includes
-            // GraphQL -> includes: [String!]! (scalar)
-            if (this.Includes != null)
-            {
-                 s += ind + "includes\n";
-
-            }
-            //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
-            // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
-            if (this.IsEffectiveSlaDomainRetentionLocked != null)
-            {
-                 s += ind + "isEffectiveSlaDomainRetentionLocked\n";
-
-            }
-            //      C# -> System.Boolean? IsPassthrough
-            // GraphQL -> isPassthrough: Boolean (scalar)
-            if (this.IsPassthrough != null)
-            {
-                 s += ind + "isPassthrough\n";
-
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic != null)
-            {
-                 s += ind + "isRelic\n";
-
-            }
-            //      C# -> System.String? OperatingSystemType
-            // GraphQL -> operatingSystemType: String (scalar)
-            if (this.OperatingSystemType != null)
-            {
-                 s += ind + "operatingSystemType\n";
-
-            }
-            //      C# -> System.String? ShareId
-            // GraphQL -> shareId: String (scalar)
-            if (this.ShareId != null)
-            {
-                 s += ind + "shareId\n";
-
-            }
-            //      C# -> System.String? SnapMirrorLabelForFullBackup
-            // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
-            if (this.SnapMirrorLabelForFullBackup != null)
-            {
-                 s += ind + "snapMirrorLabelForFullBackup\n";
-
-            }
-            //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
-            // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
-            if (this.SnapMirrorLabelForIncrementalBackup != null)
-            {
-                 s += ind + "snapMirrorLabelForIncrementalBackup\n";
-
-            }
-            //      C# -> System.String? TemplateId
-            // GraphQL -> templateId: String! (scalar)
-            if (this.TemplateId != null)
-            {
-                 s += ind + "templateId\n";
-
-            }
-            //      C# -> System.String? TemplateName
-            // GraphQL -> templateName: String! (scalar)
-            if (this.TemplateName != null)
-            {
-                 s += ind + "templateName\n";
-
-            }
-            //      C# -> FilesetArraySpec? ArraySpec
-            // GraphQL -> arraySpec: FilesetArraySpec (type)
-            if (this.ArraySpec != null)
-            {
-                 s += ind + "arraySpec\n";
-
-                 s += ind + "{\n" + 
-                 this.ArraySpec.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> FilesetOptions? FilesetOptions
-            // GraphQL -> filesetOptions: FilesetOptions (type)
-            if (this.FilesetOptions != null)
-            {
-                 s += ind + "filesetOptions\n";
-
-                 s += ind + "{\n" + 
-                 this.FilesetOptions.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
-            // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-            if (this.PendingSlaDomain != null)
-            {
-                 s += ind + "pendingSlaDomain\n";
-
-                 s += ind + "{\n" + 
-                 this.PendingSlaDomain.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable != null)
-            {
-                 s += ind + "slaAssignable\n";
-
-                 s += ind + "{\n" + 
-                 this.SlaAssignable.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? EffectiveSlaDomainId
+        // GraphQL -> effectiveSlaDomainId: String (scalar)
+        if (this.EffectiveSlaDomainId != null) {
+            s += ind + "effectiveSlaDomainId\n" ;
         }
+        //      C# -> System.String? EffectiveSlaDomainName
+        // GraphQL -> effectiveSlaDomainName: String (scalar)
+        if (this.EffectiveSlaDomainName != null) {
+            s += ind + "effectiveSlaDomainName\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
+        // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
+        if (this.EffectiveSlaDomainPolarisManagedId != null) {
+            s += ind + "effectiveSlaDomainPolarisManagedId\n" ;
+        }
+        //      C# -> System.Boolean? EnableHardlinkSupport
+        // GraphQL -> enableHardlinkSupport: Boolean (scalar)
+        if (this.EnableHardlinkSupport != null) {
+            s += ind + "enableHardlinkSupport\n" ;
+        }
+        //      C# -> System.Boolean? EnableSymlinkResolution
+        // GraphQL -> enableSymlinkResolution: Boolean (scalar)
+        if (this.EnableSymlinkResolution != null) {
+            s += ind + "enableSymlinkResolution\n" ;
+        }
+        //      C# -> List<System.String>? Exceptions
+        // GraphQL -> exceptions: [String!]! (scalar)
+        if (this.Exceptions != null) {
+            s += ind + "exceptions\n" ;
+        }
+        //      C# -> List<System.String>? Excludes
+        // GraphQL -> excludes: [String!]! (scalar)
+        if (this.Excludes != null) {
+            s += ind + "excludes\n" ;
+        }
+        //      C# -> System.String? FailoverClusterAppId
+        // GraphQL -> failoverClusterAppId: String (scalar)
+        if (this.FailoverClusterAppId != null) {
+            s += ind + "failoverClusterAppId\n" ;
+        }
+        //      C# -> System.String? FailoverClusterAppName
+        // GraphQL -> failoverClusterAppName: String (scalar)
+        if (this.FailoverClusterAppName != null) {
+            s += ind + "failoverClusterAppName\n" ;
+        }
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String (scalar)
+        if (this.HostId != null) {
+            s += ind + "hostId\n" ;
+        }
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String! (scalar)
+        if (this.HostName != null) {
+            s += ind + "hostName\n" ;
+        }
+        //      C# -> List<System.String>? Includes
+        // GraphQL -> includes: [String!]! (scalar)
+        if (this.Includes != null) {
+            s += ind + "includes\n" ;
+        }
+        //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
+        // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
+        if (this.IsEffectiveSlaDomainRetentionLocked != null) {
+            s += ind + "isEffectiveSlaDomainRetentionLocked\n" ;
+        }
+        //      C# -> System.Boolean? IsPassthrough
+        // GraphQL -> isPassthrough: Boolean (scalar)
+        if (this.IsPassthrough != null) {
+            s += ind + "isPassthrough\n" ;
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic != null) {
+            s += ind + "isRelic\n" ;
+        }
+        //      C# -> System.String? OperatingSystemType
+        // GraphQL -> operatingSystemType: String (scalar)
+        if (this.OperatingSystemType != null) {
+            s += ind + "operatingSystemType\n" ;
+        }
+        //      C# -> System.String? ShareId
+        // GraphQL -> shareId: String (scalar)
+        if (this.ShareId != null) {
+            s += ind + "shareId\n" ;
+        }
+        //      C# -> System.String? SnapMirrorLabelForFullBackup
+        // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
+        if (this.SnapMirrorLabelForFullBackup != null) {
+            s += ind + "snapMirrorLabelForFullBackup\n" ;
+        }
+        //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
+        // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
+        if (this.SnapMirrorLabelForIncrementalBackup != null) {
+            s += ind + "snapMirrorLabelForIncrementalBackup\n" ;
+        }
+        //      C# -> System.String? TemplateId
+        // GraphQL -> templateId: String! (scalar)
+        if (this.TemplateId != null) {
+            s += ind + "templateId\n" ;
+        }
+        //      C# -> System.String? TemplateName
+        // GraphQL -> templateName: String! (scalar)
+        if (this.TemplateName != null) {
+            s += ind + "templateName\n" ;
+        }
+        //      C# -> FilesetArraySpec? ArraySpec
+        // GraphQL -> arraySpec: FilesetArraySpec (type)
+        if (this.ArraySpec != null) {
+            s += ind + "arraySpec {\n" + this.ArraySpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> FilesetOptions? FilesetOptions
+        // GraphQL -> filesetOptions: FilesetOptions (type)
+        if (this.FilesetOptions != null) {
+            s += ind + "filesetOptions {\n" + this.FilesetOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
+        // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
+        if (this.PendingSlaDomain != null) {
+            s += ind + "pendingSlaDomain {\n" + this.PendingSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable != null) {
+            s += ind + "slaAssignable {\n" + this.SlaAssignable.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? EffectiveSlaDomainId
+        // GraphQL -> effectiveSlaDomainId: String (scalar)
+        if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
         {
-            //      C# -> System.String? EffectiveSlaDomainId
-            // GraphQL -> effectiveSlaDomainId: String (scalar)
-            if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId$"))
-            {
-                this.EffectiveSlaDomainId = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaDomainName
-            // GraphQL -> effectiveSlaDomainName: String (scalar)
-            if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName$"))
-            {
-                this.EffectiveSlaDomainName = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
-            // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-            if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId$"))
-            {
-                this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? EnableHardlinkSupport
-            // GraphQL -> enableHardlinkSupport: Boolean (scalar)
-            if (this.EnableHardlinkSupport == null && Exploration.Includes(parent + ".enableHardlinkSupport$"))
-            {
-                this.EnableHardlinkSupport = new System.Boolean();
-            }
-            //      C# -> System.Boolean? EnableSymlinkResolution
-            // GraphQL -> enableSymlinkResolution: Boolean (scalar)
-            if (this.EnableSymlinkResolution == null && Exploration.Includes(parent + ".enableSymlinkResolution$"))
-            {
-                this.EnableSymlinkResolution = new System.Boolean();
-            }
-            //      C# -> List<System.String>? Exceptions
-            // GraphQL -> exceptions: [String!]! (scalar)
-            if (this.Exceptions == null && Exploration.Includes(parent + ".exceptions$"))
-            {
-                this.Exceptions = new List<System.String>();
-            }
-            //      C# -> List<System.String>? Excludes
-            // GraphQL -> excludes: [String!]! (scalar)
-            if (this.Excludes == null && Exploration.Includes(parent + ".excludes$"))
-            {
-                this.Excludes = new List<System.String>();
-            }
-            //      C# -> System.String? FailoverClusterAppId
-            // GraphQL -> failoverClusterAppId: String (scalar)
-            if (this.FailoverClusterAppId == null && Exploration.Includes(parent + ".failoverClusterAppId$"))
-            {
-                this.FailoverClusterAppId = new System.String("FETCH");
-            }
-            //      C# -> System.String? FailoverClusterAppName
-            // GraphQL -> failoverClusterAppName: String (scalar)
-            if (this.FailoverClusterAppName == null && Exploration.Includes(parent + ".failoverClusterAppName$"))
-            {
-                this.FailoverClusterAppName = new System.String("FETCH");
-            }
-            //      C# -> System.String? HostId
-            // GraphQL -> hostId: String (scalar)
-            if (this.HostId == null && Exploration.Includes(parent + ".hostId$"))
-            {
-                this.HostId = new System.String("FETCH");
-            }
-            //      C# -> System.String? HostName
-            // GraphQL -> hostName: String! (scalar)
-            if (this.HostName == null && Exploration.Includes(parent + ".hostName$"))
-            {
-                this.HostName = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? Includes
-            // GraphQL -> includes: [String!]! (scalar)
-            if (this.Includes == null && Exploration.Includes(parent + ".includes$"))
-            {
-                this.Includes = new List<System.String>();
-            }
-            //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
-            // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
-            if (this.IsEffectiveSlaDomainRetentionLocked == null && Exploration.Includes(parent + ".isEffectiveSlaDomainRetentionLocked$"))
-            {
-                this.IsEffectiveSlaDomainRetentionLocked = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsPassthrough
-            // GraphQL -> isPassthrough: Boolean (scalar)
-            if (this.IsPassthrough == null && Exploration.Includes(parent + ".isPassthrough$"))
-            {
-                this.IsPassthrough = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsRelic
-            // GraphQL -> isRelic: Boolean! (scalar)
-            if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic$"))
-            {
-                this.IsRelic = new System.Boolean();
-            }
-            //      C# -> System.String? OperatingSystemType
-            // GraphQL -> operatingSystemType: String (scalar)
-            if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType$"))
-            {
-                this.OperatingSystemType = new System.String("FETCH");
-            }
-            //      C# -> System.String? ShareId
-            // GraphQL -> shareId: String (scalar)
-            if (this.ShareId == null && Exploration.Includes(parent + ".shareId$"))
-            {
-                this.ShareId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SnapMirrorLabelForFullBackup
-            // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
-            if (this.SnapMirrorLabelForFullBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForFullBackup$"))
-            {
-                this.SnapMirrorLabelForFullBackup = new System.String("FETCH");
-            }
-            //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
-            // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
-            if (this.SnapMirrorLabelForIncrementalBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForIncrementalBackup$"))
-            {
-                this.SnapMirrorLabelForIncrementalBackup = new System.String("FETCH");
-            }
-            //      C# -> System.String? TemplateId
-            // GraphQL -> templateId: String! (scalar)
-            if (this.TemplateId == null && Exploration.Includes(parent + ".templateId$"))
-            {
-                this.TemplateId = new System.String("FETCH");
-            }
-            //      C# -> System.String? TemplateName
-            // GraphQL -> templateName: String! (scalar)
-            if (this.TemplateName == null && Exploration.Includes(parent + ".templateName$"))
-            {
-                this.TemplateName = new System.String("FETCH");
-            }
-            //      C# -> FilesetArraySpec? ArraySpec
-            // GraphQL -> arraySpec: FilesetArraySpec (type)
-            if (this.ArraySpec == null && Exploration.Includes(parent + ".arraySpec"))
-            {
-                this.ArraySpec = new FilesetArraySpec();
-                this.ArraySpec.ApplyExploratoryFragment(parent + ".arraySpec");
-            }
-            //      C# -> FilesetOptions? FilesetOptions
-            // GraphQL -> filesetOptions: FilesetOptions (type)
-            if (this.FilesetOptions == null && Exploration.Includes(parent + ".filesetOptions"))
-            {
-                this.FilesetOptions = new FilesetOptions();
-                this.FilesetOptions.ApplyExploratoryFragment(parent + ".filesetOptions");
-            }
-            //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
-            // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-            if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
-            {
-                this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-                this.PendingSlaDomain.ApplyExploratoryFragment(parent + ".pendingSlaDomain");
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
-            {
-                this.SlaAssignable = new SlaAssignable();
-                this.SlaAssignable.ApplyExploratoryFragment(parent + ".slaAssignable");
-            }
+            this.EffectiveSlaDomainId = new System.String("FETCH");
         }
+        //      C# -> System.String? EffectiveSlaDomainName
+        // GraphQL -> effectiveSlaDomainName: String (scalar)
+        if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
+        {
+            this.EffectiveSlaDomainName = new System.String("FETCH");
+        }
+        //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
+        // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
+        if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
+        {
+            this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? EnableHardlinkSupport
+        // GraphQL -> enableHardlinkSupport: Boolean (scalar)
+        if (this.EnableHardlinkSupport == null && Exploration.Includes(parent + ".enableHardlinkSupport", true))
+        {
+            this.EnableHardlinkSupport = true;
+        }
+        //      C# -> System.Boolean? EnableSymlinkResolution
+        // GraphQL -> enableSymlinkResolution: Boolean (scalar)
+        if (this.EnableSymlinkResolution == null && Exploration.Includes(parent + ".enableSymlinkResolution", true))
+        {
+            this.EnableSymlinkResolution = true;
+        }
+        //      C# -> List<System.String>? Exceptions
+        // GraphQL -> exceptions: [String!]! (scalar)
+        if (this.Exceptions == null && Exploration.Includes(parent + ".exceptions", true))
+        {
+            this.Exceptions = new List<System.String>();
+        }
+        //      C# -> List<System.String>? Excludes
+        // GraphQL -> excludes: [String!]! (scalar)
+        if (this.Excludes == null && Exploration.Includes(parent + ".excludes", true))
+        {
+            this.Excludes = new List<System.String>();
+        }
+        //      C# -> System.String? FailoverClusterAppId
+        // GraphQL -> failoverClusterAppId: String (scalar)
+        if (this.FailoverClusterAppId == null && Exploration.Includes(parent + ".failoverClusterAppId", true))
+        {
+            this.FailoverClusterAppId = new System.String("FETCH");
+        }
+        //      C# -> System.String? FailoverClusterAppName
+        // GraphQL -> failoverClusterAppName: String (scalar)
+        if (this.FailoverClusterAppName == null && Exploration.Includes(parent + ".failoverClusterAppName", true))
+        {
+            this.FailoverClusterAppName = new System.String("FETCH");
+        }
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String (scalar)
+        if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
+        {
+            this.HostId = new System.String("FETCH");
+        }
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String! (scalar)
+        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        {
+            this.HostName = new System.String("FETCH");
+        }
+        //      C# -> List<System.String>? Includes
+        // GraphQL -> includes: [String!]! (scalar)
+        if (this.Includes == null && Exploration.Includes(parent + ".includes", true))
+        {
+            this.Includes = new List<System.String>();
+        }
+        //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
+        // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
+        if (this.IsEffectiveSlaDomainRetentionLocked == null && Exploration.Includes(parent + ".isEffectiveSlaDomainRetentionLocked", true))
+        {
+            this.IsEffectiveSlaDomainRetentionLocked = true;
+        }
+        //      C# -> System.Boolean? IsPassthrough
+        // GraphQL -> isPassthrough: Boolean (scalar)
+        if (this.IsPassthrough == null && Exploration.Includes(parent + ".isPassthrough", true))
+        {
+            this.IsPassthrough = true;
+        }
+        //      C# -> System.Boolean? IsRelic
+        // GraphQL -> isRelic: Boolean! (scalar)
+        if (this.IsRelic == null && Exploration.Includes(parent + ".isRelic", true))
+        {
+            this.IsRelic = true;
+        }
+        //      C# -> System.String? OperatingSystemType
+        // GraphQL -> operatingSystemType: String (scalar)
+        if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
+        {
+            this.OperatingSystemType = new System.String("FETCH");
+        }
+        //      C# -> System.String? ShareId
+        // GraphQL -> shareId: String (scalar)
+        if (this.ShareId == null && Exploration.Includes(parent + ".shareId", true))
+        {
+            this.ShareId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SnapMirrorLabelForFullBackup
+        // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
+        if (this.SnapMirrorLabelForFullBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForFullBackup", true))
+        {
+            this.SnapMirrorLabelForFullBackup = new System.String("FETCH");
+        }
+        //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
+        // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
+        if (this.SnapMirrorLabelForIncrementalBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForIncrementalBackup", true))
+        {
+            this.SnapMirrorLabelForIncrementalBackup = new System.String("FETCH");
+        }
+        //      C# -> System.String? TemplateId
+        // GraphQL -> templateId: String! (scalar)
+        if (this.TemplateId == null && Exploration.Includes(parent + ".templateId", true))
+        {
+            this.TemplateId = new System.String("FETCH");
+        }
+        //      C# -> System.String? TemplateName
+        // GraphQL -> templateName: String! (scalar)
+        if (this.TemplateName == null && Exploration.Includes(parent + ".templateName", true))
+        {
+            this.TemplateName = new System.String("FETCH");
+        }
+        //      C# -> FilesetArraySpec? ArraySpec
+        // GraphQL -> arraySpec: FilesetArraySpec (type)
+        if (this.ArraySpec == null && Exploration.Includes(parent + ".arraySpec"))
+        {
+            this.ArraySpec = new FilesetArraySpec();
+            this.ArraySpec.ApplyExploratoryFieldSpec(parent + ".arraySpec");
+        }
+        //      C# -> FilesetOptions? FilesetOptions
+        // GraphQL -> filesetOptions: FilesetOptions (type)
+        if (this.FilesetOptions == null && Exploration.Includes(parent + ".filesetOptions"))
+        {
+            this.FilesetOptions = new FilesetOptions();
+            this.FilesetOptions.ApplyExploratoryFieldSpec(parent + ".filesetOptions");
+        }
+        //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
+        // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
+        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        {
+            this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        {
+            this.SlaAssignable = new SlaAssignable();
+            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+        }
+    }
 
 
     #endregion
 
     } // class FilesetSummary
+    
     #endregion
 
     public static class ListFilesetSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<FilesetSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<FilesetSummary> list, 
             String parent = "")
         {
-            var item = new FilesetSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new FilesetSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

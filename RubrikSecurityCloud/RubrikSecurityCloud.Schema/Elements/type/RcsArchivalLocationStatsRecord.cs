@@ -11,22 +11,14 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region RcsArchivalLocationStatsRecord
-    public class RcsArchivalLocationStatsRecord: IFragment
+    public class RcsArchivalLocationStatsRecord: BaseType
     {
         #region members
-        //      C# -> System.Single? MetricValue
-        // GraphQL -> metricValue: Float! (scalar)
-        [JsonProperty("metricValue")]
-        public System.Single? MetricValue { get; set; }
-
-        //      C# -> System.String? Timestamp
-        // GraphQL -> timestamp: String! (scalar)
-        [JsonProperty("timestamp")]
-        public System.String? Timestamp { get; set; }
 
         //      C# -> RcsConsumptionMetricOutputNameType? MetricName
         // GraphQL -> metricName: RcsConsumptionMetricOutputNameType! (enum)
@@ -38,134 +30,141 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("tier")]
         public RcsTierEnumType? Tier { get; set; }
 
+        //      C# -> System.Single? MetricValue
+        // GraphQL -> metricValue: Float! (scalar)
+        [JsonProperty("metricValue")]
+        public System.Single? MetricValue { get; set; }
+
+        //      C# -> System.String? Timestamp
+        // GraphQL -> timestamp: String! (scalar)
+        [JsonProperty("timestamp")]
+        public System.String? Timestamp { get; set; }
+
+
         #endregion
 
     #region methods
 
     public RcsArchivalLocationStatsRecord Set(
-        System.Single? MetricValue = null,
-        System.String? Timestamp = null,
         RcsConsumptionMetricOutputNameType? MetricName = null,
-        RcsTierEnumType? Tier = null
+        RcsTierEnumType? Tier = null,
+        System.Single? MetricValue = null,
+        System.String? Timestamp = null
     ) 
     {
-        if ( MetricValue != null ) {
-            this.MetricValue = MetricValue;
-        }
-        if ( Timestamp != null ) {
-            this.Timestamp = Timestamp;
-        }
         if ( MetricName != null ) {
             this.MetricName = MetricName;
         }
         if ( Tier != null ) {
             this.Tier = Tier;
         }
+        if ( MetricValue != null ) {
+            this.MetricValue = MetricValue;
+        }
+        if ( Timestamp != null ) {
+            this.Timestamp = Timestamp;
+        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Single? MetricValue
-            // GraphQL -> metricValue: Float! (scalar)
-            if (this.MetricValue != null)
-            {
-                 s += ind + "metricValue\n";
-
-            }
-            //      C# -> System.String? Timestamp
-            // GraphQL -> timestamp: String! (scalar)
-            if (this.Timestamp != null)
-            {
-                 s += ind + "timestamp\n";
-
-            }
-            //      C# -> RcsConsumptionMetricOutputNameType? MetricName
-            // GraphQL -> metricName: RcsConsumptionMetricOutputNameType! (enum)
-            if (this.MetricName != null)
-            {
-                 s += ind + "metricName\n";
-
-            }
-            //      C# -> RcsTierEnumType? Tier
-            // GraphQL -> tier: RcsTierEnumType! (enum)
-            if (this.Tier != null)
-            {
-                 s += ind + "tier\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> RcsConsumptionMetricOutputNameType? MetricName
+        // GraphQL -> metricName: RcsConsumptionMetricOutputNameType! (enum)
+        if (this.MetricName != null) {
+            s += ind + "metricName\n" ;
         }
+        //      C# -> RcsTierEnumType? Tier
+        // GraphQL -> tier: RcsTierEnumType! (enum)
+        if (this.Tier != null) {
+            s += ind + "tier\n" ;
+        }
+        //      C# -> System.Single? MetricValue
+        // GraphQL -> metricValue: Float! (scalar)
+        if (this.MetricValue != null) {
+            s += ind + "metricValue\n" ;
+        }
+        //      C# -> System.String? Timestamp
+        // GraphQL -> timestamp: String! (scalar)
+        if (this.Timestamp != null) {
+            s += ind + "timestamp\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> RcsConsumptionMetricOutputNameType? MetricName
+        // GraphQL -> metricName: RcsConsumptionMetricOutputNameType! (enum)
+        if (this.MetricName == null && Exploration.Includes(parent + ".metricName", true))
         {
-            //      C# -> System.Single? MetricValue
-            // GraphQL -> metricValue: Float! (scalar)
-            if (this.MetricValue == null && Exploration.Includes(parent + ".metricValue$"))
-            {
-                this.MetricValue = new System.Single();
-            }
-            //      C# -> System.String? Timestamp
-            // GraphQL -> timestamp: String! (scalar)
-            if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp$"))
-            {
-                this.Timestamp = new System.String("FETCH");
-            }
-            //      C# -> RcsConsumptionMetricOutputNameType? MetricName
-            // GraphQL -> metricName: RcsConsumptionMetricOutputNameType! (enum)
-            if (this.MetricName == null && Exploration.Includes(parent + ".metricName$"))
-            {
-                this.MetricName = new RcsConsumptionMetricOutputNameType();
-            }
-            //      C# -> RcsTierEnumType? Tier
-            // GraphQL -> tier: RcsTierEnumType! (enum)
-            if (this.Tier == null && Exploration.Includes(parent + ".tier$"))
-            {
-                this.Tier = new RcsTierEnumType();
-            }
+            this.MetricName = new RcsConsumptionMetricOutputNameType();
         }
+        //      C# -> RcsTierEnumType? Tier
+        // GraphQL -> tier: RcsTierEnumType! (enum)
+        if (this.Tier == null && Exploration.Includes(parent + ".tier", true))
+        {
+            this.Tier = new RcsTierEnumType();
+        }
+        //      C# -> System.Single? MetricValue
+        // GraphQL -> metricValue: Float! (scalar)
+        if (this.MetricValue == null && Exploration.Includes(parent + ".metricValue", true))
+        {
+            this.MetricValue = new System.Single();
+        }
+        //      C# -> System.String? Timestamp
+        // GraphQL -> timestamp: String! (scalar)
+        if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
+        {
+            this.Timestamp = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class RcsArchivalLocationStatsRecord
+    
     #endregion
 
     public static class ListRcsArchivalLocationStatsRecordExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<RcsArchivalLocationStatsRecord> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<RcsArchivalLocationStatsRecord> list, 
             String parent = "")
         {
-            var item = new RcsArchivalLocationStatsRecord();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new RcsArchivalLocationStatsRecord());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -1,17 +1,21 @@
 <#
 .SYNOPSIS
-Sample to import the Rubrik SDK module.
+Import the Rubrik SDK module from the Output directory if not installed.
 
 .DESCRIPTION
-Typically a `Import-Module RubrikSecurityCloud` is sufficient to import the Rubrik SDK module, because it'll import the one that's installed on the system.
+Typically a `Import-Module RubrikSecurityCloud` is sufficient to import the
+Rubrik SDK module, because it'll import the one that's installed on the system.
 
-In most cases when writing a script, you'll want to import the module that's installed on the system.
-
-However, if you're developing the SDK, or if you want to work from source instead of a system-wide package, you'll want to import the one that's in the Output directory. This script will import the module from the Output directory if -Local is given or if the module isn't installed on the system.
+However, if you're developing the SDK, or if you want to work from source
+instead of an installed package, you'll want to import the one that's in the
+Output directory. This script will first try to import the module normally,
+and if missing, then import the local one in the Output directory.
+If the -Local parameter is given, it forces the module to be imported from
+the Output directory.
 
 .PARAMETER Local
-If given, the module will be imported from the Output directory instead of the system-wide package.
-If not given, the module will be imported from the system-wide package, if it's installed, or from the Output directory if it's not installed.
+If given, the module will be imported from the local Output directory.
+If not given, the module will be imported from the installed package, or if missing, from the local Output directory.
 #>
 [CmdletBinding()]
 param(
@@ -30,7 +34,7 @@ if (-not $DllPath) {
 Remove-Module -Name $ModuleName -ErrorAction 'SilentlyContinue'
 
 if ($Local) {
-    Write-Verbose "Importing ${ModuleName} module from local directory."
+    Write-Verbose "Importing ${ModuleName} module from local Output directory."
     Import-Module $DllPath -ErrorAction Stop
 }
 else {

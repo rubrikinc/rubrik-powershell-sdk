@@ -13,7 +13,7 @@
     <None Remove="GraphQL" />
     <None Remove="Elements\query\" />
     <None Remove="Elements\mutation\" />
-    <None Remove="HelperClasses\" />
+    <None Remove="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -30,6 +30,6 @@
     <Folder Include="Elements\union\*.cs" />
     <Folder Include="Elements\query\" />
     <Folder Include="Elements\mutation\" />
-    <Folder Include="HelperClasses\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 </Project>

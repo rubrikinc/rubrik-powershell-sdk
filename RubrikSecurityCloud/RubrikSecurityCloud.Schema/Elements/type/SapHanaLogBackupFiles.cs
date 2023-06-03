@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region SapHanaLogBackupFiles
-    public class SapHanaLogBackupFiles: IFragment
+    public class SapHanaLogBackupFiles: BaseType
     {
         #region members
+
         //      C# -> System.Int64? BackupId
         // GraphQL -> backupId: Long (scalar)
         [JsonProperty("backupId")]
@@ -67,6 +69,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)
         [JsonProperty("logPositionInterval")]
         public SapHanaLogPositionInterval? LogPositionInterval { get; set; }
+
 
         #endregion
 
@@ -118,190 +121,171 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? BackupId
-            // GraphQL -> backupId: Long (scalar)
-            if (this.BackupId != null)
-            {
-                 s += ind + "backupId\n";
-
-            }
-            //      C# -> System.Int64? BackupSizeInBytes
-            // GraphQL -> backupSizeInBytes: Long (scalar)
-            if (this.BackupSizeInBytes != null)
-            {
-                 s += ind + "backupSizeInBytes\n";
-
-            }
-            //      C# -> System.String? DestinationPath
-            // GraphQL -> destinationPath: String (scalar)
-            if (this.DestinationPath != null)
-            {
-                 s += ind + "destinationPath\n";
-
-            }
-            //      C# -> System.String? DestinationType
-            // GraphQL -> destinationType: String (scalar)
-            if (this.DestinationType != null)
-            {
-                 s += ind + "destinationType\n";
-
-            }
-            //      C# -> System.String? ExternalBackupId
-            // GraphQL -> externalBackupId: String (scalar)
-            if (this.ExternalBackupId != null)
-            {
-                 s += ind + "externalBackupId\n";
-
-            }
-            //      C# -> System.String? HostName
-            // GraphQL -> hostName: String (scalar)
-            if (this.HostName != null)
-            {
-                 s += ind + "hostName\n";
-
-            }
-            //      C# -> System.String? ServiceTypeName
-            // GraphQL -> serviceTypeName: String (scalar)
-            if (this.ServiceTypeName != null)
-            {
-                 s += ind + "serviceTypeName\n";
-
-            }
-            //      C# -> System.Int64? SourceId
-            // GraphQL -> sourceId: Long (scalar)
-            if (this.SourceId != null)
-            {
-                 s += ind + "sourceId\n";
-
-            }
-            //      C# -> System.String? SourceTypeName
-            // GraphQL -> sourceTypeName: String (scalar)
-            if (this.SourceTypeName != null)
-            {
-                 s += ind + "sourceTypeName\n";
-
-            }
-            //      C# -> SapHanaLogPositionInterval? LogPositionInterval
-            // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)
-            if (this.LogPositionInterval != null)
-            {
-                 s += ind + "logPositionInterval\n";
-
-                 s += ind + "{\n" + 
-                 this.LogPositionInterval.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? BackupId
+        // GraphQL -> backupId: Long (scalar)
+        if (this.BackupId != null) {
+            s += ind + "backupId\n" ;
         }
+        //      C# -> System.Int64? BackupSizeInBytes
+        // GraphQL -> backupSizeInBytes: Long (scalar)
+        if (this.BackupSizeInBytes != null) {
+            s += ind + "backupSizeInBytes\n" ;
+        }
+        //      C# -> System.String? DestinationPath
+        // GraphQL -> destinationPath: String (scalar)
+        if (this.DestinationPath != null) {
+            s += ind + "destinationPath\n" ;
+        }
+        //      C# -> System.String? DestinationType
+        // GraphQL -> destinationType: String (scalar)
+        if (this.DestinationType != null) {
+            s += ind + "destinationType\n" ;
+        }
+        //      C# -> System.String? ExternalBackupId
+        // GraphQL -> externalBackupId: String (scalar)
+        if (this.ExternalBackupId != null) {
+            s += ind + "externalBackupId\n" ;
+        }
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String (scalar)
+        if (this.HostName != null) {
+            s += ind + "hostName\n" ;
+        }
+        //      C# -> System.String? ServiceTypeName
+        // GraphQL -> serviceTypeName: String (scalar)
+        if (this.ServiceTypeName != null) {
+            s += ind + "serviceTypeName\n" ;
+        }
+        //      C# -> System.Int64? SourceId
+        // GraphQL -> sourceId: Long (scalar)
+        if (this.SourceId != null) {
+            s += ind + "sourceId\n" ;
+        }
+        //      C# -> System.String? SourceTypeName
+        // GraphQL -> sourceTypeName: String (scalar)
+        if (this.SourceTypeName != null) {
+            s += ind + "sourceTypeName\n" ;
+        }
+        //      C# -> SapHanaLogPositionInterval? LogPositionInterval
+        // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)
+        if (this.LogPositionInterval != null) {
+            s += ind + "logPositionInterval {\n" + this.LogPositionInterval.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? BackupId
+        // GraphQL -> backupId: Long (scalar)
+        if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
         {
-            //      C# -> System.Int64? BackupId
-            // GraphQL -> backupId: Long (scalar)
-            if (this.BackupId == null && Exploration.Includes(parent + ".backupId$"))
-            {
-                this.BackupId = new System.Int64();
-            }
-            //      C# -> System.Int64? BackupSizeInBytes
-            // GraphQL -> backupSizeInBytes: Long (scalar)
-            if (this.BackupSizeInBytes == null && Exploration.Includes(parent + ".backupSizeInBytes$"))
-            {
-                this.BackupSizeInBytes = new System.Int64();
-            }
-            //      C# -> System.String? DestinationPath
-            // GraphQL -> destinationPath: String (scalar)
-            if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath$"))
-            {
-                this.DestinationPath = new System.String("FETCH");
-            }
-            //      C# -> System.String? DestinationType
-            // GraphQL -> destinationType: String (scalar)
-            if (this.DestinationType == null && Exploration.Includes(parent + ".destinationType$"))
-            {
-                this.DestinationType = new System.String("FETCH");
-            }
-            //      C# -> System.String? ExternalBackupId
-            // GraphQL -> externalBackupId: String (scalar)
-            if (this.ExternalBackupId == null && Exploration.Includes(parent + ".externalBackupId$"))
-            {
-                this.ExternalBackupId = new System.String("FETCH");
-            }
-            //      C# -> System.String? HostName
-            // GraphQL -> hostName: String (scalar)
-            if (this.HostName == null && Exploration.Includes(parent + ".hostName$"))
-            {
-                this.HostName = new System.String("FETCH");
-            }
-            //      C# -> System.String? ServiceTypeName
-            // GraphQL -> serviceTypeName: String (scalar)
-            if (this.ServiceTypeName == null && Exploration.Includes(parent + ".serviceTypeName$"))
-            {
-                this.ServiceTypeName = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? SourceId
-            // GraphQL -> sourceId: Long (scalar)
-            if (this.SourceId == null && Exploration.Includes(parent + ".sourceId$"))
-            {
-                this.SourceId = new System.Int64();
-            }
-            //      C# -> System.String? SourceTypeName
-            // GraphQL -> sourceTypeName: String (scalar)
-            if (this.SourceTypeName == null && Exploration.Includes(parent + ".sourceTypeName$"))
-            {
-                this.SourceTypeName = new System.String("FETCH");
-            }
-            //      C# -> SapHanaLogPositionInterval? LogPositionInterval
-            // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)
-            if (this.LogPositionInterval == null && Exploration.Includes(parent + ".logPositionInterval"))
-            {
-                this.LogPositionInterval = new SapHanaLogPositionInterval();
-                this.LogPositionInterval.ApplyExploratoryFragment(parent + ".logPositionInterval");
-            }
+            this.BackupId = new System.Int64();
         }
+        //      C# -> System.Int64? BackupSizeInBytes
+        // GraphQL -> backupSizeInBytes: Long (scalar)
+        if (this.BackupSizeInBytes == null && Exploration.Includes(parent + ".backupSizeInBytes", true))
+        {
+            this.BackupSizeInBytes = new System.Int64();
+        }
+        //      C# -> System.String? DestinationPath
+        // GraphQL -> destinationPath: String (scalar)
+        if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
+        {
+            this.DestinationPath = new System.String("FETCH");
+        }
+        //      C# -> System.String? DestinationType
+        // GraphQL -> destinationType: String (scalar)
+        if (this.DestinationType == null && Exploration.Includes(parent + ".destinationType", true))
+        {
+            this.DestinationType = new System.String("FETCH");
+        }
+        //      C# -> System.String? ExternalBackupId
+        // GraphQL -> externalBackupId: String (scalar)
+        if (this.ExternalBackupId == null && Exploration.Includes(parent + ".externalBackupId", true))
+        {
+            this.ExternalBackupId = new System.String("FETCH");
+        }
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String (scalar)
+        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        {
+            this.HostName = new System.String("FETCH");
+        }
+        //      C# -> System.String? ServiceTypeName
+        // GraphQL -> serviceTypeName: String (scalar)
+        if (this.ServiceTypeName == null && Exploration.Includes(parent + ".serviceTypeName", true))
+        {
+            this.ServiceTypeName = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? SourceId
+        // GraphQL -> sourceId: Long (scalar)
+        if (this.SourceId == null && Exploration.Includes(parent + ".sourceId", true))
+        {
+            this.SourceId = new System.Int64();
+        }
+        //      C# -> System.String? SourceTypeName
+        // GraphQL -> sourceTypeName: String (scalar)
+        if (this.SourceTypeName == null && Exploration.Includes(parent + ".sourceTypeName", true))
+        {
+            this.SourceTypeName = new System.String("FETCH");
+        }
+        //      C# -> SapHanaLogPositionInterval? LogPositionInterval
+        // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)
+        if (this.LogPositionInterval == null && Exploration.Includes(parent + ".logPositionInterval"))
+        {
+            this.LogPositionInterval = new SapHanaLogPositionInterval();
+            this.LogPositionInterval.ApplyExploratoryFieldSpec(parent + ".logPositionInterval");
+        }
+    }
 
 
     #endregion
 
     } // class SapHanaLogBackupFiles
+    
     #endregion
 
     public static class ListSapHanaLogBackupFilesExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<SapHanaLogBackupFiles> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<SapHanaLogBackupFiles> list, 
             String parent = "")
         {
-            var item = new SapHanaLogBackupFiles();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new SapHanaLogBackupFiles());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -677,8 +677,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleTopLevelDescendantTypeConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleTopLevelDescendantTypeConnection)psObject.BaseObject;
                 } else {
                     fields = (OracleTopLevelDescendantTypeConnection)this.Field;
@@ -686,23 +685,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleTopLevelDescendants(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleTopLevelDescendants");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$typeFilter: [HierarchyObjectTypeEnum!],$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleTopLevelDescendants" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleTopLevelDescendants",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleTopLevelDescendantTypeConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleTopLevelDescendantTypeConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleTopLevelDescendantTypeConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -725,8 +723,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleDatabaseConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleDatabaseConnection)psObject.BaseObject;
                 } else {
                     fields = (OracleDatabaseConnection)this.Field;
@@ -734,23 +731,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleDatabases(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleDatabases");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleDatabases" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleDatabases",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleDatabaseConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleDatabaseConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -763,8 +759,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleHost? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleHost)psObject.BaseObject;
                 } else {
                     fields = (OracleHost)this.Field;
@@ -772,23 +767,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleHost(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleHost");
-            string parameters = "($fid: UUID!)\n";
+            var parameters = "($fid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleHost" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleHost",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleHost> task = this._rbkClient.InvokeGenericCallAsync<OracleHost>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleHost", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -801,8 +795,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleRac? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleRac)psObject.BaseObject;
                 } else {
                     fields = (OracleRac)this.Field;
@@ -810,23 +803,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleRac(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleRac");
-            string parameters = "($fid: UUID!)\n";
+            var parameters = "($fid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleRac" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleRac",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleRac> task = this._rbkClient.InvokeGenericCallAsync<OracleRac>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleRac", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -839,8 +831,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleDataGuardGroup? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleDataGuardGroup)psObject.BaseObject;
                 } else {
                     fields = (OracleDataGuardGroup)this.Field;
@@ -848,23 +839,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleDataGuardGroup(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleDataGuardGroup");
-            string parameters = "($fid: UUID!)\n";
+            var parameters = "($fid: UUID!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleDataGuardGroup" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleDataGuardGroup",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleDataGuardGroup> task = this._rbkClient.InvokeGenericCallAsync<OracleDataGuardGroup>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleDataGuardGroup", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -885,8 +875,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleLiveMountConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleLiveMountConnection)psObject.BaseObject;
                 } else {
                     fields = (OracleLiveMountConnection)this.Field;
@@ -894,23 +883,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleLiveMounts(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleLiveMounts");
-            string parameters = "($first: Int,$after: String,$filters: [OracleLiveMountFilterInput!],$sortBy: OracleLiveMountSortBy)\n";
+            var parameters = "($first: Int,$after: String,$filters: [OracleLiveMountFilterInput!],$sortBy: OracleLiveMountSortBy)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleLiveMounts" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleLiveMounts",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleLiveMountConnection> task = this._rbkClient.InvokeGenericCallAsync<OracleLiveMountConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleLiveMountConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -923,8 +911,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleAcoParameterList? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleAcoParameterList)psObject.BaseObject;
                 } else {
                     fields = (OracleAcoParameterList)this.Field;
@@ -932,23 +919,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleAcoParameters(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleAcoParameters");
-            string parameters = "($input: ClusterUuidWithDbIdInput!)\n";
+            var parameters = "($input: ClusterUuidWithDbIdInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleAcoParameters" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleAcoParameters",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleAcoParameterList> task = this._rbkClient.InvokeGenericCallAsync<OracleAcoParameterList>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleAcoParameterList", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -961,8 +947,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleRecoverableRangeListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleRecoverableRangeListResponse)psObject.BaseObject;
                 } else {
                     fields = (OracleRecoverableRangeListResponse)this.Field;
@@ -970,23 +955,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleRecoverableRanges(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleRecoverableRanges");
-            string parameters = "($input: GetOracleDbRecoverableRangesInput!)\n";
+            var parameters = "($input: GetOracleDbRecoverableRangesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleRecoverableRanges" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleRecoverableRanges",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<OracleRecoverableRangeListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleRecoverableRangeListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -999,8 +983,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleMissedRecoverableRangeListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleMissedRecoverableRangeListResponse)psObject.BaseObject;
                 } else {
                     fields = (OracleMissedRecoverableRangeListResponse)this.Field;
@@ -1008,23 +991,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleMissedRecoverableRanges(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleMissedRecoverableRanges");
-            string parameters = "($input: GetOracleDbMissedRecoverableRangesInput!)\n";
+            var parameters = "($input: GetOracleDbMissedRecoverableRangesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleMissedRecoverableRanges" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleMissedRecoverableRanges",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleMissedRecoverableRangeListResponse> task = this._rbkClient.InvokeGenericCallAsync<OracleMissedRecoverableRangeListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleMissedRecoverableRangeListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1037,8 +1019,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             MissedSnapshotListResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MissedSnapshotListResponse)psObject.BaseObject;
                 } else {
                     fields = (MissedSnapshotListResponse)this.Field;
@@ -1046,23 +1027,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleMissedSnapshots(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleMissedSnapshots");
-            string parameters = "($input: GetMissedOracleDbSnapshotsInput!)\n";
+            var parameters = "($input: GetMissedOracleDbSnapshotsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleMissedSnapshots" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleMissedSnapshots",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MissedSnapshotListResponse> task = this._rbkClient.InvokeGenericCallAsync<MissedSnapshotListResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MissedSnapshotListResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1075,8 +1055,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleFileDownloadLink? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleFileDownloadLink)psObject.BaseObject;
                 } else {
                     fields = (OracleFileDownloadLink)this.Field;
@@ -1084,23 +1063,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleAcoExampleDownloadLink(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleAcoExampleDownloadLink");
-            string parameters = "($input: ClusterUuidWithDbIdInput!)\n";
+            var parameters = "($input: ClusterUuidWithDbIdInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleAcoExampleDownloadLink" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleAcoExampleDownloadLink",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleFileDownloadLink> task = this._rbkClient.InvokeGenericCallAsync<OracleFileDownloadLink>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleFileDownloadLink", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1113,8 +1091,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OraclePdbDetails? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OraclePdbDetails)psObject.BaseObject;
                 } else {
                     fields = (OraclePdbDetails)this.Field;
@@ -1122,23 +1099,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OraclePdbDetails(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OraclePdbDetails");
-            string parameters = "($input: OraclePdbDetailsInput!)\n";
+            var parameters = "($input: OraclePdbDetailsInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOraclePdbDetails" + parameters + "{" + document + "}",
                 OperationName = "QueryOraclePdbDetails",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OraclePdbDetails> task = this._rbkClient.InvokeGenericCallAsync<OraclePdbDetails>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OraclePdbDetails", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1151,8 +1127,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleLogBackupConfig? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleLogBackupConfig)psObject.BaseObject;
                 } else {
                     fields = (OracleLogBackupConfig)this.Field;
@@ -1160,23 +1135,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleHostLogBackupConfig(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleHostLogBackupConfig");
-            string parameters = "($input: OracleHostInput!)\n";
+            var parameters = "($input: OracleHostInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleHostLogBackupConfig" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleHostLogBackupConfig",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleLogBackupConfig", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1189,8 +1163,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleLogBackupConfig? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleLogBackupConfig)psObject.BaseObject;
                 } else {
                     fields = (OracleLogBackupConfig)this.Field;
@@ -1198,23 +1171,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleDatabaseLogBackupConfig(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleDatabaseLogBackupConfig");
-            string parameters = "($input: OracleDbInput!)\n";
+            var parameters = "($input: OracleDbInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleDatabaseLogBackupConfig" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleDatabaseLogBackupConfig",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleLogBackupConfig", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -1227,8 +1199,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             OracleLogBackupConfig? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (OracleLogBackupConfig)psObject.BaseObject;
                 } else {
                     fields = (OracleLogBackupConfig)this.Field;
@@ -1236,23 +1207,22 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             }
             string document = Query.OracleRacLogBackupConfig(ref fields);
             this._input.Initialize(argDefs, fields, "Query.OracleRacLogBackupConfig");
-            string parameters = "($input: OracleRacInput!)\n";
+            var parameters = "($input: OracleRacInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryOracleRacLogBackupConfig" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleRacLogBackupConfig",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<OracleLogBackupConfig> task = this._rbkClient.InvokeGenericCallAsync<OracleLogBackupConfig>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "OracleLogBackupConfig", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

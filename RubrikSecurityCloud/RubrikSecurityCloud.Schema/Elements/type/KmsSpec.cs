@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region KmsSpec
-    public class KmsSpec: IFragment
+    public class KmsSpec: BaseType
     {
         #region members
+
+        //      C# -> O365AzureCloudType? CloudType
+        // GraphQL -> cloudType: O365AzureCloudType! (enum)
+        [JsonProperty("cloudType")]
+        public O365AzureCloudType? CloudType { get; set; }
+
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         [JsonProperty("appId")]
@@ -48,25 +55,24 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("tenantId")]
         public System.String? TenantId { get; set; }
 
-        //      C# -> O365AzureCloudType? CloudType
-        // GraphQL -> cloudType: O365AzureCloudType! (enum)
-        [JsonProperty("cloudType")]
-        public O365AzureCloudType? CloudType { get; set; }
 
         #endregion
 
     #region methods
 
     public KmsSpec Set(
+        O365AzureCloudType? CloudType = null,
         System.String? AppId = null,
         System.String? AppSecret = null,
         System.String? KekNameColossus = null,
         System.String? KeyName = null,
         System.String? KmsId = null,
-        System.String? TenantId = null,
-        O365AzureCloudType? CloudType = null
+        System.String? TenantId = null
     ) 
     {
+        if ( CloudType != null ) {
+            this.CloudType = CloudType;
+        }
         if ( AppId != null ) {
             this.AppId = AppId;
         }
@@ -85,153 +91,140 @@ namespace Rubrik.SecurityCloud.Types
         if ( TenantId != null ) {
             this.TenantId = TenantId;
         }
-        if ( CloudType != null ) {
-            this.CloudType = CloudType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AppId
-            // GraphQL -> appId: String! (scalar)
-            if (this.AppId != null)
-            {
-                 s += ind + "appId\n";
-
-            }
-            //      C# -> System.String? AppSecret
-            // GraphQL -> appSecret: String! (scalar)
-            if (this.AppSecret != null)
-            {
-                 s += ind + "appSecret\n";
-
-            }
-            //      C# -> System.String? KekNameColossus
-            // GraphQL -> kekNameColossus: String! (scalar)
-            if (this.KekNameColossus != null)
-            {
-                 s += ind + "kekNameColossus\n";
-
-            }
-            //      C# -> System.String? KeyName
-            // GraphQL -> keyName: String! (scalar)
-            if (this.KeyName != null)
-            {
-                 s += ind + "keyName\n";
-
-            }
-            //      C# -> System.String? KmsId
-            // GraphQL -> kmsId: String! (scalar)
-            if (this.KmsId != null)
-            {
-                 s += ind + "kmsId\n";
-
-            }
-            //      C# -> System.String? TenantId
-            // GraphQL -> tenantId: String! (scalar)
-            if (this.TenantId != null)
-            {
-                 s += ind + "tenantId\n";
-
-            }
-            //      C# -> O365AzureCloudType? CloudType
-            // GraphQL -> cloudType: O365AzureCloudType! (enum)
-            if (this.CloudType != null)
-            {
-                 s += ind + "cloudType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> O365AzureCloudType? CloudType
+        // GraphQL -> cloudType: O365AzureCloudType! (enum)
+        if (this.CloudType != null) {
+            s += ind + "cloudType\n" ;
         }
+        //      C# -> System.String? AppId
+        // GraphQL -> appId: String! (scalar)
+        if (this.AppId != null) {
+            s += ind + "appId\n" ;
+        }
+        //      C# -> System.String? AppSecret
+        // GraphQL -> appSecret: String! (scalar)
+        if (this.AppSecret != null) {
+            s += ind + "appSecret\n" ;
+        }
+        //      C# -> System.String? KekNameColossus
+        // GraphQL -> kekNameColossus: String! (scalar)
+        if (this.KekNameColossus != null) {
+            s += ind + "kekNameColossus\n" ;
+        }
+        //      C# -> System.String? KeyName
+        // GraphQL -> keyName: String! (scalar)
+        if (this.KeyName != null) {
+            s += ind + "keyName\n" ;
+        }
+        //      C# -> System.String? KmsId
+        // GraphQL -> kmsId: String! (scalar)
+        if (this.KmsId != null) {
+            s += ind + "kmsId\n" ;
+        }
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String! (scalar)
+        if (this.TenantId != null) {
+            s += ind + "tenantId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> O365AzureCloudType? CloudType
+        // GraphQL -> cloudType: O365AzureCloudType! (enum)
+        if (this.CloudType == null && Exploration.Includes(parent + ".cloudType", true))
         {
-            //      C# -> System.String? AppId
-            // GraphQL -> appId: String! (scalar)
-            if (this.AppId == null && Exploration.Includes(parent + ".appId$"))
-            {
-                this.AppId = new System.String("FETCH");
-            }
-            //      C# -> System.String? AppSecret
-            // GraphQL -> appSecret: String! (scalar)
-            if (this.AppSecret == null && Exploration.Includes(parent + ".appSecret$"))
-            {
-                this.AppSecret = new System.String("FETCH");
-            }
-            //      C# -> System.String? KekNameColossus
-            // GraphQL -> kekNameColossus: String! (scalar)
-            if (this.KekNameColossus == null && Exploration.Includes(parent + ".kekNameColossus$"))
-            {
-                this.KekNameColossus = new System.String("FETCH");
-            }
-            //      C# -> System.String? KeyName
-            // GraphQL -> keyName: String! (scalar)
-            if (this.KeyName == null && Exploration.Includes(parent + ".keyName$"))
-            {
-                this.KeyName = new System.String("FETCH");
-            }
-            //      C# -> System.String? KmsId
-            // GraphQL -> kmsId: String! (scalar)
-            if (this.KmsId == null && Exploration.Includes(parent + ".kmsId$"))
-            {
-                this.KmsId = new System.String("FETCH");
-            }
-            //      C# -> System.String? TenantId
-            // GraphQL -> tenantId: String! (scalar)
-            if (this.TenantId == null && Exploration.Includes(parent + ".tenantId$"))
-            {
-                this.TenantId = new System.String("FETCH");
-            }
-            //      C# -> O365AzureCloudType? CloudType
-            // GraphQL -> cloudType: O365AzureCloudType! (enum)
-            if (this.CloudType == null && Exploration.Includes(parent + ".cloudType$"))
-            {
-                this.CloudType = new O365AzureCloudType();
-            }
+            this.CloudType = new O365AzureCloudType();
         }
+        //      C# -> System.String? AppId
+        // GraphQL -> appId: String! (scalar)
+        if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
+        {
+            this.AppId = new System.String("FETCH");
+        }
+        //      C# -> System.String? AppSecret
+        // GraphQL -> appSecret: String! (scalar)
+        if (this.AppSecret == null && Exploration.Includes(parent + ".appSecret", true))
+        {
+            this.AppSecret = new System.String("FETCH");
+        }
+        //      C# -> System.String? KekNameColossus
+        // GraphQL -> kekNameColossus: String! (scalar)
+        if (this.KekNameColossus == null && Exploration.Includes(parent + ".kekNameColossus", true))
+        {
+            this.KekNameColossus = new System.String("FETCH");
+        }
+        //      C# -> System.String? KeyName
+        // GraphQL -> keyName: String! (scalar)
+        if (this.KeyName == null && Exploration.Includes(parent + ".keyName", true))
+        {
+            this.KeyName = new System.String("FETCH");
+        }
+        //      C# -> System.String? KmsId
+        // GraphQL -> kmsId: String! (scalar)
+        if (this.KmsId == null && Exploration.Includes(parent + ".kmsId", true))
+        {
+            this.KmsId = new System.String("FETCH");
+        }
+        //      C# -> System.String? TenantId
+        // GraphQL -> tenantId: String! (scalar)
+        if (this.TenantId == null && Exploration.Includes(parent + ".tenantId", true))
+        {
+            this.TenantId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class KmsSpec
+    
     #endregion
 
     public static class ListKmsSpecExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<KmsSpec> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<KmsSpec> list, 
             String parent = "")
         {
-            var item = new KmsSpec();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new KmsSpec());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

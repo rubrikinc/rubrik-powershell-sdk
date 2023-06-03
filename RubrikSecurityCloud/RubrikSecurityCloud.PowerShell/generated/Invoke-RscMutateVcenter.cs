@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -21,7 +21,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateVcenter",
-        DefaultParameterSetName = "Create")
+        DefaultParameterSetName = "Edit")
     ]
     public class Invoke_RscMutateVcenter : RscPSCmdlet
     {
@@ -29,7 +29,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Create parameter set
         //
-        // GraphQL operation: createVsphereVcenter(input: CreateVsphereVcenterInput!):CreateVsphereVcenterReply!
+        // GraphQL operation: vsphereCreateVCenter(,   clusterUuid: UUID!,   hostname: String!,   username: String!,   password: String!,   conflictResolutionAuthz: ConflictResolutionAuthzEnum!,   caCert: String, ):VsphereAsyncRequestStatus!
         //
         [Parameter(
             ParameterSetName = "Create",
@@ -38,8 +38,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
                 @"
-                Add a vCenter server.
-                GraphQL operation: createVsphereVcenter(input: CreateVsphereVcenterInput!):CreateVsphereVcenterReply!
+                
+                GraphQL operation: vsphereCreateVCenter(,   clusterUuid: UUID!,   hostname: String!,   username: String!,   password: String!,   conflictResolutionAuthz: ConflictResolutionAuthzEnum!,   caCert: String, ):VsphereAsyncRequestStatus!
                 ",
             Position = 0
         )]
@@ -52,11 +52,71 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipeline = false,
             HelpMessage =
                 @"
-                Input for V2CreateVcenterV2.
-                GraphQL argument input: CreateVsphereVcenterInput!
+                
+                GraphQL argument clusterUuid: UUID!
                 "
         )]
-        public CreateVsphereVcenterInput? Input { get; set; }
+        public System.String? ClusterUuid { get; set; }
+        [Parameter(
+            ParameterSetName = "Create",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument hostname: String!
+                "
+        )]
+        public System.String? Hostname { get; set; }
+        [Parameter(
+            ParameterSetName = "Create",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument username: String!
+                "
+        )]
+        public System.String? Username { get; set; }
+        [Parameter(
+            ParameterSetName = "Create",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument password: String!
+                "
+        )]
+        public System.String? Password { get; set; }
+        [Parameter(
+            ParameterSetName = "Create",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument conflictResolutionAuthz: ConflictResolutionAuthzEnum!
+                "
+        )]
+        public ConflictResolutionAuthzEnum? ConflictResolutionAuthz { get; set; }
+        [Parameter(
+            ParameterSetName = "Create",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument caCert: String
+                "
+        )]
+        public System.String? CaCert { get; set; }
         
         // -------------------------------------------------------------------
         // Delete parameter set
@@ -80,11 +140,55 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
         )]
         public SwitchParameter Delete { get; set; }
 
+        [Parameter(
+            ParameterSetName = "Delete",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Input for V1DeleteVcenter.
+                GraphQL argument input: VsphereDeleteVcenterInput!
+                "
+        )]
+        public VsphereDeleteVcenterInput? Input { get; set; }
+        
+        // -------------------------------------------------------------------
+        // Edit parameter set
+        //
+        // GraphQL operation: vsphereEditVCenter(,   vcenterId: UUID!,   hostname: String!,   username: String!,   password: String!,   conflictResolutionAuthz: ConflictResolutionAuthzEnum!,   caCert: String, ):RequestSuccess!
+        //
+        [Parameter(
+            ParameterSetName = "Edit",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vsphereEditVCenter(,   vcenterId: UUID!,   hostname: String!,   username: String!,   password: String!,   conflictResolutionAuthz: ConflictResolutionAuthzEnum!,   caCert: String, ):RequestSuccess!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter Edit { get; set; }
+
+        [Parameter(
+            ParameterSetName = "Edit",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument vcenterId: UUID!
+                "
+        )]
+        public System.String? VcenterId { get; set; }
         
         // -------------------------------------------------------------------
         // Refresh parameter set
         //
-        // GraphQL operation: refreshVsphereVcenter(input: RefreshVsphereVcenterInput!):AsyncRequestStatus!
+        // GraphQL operation: vsphereRefreshVCenter(vcenterId: UUID!):VsphereAsyncRequestStatus!
         //
         [Parameter(
             ParameterSetName = "Refresh",
@@ -93,11 +197,8 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
             ValueFromPipeline = false,
             HelpMessage =
                 @"
-                Refresh vCenter Server metadata
-
-Supported in v5.0+
-Create a job to refresh the metadata for the specified vCenter Server.
-                GraphQL operation: refreshVsphereVcenter(input: RefreshVsphereVcenterInput!):AsyncRequestStatus!
+                
+                GraphQL operation: vsphereRefreshVCenter(vcenterId: UUID!):VsphereAsyncRequestStatus!
                 ",
             Position = 0
         )]
@@ -185,6 +286,9 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                     case "Delete":
                         this.ProcessRecord_Delete();
                         break;
+                    case "Edit":
+                        this.ProcessRecord_Edit();
+                        break;
                     case "Refresh":
                         this.ProcessRecord_Refresh();
                         break;
@@ -214,12 +318,12 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
         }
 
         // This parameter set invokes a single graphql operation:
-        // createVsphereVcenter.
+        // vsphereCreateVCenter.
         protected void ProcessRecord_Create()
         {
             this._logger.name += " -Create";
-            // Invoke graphql operation createVsphereVcenter
-            InvokeMutationCreateVsphereVcenter();
+            // Invoke graphql operation vsphereCreateVCenter
+            InvokeMutationVsphereCreateVcenter();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -232,12 +336,21 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
         }
 
         // This parameter set invokes a single graphql operation:
-        // refreshVsphereVcenter.
+        // vsphereEditVCenter.
+        protected void ProcessRecord_Edit()
+        {
+            this._logger.name += " -Edit";
+            // Invoke graphql operation vsphereEditVCenter
+            InvokeMutationVsphereEditVcenter();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // vsphereRefreshVCenter.
         protected void ProcessRecord_Refresh()
         {
             this._logger.name += " -Refresh";
-            // Invoke graphql operation refreshVsphereVcenter
-            InvokeMutationRefreshVsphereVcenter();
+            // Invoke graphql operation vsphereRefreshVCenter
+            InvokeMutationVsphereRefreshVcenter();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -269,41 +382,51 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
 
         // Invoke GraphQL Mutation:
-        // createVsphereVcenter(input: CreateVsphereVcenterInput!): CreateVsphereVcenterReply!
-        protected void InvokeMutationCreateVsphereVcenter()
+        // vsphereCreateVCenter(
+        //     clusterUuid: UUID!
+        //     hostname: String!
+        //     username: String!
+        //     password: String!
+        //     conflictResolutionAuthz: ConflictResolutionAuthzEnum!
+        //     caCert: String
+        //   ): VsphereAsyncRequestStatus!
+        protected void InvokeMutationVsphereCreateVcenter()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "CreateVsphereVcenterInput!"),
+                Tuple.Create("clusterUuid", "UUID!"),
+                Tuple.Create("hostname", "String!"),
+                Tuple.Create("username", "String!"),
+                Tuple.Create("password", "String!"),
+                Tuple.Create("conflictResolutionAuthz", "ConflictResolutionAuthzEnum!"),
+                Tuple.Create("caCert", "String"),
             };
-            CreateVsphereVcenterReply? fields = null ;
+            VsphereAsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
-                    fields = (CreateVsphereVcenterReply)psObject.BaseObject;
+                if (this.Field is PSObject psObject) {
+                    fields = (VsphereAsyncRequestStatus)psObject.BaseObject;
                 } else {
-                    fields = (CreateVsphereVcenterReply)this.Field;
+                    fields = (VsphereAsyncRequestStatus)this.Field;
                 }
             }
-            string document = Mutation.CreateVsphereVcenter(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.CreateVsphereVcenter");
-            string parameters = "($input: CreateVsphereVcenterInput!)\n";
+            string document = Mutation.VsphereCreateVcenter(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.VsphereCreateVcenter");
+            var parameters = "($clusterUuid: UUID!,$hostname: String!,$username: String!,$password: String!,$conflictResolutionAuthz: ConflictResolutionAuthzEnum!,$caCert: String)\n";
             var request = new GraphQL.GraphQLRequest
             {
-                Query = "mutation MutationCreateVsphereVcenter" + parameters + "{" + document + "}",
-                OperationName = "MutationCreateVsphereVcenter",
+                Query = "mutation MutationVsphereCreateVcenter" + parameters + "{" + document + "}",
+                OperationName = "MutationVsphereCreateVcenter",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CreateVsphereVcenterReply> task = this._rbkClient.InvokeGenericCallAsync<CreateVsphereVcenterReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "VsphereAsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -316,8 +439,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -325,61 +447,106 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             }
             string document = Mutation.VsphereDeleteVcenter(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.VsphereDeleteVcenter");
-            string parameters = "($input: VsphereDeleteVcenterInput!)\n";
+            var parameters = "($input: VsphereDeleteVcenterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationVsphereDeleteVcenter" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereDeleteVcenter",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
-        // refreshVsphereVcenter(input: RefreshVsphereVcenterInput!): AsyncRequestStatus!
-        protected void InvokeMutationRefreshVsphereVcenter()
+        // vsphereEditVCenter(
+        //     vcenterId: UUID!
+        //     hostname: String!
+        //     username: String!
+        //     password: String!
+        //     conflictResolutionAuthz: ConflictResolutionAuthzEnum!
+        //     caCert: String
+        //   ): RequestSuccess!
+        protected void InvokeMutationVsphereEditVcenter()
         {
             Tuple<string, string>[] argDefs = {
-                Tuple.Create("input", "RefreshVsphereVcenterInput!"),
+                Tuple.Create("vcenterId", "UUID!"),
+                Tuple.Create("hostname", "String!"),
+                Tuple.Create("username", "String!"),
+                Tuple.Create("password", "String!"),
+                Tuple.Create("conflictResolutionAuthz", "ConflictResolutionAuthzEnum!"),
+                Tuple.Create("caCert", "String"),
             };
-            AsyncRequestStatus? fields = null ;
+            RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
-                    fields = (AsyncRequestStatus)psObject.BaseObject;
+                if (this.Field is PSObject psObject) {
+                    fields = (RequestSuccess)psObject.BaseObject;
                 } else {
-                    fields = (AsyncRequestStatus)this.Field;
+                    fields = (RequestSuccess)this.Field;
                 }
             }
-            string document = Mutation.RefreshVsphereVcenter(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.RefreshVsphereVcenter");
-            string parameters = "($input: RefreshVsphereVcenterInput!)\n";
+            string document = Mutation.VsphereEditVcenter(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.VsphereEditVcenter");
+            var parameters = "($vcenterId: UUID!,$hostname: String!,$username: String!,$password: String!,$conflictResolutionAuthz: ConflictResolutionAuthzEnum!,$caCert: String)\n";
             var request = new GraphQL.GraphQLRequest
             {
-                Query = "mutation MutationRefreshVsphereVcenter" + parameters + "{" + document + "}",
-                OperationName = "MutationRefreshVsphereVcenter",
+                Query = "mutation MutationVsphereEditVcenter" + parameters + "{" + document + "}",
+                OperationName = "MutationVsphereEditVcenter",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // vsphereRefreshVCenter(vcenterId: UUID!): VsphereAsyncRequestStatus!
+        protected void InvokeMutationVsphereRefreshVcenter()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("vcenterId", "UUID!"),
+            };
+            VsphereAsyncRequestStatus? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (VsphereAsyncRequestStatus)psObject.BaseObject;
+                } else {
+                    fields = (VsphereAsyncRequestStatus)this.Field;
+                }
+            }
+            string document = Mutation.VsphereRefreshVcenter(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.VsphereRefreshVcenter");
+            var parameters = "($vcenterId: UUID!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationVsphereRefreshVcenter" + parameters + "{" + document + "}",
+                OperationName = "MutationVsphereRefreshVcenter",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "VsphereAsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -392,8 +559,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             UpdateVcenterReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpdateVcenterReply)psObject.BaseObject;
                 } else {
                     fields = (UpdateVcenterReply)this.Field;
@@ -401,23 +567,22 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             }
             string document = Mutation.UpdateVcenter(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateVcenter");
-            string parameters = "($input: UpdateVcenterInput!)\n";
+            var parameters = "($input: UpdateVcenterInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateVcenter" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateVcenter",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateVcenterReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateVcenterReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateVcenterReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -430,8 +595,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestSuccess)psObject.BaseObject;
                 } else {
                     fields = (RequestSuccess)this.Field;
@@ -439,23 +603,22 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             }
             string document = Mutation.UpdateVcenterHotAddNetwork(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateVcenterHotAddNetwork");
-            string parameters = "($input: UpdateVcenterHotAddNetworkInput!)\n";
+            var parameters = "($input: UpdateVcenterHotAddNetworkInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateVcenterHotAddNetwork" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateVcenterHotAddNetwork",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -468,8 +631,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestSuccess)psObject.BaseObject;
                 } else {
                     fields = (RequestSuccess)this.Field;
@@ -477,23 +639,22 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
             }
             string document = Mutation.UpdateVcenterHotAddBandwidth(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateVcenterHotAddBandwidth");
-            string parameters = "($input: UpdateVcenterHotAddBandwidthInput!)\n";
+            var parameters = "($input: UpdateVcenterHotAddBandwidthInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateVcenterHotAddBandwidth" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateVcenterHotAddBandwidth",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

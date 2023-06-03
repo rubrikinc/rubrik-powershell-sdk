@@ -11,121 +11,121 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region NetworkRuleSet
-    public class NetworkRuleSet: IFragment
+    public class NetworkRuleSet: BaseType
     {
         #region members
-        //      C# -> List<IpRule>? IpRules
-        // GraphQL -> ipRules: [IpRule!]! (type)
-        [JsonProperty("ipRules")]
-        public List<IpRule>? IpRules { get; set; }
 
         //      C# -> DefaultActionType? DefaultAction
         // GraphQL -> defaultAction: DefaultActionType! (enum)
         [JsonProperty("defaultAction")]
         public DefaultActionType? DefaultAction { get; set; }
 
+        //      C# -> List<IpRule>? IpRules
+        // GraphQL -> ipRules: [IpRule!]! (type)
+        [JsonProperty("ipRules")]
+        public List<IpRule>? IpRules { get; set; }
+
+
         #endregion
 
     #region methods
 
     public NetworkRuleSet Set(
-        List<IpRule>? IpRules = null,
-        DefaultActionType? DefaultAction = null
+        DefaultActionType? DefaultAction = null,
+        List<IpRule>? IpRules = null
     ) 
     {
-        if ( IpRules != null ) {
-            this.IpRules = IpRules;
-        }
         if ( DefaultAction != null ) {
             this.DefaultAction = DefaultAction;
+        }
+        if ( IpRules != null ) {
+            this.IpRules = IpRules;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<IpRule>? IpRules
-            // GraphQL -> ipRules: [IpRule!]! (type)
-            if (this.IpRules != null)
-            {
-                 s += ind + "ipRules\n";
-
-                 s += ind + "{\n" + 
-                 this.IpRules.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> DefaultActionType? DefaultAction
-            // GraphQL -> defaultAction: DefaultActionType! (enum)
-            if (this.DefaultAction != null)
-            {
-                 s += ind + "defaultAction\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> DefaultActionType? DefaultAction
+        // GraphQL -> defaultAction: DefaultActionType! (enum)
+        if (this.DefaultAction != null) {
+            s += ind + "defaultAction\n" ;
         }
+        //      C# -> List<IpRule>? IpRules
+        // GraphQL -> ipRules: [IpRule!]! (type)
+        if (this.IpRules != null) {
+            s += ind + "ipRules {\n" + this.IpRules.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> DefaultActionType? DefaultAction
+        // GraphQL -> defaultAction: DefaultActionType! (enum)
+        if (this.DefaultAction == null && Exploration.Includes(parent + ".defaultAction", true))
         {
-            //      C# -> List<IpRule>? IpRules
-            // GraphQL -> ipRules: [IpRule!]! (type)
-            if (this.IpRules == null && Exploration.Includes(parent + ".ipRules"))
-            {
-                this.IpRules = new List<IpRule>();
-                this.IpRules.ApplyExploratoryFragment(parent + ".ipRules");
-            }
-            //      C# -> DefaultActionType? DefaultAction
-            // GraphQL -> defaultAction: DefaultActionType! (enum)
-            if (this.DefaultAction == null && Exploration.Includes(parent + ".defaultAction$"))
-            {
-                this.DefaultAction = new DefaultActionType();
-            }
+            this.DefaultAction = new DefaultActionType();
         }
+        //      C# -> List<IpRule>? IpRules
+        // GraphQL -> ipRules: [IpRule!]! (type)
+        if (this.IpRules == null && Exploration.Includes(parent + ".ipRules"))
+        {
+            this.IpRules = new List<IpRule>();
+            this.IpRules.ApplyExploratoryFieldSpec(parent + ".ipRules");
+        }
+    }
 
 
     #endregion
 
     } // class NetworkRuleSet
+    
     #endregion
 
     public static class ListNetworkRuleSetExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<NetworkRuleSet> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<NetworkRuleSet> list, 
             String parent = "")
         {
-            var item = new NetworkRuleSet();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new NetworkRuleSet());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

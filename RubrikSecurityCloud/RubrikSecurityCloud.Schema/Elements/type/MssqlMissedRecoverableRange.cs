@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MssqlMissedRecoverableRange
-    public class MssqlMissedRecoverableRange: IFragment
+    public class MssqlMissedRecoverableRange: BaseType
     {
         #region members
+
         //      C# -> DateTime? BeginTime
         // GraphQL -> beginTime: DateTime (scalar)
         [JsonProperty("beginTime")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
         [JsonProperty("lastError")]
         public MssqlMissedRecoverableRangeError? LastError { get; set; }
+
 
         #endregion
 
@@ -82,142 +85,128 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? BeginTime
-            // GraphQL -> beginTime: DateTime (scalar)
-            if (this.BeginTime != null)
-            {
-                 s += ind + "beginTime\n";
-
-            }
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description != null)
-            {
-                 s += ind + "description\n";
-
-            }
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime (scalar)
-            if (this.EndTime != null)
-            {
-                 s += ind + "endTime\n";
-
-            }
-            //      C# -> System.String? ErrorType
-            // GraphQL -> errorType: String! (scalar)
-            if (this.ErrorType != null)
-            {
-                 s += ind + "errorType\n";
-
-            }
-            //      C# -> MssqlMissedRecoverableRangeError? FirstError
-            // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)
-            if (this.FirstError != null)
-            {
-                 s += ind + "firstError\n";
-
-                 s += ind + "{\n" + 
-                 this.FirstError.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MssqlMissedRecoverableRangeError? LastError
-            // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
-            if (this.LastError != null)
-            {
-                 s += ind + "lastError\n";
-
-                 s += ind + "{\n" + 
-                 this.LastError.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> DateTime? BeginTime
+        // GraphQL -> beginTime: DateTime (scalar)
+        if (this.BeginTime != null) {
+            s += ind + "beginTime\n" ;
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            s += ind + "description\n" ;
+        }
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime (scalar)
+        if (this.EndTime != null) {
+            s += ind + "endTime\n" ;
+        }
+        //      C# -> System.String? ErrorType
+        // GraphQL -> errorType: String! (scalar)
+        if (this.ErrorType != null) {
+            s += ind + "errorType\n" ;
+        }
+        //      C# -> MssqlMissedRecoverableRangeError? FirstError
+        // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)
+        if (this.FirstError != null) {
+            s += ind + "firstError {\n" + this.FirstError.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MssqlMissedRecoverableRangeError? LastError
+        // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
+        if (this.LastError != null) {
+            s += ind + "lastError {\n" + this.LastError.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> DateTime? BeginTime
+        // GraphQL -> beginTime: DateTime (scalar)
+        if (this.BeginTime == null && Exploration.Includes(parent + ".beginTime", true))
         {
-            //      C# -> DateTime? BeginTime
-            // GraphQL -> beginTime: DateTime (scalar)
-            if (this.BeginTime == null && Exploration.Includes(parent + ".beginTime$"))
-            {
-                this.BeginTime = new DateTime();
-            }
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description == null && Exploration.Includes(parent + ".description$"))
-            {
-                this.Description = new System.String("FETCH");
-            }
-            //      C# -> DateTime? EndTime
-            // GraphQL -> endTime: DateTime (scalar)
-            if (this.EndTime == null && Exploration.Includes(parent + ".endTime$"))
-            {
-                this.EndTime = new DateTime();
-            }
-            //      C# -> System.String? ErrorType
-            // GraphQL -> errorType: String! (scalar)
-            if (this.ErrorType == null && Exploration.Includes(parent + ".errorType$"))
-            {
-                this.ErrorType = new System.String("FETCH");
-            }
-            //      C# -> MssqlMissedRecoverableRangeError? FirstError
-            // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)
-            if (this.FirstError == null && Exploration.Includes(parent + ".firstError"))
-            {
-                this.FirstError = new MssqlMissedRecoverableRangeError();
-                this.FirstError.ApplyExploratoryFragment(parent + ".firstError");
-            }
-            //      C# -> MssqlMissedRecoverableRangeError? LastError
-            // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
-            if (this.LastError == null && Exploration.Includes(parent + ".lastError"))
-            {
-                this.LastError = new MssqlMissedRecoverableRangeError();
-                this.LastError.ApplyExploratoryFragment(parent + ".lastError");
-            }
+            this.BeginTime = new DateTime();
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        {
+            this.Description = new System.String("FETCH");
+        }
+        //      C# -> DateTime? EndTime
+        // GraphQL -> endTime: DateTime (scalar)
+        if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
+        {
+            this.EndTime = new DateTime();
+        }
+        //      C# -> System.String? ErrorType
+        // GraphQL -> errorType: String! (scalar)
+        if (this.ErrorType == null && Exploration.Includes(parent + ".errorType", true))
+        {
+            this.ErrorType = new System.String("FETCH");
+        }
+        //      C# -> MssqlMissedRecoverableRangeError? FirstError
+        // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)
+        if (this.FirstError == null && Exploration.Includes(parent + ".firstError"))
+        {
+            this.FirstError = new MssqlMissedRecoverableRangeError();
+            this.FirstError.ApplyExploratoryFieldSpec(parent + ".firstError");
+        }
+        //      C# -> MssqlMissedRecoverableRangeError? LastError
+        // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
+        if (this.LastError == null && Exploration.Includes(parent + ".lastError"))
+        {
+            this.LastError = new MssqlMissedRecoverableRangeError();
+            this.LastError.ApplyExploratoryFieldSpec(parent + ".lastError");
+        }
+    }
 
 
     #endregion
 
     } // class MssqlMissedRecoverableRange
+    
     #endregion
 
     public static class ListMssqlMissedRecoverableRangeExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MssqlMissedRecoverableRange> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MssqlMissedRecoverableRange> list, 
             String parent = "")
         {
-            var item = new MssqlMissedRecoverableRange();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MssqlMissedRecoverableRange());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

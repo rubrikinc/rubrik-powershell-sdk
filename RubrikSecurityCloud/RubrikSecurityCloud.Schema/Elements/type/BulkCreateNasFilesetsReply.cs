@@ -11,17 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region BulkCreateNasFilesetsReply
-    public class BulkCreateNasFilesetsReply: IFragment
+    public class BulkCreateNasFilesetsReply: BaseType
     {
         #region members
+
         //      C# -> List<FilesetDetail>? FilesetDetails
         // GraphQL -> filesetDetails: [FilesetDetail!]! (type)
         [JsonProperty("filesetDetails")]
         public List<FilesetDetail>? FilesetDetails { get; set; }
+
 
         #endregion
 
@@ -37,73 +40,72 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<FilesetDetail>? FilesetDetails
-            // GraphQL -> filesetDetails: [FilesetDetail!]! (type)
-            if (this.FilesetDetails != null)
-            {
-                 s += ind + "filesetDetails\n";
-
-                 s += ind + "{\n" + 
-                 this.FilesetDetails.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<FilesetDetail>? FilesetDetails
+        // GraphQL -> filesetDetails: [FilesetDetail!]! (type)
+        if (this.FilesetDetails != null) {
+            s += ind + "filesetDetails {\n" + this.FilesetDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<FilesetDetail>? FilesetDetails
+        // GraphQL -> filesetDetails: [FilesetDetail!]! (type)
+        if (this.FilesetDetails == null && Exploration.Includes(parent + ".filesetDetails"))
         {
-            //      C# -> List<FilesetDetail>? FilesetDetails
-            // GraphQL -> filesetDetails: [FilesetDetail!]! (type)
-            if (this.FilesetDetails == null && Exploration.Includes(parent + ".filesetDetails"))
-            {
-                this.FilesetDetails = new List<FilesetDetail>();
-                this.FilesetDetails.ApplyExploratoryFragment(parent + ".filesetDetails");
-            }
+            this.FilesetDetails = new List<FilesetDetail>();
+            this.FilesetDetails.ApplyExploratoryFieldSpec(parent + ".filesetDetails");
         }
+    }
 
 
     #endregion
 
     } // class BulkCreateNasFilesetsReply
+    
     #endregion
 
     public static class ListBulkCreateNasFilesetsReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<BulkCreateNasFilesetsReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<BulkCreateNasFilesetsReply> list, 
             String parent = "")
         {
-            var item = new BulkCreateNasFilesetsReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new BulkCreateNasFilesetsReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

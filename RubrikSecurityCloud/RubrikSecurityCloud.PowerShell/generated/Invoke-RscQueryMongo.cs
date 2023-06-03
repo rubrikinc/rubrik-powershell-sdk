@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -429,8 +429,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MongoSourceConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MongoSourceConnection)psObject.BaseObject;
                 } else {
                     fields = (MongoSourceConnection)this.Field;
@@ -438,23 +437,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongoSources(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongoSources");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongoSources" + parameters + "{" + document + "}",
                 OperationName = "QueryMongoSources",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongoSourceConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoSourceConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MongoSourceConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -477,8 +475,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MongoDatabaseConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MongoDatabaseConnection)psObject.BaseObject;
                 } else {
                     fields = (MongoDatabaseConnection)this.Field;
@@ -486,23 +483,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongoDatabases(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongoDatabases");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongoDatabases" + parameters + "{" + document + "}",
                 OperationName = "QueryMongoDatabases",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongoDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoDatabaseConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MongoDatabaseConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -525,8 +521,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MongoCollectionConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MongoCollectionConnection)psObject.BaseObject;
                 } else {
                     fields = (MongoCollectionConnection)this.Field;
@@ -534,23 +529,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongoCollections(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongoCollections");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongoCollections" + parameters + "{" + document + "}",
                 OperationName = "QueryMongoCollections",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongoCollectionConnection> task = this._rbkClient.InvokeGenericCallAsync<MongoCollectionConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MongoCollectionConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -563,8 +557,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MongoRecoverableRanges? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MongoRecoverableRanges)psObject.BaseObject;
                 } else {
                     fields = (MongoRecoverableRanges)this.Field;
@@ -572,23 +565,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongoRecoverableRanges(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongoRecoverableRanges");
-            string parameters = "($input: RecoverableRangeInput!)\n";
+            var parameters = "($input: RecoverableRangeInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongoRecoverableRanges" + parameters + "{" + document + "}",
                 OperationName = "QueryMongoRecoverableRanges",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongoRecoverableRanges> task = this._rbkClient.InvokeGenericCallAsync<MongoRecoverableRanges>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MongoRecoverableRanges", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -611,8 +603,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MongodbSourceConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MongodbSourceConnection)psObject.BaseObject;
                 } else {
                     fields = (MongodbSourceConnection)this.Field;
@@ -620,23 +611,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongodbSources(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongodbSources");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongodbSources" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbSources",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongodbSourceConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbSourceConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MongodbSourceConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -659,8 +649,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MongodbDatabaseConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MongodbDatabaseConnection)psObject.BaseObject;
                 } else {
                     fields = (MongodbDatabaseConnection)this.Field;
@@ -668,23 +657,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongodbDatabases(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongodbDatabases");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongodbDatabases" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbDatabases",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongodbDatabaseConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbDatabaseConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MongodbDatabaseConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -707,8 +695,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MongodbCollectionConnection? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MongodbCollectionConnection)psObject.BaseObject;
                 } else {
                     fields = (MongodbCollectionConnection)this.Field;
@@ -716,23 +703,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongodbCollections(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongodbCollections");
-            string parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
+            var parameters = "($first: Int,$after: String,$sortBy: HierarchySortByField,$sortOrder: SortOrder,$filter: [Filter!])\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongodbCollections" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbCollections",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MongodbCollectionConnection> task = this._rbkClient.InvokeGenericCallAsync<MongodbCollectionConnection>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MongodbCollectionConnection", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -745,8 +731,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             GetMosaicRecoverableRangeResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (GetMosaicRecoverableRangeResponse)psObject.BaseObject;
                 } else {
                     fields = (GetMosaicRecoverableRangeResponse)this.Field;
@@ -754,23 +739,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongodbCollectionRecoverableRange(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongodbCollectionRecoverableRange");
-            string parameters = "($input: GetMosaicRecoverableRangeInput!)\n";
+            var parameters = "($input: GetMosaicRecoverableRangeInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongodbCollectionRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbCollectionRecoverableRange",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<GetMosaicRecoverableRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<GetMosaicRecoverableRangeResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "GetMosaicRecoverableRangeResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Query:
@@ -783,8 +767,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             MosaicRecoveryRangeResponse? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (MosaicRecoveryRangeResponse)psObject.BaseObject;
                 } else {
                     fields = (MosaicRecoveryRangeResponse)this.Field;
@@ -792,23 +775,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Query.MongodbBulkRecoverableRange(ref fields);
             this._input.Initialize(argDefs, fields, "Query.MongodbBulkRecoverableRange");
-            string parameters = "($input: MosaicBulkRecoveryRangeInput!)\n";
+            var parameters = "($input: MosaicBulkRecoveryRangeInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryMongodbBulkRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbBulkRecoverableRange",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<MosaicRecoveryRangeResponse> task = this._rbkClient.InvokeGenericCallAsync<MosaicRecoveryRangeResponse>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "MosaicRecoveryRangeResponse", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

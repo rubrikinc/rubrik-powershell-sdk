@@ -1,6 +1,6 @@
 {
   "POST /api/client_token": {
-    "{'client_id':'mock_client_id','client_secret':'mock_client_secret'}": {
+    "": {
       "response": {
         "access_token": "mock_access_token",
         "client_id": "mock_client_id"
@@ -9,7 +9,7 @@
     }
   },
   "POST /api/graphql": {
-    "{'query':'query ClusterConnection{clusterConnection{edges{node{id name type}}}}'}": {
+    "clusterConnection{edges{node{idnametype}}}": {
       "response": {
         "data": {
           "clusterConnection": {
@@ -132,7 +132,7 @@
       },
       "status": 200
     },
-    "{'query':'query AccountSettings{accountSettings{...AccountSettingFragment1}} fragment AccountSettingFragment1 on AccountSetting{isEulaAccepted isEmailNotificationEnabled}','operationName':'AccountSettings'}": {
+    "accountSettings{isEmailNotificationEnabledisEulaAccepted}": {
       "response": {
         "data": {
           "accountSettings": {
@@ -143,7 +143,7 @@
       },
       "status": 200
     },
-    "{'query':'{currentUser{id}}'}": {
+    "currentUser{id}": {
       "response": {
         "data": {
           "currentUser": {
@@ -153,7 +153,7 @@
       },
       "status": 200
     },
-    "{'query':'query GetRscVersion{deploymentVersion}','operationName':'GetRscVersion'}": {
+    "deploymentVersion": {
       "response": {
         "data": {
           "deploymentVersion": "latest"

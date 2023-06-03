@@ -11,134 +11,124 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region PolicyObjectUsage
-    public class PolicyObjectUsage: IFragment
+    public class PolicyObjectUsage: BaseType
     {
         #region members
-        //      C# -> List<ClassificationPolicySummary>? Policies
-        // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
-        [JsonProperty("policies")]
-        public List<ClassificationPolicySummary>? Policies { get; set; }
 
         //      C# -> HierarchyObject? HierarchyObject
         // GraphQL -> hierarchyObject: HierarchyObject! (interface)
         [JsonProperty("hierarchyObject")]
         public HierarchyObject? HierarchyObject { get; set; }
 
+        //      C# -> List<ClassificationPolicySummary>? Policies
+        // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
+        [JsonProperty("policies")]
+        public List<ClassificationPolicySummary>? Policies { get; set; }
+
+
         #endregion
 
     #region methods
 
     public PolicyObjectUsage Set(
-        List<ClassificationPolicySummary>? Policies = null,
-        HierarchyObject? HierarchyObject = null
+        HierarchyObject? HierarchyObject = null,
+        List<ClassificationPolicySummary>? Policies = null
     ) 
     {
-        if ( Policies != null ) {
-            this.Policies = Policies;
-        }
         if ( HierarchyObject != null ) {
             this.HierarchyObject = HierarchyObject;
+        }
+        if ( Policies != null ) {
+            this.Policies = Policies;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<ClassificationPolicySummary>? Policies
-            // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
-            if (this.Policies != null)
-            {
-                 s += ind + "policies\n";
-
-                 s += ind + "{\n" + 
-                 this.Policies.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-                        //      C# -> HierarchyObject? HierarchyObject
-            // GraphQL -> hierarchyObject: HierarchyObject! (interface)
-            if (this.HierarchyObject != null)
-            {
-                s += ind + "hierarchyObject\n";
-                s += ind + "{\n";
-
-                string typename = this.HierarchyObject.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.HierarchyObject.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> HierarchyObject? HierarchyObject
+        // GraphQL -> hierarchyObject: HierarchyObject! (interface)
+        if (this.HierarchyObject != null) {
+            s += ind + "hierarchyObject {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.HierarchyObject).AsFieldSpec(indent+1) + ind + "}\n";
         }
+        //      C# -> List<ClassificationPolicySummary>? Policies
+        // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
+        if (this.Policies != null) {
+            s += ind + "policies {\n" + this.Policies.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> HierarchyObject? HierarchyObject
+        // GraphQL -> hierarchyObject: HierarchyObject! (interface)
+        if (this.HierarchyObject == null && Exploration.Includes(parent + ".hierarchyObject"))
         {
-            //      C# -> List<ClassificationPolicySummary>? Policies
-            // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
-            if (this.Policies == null && Exploration.Includes(parent + ".policies"))
-            {
-                this.Policies = new List<ClassificationPolicySummary>();
-                this.Policies.ApplyExploratoryFragment(parent + ".policies");
-            }
-            //      C# -> HierarchyObject? HierarchyObject
-            // GraphQL -> hierarchyObject: HierarchyObject! (interface)
-            if (this.HierarchyObject == null && Exploration.Includes(parent + ".hierarchyObject"))
-            {
-                this.HierarchyObject = (HierarchyObject)InterfaceHelper.CreateInstanceOfFirstType(typeof(HierarchyObject));
-                this.HierarchyObject.ApplyExploratoryFragment(parent + ".hierarchyObject");
-            }
+            var impls = new List<HierarchyObject>();
+            impls.ApplyExploratoryFieldSpec(parent + ".hierarchyObject");
+            this.HierarchyObject = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
         }
+        //      C# -> List<ClassificationPolicySummary>? Policies
+        // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
+        if (this.Policies == null && Exploration.Includes(parent + ".policies"))
+        {
+            this.Policies = new List<ClassificationPolicySummary>();
+            this.Policies.ApplyExploratoryFieldSpec(parent + ".policies");
+        }
+    }
 
 
     #endregion
 
     } // class PolicyObjectUsage
+    
     #endregion
 
     public static class ListPolicyObjectUsageExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<PolicyObjectUsage> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<PolicyObjectUsage> list, 
             String parent = "")
         {
-            var item = new PolicyObjectUsage();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new PolicyObjectUsage());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

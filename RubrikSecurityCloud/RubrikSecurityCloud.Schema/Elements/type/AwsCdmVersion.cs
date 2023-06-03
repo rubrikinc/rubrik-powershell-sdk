@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AwsCdmVersion
-    public class AwsCdmVersion: IFragment
+    public class AwsCdmVersion: BaseType
     {
         #region members
+
+        //      C# -> List<AwsInstanceType>? SupportedInstanceTypes
+        // GraphQL -> supportedInstanceTypes: [AwsInstanceType!]! (enum)
+        [JsonProperty("supportedInstanceTypes")]
+        public List<AwsInstanceType>? SupportedInstanceTypes { get; set; }
+
         //      C# -> System.String? ImageId
         // GraphQL -> imageId: String! (scalar)
         [JsonProperty("imageId")]
@@ -43,11 +50,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("tags")]
         public List<AwsCdmVersionTag>? Tags { get; set; }
 
+
         #endregion
 
     #region methods
 
     public AwsCdmVersion Set(
+        List<AwsInstanceType>? SupportedInstanceTypes = null,
         System.String? ImageId = null,
         System.Boolean? IsLatest = null,
         List<System.String>? ProductCodes = null,
@@ -55,6 +64,9 @@ namespace Rubrik.SecurityCloud.Types
         List<AwsCdmVersionTag>? Tags = null
     ) 
     {
+        if ( SupportedInstanceTypes != null ) {
+            this.SupportedInstanceTypes = SupportedInstanceTypes;
+        }
         if ( ImageId != null ) {
             this.ImageId = ImageId;
         }
@@ -73,125 +85,127 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ImageId
-            // GraphQL -> imageId: String! (scalar)
-            if (this.ImageId != null)
-            {
-                 s += ind + "imageId\n";
-
-            }
-            //      C# -> System.Boolean? IsLatest
-            // GraphQL -> isLatest: Boolean! (scalar)
-            if (this.IsLatest != null)
-            {
-                 s += ind + "isLatest\n";
-
-            }
-            //      C# -> List<System.String>? ProductCodes
-            // GraphQL -> productCodes: [String!]! (scalar)
-            if (this.ProductCodes != null)
-            {
-                 s += ind + "productCodes\n";
-
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String! (scalar)
-            if (this.Version != null)
-            {
-                 s += ind + "version\n";
-
-            }
-            //      C# -> List<AwsCdmVersionTag>? Tags
-            // GraphQL -> tags: [AwsCdmVersionTag!]! (type)
-            if (this.Tags != null)
-            {
-                 s += ind + "tags\n";
-
-                 s += ind + "{\n" + 
-                 this.Tags.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<AwsInstanceType>? SupportedInstanceTypes
+        // GraphQL -> supportedInstanceTypes: [AwsInstanceType!]! (enum)
+        if (this.SupportedInstanceTypes != null) {
+            s += ind + "supportedInstanceTypes\n" ;
         }
+        //      C# -> System.String? ImageId
+        // GraphQL -> imageId: String! (scalar)
+        if (this.ImageId != null) {
+            s += ind + "imageId\n" ;
+        }
+        //      C# -> System.Boolean? IsLatest
+        // GraphQL -> isLatest: Boolean! (scalar)
+        if (this.IsLatest != null) {
+            s += ind + "isLatest\n" ;
+        }
+        //      C# -> List<System.String>? ProductCodes
+        // GraphQL -> productCodes: [String!]! (scalar)
+        if (this.ProductCodes != null) {
+            s += ind + "productCodes\n" ;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version != null) {
+            s += ind + "version\n" ;
+        }
+        //      C# -> List<AwsCdmVersionTag>? Tags
+        // GraphQL -> tags: [AwsCdmVersionTag!]! (type)
+        if (this.Tags != null) {
+            s += ind + "tags {\n" + this.Tags.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<AwsInstanceType>? SupportedInstanceTypes
+        // GraphQL -> supportedInstanceTypes: [AwsInstanceType!]! (enum)
+        if (this.SupportedInstanceTypes == null && Exploration.Includes(parent + ".supportedInstanceTypes", true))
         {
-            //      C# -> System.String? ImageId
-            // GraphQL -> imageId: String! (scalar)
-            if (this.ImageId == null && Exploration.Includes(parent + ".imageId$"))
-            {
-                this.ImageId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsLatest
-            // GraphQL -> isLatest: Boolean! (scalar)
-            if (this.IsLatest == null && Exploration.Includes(parent + ".isLatest$"))
-            {
-                this.IsLatest = new System.Boolean();
-            }
-            //      C# -> List<System.String>? ProductCodes
-            // GraphQL -> productCodes: [String!]! (scalar)
-            if (this.ProductCodes == null && Exploration.Includes(parent + ".productCodes$"))
-            {
-                this.ProductCodes = new List<System.String>();
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String! (scalar)
-            if (this.Version == null && Exploration.Includes(parent + ".version$"))
-            {
-                this.Version = new System.String("FETCH");
-            }
-            //      C# -> List<AwsCdmVersionTag>? Tags
-            // GraphQL -> tags: [AwsCdmVersionTag!]! (type)
-            if (this.Tags == null && Exploration.Includes(parent + ".tags"))
-            {
-                this.Tags = new List<AwsCdmVersionTag>();
-                this.Tags.ApplyExploratoryFragment(parent + ".tags");
-            }
+            this.SupportedInstanceTypes = new List<AwsInstanceType>();
         }
+        //      C# -> System.String? ImageId
+        // GraphQL -> imageId: String! (scalar)
+        if (this.ImageId == null && Exploration.Includes(parent + ".imageId", true))
+        {
+            this.ImageId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsLatest
+        // GraphQL -> isLatest: Boolean! (scalar)
+        if (this.IsLatest == null && Exploration.Includes(parent + ".isLatest", true))
+        {
+            this.IsLatest = true;
+        }
+        //      C# -> List<System.String>? ProductCodes
+        // GraphQL -> productCodes: [String!]! (scalar)
+        if (this.ProductCodes == null && Exploration.Includes(parent + ".productCodes", true))
+        {
+            this.ProductCodes = new List<System.String>();
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        {
+            this.Version = new System.String("FETCH");
+        }
+        //      C# -> List<AwsCdmVersionTag>? Tags
+        // GraphQL -> tags: [AwsCdmVersionTag!]! (type)
+        if (this.Tags == null && Exploration.Includes(parent + ".tags"))
+        {
+            this.Tags = new List<AwsCdmVersionTag>();
+            this.Tags.ApplyExploratoryFieldSpec(parent + ".tags");
+        }
+    }
 
 
     #endregion
 
     } // class AwsCdmVersion
+    
     #endregion
 
     public static class ListAwsCdmVersionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AwsCdmVersion> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AwsCdmVersion> list, 
             String parent = "")
         {
-            var item = new AwsCdmVersion();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AwsCdmVersion());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

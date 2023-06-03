@@ -11,13 +11,30 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ClassificationPolicyDetail
-    public class ClassificationPolicyDetail: IFragment
+    public class ClassificationPolicyDetail: BaseType
     {
         #region members
+
+        //      C# -> ClassificationPolicyColor? ColorEnum
+        // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
+        [JsonProperty("colorEnum")]
+        public ClassificationPolicyColor? ColorEnum { get; set; }
+
+        //      C# -> ClassificationPolicyMode? Mode
+        // GraphQL -> mode: ClassificationPolicyMode! (enum)
+        [JsonProperty("mode")]
+        public ClassificationPolicyMode? Mode { get; set; }
+
+        //      C# -> List<HierarchyObject>? HierarchyObjects
+        // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
+        [JsonProperty("hierarchyObjects")]
+        public List<HierarchyObject>? HierarchyObjects { get; set; }
+
         //      C# -> System.Int64? CreatedTime
         // GraphQL -> createdTime: Long! (scalar)
         [JsonProperty("createdTime")]
@@ -88,26 +105,15 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("whitelists")]
         public List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists { get; set; }
 
-        //      C# -> ClassificationPolicyColor? ColorEnum
-        // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
-        [JsonProperty("colorEnum")]
-        public ClassificationPolicyColor? ColorEnum { get; set; }
-
-        //      C# -> ClassificationPolicyMode? Mode
-        // GraphQL -> mode: ClassificationPolicyMode! (enum)
-        [JsonProperty("mode")]
-        public ClassificationPolicyMode? Mode { get; set; }
-
-        //      C# -> List<HierarchyObject>? HierarchyObjects
-        // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
-        [JsonProperty("hierarchyObjects")]
-        public List<HierarchyObject>? HierarchyObjects { get; set; }
 
         #endregion
 
     #region methods
 
     public ClassificationPolicyDetail Set(
+        ClassificationPolicyColor? ColorEnum = null,
+        ClassificationPolicyMode? Mode = null,
+        List<HierarchyObject>? HierarchyObjects = null,
         System.Int64? CreatedTime = null,
         System.Boolean? Deletable = null,
         System.String? Description = null,
@@ -121,12 +127,18 @@ namespace Rubrik.SecurityCloud.Types
         User? Creator = null,
         HierarchyObjectConnection? HierarchyObjectConnection = null,
         List<ObjectStatus>? ObjectStatuses = null,
-        List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists = null,
-        ClassificationPolicyColor? ColorEnum = null,
-        ClassificationPolicyMode? Mode = null,
-        List<HierarchyObject>? HierarchyObjects = null
+        List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists = null
     ) 
     {
+        if ( ColorEnum != null ) {
+            this.ColorEnum = ColorEnum;
+        }
+        if ( Mode != null ) {
+            this.Mode = Mode;
+        }
+        if ( HierarchyObjects != null ) {
+            this.HierarchyObjects = HierarchyObjects;
+        }
         if ( CreatedTime != null ) {
             this.CreatedTime = CreatedTime;
         }
@@ -169,314 +181,257 @@ namespace Rubrik.SecurityCloud.Types
         if ( Whitelists != null ) {
             this.Whitelists = Whitelists;
         }
-        if ( ColorEnum != null ) {
-            this.ColorEnum = ColorEnum;
-        }
-        if ( Mode != null ) {
-            this.Mode = Mode;
-        }
-        if ( HierarchyObjects != null ) {
-            this.HierarchyObjects = HierarchyObjects;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? CreatedTime
-            // GraphQL -> createdTime: Long! (scalar)
-            if (this.CreatedTime != null)
-            {
-                 s += ind + "createdTime\n";
-
-            }
-            //      C# -> System.Boolean? Deletable
-            // GraphQL -> deletable: Boolean! (scalar)
-            if (this.Deletable != null)
-            {
-                 s += ind + "deletable\n";
-
-            }
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description != null)
-            {
-                 s += ind + "description\n";
-
-            }
-            //      C# -> List<System.String>? HierarchyObjectIds
-            // GraphQL -> hierarchyObjectIds: [String!]! (scalar)
-            if (this.HierarchyObjectIds != null)
-            {
-                 s += ind + "hierarchyObjectIds\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Int64? LastUpdatedTime
-            // GraphQL -> lastUpdatedTime: Long! (scalar)
-            if (this.LastUpdatedTime != null)
-            {
-                 s += ind + "lastUpdatedTime\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.Int32? NumAnalyzers
-            // GraphQL -> numAnalyzers: Int! (scalar)
-            if (this.NumAnalyzers != null)
-            {
-                 s += ind + "numAnalyzers\n";
-
-            }
-            //      C# -> System.Int32? TotalObjects
-            // GraphQL -> totalObjects: Int! (scalar)
-            if (this.TotalObjects != null)
-            {
-                 s += ind + "totalObjects\n";
-
-            }
-            //      C# -> List<Analyzer>? Analyzers
-            // GraphQL -> analyzers: [Analyzer!]! (type)
-            if (this.Analyzers != null)
-            {
-                 s += ind + "analyzers\n";
-
-                 s += ind + "{\n" + 
-                 this.Analyzers.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> User? Creator
-            // GraphQL -> creator: User (type)
-            if (this.Creator != null)
-            {
-                 s += ind + "creator\n";
-
-                 s += ind + "{\n" + 
-                 this.Creator.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
-            // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
-            if (this.HierarchyObjectConnection != null)
-            {
-                 s += ind + "hierarchyObjectConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.HierarchyObjectConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<ObjectStatus>? ObjectStatuses
-            // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
-            if (this.ObjectStatuses != null)
-            {
-                 s += ind + "objectStatuses\n";
-
-                 s += ind + "{\n" + 
-                 this.ObjectStatuses.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists
-            // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
-            if (this.Whitelists != null)
-            {
-                 s += ind + "whitelists\n";
-
-                 s += ind + "{\n" + 
-                 this.Whitelists.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ClassificationPolicyColor? ColorEnum
-            // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
-            if (this.ColorEnum != null)
-            {
-                 s += ind + "colorEnum\n";
-
-            }
-            //      C# -> ClassificationPolicyMode? Mode
-            // GraphQL -> mode: ClassificationPolicyMode! (enum)
-            if (this.Mode != null)
-            {
-                 s += ind + "mode\n";
-
-            }
-                        //      C# -> List<HierarchyObject>? HierarchyObjects
-            // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
-            if (this.HierarchyObjects != null)
-            {
-                s += ind + "hierarchyObjects\n";
-                s += ind + "{\n";
-
-                s += this.HierarchyObjects.AsFragment(indent+1) +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ClassificationPolicyColor? ColorEnum
+        // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
+        if (this.ColorEnum != null) {
+            s += ind + "colorEnum\n" ;
         }
+        //      C# -> ClassificationPolicyMode? Mode
+        // GraphQL -> mode: ClassificationPolicyMode! (enum)
+        if (this.Mode != null) {
+            s += ind + "mode\n" ;
+        }
+        //      C# -> List<HierarchyObject>? HierarchyObjects
+        // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
+        if (this.HierarchyObjects != null) {
+            s += ind + "hierarchyObjects {\n" +
+                this.HierarchyObjects.AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> System.Int64? CreatedTime
+        // GraphQL -> createdTime: Long! (scalar)
+        if (this.CreatedTime != null) {
+            s += ind + "createdTime\n" ;
+        }
+        //      C# -> System.Boolean? Deletable
+        // GraphQL -> deletable: Boolean! (scalar)
+        if (this.Deletable != null) {
+            s += ind + "deletable\n" ;
+        }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            s += ind + "description\n" ;
+        }
+        //      C# -> List<System.String>? HierarchyObjectIds
+        // GraphQL -> hierarchyObjectIds: [String!]! (scalar)
+        if (this.HierarchyObjectIds != null) {
+            s += ind + "hierarchyObjectIds\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Int64? LastUpdatedTime
+        // GraphQL -> lastUpdatedTime: Long! (scalar)
+        if (this.LastUpdatedTime != null) {
+            s += ind + "lastUpdatedTime\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.Int32? NumAnalyzers
+        // GraphQL -> numAnalyzers: Int! (scalar)
+        if (this.NumAnalyzers != null) {
+            s += ind + "numAnalyzers\n" ;
+        }
+        //      C# -> System.Int32? TotalObjects
+        // GraphQL -> totalObjects: Int! (scalar)
+        if (this.TotalObjects != null) {
+            s += ind + "totalObjects\n" ;
+        }
+        //      C# -> List<Analyzer>? Analyzers
+        // GraphQL -> analyzers: [Analyzer!]! (type)
+        if (this.Analyzers != null) {
+            s += ind + "analyzers {\n" + this.Analyzers.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> User? Creator
+        // GraphQL -> creator: User (type)
+        if (this.Creator != null) {
+            s += ind + "creator {\n" + this.Creator.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
+        // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
+        if (this.HierarchyObjectConnection != null) {
+            s += ind + "hierarchyObjectConnection {\n" + this.HierarchyObjectConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ObjectStatus>? ObjectStatuses
+        // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
+        if (this.ObjectStatuses != null) {
+            s += ind + "objectStatuses {\n" + this.ObjectStatuses.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists
+        // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
+        if (this.Whitelists != null) {
+            s += ind + "whitelists {\n" + this.Whitelists.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ClassificationPolicyColor? ColorEnum
+        // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
+        if (this.ColorEnum == null && Exploration.Includes(parent + ".colorEnum", true))
         {
-            //      C# -> System.Int64? CreatedTime
-            // GraphQL -> createdTime: Long! (scalar)
-            if (this.CreatedTime == null && Exploration.Includes(parent + ".createdTime$"))
-            {
-                this.CreatedTime = new System.Int64();
-            }
-            //      C# -> System.Boolean? Deletable
-            // GraphQL -> deletable: Boolean! (scalar)
-            if (this.Deletable == null && Exploration.Includes(parent + ".deletable$"))
-            {
-                this.Deletable = new System.Boolean();
-            }
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description == null && Exploration.Includes(parent + ".description$"))
-            {
-                this.Description = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? HierarchyObjectIds
-            // GraphQL -> hierarchyObjectIds: [String!]! (scalar)
-            if (this.HierarchyObjectIds == null && Exploration.Includes(parent + ".hierarchyObjectIds$"))
-            {
-                this.HierarchyObjectIds = new List<System.String>();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? LastUpdatedTime
-            // GraphQL -> lastUpdatedTime: Long! (scalar)
-            if (this.LastUpdatedTime == null && Exploration.Includes(parent + ".lastUpdatedTime$"))
-            {
-                this.LastUpdatedTime = new System.Int64();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? NumAnalyzers
-            // GraphQL -> numAnalyzers: Int! (scalar)
-            if (this.NumAnalyzers == null && Exploration.Includes(parent + ".numAnalyzers$"))
-            {
-                this.NumAnalyzers = new System.Int32();
-            }
-            //      C# -> System.Int32? TotalObjects
-            // GraphQL -> totalObjects: Int! (scalar)
-            if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects$"))
-            {
-                this.TotalObjects = new System.Int32();
-            }
-            //      C# -> List<Analyzer>? Analyzers
-            // GraphQL -> analyzers: [Analyzer!]! (type)
-            if (this.Analyzers == null && Exploration.Includes(parent + ".analyzers"))
-            {
-                this.Analyzers = new List<Analyzer>();
-                this.Analyzers.ApplyExploratoryFragment(parent + ".analyzers");
-            }
-            //      C# -> User? Creator
-            // GraphQL -> creator: User (type)
-            if (this.Creator == null && Exploration.Includes(parent + ".creator"))
-            {
-                this.Creator = new User();
-                this.Creator.ApplyExploratoryFragment(parent + ".creator");
-            }
-            //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
-            // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
-            if (this.HierarchyObjectConnection == null && Exploration.Includes(parent + ".hierarchyObjectConnection"))
-            {
-                this.HierarchyObjectConnection = new HierarchyObjectConnection();
-                this.HierarchyObjectConnection.ApplyExploratoryFragment(parent + ".hierarchyObjectConnection");
-            }
-            //      C# -> List<ObjectStatus>? ObjectStatuses
-            // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
-            if (this.ObjectStatuses == null && Exploration.Includes(parent + ".objectStatuses"))
-            {
-                this.ObjectStatuses = new List<ObjectStatus>();
-                this.ObjectStatuses.ApplyExploratoryFragment(parent + ".objectStatuses");
-            }
-            //      C# -> List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists
-            // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
-            if (this.Whitelists == null && Exploration.Includes(parent + ".whitelists"))
-            {
-                this.Whitelists = new List<ClassificationPolicyWhitelistDetailedEntry>();
-                this.Whitelists.ApplyExploratoryFragment(parent + ".whitelists");
-            }
-            //      C# -> ClassificationPolicyColor? ColorEnum
-            // GraphQL -> colorEnum: ClassificationPolicyColor! (enum)
-            if (this.ColorEnum == null && Exploration.Includes(parent + ".colorEnum$"))
-            {
-                this.ColorEnum = new ClassificationPolicyColor();
-            }
-            //      C# -> ClassificationPolicyMode? Mode
-            // GraphQL -> mode: ClassificationPolicyMode! (enum)
-            if (this.Mode == null && Exploration.Includes(parent + ".mode$"))
-            {
-                this.Mode = new ClassificationPolicyMode();
-            }
-            //      C# -> List<HierarchyObject>? HierarchyObjects
-            // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
-            if (this.HierarchyObjects == null && Exploration.Includes(parent + ".hierarchyObjects"))
-            {
-                this.HierarchyObjects = new List<HierarchyObject>();
-                this.HierarchyObjects.ApplyExploratoryFragment(parent + ".hierarchyObjects");
-            }
+            this.ColorEnum = new ClassificationPolicyColor();
         }
+        //      C# -> ClassificationPolicyMode? Mode
+        // GraphQL -> mode: ClassificationPolicyMode! (enum)
+        if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
+        {
+            this.Mode = new ClassificationPolicyMode();
+        }
+        //      C# -> List<HierarchyObject>? HierarchyObjects
+        // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
+        if (this.HierarchyObjects == null && Exploration.Includes(parent + ".hierarchyObjects"))
+        {
+            this.HierarchyObjects = new List<HierarchyObject>();
+            this.HierarchyObjects.ApplyExploratoryFieldSpec(parent + ".hierarchyObjects");
+        }
+        //      C# -> System.Int64? CreatedTime
+        // GraphQL -> createdTime: Long! (scalar)
+        if (this.CreatedTime == null && Exploration.Includes(parent + ".createdTime", true))
+        {
+            this.CreatedTime = new System.Int64();
+        }
+        //      C# -> System.Boolean? Deletable
+        // GraphQL -> deletable: Boolean! (scalar)
+        if (this.Deletable == null && Exploration.Includes(parent + ".deletable", true))
+        {
+            this.Deletable = true;
+        }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        {
+            this.Description = new System.String("FETCH");
+        }
+        //      C# -> List<System.String>? HierarchyObjectIds
+        // GraphQL -> hierarchyObjectIds: [String!]! (scalar)
+        if (this.HierarchyObjectIds == null && Exploration.Includes(parent + ".hierarchyObjectIds", true))
+        {
+            this.HierarchyObjectIds = new List<System.String>();
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? LastUpdatedTime
+        // GraphQL -> lastUpdatedTime: Long! (scalar)
+        if (this.LastUpdatedTime == null && Exploration.Includes(parent + ".lastUpdatedTime", true))
+        {
+            this.LastUpdatedTime = new System.Int64();
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? NumAnalyzers
+        // GraphQL -> numAnalyzers: Int! (scalar)
+        if (this.NumAnalyzers == null && Exploration.Includes(parent + ".numAnalyzers", true))
+        {
+            this.NumAnalyzers = new System.Int32();
+        }
+        //      C# -> System.Int32? TotalObjects
+        // GraphQL -> totalObjects: Int! (scalar)
+        if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects", true))
+        {
+            this.TotalObjects = new System.Int32();
+        }
+        //      C# -> List<Analyzer>? Analyzers
+        // GraphQL -> analyzers: [Analyzer!]! (type)
+        if (this.Analyzers == null && Exploration.Includes(parent + ".analyzers"))
+        {
+            this.Analyzers = new List<Analyzer>();
+            this.Analyzers.ApplyExploratoryFieldSpec(parent + ".analyzers");
+        }
+        //      C# -> User? Creator
+        // GraphQL -> creator: User (type)
+        if (this.Creator == null && Exploration.Includes(parent + ".creator"))
+        {
+            this.Creator = new User();
+            this.Creator.ApplyExploratoryFieldSpec(parent + ".creator");
+        }
+        //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
+        // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
+        if (this.HierarchyObjectConnection == null && Exploration.Includes(parent + ".hierarchyObjectConnection"))
+        {
+            this.HierarchyObjectConnection = new HierarchyObjectConnection();
+            this.HierarchyObjectConnection.ApplyExploratoryFieldSpec(parent + ".hierarchyObjectConnection");
+        }
+        //      C# -> List<ObjectStatus>? ObjectStatuses
+        // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
+        if (this.ObjectStatuses == null && Exploration.Includes(parent + ".objectStatuses"))
+        {
+            this.ObjectStatuses = new List<ObjectStatus>();
+            this.ObjectStatuses.ApplyExploratoryFieldSpec(parent + ".objectStatuses");
+        }
+        //      C# -> List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists
+        // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
+        if (this.Whitelists == null && Exploration.Includes(parent + ".whitelists"))
+        {
+            this.Whitelists = new List<ClassificationPolicyWhitelistDetailedEntry>();
+            this.Whitelists.ApplyExploratoryFieldSpec(parent + ".whitelists");
+        }
+    }
 
 
     #endregion
 
     } // class ClassificationPolicyDetail
+    
     #endregion
 
     public static class ListClassificationPolicyDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ClassificationPolicyDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ClassificationPolicyDetail> list, 
             String parent = "")
         {
-            var item = new ClassificationPolicyDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ClassificationPolicyDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

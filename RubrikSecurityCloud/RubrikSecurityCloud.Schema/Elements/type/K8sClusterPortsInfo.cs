@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region K8sClusterPortsInfo
-    public class K8sClusterPortsInfo: IFragment
+    public class K8sClusterPortsInfo: BaseType
     {
         #region members
+
+        //      C# -> KuprClusterPortsType? PortRangeType
+        // GraphQL -> portRangeType: KuprClusterPortsType! (enum)
+        [JsonProperty("portRangeType")]
+        public KuprClusterPortsType? PortRangeType { get; set; }
+
         //      C# -> System.String? KuprClusterUuid
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
         [JsonProperty("kuprClusterUuid")]
@@ -33,22 +40,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("minPort")]
         public System.Int32? MinPort { get; set; }
 
-        //      C# -> KuprClusterPortsType? PortRangeType
-        // GraphQL -> portRangeType: KuprClusterPortsType! (enum)
-        [JsonProperty("portRangeType")]
-        public KuprClusterPortsType? PortRangeType { get; set; }
 
         #endregion
 
     #region methods
 
     public K8sClusterPortsInfo Set(
+        KuprClusterPortsType? PortRangeType = null,
         System.String? KuprClusterUuid = null,
         System.Int32? MaxPort = null,
-        System.Int32? MinPort = null,
-        KuprClusterPortsType? PortRangeType = null
+        System.Int32? MinPort = null
     ) 
     {
+        if ( PortRangeType != null ) {
+            this.PortRangeType = PortRangeType;
+        }
         if ( KuprClusterUuid != null ) {
             this.KuprClusterUuid = KuprClusterUuid;
         }
@@ -58,114 +64,107 @@ namespace Rubrik.SecurityCloud.Types
         if ( MinPort != null ) {
             this.MinPort = MinPort;
         }
-        if ( PortRangeType != null ) {
-            this.PortRangeType = PortRangeType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? KuprClusterUuid
-            // GraphQL -> kuprClusterUuid: UUID! (scalar)
-            if (this.KuprClusterUuid != null)
-            {
-                 s += ind + "kuprClusterUuid\n";
-
-            }
-            //      C# -> System.Int32? MaxPort
-            // GraphQL -> maxPort: Int! (scalar)
-            if (this.MaxPort != null)
-            {
-                 s += ind + "maxPort\n";
-
-            }
-            //      C# -> System.Int32? MinPort
-            // GraphQL -> minPort: Int! (scalar)
-            if (this.MinPort != null)
-            {
-                 s += ind + "minPort\n";
-
-            }
-            //      C# -> KuprClusterPortsType? PortRangeType
-            // GraphQL -> portRangeType: KuprClusterPortsType! (enum)
-            if (this.PortRangeType != null)
-            {
-                 s += ind + "portRangeType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> KuprClusterPortsType? PortRangeType
+        // GraphQL -> portRangeType: KuprClusterPortsType! (enum)
+        if (this.PortRangeType != null) {
+            s += ind + "portRangeType\n" ;
         }
+        //      C# -> System.String? KuprClusterUuid
+        // GraphQL -> kuprClusterUuid: UUID! (scalar)
+        if (this.KuprClusterUuid != null) {
+            s += ind + "kuprClusterUuid\n" ;
+        }
+        //      C# -> System.Int32? MaxPort
+        // GraphQL -> maxPort: Int! (scalar)
+        if (this.MaxPort != null) {
+            s += ind + "maxPort\n" ;
+        }
+        //      C# -> System.Int32? MinPort
+        // GraphQL -> minPort: Int! (scalar)
+        if (this.MinPort != null) {
+            s += ind + "minPort\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> KuprClusterPortsType? PortRangeType
+        // GraphQL -> portRangeType: KuprClusterPortsType! (enum)
+        if (this.PortRangeType == null && Exploration.Includes(parent + ".portRangeType", true))
         {
-            //      C# -> System.String? KuprClusterUuid
-            // GraphQL -> kuprClusterUuid: UUID! (scalar)
-            if (this.KuprClusterUuid == null && Exploration.Includes(parent + ".kuprClusterUuid$"))
-            {
-                this.KuprClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? MaxPort
-            // GraphQL -> maxPort: Int! (scalar)
-            if (this.MaxPort == null && Exploration.Includes(parent + ".maxPort$"))
-            {
-                this.MaxPort = new System.Int32();
-            }
-            //      C# -> System.Int32? MinPort
-            // GraphQL -> minPort: Int! (scalar)
-            if (this.MinPort == null && Exploration.Includes(parent + ".minPort$"))
-            {
-                this.MinPort = new System.Int32();
-            }
-            //      C# -> KuprClusterPortsType? PortRangeType
-            // GraphQL -> portRangeType: KuprClusterPortsType! (enum)
-            if (this.PortRangeType == null && Exploration.Includes(parent + ".portRangeType$"))
-            {
-                this.PortRangeType = new KuprClusterPortsType();
-            }
+            this.PortRangeType = new KuprClusterPortsType();
         }
+        //      C# -> System.String? KuprClusterUuid
+        // GraphQL -> kuprClusterUuid: UUID! (scalar)
+        if (this.KuprClusterUuid == null && Exploration.Includes(parent + ".kuprClusterUuid", true))
+        {
+            this.KuprClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? MaxPort
+        // GraphQL -> maxPort: Int! (scalar)
+        if (this.MaxPort == null && Exploration.Includes(parent + ".maxPort", true))
+        {
+            this.MaxPort = new System.Int32();
+        }
+        //      C# -> System.Int32? MinPort
+        // GraphQL -> minPort: Int! (scalar)
+        if (this.MinPort == null && Exploration.Includes(parent + ".minPort", true))
+        {
+            this.MinPort = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class K8sClusterPortsInfo
+    
     #endregion
 
     public static class ListK8sClusterPortsInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<K8sClusterPortsInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<K8sClusterPortsInfo> list, 
             String parent = "")
         {
-            var item = new K8sClusterPortsInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new K8sClusterPortsInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region OauthAccessToken
-    public class OauthAccessToken: IFragment
+    public class OauthAccessToken: BaseType
     {
         #region members
+
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
         [JsonProperty("clientId")]
@@ -42,6 +44,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> redirectUri: String! (scalar)
         [JsonProperty("redirectUri")]
         public System.String? RedirectUri { get; set; }
+
 
         #endregion
 
@@ -73,121 +76,115 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ClientId
-            // GraphQL -> clientId: String! (scalar)
-            if (this.ClientId != null)
-            {
-                 s += ind + "clientId\n";
-
-            }
-            //      C# -> System.String? Code
-            // GraphQL -> code: String! (scalar)
-            if (this.Code != null)
-            {
-                 s += ind + "code\n";
-
-            }
-            //      C# -> System.String? CodeVerifier
-            // GraphQL -> codeVerifier: String! (scalar)
-            if (this.CodeVerifier != null)
-            {
-                 s += ind + "codeVerifier\n";
-
-            }
-            //      C# -> System.String? ExpiryTime
-            // GraphQL -> expiryTime: String! (scalar)
-            if (this.ExpiryTime != null)
-            {
-                 s += ind + "expiryTime\n";
-
-            }
-            //      C# -> System.String? RedirectUri
-            // GraphQL -> redirectUri: String! (scalar)
-            if (this.RedirectUri != null)
-            {
-                 s += ind + "redirectUri\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? ClientId
+        // GraphQL -> clientId: String! (scalar)
+        if (this.ClientId != null) {
+            s += ind + "clientId\n" ;
         }
+        //      C# -> System.String? Code
+        // GraphQL -> code: String! (scalar)
+        if (this.Code != null) {
+            s += ind + "code\n" ;
+        }
+        //      C# -> System.String? CodeVerifier
+        // GraphQL -> codeVerifier: String! (scalar)
+        if (this.CodeVerifier != null) {
+            s += ind + "codeVerifier\n" ;
+        }
+        //      C# -> System.String? ExpiryTime
+        // GraphQL -> expiryTime: String! (scalar)
+        if (this.ExpiryTime != null) {
+            s += ind + "expiryTime\n" ;
+        }
+        //      C# -> System.String? RedirectUri
+        // GraphQL -> redirectUri: String! (scalar)
+        if (this.RedirectUri != null) {
+            s += ind + "redirectUri\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? ClientId
+        // GraphQL -> clientId: String! (scalar)
+        if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
         {
-            //      C# -> System.String? ClientId
-            // GraphQL -> clientId: String! (scalar)
-            if (this.ClientId == null && Exploration.Includes(parent + ".clientId$"))
-            {
-                this.ClientId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Code
-            // GraphQL -> code: String! (scalar)
-            if (this.Code == null && Exploration.Includes(parent + ".code$"))
-            {
-                this.Code = new System.String("FETCH");
-            }
-            //      C# -> System.String? CodeVerifier
-            // GraphQL -> codeVerifier: String! (scalar)
-            if (this.CodeVerifier == null && Exploration.Includes(parent + ".codeVerifier$"))
-            {
-                this.CodeVerifier = new System.String("FETCH");
-            }
-            //      C# -> System.String? ExpiryTime
-            // GraphQL -> expiryTime: String! (scalar)
-            if (this.ExpiryTime == null && Exploration.Includes(parent + ".expiryTime$"))
-            {
-                this.ExpiryTime = new System.String("FETCH");
-            }
-            //      C# -> System.String? RedirectUri
-            // GraphQL -> redirectUri: String! (scalar)
-            if (this.RedirectUri == null && Exploration.Includes(parent + ".redirectUri$"))
-            {
-                this.RedirectUri = new System.String("FETCH");
-            }
+            this.ClientId = new System.String("FETCH");
         }
+        //      C# -> System.String? Code
+        // GraphQL -> code: String! (scalar)
+        if (this.Code == null && Exploration.Includes(parent + ".code", true))
+        {
+            this.Code = new System.String("FETCH");
+        }
+        //      C# -> System.String? CodeVerifier
+        // GraphQL -> codeVerifier: String! (scalar)
+        if (this.CodeVerifier == null && Exploration.Includes(parent + ".codeVerifier", true))
+        {
+            this.CodeVerifier = new System.String("FETCH");
+        }
+        //      C# -> System.String? ExpiryTime
+        // GraphQL -> expiryTime: String! (scalar)
+        if (this.ExpiryTime == null && Exploration.Includes(parent + ".expiryTime", true))
+        {
+            this.ExpiryTime = new System.String("FETCH");
+        }
+        //      C# -> System.String? RedirectUri
+        // GraphQL -> redirectUri: String! (scalar)
+        if (this.RedirectUri == null && Exploration.Includes(parent + ".redirectUri", true))
+        {
+            this.RedirectUri = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class OauthAccessToken
+    
     #endregion
 
     public static class ListOauthAccessTokenExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<OauthAccessToken> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<OauthAccessToken> list, 
             String parent = "")
         {
-            var item = new OauthAccessToken();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new OauthAccessToken());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region K8sClusterInfo
-    public class K8sClusterInfo: IFragment
+    public class K8sClusterInfo: BaseType
     {
         #region members
+
+        //      C# -> K8sClusterType? Type
+        // GraphQL -> type: K8sClusterType! (enum)
+        [JsonProperty("type")]
+        public K8sClusterType? Type { get; set; }
+
         //      C# -> System.String? K8sVersion
         // GraphQL -> k8sVersion: String (scalar)
         [JsonProperty("k8sVersion")]
@@ -38,23 +45,22 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("associatedCdm")]
         public Cluster? AssociatedCdm { get; set; }
 
-        //      C# -> K8sClusterType? Type
-        // GraphQL -> type: K8sClusterType! (enum)
-        [JsonProperty("type")]
-        public K8sClusterType? Type { get; set; }
 
         #endregion
 
     #region methods
 
     public K8sClusterInfo Set(
+        K8sClusterType? Type = null,
         System.String? K8sVersion = null,
         System.String? KuprClusterUuid = null,
         System.Int32? Port = null,
-        Cluster? AssociatedCdm = null,
-        K8sClusterType? Type = null
+        Cluster? AssociatedCdm = null
     ) 
     {
+        if ( Type != null ) {
+            this.Type = Type;
+        }
         if ( K8sVersion != null ) {
             this.K8sVersion = K8sVersion;
         }
@@ -67,131 +73,119 @@ namespace Rubrik.SecurityCloud.Types
         if ( AssociatedCdm != null ) {
             this.AssociatedCdm = AssociatedCdm;
         }
-        if ( Type != null ) {
-            this.Type = Type;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? K8sVersion
-            // GraphQL -> k8sVersion: String (scalar)
-            if (this.K8sVersion != null)
-            {
-                 s += ind + "k8sVersion\n";
-
-            }
-            //      C# -> System.String? KuprClusterUuid
-            // GraphQL -> kuprClusterUuid: UUID! (scalar)
-            if (this.KuprClusterUuid != null)
-            {
-                 s += ind + "kuprClusterUuid\n";
-
-            }
-            //      C# -> System.Int32? Port
-            // GraphQL -> port: Int! (scalar)
-            if (this.Port != null)
-            {
-                 s += ind + "port\n";
-
-            }
-            //      C# -> Cluster? AssociatedCdm
-            // GraphQL -> associatedCdm: Cluster (type)
-            if (this.AssociatedCdm != null)
-            {
-                 s += ind + "associatedCdm\n";
-
-                 s += ind + "{\n" + 
-                 this.AssociatedCdm.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> K8sClusterType? Type
-            // GraphQL -> type: K8sClusterType! (enum)
-            if (this.Type != null)
-            {
-                 s += ind + "type\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> K8sClusterType? Type
+        // GraphQL -> type: K8sClusterType! (enum)
+        if (this.Type != null) {
+            s += ind + "type\n" ;
         }
+        //      C# -> System.String? K8sVersion
+        // GraphQL -> k8sVersion: String (scalar)
+        if (this.K8sVersion != null) {
+            s += ind + "k8sVersion\n" ;
+        }
+        //      C# -> System.String? KuprClusterUuid
+        // GraphQL -> kuprClusterUuid: UUID! (scalar)
+        if (this.KuprClusterUuid != null) {
+            s += ind + "kuprClusterUuid\n" ;
+        }
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int! (scalar)
+        if (this.Port != null) {
+            s += ind + "port\n" ;
+        }
+        //      C# -> Cluster? AssociatedCdm
+        // GraphQL -> associatedCdm: Cluster (type)
+        if (this.AssociatedCdm != null) {
+            s += ind + "associatedCdm {\n" + this.AssociatedCdm.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> K8sClusterType? Type
+        // GraphQL -> type: K8sClusterType! (enum)
+        if (this.Type == null && Exploration.Includes(parent + ".type", true))
         {
-            //      C# -> System.String? K8sVersion
-            // GraphQL -> k8sVersion: String (scalar)
-            if (this.K8sVersion == null && Exploration.Includes(parent + ".k8sVersion$"))
-            {
-                this.K8sVersion = new System.String("FETCH");
-            }
-            //      C# -> System.String? KuprClusterUuid
-            // GraphQL -> kuprClusterUuid: UUID! (scalar)
-            if (this.KuprClusterUuid == null && Exploration.Includes(parent + ".kuprClusterUuid$"))
-            {
-                this.KuprClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? Port
-            // GraphQL -> port: Int! (scalar)
-            if (this.Port == null && Exploration.Includes(parent + ".port$"))
-            {
-                this.Port = new System.Int32();
-            }
-            //      C# -> Cluster? AssociatedCdm
-            // GraphQL -> associatedCdm: Cluster (type)
-            if (this.AssociatedCdm == null && Exploration.Includes(parent + ".associatedCdm"))
-            {
-                this.AssociatedCdm = new Cluster();
-                this.AssociatedCdm.ApplyExploratoryFragment(parent + ".associatedCdm");
-            }
-            //      C# -> K8sClusterType? Type
-            // GraphQL -> type: K8sClusterType! (enum)
-            if (this.Type == null && Exploration.Includes(parent + ".type$"))
-            {
-                this.Type = new K8sClusterType();
-            }
+            this.Type = new K8sClusterType();
         }
+        //      C# -> System.String? K8sVersion
+        // GraphQL -> k8sVersion: String (scalar)
+        if (this.K8sVersion == null && Exploration.Includes(parent + ".k8sVersion", true))
+        {
+            this.K8sVersion = new System.String("FETCH");
+        }
+        //      C# -> System.String? KuprClusterUuid
+        // GraphQL -> kuprClusterUuid: UUID! (scalar)
+        if (this.KuprClusterUuid == null && Exploration.Includes(parent + ".kuprClusterUuid", true))
+        {
+            this.KuprClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int! (scalar)
+        if (this.Port == null && Exploration.Includes(parent + ".port", true))
+        {
+            this.Port = new System.Int32();
+        }
+        //      C# -> Cluster? AssociatedCdm
+        // GraphQL -> associatedCdm: Cluster (type)
+        if (this.AssociatedCdm == null && Exploration.Includes(parent + ".associatedCdm"))
+        {
+            this.AssociatedCdm = new Cluster();
+            this.AssociatedCdm.ApplyExploratoryFieldSpec(parent + ".associatedCdm");
+        }
+    }
 
 
     #endregion
 
     } // class K8sClusterInfo
+    
     #endregion
 
     public static class ListK8sClusterInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<K8sClusterInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<K8sClusterInfo> list, 
             String parent = "")
         {
-            var item = new K8sClusterInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new K8sClusterInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

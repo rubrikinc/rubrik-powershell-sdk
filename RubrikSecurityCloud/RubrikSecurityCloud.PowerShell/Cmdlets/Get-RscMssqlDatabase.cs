@@ -8,7 +8,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using RubrikSecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 {
@@ -89,7 +89,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     listFields = new MssqlDatabaseConnection();
                     listFields.Nodes = new List<MssqlDatabase>();
                     MssqlDatabase fieldsObject = new MssqlDatabase();
-                    fieldsObject.ApplyExploratoryFragment();
+                    fieldsObject.ApplyExploratoryFieldSpec();
                     listFields.Nodes.Add(fieldsObject);
                 }
 
@@ -159,7 +159,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         if (Fields == null)
                         {
                             detailFields = new MssqlDatabase();
-                            detailFields.ApplyExploratoryFragment();
+                            detailFields.ApplyExploratoryFieldSpec();
                         }
                         else
                         {

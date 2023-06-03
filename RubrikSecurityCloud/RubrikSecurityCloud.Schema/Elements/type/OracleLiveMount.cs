@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region OracleLiveMount
-    public class OracleLiveMount: IFragment
+    public class OracleLiveMount: BaseType
     {
         #region members
+
+        //      C# -> OracleLiveMountStatus? Status
+        // GraphQL -> status: OracleLiveMountStatus! (enum)
+        [JsonProperty("status")]
+        public OracleLiveMountStatus? Status { get; set; }
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -93,16 +100,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("targetOracleRac")]
         public OracleRac? TargetOracleRac { get; set; }
 
-        //      C# -> OracleLiveMountStatus? Status
-        // GraphQL -> status: OracleLiveMountStatus! (enum)
-        [JsonProperty("status")]
-        public OracleLiveMountStatus? Status { get; set; }
 
         #endregion
 
     #region methods
 
     public OracleLiveMount Set(
+        OracleLiveMountStatus? Status = null,
         System.String? CdmId = null,
         DateTime? CreationDate = null,
         System.String? Id = null,
@@ -117,10 +121,12 @@ namespace Rubrik.SecurityCloud.Types
         OracleDatabase? SourceDatabase = null,
         CdmSnapshot? SourceSnapshot = null,
         OracleHost? TargetOracleHost = null,
-        OracleRac? TargetOracleRac = null,
-        OracleLiveMountStatus? Status = null
+        OracleRac? TargetOracleRac = null
     ) 
     {
+        if ( Status != null ) {
+            this.Status = Status;
+        }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
         }
@@ -166,298 +172,246 @@ namespace Rubrik.SecurityCloud.Types
         if ( TargetOracleRac != null ) {
             this.TargetOracleRac = TargetOracleRac;
         }
-        if ( Status != null ) {
-            this.Status = Status;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId != null)
-            {
-                 s += ind + "cdmId\n";
-
-            }
-            //      C# -> DateTime? CreationDate
-            // GraphQL -> creationDate: DateTime (scalar)
-            if (this.CreationDate != null)
-            {
-                 s += ind + "creationDate\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: UUID! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsFilesOnlyMount
-            // GraphQL -> isFilesOnlyMount: Boolean! (scalar)
-            if (this.IsFilesOnlyMount != null)
-            {
-                 s += ind + "isFilesOnlyMount\n";
-
-            }
-            //      C# -> System.Boolean? IsInstantRecovered
-            // GraphQL -> isInstantRecovered: Boolean! (scalar)
-            if (this.IsInstantRecovered != null)
-            {
-                 s += ind + "isInstantRecovered\n";
-
-            }
-            //      C# -> System.Boolean? IsReady
-            // GraphQL -> isReady: Boolean! (scalar)
-            if (this.IsReady != null)
-            {
-                 s += ind + "isReady\n";
-
-            }
-            //      C# -> System.String? MountedDatabaseName
-            // GraphQL -> mountedDatabaseName: String! (scalar)
-            if (this.MountedDatabaseName != null)
-            {
-                 s += ind + "mountedDatabaseName\n";
-
-            }
-            //      C# -> System.String? TargetHostMount
-            // GraphQL -> targetHostMount: String! (scalar)
-            if (this.TargetHostMount != null)
-            {
-                 s += ind + "targetHostMount\n";
-
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleDatabase? MountedDatabase
-            // GraphQL -> mountedDatabase: OracleDatabase (type)
-            if (this.MountedDatabase != null)
-            {
-                 s += ind + "mountedDatabase\n";
-
-                 s += ind + "{\n" + 
-                 this.MountedDatabase.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> User? Owner
-            // GraphQL -> owner: User! (type)
-            if (this.Owner != null)
-            {
-                 s += ind + "owner\n";
-
-                 s += ind + "{\n" + 
-                 this.Owner.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleDatabase? SourceDatabase
-            // GraphQL -> sourceDatabase: OracleDatabase (type)
-            if (this.SourceDatabase != null)
-            {
-                 s += ind + "sourceDatabase\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceDatabase.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? SourceSnapshot
-            // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-            if (this.SourceSnapshot != null)
-            {
-                 s += ind + "sourceSnapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceSnapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleHost? TargetOracleHost
-            // GraphQL -> targetOracleHost: OracleHost (type)
-            if (this.TargetOracleHost != null)
-            {
-                 s += ind + "targetOracleHost\n";
-
-                 s += ind + "{\n" + 
-                 this.TargetOracleHost.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleRac? TargetOracleRac
-            // GraphQL -> targetOracleRac: OracleRac (type)
-            if (this.TargetOracleRac != null)
-            {
-                 s += ind + "targetOracleRac\n";
-
-                 s += ind + "{\n" + 
-                 this.TargetOracleRac.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> OracleLiveMountStatus? Status
-            // GraphQL -> status: OracleLiveMountStatus! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> OracleLiveMountStatus? Status
+        // GraphQL -> status: OracleLiveMountStatus! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
+        }
+        //      C# -> DateTime? CreationDate
+        // GraphQL -> creationDate: DateTime (scalar)
+        if (this.CreationDate != null) {
+            s += ind + "creationDate\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsFilesOnlyMount
+        // GraphQL -> isFilesOnlyMount: Boolean! (scalar)
+        if (this.IsFilesOnlyMount != null) {
+            s += ind + "isFilesOnlyMount\n" ;
+        }
+        //      C# -> System.Boolean? IsInstantRecovered
+        // GraphQL -> isInstantRecovered: Boolean! (scalar)
+        if (this.IsInstantRecovered != null) {
+            s += ind + "isInstantRecovered\n" ;
+        }
+        //      C# -> System.Boolean? IsReady
+        // GraphQL -> isReady: Boolean! (scalar)
+        if (this.IsReady != null) {
+            s += ind + "isReady\n" ;
+        }
+        //      C# -> System.String? MountedDatabaseName
+        // GraphQL -> mountedDatabaseName: String! (scalar)
+        if (this.MountedDatabaseName != null) {
+            s += ind + "mountedDatabaseName\n" ;
+        }
+        //      C# -> System.String? TargetHostMount
+        // GraphQL -> targetHostMount: String! (scalar)
+        if (this.TargetHostMount != null) {
+            s += ind + "targetHostMount\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OracleDatabase? MountedDatabase
+        // GraphQL -> mountedDatabase: OracleDatabase (type)
+        if (this.MountedDatabase != null) {
+            s += ind + "mountedDatabase {\n" + this.MountedDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> User? Owner
+        // GraphQL -> owner: User! (type)
+        if (this.Owner != null) {
+            s += ind + "owner {\n" + this.Owner.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OracleDatabase? SourceDatabase
+        // GraphQL -> sourceDatabase: OracleDatabase (type)
+        if (this.SourceDatabase != null) {
+            s += ind + "sourceDatabase {\n" + this.SourceDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? SourceSnapshot
+        // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
+        if (this.SourceSnapshot != null) {
+            s += ind + "sourceSnapshot {\n" + this.SourceSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OracleHost? TargetOracleHost
+        // GraphQL -> targetOracleHost: OracleHost (type)
+        if (this.TargetOracleHost != null) {
+            s += ind + "targetOracleHost {\n" + this.TargetOracleHost.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> OracleRac? TargetOracleRac
+        // GraphQL -> targetOracleRac: OracleRac (type)
+        if (this.TargetOracleRac != null) {
+            s += ind + "targetOracleRac {\n" + this.TargetOracleRac.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> OracleLiveMountStatus? Status
+        // GraphQL -> status: OracleLiveMountStatus! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
-            {
-                this.CdmId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? CreationDate
-            // GraphQL -> creationDate: DateTime (scalar)
-            if (this.CreationDate == null && Exploration.Includes(parent + ".creationDate$"))
-            {
-                this.CreationDate = new DateTime();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: UUID! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsFilesOnlyMount
-            // GraphQL -> isFilesOnlyMount: Boolean! (scalar)
-            if (this.IsFilesOnlyMount == null && Exploration.Includes(parent + ".isFilesOnlyMount$"))
-            {
-                this.IsFilesOnlyMount = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsInstantRecovered
-            // GraphQL -> isInstantRecovered: Boolean! (scalar)
-            if (this.IsInstantRecovered == null && Exploration.Includes(parent + ".isInstantRecovered$"))
-            {
-                this.IsInstantRecovered = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsReady
-            // GraphQL -> isReady: Boolean! (scalar)
-            if (this.IsReady == null && Exploration.Includes(parent + ".isReady$"))
-            {
-                this.IsReady = new System.Boolean();
-            }
-            //      C# -> System.String? MountedDatabaseName
-            // GraphQL -> mountedDatabaseName: String! (scalar)
-            if (this.MountedDatabaseName == null && Exploration.Includes(parent + ".mountedDatabaseName$"))
-            {
-                this.MountedDatabaseName = new System.String("FETCH");
-            }
-            //      C# -> System.String? TargetHostMount
-            // GraphQL -> targetHostMount: String! (scalar)
-            if (this.TargetHostMount == null && Exploration.Includes(parent + ".targetHostMount$"))
-            {
-                this.TargetHostMount = new System.String("FETCH");
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> OracleDatabase? MountedDatabase
-            // GraphQL -> mountedDatabase: OracleDatabase (type)
-            if (this.MountedDatabase == null && Exploration.Includes(parent + ".mountedDatabase"))
-            {
-                this.MountedDatabase = new OracleDatabase();
-                this.MountedDatabase.ApplyExploratoryFragment(parent + ".mountedDatabase");
-            }
-            //      C# -> User? Owner
-            // GraphQL -> owner: User! (type)
-            if (this.Owner == null && Exploration.Includes(parent + ".owner"))
-            {
-                this.Owner = new User();
-                this.Owner.ApplyExploratoryFragment(parent + ".owner");
-            }
-            //      C# -> OracleDatabase? SourceDatabase
-            // GraphQL -> sourceDatabase: OracleDatabase (type)
-            if (this.SourceDatabase == null && Exploration.Includes(parent + ".sourceDatabase"))
-            {
-                this.SourceDatabase = new OracleDatabase();
-                this.SourceDatabase.ApplyExploratoryFragment(parent + ".sourceDatabase");
-            }
-            //      C# -> CdmSnapshot? SourceSnapshot
-            // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-            if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
-            {
-                this.SourceSnapshot = new CdmSnapshot();
-                this.SourceSnapshot.ApplyExploratoryFragment(parent + ".sourceSnapshot");
-            }
-            //      C# -> OracleHost? TargetOracleHost
-            // GraphQL -> targetOracleHost: OracleHost (type)
-            if (this.TargetOracleHost == null && Exploration.Includes(parent + ".targetOracleHost"))
-            {
-                this.TargetOracleHost = new OracleHost();
-                this.TargetOracleHost.ApplyExploratoryFragment(parent + ".targetOracleHost");
-            }
-            //      C# -> OracleRac? TargetOracleRac
-            // GraphQL -> targetOracleRac: OracleRac (type)
-            if (this.TargetOracleRac == null && Exploration.Includes(parent + ".targetOracleRac"))
-            {
-                this.TargetOracleRac = new OracleRac();
-                this.TargetOracleRac.ApplyExploratoryFragment(parent + ".targetOracleRac");
-            }
-            //      C# -> OracleLiveMountStatus? Status
-            // GraphQL -> status: OracleLiveMountStatus! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new OracleLiveMountStatus();
-            }
+            this.Status = new OracleLiveMountStatus();
         }
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
+        {
+            this.CdmId = new System.String("FETCH");
+        }
+        //      C# -> DateTime? CreationDate
+        // GraphQL -> creationDate: DateTime (scalar)
+        if (this.CreationDate == null && Exploration.Includes(parent + ".creationDate", true))
+        {
+            this.CreationDate = new DateTime();
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsFilesOnlyMount
+        // GraphQL -> isFilesOnlyMount: Boolean! (scalar)
+        if (this.IsFilesOnlyMount == null && Exploration.Includes(parent + ".isFilesOnlyMount", true))
+        {
+            this.IsFilesOnlyMount = true;
+        }
+        //      C# -> System.Boolean? IsInstantRecovered
+        // GraphQL -> isInstantRecovered: Boolean! (scalar)
+        if (this.IsInstantRecovered == null && Exploration.Includes(parent + ".isInstantRecovered", true))
+        {
+            this.IsInstantRecovered = true;
+        }
+        //      C# -> System.Boolean? IsReady
+        // GraphQL -> isReady: Boolean! (scalar)
+        if (this.IsReady == null && Exploration.Includes(parent + ".isReady", true))
+        {
+            this.IsReady = true;
+        }
+        //      C# -> System.String? MountedDatabaseName
+        // GraphQL -> mountedDatabaseName: String! (scalar)
+        if (this.MountedDatabaseName == null && Exploration.Includes(parent + ".mountedDatabaseName", true))
+        {
+            this.MountedDatabaseName = new System.String("FETCH");
+        }
+        //      C# -> System.String? TargetHostMount
+        // GraphQL -> targetHostMount: String! (scalar)
+        if (this.TargetHostMount == null && Exploration.Includes(parent + ".targetHostMount", true))
+        {
+            this.TargetHostMount = new System.String("FETCH");
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> OracleDatabase? MountedDatabase
+        // GraphQL -> mountedDatabase: OracleDatabase (type)
+        if (this.MountedDatabase == null && Exploration.Includes(parent + ".mountedDatabase"))
+        {
+            this.MountedDatabase = new OracleDatabase();
+            this.MountedDatabase.ApplyExploratoryFieldSpec(parent + ".mountedDatabase");
+        }
+        //      C# -> User? Owner
+        // GraphQL -> owner: User! (type)
+        if (this.Owner == null && Exploration.Includes(parent + ".owner"))
+        {
+            this.Owner = new User();
+            this.Owner.ApplyExploratoryFieldSpec(parent + ".owner");
+        }
+        //      C# -> OracleDatabase? SourceDatabase
+        // GraphQL -> sourceDatabase: OracleDatabase (type)
+        if (this.SourceDatabase == null && Exploration.Includes(parent + ".sourceDatabase"))
+        {
+            this.SourceDatabase = new OracleDatabase();
+            this.SourceDatabase.ApplyExploratoryFieldSpec(parent + ".sourceDatabase");
+        }
+        //      C# -> CdmSnapshot? SourceSnapshot
+        // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
+        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        {
+            this.SourceSnapshot = new CdmSnapshot();
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+        }
+        //      C# -> OracleHost? TargetOracleHost
+        // GraphQL -> targetOracleHost: OracleHost (type)
+        if (this.TargetOracleHost == null && Exploration.Includes(parent + ".targetOracleHost"))
+        {
+            this.TargetOracleHost = new OracleHost();
+            this.TargetOracleHost.ApplyExploratoryFieldSpec(parent + ".targetOracleHost");
+        }
+        //      C# -> OracleRac? TargetOracleRac
+        // GraphQL -> targetOracleRac: OracleRac (type)
+        if (this.TargetOracleRac == null && Exploration.Includes(parent + ".targetOracleRac"))
+        {
+            this.TargetOracleRac = new OracleRac();
+            this.TargetOracleRac.ApplyExploratoryFieldSpec(parent + ".targetOracleRac");
+        }
+    }
 
 
     #endregion
 
     } // class OracleLiveMount
+    
     #endregion
 
     public static class ListOracleLiveMountExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<OracleLiveMount> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<OracleLiveMount> list, 
             String parent = "")
         {
-            var item = new OracleLiveMount();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new OracleLiveMount());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

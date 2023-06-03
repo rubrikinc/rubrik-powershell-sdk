@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ManagedVolumeSnapshotLinks
-    public class ManagedVolumeSnapshotLinks: IFragment
+    public class ManagedVolumeSnapshotLinks: BaseType
     {
         #region members
+
         //      C# -> Link? ExportLink
         // GraphQL -> exportLink: Link (type)
         [JsonProperty("exportLink")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> self: Link (type)
         [JsonProperty("self")]
         public Link? Self { get; set; }
+
 
         #endregion
 
@@ -46,90 +49,84 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> Link? ExportLink
-            // GraphQL -> exportLink: Link (type)
-            if (this.ExportLink != null)
-            {
-                 s += ind + "exportLink\n";
-
-                 s += ind + "{\n" + 
-                 this.ExportLink.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> Link? Self
-            // GraphQL -> self: Link (type)
-            if (this.Self != null)
-            {
-                 s += ind + "self\n";
-
-                 s += ind + "{\n" + 
-                 this.Self.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> Link? ExportLink
+        // GraphQL -> exportLink: Link (type)
+        if (this.ExportLink != null) {
+            s += ind + "exportLink {\n" + this.ExportLink.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> Link? Self
+        // GraphQL -> self: Link (type)
+        if (this.Self != null) {
+            s += ind + "self {\n" + this.Self.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> Link? ExportLink
+        // GraphQL -> exportLink: Link (type)
+        if (this.ExportLink == null && Exploration.Includes(parent + ".exportLink"))
         {
-            //      C# -> Link? ExportLink
-            // GraphQL -> exportLink: Link (type)
-            if (this.ExportLink == null && Exploration.Includes(parent + ".exportLink"))
-            {
-                this.ExportLink = new Link();
-                this.ExportLink.ApplyExploratoryFragment(parent + ".exportLink");
-            }
-            //      C# -> Link? Self
-            // GraphQL -> self: Link (type)
-            if (this.Self == null && Exploration.Includes(parent + ".self"))
-            {
-                this.Self = new Link();
-                this.Self.ApplyExploratoryFragment(parent + ".self");
-            }
+            this.ExportLink = new Link();
+            this.ExportLink.ApplyExploratoryFieldSpec(parent + ".exportLink");
         }
+        //      C# -> Link? Self
+        // GraphQL -> self: Link (type)
+        if (this.Self == null && Exploration.Includes(parent + ".self"))
+        {
+            this.Self = new Link();
+            this.Self.ApplyExploratoryFieldSpec(parent + ".self");
+        }
+    }
 
 
     #endregion
 
     } // class ManagedVolumeSnapshotLinks
+    
     #endregion
 
     public static class ListManagedVolumeSnapshotLinksExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ManagedVolumeSnapshotLinks> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ManagedVolumeSnapshotLinks> list, 
             String parent = "")
         {
-            var item = new ManagedVolumeSnapshotLinks();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ManagedVolumeSnapshotLinks());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

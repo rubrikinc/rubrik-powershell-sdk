@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region OracleRacSummary
-    public class OracleRacSummary: IFragment
+    public class OracleRacSummary: BaseType
     {
         #region members
+
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
         [JsonProperty("hasLogConfigFromSla")]
@@ -73,6 +75,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("slaAssignable")]
         public SlaAssignable? SlaAssignable { get; set; }
 
+
         #endregion
 
     #region methods
@@ -127,211 +130,184 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? HasLogConfigFromSla
-            // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
-            if (this.HasLogConfigFromSla != null)
-            {
-                 s += ind + "hasLogConfigFromSla\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.Int32? NumDbs
-            // GraphQL -> numDbs: Int! (scalar)
-            if (this.NumDbs != null)
-            {
-                 s += ind + "numDbs\n";
-
-            }
-            //      C# -> System.Int32? NumNodes
-            // GraphQL -> numNodes: Int! (scalar)
-            if (this.NumNodes != null)
-            {
-                 s += ind + "numNodes\n";
-
-            }
-            //      C# -> System.String? PrimaryClusterId
-            // GraphQL -> primaryClusterId: String! (scalar)
-            if (this.PrimaryClusterId != null)
-            {
-                 s += ind + "primaryClusterId\n";
-
-            }
-            //      C# -> System.Boolean? ShouldDistributeBackupsAutomatically
-            // GraphQL -> shouldDistributeBackupsAutomatically: Boolean (scalar)
-            if (this.ShouldDistributeBackupsAutomatically != null)
-            {
-                 s += ind + "shouldDistributeBackupsAutomatically\n";
-
-            }
-            //      C# -> System.String? Status
-            // GraphQL -> status: String! (scalar)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            //      C# -> List<OracleNodeOrder>? NodeOrder
-            // GraphQL -> nodeOrder: [OracleNodeOrder!]! (type)
-            if (this.NodeOrder != null)
-            {
-                 s += ind + "nodeOrder\n";
-
-                 s += ind + "{\n" + 
-                 this.NodeOrder.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<OracleNodeProperties>? Nodes
-            // GraphQL -> nodes: [OracleNodeProperties!]! (type)
-            if (this.Nodes != null)
-            {
-                 s += ind + "nodes\n";
-
-                 s += ind + "{\n" + 
-                 this.Nodes.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable != null)
-            {
-                 s += ind + "slaAssignable\n";
-
-                 s += ind + "{\n" + 
-                 this.SlaAssignable.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Boolean? HasLogConfigFromSla
+        // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
+        if (this.HasLogConfigFromSla != null) {
+            s += ind + "hasLogConfigFromSla\n" ;
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.Int32? NumDbs
+        // GraphQL -> numDbs: Int! (scalar)
+        if (this.NumDbs != null) {
+            s += ind + "numDbs\n" ;
+        }
+        //      C# -> System.Int32? NumNodes
+        // GraphQL -> numNodes: Int! (scalar)
+        if (this.NumNodes != null) {
+            s += ind + "numNodes\n" ;
+        }
+        //      C# -> System.String? PrimaryClusterId
+        // GraphQL -> primaryClusterId: String! (scalar)
+        if (this.PrimaryClusterId != null) {
+            s += ind + "primaryClusterId\n" ;
+        }
+        //      C# -> System.Boolean? ShouldDistributeBackupsAutomatically
+        // GraphQL -> shouldDistributeBackupsAutomatically: Boolean (scalar)
+        if (this.ShouldDistributeBackupsAutomatically != null) {
+            s += ind + "shouldDistributeBackupsAutomatically\n" ;
+        }
+        //      C# -> System.String? Status
+        // GraphQL -> status: String! (scalar)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
+        }
+        //      C# -> List<OracleNodeOrder>? NodeOrder
+        // GraphQL -> nodeOrder: [OracleNodeOrder!]! (type)
+        if (this.NodeOrder != null) {
+            s += ind + "nodeOrder {\n" + this.NodeOrder.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<OracleNodeProperties>? Nodes
+        // GraphQL -> nodes: [OracleNodeProperties!]! (type)
+        if (this.Nodes != null) {
+            s += ind + "nodes {\n" + this.Nodes.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable != null) {
+            s += ind + "slaAssignable {\n" + this.SlaAssignable.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Boolean? HasLogConfigFromSla
+        // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
+        if (this.HasLogConfigFromSla == null && Exploration.Includes(parent + ".hasLogConfigFromSla", true))
         {
-            //      C# -> System.Boolean? HasLogConfigFromSla
-            // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
-            if (this.HasLogConfigFromSla == null && Exploration.Includes(parent + ".hasLogConfigFromSla$"))
-            {
-                this.HasLogConfigFromSla = new System.Boolean();
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? NumDbs
-            // GraphQL -> numDbs: Int! (scalar)
-            if (this.NumDbs == null && Exploration.Includes(parent + ".numDbs$"))
-            {
-                this.NumDbs = new System.Int32();
-            }
-            //      C# -> System.Int32? NumNodes
-            // GraphQL -> numNodes: Int! (scalar)
-            if (this.NumNodes == null && Exploration.Includes(parent + ".numNodes$"))
-            {
-                this.NumNodes = new System.Int32();
-            }
-            //      C# -> System.String? PrimaryClusterId
-            // GraphQL -> primaryClusterId: String! (scalar)
-            if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId$"))
-            {
-                this.PrimaryClusterId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? ShouldDistributeBackupsAutomatically
-            // GraphQL -> shouldDistributeBackupsAutomatically: Boolean (scalar)
-            if (this.ShouldDistributeBackupsAutomatically == null && Exploration.Includes(parent + ".shouldDistributeBackupsAutomatically$"))
-            {
-                this.ShouldDistributeBackupsAutomatically = new System.Boolean();
-            }
-            //      C# -> System.String? Status
-            // GraphQL -> status: String! (scalar)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new System.String("FETCH");
-            }
-            //      C# -> List<OracleNodeOrder>? NodeOrder
-            // GraphQL -> nodeOrder: [OracleNodeOrder!]! (type)
-            if (this.NodeOrder == null && Exploration.Includes(parent + ".nodeOrder"))
-            {
-                this.NodeOrder = new List<OracleNodeOrder>();
-                this.NodeOrder.ApplyExploratoryFragment(parent + ".nodeOrder");
-            }
-            //      C# -> List<OracleNodeProperties>? Nodes
-            // GraphQL -> nodes: [OracleNodeProperties!]! (type)
-            if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
-            {
-                this.Nodes = new List<OracleNodeProperties>();
-                this.Nodes.ApplyExploratoryFragment(parent + ".nodes");
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
-            {
-                this.SlaAssignable = new SlaAssignable();
-                this.SlaAssignable.ApplyExploratoryFragment(parent + ".slaAssignable");
-            }
+            this.HasLogConfigFromSla = true;
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? NumDbs
+        // GraphQL -> numDbs: Int! (scalar)
+        if (this.NumDbs == null && Exploration.Includes(parent + ".numDbs", true))
+        {
+            this.NumDbs = new System.Int32();
+        }
+        //      C# -> System.Int32? NumNodes
+        // GraphQL -> numNodes: Int! (scalar)
+        if (this.NumNodes == null && Exploration.Includes(parent + ".numNodes", true))
+        {
+            this.NumNodes = new System.Int32();
+        }
+        //      C# -> System.String? PrimaryClusterId
+        // GraphQL -> primaryClusterId: String! (scalar)
+        if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
+        {
+            this.PrimaryClusterId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? ShouldDistributeBackupsAutomatically
+        // GraphQL -> shouldDistributeBackupsAutomatically: Boolean (scalar)
+        if (this.ShouldDistributeBackupsAutomatically == null && Exploration.Includes(parent + ".shouldDistributeBackupsAutomatically", true))
+        {
+            this.ShouldDistributeBackupsAutomatically = true;
+        }
+        //      C# -> System.String? Status
+        // GraphQL -> status: String! (scalar)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        {
+            this.Status = new System.String("FETCH");
+        }
+        //      C# -> List<OracleNodeOrder>? NodeOrder
+        // GraphQL -> nodeOrder: [OracleNodeOrder!]! (type)
+        if (this.NodeOrder == null && Exploration.Includes(parent + ".nodeOrder"))
+        {
+            this.NodeOrder = new List<OracleNodeOrder>();
+            this.NodeOrder.ApplyExploratoryFieldSpec(parent + ".nodeOrder");
+        }
+        //      C# -> List<OracleNodeProperties>? Nodes
+        // GraphQL -> nodes: [OracleNodeProperties!]! (type)
+        if (this.Nodes == null && Exploration.Includes(parent + ".nodes"))
+        {
+            this.Nodes = new List<OracleNodeProperties>();
+            this.Nodes.ApplyExploratoryFieldSpec(parent + ".nodes");
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        {
+            this.SlaAssignable = new SlaAssignable();
+            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+        }
+    }
 
 
     #endregion
 
     } // class OracleRacSummary
+    
     #endregion
 
     public static class ListOracleRacSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<OracleRacSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<OracleRacSummary> list, 
             String parent = "")
         {
-            var item = new OracleRacSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new OracleRacSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

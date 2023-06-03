@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AwsReplicationTarget
-    public class AwsReplicationTarget: IFragment
+    public class AwsReplicationTarget: BaseType
     {
         #region members
+
+        //      C# -> AwsNativeRegionForReplication? Region
+        // GraphQL -> region: AwsNativeRegionForReplication! (enum)
+        [JsonProperty("region")]
+        public AwsNativeRegionForReplication? Region { get; set; }
+
         //      C# -> System.String? AccountId
         // GraphQL -> accountId: String! (scalar)
         [JsonProperty("accountId")]
@@ -28,122 +35,116 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("accountName")]
         public System.String? AccountName { get; set; }
 
-        //      C# -> AwsNativeRegionForReplication? Region
-        // GraphQL -> region: AwsNativeRegionForReplication! (enum)
-        [JsonProperty("region")]
-        public AwsNativeRegionForReplication? Region { get; set; }
 
         #endregion
 
     #region methods
 
     public AwsReplicationTarget Set(
+        AwsNativeRegionForReplication? Region = null,
         System.String? AccountId = null,
-        System.String? AccountName = null,
-        AwsNativeRegionForReplication? Region = null
+        System.String? AccountName = null
     ) 
     {
+        if ( Region != null ) {
+            this.Region = Region;
+        }
         if ( AccountId != null ) {
             this.AccountId = AccountId;
         }
         if ( AccountName != null ) {
             this.AccountName = AccountName;
         }
-        if ( Region != null ) {
-            this.Region = Region;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AccountId
-            // GraphQL -> accountId: String! (scalar)
-            if (this.AccountId != null)
-            {
-                 s += ind + "accountId\n";
-
-            }
-            //      C# -> System.String? AccountName
-            // GraphQL -> accountName: String! (scalar)
-            if (this.AccountName != null)
-            {
-                 s += ind + "accountName\n";
-
-            }
-            //      C# -> AwsNativeRegionForReplication? Region
-            // GraphQL -> region: AwsNativeRegionForReplication! (enum)
-            if (this.Region != null)
-            {
-                 s += ind + "region\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AwsNativeRegionForReplication? Region
+        // GraphQL -> region: AwsNativeRegionForReplication! (enum)
+        if (this.Region != null) {
+            s += ind + "region\n" ;
         }
+        //      C# -> System.String? AccountId
+        // GraphQL -> accountId: String! (scalar)
+        if (this.AccountId != null) {
+            s += ind + "accountId\n" ;
+        }
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (this.AccountName != null) {
+            s += ind + "accountName\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AwsNativeRegionForReplication? Region
+        // GraphQL -> region: AwsNativeRegionForReplication! (enum)
+        if (this.Region == null && Exploration.Includes(parent + ".region", true))
         {
-            //      C# -> System.String? AccountId
-            // GraphQL -> accountId: String! (scalar)
-            if (this.AccountId == null && Exploration.Includes(parent + ".accountId$"))
-            {
-                this.AccountId = new System.String("FETCH");
-            }
-            //      C# -> System.String? AccountName
-            // GraphQL -> accountName: String! (scalar)
-            if (this.AccountName == null && Exploration.Includes(parent + ".accountName$"))
-            {
-                this.AccountName = new System.String("FETCH");
-            }
-            //      C# -> AwsNativeRegionForReplication? Region
-            // GraphQL -> region: AwsNativeRegionForReplication! (enum)
-            if (this.Region == null && Exploration.Includes(parent + ".region$"))
-            {
-                this.Region = new AwsNativeRegionForReplication();
-            }
+            this.Region = new AwsNativeRegionForReplication();
         }
+        //      C# -> System.String? AccountId
+        // GraphQL -> accountId: String! (scalar)
+        if (this.AccountId == null && Exploration.Includes(parent + ".accountId", true))
+        {
+            this.AccountId = new System.String("FETCH");
+        }
+        //      C# -> System.String? AccountName
+        // GraphQL -> accountName: String! (scalar)
+        if (this.AccountName == null && Exploration.Includes(parent + ".accountName", true))
+        {
+            this.AccountName = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AwsReplicationTarget
+    
     #endregion
 
     public static class ListAwsReplicationTargetExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AwsReplicationTarget> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AwsReplicationTarget> list, 
             String parent = "")
         {
-            var item = new AwsReplicationTarget();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AwsReplicationTarget());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

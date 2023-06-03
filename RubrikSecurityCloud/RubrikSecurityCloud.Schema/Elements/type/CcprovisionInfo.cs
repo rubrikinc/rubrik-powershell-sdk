@@ -11,22 +11,14 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CcprovisionInfo
-    public class CcprovisionInfo: IFragment
+    public class CcprovisionInfo: BaseType
     {
         #region members
-        //      C# -> System.String? MarshaledConfig
-        // GraphQL -> marshaledConfig: String! (scalar)
-        [JsonProperty("marshaledConfig")]
-        public System.String? MarshaledConfig { get; set; }
-
-        //      C# -> System.Int32? Progress
-        // GraphQL -> progress: Int! (scalar)
-        [JsonProperty("progress")]
-        public System.Int32? Progress { get; set; }
 
         //      C# -> CcpJobStatus? JobStatus
         // GraphQL -> jobStatus: CcpJobStatus! (enum)
@@ -43,24 +35,29 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("vendor")]
         public CcpVendorType? Vendor { get; set; }
 
+        //      C# -> System.String? MarshaledConfig
+        // GraphQL -> marshaledConfig: String! (scalar)
+        [JsonProperty("marshaledConfig")]
+        public System.String? MarshaledConfig { get; set; }
+
+        //      C# -> System.Int32? Progress
+        // GraphQL -> progress: Int! (scalar)
+        [JsonProperty("progress")]
+        public System.Int32? Progress { get; set; }
+
+
         #endregion
 
     #region methods
 
     public CcprovisionInfo Set(
-        System.String? MarshaledConfig = null,
-        System.Int32? Progress = null,
         CcpJobStatus? JobStatus = null,
         CcpJobType? JobType = null,
-        CcpVendorType? Vendor = null
+        CcpVendorType? Vendor = null,
+        System.String? MarshaledConfig = null,
+        System.Int32? Progress = null
     ) 
     {
-        if ( MarshaledConfig != null ) {
-            this.MarshaledConfig = MarshaledConfig;
-        }
-        if ( Progress != null ) {
-            this.Progress = Progress;
-        }
         if ( JobStatus != null ) {
             this.JobStatus = JobStatus;
         }
@@ -70,124 +67,124 @@ namespace Rubrik.SecurityCloud.Types
         if ( Vendor != null ) {
             this.Vendor = Vendor;
         }
+        if ( MarshaledConfig != null ) {
+            this.MarshaledConfig = MarshaledConfig;
+        }
+        if ( Progress != null ) {
+            this.Progress = Progress;
+        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? MarshaledConfig
-            // GraphQL -> marshaledConfig: String! (scalar)
-            if (this.MarshaledConfig != null)
-            {
-                 s += ind + "marshaledConfig\n";
-
-            }
-            //      C# -> System.Int32? Progress
-            // GraphQL -> progress: Int! (scalar)
-            if (this.Progress != null)
-            {
-                 s += ind + "progress\n";
-
-            }
-            //      C# -> CcpJobStatus? JobStatus
-            // GraphQL -> jobStatus: CcpJobStatus! (enum)
-            if (this.JobStatus != null)
-            {
-                 s += ind + "jobStatus\n";
-
-            }
-            //      C# -> CcpJobType? JobType
-            // GraphQL -> jobType: CcpJobType! (enum)
-            if (this.JobType != null)
-            {
-                 s += ind + "jobType\n";
-
-            }
-            //      C# -> CcpVendorType? Vendor
-            // GraphQL -> vendor: CcpVendorType! (enum)
-            if (this.Vendor != null)
-            {
-                 s += ind + "vendor\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> CcpJobStatus? JobStatus
+        // GraphQL -> jobStatus: CcpJobStatus! (enum)
+        if (this.JobStatus != null) {
+            s += ind + "jobStatus\n" ;
         }
+        //      C# -> CcpJobType? JobType
+        // GraphQL -> jobType: CcpJobType! (enum)
+        if (this.JobType != null) {
+            s += ind + "jobType\n" ;
+        }
+        //      C# -> CcpVendorType? Vendor
+        // GraphQL -> vendor: CcpVendorType! (enum)
+        if (this.Vendor != null) {
+            s += ind + "vendor\n" ;
+        }
+        //      C# -> System.String? MarshaledConfig
+        // GraphQL -> marshaledConfig: String! (scalar)
+        if (this.MarshaledConfig != null) {
+            s += ind + "marshaledConfig\n" ;
+        }
+        //      C# -> System.Int32? Progress
+        // GraphQL -> progress: Int! (scalar)
+        if (this.Progress != null) {
+            s += ind + "progress\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> CcpJobStatus? JobStatus
+        // GraphQL -> jobStatus: CcpJobStatus! (enum)
+        if (this.JobStatus == null && Exploration.Includes(parent + ".jobStatus", true))
         {
-            //      C# -> System.String? MarshaledConfig
-            // GraphQL -> marshaledConfig: String! (scalar)
-            if (this.MarshaledConfig == null && Exploration.Includes(parent + ".marshaledConfig$"))
-            {
-                this.MarshaledConfig = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? Progress
-            // GraphQL -> progress: Int! (scalar)
-            if (this.Progress == null && Exploration.Includes(parent + ".progress$"))
-            {
-                this.Progress = new System.Int32();
-            }
-            //      C# -> CcpJobStatus? JobStatus
-            // GraphQL -> jobStatus: CcpJobStatus! (enum)
-            if (this.JobStatus == null && Exploration.Includes(parent + ".jobStatus$"))
-            {
-                this.JobStatus = new CcpJobStatus();
-            }
-            //      C# -> CcpJobType? JobType
-            // GraphQL -> jobType: CcpJobType! (enum)
-            if (this.JobType == null && Exploration.Includes(parent + ".jobType$"))
-            {
-                this.JobType = new CcpJobType();
-            }
-            //      C# -> CcpVendorType? Vendor
-            // GraphQL -> vendor: CcpVendorType! (enum)
-            if (this.Vendor == null && Exploration.Includes(parent + ".vendor$"))
-            {
-                this.Vendor = new CcpVendorType();
-            }
+            this.JobStatus = new CcpJobStatus();
         }
+        //      C# -> CcpJobType? JobType
+        // GraphQL -> jobType: CcpJobType! (enum)
+        if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
+        {
+            this.JobType = new CcpJobType();
+        }
+        //      C# -> CcpVendorType? Vendor
+        // GraphQL -> vendor: CcpVendorType! (enum)
+        if (this.Vendor == null && Exploration.Includes(parent + ".vendor", true))
+        {
+            this.Vendor = new CcpVendorType();
+        }
+        //      C# -> System.String? MarshaledConfig
+        // GraphQL -> marshaledConfig: String! (scalar)
+        if (this.MarshaledConfig == null && Exploration.Includes(parent + ".marshaledConfig", true))
+        {
+            this.MarshaledConfig = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? Progress
+        // GraphQL -> progress: Int! (scalar)
+        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        {
+            this.Progress = new System.Int32();
+        }
+    }
 
 
     #endregion
 
     } // class CcprovisionInfo
+    
     #endregion
 
     public static class ListCcprovisionInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CcprovisionInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CcprovisionInfo> list, 
             String parent = "")
         {
-            var item = new CcprovisionInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CcprovisionInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

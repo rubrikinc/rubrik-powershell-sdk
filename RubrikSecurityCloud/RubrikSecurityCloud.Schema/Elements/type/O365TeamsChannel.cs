@@ -11,14 +11,21 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region O365TeamsChannel
  
-    public class O365TeamsChannel: IFragment, O365TeamsChannelObject
+    public class O365TeamsChannel: BaseType, O365TeamsChannelObject
     {
         #region members
+
+        //      C# -> ChannelMembershipType? MembershipType
+        // GraphQL -> membershipType: ChannelMembershipType (enum)
+        [JsonProperty("membershipType")]
+        public ChannelMembershipType? MembershipType { get; set; }
+
         //      C# -> System.String? FolderId
         // GraphQL -> folderId: String (scalar)
         [JsonProperty("folderId")]
@@ -44,24 +51,23 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("naturalId")]
         public System.String? NaturalId { get; set; }
 
-        //      C# -> ChannelMembershipType? MembershipType
-        // GraphQL -> membershipType: ChannelMembershipType (enum)
-        [JsonProperty("membershipType")]
-        public ChannelMembershipType? MembershipType { get; set; }
 
         #endregion
 
     #region methods
 
     public O365TeamsChannel Set(
+        ChannelMembershipType? MembershipType = null,
         System.String? FolderId = null,
         System.String? FolderName = null,
         System.String? Id = null,
         System.String? Name = null,
-        System.String? NaturalId = null,
-        ChannelMembershipType? MembershipType = null
+        System.String? NaturalId = null
     ) 
     {
+        if ( MembershipType != null ) {
+            this.MembershipType = MembershipType;
+        }
         if ( FolderId != null ) {
             this.FolderId = FolderId;
         }
@@ -77,140 +83,129 @@ namespace Rubrik.SecurityCloud.Types
         if ( NaturalId != null ) {
             this.NaturalId = NaturalId;
         }
-        if ( MembershipType != null ) {
-            this.MembershipType = MembershipType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? FolderId
-            // GraphQL -> folderId: String (scalar)
-            if (this.FolderId != null)
-            {
-                 s += ind + "folderId\n";
-
-            }
-            //      C# -> System.String? FolderName
-            // GraphQL -> folderName: String (scalar)
-            if (this.FolderName != null)
-            {
-                 s += ind + "folderName\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? NaturalId
-            // GraphQL -> naturalId: String (scalar)
-            if (this.NaturalId != null)
-            {
-                 s += ind + "naturalId\n";
-
-            }
-            //      C# -> ChannelMembershipType? MembershipType
-            // GraphQL -> membershipType: ChannelMembershipType (enum)
-            if (this.MembershipType != null)
-            {
-                 s += ind + "membershipType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ChannelMembershipType? MembershipType
+        // GraphQL -> membershipType: ChannelMembershipType (enum)
+        if (this.MembershipType != null) {
+            s += ind + "membershipType\n" ;
         }
+        //      C# -> System.String? FolderId
+        // GraphQL -> folderId: String (scalar)
+        if (this.FolderId != null) {
+            s += ind + "folderId\n" ;
+        }
+        //      C# -> System.String? FolderName
+        // GraphQL -> folderName: String (scalar)
+        if (this.FolderName != null) {
+            s += ind + "folderName\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String (scalar)
+        if (this.NaturalId != null) {
+            s += ind + "naturalId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ChannelMembershipType? MembershipType
+        // GraphQL -> membershipType: ChannelMembershipType (enum)
+        if (this.MembershipType == null && Exploration.Includes(parent + ".membershipType", true))
         {
-            //      C# -> System.String? FolderId
-            // GraphQL -> folderId: String (scalar)
-            if (this.FolderId == null && Exploration.Includes(parent + ".folderId$"))
-            {
-                this.FolderId = new System.String("FETCH");
-            }
-            //      C# -> System.String? FolderName
-            // GraphQL -> folderName: String (scalar)
-            if (this.FolderName == null && Exploration.Includes(parent + ".folderName$"))
-            {
-                this.FolderName = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? NaturalId
-            // GraphQL -> naturalId: String (scalar)
-            if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId$"))
-            {
-                this.NaturalId = new System.String("FETCH");
-            }
-            //      C# -> ChannelMembershipType? MembershipType
-            // GraphQL -> membershipType: ChannelMembershipType (enum)
-            if (this.MembershipType == null && Exploration.Includes(parent + ".membershipType$"))
-            {
-                this.MembershipType = new ChannelMembershipType();
-            }
+            this.MembershipType = new ChannelMembershipType();
         }
+        //      C# -> System.String? FolderId
+        // GraphQL -> folderId: String (scalar)
+        if (this.FolderId == null && Exploration.Includes(parent + ".folderId", true))
+        {
+            this.FolderId = new System.String("FETCH");
+        }
+        //      C# -> System.String? FolderName
+        // GraphQL -> folderName: String (scalar)
+        if (this.FolderName == null && Exploration.Includes(parent + ".folderName", true))
+        {
+            this.FolderName = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String (scalar)
+        if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
+        {
+            this.NaturalId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class O365TeamsChannel
+    
     #endregion
 
     public static class ListO365TeamsChannelExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<O365TeamsChannel> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<O365TeamsChannel> list, 
             String parent = "")
         {
-            var item = new O365TeamsChannel();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new O365TeamsChannel());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

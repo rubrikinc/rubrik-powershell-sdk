@@ -11,14 +11,16 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureSnappableLocation
  
-    public class AzureSnappableLocation: IFragment, SnappableLocationType
+    public class AzureSnappableLocation: BaseType, SnappableLocationType
     {
         #region members
+
         //      C# -> System.String? AzureRegion
         // GraphQL -> azureRegion: String! (scalar)
         [JsonProperty("azureRegion")]
@@ -33,6 +35,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subscriptionRubrikName: String (scalar)
         [JsonProperty("subscriptionRubrikName")]
         public System.String? SubscriptionRubrikName { get; set; }
+
 
         #endregion
 
@@ -56,95 +59,93 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AzureRegion
-            // GraphQL -> azureRegion: String! (scalar)
-            if (this.AzureRegion != null)
-            {
-                 s += ind + "azureRegion\n";
-
-            }
-            //      C# -> System.String? SubscriptionRubrikId
-            // GraphQL -> subscriptionRubrikId: String (scalar)
-            if (this.SubscriptionRubrikId != null)
-            {
-                 s += ind + "subscriptionRubrikId\n";
-
-            }
-            //      C# -> System.String? SubscriptionRubrikName
-            // GraphQL -> subscriptionRubrikName: String (scalar)
-            if (this.SubscriptionRubrikName != null)
-            {
-                 s += ind + "subscriptionRubrikName\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? AzureRegion
+        // GraphQL -> azureRegion: String! (scalar)
+        if (this.AzureRegion != null) {
+            s += ind + "azureRegion\n" ;
         }
+        //      C# -> System.String? SubscriptionRubrikId
+        // GraphQL -> subscriptionRubrikId: String (scalar)
+        if (this.SubscriptionRubrikId != null) {
+            s += ind + "subscriptionRubrikId\n" ;
+        }
+        //      C# -> System.String? SubscriptionRubrikName
+        // GraphQL -> subscriptionRubrikName: String (scalar)
+        if (this.SubscriptionRubrikName != null) {
+            s += ind + "subscriptionRubrikName\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? AzureRegion
+        // GraphQL -> azureRegion: String! (scalar)
+        if (this.AzureRegion == null && Exploration.Includes(parent + ".azureRegion", true))
         {
-            //      C# -> System.String? AzureRegion
-            // GraphQL -> azureRegion: String! (scalar)
-            if (this.AzureRegion == null && Exploration.Includes(parent + ".azureRegion$"))
-            {
-                this.AzureRegion = new System.String("FETCH");
-            }
-            //      C# -> System.String? SubscriptionRubrikId
-            // GraphQL -> subscriptionRubrikId: String (scalar)
-            if (this.SubscriptionRubrikId == null && Exploration.Includes(parent + ".subscriptionRubrikId$"))
-            {
-                this.SubscriptionRubrikId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SubscriptionRubrikName
-            // GraphQL -> subscriptionRubrikName: String (scalar)
-            if (this.SubscriptionRubrikName == null && Exploration.Includes(parent + ".subscriptionRubrikName$"))
-            {
-                this.SubscriptionRubrikName = new System.String("FETCH");
-            }
+            this.AzureRegion = new System.String("FETCH");
         }
+        //      C# -> System.String? SubscriptionRubrikId
+        // GraphQL -> subscriptionRubrikId: String (scalar)
+        if (this.SubscriptionRubrikId == null && Exploration.Includes(parent + ".subscriptionRubrikId", true))
+        {
+            this.SubscriptionRubrikId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SubscriptionRubrikName
+        // GraphQL -> subscriptionRubrikName: String (scalar)
+        if (this.SubscriptionRubrikName == null && Exploration.Includes(parent + ".subscriptionRubrikName", true))
+        {
+            this.SubscriptionRubrikName = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AzureSnappableLocation
+    
     #endregion
 
     public static class ListAzureSnappableLocationExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureSnappableLocation> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureSnappableLocation> list, 
             String parent = "")
         {
-            var item = new AzureSnappableLocation();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureSnappableLocation());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region PolarisInventorySubHierarchyRoot
-    public class PolarisInventorySubHierarchyRoot: IFragment
+    public class PolarisInventorySubHierarchyRoot: BaseType
     {
         #region members
+
+        //      C# -> InventorySubHierarchyRootEnum? RootEnum
+        // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
+        [JsonProperty("rootEnum")]
+        public InventorySubHierarchyRootEnum? RootEnum { get; set; }
+
         //      C# -> PolarisHierarchyObjectConnection? ChildConnection
         // GraphQL -> childConnection: PolarisHierarchyObjectConnection! (type)
         [JsonProperty("childConnection")]
@@ -33,22 +40,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("topLevelDescendantConnection")]
         public PolarisHierarchyObjectConnection? TopLevelDescendantConnection { get; set; }
 
-        //      C# -> InventorySubHierarchyRootEnum? RootEnum
-        // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
-        [JsonProperty("rootEnum")]
-        public InventorySubHierarchyRootEnum? RootEnum { get; set; }
 
         #endregion
 
     #region methods
 
     public PolarisInventorySubHierarchyRoot Set(
+        InventorySubHierarchyRootEnum? RootEnum = null,
         PolarisHierarchyObjectConnection? ChildConnection = null,
         PolarisHierarchyObjectConnection? DescendantConnection = null,
-        PolarisHierarchyObjectConnection? TopLevelDescendantConnection = null,
-        InventorySubHierarchyRootEnum? RootEnum = null
+        PolarisHierarchyObjectConnection? TopLevelDescendantConnection = null
     ) 
     {
+        if ( RootEnum != null ) {
+            this.RootEnum = RootEnum;
+        }
         if ( ChildConnection != null ) {
             this.ChildConnection = ChildConnection;
         }
@@ -58,126 +64,110 @@ namespace Rubrik.SecurityCloud.Types
         if ( TopLevelDescendantConnection != null ) {
             this.TopLevelDescendantConnection = TopLevelDescendantConnection;
         }
-        if ( RootEnum != null ) {
-            this.RootEnum = RootEnum;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> PolarisHierarchyObjectConnection? ChildConnection
-            // GraphQL -> childConnection: PolarisHierarchyObjectConnection! (type)
-            if (this.ChildConnection != null)
-            {
-                 s += ind + "childConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.ChildConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PolarisHierarchyObjectConnection? DescendantConnection
-            // GraphQL -> descendantConnection: PolarisHierarchyObjectConnection! (type)
-            if (this.DescendantConnection != null)
-            {
-                 s += ind + "descendantConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.DescendantConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> PolarisHierarchyObjectConnection? TopLevelDescendantConnection
-            // GraphQL -> topLevelDescendantConnection: PolarisHierarchyObjectConnection! (type)
-            if (this.TopLevelDescendantConnection != null)
-            {
-                 s += ind + "topLevelDescendantConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.TopLevelDescendantConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> InventorySubHierarchyRootEnum? RootEnum
-            // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
-            if (this.RootEnum != null)
-            {
-                 s += ind + "rootEnum\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> InventorySubHierarchyRootEnum? RootEnum
+        // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
+        if (this.RootEnum != null) {
+            s += ind + "rootEnum\n" ;
         }
+        //      C# -> PolarisHierarchyObjectConnection? ChildConnection
+        // GraphQL -> childConnection: PolarisHierarchyObjectConnection! (type)
+        if (this.ChildConnection != null) {
+            s += ind + "childConnection {\n" + this.ChildConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PolarisHierarchyObjectConnection? DescendantConnection
+        // GraphQL -> descendantConnection: PolarisHierarchyObjectConnection! (type)
+        if (this.DescendantConnection != null) {
+            s += ind + "descendantConnection {\n" + this.DescendantConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PolarisHierarchyObjectConnection? TopLevelDescendantConnection
+        // GraphQL -> topLevelDescendantConnection: PolarisHierarchyObjectConnection! (type)
+        if (this.TopLevelDescendantConnection != null) {
+            s += ind + "topLevelDescendantConnection {\n" + this.TopLevelDescendantConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> InventorySubHierarchyRootEnum? RootEnum
+        // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
+        if (this.RootEnum == null && Exploration.Includes(parent + ".rootEnum", true))
         {
-            //      C# -> PolarisHierarchyObjectConnection? ChildConnection
-            // GraphQL -> childConnection: PolarisHierarchyObjectConnection! (type)
-            if (this.ChildConnection == null && Exploration.Includes(parent + ".childConnection"))
-            {
-                this.ChildConnection = new PolarisHierarchyObjectConnection();
-                this.ChildConnection.ApplyExploratoryFragment(parent + ".childConnection");
-            }
-            //      C# -> PolarisHierarchyObjectConnection? DescendantConnection
-            // GraphQL -> descendantConnection: PolarisHierarchyObjectConnection! (type)
-            if (this.DescendantConnection == null && Exploration.Includes(parent + ".descendantConnection"))
-            {
-                this.DescendantConnection = new PolarisHierarchyObjectConnection();
-                this.DescendantConnection.ApplyExploratoryFragment(parent + ".descendantConnection");
-            }
-            //      C# -> PolarisHierarchyObjectConnection? TopLevelDescendantConnection
-            // GraphQL -> topLevelDescendantConnection: PolarisHierarchyObjectConnection! (type)
-            if (this.TopLevelDescendantConnection == null && Exploration.Includes(parent + ".topLevelDescendantConnection"))
-            {
-                this.TopLevelDescendantConnection = new PolarisHierarchyObjectConnection();
-                this.TopLevelDescendantConnection.ApplyExploratoryFragment(parent + ".topLevelDescendantConnection");
-            }
-            //      C# -> InventorySubHierarchyRootEnum? RootEnum
-            // GraphQL -> rootEnum: InventorySubHierarchyRootEnum! (enum)
-            if (this.RootEnum == null && Exploration.Includes(parent + ".rootEnum$"))
-            {
-                this.RootEnum = new InventorySubHierarchyRootEnum();
-            }
+            this.RootEnum = new InventorySubHierarchyRootEnum();
         }
+        //      C# -> PolarisHierarchyObjectConnection? ChildConnection
+        // GraphQL -> childConnection: PolarisHierarchyObjectConnection! (type)
+        if (this.ChildConnection == null && Exploration.Includes(parent + ".childConnection"))
+        {
+            this.ChildConnection = new PolarisHierarchyObjectConnection();
+            this.ChildConnection.ApplyExploratoryFieldSpec(parent + ".childConnection");
+        }
+        //      C# -> PolarisHierarchyObjectConnection? DescendantConnection
+        // GraphQL -> descendantConnection: PolarisHierarchyObjectConnection! (type)
+        if (this.DescendantConnection == null && Exploration.Includes(parent + ".descendantConnection"))
+        {
+            this.DescendantConnection = new PolarisHierarchyObjectConnection();
+            this.DescendantConnection.ApplyExploratoryFieldSpec(parent + ".descendantConnection");
+        }
+        //      C# -> PolarisHierarchyObjectConnection? TopLevelDescendantConnection
+        // GraphQL -> topLevelDescendantConnection: PolarisHierarchyObjectConnection! (type)
+        if (this.TopLevelDescendantConnection == null && Exploration.Includes(parent + ".topLevelDescendantConnection"))
+        {
+            this.TopLevelDescendantConnection = new PolarisHierarchyObjectConnection();
+            this.TopLevelDescendantConnection.ApplyExploratoryFieldSpec(parent + ".topLevelDescendantConnection");
+        }
+    }
 
 
     #endregion
 
     } // class PolarisInventorySubHierarchyRoot
+    
     #endregion
 
     public static class ListPolarisInventorySubHierarchyRootExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<PolarisInventorySubHierarchyRoot> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<PolarisInventorySubHierarchyRoot> list, 
             String parent = "")
         {
-            var item = new PolarisInventorySubHierarchyRoot();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new PolarisInventorySubHierarchyRoot());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

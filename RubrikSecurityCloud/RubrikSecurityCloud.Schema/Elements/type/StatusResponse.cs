@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region StatusResponse
-    public class StatusResponse: IFragment
+    public class StatusResponse: BaseType
     {
         #region members
+
         //      C# -> System.String? Code
         // GraphQL -> code: String! (scalar)
         [JsonProperty("code")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> message: String! (scalar)
         [JsonProperty("message")]
         public System.String? Message { get; set; }
+
 
         #endregion
 
@@ -55,95 +58,93 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Code
-            // GraphQL -> code: String! (scalar)
-            if (this.Code != null)
-            {
-                 s += ind + "code\n";
-
-            }
-            //      C# -> System.String? Excepshuns
-            // GraphQL -> excepshuns: String! (scalar)
-            if (this.Excepshuns != null)
-            {
-                 s += ind + "excepshuns\n";
-
-            }
-            //      C# -> System.String? Message
-            // GraphQL -> message: String! (scalar)
-            if (this.Message != null)
-            {
-                 s += ind + "message\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Code
+        // GraphQL -> code: String! (scalar)
+        if (this.Code != null) {
+            s += ind + "code\n" ;
         }
+        //      C# -> System.String? Excepshuns
+        // GraphQL -> excepshuns: String! (scalar)
+        if (this.Excepshuns != null) {
+            s += ind + "excepshuns\n" ;
+        }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        if (this.Message != null) {
+            s += ind + "message\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Code
+        // GraphQL -> code: String! (scalar)
+        if (this.Code == null && Exploration.Includes(parent + ".code", true))
         {
-            //      C# -> System.String? Code
-            // GraphQL -> code: String! (scalar)
-            if (this.Code == null && Exploration.Includes(parent + ".code$"))
-            {
-                this.Code = new System.String("FETCH");
-            }
-            //      C# -> System.String? Excepshuns
-            // GraphQL -> excepshuns: String! (scalar)
-            if (this.Excepshuns == null && Exploration.Includes(parent + ".excepshuns$"))
-            {
-                this.Excepshuns = new System.String("FETCH");
-            }
-            //      C# -> System.String? Message
-            // GraphQL -> message: String! (scalar)
-            if (this.Message == null && Exploration.Includes(parent + ".message$"))
-            {
-                this.Message = new System.String("FETCH");
-            }
+            this.Code = new System.String("FETCH");
         }
+        //      C# -> System.String? Excepshuns
+        // GraphQL -> excepshuns: String! (scalar)
+        if (this.Excepshuns == null && Exploration.Includes(parent + ".excepshuns", true))
+        {
+            this.Excepshuns = new System.String("FETCH");
+        }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        {
+            this.Message = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class StatusResponse
+    
     #endregion
 
     public static class ListStatusResponseExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<StatusResponse> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<StatusResponse> list, 
             String parent = "")
         {
-            var item = new StatusResponse();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new StatusResponse());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

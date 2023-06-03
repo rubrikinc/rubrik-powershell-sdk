@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region MissedSnapshotGroupBy
-    public class MissedSnapshotGroupBy: IFragment
+    public class MissedSnapshotGroupBy: BaseType
     {
         #region members
+
         //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
         [JsonProperty("missedSnapshotConnection")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
         [JsonProperty("groupByInfo")]
         public MissedSnapshotGroupByInfo? GroupByInfo { get; set; }
+
 
         #endregion
 
@@ -55,107 +58,97 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
-            // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
-            if (this.MissedSnapshotConnection != null)
-            {
-                 s += ind + "missedSnapshotConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.MissedSnapshotConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField
-            // GraphQL -> missedSnapshotGroupBy: [MissedSnapshotGroupBy!]! (type)
-            if (this.MissedSnapshotGroupByField != null)
-            {
-                 s += ind + "missedSnapshotGroupBy\n";
-
-                 s += ind + "{\n" + 
-                 this.MissedSnapshotGroupByField.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> MissedSnapshotGroupByInfo? GroupByInfo
-            // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
-            if (this.GroupByInfo != null)
-            {
-                 s += ind + "groupByInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.GroupByInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
+        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
+        if (this.MissedSnapshotConnection != null) {
+            s += ind + "missedSnapshotConnection {\n" + this.MissedSnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField
+        // GraphQL -> missedSnapshotGroupBy: [MissedSnapshotGroupBy!]! (type)
+        if (this.MissedSnapshotGroupByField != null) {
+            s += ind + "missedSnapshotGroupBy {\n" + this.MissedSnapshotGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> MissedSnapshotGroupByInfo? GroupByInfo
+        // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
+        if (this.GroupByInfo != null) {
+            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
+        // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
+        if (this.MissedSnapshotConnection == null && Exploration.Includes(parent + ".missedSnapshotConnection"))
         {
-            //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
-            // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
-            if (this.MissedSnapshotConnection == null && Exploration.Includes(parent + ".missedSnapshotConnection"))
-            {
-                this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
-                this.MissedSnapshotConnection.ApplyExploratoryFragment(parent + ".missedSnapshotConnection");
-            }
-            //      C# -> List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField
-            // GraphQL -> missedSnapshotGroupBy: [MissedSnapshotGroupBy!]! (type)
-            if (this.MissedSnapshotGroupByField == null && Exploration.Includes(parent + ".missedSnapshotGroupBy"))
-            {
-                this.MissedSnapshotGroupByField = new List<MissedSnapshotGroupBy>();
-                this.MissedSnapshotGroupByField.ApplyExploratoryFragment(parent + ".missedSnapshotGroupBy");
-            }
-            //      C# -> MissedSnapshotGroupByInfo? GroupByInfo
-            // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
-            if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
-            {
-                this.GroupByInfo = (MissedSnapshotGroupByInfo)InterfaceHelper.CreateInstanceOfFirstType(typeof(MissedSnapshotGroupByInfo));
-                this.GroupByInfo.ApplyExploratoryFragment(parent + ".groupByInfo");
-            }
+            this.MissedSnapshotConnection = new MissedSnapshotCommonConnection();
+            this.MissedSnapshotConnection.ApplyExploratoryFieldSpec(parent + ".missedSnapshotConnection");
         }
+        //      C# -> List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField
+        // GraphQL -> missedSnapshotGroupBy: [MissedSnapshotGroupBy!]! (type)
+        if (this.MissedSnapshotGroupByField == null && Exploration.Includes(parent + ".missedSnapshotGroupBy"))
+        {
+            this.MissedSnapshotGroupByField = new List<MissedSnapshotGroupBy>();
+            this.MissedSnapshotGroupByField.ApplyExploratoryFieldSpec(parent + ".missedSnapshotGroupBy");
+        }
+        //      C# -> MissedSnapshotGroupByInfo? GroupByInfo
+        // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
+        if (this.GroupByInfo == null && Exploration.Includes(parent + ".groupByInfo"))
+        {
+            var impls = new List<MissedSnapshotGroupByInfo>();
+            impls.ApplyExploratoryFieldSpec(parent + ".groupByInfo");
+            this.GroupByInfo = (MissedSnapshotGroupByInfo)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+    }
 
 
     #endregion
 
     } // class MissedSnapshotGroupBy
+    
     #endregion
 
     public static class ListMissedSnapshotGroupByExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<MissedSnapshotGroupBy> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<MissedSnapshotGroupBy> list, 
             String parent = "")
         {
-            var item = new MissedSnapshotGroupBy();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new MissedSnapshotGroupBy());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

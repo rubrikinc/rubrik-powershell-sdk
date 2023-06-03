@@ -11,13 +11,45 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region PolicyObj
-    public class PolicyObj: IFragment
+    public class PolicyObj: BaseType
     {
         #region members
+
+        //      C# -> List<RiskReason>? AccessRiskReasons
+        // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
+        [JsonProperty("accessRiskReasons")]
+        public List<RiskReason>? AccessRiskReasons { get; set; }
+
+        //      C# -> AnalysisStatus? AnalysisStatus
+        // GraphQL -> analysisStatus: AnalysisStatus! (enum)
+        [JsonProperty("analysisStatus")]
+        public AnalysisStatus? AnalysisStatus { get; set; }
+
+        //      C# -> DataGovOsType? OsType
+        // GraphQL -> osType: DataGovOsType! (enum)
+        [JsonProperty("osType")]
+        public DataGovOsType? OsType { get; set; }
+
+        //      C# -> RiskLevelType? RiskLevel
+        // GraphQL -> riskLevel: RiskLevelType! (enum)
+        [JsonProperty("riskLevel")]
+        public RiskLevelType? RiskLevel { get; set; }
+
+        //      C# -> DataGovShareType? ShareType
+        // GraphQL -> shareType: DataGovShareType! (enum)
+        [JsonProperty("shareType")]
+        public DataGovShareType? ShareType { get; set; }
+
+        //      C# -> HierarchyObject? Snappable
+        // GraphQL -> snappable: HierarchyObject (interface)
+        [JsonProperty("snappable")]
+        public HierarchyObject? Snappable { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -68,6 +100,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("policySummaries")]
         public List<ClassificationPolicySummary>? PolicySummaries { get; set; }
 
+        //      C# -> SensitiveHits? RiskHits
+        // GraphQL -> riskHits: SensitiveHits (type)
+        [JsonProperty("riskHits")]
+        public SensitiveHits? RiskHits { get; set; }
+
         //      C# -> FileResult? RootFileResult
         // GraphQL -> rootFileResult: FileResult! (type)
         [JsonProperty("rootFileResult")]
@@ -83,46 +120,28 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("totalSensitiveHits")]
         public SummaryHits? TotalSensitiveHits { get; set; }
 
+        //      C# -> PrincipalCounts? UserCounts
+        // GraphQL -> userCounts: PrincipalCounts (type)
+        [JsonProperty("userCounts")]
+        public PrincipalCounts? UserCounts { get; set; }
+
         //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
         // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
         [JsonProperty("whitelistedAnalyzerList")]
         public List<WhitelistedAnalyzer>? WhitelistedAnalyzerList { get; set; }
 
-        //      C# -> List<RiskReason>? AccessRiskReasons
-        // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
-        [JsonProperty("accessRiskReasons")]
-        public List<RiskReason>? AccessRiskReasons { get; set; }
-
-        //      C# -> AnalysisStatus? AnalysisStatus
-        // GraphQL -> analysisStatus: AnalysisStatus! (enum)
-        [JsonProperty("analysisStatus")]
-        public AnalysisStatus? AnalysisStatus { get; set; }
-
-        //      C# -> DataGovOsType? OsType
-        // GraphQL -> osType: DataGovOsType! (enum)
-        [JsonProperty("osType")]
-        public DataGovOsType? OsType { get; set; }
-
-        //      C# -> RiskLevelType? RiskLevel
-        // GraphQL -> riskLevel: RiskLevelType! (enum)
-        [JsonProperty("riskLevel")]
-        public RiskLevelType? RiskLevel { get; set; }
-
-        //      C# -> DataGovShareType? ShareType
-        // GraphQL -> shareType: DataGovShareType! (enum)
-        [JsonProperty("shareType")]
-        public DataGovShareType? ShareType { get; set; }
-
-        //      C# -> HierarchyObject? Snappable
-        // GraphQL -> snappable: HierarchyObject (interface)
-        [JsonProperty("snappable")]
-        public HierarchyObject? Snappable { get; set; }
 
         #endregion
 
     #region methods
 
     public PolicyObj Set(
+        List<RiskReason>? AccessRiskReasons = null,
+        AnalysisStatus? AnalysisStatus = null,
+        DataGovOsType? OsType = null,
+        RiskLevelType? RiskLevel = null,
+        DataGovShareType? ShareType = null,
+        HierarchyObject? Snappable = null,
         System.String? Id = null,
         System.String? SnapshotFid = null,
         System.Int64? SnapshotTimestamp = null,
@@ -133,18 +152,32 @@ namespace Rubrik.SecurityCloud.Types
         FileResultConnection? FolderChildConnection = null,
         ObjectStatus? ObjectStatus = null,
         List<ClassificationPolicySummary>? PolicySummaries = null,
+        SensitiveHits? RiskHits = null,
         FileResult? RootFileResult = null,
         SensitiveFiles? SensitiveFiles = null,
         SummaryHits? TotalSensitiveHits = null,
-        List<WhitelistedAnalyzer>? WhitelistedAnalyzerList = null,
-        List<RiskReason>? AccessRiskReasons = null,
-        AnalysisStatus? AnalysisStatus = null,
-        DataGovOsType? OsType = null,
-        RiskLevelType? RiskLevel = null,
-        DataGovShareType? ShareType = null,
-        HierarchyObject? Snappable = null
+        PrincipalCounts? UserCounts = null,
+        List<WhitelistedAnalyzer>? WhitelistedAnalyzerList = null
     ) 
     {
+        if ( AccessRiskReasons != null ) {
+            this.AccessRiskReasons = AccessRiskReasons;
+        }
+        if ( AnalysisStatus != null ) {
+            this.AnalysisStatus = AnalysisStatus;
+        }
+        if ( OsType != null ) {
+            this.OsType = OsType;
+        }
+        if ( RiskLevel != null ) {
+            this.RiskLevel = RiskLevel;
+        }
+        if ( ShareType != null ) {
+            this.ShareType = ShareType;
+        }
+        if ( Snappable != null ) {
+            this.Snappable = Snappable;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -175,6 +208,9 @@ namespace Rubrik.SecurityCloud.Types
         if ( PolicySummaries != null ) {
             this.PolicySummaries = PolicySummaries;
         }
+        if ( RiskHits != null ) {
+            this.RiskHits = RiskHits;
+        }
         if ( RootFileResult != null ) {
             this.RootFileResult = RootFileResult;
         }
@@ -184,393 +220,326 @@ namespace Rubrik.SecurityCloud.Types
         if ( TotalSensitiveHits != null ) {
             this.TotalSensitiveHits = TotalSensitiveHits;
         }
+        if ( UserCounts != null ) {
+            this.UserCounts = UserCounts;
+        }
         if ( WhitelistedAnalyzerList != null ) {
             this.WhitelistedAnalyzerList = WhitelistedAnalyzerList;
-        }
-        if ( AccessRiskReasons != null ) {
-            this.AccessRiskReasons = AccessRiskReasons;
-        }
-        if ( AnalysisStatus != null ) {
-            this.AnalysisStatus = AnalysisStatus;
-        }
-        if ( OsType != null ) {
-            this.OsType = OsType;
-        }
-        if ( RiskLevel != null ) {
-            this.RiskLevel = RiskLevel;
-        }
-        if ( ShareType != null ) {
-            this.ShareType = ShareType;
-        }
-        if ( Snappable != null ) {
-            this.Snappable = Snappable;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? SnapshotFid
-            // GraphQL -> snapshotFid: String! (scalar)
-            if (this.SnapshotFid != null)
-            {
-                 s += ind + "snapshotFid\n";
-
-            }
-            //      C# -> System.Int64? SnapshotTimestamp
-            // GraphQL -> snapshotTimestamp: Long! (scalar)
-            if (this.SnapshotTimestamp != null)
-            {
-                 s += ind + "snapshotTimestamp\n";
-
-            }
-            //      C# -> System.String? TimeContext
-            // GraphQL -> timeContext: String! (scalar)
-            if (this.TimeContext != null)
-            {
-                 s += ind + "timeContext\n";
-
-            }
-            //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
-            // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
-            if (this.AllAnalyzerMappings != null)
-            {
-                 s += ind + "allAnalyzerMappings\n";
-
-                 s += ind + "{\n" + 
-                 this.AllAnalyzerMappings.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> AnalyzerHits? AnalyzerHits
-            // GraphQL -> analyzerHits: AnalyzerHits (type)
-            if (this.AnalyzerHits != null)
-            {
-                 s += ind + "analyzerHits\n";
-
-                 s += ind + "{\n" + 
-                 this.AnalyzerHits.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> FileResultConnection? FileResultConnection
-            // GraphQL -> fileResultConnection: FileResultConnection! (type)
-            if (this.FileResultConnection != null)
-            {
-                 s += ind + "fileResultConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.FileResultConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> FileResultConnection? FolderChildConnection
-            // GraphQL -> folderChildConnection: FileResultConnection! (type)
-            if (this.FolderChildConnection != null)
-            {
-                 s += ind + "folderChildConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.FolderChildConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ObjectStatus? ObjectStatus
-            // GraphQL -> objectStatus: ObjectStatus! (type)
-            if (this.ObjectStatus != null)
-            {
-                 s += ind + "objectStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.ObjectStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<ClassificationPolicySummary>? PolicySummaries
-            // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
-            if (this.PolicySummaries != null)
-            {
-                 s += ind + "policySummaries\n";
-
-                 s += ind + "{\n" + 
-                 this.PolicySummaries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> FileResult? RootFileResult
-            // GraphQL -> rootFileResult: FileResult! (type)
-            if (this.RootFileResult != null)
-            {
-                 s += ind + "rootFileResult\n";
-
-                 s += ind + "{\n" + 
-                 this.RootFileResult.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SensitiveFiles? SensitiveFiles
-            // GraphQL -> sensitiveFiles: SensitiveFiles (type)
-            if (this.SensitiveFiles != null)
-            {
-                 s += ind + "sensitiveFiles\n";
-
-                 s += ind + "{\n" + 
-                 this.SensitiveFiles.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SummaryHits? TotalSensitiveHits
-            // GraphQL -> totalSensitiveHits: SummaryHits (type)
-            if (this.TotalSensitiveHits != null)
-            {
-                 s += ind + "totalSensitiveHits\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalSensitiveHits.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
-            // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
-            if (this.WhitelistedAnalyzerList != null)
-            {
-                 s += ind + "whitelistedAnalyzerList\n";
-
-                 s += ind + "{\n" + 
-                 this.WhitelistedAnalyzerList.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<RiskReason>? AccessRiskReasons
-            // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
-            if (this.AccessRiskReasons != null)
-            {
-                 s += ind + "accessRiskReasons\n";
-
-            }
-            //      C# -> AnalysisStatus? AnalysisStatus
-            // GraphQL -> analysisStatus: AnalysisStatus! (enum)
-            if (this.AnalysisStatus != null)
-            {
-                 s += ind + "analysisStatus\n";
-
-            }
-            //      C# -> DataGovOsType? OsType
-            // GraphQL -> osType: DataGovOsType! (enum)
-            if (this.OsType != null)
-            {
-                 s += ind + "osType\n";
-
-            }
-            //      C# -> RiskLevelType? RiskLevel
-            // GraphQL -> riskLevel: RiskLevelType! (enum)
-            if (this.RiskLevel != null)
-            {
-                 s += ind + "riskLevel\n";
-
-            }
-            //      C# -> DataGovShareType? ShareType
-            // GraphQL -> shareType: DataGovShareType! (enum)
-            if (this.ShareType != null)
-            {
-                 s += ind + "shareType\n";
-
-            }
-                        //      C# -> HierarchyObject? Snappable
-            // GraphQL -> snappable: HierarchyObject (interface)
-            if (this.Snappable != null)
-            {
-                s += ind + "snappable\n";
-                s += ind + "{\n";
-
-                string typename = this.Snappable.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.Snappable.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<RiskReason>? AccessRiskReasons
+        // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
+        if (this.AccessRiskReasons != null) {
+            s += ind + "accessRiskReasons\n" ;
         }
+        //      C# -> AnalysisStatus? AnalysisStatus
+        // GraphQL -> analysisStatus: AnalysisStatus! (enum)
+        if (this.AnalysisStatus != null) {
+            s += ind + "analysisStatus\n" ;
+        }
+        //      C# -> DataGovOsType? OsType
+        // GraphQL -> osType: DataGovOsType! (enum)
+        if (this.OsType != null) {
+            s += ind + "osType\n" ;
+        }
+        //      C# -> RiskLevelType? RiskLevel
+        // GraphQL -> riskLevel: RiskLevelType! (enum)
+        if (this.RiskLevel != null) {
+            s += ind + "riskLevel\n" ;
+        }
+        //      C# -> DataGovShareType? ShareType
+        // GraphQL -> shareType: DataGovShareType! (enum)
+        if (this.ShareType != null) {
+            s += ind + "shareType\n" ;
+        }
+        //      C# -> HierarchyObject? Snappable
+        // GraphQL -> snappable: HierarchyObject (interface)
+        if (this.Snappable != null) {
+            s += ind + "snappable {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.Snappable).AsFieldSpec(indent+1) + ind + "}\n";
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: String! (scalar)
+        if (this.SnapshotFid != null) {
+            s += ind + "snapshotFid\n" ;
+        }
+        //      C# -> System.Int64? SnapshotTimestamp
+        // GraphQL -> snapshotTimestamp: Long! (scalar)
+        if (this.SnapshotTimestamp != null) {
+            s += ind + "snapshotTimestamp\n" ;
+        }
+        //      C# -> System.String? TimeContext
+        // GraphQL -> timeContext: String! (scalar)
+        if (this.TimeContext != null) {
+            s += ind + "timeContext\n" ;
+        }
+        //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
+        // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
+        if (this.AllAnalyzerMappings != null) {
+            s += ind + "allAnalyzerMappings {\n" + this.AllAnalyzerMappings.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> AnalyzerHits? AnalyzerHits
+        // GraphQL -> analyzerHits: AnalyzerHits (type)
+        if (this.AnalyzerHits != null) {
+            s += ind + "analyzerHits {\n" + this.AnalyzerHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> FileResultConnection? FileResultConnection
+        // GraphQL -> fileResultConnection: FileResultConnection! (type)
+        if (this.FileResultConnection != null) {
+            s += ind + "fileResultConnection {\n" + this.FileResultConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> FileResultConnection? FolderChildConnection
+        // GraphQL -> folderChildConnection: FileResultConnection! (type)
+        if (this.FolderChildConnection != null) {
+            s += ind + "folderChildConnection {\n" + this.FolderChildConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ObjectStatus? ObjectStatus
+        // GraphQL -> objectStatus: ObjectStatus! (type)
+        if (this.ObjectStatus != null) {
+            s += ind + "objectStatus {\n" + this.ObjectStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ClassificationPolicySummary>? PolicySummaries
+        // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
+        if (this.PolicySummaries != null) {
+            s += ind + "policySummaries {\n" + this.PolicySummaries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SensitiveHits? RiskHits
+        // GraphQL -> riskHits: SensitiveHits (type)
+        if (this.RiskHits != null) {
+            s += ind + "riskHits {\n" + this.RiskHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> FileResult? RootFileResult
+        // GraphQL -> rootFileResult: FileResult! (type)
+        if (this.RootFileResult != null) {
+            s += ind + "rootFileResult {\n" + this.RootFileResult.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SensitiveFiles? SensitiveFiles
+        // GraphQL -> sensitiveFiles: SensitiveFiles (type)
+        if (this.SensitiveFiles != null) {
+            s += ind + "sensitiveFiles {\n" + this.SensitiveFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SummaryHits? TotalSensitiveHits
+        // GraphQL -> totalSensitiveHits: SummaryHits (type)
+        if (this.TotalSensitiveHits != null) {
+            s += ind + "totalSensitiveHits {\n" + this.TotalSensitiveHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> PrincipalCounts? UserCounts
+        // GraphQL -> userCounts: PrincipalCounts (type)
+        if (this.UserCounts != null) {
+            s += ind + "userCounts {\n" + this.UserCounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
+        // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
+        if (this.WhitelistedAnalyzerList != null) {
+            s += ind + "whitelistedAnalyzerList {\n" + this.WhitelistedAnalyzerList.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<RiskReason>? AccessRiskReasons
+        // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
+        if (this.AccessRiskReasons == null && Exploration.Includes(parent + ".accessRiskReasons", true))
         {
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? SnapshotFid
-            // GraphQL -> snapshotFid: String! (scalar)
-            if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid$"))
-            {
-                this.SnapshotFid = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? SnapshotTimestamp
-            // GraphQL -> snapshotTimestamp: Long! (scalar)
-            if (this.SnapshotTimestamp == null && Exploration.Includes(parent + ".snapshotTimestamp$"))
-            {
-                this.SnapshotTimestamp = new System.Int64();
-            }
-            //      C# -> System.String? TimeContext
-            // GraphQL -> timeContext: String! (scalar)
-            if (this.TimeContext == null && Exploration.Includes(parent + ".timeContext$"))
-            {
-                this.TimeContext = new System.String("FETCH");
-            }
-            //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
-            // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
-            if (this.AllAnalyzerMappings == null && Exploration.Includes(parent + ".allAnalyzerMappings"))
-            {
-                this.AllAnalyzerMappings = new List<AnalyzerMapping>();
-                this.AllAnalyzerMappings.ApplyExploratoryFragment(parent + ".allAnalyzerMappings");
-            }
-            //      C# -> AnalyzerHits? AnalyzerHits
-            // GraphQL -> analyzerHits: AnalyzerHits (type)
-            if (this.AnalyzerHits == null && Exploration.Includes(parent + ".analyzerHits"))
-            {
-                this.AnalyzerHits = new AnalyzerHits();
-                this.AnalyzerHits.ApplyExploratoryFragment(parent + ".analyzerHits");
-            }
-            //      C# -> FileResultConnection? FileResultConnection
-            // GraphQL -> fileResultConnection: FileResultConnection! (type)
-            if (this.FileResultConnection == null && Exploration.Includes(parent + ".fileResultConnection"))
-            {
-                this.FileResultConnection = new FileResultConnection();
-                this.FileResultConnection.ApplyExploratoryFragment(parent + ".fileResultConnection");
-            }
-            //      C# -> FileResultConnection? FolderChildConnection
-            // GraphQL -> folderChildConnection: FileResultConnection! (type)
-            if (this.FolderChildConnection == null && Exploration.Includes(parent + ".folderChildConnection"))
-            {
-                this.FolderChildConnection = new FileResultConnection();
-                this.FolderChildConnection.ApplyExploratoryFragment(parent + ".folderChildConnection");
-            }
-            //      C# -> ObjectStatus? ObjectStatus
-            // GraphQL -> objectStatus: ObjectStatus! (type)
-            if (this.ObjectStatus == null && Exploration.Includes(parent + ".objectStatus"))
-            {
-                this.ObjectStatus = new ObjectStatus();
-                this.ObjectStatus.ApplyExploratoryFragment(parent + ".objectStatus");
-            }
-            //      C# -> List<ClassificationPolicySummary>? PolicySummaries
-            // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
-            if (this.PolicySummaries == null && Exploration.Includes(parent + ".policySummaries"))
-            {
-                this.PolicySummaries = new List<ClassificationPolicySummary>();
-                this.PolicySummaries.ApplyExploratoryFragment(parent + ".policySummaries");
-            }
-            //      C# -> FileResult? RootFileResult
-            // GraphQL -> rootFileResult: FileResult! (type)
-            if (this.RootFileResult == null && Exploration.Includes(parent + ".rootFileResult"))
-            {
-                this.RootFileResult = new FileResult();
-                this.RootFileResult.ApplyExploratoryFragment(parent + ".rootFileResult");
-            }
-            //      C# -> SensitiveFiles? SensitiveFiles
-            // GraphQL -> sensitiveFiles: SensitiveFiles (type)
-            if (this.SensitiveFiles == null && Exploration.Includes(parent + ".sensitiveFiles"))
-            {
-                this.SensitiveFiles = new SensitiveFiles();
-                this.SensitiveFiles.ApplyExploratoryFragment(parent + ".sensitiveFiles");
-            }
-            //      C# -> SummaryHits? TotalSensitiveHits
-            // GraphQL -> totalSensitiveHits: SummaryHits (type)
-            if (this.TotalSensitiveHits == null && Exploration.Includes(parent + ".totalSensitiveHits"))
-            {
-                this.TotalSensitiveHits = new SummaryHits();
-                this.TotalSensitiveHits.ApplyExploratoryFragment(parent + ".totalSensitiveHits");
-            }
-            //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
-            // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
-            if (this.WhitelistedAnalyzerList == null && Exploration.Includes(parent + ".whitelistedAnalyzerList"))
-            {
-                this.WhitelistedAnalyzerList = new List<WhitelistedAnalyzer>();
-                this.WhitelistedAnalyzerList.ApplyExploratoryFragment(parent + ".whitelistedAnalyzerList");
-            }
-            //      C# -> List<RiskReason>? AccessRiskReasons
-            // GraphQL -> accessRiskReasons: [RiskReason!]! (enum)
-            if (this.AccessRiskReasons == null && Exploration.Includes(parent + ".accessRiskReasons$"))
-            {
-                this.AccessRiskReasons = new List<RiskReason>();
-            }
-            //      C# -> AnalysisStatus? AnalysisStatus
-            // GraphQL -> analysisStatus: AnalysisStatus! (enum)
-            if (this.AnalysisStatus == null && Exploration.Includes(parent + ".analysisStatus$"))
-            {
-                this.AnalysisStatus = new AnalysisStatus();
-            }
-            //      C# -> DataGovOsType? OsType
-            // GraphQL -> osType: DataGovOsType! (enum)
-            if (this.OsType == null && Exploration.Includes(parent + ".osType$"))
-            {
-                this.OsType = new DataGovOsType();
-            }
-            //      C# -> RiskLevelType? RiskLevel
-            // GraphQL -> riskLevel: RiskLevelType! (enum)
-            if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel$"))
-            {
-                this.RiskLevel = new RiskLevelType();
-            }
-            //      C# -> DataGovShareType? ShareType
-            // GraphQL -> shareType: DataGovShareType! (enum)
-            if (this.ShareType == null && Exploration.Includes(parent + ".shareType$"))
-            {
-                this.ShareType = new DataGovShareType();
-            }
-            //      C# -> HierarchyObject? Snappable
-            // GraphQL -> snappable: HierarchyObject (interface)
-            if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
-            {
-                this.Snappable = (HierarchyObject)InterfaceHelper.CreateInstanceOfFirstType(typeof(HierarchyObject));
-                this.Snappable.ApplyExploratoryFragment(parent + ".snappable");
-            }
+            this.AccessRiskReasons = new List<RiskReason>();
         }
+        //      C# -> AnalysisStatus? AnalysisStatus
+        // GraphQL -> analysisStatus: AnalysisStatus! (enum)
+        if (this.AnalysisStatus == null && Exploration.Includes(parent + ".analysisStatus", true))
+        {
+            this.AnalysisStatus = new AnalysisStatus();
+        }
+        //      C# -> DataGovOsType? OsType
+        // GraphQL -> osType: DataGovOsType! (enum)
+        if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
+        {
+            this.OsType = new DataGovOsType();
+        }
+        //      C# -> RiskLevelType? RiskLevel
+        // GraphQL -> riskLevel: RiskLevelType! (enum)
+        if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel", true))
+        {
+            this.RiskLevel = new RiskLevelType();
+        }
+        //      C# -> DataGovShareType? ShareType
+        // GraphQL -> shareType: DataGovShareType! (enum)
+        if (this.ShareType == null && Exploration.Includes(parent + ".shareType", true))
+        {
+            this.ShareType = new DataGovShareType();
+        }
+        //      C# -> HierarchyObject? Snappable
+        // GraphQL -> snappable: HierarchyObject (interface)
+        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
+        {
+            var impls = new List<HierarchyObject>();
+            impls.ApplyExploratoryFieldSpec(parent + ".snappable");
+            this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: String! (scalar)
+        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        {
+            this.SnapshotFid = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? SnapshotTimestamp
+        // GraphQL -> snapshotTimestamp: Long! (scalar)
+        if (this.SnapshotTimestamp == null && Exploration.Includes(parent + ".snapshotTimestamp", true))
+        {
+            this.SnapshotTimestamp = new System.Int64();
+        }
+        //      C# -> System.String? TimeContext
+        // GraphQL -> timeContext: String! (scalar)
+        if (this.TimeContext == null && Exploration.Includes(parent + ".timeContext", true))
+        {
+            this.TimeContext = new System.String("FETCH");
+        }
+        //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
+        // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
+        if (this.AllAnalyzerMappings == null && Exploration.Includes(parent + ".allAnalyzerMappings"))
+        {
+            this.AllAnalyzerMappings = new List<AnalyzerMapping>();
+            this.AllAnalyzerMappings.ApplyExploratoryFieldSpec(parent + ".allAnalyzerMappings");
+        }
+        //      C# -> AnalyzerHits? AnalyzerHits
+        // GraphQL -> analyzerHits: AnalyzerHits (type)
+        if (this.AnalyzerHits == null && Exploration.Includes(parent + ".analyzerHits"))
+        {
+            this.AnalyzerHits = new AnalyzerHits();
+            this.AnalyzerHits.ApplyExploratoryFieldSpec(parent + ".analyzerHits");
+        }
+        //      C# -> FileResultConnection? FileResultConnection
+        // GraphQL -> fileResultConnection: FileResultConnection! (type)
+        if (this.FileResultConnection == null && Exploration.Includes(parent + ".fileResultConnection"))
+        {
+            this.FileResultConnection = new FileResultConnection();
+            this.FileResultConnection.ApplyExploratoryFieldSpec(parent + ".fileResultConnection");
+        }
+        //      C# -> FileResultConnection? FolderChildConnection
+        // GraphQL -> folderChildConnection: FileResultConnection! (type)
+        if (this.FolderChildConnection == null && Exploration.Includes(parent + ".folderChildConnection"))
+        {
+            this.FolderChildConnection = new FileResultConnection();
+            this.FolderChildConnection.ApplyExploratoryFieldSpec(parent + ".folderChildConnection");
+        }
+        //      C# -> ObjectStatus? ObjectStatus
+        // GraphQL -> objectStatus: ObjectStatus! (type)
+        if (this.ObjectStatus == null && Exploration.Includes(parent + ".objectStatus"))
+        {
+            this.ObjectStatus = new ObjectStatus();
+            this.ObjectStatus.ApplyExploratoryFieldSpec(parent + ".objectStatus");
+        }
+        //      C# -> List<ClassificationPolicySummary>? PolicySummaries
+        // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
+        if (this.PolicySummaries == null && Exploration.Includes(parent + ".policySummaries"))
+        {
+            this.PolicySummaries = new List<ClassificationPolicySummary>();
+            this.PolicySummaries.ApplyExploratoryFieldSpec(parent + ".policySummaries");
+        }
+        //      C# -> SensitiveHits? RiskHits
+        // GraphQL -> riskHits: SensitiveHits (type)
+        if (this.RiskHits == null && Exploration.Includes(parent + ".riskHits"))
+        {
+            this.RiskHits = new SensitiveHits();
+            this.RiskHits.ApplyExploratoryFieldSpec(parent + ".riskHits");
+        }
+        //      C# -> FileResult? RootFileResult
+        // GraphQL -> rootFileResult: FileResult! (type)
+        if (this.RootFileResult == null && Exploration.Includes(parent + ".rootFileResult"))
+        {
+            this.RootFileResult = new FileResult();
+            this.RootFileResult.ApplyExploratoryFieldSpec(parent + ".rootFileResult");
+        }
+        //      C# -> SensitiveFiles? SensitiveFiles
+        // GraphQL -> sensitiveFiles: SensitiveFiles (type)
+        if (this.SensitiveFiles == null && Exploration.Includes(parent + ".sensitiveFiles"))
+        {
+            this.SensitiveFiles = new SensitiveFiles();
+            this.SensitiveFiles.ApplyExploratoryFieldSpec(parent + ".sensitiveFiles");
+        }
+        //      C# -> SummaryHits? TotalSensitiveHits
+        // GraphQL -> totalSensitiveHits: SummaryHits (type)
+        if (this.TotalSensitiveHits == null && Exploration.Includes(parent + ".totalSensitiveHits"))
+        {
+            this.TotalSensitiveHits = new SummaryHits();
+            this.TotalSensitiveHits.ApplyExploratoryFieldSpec(parent + ".totalSensitiveHits");
+        }
+        //      C# -> PrincipalCounts? UserCounts
+        // GraphQL -> userCounts: PrincipalCounts (type)
+        if (this.UserCounts == null && Exploration.Includes(parent + ".userCounts"))
+        {
+            this.UserCounts = new PrincipalCounts();
+            this.UserCounts.ApplyExploratoryFieldSpec(parent + ".userCounts");
+        }
+        //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
+        // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
+        if (this.WhitelistedAnalyzerList == null && Exploration.Includes(parent + ".whitelistedAnalyzerList"))
+        {
+            this.WhitelistedAnalyzerList = new List<WhitelistedAnalyzer>();
+            this.WhitelistedAnalyzerList.ApplyExploratoryFieldSpec(parent + ".whitelistedAnalyzerList");
+        }
+    }
 
 
     #endregion
 
     } // class PolicyObj
+    
     #endregion
 
     public static class ListPolicyObjExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<PolicyObj> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<PolicyObj> list, 
             String parent = "")
         {
-            var item = new PolicyObj();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new PolicyObj());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

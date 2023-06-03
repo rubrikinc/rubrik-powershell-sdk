@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ValidateAndCreateAwsCloudAccountReply
-    public class ValidateAndCreateAwsCloudAccountReply: IFragment
+    public class ValidateAndCreateAwsCloudAccountReply: BaseType
     {
         #region members
+
         //      C# -> AwsCloudAccountCreateResponse? InitiateResponse
         // GraphQL -> initiateResponse: AwsCloudAccountCreateResponse (type)
         [JsonProperty("initiateResponse")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> validateResponse: AwsCloudAccountValidateResponse (type)
         [JsonProperty("validateResponse")]
         public AwsCloudAccountValidateResponse? ValidateResponse { get; set; }
+
 
         #endregion
 
@@ -46,90 +49,84 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> AwsCloudAccountCreateResponse? InitiateResponse
-            // GraphQL -> initiateResponse: AwsCloudAccountCreateResponse (type)
-            if (this.InitiateResponse != null)
-            {
-                 s += ind + "initiateResponse\n";
-
-                 s += ind + "{\n" + 
-                 this.InitiateResponse.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> AwsCloudAccountValidateResponse? ValidateResponse
-            // GraphQL -> validateResponse: AwsCloudAccountValidateResponse (type)
-            if (this.ValidateResponse != null)
-            {
-                 s += ind + "validateResponse\n";
-
-                 s += ind + "{\n" + 
-                 this.ValidateResponse.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AwsCloudAccountCreateResponse? InitiateResponse
+        // GraphQL -> initiateResponse: AwsCloudAccountCreateResponse (type)
+        if (this.InitiateResponse != null) {
+            s += ind + "initiateResponse {\n" + this.InitiateResponse.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> AwsCloudAccountValidateResponse? ValidateResponse
+        // GraphQL -> validateResponse: AwsCloudAccountValidateResponse (type)
+        if (this.ValidateResponse != null) {
+            s += ind + "validateResponse {\n" + this.ValidateResponse.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AwsCloudAccountCreateResponse? InitiateResponse
+        // GraphQL -> initiateResponse: AwsCloudAccountCreateResponse (type)
+        if (this.InitiateResponse == null && Exploration.Includes(parent + ".initiateResponse"))
         {
-            //      C# -> AwsCloudAccountCreateResponse? InitiateResponse
-            // GraphQL -> initiateResponse: AwsCloudAccountCreateResponse (type)
-            if (this.InitiateResponse == null && Exploration.Includes(parent + ".initiateResponse"))
-            {
-                this.InitiateResponse = new AwsCloudAccountCreateResponse();
-                this.InitiateResponse.ApplyExploratoryFragment(parent + ".initiateResponse");
-            }
-            //      C# -> AwsCloudAccountValidateResponse? ValidateResponse
-            // GraphQL -> validateResponse: AwsCloudAccountValidateResponse (type)
-            if (this.ValidateResponse == null && Exploration.Includes(parent + ".validateResponse"))
-            {
-                this.ValidateResponse = new AwsCloudAccountValidateResponse();
-                this.ValidateResponse.ApplyExploratoryFragment(parent + ".validateResponse");
-            }
+            this.InitiateResponse = new AwsCloudAccountCreateResponse();
+            this.InitiateResponse.ApplyExploratoryFieldSpec(parent + ".initiateResponse");
         }
+        //      C# -> AwsCloudAccountValidateResponse? ValidateResponse
+        // GraphQL -> validateResponse: AwsCloudAccountValidateResponse (type)
+        if (this.ValidateResponse == null && Exploration.Includes(parent + ".validateResponse"))
+        {
+            this.ValidateResponse = new AwsCloudAccountValidateResponse();
+            this.ValidateResponse.ApplyExploratoryFieldSpec(parent + ".validateResponse");
+        }
+    }
 
 
     #endregion
 
     } // class ValidateAndCreateAwsCloudAccountReply
+    
     #endregion
 
     public static class ListValidateAndCreateAwsCloudAccountReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ValidateAndCreateAwsCloudAccountReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ValidateAndCreateAwsCloudAccountReply> list, 
             String parent = "")
         {
-            var item = new ValidateAndCreateAwsCloudAccountReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ValidateAndCreateAwsCloudAccountReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

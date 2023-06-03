@@ -159,6 +159,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "THREAT_FEED")]
         THREAT_FEED,
 
+        [EnumMember(Value = "THREAT_MONITORING")]
+        THREAT_MONITORING,
+
         [EnumMember(Value = "TestFailover")]
         TEST_FAILOVER,
 

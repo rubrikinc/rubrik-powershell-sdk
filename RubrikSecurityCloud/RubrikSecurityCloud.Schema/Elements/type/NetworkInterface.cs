@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region NetworkInterface
-    public class NetworkInterface: IFragment
+    public class NetworkInterface: BaseType
     {
         #region members
+
+        //      C# -> NetworkInterfaceType? InterfaceType
+        // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
+        [JsonProperty("interfaceType")]
+        public NetworkInterfaceType? InterfaceType { get; set; }
+
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
         [JsonProperty("interfaceName")]
@@ -48,25 +55,24 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("nodeName")]
         public System.String? NodeName { get; set; }
 
-        //      C# -> NetworkInterfaceType? InterfaceType
-        // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
-        [JsonProperty("interfaceType")]
-        public NetworkInterfaceType? InterfaceType { get; set; }
 
         #endregion
 
     #region methods
 
     public NetworkInterface Set(
+        NetworkInterfaceType? InterfaceType = null,
         System.String? InterfaceName = null,
         List<System.String>? IpAddresses = null,
         System.String? Netmask = null,
         System.String? Node = null,
         System.String? NodeId = null,
-        System.String? NodeName = null,
-        NetworkInterfaceType? InterfaceType = null
+        System.String? NodeName = null
     ) 
     {
+        if ( InterfaceType != null ) {
+            this.InterfaceType = InterfaceType;
+        }
         if ( InterfaceName != null ) {
             this.InterfaceName = InterfaceName;
         }
@@ -85,153 +91,140 @@ namespace Rubrik.SecurityCloud.Types
         if ( NodeName != null ) {
             this.NodeName = NodeName;
         }
-        if ( InterfaceType != null ) {
-            this.InterfaceType = InterfaceType;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? InterfaceName
-            // GraphQL -> interfaceName: String! (scalar)
-            if (this.InterfaceName != null)
-            {
-                 s += ind + "interfaceName\n";
-
-            }
-            //      C# -> List<System.String>? IpAddresses
-            // GraphQL -> ipAddresses: [String!]! (scalar)
-            if (this.IpAddresses != null)
-            {
-                 s += ind + "ipAddresses\n";
-
-            }
-            //      C# -> System.String? Netmask
-            // GraphQL -> netmask: String! (scalar)
-            if (this.Netmask != null)
-            {
-                 s += ind + "netmask\n";
-
-            }
-            //      C# -> System.String? Node
-            // GraphQL -> node: String (scalar)
-            if (this.Node != null)
-            {
-                 s += ind + "node\n";
-
-            }
-            //      C# -> System.String? NodeId
-            // GraphQL -> nodeId: String (scalar)
-            if (this.NodeId != null)
-            {
-                 s += ind + "nodeId\n";
-
-            }
-            //      C# -> System.String? NodeName
-            // GraphQL -> nodeName: String (scalar)
-            if (this.NodeName != null)
-            {
-                 s += ind + "nodeName\n";
-
-            }
-            //      C# -> NetworkInterfaceType? InterfaceType
-            // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
-            if (this.InterfaceType != null)
-            {
-                 s += ind + "interfaceType\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> NetworkInterfaceType? InterfaceType
+        // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
+        if (this.InterfaceType != null) {
+            s += ind + "interfaceType\n" ;
         }
+        //      C# -> System.String? InterfaceName
+        // GraphQL -> interfaceName: String! (scalar)
+        if (this.InterfaceName != null) {
+            s += ind + "interfaceName\n" ;
+        }
+        //      C# -> List<System.String>? IpAddresses
+        // GraphQL -> ipAddresses: [String!]! (scalar)
+        if (this.IpAddresses != null) {
+            s += ind + "ipAddresses\n" ;
+        }
+        //      C# -> System.String? Netmask
+        // GraphQL -> netmask: String! (scalar)
+        if (this.Netmask != null) {
+            s += ind + "netmask\n" ;
+        }
+        //      C# -> System.String? Node
+        // GraphQL -> node: String (scalar)
+        if (this.Node != null) {
+            s += ind + "node\n" ;
+        }
+        //      C# -> System.String? NodeId
+        // GraphQL -> nodeId: String (scalar)
+        if (this.NodeId != null) {
+            s += ind + "nodeId\n" ;
+        }
+        //      C# -> System.String? NodeName
+        // GraphQL -> nodeName: String (scalar)
+        if (this.NodeName != null) {
+            s += ind + "nodeName\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> NetworkInterfaceType? InterfaceType
+        // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
+        if (this.InterfaceType == null && Exploration.Includes(parent + ".interfaceType", true))
         {
-            //      C# -> System.String? InterfaceName
-            // GraphQL -> interfaceName: String! (scalar)
-            if (this.InterfaceName == null && Exploration.Includes(parent + ".interfaceName$"))
-            {
-                this.InterfaceName = new System.String("FETCH");
-            }
-            //      C# -> List<System.String>? IpAddresses
-            // GraphQL -> ipAddresses: [String!]! (scalar)
-            if (this.IpAddresses == null && Exploration.Includes(parent + ".ipAddresses$"))
-            {
-                this.IpAddresses = new List<System.String>();
-            }
-            //      C# -> System.String? Netmask
-            // GraphQL -> netmask: String! (scalar)
-            if (this.Netmask == null && Exploration.Includes(parent + ".netmask$"))
-            {
-                this.Netmask = new System.String("FETCH");
-            }
-            //      C# -> System.String? Node
-            // GraphQL -> node: String (scalar)
-            if (this.Node == null && Exploration.Includes(parent + ".node$"))
-            {
-                this.Node = new System.String("FETCH");
-            }
-            //      C# -> System.String? NodeId
-            // GraphQL -> nodeId: String (scalar)
-            if (this.NodeId == null && Exploration.Includes(parent + ".nodeId$"))
-            {
-                this.NodeId = new System.String("FETCH");
-            }
-            //      C# -> System.String? NodeName
-            // GraphQL -> nodeName: String (scalar)
-            if (this.NodeName == null && Exploration.Includes(parent + ".nodeName$"))
-            {
-                this.NodeName = new System.String("FETCH");
-            }
-            //      C# -> NetworkInterfaceType? InterfaceType
-            // GraphQL -> interfaceType: NetworkInterfaceType! (enum)
-            if (this.InterfaceType == null && Exploration.Includes(parent + ".interfaceType$"))
-            {
-                this.InterfaceType = new NetworkInterfaceType();
-            }
+            this.InterfaceType = new NetworkInterfaceType();
         }
+        //      C# -> System.String? InterfaceName
+        // GraphQL -> interfaceName: String! (scalar)
+        if (this.InterfaceName == null && Exploration.Includes(parent + ".interfaceName", true))
+        {
+            this.InterfaceName = new System.String("FETCH");
+        }
+        //      C# -> List<System.String>? IpAddresses
+        // GraphQL -> ipAddresses: [String!]! (scalar)
+        if (this.IpAddresses == null && Exploration.Includes(parent + ".ipAddresses", true))
+        {
+            this.IpAddresses = new List<System.String>();
+        }
+        //      C# -> System.String? Netmask
+        // GraphQL -> netmask: String! (scalar)
+        if (this.Netmask == null && Exploration.Includes(parent + ".netmask", true))
+        {
+            this.Netmask = new System.String("FETCH");
+        }
+        //      C# -> System.String? Node
+        // GraphQL -> node: String (scalar)
+        if (this.Node == null && Exploration.Includes(parent + ".node", true))
+        {
+            this.Node = new System.String("FETCH");
+        }
+        //      C# -> System.String? NodeId
+        // GraphQL -> nodeId: String (scalar)
+        if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
+        {
+            this.NodeId = new System.String("FETCH");
+        }
+        //      C# -> System.String? NodeName
+        // GraphQL -> nodeName: String (scalar)
+        if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
+        {
+            this.NodeName = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class NetworkInterface
+    
     #endregion
 
     public static class ListNetworkInterfaceExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<NetworkInterface> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<NetworkInterface> list, 
             String parent = "")
         {
-            var item = new NetworkInterface();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new NetworkInterface());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

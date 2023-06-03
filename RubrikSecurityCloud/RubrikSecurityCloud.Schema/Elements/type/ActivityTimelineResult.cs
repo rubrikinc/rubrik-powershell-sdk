@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ActivityTimelineResult
-    public class ActivityTimelineResult: IFragment
+    public class ActivityTimelineResult: BaseType
     {
         #region members
+
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
         [JsonProperty("day")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> topFiles: [FileAccessResult!]! (type)
         [JsonProperty("topFiles")]
         public List<FileAccessResult>? TopFiles { get; set; }
+
 
         #endregion
 
@@ -55,103 +58,95 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Day
-            // GraphQL -> day: String! (scalar)
-            if (this.Day != null)
-            {
-                 s += ind + "day\n";
-
-            }
-            //      C# -> List<ActivityResult>? ActivityResults
-            // GraphQL -> activityResults: [ActivityResult!]! (type)
-            if (this.ActivityResults != null)
-            {
-                 s += ind + "activityResults\n";
-
-                 s += ind + "{\n" + 
-                 this.ActivityResults.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<FileAccessResult>? TopFiles
-            // GraphQL -> topFiles: [FileAccessResult!]! (type)
-            if (this.TopFiles != null)
-            {
-                 s += ind + "topFiles\n";
-
-                 s += ind + "{\n" + 
-                 this.TopFiles.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Day
+        // GraphQL -> day: String! (scalar)
+        if (this.Day != null) {
+            s += ind + "day\n" ;
         }
+        //      C# -> List<ActivityResult>? ActivityResults
+        // GraphQL -> activityResults: [ActivityResult!]! (type)
+        if (this.ActivityResults != null) {
+            s += ind + "activityResults {\n" + this.ActivityResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<FileAccessResult>? TopFiles
+        // GraphQL -> topFiles: [FileAccessResult!]! (type)
+        if (this.TopFiles != null) {
+            s += ind + "topFiles {\n" + this.TopFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Day
+        // GraphQL -> day: String! (scalar)
+        if (this.Day == null && Exploration.Includes(parent + ".day", true))
         {
-            //      C# -> System.String? Day
-            // GraphQL -> day: String! (scalar)
-            if (this.Day == null && Exploration.Includes(parent + ".day$"))
-            {
-                this.Day = new System.String("FETCH");
-            }
-            //      C# -> List<ActivityResult>? ActivityResults
-            // GraphQL -> activityResults: [ActivityResult!]! (type)
-            if (this.ActivityResults == null && Exploration.Includes(parent + ".activityResults"))
-            {
-                this.ActivityResults = new List<ActivityResult>();
-                this.ActivityResults.ApplyExploratoryFragment(parent + ".activityResults");
-            }
-            //      C# -> List<FileAccessResult>? TopFiles
-            // GraphQL -> topFiles: [FileAccessResult!]! (type)
-            if (this.TopFiles == null && Exploration.Includes(parent + ".topFiles"))
-            {
-                this.TopFiles = new List<FileAccessResult>();
-                this.TopFiles.ApplyExploratoryFragment(parent + ".topFiles");
-            }
+            this.Day = new System.String("FETCH");
         }
+        //      C# -> List<ActivityResult>? ActivityResults
+        // GraphQL -> activityResults: [ActivityResult!]! (type)
+        if (this.ActivityResults == null && Exploration.Includes(parent + ".activityResults"))
+        {
+            this.ActivityResults = new List<ActivityResult>();
+            this.ActivityResults.ApplyExploratoryFieldSpec(parent + ".activityResults");
+        }
+        //      C# -> List<FileAccessResult>? TopFiles
+        // GraphQL -> topFiles: [FileAccessResult!]! (type)
+        if (this.TopFiles == null && Exploration.Includes(parent + ".topFiles"))
+        {
+            this.TopFiles = new List<FileAccessResult>();
+            this.TopFiles.ApplyExploratoryFieldSpec(parent + ".topFiles");
+        }
+    }
 
 
     #endregion
 
     } // class ActivityTimelineResult
+    
     #endregion
 
     public static class ListActivityTimelineResultExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ActivityTimelineResult> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ActivityTimelineResult> list, 
             String parent = "")
         {
-            var item = new ActivityTimelineResult();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ActivityTimelineResult());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

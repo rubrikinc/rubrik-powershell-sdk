@@ -24,6 +24,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "APP_BLUEPRINT")]
         APP_BLUEPRINT,
 
+        [EnumMember(Value = "ATLASSIAN_SITE")]
+        ATLASSIAN_SITE,
+
         [EnumMember(Value = "AWS_NATIVE_ACCOUNT")]
         AWS_NATIVE_ACCOUNT,
 
@@ -39,8 +42,8 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
-        [EnumMember(Value = "AZURE_AD_TENANT")]
-        AZURE_AD_TENANT,
+        [EnumMember(Value = "AZURE_AD_DIRECTORY")]
+        AZURE_AD_DIRECTORY,
 
         [EnumMember(Value = "AZURE_MANAGED_DISK")]
         AZURE_MANAGED_DISK,
@@ -149,6 +152,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE")]
         HYPERV_VIRTUAL_MACHINE,
+
+        [EnumMember(Value = "JIRA_FIXED_OBJECT")]
+        JIRA_FIXED_OBJECT,
 
         [EnumMember(Value = "JIRA_PROJECT")]
         JIRA_PROJECT,

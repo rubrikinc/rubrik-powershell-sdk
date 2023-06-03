@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CdmUpgradeReleaseDetail
-    public class CdmUpgradeReleaseDetail: IFragment
+    public class CdmUpgradeReleaseDetail: BaseType
     {
         #region members
+
+        //      C# -> AdoptionStatus? AdoptionStatus
+        // GraphQL -> adoptionStatus: AdoptionStatus! (enum)
+        [JsonProperty("adoptionStatus")]
+        public AdoptionStatus? AdoptionStatus { get; set; }
+
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         [JsonProperty("description")]
@@ -68,16 +75,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("tarDownloadLink")]
         public System.String? TarDownloadLink { get; set; }
 
-        //      C# -> AdoptionStatus? AdoptionStatus
-        // GraphQL -> adoptionStatus: AdoptionStatus! (enum)
-        [JsonProperty("adoptionStatus")]
-        public AdoptionStatus? AdoptionStatus { get; set; }
 
         #endregion
 
     #region methods
 
     public CdmUpgradeReleaseDetail Set(
+        AdoptionStatus? AdoptionStatus = null,
         System.String? Description = null,
         System.String? GaReleaseDate = null,
         System.Boolean? IsRecommended = null,
@@ -87,10 +91,12 @@ namespace Rubrik.SecurityCloud.Types
         System.String? ReleaseDate = null,
         System.String? ReleaseNotesLink = null,
         System.Int64? Size = null,
-        System.String? TarDownloadLink = null,
-        AdoptionStatus? AdoptionStatus = null
+        System.String? TarDownloadLink = null
     ) 
     {
+        if ( AdoptionStatus != null ) {
+            this.AdoptionStatus = AdoptionStatus;
+        }
         if ( Description != null ) {
             this.Description = Description;
         }
@@ -121,205 +127,184 @@ namespace Rubrik.SecurityCloud.Types
         if ( TarDownloadLink != null ) {
             this.TarDownloadLink = TarDownloadLink;
         }
-        if ( AdoptionStatus != null ) {
-            this.AdoptionStatus = AdoptionStatus;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description != null)
-            {
-                 s += ind + "description\n";
-
-            }
-            //      C# -> System.String? GaReleaseDate
-            // GraphQL -> gaReleaseDate: String! (scalar)
-            if (this.GaReleaseDate != null)
-            {
-                 s += ind + "gaReleaseDate\n";
-
-            }
-            //      C# -> System.Boolean? IsRecommended
-            // GraphQL -> isRecommended: Boolean! (scalar)
-            if (this.IsRecommended != null)
-            {
-                 s += ind + "isRecommended\n";
-
-            }
-            //      C# -> System.Boolean? IsUpgradable
-            // GraphQL -> isUpgradable: Boolean! (scalar)
-            if (this.IsUpgradable != null)
-            {
-                 s += ind + "isUpgradable\n";
-
-            }
-            //      C# -> System.String? Md5Sum
-            // GraphQL -> md5Sum: String! (scalar)
-            if (this.Md5Sum != null)
-            {
-                 s += ind + "md5Sum\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? ReleaseDate
-            // GraphQL -> releaseDate: String! (scalar)
-            if (this.ReleaseDate != null)
-            {
-                 s += ind + "releaseDate\n";
-
-            }
-            //      C# -> System.String? ReleaseNotesLink
-            // GraphQL -> releaseNotesLink: String! (scalar)
-            if (this.ReleaseNotesLink != null)
-            {
-                 s += ind + "releaseNotesLink\n";
-
-            }
-            //      C# -> System.Int64? Size
-            // GraphQL -> size: Long! (scalar)
-            if (this.Size != null)
-            {
-                 s += ind + "size\n";
-
-            }
-            //      C# -> System.String? TarDownloadLink
-            // GraphQL -> tarDownloadLink: String! (scalar)
-            if (this.TarDownloadLink != null)
-            {
-                 s += ind + "tarDownloadLink\n";
-
-            }
-            //      C# -> AdoptionStatus? AdoptionStatus
-            // GraphQL -> adoptionStatus: AdoptionStatus! (enum)
-            if (this.AdoptionStatus != null)
-            {
-                 s += ind + "adoptionStatus\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AdoptionStatus? AdoptionStatus
+        // GraphQL -> adoptionStatus: AdoptionStatus! (enum)
+        if (this.AdoptionStatus != null) {
+            s += ind + "adoptionStatus\n" ;
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description != null) {
+            s += ind + "description\n" ;
+        }
+        //      C# -> System.String? GaReleaseDate
+        // GraphQL -> gaReleaseDate: String! (scalar)
+        if (this.GaReleaseDate != null) {
+            s += ind + "gaReleaseDate\n" ;
+        }
+        //      C# -> System.Boolean? IsRecommended
+        // GraphQL -> isRecommended: Boolean! (scalar)
+        if (this.IsRecommended != null) {
+            s += ind + "isRecommended\n" ;
+        }
+        //      C# -> System.Boolean? IsUpgradable
+        // GraphQL -> isUpgradable: Boolean! (scalar)
+        if (this.IsUpgradable != null) {
+            s += ind + "isUpgradable\n" ;
+        }
+        //      C# -> System.String? Md5Sum
+        // GraphQL -> md5Sum: String! (scalar)
+        if (this.Md5Sum != null) {
+            s += ind + "md5Sum\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? ReleaseDate
+        // GraphQL -> releaseDate: String! (scalar)
+        if (this.ReleaseDate != null) {
+            s += ind + "releaseDate\n" ;
+        }
+        //      C# -> System.String? ReleaseNotesLink
+        // GraphQL -> releaseNotesLink: String! (scalar)
+        if (this.ReleaseNotesLink != null) {
+            s += ind + "releaseNotesLink\n" ;
+        }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long! (scalar)
+        if (this.Size != null) {
+            s += ind + "size\n" ;
+        }
+        //      C# -> System.String? TarDownloadLink
+        // GraphQL -> tarDownloadLink: String! (scalar)
+        if (this.TarDownloadLink != null) {
+            s += ind + "tarDownloadLink\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AdoptionStatus? AdoptionStatus
+        // GraphQL -> adoptionStatus: AdoptionStatus! (enum)
+        if (this.AdoptionStatus == null && Exploration.Includes(parent + ".adoptionStatus", true))
         {
-            //      C# -> System.String? Description
-            // GraphQL -> description: String! (scalar)
-            if (this.Description == null && Exploration.Includes(parent + ".description$"))
-            {
-                this.Description = new System.String("FETCH");
-            }
-            //      C# -> System.String? GaReleaseDate
-            // GraphQL -> gaReleaseDate: String! (scalar)
-            if (this.GaReleaseDate == null && Exploration.Includes(parent + ".gaReleaseDate$"))
-            {
-                this.GaReleaseDate = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsRecommended
-            // GraphQL -> isRecommended: Boolean! (scalar)
-            if (this.IsRecommended == null && Exploration.Includes(parent + ".isRecommended$"))
-            {
-                this.IsRecommended = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsUpgradable
-            // GraphQL -> isUpgradable: Boolean! (scalar)
-            if (this.IsUpgradable == null && Exploration.Includes(parent + ".isUpgradable$"))
-            {
-                this.IsUpgradable = new System.Boolean();
-            }
-            //      C# -> System.String? Md5Sum
-            // GraphQL -> md5Sum: String! (scalar)
-            if (this.Md5Sum == null && Exploration.Includes(parent + ".md5Sum$"))
-            {
-                this.Md5Sum = new System.String("FETCH");
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? ReleaseDate
-            // GraphQL -> releaseDate: String! (scalar)
-            if (this.ReleaseDate == null && Exploration.Includes(parent + ".releaseDate$"))
-            {
-                this.ReleaseDate = new System.String("FETCH");
-            }
-            //      C# -> System.String? ReleaseNotesLink
-            // GraphQL -> releaseNotesLink: String! (scalar)
-            if (this.ReleaseNotesLink == null && Exploration.Includes(parent + ".releaseNotesLink$"))
-            {
-                this.ReleaseNotesLink = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? Size
-            // GraphQL -> size: Long! (scalar)
-            if (this.Size == null && Exploration.Includes(parent + ".size$"))
-            {
-                this.Size = new System.Int64();
-            }
-            //      C# -> System.String? TarDownloadLink
-            // GraphQL -> tarDownloadLink: String! (scalar)
-            if (this.TarDownloadLink == null && Exploration.Includes(parent + ".tarDownloadLink$"))
-            {
-                this.TarDownloadLink = new System.String("FETCH");
-            }
-            //      C# -> AdoptionStatus? AdoptionStatus
-            // GraphQL -> adoptionStatus: AdoptionStatus! (enum)
-            if (this.AdoptionStatus == null && Exploration.Includes(parent + ".adoptionStatus$"))
-            {
-                this.AdoptionStatus = new AdoptionStatus();
-            }
+            this.AdoptionStatus = new AdoptionStatus();
         }
+        //      C# -> System.String? Description
+        // GraphQL -> description: String! (scalar)
+        if (this.Description == null && Exploration.Includes(parent + ".description", true))
+        {
+            this.Description = new System.String("FETCH");
+        }
+        //      C# -> System.String? GaReleaseDate
+        // GraphQL -> gaReleaseDate: String! (scalar)
+        if (this.GaReleaseDate == null && Exploration.Includes(parent + ".gaReleaseDate", true))
+        {
+            this.GaReleaseDate = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsRecommended
+        // GraphQL -> isRecommended: Boolean! (scalar)
+        if (this.IsRecommended == null && Exploration.Includes(parent + ".isRecommended", true))
+        {
+            this.IsRecommended = true;
+        }
+        //      C# -> System.Boolean? IsUpgradable
+        // GraphQL -> isUpgradable: Boolean! (scalar)
+        if (this.IsUpgradable == null && Exploration.Includes(parent + ".isUpgradable", true))
+        {
+            this.IsUpgradable = true;
+        }
+        //      C# -> System.String? Md5Sum
+        // GraphQL -> md5Sum: String! (scalar)
+        if (this.Md5Sum == null && Exploration.Includes(parent + ".md5Sum", true))
+        {
+            this.Md5Sum = new System.String("FETCH");
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? ReleaseDate
+        // GraphQL -> releaseDate: String! (scalar)
+        if (this.ReleaseDate == null && Exploration.Includes(parent + ".releaseDate", true))
+        {
+            this.ReleaseDate = new System.String("FETCH");
+        }
+        //      C# -> System.String? ReleaseNotesLink
+        // GraphQL -> releaseNotesLink: String! (scalar)
+        if (this.ReleaseNotesLink == null && Exploration.Includes(parent + ".releaseNotesLink", true))
+        {
+            this.ReleaseNotesLink = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? Size
+        // GraphQL -> size: Long! (scalar)
+        if (this.Size == null && Exploration.Includes(parent + ".size", true))
+        {
+            this.Size = new System.Int64();
+        }
+        //      C# -> System.String? TarDownloadLink
+        // GraphQL -> tarDownloadLink: String! (scalar)
+        if (this.TarDownloadLink == null && Exploration.Includes(parent + ".tarDownloadLink", true))
+        {
+            this.TarDownloadLink = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class CdmUpgradeReleaseDetail
+    
     #endregion
 
     public static class ListCdmUpgradeReleaseDetailExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CdmUpgradeReleaseDetail> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CdmUpgradeReleaseDetail> list, 
             String parent = "")
         {
-            var item = new CdmUpgradeReleaseDetail();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CdmUpgradeReleaseDetail());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

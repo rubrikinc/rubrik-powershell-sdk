@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ArchivalLocationToClusterMapping
-    public class ArchivalLocationToClusterMapping: IFragment
+    public class ArchivalLocationToClusterMapping: BaseType
     {
         #region members
+
         //      C# -> SlaArchivalCluster? Cluster
         // GraphQL -> cluster: SlaArchivalCluster (type)
         [JsonProperty("cluster")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: DlsArchivalLocation (type)
         [JsonProperty("location")]
         public DlsArchivalLocation? Location { get; set; }
+
 
         #endregion
 
@@ -46,90 +49,84 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> SlaArchivalCluster? Cluster
-            // GraphQL -> cluster: SlaArchivalCluster (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> DlsArchivalLocation? Location
-            // GraphQL -> location: DlsArchivalLocation (type)
-            if (this.Location != null)
-            {
-                 s += ind + "location\n";
-
-                 s += ind + "{\n" + 
-                 this.Location.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> SlaArchivalCluster? Cluster
+        // GraphQL -> cluster: SlaArchivalCluster (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> DlsArchivalLocation? Location
+        // GraphQL -> location: DlsArchivalLocation (type)
+        if (this.Location != null) {
+            s += ind + "location {\n" + this.Location.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> SlaArchivalCluster? Cluster
+        // GraphQL -> cluster: SlaArchivalCluster (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
         {
-            //      C# -> SlaArchivalCluster? Cluster
-            // GraphQL -> cluster: SlaArchivalCluster (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new SlaArchivalCluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> DlsArchivalLocation? Location
-            // GraphQL -> location: DlsArchivalLocation (type)
-            if (this.Location == null && Exploration.Includes(parent + ".location"))
-            {
-                this.Location = new DlsArchivalLocation();
-                this.Location.ApplyExploratoryFragment(parent + ".location");
-            }
+            this.Cluster = new SlaArchivalCluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
         }
+        //      C# -> DlsArchivalLocation? Location
+        // GraphQL -> location: DlsArchivalLocation (type)
+        if (this.Location == null && Exploration.Includes(parent + ".location"))
+        {
+            this.Location = new DlsArchivalLocation();
+            this.Location.ApplyExploratoryFieldSpec(parent + ".location");
+        }
+    }
 
 
     #endregion
 
     } // class ArchivalLocationToClusterMapping
+    
     #endregion
 
     public static class ListArchivalLocationToClusterMappingExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ArchivalLocationToClusterMapping> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ArchivalLocationToClusterMapping> list, 
             String parent = "")
         {
-            var item = new ArchivalLocationToClusterMapping();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ArchivalLocationToClusterMapping());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -9,13 +9,16 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region O365AppObject
-    public interface O365AppObject: IFragment
+
+    public interface O365AppObject: IFieldSpec
     {
         #region members
+
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         [JsonProperty("appId")]
@@ -61,51 +64,57 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("appAuthVersion")]
         System.Int32? AppAuthVersion { get; set; }
 
+
         #endregion
 
-    } // class O365AppObject
+    } // interface O365AppObject
+
     #endregion
+
+
 
     public static class ListO365AppObjectExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<O365AppObject> list,
             int indent=0)
         {
-            string fragments = "";
+            string ind = new string(' ', indent*2);
+            string fieldspecs = "";
             foreach (O365AppObject item in list) 
             {
-                string typename = item.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-
-                fragments += String.Format("... on {0}\n", typename);
-
-                fragments += "{\n" +
-                item.AsFragment(indent+1) +
-                "}\n";
+                fieldspecs += ind + " ... on " + item.GetType().Name + " {\n" + item.AsFieldSpec(indent+1) + ind + "}\n";
             }
-            return fragments;
+            return fieldspecs;
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<O365AppObject> list, 
             String parent = "")
         {
-            var item = (O365AppObject)InterfaceHelper.CreateInstanceOfFirstType(typeof(O365AppObject));
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                InterfaceHelper
+                    .AddInstancesOfImplementingTypes<O365AppObject>(
+                        ref list, 
+                        instance => instance.ApplyExploratoryFieldSpec(parent));
+            } else {
+                foreach (O365AppObject item in list) {
+                    item.ApplyExploratoryFieldSpec(parent);
+                }
+            }
+
         }
     }
 

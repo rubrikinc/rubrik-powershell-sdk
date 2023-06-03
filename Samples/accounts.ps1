@@ -107,7 +107,7 @@ Query-RscAccount -Setting -Field $accountSetting
 
 
 Write-Message @"
-8. All schema types have an ApplyExploratoryFragment() method.
+8. All schema types have an ApplyExploratoryFieldSpec() method.
    It sets *some* fields in the object to non-null values.
    It is meant to be used when you don't know which fields you want to fetch,
    and you want to see what the query would look like.
@@ -117,24 +117,24 @@ Write-Message @"
 "@
 $accountSetting = [Rubrik.SecurityCloud.Types.AccountSetting]@{}
 $accountSetting
-$accountSetting.ApplyExploratoryFragment()
+$accountSetting.ApplyExploratoryFieldSpec()
 $accountSetting
 Query-RscAccount -Setting -Field $accountSetting
 
 
 Write-Message @"
-9. All schema types also have an AsFragment() method.
-   It returns a string that is a valid GraphQL fragment of the object,
+9. All schema types also have an AsFieldSpec() method.
+   It returns a string that is a valid GraphQL fieldspec of the object,
    that is: a string that lists all the fields of the object that
     are not null, *recursively*.
 
 "@
-$accountSetting.AsFragment()
+$accountSetting.AsFieldSpec()
 
 
 Write-Message @"
-10. You can use the AsFragment() method to build queries manually:
+10. You can use the AsFieldSpec() method to build queries manually:
 "@
-$fragment = $accountSetting.AsFragment()
-$query = "{accountSettings { $fragment }}"
+$fieldspec = $accountSetting.AsFieldSpec()
+$query = "{accountSettings { $fieldspec }}"
 Invoke-Rsc -OutputType AccountSetting $query

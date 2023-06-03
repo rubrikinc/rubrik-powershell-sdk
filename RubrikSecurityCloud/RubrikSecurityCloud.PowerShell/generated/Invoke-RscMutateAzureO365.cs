@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -129,8 +129,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             SetupAzureO365ExocomputeResp? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (SetupAzureO365ExocomputeResp)psObject.BaseObject;
                 } else {
                     fields = (SetupAzureO365ExocomputeResp)this.Field;
@@ -138,23 +137,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             }
             string document = Mutation.SetupAzureO365Exocompute(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.SetupAzureO365Exocompute");
-            string parameters = "($tenantId: String!,$subscriptionId: UUID!,$exocomputeConfig: AzureO365ExocomputeConfig!)\n";
+            var parameters = "($tenantId: String!,$subscriptionId: UUID!,$exocomputeConfig: AzureO365ExocomputeConfig!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationSetupAzureO365Exocompute" + parameters + "{" + document + "}",
                 OperationName = "MutationSetupAzureO365Exocompute",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<SetupAzureO365ExocomputeResp> task = this._rbkClient.InvokeGenericCallAsync<SetupAzureO365ExocomputeResp>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "SetupAzureO365ExocomputeResp", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

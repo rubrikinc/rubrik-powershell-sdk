@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region HealthPolicyStatus
-    public class HealthPolicyStatus: IFragment
+    public class HealthPolicyStatus: BaseType
     {
         #region members
+
+        //      C# -> HardwareHealthPolicyName? PolicyName
+        // GraphQL -> policyName: HardwareHealthPolicyName! (enum)
+        [JsonProperty("policyName")]
+        public HardwareHealthPolicyName? PolicyName { get; set; }
+
         //      C# -> System.Boolean? IsHealthy
         // GraphQL -> isHealthy: Boolean! (scalar)
         [JsonProperty("isHealthy")]
@@ -28,122 +35,116 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("message")]
         public System.String? Message { get; set; }
 
-        //      C# -> HardwareHealthPolicyName? PolicyName
-        // GraphQL -> policyName: HardwareHealthPolicyName! (enum)
-        [JsonProperty("policyName")]
-        public HardwareHealthPolicyName? PolicyName { get; set; }
 
         #endregion
 
     #region methods
 
     public HealthPolicyStatus Set(
+        HardwareHealthPolicyName? PolicyName = null,
         System.Boolean? IsHealthy = null,
-        System.String? Message = null,
-        HardwareHealthPolicyName? PolicyName = null
+        System.String? Message = null
     ) 
     {
+        if ( PolicyName != null ) {
+            this.PolicyName = PolicyName;
+        }
         if ( IsHealthy != null ) {
             this.IsHealthy = IsHealthy;
         }
         if ( Message != null ) {
             this.Message = Message;
         }
-        if ( PolicyName != null ) {
-            this.PolicyName = PolicyName;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Boolean? IsHealthy
-            // GraphQL -> isHealthy: Boolean! (scalar)
-            if (this.IsHealthy != null)
-            {
-                 s += ind + "isHealthy\n";
-
-            }
-            //      C# -> System.String? Message
-            // GraphQL -> message: String! (scalar)
-            if (this.Message != null)
-            {
-                 s += ind + "message\n";
-
-            }
-            //      C# -> HardwareHealthPolicyName? PolicyName
-            // GraphQL -> policyName: HardwareHealthPolicyName! (enum)
-            if (this.PolicyName != null)
-            {
-                 s += ind + "policyName\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> HardwareHealthPolicyName? PolicyName
+        // GraphQL -> policyName: HardwareHealthPolicyName! (enum)
+        if (this.PolicyName != null) {
+            s += ind + "policyName\n" ;
         }
+        //      C# -> System.Boolean? IsHealthy
+        // GraphQL -> isHealthy: Boolean! (scalar)
+        if (this.IsHealthy != null) {
+            s += ind + "isHealthy\n" ;
+        }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        if (this.Message != null) {
+            s += ind + "message\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> HardwareHealthPolicyName? PolicyName
+        // GraphQL -> policyName: HardwareHealthPolicyName! (enum)
+        if (this.PolicyName == null && Exploration.Includes(parent + ".policyName", true))
         {
-            //      C# -> System.Boolean? IsHealthy
-            // GraphQL -> isHealthy: Boolean! (scalar)
-            if (this.IsHealthy == null && Exploration.Includes(parent + ".isHealthy$"))
-            {
-                this.IsHealthy = new System.Boolean();
-            }
-            //      C# -> System.String? Message
-            // GraphQL -> message: String! (scalar)
-            if (this.Message == null && Exploration.Includes(parent + ".message$"))
-            {
-                this.Message = new System.String("FETCH");
-            }
-            //      C# -> HardwareHealthPolicyName? PolicyName
-            // GraphQL -> policyName: HardwareHealthPolicyName! (enum)
-            if (this.PolicyName == null && Exploration.Includes(parent + ".policyName$"))
-            {
-                this.PolicyName = new HardwareHealthPolicyName();
-            }
+            this.PolicyName = new HardwareHealthPolicyName();
         }
+        //      C# -> System.Boolean? IsHealthy
+        // GraphQL -> isHealthy: Boolean! (scalar)
+        if (this.IsHealthy == null && Exploration.Includes(parent + ".isHealthy", true))
+        {
+            this.IsHealthy = true;
+        }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        {
+            this.Message = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class HealthPolicyStatus
+    
     #endregion
 
     public static class ListHealthPolicyStatusExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<HealthPolicyStatus> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<HealthPolicyStatus> list, 
             String parent = "")
         {
-            var item = new HealthPolicyStatus();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new HealthPolicyStatus());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

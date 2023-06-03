@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ClassificationPolicyWhitelistDetailedEntry
-    public class ClassificationPolicyWhitelistDetailedEntry: IFragment
+    public class ClassificationPolicyWhitelistDetailedEntry: BaseType
     {
         #region members
+
+        //      C# -> HierarchyObject? Snappable
+        // GraphQL -> snappable: HierarchyObject! (interface)
+        [JsonProperty("snappable")]
+        public HierarchyObject? Snappable { get; set; }
+
         //      C# -> System.String? NativePath
         // GraphQL -> nativePath: String! (scalar)
         [JsonProperty("nativePath")]
@@ -38,23 +45,22 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("updateUsername")]
         public System.String? UpdateUsername { get; set; }
 
-        //      C# -> HierarchyObject? Snappable
-        // GraphQL -> snappable: HierarchyObject! (interface)
-        [JsonProperty("snappable")]
-        public HierarchyObject? Snappable { get; set; }
 
         #endregion
 
     #region methods
 
     public ClassificationPolicyWhitelistDetailedEntry Set(
+        HierarchyObject? Snappable = null,
         System.String? NativePath = null,
         System.String? StdPath = null,
         System.Int64? UpdateTs = null,
-        System.String? UpdateUsername = null,
-        HierarchyObject? Snappable = null
+        System.String? UpdateUsername = null
     ) 
     {
+        if ( Snappable != null ) {
+            this.Snappable = Snappable;
+        }
         if ( NativePath != null ) {
             this.NativePath = NativePath;
         }
@@ -67,140 +73,121 @@ namespace Rubrik.SecurityCloud.Types
         if ( UpdateUsername != null ) {
             this.UpdateUsername = UpdateUsername;
         }
-        if ( Snappable != null ) {
-            this.Snappable = Snappable;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? NativePath
-            // GraphQL -> nativePath: String! (scalar)
-            if (this.NativePath != null)
-            {
-                 s += ind + "nativePath\n";
-
-            }
-            //      C# -> System.String? StdPath
-            // GraphQL -> stdPath: String! (scalar)
-            if (this.StdPath != null)
-            {
-                 s += ind + "stdPath\n";
-
-            }
-            //      C# -> System.Int64? UpdateTs
-            // GraphQL -> updateTs: Long! (scalar)
-            if (this.UpdateTs != null)
-            {
-                 s += ind + "updateTs\n";
-
-            }
-            //      C# -> System.String? UpdateUsername
-            // GraphQL -> updateUsername: String! (scalar)
-            if (this.UpdateUsername != null)
-            {
-                 s += ind + "updateUsername\n";
-
-            }
-                        //      C# -> HierarchyObject? Snappable
-            // GraphQL -> snappable: HierarchyObject! (interface)
-            if (this.Snappable != null)
-            {
-                s += ind + "snappable\n";
-                s += ind + "{\n";
-
-                string typename = this.Snappable.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.Snappable.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> HierarchyObject? Snappable
+        // GraphQL -> snappable: HierarchyObject! (interface)
+        if (this.Snappable != null) {
+            s += ind + "snappable {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.Snappable).AsFieldSpec(indent+1) + ind + "}\n";
         }
+        //      C# -> System.String? NativePath
+        // GraphQL -> nativePath: String! (scalar)
+        if (this.NativePath != null) {
+            s += ind + "nativePath\n" ;
+        }
+        //      C# -> System.String? StdPath
+        // GraphQL -> stdPath: String! (scalar)
+        if (this.StdPath != null) {
+            s += ind + "stdPath\n" ;
+        }
+        //      C# -> System.Int64? UpdateTs
+        // GraphQL -> updateTs: Long! (scalar)
+        if (this.UpdateTs != null) {
+            s += ind + "updateTs\n" ;
+        }
+        //      C# -> System.String? UpdateUsername
+        // GraphQL -> updateUsername: String! (scalar)
+        if (this.UpdateUsername != null) {
+            s += ind + "updateUsername\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> HierarchyObject? Snappable
+        // GraphQL -> snappable: HierarchyObject! (interface)
+        if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
         {
-            //      C# -> System.String? NativePath
-            // GraphQL -> nativePath: String! (scalar)
-            if (this.NativePath == null && Exploration.Includes(parent + ".nativePath$"))
-            {
-                this.NativePath = new System.String("FETCH");
-            }
-            //      C# -> System.String? StdPath
-            // GraphQL -> stdPath: String! (scalar)
-            if (this.StdPath == null && Exploration.Includes(parent + ".stdPath$"))
-            {
-                this.StdPath = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? UpdateTs
-            // GraphQL -> updateTs: Long! (scalar)
-            if (this.UpdateTs == null && Exploration.Includes(parent + ".updateTs$"))
-            {
-                this.UpdateTs = new System.Int64();
-            }
-            //      C# -> System.String? UpdateUsername
-            // GraphQL -> updateUsername: String! (scalar)
-            if (this.UpdateUsername == null && Exploration.Includes(parent + ".updateUsername$"))
-            {
-                this.UpdateUsername = new System.String("FETCH");
-            }
-            //      C# -> HierarchyObject? Snappable
-            // GraphQL -> snappable: HierarchyObject! (interface)
-            if (this.Snappable == null && Exploration.Includes(parent + ".snappable"))
-            {
-                this.Snappable = (HierarchyObject)InterfaceHelper.CreateInstanceOfFirstType(typeof(HierarchyObject));
-                this.Snappable.ApplyExploratoryFragment(parent + ".snappable");
-            }
+            var impls = new List<HierarchyObject>();
+            impls.ApplyExploratoryFieldSpec(parent + ".snappable");
+            this.Snappable = (HierarchyObject)InterfaceHelper.MakeCompositeFromList(impls);
         }
+        //      C# -> System.String? NativePath
+        // GraphQL -> nativePath: String! (scalar)
+        if (this.NativePath == null && Exploration.Includes(parent + ".nativePath", true))
+        {
+            this.NativePath = new System.String("FETCH");
+        }
+        //      C# -> System.String? StdPath
+        // GraphQL -> stdPath: String! (scalar)
+        if (this.StdPath == null && Exploration.Includes(parent + ".stdPath", true))
+        {
+            this.StdPath = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? UpdateTs
+        // GraphQL -> updateTs: Long! (scalar)
+        if (this.UpdateTs == null && Exploration.Includes(parent + ".updateTs", true))
+        {
+            this.UpdateTs = new System.Int64();
+        }
+        //      C# -> System.String? UpdateUsername
+        // GraphQL -> updateUsername: String! (scalar)
+        if (this.UpdateUsername == null && Exploration.Includes(parent + ".updateUsername", true))
+        {
+            this.UpdateUsername = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class ClassificationPolicyWhitelistDetailedEntry
+    
     #endregion
 
     public static class ListClassificationPolicyWhitelistDetailedEntryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ClassificationPolicyWhitelistDetailedEntry> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ClassificationPolicyWhitelistDetailedEntry> list, 
             String parent = "")
         {
-            var item = new ClassificationPolicyWhitelistDetailedEntry();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ClassificationPolicyWhitelistDetailedEntry());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

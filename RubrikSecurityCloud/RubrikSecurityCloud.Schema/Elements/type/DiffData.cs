@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region DiffData
-    public class DiffData: IFragment
+    public class DiffData: BaseType
     {
         #region members
+
         //      C# -> System.Int64? BytesCreated
         // GraphQL -> bytesCreated: Long! (scalar)
         [JsonProperty("bytesCreated")]
@@ -88,6 +90,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("anomalyInfo")]
         public AnomalyInfo? AnomalyInfo { get; set; }
 
+
         #endregion
 
     #region methods
@@ -154,242 +157,215 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int64? BytesCreated
-            // GraphQL -> bytesCreated: Long! (scalar)
-            if (this.BytesCreated != null)
-            {
-                 s += ind + "bytesCreated\n";
-
-            }
-            //      C# -> System.Int64? BytesDeleted
-            // GraphQL -> bytesDeleted: Long! (scalar)
-            if (this.BytesDeleted != null)
-            {
-                 s += ind + "bytesDeleted\n";
-
-            }
-            //      C# -> System.Int64? BytesModified
-            // GraphQL -> bytesModified: Long! (scalar)
-            if (this.BytesModified != null)
-            {
-                 s += ind + "bytesModified\n";
-
-            }
-            //      C# -> System.Int64? FilesCreated
-            // GraphQL -> filesCreated: Long! (scalar)
-            if (this.FilesCreated != null)
-            {
-                 s += ind + "filesCreated\n";
-
-            }
-            //      C# -> System.Int64? FilesDeleted
-            // GraphQL -> filesDeleted: Long! (scalar)
-            if (this.FilesDeleted != null)
-            {
-                 s += ind + "filesDeleted\n";
-
-            }
-            //      C# -> System.Int64? FilesModified
-            // GraphQL -> filesModified: Long! (scalar)
-            if (this.FilesModified != null)
-            {
-                 s += ind + "filesModified\n";
-
-            }
-            //      C# -> System.Boolean? IsDeleted
-            // GraphQL -> isDeleted: Boolean! (scalar)
-            if (this.IsDeleted != null)
-            {
-                 s += ind + "isDeleted\n";
-
-            }
-            //      C# -> System.Boolean? IsFolder
-            // GraphQL -> isFolder: Boolean! (scalar)
-            if (this.IsFolder != null)
-            {
-                 s += ind + "isFolder\n";
-
-            }
-            //      C# -> System.Int64? LastModifiedTime
-            // GraphQL -> lastModifiedTime: Long! (scalar)
-            if (this.LastModifiedTime != null)
-            {
-                 s += ind + "lastModifiedTime\n";
-
-            }
-            //      C# -> System.Int32? Mode
-            // GraphQL -> mode: Int! (scalar)
-            if (this.Mode != null)
-            {
-                 s += ind + "mode\n";
-
-            }
-            //      C# -> System.String? Path
-            // GraphQL -> path: String! (scalar)
-            if (this.Path != null)
-            {
-                 s += ind + "path\n";
-
-            }
-            //      C# -> System.Int64? SuspiciousFilesAdded
-            // GraphQL -> suspiciousFilesAdded: Long! (scalar)
-            if (this.SuspiciousFilesAdded != null)
-            {
-                 s += ind + "suspiciousFilesAdded\n";
-
-            }
-            //      C# -> System.Int64? TotalSize
-            // GraphQL -> totalSize: Long! (scalar)
-            if (this.TotalSize != null)
-            {
-                 s += ind + "totalSize\n";
-
-            }
-            //      C# -> AnomalyInfo? AnomalyInfo
-            // GraphQL -> anomalyInfo: AnomalyInfo (type)
-            if (this.AnomalyInfo != null)
-            {
-                 s += ind + "anomalyInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.AnomalyInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.Int64? BytesCreated
+        // GraphQL -> bytesCreated: Long! (scalar)
+        if (this.BytesCreated != null) {
+            s += ind + "bytesCreated\n" ;
         }
+        //      C# -> System.Int64? BytesDeleted
+        // GraphQL -> bytesDeleted: Long! (scalar)
+        if (this.BytesDeleted != null) {
+            s += ind + "bytesDeleted\n" ;
+        }
+        //      C# -> System.Int64? BytesModified
+        // GraphQL -> bytesModified: Long! (scalar)
+        if (this.BytesModified != null) {
+            s += ind + "bytesModified\n" ;
+        }
+        //      C# -> System.Int64? FilesCreated
+        // GraphQL -> filesCreated: Long! (scalar)
+        if (this.FilesCreated != null) {
+            s += ind + "filesCreated\n" ;
+        }
+        //      C# -> System.Int64? FilesDeleted
+        // GraphQL -> filesDeleted: Long! (scalar)
+        if (this.FilesDeleted != null) {
+            s += ind + "filesDeleted\n" ;
+        }
+        //      C# -> System.Int64? FilesModified
+        // GraphQL -> filesModified: Long! (scalar)
+        if (this.FilesModified != null) {
+            s += ind + "filesModified\n" ;
+        }
+        //      C# -> System.Boolean? IsDeleted
+        // GraphQL -> isDeleted: Boolean! (scalar)
+        if (this.IsDeleted != null) {
+            s += ind + "isDeleted\n" ;
+        }
+        //      C# -> System.Boolean? IsFolder
+        // GraphQL -> isFolder: Boolean! (scalar)
+        if (this.IsFolder != null) {
+            s += ind + "isFolder\n" ;
+        }
+        //      C# -> System.Int64? LastModifiedTime
+        // GraphQL -> lastModifiedTime: Long! (scalar)
+        if (this.LastModifiedTime != null) {
+            s += ind + "lastModifiedTime\n" ;
+        }
+        //      C# -> System.Int32? Mode
+        // GraphQL -> mode: Int! (scalar)
+        if (this.Mode != null) {
+            s += ind + "mode\n" ;
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        if (this.Path != null) {
+            s += ind + "path\n" ;
+        }
+        //      C# -> System.Int64? SuspiciousFilesAdded
+        // GraphQL -> suspiciousFilesAdded: Long! (scalar)
+        if (this.SuspiciousFilesAdded != null) {
+            s += ind + "suspiciousFilesAdded\n" ;
+        }
+        //      C# -> System.Int64? TotalSize
+        // GraphQL -> totalSize: Long! (scalar)
+        if (this.TotalSize != null) {
+            s += ind + "totalSize\n" ;
+        }
+        //      C# -> AnomalyInfo? AnomalyInfo
+        // GraphQL -> anomalyInfo: AnomalyInfo (type)
+        if (this.AnomalyInfo != null) {
+            s += ind + "anomalyInfo {\n" + this.AnomalyInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.Int64? BytesCreated
+        // GraphQL -> bytesCreated: Long! (scalar)
+        if (this.BytesCreated == null && Exploration.Includes(parent + ".bytesCreated", true))
         {
-            //      C# -> System.Int64? BytesCreated
-            // GraphQL -> bytesCreated: Long! (scalar)
-            if (this.BytesCreated == null && Exploration.Includes(parent + ".bytesCreated$"))
-            {
-                this.BytesCreated = new System.Int64();
-            }
-            //      C# -> System.Int64? BytesDeleted
-            // GraphQL -> bytesDeleted: Long! (scalar)
-            if (this.BytesDeleted == null && Exploration.Includes(parent + ".bytesDeleted$"))
-            {
-                this.BytesDeleted = new System.Int64();
-            }
-            //      C# -> System.Int64? BytesModified
-            // GraphQL -> bytesModified: Long! (scalar)
-            if (this.BytesModified == null && Exploration.Includes(parent + ".bytesModified$"))
-            {
-                this.BytesModified = new System.Int64();
-            }
-            //      C# -> System.Int64? FilesCreated
-            // GraphQL -> filesCreated: Long! (scalar)
-            if (this.FilesCreated == null && Exploration.Includes(parent + ".filesCreated$"))
-            {
-                this.FilesCreated = new System.Int64();
-            }
-            //      C# -> System.Int64? FilesDeleted
-            // GraphQL -> filesDeleted: Long! (scalar)
-            if (this.FilesDeleted == null && Exploration.Includes(parent + ".filesDeleted$"))
-            {
-                this.FilesDeleted = new System.Int64();
-            }
-            //      C# -> System.Int64? FilesModified
-            // GraphQL -> filesModified: Long! (scalar)
-            if (this.FilesModified == null && Exploration.Includes(parent + ".filesModified$"))
-            {
-                this.FilesModified = new System.Int64();
-            }
-            //      C# -> System.Boolean? IsDeleted
-            // GraphQL -> isDeleted: Boolean! (scalar)
-            if (this.IsDeleted == null && Exploration.Includes(parent + ".isDeleted$"))
-            {
-                this.IsDeleted = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsFolder
-            // GraphQL -> isFolder: Boolean! (scalar)
-            if (this.IsFolder == null && Exploration.Includes(parent + ".isFolder$"))
-            {
-                this.IsFolder = new System.Boolean();
-            }
-            //      C# -> System.Int64? LastModifiedTime
-            // GraphQL -> lastModifiedTime: Long! (scalar)
-            if (this.LastModifiedTime == null && Exploration.Includes(parent + ".lastModifiedTime$"))
-            {
-                this.LastModifiedTime = new System.Int64();
-            }
-            //      C# -> System.Int32? Mode
-            // GraphQL -> mode: Int! (scalar)
-            if (this.Mode == null && Exploration.Includes(parent + ".mode$"))
-            {
-                this.Mode = new System.Int32();
-            }
-            //      C# -> System.String? Path
-            // GraphQL -> path: String! (scalar)
-            if (this.Path == null && Exploration.Includes(parent + ".path$"))
-            {
-                this.Path = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? SuspiciousFilesAdded
-            // GraphQL -> suspiciousFilesAdded: Long! (scalar)
-            if (this.SuspiciousFilesAdded == null && Exploration.Includes(parent + ".suspiciousFilesAdded$"))
-            {
-                this.SuspiciousFilesAdded = new System.Int64();
-            }
-            //      C# -> System.Int64? TotalSize
-            // GraphQL -> totalSize: Long! (scalar)
-            if (this.TotalSize == null && Exploration.Includes(parent + ".totalSize$"))
-            {
-                this.TotalSize = new System.Int64();
-            }
-            //      C# -> AnomalyInfo? AnomalyInfo
-            // GraphQL -> anomalyInfo: AnomalyInfo (type)
-            if (this.AnomalyInfo == null && Exploration.Includes(parent + ".anomalyInfo"))
-            {
-                this.AnomalyInfo = new AnomalyInfo();
-                this.AnomalyInfo.ApplyExploratoryFragment(parent + ".anomalyInfo");
-            }
+            this.BytesCreated = new System.Int64();
         }
+        //      C# -> System.Int64? BytesDeleted
+        // GraphQL -> bytesDeleted: Long! (scalar)
+        if (this.BytesDeleted == null && Exploration.Includes(parent + ".bytesDeleted", true))
+        {
+            this.BytesDeleted = new System.Int64();
+        }
+        //      C# -> System.Int64? BytesModified
+        // GraphQL -> bytesModified: Long! (scalar)
+        if (this.BytesModified == null && Exploration.Includes(parent + ".bytesModified", true))
+        {
+            this.BytesModified = new System.Int64();
+        }
+        //      C# -> System.Int64? FilesCreated
+        // GraphQL -> filesCreated: Long! (scalar)
+        if (this.FilesCreated == null && Exploration.Includes(parent + ".filesCreated", true))
+        {
+            this.FilesCreated = new System.Int64();
+        }
+        //      C# -> System.Int64? FilesDeleted
+        // GraphQL -> filesDeleted: Long! (scalar)
+        if (this.FilesDeleted == null && Exploration.Includes(parent + ".filesDeleted", true))
+        {
+            this.FilesDeleted = new System.Int64();
+        }
+        //      C# -> System.Int64? FilesModified
+        // GraphQL -> filesModified: Long! (scalar)
+        if (this.FilesModified == null && Exploration.Includes(parent + ".filesModified", true))
+        {
+            this.FilesModified = new System.Int64();
+        }
+        //      C# -> System.Boolean? IsDeleted
+        // GraphQL -> isDeleted: Boolean! (scalar)
+        if (this.IsDeleted == null && Exploration.Includes(parent + ".isDeleted", true))
+        {
+            this.IsDeleted = true;
+        }
+        //      C# -> System.Boolean? IsFolder
+        // GraphQL -> isFolder: Boolean! (scalar)
+        if (this.IsFolder == null && Exploration.Includes(parent + ".isFolder", true))
+        {
+            this.IsFolder = true;
+        }
+        //      C# -> System.Int64? LastModifiedTime
+        // GraphQL -> lastModifiedTime: Long! (scalar)
+        if (this.LastModifiedTime == null && Exploration.Includes(parent + ".lastModifiedTime", true))
+        {
+            this.LastModifiedTime = new System.Int64();
+        }
+        //      C# -> System.Int32? Mode
+        // GraphQL -> mode: Int! (scalar)
+        if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
+        {
+            this.Mode = new System.Int32();
+        }
+        //      C# -> System.String? Path
+        // GraphQL -> path: String! (scalar)
+        if (this.Path == null && Exploration.Includes(parent + ".path", true))
+        {
+            this.Path = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? SuspiciousFilesAdded
+        // GraphQL -> suspiciousFilesAdded: Long! (scalar)
+        if (this.SuspiciousFilesAdded == null && Exploration.Includes(parent + ".suspiciousFilesAdded", true))
+        {
+            this.SuspiciousFilesAdded = new System.Int64();
+        }
+        //      C# -> System.Int64? TotalSize
+        // GraphQL -> totalSize: Long! (scalar)
+        if (this.TotalSize == null && Exploration.Includes(parent + ".totalSize", true))
+        {
+            this.TotalSize = new System.Int64();
+        }
+        //      C# -> AnomalyInfo? AnomalyInfo
+        // GraphQL -> anomalyInfo: AnomalyInfo (type)
+        if (this.AnomalyInfo == null && Exploration.Includes(parent + ".anomalyInfo"))
+        {
+            this.AnomalyInfo = new AnomalyInfo();
+            this.AnomalyInfo.ApplyExploratoryFieldSpec(parent + ".anomalyInfo");
+        }
+    }
 
 
     #endregion
 
     } // class DiffData
+    
     #endregion
 
     public static class ListDiffDataExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<DiffData> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<DiffData> list, 
             String parent = "")
         {
-            var item = new DiffData();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new DiffData());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

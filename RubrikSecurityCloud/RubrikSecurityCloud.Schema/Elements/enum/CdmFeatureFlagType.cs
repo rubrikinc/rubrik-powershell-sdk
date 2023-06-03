@@ -57,6 +57,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "ARCHIVAL_AWS_JAKARTA")]
         ARCHIVAL_AWS_JAKARTA,
 
+        [EnumMember(Value = "ARCHIVAL_AWS_PRIVATE_ENDPOINT")]
+        ARCHIVAL_AWS_PRIVATE_ENDPOINT,
+
         [EnumMember(Value = "ARCHIVAL_AWS_ZURICH")]
         ARCHIVAL_AWS_ZURICH,
 

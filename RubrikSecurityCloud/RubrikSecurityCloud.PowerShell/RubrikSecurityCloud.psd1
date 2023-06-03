@@ -8,7 +8,7 @@
 RootModule = 'RubrikSecurityCloud.PowerShell.dll'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,10 +27,10 @@ Copyright = '(c) Rubrik. All rights reserved.'
 
 # Description of the functionality provided by this module
 # NOTE: The word after "GraphQL schema version:" is generated.
-Description = 'RSC PowerShell SDK. GraphQL schema version: v20230503-40 .'
+Description = 'PowerShell Module for Rubrik Security Cloud. GraphQL schema version: v20230524-16 .'
 
 # Minimum version of the PowerShell engine required by this module
-#PowerShellVersion = '7.0.0'
+PowerShellVersion = '6.0.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -93,25 +93,25 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @("Rubrik","RubrikSecurityCloud","Ransomeware_Recovery","Data_Security", "Data_Protection")
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/rubrikinc/rubrik-powershell-sdk/blob/main/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/rubrikinc/rubrik-powershell-sdk'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://i.imgur.com/Zbdd4Ko.jpg'
 
         # ReleaseNotes of this module
         # ReleaseNotes = ''
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'Beta'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
-        # RequireLicenseAcceptance = $false
+        RequireLicenseAcceptance = $false
 
         # External dependent modules of this module
         # ExternalModuleDependencies = @()

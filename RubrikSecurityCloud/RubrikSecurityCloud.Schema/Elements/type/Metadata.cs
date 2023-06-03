@@ -11,130 +11,123 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region Metadata
-    public class Metadata: IFragment
+    public class Metadata: BaseType
     {
         #region members
-        //      C# -> System.String? Key
-        // GraphQL -> key: String! (scalar)
-        [JsonProperty("key")]
-        public System.String? Key { get; set; }
 
         //      C# -> Value? Value
         // GraphQL -> value: Value (interface)
         [JsonProperty("value")]
         public Value? Value { get; set; }
 
+        //      C# -> System.String? Key
+        // GraphQL -> key: String! (scalar)
+        [JsonProperty("key")]
+        public System.String? Key { get; set; }
+
+
         #endregion
 
     #region methods
 
     public Metadata Set(
-        System.String? Key = null,
-        Value? Value = null
+        Value? Value = null,
+        System.String? Key = null
     ) 
     {
-        if ( Key != null ) {
-            this.Key = Key;
-        }
         if ( Value != null ) {
             this.Value = Value;
+        }
+        if ( Key != null ) {
+            this.Key = Key;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Key
-            // GraphQL -> key: String! (scalar)
-            if (this.Key != null)
-            {
-                 s += ind + "key\n";
-
-            }
-                        //      C# -> Value? Value
-            // GraphQL -> value: Value (interface)
-            if (this.Value != null)
-            {
-                s += ind + "value\n";
-                s += ind + "{\n";
-
-                string typename = this.Value.GetType().ToString();
-                int typenameIdx = typename.LastIndexOf('.');
-                typename = typename.Substring(typenameIdx + 1);
-                s += ind + String.Format("... on {0}\n", typename);
-                s += ind + "{\n" +
-
-                this.Value.AsFragment(indent+1) +
-
-                ind + "}\n" +
-
-                ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> Value? Value
+        // GraphQL -> value: Value (interface)
+        if (this.Value != null) {
+            s += ind + "value {\n" +
+                InterfaceHelper.MakeListFromComposite((BaseType)this.Value).AsFieldSpec(indent+1) + ind + "}\n";
         }
+        //      C# -> System.String? Key
+        // GraphQL -> key: String! (scalar)
+        if (this.Key != null) {
+            s += ind + "key\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> Value? Value
+        // GraphQL -> value: Value (interface)
+        if (this.Value == null && Exploration.Includes(parent + ".value"))
         {
-            //      C# -> System.String? Key
-            // GraphQL -> key: String! (scalar)
-            if (this.Key == null && Exploration.Includes(parent + ".key$"))
-            {
-                this.Key = new System.String("FETCH");
-            }
-            //      C# -> Value? Value
-            // GraphQL -> value: Value (interface)
-            if (this.Value == null && Exploration.Includes(parent + ".value"))
-            {
-                this.Value = (Value)InterfaceHelper.CreateInstanceOfFirstType(typeof(Value));
-                this.Value.ApplyExploratoryFragment(parent + ".value");
-            }
+            var impls = new List<Value>();
+            impls.ApplyExploratoryFieldSpec(parent + ".value");
+            this.Value = (Value)InterfaceHelper.MakeCompositeFromList(impls);
         }
+        //      C# -> System.String? Key
+        // GraphQL -> key: String! (scalar)
+        if (this.Key == null && Exploration.Includes(parent + ".key", true))
+        {
+            this.Key = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class Metadata
+    
     #endregion
 
     public static class ListMetadataExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<Metadata> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<Metadata> list, 
             String parent = "")
         {
-            var item = new Metadata();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new Metadata());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

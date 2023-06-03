@@ -11,17 +11,14 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CloudNativeRegion
-    public class CloudNativeRegion: IFragment
+    public class CloudNativeRegion: BaseType
     {
         #region members
-        //      C# -> GcpNativeRegion? GcpRegion
-        // GraphQL -> gcpRegion: GcpNativeRegion (type)
-        [JsonProperty("gcpRegion")]
-        public GcpNativeRegion? GcpRegion { get; set; }
 
         //      C# -> AwsNativeRegion? AwsRegion
         // GraphQL -> awsRegion: AwsNativeRegion (enum)
@@ -33,121 +30,122 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("azureRegion")]
         public AzureNativeRegion? AzureRegion { get; set; }
 
+        //      C# -> GcpNativeRegion? GcpRegion
+        // GraphQL -> gcpRegion: GcpNativeRegion (type)
+        [JsonProperty("gcpRegion")]
+        public GcpNativeRegion? GcpRegion { get; set; }
+
+
         #endregion
 
     #region methods
 
     public CloudNativeRegion Set(
-        GcpNativeRegion? GcpRegion = null,
         AwsNativeRegion? AwsRegion = null,
-        AzureNativeRegion? AzureRegion = null
+        AzureNativeRegion? AzureRegion = null,
+        GcpNativeRegion? GcpRegion = null
     ) 
     {
-        if ( GcpRegion != null ) {
-            this.GcpRegion = GcpRegion;
-        }
         if ( AwsRegion != null ) {
             this.AwsRegion = AwsRegion;
         }
         if ( AzureRegion != null ) {
             this.AzureRegion = AzureRegion;
         }
+        if ( GcpRegion != null ) {
+            this.GcpRegion = GcpRegion;
+        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> GcpNativeRegion? GcpRegion
-            // GraphQL -> gcpRegion: GcpNativeRegion (type)
-            if (this.GcpRegion != null)
-            {
-                 s += ind + "gcpRegion\n";
-
-                 s += ind + "{\n" + 
-                 this.GcpRegion.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> AwsNativeRegion? AwsRegion
-            // GraphQL -> awsRegion: AwsNativeRegion (enum)
-            if (this.AwsRegion != null)
-            {
-                 s += ind + "awsRegion\n";
-
-            }
-            //      C# -> AzureNativeRegion? AzureRegion
-            // GraphQL -> azureRegion: AzureNativeRegion (enum)
-            if (this.AzureRegion != null)
-            {
-                 s += ind + "azureRegion\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AwsNativeRegion? AwsRegion
+        // GraphQL -> awsRegion: AwsNativeRegion (enum)
+        if (this.AwsRegion != null) {
+            s += ind + "awsRegion\n" ;
         }
+        //      C# -> AzureNativeRegion? AzureRegion
+        // GraphQL -> azureRegion: AzureNativeRegion (enum)
+        if (this.AzureRegion != null) {
+            s += ind + "azureRegion\n" ;
+        }
+        //      C# -> GcpNativeRegion? GcpRegion
+        // GraphQL -> gcpRegion: GcpNativeRegion (type)
+        if (this.GcpRegion != null) {
+            s += ind + "gcpRegion {\n" + this.GcpRegion.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AwsNativeRegion? AwsRegion
+        // GraphQL -> awsRegion: AwsNativeRegion (enum)
+        if (this.AwsRegion == null && Exploration.Includes(parent + ".awsRegion", true))
         {
-            //      C# -> GcpNativeRegion? GcpRegion
-            // GraphQL -> gcpRegion: GcpNativeRegion (type)
-            if (this.GcpRegion == null && Exploration.Includes(parent + ".gcpRegion"))
-            {
-                this.GcpRegion = new GcpNativeRegion();
-                this.GcpRegion.ApplyExploratoryFragment(parent + ".gcpRegion");
-            }
-            //      C# -> AwsNativeRegion? AwsRegion
-            // GraphQL -> awsRegion: AwsNativeRegion (enum)
-            if (this.AwsRegion == null && Exploration.Includes(parent + ".awsRegion$"))
-            {
-                this.AwsRegion = new AwsNativeRegion();
-            }
-            //      C# -> AzureNativeRegion? AzureRegion
-            // GraphQL -> azureRegion: AzureNativeRegion (enum)
-            if (this.AzureRegion == null && Exploration.Includes(parent + ".azureRegion$"))
-            {
-                this.AzureRegion = new AzureNativeRegion();
-            }
+            this.AwsRegion = new AwsNativeRegion();
         }
+        //      C# -> AzureNativeRegion? AzureRegion
+        // GraphQL -> azureRegion: AzureNativeRegion (enum)
+        if (this.AzureRegion == null && Exploration.Includes(parent + ".azureRegion", true))
+        {
+            this.AzureRegion = new AzureNativeRegion();
+        }
+        //      C# -> GcpNativeRegion? GcpRegion
+        // GraphQL -> gcpRegion: GcpNativeRegion (type)
+        if (this.GcpRegion == null && Exploration.Includes(parent + ".gcpRegion"))
+        {
+            this.GcpRegion = new GcpNativeRegion();
+            this.GcpRegion.ApplyExploratoryFieldSpec(parent + ".gcpRegion");
+        }
+    }
 
 
     #endregion
 
     } // class CloudNativeRegion
+    
     #endregion
 
     public static class ListCloudNativeRegionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CloudNativeRegion> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CloudNativeRegion> list, 
             String parent = "")
         {
-            var item = new CloudNativeRegion();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CloudNativeRegion());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -8,7 +8,7 @@ using System.Xml.Linq;
 using Newtonsoft.Json;
 using Rubrik.SecurityCloud.NetSDK.Client;
 using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using Rubrik.SecurityCloud.Types;
 
 namespace Rubrik.SecurityCloud.PowerShell.Private

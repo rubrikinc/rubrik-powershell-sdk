@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region GetPoliciesTimelineReply
-    public class GetPoliciesTimelineReply: IFragment
+    public class GetPoliciesTimelineReply: BaseType
     {
         #region members
+
         //      C# -> List<TimelineEntry>? HighRiskObjects
         // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
         [JsonProperty("highRiskObjects")]
@@ -32,6 +34,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lowRiskObjects: [TimelineEntry!]! (type)
         [JsonProperty("lowRiskObjects")]
         public List<TimelineEntry>? LowRiskObjects { get; set; }
+
+        //      C# -> List<TimelineEntry>? MediumRiskObjects
+        // GraphQL -> mediumRiskObjects: [TimelineEntry!]! (type)
+        [JsonProperty("mediumRiskObjects")]
+        public List<TimelineEntry>? MediumRiskObjects { get; set; }
 
         //      C# -> List<TimelineEntry>? NoRiskObjects
         // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
@@ -108,6 +115,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("upToDateStatus")]
         public List<TimelineCountEntry>? UpToDateStatus { get; set; }
 
+
         #endregion
 
     #region methods
@@ -116,6 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         List<TimelineEntry>? HighRiskObjects = null,
         List<TimelineCountEntry>? InitialAnalysisStatus = null,
         List<TimelineEntry>? LowRiskObjects = null,
+        List<TimelineEntry>? MediumRiskObjects = null,
         List<TimelineEntry>? NoRiskObjects = null,
         List<TimelineCountEntry>? OutOfDateStatus = null,
         List<TimelineEntry>? PolicyFilesHitsEntries = null,
@@ -141,6 +150,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( LowRiskObjects != null ) {
             this.LowRiskObjects = LowRiskObjects;
+        }
+        if ( MediumRiskObjects != null ) {
+            this.MediumRiskObjects = MediumRiskObjects;
         }
         if ( NoRiskObjects != null ) {
             this.NoRiskObjects = NoRiskObjects;
@@ -190,362 +202,288 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<TimelineEntry>? HighRiskObjects
-            // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
-            if (this.HighRiskObjects != null)
-            {
-                 s += ind + "highRiskObjects\n";
-
-                 s += ind + "{\n" + 
-                 this.HighRiskObjects.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineCountEntry>? InitialAnalysisStatus
-            // GraphQL -> initialAnalysisStatus: [TimelineCountEntry!]! (type)
-            if (this.InitialAnalysisStatus != null)
-            {
-                 s += ind + "initialAnalysisStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.InitialAnalysisStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? LowRiskObjects
-            // GraphQL -> lowRiskObjects: [TimelineEntry!]! (type)
-            if (this.LowRiskObjects != null)
-            {
-                 s += ind + "lowRiskObjects\n";
-
-                 s += ind + "{\n" + 
-                 this.LowRiskObjects.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? NoRiskObjects
-            // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
-            if (this.NoRiskObjects != null)
-            {
-                 s += ind + "noRiskObjects\n";
-
-                 s += ind + "{\n" + 
-                 this.NoRiskObjects.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineCountEntry>? OutOfDateStatus
-            // GraphQL -> outOfDateStatus: [TimelineCountEntry!]! (type)
-            if (this.OutOfDateStatus != null)
-            {
-                 s += ind + "outOfDateStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.OutOfDateStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? PolicyFilesHitsEntries
-            // GraphQL -> policyFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.PolicyFilesHitsEntries != null)
-            {
-                 s += ind + "policyFilesHitsEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.PolicyFilesHitsEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? PolicyHitsEntries
-            // GraphQL -> policyHitsEntries: [TimelineEntry!]! (type)
-            if (this.PolicyHitsEntries != null)
-            {
-                 s += ind + "policyHitsEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.PolicyHitsEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? PolicyOaFilesHitsEntries
-            // GraphQL -> policyOaFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.PolicyOaFilesHitsEntries != null)
-            {
-                 s += ind + "policyOaFilesHitsEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.PolicyOaFilesHitsEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? PolicyStaleFilesHitsEntries
-            // GraphQL -> policyStaleFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.PolicyStaleFilesHitsEntries != null)
-            {
-                 s += ind + "policyStaleFilesHitsEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.PolicyStaleFilesHitsEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<ClassificationPolicySummary>? PolicySummaries
-            // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
-            if (this.PolicySummaries != null)
-            {
-                 s += ind + "policySummaries\n";
-
-                 s += ind + "{\n" + 
-                 this.PolicySummaries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? TotalFilesHitsEntries
-            // GraphQL -> totalFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.TotalFilesHitsEntries != null)
-            {
-                 s += ind + "totalFilesHitsEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalFilesHitsEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? TotalHitsEntries
-            // GraphQL -> totalHitsEntries: [TimelineEntry!]! (type)
-            if (this.TotalHitsEntries != null)
-            {
-                 s += ind + "totalHitsEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalHitsEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? TotalOaFilesEntries
-            // GraphQL -> totalOaFilesEntries: [TimelineEntry!]! (type)
-            if (this.TotalOaFilesEntries != null)
-            {
-                 s += ind + "totalOaFilesEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalOaFilesEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? TotalOaFilesHitsEntries
-            // GraphQL -> totalOaFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.TotalOaFilesHitsEntries != null)
-            {
-                 s += ind + "totalOaFilesHitsEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalOaFilesHitsEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? TotalOaFoldersEntries
-            // GraphQL -> totalOaFoldersEntries: [TimelineEntry!]! (type)
-            if (this.TotalOaFoldersEntries != null)
-            {
-                 s += ind + "totalOaFoldersEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalOaFoldersEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? TotalStaleFilesHitsEntries
-            // GraphQL -> totalStaleFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.TotalStaleFilesHitsEntries != null)
-            {
-                 s += ind + "totalStaleFilesHitsEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalStaleFilesHitsEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineEntry>? TotalStaleOaFilesEntries
-            // GraphQL -> totalStaleOaFilesEntries: [TimelineEntry!]! (type)
-            if (this.TotalStaleOaFilesEntries != null)
-            {
-                 s += ind + "totalStaleOaFilesEntries\n";
-
-                 s += ind + "{\n" + 
-                 this.TotalStaleOaFilesEntries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<TimelineCountEntry>? UpToDateStatus
-            // GraphQL -> upToDateStatus: [TimelineCountEntry!]! (type)
-            if (this.UpToDateStatus != null)
-            {
-                 s += ind + "upToDateStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.UpToDateStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<TimelineEntry>? HighRiskObjects
+        // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
+        if (this.HighRiskObjects != null) {
+            s += ind + "highRiskObjects {\n" + this.HighRiskObjects.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> List<TimelineCountEntry>? InitialAnalysisStatus
+        // GraphQL -> initialAnalysisStatus: [TimelineCountEntry!]! (type)
+        if (this.InitialAnalysisStatus != null) {
+            s += ind + "initialAnalysisStatus {\n" + this.InitialAnalysisStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? LowRiskObjects
+        // GraphQL -> lowRiskObjects: [TimelineEntry!]! (type)
+        if (this.LowRiskObjects != null) {
+            s += ind + "lowRiskObjects {\n" + this.LowRiskObjects.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? MediumRiskObjects
+        // GraphQL -> mediumRiskObjects: [TimelineEntry!]! (type)
+        if (this.MediumRiskObjects != null) {
+            s += ind + "mediumRiskObjects {\n" + this.MediumRiskObjects.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? NoRiskObjects
+        // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
+        if (this.NoRiskObjects != null) {
+            s += ind + "noRiskObjects {\n" + this.NoRiskObjects.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineCountEntry>? OutOfDateStatus
+        // GraphQL -> outOfDateStatus: [TimelineCountEntry!]! (type)
+        if (this.OutOfDateStatus != null) {
+            s += ind + "outOfDateStatus {\n" + this.OutOfDateStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? PolicyFilesHitsEntries
+        // GraphQL -> policyFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.PolicyFilesHitsEntries != null) {
+            s += ind + "policyFilesHitsEntries {\n" + this.PolicyFilesHitsEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? PolicyHitsEntries
+        // GraphQL -> policyHitsEntries: [TimelineEntry!]! (type)
+        if (this.PolicyHitsEntries != null) {
+            s += ind + "policyHitsEntries {\n" + this.PolicyHitsEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? PolicyOaFilesHitsEntries
+        // GraphQL -> policyOaFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.PolicyOaFilesHitsEntries != null) {
+            s += ind + "policyOaFilesHitsEntries {\n" + this.PolicyOaFilesHitsEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? PolicyStaleFilesHitsEntries
+        // GraphQL -> policyStaleFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.PolicyStaleFilesHitsEntries != null) {
+            s += ind + "policyStaleFilesHitsEntries {\n" + this.PolicyStaleFilesHitsEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ClassificationPolicySummary>? PolicySummaries
+        // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
+        if (this.PolicySummaries != null) {
+            s += ind + "policySummaries {\n" + this.PolicySummaries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? TotalFilesHitsEntries
+        // GraphQL -> totalFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.TotalFilesHitsEntries != null) {
+            s += ind + "totalFilesHitsEntries {\n" + this.TotalFilesHitsEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? TotalHitsEntries
+        // GraphQL -> totalHitsEntries: [TimelineEntry!]! (type)
+        if (this.TotalHitsEntries != null) {
+            s += ind + "totalHitsEntries {\n" + this.TotalHitsEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? TotalOaFilesEntries
+        // GraphQL -> totalOaFilesEntries: [TimelineEntry!]! (type)
+        if (this.TotalOaFilesEntries != null) {
+            s += ind + "totalOaFilesEntries {\n" + this.TotalOaFilesEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? TotalOaFilesHitsEntries
+        // GraphQL -> totalOaFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.TotalOaFilesHitsEntries != null) {
+            s += ind + "totalOaFilesHitsEntries {\n" + this.TotalOaFilesHitsEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? TotalOaFoldersEntries
+        // GraphQL -> totalOaFoldersEntries: [TimelineEntry!]! (type)
+        if (this.TotalOaFoldersEntries != null) {
+            s += ind + "totalOaFoldersEntries {\n" + this.TotalOaFoldersEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? TotalStaleFilesHitsEntries
+        // GraphQL -> totalStaleFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.TotalStaleFilesHitsEntries != null) {
+            s += ind + "totalStaleFilesHitsEntries {\n" + this.TotalStaleFilesHitsEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineEntry>? TotalStaleOaFilesEntries
+        // GraphQL -> totalStaleOaFilesEntries: [TimelineEntry!]! (type)
+        if (this.TotalStaleOaFilesEntries != null) {
+            s += ind + "totalStaleOaFilesEntries {\n" + this.TotalStaleOaFilesEntries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<TimelineCountEntry>? UpToDateStatus
+        // GraphQL -> upToDateStatus: [TimelineCountEntry!]! (type)
+        if (this.UpToDateStatus != null) {
+            s += ind + "upToDateStatus {\n" + this.UpToDateStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<TimelineEntry>? HighRiskObjects
+        // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
+        if (this.HighRiskObjects == null && Exploration.Includes(parent + ".highRiskObjects"))
         {
-            //      C# -> List<TimelineEntry>? HighRiskObjects
-            // GraphQL -> highRiskObjects: [TimelineEntry!]! (type)
-            if (this.HighRiskObjects == null && Exploration.Includes(parent + ".highRiskObjects"))
-            {
-                this.HighRiskObjects = new List<TimelineEntry>();
-                this.HighRiskObjects.ApplyExploratoryFragment(parent + ".highRiskObjects");
-            }
-            //      C# -> List<TimelineCountEntry>? InitialAnalysisStatus
-            // GraphQL -> initialAnalysisStatus: [TimelineCountEntry!]! (type)
-            if (this.InitialAnalysisStatus == null && Exploration.Includes(parent + ".initialAnalysisStatus"))
-            {
-                this.InitialAnalysisStatus = new List<TimelineCountEntry>();
-                this.InitialAnalysisStatus.ApplyExploratoryFragment(parent + ".initialAnalysisStatus");
-            }
-            //      C# -> List<TimelineEntry>? LowRiskObjects
-            // GraphQL -> lowRiskObjects: [TimelineEntry!]! (type)
-            if (this.LowRiskObjects == null && Exploration.Includes(parent + ".lowRiskObjects"))
-            {
-                this.LowRiskObjects = new List<TimelineEntry>();
-                this.LowRiskObjects.ApplyExploratoryFragment(parent + ".lowRiskObjects");
-            }
-            //      C# -> List<TimelineEntry>? NoRiskObjects
-            // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
-            if (this.NoRiskObjects == null && Exploration.Includes(parent + ".noRiskObjects"))
-            {
-                this.NoRiskObjects = new List<TimelineEntry>();
-                this.NoRiskObjects.ApplyExploratoryFragment(parent + ".noRiskObjects");
-            }
-            //      C# -> List<TimelineCountEntry>? OutOfDateStatus
-            // GraphQL -> outOfDateStatus: [TimelineCountEntry!]! (type)
-            if (this.OutOfDateStatus == null && Exploration.Includes(parent + ".outOfDateStatus"))
-            {
-                this.OutOfDateStatus = new List<TimelineCountEntry>();
-                this.OutOfDateStatus.ApplyExploratoryFragment(parent + ".outOfDateStatus");
-            }
-            //      C# -> List<TimelineEntry>? PolicyFilesHitsEntries
-            // GraphQL -> policyFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.PolicyFilesHitsEntries == null && Exploration.Includes(parent + ".policyFilesHitsEntries"))
-            {
-                this.PolicyFilesHitsEntries = new List<TimelineEntry>();
-                this.PolicyFilesHitsEntries.ApplyExploratoryFragment(parent + ".policyFilesHitsEntries");
-            }
-            //      C# -> List<TimelineEntry>? PolicyHitsEntries
-            // GraphQL -> policyHitsEntries: [TimelineEntry!]! (type)
-            if (this.PolicyHitsEntries == null && Exploration.Includes(parent + ".policyHitsEntries"))
-            {
-                this.PolicyHitsEntries = new List<TimelineEntry>();
-                this.PolicyHitsEntries.ApplyExploratoryFragment(parent + ".policyHitsEntries");
-            }
-            //      C# -> List<TimelineEntry>? PolicyOaFilesHitsEntries
-            // GraphQL -> policyOaFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.PolicyOaFilesHitsEntries == null && Exploration.Includes(parent + ".policyOaFilesHitsEntries"))
-            {
-                this.PolicyOaFilesHitsEntries = new List<TimelineEntry>();
-                this.PolicyOaFilesHitsEntries.ApplyExploratoryFragment(parent + ".policyOaFilesHitsEntries");
-            }
-            //      C# -> List<TimelineEntry>? PolicyStaleFilesHitsEntries
-            // GraphQL -> policyStaleFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.PolicyStaleFilesHitsEntries == null && Exploration.Includes(parent + ".policyStaleFilesHitsEntries"))
-            {
-                this.PolicyStaleFilesHitsEntries = new List<TimelineEntry>();
-                this.PolicyStaleFilesHitsEntries.ApplyExploratoryFragment(parent + ".policyStaleFilesHitsEntries");
-            }
-            //      C# -> List<ClassificationPolicySummary>? PolicySummaries
-            // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
-            if (this.PolicySummaries == null && Exploration.Includes(parent + ".policySummaries"))
-            {
-                this.PolicySummaries = new List<ClassificationPolicySummary>();
-                this.PolicySummaries.ApplyExploratoryFragment(parent + ".policySummaries");
-            }
-            //      C# -> List<TimelineEntry>? TotalFilesHitsEntries
-            // GraphQL -> totalFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.TotalFilesHitsEntries == null && Exploration.Includes(parent + ".totalFilesHitsEntries"))
-            {
-                this.TotalFilesHitsEntries = new List<TimelineEntry>();
-                this.TotalFilesHitsEntries.ApplyExploratoryFragment(parent + ".totalFilesHitsEntries");
-            }
-            //      C# -> List<TimelineEntry>? TotalHitsEntries
-            // GraphQL -> totalHitsEntries: [TimelineEntry!]! (type)
-            if (this.TotalHitsEntries == null && Exploration.Includes(parent + ".totalHitsEntries"))
-            {
-                this.TotalHitsEntries = new List<TimelineEntry>();
-                this.TotalHitsEntries.ApplyExploratoryFragment(parent + ".totalHitsEntries");
-            }
-            //      C# -> List<TimelineEntry>? TotalOaFilesEntries
-            // GraphQL -> totalOaFilesEntries: [TimelineEntry!]! (type)
-            if (this.TotalOaFilesEntries == null && Exploration.Includes(parent + ".totalOaFilesEntries"))
-            {
-                this.TotalOaFilesEntries = new List<TimelineEntry>();
-                this.TotalOaFilesEntries.ApplyExploratoryFragment(parent + ".totalOaFilesEntries");
-            }
-            //      C# -> List<TimelineEntry>? TotalOaFilesHitsEntries
-            // GraphQL -> totalOaFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.TotalOaFilesHitsEntries == null && Exploration.Includes(parent + ".totalOaFilesHitsEntries"))
-            {
-                this.TotalOaFilesHitsEntries = new List<TimelineEntry>();
-                this.TotalOaFilesHitsEntries.ApplyExploratoryFragment(parent + ".totalOaFilesHitsEntries");
-            }
-            //      C# -> List<TimelineEntry>? TotalOaFoldersEntries
-            // GraphQL -> totalOaFoldersEntries: [TimelineEntry!]! (type)
-            if (this.TotalOaFoldersEntries == null && Exploration.Includes(parent + ".totalOaFoldersEntries"))
-            {
-                this.TotalOaFoldersEntries = new List<TimelineEntry>();
-                this.TotalOaFoldersEntries.ApplyExploratoryFragment(parent + ".totalOaFoldersEntries");
-            }
-            //      C# -> List<TimelineEntry>? TotalStaleFilesHitsEntries
-            // GraphQL -> totalStaleFilesHitsEntries: [TimelineEntry!]! (type)
-            if (this.TotalStaleFilesHitsEntries == null && Exploration.Includes(parent + ".totalStaleFilesHitsEntries"))
-            {
-                this.TotalStaleFilesHitsEntries = new List<TimelineEntry>();
-                this.TotalStaleFilesHitsEntries.ApplyExploratoryFragment(parent + ".totalStaleFilesHitsEntries");
-            }
-            //      C# -> List<TimelineEntry>? TotalStaleOaFilesEntries
-            // GraphQL -> totalStaleOaFilesEntries: [TimelineEntry!]! (type)
-            if (this.TotalStaleOaFilesEntries == null && Exploration.Includes(parent + ".totalStaleOaFilesEntries"))
-            {
-                this.TotalStaleOaFilesEntries = new List<TimelineEntry>();
-                this.TotalStaleOaFilesEntries.ApplyExploratoryFragment(parent + ".totalStaleOaFilesEntries");
-            }
-            //      C# -> List<TimelineCountEntry>? UpToDateStatus
-            // GraphQL -> upToDateStatus: [TimelineCountEntry!]! (type)
-            if (this.UpToDateStatus == null && Exploration.Includes(parent + ".upToDateStatus"))
-            {
-                this.UpToDateStatus = new List<TimelineCountEntry>();
-                this.UpToDateStatus.ApplyExploratoryFragment(parent + ".upToDateStatus");
-            }
+            this.HighRiskObjects = new List<TimelineEntry>();
+            this.HighRiskObjects.ApplyExploratoryFieldSpec(parent + ".highRiskObjects");
         }
+        //      C# -> List<TimelineCountEntry>? InitialAnalysisStatus
+        // GraphQL -> initialAnalysisStatus: [TimelineCountEntry!]! (type)
+        if (this.InitialAnalysisStatus == null && Exploration.Includes(parent + ".initialAnalysisStatus"))
+        {
+            this.InitialAnalysisStatus = new List<TimelineCountEntry>();
+            this.InitialAnalysisStatus.ApplyExploratoryFieldSpec(parent + ".initialAnalysisStatus");
+        }
+        //      C# -> List<TimelineEntry>? LowRiskObjects
+        // GraphQL -> lowRiskObjects: [TimelineEntry!]! (type)
+        if (this.LowRiskObjects == null && Exploration.Includes(parent + ".lowRiskObjects"))
+        {
+            this.LowRiskObjects = new List<TimelineEntry>();
+            this.LowRiskObjects.ApplyExploratoryFieldSpec(parent + ".lowRiskObjects");
+        }
+        //      C# -> List<TimelineEntry>? MediumRiskObjects
+        // GraphQL -> mediumRiskObjects: [TimelineEntry!]! (type)
+        if (this.MediumRiskObjects == null && Exploration.Includes(parent + ".mediumRiskObjects"))
+        {
+            this.MediumRiskObjects = new List<TimelineEntry>();
+            this.MediumRiskObjects.ApplyExploratoryFieldSpec(parent + ".mediumRiskObjects");
+        }
+        //      C# -> List<TimelineEntry>? NoRiskObjects
+        // GraphQL -> noRiskObjects: [TimelineEntry!]! (type)
+        if (this.NoRiskObjects == null && Exploration.Includes(parent + ".noRiskObjects"))
+        {
+            this.NoRiskObjects = new List<TimelineEntry>();
+            this.NoRiskObjects.ApplyExploratoryFieldSpec(parent + ".noRiskObjects");
+        }
+        //      C# -> List<TimelineCountEntry>? OutOfDateStatus
+        // GraphQL -> outOfDateStatus: [TimelineCountEntry!]! (type)
+        if (this.OutOfDateStatus == null && Exploration.Includes(parent + ".outOfDateStatus"))
+        {
+            this.OutOfDateStatus = new List<TimelineCountEntry>();
+            this.OutOfDateStatus.ApplyExploratoryFieldSpec(parent + ".outOfDateStatus");
+        }
+        //      C# -> List<TimelineEntry>? PolicyFilesHitsEntries
+        // GraphQL -> policyFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.PolicyFilesHitsEntries == null && Exploration.Includes(parent + ".policyFilesHitsEntries"))
+        {
+            this.PolicyFilesHitsEntries = new List<TimelineEntry>();
+            this.PolicyFilesHitsEntries.ApplyExploratoryFieldSpec(parent + ".policyFilesHitsEntries");
+        }
+        //      C# -> List<TimelineEntry>? PolicyHitsEntries
+        // GraphQL -> policyHitsEntries: [TimelineEntry!]! (type)
+        if (this.PolicyHitsEntries == null && Exploration.Includes(parent + ".policyHitsEntries"))
+        {
+            this.PolicyHitsEntries = new List<TimelineEntry>();
+            this.PolicyHitsEntries.ApplyExploratoryFieldSpec(parent + ".policyHitsEntries");
+        }
+        //      C# -> List<TimelineEntry>? PolicyOaFilesHitsEntries
+        // GraphQL -> policyOaFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.PolicyOaFilesHitsEntries == null && Exploration.Includes(parent + ".policyOaFilesHitsEntries"))
+        {
+            this.PolicyOaFilesHitsEntries = new List<TimelineEntry>();
+            this.PolicyOaFilesHitsEntries.ApplyExploratoryFieldSpec(parent + ".policyOaFilesHitsEntries");
+        }
+        //      C# -> List<TimelineEntry>? PolicyStaleFilesHitsEntries
+        // GraphQL -> policyStaleFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.PolicyStaleFilesHitsEntries == null && Exploration.Includes(parent + ".policyStaleFilesHitsEntries"))
+        {
+            this.PolicyStaleFilesHitsEntries = new List<TimelineEntry>();
+            this.PolicyStaleFilesHitsEntries.ApplyExploratoryFieldSpec(parent + ".policyStaleFilesHitsEntries");
+        }
+        //      C# -> List<ClassificationPolicySummary>? PolicySummaries
+        // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
+        if (this.PolicySummaries == null && Exploration.Includes(parent + ".policySummaries"))
+        {
+            this.PolicySummaries = new List<ClassificationPolicySummary>();
+            this.PolicySummaries.ApplyExploratoryFieldSpec(parent + ".policySummaries");
+        }
+        //      C# -> List<TimelineEntry>? TotalFilesHitsEntries
+        // GraphQL -> totalFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.TotalFilesHitsEntries == null && Exploration.Includes(parent + ".totalFilesHitsEntries"))
+        {
+            this.TotalFilesHitsEntries = new List<TimelineEntry>();
+            this.TotalFilesHitsEntries.ApplyExploratoryFieldSpec(parent + ".totalFilesHitsEntries");
+        }
+        //      C# -> List<TimelineEntry>? TotalHitsEntries
+        // GraphQL -> totalHitsEntries: [TimelineEntry!]! (type)
+        if (this.TotalHitsEntries == null && Exploration.Includes(parent + ".totalHitsEntries"))
+        {
+            this.TotalHitsEntries = new List<TimelineEntry>();
+            this.TotalHitsEntries.ApplyExploratoryFieldSpec(parent + ".totalHitsEntries");
+        }
+        //      C# -> List<TimelineEntry>? TotalOaFilesEntries
+        // GraphQL -> totalOaFilesEntries: [TimelineEntry!]! (type)
+        if (this.TotalOaFilesEntries == null && Exploration.Includes(parent + ".totalOaFilesEntries"))
+        {
+            this.TotalOaFilesEntries = new List<TimelineEntry>();
+            this.TotalOaFilesEntries.ApplyExploratoryFieldSpec(parent + ".totalOaFilesEntries");
+        }
+        //      C# -> List<TimelineEntry>? TotalOaFilesHitsEntries
+        // GraphQL -> totalOaFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.TotalOaFilesHitsEntries == null && Exploration.Includes(parent + ".totalOaFilesHitsEntries"))
+        {
+            this.TotalOaFilesHitsEntries = new List<TimelineEntry>();
+            this.TotalOaFilesHitsEntries.ApplyExploratoryFieldSpec(parent + ".totalOaFilesHitsEntries");
+        }
+        //      C# -> List<TimelineEntry>? TotalOaFoldersEntries
+        // GraphQL -> totalOaFoldersEntries: [TimelineEntry!]! (type)
+        if (this.TotalOaFoldersEntries == null && Exploration.Includes(parent + ".totalOaFoldersEntries"))
+        {
+            this.TotalOaFoldersEntries = new List<TimelineEntry>();
+            this.TotalOaFoldersEntries.ApplyExploratoryFieldSpec(parent + ".totalOaFoldersEntries");
+        }
+        //      C# -> List<TimelineEntry>? TotalStaleFilesHitsEntries
+        // GraphQL -> totalStaleFilesHitsEntries: [TimelineEntry!]! (type)
+        if (this.TotalStaleFilesHitsEntries == null && Exploration.Includes(parent + ".totalStaleFilesHitsEntries"))
+        {
+            this.TotalStaleFilesHitsEntries = new List<TimelineEntry>();
+            this.TotalStaleFilesHitsEntries.ApplyExploratoryFieldSpec(parent + ".totalStaleFilesHitsEntries");
+        }
+        //      C# -> List<TimelineEntry>? TotalStaleOaFilesEntries
+        // GraphQL -> totalStaleOaFilesEntries: [TimelineEntry!]! (type)
+        if (this.TotalStaleOaFilesEntries == null && Exploration.Includes(parent + ".totalStaleOaFilesEntries"))
+        {
+            this.TotalStaleOaFilesEntries = new List<TimelineEntry>();
+            this.TotalStaleOaFilesEntries.ApplyExploratoryFieldSpec(parent + ".totalStaleOaFilesEntries");
+        }
+        //      C# -> List<TimelineCountEntry>? UpToDateStatus
+        // GraphQL -> upToDateStatus: [TimelineCountEntry!]! (type)
+        if (this.UpToDateStatus == null && Exploration.Includes(parent + ".upToDateStatus"))
+        {
+            this.UpToDateStatus = new List<TimelineCountEntry>();
+            this.UpToDateStatus.ApplyExploratoryFieldSpec(parent + ".upToDateStatus");
+        }
+    }
 
 
     #endregion
 
     } // class GetPoliciesTimelineReply
+    
     #endregion
 
     public static class ListGetPoliciesTimelineReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<GetPoliciesTimelineReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<GetPoliciesTimelineReply> list, 
             String parent = "")
         {
-            var item = new GetPoliciesTimelineReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new GetPoliciesTimelineReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

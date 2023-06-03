@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region NutanixClusterSummary
-    public class NutanixClusterSummary: IFragment
+    public class NutanixClusterSummary: BaseType
     {
         #region members
+
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         [JsonProperty("hostname")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> slaAssignable: SlaAssignable (type)
         [JsonProperty("slaAssignable")]
         public SlaAssignable? SlaAssignable { get; set; }
+
 
         #endregion
 
@@ -82,146 +85,129 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String! (scalar)
-            if (this.Hostname != null)
-            {
-                 s += ind + "hostname\n";
-
-            }
-            //      C# -> System.String? NaturalId
-            // GraphQL -> naturalId: String! (scalar)
-            if (this.NaturalId != null)
-            {
-                 s += ind + "naturalId\n";
-
-            }
-            //      C# -> System.String? Username
-            // GraphQL -> username: String! (scalar)
-            if (this.Username != null)
-            {
-                 s += ind + "username\n";
-
-            }
-            //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
-            // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
-            if (this.ConnectionStatus != null)
-            {
-                 s += ind + "connectionStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.ConnectionStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
-            // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-            if (this.PendingSlaDomain != null)
-            {
-                 s += ind + "pendingSlaDomain\n";
-
-                 s += ind + "{\n" + 
-                 this.PendingSlaDomain.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable != null)
-            {
-                 s += ind + "slaAssignable\n";
-
-                 s += ind + "{\n" + 
-                 this.SlaAssignable.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        if (this.Hostname != null) {
+            s += ind + "hostname\n" ;
         }
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String! (scalar)
+        if (this.NaturalId != null) {
+            s += ind + "naturalId\n" ;
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username != null) {
+            s += ind + "username\n" ;
+        }
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
+        if (this.ConnectionStatus != null) {
+            s += ind + "connectionStatus {\n" + this.ConnectionStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
+        // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
+        if (this.PendingSlaDomain != null) {
+            s += ind + "pendingSlaDomain {\n" + this.PendingSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable != null) {
+            s += ind + "slaAssignable {\n" + this.SlaAssignable.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Hostname
+        // GraphQL -> hostname: String! (scalar)
+        if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            //      C# -> System.String? Hostname
-            // GraphQL -> hostname: String! (scalar)
-            if (this.Hostname == null && Exploration.Includes(parent + ".hostname$"))
-            {
-                this.Hostname = new System.String("FETCH");
-            }
-            //      C# -> System.String? NaturalId
-            // GraphQL -> naturalId: String! (scalar)
-            if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId$"))
-            {
-                this.NaturalId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Username
-            // GraphQL -> username: String! (scalar)
-            if (this.Username == null && Exploration.Includes(parent + ".username$"))
-            {
-                this.Username = new System.String("FETCH");
-            }
-            //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
-            // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
-            if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
-            {
-                this.ConnectionStatus = new RefreshableObjectConnectionStatus();
-                this.ConnectionStatus.ApplyExploratoryFragment(parent + ".connectionStatus");
-            }
-            //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
-            // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
-            if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
-            {
-                this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
-                this.PendingSlaDomain.ApplyExploratoryFragment(parent + ".pendingSlaDomain");
-            }
-            //      C# -> SlaAssignable? SlaAssignable
-            // GraphQL -> slaAssignable: SlaAssignable (type)
-            if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
-            {
-                this.SlaAssignable = new SlaAssignable();
-                this.SlaAssignable.ApplyExploratoryFragment(parent + ".slaAssignable");
-            }
+            this.Hostname = new System.String("FETCH");
         }
+        //      C# -> System.String? NaturalId
+        // GraphQL -> naturalId: String! (scalar)
+        if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
+        {
+            this.NaturalId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Username
+        // GraphQL -> username: String! (scalar)
+        if (this.Username == null && Exploration.Includes(parent + ".username", true))
+        {
+            this.Username = new System.String("FETCH");
+        }
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
+        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
+        {
+            this.ConnectionStatus = new RefreshableObjectConnectionStatus();
+            this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
+        }
+        //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
+        // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
+        if (this.PendingSlaDomain == null && Exploration.Includes(parent + ".pendingSlaDomain"))
+        {
+            this.PendingSlaDomain = new ManagedObjectPendingSlaInfo();
+            this.PendingSlaDomain.ApplyExploratoryFieldSpec(parent + ".pendingSlaDomain");
+        }
+        //      C# -> SlaAssignable? SlaAssignable
+        // GraphQL -> slaAssignable: SlaAssignable (type)
+        if (this.SlaAssignable == null && Exploration.Includes(parent + ".slaAssignable"))
+        {
+            this.SlaAssignable = new SlaAssignable();
+            this.SlaAssignable.ApplyExploratoryFieldSpec(parent + ".slaAssignable");
+        }
+    }
 
 
     #endregion
 
     } // class NutanixClusterSummary
+    
     #endregion
 
     public static class ListNutanixClusterSummaryExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<NutanixClusterSummary> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<NutanixClusterSummary> list, 
             String parent = "")
         {
-            var item = new NutanixClusterSummary();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new NutanixClusterSummary());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

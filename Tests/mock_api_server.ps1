@@ -1,23 +1,38 @@
-function Start-MockApiServer
-{
-  python3 $PSScriptRoot/mock_api_server/mock_api_server.py &
-  Start-Sleep -Seconds 1.5
+function Test-MockApiServer {
+  $uri = "http://localhost:8080/cache"
+  try {
+    $response = Invoke-WebRequest -Uri $uri -UseBasicParsing -Method Get -ErrorAction Stop
+    return $response.StatusCode -eq 200
+  }
+  catch {
+    return $false
+  }
 }
 
-function Close-MockApiServer
-{
-  curl -X POST http://localhost:8080/shutdown
+function Start-MockApiServer {
+  if (Test-MockApiServer) {
+    Write-Output "Server is already running"
+  }
+  else {
+    python3 $PSScriptRoot/mock_api_server/mock_api_server.py &
+    while (-not (Test-MockApiServer)) {
+      Start-Sleep -Milliseconds 100
+    }
+    Write-Output "Server has started"
+  }
+}
+function Close-MockApiServer {
+  Invoke-WebRequest -Uri "http://localhost:8080/shutdown" -UseBasicParsing -Method Post -ErrorAction SilentlyContinue | Out-Null
 }
 
-function Update-MockApiServerCache
-{
+function Update-MockApiServerCache {
   param (
-      [string]$Query,
-      [string]$Reply
+    [string]$Query,
+    [string]$Reply
   )
 
   $replyHash = @{}
-  (ConvertFrom-Json $Reply).psobject.properties | Foreach {$replyHash[$_.Name] = $_.Value}
+  (ConvertFrom-Json $Reply).psobject.properties | ForEach-Object { $replyHash[$_.Name] = $_.Value }
 
   $payload = @{
     "POST /api/graphql" = @{
@@ -25,7 +40,7 @@ function Update-MockApiServerCache
         response = @{
           data = $replyHash
         }
-        status = 200
+        status   = 200
       }
     }
   }
@@ -33,10 +48,10 @@ function Update-MockApiServerCache
   $payloadJson = ($payload | ConvertTo-Json -Depth 10)
 
   $params = @{
-     Method = "Post"
-     Uri = "http://localhost:8080/cache"
-     Body = ${payloadJson}
-     ContentType = "application/json"
+    Method      = "Post"
+    Uri         = "http://localhost:8080/cache"
+    Body        = ${payloadJson}
+    ContentType = "application/json"
   }
 
   Invoke-RestMethod @params

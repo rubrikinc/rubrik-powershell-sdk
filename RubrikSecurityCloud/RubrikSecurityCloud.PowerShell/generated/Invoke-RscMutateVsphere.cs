@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -120,6 +120,146 @@ Create a request to delete a Live Mount virtual machine.
         )]
         public SwitchParameter ExportSnapshotToStandaloneHostV2 { get; set; }
 
+        
+        // -------------------------------------------------------------------
+        // ExportSnapshotToStandaloneHost parameter set
+        //
+        // GraphQL operation: vsphereExportSnapshotToStandaloneHost(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostIpAddress: String!,   datastoreName: String!,   hostUsername: String!,   hostPassword: String!, ):VsphereAsyncRequestStatus!
+        //
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL operation: vsphereExportSnapshotToStandaloneHost(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostIpAddress: String!,   datastoreName: String!,   hostUsername: String!,   hostPassword: String!, ):VsphereAsyncRequestStatus!
+                ",
+            Position = 0
+        )]
+        public SwitchParameter ExportSnapshotToStandaloneHost { get; set; }
+
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                Snapshot forever UUID in Rubrik Security Cloud.
+                GraphQL argument snapshotFid: UUID!
+                "
+        )]
+        public System.String? SnapshotFid { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument vmName: String
+                "
+        )]
+        public System.String? VmName { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument disableNetwork: Boolean
+                "
+        )]
+        public System.Boolean? DisableNetwork { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument removeNetworkDevices: Boolean
+                "
+        )]
+        public System.Boolean? RemoveNetworkDevices { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument powerOn: Boolean
+                "
+        )]
+        public System.Boolean? PowerOn { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument keepMacAddresses: Boolean
+                "
+        )]
+        public System.Boolean? KeepMacAddresses { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument hostIpAddress: String!
+                "
+        )]
+        public System.String? HostIpAddress { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument datastoreName: String!
+                "
+        )]
+        public System.String? DatastoreName { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument hostUsername: String!
+                "
+        )]
+        public System.String? HostUsername { get; set; }
+        [Parameter(
+            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+                @"
+                
+                GraphQL argument hostPassword: String!
+                "
+        )]
+        public System.String? HostPassword { get; set; }
         
         // -------------------------------------------------------------------
         // downloadVirtualMachineFile parameter set
@@ -231,6 +371,9 @@ Updates the name, condition, and description of the specified multi-tag filter.
                     case "ExportSnapshotToStandaloneHostV2":
                         this.ProcessRecord_ExportSnapshotToStandaloneHostV2();
                         break;
+                    case "ExportSnapshotToStandaloneHost":
+                        this.ProcessRecord_ExportSnapshotToStandaloneHost();
+                        break;
                     case "downloadVirtualMachineFile":
                         this.ProcessRecord_downloadVirtualMachineFile();
                         break;
@@ -296,6 +439,15 @@ Updates the name, condition, and description of the specified multi-tag filter.
         }
 
         // This parameter set invokes a single graphql operation:
+        // vsphereExportSnapshotToStandaloneHost.
+        protected void ProcessRecord_ExportSnapshotToStandaloneHost()
+        {
+            this._logger.name += " -ExportSnapshotToStandaloneHost";
+            // Invoke graphql operation vsphereExportSnapshotToStandaloneHost
+            InvokeMutationVsphereExportSnapshotToStandaloneHost();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // downloadVsphereVirtualMachineFiles.
         protected void ProcessRecord_downloadVirtualMachineFile()
         {
@@ -342,8 +494,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -351,23 +502,22 @@ Updates the name, condition, and description of the specified multi-tag filter.
             }
             string document = Mutation.VsphereOnDemandSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.VsphereOnDemandSnapshot");
-            string parameters = "($input: VsphereOnDemandSnapshotInput!)\n";
+            var parameters = "($input: VsphereOnDemandSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationVsphereOnDemandSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereOnDemandSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -380,8 +530,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
             BatchAsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (BatchAsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (BatchAsyncRequestStatus)this.Field;
@@ -389,23 +538,22 @@ Updates the name, condition, and description of the specified multi-tag filter.
             }
             string document = Mutation.VsphereBulkOnDemandSnapshot(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.VsphereBulkOnDemandSnapshot");
-            string parameters = "($input: VsphereBulkOnDemandSnapshotInput!)\n";
+            var parameters = "($input: VsphereBulkOnDemandSnapshotInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationVsphereBulkOnDemandSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereBulkOnDemandSnapshot",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<BatchAsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<BatchAsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "BatchAsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -418,8 +566,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -427,23 +574,22 @@ Updates the name, condition, and description of the specified multi-tag filter.
             }
             string document = Mutation.DeleteVsphereLiveMount(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteVsphereLiveMount");
-            string parameters = "($input: DeleteVsphereLiveMountInput!)\n";
+            var parameters = "($input: DeleteVsphereLiveMountInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteVsphereLiveMount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteVsphereLiveMount",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -456,8 +602,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -465,23 +610,78 @@ Updates the name, condition, and description of the specified multi-tag filter.
             }
             string document = Mutation.VsphereExportSnapshotToStandaloneHostV2(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.VsphereExportSnapshotToStandaloneHostV2");
-            string parameters = "($input: VsphereExportSnapshotToStandaloneHostV2Input!)\n";
+            var parameters = "($input: VsphereExportSnapshotToStandaloneHostV2Input!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationVsphereExportSnapshotToStandaloneHostV2" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereExportSnapshotToStandaloneHostV2",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // vsphereExportSnapshotToStandaloneHost(
+        //     snapshotFid: UUID!
+        //     vmName: String
+        //     disableNetwork: Boolean
+        //     removeNetworkDevices: Boolean
+        //     powerOn: Boolean
+        //     keepMacAddresses: Boolean
+        //     hostIpAddress: String!
+        //     datastoreName: String!
+        //     hostUsername: String!
+        //     hostPassword: String!
+        //   ): VsphereAsyncRequestStatus!
+        protected void InvokeMutationVsphereExportSnapshotToStandaloneHost()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("snapshotFid", "UUID!"),
+                Tuple.Create("vmName", "String"),
+                Tuple.Create("disableNetwork", "Boolean"),
+                Tuple.Create("removeNetworkDevices", "Boolean"),
+                Tuple.Create("powerOn", "Boolean"),
+                Tuple.Create("keepMacAddresses", "Boolean"),
+                Tuple.Create("hostIpAddress", "String!"),
+                Tuple.Create("datastoreName", "String!"),
+                Tuple.Create("hostUsername", "String!"),
+                Tuple.Create("hostPassword", "String!"),
+            };
+            VsphereAsyncRequestStatus? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (VsphereAsyncRequestStatus)psObject.BaseObject;
+                } else {
+                    fields = (VsphereAsyncRequestStatus)this.Field;
+                }
+            }
+            string document = Mutation.VsphereExportSnapshotToStandaloneHost(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.VsphereExportSnapshotToStandaloneHost");
+            var parameters = "($snapshotFid: UUID!,$vmName: String,$disableNetwork: Boolean,$removeNetworkDevices: Boolean,$powerOn: Boolean,$keepMacAddresses: Boolean,$hostIpAddress: String!,$datastoreName: String!,$hostUsername: String!,$hostPassword: String!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationVsphereExportSnapshotToStandaloneHost" + parameters + "{" + document + "}",
+                OperationName = "MutationVsphereExportSnapshotToStandaloneHost",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "VsphereAsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -494,8 +694,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
             AsyncRequestStatus? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (AsyncRequestStatus)psObject.BaseObject;
                 } else {
                     fields = (AsyncRequestStatus)this.Field;
@@ -503,23 +702,22 @@ Updates the name, condition, and description of the specified multi-tag filter.
             }
             string document = Mutation.DownloadVsphereVirtualMachineFiles(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DownloadVsphereVirtualMachineFiles");
-            string parameters = "($input: DownloadVsphereVirtualMachineFilesInput!)\n";
+            var parameters = "($input: DownloadVsphereVirtualMachineFilesInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDownloadVsphereVirtualMachineFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadVsphereVirtualMachineFiles",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<AsyncRequestStatus> task = this._rbkClient.InvokeGenericCallAsync<AsyncRequestStatus>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "AsyncRequestStatus", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -532,8 +730,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
             CreateVsphereAdvancedTagReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (CreateVsphereAdvancedTagReply)psObject.BaseObject;
                 } else {
                     fields = (CreateVsphereAdvancedTagReply)this.Field;
@@ -541,23 +738,22 @@ Updates the name, condition, and description of the specified multi-tag filter.
             }
             string document = Mutation.CreateVsphereAdvancedTag(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.CreateVsphereAdvancedTag");
-            string parameters = "($input: CreateVsphereAdvancedTagInput!)\n";
+            var parameters = "($input: CreateVsphereAdvancedTagInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationCreateVsphereAdvancedTag" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateVsphereAdvancedTag",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<CreateVsphereAdvancedTagReply> task = this._rbkClient.InvokeGenericCallAsync<CreateVsphereAdvancedTagReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "CreateVsphereAdvancedTagReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -570,8 +766,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
             RequestSuccess? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (RequestSuccess)psObject.BaseObject;
                 } else {
                     fields = (RequestSuccess)this.Field;
@@ -579,23 +774,22 @@ Updates the name, condition, and description of the specified multi-tag filter.
             }
             string document = Mutation.DeleteVsphereAdvancedTag(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.DeleteVsphereAdvancedTag");
-            string parameters = "($input: DeleteVsphereAdvancedTagInput!)\n";
+            var parameters = "($input: DeleteVsphereAdvancedTagInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationDeleteVsphereAdvancedTag" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteVsphereAdvancedTag",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<RequestSuccess> task = this._rbkClient.InvokeGenericCallAsync<RequestSuccess>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "RequestSuccess", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
         // Invoke GraphQL Mutation:
@@ -608,8 +802,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
             UpdateVsphereAdvancedTagReply? fields = null ;
             if (this.Field != null)
             {
-                if (this.Field is PSObject) {
-                    var psObject = (PSObject)this.Field;
+                if (this.Field is PSObject psObject) {
                     fields = (UpdateVsphereAdvancedTagReply)psObject.BaseObject;
                 } else {
                     fields = (UpdateVsphereAdvancedTagReply)this.Field;
@@ -617,23 +810,22 @@ Updates the name, condition, and description of the specified multi-tag filter.
             }
             string document = Mutation.UpdateVsphereAdvancedTag(ref fields);
             this._input.Initialize(argDefs, fields, "Mutation.UpdateVsphereAdvancedTag");
-            string parameters = "($input: UpdateVsphereAdvancedTagInput!)\n";
+            var parameters = "($input: UpdateVsphereAdvancedTagInput!)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "mutation MutationUpdateVsphereAdvancedTag" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateVsphereAdvancedTag",
             };
-            OperationVariableSet vars = new OperationVariableSet();
+            OperationVariableSet vars = new();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
                 return;
             }
             vars.Variables = this._input.GetArgDict();
-            Task<UpdateVsphereAdvancedTagReply> task = this._rbkClient.InvokeGenericCallAsync<UpdateVsphereAdvancedTagReply>(request, vars, this._logger, GetMetricTags());
-            task.Wait();
-            this._logger.Flush();
-            WriteObject(task.Result, true);
+            var result = this._rbkClient.Invoke(
+                request, vars, "UpdateVsphereAdvancedTagReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
         }
 
 

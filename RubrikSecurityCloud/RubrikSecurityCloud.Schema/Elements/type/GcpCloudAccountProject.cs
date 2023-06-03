@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region GcpCloudAccountProject
-    public class GcpCloudAccountProject: IFragment
+    public class GcpCloudAccountProject: BaseType
     {
         #region members
+
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         [JsonProperty("id")]
@@ -52,6 +54,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> usesGlobalConfig: Boolean! (scalar)
         [JsonProperty("usesGlobalConfig")]
         public System.Boolean? UsesGlobalConfig { get; set; }
+
 
         #endregion
 
@@ -91,147 +94,137 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? OrganizationName
-            // GraphQL -> organizationName: String! (scalar)
-            if (this.OrganizationName != null)
-            {
-                 s += ind + "organizationName\n";
-
-            }
-            //      C# -> System.String? ProjectId
-            // GraphQL -> projectId: String! (scalar)
-            if (this.ProjectId != null)
-            {
-                 s += ind + "projectId\n";
-
-            }
-            //      C# -> System.Int64? ProjectNumber
-            // GraphQL -> projectNumber: Long! (scalar)
-            if (this.ProjectNumber != null)
-            {
-                 s += ind + "projectNumber\n";
-
-            }
-            //      C# -> System.String? RoleId
-            // GraphQL -> roleId: String! (scalar)
-            if (this.RoleId != null)
-            {
-                 s += ind + "roleId\n";
-
-            }
-            //      C# -> System.Boolean? UsesGlobalConfig
-            // GraphQL -> usesGlobalConfig: Boolean! (scalar)
-            if (this.UsesGlobalConfig != null)
-            {
-                 s += ind + "usesGlobalConfig\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
         }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? OrganizationName
+        // GraphQL -> organizationName: String! (scalar)
+        if (this.OrganizationName != null) {
+            s += ind + "organizationName\n" ;
+        }
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        if (this.ProjectId != null) {
+            s += ind + "projectId\n" ;
+        }
+        //      C# -> System.Int64? ProjectNumber
+        // GraphQL -> projectNumber: Long! (scalar)
+        if (this.ProjectNumber != null) {
+            s += ind + "projectNumber\n" ;
+        }
+        //      C# -> System.String? RoleId
+        // GraphQL -> roleId: String! (scalar)
+        if (this.RoleId != null) {
+            s += ind + "roleId\n" ;
+        }
+        //      C# -> System.Boolean? UsesGlobalConfig
+        // GraphQL -> usesGlobalConfig: Boolean! (scalar)
+        if (this.UsesGlobalConfig != null) {
+            s += ind + "usesGlobalConfig\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? OrganizationName
-            // GraphQL -> organizationName: String! (scalar)
-            if (this.OrganizationName == null && Exploration.Includes(parent + ".organizationName$"))
-            {
-                this.OrganizationName = new System.String("FETCH");
-            }
-            //      C# -> System.String? ProjectId
-            // GraphQL -> projectId: String! (scalar)
-            if (this.ProjectId == null && Exploration.Includes(parent + ".projectId$"))
-            {
-                this.ProjectId = new System.String("FETCH");
-            }
-            //      C# -> System.Int64? ProjectNumber
-            // GraphQL -> projectNumber: Long! (scalar)
-            if (this.ProjectNumber == null && Exploration.Includes(parent + ".projectNumber$"))
-            {
-                this.ProjectNumber = new System.Int64();
-            }
-            //      C# -> System.String? RoleId
-            // GraphQL -> roleId: String! (scalar)
-            if (this.RoleId == null && Exploration.Includes(parent + ".roleId$"))
-            {
-                this.RoleId = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? UsesGlobalConfig
-            // GraphQL -> usesGlobalConfig: Boolean! (scalar)
-            if (this.UsesGlobalConfig == null && Exploration.Includes(parent + ".usesGlobalConfig$"))
-            {
-                this.UsesGlobalConfig = new System.Boolean();
-            }
+            this.Id = new System.String("FETCH");
         }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? OrganizationName
+        // GraphQL -> organizationName: String! (scalar)
+        if (this.OrganizationName == null && Exploration.Includes(parent + ".organizationName", true))
+        {
+            this.OrganizationName = new System.String("FETCH");
+        }
+        //      C# -> System.String? ProjectId
+        // GraphQL -> projectId: String! (scalar)
+        if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
+        {
+            this.ProjectId = new System.String("FETCH");
+        }
+        //      C# -> System.Int64? ProjectNumber
+        // GraphQL -> projectNumber: Long! (scalar)
+        if (this.ProjectNumber == null && Exploration.Includes(parent + ".projectNumber", true))
+        {
+            this.ProjectNumber = new System.Int64();
+        }
+        //      C# -> System.String? RoleId
+        // GraphQL -> roleId: String! (scalar)
+        if (this.RoleId == null && Exploration.Includes(parent + ".roleId", true))
+        {
+            this.RoleId = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? UsesGlobalConfig
+        // GraphQL -> usesGlobalConfig: Boolean! (scalar)
+        if (this.UsesGlobalConfig == null && Exploration.Includes(parent + ".usesGlobalConfig", true))
+        {
+            this.UsesGlobalConfig = true;
+        }
+    }
 
 
     #endregion
 
     } // class GcpCloudAccountProject
+    
     #endregion
 
     public static class ListGcpCloudAccountProjectExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<GcpCloudAccountProject> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<GcpCloudAccountProject> list, 
             String parent = "")
         {
-            var item = new GcpCloudAccountProject();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new GcpCloudAccountProject());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

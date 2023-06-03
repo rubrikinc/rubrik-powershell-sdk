@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region HotAddProxyVmInfo
-    public class HotAddProxyVmInfo: IFragment
+    public class HotAddProxyVmInfo: BaseType
     {
         #region members
+
+        //      C# -> HotAddProxyVmStatusType? Status
+        // GraphQL -> status: HotAddProxyVmStatusType! (enum)
+        [JsonProperty("status")]
+        public HotAddProxyVmStatusType? Status { get; set; }
+
         //      C# -> System.String? ComputeClusterName
         // GraphQL -> computeClusterName: String (scalar)
         [JsonProperty("computeClusterName")]
@@ -58,16 +65,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("proxyNetworkInfo")]
         public HotAddNetworkConfigWithName? ProxyNetworkInfo { get; set; }
 
-        //      C# -> HotAddProxyVmStatusType? Status
-        // GraphQL -> status: HotAddProxyVmStatusType! (enum)
-        [JsonProperty("status")]
-        public HotAddProxyVmStatusType? Status { get; set; }
 
         #endregion
 
     #region methods
 
     public HotAddProxyVmInfo Set(
+        HotAddProxyVmStatusType? Status = null,
         System.String? ComputeClusterName = null,
         System.String? DatastoreName = null,
         System.String? HostName = null,
@@ -75,10 +79,12 @@ namespace Rubrik.SecurityCloud.Types
         System.String? Name = null,
         System.Int32? UsedPortCount = null,
         System.String? VcenterName = null,
-        HotAddNetworkConfigWithName? ProxyNetworkInfo = null,
-        HotAddProxyVmStatusType? Status = null
+        HotAddNetworkConfigWithName? ProxyNetworkInfo = null
     ) 
     {
+        if ( Status != null ) {
+            this.Status = Status;
+        }
         if ( ComputeClusterName != null ) {
             this.ComputeClusterName = ComputeClusterName;
         }
@@ -103,183 +109,163 @@ namespace Rubrik.SecurityCloud.Types
         if ( ProxyNetworkInfo != null ) {
             this.ProxyNetworkInfo = ProxyNetworkInfo;
         }
-        if ( Status != null ) {
-            this.Status = Status;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ComputeClusterName
-            // GraphQL -> computeClusterName: String (scalar)
-            if (this.ComputeClusterName != null)
-            {
-                 s += ind + "computeClusterName\n";
-
-            }
-            //      C# -> System.String? DatastoreName
-            // GraphQL -> datastoreName: String! (scalar)
-            if (this.DatastoreName != null)
-            {
-                 s += ind + "datastoreName\n";
-
-            }
-            //      C# -> System.String? HostName
-            // GraphQL -> hostName: String (scalar)
-            if (this.HostName != null)
-            {
-                 s += ind + "hostName\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.Int32? UsedPortCount
-            // GraphQL -> usedPortCount: Int! (scalar)
-            if (this.UsedPortCount != null)
-            {
-                 s += ind + "usedPortCount\n";
-
-            }
-            //      C# -> System.String? VcenterName
-            // GraphQL -> vcenterName: String! (scalar)
-            if (this.VcenterName != null)
-            {
-                 s += ind + "vcenterName\n";
-
-            }
-            //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
-            // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)
-            if (this.ProxyNetworkInfo != null)
-            {
-                 s += ind + "proxyNetworkInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.ProxyNetworkInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> HotAddProxyVmStatusType? Status
-            // GraphQL -> status: HotAddProxyVmStatusType! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> HotAddProxyVmStatusType? Status
+        // GraphQL -> status: HotAddProxyVmStatusType! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
+        //      C# -> System.String? ComputeClusterName
+        // GraphQL -> computeClusterName: String (scalar)
+        if (this.ComputeClusterName != null) {
+            s += ind + "computeClusterName\n" ;
+        }
+        //      C# -> System.String? DatastoreName
+        // GraphQL -> datastoreName: String! (scalar)
+        if (this.DatastoreName != null) {
+            s += ind + "datastoreName\n" ;
+        }
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String (scalar)
+        if (this.HostName != null) {
+            s += ind + "hostName\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.Int32? UsedPortCount
+        // GraphQL -> usedPortCount: Int! (scalar)
+        if (this.UsedPortCount != null) {
+            s += ind + "usedPortCount\n" ;
+        }
+        //      C# -> System.String? VcenterName
+        // GraphQL -> vcenterName: String! (scalar)
+        if (this.VcenterName != null) {
+            s += ind + "vcenterName\n" ;
+        }
+        //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
+        // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)
+        if (this.ProxyNetworkInfo != null) {
+            s += ind + "proxyNetworkInfo {\n" + this.ProxyNetworkInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> HotAddProxyVmStatusType? Status
+        // GraphQL -> status: HotAddProxyVmStatusType! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            //      C# -> System.String? ComputeClusterName
-            // GraphQL -> computeClusterName: String (scalar)
-            if (this.ComputeClusterName == null && Exploration.Includes(parent + ".computeClusterName$"))
-            {
-                this.ComputeClusterName = new System.String("FETCH");
-            }
-            //      C# -> System.String? DatastoreName
-            // GraphQL -> datastoreName: String! (scalar)
-            if (this.DatastoreName == null && Exploration.Includes(parent + ".datastoreName$"))
-            {
-                this.DatastoreName = new System.String("FETCH");
-            }
-            //      C# -> System.String? HostName
-            // GraphQL -> hostName: String (scalar)
-            if (this.HostName == null && Exploration.Includes(parent + ".hostName$"))
-            {
-                this.HostName = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: String! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.Int32? UsedPortCount
-            // GraphQL -> usedPortCount: Int! (scalar)
-            if (this.UsedPortCount == null && Exploration.Includes(parent + ".usedPortCount$"))
-            {
-                this.UsedPortCount = new System.Int32();
-            }
-            //      C# -> System.String? VcenterName
-            // GraphQL -> vcenterName: String! (scalar)
-            if (this.VcenterName == null && Exploration.Includes(parent + ".vcenterName$"))
-            {
-                this.VcenterName = new System.String("FETCH");
-            }
-            //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
-            // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)
-            if (this.ProxyNetworkInfo == null && Exploration.Includes(parent + ".proxyNetworkInfo"))
-            {
-                this.ProxyNetworkInfo = new HotAddNetworkConfigWithName();
-                this.ProxyNetworkInfo.ApplyExploratoryFragment(parent + ".proxyNetworkInfo");
-            }
-            //      C# -> HotAddProxyVmStatusType? Status
-            // GraphQL -> status: HotAddProxyVmStatusType! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new HotAddProxyVmStatusType();
-            }
+            this.Status = new HotAddProxyVmStatusType();
         }
+        //      C# -> System.String? ComputeClusterName
+        // GraphQL -> computeClusterName: String (scalar)
+        if (this.ComputeClusterName == null && Exploration.Includes(parent + ".computeClusterName", true))
+        {
+            this.ComputeClusterName = new System.String("FETCH");
+        }
+        //      C# -> System.String? DatastoreName
+        // GraphQL -> datastoreName: String! (scalar)
+        if (this.DatastoreName == null && Exploration.Includes(parent + ".datastoreName", true))
+        {
+            this.DatastoreName = new System.String("FETCH");
+        }
+        //      C# -> System.String? HostName
+        // GraphQL -> hostName: String (scalar)
+        if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
+        {
+            this.HostName = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: String! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.Int32? UsedPortCount
+        // GraphQL -> usedPortCount: Int! (scalar)
+        if (this.UsedPortCount == null && Exploration.Includes(parent + ".usedPortCount", true))
+        {
+            this.UsedPortCount = new System.Int32();
+        }
+        //      C# -> System.String? VcenterName
+        // GraphQL -> vcenterName: String! (scalar)
+        if (this.VcenterName == null && Exploration.Includes(parent + ".vcenterName", true))
+        {
+            this.VcenterName = new System.String("FETCH");
+        }
+        //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
+        // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)
+        if (this.ProxyNetworkInfo == null && Exploration.Includes(parent + ".proxyNetworkInfo"))
+        {
+            this.ProxyNetworkInfo = new HotAddNetworkConfigWithName();
+            this.ProxyNetworkInfo.ApplyExploratoryFieldSpec(parent + ".proxyNetworkInfo");
+        }
+    }
 
 
     #endregion
 
     } // class HotAddProxyVmInfo
+    
     #endregion
 
     public static class ListHotAddProxyVmInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<HotAddProxyVmInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<HotAddProxyVmInfo> list, 
             String parent = "")
         {
-            var item = new HotAddProxyVmInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new HotAddProxyVmInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CdmClusterStatus
-    public class CdmClusterStatus: IFragment
+    public class CdmClusterStatus: BaseType
     {
         #region members
+
+        //      C# -> CdmClusterStatusTypeEnum? Status
+        // GraphQL -> status: CdmClusterStatusTypeEnum! (enum)
+        [JsonProperty("status")]
+        public CdmClusterStatusTypeEnum? Status { get; set; }
+
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
         [JsonProperty("message")]
@@ -28,126 +35,117 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("statusInfo")]
         public CdmClusterStatusInfo? StatusInfo { get; set; }
 
-        //      C# -> CdmClusterStatusTypeEnum? Status
-        // GraphQL -> status: CdmClusterStatusTypeEnum! (enum)
-        [JsonProperty("status")]
-        public CdmClusterStatusTypeEnum? Status { get; set; }
 
         #endregion
 
     #region methods
 
     public CdmClusterStatus Set(
+        CdmClusterStatusTypeEnum? Status = null,
         System.String? Message = null,
-        CdmClusterStatusInfo? StatusInfo = null,
-        CdmClusterStatusTypeEnum? Status = null
+        CdmClusterStatusInfo? StatusInfo = null
     ) 
     {
+        if ( Status != null ) {
+            this.Status = Status;
+        }
         if ( Message != null ) {
             this.Message = Message;
         }
         if ( StatusInfo != null ) {
             this.StatusInfo = StatusInfo;
         }
-        if ( Status != null ) {
-            this.Status = Status;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? Message
-            // GraphQL -> message: String (scalar)
-            if (this.Message != null)
-            {
-                 s += ind + "message\n";
-
-            }
-            //      C# -> CdmClusterStatusInfo? StatusInfo
-            // GraphQL -> statusInfo: CdmClusterStatusInfo (type)
-            if (this.StatusInfo != null)
-            {
-                 s += ind + "statusInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.StatusInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmClusterStatusTypeEnum? Status
-            // GraphQL -> status: CdmClusterStatusTypeEnum! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> CdmClusterStatusTypeEnum? Status
+        // GraphQL -> status: CdmClusterStatusTypeEnum! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String (scalar)
+        if (this.Message != null) {
+            s += ind + "message\n" ;
+        }
+        //      C# -> CdmClusterStatusInfo? StatusInfo
+        // GraphQL -> statusInfo: CdmClusterStatusInfo (type)
+        if (this.StatusInfo != null) {
+            s += ind + "statusInfo {\n" + this.StatusInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> CdmClusterStatusTypeEnum? Status
+        // GraphQL -> status: CdmClusterStatusTypeEnum! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            //      C# -> System.String? Message
-            // GraphQL -> message: String (scalar)
-            if (this.Message == null && Exploration.Includes(parent + ".message$"))
-            {
-                this.Message = new System.String("FETCH");
-            }
-            //      C# -> CdmClusterStatusInfo? StatusInfo
-            // GraphQL -> statusInfo: CdmClusterStatusInfo (type)
-            if (this.StatusInfo == null && Exploration.Includes(parent + ".statusInfo"))
-            {
-                this.StatusInfo = new CdmClusterStatusInfo();
-                this.StatusInfo.ApplyExploratoryFragment(parent + ".statusInfo");
-            }
-            //      C# -> CdmClusterStatusTypeEnum? Status
-            // GraphQL -> status: CdmClusterStatusTypeEnum! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new CdmClusterStatusTypeEnum();
-            }
+            this.Status = new CdmClusterStatusTypeEnum();
         }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String (scalar)
+        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        {
+            this.Message = new System.String("FETCH");
+        }
+        //      C# -> CdmClusterStatusInfo? StatusInfo
+        // GraphQL -> statusInfo: CdmClusterStatusInfo (type)
+        if (this.StatusInfo == null && Exploration.Includes(parent + ".statusInfo"))
+        {
+            this.StatusInfo = new CdmClusterStatusInfo();
+            this.StatusInfo.ApplyExploratoryFieldSpec(parent + ".statusInfo");
+        }
+    }
 
 
     #endregion
 
     } // class CdmClusterStatus
+    
     #endregion
 
     public static class ListCdmClusterStatusExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CdmClusterStatus> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CdmClusterStatus> list, 
             String parent = "")
         {
-            var item = new CdmClusterStatus();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CdmClusterStatus());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

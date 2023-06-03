@@ -11,13 +11,25 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region CdmUpgradeInfo
-    public class CdmUpgradeInfo: IFragment
+    public class CdmUpgradeInfo: BaseType
     {
         #region members
+
+        //      C# -> ClusterJobStatusTypeEnum? ClusterJobStatus
+        // GraphQL -> clusterJobStatus: ClusterJobStatusTypeEnum (enum)
+        [JsonProperty("clusterJobStatus")]
+        public ClusterJobStatusTypeEnum? ClusterJobStatus { get; set; }
+
+        //      C# -> VersionStatus? VersionStatus
+        // GraphQL -> versionStatus: VersionStatus (enum)
+        [JsonProperty("versionStatus")]
+        public VersionStatus? VersionStatus { get; set; }
+
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         [JsonProperty("clusterUuid")]
@@ -128,21 +140,14 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("upgradeRecommendationInfo")]
         public UpgradeRecommendationInfo? UpgradeRecommendationInfo { get; set; }
 
-        //      C# -> ClusterJobStatusTypeEnum? ClusterJobStatus
-        // GraphQL -> clusterJobStatus: ClusterJobStatusTypeEnum (enum)
-        [JsonProperty("clusterJobStatus")]
-        public ClusterJobStatusTypeEnum? ClusterJobStatus { get; set; }
-
-        //      C# -> VersionStatus? VersionStatus
-        // GraphQL -> versionStatus: VersionStatus (enum)
-        [JsonProperty("versionStatus")]
-        public VersionStatus? VersionStatus { get; set; }
 
         #endregion
 
     #region methods
 
     public CdmUpgradeInfo Set(
+        ClusterJobStatusTypeEnum? ClusterJobStatus = null,
+        VersionStatus? VersionStatus = null,
         System.String? ClusterUuid = null,
         System.Single? CurrentStateProgress = null,
         System.String? DownloadedVersion = null,
@@ -164,11 +169,15 @@ namespace Rubrik.SecurityCloud.Types
         List<CdmNodeDetail>? CdmClusterNodeDetails = null,
         CdmClusterStatus? ClusterStatus = null,
         UpgradeDurationReply? LastUpgradeDuration = null,
-        UpgradeRecommendationInfo? UpgradeRecommendationInfo = null,
-        ClusterJobStatusTypeEnum? ClusterJobStatus = null,
-        VersionStatus? VersionStatus = null
+        UpgradeRecommendationInfo? UpgradeRecommendationInfo = null
     ) 
     {
+        if ( ClusterJobStatus != null ) {
+            this.ClusterJobStatus = ClusterJobStatus;
+        }
+        if ( VersionStatus != null ) {
+            this.VersionStatus = VersionStatus;
+        }
         if ( ClusterUuid != null ) {
             this.ClusterUuid = ClusterUuid;
         }
@@ -235,397 +244,332 @@ namespace Rubrik.SecurityCloud.Types
         if ( UpgradeRecommendationInfo != null ) {
             this.UpgradeRecommendationInfo = UpgradeRecommendationInfo;
         }
-        if ( ClusterJobStatus != null ) {
-            this.ClusterJobStatus = ClusterJobStatus;
-        }
-        if ( VersionStatus != null ) {
-            this.VersionStatus = VersionStatus;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid != null)
-            {
-                 s += ind + "clusterUuid\n";
-
-            }
-            //      C# -> System.Single? CurrentStateProgress
-            // GraphQL -> currentStateProgress: Float (scalar)
-            if (this.CurrentStateProgress != null)
-            {
-                 s += ind + "currentStateProgress\n";
-
-            }
-            //      C# -> System.String? DownloadedVersion
-            // GraphQL -> downloadedVersion: String (scalar)
-            if (this.DownloadedVersion != null)
-            {
-                 s += ind + "downloadedVersion\n";
-
-            }
-            //      C# -> System.Boolean? FastUpgradePreferred
-            // GraphQL -> fastUpgradePreferred: Boolean (scalar)
-            if (this.FastUpgradePreferred != null)
-            {
-                 s += ind + "fastUpgradePreferred\n";
-
-            }
-            //      C# -> System.String? FinishedStates
-            // GraphQL -> finishedStates: String (scalar)
-            if (this.FinishedStates != null)
-            {
-                 s += ind + "finishedStates\n";
-
-            }
-            //      C# -> System.Single? OverallProgress
-            // GraphQL -> overallProgress: Float (scalar)
-            if (this.OverallProgress != null)
-            {
-                 s += ind + "overallProgress\n";
-
-            }
-            //      C# -> System.String? PendingStates
-            // GraphQL -> pendingStates: String (scalar)
-            if (this.PendingStates != null)
-            {
-                 s += ind + "pendingStates\n";
-
-            }
-            //      C# -> System.String? PreviousVersion
-            // GraphQL -> previousVersion: String (scalar)
-            if (this.PreviousVersion != null)
-            {
-                 s += ind + "previousVersion\n";
-
-            }
-            //      C# -> System.String? ScheduleUpgradeAction
-            // GraphQL -> scheduleUpgradeAction: String (scalar)
-            if (this.ScheduleUpgradeAction != null)
-            {
-                 s += ind + "scheduleUpgradeAction\n";
-
-            }
-            //      C# -> DateTime? ScheduleUpgradeAt
-            // GraphQL -> scheduleUpgradeAt: DateTime (scalar)
-            if (this.ScheduleUpgradeAt != null)
-            {
-                 s += ind + "scheduleUpgradeAt\n";
-
-            }
-            //      C# -> System.String? ScheduleUpgradeMode
-            // GraphQL -> scheduleUpgradeMode: String (scalar)
-            if (this.ScheduleUpgradeMode != null)
-            {
-                 s += ind + "scheduleUpgradeMode\n";
-
-            }
-            //      C# -> System.String? StateMachineStatus
-            // GraphQL -> stateMachineStatus: String (scalar)
-            if (this.StateMachineStatus != null)
-            {
-                 s += ind + "stateMachineStatus\n";
-
-            }
-            //      C# -> DateTime? StateMachineStatusAt
-            // GraphQL -> stateMachineStatusAt: DateTime (scalar)
-            if (this.StateMachineStatusAt != null)
-            {
-                 s += ind + "stateMachineStatusAt\n";
-
-            }
-            //      C# -> DateTime? UpgradeEndAt
-            // GraphQL -> upgradeEndAt: DateTime (scalar)
-            if (this.UpgradeEndAt != null)
-            {
-                 s += ind + "upgradeEndAt\n";
-
-            }
-            //      C# -> System.String? UpgradeEventSeriesId
-            // GraphQL -> upgradeEventSeriesId: String (scalar)
-            if (this.UpgradeEventSeriesId != null)
-            {
-                 s += ind + "upgradeEventSeriesId\n";
-
-            }
-            //      C# -> DateTime? UpgradeStartAt
-            // GraphQL -> upgradeStartAt: DateTime (scalar)
-            if (this.UpgradeStartAt != null)
-            {
-                 s += ind + "upgradeStartAt\n";
-
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String! (scalar)
-            if (this.Version != null)
-            {
-                 s += ind + "version\n";
-
-            }
-            //      C# -> AuthorizedOperations? AuthorizedOperations
-            // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
-            if (this.AuthorizedOperations != null)
-            {
-                 s += ind + "authorizedOperations\n";
-
-                 s += ind + "{\n" + 
-                 this.AuthorizedOperations.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<CdmNodeDetail>? CdmClusterNodeDetails
-            // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
-            if (this.CdmClusterNodeDetails != null)
-            {
-                 s += ind + "cdmClusterNodeDetails\n";
-
-                 s += ind + "{\n" + 
-                 this.CdmClusterNodeDetails.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmClusterStatus? ClusterStatus
-            // GraphQL -> clusterStatus: CdmClusterStatus (type)
-            if (this.ClusterStatus != null)
-            {
-                 s += ind + "clusterStatus\n";
-
-                 s += ind + "{\n" + 
-                 this.ClusterStatus.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> UpgradeDurationReply? LastUpgradeDuration
-            // GraphQL -> lastUpgradeDuration: UpgradeDurationReply (type)
-            if (this.LastUpgradeDuration != null)
-            {
-                 s += ind + "lastUpgradeDuration\n";
-
-                 s += ind + "{\n" + 
-                 this.LastUpgradeDuration.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
-            // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
-            if (this.UpgradeRecommendationInfo != null)
-            {
-                 s += ind + "upgradeRecommendationInfo\n";
-
-                 s += ind + "{\n" + 
-                 this.UpgradeRecommendationInfo.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ClusterJobStatusTypeEnum? ClusterJobStatus
-            // GraphQL -> clusterJobStatus: ClusterJobStatusTypeEnum (enum)
-            if (this.ClusterJobStatus != null)
-            {
-                 s += ind + "clusterJobStatus\n";
-
-            }
-            //      C# -> VersionStatus? VersionStatus
-            // GraphQL -> versionStatus: VersionStatus (enum)
-            if (this.VersionStatus != null)
-            {
-                 s += ind + "versionStatus\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ClusterJobStatusTypeEnum? ClusterJobStatus
+        // GraphQL -> clusterJobStatus: ClusterJobStatusTypeEnum (enum)
+        if (this.ClusterJobStatus != null) {
+            s += ind + "clusterJobStatus\n" ;
         }
+        //      C# -> VersionStatus? VersionStatus
+        // GraphQL -> versionStatus: VersionStatus (enum)
+        if (this.VersionStatus != null) {
+            s += ind + "versionStatus\n" ;
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid != null) {
+            s += ind + "clusterUuid\n" ;
+        }
+        //      C# -> System.Single? CurrentStateProgress
+        // GraphQL -> currentStateProgress: Float (scalar)
+        if (this.CurrentStateProgress != null) {
+            s += ind + "currentStateProgress\n" ;
+        }
+        //      C# -> System.String? DownloadedVersion
+        // GraphQL -> downloadedVersion: String (scalar)
+        if (this.DownloadedVersion != null) {
+            s += ind + "downloadedVersion\n" ;
+        }
+        //      C# -> System.Boolean? FastUpgradePreferred
+        // GraphQL -> fastUpgradePreferred: Boolean (scalar)
+        if (this.FastUpgradePreferred != null) {
+            s += ind + "fastUpgradePreferred\n" ;
+        }
+        //      C# -> System.String? FinishedStates
+        // GraphQL -> finishedStates: String (scalar)
+        if (this.FinishedStates != null) {
+            s += ind + "finishedStates\n" ;
+        }
+        //      C# -> System.Single? OverallProgress
+        // GraphQL -> overallProgress: Float (scalar)
+        if (this.OverallProgress != null) {
+            s += ind + "overallProgress\n" ;
+        }
+        //      C# -> System.String? PendingStates
+        // GraphQL -> pendingStates: String (scalar)
+        if (this.PendingStates != null) {
+            s += ind + "pendingStates\n" ;
+        }
+        //      C# -> System.String? PreviousVersion
+        // GraphQL -> previousVersion: String (scalar)
+        if (this.PreviousVersion != null) {
+            s += ind + "previousVersion\n" ;
+        }
+        //      C# -> System.String? ScheduleUpgradeAction
+        // GraphQL -> scheduleUpgradeAction: String (scalar)
+        if (this.ScheduleUpgradeAction != null) {
+            s += ind + "scheduleUpgradeAction\n" ;
+        }
+        //      C# -> DateTime? ScheduleUpgradeAt
+        // GraphQL -> scheduleUpgradeAt: DateTime (scalar)
+        if (this.ScheduleUpgradeAt != null) {
+            s += ind + "scheduleUpgradeAt\n" ;
+        }
+        //      C# -> System.String? ScheduleUpgradeMode
+        // GraphQL -> scheduleUpgradeMode: String (scalar)
+        if (this.ScheduleUpgradeMode != null) {
+            s += ind + "scheduleUpgradeMode\n" ;
+        }
+        //      C# -> System.String? StateMachineStatus
+        // GraphQL -> stateMachineStatus: String (scalar)
+        if (this.StateMachineStatus != null) {
+            s += ind + "stateMachineStatus\n" ;
+        }
+        //      C# -> DateTime? StateMachineStatusAt
+        // GraphQL -> stateMachineStatusAt: DateTime (scalar)
+        if (this.StateMachineStatusAt != null) {
+            s += ind + "stateMachineStatusAt\n" ;
+        }
+        //      C# -> DateTime? UpgradeEndAt
+        // GraphQL -> upgradeEndAt: DateTime (scalar)
+        if (this.UpgradeEndAt != null) {
+            s += ind + "upgradeEndAt\n" ;
+        }
+        //      C# -> System.String? UpgradeEventSeriesId
+        // GraphQL -> upgradeEventSeriesId: String (scalar)
+        if (this.UpgradeEventSeriesId != null) {
+            s += ind + "upgradeEventSeriesId\n" ;
+        }
+        //      C# -> DateTime? UpgradeStartAt
+        // GraphQL -> upgradeStartAt: DateTime (scalar)
+        if (this.UpgradeStartAt != null) {
+            s += ind + "upgradeStartAt\n" ;
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version != null) {
+            s += ind + "version\n" ;
+        }
+        //      C# -> AuthorizedOperations? AuthorizedOperations
+        // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
+        if (this.AuthorizedOperations != null) {
+            s += ind + "authorizedOperations {\n" + this.AuthorizedOperations.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<CdmNodeDetail>? CdmClusterNodeDetails
+        // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
+        if (this.CdmClusterNodeDetails != null) {
+            s += ind + "cdmClusterNodeDetails {\n" + this.CdmClusterNodeDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmClusterStatus? ClusterStatus
+        // GraphQL -> clusterStatus: CdmClusterStatus (type)
+        if (this.ClusterStatus != null) {
+            s += ind + "clusterStatus {\n" + this.ClusterStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> UpgradeDurationReply? LastUpgradeDuration
+        // GraphQL -> lastUpgradeDuration: UpgradeDurationReply (type)
+        if (this.LastUpgradeDuration != null) {
+            s += ind + "lastUpgradeDuration {\n" + this.LastUpgradeDuration.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
+        // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
+        if (this.UpgradeRecommendationInfo != null) {
+            s += ind + "upgradeRecommendationInfo {\n" + this.UpgradeRecommendationInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ClusterJobStatusTypeEnum? ClusterJobStatus
+        // GraphQL -> clusterJobStatus: ClusterJobStatusTypeEnum (enum)
+        if (this.ClusterJobStatus == null && Exploration.Includes(parent + ".clusterJobStatus", true))
         {
-            //      C# -> System.String? ClusterUuid
-            // GraphQL -> clusterUuid: UUID! (scalar)
-            if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid$"))
-            {
-                this.ClusterUuid = new System.String("FETCH");
-            }
-            //      C# -> System.Single? CurrentStateProgress
-            // GraphQL -> currentStateProgress: Float (scalar)
-            if (this.CurrentStateProgress == null && Exploration.Includes(parent + ".currentStateProgress$"))
-            {
-                this.CurrentStateProgress = new System.Single();
-            }
-            //      C# -> System.String? DownloadedVersion
-            // GraphQL -> downloadedVersion: String (scalar)
-            if (this.DownloadedVersion == null && Exploration.Includes(parent + ".downloadedVersion$"))
-            {
-                this.DownloadedVersion = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? FastUpgradePreferred
-            // GraphQL -> fastUpgradePreferred: Boolean (scalar)
-            if (this.FastUpgradePreferred == null && Exploration.Includes(parent + ".fastUpgradePreferred$"))
-            {
-                this.FastUpgradePreferred = new System.Boolean();
-            }
-            //      C# -> System.String? FinishedStates
-            // GraphQL -> finishedStates: String (scalar)
-            if (this.FinishedStates == null && Exploration.Includes(parent + ".finishedStates$"))
-            {
-                this.FinishedStates = new System.String("FETCH");
-            }
-            //      C# -> System.Single? OverallProgress
-            // GraphQL -> overallProgress: Float (scalar)
-            if (this.OverallProgress == null && Exploration.Includes(parent + ".overallProgress$"))
-            {
-                this.OverallProgress = new System.Single();
-            }
-            //      C# -> System.String? PendingStates
-            // GraphQL -> pendingStates: String (scalar)
-            if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates$"))
-            {
-                this.PendingStates = new System.String("FETCH");
-            }
-            //      C# -> System.String? PreviousVersion
-            // GraphQL -> previousVersion: String (scalar)
-            if (this.PreviousVersion == null && Exploration.Includes(parent + ".previousVersion$"))
-            {
-                this.PreviousVersion = new System.String("FETCH");
-            }
-            //      C# -> System.String? ScheduleUpgradeAction
-            // GraphQL -> scheduleUpgradeAction: String (scalar)
-            if (this.ScheduleUpgradeAction == null && Exploration.Includes(parent + ".scheduleUpgradeAction$"))
-            {
-                this.ScheduleUpgradeAction = new System.String("FETCH");
-            }
-            //      C# -> DateTime? ScheduleUpgradeAt
-            // GraphQL -> scheduleUpgradeAt: DateTime (scalar)
-            if (this.ScheduleUpgradeAt == null && Exploration.Includes(parent + ".scheduleUpgradeAt$"))
-            {
-                this.ScheduleUpgradeAt = new DateTime();
-            }
-            //      C# -> System.String? ScheduleUpgradeMode
-            // GraphQL -> scheduleUpgradeMode: String (scalar)
-            if (this.ScheduleUpgradeMode == null && Exploration.Includes(parent + ".scheduleUpgradeMode$"))
-            {
-                this.ScheduleUpgradeMode = new System.String("FETCH");
-            }
-            //      C# -> System.String? StateMachineStatus
-            // GraphQL -> stateMachineStatus: String (scalar)
-            if (this.StateMachineStatus == null && Exploration.Includes(parent + ".stateMachineStatus$"))
-            {
-                this.StateMachineStatus = new System.String("FETCH");
-            }
-            //      C# -> DateTime? StateMachineStatusAt
-            // GraphQL -> stateMachineStatusAt: DateTime (scalar)
-            if (this.StateMachineStatusAt == null && Exploration.Includes(parent + ".stateMachineStatusAt$"))
-            {
-                this.StateMachineStatusAt = new DateTime();
-            }
-            //      C# -> DateTime? UpgradeEndAt
-            // GraphQL -> upgradeEndAt: DateTime (scalar)
-            if (this.UpgradeEndAt == null && Exploration.Includes(parent + ".upgradeEndAt$"))
-            {
-                this.UpgradeEndAt = new DateTime();
-            }
-            //      C# -> System.String? UpgradeEventSeriesId
-            // GraphQL -> upgradeEventSeriesId: String (scalar)
-            if (this.UpgradeEventSeriesId == null && Exploration.Includes(parent + ".upgradeEventSeriesId$"))
-            {
-                this.UpgradeEventSeriesId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? UpgradeStartAt
-            // GraphQL -> upgradeStartAt: DateTime (scalar)
-            if (this.UpgradeStartAt == null && Exploration.Includes(parent + ".upgradeStartAt$"))
-            {
-                this.UpgradeStartAt = new DateTime();
-            }
-            //      C# -> System.String? Version
-            // GraphQL -> version: String! (scalar)
-            if (this.Version == null && Exploration.Includes(parent + ".version$"))
-            {
-                this.Version = new System.String("FETCH");
-            }
-            //      C# -> AuthorizedOperations? AuthorizedOperations
-            // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
-            if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations"))
-            {
-                this.AuthorizedOperations = new AuthorizedOperations();
-                this.AuthorizedOperations.ApplyExploratoryFragment(parent + ".authorizedOperations");
-            }
-            //      C# -> List<CdmNodeDetail>? CdmClusterNodeDetails
-            // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
-            if (this.CdmClusterNodeDetails == null && Exploration.Includes(parent + ".cdmClusterNodeDetails"))
-            {
-                this.CdmClusterNodeDetails = new List<CdmNodeDetail>();
-                this.CdmClusterNodeDetails.ApplyExploratoryFragment(parent + ".cdmClusterNodeDetails");
-            }
-            //      C# -> CdmClusterStatus? ClusterStatus
-            // GraphQL -> clusterStatus: CdmClusterStatus (type)
-            if (this.ClusterStatus == null && Exploration.Includes(parent + ".clusterStatus"))
-            {
-                this.ClusterStatus = new CdmClusterStatus();
-                this.ClusterStatus.ApplyExploratoryFragment(parent + ".clusterStatus");
-            }
-            //      C# -> UpgradeDurationReply? LastUpgradeDuration
-            // GraphQL -> lastUpgradeDuration: UpgradeDurationReply (type)
-            if (this.LastUpgradeDuration == null && Exploration.Includes(parent + ".lastUpgradeDuration"))
-            {
-                this.LastUpgradeDuration = new UpgradeDurationReply();
-                this.LastUpgradeDuration.ApplyExploratoryFragment(parent + ".lastUpgradeDuration");
-            }
-            //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
-            // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
-            if (this.UpgradeRecommendationInfo == null && Exploration.Includes(parent + ".upgradeRecommendationInfo"))
-            {
-                this.UpgradeRecommendationInfo = new UpgradeRecommendationInfo();
-                this.UpgradeRecommendationInfo.ApplyExploratoryFragment(parent + ".upgradeRecommendationInfo");
-            }
-            //      C# -> ClusterJobStatusTypeEnum? ClusterJobStatus
-            // GraphQL -> clusterJobStatus: ClusterJobStatusTypeEnum (enum)
-            if (this.ClusterJobStatus == null && Exploration.Includes(parent + ".clusterJobStatus$"))
-            {
-                this.ClusterJobStatus = new ClusterJobStatusTypeEnum();
-            }
-            //      C# -> VersionStatus? VersionStatus
-            // GraphQL -> versionStatus: VersionStatus (enum)
-            if (this.VersionStatus == null && Exploration.Includes(parent + ".versionStatus$"))
-            {
-                this.VersionStatus = new VersionStatus();
-            }
+            this.ClusterJobStatus = new ClusterJobStatusTypeEnum();
         }
+        //      C# -> VersionStatus? VersionStatus
+        // GraphQL -> versionStatus: VersionStatus (enum)
+        if (this.VersionStatus == null && Exploration.Includes(parent + ".versionStatus", true))
+        {
+            this.VersionStatus = new VersionStatus();
+        }
+        //      C# -> System.String? ClusterUuid
+        // GraphQL -> clusterUuid: UUID! (scalar)
+        if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
+        {
+            this.ClusterUuid = new System.String("FETCH");
+        }
+        //      C# -> System.Single? CurrentStateProgress
+        // GraphQL -> currentStateProgress: Float (scalar)
+        if (this.CurrentStateProgress == null && Exploration.Includes(parent + ".currentStateProgress", true))
+        {
+            this.CurrentStateProgress = new System.Single();
+        }
+        //      C# -> System.String? DownloadedVersion
+        // GraphQL -> downloadedVersion: String (scalar)
+        if (this.DownloadedVersion == null && Exploration.Includes(parent + ".downloadedVersion", true))
+        {
+            this.DownloadedVersion = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? FastUpgradePreferred
+        // GraphQL -> fastUpgradePreferred: Boolean (scalar)
+        if (this.FastUpgradePreferred == null && Exploration.Includes(parent + ".fastUpgradePreferred", true))
+        {
+            this.FastUpgradePreferred = true;
+        }
+        //      C# -> System.String? FinishedStates
+        // GraphQL -> finishedStates: String (scalar)
+        if (this.FinishedStates == null && Exploration.Includes(parent + ".finishedStates", true))
+        {
+            this.FinishedStates = new System.String("FETCH");
+        }
+        //      C# -> System.Single? OverallProgress
+        // GraphQL -> overallProgress: Float (scalar)
+        if (this.OverallProgress == null && Exploration.Includes(parent + ".overallProgress", true))
+        {
+            this.OverallProgress = new System.Single();
+        }
+        //      C# -> System.String? PendingStates
+        // GraphQL -> pendingStates: String (scalar)
+        if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates", true))
+        {
+            this.PendingStates = new System.String("FETCH");
+        }
+        //      C# -> System.String? PreviousVersion
+        // GraphQL -> previousVersion: String (scalar)
+        if (this.PreviousVersion == null && Exploration.Includes(parent + ".previousVersion", true))
+        {
+            this.PreviousVersion = new System.String("FETCH");
+        }
+        //      C# -> System.String? ScheduleUpgradeAction
+        // GraphQL -> scheduleUpgradeAction: String (scalar)
+        if (this.ScheduleUpgradeAction == null && Exploration.Includes(parent + ".scheduleUpgradeAction", true))
+        {
+            this.ScheduleUpgradeAction = new System.String("FETCH");
+        }
+        //      C# -> DateTime? ScheduleUpgradeAt
+        // GraphQL -> scheduleUpgradeAt: DateTime (scalar)
+        if (this.ScheduleUpgradeAt == null && Exploration.Includes(parent + ".scheduleUpgradeAt", true))
+        {
+            this.ScheduleUpgradeAt = new DateTime();
+        }
+        //      C# -> System.String? ScheduleUpgradeMode
+        // GraphQL -> scheduleUpgradeMode: String (scalar)
+        if (this.ScheduleUpgradeMode == null && Exploration.Includes(parent + ".scheduleUpgradeMode", true))
+        {
+            this.ScheduleUpgradeMode = new System.String("FETCH");
+        }
+        //      C# -> System.String? StateMachineStatus
+        // GraphQL -> stateMachineStatus: String (scalar)
+        if (this.StateMachineStatus == null && Exploration.Includes(parent + ".stateMachineStatus", true))
+        {
+            this.StateMachineStatus = new System.String("FETCH");
+        }
+        //      C# -> DateTime? StateMachineStatusAt
+        // GraphQL -> stateMachineStatusAt: DateTime (scalar)
+        if (this.StateMachineStatusAt == null && Exploration.Includes(parent + ".stateMachineStatusAt", true))
+        {
+            this.StateMachineStatusAt = new DateTime();
+        }
+        //      C# -> DateTime? UpgradeEndAt
+        // GraphQL -> upgradeEndAt: DateTime (scalar)
+        if (this.UpgradeEndAt == null && Exploration.Includes(parent + ".upgradeEndAt", true))
+        {
+            this.UpgradeEndAt = new DateTime();
+        }
+        //      C# -> System.String? UpgradeEventSeriesId
+        // GraphQL -> upgradeEventSeriesId: String (scalar)
+        if (this.UpgradeEventSeriesId == null && Exploration.Includes(parent + ".upgradeEventSeriesId", true))
+        {
+            this.UpgradeEventSeriesId = new System.String("FETCH");
+        }
+        //      C# -> DateTime? UpgradeStartAt
+        // GraphQL -> upgradeStartAt: DateTime (scalar)
+        if (this.UpgradeStartAt == null && Exploration.Includes(parent + ".upgradeStartAt", true))
+        {
+            this.UpgradeStartAt = new DateTime();
+        }
+        //      C# -> System.String? Version
+        // GraphQL -> version: String! (scalar)
+        if (this.Version == null && Exploration.Includes(parent + ".version", true))
+        {
+            this.Version = new System.String("FETCH");
+        }
+        //      C# -> AuthorizedOperations? AuthorizedOperations
+        // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
+        if (this.AuthorizedOperations == null && Exploration.Includes(parent + ".authorizedOperations"))
+        {
+            this.AuthorizedOperations = new AuthorizedOperations();
+            this.AuthorizedOperations.ApplyExploratoryFieldSpec(parent + ".authorizedOperations");
+        }
+        //      C# -> List<CdmNodeDetail>? CdmClusterNodeDetails
+        // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
+        if (this.CdmClusterNodeDetails == null && Exploration.Includes(parent + ".cdmClusterNodeDetails"))
+        {
+            this.CdmClusterNodeDetails = new List<CdmNodeDetail>();
+            this.CdmClusterNodeDetails.ApplyExploratoryFieldSpec(parent + ".cdmClusterNodeDetails");
+        }
+        //      C# -> CdmClusterStatus? ClusterStatus
+        // GraphQL -> clusterStatus: CdmClusterStatus (type)
+        if (this.ClusterStatus == null && Exploration.Includes(parent + ".clusterStatus"))
+        {
+            this.ClusterStatus = new CdmClusterStatus();
+            this.ClusterStatus.ApplyExploratoryFieldSpec(parent + ".clusterStatus");
+        }
+        //      C# -> UpgradeDurationReply? LastUpgradeDuration
+        // GraphQL -> lastUpgradeDuration: UpgradeDurationReply (type)
+        if (this.LastUpgradeDuration == null && Exploration.Includes(parent + ".lastUpgradeDuration"))
+        {
+            this.LastUpgradeDuration = new UpgradeDurationReply();
+            this.LastUpgradeDuration.ApplyExploratoryFieldSpec(parent + ".lastUpgradeDuration");
+        }
+        //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
+        // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
+        if (this.UpgradeRecommendationInfo == null && Exploration.Includes(parent + ".upgradeRecommendationInfo"))
+        {
+            this.UpgradeRecommendationInfo = new UpgradeRecommendationInfo();
+            this.UpgradeRecommendationInfo.ApplyExploratoryFieldSpec(parent + ".upgradeRecommendationInfo");
+        }
+    }
 
 
     #endregion
 
     } // class CdmUpgradeInfo
+    
     #endregion
 
     public static class ListCdmUpgradeInfoExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<CdmUpgradeInfo> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<CdmUpgradeInfo> list, 
             String parent = "")
         {
-            var item = new CdmUpgradeInfo();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new CdmUpgradeInfo());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

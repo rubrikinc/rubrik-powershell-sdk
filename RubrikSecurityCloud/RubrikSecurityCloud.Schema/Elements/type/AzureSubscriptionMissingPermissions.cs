@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AzureSubscriptionMissingPermissions
-    public class AzureSubscriptionMissingPermissions: IFragment
+    public class AzureSubscriptionMissingPermissions: BaseType
     {
         #region members
+
         //      C# -> List<System.String>? MissingPermissions
         // GraphQL -> missingPermissions: [String!]! (scalar)
         [JsonProperty("missingPermissions")]
@@ -27,6 +29,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subscriptionNativeId: String! (scalar)
         [JsonProperty("subscriptionNativeId")]
         public System.String? SubscriptionNativeId { get; set; }
+
 
         #endregion
 
@@ -46,82 +49,82 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> List<System.String>? MissingPermissions
-            // GraphQL -> missingPermissions: [String!]! (scalar)
-            if (this.MissingPermissions != null)
-            {
-                 s += ind + "missingPermissions\n";
-
-            }
-            //      C# -> System.String? SubscriptionNativeId
-            // GraphQL -> subscriptionNativeId: String! (scalar)
-            if (this.SubscriptionNativeId != null)
-            {
-                 s += ind + "subscriptionNativeId\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<System.String>? MissingPermissions
+        // GraphQL -> missingPermissions: [String!]! (scalar)
+        if (this.MissingPermissions != null) {
+            s += ind + "missingPermissions\n" ;
         }
+        //      C# -> System.String? SubscriptionNativeId
+        // GraphQL -> subscriptionNativeId: String! (scalar)
+        if (this.SubscriptionNativeId != null) {
+            s += ind + "subscriptionNativeId\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<System.String>? MissingPermissions
+        // GraphQL -> missingPermissions: [String!]! (scalar)
+        if (this.MissingPermissions == null && Exploration.Includes(parent + ".missingPermissions", true))
         {
-            //      C# -> List<System.String>? MissingPermissions
-            // GraphQL -> missingPermissions: [String!]! (scalar)
-            if (this.MissingPermissions == null && Exploration.Includes(parent + ".missingPermissions$"))
-            {
-                this.MissingPermissions = new List<System.String>();
-            }
-            //      C# -> System.String? SubscriptionNativeId
-            // GraphQL -> subscriptionNativeId: String! (scalar)
-            if (this.SubscriptionNativeId == null && Exploration.Includes(parent + ".subscriptionNativeId$"))
-            {
-                this.SubscriptionNativeId = new System.String("FETCH");
-            }
+            this.MissingPermissions = new List<System.String>();
         }
+        //      C# -> System.String? SubscriptionNativeId
+        // GraphQL -> subscriptionNativeId: String! (scalar)
+        if (this.SubscriptionNativeId == null && Exploration.Includes(parent + ".subscriptionNativeId", true))
+        {
+            this.SubscriptionNativeId = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class AzureSubscriptionMissingPermissions
+    
     #endregion
 
     public static class ListAzureSubscriptionMissingPermissionsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AzureSubscriptionMissingPermissions> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AzureSubscriptionMissingPermissions> list, 
             String parent = "")
         {
-            var item = new AzureSubscriptionMissingPermissions();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AzureSubscriptionMissingPermissions());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

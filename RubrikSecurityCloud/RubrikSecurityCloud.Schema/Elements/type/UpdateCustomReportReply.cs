@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region UpdateCustomReportReply
-    public class UpdateCustomReportReply: IFragment
+    public class UpdateCustomReportReply: BaseType
     {
         #region members
+
+        //      C# -> ReportFocusEnum? Focus
+        // GraphQL -> focus: ReportFocusEnum! (enum)
+        [JsonProperty("focus")]
+        public ReportFocusEnum? Focus { get; set; }
+
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime! (scalar)
         [JsonProperty("createdAt")]
@@ -78,11 +85,6 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("scheduledReportConnection")]
         public ScheduledReportConnection? ScheduledReportConnection { get; set; }
 
-        //      C# -> ReportFocusEnum? Focus
-        // GraphQL -> focus: ReportFocusEnum! (enum)
-        [JsonProperty("focus")]
-        public ReportFocusEnum? Focus { get; set; }
-
         //      C# -> List<ReportChartType>? Charts
         // GraphQL -> charts: [ReportChartType!]! (union)
         [JsonProperty("charts")]
@@ -93,11 +95,13 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("tables")]
         public List<ReportTableType>? Tables { get; set; }
 
+
         #endregion
 
     #region methods
 
     public UpdateCustomReportReply Set(
+        ReportFocusEnum? Focus = null,
         DateTime? CreatedAt = null,
         System.Int32? Id = null,
         System.Boolean? IsHidden = null,
@@ -110,11 +114,13 @@ namespace Rubrik.SecurityCloud.Types
         CustomReportFilters? Filters = null,
         User? Owner = null,
         ScheduledReportConnection? ScheduledReportConnection = null,
-        ReportFocusEnum? Focus = null,
         List<ReportChartType>? Charts = null,
         List<ReportTableType>? Tables = null
     ) 
     {
+        if ( Focus != null ) {
+            this.Focus = Focus;
+        }
         if ( CreatedAt != null ) {
             this.CreatedAt = CreatedAt;
         }
@@ -151,9 +157,6 @@ namespace Rubrik.SecurityCloud.Types
         if ( ScheduledReportConnection != null ) {
             this.ScheduledReportConnection = ScheduledReportConnection;
         }
-        if ( Focus != null ) {
-            this.Focus = Focus;
-        }
         if ( Charts != null ) {
             this.Charts = Charts;
         }
@@ -163,273 +166,230 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> DateTime? CreatedAt
-            // GraphQL -> createdAt: DateTime! (scalar)
-            if (this.CreatedAt != null)
-            {
-                 s += ind + "createdAt\n";
-
-            }
-            //      C# -> System.Int32? Id
-            // GraphQL -> id: Int! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsHidden
-            // GraphQL -> isHidden: Boolean! (scalar)
-            if (this.IsHidden != null)
-            {
-                 s += ind + "isHidden\n";
-
-            }
-            //      C# -> System.Boolean? IsReadOnly
-            // GraphQL -> isReadOnly: Boolean! (scalar)
-            if (this.IsReadOnly != null)
-            {
-                 s += ind + "isReadOnly\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> DateTime? NewestSyncDate
-            // GraphQL -> newestSyncDate: DateTime (scalar)
-            if (this.NewestSyncDate != null)
-            {
-                 s += ind + "newestSyncDate\n";
-
-            }
-            //      C# -> DateTime? OldestSyncDate
-            // GraphQL -> oldestSyncDate: DateTime (scalar)
-            if (this.OldestSyncDate != null)
-            {
-                 s += ind + "oldestSyncDate\n";
-
-            }
-            //      C# -> DateTime? UpdatedAt
-            // GraphQL -> updatedAt: DateTime! (scalar)
-            if (this.UpdatedAt != null)
-            {
-                 s += ind + "updatedAt\n";
-
-            }
-            //      C# -> DateTime? ViewedAt
-            // GraphQL -> viewedAt: DateTime! (scalar)
-            if (this.ViewedAt != null)
-            {
-                 s += ind + "viewedAt\n";
-
-            }
-            //      C# -> CustomReportFilters? Filters
-            // GraphQL -> filters: CustomReportFilters! (type)
-            if (this.Filters != null)
-            {
-                 s += ind + "filters\n";
-
-                 s += ind + "{\n" + 
-                 this.Filters.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> User? Owner
-            // GraphQL -> owner: User! (type)
-            if (this.Owner != null)
-            {
-                 s += ind + "owner\n";
-
-                 s += ind + "{\n" + 
-                 this.Owner.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ScheduledReportConnection? ScheduledReportConnection
-            // GraphQL -> scheduledReportConnection: ScheduledReportConnection! (type)
-            if (this.ScheduledReportConnection != null)
-            {
-                 s += ind + "scheduledReportConnection\n";
-
-                 s += ind + "{\n" + 
-                 this.ScheduledReportConnection.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ReportFocusEnum? Focus
-            // GraphQL -> focus: ReportFocusEnum! (enum)
-            if (this.Focus != null)
-            {
-                 s += ind + "focus\n";
-
-            }
-            //      C# -> List<ReportChartType>? Charts
-            // GraphQL -> charts: [ReportChartType!]! (union)
-            if (this.Charts != null)
-            {
-                 s += ind + "charts\n";
-
-                 s += ind + "{\n" + 
-                 this.Charts.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<ReportTableType>? Tables
-            // GraphQL -> tables: [ReportTableType!]! (union)
-            if (this.Tables != null)
-            {
-                 s += ind + "tables\n";
-
-                 s += ind + "{\n" + 
-                 this.Tables.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ReportFocusEnum? Focus
+        // GraphQL -> focus: ReportFocusEnum! (enum)
+        if (this.Focus != null) {
+            s += ind + "focus\n" ;
         }
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime! (scalar)
+        if (this.CreatedAt != null) {
+            s += ind + "createdAt\n" ;
+        }
+        //      C# -> System.Int32? Id
+        // GraphQL -> id: Int! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsHidden
+        // GraphQL -> isHidden: Boolean! (scalar)
+        if (this.IsHidden != null) {
+            s += ind + "isHidden\n" ;
+        }
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean! (scalar)
+        if (this.IsReadOnly != null) {
+            s += ind + "isReadOnly\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> DateTime? NewestSyncDate
+        // GraphQL -> newestSyncDate: DateTime (scalar)
+        if (this.NewestSyncDate != null) {
+            s += ind + "newestSyncDate\n" ;
+        }
+        //      C# -> DateTime? OldestSyncDate
+        // GraphQL -> oldestSyncDate: DateTime (scalar)
+        if (this.OldestSyncDate != null) {
+            s += ind + "oldestSyncDate\n" ;
+        }
+        //      C# -> DateTime? UpdatedAt
+        // GraphQL -> updatedAt: DateTime! (scalar)
+        if (this.UpdatedAt != null) {
+            s += ind + "updatedAt\n" ;
+        }
+        //      C# -> DateTime? ViewedAt
+        // GraphQL -> viewedAt: DateTime! (scalar)
+        if (this.ViewedAt != null) {
+            s += ind + "viewedAt\n" ;
+        }
+        //      C# -> CustomReportFilters? Filters
+        // GraphQL -> filters: CustomReportFilters! (type)
+        if (this.Filters != null) {
+            s += ind + "filters {\n" + this.Filters.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> User? Owner
+        // GraphQL -> owner: User! (type)
+        if (this.Owner != null) {
+            s += ind + "owner {\n" + this.Owner.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> ScheduledReportConnection? ScheduledReportConnection
+        // GraphQL -> scheduledReportConnection: ScheduledReportConnection! (type)
+        if (this.ScheduledReportConnection != null) {
+            s += ind + "scheduledReportConnection {\n" + this.ScheduledReportConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ReportChartType>? Charts
+        // GraphQL -> charts: [ReportChartType!]! (union)
+        if (this.Charts != null) {
+            s += ind + "charts {\n" + this.Charts.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<ReportTableType>? Tables
+        // GraphQL -> tables: [ReportTableType!]! (union)
+        if (this.Tables != null) {
+            s += ind + "tables {\n" + this.Tables.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ReportFocusEnum? Focus
+        // GraphQL -> focus: ReportFocusEnum! (enum)
+        if (this.Focus == null && Exploration.Includes(parent + ".focus", true))
         {
-            //      C# -> DateTime? CreatedAt
-            // GraphQL -> createdAt: DateTime! (scalar)
-            if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt$"))
-            {
-                this.CreatedAt = new DateTime();
-            }
-            //      C# -> System.Int32? Id
-            // GraphQL -> id: Int! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.Int32();
-            }
-            //      C# -> System.Boolean? IsHidden
-            // GraphQL -> isHidden: Boolean! (scalar)
-            if (this.IsHidden == null && Exploration.Includes(parent + ".isHidden$"))
-            {
-                this.IsHidden = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsReadOnly
-            // GraphQL -> isReadOnly: Boolean! (scalar)
-            if (this.IsReadOnly == null && Exploration.Includes(parent + ".isReadOnly$"))
-            {
-                this.IsReadOnly = new System.Boolean();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> DateTime? NewestSyncDate
-            // GraphQL -> newestSyncDate: DateTime (scalar)
-            if (this.NewestSyncDate == null && Exploration.Includes(parent + ".newestSyncDate$"))
-            {
-                this.NewestSyncDate = new DateTime();
-            }
-            //      C# -> DateTime? OldestSyncDate
-            // GraphQL -> oldestSyncDate: DateTime (scalar)
-            if (this.OldestSyncDate == null && Exploration.Includes(parent + ".oldestSyncDate$"))
-            {
-                this.OldestSyncDate = new DateTime();
-            }
-            //      C# -> DateTime? UpdatedAt
-            // GraphQL -> updatedAt: DateTime! (scalar)
-            if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt$"))
-            {
-                this.UpdatedAt = new DateTime();
-            }
-            //      C# -> DateTime? ViewedAt
-            // GraphQL -> viewedAt: DateTime! (scalar)
-            if (this.ViewedAt == null && Exploration.Includes(parent + ".viewedAt$"))
-            {
-                this.ViewedAt = new DateTime();
-            }
-            //      C# -> CustomReportFilters? Filters
-            // GraphQL -> filters: CustomReportFilters! (type)
-            if (this.Filters == null && Exploration.Includes(parent + ".filters"))
-            {
-                this.Filters = new CustomReportFilters();
-                this.Filters.ApplyExploratoryFragment(parent + ".filters");
-            }
-            //      C# -> User? Owner
-            // GraphQL -> owner: User! (type)
-            if (this.Owner == null && Exploration.Includes(parent + ".owner"))
-            {
-                this.Owner = new User();
-                this.Owner.ApplyExploratoryFragment(parent + ".owner");
-            }
-            //      C# -> ScheduledReportConnection? ScheduledReportConnection
-            // GraphQL -> scheduledReportConnection: ScheduledReportConnection! (type)
-            if (this.ScheduledReportConnection == null && Exploration.Includes(parent + ".scheduledReportConnection"))
-            {
-                this.ScheduledReportConnection = new ScheduledReportConnection();
-                this.ScheduledReportConnection.ApplyExploratoryFragment(parent + ".scheduledReportConnection");
-            }
-            //      C# -> ReportFocusEnum? Focus
-            // GraphQL -> focus: ReportFocusEnum! (enum)
-            if (this.Focus == null && Exploration.Includes(parent + ".focus$"))
-            {
-                this.Focus = new ReportFocusEnum();
-            }
-            //      C# -> List<ReportChartType>? Charts
-            // GraphQL -> charts: [ReportChartType!]! (union)
-            if (this.Charts == null && Exploration.Includes(parent + ".charts"))
-            {
-                var obj = (ReportChartType)InterfaceHelper.CreateInstanceOfFirstType(typeof(ReportChartType));
-                this.Charts = new List<ReportChartType>() { obj };
-                this.Charts.ApplyExploratoryFragment(parent + ".charts");
-            }
-            //      C# -> List<ReportTableType>? Tables
-            // GraphQL -> tables: [ReportTableType!]! (union)
-            if (this.Tables == null && Exploration.Includes(parent + ".tables"))
-            {
-                var obj = (ReportTableType)InterfaceHelper.CreateInstanceOfFirstType(typeof(ReportTableType));
-                this.Tables = new List<ReportTableType>() { obj };
-                this.Tables.ApplyExploratoryFragment(parent + ".tables");
-            }
+            this.Focus = new ReportFocusEnum();
         }
+        //      C# -> DateTime? CreatedAt
+        // GraphQL -> createdAt: DateTime! (scalar)
+        if (this.CreatedAt == null && Exploration.Includes(parent + ".createdAt", true))
+        {
+            this.CreatedAt = new DateTime();
+        }
+        //      C# -> System.Int32? Id
+        // GraphQL -> id: Int! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.Int32();
+        }
+        //      C# -> System.Boolean? IsHidden
+        // GraphQL -> isHidden: Boolean! (scalar)
+        if (this.IsHidden == null && Exploration.Includes(parent + ".isHidden", true))
+        {
+            this.IsHidden = true;
+        }
+        //      C# -> System.Boolean? IsReadOnly
+        // GraphQL -> isReadOnly: Boolean! (scalar)
+        if (this.IsReadOnly == null && Exploration.Includes(parent + ".isReadOnly", true))
+        {
+            this.IsReadOnly = true;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> DateTime? NewestSyncDate
+        // GraphQL -> newestSyncDate: DateTime (scalar)
+        if (this.NewestSyncDate == null && Exploration.Includes(parent + ".newestSyncDate", true))
+        {
+            this.NewestSyncDate = new DateTime();
+        }
+        //      C# -> DateTime? OldestSyncDate
+        // GraphQL -> oldestSyncDate: DateTime (scalar)
+        if (this.OldestSyncDate == null && Exploration.Includes(parent + ".oldestSyncDate", true))
+        {
+            this.OldestSyncDate = new DateTime();
+        }
+        //      C# -> DateTime? UpdatedAt
+        // GraphQL -> updatedAt: DateTime! (scalar)
+        if (this.UpdatedAt == null && Exploration.Includes(parent + ".updatedAt", true))
+        {
+            this.UpdatedAt = new DateTime();
+        }
+        //      C# -> DateTime? ViewedAt
+        // GraphQL -> viewedAt: DateTime! (scalar)
+        if (this.ViewedAt == null && Exploration.Includes(parent + ".viewedAt", true))
+        {
+            this.ViewedAt = new DateTime();
+        }
+        //      C# -> CustomReportFilters? Filters
+        // GraphQL -> filters: CustomReportFilters! (type)
+        if (this.Filters == null && Exploration.Includes(parent + ".filters"))
+        {
+            this.Filters = new CustomReportFilters();
+            this.Filters.ApplyExploratoryFieldSpec(parent + ".filters");
+        }
+        //      C# -> User? Owner
+        // GraphQL -> owner: User! (type)
+        if (this.Owner == null && Exploration.Includes(parent + ".owner"))
+        {
+            this.Owner = new User();
+            this.Owner.ApplyExploratoryFieldSpec(parent + ".owner");
+        }
+        //      C# -> ScheduledReportConnection? ScheduledReportConnection
+        // GraphQL -> scheduledReportConnection: ScheduledReportConnection! (type)
+        if (this.ScheduledReportConnection == null && Exploration.Includes(parent + ".scheduledReportConnection"))
+        {
+            this.ScheduledReportConnection = new ScheduledReportConnection();
+            this.ScheduledReportConnection.ApplyExploratoryFieldSpec(parent + ".scheduledReportConnection");
+        }
+        //      C# -> List<ReportChartType>? Charts
+        // GraphQL -> charts: [ReportChartType!]! (union)
+        if (this.Charts == null && Exploration.Includes(parent + ".charts"))
+        {
+            this.Charts = new List<ReportChartType>();
+            this.Charts.ApplyExploratoryFieldSpec(parent + ".charts");
+        }
+        //      C# -> List<ReportTableType>? Tables
+        // GraphQL -> tables: [ReportTableType!]! (union)
+        if (this.Tables == null && Exploration.Includes(parent + ".tables"))
+        {
+            this.Tables = new List<ReportTableType>();
+            this.Tables.ApplyExploratoryFieldSpec(parent + ".tables");
+        }
+    }
 
 
     #endregion
 
     } // class UpdateCustomReportReply
+    
     #endregion
 
     public static class ListUpdateCustomReportReplyExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<UpdateCustomReportReply> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<UpdateCustomReportReply> list, 
             String parent = "")
         {
-            var item = new UpdateCustomReportReply();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new UpdateCustomReportReply());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

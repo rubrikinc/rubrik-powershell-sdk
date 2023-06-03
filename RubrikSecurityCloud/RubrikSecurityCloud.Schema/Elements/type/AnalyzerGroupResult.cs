@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AnalyzerGroupResult
-    public class AnalyzerGroupResult: IFragment
+    public class AnalyzerGroupResult: BaseType
     {
         #region members
+
         //      C# -> AnalyzerGroup? AnalyzerGroup
         // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
         [JsonProperty("analyzerGroup")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hits: Hits! (type)
         [JsonProperty("hits")]
         public Hits? Hits { get; set; }
+
 
         #endregion
 
@@ -55,107 +58,96 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> AnalyzerGroup? AnalyzerGroup
-            // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
-            if (this.AnalyzerGroup != null)
-            {
-                 s += ind + "analyzerGroup\n";
-
-                 s += ind + "{\n" + 
-                 this.AnalyzerGroup.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<AnalyzerResult>? AnalyzerResults
-            // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-            if (this.AnalyzerResults != null)
-            {
-                 s += ind + "analyzerResults\n";
-
-                 s += ind + "{\n" + 
-                 this.AnalyzerResults.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> Hits? Hits
-            // GraphQL -> hits: Hits! (type)
-            if (this.Hits != null)
-            {
-                 s += ind + "hits\n";
-
-                 s += ind + "{\n" + 
-                 this.Hits.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> AnalyzerGroup? AnalyzerGroup
+        // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
+        if (this.AnalyzerGroup != null) {
+            s += ind + "analyzerGroup {\n" + this.AnalyzerGroup.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> List<AnalyzerResult>? AnalyzerResults
+        // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
+        if (this.AnalyzerResults != null) {
+            s += ind + "analyzerResults {\n" + this.AnalyzerResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> Hits? Hits
+        // GraphQL -> hits: Hits! (type)
+        if (this.Hits != null) {
+            s += ind + "hits {\n" + this.Hits.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> AnalyzerGroup? AnalyzerGroup
+        // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
+        if (this.AnalyzerGroup == null && Exploration.Includes(parent + ".analyzerGroup"))
         {
-            //      C# -> AnalyzerGroup? AnalyzerGroup
-            // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
-            if (this.AnalyzerGroup == null && Exploration.Includes(parent + ".analyzerGroup"))
-            {
-                this.AnalyzerGroup = new AnalyzerGroup();
-                this.AnalyzerGroup.ApplyExploratoryFragment(parent + ".analyzerGroup");
-            }
-            //      C# -> List<AnalyzerResult>? AnalyzerResults
-            // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
-            if (this.AnalyzerResults == null && Exploration.Includes(parent + ".analyzerResults"))
-            {
-                this.AnalyzerResults = new List<AnalyzerResult>();
-                this.AnalyzerResults.ApplyExploratoryFragment(parent + ".analyzerResults");
-            }
-            //      C# -> Hits? Hits
-            // GraphQL -> hits: Hits! (type)
-            if (this.Hits == null && Exploration.Includes(parent + ".hits"))
-            {
-                this.Hits = new Hits();
-                this.Hits.ApplyExploratoryFragment(parent + ".hits");
-            }
+            this.AnalyzerGroup = new AnalyzerGroup();
+            this.AnalyzerGroup.ApplyExploratoryFieldSpec(parent + ".analyzerGroup");
         }
+        //      C# -> List<AnalyzerResult>? AnalyzerResults
+        // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
+        if (this.AnalyzerResults == null && Exploration.Includes(parent + ".analyzerResults"))
+        {
+            this.AnalyzerResults = new List<AnalyzerResult>();
+            this.AnalyzerResults.ApplyExploratoryFieldSpec(parent + ".analyzerResults");
+        }
+        //      C# -> Hits? Hits
+        // GraphQL -> hits: Hits! (type)
+        if (this.Hits == null && Exploration.Includes(parent + ".hits"))
+        {
+            this.Hits = new Hits();
+            this.Hits.ApplyExploratoryFieldSpec(parent + ".hits");
+        }
+    }
 
 
     #endregion
 
     } // class AnalyzerGroupResult
+    
     #endregion
 
     public static class ListAnalyzerGroupResultExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AnalyzerGroupResult> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AnalyzerGroupResult> list, 
             String parent = "")
         {
-            var item = new AnalyzerGroupResult();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AnalyzerGroupResult());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Library.HelperClasses;
+using RubrikSecurityCloud.Schema.Utils;
 using RubrikSecurityCloud.PowerShell.Private;
 
 namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
@@ -194,7 +194,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         {
 
                             detailFields = new VsphereVm();
-                            detailFields.ApplyExploratoryFragment();
+                            detailFields.ApplyExploratoryFieldSpec();
                             detailFields.Cluster = new Cluster
                             {
                                 Id = "FETCH",

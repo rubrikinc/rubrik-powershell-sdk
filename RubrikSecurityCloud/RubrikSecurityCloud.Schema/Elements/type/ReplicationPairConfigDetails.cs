@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region ReplicationPairConfigDetails
-    public class ReplicationPairConfigDetails: IFragment
+    public class ReplicationPairConfigDetails: BaseType
     {
         #region members
+
         //      C# -> System.String? SetupType
         // GraphQL -> setupType: String! (scalar)
         [JsonProperty("setupType")]
@@ -32,6 +34,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> targetGateway: GatewayInfo (type)
         [JsonProperty("targetGateway")]
         public GatewayInfo? TargetGateway { get; set; }
+
 
         #endregion
 
@@ -55,103 +58,95 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? SetupType
-            // GraphQL -> setupType: String! (scalar)
-            if (this.SetupType != null)
-            {
-                 s += ind + "setupType\n";
-
-            }
-            //      C# -> GatewayInfo? SourceGateway
-            // GraphQL -> sourceGateway: GatewayInfo (type)
-            if (this.SourceGateway != null)
-            {
-                 s += ind + "sourceGateway\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceGateway.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> GatewayInfo? TargetGateway
-            // GraphQL -> targetGateway: GatewayInfo (type)
-            if (this.TargetGateway != null)
-            {
-                 s += ind + "targetGateway\n";
-
-                 s += ind + "{\n" + 
-                 this.TargetGateway.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? SetupType
+        // GraphQL -> setupType: String! (scalar)
+        if (this.SetupType != null) {
+            s += ind + "setupType\n" ;
         }
+        //      C# -> GatewayInfo? SourceGateway
+        // GraphQL -> sourceGateway: GatewayInfo (type)
+        if (this.SourceGateway != null) {
+            s += ind + "sourceGateway {\n" + this.SourceGateway.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> GatewayInfo? TargetGateway
+        // GraphQL -> targetGateway: GatewayInfo (type)
+        if (this.TargetGateway != null) {
+            s += ind + "targetGateway {\n" + this.TargetGateway.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? SetupType
+        // GraphQL -> setupType: String! (scalar)
+        if (this.SetupType == null && Exploration.Includes(parent + ".setupType", true))
         {
-            //      C# -> System.String? SetupType
-            // GraphQL -> setupType: String! (scalar)
-            if (this.SetupType == null && Exploration.Includes(parent + ".setupType$"))
-            {
-                this.SetupType = new System.String("FETCH");
-            }
-            //      C# -> GatewayInfo? SourceGateway
-            // GraphQL -> sourceGateway: GatewayInfo (type)
-            if (this.SourceGateway == null && Exploration.Includes(parent + ".sourceGateway"))
-            {
-                this.SourceGateway = new GatewayInfo();
-                this.SourceGateway.ApplyExploratoryFragment(parent + ".sourceGateway");
-            }
-            //      C# -> GatewayInfo? TargetGateway
-            // GraphQL -> targetGateway: GatewayInfo (type)
-            if (this.TargetGateway == null && Exploration.Includes(parent + ".targetGateway"))
-            {
-                this.TargetGateway = new GatewayInfo();
-                this.TargetGateway.ApplyExploratoryFragment(parent + ".targetGateway");
-            }
+            this.SetupType = new System.String("FETCH");
         }
+        //      C# -> GatewayInfo? SourceGateway
+        // GraphQL -> sourceGateway: GatewayInfo (type)
+        if (this.SourceGateway == null && Exploration.Includes(parent + ".sourceGateway"))
+        {
+            this.SourceGateway = new GatewayInfo();
+            this.SourceGateway.ApplyExploratoryFieldSpec(parent + ".sourceGateway");
+        }
+        //      C# -> GatewayInfo? TargetGateway
+        // GraphQL -> targetGateway: GatewayInfo (type)
+        if (this.TargetGateway == null && Exploration.Includes(parent + ".targetGateway"))
+        {
+            this.TargetGateway = new GatewayInfo();
+            this.TargetGateway.ApplyExploratoryFieldSpec(parent + ".targetGateway");
+        }
+    }
 
 
     #endregion
 
     } // class ReplicationPairConfigDetails
+    
     #endregion
 
     public static class ListReplicationPairConfigDetailsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<ReplicationPairConfigDetails> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<ReplicationPairConfigDetails> list, 
             String parent = "")
         {
-            var item = new ReplicationPairConfigDetails();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new ReplicationPairConfigDetails());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

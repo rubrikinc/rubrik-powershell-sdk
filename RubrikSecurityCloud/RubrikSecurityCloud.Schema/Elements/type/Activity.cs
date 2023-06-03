@@ -11,13 +11,35 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region Activity
-    public class Activity: IFragment
+    public class Activity: BaseType
     {
         #region members
+
+        //      C# -> ActivityObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
+        [JsonProperty("objectType")]
+        public ActivityObjectTypeEnum? ObjectType { get; set; }
+
+        //      C# -> ActivitySeverityEnum? Severity
+        // GraphQL -> severity: ActivitySeverityEnum! (enum)
+        [JsonProperty("severity")]
+        public ActivitySeverityEnum? Severity { get; set; }
+
+        //      C# -> ActivityStatusEnum? Status
+        // GraphQL -> status: ActivityStatusEnum! (enum)
+        [JsonProperty("status")]
+        public ActivityStatusEnum? Status { get; set; }
+
+        //      C# -> ActivityTypeEnum? Type
+        // GraphQL -> type: ActivityTypeEnum! (enum)
+        [JsonProperty("type")]
+        public ActivityTypeEnum? Type { get; set; }
+
         //      C# -> System.String? ActivityInfo
         // GraphQL -> activityInfo: String (scalar)
         [JsonProperty("activityInfo")]
@@ -58,31 +80,16 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("activitySeries")]
         public ActivitySeries? ActivitySeries { get; set; }
 
-        //      C# -> ActivityObjectTypeEnum? ObjectType
-        // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
-        [JsonProperty("objectType")]
-        public ActivityObjectTypeEnum? ObjectType { get; set; }
-
-        //      C# -> ActivitySeverityEnum? Severity
-        // GraphQL -> severity: ActivitySeverityEnum! (enum)
-        [JsonProperty("severity")]
-        public ActivitySeverityEnum? Severity { get; set; }
-
-        //      C# -> ActivityStatusEnum? Status
-        // GraphQL -> status: ActivityStatusEnum! (enum)
-        [JsonProperty("status")]
-        public ActivityStatusEnum? Status { get; set; }
-
-        //      C# -> ActivityTypeEnum? Type
-        // GraphQL -> type: ActivityTypeEnum! (enum)
-        [JsonProperty("type")]
-        public ActivityTypeEnum? Type { get; set; }
 
         #endregion
 
     #region methods
 
     public Activity Set(
+        ActivityObjectTypeEnum? ObjectType = null,
+        ActivitySeverityEnum? Severity = null,
+        ActivityStatusEnum? Status = null,
+        ActivityTypeEnum? Type = null,
         System.String? ActivityInfo = null,
         System.String? ClusterId = null,
         System.String? Id = null,
@@ -90,13 +97,21 @@ namespace Rubrik.SecurityCloud.Types
         System.String? ObjectId = null,
         System.String? Progress = null,
         DateTime? Time = null,
-        ActivitySeries? ActivitySeries = null,
-        ActivityObjectTypeEnum? ObjectType = null,
-        ActivitySeverityEnum? Severity = null,
-        ActivityStatusEnum? Status = null,
-        ActivityTypeEnum? Type = null
+        ActivitySeries? ActivitySeries = null
     ) 
     {
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
+        }
+        if ( Severity != null ) {
+            this.Severity = Severity;
+        }
+        if ( Status != null ) {
+            this.Status = Status;
+        }
+        if ( Type != null ) {
+            this.Type = Type;
+        }
         if ( ActivityInfo != null ) {
             this.ActivityInfo = ActivityInfo;
         }
@@ -121,231 +136,196 @@ namespace Rubrik.SecurityCloud.Types
         if ( ActivitySeries != null ) {
             this.ActivitySeries = ActivitySeries;
         }
-        if ( ObjectType != null ) {
-            this.ObjectType = ObjectType;
-        }
-        if ( Severity != null ) {
-            this.Severity = Severity;
-        }
-        if ( Status != null ) {
-            this.Status = Status;
-        }
-        if ( Type != null ) {
-            this.Type = Type;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? ActivityInfo
-            // GraphQL -> activityInfo: String (scalar)
-            if (this.ActivityInfo != null)
-            {
-                 s += ind + "activityInfo\n";
-
-            }
-            //      C# -> System.String? ClusterId
-            // GraphQL -> clusterId: UUID! (scalar)
-            if (this.ClusterId != null)
-            {
-                 s += ind + "clusterId\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: ID! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.String? Message
-            // GraphQL -> message: String! (scalar)
-            if (this.Message != null)
-            {
-                 s += ind + "message\n";
-
-            }
-            //      C# -> System.String? ObjectId
-            // GraphQL -> objectId: String! (scalar)
-            if (this.ObjectId != null)
-            {
-                 s += ind + "objectId\n";
-
-            }
-            //      C# -> System.String? Progress
-            // GraphQL -> progress: String (scalar)
-            if (this.Progress != null)
-            {
-                 s += ind + "progress\n";
-
-            }
-            //      C# -> DateTime? Time
-            // GraphQL -> time: DateTime! (scalar)
-            if (this.Time != null)
-            {
-                 s += ind + "time\n";
-
-            }
-            //      C# -> ActivitySeries? ActivitySeries
-            // GraphQL -> activitySeries: ActivitySeries! (type)
-            if (this.ActivitySeries != null)
-            {
-                 s += ind + "activitySeries\n";
-
-                 s += ind + "{\n" + 
-                 this.ActivitySeries.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> ActivityObjectTypeEnum? ObjectType
-            // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
-            if (this.ObjectType != null)
-            {
-                 s += ind + "objectType\n";
-
-            }
-            //      C# -> ActivitySeverityEnum? Severity
-            // GraphQL -> severity: ActivitySeverityEnum! (enum)
-            if (this.Severity != null)
-            {
-                 s += ind + "severity\n";
-
-            }
-            //      C# -> ActivityStatusEnum? Status
-            // GraphQL -> status: ActivityStatusEnum! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            //      C# -> ActivityTypeEnum? Type
-            // GraphQL -> type: ActivityTypeEnum! (enum)
-            if (this.Type != null)
-            {
-                 s += ind + "type\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> ActivityObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
+        if (this.ObjectType != null) {
+            s += ind + "objectType\n" ;
         }
+        //      C# -> ActivitySeverityEnum? Severity
+        // GraphQL -> severity: ActivitySeverityEnum! (enum)
+        if (this.Severity != null) {
+            s += ind + "severity\n" ;
+        }
+        //      C# -> ActivityStatusEnum? Status
+        // GraphQL -> status: ActivityStatusEnum! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
+        }
+        //      C# -> ActivityTypeEnum? Type
+        // GraphQL -> type: ActivityTypeEnum! (enum)
+        if (this.Type != null) {
+            s += ind + "type\n" ;
+        }
+        //      C# -> System.String? ActivityInfo
+        // GraphQL -> activityInfo: String (scalar)
+        if (this.ActivityInfo != null) {
+            s += ind + "activityInfo\n" ;
+        }
+        //      C# -> System.String? ClusterId
+        // GraphQL -> clusterId: UUID! (scalar)
+        if (this.ClusterId != null) {
+            s += ind + "clusterId\n" ;
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: ID! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        if (this.Message != null) {
+            s += ind + "message\n" ;
+        }
+        //      C# -> System.String? ObjectId
+        // GraphQL -> objectId: String! (scalar)
+        if (this.ObjectId != null) {
+            s += ind + "objectId\n" ;
+        }
+        //      C# -> System.String? Progress
+        // GraphQL -> progress: String (scalar)
+        if (this.Progress != null) {
+            s += ind + "progress\n" ;
+        }
+        //      C# -> DateTime? Time
+        // GraphQL -> time: DateTime! (scalar)
+        if (this.Time != null) {
+            s += ind + "time\n" ;
+        }
+        //      C# -> ActivitySeries? ActivitySeries
+        // GraphQL -> activitySeries: ActivitySeries! (type)
+        if (this.ActivitySeries != null) {
+            s += ind + "activitySeries {\n" + this.ActivitySeries.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> ActivityObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
+        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
         {
-            //      C# -> System.String? ActivityInfo
-            // GraphQL -> activityInfo: String (scalar)
-            if (this.ActivityInfo == null && Exploration.Includes(parent + ".activityInfo$"))
-            {
-                this.ActivityInfo = new System.String("FETCH");
-            }
-            //      C# -> System.String? ClusterId
-            // GraphQL -> clusterId: UUID! (scalar)
-            if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId$"))
-            {
-                this.ClusterId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: ID! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.String? Message
-            // GraphQL -> message: String! (scalar)
-            if (this.Message == null && Exploration.Includes(parent + ".message$"))
-            {
-                this.Message = new System.String("FETCH");
-            }
-            //      C# -> System.String? ObjectId
-            // GraphQL -> objectId: String! (scalar)
-            if (this.ObjectId == null && Exploration.Includes(parent + ".objectId$"))
-            {
-                this.ObjectId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Progress
-            // GraphQL -> progress: String (scalar)
-            if (this.Progress == null && Exploration.Includes(parent + ".progress$"))
-            {
-                this.Progress = new System.String("FETCH");
-            }
-            //      C# -> DateTime? Time
-            // GraphQL -> time: DateTime! (scalar)
-            if (this.Time == null && Exploration.Includes(parent + ".time$"))
-            {
-                this.Time = new DateTime();
-            }
-            //      C# -> ActivitySeries? ActivitySeries
-            // GraphQL -> activitySeries: ActivitySeries! (type)
-            if (this.ActivitySeries == null && Exploration.Includes(parent + ".activitySeries"))
-            {
-                this.ActivitySeries = new ActivitySeries();
-                this.ActivitySeries.ApplyExploratoryFragment(parent + ".activitySeries");
-            }
-            //      C# -> ActivityObjectTypeEnum? ObjectType
-            // GraphQL -> objectType: ActivityObjectTypeEnum! (enum)
-            if (this.ObjectType == null && Exploration.Includes(parent + ".objectType$"))
-            {
-                this.ObjectType = new ActivityObjectTypeEnum();
-            }
-            //      C# -> ActivitySeverityEnum? Severity
-            // GraphQL -> severity: ActivitySeverityEnum! (enum)
-            if (this.Severity == null && Exploration.Includes(parent + ".severity$"))
-            {
-                this.Severity = new ActivitySeverityEnum();
-            }
-            //      C# -> ActivityStatusEnum? Status
-            // GraphQL -> status: ActivityStatusEnum! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new ActivityStatusEnum();
-            }
-            //      C# -> ActivityTypeEnum? Type
-            // GraphQL -> type: ActivityTypeEnum! (enum)
-            if (this.Type == null && Exploration.Includes(parent + ".type$"))
-            {
-                this.Type = new ActivityTypeEnum();
-            }
+            this.ObjectType = new ActivityObjectTypeEnum();
         }
+        //      C# -> ActivitySeverityEnum? Severity
+        // GraphQL -> severity: ActivitySeverityEnum! (enum)
+        if (this.Severity == null && Exploration.Includes(parent + ".severity", true))
+        {
+            this.Severity = new ActivitySeverityEnum();
+        }
+        //      C# -> ActivityStatusEnum? Status
+        // GraphQL -> status: ActivityStatusEnum! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        {
+            this.Status = new ActivityStatusEnum();
+        }
+        //      C# -> ActivityTypeEnum? Type
+        // GraphQL -> type: ActivityTypeEnum! (enum)
+        if (this.Type == null && Exploration.Includes(parent + ".type", true))
+        {
+            this.Type = new ActivityTypeEnum();
+        }
+        //      C# -> System.String? ActivityInfo
+        // GraphQL -> activityInfo: String (scalar)
+        if (this.ActivityInfo == null && Exploration.Includes(parent + ".activityInfo", true))
+        {
+            this.ActivityInfo = new System.String("FETCH");
+        }
+        //      C# -> System.String? ClusterId
+        // GraphQL -> clusterId: UUID! (scalar)
+        if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
+        {
+            this.ClusterId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Id
+        // GraphQL -> id: ID! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.String? Message
+        // GraphQL -> message: String! (scalar)
+        if (this.Message == null && Exploration.Includes(parent + ".message", true))
+        {
+            this.Message = new System.String("FETCH");
+        }
+        //      C# -> System.String? ObjectId
+        // GraphQL -> objectId: String! (scalar)
+        if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
+        {
+            this.ObjectId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Progress
+        // GraphQL -> progress: String (scalar)
+        if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
+        {
+            this.Progress = new System.String("FETCH");
+        }
+        //      C# -> DateTime? Time
+        // GraphQL -> time: DateTime! (scalar)
+        if (this.Time == null && Exploration.Includes(parent + ".time", true))
+        {
+            this.Time = new DateTime();
+        }
+        //      C# -> ActivitySeries? ActivitySeries
+        // GraphQL -> activitySeries: ActivitySeries! (type)
+        if (this.ActivitySeries == null && Exploration.Includes(parent + ".activitySeries"))
+        {
+            this.ActivitySeries = new ActivitySeries();
+            this.ActivitySeries.ApplyExploratoryFieldSpec(parent + ".activitySeries");
+        }
+    }
 
 
     #endregion
 
     } // class Activity
+    
     #endregion
 
     public static class ListActivityExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<Activity> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<Activity> list, 
             String parent = "")
         {
-            var item = new Activity();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new Activity());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

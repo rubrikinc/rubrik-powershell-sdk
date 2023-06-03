@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
@@ -52,6 +53,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstanceInput (input)
         [JsonProperty("analyzerRiskInstance")]
         public AnalyzerRiskInstanceInput? AnalyzerRiskInstance { get; set; }
+
+        //      C# -> RiskLevelType? Risk
+        // GraphQL -> risk: RiskLevelType (enum)
+        [JsonProperty("risk")]
+        public RiskLevelType? Risk { get; set; }
 
 
         #endregion

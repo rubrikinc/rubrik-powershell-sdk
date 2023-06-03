@@ -11,117 +11,120 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region PendingSnapshotDeletion
-    public class PendingSnapshotDeletion: IFragment
+    public class PendingSnapshotDeletion: BaseType
     {
         #region members
-        //      C# -> System.String? SnapshotFid
-        // GraphQL -> snapshotFid: UUID! (scalar)
-        [JsonProperty("snapshotFid")]
-        public System.String? SnapshotFid { get; set; }
 
         //      C# -> PendingActionStatus? Status
         // GraphQL -> status: PendingActionStatus! (enum)
         [JsonProperty("status")]
         public PendingActionStatus? Status { get; set; }
 
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: UUID! (scalar)
+        [JsonProperty("snapshotFid")]
+        public System.String? SnapshotFid { get; set; }
+
+
         #endregion
 
     #region methods
 
     public PendingSnapshotDeletion Set(
-        System.String? SnapshotFid = null,
-        PendingActionStatus? Status = null
+        PendingActionStatus? Status = null,
+        System.String? SnapshotFid = null
     ) 
     {
-        if ( SnapshotFid != null ) {
-            this.SnapshotFid = SnapshotFid;
-        }
         if ( Status != null ) {
             this.Status = Status;
+        }
+        if ( SnapshotFid != null ) {
+            this.SnapshotFid = SnapshotFid;
         }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? SnapshotFid
-            // GraphQL -> snapshotFid: UUID! (scalar)
-            if (this.SnapshotFid != null)
-            {
-                 s += ind + "snapshotFid\n";
-
-            }
-            //      C# -> PendingActionStatus? Status
-            // GraphQL -> status: PendingActionStatus! (enum)
-            if (this.Status != null)
-            {
-                 s += ind + "status\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> PendingActionStatus? Status
+        // GraphQL -> status: PendingActionStatus! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: UUID! (scalar)
+        if (this.SnapshotFid != null) {
+            s += ind + "snapshotFid\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> PendingActionStatus? Status
+        // GraphQL -> status: PendingActionStatus! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            //      C# -> System.String? SnapshotFid
-            // GraphQL -> snapshotFid: UUID! (scalar)
-            if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid$"))
-            {
-                this.SnapshotFid = new System.String("FETCH");
-            }
-            //      C# -> PendingActionStatus? Status
-            // GraphQL -> status: PendingActionStatus! (enum)
-            if (this.Status == null && Exploration.Includes(parent + ".status$"))
-            {
-                this.Status = new PendingActionStatus();
-            }
+            this.Status = new PendingActionStatus();
         }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: UUID! (scalar)
+        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        {
+            this.SnapshotFid = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class PendingSnapshotDeletion
+    
     #endregion
 
     public static class ListPendingSnapshotDeletionExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<PendingSnapshotDeletion> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<PendingSnapshotDeletion> list, 
             String parent = "")
         {
-            var item = new PendingSnapshotDeletion();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new PendingSnapshotDeletion());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

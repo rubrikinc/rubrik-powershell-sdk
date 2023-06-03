@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region EffectiveSlaHolder
-    public class EffectiveSlaHolder: IFragment
+    public class EffectiveSlaHolder: BaseType
     {
         #region members
+
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String! (scalar)
         [JsonProperty("effectiveSlaDomainId")]
@@ -47,6 +49,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
         [JsonProperty("isEffectiveSlaDomainRetentionLocked")]
         public System.Boolean? IsEffectiveSlaDomainRetentionLocked { get; set; }
+
 
         #endregion
 
@@ -82,134 +85,126 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? EffectiveSlaDomainId
-            // GraphQL -> effectiveSlaDomainId: String! (scalar)
-            if (this.EffectiveSlaDomainId != null)
-            {
-                 s += ind + "effectiveSlaDomainId\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaDomainName
-            // GraphQL -> effectiveSlaDomainName: String! (scalar)
-            if (this.EffectiveSlaDomainName != null)
-            {
-                 s += ind + "effectiveSlaDomainName\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
-            // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-            if (this.EffectiveSlaDomainPolarisManagedId != null)
-            {
-                 s += ind + "effectiveSlaDomainPolarisManagedId\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaSourceObjectId
-            // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
-            if (this.EffectiveSlaSourceObjectId != null)
-            {
-                 s += ind + "effectiveSlaSourceObjectId\n";
-
-            }
-            //      C# -> System.String? EffectiveSlaSourceObjectName
-            // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
-            if (this.EffectiveSlaSourceObjectName != null)
-            {
-                 s += ind + "effectiveSlaSourceObjectName\n";
-
-            }
-            //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
-            // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
-            if (this.IsEffectiveSlaDomainRetentionLocked != null)
-            {
-                 s += ind + "isEffectiveSlaDomainRetentionLocked\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? EffectiveSlaDomainId
+        // GraphQL -> effectiveSlaDomainId: String! (scalar)
+        if (this.EffectiveSlaDomainId != null) {
+            s += ind + "effectiveSlaDomainId\n" ;
         }
+        //      C# -> System.String? EffectiveSlaDomainName
+        // GraphQL -> effectiveSlaDomainName: String! (scalar)
+        if (this.EffectiveSlaDomainName != null) {
+            s += ind + "effectiveSlaDomainName\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
+        // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
+        if (this.EffectiveSlaDomainPolarisManagedId != null) {
+            s += ind + "effectiveSlaDomainPolarisManagedId\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaSourceObjectId
+        // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
+        if (this.EffectiveSlaSourceObjectId != null) {
+            s += ind + "effectiveSlaSourceObjectId\n" ;
+        }
+        //      C# -> System.String? EffectiveSlaSourceObjectName
+        // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
+        if (this.EffectiveSlaSourceObjectName != null) {
+            s += ind + "effectiveSlaSourceObjectName\n" ;
+        }
+        //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
+        // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
+        if (this.IsEffectiveSlaDomainRetentionLocked != null) {
+            s += ind + "isEffectiveSlaDomainRetentionLocked\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? EffectiveSlaDomainId
+        // GraphQL -> effectiveSlaDomainId: String! (scalar)
+        if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
         {
-            //      C# -> System.String? EffectiveSlaDomainId
-            // GraphQL -> effectiveSlaDomainId: String! (scalar)
-            if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId$"))
-            {
-                this.EffectiveSlaDomainId = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaDomainName
-            // GraphQL -> effectiveSlaDomainName: String! (scalar)
-            if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName$"))
-            {
-                this.EffectiveSlaDomainName = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
-            // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
-            if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId$"))
-            {
-                this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaSourceObjectId
-            // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
-            if (this.EffectiveSlaSourceObjectId == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectId$"))
-            {
-                this.EffectiveSlaSourceObjectId = new System.String("FETCH");
-            }
-            //      C# -> System.String? EffectiveSlaSourceObjectName
-            // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
-            if (this.EffectiveSlaSourceObjectName == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectName$"))
-            {
-                this.EffectiveSlaSourceObjectName = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
-            // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
-            if (this.IsEffectiveSlaDomainRetentionLocked == null && Exploration.Includes(parent + ".isEffectiveSlaDomainRetentionLocked$"))
-            {
-                this.IsEffectiveSlaDomainRetentionLocked = new System.Boolean();
-            }
+            this.EffectiveSlaDomainId = new System.String("FETCH");
         }
+        //      C# -> System.String? EffectiveSlaDomainName
+        // GraphQL -> effectiveSlaDomainName: String! (scalar)
+        if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
+        {
+            this.EffectiveSlaDomainName = new System.String("FETCH");
+        }
+        //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
+        // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
+        if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
+        {
+            this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
+        }
+        //      C# -> System.String? EffectiveSlaSourceObjectId
+        // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
+        if (this.EffectiveSlaSourceObjectId == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectId", true))
+        {
+            this.EffectiveSlaSourceObjectId = new System.String("FETCH");
+        }
+        //      C# -> System.String? EffectiveSlaSourceObjectName
+        // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
+        if (this.EffectiveSlaSourceObjectName == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectName", true))
+        {
+            this.EffectiveSlaSourceObjectName = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
+        // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
+        if (this.IsEffectiveSlaDomainRetentionLocked == null && Exploration.Includes(parent + ".isEffectiveSlaDomainRetentionLocked", true))
+        {
+            this.IsEffectiveSlaDomainRetentionLocked = true;
+        }
+    }
 
 
     #endregion
 
     } // class EffectiveSlaHolder
+    
     #endregion
 
     public static class ListEffectiveSlaHolderExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<EffectiveSlaHolder> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<EffectiveSlaHolder> list, 
             String parent = "")
         {
-            var item = new EffectiveSlaHolder();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new EffectiveSlaHolder());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

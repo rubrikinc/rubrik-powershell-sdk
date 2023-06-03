@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region NutanixLiveMount
-    public class NutanixLiveMount: IFragment
+    public class NutanixLiveMount: BaseType
     {
         #region members
+
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
@@ -153,6 +155,7 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("sourceSnapshot")]
         public CdmSnapshot? SourceSnapshot { get; set; }
 
+
         #endregion
 
     #region methods
@@ -271,415 +274,359 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId != null)
-            {
-                 s += ind + "cdmId\n";
-
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: UUID! (scalar)
-            if (this.Id != null)
-            {
-                 s += ind + "id\n";
-
-            }
-            //      C# -> System.Boolean? IsMigrationDisabled
-            // GraphQL -> isMigrationDisabled: Boolean! (scalar)
-            if (this.IsMigrationDisabled != null)
-            {
-                 s += ind + "isMigrationDisabled\n";
-
-            }
-            //      C# -> System.Boolean? IsVmReady
-            // GraphQL -> isVmReady: Boolean! (scalar)
-            if (this.IsVmReady != null)
-            {
-                 s += ind + "isVmReady\n";
-
-            }
-            //      C# -> System.String? MigrationJobInstanceId
-            // GraphQL -> migrationJobInstanceId: String (scalar)
-            if (this.MigrationJobInstanceId != null)
-            {
-                 s += ind + "migrationJobInstanceId\n";
-
-            }
-            //      C# -> System.String? MigrationJobStatus
-            // GraphQL -> migrationJobStatus: String (scalar)
-            if (this.MigrationJobStatus != null)
-            {
-                 s += ind + "migrationJobStatus\n";
-
-            }
-            //      C# -> System.String? MountJobInstanceId
-            // GraphQL -> mountJobInstanceId: String! (scalar)
-            if (this.MountJobInstanceId != null)
-            {
-                 s += ind + "mountJobInstanceId\n";
-
-            }
-            //      C# -> System.String? MountSpec
-            // GraphQL -> mountSpec: String! (scalar)
-            if (this.MountSpec != null)
-            {
-                 s += ind + "mountSpec\n";
-
-            }
-            //      C# -> DateTime? MountedDate
-            // GraphQL -> mountedDate: DateTime (scalar)
-            if (this.MountedDate != null)
-            {
-                 s += ind + "mountedDate\n";
-
-            }
-            //      C# -> System.String? MountedVmFid
-            // GraphQL -> mountedVmFid: String (scalar)
-            if (this.MountedVmFid != null)
-            {
-                 s += ind + "mountedVmFid\n";
-
-            }
-            //      C# -> System.String? MountedVmId
-            // GraphQL -> mountedVmId: String (scalar)
-            if (this.MountedVmId != null)
-            {
-                 s += ind + "mountedVmId\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? NutanixClusterFid
-            // GraphQL -> nutanixClusterFid: String! (scalar)
-            if (this.NutanixClusterFid != null)
-            {
-                 s += ind + "nutanixClusterFid\n";
-
-            }
-            //      C# -> System.String? NutanixClusterId
-            // GraphQL -> nutanixClusterId: String! (scalar)
-            if (this.NutanixClusterId != null)
-            {
-                 s += ind + "nutanixClusterId\n";
-
-            }
-            //      C# -> System.String? NutanixClusterName
-            // GraphQL -> nutanixClusterName: String! (scalar)
-            if (this.NutanixClusterName != null)
-            {
-                 s += ind + "nutanixClusterName\n";
-
-            }
-            //      C# -> System.String? OrganizationId
-            // GraphQL -> organizationId: String! (scalar)
-            if (this.OrganizationId != null)
-            {
-                 s += ind + "organizationId\n";
-
-            }
-            //      C# -> System.String? OwnerId
-            // GraphQL -> ownerId: String! (scalar)
-            if (this.OwnerId != null)
-            {
-                 s += ind + "ownerId\n";
-
-            }
-            //      C# -> System.String? PowerStatus
-            // GraphQL -> powerStatus: String! (scalar)
-            if (this.PowerStatus != null)
-            {
-                 s += ind + "powerStatus\n";
-
-            }
-            //      C# -> DateTime? SnapshotDate
-            // GraphQL -> snapshotDate: DateTime (scalar)
-            if (this.SnapshotDate != null)
-            {
-                 s += ind + "snapshotDate\n";
-
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId != null)
-            {
-                 s += ind + "snapshotId\n";
-
-            }
-            //      C# -> System.String? SourceVmFid
-            // GraphQL -> sourceVmFid: String! (scalar)
-            if (this.SourceVmFid != null)
-            {
-                 s += ind + "sourceVmFid\n";
-
-            }
-            //      C# -> System.String? SourceVmId
-            // GraphQL -> sourceVmId: String! (scalar)
-            if (this.SourceVmId != null)
-            {
-                 s += ind + "sourceVmId\n";
-
-            }
-            //      C# -> System.String? SourceVmName
-            // GraphQL -> sourceVmName: String! (scalar)
-            if (this.SourceVmName != null)
-            {
-                 s += ind + "sourceVmName\n";
-
-            }
-            //      C# -> System.String? StorageContainerName
-            // GraphQL -> storageContainerName: String (scalar)
-            if (this.StorageContainerName != null)
-            {
-                 s += ind + "storageContainerName\n";
-
-            }
-            //      C# -> System.String? UnmountJobInstanceId
-            // GraphQL -> unmountJobInstanceId: String! (scalar)
-            if (this.UnmountJobInstanceId != null)
-            {
-                 s += ind + "unmountJobInstanceId\n";
-
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster != null)
-            {
-                 s += ind + "cluster\n";
-
-                 s += ind + "{\n" + 
-                 this.Cluster.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> CdmSnapshot? SourceSnapshot
-            // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-            if (this.SourceSnapshot != null)
-            {
-                 s += ind + "sourceSnapshot\n";
-
-                 s += ind + "{\n" + 
-                 this.SourceSnapshot.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId != null) {
+            s += ind + "cdmId\n" ;
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        if (this.Id != null) {
+            s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsMigrationDisabled
+        // GraphQL -> isMigrationDisabled: Boolean! (scalar)
+        if (this.IsMigrationDisabled != null) {
+            s += ind + "isMigrationDisabled\n" ;
+        }
+        //      C# -> System.Boolean? IsVmReady
+        // GraphQL -> isVmReady: Boolean! (scalar)
+        if (this.IsVmReady != null) {
+            s += ind + "isVmReady\n" ;
+        }
+        //      C# -> System.String? MigrationJobInstanceId
+        // GraphQL -> migrationJobInstanceId: String (scalar)
+        if (this.MigrationJobInstanceId != null) {
+            s += ind + "migrationJobInstanceId\n" ;
+        }
+        //      C# -> System.String? MigrationJobStatus
+        // GraphQL -> migrationJobStatus: String (scalar)
+        if (this.MigrationJobStatus != null) {
+            s += ind + "migrationJobStatus\n" ;
+        }
+        //      C# -> System.String? MountJobInstanceId
+        // GraphQL -> mountJobInstanceId: String! (scalar)
+        if (this.MountJobInstanceId != null) {
+            s += ind + "mountJobInstanceId\n" ;
+        }
+        //      C# -> System.String? MountSpec
+        // GraphQL -> mountSpec: String! (scalar)
+        if (this.MountSpec != null) {
+            s += ind + "mountSpec\n" ;
+        }
+        //      C# -> DateTime? MountedDate
+        // GraphQL -> mountedDate: DateTime (scalar)
+        if (this.MountedDate != null) {
+            s += ind + "mountedDate\n" ;
+        }
+        //      C# -> System.String? MountedVmFid
+        // GraphQL -> mountedVmFid: String (scalar)
+        if (this.MountedVmFid != null) {
+            s += ind + "mountedVmFid\n" ;
+        }
+        //      C# -> System.String? MountedVmId
+        // GraphQL -> mountedVmId: String (scalar)
+        if (this.MountedVmId != null) {
+            s += ind + "mountedVmId\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? NutanixClusterFid
+        // GraphQL -> nutanixClusterFid: String! (scalar)
+        if (this.NutanixClusterFid != null) {
+            s += ind + "nutanixClusterFid\n" ;
+        }
+        //      C# -> System.String? NutanixClusterId
+        // GraphQL -> nutanixClusterId: String! (scalar)
+        if (this.NutanixClusterId != null) {
+            s += ind + "nutanixClusterId\n" ;
+        }
+        //      C# -> System.String? NutanixClusterName
+        // GraphQL -> nutanixClusterName: String! (scalar)
+        if (this.NutanixClusterName != null) {
+            s += ind + "nutanixClusterName\n" ;
+        }
+        //      C# -> System.String? OrganizationId
+        // GraphQL -> organizationId: String! (scalar)
+        if (this.OrganizationId != null) {
+            s += ind + "organizationId\n" ;
+        }
+        //      C# -> System.String? OwnerId
+        // GraphQL -> ownerId: String! (scalar)
+        if (this.OwnerId != null) {
+            s += ind + "ownerId\n" ;
+        }
+        //      C# -> System.String? PowerStatus
+        // GraphQL -> powerStatus: String! (scalar)
+        if (this.PowerStatus != null) {
+            s += ind + "powerStatus\n" ;
+        }
+        //      C# -> DateTime? SnapshotDate
+        // GraphQL -> snapshotDate: DateTime (scalar)
+        if (this.SnapshotDate != null) {
+            s += ind + "snapshotDate\n" ;
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId != null) {
+            s += ind + "snapshotId\n" ;
+        }
+        //      C# -> System.String? SourceVmFid
+        // GraphQL -> sourceVmFid: String! (scalar)
+        if (this.SourceVmFid != null) {
+            s += ind + "sourceVmFid\n" ;
+        }
+        //      C# -> System.String? SourceVmId
+        // GraphQL -> sourceVmId: String! (scalar)
+        if (this.SourceVmId != null) {
+            s += ind + "sourceVmId\n" ;
+        }
+        //      C# -> System.String? SourceVmName
+        // GraphQL -> sourceVmName: String! (scalar)
+        if (this.SourceVmName != null) {
+            s += ind + "sourceVmName\n" ;
+        }
+        //      C# -> System.String? StorageContainerName
+        // GraphQL -> storageContainerName: String (scalar)
+        if (this.StorageContainerName != null) {
+            s += ind + "storageContainerName\n" ;
+        }
+        //      C# -> System.String? UnmountJobInstanceId
+        // GraphQL -> unmountJobInstanceId: String! (scalar)
+        if (this.UnmountJobInstanceId != null) {
+            s += ind + "unmountJobInstanceId\n" ;
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster != null) {
+            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CdmSnapshot? SourceSnapshot
+        // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
+        if (this.SourceSnapshot != null) {
+            s += ind + "sourceSnapshot {\n" + this.SourceSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? CdmId
+        // GraphQL -> cdmId: String! (scalar)
+        if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            //      C# -> System.String? CdmId
-            // GraphQL -> cdmId: String! (scalar)
-            if (this.CdmId == null && Exploration.Includes(parent + ".cdmId$"))
-            {
-                this.CdmId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Id
-            // GraphQL -> id: UUID! (scalar)
-            if (this.Id == null && Exploration.Includes(parent + ".id$"))
-            {
-                this.Id = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsMigrationDisabled
-            // GraphQL -> isMigrationDisabled: Boolean! (scalar)
-            if (this.IsMigrationDisabled == null && Exploration.Includes(parent + ".isMigrationDisabled$"))
-            {
-                this.IsMigrationDisabled = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsVmReady
-            // GraphQL -> isVmReady: Boolean! (scalar)
-            if (this.IsVmReady == null && Exploration.Includes(parent + ".isVmReady$"))
-            {
-                this.IsVmReady = new System.Boolean();
-            }
-            //      C# -> System.String? MigrationJobInstanceId
-            // GraphQL -> migrationJobInstanceId: String (scalar)
-            if (this.MigrationJobInstanceId == null && Exploration.Includes(parent + ".migrationJobInstanceId$"))
-            {
-                this.MigrationJobInstanceId = new System.String("FETCH");
-            }
-            //      C# -> System.String? MigrationJobStatus
-            // GraphQL -> migrationJobStatus: String (scalar)
-            if (this.MigrationJobStatus == null && Exploration.Includes(parent + ".migrationJobStatus$"))
-            {
-                this.MigrationJobStatus = new System.String("FETCH");
-            }
-            //      C# -> System.String? MountJobInstanceId
-            // GraphQL -> mountJobInstanceId: String! (scalar)
-            if (this.MountJobInstanceId == null && Exploration.Includes(parent + ".mountJobInstanceId$"))
-            {
-                this.MountJobInstanceId = new System.String("FETCH");
-            }
-            //      C# -> System.String? MountSpec
-            // GraphQL -> mountSpec: String! (scalar)
-            if (this.MountSpec == null && Exploration.Includes(parent + ".mountSpec$"))
-            {
-                this.MountSpec = new System.String("FETCH");
-            }
-            //      C# -> DateTime? MountedDate
-            // GraphQL -> mountedDate: DateTime (scalar)
-            if (this.MountedDate == null && Exploration.Includes(parent + ".mountedDate$"))
-            {
-                this.MountedDate = new DateTime();
-            }
-            //      C# -> System.String? MountedVmFid
-            // GraphQL -> mountedVmFid: String (scalar)
-            if (this.MountedVmFid == null && Exploration.Includes(parent + ".mountedVmFid$"))
-            {
-                this.MountedVmFid = new System.String("FETCH");
-            }
-            //      C# -> System.String? MountedVmId
-            // GraphQL -> mountedVmId: String (scalar)
-            if (this.MountedVmId == null && Exploration.Includes(parent + ".mountedVmId$"))
-            {
-                this.MountedVmId = new System.String("FETCH");
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? NutanixClusterFid
-            // GraphQL -> nutanixClusterFid: String! (scalar)
-            if (this.NutanixClusterFid == null && Exploration.Includes(parent + ".nutanixClusterFid$"))
-            {
-                this.NutanixClusterFid = new System.String("FETCH");
-            }
-            //      C# -> System.String? NutanixClusterId
-            // GraphQL -> nutanixClusterId: String! (scalar)
-            if (this.NutanixClusterId == null && Exploration.Includes(parent + ".nutanixClusterId$"))
-            {
-                this.NutanixClusterId = new System.String("FETCH");
-            }
-            //      C# -> System.String? NutanixClusterName
-            // GraphQL -> nutanixClusterName: String! (scalar)
-            if (this.NutanixClusterName == null && Exploration.Includes(parent + ".nutanixClusterName$"))
-            {
-                this.NutanixClusterName = new System.String("FETCH");
-            }
-            //      C# -> System.String? OrganizationId
-            // GraphQL -> organizationId: String! (scalar)
-            if (this.OrganizationId == null && Exploration.Includes(parent + ".organizationId$"))
-            {
-                this.OrganizationId = new System.String("FETCH");
-            }
-            //      C# -> System.String? OwnerId
-            // GraphQL -> ownerId: String! (scalar)
-            if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId$"))
-            {
-                this.OwnerId = new System.String("FETCH");
-            }
-            //      C# -> System.String? PowerStatus
-            // GraphQL -> powerStatus: String! (scalar)
-            if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus$"))
-            {
-                this.PowerStatus = new System.String("FETCH");
-            }
-            //      C# -> DateTime? SnapshotDate
-            // GraphQL -> snapshotDate: DateTime (scalar)
-            if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate$"))
-            {
-                this.SnapshotDate = new DateTime();
-            }
-            //      C# -> System.String? SnapshotId
-            // GraphQL -> snapshotId: String! (scalar)
-            if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId$"))
-            {
-                this.SnapshotId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceVmFid
-            // GraphQL -> sourceVmFid: String! (scalar)
-            if (this.SourceVmFid == null && Exploration.Includes(parent + ".sourceVmFid$"))
-            {
-                this.SourceVmFid = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceVmId
-            // GraphQL -> sourceVmId: String! (scalar)
-            if (this.SourceVmId == null && Exploration.Includes(parent + ".sourceVmId$"))
-            {
-                this.SourceVmId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SourceVmName
-            // GraphQL -> sourceVmName: String! (scalar)
-            if (this.SourceVmName == null && Exploration.Includes(parent + ".sourceVmName$"))
-            {
-                this.SourceVmName = new System.String("FETCH");
-            }
-            //      C# -> System.String? StorageContainerName
-            // GraphQL -> storageContainerName: String (scalar)
-            if (this.StorageContainerName == null && Exploration.Includes(parent + ".storageContainerName$"))
-            {
-                this.StorageContainerName = new System.String("FETCH");
-            }
-            //      C# -> System.String? UnmountJobInstanceId
-            // GraphQL -> unmountJobInstanceId: String! (scalar)
-            if (this.UnmountJobInstanceId == null && Exploration.Includes(parent + ".unmountJobInstanceId$"))
-            {
-                this.UnmountJobInstanceId = new System.String("FETCH");
-            }
-            //      C# -> Cluster? Cluster
-            // GraphQL -> cluster: Cluster! (type)
-            if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
-            {
-                this.Cluster = new Cluster();
-                this.Cluster.ApplyExploratoryFragment(parent + ".cluster");
-            }
-            //      C# -> CdmSnapshot? SourceSnapshot
-            // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
-            if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
-            {
-                this.SourceSnapshot = new CdmSnapshot();
-                this.SourceSnapshot.ApplyExploratoryFragment(parent + ".sourceSnapshot");
-            }
+            this.CdmId = new System.String("FETCH");
         }
+        //      C# -> System.String? Id
+        // GraphQL -> id: UUID! (scalar)
+        if (this.Id == null && Exploration.Includes(parent + ".id", true))
+        {
+            this.Id = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsMigrationDisabled
+        // GraphQL -> isMigrationDisabled: Boolean! (scalar)
+        if (this.IsMigrationDisabled == null && Exploration.Includes(parent + ".isMigrationDisabled", true))
+        {
+            this.IsMigrationDisabled = true;
+        }
+        //      C# -> System.Boolean? IsVmReady
+        // GraphQL -> isVmReady: Boolean! (scalar)
+        if (this.IsVmReady == null && Exploration.Includes(parent + ".isVmReady", true))
+        {
+            this.IsVmReady = true;
+        }
+        //      C# -> System.String? MigrationJobInstanceId
+        // GraphQL -> migrationJobInstanceId: String (scalar)
+        if (this.MigrationJobInstanceId == null && Exploration.Includes(parent + ".migrationJobInstanceId", true))
+        {
+            this.MigrationJobInstanceId = new System.String("FETCH");
+        }
+        //      C# -> System.String? MigrationJobStatus
+        // GraphQL -> migrationJobStatus: String (scalar)
+        if (this.MigrationJobStatus == null && Exploration.Includes(parent + ".migrationJobStatus", true))
+        {
+            this.MigrationJobStatus = new System.String("FETCH");
+        }
+        //      C# -> System.String? MountJobInstanceId
+        // GraphQL -> mountJobInstanceId: String! (scalar)
+        if (this.MountJobInstanceId == null && Exploration.Includes(parent + ".mountJobInstanceId", true))
+        {
+            this.MountJobInstanceId = new System.String("FETCH");
+        }
+        //      C# -> System.String? MountSpec
+        // GraphQL -> mountSpec: String! (scalar)
+        if (this.MountSpec == null && Exploration.Includes(parent + ".mountSpec", true))
+        {
+            this.MountSpec = new System.String("FETCH");
+        }
+        //      C# -> DateTime? MountedDate
+        // GraphQL -> mountedDate: DateTime (scalar)
+        if (this.MountedDate == null && Exploration.Includes(parent + ".mountedDate", true))
+        {
+            this.MountedDate = new DateTime();
+        }
+        //      C# -> System.String? MountedVmFid
+        // GraphQL -> mountedVmFid: String (scalar)
+        if (this.MountedVmFid == null && Exploration.Includes(parent + ".mountedVmFid", true))
+        {
+            this.MountedVmFid = new System.String("FETCH");
+        }
+        //      C# -> System.String? MountedVmId
+        // GraphQL -> mountedVmId: String (scalar)
+        if (this.MountedVmId == null && Exploration.Includes(parent + ".mountedVmId", true))
+        {
+            this.MountedVmId = new System.String("FETCH");
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? NutanixClusterFid
+        // GraphQL -> nutanixClusterFid: String! (scalar)
+        if (this.NutanixClusterFid == null && Exploration.Includes(parent + ".nutanixClusterFid", true))
+        {
+            this.NutanixClusterFid = new System.String("FETCH");
+        }
+        //      C# -> System.String? NutanixClusterId
+        // GraphQL -> nutanixClusterId: String! (scalar)
+        if (this.NutanixClusterId == null && Exploration.Includes(parent + ".nutanixClusterId", true))
+        {
+            this.NutanixClusterId = new System.String("FETCH");
+        }
+        //      C# -> System.String? NutanixClusterName
+        // GraphQL -> nutanixClusterName: String! (scalar)
+        if (this.NutanixClusterName == null && Exploration.Includes(parent + ".nutanixClusterName", true))
+        {
+            this.NutanixClusterName = new System.String("FETCH");
+        }
+        //      C# -> System.String? OrganizationId
+        // GraphQL -> organizationId: String! (scalar)
+        if (this.OrganizationId == null && Exploration.Includes(parent + ".organizationId", true))
+        {
+            this.OrganizationId = new System.String("FETCH");
+        }
+        //      C# -> System.String? OwnerId
+        // GraphQL -> ownerId: String! (scalar)
+        if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId", true))
+        {
+            this.OwnerId = new System.String("FETCH");
+        }
+        //      C# -> System.String? PowerStatus
+        // GraphQL -> powerStatus: String! (scalar)
+        if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus", true))
+        {
+            this.PowerStatus = new System.String("FETCH");
+        }
+        //      C# -> DateTime? SnapshotDate
+        // GraphQL -> snapshotDate: DateTime (scalar)
+        if (this.SnapshotDate == null && Exploration.Includes(parent + ".snapshotDate", true))
+        {
+            this.SnapshotDate = new DateTime();
+        }
+        //      C# -> System.String? SnapshotId
+        // GraphQL -> snapshotId: String! (scalar)
+        if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
+        {
+            this.SnapshotId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SourceVmFid
+        // GraphQL -> sourceVmFid: String! (scalar)
+        if (this.SourceVmFid == null && Exploration.Includes(parent + ".sourceVmFid", true))
+        {
+            this.SourceVmFid = new System.String("FETCH");
+        }
+        //      C# -> System.String? SourceVmId
+        // GraphQL -> sourceVmId: String! (scalar)
+        if (this.SourceVmId == null && Exploration.Includes(parent + ".sourceVmId", true))
+        {
+            this.SourceVmId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SourceVmName
+        // GraphQL -> sourceVmName: String! (scalar)
+        if (this.SourceVmName == null && Exploration.Includes(parent + ".sourceVmName", true))
+        {
+            this.SourceVmName = new System.String("FETCH");
+        }
+        //      C# -> System.String? StorageContainerName
+        // GraphQL -> storageContainerName: String (scalar)
+        if (this.StorageContainerName == null && Exploration.Includes(parent + ".storageContainerName", true))
+        {
+            this.StorageContainerName = new System.String("FETCH");
+        }
+        //      C# -> System.String? UnmountJobInstanceId
+        // GraphQL -> unmountJobInstanceId: String! (scalar)
+        if (this.UnmountJobInstanceId == null && Exploration.Includes(parent + ".unmountJobInstanceId", true))
+        {
+            this.UnmountJobInstanceId = new System.String("FETCH");
+        }
+        //      C# -> Cluster? Cluster
+        // GraphQL -> cluster: Cluster! (type)
+        if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
+        {
+            this.Cluster = new Cluster();
+            this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> CdmSnapshot? SourceSnapshot
+        // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
+        if (this.SourceSnapshot == null && Exploration.Includes(parent + ".sourceSnapshot"))
+        {
+            this.SourceSnapshot = new CdmSnapshot();
+            this.SourceSnapshot.ApplyExploratoryFieldSpec(parent + ".sourceSnapshot");
+        }
+    }
 
 
     #endregion
 
     } // class NutanixLiveMount
+    
     #endregion
 
     public static class ListNutanixLiveMountExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<NutanixLiveMount> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<NutanixLiveMount> list, 
             String parent = "")
         {
-            var item = new NutanixLiveMount();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new NutanixLiveMount());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

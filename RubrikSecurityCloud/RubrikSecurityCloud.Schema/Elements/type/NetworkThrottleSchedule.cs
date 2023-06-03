@@ -11,13 +11,20 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region NetworkThrottleSchedule
-    public class NetworkThrottleSchedule: IFragment
+    public class NetworkThrottleSchedule: BaseType
     {
         #region members
+
+        //      C# -> List<DayOfWeek>? DaysOfWeek
+        // GraphQL -> daysOfWeek: [DayOfWeek!]! (enum)
+        [JsonProperty("daysOfWeek")]
+        public List<DayOfWeek>? DaysOfWeek { get; set; }
+
         //      C# -> System.Int32? EndHour
         // GraphQL -> endHour: Int! (scalar)
         [JsonProperty("endHour")]
@@ -33,22 +40,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("throttleLimit")]
         public System.Single? ThrottleLimit { get; set; }
 
-        //      C# -> List<DayOfWeek>? DaysOfWeek
-        // GraphQL -> daysOfWeek: [DayOfWeek!]! (enum)
-        [JsonProperty("daysOfWeek")]
-        public List<DayOfWeek>? DaysOfWeek { get; set; }
 
         #endregion
 
     #region methods
 
     public NetworkThrottleSchedule Set(
+        List<DayOfWeek>? DaysOfWeek = null,
         System.Int32? EndHour = null,
         System.Int32? StartHour = null,
-        System.Single? ThrottleLimit = null,
-        List<DayOfWeek>? DaysOfWeek = null
+        System.Single? ThrottleLimit = null
     ) 
     {
+        if ( DaysOfWeek != null ) {
+            this.DaysOfWeek = DaysOfWeek;
+        }
         if ( EndHour != null ) {
             this.EndHour = EndHour;
         }
@@ -58,114 +64,107 @@ namespace Rubrik.SecurityCloud.Types
         if ( ThrottleLimit != null ) {
             this.ThrottleLimit = ThrottleLimit;
         }
-        if ( DaysOfWeek != null ) {
-            this.DaysOfWeek = DaysOfWeek;
-        }
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.Int32? EndHour
-            // GraphQL -> endHour: Int! (scalar)
-            if (this.EndHour != null)
-            {
-                 s += ind + "endHour\n";
-
-            }
-            //      C# -> System.Int32? StartHour
-            // GraphQL -> startHour: Int! (scalar)
-            if (this.StartHour != null)
-            {
-                 s += ind + "startHour\n";
-
-            }
-            //      C# -> System.Single? ThrottleLimit
-            // GraphQL -> throttleLimit: Float! (scalar)
-            if (this.ThrottleLimit != null)
-            {
-                 s += ind + "throttleLimit\n";
-
-            }
-            //      C# -> List<DayOfWeek>? DaysOfWeek
-            // GraphQL -> daysOfWeek: [DayOfWeek!]! (enum)
-            if (this.DaysOfWeek != null)
-            {
-                 s += ind + "daysOfWeek\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> List<DayOfWeek>? DaysOfWeek
+        // GraphQL -> daysOfWeek: [DayOfWeek!]! (enum)
+        if (this.DaysOfWeek != null) {
+            s += ind + "daysOfWeek\n" ;
         }
+        //      C# -> System.Int32? EndHour
+        // GraphQL -> endHour: Int! (scalar)
+        if (this.EndHour != null) {
+            s += ind + "endHour\n" ;
+        }
+        //      C# -> System.Int32? StartHour
+        // GraphQL -> startHour: Int! (scalar)
+        if (this.StartHour != null) {
+            s += ind + "startHour\n" ;
+        }
+        //      C# -> System.Single? ThrottleLimit
+        // GraphQL -> throttleLimit: Float! (scalar)
+        if (this.ThrottleLimit != null) {
+            s += ind + "throttleLimit\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> List<DayOfWeek>? DaysOfWeek
+        // GraphQL -> daysOfWeek: [DayOfWeek!]! (enum)
+        if (this.DaysOfWeek == null && Exploration.Includes(parent + ".daysOfWeek", true))
         {
-            //      C# -> System.Int32? EndHour
-            // GraphQL -> endHour: Int! (scalar)
-            if (this.EndHour == null && Exploration.Includes(parent + ".endHour$"))
-            {
-                this.EndHour = new System.Int32();
-            }
-            //      C# -> System.Int32? StartHour
-            // GraphQL -> startHour: Int! (scalar)
-            if (this.StartHour == null && Exploration.Includes(parent + ".startHour$"))
-            {
-                this.StartHour = new System.Int32();
-            }
-            //      C# -> System.Single? ThrottleLimit
-            // GraphQL -> throttleLimit: Float! (scalar)
-            if (this.ThrottleLimit == null && Exploration.Includes(parent + ".throttleLimit$"))
-            {
-                this.ThrottleLimit = new System.Single();
-            }
-            //      C# -> List<DayOfWeek>? DaysOfWeek
-            // GraphQL -> daysOfWeek: [DayOfWeek!]! (enum)
-            if (this.DaysOfWeek == null && Exploration.Includes(parent + ".daysOfWeek$"))
-            {
-                this.DaysOfWeek = new List<DayOfWeek>();
-            }
+            this.DaysOfWeek = new List<DayOfWeek>();
         }
+        //      C# -> System.Int32? EndHour
+        // GraphQL -> endHour: Int! (scalar)
+        if (this.EndHour == null && Exploration.Includes(parent + ".endHour", true))
+        {
+            this.EndHour = new System.Int32();
+        }
+        //      C# -> System.Int32? StartHour
+        // GraphQL -> startHour: Int! (scalar)
+        if (this.StartHour == null && Exploration.Includes(parent + ".startHour", true))
+        {
+            this.StartHour = new System.Int32();
+        }
+        //      C# -> System.Single? ThrottleLimit
+        // GraphQL -> throttleLimit: Float! (scalar)
+        if (this.ThrottleLimit == null && Exploration.Includes(parent + ".throttleLimit", true))
+        {
+            this.ThrottleLimit = new System.Single();
+        }
+    }
 
 
     #endregion
 
     } // class NetworkThrottleSchedule
+    
     #endregion
 
     public static class ListNetworkThrottleScheduleExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<NetworkThrottleSchedule> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<NetworkThrottleSchedule> list, 
             String parent = "")
         {
-            var item = new NetworkThrottleSchedule();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new NetworkThrottleSchedule());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

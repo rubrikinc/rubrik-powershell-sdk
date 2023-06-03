@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region RcsArchivalLocationConsumptionStats
-    public class RcsArchivalLocationConsumptionStats: IFragment
+    public class RcsArchivalLocationConsumptionStats: BaseType
     {
         #region members
+
         //      C# -> System.String? LocationId
         // GraphQL -> locationId: String! (scalar)
         [JsonProperty("locationId")]
@@ -42,6 +44,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ingressStats: [RcsArchivalLocationStatsRecord!]! (type)
         [JsonProperty("ingressStats")]
         public List<RcsArchivalLocationStatsRecord>? IngressStats { get; set; }
+
 
         #endregion
 
@@ -73,137 +76,119 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? LocationId
-            // GraphQL -> locationId: String! (scalar)
-            if (this.LocationId != null)
-            {
-                 s += ind + "locationId\n";
-
-            }
-            //      C# -> List<RcsArchivalLocationStatsRecord>? BlobCapacityStats
-            // GraphQL -> blobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
-            if (this.BlobCapacityStats != null)
-            {
-                 s += ind + "blobCapacityStats\n";
-
-                 s += ind + "{\n" + 
-                 this.BlobCapacityStats.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<RcsArchivalLocationStatsRecord>? EgressStats
-            // GraphQL -> egressStats: [RcsArchivalLocationStatsRecord!]! (type)
-            if (this.EgressStats != null)
-            {
-                 s += ind + "egressStats\n";
-
-                 s += ind + "{\n" + 
-                 this.EgressStats.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<RcsArchivalLocationStatsRecord>? ForecastedBlobCapacityStats
-            // GraphQL -> forecastedBlobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
-            if (this.ForecastedBlobCapacityStats != null)
-            {
-                 s += ind + "forecastedBlobCapacityStats\n";
-
-                 s += ind + "{\n" + 
-                 this.ForecastedBlobCapacityStats.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            //      C# -> List<RcsArchivalLocationStatsRecord>? IngressStats
-            // GraphQL -> ingressStats: [RcsArchivalLocationStatsRecord!]! (type)
-            if (this.IngressStats != null)
-            {
-                 s += ind + "ingressStats\n";
-
-                 s += ind + "{\n" + 
-                 this.IngressStats.AsFragment(indent+1) + 
-                 ind + "}\n";
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: String! (scalar)
+        if (this.LocationId != null) {
+            s += ind + "locationId\n" ;
         }
+        //      C# -> List<RcsArchivalLocationStatsRecord>? BlobCapacityStats
+        // GraphQL -> blobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
+        if (this.BlobCapacityStats != null) {
+            s += ind + "blobCapacityStats {\n" + this.BlobCapacityStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<RcsArchivalLocationStatsRecord>? EgressStats
+        // GraphQL -> egressStats: [RcsArchivalLocationStatsRecord!]! (type)
+        if (this.EgressStats != null) {
+            s += ind + "egressStats {\n" + this.EgressStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<RcsArchivalLocationStatsRecord>? ForecastedBlobCapacityStats
+        // GraphQL -> forecastedBlobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
+        if (this.ForecastedBlobCapacityStats != null) {
+            s += ind + "forecastedBlobCapacityStats {\n" + this.ForecastedBlobCapacityStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> List<RcsArchivalLocationStatsRecord>? IngressStats
+        // GraphQL -> ingressStats: [RcsArchivalLocationStatsRecord!]! (type)
+        if (this.IngressStats != null) {
+            s += ind + "ingressStats {\n" + this.IngressStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? LocationId
+        // GraphQL -> locationId: String! (scalar)
+        if (this.LocationId == null && Exploration.Includes(parent + ".locationId", true))
         {
-            //      C# -> System.String? LocationId
-            // GraphQL -> locationId: String! (scalar)
-            if (this.LocationId == null && Exploration.Includes(parent + ".locationId$"))
-            {
-                this.LocationId = new System.String("FETCH");
-            }
-            //      C# -> List<RcsArchivalLocationStatsRecord>? BlobCapacityStats
-            // GraphQL -> blobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
-            if (this.BlobCapacityStats == null && Exploration.Includes(parent + ".blobCapacityStats"))
-            {
-                this.BlobCapacityStats = new List<RcsArchivalLocationStatsRecord>();
-                this.BlobCapacityStats.ApplyExploratoryFragment(parent + ".blobCapacityStats");
-            }
-            //      C# -> List<RcsArchivalLocationStatsRecord>? EgressStats
-            // GraphQL -> egressStats: [RcsArchivalLocationStatsRecord!]! (type)
-            if (this.EgressStats == null && Exploration.Includes(parent + ".egressStats"))
-            {
-                this.EgressStats = new List<RcsArchivalLocationStatsRecord>();
-                this.EgressStats.ApplyExploratoryFragment(parent + ".egressStats");
-            }
-            //      C# -> List<RcsArchivalLocationStatsRecord>? ForecastedBlobCapacityStats
-            // GraphQL -> forecastedBlobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
-            if (this.ForecastedBlobCapacityStats == null && Exploration.Includes(parent + ".forecastedBlobCapacityStats"))
-            {
-                this.ForecastedBlobCapacityStats = new List<RcsArchivalLocationStatsRecord>();
-                this.ForecastedBlobCapacityStats.ApplyExploratoryFragment(parent + ".forecastedBlobCapacityStats");
-            }
-            //      C# -> List<RcsArchivalLocationStatsRecord>? IngressStats
-            // GraphQL -> ingressStats: [RcsArchivalLocationStatsRecord!]! (type)
-            if (this.IngressStats == null && Exploration.Includes(parent + ".ingressStats"))
-            {
-                this.IngressStats = new List<RcsArchivalLocationStatsRecord>();
-                this.IngressStats.ApplyExploratoryFragment(parent + ".ingressStats");
-            }
+            this.LocationId = new System.String("FETCH");
         }
+        //      C# -> List<RcsArchivalLocationStatsRecord>? BlobCapacityStats
+        // GraphQL -> blobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
+        if (this.BlobCapacityStats == null && Exploration.Includes(parent + ".blobCapacityStats"))
+        {
+            this.BlobCapacityStats = new List<RcsArchivalLocationStatsRecord>();
+            this.BlobCapacityStats.ApplyExploratoryFieldSpec(parent + ".blobCapacityStats");
+        }
+        //      C# -> List<RcsArchivalLocationStatsRecord>? EgressStats
+        // GraphQL -> egressStats: [RcsArchivalLocationStatsRecord!]! (type)
+        if (this.EgressStats == null && Exploration.Includes(parent + ".egressStats"))
+        {
+            this.EgressStats = new List<RcsArchivalLocationStatsRecord>();
+            this.EgressStats.ApplyExploratoryFieldSpec(parent + ".egressStats");
+        }
+        //      C# -> List<RcsArchivalLocationStatsRecord>? ForecastedBlobCapacityStats
+        // GraphQL -> forecastedBlobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
+        if (this.ForecastedBlobCapacityStats == null && Exploration.Includes(parent + ".forecastedBlobCapacityStats"))
+        {
+            this.ForecastedBlobCapacityStats = new List<RcsArchivalLocationStatsRecord>();
+            this.ForecastedBlobCapacityStats.ApplyExploratoryFieldSpec(parent + ".forecastedBlobCapacityStats");
+        }
+        //      C# -> List<RcsArchivalLocationStatsRecord>? IngressStats
+        // GraphQL -> ingressStats: [RcsArchivalLocationStatsRecord!]! (type)
+        if (this.IngressStats == null && Exploration.Includes(parent + ".ingressStats"))
+        {
+            this.IngressStats = new List<RcsArchivalLocationStatsRecord>();
+            this.IngressStats.ApplyExploratoryFieldSpec(parent + ".ingressStats");
+        }
+    }
 
 
     #endregion
 
     } // class RcsArchivalLocationConsumptionStats
+    
     #endregion
 
     public static class ListRcsArchivalLocationConsumptionStatsExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<RcsArchivalLocationConsumptionStats> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<RcsArchivalLocationConsumptionStats> list, 
             String parent = "")
         {
-            var item = new RcsArchivalLocationConsumptionStats();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new RcsArchivalLocationConsumptionStats());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

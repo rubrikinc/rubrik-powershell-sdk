@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region AttachmentSpecForEbsVolume
-    public class AttachmentSpecForEbsVolume: IFragment
+    public class AttachmentSpecForEbsVolume: BaseType
     {
         #region members
+
         //      C# -> System.String? AwsNativeEc2InstanceId
         // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
         [JsonProperty("awsNativeEc2InstanceId")]
@@ -37,6 +39,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isRootVolume: Boolean! (scalar)
         [JsonProperty("isRootVolume")]
         public System.Boolean? IsRootVolume { get; set; }
+
 
         #endregion
 
@@ -64,108 +67,104 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? AwsNativeEc2InstanceId
-            // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
-            if (this.AwsNativeEc2InstanceId != null)
-            {
-                 s += ind + "awsNativeEc2InstanceId\n";
-
-            }
-            //      C# -> System.String? DevicePath
-            // GraphQL -> devicePath: String! (scalar)
-            if (this.DevicePath != null)
-            {
-                 s += ind + "devicePath\n";
-
-            }
-            //      C# -> System.Boolean? IsExcludedFromSnapshot
-            // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-            if (this.IsExcludedFromSnapshot != null)
-            {
-                 s += ind + "isExcludedFromSnapshot\n";
-
-            }
-            //      C# -> System.Boolean? IsRootVolume
-            // GraphQL -> isRootVolume: Boolean! (scalar)
-            if (this.IsRootVolume != null)
-            {
-                 s += ind + "isRootVolume\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? AwsNativeEc2InstanceId
+        // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
+        if (this.AwsNativeEc2InstanceId != null) {
+            s += ind + "awsNativeEc2InstanceId\n" ;
         }
+        //      C# -> System.String? DevicePath
+        // GraphQL -> devicePath: String! (scalar)
+        if (this.DevicePath != null) {
+            s += ind + "devicePath\n" ;
+        }
+        //      C# -> System.Boolean? IsExcludedFromSnapshot
+        // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
+        if (this.IsExcludedFromSnapshot != null) {
+            s += ind + "isExcludedFromSnapshot\n" ;
+        }
+        //      C# -> System.Boolean? IsRootVolume
+        // GraphQL -> isRootVolume: Boolean! (scalar)
+        if (this.IsRootVolume != null) {
+            s += ind + "isRootVolume\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? AwsNativeEc2InstanceId
+        // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
+        if (this.AwsNativeEc2InstanceId == null && Exploration.Includes(parent + ".awsNativeEc2InstanceId", true))
         {
-            //      C# -> System.String? AwsNativeEc2InstanceId
-            // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
-            if (this.AwsNativeEc2InstanceId == null && Exploration.Includes(parent + ".awsNativeEc2InstanceId$"))
-            {
-                this.AwsNativeEc2InstanceId = new System.String("FETCH");
-            }
-            //      C# -> System.String? DevicePath
-            // GraphQL -> devicePath: String! (scalar)
-            if (this.DevicePath == null && Exploration.Includes(parent + ".devicePath$"))
-            {
-                this.DevicePath = new System.String("FETCH");
-            }
-            //      C# -> System.Boolean? IsExcludedFromSnapshot
-            // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
-            if (this.IsExcludedFromSnapshot == null && Exploration.Includes(parent + ".isExcludedFromSnapshot$"))
-            {
-                this.IsExcludedFromSnapshot = new System.Boolean();
-            }
-            //      C# -> System.Boolean? IsRootVolume
-            // GraphQL -> isRootVolume: Boolean! (scalar)
-            if (this.IsRootVolume == null && Exploration.Includes(parent + ".isRootVolume$"))
-            {
-                this.IsRootVolume = new System.Boolean();
-            }
+            this.AwsNativeEc2InstanceId = new System.String("FETCH");
         }
+        //      C# -> System.String? DevicePath
+        // GraphQL -> devicePath: String! (scalar)
+        if (this.DevicePath == null && Exploration.Includes(parent + ".devicePath", true))
+        {
+            this.DevicePath = new System.String("FETCH");
+        }
+        //      C# -> System.Boolean? IsExcludedFromSnapshot
+        // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
+        if (this.IsExcludedFromSnapshot == null && Exploration.Includes(parent + ".isExcludedFromSnapshot", true))
+        {
+            this.IsExcludedFromSnapshot = true;
+        }
+        //      C# -> System.Boolean? IsRootVolume
+        // GraphQL -> isRootVolume: Boolean! (scalar)
+        if (this.IsRootVolume == null && Exploration.Includes(parent + ".isRootVolume", true))
+        {
+            this.IsRootVolume = true;
+        }
+    }
 
 
     #endregion
 
     } // class AttachmentSpecForEbsVolume
+    
     #endregion
 
     public static class ListAttachmentSpecForEbsVolumeExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<AttachmentSpecForEbsVolume> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<AttachmentSpecForEbsVolume> list, 
             String parent = "")
         {
-            var item = new AttachmentSpecForEbsVolume();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new AttachmentSpecForEbsVolume());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 

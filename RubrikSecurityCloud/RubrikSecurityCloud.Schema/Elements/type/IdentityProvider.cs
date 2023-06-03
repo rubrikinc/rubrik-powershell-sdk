@@ -11,13 +11,15 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using RubrikSecurityCloud.Schema.Utils;
 
 namespace Rubrik.SecurityCloud.Types
 {
     #region IdentityProvider
-    public class IdentityProvider: IFragment
+    public class IdentityProvider: BaseType
     {
         #region members
+
         //      C# -> System.String? EntityId
         // GraphQL -> entityId: String! (scalar)
         [JsonProperty("entityId")]
@@ -57,6 +59,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> spInitiatedTestUrl: String! (scalar)
         [JsonProperty("spInitiatedTestUrl")]
         public System.String? SpInitiatedTestUrl { get; set; }
+
 
         #endregion
 
@@ -100,160 +103,148 @@ namespace Rubrik.SecurityCloud.Types
         return this;
     }
 
-            //[JsonIgnore]
-        // AsFragment returns a string that denotes what
-        // fields are not null, recursively for non-scalar fields.
-        public string AsFragment(int indent=0)
-        {
-            string ind = new string(' ', indent*2);
-            string s = "";
-            //      C# -> System.String? EntityId
-            // GraphQL -> entityId: String! (scalar)
-            if (this.EntityId != null)
-            {
-                 s += ind + "entityId\n";
-
-            }
-            //      C# -> DateTime? ExpirationDate
-            // GraphQL -> expirationDate: DateTime (scalar)
-            if (this.ExpirationDate != null)
-            {
-                 s += ind + "expirationDate\n";
-
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name != null)
-            {
-                 s += ind + "name\n";
-
-            }
-            //      C# -> System.String? OwnerOrgId
-            // GraphQL -> ownerOrgId: String! (scalar)
-            if (this.OwnerOrgId != null)
-            {
-                 s += ind + "ownerOrgId\n";
-
-            }
-            //      C# -> System.String? SignInUrl
-            // GraphQL -> signInUrl: String! (scalar)
-            if (this.SignInUrl != null)
-            {
-                 s += ind + "signInUrl\n";
-
-            }
-            //      C# -> System.String? SignOutUrl
-            // GraphQL -> signOutUrl: String! (scalar)
-            if (this.SignOutUrl != null)
-            {
-                 s += ind + "signOutUrl\n";
-
-            }
-            //      C# -> System.String? SpInitiatedSignInUrl
-            // GraphQL -> spInitiatedSignInUrl: String! (scalar)
-            if (this.SpInitiatedSignInUrl != null)
-            {
-                 s += ind + "spInitiatedSignInUrl\n";
-
-            }
-            //      C# -> System.String? SpInitiatedTestUrl
-            // GraphQL -> spInitiatedTestUrl: String! (scalar)
-            if (this.SpInitiatedTestUrl != null)
-            {
-                 s += ind + "spInitiatedTestUrl\n";
-
-            }
-            return new string(s);
+        //[JsonIgnore]
+    // AsFieldSpec returns a string that denotes what
+    // fields are not null, recursively for non-scalar fields.
+    public override string AsFieldSpec(int indent=0)
+    {
+        string ind = new string(' ', indent*2);
+        string s = "";
+        //      C# -> System.String? EntityId
+        // GraphQL -> entityId: String! (scalar)
+        if (this.EntityId != null) {
+            s += ind + "entityId\n" ;
         }
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        if (this.ExpirationDate != null) {
+            s += ind + "expirationDate\n" ;
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name != null) {
+            s += ind + "name\n" ;
+        }
+        //      C# -> System.String? OwnerOrgId
+        // GraphQL -> ownerOrgId: String! (scalar)
+        if (this.OwnerOrgId != null) {
+            s += ind + "ownerOrgId\n" ;
+        }
+        //      C# -> System.String? SignInUrl
+        // GraphQL -> signInUrl: String! (scalar)
+        if (this.SignInUrl != null) {
+            s += ind + "signInUrl\n" ;
+        }
+        //      C# -> System.String? SignOutUrl
+        // GraphQL -> signOutUrl: String! (scalar)
+        if (this.SignOutUrl != null) {
+            s += ind + "signOutUrl\n" ;
+        }
+        //      C# -> System.String? SpInitiatedSignInUrl
+        // GraphQL -> spInitiatedSignInUrl: String! (scalar)
+        if (this.SpInitiatedSignInUrl != null) {
+            s += ind + "spInitiatedSignInUrl\n" ;
+        }
+        //      C# -> System.String? SpInitiatedTestUrl
+        // GraphQL -> spInitiatedTestUrl: String! (scalar)
+        if (this.SpInitiatedTestUrl != null) {
+            s += ind + "spInitiatedTestUrl\n" ;
+        }
+        return s;
+    }
 
 
     
-        //[JsonIgnore]
-        public void ApplyExploratoryFragment(String parent = "")
+    //[JsonIgnore]
+    public override void ApplyExploratoryFieldSpec(String parent = "")
+    {
+        //      C# -> System.String? EntityId
+        // GraphQL -> entityId: String! (scalar)
+        if (this.EntityId == null && Exploration.Includes(parent + ".entityId", true))
         {
-            //      C# -> System.String? EntityId
-            // GraphQL -> entityId: String! (scalar)
-            if (this.EntityId == null && Exploration.Includes(parent + ".entityId$"))
-            {
-                this.EntityId = new System.String("FETCH");
-            }
-            //      C# -> DateTime? ExpirationDate
-            // GraphQL -> expirationDate: DateTime (scalar)
-            if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate$"))
-            {
-                this.ExpirationDate = new DateTime();
-            }
-            //      C# -> System.String? Name
-            // GraphQL -> name: String! (scalar)
-            if (this.Name == null && Exploration.Includes(parent + ".name$"))
-            {
-                this.Name = new System.String("FETCH");
-            }
-            //      C# -> System.String? OwnerOrgId
-            // GraphQL -> ownerOrgId: String! (scalar)
-            if (this.OwnerOrgId == null && Exploration.Includes(parent + ".ownerOrgId$"))
-            {
-                this.OwnerOrgId = new System.String("FETCH");
-            }
-            //      C# -> System.String? SignInUrl
-            // GraphQL -> signInUrl: String! (scalar)
-            if (this.SignInUrl == null && Exploration.Includes(parent + ".signInUrl$"))
-            {
-                this.SignInUrl = new System.String("FETCH");
-            }
-            //      C# -> System.String? SignOutUrl
-            // GraphQL -> signOutUrl: String! (scalar)
-            if (this.SignOutUrl == null && Exploration.Includes(parent + ".signOutUrl$"))
-            {
-                this.SignOutUrl = new System.String("FETCH");
-            }
-            //      C# -> System.String? SpInitiatedSignInUrl
-            // GraphQL -> spInitiatedSignInUrl: String! (scalar)
-            if (this.SpInitiatedSignInUrl == null && Exploration.Includes(parent + ".spInitiatedSignInUrl$"))
-            {
-                this.SpInitiatedSignInUrl = new System.String("FETCH");
-            }
-            //      C# -> System.String? SpInitiatedTestUrl
-            // GraphQL -> spInitiatedTestUrl: String! (scalar)
-            if (this.SpInitiatedTestUrl == null && Exploration.Includes(parent + ".spInitiatedTestUrl$"))
-            {
-                this.SpInitiatedTestUrl = new System.String("FETCH");
-            }
+            this.EntityId = new System.String("FETCH");
         }
+        //      C# -> DateTime? ExpirationDate
+        // GraphQL -> expirationDate: DateTime (scalar)
+        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        {
+            this.ExpirationDate = new DateTime();
+        }
+        //      C# -> System.String? Name
+        // GraphQL -> name: String! (scalar)
+        if (this.Name == null && Exploration.Includes(parent + ".name", true))
+        {
+            this.Name = new System.String("FETCH");
+        }
+        //      C# -> System.String? OwnerOrgId
+        // GraphQL -> ownerOrgId: String! (scalar)
+        if (this.OwnerOrgId == null && Exploration.Includes(parent + ".ownerOrgId", true))
+        {
+            this.OwnerOrgId = new System.String("FETCH");
+        }
+        //      C# -> System.String? SignInUrl
+        // GraphQL -> signInUrl: String! (scalar)
+        if (this.SignInUrl == null && Exploration.Includes(parent + ".signInUrl", true))
+        {
+            this.SignInUrl = new System.String("FETCH");
+        }
+        //      C# -> System.String? SignOutUrl
+        // GraphQL -> signOutUrl: String! (scalar)
+        if (this.SignOutUrl == null && Exploration.Includes(parent + ".signOutUrl", true))
+        {
+            this.SignOutUrl = new System.String("FETCH");
+        }
+        //      C# -> System.String? SpInitiatedSignInUrl
+        // GraphQL -> spInitiatedSignInUrl: String! (scalar)
+        if (this.SpInitiatedSignInUrl == null && Exploration.Includes(parent + ".spInitiatedSignInUrl", true))
+        {
+            this.SpInitiatedSignInUrl = new System.String("FETCH");
+        }
+        //      C# -> System.String? SpInitiatedTestUrl
+        // GraphQL -> spInitiatedTestUrl: String! (scalar)
+        if (this.SpInitiatedTestUrl == null && Exploration.Includes(parent + ".spInitiatedTestUrl", true))
+        {
+            this.SpInitiatedTestUrl = new System.String("FETCH");
+        }
+    }
 
 
     #endregion
 
     } // class IdentityProvider
+    
     #endregion
 
     public static class ListIdentityProviderExtensions
     {
-        // This SDK uses the convention of defining fragments by
-        // _un-null-ing_ fields in an object of the type of the fragment
-        // we want to create. When creating a fragment from an object,
+        // This SDK uses the convention of defining field specs as
+        // the collection of fields that are not null in an object.
+        // When creating a field spec from an (non-list) object,
         // all fields (including nested objects) that are not null are
-        // included in the fragment. When creating a fragment from a list,
-        // there is possibly a different fragment with each item in the list,
-        // but the GraphQL syntax for list fragment is identical to
-        // object fragment, so we have to decide how to generate the fragment.
-        // We choose to generate a fragment that includes all fields that are
-        // not null in the *first* item in the list. This is not a perfect
-        // solution, but it is a reasonable one.
-        public static string AsFragment(
+        // included in the fieldspec.
+        // When creating a fieldspec from a list of objects,
+        // we arbitrarily choose to use the fieldspec of the first item
+        // in the list. This is not a perfect solution, but it is a
+        // reasonable one.
+        // When creating a fieldspec from a list of interfaces,
+        // we include the fieldspec of each item in the list
+        // as an inline fragment (... on)
+        public static string AsFieldSpec(
             this List<IdentityProvider> list,
             int indent=0)
         {
-            return list[0].AsFragment();
+            string ind = new string(' ', indent*2);
+            return ind + list[0].AsFieldSpec();
         }
 
-        public static void ApplyExploratoryFragment(
+        public static void ApplyExploratoryFieldSpec(
             this List<IdentityProvider> list, 
             String parent = "")
         {
-            var item = new IdentityProvider();
-            list.Add(item);
-            item.ApplyExploratoryFragment(parent);
+            if ( list.Count == 0 ) {
+                list.Add(new IdentityProvider());
+            }
+            list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 
