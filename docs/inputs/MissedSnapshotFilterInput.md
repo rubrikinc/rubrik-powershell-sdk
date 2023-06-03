@@ -1,3 +1,0 @@
-### MissedSnapshotFilterInput
-- timeRange: TimeRangeInput
-  - None

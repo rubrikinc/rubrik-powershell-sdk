@@ -9,21 +9,45 @@
              Establishes a user session with Rubrik Security Cloud
              </summary>
              <description>
-             The Connect-Rsc Cmdlet is used to connect to the Rubrik Security Cloud (RSC) API. RSC then returns a unique token to represent the user's credentials for subsequent calls.
+             The Connect-Rsc Cmdlet is used to connect to the Rubrik Security Cloud (RSC) API.
+             RSC then returns a unique token to represent the user's credentials for subsequent calls.
              The token is stored securly in a .NET object within this PowerShell session.
              The recommended authentication method is a Rsc Service Account.
+             Service Account credentials may be provided as parameters, or stored
+             in an encrypted credential file, using Set-RscServiceAccountFile.
+             Service Account .json files (unencryped) are not supported.
              </description>
-             <example>
-             Connect to Rubrik Security Cloud, using the service account file as downloaded from the Rsc Web UI:
-             <code>
-            Connect-Rsc -ServiceAccountFile .\rubrik_service_account.json
-            </code>
-             </example>
              <example>
              Connect to Rubrik Security Cloud, using the URL, Client Id and Client Secret
              <code>Connect-Rsc -Server mycompany.my.rubrik.com -ClientId xxxxxxxxx -ClientSecret xxxxxxxxx</code>
              </example>
-             
+             <example>
+             Connect to Rubrik Security Cloud, using a service account file,
+             stored in the default RSC credential store in the user profile
+             The service account file can be downloaded from the Rsc Web UI.
+             <code>
+             Set-RscServiceAccountFile -InputFilePath rubrik_service_account.json
+             Connect-Rsc
+             </code>
+             </example>
+             <example>
+             Connect to Rubrik Security Cloud, using a service account file,
+             stored in a location other than the default RSC credential store.
+             The service account file can be downloaded from the Rsc Web UI.
+             <code>
+             Set-RscServiceAccountFile -InputFilePath rubrik_service_account.json -OutputFilePath rubrik_service_account.xml
+             Connect-Rsc -ServiceAccountFile rubrik_service_account.xml
+             </code>
+             </example>
+             <example>
+             Connect to Rubrik Security Cloud, using a service account file,
+             stored in a location held in the OS environment variable RSC_SERVICE_ACCOUNT_FILE
+             The service account file can be downloaded from the Rsc Web UI.
+             <code>
+             Set-RscServiceAccountFile -InputFilePath rubrik_service_account.json -OutputFilePath $ENV:RSC_SERVICE_ACCOUNT_FILE
+             Connect-Rsc -FromEnv
+             </code>
+             </example>
         </member>
         <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Connect_Rsc.FromEnv">
             <summary>
@@ -190,6 +214,25 @@
             PS C:\> Get-RscType -Name "AccountSetting" -InitialValues @{"IsEulaAccepted"= $false}
             </code>
             </example>
+            <example>
+            Get a list of all available Rsc .NET Interfaces
+            <code>
+            PS C:\> Get-RscType -ListAvailable -Interfaces
+            </code>
+            </example>
+            <example>
+            Get a list of all available Rsc .NET Interfaces filtered by name
+            <code>
+            PS C:\> Get-RscType -ListAvailable -Interfaces -FilterByName "mssql"
+            </code>
+            </example>
+            <example>
+            Get a list of all Rsc .NET types that implement the
+            MssqlTopLevelDescendantType interface
+            <code>
+            PS C:\> Get-RscType -Interface MssqlTopLevelDescendantType
+            </code>
+            </example>
         </member>
         <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.Name">
             <summary>
@@ -216,6 +259,16 @@
         <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.FilterByName">
             <summary>
             Optional to filter results by name.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.Interfaces">
+            <summary>
+            Flag to specify if interfaces should be returned.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscType.Interface">
+            <summary>
+            Used to request a list of types implementing a given interface.
             </summary>
         </member>
         <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscVsphereVm">
@@ -278,21 +331,31 @@
             and the result is returned to the user.
             </description>
             <example>
-            Read GraphQL query from JSON file.
+            Read GraphQL query from txt file.
             <code>
-            Get-Content -Path /Samples/GetVsphereVmList.query.json -Raw | Invoke-Rsc
+            Get-Content -Path /Samples/GetVsphereVmList.query.txt -Raw | Invoke-Rsc
             </code>
             </example>
             <example>
             Read GraphQL query from parameter.
             <code>
-            Invoke-Rsc '{"query":"query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}"}'
+            Invoke-Rsc -Query "mutation DeleteWebhookMutation(`$id: Int!) { deleteWebhook(input: {id: `$id}) }" -Variables @{id = 1}
             </code>
             </example>
         </member>
-        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Invoke_Rsc.OperationText">
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Invoke_Rsc.Query">
             <summary>
             The GQL query to send to the Rubrik Security Cloud API.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Invoke_Rsc.Variables">
+            <summary>
+            The variables to supply to the GraphQL query.
+            </summary>
+        </member>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet">
+            <summary>
+            Base class for all Rubrik Security Cloud PowerShell cmdlets.
             </summary>
         </member>
         <member name="P:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet.Op">
@@ -324,6 +387,11 @@
             The input profile determines how inputs to the operation
             should be automatically set if they are not explicitly given
             as parameters.
+            </summary>
+        </member>
+        <member name="M:Rubrik.SecurityCloud.PowerShell.Private.RscBasePSCmdlet.#ctor">
+            <summary>
+            Create a new Rubrik Security Cloud PowerShell cmdlet.
             </summary>
         </member>
         <member name="M:Rubrik.SecurityCloud.PowerShell.Private.RscCmdletInput.GqlOperation">

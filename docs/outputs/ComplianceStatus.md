@@ -1,3 +1,0 @@
-### ComplianceStatus
-- enumValue: ComplianceStatusEnum
-  - None

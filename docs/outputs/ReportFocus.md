@@ -1,3 +1,0 @@
-### ReportFocus
-- enumValue: ReportFocusEnum
-  - None

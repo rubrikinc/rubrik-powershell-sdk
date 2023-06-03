@@ -1,3 +1,0 @@
-### FailoverType
-- enumValue: FailoverTypeEnum
-  - None

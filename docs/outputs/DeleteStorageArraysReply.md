@@ -1,5 +1,0 @@
-### DeleteStorageArraysReply
-Responses of operations to delete storage arrays from Rubrik clusters.
-
-- responses: a list of StorageArrayOperationOutputTypes
-  - Delete storage arrays responses.

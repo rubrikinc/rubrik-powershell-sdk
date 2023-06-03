@@ -1,3 +1,0 @@
-### ObjectType
-- enumValue: ObjectTypeEnum
-  - None

@@ -1,12 +1,6 @@
-# rubrik-powershell-sdk ALPHA RELEASE
+# rubrik-powershell-sdk
 
-Thank you for participating in the Alpha Release
-of the Rubrik PowerShell SDK.
-This SDK is currently in Alpha and is not supported
-by Rubrik and not
-intended for customer use.
-
-> Please use this SDK at your own risk.
+Thank you for using the Rubrik PowerShell SDK.
 
 We rely on your feedback to improve the SDK !
 

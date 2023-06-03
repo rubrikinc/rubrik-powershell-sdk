@@ -45,7 +45,7 @@ function Get-RscAccount {
         }
 
         # -3- Invoke GraphQL operations 
-        #     and collect results:
+        #     and collect results into a PSObject:
         $result = New-Object -TypeName PSObject
         $accountId = (Invoke-RscQueryAccount -InputProfile $inputProfile)
         $result | Add-Member -MemberType NoteProperty -Name "AccountId" -Value $accountId

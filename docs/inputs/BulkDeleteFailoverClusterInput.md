@@ -1,7 +1,0 @@
-### BulkDeleteFailoverClusterInput
-Input for V1BulkDeleteFailoverCluster.
-
-- ids: a list of System.Strings
-  - Required. The ID of each failover cluster to delete.
-- preserveSnapshots: System.Boolean
-  - Specifies whether to preserve the fileset snapshots that belong to a failover cluster. When this value is 'true', the snapshots are preserved. The default value is 'true'.
