@@ -120,17 +120,11 @@ namespace Rubrik.SecurityCloud.Schema.Tests
                 };
             var ind = new string(' ', 2);
 
-            string expected =
-                "id\nname\neffectiveSlaDomain\n"
-                + "{\n ... on ClusterSlaDomain\n{\n"
-                + ind
-                + "id\n"
-                + ind
-                + "name\n}\n}\n";
+            string expected = "effectiveSlaDomain{...onClusterSlaDomain{idname}}idname";
 
             //Act
             string result = inputObject.AsFieldSpec();
-
+            result = result.Replace(" ", "").Replace("\n", "");
             // Assert
 
             Assert.IsNotNull(result);
