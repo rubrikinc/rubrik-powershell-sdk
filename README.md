@@ -61,7 +61,7 @@ First, generate an **encrypted** service account file
 from the clear-text one and delete the clear-text one:
 
 ```powershell
-Set-RscServiceAccountFile -Path /path/to/service/account/file.json
+Set-RscServiceAccountFile /path/to/service/account/file.json
 ```
 
 `Set-RscServiceAccountFile` will generate an encrypted service account (SA)

@@ -1,52 +1,8 @@
 # RSC PowerShell SDK Developer Manual
 
-## Installation
-
-```powershell
-Install-Module -Name RubrikSecurityCloud
-```
-
 ## Getting Started
 
-The easiest way to connect to RSC is to use a service account file
-(which can be downloaded from the RSC UI). Just store the path to it
-in the `RSC_SERVICE_ACCOUNT_FILE` environment variable,
-and call `Connect-Rsc` without any parameters.
-
-```powershell
-[Environment]::SetEnvironmentVariable(
-    "RSC_SERVICE_ACCOUNT_FILE", 
-    "/path/to/service/account/file.json", "User"
-)
-Connect-Rsc
-```
-
-It will retrieve an access token and store it in the session state.
-Any subsequent calls to `Connect-Rsc` will use the same token.
-
-You can then run any of the cmdlets in the SDK
-
-```powershell
-Get-Command -Module RubrikSecurityCloud
-```
-
-For example, to retrieve the current account info:
-
-```powershell
-Get-RscAccount
-```
-
-or run a raw GraphQL query:
-
-```powershell
-Invoke-Rsc -OperationText '{"query": "query GetVsphereVmList{vSphereVmNewConnection{nodes{id name}}}" }'
-```
-
-Then end the session with:
-
-```powershell
-Disconnect-Rsc
-```
+See : [Getting Started](../README.md)
 
 ## Working with GraphQL queries
 
