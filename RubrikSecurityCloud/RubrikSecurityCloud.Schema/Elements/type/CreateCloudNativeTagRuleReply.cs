@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> tagRuleId: String! (scalar)
         if (this.TagRuleId == null && Exploration.Includes(parent + ".tagRuleId", true))
         {
-            this.TagRuleId = new System.String("FETCH");
+            this.TagRuleId = "FETCH";
         }
     }
 

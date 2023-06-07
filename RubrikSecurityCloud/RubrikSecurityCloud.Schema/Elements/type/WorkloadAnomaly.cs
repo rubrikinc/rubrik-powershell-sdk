@@ -354,13 +354,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> anomalousSnapshotFid: String! (scalar)
         if (this.AnomalousSnapshotFid == null && Exploration.Includes(parent + ".anomalousSnapshotFid", true))
         {
-            this.AnomalousSnapshotFid = new System.String("FETCH");
+            this.AnomalousSnapshotFid = "FETCH";
         }
         //      C# -> System.String? AnomalousSnapshotId
         // GraphQL -> anomalousSnapshotId: String! (scalar)
         if (this.AnomalousSnapshotId == null && Exploration.Includes(parent + ".anomalousSnapshotId", true))
         {
-            this.AnomalousSnapshotId = new System.String("FETCH");
+            this.AnomalousSnapshotId = "FETCH";
         }
         //      C# -> System.Int64? CreatedFileCount
         // GraphQL -> createdFileCount: Long! (scalar)
@@ -384,7 +384,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> previousSnapshotFid: String! (scalar)
         if (this.PreviousSnapshotFid == null && Exploration.Includes(parent + ".previousSnapshotFid", true))
         {
-            this.PreviousSnapshotFid = new System.String("FETCH");
+            this.PreviousSnapshotFid = "FETCH";
         }
         //      C# -> System.Int64? SuspiciousFileCount
         // GraphQL -> suspiciousFileCount: Long! (scalar)
@@ -402,19 +402,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> workloadFid: String! (scalar)
         if (this.WorkloadFid == null && Exploration.Includes(parent + ".workloadFid", true))
         {
-            this.WorkloadFid = new System.String("FETCH");
+            this.WorkloadFid = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
         {
-            this.WorkloadId = new System.String("FETCH");
+            this.WorkloadId = "FETCH";
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
         if (this.WorkloadName == null && Exploration.Includes(parent + ".workloadName", true))
         {
-            this.WorkloadName = new System.String("FETCH");
+            this.WorkloadName = "FETCH";
         }
         //      C# -> List<WorkloadAnomaly>? AnomalousChildren
         // GraphQL -> anomalousChildren: [WorkloadAnomaly!]! (type)

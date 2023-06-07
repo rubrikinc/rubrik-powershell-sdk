@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> loginText: String! (scalar)
         if (this.LoginText == null && Exploration.Includes(parent + ".loginText", true))
         {
-            this.LoginText = new System.String("FETCH");
+            this.LoginText = "FETCH";
         }
     }
 

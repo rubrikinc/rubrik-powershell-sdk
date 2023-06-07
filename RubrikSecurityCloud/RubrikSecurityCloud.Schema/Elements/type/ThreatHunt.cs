@@ -112,7 +112,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> huntId: String! (scalar)
         if (this.HuntId == null && Exploration.Includes(parent + ".huntId", true))
         {
-            this.HuntId = new System.String("FETCH");
+            this.HuntId = "FETCH";
         }
         //      C# -> ThreatHuntDetails? HuntDetails
         // GraphQL -> huntDetails: ThreatHuntDetails! (type)

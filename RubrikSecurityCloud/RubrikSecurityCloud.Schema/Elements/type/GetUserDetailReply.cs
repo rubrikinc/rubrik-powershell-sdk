@@ -112,19 +112,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumFilesAccessible
         // GraphQL -> numFilesAccessible: Int! (scalar)
         if (this.NumFilesAccessible == null && Exploration.Includes(parent + ".numFilesAccessible", true))
         {
-            this.NumFilesAccessible = new System.Int32();
+            this.NumFilesAccessible = Int32.MinValue;
         }
     }
 

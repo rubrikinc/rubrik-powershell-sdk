@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> requestMessage: String! (scalar)
         if (this.RequestMessage == null && Exploration.Includes(parent + ".requestMessage", true))
         {
-            this.RequestMessage = new System.String("FETCH");
+            this.RequestMessage = "FETCH";
         }
         //      C# -> System.String? StorageAccountId
         // GraphQL -> storageAccountId: String! (scalar)
         if (this.StorageAccountId == null && Exploration.Includes(parent + ".storageAccountId", true))
         {
-            this.StorageAccountId = new System.String("FETCH");
+            this.StorageAccountId = "FETCH";
         }
     }
 

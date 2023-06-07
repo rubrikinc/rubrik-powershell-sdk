@@ -112,19 +112,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> account: String! (scalar)
         if (this.Account == null && Exploration.Includes(parent + ".account", true))
         {
-            this.Account = new System.String("FETCH");
+            this.Account = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? TargetId
         // GraphQL -> targetId: String! (scalar)
         if (this.TargetId == null && Exploration.Includes(parent + ".targetId", true))
         {
-            this.TargetId = new System.String("FETCH");
+            this.TargetId = "FETCH";
         }
     }
 

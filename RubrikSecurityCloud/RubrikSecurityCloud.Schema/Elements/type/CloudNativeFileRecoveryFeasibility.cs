@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
     }
 

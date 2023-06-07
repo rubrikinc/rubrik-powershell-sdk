@@ -168,13 +168,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
         if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
         {
-            this.NodeId = new System.String("FETCH");
+            this.NodeId = "FETCH";
         }
         //      C# -> System.Single? Progress
         // GraphQL -> progress: Float (scalar)
@@ -192,7 +192,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> RequestErrorInfo? Error
         // GraphQL -> error: RequestErrorInfo (type)

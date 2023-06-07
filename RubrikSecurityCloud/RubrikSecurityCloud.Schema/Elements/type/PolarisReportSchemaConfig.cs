@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> chartTitle: String! (scalar)
         if (this.ChartTitle == null && Exploration.Includes(parent + ".chartTitle", true))
         {
-            this.ChartTitle = new System.String("FETCH");
+            this.ChartTitle = "FETCH";
         }
         //      C# -> System.String? DefaultName
         // GraphQL -> defaultName: String! (scalar)
         if (this.DefaultName == null && Exploration.Includes(parent + ".defaultName", true))
         {
-            this.DefaultName = new System.String("FETCH");
+            this.DefaultName = "FETCH";
         }
         //      C# -> System.String? TableTitle
         // GraphQL -> tableTitle: String! (scalar)
         if (this.TableTitle == null && Exploration.Includes(parent + ".tableTitle", true))
         {
-            this.TableTitle = new System.String("FETCH");
+            this.TableTitle = "FETCH";
         }
     }
 

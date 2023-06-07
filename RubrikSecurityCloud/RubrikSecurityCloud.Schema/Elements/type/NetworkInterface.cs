@@ -154,7 +154,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> interfaceName: String! (scalar)
         if (this.InterfaceName == null && Exploration.Includes(parent + ".interfaceName", true))
         {
-            this.InterfaceName = new System.String("FETCH");
+            this.InterfaceName = "FETCH";
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
@@ -166,25 +166,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> netmask: String! (scalar)
         if (this.Netmask == null && Exploration.Includes(parent + ".netmask", true))
         {
-            this.Netmask = new System.String("FETCH");
+            this.Netmask = "FETCH";
         }
         //      C# -> System.String? Node
         // GraphQL -> node: String (scalar)
         if (this.Node == null && Exploration.Includes(parent + ".node", true))
         {
-            this.Node = new System.String("FETCH");
+            this.Node = "FETCH";
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String (scalar)
         if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
         {
-            this.NodeId = new System.String("FETCH");
+            this.NodeId = "FETCH";
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String (scalar)
         if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
         {
-            this.NodeName = new System.String("FETCH");
+            this.NodeName = "FETCH";
         }
     }
 

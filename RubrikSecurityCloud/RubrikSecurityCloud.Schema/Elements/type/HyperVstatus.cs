@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> connectivity: String! (scalar)
         if (this.Connectivity == null && Exploration.Includes(parent + ".connectivity", true))
         {
-            this.Connectivity = new System.String("FETCH");
+            this.Connectivity = "FETCH";
         }
         //      C# -> DateTime? TimestampMillis
         // GraphQL -> timestampMillis: DateTime (scalar)

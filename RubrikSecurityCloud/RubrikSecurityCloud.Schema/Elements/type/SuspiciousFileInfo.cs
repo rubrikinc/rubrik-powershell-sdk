@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> filePath: String! (scalar)
         if (this.FilePath == null && Exploration.Includes(parent + ".filePath", true))
         {
-            this.FilePath = new System.String("FETCH");
+            this.FilePath = "FETCH";
         }
         //      C# -> System.Int64? FileSizeBytes
         // GraphQL -> fileSizeBytes: Long! (scalar)

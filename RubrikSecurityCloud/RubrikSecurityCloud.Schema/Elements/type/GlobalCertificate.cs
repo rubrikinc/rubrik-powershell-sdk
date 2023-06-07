@@ -322,25 +322,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> certificate: String! (scalar)
         if (this.Certificate == null && Exploration.Includes(parent + ".certificate", true))
         {
-            this.Certificate = new System.String("FETCH");
+            this.Certificate = "FETCH";
         }
         //      C# -> System.String? CertificateFid
         // GraphQL -> certificateFid: UUID! (scalar)
         if (this.CertificateFid == null && Exploration.Includes(parent + ".certificateFid", true))
         {
-            this.CertificateFid = new System.String("FETCH");
+            this.CertificateFid = "FETCH";
         }
         //      C# -> System.String? CertificateId
         // GraphQL -> certificateId: String! (scalar)
         if (this.CertificateId == null && Exploration.Includes(parent + ".certificateId", true))
         {
-            this.CertificateId = new System.String("FETCH");
+            this.CertificateId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> DateTime? ExpiringAt
         // GraphQL -> expiringAt: DateTime (scalar)
@@ -370,7 +370,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> issuedBy: String! (scalar)
         if (this.IssuedBy == null && Exploration.Includes(parent + ".issuedBy", true))
         {
-            this.IssuedBy = new System.String("FETCH");
+            this.IssuedBy = "FETCH";
         }
         //      C# -> DateTime? IssuedOn
         // GraphQL -> issuedOn: DateTime (scalar)
@@ -382,31 +382,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> issuedTo: String! (scalar)
         if (this.IssuedTo == null && Exploration.Includes(parent + ".issuedTo", true))
         {
-            this.IssuedTo = new System.String("FETCH");
+            this.IssuedTo = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? SerialNumber
         // GraphQL -> serialNumber: String! (scalar)
         if (this.SerialNumber == null && Exploration.Includes(parent + ".serialNumber", true))
         {
-            this.SerialNumber = new System.String("FETCH");
+            this.SerialNumber = "FETCH";
         }
         //      C# -> System.String? Sha1Fingerprint
         // GraphQL -> sha1Fingerprint: String! (scalar)
         if (this.Sha1Fingerprint == null && Exploration.Includes(parent + ".sha1Fingerprint", true))
         {
-            this.Sha1Fingerprint = new System.String("FETCH");
+            this.Sha1Fingerprint = "FETCH";
         }
         //      C# -> System.String? Sha256Fingerprint
         // GraphQL -> sha256Fingerprint: String! (scalar)
         if (this.Sha256Fingerprint == null && Exploration.Includes(parent + ".sha256Fingerprint", true))
         {
-            this.Sha256Fingerprint = new System.String("FETCH");
+            this.Sha256Fingerprint = "FETCH";
         }
         //      C# -> List<CdmCertificateUsageInfo>? CdmUsages
         // GraphQL -> cdmUsages: [CdmCertificateUsageInfo!]! (type)

@@ -140,7 +140,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> imageId: String! (scalar)
         if (this.ImageId == null && Exploration.Includes(parent + ".imageId", true))
         {
-            this.ImageId = new System.String("FETCH");
+            this.ImageId = "FETCH";
         }
         //      C# -> System.Boolean? IsLatest
         // GraphQL -> isLatest: Boolean! (scalar)
@@ -158,7 +158,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> List<AwsCdmVersionTag>? Tags
         // GraphQL -> tags: [AwsCdmVersionTag!]! (type)

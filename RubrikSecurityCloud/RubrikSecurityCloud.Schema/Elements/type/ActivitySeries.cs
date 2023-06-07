@@ -522,43 +522,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> activitySeriesId: UUID! (scalar)
         if (this.ActivitySeriesId == null && Exploration.Includes(parent + ".activitySeriesId", true))
         {
-            this.ActivitySeriesId = new System.String("FETCH");
+            this.ActivitySeriesId = "FETCH";
         }
         //      C# -> System.String? CauseErrorCode
         // GraphQL -> causeErrorCode: String (scalar)
         if (this.CauseErrorCode == null && Exploration.Includes(parent + ".causeErrorCode", true))
         {
-            this.CauseErrorCode = new System.String("FETCH");
+            this.CauseErrorCode = "FETCH";
         }
         //      C# -> System.String? CauseErrorMessage
         // GraphQL -> causeErrorMessage: String (scalar)
         if (this.CauseErrorMessage == null && Exploration.Includes(parent + ".causeErrorMessage", true))
         {
-            this.CauseErrorMessage = new System.String("FETCH");
+            this.CauseErrorMessage = "FETCH";
         }
         //      C# -> System.String? CauseErrorReason
         // GraphQL -> causeErrorReason: String (scalar)
         if (this.CauseErrorReason == null && Exploration.Includes(parent + ".causeErrorReason", true))
         {
-            this.CauseErrorReason = new System.String("FETCH");
+            this.CauseErrorReason = "FETCH";
         }
         //      C# -> System.String? CauseErrorRemedy
         // GraphQL -> causeErrorRemedy: String (scalar)
         if (this.CauseErrorRemedy == null && Exploration.Includes(parent + ".causeErrorRemedy", true))
         {
-            this.CauseErrorRemedy = new System.String("FETCH");
+            this.CauseErrorRemedy = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Int64? DataTransferred
         // GraphQL -> dataTransferred: Long (scalar)
@@ -576,13 +576,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failureReason: String (scalar)
         if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
         {
-            this.FailureReason = new System.String("FETCH");
+            this.FailureReason = "FETCH";
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -624,7 +624,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogicalSize
         // GraphQL -> logicalSize: Long (scalar)
@@ -636,31 +636,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
         {
-            this.ObjectId = new System.String("FETCH");
+            this.ObjectId = "FETCH";
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String (scalar)
         if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
         {
-            this.ObjectName = new System.String("FETCH");
+            this.ObjectName = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
         if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
         {
-            this.OrgName = new System.String("FETCH");
+            this.OrgName = "FETCH";
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String (scalar)
         if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
         {
-            this.Progress = new System.String("FETCH");
+            this.Progress = "FETCH";
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)

@@ -264,13 +264,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appBlueprintId: UUID! (scalar)
         if (this.AppBlueprintId == null && Exploration.Includes(parent + ".appBlueprintId", true))
         {
-            this.AppBlueprintId = new System.String("FETCH");
+            this.AppBlueprintId = "FETCH";
         }
         //      C# -> System.String? AppBlueprintName
         // GraphQL -> appBlueprintName: String! (scalar)
         if (this.AppBlueprintName == null && Exploration.Includes(parent + ".appBlueprintName", true))
         {
-            this.AppBlueprintName = new System.String("FETCH");
+            this.AppBlueprintName = "FETCH";
         }
         //      C# -> System.Int64? Duration
         // GraphQL -> duration: Long (scalar)
@@ -288,7 +288,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? LastTestTime
         // GraphQL -> lastTestTime: DateTime (scalar)
@@ -300,7 +300,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> source: String! (scalar)
         if (this.Source == null && Exploration.Includes(parent + ".source", true))
         {
-            this.Source = new System.String("FETCH");
+            this.Source = "FETCH";
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime! (scalar)
@@ -312,13 +312,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> targetSite: String! (scalar)
         if (this.TargetSite == null && Exploration.Includes(parent + ".targetSite", true))
         {
-            this.TargetSite = new System.String("FETCH");
+            this.TargetSite = "FETCH";
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)
         if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
         {
-            this.TaskchainId = new System.String("FETCH");
+            this.TaskchainId = "FETCH";
         }
         //      C# -> FailoverReport? Report
         // GraphQL -> report: FailoverReport (type)

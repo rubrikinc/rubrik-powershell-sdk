@@ -607,25 +607,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accessibleBySidsRepresentation: String! (scalar)
         if (this.AccessibleBySidsRepresentation == null && Exploration.Includes(parent + ".accessibleBySidsRepresentation", true))
         {
-            this.AccessibleBySidsRepresentation = new System.String("FETCH");
+            this.AccessibleBySidsRepresentation = "FETCH";
         }
         //      C# -> System.String? AccessibleBySidsRepresentationShortForm
         // GraphQL -> accessibleBySidsRepresentationShortForm: String! (scalar)
         if (this.AccessibleBySidsRepresentationShortForm == null && Exploration.Includes(parent + ".accessibleBySidsRepresentationShortForm", true))
         {
-            this.AccessibleBySidsRepresentationShortForm = new System.String("FETCH");
+            this.AccessibleBySidsRepresentationShortForm = "FETCH";
         }
         //      C# -> System.String? Directory
         // GraphQL -> directory: String! (scalar)
         if (this.Directory == null && Exploration.Includes(parent + ".directory", true))
         {
-            this.Directory = new System.String("FETCH");
+            this.Directory = "FETCH";
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
         if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
         {
-            this.Filename = new System.String("FETCH");
+            this.Filename = "FETCH";
         }
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
@@ -643,7 +643,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nativePath: String! (scalar)
         if (this.NativePath == null && Exploration.Includes(parent + ".nativePath", true))
         {
-            this.NativePath = new System.String("FETCH");
+            this.NativePath = "FETCH";
         }
         //      C# -> System.Int64? NumActivities
         // GraphQL -> numActivities: Long! (scalar)
@@ -667,7 +667,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numDescendantFiles: Int! (scalar)
         if (this.NumDescendantFiles == null && Exploration.Includes(parent + ".numDescendantFiles", true))
         {
-            this.NumDescendantFiles = new System.Int32();
+            this.NumDescendantFiles = Int32.MinValue;
         }
         //      C# -> System.Int64? NumDescendantFolders
         // GraphQL -> numDescendantFolders: Long! (scalar)
@@ -691,13 +691,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> owner: String! (scalar)
         if (this.Owner == null && Exploration.Includes(parent + ".owner", true))
         {
-            this.Owner = new System.String("FETCH");
+            this.Owner = "FETCH";
         }
         //      C# -> System.String? PaginationId
         // GraphQL -> paginationId: String! (scalar)
         if (this.PaginationId == null && Exploration.Includes(parent + ".paginationId", true))
         {
-            this.PaginationId = new System.String("FETCH");
+            this.PaginationId = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
@@ -709,7 +709,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
         {
-            this.SnapshotFid = new System.String("FETCH");
+            this.SnapshotFid = "FETCH";
         }
         //      C# -> System.Int64? SnapshotTimestamp
         // GraphQL -> snapshotTimestamp: Long! (scalar)
@@ -721,7 +721,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> stdPath: String! (scalar)
         if (this.StdPath == null && Exploration.Includes(parent + ".stdPath", true))
         {
-            this.StdPath = new System.String("FETCH");
+            this.StdPath = "FETCH";
         }
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)

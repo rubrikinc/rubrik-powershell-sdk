@@ -997,43 +997,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> blueprintId: String (scalar)
         if (this.BlueprintId == null && Exploration.Includes(parent + ".blueprintId", true))
         {
-            this.BlueprintId = new System.String("FETCH");
+            this.BlueprintId = "FETCH";
         }
         //      C# -> System.String? BlueprintName
         // GraphQL -> blueprintName: String (scalar)
         if (this.BlueprintName == null && Exploration.Includes(parent + ".blueprintName", true))
         {
-            this.BlueprintName = new System.String("FETCH");
+            this.BlueprintName = "FETCH";
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmLink
         // GraphQL -> cdmLink: String! (scalar)
         if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink", true))
         {
-            this.CdmLink = new System.String("FETCH");
+            this.CdmLink = "FETCH";
         }
         //      C# -> System.String? GuestCredentialId
         // GraphQL -> guestCredentialId: String! (scalar)
         if (this.GuestCredentialId == null && Exploration.Includes(parent + ".guestCredentialId", true))
         {
-            this.GuestCredentialId = new System.String("FETCH");
+            this.GuestCredentialId = "FETCH";
         }
         //      C# -> System.String? GuestOsName
         // GraphQL -> guestOsName: String! (scalar)
         if (this.GuestOsName == null && Exploration.Includes(parent + ".guestOsName", true))
         {
-            this.GuestOsName = new System.String("FETCH");
+            this.GuestOsName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
@@ -1063,31 +1063,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? ParentWorkloadIdOpt
         // GraphQL -> parentWorkloadIdOpt: UUID (scalar)
         if (this.ParentWorkloadIdOpt == null && Exploration.Includes(parent + ".parentWorkloadIdOpt", true))
         {
-            this.ParentWorkloadIdOpt = new System.String("FETCH");
+            this.ParentWorkloadIdOpt = "FETCH";
         }
         //      C# -> System.String? ParentWorkloadTypeOpt
         // GraphQL -> parentWorkloadTypeOpt: String (scalar)
         if (this.ParentWorkloadTypeOpt == null && Exploration.Includes(parent + ".parentWorkloadTypeOpt", true))
         {
-            this.ParentWorkloadTypeOpt = new System.String("FETCH");
+            this.ParentWorkloadTypeOpt = "FETCH";
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
@@ -1099,7 +1099,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

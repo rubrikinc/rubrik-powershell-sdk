@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmOvaLink: String! (scalar)
         if (this.CdmOvaLink == null && Exploration.Includes(parent + ".cdmOvaLink", true))
         {
-            this.CdmOvaLink = new System.String("FETCH");
+            this.CdmOvaLink = "FETCH";
         }
         //      C# -> System.String? WindowsToolLink
         // GraphQL -> windowsToolLink: String! (scalar)
         if (this.WindowsToolLink == null && Exploration.Includes(parent + ".windowsToolLink", true))
         {
-            this.WindowsToolLink = new System.String("FETCH");
+            this.WindowsToolLink = "FETCH";
         }
         //      C# -> List<OauthAccessToken>? RegistrationCodes
         // GraphQL -> registrationCodes: [OauthAccessToken!]! (type)

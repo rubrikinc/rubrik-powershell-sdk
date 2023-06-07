@@ -182,13 +182,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backupClusterVersion: String! (scalar)
         if (this.BackupClusterVersion == null && Exploration.Includes(parent + ".backupClusterVersion", true))
         {
-            this.BackupClusterVersion = new System.String("FETCH");
+            this.BackupClusterVersion = "FETCH";
         }
         //      C# -> System.String? BackupFileName
         // GraphQL -> backupFileName: String! (scalar)
         if (this.BackupFileName == null && Exploration.Includes(parent + ".backupFileName", true))
         {
-            this.BackupFileName = new System.String("FETCH");
+            this.BackupFileName = "FETCH";
         }
         //      C# -> System.Int64? BackupSizeInBytes
         // GraphQL -> backupSizeInBytes: Long! (scalar)
@@ -206,25 +206,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String (scalar)
         if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
         {
-            this.ReplicationTargetName = new System.String("FETCH");
+            this.ReplicationTargetName = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetUuid
         // GraphQL -> replicationTargetUuid: String (scalar)
         if (this.ReplicationTargetUuid == null && Exploration.Includes(parent + ".replicationTargetUuid", true))
         {
-            this.ReplicationTargetUuid = new System.String("FETCH");
+            this.ReplicationTargetUuid = "FETCH";
         }
     }
 

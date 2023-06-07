@@ -104,7 +104,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> level: String! (scalar)
         if (this.Level == null && Exploration.Includes(parent + ".level", true))
         {
-            this.Level = new System.String("FETCH");
+            this.Level = "FETCH";
         }
     }
 

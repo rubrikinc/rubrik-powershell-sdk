@@ -134,13 +134,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> diskType: String! (scalar)
         if (this.DiskType == null && Exploration.Includes(parent + ".diskType", true))
         {
-            this.DiskType = new System.String("FETCH");
+            this.DiskType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsDegraded
         // GraphQL -> isDegraded: Boolean! (scalar)
@@ -158,13 +158,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
         {
-            this.NodeId = new System.String("FETCH");
+            this.NodeId = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
     }
 

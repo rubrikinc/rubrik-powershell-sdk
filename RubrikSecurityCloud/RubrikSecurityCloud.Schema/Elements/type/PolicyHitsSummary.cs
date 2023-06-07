@@ -224,13 +224,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
         {
-            this.PolicyId = new System.String("FETCH");
+            this.PolicyId = "FETCH";
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
         if (this.PolicyName == null && Exploration.Includes(parent + ".policyName", true))
         {
-            this.PolicyName = new System.String("FETCH");
+            this.PolicyName = "FETCH";
         }
         //      C# -> System.Int64? RiskHits
         // GraphQL -> riskHits: Long! (scalar)

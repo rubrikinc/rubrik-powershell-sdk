@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountDir: String! (scalar)
         if (this.MountDir == null && Exploration.Includes(parent + ".mountDir", true))
         {
-            this.MountDir = new System.String("FETCH");
+            this.MountDir = "FETCH";
         }
         //      C# -> ClusterNode? Node
         // GraphQL -> node: ClusterNode (type)

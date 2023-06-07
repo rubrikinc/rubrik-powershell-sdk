@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmCertUuid: UUID! (scalar)
         if (this.CdmCertUuid == null && Exploration.Includes(parent + ".cdmCertUuid", true))
         {
-            this.CdmCertUuid = new System.String("FETCH");
+            this.CdmCertUuid = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Boolean? IsTrusted
         // GraphQL -> isTrusted: Boolean! (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
     }
 

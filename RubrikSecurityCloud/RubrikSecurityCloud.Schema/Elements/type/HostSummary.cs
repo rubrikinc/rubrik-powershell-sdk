@@ -258,61 +258,61 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> alias: String (scalar)
         if (this.Alias == null && Exploration.Includes(parent + ".alias", true))
         {
-            this.Alias = new System.String("FETCH");
+            this.Alias = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OperatingSystem
         // GraphQL -> operatingSystem: String (scalar)
         if (this.OperatingSystem == null && Exploration.Includes(parent + ".operatingSystem", true))
         {
-            this.OperatingSystem = new System.String("FETCH");
+            this.OperatingSystem = "FETCH";
         }
         //      C# -> System.String? OperatingSystemType
         // GraphQL -> operatingSystemType: String (scalar)
         if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
         {
-            this.OperatingSystemType = new System.String("FETCH");
+            this.OperatingSystemType = "FETCH";
         }
         //      C# -> System.String? OrganizationId
         // GraphQL -> organizationId: String (scalar)
         if (this.OrganizationId == null && Exploration.Includes(parent + ".organizationId", true))
         {
-            this.OrganizationId = new System.String("FETCH");
+            this.OrganizationId = "FETCH";
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String (scalar)
         if (this.OrganizationName == null && Exploration.Includes(parent + ".organizationName", true))
         {
-            this.OrganizationName = new System.String("FETCH");
+            this.OrganizationName = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> HdfsBaseConfig? HdfsBaseConfig
         // GraphQL -> hdfsBaseConfig: HdfsBaseConfig (type)

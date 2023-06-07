@@ -112,19 +112,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> rootId: String (scalar)
         if (this.RootId == null && Exploration.Includes(parent + ".rootId", true))
         {
-            this.RootId = new System.String("FETCH");
+            this.RootId = "FETCH";
         }
         //      C# -> System.String? RootName
         // GraphQL -> rootName: String! (scalar)
         if (this.RootName == null && Exploration.Includes(parent + ".rootName", true))
         {
-            this.RootName = new System.String("FETCH");
+            this.RootName = "FETCH";
         }
         //      C# -> System.String? RootRole
         // GraphQL -> rootRole: String (scalar)
         if (this.RootRole == null && Exploration.Includes(parent + ".rootRole", true))
         {
-            this.RootRole = new System.String("FETCH");
+            this.RootRole = "FETCH";
         }
     }
 

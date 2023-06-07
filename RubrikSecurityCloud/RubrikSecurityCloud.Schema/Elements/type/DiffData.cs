@@ -300,13 +300,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mode: Int! (scalar)
         if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
         {
-            this.Mode = new System.Int32();
+            this.Mode = Int32.MinValue;
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> System.Int64? SuspiciousFilesAdded
         // GraphQL -> suspiciousFilesAdded: Long! (scalar)

@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> scan: String! (scalar)
         if (this.Scan == null && Exploration.Includes(parent + ".scan", true))
         {
-            this.Scan = new System.String("FETCH");
+            this.Scan = "FETCH";
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)

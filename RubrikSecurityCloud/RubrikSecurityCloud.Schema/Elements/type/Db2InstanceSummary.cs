@@ -304,7 +304,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
@@ -316,25 +316,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lastRefreshTime: String! (scalar)
         if (this.LastRefreshTime == null && Exploration.Includes(parent + ".lastRefreshTime", true))
         {
-            this.LastRefreshTime = new System.String("FETCH");
+            this.LastRefreshTime = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: String! (scalar)
         if (this.PrimaryClusterUuid == null && Exploration.Includes(parent + ".primaryClusterUuid", true))
         {
-            this.PrimaryClusterUuid = new System.String("FETCH");
+            this.PrimaryClusterUuid = "FETCH";
         }
         //      C# -> System.String? ProtectionDate
         // GraphQL -> protectionDate: String! (scalar)
         if (this.ProtectionDate == null && Exploration.Includes(parent + ".protectionDate", true))
         {
-            this.ProtectionDate = new System.String("FETCH");
+            this.ProtectionDate = "FETCH";
         }
         //      C# -> List<System.String>? RelicDatabaseIds
         // GraphQL -> relicDatabaseIds: [String!]! (scalar)
@@ -346,25 +346,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> slaDomainId: String! (scalar)
         if (this.SlaDomainId == null && Exploration.Includes(parent + ".slaDomainId", true))
         {
-            this.SlaDomainId = new System.String("FETCH");
+            this.SlaDomainId = "FETCH";
         }
         //      C# -> System.String? SlaType
         // GraphQL -> slaType: String! (scalar)
         if (this.SlaType == null && Exploration.Includes(parent + ".slaType", true))
         {
-            this.SlaType = new System.String("FETCH");
+            this.SlaType = "FETCH";
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String! (scalar)
         if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
         {
-            this.StatusMessage = new System.String("FETCH");
+            this.StatusMessage = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
     }
 

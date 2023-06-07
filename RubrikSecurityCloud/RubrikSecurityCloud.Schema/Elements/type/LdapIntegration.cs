@@ -232,43 +232,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> baseDn: String! (scalar)
         if (this.BaseDn == null && Exploration.Includes(parent + ".baseDn", true))
         {
-            this.BaseDn = new System.String("FETCH");
+            this.BaseDn = "FETCH";
         }
         //      C# -> System.String? BindUserName
         // GraphQL -> bindUserName: String! (scalar)
         if (this.BindUserName == null && Exploration.Includes(parent + ".bindUserName", true))
         {
-            this.BindUserName = new System.String("FETCH");
+            this.BindUserName = "FETCH";
         }
         //      C# -> System.String? DynamicDnsName
         // GraphQL -> dynamicDnsName: String! (scalar)
         if (this.DynamicDnsName == null && Exploration.Includes(parent + ".dynamicDnsName", true))
         {
-            this.DynamicDnsName = new System.String("FETCH");
+            this.DynamicDnsName = "FETCH";
         }
         //      C# -> System.String? GroupMemberAttr
         // GraphQL -> groupMemberAttr: String (scalar)
         if (this.GroupMemberAttr == null && Exploration.Includes(parent + ".groupMemberAttr", true))
         {
-            this.GroupMemberAttr = new System.String("FETCH");
+            this.GroupMemberAttr = "FETCH";
         }
         //      C# -> System.String? GroupMembershipAttr
         // GraphQL -> groupMembershipAttr: String (scalar)
         if (this.GroupMembershipAttr == null && Exploration.Includes(parent + ".groupMembershipAttr", true))
         {
-            this.GroupMembershipAttr = new System.String("FETCH");
+            this.GroupMembershipAttr = "FETCH";
         }
         //      C# -> System.String? GroupSearchFilter
         // GraphQL -> groupSearchFilter: String (scalar)
         if (this.GroupSearchFilter == null && Exploration.Includes(parent + ".groupSearchFilter", true))
         {
-            this.GroupSearchFilter = new System.String("FETCH");
+            this.GroupSearchFilter = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsTotpEnforced
         // GraphQL -> isTotpEnforced: Boolean! (scalar)
@@ -280,25 +280,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? TrustedCerts
         // GraphQL -> trustedCerts: String (scalar)
         if (this.TrustedCerts == null && Exploration.Includes(parent + ".trustedCerts", true))
         {
-            this.TrustedCerts = new System.String("FETCH");
+            this.TrustedCerts = "FETCH";
         }
         //      C# -> System.String? UserNameAttr
         // GraphQL -> userNameAttr: String (scalar)
         if (this.UserNameAttr == null && Exploration.Includes(parent + ".userNameAttr", true))
         {
-            this.UserNameAttr = new System.String("FETCH");
+            this.UserNameAttr = "FETCH";
         }
         //      C# -> System.String? UserSearchFilter
         // GraphQL -> userSearchFilter: String (scalar)
         if (this.UserSearchFilter == null && Exploration.Includes(parent + ".userSearchFilter", true))
         {
-            this.UserSearchFilter = new System.String("FETCH");
+            this.UserSearchFilter = "FETCH";
         }
         //      C# -> List<LdapServer>? LdapServers
         // GraphQL -> ldapServers: [LdapServer!]! (type)

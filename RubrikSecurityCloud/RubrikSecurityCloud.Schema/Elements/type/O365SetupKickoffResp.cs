@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appClientId: String! (scalar)
         if (this.AppClientId == null && Exploration.Includes(parent + ".appClientId", true))
         {
-            this.AppClientId = new System.String("FETCH");
+            this.AppClientId = "FETCH";
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
         if (this.CsrfToken == null && Exploration.Includes(parent + ".csrfToken", true))
         {
-            this.CsrfToken = new System.String("FETCH");
+            this.CsrfToken = "FETCH";
         }
         //      C# -> List<AppIdForType>? AppClientIdsPerType
         // GraphQL -> appClientIdsPerType: [AppIdForType!]! (type)

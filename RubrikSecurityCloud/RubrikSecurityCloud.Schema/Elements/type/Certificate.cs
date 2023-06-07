@@ -148,7 +148,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> certificate: String! (scalar)
         if (this.CertificateField == null && Exploration.Includes(parent + ".certificate", true))
         {
-            this.CertificateField = new System.String("FETCH");
+            this.CertificateField = "FETCH";
         }
         //      C# -> System.Int64? CertificateId
         // GraphQL -> certificateId: Long! (scalar)
@@ -160,7 +160,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> DateTime? ExpiringAt
         // GraphQL -> expiringAt: DateTime (scalar)
@@ -178,7 +178,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> List<System.String>? UsedBy
         // GraphQL -> usedBy: [String!]! (scalar)

@@ -280,7 +280,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> DateTime? CreationDate
         // GraphQL -> creationDate: DateTime (scalar)
@@ -292,7 +292,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsFilesOnlyMount
         // GraphQL -> isFilesOnlyMount: Boolean! (scalar)
@@ -316,13 +316,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountedDatabaseName: String! (scalar)
         if (this.MountedDatabaseName == null && Exploration.Includes(parent + ".mountedDatabaseName", true))
         {
-            this.MountedDatabaseName = new System.String("FETCH");
+            this.MountedDatabaseName = "FETCH";
         }
         //      C# -> System.String? TargetHostMount
         // GraphQL -> targetHostMount: String! (scalar)
         if (this.TargetHostMount == null && Exploration.Includes(parent + ".targetHostMount", true))
         {
-            this.TargetHostMount = new System.String("FETCH");
+            this.TargetHostMount = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

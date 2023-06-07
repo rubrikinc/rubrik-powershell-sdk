@@ -120,13 +120,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fileMode: String (scalar)
         if (this.FileMode == null && Exploration.Includes(parent + ".fileMode", true))
         {
-            this.FileMode = new System.String("FETCH");
+            this.FileMode = "FETCH";
         }
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String (scalar)
         if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
         {
-            this.LastModified = new System.String("FETCH");
+            this.LastModified = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
@@ -138,13 +138,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotId: String (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> System.String? Source
         // GraphQL -> source: String (scalar)
         if (this.Source == null && Exploration.Includes(parent + ".source", true))
         {
-            this.Source = new System.String("FETCH");
+            this.Source = "FETCH";
         }
     }
 

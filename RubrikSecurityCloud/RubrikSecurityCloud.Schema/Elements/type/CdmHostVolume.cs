@@ -148,19 +148,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? FileSystemType
         // GraphQL -> fileSystemType: String (scalar)
         if (this.FileSystemType == null && Exploration.Includes(parent + ".fileSystemType", true))
         {
-            this.FileSystemType = new System.String("FETCH");
+            this.FileSystemType = "FETCH";
         }
         //      C# -> List<System.String>? MountPoints
         // GraphQL -> mountPoints: [String!]! (scalar)
@@ -178,13 +178,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> volumeGroupId: String (scalar)
         if (this.VolumeGroupId == null && Exploration.Includes(parent + ".volumeGroupId", true))
         {
-            this.VolumeGroupId = new System.String("FETCH");
+            this.VolumeGroupId = "FETCH";
         }
         //      C# -> System.String? VolumeId
         // GraphQL -> volumeId: String! (scalar)
         if (this.VolumeId == null && Exploration.Includes(parent + ".volumeId", true))
         {
-            this.VolumeId = new System.String("FETCH");
+            this.VolumeId = "FETCH";
         }
     }
 

@@ -112,7 +112,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failureReason: String! (scalar)
         if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
         {
-            this.FailureReason = new System.String("FETCH");
+            this.FailureReason = "FETCH";
         }
         //      C# -> DateTime? LastUpdatedAt
         // GraphQL -> lastUpdatedAt: DateTime (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> taskchainId: String! (scalar)
         if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
         {
-            this.TaskchainId = new System.String("FETCH");
+            this.TaskchainId = "FETCH";
         }
     }
 

@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> filterCondition: String! (scalar)
         if (this.FilterCondition == null && Exploration.Includes(parent + ".filterCondition", true))
         {
-            this.FilterCondition = new System.String("FETCH");
+            this.FilterCondition = "FETCH";
         }
         //      C# -> VirtualMachineSummary? VirtualMachineSummary
         // GraphQL -> virtualMachineSummary: VirtualMachineSummary (type)

@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> endCursor: String! (scalar)
         if (this.EndCursor == null && Exploration.Includes(parent + ".endCursor", true))
         {
-            this.EndCursor = new System.String("FETCH");
+            this.EndCursor = "FETCH";
         }
         //      C# -> System.Boolean? HasNextPage
         // GraphQL -> hasNextPage: Boolean! (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> startCursor: String! (scalar)
         if (this.StartCursor == null && Exploration.Includes(parent + ".startCursor", true))
         {
-            this.StartCursor = new System.String("FETCH");
+            this.StartCursor = "FETCH";
         }
     }
 

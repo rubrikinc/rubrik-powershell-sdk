@@ -204,31 +204,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
         if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
         {
-            this.CdmVersion = new System.String("FETCH");
+            this.CdmVersion = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? DatastoreFid
         // GraphQL -> datastoreFid: String (scalar)
         if (this.DatastoreFid == null && Exploration.Includes(parent + ".datastoreFid", true))
         {
-            this.DatastoreFid = new System.String("FETCH");
+            this.DatastoreFid = "FETCH";
         }
         //      C# -> System.Int32? DeviceKey
         // GraphQL -> deviceKey: Int (scalar)
         if (this.DeviceKey == null && Exploration.Includes(parent + ".deviceKey", true))
         {
-            this.DeviceKey = new System.Int32();
+            this.DeviceKey = Int32.MinValue;
         }
         //      C# -> System.Boolean? ExcludeFromSnapshots
         // GraphQL -> excludeFromSnapshots: Boolean! (scalar)
@@ -240,13 +240,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fid: UUID! (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.String? FileName
         // GraphQL -> fileName: String! (scalar)
         if (this.FileName == null && Exploration.Includes(parent + ".fileName", true))
         {
-            this.FileName = new System.String("FETCH");
+            this.FileName = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
@@ -258,7 +258,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> virtualMachineId: String! (scalar)
         if (this.VirtualMachineId == null && Exploration.Includes(parent + ".virtualMachineId", true))
         {
-            this.VirtualMachineId = new System.String("FETCH");
+            this.VirtualMachineId = "FETCH";
         }
         //      C# -> VsphereDatastore? Datastore
         // GraphQL -> datastore: VsphereDatastore (type)

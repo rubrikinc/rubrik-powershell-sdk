@@ -317,7 +317,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> crawlId: String! (scalar)
         if (this.CrawlId == null && Exploration.Includes(parent + ".crawlId", true))
         {
-            this.CrawlId = new System.String("FETCH");
+            this.CrawlId = "FETCH";
         }
         //      C# -> System.Int64? EndTime
         // GraphQL -> endTime: Long! (scalar)
@@ -329,7 +329,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> error: String! (scalar)
         if (this.Error == null && Exploration.Includes(parent + ".error", true))
         {
-            this.Error = new System.String("FETCH");
+            this.Error = "FETCH";
         }
         //      C# -> System.Int64? FilesAnalyzeable
         // GraphQL -> filesAnalyzeable: Long! (scalar)
@@ -365,7 +365,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
         {
-            this.SnapshotFid = new System.String("FETCH");
+            this.SnapshotFid = "FETCH";
         }
         //      C# -> System.Int64? SnapshotTime
         // GraphQL -> snapshotTime: Long! (scalar)
@@ -383,7 +383,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totalHits: Int! (scalar)
         if (this.TotalHits == null && Exploration.Includes(parent + ".totalHits", true))
         {
-            this.TotalHits = new System.Int32();
+            this.TotalHits = Int32.MinValue;
         }
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)

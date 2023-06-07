@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> error: String! (scalar)
         if (this.Error == null && Exploration.Includes(parent + ".error", true))
         {
-            this.Error = new System.String("FETCH");
+            this.Error = "FETCH";
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
         {
-            this.VmId = new System.String("FETCH");
+            this.VmId = "FETCH";
         }
     }
 

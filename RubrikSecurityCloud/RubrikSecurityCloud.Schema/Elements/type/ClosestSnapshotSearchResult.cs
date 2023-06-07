@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
         {
-            this.SnappableId = new System.String("FETCH");
+            this.SnappableId = "FETCH";
         }
         //      C# -> ClosestSnapshotDetail? Snapshot
         // GraphQL -> snapshot: ClosestSnapshotDetail (type)

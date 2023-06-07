@@ -286,7 +286,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> email: String! (scalar)
         if (this.Email == null && Exploration.Includes(parent + ".email", true))
         {
-            this.Email = new System.String("FETCH");
+            this.Email = "FETCH";
         }
         //      C# -> List<System.String>? Groups
         // GraphQL -> groups: [String!]! (scalar)
@@ -298,7 +298,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsAccountOwner
         // GraphQL -> isAccountOwner: Boolean! (scalar)
@@ -328,7 +328,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> username: String! (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

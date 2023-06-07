@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> chartName: String! (scalar)
         if (this.ChartName == null && Exploration.Includes(parent + ".chartName", true))
         {
-            this.ChartName = new System.String("FETCH");
+            this.ChartName = "FETCH";
         }
     }
 

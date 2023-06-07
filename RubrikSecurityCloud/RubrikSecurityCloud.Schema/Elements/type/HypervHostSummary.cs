@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? ServerName
         // GraphQL -> serverName: String! (scalar)
         if (this.ServerName == null && Exploration.Includes(parent + ".serverName", true))
         {
-            this.ServerName = new System.String("FETCH");
+            this.ServerName = "FETCH";
         }
     }
 

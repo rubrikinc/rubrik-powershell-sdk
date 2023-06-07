@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lun: Int! (scalar)
         if (this.Lun == null && Exploration.Includes(parent + ".lun", true))
         {
-            this.Lun = new System.Int32();
+            this.Lun = Int32.MinValue;
         }
         //      C# -> System.String? ManagedDiskId
         // GraphQL -> managedDiskId: String! (scalar)
         if (this.ManagedDiskId == null && Exploration.Includes(parent + ".managedDiskId", true))
         {
-            this.ManagedDiskId = new System.String("FETCH");
+            this.ManagedDiskId = "FETCH";
         }
     }
 

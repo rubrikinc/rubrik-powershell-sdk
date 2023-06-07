@@ -126,19 +126,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmVersion: String! (scalar)
         if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
         {
-            this.CdmVersion = new System.String("FETCH");
+            this.CdmVersion = "FETCH";
         }
         //      C# -> System.String? Sku
         // GraphQL -> sku: String! (scalar)
         if (this.Sku == null && Exploration.Includes(parent + ".sku", true))
         {
-            this.Sku = new System.String("FETCH");
+            this.Sku = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> List<AzureCdmVersionTag>? Tags
         // GraphQL -> tags: [AzureCdmVersionTag!]! (type)

@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> storeName: String! (scalar)
         if (this.StoreName == null && Exploration.Includes(parent + ".storeName", true))
         {
-            this.StoreName = new System.String("FETCH");
+            this.StoreName = "FETCH";
         }
         //      C# -> System.Int64? WatcherFrequency
         // GraphQL -> watcherFrequency: Long! (scalar)

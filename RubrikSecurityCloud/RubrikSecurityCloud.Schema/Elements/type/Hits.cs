@@ -134,37 +134,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> permittedHits: Int! (scalar)
         if (this.PermittedHits == null && Exploration.Includes(parent + ".permittedHits", true))
         {
-            this.PermittedHits = new System.Int32();
+            this.PermittedHits = Int32.MinValue;
         }
         //      C# -> System.Int32? PermittedHitsDelta
         // GraphQL -> permittedHitsDelta: Int! (scalar)
         if (this.PermittedHitsDelta == null && Exploration.Includes(parent + ".permittedHitsDelta", true))
         {
-            this.PermittedHitsDelta = new System.Int32();
+            this.PermittedHitsDelta = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalHits
         // GraphQL -> totalHits: Int! (scalar)
         if (this.TotalHits == null && Exploration.Includes(parent + ".totalHits", true))
         {
-            this.TotalHits = new System.Int32();
+            this.TotalHits = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalHitsDelta
         // GraphQL -> totalHitsDelta: Int! (scalar)
         if (this.TotalHitsDelta == null && Exploration.Includes(parent + ".totalHitsDelta", true))
         {
-            this.TotalHitsDelta = new System.Int32();
+            this.TotalHitsDelta = Int32.MinValue;
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
         if (this.Violations == null && Exploration.Includes(parent + ".violations", true))
         {
-            this.Violations = new System.Int32();
+            this.Violations = Int32.MinValue;
         }
         //      C# -> System.Int32? ViolationsDelta
         // GraphQL -> violationsDelta: Int! (scalar)
         if (this.ViolationsDelta == null && Exploration.Includes(parent + ".violationsDelta", true))
         {
-            this.ViolationsDelta = new System.Int32();
+            this.ViolationsDelta = Int32.MinValue;
         }
     }
 

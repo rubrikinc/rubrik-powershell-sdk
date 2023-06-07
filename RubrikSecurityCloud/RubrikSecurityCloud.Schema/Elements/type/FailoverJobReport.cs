@@ -260,13 +260,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> blueprintId: UUID! (scalar)
         if (this.BlueprintId == null && Exploration.Includes(parent + ".blueprintId", true))
         {
-            this.BlueprintId = new System.String("FETCH");
+            this.BlueprintId = "FETCH";
         }
         //      C# -> System.String? BlueprintName
         // GraphQL -> blueprintName: String! (scalar)
         if (this.BlueprintName == null && Exploration.Includes(parent + ".blueprintName", true))
         {
-            this.BlueprintName = new System.String("FETCH");
+            this.BlueprintName = "FETCH";
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -296,13 +296,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> jobId: String! (scalar)
         if (this.JobId == null && Exploration.Includes(parent + ".jobId", true))
         {
-            this.JobId = new System.String("FETCH");
+            this.JobId = "FETCH";
         }
         //      C# -> System.String? JobType
         // GraphQL -> jobType: String! (scalar)
         if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
         {
-            this.JobType = new System.String("FETCH");
+            this.JobType = "FETCH";
         }
         //      C# -> List<System.String>? ObjectIds
         // GraphQL -> objectIds: [String!]! (scalar)
@@ -320,13 +320,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoveryName: String! (scalar)
         if (this.RecoveryName == null && Exploration.Includes(parent + ".recoveryName", true))
         {
-            this.RecoveryName = new System.String("FETCH");
+            this.RecoveryName = "FETCH";
         }
         //      C# -> System.String? RecoveryPlanName
         // GraphQL -> recoveryPlanName: String! (scalar)
         if (this.RecoveryPlanName == null && Exploration.Includes(parent + ".recoveryPlanName", true))
         {
-            this.RecoveryPlanName = new System.String("FETCH");
+            this.RecoveryPlanName = "FETCH";
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
@@ -338,7 +338,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> List<FailoverStep>? Steps
         // GraphQL -> steps: [FailoverStep!]! (type)

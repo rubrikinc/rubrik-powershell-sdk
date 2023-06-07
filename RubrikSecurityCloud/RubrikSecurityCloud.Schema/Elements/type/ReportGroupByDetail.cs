@@ -164,31 +164,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
         {
-            this.DisplayName = new System.String("FETCH");
+            this.DisplayName = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryGroupBy
         // GraphQL -> primaryGroupBy: String! (scalar)
         if (this.PrimaryGroupBy == null && Exploration.Includes(parent + ".primaryGroupBy", true))
         {
-            this.PrimaryGroupBy = new System.String("FETCH");
+            this.PrimaryGroupBy = "FETCH";
         }
         //      C# -> System.String? SecondaryAggregation
         // GraphQL -> secondaryAggregation: String (scalar)
         if (this.SecondaryAggregation == null && Exploration.Includes(parent + ".secondaryAggregation", true))
         {
-            this.SecondaryAggregation = new System.String("FETCH");
+            this.SecondaryAggregation = "FETCH";
         }
         //      C# -> System.String? SecondaryGroupBy
         // GraphQL -> secondaryGroupBy: String (scalar)
         if (this.SecondaryGroupBy == null && Exploration.Includes(parent + ".secondaryGroupBy", true))
         {
-            this.SecondaryGroupBy = new System.String("FETCH");
+            this.SecondaryGroupBy = "FETCH";
         }
     }
 

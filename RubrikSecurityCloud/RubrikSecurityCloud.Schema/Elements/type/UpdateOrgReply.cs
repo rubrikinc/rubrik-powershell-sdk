@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> organizationId: String! (scalar)
         if (this.OrganizationId == null && Exploration.Includes(parent + ".organizationId", true))
         {
-            this.OrganizationId = new System.String("FETCH");
+            this.OrganizationId = "FETCH";
         }
     }
 

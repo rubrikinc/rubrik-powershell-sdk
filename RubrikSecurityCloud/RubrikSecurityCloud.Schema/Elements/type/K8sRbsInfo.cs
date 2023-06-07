@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
         if (this.KuprClusterUuid == null && Exploration.Includes(parent + ".kuprClusterUuid", true))
         {
-            this.KuprClusterUuid = new System.String("FETCH");
+            this.KuprClusterUuid = "FETCH";
         }
         //      C# -> System.Int32? MaxPort
         // GraphQL -> maxPort: Int! (scalar)
         if (this.MaxPort == null && Exploration.Includes(parent + ".maxPort", true))
         {
-            this.MaxPort = new System.Int32();
+            this.MaxPort = Int32.MinValue;
         }
         //      C# -> System.Int32? MinPort
         // GraphQL -> minPort: Int! (scalar)
         if (this.MinPort == null && Exploration.Includes(parent + ".minPort", true))
         {
-            this.MinPort = new System.Int32();
+            this.MinPort = Int32.MinValue;
         }
     }
 

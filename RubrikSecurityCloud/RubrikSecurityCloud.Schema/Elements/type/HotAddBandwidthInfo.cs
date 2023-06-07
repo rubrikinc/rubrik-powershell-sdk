@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> exportLimit: Int! (scalar)
         if (this.ExportLimit == null && Exploration.Includes(parent + ".exportLimit", true))
         {
-            this.ExportLimit = new System.Int32();
+            this.ExportLimit = Int32.MinValue;
         }
         //      C# -> System.Int32? IngestLimit
         // GraphQL -> ingestLimit: Int! (scalar)
         if (this.IngestLimit == null && Exploration.Includes(parent + ".ingestLimit", true))
         {
-            this.IngestLimit = new System.Int32();
+            this.IngestLimit = Int32.MinValue;
         }
     }
 

@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> exportId: Int! (scalar)
         if (this.ExportId == null && Exploration.Includes(parent + ".exportId", true))
         {
-            this.ExportId = new System.Int32();
+            this.ExportId = Int32.MinValue;
         }
         //      C# -> System.String? Share
         // GraphQL -> share: String! (scalar)
         if (this.Share == null && Exploration.Includes(parent + ".share", true))
         {
-            this.Share = new System.String("FETCH");
+            this.Share = "FETCH";
         }
     }
 

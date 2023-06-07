@@ -168,7 +168,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostId: String! (scalar)
         if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
         {
-            this.HostId = new System.String("FETCH");
+            this.HostId = "FETCH";
         }
         //      C# -> System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure
         // GraphQL -> shouldCancelBackupOnPreBackupScriptFailure: Boolean! (scalar)
@@ -180,7 +180,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> username: String! (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
         //      C# -> ManagedVolumeSlaScriptConfig? BackupScript
         // GraphQL -> backupScript: ManagedVolumeSlaScriptConfig! (type)

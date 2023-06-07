@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterId: String! (scalar)
         if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
         {
-            this.ClusterId = new System.String("FETCH");
+            this.ClusterId = "FETCH";
         }
         //      C# -> System.String? YamlUrl
         // GraphQL -> yamlUrl: String! (scalar)
         if (this.YamlUrl == null && Exploration.Includes(parent + ".yamlUrl", true))
         {
-            this.YamlUrl = new System.String("FETCH");
+            this.YamlUrl = "FETCH";
         }
     }
 

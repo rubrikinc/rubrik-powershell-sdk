@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> variant: String (scalar)
         if (this.Variant == null && Exploration.Includes(parent + ".variant", true))
         {
-            this.Variant = new System.String("FETCH");
+            this.Variant = "FETCH";
         }
     }
 

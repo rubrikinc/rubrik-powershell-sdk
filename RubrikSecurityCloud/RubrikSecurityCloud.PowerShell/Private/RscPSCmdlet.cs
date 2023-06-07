@@ -42,7 +42,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                     .ToString();
 
             return new Dictionary<string, string>{
-                {"Sdk-Caller", this._rbkClient.ClientId},
+                {"Sdk-Caller", this._rbkClient.ClientName},
                 {"Sdk-Language", "PowerShell"},
                 {"Sdk-Rsc-Version", SchemaMeta.GraphqlSchemaVersion},
                 {"Sdk-Version", version}

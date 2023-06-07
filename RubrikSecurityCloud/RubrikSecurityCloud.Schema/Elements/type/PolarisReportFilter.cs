@@ -176,13 +176,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
         {
-            this.DisplayName = new System.String("FETCH");
+            this.DisplayName = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> List<PolarisReportFilterConfigs>? Configs
         // GraphQL -> configs: [PolarisReportFilterConfigs!]! (type)

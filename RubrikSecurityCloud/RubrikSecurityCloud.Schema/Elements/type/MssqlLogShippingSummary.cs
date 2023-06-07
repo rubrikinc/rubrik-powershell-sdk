@@ -204,7 +204,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? LagTime
         // GraphQL -> lagTime: Long (scalar)
@@ -222,13 +222,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.String? PrimaryDatabaseId
         // GraphQL -> primaryDatabaseId: String! (scalar)
         if (this.PrimaryDatabaseId == null && Exploration.Includes(parent + ".primaryDatabaseId", true))
         {
-            this.PrimaryDatabaseId = new System.String("FETCH");
+            this.PrimaryDatabaseId = "FETCH";
         }
         //      C# -> System.Int64? PrimaryDatabaseLogBackupFrequency
         // GraphQL -> primaryDatabaseLogBackupFrequency: Long (scalar)
@@ -240,25 +240,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> primaryDatabaseName: String! (scalar)
         if (this.PrimaryDatabaseName == null && Exploration.Includes(parent + ".primaryDatabaseName", true))
         {
-            this.PrimaryDatabaseName = new System.String("FETCH");
+            this.PrimaryDatabaseName = "FETCH";
         }
         //      C# -> System.String? SecondaryDatabaseId
         // GraphQL -> secondaryDatabaseId: String (scalar)
         if (this.SecondaryDatabaseId == null && Exploration.Includes(parent + ".secondaryDatabaseId", true))
         {
-            this.SecondaryDatabaseId = new System.String("FETCH");
+            this.SecondaryDatabaseId = "FETCH";
         }
         //      C# -> System.String? SecondaryDatabaseName
         // GraphQL -> secondaryDatabaseName: String! (scalar)
         if (this.SecondaryDatabaseName == null && Exploration.Includes(parent + ".secondaryDatabaseName", true))
         {
-            this.SecondaryDatabaseName = new System.String("FETCH");
+            this.SecondaryDatabaseName = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
         //      C# -> MssqlLogShippingStatusInfo? Status
         // GraphQL -> status: MssqlLogShippingStatusInfo (type)

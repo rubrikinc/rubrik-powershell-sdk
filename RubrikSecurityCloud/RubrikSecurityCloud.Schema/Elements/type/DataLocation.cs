@@ -154,7 +154,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? CreateDate
         // GraphQL -> createDate: DateTime! (scalar)
@@ -166,7 +166,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsActive
         // GraphQL -> isActive: Boolean! (scalar)
@@ -184,7 +184,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
     }
 

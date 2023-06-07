@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nfsServer: String! (scalar)
         if (this.NfsServer == null && Exploration.Includes(parent + ".nfsServer", true))
         {
-            this.NfsServer = new System.String("FETCH");
+            this.NfsServer = "FETCH";
         }
         //      C# -> System.String? NfsServerMountPath
         // GraphQL -> nfsServerMountPath: String! (scalar)
         if (this.NfsServerMountPath == null && Exploration.Includes(parent + ".nfsServerMountPath", true))
         {
-            this.NfsServerMountPath = new System.String("FETCH");
+            this.NfsServerMountPath = "FETCH";
         }
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)
         if (this.StoreUrl == null && Exploration.Includes(parent + ".storeUrl", true))
         {
-            this.StoreUrl = new System.String("FETCH");
+            this.StoreUrl = "FETCH";
         }
     }
 

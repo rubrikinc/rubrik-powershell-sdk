@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> groupById: String! (scalar)
         if (this.GroupById == null && Exploration.Includes(parent + ".groupById", true))
         {
-            this.GroupById = new System.String("FETCH");
+            this.GroupById = "FETCH";
         }
     }
 

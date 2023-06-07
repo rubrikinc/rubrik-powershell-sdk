@@ -1,5 +1,10 @@
-& "$PSScriptRoot\..\..\Utils\import.ps1"
-. "$PSScriptRoot\..\serviceaccount.ps1"
+<#
+.SYNOPSIS
+Run tests around vSphere VMs
+#>
+BeforeAll {
+    . "$PSScriptRoot\e2eInit.ps1"
+}
 
 Describe -Name 'Get-RscVSphereVM' -Tag 'Public' -Fixture{
 

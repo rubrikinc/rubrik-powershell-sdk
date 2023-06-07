@@ -104,7 +104,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failoverId: String! (scalar)
         if (this.FailoverId == null && Exploration.Includes(parent + ".failoverId", true))
         {
-            this.FailoverId = new System.String("FETCH");
+            this.FailoverId = "FETCH";
         }
     }
 

@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> minimumVersion: String! (scalar)
         if (this.MinimumVersion == null && Exploration.Includes(parent + ".minimumVersion", true))
         {
-            this.MinimumVersion = new System.String("FETCH");
+            this.MinimumVersion = "FETCH";
         }
     }
 

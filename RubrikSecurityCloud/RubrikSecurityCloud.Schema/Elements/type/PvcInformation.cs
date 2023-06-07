@@ -162,49 +162,49 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accessMode: String! (scalar)
         if (this.AccessMode == null && Exploration.Includes(parent + ".accessMode", true))
         {
-            this.AccessMode = new System.String("FETCH");
+            this.AccessMode = "FETCH";
         }
         //      C# -> System.String? Capacity
         // GraphQL -> capacity: String! (scalar)
         if (this.Capacity == null && Exploration.Includes(parent + ".capacity", true))
         {
-            this.Capacity = new System.String("FETCH");
+            this.Capacity = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Labels
         // GraphQL -> labels: String! (scalar)
         if (this.Labels == null && Exploration.Includes(parent + ".labels", true))
         {
-            this.Labels = new System.String("FETCH");
+            this.Labels = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? Phase
         // GraphQL -> phase: String! (scalar)
         if (this.Phase == null && Exploration.Includes(parent + ".phase", true))
         {
-            this.Phase = new System.String("FETCH");
+            this.Phase = "FETCH";
         }
         //      C# -> System.String? StorageClass
         // GraphQL -> storageClass: String! (scalar)
         if (this.StorageClass == null && Exploration.Includes(parent + ".storageClass", true))
         {
-            this.StorageClass = new System.String("FETCH");
+            this.StorageClass = "FETCH";
         }
         //      C# -> System.String? Volume
         // GraphQL -> volume: String! (scalar)
         if (this.Volume == null && Exploration.Includes(parent + ".volume", true))
         {
-            this.Volume = new System.String("FETCH");
+            this.Volume = "FETCH";
         }
     }
 

@@ -126,19 +126,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> authorId: String! (scalar)
         if (this.AuthorId == null && Exploration.Includes(parent + ".authorId", true))
         {
-            this.AuthorId = new System.String("FETCH");
+            this.AuthorId = "FETCH";
         }
         //      C# -> System.String? AuthorName
         // GraphQL -> authorName: String! (scalar)
         if (this.AuthorName == null && Exploration.Includes(parent + ".authorName", true))
         {
-            this.AuthorName = new System.String("FETCH");
+            this.AuthorName = "FETCH";
         }
         //      C# -> System.String? Comment
         // GraphQL -> comment: String! (scalar)
         if (this.Comment == null && Exploration.Includes(parent + ".comment", true))
         {
-            this.Comment = new System.String("FETCH");
+            this.Comment = "FETCH";
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)

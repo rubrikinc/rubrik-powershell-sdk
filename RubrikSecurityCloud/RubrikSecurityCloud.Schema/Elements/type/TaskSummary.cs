@@ -224,7 +224,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
@@ -236,55 +236,55 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.Int32? NumCanceled
         // GraphQL -> numCanceled: Int! (scalar)
         if (this.NumCanceled == null && Exploration.Includes(parent + ".numCanceled", true))
         {
-            this.NumCanceled = new System.Int32();
+            this.NumCanceled = Int32.MinValue;
         }
         //      C# -> System.Int32? NumExpected
         // GraphQL -> numExpected: Int! (scalar)
         if (this.NumExpected == null && Exploration.Includes(parent + ".numExpected", true))
         {
-            this.NumExpected = new System.Int32();
+            this.NumExpected = Int32.MinValue;
         }
         //      C# -> System.Int32? NumFailed
         // GraphQL -> numFailed: Int! (scalar)
         if (this.NumFailed == null && Exploration.Includes(parent + ".numFailed", true))
         {
-            this.NumFailed = new System.Int32();
+            this.NumFailed = Int32.MinValue;
         }
         //      C# -> System.Int32? NumSucceeded
         // GraphQL -> numSucceeded: Int! (scalar)
         if (this.NumSucceeded == null && Exploration.Includes(parent + ".numSucceeded", true))
         {
-            this.NumSucceeded = new System.Int32();
+            this.NumSucceeded = Int32.MinValue;
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
         if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
         {
-            this.ObjectName = new System.String("FETCH");
+            this.ObjectName = "FETCH";
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
         if (this.SlaDomainId == null && Exploration.Includes(parent + ".slaDomainId", true))
         {
-            this.SlaDomainId = new System.String("FETCH");
+            this.SlaDomainId = "FETCH";
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
         if (this.SlaDomainName == null && Exploration.Includes(parent + ".slaDomainName", true))
         {
-            this.SlaDomainName = new System.String("FETCH");
+            this.SlaDomainName = "FETCH";
         }
         //      C# -> System.String? SnappbleId
         // GraphQL -> snappbleId: UUID! (scalar)
         if (this.SnappbleId == null && Exploration.Includes(parent + ".snappbleId", true))
         {
-            this.SnappbleId = new System.String("FETCH");
+            this.SnappbleId = "FETCH";
         }
     }
 

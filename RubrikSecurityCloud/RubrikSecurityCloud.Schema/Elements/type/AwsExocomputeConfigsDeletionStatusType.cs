@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> exocomputeConfigId: String! (scalar)
         if (this.ExocomputeConfigId == null && Exploration.Includes(parent + ".exocomputeConfigId", true))
         {
-            this.ExocomputeConfigId = new System.String("FETCH");
+            this.ExocomputeConfigId = "FETCH";
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)

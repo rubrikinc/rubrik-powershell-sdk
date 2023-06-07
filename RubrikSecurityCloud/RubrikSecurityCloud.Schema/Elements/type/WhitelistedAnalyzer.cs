@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> whitelistedAnalyzerId: String! (scalar)
         if (this.WhitelistedAnalyzerId == null && Exploration.Includes(parent + ".whitelistedAnalyzerId", true))
         {
-            this.WhitelistedAnalyzerId = new System.String("FETCH");
+            this.WhitelistedAnalyzerId = "FETCH";
         }
         //      C# -> System.String? WhitelistedPath
         // GraphQL -> whitelistedPath: String! (scalar)
         if (this.WhitelistedPath == null && Exploration.Includes(parent + ".whitelistedPath", true))
         {
-            this.WhitelistedPath = new System.String("FETCH");
+            this.WhitelistedPath = "FETCH";
         }
     }
 

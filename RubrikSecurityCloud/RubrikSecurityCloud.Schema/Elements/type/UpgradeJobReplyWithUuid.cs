@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> uuid: String! (scalar)
         if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
         {
-            this.Uuid = new System.String("FETCH");
+            this.Uuid = "FETCH";
         }
         //      C# -> UpgradeJobReply? UpgradeJobReply
         // GraphQL -> upgradeJobReply: UpgradeJobReply! (type)

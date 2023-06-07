@@ -533,31 +533,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
         if (this.HostLogRetentionHours == null && Exploration.Includes(parent + ".hostLogRetentionHours", true))
         {
-            this.HostLogRetentionHours = new System.Int32();
+            this.HostLogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int32? LogBackupFrequency
         // GraphQL -> logBackupFrequency: Int! (scalar)
         if (this.LogBackupFrequency == null && Exploration.Includes(parent + ".logBackupFrequency", true))
         {
-            this.LogBackupFrequency = new System.Int32();
+            this.LogBackupFrequency = Int32.MinValue;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (this.LogRetentionHours == null && Exploration.Includes(parent + ".logRetentionHours", true))
         {
-            this.LogRetentionHours = new System.Int32();
+            this.LogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int64? NumChannels
         // GraphQL -> numChannels: Long! (scalar)
@@ -569,13 +569,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> endIndex: Int! (scalar)
         if (this.EndIndex == null && Exploration.Includes(parent + ".endIndex", true))
         {
-            this.EndIndex = new System.Int32();
+            this.EndIndex = Int32.MinValue;
         }
         //      C# -> System.Int32? StartIndex
         // GraphQL -> startIndex: Int! (scalar)
         if (this.StartIndex == null && Exploration.Includes(parent + ".startIndex", true))
         {
-            this.StartIndex = new System.Int32();
+            this.StartIndex = Int32.MinValue;
         }
     }
 

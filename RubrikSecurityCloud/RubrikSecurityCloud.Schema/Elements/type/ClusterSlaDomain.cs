@@ -359,19 +359,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRetentionLockedSla
         // GraphQL -> isRetentionLockedSla: Boolean! (scalar)
@@ -383,31 +383,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OwnerOrgName
         // GraphQL -> ownerOrgName: String! (scalar)
         if (this.OwnerOrgName == null && Exploration.Includes(parent + ".ownerOrgName", true))
         {
-            this.OwnerOrgName = new System.String("FETCH");
+            this.OwnerOrgName = "FETCH";
         }
         //      C# -> System.String? PolarisManagedId
         // GraphQL -> polarisManagedId: String (scalar)
         if (this.PolarisManagedId == null && Exploration.Includes(parent + ".polarisManagedId", true))
         {
-            this.PolarisManagedId = new System.String("FETCH");
+            this.PolarisManagedId = "FETCH";
         }
         //      C# -> System.Int32? ProtectedObjectCount
         // GraphQL -> protectedObjectCount: Int! (scalar)
         if (this.ProtectedObjectCount == null && Exploration.Includes(parent + ".protectedObjectCount", true))
         {
-            this.ProtectedObjectCount = new System.Int32();
+            this.ProtectedObjectCount = Int32.MinValue;
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> ClusterArchivalSpec? ArchivalSpec
         // GraphQL -> archivalSpec: ClusterArchivalSpec (type)

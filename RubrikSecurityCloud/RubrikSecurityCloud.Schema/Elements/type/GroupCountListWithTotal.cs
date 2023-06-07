@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totalCount: Int! (scalar)
         if (this.TotalCount == null && Exploration.Includes(parent + ".totalCount", true))
         {
-            this.TotalCount = new System.Int32();
+            this.TotalCount = Int32.MinValue;
         }
         //      C# -> List<GroupCount>? GroupList
         // GraphQL -> groupList: [GroupCount!]! (type)

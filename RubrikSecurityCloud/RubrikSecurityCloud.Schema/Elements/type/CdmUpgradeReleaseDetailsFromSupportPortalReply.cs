@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> compatibilityMatrixLink: String! (scalar)
         if (this.CompatibilityMatrixLink == null && Exploration.Includes(parent + ".compatibilityMatrixLink", true))
         {
-            this.CompatibilityMatrixLink = new System.String("FETCH");
+            this.CompatibilityMatrixLink = "FETCH";
         }
         //      C# -> System.String? SupportSoftwareLink
         // GraphQL -> supportSoftwareLink: String! (scalar)
         if (this.SupportSoftwareLink == null && Exploration.Includes(parent + ".supportSoftwareLink", true))
         {
-            this.SupportSoftwareLink = new System.String("FETCH");
+            this.SupportSoftwareLink = "FETCH";
         }
         //      C# -> List<CdmUpgradeReleaseDetail>? ReleaseDetails
         // GraphQL -> releaseDetails: [CdmUpgradeReleaseDetail!]! (type)

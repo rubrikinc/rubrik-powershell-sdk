@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
         {
-            this.ClusterId = new System.String("FETCH");
+            this.ClusterId = "FETCH";
         }
         //      C# -> System.String? DataIpAddress
         // GraphQL -> dataIpAddress: String! (scalar)
         if (this.DataIpAddress == null && Exploration.Includes(parent + ".dataIpAddress", true))
         {
-            this.DataIpAddress = new System.String("FETCH");
+            this.DataIpAddress = "FETCH";
         }
         //      C# -> System.String? IpmiIpAddress
         // GraphQL -> ipmiIpAddress: String (scalar)
         if (this.IpmiIpAddress == null && Exploration.Includes(parent + ".ipmiIpAddress", true))
         {
-            this.IpmiIpAddress = new System.String("FETCH");
+            this.IpmiIpAddress = "FETCH";
         }
         //      C# -> System.String? NodeId
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
         {
-            this.NodeId = new System.String("FETCH");
+            this.NodeId = "FETCH";
         }
     }
 

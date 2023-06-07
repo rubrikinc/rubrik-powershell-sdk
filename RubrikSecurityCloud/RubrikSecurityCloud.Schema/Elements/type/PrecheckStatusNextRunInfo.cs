@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> jobInstanceId: String! (scalar)
         if (this.JobInstanceId == null && Exploration.Includes(parent + ".jobInstanceId", true))
         {
-            this.JobInstanceId = new System.String("FETCH");
+            this.JobInstanceId = "FETCH";
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
@@ -104,7 +104,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
     }
 

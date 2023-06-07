@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeProjectId
         // GraphQL -> nativeProjectId: String! (scalar)
         if (this.NativeProjectId == null && Exploration.Includes(parent + ".nativeProjectId", true))
         {
-            this.NativeProjectId = new System.String("FETCH");
+            this.NativeProjectId = "FETCH";
         }
         //      C# -> List<GcpNativeFirewallRule>? FirewallRules
         // GraphQL -> firewallRules: [GcpNativeFirewallRule!]! (type)

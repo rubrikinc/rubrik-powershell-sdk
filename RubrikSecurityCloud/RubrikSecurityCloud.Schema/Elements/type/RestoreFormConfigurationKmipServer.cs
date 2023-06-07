@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> serverAddress: String! (scalar)
         if (this.ServerAddress == null && Exploration.Includes(parent + ".serverAddress", true))
         {
-            this.ServerAddress = new System.String("FETCH");
+            this.ServerAddress = "FETCH";
         }
     }
 

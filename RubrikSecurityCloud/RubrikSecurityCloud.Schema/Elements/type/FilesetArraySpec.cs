@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> proxyHostId: String (scalar)
         if (this.ProxyHostId == null && Exploration.Includes(parent + ".proxyHostId", true))
         {
-            this.ProxyHostId = new System.String("FETCH");
+            this.ProxyHostId = "FETCH";
         }
     }
 

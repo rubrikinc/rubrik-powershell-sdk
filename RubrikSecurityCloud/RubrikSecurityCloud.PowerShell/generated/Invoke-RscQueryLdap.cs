@@ -21,176 +21,152 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscQueryLdap",
-        DefaultParameterSetName = "PrincipalList")
+        DefaultParameterSetName = "Principalconnection")
     ]
     public class Invoke_RscQueryLdap : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // IntegrationList parameter set
+        // Integrationconnection parameter set
         //
-        // GraphQL operation: ldapIntegrationConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: LdapIntegrationFieldEnum = Name, ):LdapIntegrationConnection!
+        // [GraphQL: ldapIntegrationConnection]
         //
         [Parameter(
-            ParameterSetName = "IntegrationList",
+            ParameterSetName = "Integrationconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Browse LDAP integrations.
-                GraphQL operation: ldapIntegrationConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: LdapIntegrationFieldEnum = Name, ):LdapIntegrationConnection!
-                ",
+@"Browse LDAP integrations.
+[GraphQL: ldapIntegrationConnection]",
             Position = 0
         )]
-        public SwitchParameter IntegrationList { get; set; }
+        public SwitchParameter Integrationconnection { get; set; }
 
         [Parameter(
-            ParameterSetName = "IntegrationList",
+            ParameterSetName = "Integrationconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
-            ParameterSetName = "IntegrationList",
+            ParameterSetName = "Integrationconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
-            ParameterSetName = "IntegrationList",
+            ParameterSetName = "Integrationconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the last n elements from the list.
-                GraphQL argument last: Int
-                "
+@"Returns the last n elements from the list.
+GraphQL argument last: Int"
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
-            ParameterSetName = "IntegrationList",
+            ParameterSetName = "Integrationconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come before the specified cursor.
-                GraphQL argument before: String
-                "
+@"Returns the elements in the list that come before the specified cursor.
+GraphQL argument before: String"
         )]
         public System.String? Before { get; set; }
         [Parameter(
-            ParameterSetName = "IntegrationList",
+            ParameterSetName = "Integrationconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sorting order for the results.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Sorting order for the results.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
-            ParameterSetName = "IntegrationList",
+            ParameterSetName = "Integrationconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument sortBy: LdapIntegrationFieldEnum
-                "
+@"
+GraphQL argument sortBy: LdapIntegrationFieldEnum"
         )]
         public LdapIntegrationFieldEnum? SortBy { get; set; }
         
         // -------------------------------------------------------------------
-        // PrincipalList parameter set
+        // Principalconnection parameter set
         //
-        // GraphQL operation: ldapPrincipalConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: LdapPrincipalFieldEnum = Name,   id: UUID!,   searchText: String!, ):PrincipalConnection!
+        // [GraphQL: ldapPrincipalConnection]
         //
         [Parameter(
-            ParameterSetName = "PrincipalList",
+            ParameterSetName = "Principalconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Search LDAP Principals.
-                GraphQL operation: ldapPrincipalConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: LdapPrincipalFieldEnum = Name,   id: UUID!,   searchText: String!, ):PrincipalConnection!
-                ",
+@"Search LDAP Principals.
+[GraphQL: ldapPrincipalConnection]",
             Position = 0
         )]
-        public SwitchParameter PrincipalList { get; set; }
+        public SwitchParameter Principalconnection { get; set; }
 
         [Parameter(
-            ParameterSetName = "PrincipalList",
+            ParameterSetName = "Principalconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                ID for your LDAP integration.
-                GraphQL argument id: UUID!
-                "
+@"ID for your LDAP integration.
+GraphQL argument id: UUID!"
         )]
         public System.String? Id { get; set; }
         [Parameter(
-            ParameterSetName = "PrincipalList",
+            ParameterSetName = "Principalconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Search Text for LDAP principal.
-                GraphQL argument searchText: String!
-                "
+@"Search Text for LDAP principal.
+GraphQL argument searchText: String!"
         )]
         public System.String? SearchText { get; set; }
         
         // -------------------------------------------------------------------
-        // AuthorizedPrincipalList parameter set
+        // Authorizedprincipalconnection parameter set
         //
-        // GraphQL operation: ldapAuthorizedPrincipalConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: LdapAuthorizedPrincipalFieldEnum = Name,   searchText: String!,   roleIds: [UUID!], ):AuthorizedPrincipalConnection!
+        // [GraphQL: ldapAuthorizedPrincipalConnection]
         //
         [Parameter(
-            ParameterSetName = "AuthorizedPrincipalList",
+            ParameterSetName = "Authorizedprincipalconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Browse LDAP-authorized principals.
-                GraphQL operation: ldapAuthorizedPrincipalConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: LdapAuthorizedPrincipalFieldEnum = Name,   searchText: String!,   roleIds: [UUID!], ):AuthorizedPrincipalConnection!
-                ",
+@"Browse LDAP-authorized principals.
+[GraphQL: ldapAuthorizedPrincipalConnection]",
             Position = 0
         )]
-        public SwitchParameter AuthorizedPrincipalList { get; set; }
+        public SwitchParameter Authorizedprincipalconnection { get; set; }
 
         [Parameter(
-            ParameterSetName = "AuthorizedPrincipalList",
+            ParameterSetName = "Authorizedprincipalconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Assigned role IDs for LDAP principal.
-                GraphQL argument roleIds: [UUID!]
-                "
+@"Assigned role IDs for LDAP principal.
+GraphQL argument roleIds: [UUID!]"
         )]
         public List<System.String>? RoleIds { get; set; }
 
@@ -200,14 +176,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "IntegrationList":
-                        this.ProcessRecord_IntegrationList();
+                    case "Integrationconnection":
+                        this.ProcessRecord_Integrationconnection();
                         break;
-                    case "PrincipalList":
-                        this.ProcessRecord_PrincipalList();
+                    case "Principalconnection":
+                        this.ProcessRecord_Principalconnection();
                         break;
-                    case "AuthorizedPrincipalList":
-                        this.ProcessRecord_AuthorizedPrincipalList();
+                    case "Authorizedprincipalconnection":
+                        this.ProcessRecord_Authorizedprincipalconnection();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -227,27 +203,27 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // ldapIntegrationConnection.
-        protected void ProcessRecord_IntegrationList()
+        protected void ProcessRecord_Integrationconnection()
         {
-            this._logger.name += " -IntegrationList";
+            this._logger.name += " -Integrationconnection";
             // Invoke graphql operation ldapIntegrationConnection
             InvokeQueryLdapIntegrationConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // ldapPrincipalConnection.
-        protected void ProcessRecord_PrincipalList()
+        protected void ProcessRecord_Principalconnection()
         {
-            this._logger.name += " -PrincipalList";
+            this._logger.name += " -Principalconnection";
             // Invoke graphql operation ldapPrincipalConnection
             InvokeQueryLdapPrincipalConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // ldapAuthorizedPrincipalConnection.
-        protected void ProcessRecord_AuthorizedPrincipalList()
+        protected void ProcessRecord_Authorizedprincipalconnection()
         {
-            this._logger.name += " -AuthorizedPrincipalList";
+            this._logger.name += " -Authorizedprincipalconnection";
             // Invoke graphql operation ldapAuthorizedPrincipalConnection
             InvokeQueryLdapAuthorizedPrincipalConnection();
         }

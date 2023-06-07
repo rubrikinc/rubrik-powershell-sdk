@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> productType: String! (scalar)
         if (this.ProductType == null && Exploration.Includes(parent + ".productType", true))
         {
-            this.ProductType = new System.String("FETCH");
+            this.ProductType = "FETCH";
         }
         //      C# -> List<License>? Licenses
         // GraphQL -> licenses: [License!]! (type)

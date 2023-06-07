@@ -679,19 +679,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cbtStatus: String (scalar)
         if (this.CbtStatus == null && Exploration.Includes(parent + ".cbtStatus", true))
         {
-            this.CbtStatus = new System.String("FETCH");
+            this.CbtStatus = "FETCH";
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmLink
         // GraphQL -> cdmLink: String! (scalar)
         if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink", true))
         {
-            this.CdmLink = new System.String("FETCH");
+            this.CdmLink = "FETCH";
         }
         //      C# -> System.Boolean? DefaultCbt
         // GraphQL -> defaultCbt: Boolean (scalar)
@@ -703,7 +703,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
@@ -733,37 +733,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NasMigrationInfo
         // GraphQL -> nasMigrationInfo: String (scalar)
         if (this.NasMigrationInfo == null && Exploration.Includes(parent + ".nasMigrationInfo", true))
         {
-            this.NasMigrationInfo = new System.String("FETCH");
+            this.NasMigrationInfo = "FETCH";
         }
         //      C# -> System.String? NasVendorType
         // GraphQL -> nasVendorType: String (scalar)
         if (this.NasVendorType == null && Exploration.Includes(parent + ".nasVendorType", true))
         {
-            this.NasVendorType = new System.String("FETCH");
+            this.NasVendorType = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.String? OsName
         // GraphQL -> osName: String (scalar)
         if (this.OsName == null && Exploration.Includes(parent + ".osName", true))
         {
-            this.OsName = new System.String("FETCH");
+            this.OsName = "FETCH";
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -775,7 +775,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vfdState: String! (scalar)
         if (this.VfdState == null && Exploration.Includes(parent + ".vfdState", true))
         {
-            this.VfdState = new System.String("FETCH");
+            this.VfdState = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

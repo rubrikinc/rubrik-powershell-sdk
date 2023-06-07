@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appId: String! (scalar)
         if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
         {
-            this.AppId = new System.String("FETCH");
+            this.AppId = "FETCH";
         }
         //      C# -> System.String? EncryptedRefreshToken
         // GraphQL -> encryptedRefreshToken: String! (scalar)
         if (this.EncryptedRefreshToken == null && Exploration.Includes(parent + ".encryptedRefreshToken", true))
         {
-            this.EncryptedRefreshToken = new System.String("FETCH");
+            this.EncryptedRefreshToken = "FETCH";
         }
     }
 

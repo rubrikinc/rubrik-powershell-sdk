@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> jobProgress: Int! (scalar)
         if (this.JobProgress == null && Exploration.Includes(parent + ".jobProgress", true))
         {
-            this.JobProgress = new System.Int32();
+            this.JobProgress = Int32.MinValue;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
     }
 

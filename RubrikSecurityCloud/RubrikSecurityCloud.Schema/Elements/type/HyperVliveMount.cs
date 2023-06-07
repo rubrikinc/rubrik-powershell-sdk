@@ -238,7 +238,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsVmReady
         // GraphQL -> isVmReady: Boolean! (scalar)
@@ -250,7 +250,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountSpec: String! (scalar)
         if (this.MountSpec == null && Exploration.Includes(parent + ".mountSpec", true))
         {
-            this.MountSpec = new System.String("FETCH");
+            this.MountSpec = "FETCH";
         }
         //      C# -> DateTime? MountTime
         // GraphQL -> mountTime: DateTime (scalar)
@@ -262,37 +262,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountedVmFid: UUID! (scalar)
         if (this.MountedVmFid == null && Exploration.Includes(parent + ".mountedVmFid", true))
         {
-            this.MountedVmFid = new System.String("FETCH");
+            this.MountedVmFid = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? ServerFid
         // GraphQL -> serverFid: UUID! (scalar)
         if (this.ServerFid == null && Exploration.Includes(parent + ".serverFid", true))
         {
-            this.ServerFid = new System.String("FETCH");
+            this.ServerFid = "FETCH";
         }
         //      C# -> System.String? ServerName
         // GraphQL -> serverName: String! (scalar)
         if (this.ServerName == null && Exploration.Includes(parent + ".serverName", true))
         {
-            this.ServerName = new System.String("FETCH");
+            this.ServerName = "FETCH";
         }
         //      C# -> System.String? SourceVm
         // GraphQL -> sourceVm: String! (scalar)
         if (this.SourceVm == null && Exploration.Includes(parent + ".sourceVm", true))
         {
-            this.SourceVm = new System.String("FETCH");
+            this.SourceVm = "FETCH";
         }
         //      C# -> System.String? SourceVmFid
         // GraphQL -> sourceVmFid: UUID! (scalar)
         if (this.SourceVmFid == null && Exploration.Includes(parent + ".sourceVmFid", true))
         {
-            this.SourceVmFid = new System.String("FETCH");
+            this.SourceVmFid = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

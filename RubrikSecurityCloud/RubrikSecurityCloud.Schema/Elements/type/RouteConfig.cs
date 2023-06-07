@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> device: String! (scalar)
         if (this.Device == null && Exploration.Includes(parent + ".device", true))
         {
-            this.Device = new System.String("FETCH");
+            this.Device = "FETCH";
         }
         //      C# -> System.String? Gateway
         // GraphQL -> gateway: String! (scalar)
         if (this.Gateway == null && Exploration.Includes(parent + ".gateway", true))
         {
-            this.Gateway = new System.String("FETCH");
+            this.Gateway = "FETCH";
         }
         //      C# -> System.String? Netmask
         // GraphQL -> netmask: String! (scalar)
         if (this.Netmask == null && Exploration.Includes(parent + ".netmask", true))
         {
-            this.Netmask = new System.String("FETCH");
+            this.Netmask = "FETCH";
         }
         //      C# -> System.String? Network
         // GraphQL -> network: String! (scalar)
         if (this.Network == null && Exploration.Includes(parent + ".network", true))
         {
-            this.Network = new System.String("FETCH");
+            this.Network = "FETCH";
         }
     }
 

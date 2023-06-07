@@ -460,7 +460,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -472,25 +472,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? PreferredDataLocation
         // GraphQL -> preferredDataLocation: String! (scalar)
         if (this.PreferredDataLocation == null && Exploration.Includes(parent + ".preferredDataLocation", true))
         {
-            this.PreferredDataLocation = new System.String("FETCH");
+            this.PreferredDataLocation = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -502,7 +502,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userPrincipalName: String! (scalar)
         if (this.UserPrincipalName == null && Exploration.Includes(parent + ".userPrincipalName", true))
         {
-            this.UserPrincipalName = new System.String("FETCH");
+            this.UserPrincipalName = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

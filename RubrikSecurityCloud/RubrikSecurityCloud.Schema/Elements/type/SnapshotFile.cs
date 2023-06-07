@@ -196,19 +196,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> absolutePath: String! (scalar)
         if (this.AbsolutePath == null && Exploration.Includes(parent + ".absolutePath", true))
         {
-            this.AbsolutePath = new System.String("FETCH");
+            this.AbsolutePath = "FETCH";
         }
         //      C# -> System.String? DisplayPath
         // GraphQL -> displayPath: String! (scalar)
         if (this.DisplayPath == null && Exploration.Includes(parent + ".displayPath", true))
         {
-            this.DisplayPath = new System.String("FETCH");
+            this.DisplayPath = "FETCH";
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
         if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
         {
-            this.Filename = new System.String("FETCH");
+            this.Filename = "FETCH";
         }
         //      C# -> DateTime? LastModified
         // GraphQL -> lastModified: DateTime! (scalar)
@@ -220,7 +220,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> path: String! (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
@@ -232,7 +232,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> statusMessage: String! (scalar)
         if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
         {
-            this.StatusMessage = new System.String("FETCH");
+            this.StatusMessage = "FETCH";
         }
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)

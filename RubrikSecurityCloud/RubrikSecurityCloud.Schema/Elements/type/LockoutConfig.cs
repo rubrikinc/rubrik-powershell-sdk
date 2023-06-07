@@ -148,7 +148,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accountAutoUnlockDurationInMins: Int! (scalar)
         if (this.AccountAutoUnlockDurationInMins == null && Exploration.Includes(parent + ".accountAutoUnlockDurationInMins", true))
         {
-            this.AccountAutoUnlockDurationInMins = new System.Int32();
+            this.AccountAutoUnlockDurationInMins = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsAutoUnlockFeatureEnabled
         // GraphQL -> isAutoUnlockFeatureEnabled: Boolean! (scalar)
@@ -172,19 +172,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> loginAttemptsLimit: Int! (scalar)
         if (this.LoginAttemptsLimit == null && Exploration.Includes(parent + ".loginAttemptsLimit", true))
         {
-            this.LoginAttemptsLimit = new System.Int32();
+            this.LoginAttemptsLimit = Int32.MinValue;
         }
         //      C# -> System.Int32? SelfServiceAttemptsLimit
         // GraphQL -> selfServiceAttemptsLimit: Int! (scalar)
         if (this.SelfServiceAttemptsLimit == null && Exploration.Includes(parent + ".selfServiceAttemptsLimit", true))
         {
-            this.SelfServiceAttemptsLimit = new System.Int32();
+            this.SelfServiceAttemptsLimit = Int32.MinValue;
         }
         //      C# -> System.Int32? SelfServiceTokenValidityInMins
         // GraphQL -> selfServiceTokenValidityInMins: Int! (scalar)
         if (this.SelfServiceTokenValidityInMins == null && Exploration.Includes(parent + ".selfServiceTokenValidityInMins", true))
         {
-            this.SelfServiceTokenValidityInMins = new System.Int32();
+            this.SelfServiceTokenValidityInMins = Int32.MinValue;
         }
     }
 

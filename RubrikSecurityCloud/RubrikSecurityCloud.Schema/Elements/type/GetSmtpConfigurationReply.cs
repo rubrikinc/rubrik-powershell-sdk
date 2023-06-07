@@ -154,13 +154,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> defaultFromEmail: String! (scalar)
         if (this.DefaultFromEmail == null && Exploration.Includes(parent + ".defaultFromEmail", true))
         {
-            this.DefaultFromEmail = new System.String("FETCH");
+            this.DefaultFromEmail = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.Boolean? IsValid
         // GraphQL -> isValid: Boolean! (scalar)
@@ -172,19 +172,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> port: Int! (scalar)
         if (this.Port == null && Exploration.Includes(parent + ".port", true))
         {
-            this.Port = new System.Int32();
+            this.Port = Int32.MinValue;
         }
         //      C# -> System.String? TrustedCerts
         // GraphQL -> trustedCerts: String! (scalar)
         if (this.TrustedCerts == null && Exploration.Includes(parent + ".trustedCerts", true))
         {
-            this.TrustedCerts = new System.String("FETCH");
+            this.TrustedCerts = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
     }
 

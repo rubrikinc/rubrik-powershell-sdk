@@ -126,7 +126,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
         {
-            this.SnapshotFid = new System.String("FETCH");
+            this.SnapshotFid = "FETCH";
         }
         //      C# -> System.Int64? Timestamp
         // GraphQL -> timestamp: Long! (scalar)
@@ -138,13 +138,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> violations: Int! (scalar)
         if (this.Violations == null && Exploration.Includes(parent + ".violations", true))
         {
-            this.Violations = new System.Int32();
+            this.Violations = Int32.MinValue;
         }
         //      C# -> System.Int32? ViolationsDelta
         // GraphQL -> violationsDelta: Int! (scalar)
         if (this.ViolationsDelta == null && Exploration.Includes(parent + ".violationsDelta", true))
         {
-            this.ViolationsDelta = new System.Int32();
+            this.ViolationsDelta = Int32.MinValue;
         }
     }
 

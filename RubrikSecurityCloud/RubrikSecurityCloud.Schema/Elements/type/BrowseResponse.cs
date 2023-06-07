@@ -148,25 +148,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fileMode: String (scalar)
         if (this.FileMode == null && Exploration.Includes(parent + ".fileMode", true))
         {
-            this.FileMode = new System.String("FETCH");
+            this.FileMode = "FETCH";
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String (scalar)
         if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
         {
-            this.Filename = new System.String("FETCH");
+            this.Filename = "FETCH";
         }
         //      C# -> System.String? LastModified
         // GraphQL -> lastModified: String (scalar)
         if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
         {
-            this.LastModified = new System.String("FETCH");
+            this.LastModified = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
@@ -178,13 +178,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> statusMessage: String (scalar)
         if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
         {
-            this.StatusMessage = new System.String("FETCH");
+            this.StatusMessage = "FETCH";
         }
         //      C# -> System.Int32? Unreadable
         // GraphQL -> unreadable: Int (scalar)
         if (this.Unreadable == null && Exploration.Includes(parent + ".unreadable", true))
         {
-            this.Unreadable = new System.Int32();
+            this.Unreadable = Int32.MinValue;
         }
     }
 

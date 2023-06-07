@@ -260,79 +260,79 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> currentState: String! (scalar)
         if (this.CurrentState == null && Exploration.Includes(parent + ".currentState", true))
         {
-            this.CurrentState = new System.String("FETCH");
+            this.CurrentState = "FETCH";
         }
         //      C# -> System.String? CurrentStateName
         // GraphQL -> currentStateName: String! (scalar)
         if (this.CurrentStateName == null && Exploration.Includes(parent + ".currentStateName", true))
         {
-            this.CurrentStateName = new System.String("FETCH");
+            this.CurrentStateName = "FETCH";
         }
         //      C# -> System.String? CurrentStateProgress
         // GraphQL -> currentStateProgress: String! (scalar)
         if (this.CurrentStateProgress == null && Exploration.Includes(parent + ".currentStateProgress", true))
         {
-            this.CurrentStateProgress = new System.String("FETCH");
+            this.CurrentStateProgress = "FETCH";
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String! (scalar)
         if (this.FinishedStates == null && Exploration.Includes(parent + ".finishedStates", true))
         {
-            this.FinishedStates = new System.String("FETCH");
+            this.FinishedStates = "FETCH";
         }
         //      C# -> System.String? Mode
         // GraphQL -> mode: String! (scalar)
         if (this.Mode == null && Exploration.Includes(parent + ".mode", true))
         {
-            this.Mode = new System.String("FETCH");
+            this.Mode = "FETCH";
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
         if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
         {
-            this.NodeName = new System.String("FETCH");
+            this.NodeName = "FETCH";
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String! (scalar)
         if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates", true))
         {
-            this.PendingStates = new System.String("FETCH");
+            this.PendingStates = "FETCH";
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String! (scalar)
         if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
         {
-            this.Progress = new System.String("FETCH");
+            this.Progress = "FETCH";
         }
         //      C# -> System.String? TarballName
         // GraphQL -> tarballName: String! (scalar)
         if (this.TarballName == null && Exploration.Includes(parent + ".tarballName", true))
         {
-            this.TarballName = new System.String("FETCH");
+            this.TarballName = "FETCH";
         }
         //      C# -> System.String? UpgradeProgressPercentage
         // GraphQL -> upgradeProgressPercentage: String! (scalar)
         if (this.UpgradeProgressPercentage == null && Exploration.Includes(parent + ".upgradeProgressPercentage", true))
         {
-            this.UpgradeProgressPercentage = new System.String("FETCH");
+            this.UpgradeProgressPercentage = "FETCH";
         }
         //      C# -> System.String? UpgradeTimeLeftSecs
         // GraphQL -> upgradeTimeLeftSecs: String! (scalar)
         if (this.UpgradeTimeLeftSecs == null && Exploration.Includes(parent + ".upgradeTimeLeftSecs", true))
         {
-            this.UpgradeTimeLeftSecs = new System.String("FETCH");
+            this.UpgradeTimeLeftSecs = "FETCH";
         }
         //      C# -> System.String? UpgradeTimestamp
         // GraphQL -> upgradeTimestamp: String! (scalar)
         if (this.UpgradeTimestamp == null && Exploration.Includes(parent + ".upgradeTimestamp", true))
         {
-            this.UpgradeTimestamp = new System.String("FETCH");
+            this.UpgradeTimestamp = "FETCH";
         }
         //      C# -> System.String? UserSurfacedTaskName
         // GraphQL -> userSurfacedTaskName: String! (scalar)
         if (this.UserSurfacedTaskName == null && Exploration.Includes(parent + ".userSurfacedTaskName", true))
         {
-            this.UserSurfacedTaskName = new System.String("FETCH");
+            this.UserSurfacedTaskName = "FETCH";
         }
         //      C# -> RollingUpgradeInfo? RuInfo
         // GraphQL -> ruInfo: RollingUpgradeInfo (type)

@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> certificateId: String! (scalar)
         if (this.CertificateId == null && Exploration.Includes(parent + ".certificateId", true))
         {
-            this.CertificateId = new System.String("FETCH");
+            this.CertificateId = "FETCH";
         }
         //      C# -> System.String? CertificateName
         // GraphQL -> certificateName: String! (scalar)
         if (this.CertificateName == null && Exploration.Includes(parent + ".certificateName", true))
         {
-            this.CertificateName = new System.String("FETCH");
+            this.CertificateName = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
     }
 

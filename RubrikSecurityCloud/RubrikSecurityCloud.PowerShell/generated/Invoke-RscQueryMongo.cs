@@ -29,7 +29,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Source parameter set
         //
-        // GraphQL operation: mongoSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoSourceConnection!
+        // [GraphQL: mongoSources]
         //
         [Parameter(
             ParameterSetName = "Source",
@@ -37,10 +37,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of MongoDB sources.
-                GraphQL operation: mongoSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoSourceConnection!
-                ",
+@"Paginated list of MongoDB sources.
+[GraphQL: mongoSources]",
             Position = 0
         )]
         public SwitchParameter Source { get; set; }
@@ -51,10 +49,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -63,10 +59,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -75,10 +69,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort hierarchy objects by hierarchy field.
-                GraphQL argument sortBy: HierarchySortByField
-                "
+@"Sort hierarchy objects by hierarchy field.
+GraphQL argument sortBy: HierarchySortByField"
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
@@ -87,10 +79,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sorting order for the results.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Sorting order for the results.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -99,17 +89,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The hierarchy object filter.
-                GraphQL argument filter: [Filter!]
-                "
+@"The hierarchy object filter.
+GraphQL argument filter: [Filter!]"
         )]
         public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
         // Database parameter set
         //
-        // GraphQL operation: mongoDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoDatabaseConnection!
+        // [GraphQL: mongoDatabases]
         //
         [Parameter(
             ParameterSetName = "Database",
@@ -117,10 +105,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of MongoDB databases.
-                GraphQL operation: mongoDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoDatabaseConnection!
-                ",
+@"Paginated list of MongoDB databases.
+[GraphQL: mongoDatabases]",
             Position = 0
         )]
         public SwitchParameter Database { get; set; }
@@ -129,7 +115,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Collection parameter set
         //
-        // GraphQL operation: mongoCollections(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoCollectionConnection!
+        // [GraphQL: mongoCollections]
         //
         [Parameter(
             ParameterSetName = "Collection",
@@ -137,145 +123,129 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of MongoDB collections.
-                GraphQL operation: mongoCollections(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongoCollectionConnection!
-                ",
+@"Paginated list of MongoDB collections.
+[GraphQL: mongoCollections]",
             Position = 0
         )]
         public SwitchParameter Collection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // RecoverableRange parameter set
+        // Recoverablerange parameter set
         //
-        // GraphQL operation: mongoRecoverableRanges(input: RecoverableRangeInput!):MongoRecoverableRanges!
+        // [GraphQL: mongoRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Recoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Provides the range for recovery of MongoDB objects.
-                GraphQL operation: mongoRecoverableRanges(input: RecoverableRangeInput!):MongoRecoverableRanges!
-                ",
+@"Provides the range for recovery of MongoDB objects.
+[GraphQL: mongoRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter RecoverableRange { get; set; }
+        public SwitchParameter Recoverablerange { get; set; }
 
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Recoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Arguments for MongoDB recoverable range.
-                GraphQL argument input: RecoverableRangeInput!
-                "
+@"Arguments for MongoDB recoverable range.
+GraphQL argument input: RecoverableRangeInput!"
         )]
         public RecoverableRangeInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // dbSource parameter set
+        // Dbsource parameter set
         //
-        // GraphQL operation: mongodbSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbSourceConnection!
+        // [GraphQL: mongodbSources]
         //
         [Parameter(
-            ParameterSetName = "dbSource",
+            ParameterSetName = "Dbsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of MongoDB sources on NoSQL cluster.
-                GraphQL operation: mongodbSources(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbSourceConnection!
-                ",
+@"Paginated list of MongoDB sources on NoSQL cluster.
+[GraphQL: mongodbSources]",
             Position = 0
         )]
-        public SwitchParameter dbSource { get; set; }
+        public SwitchParameter Dbsource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // dbDatabase parameter set
+        // Dbdatabase parameter set
         //
-        // GraphQL operation: mongodbDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbDatabaseConnection!
+        // [GraphQL: mongodbDatabases]
         //
         [Parameter(
-            ParameterSetName = "dbDatabase",
+            ParameterSetName = "Dbdatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of MongoDB databases on NoSQL cluster.
-                GraphQL operation: mongodbDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbDatabaseConnection!
-                ",
+@"Paginated list of MongoDB databases on NoSQL cluster.
+[GraphQL: mongodbDatabases]",
             Position = 0
         )]
-        public SwitchParameter dbDatabase { get; set; }
+        public SwitchParameter Dbdatabase { get; set; }
 
         
         // -------------------------------------------------------------------
-        // dbCollection parameter set
+        // Dbcollection parameter set
         //
-        // GraphQL operation: mongodbCollections(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbCollectionConnection!
+        // [GraphQL: mongodbCollections]
         //
         [Parameter(
-            ParameterSetName = "dbCollection",
+            ParameterSetName = "Dbcollection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of MongoDB collections on NoSQL cluster.
-                GraphQL operation: mongodbCollections(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MongodbCollectionConnection!
-                ",
+@"Paginated list of MongoDB collections on NoSQL cluster.
+[GraphQL: mongodbCollections]",
             Position = 0
         )]
-        public SwitchParameter dbCollection { get; set; }
+        public SwitchParameter Dbcollection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // dbCollectionRecoverableRange parameter set
+        // Dbcollectionrecoverablerange parameter set
         //
-        // GraphQL operation: mongodbCollectionRecoverableRange(input: GetMosaicRecoverableRangeInput!):GetMosaicRecoverableRangeResponse!
+        // [GraphQL: mongodbCollectionRecoverableRange]
         //
         [Parameter(
-            ParameterSetName = "dbCollectionRecoverableRange",
+            ParameterSetName = "Dbcollectionrecoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Recoverable Range of a MongoDB collection on NoSQL cluster.
-                GraphQL operation: mongodbCollectionRecoverableRange(input: GetMosaicRecoverableRangeInput!):GetMosaicRecoverableRangeResponse!
-                ",
+@"Recoverable Range of a MongoDB collection on NoSQL cluster.
+[GraphQL: mongodbCollectionRecoverableRange]",
             Position = 0
         )]
-        public SwitchParameter dbCollectionRecoverableRange { get; set; }
+        public SwitchParameter Dbcollectionrecoverablerange { get; set; }
 
         
         // -------------------------------------------------------------------
-        // dbBulkRecoverableRange parameter set
+        // Dbbulkrecoverablerange parameter set
         //
-        // GraphQL operation: mongodbBulkRecoverableRange(input: MosaicBulkRecoveryRangeInput!):MosaicRecoveryRangeResponse!
+        // [GraphQL: mongodbBulkRecoverableRange]
         //
         [Parameter(
-            ParameterSetName = "dbBulkRecoverableRange",
+            ParameterSetName = "Dbbulkrecoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Recoverable range for multiple Management Objects on NoSQL cluster.
-                GraphQL operation: mongodbBulkRecoverableRange(input: MosaicBulkRecoveryRangeInput!):MosaicRecoveryRangeResponse!
-                ",
+@"Recoverable range for multiple Management Objects on NoSQL cluster.
+[GraphQL: mongodbBulkRecoverableRange]",
             Position = 0
         )]
-        public SwitchParameter dbBulkRecoverableRange { get; set; }
+        public SwitchParameter Dbbulkrecoverablerange { get; set; }
 
 
         protected override void ProcessRecord()
@@ -293,23 +263,23 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "Collection":
                         this.ProcessRecord_Collection();
                         break;
-                    case "RecoverableRange":
-                        this.ProcessRecord_RecoverableRange();
+                    case "Recoverablerange":
+                        this.ProcessRecord_Recoverablerange();
                         break;
-                    case "dbSource":
-                        this.ProcessRecord_dbSource();
+                    case "Dbsource":
+                        this.ProcessRecord_Dbsource();
                         break;
-                    case "dbDatabase":
-                        this.ProcessRecord_dbDatabase();
+                    case "Dbdatabase":
+                        this.ProcessRecord_Dbdatabase();
                         break;
-                    case "dbCollection":
-                        this.ProcessRecord_dbCollection();
+                    case "Dbcollection":
+                        this.ProcessRecord_Dbcollection();
                         break;
-                    case "dbCollectionRecoverableRange":
-                        this.ProcessRecord_dbCollectionRecoverableRange();
+                    case "Dbcollectionrecoverablerange":
+                        this.ProcessRecord_Dbcollectionrecoverablerange();
                         break;
-                    case "dbBulkRecoverableRange":
-                        this.ProcessRecord_dbBulkRecoverableRange();
+                    case "Dbbulkrecoverablerange":
+                        this.ProcessRecord_Dbbulkrecoverablerange();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -356,54 +326,54 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // mongoRecoverableRanges.
-        protected void ProcessRecord_RecoverableRange()
+        protected void ProcessRecord_Recoverablerange()
         {
-            this._logger.name += " -RecoverableRange";
+            this._logger.name += " -Recoverablerange";
             // Invoke graphql operation mongoRecoverableRanges
             InvokeQueryMongoRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbSources.
-        protected void ProcessRecord_dbSource()
+        protected void ProcessRecord_Dbsource()
         {
-            this._logger.name += " -dbSource";
+            this._logger.name += " -Dbsource";
             // Invoke graphql operation mongodbSources
             InvokeQueryMongodbSources();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbDatabases.
-        protected void ProcessRecord_dbDatabase()
+        protected void ProcessRecord_Dbdatabase()
         {
-            this._logger.name += " -dbDatabase";
+            this._logger.name += " -Dbdatabase";
             // Invoke graphql operation mongodbDatabases
             InvokeQueryMongodbDatabases();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbCollections.
-        protected void ProcessRecord_dbCollection()
+        protected void ProcessRecord_Dbcollection()
         {
-            this._logger.name += " -dbCollection";
+            this._logger.name += " -Dbcollection";
             // Invoke graphql operation mongodbCollections
             InvokeQueryMongodbCollections();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbCollectionRecoverableRange.
-        protected void ProcessRecord_dbCollectionRecoverableRange()
+        protected void ProcessRecord_Dbcollectionrecoverablerange()
         {
-            this._logger.name += " -dbCollectionRecoverableRange";
+            this._logger.name += " -Dbcollectionrecoverablerange";
             // Invoke graphql operation mongodbCollectionRecoverableRange
             InvokeQueryMongodbCollectionRecoverableRange();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbBulkRecoverableRange.
-        protected void ProcessRecord_dbBulkRecoverableRange()
+        protected void ProcessRecord_Dbbulkrecoverablerange()
         {
-            this._logger.name += " -dbBulkRecoverableRange";
+            this._logger.name += " -Dbbulkrecoverablerange";
             // Invoke graphql operation mongodbBulkRecoverableRange
             InvokeQueryMongodbBulkRecoverableRange();
         }

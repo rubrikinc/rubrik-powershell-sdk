@@ -196,43 +196,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> acceptedEulaVersion: String! (scalar)
         if (this.AcceptedEulaVersion == null && Exploration.Includes(parent + ".acceptedEulaVersion", true))
         {
-            this.AcceptedEulaVersion = new System.String("FETCH");
+            this.AcceptedEulaVersion = "FETCH";
         }
         //      C# -> System.String? ApiVersion
         // GraphQL -> apiVersion: String! (scalar)
         if (this.ApiVersion == null && Exploration.Includes(parent + ".apiVersion", true))
         {
-            this.ApiVersion = new System.String("FETCH");
+            this.ApiVersion = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? LatestEulaVersion
         // GraphQL -> latestEulaVersion: String! (scalar)
         if (this.LatestEulaVersion == null && Exploration.Includes(parent + ".latestEulaVersion", true))
         {
-            this.LatestEulaVersion = new System.String("FETCH");
+            this.LatestEulaVersion = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? RubrikUrl
         // GraphQL -> rubrikUrl: URL! (scalar)
         if (this.RubrikUrl == null && Exploration.Includes(parent + ".rubrikUrl", true))
         {
-            this.RubrikUrl = new System.String("FETCH");
+            this.RubrikUrl = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> ClusterGeolocation? Geolocation
         // GraphQL -> geolocation: ClusterGeolocation (type)

@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> csr: String! (scalar)
         if (this.Csr == null && Exploration.Includes(parent + ".csr", true))
         {
-            this.Csr = new System.String("FETCH");
+            this.Csr = "FETCH";
         }
     }
 

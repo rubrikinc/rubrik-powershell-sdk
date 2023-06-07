@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cloudFormationUrl: String! (scalar)
         if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl", true))
         {
-            this.CloudFormationUrl = new System.String("FETCH");
+            this.CloudFormationUrl = "FETCH";
         }
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)
         if (this.TemplateUrl == null && Exploration.Includes(parent + ".templateUrl", true))
         {
-            this.TemplateUrl = new System.String("FETCH");
+            this.TemplateUrl = "FETCH";
         }
     }
 

@@ -336,31 +336,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> account: String! (scalar)
         if (this.Account == null && Exploration.Includes(parent + ".account", true))
         {
-            this.Account = new System.String("FETCH");
+            this.Account = "FETCH";
         }
         //      C# -> System.String? Component
         // GraphQL -> component: String! (scalar)
         if (this.Component == null && Exploration.Includes(parent + ".component", true))
         {
-            this.Component = new System.String("FETCH");
+            this.Component = "FETCH";
         }
         //      C# -> System.String? Config
         // GraphQL -> config: String! (scalar)
         if (this.Config == null && Exploration.Includes(parent + ".config", true))
         {
-            this.Config = new System.String("FETCH");
+            this.Config = "FETCH";
         }
         //      C# -> System.Int32? CurrentTaskExecutionAttempts
         // GraphQL -> currentTaskExecutionAttempts: Int! (scalar)
         if (this.CurrentTaskExecutionAttempts == null && Exploration.Includes(parent + ".currentTaskExecutionAttempts", true))
         {
-            this.CurrentTaskExecutionAttempts = new System.Int32();
+            this.CurrentTaskExecutionAttempts = Int32.MinValue;
         }
         //      C# -> System.Int32? CurrentTaskIndex
         // GraphQL -> currentTaskIndex: Int! (scalar)
         if (this.CurrentTaskIndex == null && Exploration.Includes(parent + ".currentTaskIndex", true))
         {
-            this.CurrentTaskIndex = new System.Int32();
+            this.CurrentTaskIndex = Int32.MinValue;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
@@ -372,7 +372,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> error: String! (scalar)
         if (this.Error == null && Exploration.Includes(parent + ".error", true))
         {
-            this.Error = new System.String("FETCH");
+            this.Error = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -390,31 +390,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> jobType: String! (scalar)
         if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
         {
-            this.JobType = new System.String("FETCH");
+            this.JobType = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? ParentTaskchainId
         // GraphQL -> parentTaskchainId: String! (scalar)
         if (this.ParentTaskchainId == null && Exploration.Includes(parent + ".parentTaskchainId", true))
         {
-            this.ParentTaskchainId = new System.String("FETCH");
+            this.ParentTaskchainId = "FETCH";
         }
         //      C# -> System.String? PodName
         // GraphQL -> podName: String! (scalar)
         if (this.PodName == null && Exploration.Includes(parent + ".podName", true))
         {
-            this.PodName = new System.String("FETCH");
+            this.PodName = "FETCH";
         }
         //      C# -> System.Int32? Priority
         // GraphQL -> priority: Int! (scalar)
         if (this.Priority == null && Exploration.Includes(parent + ".priority", true))
         {
-            this.Priority = new System.Int32();
+            this.Priority = Int32.MinValue;
         }
         //      C# -> System.Int64? Progress
         // GraphQL -> progress: Long! (scalar)
@@ -438,13 +438,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> taskchainUuid: String! (scalar)
         if (this.TaskchainUuid == null && Exploration.Includes(parent + ".taskchainUuid", true))
         {
-            this.TaskchainUuid = new System.String("FETCH");
+            this.TaskchainUuid = "FETCH";
         }
         //      C# -> System.String? WorkflowName
         // GraphQL -> workflowName: String! (scalar)
         if (this.WorkflowName == null && Exploration.Includes(parent + ".workflowName", true))
         {
-            this.WorkflowName = new System.String("FETCH");
+            this.WorkflowName = "FETCH";
         }
     }
 

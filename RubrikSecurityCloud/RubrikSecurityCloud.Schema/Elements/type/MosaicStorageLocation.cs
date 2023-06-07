@@ -202,31 +202,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backupCount: Int! (scalar)
         if (this.BackupCount == null && Exploration.Includes(parent + ".backupCount", true))
         {
-            this.BackupCount = new System.Int32();
+            this.BackupCount = Int32.MinValue;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.String? GeographicLocation
         // GraphQL -> geographicLocation: String! (scalar)
         if (this.GeographicLocation == null && Exploration.Includes(parent + ".geographicLocation", true))
         {
-            this.GeographicLocation = new System.String("FETCH");
+            this.GeographicLocation = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? SpaceConsumedBytes
         // GraphQL -> spaceConsumedBytes: Long! (scalar)
@@ -238,7 +238,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> storageLocationName: String! (scalar)
         if (this.StorageLocationName == null && Exploration.Includes(parent + ".storageLocationName", true))
         {
-            this.StorageLocationName = new System.String("FETCH");
+            this.StorageLocationName = "FETCH";
         }
         //      C# -> MosaicStoreConnectionParameters? ConnectionParameters
         // GraphQL -> connectionParameters: MosaicStoreConnectionParameters (type)

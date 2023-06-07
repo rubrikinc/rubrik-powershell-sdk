@@ -190,7 +190,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> account: String! (scalar)
         if (this.Account == null && Exploration.Includes(parent + ".account", true))
         {
-            this.Account = new System.String("FETCH");
+            this.Account = "FETCH";
         }
         //      C# -> List<System.String>? ClusterUuids
         // GraphQL -> clusterUuids: [UUID!]! (scalar)
@@ -202,25 +202,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> digestId: Int! (scalar)
         if (this.DigestId == null && Exploration.Includes(parent + ".digestId", true))
         {
-            this.DigestId = new System.Int32();
+            this.DigestId = Int32.MinValue;
         }
         //      C# -> System.String? DigestName
         // GraphQL -> digestName: String! (scalar)
         if (this.DigestName == null && Exploration.Includes(parent + ".digestName", true))
         {
-            this.DigestName = new System.String("FETCH");
+            this.DigestName = "FETCH";
         }
         //      C# -> System.String? EventDigestConfigJson
         // GraphQL -> eventDigestConfigJson: String! (scalar)
         if (this.EventDigestConfigJson == null && Exploration.Includes(parent + ".eventDigestConfigJson", true))
         {
-            this.EventDigestConfigJson = new System.String("FETCH");
+            this.EventDigestConfigJson = "FETCH";
         }
         //      C# -> System.Int32? Frequency
         // GraphQL -> frequency: Int! (scalar)
         if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
         {
-            this.Frequency = new System.Int32();
+            this.Frequency = Int32.MinValue;
         }
         //      C# -> System.Boolean? IncludeAudits
         // GraphQL -> includeAudits: Boolean! (scalar)
@@ -244,7 +244,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recipientUserId: String! (scalar)
         if (this.RecipientUserId == null && Exploration.Includes(parent + ".recipientUserId", true))
         {
-            this.RecipientUserId = new System.String("FETCH");
+            this.RecipientUserId = "FETCH";
         }
     }
 

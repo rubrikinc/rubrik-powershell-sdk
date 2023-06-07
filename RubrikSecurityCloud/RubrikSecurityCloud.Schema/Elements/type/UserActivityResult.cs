@@ -112,7 +112,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> paginationId: String! (scalar)
         if (this.PaginationId == null && Exploration.Includes(parent + ".paginationId", true))
         {
-            this.PaginationId = new System.String("FETCH");
+            this.PaginationId = "FETCH";
         }
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)

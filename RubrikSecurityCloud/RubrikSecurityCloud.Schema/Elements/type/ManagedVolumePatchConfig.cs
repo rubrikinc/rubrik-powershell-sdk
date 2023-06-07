@@ -132,7 +132,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> smbDomainName: String (scalar)
         if (this.SmbDomainName == null && Exploration.Includes(parent + ".smbDomainName", true))
         {
-            this.SmbDomainName = new System.String("FETCH");
+            this.SmbDomainName = "FETCH";
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)

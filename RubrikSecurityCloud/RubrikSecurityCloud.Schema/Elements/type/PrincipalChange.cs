@@ -120,13 +120,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fullName: String! (scalar)
         if (this.FullName == null && Exploration.Includes(parent + ".fullName", true))
         {
-            this.FullName = new System.String("FETCH");
+            this.FullName = "FETCH";
         }
         //      C# -> System.String? PrincipalId
         // GraphQL -> principalId: String! (scalar)
         if (this.PrincipalId == null && Exploration.Includes(parent + ".principalId", true))
         {
-            this.PrincipalId = new System.String("FETCH");
+            this.PrincipalId = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)

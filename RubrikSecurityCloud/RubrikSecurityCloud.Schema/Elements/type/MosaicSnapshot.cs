@@ -205,13 +205,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? DbInfo
         // GraphQL -> dbInfo: String (scalar)
         if (this.DbInfo == null && Exploration.Includes(parent + ".dbInfo", true))
         {
-            this.DbInfo = new System.String("FETCH");
+            this.DbInfo = "FETCH";
         }
         //      C# -> DateTime? ExpirationTime
         // GraphQL -> expirationTime: DateTime (scalar)
@@ -223,13 +223,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int32? JobDuration
         // GraphQL -> jobDuration: Int (scalar)
         if (this.JobDuration == null && Exploration.Includes(parent + ".jobDuration", true))
         {
-            this.JobDuration = new System.Int32();
+            this.JobDuration = Int32.MinValue;
         }
         //      C# -> DateTime? Version
         // GraphQL -> version: DateTime! (scalar)
@@ -241,13 +241,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> versionState: String (scalar)
         if (this.VersionState == null && Exploration.Includes(parent + ".versionState", true))
         {
-            this.VersionState = new System.String("FETCH");
+            this.VersionState = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
         {
-            this.WorkloadId = new System.String("FETCH");
+            this.WorkloadId = "FETCH";
         }
     }
 

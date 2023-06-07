@@ -378,43 +378,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterName: String (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.String? GuestCredentialAuthorizationStatus
         // GraphQL -> guestCredentialAuthorizationStatus: String! (scalar)
         if (this.GuestCredentialAuthorizationStatus == null && Exploration.Includes(parent + ".guestCredentialAuthorizationStatus", true))
         {
-            this.GuestCredentialAuthorizationStatus = new System.String("FETCH");
+            this.GuestCredentialAuthorizationStatus = "FETCH";
         }
         //      C# -> System.String? GuestOsName
         // GraphQL -> guestOsName: String (scalar)
         if (this.GuestOsName == null && Exploration.Includes(parent + ".guestOsName", true))
         {
-            this.GuestOsName = new System.String("FETCH");
+            this.GuestOsName = "FETCH";
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
         {
-            this.HostId = new System.String("FETCH");
+            this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> System.String? InstanceUuid
         // GraphQL -> instanceUuid: String (scalar)
         if (this.InstanceUuid == null && Exploration.Includes(parent + ".instanceUuid", true))
         {
-            this.InstanceUuid = new System.String("FETCH");
+            this.InstanceUuid = "FETCH";
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String! (scalar)
         if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
         {
-            this.IpAddress = new System.String("FETCH");
+            this.IpAddress = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -432,13 +432,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> moid: String! (scalar)
         if (this.Moid == null && Exploration.Includes(parent + ".moid", true))
         {
-            this.Moid = new System.String("FETCH");
+            this.Moid = "FETCH";
         }
         //      C# -> System.String? PowerStatus
         // GraphQL -> powerStatus: String (scalar)
         if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus", true))
         {
-            this.PowerStatus = new System.String("FETCH");
+            this.PowerStatus = "FETCH";
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
@@ -456,7 +456,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vcenterId: String (scalar)
         if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
         {
-            this.VcenterId = new System.String("FETCH");
+            this.VcenterId = "FETCH";
         }
         //      C# -> System.Boolean? VmwareToolsInstalled
         // GraphQL -> vmwareToolsInstalled: Boolean! (scalar)

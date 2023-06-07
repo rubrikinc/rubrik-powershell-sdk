@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> workloadFid: UUID! (scalar)
         if (this.WorkloadFid == null && Exploration.Includes(parent + ".workloadFid", true))
         {
-            this.WorkloadFid = new System.String("FETCH");
+            this.WorkloadFid = "FETCH";
         }
     }
 

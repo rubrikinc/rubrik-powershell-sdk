@@ -148,19 +148,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sourceVmDiskId: String! (scalar)
         if (this.SourceVmDiskId == null && Exploration.Includes(parent + ".sourceVmDiskId", true))
         {
-            this.SourceVmDiskId = new System.String("FETCH");
+            this.SourceVmDiskId = "FETCH";
         }
         //      C# -> System.String? TargetDiskId
         // GraphQL -> targetDiskId: String! (scalar)
         if (this.TargetDiskId == null && Exploration.Includes(parent + ".targetDiskId", true))
         {
-            this.TargetDiskId = new System.String("FETCH");
+            this.TargetDiskId = "FETCH";
         }
         //      C# -> System.String? TargetDiskNativeId
         // GraphQL -> targetDiskNativeId: String! (scalar)
         if (this.TargetDiskNativeId == null && Exploration.Includes(parent + ".targetDiskNativeId", true))
         {
-            this.TargetDiskNativeId = new System.String("FETCH");
+            this.TargetDiskNativeId = "FETCH";
         }
         //      C# -> System.Boolean? TargetIsOsDisk
         // GraphQL -> targetIsOsDisk: Boolean! (scalar)
@@ -178,7 +178,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> targetSnapshotId: String! (scalar)
         if (this.TargetSnapshotId == null && Exploration.Includes(parent + ".targetSnapshotId", true))
         {
-            this.TargetSnapshotId = new System.String("FETCH");
+            this.TargetSnapshotId = "FETCH";
         }
         //      C# -> VmDatastore? SourceDatastore
         // GraphQL -> sourceDatastore: VmDatastore (type)

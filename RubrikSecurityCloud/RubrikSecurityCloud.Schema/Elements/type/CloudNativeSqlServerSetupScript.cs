@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> script: String! (scalar)
         if (this.Script == null && Exploration.Includes(parent + ".script", true))
         {
-            this.Script = new System.String("FETCH");
+            this.Script = "FETCH";
         }
     }
 

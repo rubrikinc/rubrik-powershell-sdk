@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         if (this.AzureSubscriptionNativeId == null && Exploration.Includes(parent + ".azureSubscriptionNativeId", true))
         {
-            this.AzureSubscriptionNativeId = new System.String("FETCH");
+            this.AzureSubscriptionNativeId = "FETCH";
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
         if (this.Error == null && Exploration.Includes(parent + ".error", true))
         {
-            this.Error = new System.String("FETCH");
+            this.Error = "FETCH";
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)

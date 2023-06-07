@@ -204,7 +204,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
         {
-            this.ClusterId = new System.String("FETCH");
+            this.ClusterId = "FETCH";
         }
         //      C# -> System.Int64? CpuStat
         // GraphQL -> cpuStat: Long! (scalar)
@@ -240,7 +240,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
         {
-            this.NodeId = new System.String("FETCH");
+            this.NodeId = "FETCH";
         }
         //      C# -> System.Int64? ReadThroughputBytesPerSecond
         // GraphQL -> readThroughputBytesPerSecond: Long! (scalar)
@@ -258,7 +258,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> usedMemoryStat: Int! (scalar)
         if (this.UsedMemoryStat == null && Exploration.Includes(parent + ".usedMemoryStat", true))
         {
-            this.UsedMemoryStat = new System.Int32();
+            this.UsedMemoryStat = Int32.MinValue;
         }
         //      C# -> System.Int64? WriteThroughputBytesPerSecond
         // GraphQL -> writeThroughputBytesPerSecond: Long! (scalar)

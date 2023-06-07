@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> blobName: String! (scalar)
         if (this.BlobName == null && Exploration.Includes(parent + ".blobName", true))
         {
-            this.BlobName = new System.String("FETCH");
+            this.BlobName = "FETCH";
         }
         //      C# -> System.String? BlobSasUri
         // GraphQL -> blobSasUri: String! (scalar)
         if (this.BlobSasUri == null && Exploration.Includes(parent + ".blobSasUri", true))
         {
-            this.BlobSasUri = new System.String("FETCH");
+            this.BlobSasUri = "FETCH";
         }
         //      C# -> System.String? PolarisAccount
         // GraphQL -> polarisAccount: String! (scalar)
         if (this.PolarisAccount == null && Exploration.Includes(parent + ".polarisAccount", true))
         {
-            this.PolarisAccount = new System.String("FETCH");
+            this.PolarisAccount = "FETCH";
         }
     }
 

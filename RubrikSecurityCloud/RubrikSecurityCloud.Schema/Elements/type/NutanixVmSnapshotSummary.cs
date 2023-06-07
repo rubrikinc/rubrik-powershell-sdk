@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nicsInSnapshot: Int (scalar)
         if (this.NicsInSnapshot == null && Exploration.Includes(parent + ".nicsInSnapshot", true))
         {
-            this.NicsInSnapshot = new System.Int32();
+            this.NicsInSnapshot = Int32.MinValue;
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
         {
-            this.VmName = new System.String("FETCH");
+            this.VmName = "FETCH";
         }
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)

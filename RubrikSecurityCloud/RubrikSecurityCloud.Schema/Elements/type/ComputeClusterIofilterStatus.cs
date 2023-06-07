@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> computeClusterFid: String! (scalar)
         if (this.ComputeClusterFid == null && Exploration.Includes(parent + ".computeClusterFid", true))
         {
-            this.ComputeClusterFid = new System.String("FETCH");
+            this.ComputeClusterFid = "FETCH";
         }
         //      C# -> System.String? ComputeClusterName
         // GraphQL -> computeClusterName: String! (scalar)
         if (this.ComputeClusterName == null && Exploration.Includes(parent + ".computeClusterName", true))
         {
-            this.ComputeClusterName = new System.String("FETCH");
+            this.ComputeClusterName = "FETCH";
         }
         //      C# -> System.String? IofilterStatus
         // GraphQL -> iofilterStatus: String! (scalar)
         if (this.IofilterStatus == null && Exploration.Includes(parent + ".iofilterStatus", true))
         {
-            this.IofilterStatus = new System.String("FETCH");
+            this.IofilterStatus = "FETCH";
         }
     }
 

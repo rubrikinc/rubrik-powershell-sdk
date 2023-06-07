@@ -112,13 +112,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> endHour: Int! (scalar)
         if (this.EndHour == null && Exploration.Includes(parent + ".endHour", true))
         {
-            this.EndHour = new System.Int32();
+            this.EndHour = Int32.MinValue;
         }
         //      C# -> System.Int32? StartHour
         // GraphQL -> startHour: Int! (scalar)
         if (this.StartHour == null && Exploration.Includes(parent + ".startHour", true))
         {
-            this.StartHour = new System.Int32();
+            this.StartHour = Int32.MinValue;
         }
         //      C# -> System.Single? ThrottleLimit
         // GraphQL -> throttleLimit: Float! (scalar)

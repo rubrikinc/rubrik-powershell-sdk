@@ -162,31 +162,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> memoryMbs: Int! (scalar)
         if (this.MemoryMbs == null && Exploration.Includes(parent + ".memoryMbs", true))
         {
-            this.MemoryMbs = new System.Int32();
+            this.MemoryMbs = Int32.MinValue;
         }
         //      C# -> System.String? OsType
         // GraphQL -> osType: String! (scalar)
         if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
         {
-            this.OsType = new System.String("FETCH");
+            this.OsType = "FETCH";
         }
         //      C# -> System.String? SnapshotAppMetadata
         // GraphQL -> snapshotAppMetadata: String! (scalar)
         if (this.SnapshotAppMetadata == null && Exploration.Includes(parent + ".snapshotAppMetadata", true))
         {
-            this.SnapshotAppMetadata = new System.String("FETCH");
+            this.SnapshotAppMetadata = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int32? Vcpus
         // GraphQL -> vcpus: Int! (scalar)
         if (this.Vcpus == null && Exploration.Includes(parent + ".vcpus", true))
         {
-            this.Vcpus = new System.Int32();
+            this.Vcpus = Int32.MinValue;
         }
         //      C# -> VmHost? Host
         // GraphQL -> host: VmHost (type)

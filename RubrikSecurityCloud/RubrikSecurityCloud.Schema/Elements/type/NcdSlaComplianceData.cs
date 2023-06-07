@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> jobsFailing: Int! (scalar)
         if (this.JobsFailing == null && Exploration.Includes(parent + ".jobsFailing", true))
         {
-            this.JobsFailing = new System.Int32();
+            this.JobsFailing = Int32.MinValue;
         }
         //      C# -> System.Int32? JobsPassing
         // GraphQL -> jobsPassing: Int! (scalar)
         if (this.JobsPassing == null && Exploration.Includes(parent + ".jobsPassing", true))
         {
-            this.JobsPassing = new System.Int32();
+            this.JobsPassing = Int32.MinValue;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)

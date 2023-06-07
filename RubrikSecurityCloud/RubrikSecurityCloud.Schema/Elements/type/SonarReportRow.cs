@@ -154,37 +154,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numHighRiskLocations: Int! (scalar)
         if (this.NumHighRiskLocations == null && Exploration.Includes(parent + ".numHighRiskLocations", true))
         {
-            this.NumHighRiskLocations = new System.Int32();
+            this.NumHighRiskLocations = Int32.MinValue;
         }
         //      C# -> System.Int32? NumObjects
         // GraphQL -> numObjects: Int! (scalar)
         if (this.NumObjects == null && Exploration.Includes(parent + ".numObjects", true))
         {
-            this.NumObjects = new System.Int32();
+            this.NumObjects = Int32.MinValue;
         }
         //      C# -> System.Int32? NumViolatedFiles
         // GraphQL -> numViolatedFiles: Int! (scalar)
         if (this.NumViolatedFiles == null && Exploration.Includes(parent + ".numViolatedFiles", true))
         {
-            this.NumViolatedFiles = new System.Int32();
+            this.NumViolatedFiles = Int32.MinValue;
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
         {
-            this.PolicyId = new System.String("FETCH");
+            this.PolicyId = "FETCH";
         }
         //      C# -> System.String? PolicyName
         // GraphQL -> policyName: String! (scalar)
         if (this.PolicyName == null && Exploration.Includes(parent + ".policyName", true))
         {
-            this.PolicyName = new System.String("FETCH");
+            this.PolicyName = "FETCH";
         }
         //      C# -> System.Int32? Violations
         // GraphQL -> violations: Int! (scalar)
         if (this.Violations == null && Exploration.Includes(parent + ".violations", true))
         {
-            this.Violations = new System.Int32();
+            this.Violations = Int32.MinValue;
         }
     }
 

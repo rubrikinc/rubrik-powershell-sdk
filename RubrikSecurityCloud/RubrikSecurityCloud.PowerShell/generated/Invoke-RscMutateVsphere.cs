@@ -21,336 +21,296 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateVsphere",
-        DefaultParameterSetName = "deleteLiveMount")
+        DefaultParameterSetName = "Deletelivemount")
     ]
     public class Invoke_RscMutateVsphere : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // OnDemandSnapshot parameter set
+        // Ondemandsnapshot parameter set
         //
-        // GraphQL operation: vsphereOnDemandSnapshot(input: VsphereOnDemandSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereOnDemandSnapshot]
         //
         [Parameter(
-            ParameterSetName = "OnDemandSnapshot",
+            ParameterSetName = "Ondemandsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereOnDemandSnapshot(input: VsphereOnDemandSnapshotInput!):AsyncRequestStatus!
-                ",
+@"
+[GraphQL: vsphereOnDemandSnapshot]",
             Position = 0
         )]
-        public SwitchParameter OnDemandSnapshot { get; set; }
+        public SwitchParameter Ondemandsnapshot { get; set; }
 
         [Parameter(
-            ParameterSetName = "OnDemandSnapshot",
+            ParameterSetName = "Ondemandsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for V1CreateOnDemandBackup.
-                GraphQL argument input: VsphereOnDemandSnapshotInput!
-                "
+@"Input for V1CreateOnDemandBackup.
+GraphQL argument input: VsphereOnDemandSnapshotInput!"
         )]
         public VsphereOnDemandSnapshotInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // BulkOnDemandSnapshot parameter set
+        // Bulkondemandsnapshot parameter set
         //
-        // GraphQL operation: vsphereBulkOnDemandSnapshot(input: VsphereBulkOnDemandSnapshotInput!):BatchAsyncRequestStatus!
+        // [GraphQL: vsphereBulkOnDemandSnapshot]
         //
         [Parameter(
-            ParameterSetName = "BulkOnDemandSnapshot",
+            ParameterSetName = "Bulkondemandsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Trigger a bulk on demand snapshot.
-                GraphQL operation: vsphereBulkOnDemandSnapshot(input: VsphereBulkOnDemandSnapshotInput!):BatchAsyncRequestStatus!
-                ",
+@"Trigger a bulk on demand snapshot.
+[GraphQL: vsphereBulkOnDemandSnapshot]",
             Position = 0
         )]
-        public SwitchParameter BulkOnDemandSnapshot { get; set; }
+        public SwitchParameter Bulkondemandsnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteLiveMount parameter set
+        // Deletelivemount parameter set
         //
-        // GraphQL operation: deleteVsphereLiveMount(input: DeleteVsphereLiveMountInput!):AsyncRequestStatus!
+        // [GraphQL: deleteVsphereLiveMount]
         //
         [Parameter(
-            ParameterSetName = "deleteLiveMount",
+            ParameterSetName = "Deletelivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete a Live Mount VM
+@"Delete a Live Mount VM
 
 Supported in v5.0+
 Create a request to delete a Live Mount virtual machine.
-                GraphQL operation: deleteVsphereLiveMount(input: DeleteVsphereLiveMountInput!):AsyncRequestStatus!
-                ",
+[GraphQL: deleteVsphereLiveMount]",
             Position = 0
         )]
-        public SwitchParameter deleteLiveMount { get; set; }
+        public SwitchParameter Deletelivemount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ExportSnapshotToStandaloneHostV2 parameter set
+        // Exportsnapshottostandalonehostv2 parameter set
         //
-        // GraphQL operation: vsphereExportSnapshotToStandaloneHostV2(input: VsphereExportSnapshotToStandaloneHostV2Input!):AsyncRequestStatus!
+        // [GraphQL: vsphereExportSnapshotToStandaloneHostV2]
         //
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHostV2",
+            ParameterSetName = "Exportsnapshottostandalonehostv2",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Export snapshot of a virtual machine to standalone ESXi server.
-                GraphQL operation: vsphereExportSnapshotToStandaloneHostV2(input: VsphereExportSnapshotToStandaloneHostV2Input!):AsyncRequestStatus!
-                ",
+@"Export snapshot of a virtual machine to standalone ESXi server.
+[GraphQL: vsphereExportSnapshotToStandaloneHostV2]",
             Position = 0
         )]
-        public SwitchParameter ExportSnapshotToStandaloneHostV2 { get; set; }
+        public SwitchParameter Exportsnapshottostandalonehostv2 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ExportSnapshotToStandaloneHost parameter set
+        // Exportsnapshottostandalonehost parameter set
         //
-        // GraphQL operation: vsphereExportSnapshotToStandaloneHost(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostIpAddress: String!,   datastoreName: String!,   hostUsername: String!,   hostPassword: String!, ):VsphereAsyncRequestStatus!
+        // [GraphQL: vsphereExportSnapshotToStandaloneHost]
         //
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereExportSnapshotToStandaloneHost(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostIpAddress: String!,   datastoreName: String!,   hostUsername: String!,   hostPassword: String!, ):VsphereAsyncRequestStatus!
-                ",
+@"
+[GraphQL: vsphereExportSnapshotToStandaloneHost]",
             Position = 0
         )]
-        public SwitchParameter ExportSnapshotToStandaloneHost { get; set; }
+        public SwitchParameter Exportsnapshottostandalonehost { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Snapshot forever UUID in Rubrik Security Cloud.
-                GraphQL argument snapshotFid: UUID!
-                "
+@"Snapshot forever UUID in Rubrik Security Cloud.
+GraphQL argument snapshotFid: UUID!"
         )]
         public System.String? SnapshotFid { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument vmName: String
-                "
+@"
+GraphQL argument vmName: String"
         )]
         public System.String? VmName { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument disableNetwork: Boolean
-                "
+@"
+GraphQL argument disableNetwork: Boolean"
         )]
         public System.Boolean? DisableNetwork { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument removeNetworkDevices: Boolean
-                "
+@"
+GraphQL argument removeNetworkDevices: Boolean"
         )]
         public System.Boolean? RemoveNetworkDevices { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument powerOn: Boolean
-                "
+@"
+GraphQL argument powerOn: Boolean"
         )]
         public System.Boolean? PowerOn { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument keepMacAddresses: Boolean
-                "
+@"
+GraphQL argument keepMacAddresses: Boolean"
         )]
         public System.Boolean? KeepMacAddresses { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument hostIpAddress: String!
-                "
+@"
+GraphQL argument hostIpAddress: String!"
         )]
         public System.String? HostIpAddress { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument datastoreName: String!
-                "
+@"
+GraphQL argument datastoreName: String!"
         )]
         public System.String? DatastoreName { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument hostUsername: String!
-                "
+@"
+GraphQL argument hostUsername: String!"
         )]
         public System.String? HostUsername { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshotToStandaloneHost",
+            ParameterSetName = "Exportsnapshottostandalonehost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument hostPassword: String!
-                "
+@"
+GraphQL argument hostPassword: String!"
         )]
         public System.String? HostPassword { get; set; }
         
         // -------------------------------------------------------------------
-        // downloadVirtualMachineFile parameter set
+        // Downloadvirtualmachinefile parameter set
         //
-        // GraphQL operation: downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!):AsyncRequestStatus!
+        // [GraphQL: downloadVsphereVirtualMachineFiles]
         //
         [Parameter(
-            ParameterSetName = "downloadVirtualMachineFile",
+            ParameterSetName = "Downloadvirtualmachinefile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Download Virtual Machine files from a snapshot
+@"Download Virtual Machine files from a snapshot
 
 Supported in v9.0
 Start an asynchronous job to download multiple Virtual Machine files, such as .vmdk, .vmx, and .nvram files, from the specified Virtual Machine snapshot.
-                GraphQL operation: downloadVsphereVirtualMachineFiles(input: DownloadVsphereVirtualMachineFilesInput!):AsyncRequestStatus!
-                ",
+[GraphQL: downloadVsphereVirtualMachineFiles]",
             Position = 0
         )]
-        public SwitchParameter downloadVirtualMachineFile { get; set; }
+        public SwitchParameter Downloadvirtualmachinefile { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createAdvancedTag parameter set
+        // Createadvancedtag parameter set
         //
-        // GraphQL operation: createVsphereAdvancedTag(input: CreateVsphereAdvancedTagInput!):CreateVsphereAdvancedTagReply!
+        // [GraphQL: createVsphereAdvancedTag]
         //
         [Parameter(
-            ParameterSetName = "createAdvancedTag",
+            ParameterSetName = "Createadvancedtag",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a multi-tag filter for vSphere tags
+@"Create a multi-tag filter for vSphere tags
 
 Supported in v7.0+
 Create a filter consisting of vSphere tags joined with logical operators.
-                GraphQL operation: createVsphereAdvancedTag(input: CreateVsphereAdvancedTagInput!):CreateVsphereAdvancedTagReply!
-                ",
+[GraphQL: createVsphereAdvancedTag]",
             Position = 0
         )]
-        public SwitchParameter createAdvancedTag { get; set; }
+        public SwitchParameter Createadvancedtag { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteAdvancedTag parameter set
+        // Deleteadvancedtag parameter set
         //
-        // GraphQL operation: deleteVsphereAdvancedTag(input: DeleteVsphereAdvancedTagInput!):RequestSuccess!
+        // [GraphQL: deleteVsphereAdvancedTag]
         //
         [Parameter(
-            ParameterSetName = "deleteAdvancedTag",
+            ParameterSetName = "Deleteadvancedtag",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Remove the multi-tag filter
+@"Remove the multi-tag filter
 
 Supported in v7.0+
 Remove the multi-tag filter.
-                GraphQL operation: deleteVsphereAdvancedTag(input: DeleteVsphereAdvancedTagInput!):RequestSuccess!
-                ",
+[GraphQL: deleteVsphereAdvancedTag]",
             Position = 0
         )]
-        public SwitchParameter deleteAdvancedTag { get; set; }
+        public SwitchParameter Deleteadvancedtag { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateAdvancedTag parameter set
+        // Updateadvancedtag parameter set
         //
-        // GraphQL operation: updateVsphereAdvancedTag(input: UpdateVsphereAdvancedTagInput!):UpdateVsphereAdvancedTagReply!
+        // [GraphQL: updateVsphereAdvancedTag]
         //
         [Parameter(
-            ParameterSetName = "updateAdvancedTag",
+            ParameterSetName = "Updateadvancedtag",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update the multi-tag filter
+@"Update the multi-tag filter
 
 Supported in v7.0+
 Updates the name, condition, and description of the specified multi-tag filter.
-                GraphQL operation: updateVsphereAdvancedTag(input: UpdateVsphereAdvancedTagInput!):UpdateVsphereAdvancedTagReply!
-                ",
+[GraphQL: updateVsphereAdvancedTag]",
             Position = 0
         )]
-        public SwitchParameter updateAdvancedTag { get; set; }
+        public SwitchParameter Updateadvancedtag { get; set; }
 
 
         protected override void ProcessRecord()
@@ -359,32 +319,32 @@ Updates the name, condition, and description of the specified multi-tag filter.
             {
                 switch(Op)
                 {
-                    case "OnDemandSnapshot":
-                        this.ProcessRecord_OnDemandSnapshot();
+                    case "Ondemandsnapshot":
+                        this.ProcessRecord_Ondemandsnapshot();
                         break;
-                    case "BulkOnDemandSnapshot":
-                        this.ProcessRecord_BulkOnDemandSnapshot();
+                    case "Bulkondemandsnapshot":
+                        this.ProcessRecord_Bulkondemandsnapshot();
                         break;
-                    case "deleteLiveMount":
-                        this.ProcessRecord_deleteLiveMount();
+                    case "Deletelivemount":
+                        this.ProcessRecord_Deletelivemount();
                         break;
-                    case "ExportSnapshotToStandaloneHostV2":
-                        this.ProcessRecord_ExportSnapshotToStandaloneHostV2();
+                    case "Exportsnapshottostandalonehostv2":
+                        this.ProcessRecord_Exportsnapshottostandalonehostv2();
                         break;
-                    case "ExportSnapshotToStandaloneHost":
-                        this.ProcessRecord_ExportSnapshotToStandaloneHost();
+                    case "Exportsnapshottostandalonehost":
+                        this.ProcessRecord_Exportsnapshottostandalonehost();
                         break;
-                    case "downloadVirtualMachineFile":
-                        this.ProcessRecord_downloadVirtualMachineFile();
+                    case "Downloadvirtualmachinefile":
+                        this.ProcessRecord_Downloadvirtualmachinefile();
                         break;
-                    case "createAdvancedTag":
-                        this.ProcessRecord_createAdvancedTag();
+                    case "Createadvancedtag":
+                        this.ProcessRecord_Createadvancedtag();
                         break;
-                    case "deleteAdvancedTag":
-                        this.ProcessRecord_deleteAdvancedTag();
+                    case "Deleteadvancedtag":
+                        this.ProcessRecord_Deleteadvancedtag();
                         break;
-                    case "updateAdvancedTag":
-                        this.ProcessRecord_updateAdvancedTag();
+                    case "Updateadvancedtag":
+                        this.ProcessRecord_Updateadvancedtag();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -404,81 +364,81 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
         // This parameter set invokes a single graphql operation:
         // vsphereOnDemandSnapshot.
-        protected void ProcessRecord_OnDemandSnapshot()
+        protected void ProcessRecord_Ondemandsnapshot()
         {
-            this._logger.name += " -OnDemandSnapshot";
+            this._logger.name += " -Ondemandsnapshot";
             // Invoke graphql operation vsphereOnDemandSnapshot
             InvokeMutationVsphereOnDemandSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereBulkOnDemandSnapshot.
-        protected void ProcessRecord_BulkOnDemandSnapshot()
+        protected void ProcessRecord_Bulkondemandsnapshot()
         {
-            this._logger.name += " -BulkOnDemandSnapshot";
+            this._logger.name += " -Bulkondemandsnapshot";
             // Invoke graphql operation vsphereBulkOnDemandSnapshot
             InvokeMutationVsphereBulkOnDemandSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteVsphereLiveMount.
-        protected void ProcessRecord_deleteLiveMount()
+        protected void ProcessRecord_Deletelivemount()
         {
-            this._logger.name += " -deleteLiveMount";
+            this._logger.name += " -Deletelivemount";
             // Invoke graphql operation deleteVsphereLiveMount
             InvokeMutationDeleteVsphereLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereExportSnapshotToStandaloneHostV2.
-        protected void ProcessRecord_ExportSnapshotToStandaloneHostV2()
+        protected void ProcessRecord_Exportsnapshottostandalonehostv2()
         {
-            this._logger.name += " -ExportSnapshotToStandaloneHostV2";
+            this._logger.name += " -Exportsnapshottostandalonehostv2";
             // Invoke graphql operation vsphereExportSnapshotToStandaloneHostV2
             InvokeMutationVsphereExportSnapshotToStandaloneHostV2();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereExportSnapshotToStandaloneHost.
-        protected void ProcessRecord_ExportSnapshotToStandaloneHost()
+        protected void ProcessRecord_Exportsnapshottostandalonehost()
         {
-            this._logger.name += " -ExportSnapshotToStandaloneHost";
+            this._logger.name += " -Exportsnapshottostandalonehost";
             // Invoke graphql operation vsphereExportSnapshotToStandaloneHost
             InvokeMutationVsphereExportSnapshotToStandaloneHost();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadVsphereVirtualMachineFiles.
-        protected void ProcessRecord_downloadVirtualMachineFile()
+        protected void ProcessRecord_Downloadvirtualmachinefile()
         {
-            this._logger.name += " -downloadVirtualMachineFile";
+            this._logger.name += " -Downloadvirtualmachinefile";
             // Invoke graphql operation downloadVsphereVirtualMachineFiles
             InvokeMutationDownloadVsphereVirtualMachineFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // createVsphereAdvancedTag.
-        protected void ProcessRecord_createAdvancedTag()
+        protected void ProcessRecord_Createadvancedtag()
         {
-            this._logger.name += " -createAdvancedTag";
+            this._logger.name += " -Createadvancedtag";
             // Invoke graphql operation createVsphereAdvancedTag
             InvokeMutationCreateVsphereAdvancedTag();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteVsphereAdvancedTag.
-        protected void ProcessRecord_deleteAdvancedTag()
+        protected void ProcessRecord_Deleteadvancedtag()
         {
-            this._logger.name += " -deleteAdvancedTag";
+            this._logger.name += " -Deleteadvancedtag";
             // Invoke graphql operation deleteVsphereAdvancedTag
             InvokeMutationDeleteVsphereAdvancedTag();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateVsphereAdvancedTag.
-        protected void ProcessRecord_updateAdvancedTag()
+        protected void ProcessRecord_Updateadvancedtag()
         {
-            this._logger.name += " -updateAdvancedTag";
+            this._logger.name += " -Updateadvancedtag";
             // Invoke graphql operation updateVsphereAdvancedTag
             InvokeMutationUpdateVsphereAdvancedTag();
         }

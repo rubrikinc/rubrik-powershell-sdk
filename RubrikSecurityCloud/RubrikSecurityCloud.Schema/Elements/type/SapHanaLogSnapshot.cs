@@ -190,13 +190,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
@@ -208,7 +208,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fid: String! (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.Int64? InternalTimestamp
         // GraphQL -> internalTimestamp: Long! (scalar)
@@ -226,19 +226,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> locationMap: String (scalar)
         if (this.LocationMap == null && Exploration.Includes(parent + ".locationMap", true))
         {
-            this.LocationMap = new System.String("FETCH");
+            this.LocationMap = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
         {
-            this.WorkloadId = new System.String("FETCH");
+            this.WorkloadId = "FETCH";
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
         if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
         {
-            this.WorkloadType = new System.String("FETCH");
+            this.WorkloadType = "FETCH";
         }
         //      C# -> SapHanaLogSnapshotAppMetadata? AppMetadata
         // GraphQL -> appMetadata: SapHanaLogSnapshotAppMetadata (type)

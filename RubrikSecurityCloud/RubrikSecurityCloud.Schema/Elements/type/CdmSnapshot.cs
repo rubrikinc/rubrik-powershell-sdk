@@ -692,13 +692,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
         if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
         {
-            this.CdmVersion = new System.String("FETCH");
+            this.CdmVersion = "FETCH";
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
@@ -734,7 +734,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? IndexingAttempts
         // GraphQL -> indexingAttempts: Long! (scalar)
@@ -806,19 +806,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> parentSnapshotId: String (scalar)
         if (this.ParentSnapshotId == null && Exploration.Includes(parent + ".parentSnapshotId", true))
         {
-            this.ParentSnapshotId = new System.String("FETCH");
+            this.ParentSnapshotId = "FETCH";
         }
         //      C# -> System.String? ResourceSpec
         // GraphQL -> resourceSpec: String (scalar)
         if (this.ResourceSpec == null && Exploration.Includes(parent + ".resourceSpec", true))
         {
-            this.ResourceSpec = new System.String("FETCH");
+            this.ResourceSpec = "FETCH";
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
         {
-            this.SnappableId = new System.String("FETCH");
+            this.SnappableId = "FETCH";
         }
         //      C# -> List<DataLocation>? ArchivalLocations
         // GraphQL -> archivalLocations: [DataLocation!] (type)

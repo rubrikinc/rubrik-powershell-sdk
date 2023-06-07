@@ -120,31 +120,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostLogRetentionHours: Int (scalar)
         if (this.HostLogRetentionHours == null && Exploration.Includes(parent + ".hostLogRetentionHours", true))
         {
-            this.HostLogRetentionHours = new System.Int32();
+            this.HostLogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? HostMount
         // GraphQL -> hostMount: String! (scalar)
         if (this.HostMount == null && Exploration.Includes(parent + ".hostMount", true))
         {
-            this.HostMount = new System.String("FETCH");
+            this.HostMount = "FETCH";
         }
         //      C# -> System.Int32? LogBackupFrequencyInMinutes
         // GraphQL -> logBackupFrequencyInMinutes: Int! (scalar)
         if (this.LogBackupFrequencyInMinutes == null && Exploration.Includes(parent + ".logBackupFrequencyInMinutes", true))
         {
-            this.LogBackupFrequencyInMinutes = new System.Int32();
+            this.LogBackupFrequencyInMinutes = Int32.MinValue;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (this.LogRetentionHours == null && Exploration.Includes(parent + ".logRetentionHours", true))
         {
-            this.LogRetentionHours = new System.Int32();
+            this.LogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
         if (this.NumChannels == null && Exploration.Includes(parent + ".numChannels", true))
         {
-            this.NumChannels = new System.Int32();
+            this.NumChannels = Int32.MinValue;
         }
     }
 

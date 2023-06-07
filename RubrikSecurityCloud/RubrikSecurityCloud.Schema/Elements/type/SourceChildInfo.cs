@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failoverChildId: String! (scalar)
         if (this.FailoverChildId == null && Exploration.Includes(parent + ".failoverChildId", true))
         {
-            this.FailoverChildId = new System.String("FETCH");
+            this.FailoverChildId = "FETCH";
         }
         //      C# -> ChildInfo? ChildInfo
         // GraphQL -> childInfo: ChildInfo! (type)

@@ -138,7 +138,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> objectName: String! (scalar)
         if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
         {
-            this.ObjectName = new System.String("FETCH");
+            this.ObjectName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

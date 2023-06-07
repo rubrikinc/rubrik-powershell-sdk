@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nasSystemId: String! (scalar)
         if (this.NasSystemId == null && Exploration.Includes(parent + ".nasSystemId", true))
         {
-            this.NasSystemId = new System.String("FETCH");
+            this.NasSystemId = "FETCH";
         }
         //      C# -> AsyncRequestStatus? NasDiscoverJobStatus
         // GraphQL -> nasDiscoverJobStatus: AsyncRequestStatus (type)

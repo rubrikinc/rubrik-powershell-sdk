@@ -180,25 +180,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accessKey: String (scalar)
         if (this.AccessKey == null && Exploration.Includes(parent + ".accessKey", true))
         {
-            this.AccessKey = new System.String("FETCH");
+            this.AccessKey = "FETCH";
         }
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String! (scalar)
         if (this.RoleArn == null && Exploration.Includes(parent + ".roleArn", true))
         {
-            this.RoleArn = new System.String("FETCH");
+            this.RoleArn = "FETCH";
         }
         //      C# -> System.String? StackArn
         // GraphQL -> stackArn: String! (scalar)
         if (this.StackArn == null && Exploration.Includes(parent + ".stackArn", true))
         {
-            this.StackArn = new System.String("FETCH");
+            this.StackArn = "FETCH";
         }
         //      C# -> System.String? UserArn
         // GraphQL -> userArn: String (scalar)
         if (this.UserArn == null && Exploration.Includes(parent + ".userArn", true))
         {
-            this.UserArn = new System.String("FETCH");
+            this.UserArn = "FETCH";
         }
         //      C# -> AwsAuthServerDetail? AuthServerDetail
         // GraphQL -> authServerDetail: AwsAuthServerDetail (type)

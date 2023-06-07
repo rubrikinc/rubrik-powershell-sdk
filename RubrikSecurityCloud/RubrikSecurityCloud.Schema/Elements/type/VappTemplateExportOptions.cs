@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> orgVdcId: String! (scalar)
         if (this.OrgVdcId == null && Exploration.Includes(parent + ".orgVdcId", true))
         {
-            this.OrgVdcId = new System.String("FETCH");
+            this.OrgVdcId = "FETCH";
         }
         //      C# -> List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies
         // GraphQL -> availableStoragePolicies: [VcdOrgVdcStorageProfile!]! (type)

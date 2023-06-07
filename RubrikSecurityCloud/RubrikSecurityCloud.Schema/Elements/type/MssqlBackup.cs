@@ -154,7 +154,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backupId: String! (scalar)
         if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
         {
-            this.BackupId = new System.String("FETCH");
+            this.BackupId = "FETCH";
         }
         //      C# -> System.Int64? BackupSize
         // GraphQL -> backupSize: Long! (scalar)
@@ -172,19 +172,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lsn: String! (scalar)
         if (this.Lsn == null && Exploration.Includes(parent + ".lsn", true))
         {
-            this.Lsn = new System.String("FETCH");
+            this.Lsn = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> System.String? RecoveryForkGuid
         // GraphQL -> recoveryForkGuid: String! (scalar)
         if (this.RecoveryForkGuid == null && Exploration.Includes(parent + ".recoveryForkGuid", true))
         {
-            this.RecoveryForkGuid = new System.String("FETCH");
+            this.RecoveryForkGuid = "FETCH";
         }
     }
 

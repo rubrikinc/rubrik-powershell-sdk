@@ -138,7 +138,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> allowedO365UserCount: Int! (scalar)
         if (this.AllowedO365UserCount == null && Exploration.Includes(parent + ".allowedO365UserCount", true))
         {
-            this.AllowedO365UserCount = new System.Int32();
+            this.AllowedO365UserCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? DisableLicense
         // GraphQL -> disableLicense: Boolean! (scalar)

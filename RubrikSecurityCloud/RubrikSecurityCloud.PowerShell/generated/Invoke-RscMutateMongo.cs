@@ -21,283 +21,257 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateMongo",
-        DefaultParameterSetName = "addSource")
+        DefaultParameterSetName = "Addsource")
     ]
     public class Invoke_RscMutateMongo : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // addSource parameter set
+        // Addsource parameter set
         //
-        // GraphQL operation: addMongoSource(input: AddMongoSourceInput!):AddMongoSourceReply!
+        // [GraphQL: addMongoSource]
         //
         [Parameter(
-            ParameterSetName = "addSource",
+            ParameterSetName = "Addsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Add a new MongoDB source
+@"Add a new MongoDB source
 
 Supported in v8.1+
 Adds a new MongoDB source to the Rubrik Cluster.
-                GraphQL operation: addMongoSource(input: AddMongoSourceInput!):AddMongoSourceReply!
-                ",
+[GraphQL: addMongoSource]",
             Position = 0
         )]
-        public SwitchParameter addSource { get; set; }
+        public SwitchParameter Addsource { get; set; }
 
         [Parameter(
-            ParameterSetName = "addSource",
+            ParameterSetName = "Addsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for V1AddMongoSource.
-                GraphQL argument input: AddMongoSourceInput!
-                "
+@"Input for V1AddMongoSource.
+GraphQL argument input: AddMongoSourceInput!"
         )]
         public AddMongoSourceInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // deleteSource parameter set
+        // Deletesource parameter set
         //
-        // GraphQL operation: deleteMongoSource(input: DeleteMongoSourceInput!):AsyncRequestStatus!
+        // [GraphQL: deleteMongoSource]
         //
         [Parameter(
-            ParameterSetName = "deleteSource",
+            ParameterSetName = "Deletesource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete a MongoDB source
+@"Delete a MongoDB source
 
 Supported in v8.1+
 Deletes a specific MongoDB source.
-                GraphQL operation: deleteMongoSource(input: DeleteMongoSourceInput!):AsyncRequestStatus!
-                ",
+[GraphQL: deleteMongoSource]",
             Position = 0
         )]
-        public SwitchParameter deleteSource { get; set; }
+        public SwitchParameter Deletesource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // discoverSource parameter set
+        // Discoversource parameter set
         //
-        // GraphQL operation: discoverMongoSource(input: DiscoverMongoSourceInput!):AsyncRequestStatus!
+        // [GraphQL: discoverMongoSource]
         //
         [Parameter(
-            ParameterSetName = "discoverSource",
+            ParameterSetName = "Discoversource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Discover a MongoDB source on-demand
+@"Discover a MongoDB source on-demand
 
 Supported in v8.1+
 Initiates an on-demand job to discover a MongoDB source.
-                GraphQL operation: discoverMongoSource(input: DiscoverMongoSourceInput!):AsyncRequestStatus!
-                ",
+[GraphQL: discoverMongoSource]",
             Position = 0
         )]
-        public SwitchParameter discoverSource { get; set; }
+        public SwitchParameter Discoversource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // patchSource parameter set
+        // Patchsource parameter set
         //
-        // GraphQL operation: patchMongoSource(input: PatchMongoSourceInput!):AsyncRequestStatus!
+        // [GraphQL: patchMongoSource]
         //
         [Parameter(
-            ParameterSetName = "patchSource",
+            ParameterSetName = "Patchsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Edit a MongoDB source
+@"Edit a MongoDB source
 
 Supported in v8.1+
 Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB cannot be changed once added.
-                GraphQL operation: patchMongoSource(input: PatchMongoSourceInput!):AsyncRequestStatus!
-                ",
+[GraphQL: patchMongoSource]",
             Position = 0
         )]
-        public SwitchParameter patchSource { get; set; }
+        public SwitchParameter Patchsource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // retryAddSource parameter set
+        // Retryaddsource parameter set
         //
-        // GraphQL operation: retryAddMongoSource(input: RetryAddMongoSourceInput!):AsyncRequestStatus!
+        // [GraphQL: retryAddMongoSource]
         //
         [Parameter(
-            ParameterSetName = "retryAddSource",
+            ParameterSetName = "Retryaddsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update a MongoDB source
+@"Update a MongoDB source
 
 Supported in v8.1+
 Updates a MongoDB source details. You can use this endpoint for updating MongoDB source details when the request to add a source fails.
-                GraphQL operation: retryAddMongoSource(input: RetryAddMongoSourceInput!):AsyncRequestStatus!
-                ",
+[GraphQL: retryAddMongoSource]",
             Position = 0
         )]
-        public SwitchParameter retryAddSource { get; set; }
+        public SwitchParameter Retryaddsource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // assignSlaToDbCollection parameter set
+        // Assignslatodbcollection parameter set
         //
-        // GraphQL operation: assignSlaToMongoDbCollection(input: AssignSlaToMongoDbCollectionInput!):AsyncRequestStatus!
+        // [GraphQL: assignSlaToMongoDbCollection]
         //
         [Parameter(
-            ParameterSetName = "assignSlaToDbCollection",
+            ParameterSetName = "Assignslatodbcollection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Assign SLA Domain to MongoDB collection objects
+@"Assign SLA Domain to MongoDB collection objects
 
 Supported in v8.1+
 Assigns SLA Domain to the given MongoDB collection objects.
-                GraphQL operation: assignSlaToMongoDbCollection(input: AssignSlaToMongoDbCollectionInput!):AsyncRequestStatus!
-                ",
+[GraphQL: assignSlaToMongoDbCollection]",
             Position = 0
         )]
-        public SwitchParameter assignSlaToDbCollection { get; set; }
+        public SwitchParameter Assignslatodbcollection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // recoverSource parameter set
+        // Recoversource parameter set
         //
-        // GraphQL operation: recoverMongoSource(input: RecoverMongoSourceInput!):AsyncRequestStatus!
+        // [GraphQL: recoverMongoSource]
         //
         [Parameter(
-            ParameterSetName = "recoverSource",
+            ParameterSetName = "Recoversource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Recover a MongoDB source from Rubrik CDM cluster.
-                GraphQL operation: recoverMongoSource(input: RecoverMongoSourceInput!):AsyncRequestStatus!
-                ",
+@"Recover a MongoDB source from Rubrik CDM cluster.
+[GraphQL: recoverMongoSource]",
             Position = 0
         )]
-        public SwitchParameter recoverSource { get; set; }
+        public SwitchParameter Recoversource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createdbSource parameter set
+        // Createdbsource parameter set
         //
-        // GraphQL operation: createMongodbSource(input: AddMosaicSourceInput!):MosaicAsyncResponse!
+        // [GraphQL: createMongodbSource]
         //
         [Parameter(
-            ParameterSetName = "createdbSource",
+            ParameterSetName = "Createdbsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Register a new MongoDB source to NoSQL cluster. 
+@"Register a new MongoDB source to NoSQL cluster. 
 For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster.
 For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/introduction/.
-                GraphQL operation: createMongodbSource(input: AddMosaicSourceInput!):MosaicAsyncResponse!
-                ",
+[GraphQL: createMongodbSource]",
             Position = 0
         )]
-        public SwitchParameter createdbSource { get; set; }
+        public SwitchParameter Createdbsource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updatedbSource parameter set
+        // Updatedbsource parameter set
         //
-        // GraphQL operation: updateMongodbSource(input: ModifyMosaicSourceInput!):MosaicAsyncResponse!
+        // [GraphQL: updateMongodbSource]
         //
         [Parameter(
-            ParameterSetName = "updatedbSource",
+            ParameterSetName = "Updatedbsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Modifies configuration for a registered MongoDB source in NoSQL cluster.
-                GraphQL operation: updateMongodbSource(input: ModifyMosaicSourceInput!):MosaicAsyncResponse!
-                ",
+@"Modifies configuration for a registered MongoDB source in NoSQL cluster.
+[GraphQL: updateMongodbSource]",
             Position = 0
         )]
-        public SwitchParameter updatedbSource { get; set; }
+        public SwitchParameter Updatedbsource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deletedbSource parameter set
+        // Deletedbsource parameter set
         //
-        // GraphQL operation: deleteMongodbSource(input: DeleteMosaicSourceInput!):MosaicAsyncResponse!
+        // [GraphQL: deleteMongodbSource]
         //
         [Parameter(
-            ParameterSetName = "deletedbSource",
+            ParameterSetName = "Deletedbsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Remove a registered MongoDB source from NoSQL cluster.
-                GraphQL operation: deleteMongodbSource(input: DeleteMosaicSourceInput!):MosaicAsyncResponse!
-                ",
+@"Remove a registered MongoDB source from NoSQL cluster.
+[GraphQL: deleteMongodbSource]",
             Position = 0
         )]
-        public SwitchParameter deletedbSource { get; set; }
+        public SwitchParameter Deletedbsource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // bulkDeletedbSource parameter set
+        // Bulkdeletedbsource parameter set
         //
-        // GraphQL operation: bulkDeleteMongodbSources(input: BulkDeleteMosaicSourcesInput!):MosaicAsyncResponse!
+        // [GraphQL: bulkDeleteMongodbSources]
         //
         [Parameter(
-            ParameterSetName = "bulkDeletedbSource",
+            ParameterSetName = "Bulkdeletedbsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Bulk Delete Sources
+@"Bulk Delete Sources
 
 Supported in m3.2.0-m4.2.0.
-                GraphQL operation: bulkDeleteMongodbSources(input: BulkDeleteMosaicSourcesInput!):MosaicAsyncResponse!
-                ",
+[GraphQL: bulkDeleteMongodbSources]",
             Position = 0
         )]
-        public SwitchParameter bulkDeletedbSource { get; set; }
+        public SwitchParameter Bulkdeletedbsource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // recoverdbSource parameter set
+        // Recoverdbsource parameter set
         //
-        // GraphQL operation: recoverMongodbSource(input: MosaicRestoreDataInput!):MosaicAsyncResponse!
+        // [GraphQL: recoverMongodbSource]
         //
         [Parameter(
-            ParameterSetName = "recoverdbSource",
+            ParameterSetName = "Recoverdbsource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Recover a MongoDB source from NoSQL cluster.
-                GraphQL operation: recoverMongodbSource(input: MosaicRestoreDataInput!):MosaicAsyncResponse!
-                ",
+@"Recover a MongoDB source from NoSQL cluster.
+[GraphQL: recoverMongodbSource]",
             Position = 0
         )]
-        public SwitchParameter recoverdbSource { get; set; }
+        public SwitchParameter Recoverdbsource { get; set; }
 
 
         protected override void ProcessRecord()
@@ -306,41 +280,41 @@ Supported in m3.2.0-m4.2.0.
             {
                 switch(Op)
                 {
-                    case "addSource":
-                        this.ProcessRecord_addSource();
+                    case "Addsource":
+                        this.ProcessRecord_Addsource();
                         break;
-                    case "deleteSource":
-                        this.ProcessRecord_deleteSource();
+                    case "Deletesource":
+                        this.ProcessRecord_Deletesource();
                         break;
-                    case "discoverSource":
-                        this.ProcessRecord_discoverSource();
+                    case "Discoversource":
+                        this.ProcessRecord_Discoversource();
                         break;
-                    case "patchSource":
-                        this.ProcessRecord_patchSource();
+                    case "Patchsource":
+                        this.ProcessRecord_Patchsource();
                         break;
-                    case "retryAddSource":
-                        this.ProcessRecord_retryAddSource();
+                    case "Retryaddsource":
+                        this.ProcessRecord_Retryaddsource();
                         break;
-                    case "assignSlaToDbCollection":
-                        this.ProcessRecord_assignSlaToDbCollection();
+                    case "Assignslatodbcollection":
+                        this.ProcessRecord_Assignslatodbcollection();
                         break;
-                    case "recoverSource":
-                        this.ProcessRecord_recoverSource();
+                    case "Recoversource":
+                        this.ProcessRecord_Recoversource();
                         break;
-                    case "createdbSource":
-                        this.ProcessRecord_createdbSource();
+                    case "Createdbsource":
+                        this.ProcessRecord_Createdbsource();
                         break;
-                    case "updatedbSource":
-                        this.ProcessRecord_updatedbSource();
+                    case "Updatedbsource":
+                        this.ProcessRecord_Updatedbsource();
                         break;
-                    case "deletedbSource":
-                        this.ProcessRecord_deletedbSource();
+                    case "Deletedbsource":
+                        this.ProcessRecord_Deletedbsource();
                         break;
-                    case "bulkDeletedbSource":
-                        this.ProcessRecord_bulkDeletedbSource();
+                    case "Bulkdeletedbsource":
+                        this.ProcessRecord_Bulkdeletedbsource();
                         break;
-                    case "recoverdbSource":
-                        this.ProcessRecord_recoverdbSource();
+                    case "Recoverdbsource":
+                        this.ProcessRecord_Recoverdbsource();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -360,108 +334,108 @@ Supported in m3.2.0-m4.2.0.
 
         // This parameter set invokes a single graphql operation:
         // addMongoSource.
-        protected void ProcessRecord_addSource()
+        protected void ProcessRecord_Addsource()
         {
-            this._logger.name += " -addSource";
+            this._logger.name += " -Addsource";
             // Invoke graphql operation addMongoSource
             InvokeMutationAddMongoSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteMongoSource.
-        protected void ProcessRecord_deleteSource()
+        protected void ProcessRecord_Deletesource()
         {
-            this._logger.name += " -deleteSource";
+            this._logger.name += " -Deletesource";
             // Invoke graphql operation deleteMongoSource
             InvokeMutationDeleteMongoSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // discoverMongoSource.
-        protected void ProcessRecord_discoverSource()
+        protected void ProcessRecord_Discoversource()
         {
-            this._logger.name += " -discoverSource";
+            this._logger.name += " -Discoversource";
             // Invoke graphql operation discoverMongoSource
             InvokeMutationDiscoverMongoSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // patchMongoSource.
-        protected void ProcessRecord_patchSource()
+        protected void ProcessRecord_Patchsource()
         {
-            this._logger.name += " -patchSource";
+            this._logger.name += " -Patchsource";
             // Invoke graphql operation patchMongoSource
             InvokeMutationPatchMongoSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // retryAddMongoSource.
-        protected void ProcessRecord_retryAddSource()
+        protected void ProcessRecord_Retryaddsource()
         {
-            this._logger.name += " -retryAddSource";
+            this._logger.name += " -Retryaddsource";
             // Invoke graphql operation retryAddMongoSource
             InvokeMutationRetryAddMongoSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignSlaToMongoDbCollection.
-        protected void ProcessRecord_assignSlaToDbCollection()
+        protected void ProcessRecord_Assignslatodbcollection()
         {
-            this._logger.name += " -assignSlaToDbCollection";
+            this._logger.name += " -Assignslatodbcollection";
             // Invoke graphql operation assignSlaToMongoDbCollection
             InvokeMutationAssignSlaToMongoDbCollection();
         }
 
         // This parameter set invokes a single graphql operation:
         // recoverMongoSource.
-        protected void ProcessRecord_recoverSource()
+        protected void ProcessRecord_Recoversource()
         {
-            this._logger.name += " -recoverSource";
+            this._logger.name += " -Recoversource";
             // Invoke graphql operation recoverMongoSource
             InvokeMutationRecoverMongoSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // createMongodbSource.
-        protected void ProcessRecord_createdbSource()
+        protected void ProcessRecord_Createdbsource()
         {
-            this._logger.name += " -createdbSource";
+            this._logger.name += " -Createdbsource";
             // Invoke graphql operation createMongodbSource
             InvokeMutationCreateMongodbSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateMongodbSource.
-        protected void ProcessRecord_updatedbSource()
+        protected void ProcessRecord_Updatedbsource()
         {
-            this._logger.name += " -updatedbSource";
+            this._logger.name += " -Updatedbsource";
             // Invoke graphql operation updateMongodbSource
             InvokeMutationUpdateMongodbSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteMongodbSource.
-        protected void ProcessRecord_deletedbSource()
+        protected void ProcessRecord_Deletedbsource()
         {
-            this._logger.name += " -deletedbSource";
+            this._logger.name += " -Deletedbsource";
             // Invoke graphql operation deleteMongodbSource
             InvokeMutationDeleteMongodbSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkDeleteMongodbSources.
-        protected void ProcessRecord_bulkDeletedbSource()
+        protected void ProcessRecord_Bulkdeletedbsource()
         {
-            this._logger.name += " -bulkDeletedbSource";
+            this._logger.name += " -Bulkdeletedbsource";
             // Invoke graphql operation bulkDeleteMongodbSources
             InvokeMutationBulkDeleteMongodbSources();
         }
 
         // This parameter set invokes a single graphql operation:
         // recoverMongodbSource.
-        protected void ProcessRecord_recoverdbSource()
+        protected void ProcessRecord_Recoverdbsource()
         {
-            this._logger.name += " -recoverdbSource";
+            this._logger.name += " -Recoverdbsource";
             // Invoke graphql operation recoverMongodbSource
             InvokeMutationRecoverMongodbSource();
         }

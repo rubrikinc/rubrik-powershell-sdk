@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> workloadType: String! (scalar)
         if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
         {
-            this.WorkloadType = new System.String("FETCH");
+            this.WorkloadType = "FETCH";
         }
     }
 

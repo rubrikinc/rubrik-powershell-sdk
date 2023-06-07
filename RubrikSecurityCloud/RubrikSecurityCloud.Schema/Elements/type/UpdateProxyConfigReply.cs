@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> host: String! (scalar)
         if (this.Host == null && Exploration.Includes(parent + ".host", true))
         {
-            this.Host = new System.String("FETCH");
+            this.Host = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int (scalar)
         if (this.Port == null && Exploration.Includes(parent + ".port", true))
         {
-            this.Port = new System.Int32();
+            this.Port = Int32.MinValue;
         }
         //      C# -> System.String? Protocol
         // GraphQL -> protocol: String! (scalar)
         if (this.Protocol == null && Exploration.Includes(parent + ".protocol", true))
         {
-            this.Protocol = new System.String("FETCH");
+            this.Protocol = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
     }
 

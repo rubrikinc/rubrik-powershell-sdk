@@ -189,25 +189,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appAuthVersion: Int! (scalar)
         if (this.AppAuthVersion == null && Exploration.Includes(parent + ".appAuthVersion", true))
         {
-            this.AppAuthVersion = new System.Int32();
+            this.AppAuthVersion = Int32.MinValue;
         }
         //      C# -> System.String? AppId
         // GraphQL -> appId: String! (scalar)
         if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
         {
-            this.AppId = new System.String("FETCH");
+            this.AppId = "FETCH";
         }
         //      C# -> System.String? AppOwner
         // GraphQL -> appOwner: String! (scalar)
         if (this.AppOwner == null && Exploration.Includes(parent + ".appOwner", true))
         {
-            this.AppOwner = new System.String("FETCH");
+            this.AppOwner = "FETCH";
         }
         //      C# -> System.String? AppType
         // GraphQL -> appType: String! (scalar)
         if (this.AppType == null && Exploration.Includes(parent + ".appType", true))
         {
-            this.AppType = new System.String("FETCH");
+            this.AppType = "FETCH";
         }
         //      C# -> System.Boolean? IsAuthenticated
         // GraphQL -> isAuthenticated: Boolean! (scalar)
@@ -219,13 +219,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subscription: String! (scalar)
         if (this.Subscription == null && Exploration.Includes(parent + ".subscription", true))
         {
-            this.Subscription = new System.String("FETCH");
+            this.Subscription = "FETCH";
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
         if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId", true))
         {
-            this.SubscriptionId = new System.String("FETCH");
+            this.SubscriptionId = "FETCH";
         }
     }
 

@@ -132,7 +132,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> filesetName: String! (scalar)
         if (this.FilesetName == null && Exploration.Includes(parent + ".filesetName", true))
         {
-            this.FilesetName = new System.String("FETCH");
+            this.FilesetName = "FETCH";
         }
         //      C# -> System.Boolean? SnapdiffUsed
         // GraphQL -> snapdiffUsed: Boolean (scalar)

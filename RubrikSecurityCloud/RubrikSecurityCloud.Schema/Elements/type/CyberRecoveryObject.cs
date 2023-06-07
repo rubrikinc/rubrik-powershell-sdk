@@ -300,25 +300,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
         {
-            this.ClusterId = new System.String("FETCH");
+            this.ClusterId = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? LastRecoveryFailoverId
         // GraphQL -> lastRecoveryFailoverId: UUID (scalar)
         if (this.LastRecoveryFailoverId == null && Exploration.Includes(parent + ".lastRecoveryFailoverId", true))
         {
-            this.LastRecoveryFailoverId = new System.String("FETCH");
+            this.LastRecoveryFailoverId = "FETCH";
         }
         //      C# -> System.Int64? LastRecoveryMilliSec
         // GraphQL -> lastRecoveryMilliSec: Long! (scalar)
@@ -330,13 +330,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lastRecoveryRecoveryPlanId: UUID (scalar)
         if (this.LastRecoveryRecoveryPlanId == null && Exploration.Includes(parent + ".lastRecoveryRecoveryPlanId", true))
         {
-            this.LastRecoveryRecoveryPlanId = new System.String("FETCH");
+            this.LastRecoveryRecoveryPlanId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> List<System.String>? RecoveryPlanIds
         // GraphQL -> recoveryPlanIds: [UUID!]! (scalar)
@@ -348,13 +348,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> retentionSlaDomainId: String! (scalar)
         if (this.RetentionSlaDomainId == null && Exploration.Includes(parent + ".retentionSlaDomainId", true))
         {
-            this.RetentionSlaDomainId = new System.String("FETCH");
+            this.RetentionSlaDomainId = "FETCH";
         }
         //      C# -> System.String? RetentionSlaDomainName
         // GraphQL -> retentionSlaDomainName: String! (scalar)
         if (this.RetentionSlaDomainName == null && Exploration.Includes(parent + ".retentionSlaDomainName", true))
         {
-            this.RetentionSlaDomainName = new System.String("FETCH");
+            this.RetentionSlaDomainName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)

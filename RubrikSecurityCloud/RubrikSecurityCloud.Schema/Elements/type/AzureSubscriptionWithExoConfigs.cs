@@ -162,13 +162,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         if (this.AzureSubscriptionNativeId == null && Exploration.Includes(parent + ".azureSubscriptionNativeId", true))
         {
-            this.AzureSubscriptionNativeId = new System.String("FETCH");
+            this.AzureSubscriptionNativeId = "FETCH";
         }
         //      C# -> System.String? AzureSubscriptionRubrikId
         // GraphQL -> azureSubscriptionRubrikId: String! (scalar)
         if (this.AzureSubscriptionRubrikId == null && Exploration.Includes(parent + ".azureSubscriptionRubrikId", true))
         {
-            this.AzureSubscriptionRubrikId = new System.String("FETCH");
+            this.AzureSubscriptionRubrikId = "FETCH";
         }
         //      C# -> List<System.String>? MappedCloudAccountIds
         // GraphQL -> mappedCloudAccountIds: [UUID!]! (scalar)
@@ -180,7 +180,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subscriptionName: String! (scalar)
         if (this.SubscriptionName == null && Exploration.Includes(parent + ".subscriptionName", true))
         {
-            this.SubscriptionName = new System.String("FETCH");
+            this.SubscriptionName = "FETCH";
         }
         //      C# -> List<AzureExocomputeConfigDetails>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)

@@ -21,411 +21,361 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateSla",
-        DefaultParameterSetName = "pause")
+        DefaultParameterSetName = "Pause")
     ]
     public class Invoke_RscMutateSla : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // createGlobal parameter set
+        // Createglobal parameter set
         //
-        // GraphQL operation: createGlobalSla(input: CreateGlobalSlaInput!):GlobalSlaReply!
+        // [GraphQL: createGlobalSla]
         //
         [Parameter(
-            ParameterSetName = "createGlobal",
+            ParameterSetName = "Createglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create SLA Domain.
-                GraphQL operation: createGlobalSla(input: CreateGlobalSlaInput!):GlobalSlaReply!
-                ",
+@"Create SLA Domain.
+[GraphQL: createGlobalSla]",
             Position = 0
         )]
-        public SwitchParameter createGlobal { get; set; }
+        public SwitchParameter Createglobal { get; set; }
 
         [Parameter(
-            ParameterSetName = "createGlobal",
+            ParameterSetName = "Createglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument input: CreateGlobalSlaInput!
-                "
+@"
+GraphQL argument input: CreateGlobalSlaInput!"
         )]
         public CreateGlobalSlaInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // editGlobal parameter set
+        // Editglobal parameter set
         //
-        // GraphQL operation: editGlobalSla(globalSlaEditRequest: GlobalSlaEditRequest!):GlobalSlaReply!
+        // [GraphQL: editGlobalSla]
         //
         [Parameter(
-            ParameterSetName = "editGlobal",
+            ParameterSetName = "Editglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: editGlobalSla(globalSlaEditRequest: GlobalSlaEditRequest!):GlobalSlaReply!
-                ",
+@"
+[GraphQL: editGlobalSla]",
             Position = 0
         )]
-        public SwitchParameter editGlobal { get; set; }
+        public SwitchParameter Editglobal { get; set; }
 
         [Parameter(
-            ParameterSetName = "editGlobal",
+            ParameterSetName = "Editglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument globalSlaEditRequest: GlobalSlaEditRequest!
-                "
+@"
+GraphQL argument globalSlaEditRequest: GlobalSlaEditRequest!"
         )]
         public GlobalSlaEditRequest? GlobalSlaEditRequest { get; set; }
         
         // -------------------------------------------------------------------
-        // updateGlobal parameter set
+        // Updateglobal parameter set
         //
-        // GraphQL operation: updateGlobalSla(input: UpdateGlobalSlaInput!):GlobalSlaReply!
+        // [GraphQL: updateGlobalSla]
         //
         [Parameter(
-            ParameterSetName = "updateGlobal",
+            ParameterSetName = "Updateglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update SLA Domain.
-                GraphQL operation: updateGlobalSla(input: UpdateGlobalSlaInput!):GlobalSlaReply!
-                ",
+@"Update SLA Domain.
+[GraphQL: updateGlobalSla]",
             Position = 0
         )]
-        public SwitchParameter updateGlobal { get; set; }
+        public SwitchParameter Updateglobal { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteGlobal parameter set
+        // Deleteglobal parameter set
         //
-        // GraphQL operation: deleteGlobalSla(id: UUID!, userNote: String):SlaResult!
+        // [GraphQL: deleteGlobalSla]
         //
         [Parameter(
-            ParameterSetName = "deleteGlobal",
+            ParameterSetName = "Deleteglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: deleteGlobalSla(id: UUID!, userNote: String):SlaResult!
-                ",
+@"
+[GraphQL: deleteGlobalSla]",
             Position = 0
         )]
-        public SwitchParameter deleteGlobal { get; set; }
+        public SwitchParameter Deleteglobal { get; set; }
 
         [Parameter(
-            ParameterSetName = "deleteGlobal",
+            ParameterSetName = "Deleteglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                SLA Domain ID.
-                GraphQL argument id: UUID!
-                "
+@"SLA Domain ID.
+GraphQL argument id: UUID!"
         )]
         public System.String? Id { get; set; }
         [Parameter(
-            ParameterSetName = "deleteGlobal",
+            ParameterSetName = "Deleteglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Optional User note.
-                GraphQL argument userNote: String
-                "
+@"Optional User note.
+GraphQL argument userNote: String"
         )]
         public System.String? UserNote { get; set; }
         
         // -------------------------------------------------------------------
-        // assign parameter set
+        // Assign parameter set
         //
-        // GraphQL operation: assignSla(input: AssignSlaInput!):SlaAssignResult!
+        // [GraphQL: assignSla]
         //
         [Parameter(
-            ParameterSetName = "assign",
+            ParameterSetName = "Assign",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Endpoint to assign SLA Domain.
-                GraphQL operation: assignSla(input: AssignSlaInput!):SlaAssignResult!
-                ",
+@"Endpoint to assign SLA Domain.
+[GraphQL: assignSla]",
             Position = 0
         )]
-        public SwitchParameter assign { get; set; }
+        public SwitchParameter Assign { get; set; }
 
         
         // -------------------------------------------------------------------
-        // assignsForSnappableHierarchie parameter set
+        // Assignsforsnappablehierarchie parameter set
         //
-        // GraphQL operation: assignSlasForSnappableHierarchies(,   globalSlaOptionalFid: UUID,   globalSlaAssignType: SlaAssignTypeEnum!,   objectIds: [UUID!]!,   applicableSnappableTypes: [WorkloadLevelHierarchy!],   shouldApplyToExistingSnapshots: Boolean,   shouldApplyToNonPolicySnapshots: Boolean,   globalExistingSnapshotRetention: GlobalExistingSnapshotRetention,   userNote: String, ):[SlaAssignResult!]!
+        // [GraphQL: assignSlasForSnappableHierarchies]
         //
         [Parameter(
-            ParameterSetName = "assignsForSnappableHierarchie",
+            ParameterSetName = "Assignsforsnappablehierarchie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: assignSlasForSnappableHierarchies(,   globalSlaOptionalFid: UUID,   globalSlaAssignType: SlaAssignTypeEnum!,   objectIds: [UUID!]!,   applicableSnappableTypes: [WorkloadLevelHierarchy!],   shouldApplyToExistingSnapshots: Boolean,   shouldApplyToNonPolicySnapshots: Boolean,   globalExistingSnapshotRetention: GlobalExistingSnapshotRetention,   userNote: String, ):[SlaAssignResult!]!
-                ",
+@"
+[GraphQL: assignSlasForSnappableHierarchies]",
             Position = 0
         )]
-        public SwitchParameter assignsForSnappableHierarchie { get; set; }
+        public SwitchParameter Assignsforsnappablehierarchie { get; set; }
 
         [Parameter(
-            ParameterSetName = "assignsForSnappableHierarchie",
+            ParameterSetName = "Assignsforsnappablehierarchie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Global SLA Domain forever UUID.
-                GraphQL argument globalSlaOptionalFid: UUID
-                "
+@"Global SLA Domain forever UUID.
+GraphQL argument globalSlaOptionalFid: UUID"
         )]
         public System.String? GlobalSlaOptionalFid { get; set; }
         [Parameter(
-            ParameterSetName = "assignsForSnappableHierarchie",
+            ParameterSetName = "Assignsforsnappablehierarchie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Corresponds to the assignment type for the global SLA
-                GraphQL argument globalSlaAssignType: SlaAssignTypeEnum!
-                "
+@"Corresponds to the assignment type for the global SLA
+GraphQL argument globalSlaAssignType: SlaAssignTypeEnum!"
         )]
         public SlaAssignTypeEnum? GlobalSlaAssignType { get; set; }
         [Parameter(
-            ParameterSetName = "assignsForSnappableHierarchie",
+            ParameterSetName = "Assignsforsnappablehierarchie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A list of object forever UUIDs to assign to the global SLA Domain.
-                GraphQL argument objectIds: [UUID!]!
-                "
+@"A list of object forever UUIDs to assign to the global SLA Domain.
+GraphQL argument objectIds: [UUID!]!"
         )]
         public List<System.String>? ObjectIds { get; set; }
         [Parameter(
-            ParameterSetName = "assignsForSnappableHierarchie",
+            ParameterSetName = "Assignsforsnappablehierarchie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Provide optional snappable types under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. See 'applicableSnappableType' for more details. If more than one is provided, the SLA will be assigned to all.
-                GraphQL argument applicableSnappableTypes: [WorkloadLevelHierarchy!]
-                "
+@"Provide optional snappable types under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. See 'applicableSnappableType' for more details. If more than one is provided, the SLA will be assigned to all.
+GraphQL argument applicableSnappableTypes: [WorkloadLevelHierarchy!]"
         )]
         public List<WorkloadLevelHierarchy>? ApplicableSnappableTypes { get; set; }
         [Parameter(
-            ParameterSetName = "assignsForSnappableHierarchie",
+            ParameterSetName = "Assignsforsnappablehierarchie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Boolean value to indicate whether to apply changes made to the SLA to existing snapshots.
-                GraphQL argument shouldApplyToExistingSnapshots: Boolean
-                "
+@"Boolean value to indicate whether to apply changes made to the SLA to existing snapshots.
+GraphQL argument shouldApplyToExistingSnapshots: Boolean"
         )]
         public System.Boolean? ShouldApplyToExistingSnapshots { get; set; }
         [Parameter(
-            ParameterSetName = "assignsForSnappableHierarchie",
+            ParameterSetName = "Assignsforsnappablehierarchie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Boolean value to indicate if the new configuration keeps existing, non-policy snapshots of data sources retained by this SLA Domain.
-                GraphQL argument shouldApplyToNonPolicySnapshots: Boolean
-                "
+@"Boolean value to indicate if the new configuration keeps existing, non-policy snapshots of data sources retained by this SLA Domain.
+GraphQL argument shouldApplyToNonPolicySnapshots: Boolean"
         )]
         public System.Boolean? ShouldApplyToNonPolicySnapshots { get; set; }
         [Parameter(
-            ParameterSetName = "assignsForSnappableHierarchie",
+            ParameterSetName = "Assignsforsnappablehierarchie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Choose what to do with existing snapshot in case of do not protect slas
-                GraphQL argument globalExistingSnapshotRetention: GlobalExistingSnapshotRetention
-                "
+@"Choose what to do with existing snapshot in case of do not protect slas
+GraphQL argument globalExistingSnapshotRetention: GlobalExistingSnapshotRetention"
         )]
         public GlobalExistingSnapshotRetention? GlobalExistingSnapshotRetention { get; set; }
         
         // -------------------------------------------------------------------
-        // assignRetentionToSnappable parameter set
+        // Assignretentiontosnappable parameter set
         //
-        // GraphQL operation: assignRetentionSLAToSnappables(,   globalSlaOptionalFid: UUID,   globalSlaAssignType: SlaAssignTypeEnum!,   objectIds: [UUID!]!,   applicableSnappableType: WorkloadLevelHierarchy,   shouldApplyToNonPolicySnapshots: Boolean,   userNote: String, ):SlaAssignResult!
+        // [GraphQL: assignRetentionSLAToSnappables]
         //
         [Parameter(
-            ParameterSetName = "assignRetentionToSnappable",
+            ParameterSetName = "Assignretentiontosnappable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: assignRetentionSLAToSnappables(,   globalSlaOptionalFid: UUID,   globalSlaAssignType: SlaAssignTypeEnum!,   objectIds: [UUID!]!,   applicableSnappableType: WorkloadLevelHierarchy,   shouldApplyToNonPolicySnapshots: Boolean,   userNote: String, ):SlaAssignResult!
-                ",
+@"
+[GraphQL: assignRetentionSLAToSnappables]",
             Position = 0
         )]
-        public SwitchParameter assignRetentionToSnappable { get; set; }
+        public SwitchParameter Assignretentiontosnappable { get; set; }
 
         [Parameter(
-            ParameterSetName = "assignRetentionToSnappable",
+            ParameterSetName = "Assignretentiontosnappable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Provide optional snappable type under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. This allows an SLA to be set for one/more specific snappable types under the object, instead of applying the SLA for all the snappable types. For example, an AWS account object can potentially have 2 different snappable types under it - AwsNativeEc2Instance and AwsNativeRdsInstance. This field can be set with the appropriate type so that the SLA only gets applied to snappables of the selected type under that account. If the SLA must be applicable for all the snappable types under the object, then this field can be set to `AllSubHierarchyType` or left blank. This field must either be left blank or set to `AllSubHierarchyType` when assigning SLA to a snappable or to an object that does not support multiple snappable types.
-                GraphQL argument applicableSnappableType: WorkloadLevelHierarchy
-                "
+@"Provide optional snappable type under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. This allows an SLA to be set for one/more specific snappable types under the object, instead of applying the SLA for all the snappable types. For example, an AWS account object can potentially have 2 different snappable types under it - AwsNativeEc2Instance and AwsNativeRdsInstance. This field can be set with the appropriate type so that the SLA only gets applied to snappables of the selected type under that account. If the SLA must be applicable for all the snappable types under the object, then this field can be set to `AllSubHierarchyType` or left blank. This field must either be left blank or set to `AllSubHierarchyType` when assigning SLA to a snappable or to an object that does not support multiple snappable types.
+GraphQL argument applicableSnappableType: WorkloadLevelHierarchy"
         )]
         public WorkloadLevelHierarchy? ApplicableSnappableType { get; set; }
         
         // -------------------------------------------------------------------
-        // assignRetentionToSnapshot parameter set
+        // Assignretentiontosnapshot parameter set
         //
-        // GraphQL operation: assignRetentionSLAToSnapshots(,   globalSlaOptionalFid: UUID,   globalSlaAssignType: SlaAssignTypeEnum!,   snapshotFids: [UUID!]!,   userNote: String, ):SlaAssignResult!
+        // [GraphQL: assignRetentionSLAToSnapshots]
         //
         [Parameter(
-            ParameterSetName = "assignRetentionToSnapshot",
+            ParameterSetName = "Assignretentiontosnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: assignRetentionSLAToSnapshots(,   globalSlaOptionalFid: UUID,   globalSlaAssignType: SlaAssignTypeEnum!,   snapshotFids: [UUID!]!,   userNote: String, ):SlaAssignResult!
-                ",
+@"
+[GraphQL: assignRetentionSLAToSnapshots]",
             Position = 0
         )]
-        public SwitchParameter assignRetentionToSnapshot { get; set; }
+        public SwitchParameter Assignretentiontosnapshot { get; set; }
 
         [Parameter(
-            ParameterSetName = "assignRetentionToSnapshot",
+            ParameterSetName = "Assignretentiontosnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of UUIDs of objects.
-                GraphQL argument snapshotFids: [UUID!]!
-                "
+@"List of UUIDs of objects.
+GraphQL argument snapshotFids: [UUID!]!"
         )]
         public List<System.String>? SnapshotFids { get; set; }
         
         // -------------------------------------------------------------------
-        // pause parameter set
+        // Pause parameter set
         //
-        // GraphQL operation: pauseSla(input: PauseSlaRequest!):SlaResult!
+        // [GraphQL: pauseSla]
         //
         [Parameter(
-            ParameterSetName = "pause",
+            ParameterSetName = "Pause",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Pause/Resume Global SLA on the given clusters.
-                GraphQL operation: pauseSla(input: PauseSlaRequest!):SlaResult!
-                ",
+@"Pause/Resume Global SLA on the given clusters.
+[GraphQL: pauseSla]",
             Position = 0
         )]
-        public SwitchParameter pause { get; set; }
+        public SwitchParameter Pause { get; set; }
 
         
         // -------------------------------------------------------------------
-        // upgrade parameter set
+        // Upgrade parameter set
         //
-        // GraphQL operation: upgradeSlas(input: UpgradeSlasInput!):UpgradeSlasReply!
+        // [GraphQL: upgradeSlas]
         //
         [Parameter(
-            ParameterSetName = "upgrade",
+            ParameterSetName = "Upgrade",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Upgrade SLA Domains from the Rubrik clusters.
-                GraphQL operation: upgradeSlas(input: UpgradeSlasInput!):UpgradeSlasReply!
-                ",
+@"Upgrade SLA Domains from the Rubrik clusters.
+[GraphQL: upgradeSlas]",
             Position = 0
         )]
-        public SwitchParameter upgrade { get; set; }
+        public SwitchParameter Upgrade { get; set; }
 
         
         // -------------------------------------------------------------------
-        // getPendingAssignment parameter set
+        // Getpendingassignment parameter set
         //
-        // GraphQL operation: getPendingSlaAssignments(input: GetPendingSlaAssignmentsInput!):PendingSlaOperations!
+        // [GraphQL: getPendingSlaAssignments]
         //
         [Parameter(
-            ParameterSetName = "getPendingAssignment",
+            ParameterSetName = "Getpendingassignment",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get pending SLA Domain assignments on selected managed objects
+@"Get pending SLA Domain assignments on selected managed objects
 
 Supported in v5.2+
 Retrieve the details of pending SLA Domain assignments on the given managed objects. For objects with pending assignments, return the SLA Domain that is pending. For objects without pending assignments, return the current SLA Domain information. Explicitly list invalid object IDs.
-                GraphQL operation: getPendingSlaAssignments(input: GetPendingSlaAssignmentsInput!):PendingSlaOperations!
-                ",
+[GraphQL: getPendingSlaAssignments]",
             Position = 0
         )]
-        public SwitchParameter getPendingAssignment { get; set; }
+        public SwitchParameter Getpendingassignment { get; set; }
 
         
         // -------------------------------------------------------------------
-        // exportManagedVolumeSnapshot parameter set
+        // Exportmanagedvolumesnapshot parameter set
         //
-        // GraphQL operation: exportSlaManagedVolumeSnapshot(input: ExportSlaManagedVolumeSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: exportSlaManagedVolumeSnapshot]
         //
         [Parameter(
-            ParameterSetName = "exportManagedVolumeSnapshot",
+            ParameterSetName = "Exportmanagedvolumesnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a request to export a snapshot and mount it on a host
+@"Create a request to export a snapshot and mount it on a host
 
 Supported in v5.3+
 Export a managed volume snapshot as a share and mount it on a given host.
-                GraphQL operation: exportSlaManagedVolumeSnapshot(input: ExportSlaManagedVolumeSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: exportSlaManagedVolumeSnapshot]",
             Position = 0
         )]
-        public SwitchParameter exportManagedVolumeSnapshot { get; set; }
+        public SwitchParameter Exportmanagedvolumesnapshot { get; set; }
 
 
         protected override void ProcessRecord()
@@ -434,41 +384,41 @@ Export a managed volume snapshot as a share and mount it on a given host.
             {
                 switch(Op)
                 {
-                    case "createGlobal":
-                        this.ProcessRecord_createGlobal();
+                    case "Createglobal":
+                        this.ProcessRecord_Createglobal();
                         break;
-                    case "editGlobal":
-                        this.ProcessRecord_editGlobal();
+                    case "Editglobal":
+                        this.ProcessRecord_Editglobal();
                         break;
-                    case "updateGlobal":
-                        this.ProcessRecord_updateGlobal();
+                    case "Updateglobal":
+                        this.ProcessRecord_Updateglobal();
                         break;
-                    case "deleteGlobal":
-                        this.ProcessRecord_deleteGlobal();
+                    case "Deleteglobal":
+                        this.ProcessRecord_Deleteglobal();
                         break;
-                    case "assign":
-                        this.ProcessRecord_assign();
+                    case "Assign":
+                        this.ProcessRecord_Assign();
                         break;
-                    case "assignsForSnappableHierarchie":
-                        this.ProcessRecord_assignsForSnappableHierarchie();
+                    case "Assignsforsnappablehierarchie":
+                        this.ProcessRecord_Assignsforsnappablehierarchie();
                         break;
-                    case "assignRetentionToSnappable":
-                        this.ProcessRecord_assignRetentionToSnappable();
+                    case "Assignretentiontosnappable":
+                        this.ProcessRecord_Assignretentiontosnappable();
                         break;
-                    case "assignRetentionToSnapshot":
-                        this.ProcessRecord_assignRetentionToSnapshot();
+                    case "Assignretentiontosnapshot":
+                        this.ProcessRecord_Assignretentiontosnapshot();
                         break;
-                    case "pause":
-                        this.ProcessRecord_pause();
+                    case "Pause":
+                        this.ProcessRecord_Pause();
                         break;
-                    case "upgrade":
-                        this.ProcessRecord_upgrade();
+                    case "Upgrade":
+                        this.ProcessRecord_Upgrade();
                         break;
-                    case "getPendingAssignment":
-                        this.ProcessRecord_getPendingAssignment();
+                    case "Getpendingassignment":
+                        this.ProcessRecord_Getpendingassignment();
                         break;
-                    case "exportManagedVolumeSnapshot":
-                        this.ProcessRecord_exportManagedVolumeSnapshot();
+                    case "Exportmanagedvolumesnapshot":
+                        this.ProcessRecord_Exportmanagedvolumesnapshot();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -488,108 +438,108 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
         // This parameter set invokes a single graphql operation:
         // createGlobalSla.
-        protected void ProcessRecord_createGlobal()
+        protected void ProcessRecord_Createglobal()
         {
-            this._logger.name += " -createGlobal";
+            this._logger.name += " -Createglobal";
             // Invoke graphql operation createGlobalSla
             InvokeMutationCreateGlobalSla();
         }
 
         // This parameter set invokes a single graphql operation:
         // editGlobalSla.
-        protected void ProcessRecord_editGlobal()
+        protected void ProcessRecord_Editglobal()
         {
-            this._logger.name += " -editGlobal";
+            this._logger.name += " -Editglobal";
             // Invoke graphql operation editGlobalSla
             InvokeMutationEditGlobalSla();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateGlobalSla.
-        protected void ProcessRecord_updateGlobal()
+        protected void ProcessRecord_Updateglobal()
         {
-            this._logger.name += " -updateGlobal";
+            this._logger.name += " -Updateglobal";
             // Invoke graphql operation updateGlobalSla
             InvokeMutationUpdateGlobalSla();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteGlobalSla.
-        protected void ProcessRecord_deleteGlobal()
+        protected void ProcessRecord_Deleteglobal()
         {
-            this._logger.name += " -deleteGlobal";
+            this._logger.name += " -Deleteglobal";
             // Invoke graphql operation deleteGlobalSla
             InvokeMutationDeleteGlobalSla();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignSla.
-        protected void ProcessRecord_assign()
+        protected void ProcessRecord_Assign()
         {
-            this._logger.name += " -assign";
+            this._logger.name += " -Assign";
             // Invoke graphql operation assignSla
             InvokeMutationAssignSla();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignSlasForSnappableHierarchies.
-        protected void ProcessRecord_assignsForSnappableHierarchie()
+        protected void ProcessRecord_Assignsforsnappablehierarchie()
         {
-            this._logger.name += " -assignsForSnappableHierarchie";
+            this._logger.name += " -Assignsforsnappablehierarchie";
             // Invoke graphql operation assignSlasForSnappableHierarchies
             InvokeMutationAssignSlasForSnappableHierarchies();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignRetentionSLAToSnappables.
-        protected void ProcessRecord_assignRetentionToSnappable()
+        protected void ProcessRecord_Assignretentiontosnappable()
         {
-            this._logger.name += " -assignRetentionToSnappable";
+            this._logger.name += " -Assignretentiontosnappable";
             // Invoke graphql operation assignRetentionSLAToSnappables
             InvokeMutationAssignRetentionSlaToSnappables();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignRetentionSLAToSnapshots.
-        protected void ProcessRecord_assignRetentionToSnapshot()
+        protected void ProcessRecord_Assignretentiontosnapshot()
         {
-            this._logger.name += " -assignRetentionToSnapshot";
+            this._logger.name += " -Assignretentiontosnapshot";
             // Invoke graphql operation assignRetentionSLAToSnapshots
             InvokeMutationAssignRetentionSlaToSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // pauseSla.
-        protected void ProcessRecord_pause()
+        protected void ProcessRecord_Pause()
         {
-            this._logger.name += " -pause";
+            this._logger.name += " -Pause";
             // Invoke graphql operation pauseSla
             InvokeMutationPauseSla();
         }
 
         // This parameter set invokes a single graphql operation:
         // upgradeSlas.
-        protected void ProcessRecord_upgrade()
+        protected void ProcessRecord_Upgrade()
         {
-            this._logger.name += " -upgrade";
+            this._logger.name += " -Upgrade";
             // Invoke graphql operation upgradeSlas
             InvokeMutationUpgradeSlas();
         }
 
         // This parameter set invokes a single graphql operation:
         // getPendingSlaAssignments.
-        protected void ProcessRecord_getPendingAssignment()
+        protected void ProcessRecord_Getpendingassignment()
         {
-            this._logger.name += " -getPendingAssignment";
+            this._logger.name += " -Getpendingassignment";
             // Invoke graphql operation getPendingSlaAssignments
             InvokeMutationGetPendingSlaAssignments();
         }
 
         // This parameter set invokes a single graphql operation:
         // exportSlaManagedVolumeSnapshot.
-        protected void ProcessRecord_exportManagedVolumeSnapshot()
+        protected void ProcessRecord_Exportmanagedvolumesnapshot()
         {
-            this._logger.name += " -exportManagedVolumeSnapshot";
+            this._logger.name += " -Exportmanagedvolumesnapshot";
             // Invoke graphql operation exportSlaManagedVolumeSnapshot
             InvokeMutationExportSlaManagedVolumeSnapshot();
         }

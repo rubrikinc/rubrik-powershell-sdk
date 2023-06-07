@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subscriptionNativeId: String! (scalar)
         if (this.SubscriptionNativeId == null && Exploration.Includes(parent + ".subscriptionNativeId", true))
         {
-            this.SubscriptionNativeId = new System.String("FETCH");
+            this.SubscriptionNativeId = "FETCH";
         }
     }
 

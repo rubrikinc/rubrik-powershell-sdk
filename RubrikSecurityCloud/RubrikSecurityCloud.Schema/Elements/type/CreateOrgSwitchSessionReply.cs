@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accessToken: String! (scalar)
         if (this.AccessToken == null && Exploration.Includes(parent + ".accessToken", true))
         {
-            this.AccessToken = new System.String("FETCH");
+            this.AccessToken = "FETCH";
         }
     }
 

@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> authenticated: Int! (scalar)
         if (this.Authenticated == null && Exploration.Includes(parent + ".authenticated", true))
         {
-            this.Authenticated = new System.Int32();
+            this.Authenticated = Int32.MinValue;
         }
         //      C# -> System.Int32? PartiallyAuthenticated
         // GraphQL -> partiallyAuthenticated: Int! (scalar)
         if (this.PartiallyAuthenticated == null && Exploration.Includes(parent + ".partiallyAuthenticated", true))
         {
-            this.PartiallyAuthenticated = new System.Int32();
+            this.PartiallyAuthenticated = Int32.MinValue;
         }
         //      C# -> System.Int32? Unauthenticated
         // GraphQL -> unauthenticated: Int! (scalar)
         if (this.Unauthenticated == null && Exploration.Includes(parent + ".unauthenticated", true))
         {
-            this.Unauthenticated = new System.Int32();
+            this.Unauthenticated = Int32.MinValue;
         }
     }
 

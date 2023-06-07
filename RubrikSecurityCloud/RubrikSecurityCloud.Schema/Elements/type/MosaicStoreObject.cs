@@ -140,25 +140,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? StoreName
         // GraphQL -> storeName: String! (scalar)
         if (this.StoreName == null && Exploration.Includes(parent + ".storeName", true))
         {
-            this.StoreName = new System.String("FETCH");
+            this.StoreName = "FETCH";
         }
         //      C# -> System.String? StoreUrl
         // GraphQL -> storeUrl: String! (scalar)
         if (this.StoreUrl == null && Exploration.Includes(parent + ".storeUrl", true))
         {
-            this.StoreUrl = new System.String("FETCH");
+            this.StoreUrl = "FETCH";
         }
         //      C# -> System.String? SurlNfs
         // GraphQL -> surlNfs: String (scalar)
         if (this.SurlNfs == null && Exploration.Includes(parent + ".surlNfs", true))
         {
-            this.SurlNfs = new System.String("FETCH");
+            this.SurlNfs = "FETCH";
         }
         //      C# -> StoreMetadata? StoreMetadata
         // GraphQL -> storeMetadata: StoreMetadata (type)

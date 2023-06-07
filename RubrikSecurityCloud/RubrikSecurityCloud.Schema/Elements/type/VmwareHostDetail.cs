@@ -148,13 +148,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> computeClusterId: String (scalar)
         if (this.ComputeClusterId == null && Exploration.Includes(parent + ".computeClusterId", true))
         {
-            this.ComputeClusterId = new System.String("FETCH");
+            this.ComputeClusterId = "FETCH";
         }
         //      C# -> System.String? Moid
         // GraphQL -> moid: String (scalar)
         if (this.Moid == null && Exploration.Includes(parent + ".moid", true))
         {
-            this.Moid = new System.String("FETCH");
+            this.Moid = "FETCH";
         }
         //      C# -> DataCenterSummary? Datacenter
         // GraphQL -> datacenter: DataCenterSummary (type)

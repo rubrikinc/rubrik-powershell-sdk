@@ -19,6 +19,55 @@ function Write-Title {
     Write-Host -ForegroundColor Green $titleLine
 }
 
+function Write-IndentedWrappedMessage {
+    param(
+        [Parameter(Mandatory=$true)]
+        [string] $Message,
+
+        [Parameter(Mandatory=$false)]
+        [System.ConsoleColor] $Color = $null,
+
+        [Parameter(Mandatory=$false)]
+        [int] $Indent = 2,
+
+        [Parameter(Mandatory=$false)]
+        [int] $Width = ($Host.UI -and $Host.UI.RawUI) ? $Host.UI.RawUI.BufferSize.Width : 80
+    )
+
+    $indentString = " " * $Indent
+    $width = $Width - $Indent
+    $lines = $Message -split "`n"
+    foreach ($line in $lines) {
+        $words = $line -split ' '
+        $buffer = $indentString
+        foreach ($word in $words) {
+            if (($buffer + $word).Length -gt $Width) {
+                Write-Color -Message $buffer -Color $Color
+                $buffer = $indentString + $word + ' '
+            } else {
+                $buffer += $word + ' '
+            }
+        }
+        Write-Color -Message $buffer -Color $Color
+    }
+}
+
+function Write-Color {
+    param(
+        [Parameter(Mandatory=$true)]
+        [string] $Message,
+
+        [Parameter(Mandatory=$false)]
+        [System.ConsoleColor] $Color = $null
+    )
+
+    if ($null -eq $Color) {
+        Write-Host $Message
+    } else {
+        Write-Host $Message -ForegroundColor $Color
+    }
+}
+
 function Write-Message {
     param (
         [string]$GreenMessage,
@@ -28,13 +77,13 @@ function Write-Message {
         [switch]$Pause
     )
     if ($GreenMessage) {
-        Write-Host -NoNewline -ForegroundColor Green "$GreenMessage "
+        Write-Color "$GreenMessage " Green
     }
     if ($YellowMessage) {
-        Write-Host -NoNewline -ForegroundColor Yellow "$YellowMessage "
+        Write-IndentedWrappedMessage "$YellowMessage" Yellow
     }
     if ($BlueMessage) {
-        Write-Host -NoNewline -ForegroundColor Blue "$BlueMessage "
+        Write-IndentedWrappedMessage "$BlueMessage" Blue
     }
     Write-Host
     # If the Pause switch is used, pause and wait for a keypress

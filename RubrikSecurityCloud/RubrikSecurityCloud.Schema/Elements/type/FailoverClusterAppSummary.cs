@@ -194,19 +194,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failoverClusterName: String (scalar)
         if (this.FailoverClusterName == null && Exploration.Includes(parent + ".failoverClusterName", true))
         {
-            this.FailoverClusterName = new System.String("FETCH");
+            this.FailoverClusterName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)

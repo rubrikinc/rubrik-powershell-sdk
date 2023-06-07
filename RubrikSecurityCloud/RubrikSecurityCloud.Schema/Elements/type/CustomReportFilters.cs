@@ -584,7 +584,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> searchTerm: String (scalar)
         if (this.SearchTerm == null && Exploration.Includes(parent + ".searchTerm", true))
         {
-            this.SearchTerm = new System.String("FETCH");
+            this.SearchTerm = "FETCH";
         }
         //      C# -> List<System.String>? Source
         // GraphQL -> source: [String!] (scalar)

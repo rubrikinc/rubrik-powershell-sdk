@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cloudAccountId: String! (scalar)
         if (this.CloudAccountId == null && Exploration.Includes(parent + ".cloudAccountId", true))
         {
-            this.CloudAccountId = new System.String("FETCH");
+            this.CloudAccountId = "FETCH";
         }
         //      C# -> List<FeaturePermission>? FeaturePermissions
         // GraphQL -> featurePermissions: [FeaturePermission!]! (type)

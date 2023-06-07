@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> referenceId: String! (scalar)
         if (this.ReferenceId == null && Exploration.Includes(parent + ".referenceId", true))
         {
-            this.ReferenceId = new System.String("FETCH");
+            this.ReferenceId = "FETCH";
         }
     }
 

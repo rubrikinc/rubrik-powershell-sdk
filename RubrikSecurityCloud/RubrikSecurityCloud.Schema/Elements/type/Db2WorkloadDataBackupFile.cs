@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> partitionNum: Int! (scalar)
         if (this.PartitionNum == null && Exploration.Includes(parent + ".partitionNum", true))
         {
-            this.PartitionNum = new System.Int32();
+            this.PartitionNum = Int32.MinValue;
         }
         //      C# -> System.Int32? SequenceNum
         // GraphQL -> sequenceNum: Int! (scalar)
         if (this.SequenceNum == null && Exploration.Includes(parent + ".sequenceNum", true))
         {
-            this.SequenceNum = new System.Int32();
+            this.SequenceNum = Int32.MinValue;
         }
     }
 

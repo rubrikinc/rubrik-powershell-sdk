@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> analyzerId: String! (scalar)
         if (this.AnalyzerId == null && Exploration.Includes(parent + ".analyzerId", true))
         {
-            this.AnalyzerId = new System.String("FETCH");
+            this.AnalyzerId = "FETCH";
         }
         //      C# -> System.Int32? RiskVersion
         // GraphQL -> riskVersion: Int! (scalar)
         if (this.RiskVersion == null && Exploration.Includes(parent + ".riskVersion", true))
         {
-            this.RiskVersion = new System.Int32();
+            this.RiskVersion = Int32.MinValue;
         }
     }
 

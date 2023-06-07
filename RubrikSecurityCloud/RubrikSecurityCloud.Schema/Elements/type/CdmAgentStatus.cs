@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> agentStatus: String! (scalar)
         if (this.AgentStatus == null && Exploration.Includes(parent + ".agentStatus", true))
         {
-            this.AgentStatus = new System.String("FETCH");
+            this.AgentStatus = "FETCH";
         }
         //      C# -> System.String? DisconnectReason
         // GraphQL -> disconnectReason: String (scalar)
         if (this.DisconnectReason == null && Exploration.Includes(parent + ".disconnectReason", true))
         {
-            this.DisconnectReason = new System.String("FETCH");
+            this.DisconnectReason = "FETCH";
         }
     }
 

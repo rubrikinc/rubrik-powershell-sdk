@@ -252,79 +252,79 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dbInfo: String (scalar)
         if (this.DbInfo == null && Exploration.Includes(parent + ".dbInfo", true))
         {
-            this.DbInfo = new System.String("FETCH");
+            this.DbInfo = "FETCH";
         }
         //      C# -> System.Int32? ExpirationTime
         // GraphQL -> expirationTime: Int (scalar)
         if (this.ExpirationTime == null && Exploration.Includes(parent + ".expirationTime", true))
         {
-            this.ExpirationTime = new System.Int32();
+            this.ExpirationTime = Int32.MinValue;
         }
         //      C# -> System.String? GroupPolicyId
         // GraphQL -> groupPolicyId: String (scalar)
         if (this.GroupPolicyId == null && Exploration.Includes(parent + ".groupPolicyId", true))
         {
-            this.GroupPolicyId = new System.String("FETCH");
+            this.GroupPolicyId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int32? IntervalType
         // GraphQL -> intervalType: Int (scalar)
         if (this.IntervalType == null && Exploration.Includes(parent + ".intervalType", true))
         {
-            this.IntervalType = new System.Int32();
+            this.IntervalType = Int32.MinValue;
         }
         //      C# -> System.Int32? JobDuration
         // GraphQL -> jobDuration: Int (scalar)
         if (this.JobDuration == null && Exploration.Includes(parent + ".jobDuration", true))
         {
-            this.JobDuration = new System.Int32();
+            this.JobDuration = Int32.MinValue;
         }
         //      C# -> System.String? NeedSstableLoaderStr
         // GraphQL -> needSstableLoaderStr: String (scalar)
         if (this.NeedSstableLoaderStr == null && Exploration.Includes(parent + ".needSstableLoaderStr", true))
         {
-            this.NeedSstableLoaderStr = new System.String("FETCH");
+            this.NeedSstableLoaderStr = "FETCH";
         }
         //      C# -> System.String? RsList
         // GraphQL -> rsList: String (scalar)
         if (this.RsList == null && Exploration.Includes(parent + ".rsList", true))
         {
-            this.RsList = new System.String("FETCH");
+            this.RsList = "FETCH";
         }
         //      C# -> System.String? SourceMgmtObj
         // GraphQL -> sourceMgmtObj: String (scalar)
         if (this.SourceMgmtObj == null && Exploration.Includes(parent + ".sourceMgmtObj", true))
         {
-            this.SourceMgmtObj = new System.String("FETCH");
+            this.SourceMgmtObj = "FETCH";
         }
         //      C# -> System.String? SourceName
         // GraphQL -> sourceName: String (scalar)
         if (this.SourceName == null && Exploration.Includes(parent + ".sourceName", true))
         {
-            this.SourceName = new System.String("FETCH");
+            this.SourceName = "FETCH";
         }
         //      C# -> System.String? SourceType
         // GraphQL -> sourceType: String (scalar)
         if (this.SourceType == null && Exploration.Includes(parent + ".sourceType", true))
         {
-            this.SourceType = new System.String("FETCH");
+            this.SourceType = "FETCH";
         }
         //      C# -> System.String? SystemPolicyId
         // GraphQL -> systemPolicyId: String (scalar)
         if (this.SystemPolicyId == null && Exploration.Includes(parent + ".systemPolicyId", true))
         {
-            this.SystemPolicyId = new System.String("FETCH");
+            this.SystemPolicyId = "FETCH";
         }
         //      C# -> System.Int32? Timestamp
         // GraphQL -> timestamp: Int (scalar)
         if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
         {
-            this.Timestamp = new System.Int32();
+            this.Timestamp = Int32.MinValue;
         }
     }
 

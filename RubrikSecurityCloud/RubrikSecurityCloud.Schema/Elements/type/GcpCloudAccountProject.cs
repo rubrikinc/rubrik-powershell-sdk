@@ -148,25 +148,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String! (scalar)
         if (this.OrganizationName == null && Exploration.Includes(parent + ".organizationName", true))
         {
-            this.OrganizationName = new System.String("FETCH");
+            this.OrganizationName = "FETCH";
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
         if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
         {
-            this.ProjectId = new System.String("FETCH");
+            this.ProjectId = "FETCH";
         }
         //      C# -> System.Int64? ProjectNumber
         // GraphQL -> projectNumber: Long! (scalar)
@@ -178,7 +178,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> roleId: String! (scalar)
         if (this.RoleId == null && Exploration.Includes(parent + ".roleId", true))
         {
-            this.RoleId = new System.String("FETCH");
+            this.RoleId = "FETCH";
         }
         //      C# -> System.Boolean? UsesGlobalConfig
         // GraphQL -> usesGlobalConfig: Boolean! (scalar)

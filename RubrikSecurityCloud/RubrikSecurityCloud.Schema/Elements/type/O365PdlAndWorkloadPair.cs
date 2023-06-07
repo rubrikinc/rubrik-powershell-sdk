@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> pdl: String! (scalar)
         if (this.Pdl == null && Exploration.Includes(parent + ".pdl", true))
         {
-            this.Pdl = new System.String("FETCH");
+            this.Pdl = "FETCH";
         }
     }
 

@@ -3,7 +3,7 @@ default: test
 
 PWSH_UNIT_TESTS = $(wildcard unit/*.ps1)
 SH_UNIT_TESTS = $(wildcard unit/*.sh)
-E2E_TESTS = $(wildcard e2e/*.ps1)
+E2E_TESTS = $(wildcard e2e/*.Tests.ps1)
 MOCK_TESTS = $(wildcard mock/Get-RscAccount*.ps1)
 
 pwsh-unit-test:

@@ -244,67 +244,67 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.Int32? Past1DayMailboxComplianceCount
         // GraphQL -> past1DayMailboxComplianceCount: Int! (scalar)
         if (this.Past1DayMailboxComplianceCount == null && Exploration.Includes(parent + ".past1DayMailboxComplianceCount", true))
         {
-            this.Past1DayMailboxComplianceCount = new System.Int32();
+            this.Past1DayMailboxComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayMailboxOutOfComplianceCount
         // GraphQL -> past1DayMailboxOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayMailboxOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayMailboxOutOfComplianceCount", true))
         {
-            this.Past1DayMailboxOutOfComplianceCount = new System.Int32();
+            this.Past1DayMailboxOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayOnedriveComplianceCount
         // GraphQL -> past1DayOnedriveComplianceCount: Int! (scalar)
         if (this.Past1DayOnedriveComplianceCount == null && Exploration.Includes(parent + ".past1DayOnedriveComplianceCount", true))
         {
-            this.Past1DayOnedriveComplianceCount = new System.Int32();
+            this.Past1DayOnedriveComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayOnedriveOutOfComplianceCount
         // GraphQL -> past1DayOnedriveOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayOnedriveOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayOnedriveOutOfComplianceCount", true))
         {
-            this.Past1DayOnedriveOutOfComplianceCount = new System.Int32();
+            this.Past1DayOnedriveOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySharepointComplianceCount
         // GraphQL -> past1DaySharepointComplianceCount: Int! (scalar)
         if (this.Past1DaySharepointComplianceCount == null && Exploration.Includes(parent + ".past1DaySharepointComplianceCount", true))
         {
-            this.Past1DaySharepointComplianceCount = new System.Int32();
+            this.Past1DaySharepointComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySharepointOutOfComplianceCount
         // GraphQL -> past1DaySharepointOutOfComplianceCount: Int! (scalar)
         if (this.Past1DaySharepointOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySharepointOutOfComplianceCount", true))
         {
-            this.Past1DaySharepointOutOfComplianceCount = new System.Int32();
+            this.Past1DaySharepointOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySpListComplianceCount
         // GraphQL -> past1DaySpListComplianceCount: Int! (scalar)
         if (this.Past1DaySpListComplianceCount == null && Exploration.Includes(parent + ".past1DaySpListComplianceCount", true))
         {
-            this.Past1DaySpListComplianceCount = new System.Int32();
+            this.Past1DaySpListComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DaySpListOutOfComplianceCount
         // GraphQL -> past1DaySpListOutOfComplianceCount: Int! (scalar)
         if (this.Past1DaySpListOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DaySpListOutOfComplianceCount", true))
         {
-            this.Past1DaySpListOutOfComplianceCount = new System.Int32();
+            this.Past1DaySpListOutOfComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayTeamsComplianceCount
         // GraphQL -> past1DayTeamsComplianceCount: Int! (scalar)
         if (this.Past1DayTeamsComplianceCount == null && Exploration.Includes(parent + ".past1DayTeamsComplianceCount", true))
         {
-            this.Past1DayTeamsComplianceCount = new System.Int32();
+            this.Past1DayTeamsComplianceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Past1DayTeamsOutOfComplianceCount
         // GraphQL -> past1DayTeamsOutOfComplianceCount: Int! (scalar)
         if (this.Past1DayTeamsOutOfComplianceCount == null && Exploration.Includes(parent + ".past1DayTeamsOutOfComplianceCount", true))
         {
-            this.Past1DayTeamsOutOfComplianceCount = new System.Int32();
+            this.Past1DayTeamsOutOfComplianceCount = Int32.MinValue;
         }
     }
 

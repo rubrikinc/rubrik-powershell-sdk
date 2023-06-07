@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nasIp: String (scalar)
         if (this.NasIp == null && Exploration.Includes(parent + ".nasIp", true))
         {
-            this.NasIp = new System.String("FETCH");
+            this.NasIp = "FETCH";
         }
         //      C# -> System.String? PowerStatus
         // GraphQL -> powerStatus: String (scalar)
         if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus", true))
         {
-            this.PowerStatus = new System.String("FETCH");
+            this.PowerStatus = "FETCH";
         }
         //      C# -> VmwareVmMountSummaryV1? VmwareVmMountSummaryV1
         // GraphQL -> vmwareVmMountSummaryV1: VmwareVmMountSummaryV1 (type)

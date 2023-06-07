@@ -21,538 +21,490 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateHyperv",
-        DefaultParameterSetName = "ScvmmUpdate")
+        DefaultParameterSetName = "Scvmmupdate")
     ]
     public class Invoke_RscMutateHyperv : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // registerScvmm parameter set
+        // Registerscvmm parameter set
         //
-        // GraphQL operation: registerHypervScvmm(input: RegisterHypervScvmmInput!):AsyncRequestStatus!
+        // [GraphQL: registerHypervScvmm]
         //
         [Parameter(
-            ParameterSetName = "registerScvmm",
+            ParameterSetName = "Registerscvmm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Register HyperV SCVMM to Rubrik Cluster.
-                GraphQL operation: registerHypervScvmm(input: RegisterHypervScvmmInput!):AsyncRequestStatus!
-                ",
+@"Register HyperV SCVMM to Rubrik Cluster.
+[GraphQL: registerHypervScvmm]",
             Position = 0
         )]
-        public SwitchParameter registerScvmm { get; set; }
+        public SwitchParameter Registerscvmm { get; set; }
 
         [Parameter(
-            ParameterSetName = "registerScvmm",
+            ParameterSetName = "Registerscvmm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for register Hyper-V SCVMM.
-                GraphQL argument input: RegisterHypervScvmmInput!
-                "
+@"Input for register Hyper-V SCVMM.
+GraphQL argument input: RegisterHypervScvmmInput!"
         )]
         public RegisterHypervScvmmInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // ScvmmUpdate parameter set
+        // Scvmmupdate parameter set
         //
-        // GraphQL operation: hypervScvmmUpdate(input: HypervScvmmUpdateInput!):HypervScvmmUpdateReply!
+        // [GraphQL: hypervScvmmUpdate]
         //
         [Parameter(
-            ParameterSetName = "ScvmmUpdate",
+            ParameterSetName = "Scvmmupdate",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update properties for a given HyperV SCVMM.
-                GraphQL operation: hypervScvmmUpdate(input: HypervScvmmUpdateInput!):HypervScvmmUpdateReply!
-                ",
+@"Update properties for a given HyperV SCVMM.
+[GraphQL: hypervScvmmUpdate]",
             Position = 0
         )]
-        public SwitchParameter ScvmmUpdate { get; set; }
+        public SwitchParameter Scvmmupdate { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ScvmmDelete parameter set
+        // Scvmmdelete parameter set
         //
-        // GraphQL operation: hypervScvmmDelete(input: HypervScvmmDeleteInput!):ResponseSuccess!
+        // [GraphQL: hypervScvmmDelete]
         //
         [Parameter(
-            ParameterSetName = "ScvmmDelete",
+            ParameterSetName = "Scvmmdelete",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete a given HyperV SCVMM.
-                GraphQL operation: hypervScvmmDelete(input: HypervScvmmDeleteInput!):ResponseSuccess!
-                ",
+@"Delete a given HyperV SCVMM.
+[GraphQL: hypervScvmmDelete]",
             Position = 0
         )]
-        public SwitchParameter ScvmmDelete { get; set; }
+        public SwitchParameter Scvmmdelete { get; set; }
 
         
         // -------------------------------------------------------------------
-        // refreshScvmm parameter set
+        // Refreshscvmm parameter set
         //
-        // GraphQL operation: refreshHypervScvmm(input: RefreshHypervScvmmInput!):AsyncRequestStatus!
+        // [GraphQL: refreshHypervScvmm]
         //
         [Parameter(
-            ParameterSetName = "refreshScvmm",
+            ParameterSetName = "Refreshscvmm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refresh a given HyperV SCVMM.
-                GraphQL operation: refreshHypervScvmm(input: RefreshHypervScvmmInput!):AsyncRequestStatus!
-                ",
+@"Refresh a given HyperV SCVMM.
+[GraphQL: refreshHypervScvmm]",
             Position = 0
         )]
-        public SwitchParameter refreshScvmm { get; set; }
+        public SwitchParameter Refreshscvmm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // OnDemandSnapshot parameter set
+        // Ondemandsnapshot parameter set
         //
-        // GraphQL operation: hypervOnDemandSnapshot(input: HypervOnDemandSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: hypervOnDemandSnapshot]
         //
         [Parameter(
-            ParameterSetName = "OnDemandSnapshot",
+            ParameterSetName = "Ondemandsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create on-demand VM snapshot
+@"Create on-demand VM snapshot
 
 Supported in v5.0+
 Create an on-demand snapshot for the given VM ID.
-                GraphQL operation: hypervOnDemandSnapshot(input: HypervOnDemandSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: hypervOnDemandSnapshot]",
             Position = 0
         )]
-        public SwitchParameter OnDemandSnapshot { get; set; }
+        public SwitchParameter Ondemandsnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DeleteAllSnapshot parameter set
+        // Deleteallsnapshot parameter set
         //
-        // GraphQL operation: hypervDeleteAllSnapshots(input: HypervDeleteAllSnapshotsInput!):RequestSuccess!
+        // [GraphQL: hypervDeleteAllSnapshots]
         //
         [Parameter(
-            ParameterSetName = "DeleteAllSnapshot",
+            ParameterSetName = "Deleteallsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete all snapshots of VM
+@"Delete all snapshots of VM
 
 Supported in v5.0+
 Delete all snapshots of a virtual machine.
-                GraphQL operation: hypervDeleteAllSnapshots(input: HypervDeleteAllSnapshotsInput!):RequestSuccess!
-                ",
+[GraphQL: hypervDeleteAllSnapshots]",
             Position = 0
         )]
-        public SwitchParameter DeleteAllSnapshot { get; set; }
+        public SwitchParameter Deleteallsnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // exportVirtualMachine parameter set
+        // Exportvirtualmachine parameter set
         //
-        // GraphQL operation: exportHypervVirtualMachine(input: ExportHypervVirtualMachineInput!):AsyncRequestStatus!
+        // [GraphQL: exportHypervVirtualMachine]
         //
         [Parameter(
-            ParameterSetName = "exportVirtualMachine",
+            ParameterSetName = "Exportvirtualmachine",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Export VM snapshot
+@"Export VM snapshot
 
 Supported in v5.0+
 Export snapshot of a vm.
-                GraphQL operation: exportHypervVirtualMachine(input: ExportHypervVirtualMachineInput!):AsyncRequestStatus!
-                ",
+[GraphQL: exportHypervVirtualMachine]",
             Position = 0
         )]
-        public SwitchParameter exportVirtualMachine { get; set; }
+        public SwitchParameter Exportvirtualmachine { get; set; }
 
         
         // -------------------------------------------------------------------
-        // downloadVirtualMachineSnapshotFile parameter set
+        // Downloadvirtualmachinesnapshotfile parameter set
         //
-        // GraphQL operation: downloadHypervVirtualMachineSnapshotFiles(input: DownloadHypervVirtualMachineSnapshotFilesInput!):AsyncRequestStatus!
+        // [GraphQL: downloadHypervVirtualMachineSnapshotFiles]
         //
         [Parameter(
-            ParameterSetName = "downloadVirtualMachineSnapshotFile",
+            ParameterSetName = "Downloadvirtualmachinesnapshotfile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Download files from a Hyper-V VM backup
+@"Download files from a Hyper-V VM backup
 
 Supported in v5.0+
 Start an asynchronous job to download multiple files and folders from a specified Hyper-V VM backup. The response returns an asynchrounous request ID. Get the URL for downloading the ZIP file including the specific files/folders by sending a GET request to 'hyperv/vm/request/{id}'.
-                GraphQL operation: downloadHypervVirtualMachineSnapshotFiles(input: DownloadHypervVirtualMachineSnapshotFilesInput!):AsyncRequestStatus!
-                ",
+[GraphQL: downloadHypervVirtualMachineSnapshotFiles]",
             Position = 0
         )]
-        public SwitchParameter downloadVirtualMachineSnapshotFile { get; set; }
+        public SwitchParameter Downloadvirtualmachinesnapshotfile { get; set; }
 
         
         // -------------------------------------------------------------------
-        // instantRecoverVirtualMachineSnapshot parameter set
+        // Instantrecovervirtualmachinesnapshot parameter set
         //
-        // GraphQL operation: instantRecoverHypervVirtualMachineSnapshot(input: InstantRecoverHypervVirtualMachineSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: instantRecoverHypervVirtualMachineSnapshot]
         //
         [Parameter(
-            ParameterSetName = "instantRecoverVirtualMachineSnapshot",
+            ParameterSetName = "Instantrecovervirtualmachinesnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
+@"Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
 
 Supported in v5.0+
 The VM will be started with networking enabled. If the VM does not exist anymore, a new VM will be created.
-                GraphQL operation: instantRecoverHypervVirtualMachineSnapshot(input: InstantRecoverHypervVirtualMachineSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: instantRecoverHypervVirtualMachineSnapshot]",
             Position = 0
         )]
-        public SwitchParameter instantRecoverVirtualMachineSnapshot { get; set; }
+        public SwitchParameter Instantrecovervirtualmachinesnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // restoreVirtualMachineSnapshotFile parameter set
+        // Restorevirtualmachinesnapshotfile parameter set
         //
-        // GraphQL operation: restoreHypervVirtualMachineSnapshotFiles(input: RestoreHypervVirtualMachineSnapshotFilesInput!):AsyncRequestStatus!
+        // [GraphQL: restoreHypervVirtualMachineSnapshotFiles]
         //
         [Parameter(
-            ParameterSetName = "restoreVirtualMachineSnapshotFile",
+            ParameterSetName = "Restorevirtualmachinesnapshotfile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Restore files from snapshot
+@"Restore files from snapshot
 
 Supported in v5.0+
 Restore files from a snapshot to the original source location.
-                GraphQL operation: restoreHypervVirtualMachineSnapshotFiles(input: RestoreHypervVirtualMachineSnapshotFilesInput!):AsyncRequestStatus!
-                ",
+[GraphQL: restoreHypervVirtualMachineSnapshotFiles]",
             Position = 0
         )]
-        public SwitchParameter restoreVirtualMachineSnapshotFile { get; set; }
+        public SwitchParameter Restorevirtualmachinesnapshotfile { get; set; }
 
         
         // -------------------------------------------------------------------
-        // registerAgentVirtualMachine parameter set
+        // Registeragentvirtualmachine parameter set
         //
-        // GraphQL operation: registerAgentHypervVirtualMachine(input: RegisterAgentHypervVirtualMachineInput!):RequestSuccess!
+        // [GraphQL: registerAgentHypervVirtualMachine]
         //
         [Parameter(
-            ParameterSetName = "registerAgentVirtualMachine",
+            ParameterSetName = "Registeragentvirtualmachine",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Register the agent installed in VM
+@"Register the agent installed in VM
 
 Supported in v5.0+
 Register the agent that installed in VM.
-                GraphQL operation: registerAgentHypervVirtualMachine(input: RegisterAgentHypervVirtualMachineInput!):RequestSuccess!
-                ",
+[GraphQL: registerAgentHypervVirtualMachine]",
             Position = 0
         )]
-        public SwitchParameter registerAgentVirtualMachine { get; set; }
+        public SwitchParameter Registeragentvirtualmachine { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteVirtualMachineSnapshot parameter set
+        // Deletevirtualmachinesnapshot parameter set
         //
-        // GraphQL operation: deleteHypervVirtualMachineSnapshot(input: DeleteHypervVirtualMachineSnapshotInput!):RequestSuccess!
+        // [GraphQL: deleteHypervVirtualMachineSnapshot]
         //
         [Parameter(
-            ParameterSetName = "deleteVirtualMachineSnapshot",
+            ParameterSetName = "Deletevirtualmachinesnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete VM snapshot
+@"Delete VM snapshot
 
 Supported in v5.0+
 Delete a snapshot by expiring it. Snapshot is expired only if it is a manual snapshot or a snapshot of an unprotected vm.
-                GraphQL operation: deleteHypervVirtualMachineSnapshot(input: DeleteHypervVirtualMachineSnapshotInput!):RequestSuccess!
-                ",
+[GraphQL: deleteHypervVirtualMachineSnapshot]",
             Position = 0
         )]
-        public SwitchParameter deleteVirtualMachineSnapshot { get; set; }
+        public SwitchParameter Deletevirtualmachinesnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // downloadVirtualMachineSnapshot parameter set
+        // Downloadvirtualmachinesnapshot parameter set
         //
-        // GraphQL operation: downloadHypervVirtualMachineSnapshot(input: DownloadHypervVirtualMachineSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: downloadHypervVirtualMachineSnapshot]
         //
         [Parameter(
-            ParameterSetName = "downloadVirtualMachineSnapshot",
+            ParameterSetName = "Downloadvirtualmachinesnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Creates a download from archival request
+@"Creates a download from archival request
 
 Supported in v5.0+
 Download a snapshot from archival.
-                GraphQL operation: downloadHypervVirtualMachineSnapshot(input: DownloadHypervVirtualMachineSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: downloadHypervVirtualMachineSnapshot]",
             Position = 0
         )]
-        public SwitchParameter downloadVirtualMachineSnapshot { get; set; }
+        public SwitchParameter Downloadvirtualmachinesnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createVirtualMachineSnapshotMount parameter set
+        // Createvirtualmachinesnapshotmount parameter set
         //
-        // GraphQL operation: createHypervVirtualMachineSnapshotMount(input: CreateHypervVirtualMachineSnapshotMountInput!):AsyncRequestStatus!
+        // [GraphQL: createHypervVirtualMachineSnapshotMount]
         //
         [Parameter(
-            ParameterSetName = "createVirtualMachineSnapshotMount",
+            ParameterSetName = "Createvirtualmachinesnapshotmount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a live mount request
+@"Create a live mount request
 
 Supported in v5.0+
 Create a live mount request with given configuration.
-                GraphQL operation: createHypervVirtualMachineSnapshotMount(input: CreateHypervVirtualMachineSnapshotMountInput!):AsyncRequestStatus!
-                ",
+[GraphQL: createHypervVirtualMachineSnapshotMount]",
             Position = 0
         )]
-        public SwitchParameter createVirtualMachineSnapshotMount { get; set; }
+        public SwitchParameter Createvirtualmachinesnapshotmount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateVirtualMachineSnapshotMount parameter set
+        // Updatevirtualmachinesnapshotmount parameter set
         //
-        // GraphQL operation: updateHypervVirtualMachineSnapshotMount(input: UpdateHypervVirtualMachineSnapshotMountInput!):UpdateHypervVirtualMachineSnapshotMountReply!
+        // [GraphQL: updateHypervVirtualMachineSnapshotMount]
         //
         [Parameter(
-            ParameterSetName = "updateVirtualMachineSnapshotMount",
+            ParameterSetName = "Updatevirtualmachinesnapshotmount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Power a Live Mount on and off
+@"Power a Live Mount on and off
 
 Supported in v5.0+
 Power a specified Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
-                GraphQL operation: updateHypervVirtualMachineSnapshotMount(input: UpdateHypervVirtualMachineSnapshotMountInput!):UpdateHypervVirtualMachineSnapshotMountReply!
-                ",
+[GraphQL: updateHypervVirtualMachineSnapshotMount]",
             Position = 0
         )]
-        public SwitchParameter updateVirtualMachineSnapshotMount { get; set; }
+        public SwitchParameter Updatevirtualmachinesnapshotmount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteVirtualMachineSnapshotMount parameter set
+        // Deletevirtualmachinesnapshotmount parameter set
         //
-        // GraphQL operation: deleteHypervVirtualMachineSnapshotMount(input: DeleteHypervVirtualMachineSnapshotMountInput!):AsyncRequestStatus!
+        // [GraphQL: deleteHypervVirtualMachineSnapshotMount]
         //
         [Parameter(
-            ParameterSetName = "deleteVirtualMachineSnapshotMount",
+            ParameterSetName = "Deletevirtualmachinesnapshotmount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Requst to delete a live mount
+@"Requst to delete a live mount
 
 Supported in v5.0+
 Create a request to delete a live mount.
-                GraphQL operation: deleteHypervVirtualMachineSnapshotMount(input: DeleteHypervVirtualMachineSnapshotMountInput!):AsyncRequestStatus!
-                ",
+[GraphQL: deleteHypervVirtualMachineSnapshotMount]",
             Position = 0
         )]
-        public SwitchParameter deleteVirtualMachineSnapshotMount { get; set; }
+        public SwitchParameter Deletevirtualmachinesnapshotmount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // refreshServer parameter set
+        // Refreshserver parameter set
         //
-        // GraphQL operation: refreshHypervServer(input: RefreshHypervServerInput!):AsyncRequestStatus!
+        // [GraphQL: refreshHypervServer]
         //
         [Parameter(
-            ParameterSetName = "refreshServer",
+            ParameterSetName = "Refreshserver",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refresh Hyper-V host metadata
+@"Refresh Hyper-V host metadata
 
 Supported in v5.0+
 Create a job to refresh the metadata for the specified Hyper-V host.
-                GraphQL operation: refreshHypervServer(input: RefreshHypervServerInput!):AsyncRequestStatus!
-                ",
+[GraphQL: refreshHypervServer]",
             Position = 0
         )]
-        public SwitchParameter refreshServer { get; set; }
+        public SwitchParameter Refreshserver { get; set; }
 
         
         // -------------------------------------------------------------------
-        // batchOnDemandBackupVm parameter set
+        // Batchondemandbackupvm parameter set
         //
-        // GraphQL operation: batchOnDemandBackupHypervVm(input: BatchOnDemandBackupHypervVmInput!):BatchOnDemandBackupHypervVmReply!
+        // [GraphQL: batchOnDemandBackupHypervVm]
         //
         [Parameter(
-            ParameterSetName = "batchOnDemandBackupVm",
+            ParameterSetName = "Batchondemandbackupvm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Takes bulk on-demand backup of Hyper-V virtual machines
+@"Takes bulk on-demand backup of Hyper-V virtual machines
 
 Supported in v9.0
 Takes on-demand backup of multiple specified Hyper-V virtual machines.
-                GraphQL operation: batchOnDemandBackupHypervVm(input: BatchOnDemandBackupHypervVmInput!):BatchOnDemandBackupHypervVmReply!
-                ",
+[GraphQL: batchOnDemandBackupHypervVm]",
             Position = 0
         )]
-        public SwitchParameter batchOnDemandBackupVm { get; set; }
+        public SwitchParameter Batchondemandbackupvm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // batchExportVm parameter set
+        // Batchexportvm parameter set
         //
-        // GraphQL operation: batchExportHypervVm(input: BatchExportHypervVmInput!):BatchExportHypervVmReply!
+        // [GraphQL: batchExportHypervVm]
         //
         [Parameter(
-            ParameterSetName = "batchExportVm",
+            ParameterSetName = "Batchexportvm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Exports a snapshot from each member of a set of virtual machines
+@"Exports a snapshot from each member of a set of virtual machines
 
 Supported in v7.0+
 Export a snapshot from each member of a set of virtual machines.
-                GraphQL operation: batchExportHypervVm(input: BatchExportHypervVmInput!):BatchExportHypervVmReply!
-                ",
+[GraphQL: batchExportHypervVm]",
             Position = 0
         )]
-        public SwitchParameter batchExportVm { get; set; }
+        public SwitchParameter Batchexportvm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // batchMountVm parameter set
+        // Batchmountvm parameter set
         //
-        // GraphQL operation: batchMountHypervVm(input: BatchMountHypervVmInput!):BatchMountHypervVmReply!
+        // [GraphQL: batchMountHypervVm]
         //
         [Parameter(
-            ParameterSetName = "batchMountVm",
+            ParameterSetName = "Batchmountvm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Mount snapshots from multiple virtual machines
+@"Mount snapshots from multiple virtual machines
 
 Supported in v7.0+
 Mounts a batch of snapshots from a group of specified virtual machines.
-                GraphQL operation: batchMountHypervVm(input: BatchMountHypervVmInput!):BatchMountHypervVmReply!
-                ",
+[GraphQL: batchMountHypervVm]",
             Position = 0
         )]
-        public SwitchParameter batchMountVm { get; set; }
+        public SwitchParameter Batchmountvm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // batchInstantRecoverVm parameter set
+        // Batchinstantrecovervm parameter set
         //
-        // GraphQL operation: batchInstantRecoverHypervVm(input: BatchInstantRecoverHypervVmInput!):BatchInstantRecoverHypervVmReply!
+        // [GraphQL: batchInstantRecoverHypervVm]
         //
         [Parameter(
-            ParameterSetName = "batchInstantRecoverVm",
+            ParameterSetName = "Batchinstantrecovervm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Instantly recovers snapshots from multiple virtual machines
+@"Instantly recovers snapshots from multiple virtual machines
 
 Supported in v7.0+
 Instantly recovers a batch of snapshots from a group of specified virtual machines.
-                GraphQL operation: batchInstantRecoverHypervVm(input: BatchInstantRecoverHypervVmInput!):BatchInstantRecoverHypervVmReply!
-                ",
+[GraphQL: batchInstantRecoverHypervVm]",
             Position = 0
         )]
-        public SwitchParameter batchInstantRecoverVm { get; set; }
+        public SwitchParameter Batchinstantrecovervm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateVirtualMachine parameter set
+        // Updatevirtualmachine parameter set
         //
-        // GraphQL operation: updateHypervVirtualMachine(input: UpdateHypervVirtualMachineInput!):UpdateHypervVirtualMachineReply!
+        // [GraphQL: updateHypervVirtualMachine]
         //
         [Parameter(
-            ParameterSetName = "updateVirtualMachine",
+            ParameterSetName = "Updatevirtualmachine",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update VM
+@"Update VM
 
 Supported in v5.0+
 Update VM with specified properties.
-                GraphQL operation: updateHypervVirtualMachine(input: UpdateHypervVirtualMachineInput!):UpdateHypervVirtualMachineReply!
-                ",
+[GraphQL: updateHypervVirtualMachine]",
             Position = 0
         )]
-        public SwitchParameter updateVirtualMachine { get; set; }
+        public SwitchParameter Updatevirtualmachine { get; set; }
 
         
         // -------------------------------------------------------------------
-        // downloadSnapshotFromLocation parameter set
+        // Downloadsnapshotfromlocation parameter set
         //
-        // GraphQL operation: downloadHypervSnapshotFromLocation(input: DownloadHypervSnapshotFromLocationInput!):AsyncRequestStatus!
+        // [GraphQL: downloadHypervSnapshotFromLocation]
         //
         [Parameter(
-            ParameterSetName = "downloadSnapshotFromLocation",
+            ParameterSetName = "Downloadsnapshotfromlocation",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Download a snapshot from a replication target
+@"Download a snapshot from a replication target
 
 Supported in v7.0+
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
-                GraphQL operation: downloadHypervSnapshotFromLocation(input: DownloadHypervSnapshotFromLocationInput!):AsyncRequestStatus!
-                ",
+[GraphQL: downloadHypervSnapshotFromLocation]",
             Position = 0
         )]
-        public SwitchParameter downloadSnapshotFromLocation { get; set; }
+        public SwitchParameter Downloadsnapshotfromlocation { get; set; }
 
 
         protected override void ProcessRecord()
@@ -561,74 +513,74 @@ Initiates a job to download a snapshot from the specified location when the snap
             {
                 switch(Op)
                 {
-                    case "registerScvmm":
-                        this.ProcessRecord_registerScvmm();
+                    case "Registerscvmm":
+                        this.ProcessRecord_Registerscvmm();
                         break;
-                    case "ScvmmUpdate":
-                        this.ProcessRecord_ScvmmUpdate();
+                    case "Scvmmupdate":
+                        this.ProcessRecord_Scvmmupdate();
                         break;
-                    case "ScvmmDelete":
-                        this.ProcessRecord_ScvmmDelete();
+                    case "Scvmmdelete":
+                        this.ProcessRecord_Scvmmdelete();
                         break;
-                    case "refreshScvmm":
-                        this.ProcessRecord_refreshScvmm();
+                    case "Refreshscvmm":
+                        this.ProcessRecord_Refreshscvmm();
                         break;
-                    case "OnDemandSnapshot":
-                        this.ProcessRecord_OnDemandSnapshot();
+                    case "Ondemandsnapshot":
+                        this.ProcessRecord_Ondemandsnapshot();
                         break;
-                    case "DeleteAllSnapshot":
-                        this.ProcessRecord_DeleteAllSnapshot();
+                    case "Deleteallsnapshot":
+                        this.ProcessRecord_Deleteallsnapshot();
                         break;
-                    case "exportVirtualMachine":
-                        this.ProcessRecord_exportVirtualMachine();
+                    case "Exportvirtualmachine":
+                        this.ProcessRecord_Exportvirtualmachine();
                         break;
-                    case "downloadVirtualMachineSnapshotFile":
-                        this.ProcessRecord_downloadVirtualMachineSnapshotFile();
+                    case "Downloadvirtualmachinesnapshotfile":
+                        this.ProcessRecord_Downloadvirtualmachinesnapshotfile();
                         break;
-                    case "instantRecoverVirtualMachineSnapshot":
-                        this.ProcessRecord_instantRecoverVirtualMachineSnapshot();
+                    case "Instantrecovervirtualmachinesnapshot":
+                        this.ProcessRecord_Instantrecovervirtualmachinesnapshot();
                         break;
-                    case "restoreVirtualMachineSnapshotFile":
-                        this.ProcessRecord_restoreVirtualMachineSnapshotFile();
+                    case "Restorevirtualmachinesnapshotfile":
+                        this.ProcessRecord_Restorevirtualmachinesnapshotfile();
                         break;
-                    case "registerAgentVirtualMachine":
-                        this.ProcessRecord_registerAgentVirtualMachine();
+                    case "Registeragentvirtualmachine":
+                        this.ProcessRecord_Registeragentvirtualmachine();
                         break;
-                    case "deleteVirtualMachineSnapshot":
-                        this.ProcessRecord_deleteVirtualMachineSnapshot();
+                    case "Deletevirtualmachinesnapshot":
+                        this.ProcessRecord_Deletevirtualmachinesnapshot();
                         break;
-                    case "downloadVirtualMachineSnapshot":
-                        this.ProcessRecord_downloadVirtualMachineSnapshot();
+                    case "Downloadvirtualmachinesnapshot":
+                        this.ProcessRecord_Downloadvirtualmachinesnapshot();
                         break;
-                    case "createVirtualMachineSnapshotMount":
-                        this.ProcessRecord_createVirtualMachineSnapshotMount();
+                    case "Createvirtualmachinesnapshotmount":
+                        this.ProcessRecord_Createvirtualmachinesnapshotmount();
                         break;
-                    case "updateVirtualMachineSnapshotMount":
-                        this.ProcessRecord_updateVirtualMachineSnapshotMount();
+                    case "Updatevirtualmachinesnapshotmount":
+                        this.ProcessRecord_Updatevirtualmachinesnapshotmount();
                         break;
-                    case "deleteVirtualMachineSnapshotMount":
-                        this.ProcessRecord_deleteVirtualMachineSnapshotMount();
+                    case "Deletevirtualmachinesnapshotmount":
+                        this.ProcessRecord_Deletevirtualmachinesnapshotmount();
                         break;
-                    case "refreshServer":
-                        this.ProcessRecord_refreshServer();
+                    case "Refreshserver":
+                        this.ProcessRecord_Refreshserver();
                         break;
-                    case "batchOnDemandBackupVm":
-                        this.ProcessRecord_batchOnDemandBackupVm();
+                    case "Batchondemandbackupvm":
+                        this.ProcessRecord_Batchondemandbackupvm();
                         break;
-                    case "batchExportVm":
-                        this.ProcessRecord_batchExportVm();
+                    case "Batchexportvm":
+                        this.ProcessRecord_Batchexportvm();
                         break;
-                    case "batchMountVm":
-                        this.ProcessRecord_batchMountVm();
+                    case "Batchmountvm":
+                        this.ProcessRecord_Batchmountvm();
                         break;
-                    case "batchInstantRecoverVm":
-                        this.ProcessRecord_batchInstantRecoverVm();
+                    case "Batchinstantrecovervm":
+                        this.ProcessRecord_Batchinstantrecovervm();
                         break;
-                    case "updateVirtualMachine":
-                        this.ProcessRecord_updateVirtualMachine();
+                    case "Updatevirtualmachine":
+                        this.ProcessRecord_Updatevirtualmachine();
                         break;
-                    case "downloadSnapshotFromLocation":
-                        this.ProcessRecord_downloadSnapshotFromLocation();
+                    case "Downloadsnapshotfromlocation":
+                        this.ProcessRecord_Downloadsnapshotfromlocation();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -648,207 +600,207 @@ Initiates a job to download a snapshot from the specified location when the snap
 
         // This parameter set invokes a single graphql operation:
         // registerHypervScvmm.
-        protected void ProcessRecord_registerScvmm()
+        protected void ProcessRecord_Registerscvmm()
         {
-            this._logger.name += " -registerScvmm";
+            this._logger.name += " -Registerscvmm";
             // Invoke graphql operation registerHypervScvmm
             InvokeMutationRegisterHypervScvmm();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervScvmmUpdate.
-        protected void ProcessRecord_ScvmmUpdate()
+        protected void ProcessRecord_Scvmmupdate()
         {
-            this._logger.name += " -ScvmmUpdate";
+            this._logger.name += " -Scvmmupdate";
             // Invoke graphql operation hypervScvmmUpdate
             InvokeMutationHypervScvmmUpdate();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervScvmmDelete.
-        protected void ProcessRecord_ScvmmDelete()
+        protected void ProcessRecord_Scvmmdelete()
         {
-            this._logger.name += " -ScvmmDelete";
+            this._logger.name += " -Scvmmdelete";
             // Invoke graphql operation hypervScvmmDelete
             InvokeMutationHypervScvmmDelete();
         }
 
         // This parameter set invokes a single graphql operation:
         // refreshHypervScvmm.
-        protected void ProcessRecord_refreshScvmm()
+        protected void ProcessRecord_Refreshscvmm()
         {
-            this._logger.name += " -refreshScvmm";
+            this._logger.name += " -Refreshscvmm";
             // Invoke graphql operation refreshHypervScvmm
             InvokeMutationRefreshHypervScvmm();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervOnDemandSnapshot.
-        protected void ProcessRecord_OnDemandSnapshot()
+        protected void ProcessRecord_Ondemandsnapshot()
         {
-            this._logger.name += " -OnDemandSnapshot";
+            this._logger.name += " -Ondemandsnapshot";
             // Invoke graphql operation hypervOnDemandSnapshot
             InvokeMutationHypervOnDemandSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervDeleteAllSnapshots.
-        protected void ProcessRecord_DeleteAllSnapshot()
+        protected void ProcessRecord_Deleteallsnapshot()
         {
-            this._logger.name += " -DeleteAllSnapshot";
+            this._logger.name += " -Deleteallsnapshot";
             // Invoke graphql operation hypervDeleteAllSnapshots
             InvokeMutationHypervDeleteAllSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // exportHypervVirtualMachine.
-        protected void ProcessRecord_exportVirtualMachine()
+        protected void ProcessRecord_Exportvirtualmachine()
         {
-            this._logger.name += " -exportVirtualMachine";
+            this._logger.name += " -Exportvirtualmachine";
             // Invoke graphql operation exportHypervVirtualMachine
             InvokeMutationExportHypervVirtualMachine();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadHypervVirtualMachineSnapshotFiles.
-        protected void ProcessRecord_downloadVirtualMachineSnapshotFile()
+        protected void ProcessRecord_Downloadvirtualmachinesnapshotfile()
         {
-            this._logger.name += " -downloadVirtualMachineSnapshotFile";
+            this._logger.name += " -Downloadvirtualmachinesnapshotfile";
             // Invoke graphql operation downloadHypervVirtualMachineSnapshotFiles
             InvokeMutationDownloadHypervVirtualMachineSnapshotFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // instantRecoverHypervVirtualMachineSnapshot.
-        protected void ProcessRecord_instantRecoverVirtualMachineSnapshot()
+        protected void ProcessRecord_Instantrecovervirtualmachinesnapshot()
         {
-            this._logger.name += " -instantRecoverVirtualMachineSnapshot";
+            this._logger.name += " -Instantrecovervirtualmachinesnapshot";
             // Invoke graphql operation instantRecoverHypervVirtualMachineSnapshot
             InvokeMutationInstantRecoverHypervVirtualMachineSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // restoreHypervVirtualMachineSnapshotFiles.
-        protected void ProcessRecord_restoreVirtualMachineSnapshotFile()
+        protected void ProcessRecord_Restorevirtualmachinesnapshotfile()
         {
-            this._logger.name += " -restoreVirtualMachineSnapshotFile";
+            this._logger.name += " -Restorevirtualmachinesnapshotfile";
             // Invoke graphql operation restoreHypervVirtualMachineSnapshotFiles
             InvokeMutationRestoreHypervVirtualMachineSnapshotFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // registerAgentHypervVirtualMachine.
-        protected void ProcessRecord_registerAgentVirtualMachine()
+        protected void ProcessRecord_Registeragentvirtualmachine()
         {
-            this._logger.name += " -registerAgentVirtualMachine";
+            this._logger.name += " -Registeragentvirtualmachine";
             // Invoke graphql operation registerAgentHypervVirtualMachine
             InvokeMutationRegisterAgentHypervVirtualMachine();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteHypervVirtualMachineSnapshot.
-        protected void ProcessRecord_deleteVirtualMachineSnapshot()
+        protected void ProcessRecord_Deletevirtualmachinesnapshot()
         {
-            this._logger.name += " -deleteVirtualMachineSnapshot";
+            this._logger.name += " -Deletevirtualmachinesnapshot";
             // Invoke graphql operation deleteHypervVirtualMachineSnapshot
             InvokeMutationDeleteHypervVirtualMachineSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadHypervVirtualMachineSnapshot.
-        protected void ProcessRecord_downloadVirtualMachineSnapshot()
+        protected void ProcessRecord_Downloadvirtualmachinesnapshot()
         {
-            this._logger.name += " -downloadVirtualMachineSnapshot";
+            this._logger.name += " -Downloadvirtualmachinesnapshot";
             // Invoke graphql operation downloadHypervVirtualMachineSnapshot
             InvokeMutationDownloadHypervVirtualMachineSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // createHypervVirtualMachineSnapshotMount.
-        protected void ProcessRecord_createVirtualMachineSnapshotMount()
+        protected void ProcessRecord_Createvirtualmachinesnapshotmount()
         {
-            this._logger.name += " -createVirtualMachineSnapshotMount";
+            this._logger.name += " -Createvirtualmachinesnapshotmount";
             // Invoke graphql operation createHypervVirtualMachineSnapshotMount
             InvokeMutationCreateHypervVirtualMachineSnapshotMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateHypervVirtualMachineSnapshotMount.
-        protected void ProcessRecord_updateVirtualMachineSnapshotMount()
+        protected void ProcessRecord_Updatevirtualmachinesnapshotmount()
         {
-            this._logger.name += " -updateVirtualMachineSnapshotMount";
+            this._logger.name += " -Updatevirtualmachinesnapshotmount";
             // Invoke graphql operation updateHypervVirtualMachineSnapshotMount
             InvokeMutationUpdateHypervVirtualMachineSnapshotMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteHypervVirtualMachineSnapshotMount.
-        protected void ProcessRecord_deleteVirtualMachineSnapshotMount()
+        protected void ProcessRecord_Deletevirtualmachinesnapshotmount()
         {
-            this._logger.name += " -deleteVirtualMachineSnapshotMount";
+            this._logger.name += " -Deletevirtualmachinesnapshotmount";
             // Invoke graphql operation deleteHypervVirtualMachineSnapshotMount
             InvokeMutationDeleteHypervVirtualMachineSnapshotMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // refreshHypervServer.
-        protected void ProcessRecord_refreshServer()
+        protected void ProcessRecord_Refreshserver()
         {
-            this._logger.name += " -refreshServer";
+            this._logger.name += " -Refreshserver";
             // Invoke graphql operation refreshHypervServer
             InvokeMutationRefreshHypervServer();
         }
 
         // This parameter set invokes a single graphql operation:
         // batchOnDemandBackupHypervVm.
-        protected void ProcessRecord_batchOnDemandBackupVm()
+        protected void ProcessRecord_Batchondemandbackupvm()
         {
-            this._logger.name += " -batchOnDemandBackupVm";
+            this._logger.name += " -Batchondemandbackupvm";
             // Invoke graphql operation batchOnDemandBackupHypervVm
             InvokeMutationBatchOnDemandBackupHypervVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // batchExportHypervVm.
-        protected void ProcessRecord_batchExportVm()
+        protected void ProcessRecord_Batchexportvm()
         {
-            this._logger.name += " -batchExportVm";
+            this._logger.name += " -Batchexportvm";
             // Invoke graphql operation batchExportHypervVm
             InvokeMutationBatchExportHypervVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // batchMountHypervVm.
-        protected void ProcessRecord_batchMountVm()
+        protected void ProcessRecord_Batchmountvm()
         {
-            this._logger.name += " -batchMountVm";
+            this._logger.name += " -Batchmountvm";
             // Invoke graphql operation batchMountHypervVm
             InvokeMutationBatchMountHypervVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // batchInstantRecoverHypervVm.
-        protected void ProcessRecord_batchInstantRecoverVm()
+        protected void ProcessRecord_Batchinstantrecovervm()
         {
-            this._logger.name += " -batchInstantRecoverVm";
+            this._logger.name += " -Batchinstantrecovervm";
             // Invoke graphql operation batchInstantRecoverHypervVm
             InvokeMutationBatchInstantRecoverHypervVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateHypervVirtualMachine.
-        protected void ProcessRecord_updateVirtualMachine()
+        protected void ProcessRecord_Updatevirtualmachine()
         {
-            this._logger.name += " -updateVirtualMachine";
+            this._logger.name += " -Updatevirtualmachine";
             // Invoke graphql operation updateHypervVirtualMachine
             InvokeMutationUpdateHypervVirtualMachine();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadHypervSnapshotFromLocation.
-        protected void ProcessRecord_downloadSnapshotFromLocation()
+        protected void ProcessRecord_Downloadsnapshotfromlocation()
         {
-            this._logger.name += " -downloadSnapshotFromLocation";
+            this._logger.name += " -Downloadsnapshotfromlocation";
             // Invoke graphql operation downloadHypervSnapshotFromLocation
             InvokeMutationDownloadHypervSnapshotFromLocation();
         }

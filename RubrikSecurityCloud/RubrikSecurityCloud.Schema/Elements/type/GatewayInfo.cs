@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> address: String! (scalar)
         if (this.Address == null && Exploration.Includes(parent + ".address", true))
         {
-            this.Address = new System.String("FETCH");
+            this.Address = "FETCH";
         }
         //      C# -> List<System.Int32>? Ports
         // GraphQL -> ports: [Int!]! (scalar)

@@ -112,13 +112,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> resourceGroupName: String! (scalar)
         if (this.ResourceGroupName == null && Exploration.Includes(parent + ".resourceGroupName", true))
         {
-            this.ResourceGroupName = new System.String("FETCH");
+            this.ResourceGroupName = "FETCH";
         }
         //      C# -> System.String? SubscriptionNativeId
         // GraphQL -> subscriptionNativeId: UUID! (scalar)
         if (this.SubscriptionNativeId == null && Exploration.Includes(parent + ".subscriptionNativeId", true))
         {
-            this.SubscriptionNativeId = new System.String("FETCH");
+            this.SubscriptionNativeId = "FETCH";
         }
         //      C# -> List<TagObject>? Tags
         // GraphQL -> tags: [TagObject!]! (type)

@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> setupType: String! (scalar)
         if (this.SetupType == null && Exploration.Includes(parent + ".setupType", true))
         {
-            this.SetupType = new System.String("FETCH");
+            this.SetupType = "FETCH";
         }
         //      C# -> GatewayInfo? SourceGateway
         // GraphQL -> sourceGateway: GatewayInfo (type)

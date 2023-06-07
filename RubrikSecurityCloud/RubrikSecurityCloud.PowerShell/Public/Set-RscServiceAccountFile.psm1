@@ -5,7 +5,7 @@ function Set-RscServiceAccountFile {
     an encrypted format.
 
     .DESCRIPTION
-    Read in a ServiceAccount.json file and store it's content in 
+    Read in a ServiceAccount.json file and store its content in 
     an encrypted XML format.
 
     Connect-Rsc can accept service account credentials from the

@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> s3Bucket: String (scalar)
         if (this.S3Bucket == null && Exploration.Includes(parent + ".s3Bucket", true))
         {
-            this.S3Bucket = new System.String("FETCH");
+            this.S3Bucket = "FETCH";
         }
         //      C# -> System.String? S3Region
         // GraphQL -> s3Region: String (scalar)
         if (this.S3Region == null && Exploration.Includes(parent + ".s3Region", true))
         {
-            this.S3Region = new System.String("FETCH");
+            this.S3Region = "FETCH";
         }
     }
 

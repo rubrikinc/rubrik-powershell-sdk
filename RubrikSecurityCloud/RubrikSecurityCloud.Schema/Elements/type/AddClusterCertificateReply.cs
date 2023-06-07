@@ -162,13 +162,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> certId: String! (scalar)
         if (this.CertId == null && Exploration.Includes(parent + ".certId", true))
         {
-            this.CertId = new System.String("FETCH");
+            this.CertId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> DateTime? Expiration
         // GraphQL -> expiration: DateTime (scalar)
@@ -192,19 +192,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? PemFile
         // GraphQL -> pemFile: String! (scalar)
         if (this.PemFile == null && Exploration.Includes(parent + ".pemFile", true))
         {
-            this.PemFile = new System.String("FETCH");
+            this.PemFile = "FETCH";
         }
         //      C# -> System.String? UsedBy
         // GraphQL -> usedBy: String! (scalar)
         if (this.UsedBy == null && Exploration.Includes(parent + ".usedBy", true))
         {
-            this.UsedBy = new System.String("FETCH");
+            this.UsedBy = "FETCH";
         }
     }
 

@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cidrBlock: String! (scalar)
         if (this.CidrBlock == null && Exploration.Includes(parent + ".cidrBlock", true))
         {
-            this.CidrBlock = new System.String("FETCH");
+            this.CidrBlock = "FETCH";
         }
     }
 

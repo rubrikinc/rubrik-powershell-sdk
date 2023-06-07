@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> makeupReseedLimit: Int (scalar)
         if (this.MakeupReseedLimit == null && Exploration.Includes(parent + ".makeupReseedLimit", true))
         {
-            this.MakeupReseedLimit = new System.Int32();
+            this.MakeupReseedLimit = Int32.MinValue;
         }
         //      C# -> MssqlLogShippingSummary? MssqlLogShippingSummary
         // GraphQL -> mssqlLogShippingSummary: MssqlLogShippingSummary (type)

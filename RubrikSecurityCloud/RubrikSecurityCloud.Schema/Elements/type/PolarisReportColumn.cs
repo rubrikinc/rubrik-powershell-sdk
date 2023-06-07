@@ -134,7 +134,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> columnWidth: Int! (scalar)
         if (this.ColumnWidth == null && Exploration.Includes(parent + ".columnWidth", true))
         {
-            this.ColumnWidth = new System.Int32();
+            this.ColumnWidth = Int32.MinValue;
         }
         //      C# -> System.Boolean? Default
         // GraphQL -> default: Boolean! (scalar)
@@ -146,13 +146,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
         {
-            this.DisplayName = new System.String("FETCH");
+            this.DisplayName = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Boolean? Sortable
         // GraphQL -> sortable: Boolean! (scalar)

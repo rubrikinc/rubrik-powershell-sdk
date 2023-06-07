@@ -155,13 +155,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> effectiveSlaOpt: String (scalar)
         if (this.EffectiveSlaOpt == null && Exploration.Includes(parent + ".effectiveSlaOpt", true))
         {
-            this.EffectiveSlaOpt = new System.String("FETCH");
+            this.EffectiveSlaOpt = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
@@ -179,7 +179,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean (scalar)

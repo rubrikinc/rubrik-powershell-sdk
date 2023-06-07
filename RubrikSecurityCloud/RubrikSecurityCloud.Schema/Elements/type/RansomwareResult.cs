@@ -176,7 +176,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Single? EncryptionProbability
         // GraphQL -> encryptionProbability: Float! (scalar)
@@ -188,7 +188,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
@@ -200,7 +200,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> managedId: String! (scalar)
         if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
         {
-            this.ManagedId = new System.String("FETCH");
+            this.ManagedId = "FETCH";
         }
         //      C# -> DateTime? SnapshotData
         // GraphQL -> snapshotData: DateTime! (scalar)
@@ -212,19 +212,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
         {
-            this.SnapshotFid = new System.String("FETCH");
+            this.SnapshotFid = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
         {
-            this.WorkloadId = new System.String("FETCH");
+            this.WorkloadId = "FETCH";
         }
     }
 

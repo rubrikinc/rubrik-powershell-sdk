@@ -488,19 +488,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backupCount: Int (scalar)
         if (this.BackupCount == null && Exploration.Includes(parent + ".backupCount", true))
         {
-            this.BackupCount = new System.Int32();
+            this.BackupCount = Int32.MinValue;
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -518,19 +518,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NodeCount
         // GraphQL -> nodeCount: Int (scalar)
         if (this.NodeCount == null && Exploration.Includes(parent + ".nodeCount", true))
         {
-            this.NodeCount = new System.Int32();
+            this.NodeCount = Int32.MinValue;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long (scalar)
@@ -548,7 +548,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sourceIp: String! (scalar)
         if (this.SourceIp == null && Exploration.Includes(parent + ".sourceIp", true))
         {
-            this.SourceIp = new System.String("FETCH");
+            this.SourceIp = "FETCH";
         }
         //      C# -> System.Boolean? WatcherEnabled
         // GraphQL -> watcherEnabled: Boolean! (scalar)

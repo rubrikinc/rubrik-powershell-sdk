@@ -112,19 +112,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OperatingSystem
         // GraphQL -> operatingSystem: String (scalar)
         if (this.OperatingSystem == null && Exploration.Includes(parent + ".operatingSystem", true))
         {
-            this.OperatingSystem = new System.String("FETCH");
+            this.OperatingSystem = "FETCH";
         }
     }
 

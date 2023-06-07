@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> permission: String! (scalar)
         if (this.Permission == null && Exploration.Includes(parent + ".permission", true))
         {
-            this.Permission = new System.String("FETCH");
+            this.Permission = "FETCH";
         }
     }
 

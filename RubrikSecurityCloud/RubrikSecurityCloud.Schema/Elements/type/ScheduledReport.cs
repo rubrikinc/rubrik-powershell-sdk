@@ -296,7 +296,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> monthlyDate: Int (scalar)
         if (this.MonthlyDate == null && Exploration.Includes(parent + ".monthlyDate", true))
         {
-            this.MonthlyDate = new System.Int32();
+            this.MonthlyDate = Int32.MinValue;
         }
         //      C# -> DateTime? MonthlyTime
         // GraphQL -> monthlyTime: LocalTime (scalar)
@@ -314,13 +314,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> reportId: Int! (scalar)
         if (this.ReportId == null && Exploration.Includes(parent + ".reportId", true))
         {
-            this.ReportId = new System.Int32();
+            this.ReportId = Int32.MinValue;
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         if (this.Title == null && Exploration.Includes(parent + ".title", true))
         {
-            this.Title = new System.String("FETCH");
+            this.Title = "FETCH";
         }
         //      C# -> DateTime? WeeklyTime
         // GraphQL -> weeklyTime: LocalTime (scalar)

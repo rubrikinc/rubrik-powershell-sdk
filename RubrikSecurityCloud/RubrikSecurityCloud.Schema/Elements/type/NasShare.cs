@@ -623,31 +623,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: UUID! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? ExportPoint
         // GraphQL -> exportPoint: String! (scalar)
         if (this.ExportPoint == null && Exploration.Includes(parent + ".exportPoint", true))
         {
-            this.ExportPoint = new System.String("FETCH");
+            this.ExportPoint = "FETCH";
         }
         //      C# -> System.String? HostAddress
         // GraphQL -> hostAddress: String! (scalar)
         if (this.HostAddress == null && Exploration.Includes(parent + ".hostAddress", true))
         {
-            this.HostAddress = new System.String("FETCH");
+            this.HostAddress = "FETCH";
         }
         //      C# -> System.String? HostIdForRestore
         // GraphQL -> hostIdForRestore: String! (scalar)
         if (this.HostIdForRestore == null && Exploration.Includes(parent + ".hostIdForRestore", true))
         {
-            this.HostIdForRestore = new System.String("FETCH");
+            this.HostIdForRestore = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsChangelistEnabled
         // GraphQL -> isChangelistEnabled: Boolean! (scalar)
@@ -677,25 +677,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.String? ShareType
         // GraphQL -> shareType: String! (scalar)
         if (this.ShareType == null && Exploration.Includes(parent + ".shareType", true))
         {
-            this.ShareType = new System.String("FETCH");
+            this.ShareType = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

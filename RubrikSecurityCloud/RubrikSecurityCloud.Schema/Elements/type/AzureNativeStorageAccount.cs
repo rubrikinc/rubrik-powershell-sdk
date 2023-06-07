@@ -126,19 +126,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? ResourceGroupName
         // GraphQL -> resourceGroupName: String! (scalar)
         if (this.ResourceGroupName == null && Exploration.Includes(parent + ".resourceGroupName", true))
         {
-            this.ResourceGroupName = new System.String("FETCH");
+            this.ResourceGroupName = "FETCH";
         }
         //      C# -> List<AzureTag>? Tags
         // GraphQL -> tags: [AzureTag!]! (type)

@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> datastoreId: String! (scalar)
         if (this.DatastoreId == null && Exploration.Includes(parent + ".datastoreId", true))
         {
-            this.DatastoreId = new System.String("FETCH");
+            this.DatastoreId = "FETCH";
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String! (scalar)
         if (this.DatastoreName == null && Exploration.Includes(parent + ".datastoreName", true))
         {
-            this.DatastoreName = new System.String("FETCH");
+            this.DatastoreName = "FETCH";
         }
     }
 

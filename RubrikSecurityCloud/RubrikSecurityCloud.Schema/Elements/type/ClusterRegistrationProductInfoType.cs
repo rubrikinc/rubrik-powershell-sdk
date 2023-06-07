@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> latestProductType: String! (scalar)
         if (this.LatestProductType == null && Exploration.Includes(parent + ".latestProductType", true))
         {
-            this.LatestProductType = new System.String("FETCH");
+            this.LatestProductType = "FETCH";
         }
         //      C# -> List<System.String>? ProductTypes
         // GraphQL -> productTypes: [String!]! (scalar)

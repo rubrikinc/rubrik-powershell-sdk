@@ -120,13 +120,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> eventId: String! (scalar)
         if (this.EventId == null && Exploration.Includes(parent + ".eventId", true))
         {
-            this.EventId = new System.String("FETCH");
+            this.EventId = "FETCH";
         }
         //      C# -> System.String? JobInstanceId
         // GraphQL -> jobInstanceId: String! (scalar)
         if (this.JobInstanceId == null && Exploration.Includes(parent + ".jobInstanceId", true))
         {
-            this.JobInstanceId = new System.String("FETCH");
+            this.JobInstanceId = "FETCH";
         }
         //      C# -> System.Single? Progress
         // GraphQL -> progress: Float! (scalar)
@@ -144,7 +144,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
     }
 

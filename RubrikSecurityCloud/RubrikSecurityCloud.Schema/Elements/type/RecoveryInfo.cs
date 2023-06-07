@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoveryCount: Int! (scalar)
         if (this.RecoveryCount == null && Exploration.Includes(parent + ".recoveryCount", true))
         {
-            this.RecoveryCount = new System.Int32();
+            this.RecoveryCount = Int32.MinValue;
         }
         //      C# -> List<System.String>? RecoveryIds
         // GraphQL -> recoveryIds: [String!]! (scalar)
@@ -104,7 +104,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoveryType: String! (scalar)
         if (this.RecoveryType == null && Exploration.Includes(parent + ".recoveryType", true))
         {
-            this.RecoveryType = new System.String("FETCH");
+            this.RecoveryType = "FETCH";
         }
     }
 

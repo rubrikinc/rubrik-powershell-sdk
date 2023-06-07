@@ -146,13 +146,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> caCertUuid: UUID (scalar)
         if (this.CaCertUuid == null && Exploration.Includes(parent + ".caCertUuid", true))
         {
-            this.CaCertUuid = new System.String("FETCH");
+            this.CaCertUuid = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? LastSuccessfulBackupTime
         // GraphQL -> lastSuccessfulBackupTime: DateTime (scalar)
@@ -164,7 +164,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicationTargetName: String (scalar)
         if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
         {
-            this.ReplicationTargetName = new System.String("FETCH");
+            this.ReplicationTargetName = "FETCH";
         }
     }
 

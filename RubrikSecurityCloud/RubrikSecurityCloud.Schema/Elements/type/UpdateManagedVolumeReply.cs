@@ -406,19 +406,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numChannels: Int! (scalar)
         if (this.NumChannels == null && Exploration.Includes(parent + ".numChannels", true))
         {
-            this.NumChannels = new System.Int32();
+            this.NumChannels = Int32.MinValue;
         }
         //      C# -> System.Int32? PendingSnapshotCount
         // GraphQL -> pendingSnapshotCount: Int! (scalar)
         if (this.PendingSnapshotCount == null && Exploration.Includes(parent + ".pendingSnapshotCount", true))
         {
-            this.PendingSnapshotCount = new System.Int32();
+            this.PendingSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? SmbDomainName
         // GraphQL -> smbDomainName: String (scalar)
         if (this.SmbDomainName == null && Exploration.Includes(parent + ".smbDomainName", true))
         {
-            this.SmbDomainName = new System.String("FETCH");
+            this.SmbDomainName = "FETCH";
         }
         //      C# -> List<System.String>? SmbValidIps
         // GraphQL -> smbValidIps: [String!]! (scalar)
@@ -436,13 +436,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotCount: Int! (scalar)
         if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
         {
-            this.SnapshotCount = new System.Int32();
+            this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? Subnet
         // GraphQL -> subnet: String (scalar)
         if (this.Subnet == null && Exploration.Includes(parent + ".subnet", true))
         {
-            this.Subnet = new System.String("FETCH");
+            this.Subnet = "FETCH";
         }
         //      C# -> System.Int64? UsedSize
         // GraphQL -> usedSize: Long! (scalar)

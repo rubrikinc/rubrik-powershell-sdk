@@ -21,973 +21,875 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateAzure",
-        DefaultParameterSetName = "createTarget")
+        DefaultParameterSetName = "Createtarget")
     ]
     public class Invoke_RscMutateAzure : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // startRefreshNativeSubscriptionsJob parameter set
+        // Startrefreshnativesubscriptionsjob parameter set
         //
-        // GraphQL operation: startRefreshAzureNativeSubscriptionsJob(input: StartRefreshAzureNativeSubscriptionsJobInput!):BatchAsyncJobStatus!
+        // [GraphQL: startRefreshAzureNativeSubscriptionsJob]
         //
         [Parameter(
-            ParameterSetName = "startRefreshNativeSubscriptionsJob",
+            ParameterSetName = "Startrefreshnativesubscriptionsjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
-                GraphQL operation: startRefreshAzureNativeSubscriptionsJob(input: StartRefreshAzureNativeSubscriptionsJobInput!):BatchAsyncJobStatus!
-                ",
+@"Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
+[GraphQL: startRefreshAzureNativeSubscriptionsJob]",
             Position = 0
         )]
-        public SwitchParameter startRefreshNativeSubscriptionsJob { get; set; }
+        public SwitchParameter Startrefreshnativesubscriptionsjob { get; set; }
 
         [Parameter(
-            ParameterSetName = "startRefreshNativeSubscriptionsJob",
+            ParameterSetName = "Startrefreshnativesubscriptionsjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for the job to refresh Azure Native subscriptions.
-                GraphQL argument input: StartRefreshAzureNativeSubscriptionsJobInput!
-                "
+@"Input for the job to refresh Azure Native subscriptions.
+GraphQL argument input: StartRefreshAzureNativeSubscriptionsJobInput!"
         )]
         public StartRefreshAzureNativeSubscriptionsJobInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // startRestoreNativeVirtualMachineJob parameter set
+        // Startrestorenativevirtualmachinejob parameter set
         //
-        // GraphQL operation: startRestoreAzureNativeVirtualMachineJob(input: StartRestoreAzureNativeVirtualMachineJobInput!):AsyncJobStatus!
+        // [GraphQL: startRestoreAzureNativeVirtualMachineJob]
         //
         [Parameter(
-            ParameterSetName = "startRestoreNativeVirtualMachineJob",
+            ParameterSetName = "Startrestorenativevirtualmachinejob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to restore Azure Native virtual machine with the selected snapshot. When started, this will replace the original VM with the selected snapshot.
-                GraphQL operation: startRestoreAzureNativeVirtualMachineJob(input: StartRestoreAzureNativeVirtualMachineJobInput!):AsyncJobStatus!
-                ",
+@"Start a job to restore Azure Native virtual machine with the selected snapshot. When started, this will replace the original VM with the selected snapshot.
+[GraphQL: startRestoreAzureNativeVirtualMachineJob]",
             Position = 0
         )]
-        public SwitchParameter startRestoreNativeVirtualMachineJob { get; set; }
+        public SwitchParameter Startrestorenativevirtualmachinejob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startExportNativeVirtualMachineJob parameter set
+        // Startexportnativevirtualmachinejob parameter set
         //
-        // GraphQL operation: startExportAzureNativeVirtualMachineJob(input: StartExportAzureNativeVirtualMachineJobInput!):AsyncJobStatus!
+        // [GraphQL: startExportAzureNativeVirtualMachineJob]
         //
         [Parameter(
-            ParameterSetName = "startExportNativeVirtualMachineJob",
+            ParameterSetName = "Startexportnativevirtualmachinejob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to export the Azure native virtual machine for a specified snapshot to a specified destination.
-                GraphQL operation: startExportAzureNativeVirtualMachineJob(input: StartExportAzureNativeVirtualMachineJobInput!):AsyncJobStatus!
-                ",
+@"Start a job to export the Azure native virtual machine for a specified snapshot to a specified destination.
+[GraphQL: startExportAzureNativeVirtualMachineJob]",
             Position = 0
         )]
-        public SwitchParameter startExportNativeVirtualMachineJob { get; set; }
+        public SwitchParameter Startexportnativevirtualmachinejob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // excludeNativeManagedDisksFromSnapshot parameter set
+        // Excludenativemanageddisksfromsnapshot parameter set
         //
-        // GraphQL operation: excludeAzureNativeManagedDisksFromSnapshot(input: ExcludeAzureNativeManagedDisksFromSnapshotInput!):Void
+        // [GraphQL: excludeAzureNativeManagedDisksFromSnapshot]
         //
         [Parameter(
-            ParameterSetName = "excludeNativeManagedDisksFromSnapshot",
+            ParameterSetName = "Excludenativemanageddisksfromsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Exclude the Managed Disks from snapshots, for the specified virtual machines.
-                GraphQL operation: excludeAzureNativeManagedDisksFromSnapshot(input: ExcludeAzureNativeManagedDisksFromSnapshotInput!):Void
-                ",
+@"Exclude the Managed Disks from snapshots, for the specified virtual machines.
+[GraphQL: excludeAzureNativeManagedDisksFromSnapshot]",
             Position = 0
         )]
-        public SwitchParameter excludeNativeManagedDisksFromSnapshot { get; set; }
+        public SwitchParameter Excludenativemanageddisksfromsnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startCreateNativeVirtualMachineSnapshotsJob parameter set
+        // Startcreatenativevirtualmachinesnapshotsjob parameter set
         //
-        // GraphQL operation: startCreateAzureNativeVirtualMachineSnapshotsJob(input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!):BatchAsyncJobStatus!
+        // [GraphQL: startCreateAzureNativeVirtualMachineSnapshotsJob]
         //
         [Parameter(
-            ParameterSetName = "startCreateNativeVirtualMachineSnapshotsJob",
+            ParameterSetName = "Startcreatenativevirtualmachinesnapshotsjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to create a snapshot for the Azure Native virtual machine identified by the IDs. When started, this will start taking an on-demand snapshot of the selected VMs as per the SLA Policy assigned to the respective VMs.
-                GraphQL operation: startCreateAzureNativeVirtualMachineSnapshotsJob(input: StartCreateAzureNativeVirtualMachineSnapshotsJobInput!):BatchAsyncJobStatus!
-                ",
+@"Start a job to create a snapshot for the Azure Native virtual machine identified by the IDs. When started, this will start taking an on-demand snapshot of the selected VMs as per the SLA Policy assigned to the respective VMs.
+[GraphQL: startCreateAzureNativeVirtualMachineSnapshotsJob]",
             Position = 0
         )]
-        public SwitchParameter startCreateNativeVirtualMachineSnapshotsJob { get; set; }
+        public SwitchParameter Startcreatenativevirtualmachinesnapshotsjob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startDisableNativeSubscriptionProtectionJob parameter set
+        // Startdisablenativesubscriptionprotectionjob parameter set
         //
-        // GraphQL operation: startDisableAzureNativeSubscriptionProtectionJob(input: StartDisableAzureNativeSubscriptionProtectionJobInput!):AsyncJobStatus!
+        // [GraphQL: startDisableAzureNativeSubscriptionProtectionJob]
         //
         [Parameter(
-            ParameterSetName = "startDisableNativeSubscriptionProtectionJob",
+            ParameterSetName = "Startdisablenativesubscriptionprotectionjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to disable protection for a specified Azure subscription.
-                GraphQL operation: startDisableAzureNativeSubscriptionProtectionJob(input: StartDisableAzureNativeSubscriptionProtectionJobInput!):AsyncJobStatus!
-                ",
+@"Start a job to disable protection for a specified Azure subscription.
+[GraphQL: startDisableAzureNativeSubscriptionProtectionJob]",
             Position = 0
         )]
-        public SwitchParameter startDisableNativeSubscriptionProtectionJob { get; set; }
+        public SwitchParameter Startdisablenativesubscriptionprotectionjob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startCreateNativeManagedDiskSnapshotsJob parameter set
+        // Startcreatenativemanageddisksnapshotsjob parameter set
         //
-        // GraphQL operation: startCreateAzureNativeManagedDiskSnapshotsJob(input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!):BatchAsyncJobStatus!
+        // [GraphQL: startCreateAzureNativeManagedDiskSnapshotsJob]
         //
         [Parameter(
-            ParameterSetName = "startCreateNativeManagedDiskSnapshotsJob",
+            ParameterSetName = "Startcreatenativemanageddisksnapshotsjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to create snapshots of the Azure Native Managed Disks identified by the given IDs. When started, this will start taking an on-demand snapshot of the selected disks as per the SLA Policy assigned to the respective disks.
-                GraphQL operation: startCreateAzureNativeManagedDiskSnapshotsJob(input: StartCreateAzureNativeManagedDiskSnapshotsJobInput!):BatchAsyncJobStatus!
-                ",
+@"Start a job to create snapshots of the Azure Native Managed Disks identified by the given IDs. When started, this will start taking an on-demand snapshot of the selected disks as per the SLA Policy assigned to the respective disks.
+[GraphQL: startCreateAzureNativeManagedDiskSnapshotsJob]",
             Position = 0
         )]
-        public SwitchParameter startCreateNativeManagedDiskSnapshotsJob { get; set; }
+        public SwitchParameter Startcreatenativemanageddisksnapshotsjob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startExportNativeManagedDiskJob parameter set
+        // Startexportnativemanageddiskjob parameter set
         //
-        // GraphQL operation: startExportAzureNativeManagedDiskJob(input: StartExportAzureNativeManagedDiskJobInput!):AsyncJobStatus!
+        // [GraphQL: startExportAzureNativeManagedDiskJob]
         //
         [Parameter(
-            ParameterSetName = "startExportNativeManagedDiskJob",
+            ParameterSetName = "Startexportnativemanageddiskjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to export the specified Azure Native Managed Disks to the desired destination.
-                GraphQL operation: startExportAzureNativeManagedDiskJob(input: StartExportAzureNativeManagedDiskJobInput!):AsyncJobStatus!
-                ",
+@"Start a job to export the specified Azure Native Managed Disks to the desired destination.
+[GraphQL: startExportAzureNativeManagedDiskJob]",
             Position = 0
         )]
-        public SwitchParameter startExportNativeManagedDiskJob { get; set; }
+        public SwitchParameter Startexportnativemanageddiskjob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startExportSqlDatabaseDbJob parameter set
+        // Startexportsqldatabasedbjob parameter set
         //
-        // GraphQL operation: startExportAzureSqlDatabaseDbJob(input: StartExportAzureSqlDatabaseDbJobInput!):AsyncJobStatus!
+        // [GraphQL: startExportAzureSqlDatabaseDbJob]
         //
         [Parameter(
-            ParameterSetName = "startExportSqlDatabaseDbJob",
+            ParameterSetName = "Startexportsqldatabasedbjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to export Azure SQL Database. The job creates a new Azure SQL Database with the same properties as that of the instance that is exported.
-                GraphQL operation: startExportAzureSqlDatabaseDbJob(input: StartExportAzureSqlDatabaseDbJobInput!):AsyncJobStatus!
-                ",
+@"Start a job to export Azure SQL Database. The job creates a new Azure SQL Database with the same properties as that of the instance that is exported.
+[GraphQL: startExportAzureSqlDatabaseDbJob]",
             Position = 0
         )]
-        public SwitchParameter startExportSqlDatabaseDbJob { get; set; }
+        public SwitchParameter Startexportsqldatabasedbjob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startExportSqlManagedInstanceDbJob parameter set
+        // Startexportsqlmanagedinstancedbjob parameter set
         //
-        // GraphQL operation: startExportAzureSqlManagedInstanceDbJob(input: StartExportAzureSqlManagedInstanceDbJobInput!):AsyncJobStatus!
+        // [GraphQL: startExportAzureSqlManagedInstanceDbJob]
         //
         [Parameter(
-            ParameterSetName = "startExportSqlManagedInstanceDbJob",
+            ParameterSetName = "Startexportsqlmanagedinstancedbjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start a job to export Azure SQL Managed Instance database. The job creates a new Azure SQL Managed Instance database with the same properties as that of the instance that is exported.
-                GraphQL operation: startExportAzureSqlManagedInstanceDbJob(input: StartExportAzureSqlManagedInstanceDbJobInput!):AsyncJobStatus!
-                ",
+@"Start a job to export Azure SQL Managed Instance database. The job creates a new Azure SQL Managed Instance database with the same properties as that of the instance that is exported.
+[GraphQL: startExportAzureSqlManagedInstanceDbJob]",
             Position = 0
         )]
-        public SwitchParameter startExportSqlManagedInstanceDbJob { get; set; }
+        public SwitchParameter Startexportsqlmanagedinstancedbjob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createAccount parameter set
+        // Createaccount parameter set
         //
-        // GraphQL operation: createAzureAccount(input: CreateAzureAccountInput!):CloudAccount!
+        // [GraphQL: createAzureAccount]
         //
         [Parameter(
-            ParameterSetName = "createAccount",
+            ParameterSetName = "Createaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: createAzureAccount(input: CreateAzureAccountInput!):CloudAccount!
-                ",
+@"
+[GraphQL: createAzureAccount]",
             Position = 0
         )]
-        public SwitchParameter createAccount { get; set; }
+        public SwitchParameter Createaccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateAccount parameter set
+        // Updateaccount parameter set
         //
-        // GraphQL operation: updateAzureAccount(input: UpdateAzureAccountInput!):CloudAccount!
+        // [GraphQL: updateAzureAccount]
         //
         [Parameter(
-            ParameterSetName = "updateAccount",
+            ParameterSetName = "Updateaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: updateAzureAccount(input: UpdateAzureAccountInput!):CloudAccount!
-                ",
+@"
+[GraphQL: updateAzureAccount]",
             Position = 0
         )]
-        public SwitchParameter updateAccount { get; set; }
+        public SwitchParameter Updateaccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createAutomaticTargetMapping parameter set
+        // Createautomatictargetmapping parameter set
         //
-        // GraphQL operation: createAutomaticAzureTargetMapping(input: CreateAutomaticAzureTargetMappingInput!):TargetMapping!
+        // [GraphQL: createAutomaticAzureTargetMapping]
         //
         [Parameter(
-            ParameterSetName = "createAutomaticTargetMapping",
+            ParameterSetName = "Createautomatictargetmapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: createAutomaticAzureTargetMapping(input: CreateAutomaticAzureTargetMappingInput!):TargetMapping!
-                ",
+@"
+[GraphQL: createAutomaticAzureTargetMapping]",
             Position = 0
         )]
-        public SwitchParameter createAutomaticTargetMapping { get; set; }
+        public SwitchParameter Createautomatictargetmapping { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createCloudNativeStorageSetting parameter set
+        // Createcloudnativestoragesetting parameter set
         //
-        // GraphQL operation: createCloudNativeAzureStorageSetting(input: CreateCloudNativeAzureStorageSettingInput!):CreateCloudNativeAzureStorageSettingReply!
+        // [GraphQL: createCloudNativeAzureStorageSetting]
         //
         [Parameter(
-            ParameterSetName = "createCloudNativeStorageSetting",
+            ParameterSetName = "Createcloudnativestoragesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Creates Storage Settings for the archival of azure cloud native protected objects
-                GraphQL operation: createCloudNativeAzureStorageSetting(input: CreateCloudNativeAzureStorageSettingInput!):CreateCloudNativeAzureStorageSettingReply!
-                ",
+@"Creates Storage Settings for the archival of azure cloud native protected objects
+[GraphQL: createCloudNativeAzureStorageSetting]",
             Position = 0
         )]
-        public SwitchParameter createCloudNativeStorageSetting { get; set; }
+        public SwitchParameter Createcloudnativestoragesetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createCloudNativeRcvStorageSetting parameter set
+        // Createcloudnativercvstoragesetting parameter set
         //
-        // GraphQL operation: createCloudNativeRcvAzureStorageSetting(input: CreateCloudNativeRcvAzureStorageSettingInput!):CreateCloudNativeRcvAzureStorageSettingReply!
+        // [GraphQL: createCloudNativeRcvAzureStorageSetting]
         //
         [Parameter(
-            ParameterSetName = "createCloudNativeRcvStorageSetting",
+            ParameterSetName = "Createcloudnativercvstoragesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create Rubrik Cloud Vault storage settings for archiving azure cloud native protected objects.
-                GraphQL operation: createCloudNativeRcvAzureStorageSetting(input: CreateCloudNativeRcvAzureStorageSettingInput!):CreateCloudNativeRcvAzureStorageSettingReply!
-                ",
+@"Create Rubrik Cloud Vault storage settings for archiving azure cloud native protected objects.
+[GraphQL: createCloudNativeRcvAzureStorageSetting]",
             Position = 0
         )]
-        public SwitchParameter createCloudNativeRcvStorageSetting { get; set; }
+        public SwitchParameter Createcloudnativercvstoragesetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateAutomaticTargetMapping parameter set
+        // Updateautomatictargetmapping parameter set
         //
-        // GraphQL operation: updateAutomaticAzureTargetMapping(input: UpdateAutomaticAzureTargetMappingInput!):TargetMapping!
+        // [GraphQL: updateAutomaticAzureTargetMapping]
         //
         [Parameter(
-            ParameterSetName = "updateAutomaticTargetMapping",
+            ParameterSetName = "Updateautomatictargetmapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: updateAutomaticAzureTargetMapping(input: UpdateAutomaticAzureTargetMappingInput!):TargetMapping!
-                ",
+@"
+[GraphQL: updateAutomaticAzureTargetMapping]",
             Position = 0
         )]
-        public SwitchParameter updateAutomaticTargetMapping { get; set; }
+        public SwitchParameter Updateautomatictargetmapping { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateCloudNativeStorageSetting parameter set
+        // Updatecloudnativestoragesetting parameter set
         //
-        // GraphQL operation: updateCloudNativeAzureStorageSetting(input: UpdateCloudNativeAzureStorageSettingInput!):UpdateCloudNativeAzureStorageSettingReply!
+        // [GraphQL: updateCloudNativeAzureStorageSetting]
         //
         [Parameter(
-            ParameterSetName = "updateCloudNativeStorageSetting",
+            ParameterSetName = "Updatecloudnativestoragesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: updateCloudNativeAzureStorageSetting(input: UpdateCloudNativeAzureStorageSettingInput!):UpdateCloudNativeAzureStorageSettingReply!
-                ",
+@"
+[GraphQL: updateCloudNativeAzureStorageSetting]",
             Position = 0
         )]
-        public SwitchParameter updateCloudNativeStorageSetting { get; set; }
+        public SwitchParameter Updatecloudnativestoragesetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateCloudNativeRcvStorageSetting parameter set
+        // Updatecloudnativercvstoragesetting parameter set
         //
-        // GraphQL operation: updateCloudNativeRcvAzureStorageSetting(input: UpdateCloudNativeRcvAzureStorageSettingInput!):UpdateCloudNativeRcvAzureStorageSettingReply!
+        // [GraphQL: updateCloudNativeRcvAzureStorageSetting]
         //
         [Parameter(
-            ParameterSetName = "updateCloudNativeRcvStorageSetting",
+            ParameterSetName = "Updatecloudnativercvstoragesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azure cloud native protected objects.
-                GraphQL operation: updateCloudNativeRcvAzureStorageSetting(input: UpdateCloudNativeRcvAzureStorageSettingInput!):UpdateCloudNativeRcvAzureStorageSettingReply!
-                ",
+@"Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azure cloud native protected objects.
+[GraphQL: updateCloudNativeRcvAzureStorageSetting]",
             Position = 0
         )]
-        public SwitchParameter updateCloudNativeRcvStorageSetting { get; set; }
+        public SwitchParameter Updatecloudnativercvstoragesetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createTarget parameter set
+        // Createtarget parameter set
         //
-        // GraphQL operation: createAzureTarget(input: CreateAzureTargetInput!):Target!
+        // [GraphQL: createAzureTarget]
         //
         [Parameter(
-            ParameterSetName = "createTarget",
+            ParameterSetName = "Createtarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Creates an Azure archival target on the Rubrik cluster.
-                GraphQL operation: createAzureTarget(input: CreateAzureTargetInput!):Target!
-                ",
+@"Creates an Azure archival target on the Rubrik cluster.
+[GraphQL: createAzureTarget]",
             Position = 0
         )]
-        public SwitchParameter createTarget { get; set; }
+        public SwitchParameter Createtarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateTarget parameter set
+        // Updatetarget parameter set
         //
-        // GraphQL operation: updateAzureTarget(input: UpdateAzureTargetInput!):Target!
+        // [GraphQL: updateAzureTarget]
         //
         [Parameter(
-            ParameterSetName = "updateTarget",
+            ParameterSetName = "Updatetarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: updateAzureTarget(input: UpdateAzureTargetInput!):Target!
-                ",
+@"
+[GraphQL: updateAzureTarget]",
             Position = 0
         )]
-        public SwitchParameter updateTarget { get; set; }
+        public SwitchParameter Updatetarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createReaderTarget parameter set
+        // Createreadertarget parameter set
         //
-        // GraphQL operation: createAzureReaderTarget(input: CreateAzureReaderTargetInput!):Target!
+        // [GraphQL: createAzureReaderTarget]
         //
         [Parameter(
-            ParameterSetName = "createReaderTarget",
+            ParameterSetName = "Createreadertarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Creates reader type for Azure archival location on a CDM cluster.
-                GraphQL operation: createAzureReaderTarget(input: CreateAzureReaderTargetInput!):Target!
-                ",
+@"Creates reader type for Azure archival location on a CDM cluster.
+[GraphQL: createAzureReaderTarget]",
             Position = 0
         )]
-        public SwitchParameter createReaderTarget { get; set; }
+        public SwitchParameter Createreadertarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startCloudAccountOauth parameter set
+        // Startcloudaccountoauth parameter set
         //
-        // GraphQL operation: startAzureCloudAccountOauth(input: StartAzureCloudAccountOauthInput!):StartAzureCloudAccountOauthReply!
+        // [GraphQL: startAzureCloudAccountOauth]
         //
         [Parameter(
-            ParameterSetName = "startCloudAccountOauth",
+            ParameterSetName = "Startcloudaccountoauth",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
-                GraphQL operation: startAzureCloudAccountOauth(input: StartAzureCloudAccountOauthInput!):StartAzureCloudAccountOauthReply!
-                ",
+@"Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
+[GraphQL: startAzureCloudAccountOauth]",
             Position = 0
         )]
-        public SwitchParameter startCloudAccountOauth { get; set; }
+        public SwitchParameter Startcloudaccountoauth { get; set; }
 
         
         // -------------------------------------------------------------------
-        // completeCloudAccountOauth parameter set
+        // Completecloudaccountoauth parameter set
         //
-        // GraphQL operation: completeAzureCloudAccountOauth(input: CompleteAzureCloudAccountOauthInput!):CompleteAzureCloudAccountOauthReply!
+        // [GraphQL: completeAzureCloudAccountOauth]
         //
         [Parameter(
-            ParameterSetName = "completeCloudAccountOauth",
+            ParameterSetName = "Completecloudaccountoauth",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Complete the Azure OAuth flow and pass the authorization code.
-                GraphQL operation: completeAzureCloudAccountOauth(input: CompleteAzureCloudAccountOauthInput!):CompleteAzureCloudAccountOauthReply!
-                ",
+@"Complete the Azure OAuth flow and pass the authorization code.
+[GraphQL: completeAzureCloudAccountOauth]",
             Position = 0
         )]
-        public SwitchParameter completeCloudAccountOauth { get; set; }
+        public SwitchParameter Completecloudaccountoauth { get; set; }
 
         
         // -------------------------------------------------------------------
-        // setCloudAccountCustomerAppCredential parameter set
+        // Setcloudaccountcustomerappcredential parameter set
         //
-        // GraphQL operation: setAzureCloudAccountCustomerAppCredentials(input: SetAzureCloudAccountCustomerAppCredentialsInput!):Boolean!
+        // [GraphQL: setAzureCloudAccountCustomerAppCredentials]
         //
         [Parameter(
-            ParameterSetName = "setCloudAccountCustomerAppCredential",
+            ParameterSetName = "Setcloudaccountcustomerappcredential",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Set credentials for the customer application, for the tenant domain name.
-                GraphQL operation: setAzureCloudAccountCustomerAppCredentials(input: SetAzureCloudAccountCustomerAppCredentialsInput!):Boolean!
-                ",
+@"Set credentials for the customer application, for the tenant domain name.
+[GraphQL: setAzureCloudAccountCustomerAppCredentials]",
             Position = 0
         )]
-        public SwitchParameter setCloudAccountCustomerAppCredential { get; set; }
+        public SwitchParameter Setcloudaccountcustomerappcredential { get; set; }
 
         
         // -------------------------------------------------------------------
-        // addCloudAccount parameter set
+        // Addcloudaccount parameter set
         //
-        // GraphQL operation: addAzureCloudAccount(input: AddAzureCloudAccountInput!):AddAzureCloudAccountReply!
+        // [GraphQL: addAzureCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "addCloudAccount",
+            ParameterSetName = "Addcloudaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Add the Azure Subscriptions cloud account for the given feature.
-                GraphQL operation: addAzureCloudAccount(input: AddAzureCloudAccountInput!):AddAzureCloudAccountReply!
-                ",
+@"Add the Azure Subscriptions cloud account for the given feature.
+[GraphQL: addAzureCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter addCloudAccount { get; set; }
+        public SwitchParameter Addcloudaccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // addCloudAccountWithoutOauth parameter set
+        // Addcloudaccountwithoutoauth parameter set
         //
-        // GraphQL operation: addAzureCloudAccountWithoutOauth(input: AddAzureCloudAccountWithoutOauthInput!):AddAzureCloudAccountWithoutOauthReply!
+        // [GraphQL: addAzureCloudAccountWithoutOauth]
         //
         [Parameter(
-            ParameterSetName = "addCloudAccountWithoutOauth",
+            ParameterSetName = "Addcloudaccountwithoutoauth",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Add the Azure Subscription cloud account for the given feature without OAuth.
-                GraphQL operation: addAzureCloudAccountWithoutOauth(input: AddAzureCloudAccountWithoutOauthInput!):AddAzureCloudAccountWithoutOauthReply!
-                ",
+@"Add the Azure Subscription cloud account for the given feature without OAuth.
+[GraphQL: addAzureCloudAccountWithoutOauth]",
             Position = 0
         )]
-        public SwitchParameter addCloudAccountWithoutOauth { get; set; }
+        public SwitchParameter Addcloudaccountwithoutoauth { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteCloudAccount parameter set
+        // Deletecloudaccount parameter set
         //
-        // GraphQL operation: deleteAzureCloudAccount(input: DeleteAzureCloudAccountInput!):DeleteAzureCloudAccountReply!
+        // [GraphQL: deleteAzureCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "deleteCloudAccount",
+            ParameterSetName = "Deletecloudaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete the Azure Subscriptions cloud account for the given feature.
-                GraphQL operation: deleteAzureCloudAccount(input: DeleteAzureCloudAccountInput!):DeleteAzureCloudAccountReply!
-                ",
+@"Delete the Azure Subscriptions cloud account for the given feature.
+[GraphQL: deleteAzureCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter deleteCloudAccount { get; set; }
+        public SwitchParameter Deletecloudaccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteCloudAccountWithoutOauth parameter set
+        // Deletecloudaccountwithoutoauth parameter set
         //
-        // GraphQL operation: deleteAzureCloudAccountWithoutOauth(input: DeleteAzureCloudAccountWithoutOauthInput!):DeleteAzureCloudAccountWithoutOauthReply!
+        // [GraphQL: deleteAzureCloudAccountWithoutOauth]
         //
         [Parameter(
-            ParameterSetName = "deleteCloudAccountWithoutOauth",
+            ParameterSetName = "Deletecloudaccountwithoutoauth",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete the Azure Subscriptions cloud account for the given feature without OAuth.
-                GraphQL operation: deleteAzureCloudAccountWithoutOauth(input: DeleteAzureCloudAccountWithoutOauthInput!):DeleteAzureCloudAccountWithoutOauthReply!
-                ",
+@"Delete the Azure Subscriptions cloud account for the given feature without OAuth.
+[GraphQL: deleteAzureCloudAccountWithoutOauth]",
             Position = 0
         )]
-        public SwitchParameter deleteCloudAccountWithoutOauth { get; set; }
+        public SwitchParameter Deletecloudaccountwithoutoauth { get; set; }
 
         
         // -------------------------------------------------------------------
-        // upgradeCloudAccount parameter set
+        // Upgradecloudaccount parameter set
         //
-        // GraphQL operation: upgradeAzureCloudAccount(input: UpgradeAzureCloudAccountInput!):UpgradeAzureCloudAccountReply!
+        // [GraphQL: upgradeAzureCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "upgradeCloudAccount",
+            ParameterSetName = "Upgradecloudaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update permissions of the Azure Subscriptions cloud account for given feature.
-                GraphQL operation: upgradeAzureCloudAccount(input: UpgradeAzureCloudAccountInput!):UpgradeAzureCloudAccountReply!
-                ",
+@"Update permissions of the Azure Subscriptions cloud account for given feature.
+[GraphQL: upgradeAzureCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter upgradeCloudAccount { get; set; }
+        public SwitchParameter Upgradecloudaccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateCustomerAppPermissionForSql parameter set
+        // Updatecustomerapppermissionforsql parameter set
         //
-        // GraphQL operation: updateCustomerAppPermissionForAzureSql:Void
+        // [GraphQL: updateCustomerAppPermissionForAzureSql]
         //
         [Parameter(
-            ParameterSetName = "updateCustomerAppPermissionForSql",
+            ParameterSetName = "Updatecustomerapppermissionforsql",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
-                GraphQL operation: updateCustomerAppPermissionForAzureSql:Void
-                ",
+@"Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
+[GraphQL: updateCustomerAppPermissionForAzureSql]",
             Position = 0
         )]
-        public SwitchParameter updateCustomerAppPermissionForSql { get; set; }
+        public SwitchParameter Updatecustomerapppermissionforsql { get; set; }
 
         
         // -------------------------------------------------------------------
-        // startDisableCloudAccountJob parameter set
+        // Startdisablecloudaccountjob parameter set
         //
-        // GraphQL operation: startDisableAzureCloudAccountJob(input: StartDisableAzureCloudAccountJobInput!):BatchAsyncJobStatus!
+        // [GraphQL: startDisableAzureCloudAccountJob]
         //
         [Parameter(
-            ParameterSetName = "startDisableCloudAccountJob",
+            ParameterSetName = "Startdisablecloudaccountjob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. When completed, the status of cloud account feature will change to Disabled and the feature will become eligible to be deleted.
-                GraphQL operation: startDisableAzureCloudAccountJob(input: StartDisableAzureCloudAccountJobInput!):BatchAsyncJobStatus!
-                ",
+@"Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. When completed, the status of cloud account feature will change to Disabled and the feature will become eligible to be deleted.
+[GraphQL: startDisableAzureCloudAccountJob]",
             Position = 0
         )]
-        public SwitchParameter startDisableCloudAccountJob { get; set; }
+        public SwitchParameter Startdisablecloudaccountjob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateCloudAccount parameter set
+        // Updatecloudaccount parameter set
         //
-        // GraphQL operation: updateAzureCloudAccount(input: UpdateAzureCloudAccountInput!):UpdateAzureCloudAccountReply!
+        // [GraphQL: updateAzureCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "updateCloudAccount",
+            ParameterSetName = "Updatecloudaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update names of the Azure Subscriptions cloud account and regions for the given feature.
-                GraphQL operation: updateAzureCloudAccount(input: UpdateAzureCloudAccountInput!):UpdateAzureCloudAccountReply!
-                ",
+@"Update names of the Azure Subscriptions cloud account and regions for the given feature.
+[GraphQL: updateAzureCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter updateCloudAccount { get; set; }
+        public SwitchParameter Updatecloudaccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // mapCloudAccountToPersistentStorageLocation parameter set
+        // Mapcloudaccounttopersistentstoragelocation parameter set
         //
-        // GraphQL operation: mapAzureCloudAccountToPersistentStorageLocation(input: MapAzureCloudAccountToPersistentStorageLocationInput!):MapAzureCloudAccountToPersistentStorageLocationReply!
+        // [GraphQL: mapAzureCloudAccountToPersistentStorageLocation]
         //
         [Parameter(
-            ParameterSetName = "mapCloudAccountToPersistentStorageLocation",
+            ParameterSetName = "Mapcloudaccounttopersistentstoragelocation",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Map Azure cloud accounts to a persistent storage location.
-                GraphQL operation: mapAzureCloudAccountToPersistentStorageLocation(input: MapAzureCloudAccountToPersistentStorageLocationInput!):MapAzureCloudAccountToPersistentStorageLocationReply!
-                ",
+@"Map Azure cloud accounts to a persistent storage location.
+[GraphQL: mapAzureCloudAccountToPersistentStorageLocation]",
             Position = 0
         )]
-        public SwitchParameter mapCloudAccountToPersistentStorageLocation { get; set; }
+        public SwitchParameter Mapcloudaccounttopersistentstoragelocation { get; set; }
 
         
         // -------------------------------------------------------------------
-        // addCloudAccountExocomputeConfiguration parameter set
+        // Addcloudaccountexocomputeconfiguration parameter set
         //
-        // GraphQL operation: addAzureCloudAccountExocomputeConfigurations(input: AddAzureCloudAccountExocomputeConfigurationsInput!):AddAzureCloudAccountExocomputeConfigurationsReply!
+        // [GraphQL: addAzureCloudAccountExocomputeConfigurations]
         //
         [Parameter(
-            ParameterSetName = "addCloudAccountExocomputeConfiguration",
+            ParameterSetName = "Addcloudaccountexocomputeconfiguration",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Add Exocompute configurations for an Azure Cloud Account.
-                GraphQL operation: addAzureCloudAccountExocomputeConfigurations(input: AddAzureCloudAccountExocomputeConfigurationsInput!):AddAzureCloudAccountExocomputeConfigurationsReply!
-                ",
+@"Add Exocompute configurations for an Azure Cloud Account.
+[GraphQL: addAzureCloudAccountExocomputeConfigurations]",
             Position = 0
         )]
-        public SwitchParameter addCloudAccountExocomputeConfiguration { get; set; }
+        public SwitchParameter Addcloudaccountexocomputeconfiguration { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteCloudAccountExocomputeConfiguration parameter set
+        // Deletecloudaccountexocomputeconfiguration parameter set
         //
-        // GraphQL operation: deleteAzureCloudAccountExocomputeConfigurations(input: DeleteAzureCloudAccountExocomputeConfigurationsInput!):DeleteAzureCloudAccountExocomputeConfigurationsReply!
+        // [GraphQL: deleteAzureCloudAccountExocomputeConfigurations]
         //
         [Parameter(
-            ParameterSetName = "deleteCloudAccountExocomputeConfiguration",
+            ParameterSetName = "Deletecloudaccountexocomputeconfiguration",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete Exocompute configurations for an Azure Cloud Account.
-                GraphQL operation: deleteAzureCloudAccountExocomputeConfigurations(input: DeleteAzureCloudAccountExocomputeConfigurationsInput!):DeleteAzureCloudAccountExocomputeConfigurationsReply!
-                ",
+@"Delete Exocompute configurations for an Azure Cloud Account.
+[GraphQL: deleteAzureCloudAccountExocomputeConfigurations]",
             Position = 0
         )]
-        public SwitchParameter deleteCloudAccountExocomputeConfiguration { get; set; }
+        public SwitchParameter Deletecloudaccountexocomputeconfiguration { get; set; }
 
         
         // -------------------------------------------------------------------
-        // mapCloudAccountExocomputeSubscription parameter set
+        // Mapcloudaccountexocomputesubscription parameter set
         //
-        // GraphQL operation: mapAzureCloudAccountExocomputeSubscription(input: MapAzureCloudAccountExocomputeSubscriptionInput!):MapAzureCloudAccountExocomputeSubscriptionReply!
+        // [GraphQL: mapAzureCloudAccountExocomputeSubscription]
         //
         [Parameter(
-            ParameterSetName = "mapCloudAccountExocomputeSubscription",
+            ParameterSetName = "Mapcloudaccountexocomputesubscription",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Map Azure cloud accounts to an Exocompute subscription.
-                GraphQL operation: mapAzureCloudAccountExocomputeSubscription(input: MapAzureCloudAccountExocomputeSubscriptionInput!):MapAzureCloudAccountExocomputeSubscriptionReply!
-                ",
+@"Map Azure cloud accounts to an Exocompute subscription.
+[GraphQL: mapAzureCloudAccountExocomputeSubscription]",
             Position = 0
         )]
-        public SwitchParameter mapCloudAccountExocomputeSubscription { get; set; }
+        public SwitchParameter Mapcloudaccountexocomputesubscription { get; set; }
 
         
         // -------------------------------------------------------------------
-        // unmapCloudAccountExocomputeSubscription parameter set
+        // Unmapcloudaccountexocomputesubscription parameter set
         //
-        // GraphQL operation: unmapAzureCloudAccountExocomputeSubscription(input: UnmapAzureCloudAccountExocomputeSubscriptionInput!):UnmapAzureCloudAccountExocomputeSubscriptionReply!
+        // [GraphQL: unmapAzureCloudAccountExocomputeSubscription]
         //
         [Parameter(
-            ParameterSetName = "unmapCloudAccountExocomputeSubscription",
+            ParameterSetName = "Unmapcloudaccountexocomputesubscription",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Unmap Azure cloud accounts from the mapped Exocompute subscription.
-                GraphQL operation: unmapAzureCloudAccountExocomputeSubscription(input: UnmapAzureCloudAccountExocomputeSubscriptionInput!):UnmapAzureCloudAccountExocomputeSubscriptionReply!
-                ",
+@"Unmap Azure cloud accounts from the mapped Exocompute subscription.
+[GraphQL: unmapAzureCloudAccountExocomputeSubscription]",
             Position = 0
         )]
-        public SwitchParameter unmapCloudAccountExocomputeSubscription { get; set; }
+        public SwitchParameter Unmapcloudaccountexocomputesubscription { get; set; }
 
         
         // -------------------------------------------------------------------
-        // upgradeCloudAccountPermissionsWithoutOauth parameter set
+        // Upgradecloudaccountpermissionswithoutoauth parameter set
         //
-        // GraphQL operation: upgradeAzureCloudAccountPermissionsWithoutOauth(input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!):UpgradeAzureCloudAccountPermissionsWithoutOauthReply!
+        // [GraphQL: upgradeAzureCloudAccountPermissionsWithoutOauth]
         //
         [Parameter(
-            ParameterSetName = "upgradeCloudAccountPermissionsWithoutOauth",
+            ParameterSetName = "Upgradecloudaccountpermissionswithoutoauth",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Set Azure Cloud Account feature status to Connected from Update Permissions state without any permission validation. It should be used by caution from cloud accounts which have been set up without using OAuth, only after adding the latest permissions that are required.
-                GraphQL operation: upgradeAzureCloudAccountPermissionsWithoutOauth(input: UpgradeAzureCloudAccountPermissionsWithoutOauthInput!):UpgradeAzureCloudAccountPermissionsWithoutOauthReply!
-                ",
+@"Set Azure Cloud Account feature status to Connected from Update Permissions state without any permission validation. It should be used by caution from cloud accounts which have been set up without using OAuth, only after adding the latest permissions that are required.
+[GraphQL: upgradeAzureCloudAccountPermissionsWithoutOauth]",
             Position = 0
         )]
-        public SwitchParameter upgradeCloudAccountPermissionsWithoutOauth { get; set; }
+        public SwitchParameter Upgradecloudaccountpermissionswithoutoauth { get; set; }
 
         
         // -------------------------------------------------------------------
-        // OauthConsentKickoff parameter set
+        // Oauthconsentkickoff parameter set
         //
-        // GraphQL operation: azureOauthConsentKickoff:AzureOauthConsentKickoffReply!
+        // [GraphQL: azureOauthConsentKickoff]
         //
         [Parameter(
-            ParameterSetName = "OauthConsentKickoff",
+            ParameterSetName = "Oauthconsentkickoff",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Kicks off an OAuth consent flow for Azure resource access.
-                GraphQL operation: azureOauthConsentKickoff:AzureOauthConsentKickoffReply!
-                ",
+@"Kicks off an OAuth consent flow for Azure resource access.
+[GraphQL: azureOauthConsentKickoff]",
             Position = 0
         )]
-        public SwitchParameter OauthConsentKickoff { get; set; }
+        public SwitchParameter Oauthconsentkickoff { get; set; }
 
         
         // -------------------------------------------------------------------
-        // OauthConsentComplete parameter set
+        // Oauthconsentcomplete parameter set
         //
-        // GraphQL operation: azureOauthConsentComplete(input: AzureOauthConsentCompleteInput!):RequestStatus!
+        // [GraphQL: azureOauthConsentComplete]
         //
         [Parameter(
-            ParameterSetName = "OauthConsentComplete",
+            ParameterSetName = "Oauthconsentcomplete",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Completes an OAuth consent flow for Azure resource access.
-                GraphQL operation: azureOauthConsentComplete(input: AzureOauthConsentCompleteInput!):RequestStatus!
-                ",
+@"Completes an OAuth consent flow for Azure resource access.
+[GraphQL: azureOauthConsentComplete]",
             Position = 0
         )]
-        public SwitchParameter OauthConsentComplete { get; set; }
+        public SwitchParameter Oauthconsentcomplete { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createSaasAppAad parameter set
+        // Createsaasappaad parameter set
         //
-        // GraphQL operation: createAzureSaasAppAad:CreateAzureSaasAppAadReply!
+        // [GraphQL: createAzureSaasAppAad]
         //
         [Parameter(
-            ParameterSetName = "createSaasAppAad",
+            ParameterSetName = "Createsaasappaad",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create or get an Azure AAD application.
-                GraphQL operation: createAzureSaasAppAad:CreateAzureSaasAppAadReply!
-                ",
+@"Create or get an Azure AAD application.
+[GraphQL: createAzureSaasAppAad]",
             Position = 0
         )]
-        public SwitchParameter createSaasAppAad { get; set; }
+        public SwitchParameter Createsaasappaad { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createCluster parameter set
+        // Createcluster parameter set
         //
-        // GraphQL operation: createAzureCluster(input: CreateAzureClusterInput!):CcProvisionJobReply!
+        // [GraphQL: createAzureCluster]
         //
         [Parameter(
-            ParameterSetName = "createCluster",
+            ParameterSetName = "Createcluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a Rubrik Cloud Cluster on Azure.
-                GraphQL operation: createAzureCluster(input: CreateAzureClusterInput!):CcProvisionJobReply!
-                ",
+@"Create a Rubrik Cloud Cluster on Azure.
+[GraphQL: createAzureCluster]",
             Position = 0
         )]
-        public SwitchParameter createCluster { get; set; }
+        public SwitchParameter Createcluster { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteCluster parameter set
+        // Deletecluster parameter set
         //
-        // GraphQL operation: deleteAzureCluster(input: DeleteAzureClusterInput!):CcProvisionJobReply!
+        // [GraphQL: deleteAzureCluster]
         //
         [Parameter(
-            ParameterSetName = "deleteCluster",
+            ParameterSetName = "Deletecluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete a Rubrik Cloud Cluster on Azure.
-                GraphQL operation: deleteAzureCluster(input: DeleteAzureClusterInput!):CcProvisionJobReply!
-                ",
+@"Delete a Rubrik Cloud Cluster on Azure.
+[GraphQL: deleteAzureCluster]",
             Position = 0
         )]
-        public SwitchParameter deleteCluster { get; set; }
+        public SwitchParameter Deletecluster { get; set; }
 
         
         // -------------------------------------------------------------------
-        // kickoffAdAppSetup parameter set
+        // Kickoffadappsetup parameter set
         //
-        // GraphQL operation: kickoffAzureAdAppSetup(input: KickoffAzureAdAppSetupInput!):KickoffAzureAdAppSetupReply!
+        // [GraphQL: kickoffAzureAdAppSetup]
         //
         [Parameter(
-            ParameterSetName = "kickoffAdAppSetup",
+            ParameterSetName = "Kickoffadappsetup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Initiates the Azure AD app creation flow.
-                GraphQL operation: kickoffAzureAdAppSetup(input: KickoffAzureAdAppSetupInput!):KickoffAzureAdAppSetupReply!
-                ",
+@"Initiates the Azure AD app creation flow.
+[GraphQL: kickoffAzureAdAppSetup]",
             Position = 0
         )]
-        public SwitchParameter kickoffAdAppSetup { get; set; }
+        public SwitchParameter Kickoffadappsetup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // completeAdAppSetup parameter set
+        // Completeadappsetup parameter set
         //
-        // GraphQL operation: completeAzureAdAppSetup(input: CompleteAzureAdAppSetupInput!):CompleteAzureAdAppSetupReply!
+        // [GraphQL: completeAzureAdAppSetup]
         //
         [Parameter(
-            ParameterSetName = "completeAdAppSetup",
+            ParameterSetName = "Completeadappsetup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Completes the creation flow for an Azure AD app.
-                GraphQL operation: completeAzureAdAppSetup(input: CompleteAzureAdAppSetupInput!):CompleteAzureAdAppSetupReply!
-                ",
+@"Completes the creation flow for an Azure AD app.
+[GraphQL: completeAzureAdAppSetup]",
             Position = 0
         )]
-        public SwitchParameter completeAdAppSetup { get; set; }
+        public SwitchParameter Completeadappsetup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteAdDirectory parameter set
+        // Deleteaddirectory parameter set
         //
-        // GraphQL operation: deleteAzureAdDirectory(workloadFid: UUID!):CreateOnDemandJobReply!
+        // [GraphQL: deleteAzureAdDirectory]
         //
         [Parameter(
-            ParameterSetName = "deleteAdDirectory",
+            ParameterSetName = "Deleteaddirectory",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Deletes an Azure AD directory.
-                GraphQL operation: deleteAzureAdDirectory(workloadFid: UUID!):CreateOnDemandJobReply!
-                ",
+@"Deletes an Azure AD directory.
+[GraphQL: deleteAzureAdDirectory]",
             Position = 0
         )]
-        public SwitchParameter deleteAdDirectory { get; set; }
+        public SwitchParameter Deleteaddirectory { get; set; }
 
         [Parameter(
-            ParameterSetName = "deleteAdDirectory",
+            ParameterSetName = "Deleteaddirectory",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The FID of the workload.
-                GraphQL argument workloadFid: UUID!
-                "
+@"The FID of the workload.
+GraphQL argument workloadFid: UUID!"
         )]
         public System.String? WorkloadFid { get; set; }
         
         // -------------------------------------------------------------------
-        // backupAdDirectory parameter set
+        // Backupaddirectory parameter set
         //
-        // GraphQL operation: backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!):[CreateOnDemandJobReply!]!
+        // [GraphQL: backupAzureAdDirectory]
         //
         [Parameter(
-            ParameterSetName = "backupAdDirectory",
+            ParameterSetName = "Backupaddirectory",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Backs up the Azure AD directory.
-                GraphQL operation: backupAzureAdDirectory(input: BackupAzureAdDirectoryInput!):[CreateOnDemandJobReply!]!
-                ",
+@"Backs up the Azure AD directory.
+[GraphQL: backupAzureAdDirectory]",
             Position = 0
         )]
-        public SwitchParameter backupAdDirectory { get; set; }
+        public SwitchParameter Backupaddirectory { get; set; }
 
 
         protected override void ProcessRecord()
@@ -996,146 +898,146 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "startRefreshNativeSubscriptionsJob":
-                        this.ProcessRecord_startRefreshNativeSubscriptionsJob();
+                    case "Startrefreshnativesubscriptionsjob":
+                        this.ProcessRecord_Startrefreshnativesubscriptionsjob();
                         break;
-                    case "startRestoreNativeVirtualMachineJob":
-                        this.ProcessRecord_startRestoreNativeVirtualMachineJob();
+                    case "Startrestorenativevirtualmachinejob":
+                        this.ProcessRecord_Startrestorenativevirtualmachinejob();
                         break;
-                    case "startExportNativeVirtualMachineJob":
-                        this.ProcessRecord_startExportNativeVirtualMachineJob();
+                    case "Startexportnativevirtualmachinejob":
+                        this.ProcessRecord_Startexportnativevirtualmachinejob();
                         break;
-                    case "excludeNativeManagedDisksFromSnapshot":
-                        this.ProcessRecord_excludeNativeManagedDisksFromSnapshot();
+                    case "Excludenativemanageddisksfromsnapshot":
+                        this.ProcessRecord_Excludenativemanageddisksfromsnapshot();
                         break;
-                    case "startCreateNativeVirtualMachineSnapshotsJob":
-                        this.ProcessRecord_startCreateNativeVirtualMachineSnapshotsJob();
+                    case "Startcreatenativevirtualmachinesnapshotsjob":
+                        this.ProcessRecord_Startcreatenativevirtualmachinesnapshotsjob();
                         break;
-                    case "startDisableNativeSubscriptionProtectionJob":
-                        this.ProcessRecord_startDisableNativeSubscriptionProtectionJob();
+                    case "Startdisablenativesubscriptionprotectionjob":
+                        this.ProcessRecord_Startdisablenativesubscriptionprotectionjob();
                         break;
-                    case "startCreateNativeManagedDiskSnapshotsJob":
-                        this.ProcessRecord_startCreateNativeManagedDiskSnapshotsJob();
+                    case "Startcreatenativemanageddisksnapshotsjob":
+                        this.ProcessRecord_Startcreatenativemanageddisksnapshotsjob();
                         break;
-                    case "startExportNativeManagedDiskJob":
-                        this.ProcessRecord_startExportNativeManagedDiskJob();
+                    case "Startexportnativemanageddiskjob":
+                        this.ProcessRecord_Startexportnativemanageddiskjob();
                         break;
-                    case "startExportSqlDatabaseDbJob":
-                        this.ProcessRecord_startExportSqlDatabaseDbJob();
+                    case "Startexportsqldatabasedbjob":
+                        this.ProcessRecord_Startexportsqldatabasedbjob();
                         break;
-                    case "startExportSqlManagedInstanceDbJob":
-                        this.ProcessRecord_startExportSqlManagedInstanceDbJob();
+                    case "Startexportsqlmanagedinstancedbjob":
+                        this.ProcessRecord_Startexportsqlmanagedinstancedbjob();
                         break;
-                    case "createAccount":
-                        this.ProcessRecord_createAccount();
+                    case "Createaccount":
+                        this.ProcessRecord_Createaccount();
                         break;
-                    case "updateAccount":
-                        this.ProcessRecord_updateAccount();
+                    case "Updateaccount":
+                        this.ProcessRecord_Updateaccount();
                         break;
-                    case "createAutomaticTargetMapping":
-                        this.ProcessRecord_createAutomaticTargetMapping();
+                    case "Createautomatictargetmapping":
+                        this.ProcessRecord_Createautomatictargetmapping();
                         break;
-                    case "createCloudNativeStorageSetting":
-                        this.ProcessRecord_createCloudNativeStorageSetting();
+                    case "Createcloudnativestoragesetting":
+                        this.ProcessRecord_Createcloudnativestoragesetting();
                         break;
-                    case "createCloudNativeRcvStorageSetting":
-                        this.ProcessRecord_createCloudNativeRcvStorageSetting();
+                    case "Createcloudnativercvstoragesetting":
+                        this.ProcessRecord_Createcloudnativercvstoragesetting();
                         break;
-                    case "updateAutomaticTargetMapping":
-                        this.ProcessRecord_updateAutomaticTargetMapping();
+                    case "Updateautomatictargetmapping":
+                        this.ProcessRecord_Updateautomatictargetmapping();
                         break;
-                    case "updateCloudNativeStorageSetting":
-                        this.ProcessRecord_updateCloudNativeStorageSetting();
+                    case "Updatecloudnativestoragesetting":
+                        this.ProcessRecord_Updatecloudnativestoragesetting();
                         break;
-                    case "updateCloudNativeRcvStorageSetting":
-                        this.ProcessRecord_updateCloudNativeRcvStorageSetting();
+                    case "Updatecloudnativercvstoragesetting":
+                        this.ProcessRecord_Updatecloudnativercvstoragesetting();
                         break;
-                    case "createTarget":
-                        this.ProcessRecord_createTarget();
+                    case "Createtarget":
+                        this.ProcessRecord_Createtarget();
                         break;
-                    case "updateTarget":
-                        this.ProcessRecord_updateTarget();
+                    case "Updatetarget":
+                        this.ProcessRecord_Updatetarget();
                         break;
-                    case "createReaderTarget":
-                        this.ProcessRecord_createReaderTarget();
+                    case "Createreadertarget":
+                        this.ProcessRecord_Createreadertarget();
                         break;
-                    case "startCloudAccountOauth":
-                        this.ProcessRecord_startCloudAccountOauth();
+                    case "Startcloudaccountoauth":
+                        this.ProcessRecord_Startcloudaccountoauth();
                         break;
-                    case "completeCloudAccountOauth":
-                        this.ProcessRecord_completeCloudAccountOauth();
+                    case "Completecloudaccountoauth":
+                        this.ProcessRecord_Completecloudaccountoauth();
                         break;
-                    case "setCloudAccountCustomerAppCredential":
-                        this.ProcessRecord_setCloudAccountCustomerAppCredential();
+                    case "Setcloudaccountcustomerappcredential":
+                        this.ProcessRecord_Setcloudaccountcustomerappcredential();
                         break;
-                    case "addCloudAccount":
-                        this.ProcessRecord_addCloudAccount();
+                    case "Addcloudaccount":
+                        this.ProcessRecord_Addcloudaccount();
                         break;
-                    case "addCloudAccountWithoutOauth":
-                        this.ProcessRecord_addCloudAccountWithoutOauth();
+                    case "Addcloudaccountwithoutoauth":
+                        this.ProcessRecord_Addcloudaccountwithoutoauth();
                         break;
-                    case "deleteCloudAccount":
-                        this.ProcessRecord_deleteCloudAccount();
+                    case "Deletecloudaccount":
+                        this.ProcessRecord_Deletecloudaccount();
                         break;
-                    case "deleteCloudAccountWithoutOauth":
-                        this.ProcessRecord_deleteCloudAccountWithoutOauth();
+                    case "Deletecloudaccountwithoutoauth":
+                        this.ProcessRecord_Deletecloudaccountwithoutoauth();
                         break;
-                    case "upgradeCloudAccount":
-                        this.ProcessRecord_upgradeCloudAccount();
+                    case "Upgradecloudaccount":
+                        this.ProcessRecord_Upgradecloudaccount();
                         break;
-                    case "updateCustomerAppPermissionForSql":
-                        this.ProcessRecord_updateCustomerAppPermissionForSql();
+                    case "Updatecustomerapppermissionforsql":
+                        this.ProcessRecord_Updatecustomerapppermissionforsql();
                         break;
-                    case "startDisableCloudAccountJob":
-                        this.ProcessRecord_startDisableCloudAccountJob();
+                    case "Startdisablecloudaccountjob":
+                        this.ProcessRecord_Startdisablecloudaccountjob();
                         break;
-                    case "updateCloudAccount":
-                        this.ProcessRecord_updateCloudAccount();
+                    case "Updatecloudaccount":
+                        this.ProcessRecord_Updatecloudaccount();
                         break;
-                    case "mapCloudAccountToPersistentStorageLocation":
-                        this.ProcessRecord_mapCloudAccountToPersistentStorageLocation();
+                    case "Mapcloudaccounttopersistentstoragelocation":
+                        this.ProcessRecord_Mapcloudaccounttopersistentstoragelocation();
                         break;
-                    case "addCloudAccountExocomputeConfiguration":
-                        this.ProcessRecord_addCloudAccountExocomputeConfiguration();
+                    case "Addcloudaccountexocomputeconfiguration":
+                        this.ProcessRecord_Addcloudaccountexocomputeconfiguration();
                         break;
-                    case "deleteCloudAccountExocomputeConfiguration":
-                        this.ProcessRecord_deleteCloudAccountExocomputeConfiguration();
+                    case "Deletecloudaccountexocomputeconfiguration":
+                        this.ProcessRecord_Deletecloudaccountexocomputeconfiguration();
                         break;
-                    case "mapCloudAccountExocomputeSubscription":
-                        this.ProcessRecord_mapCloudAccountExocomputeSubscription();
+                    case "Mapcloudaccountexocomputesubscription":
+                        this.ProcessRecord_Mapcloudaccountexocomputesubscription();
                         break;
-                    case "unmapCloudAccountExocomputeSubscription":
-                        this.ProcessRecord_unmapCloudAccountExocomputeSubscription();
+                    case "Unmapcloudaccountexocomputesubscription":
+                        this.ProcessRecord_Unmapcloudaccountexocomputesubscription();
                         break;
-                    case "upgradeCloudAccountPermissionsWithoutOauth":
-                        this.ProcessRecord_upgradeCloudAccountPermissionsWithoutOauth();
+                    case "Upgradecloudaccountpermissionswithoutoauth":
+                        this.ProcessRecord_Upgradecloudaccountpermissionswithoutoauth();
                         break;
-                    case "OauthConsentKickoff":
-                        this.ProcessRecord_OauthConsentKickoff();
+                    case "Oauthconsentkickoff":
+                        this.ProcessRecord_Oauthconsentkickoff();
                         break;
-                    case "OauthConsentComplete":
-                        this.ProcessRecord_OauthConsentComplete();
+                    case "Oauthconsentcomplete":
+                        this.ProcessRecord_Oauthconsentcomplete();
                         break;
-                    case "createSaasAppAad":
-                        this.ProcessRecord_createSaasAppAad();
+                    case "Createsaasappaad":
+                        this.ProcessRecord_Createsaasappaad();
                         break;
-                    case "createCluster":
-                        this.ProcessRecord_createCluster();
+                    case "Createcluster":
+                        this.ProcessRecord_Createcluster();
                         break;
-                    case "deleteCluster":
-                        this.ProcessRecord_deleteCluster();
+                    case "Deletecluster":
+                        this.ProcessRecord_Deletecluster();
                         break;
-                    case "kickoffAdAppSetup":
-                        this.ProcessRecord_kickoffAdAppSetup();
+                    case "Kickoffadappsetup":
+                        this.ProcessRecord_Kickoffadappsetup();
                         break;
-                    case "completeAdAppSetup":
-                        this.ProcessRecord_completeAdAppSetup();
+                    case "Completeadappsetup":
+                        this.ProcessRecord_Completeadappsetup();
                         break;
-                    case "deleteAdDirectory":
-                        this.ProcessRecord_deleteAdDirectory();
+                    case "Deleteaddirectory":
+                        this.ProcessRecord_Deleteaddirectory();
                         break;
-                    case "backupAdDirectory":
-                        this.ProcessRecord_backupAdDirectory();
+                    case "Backupaddirectory":
+                        this.ProcessRecord_Backupaddirectory();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1155,423 +1057,423 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // startRefreshAzureNativeSubscriptionsJob.
-        protected void ProcessRecord_startRefreshNativeSubscriptionsJob()
+        protected void ProcessRecord_Startrefreshnativesubscriptionsjob()
         {
-            this._logger.name += " -startRefreshNativeSubscriptionsJob";
+            this._logger.name += " -Startrefreshnativesubscriptionsjob";
             // Invoke graphql operation startRefreshAzureNativeSubscriptionsJob
             InvokeMutationStartRefreshAzureNativeSubscriptionsJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startRestoreAzureNativeVirtualMachineJob.
-        protected void ProcessRecord_startRestoreNativeVirtualMachineJob()
+        protected void ProcessRecord_Startrestorenativevirtualmachinejob()
         {
-            this._logger.name += " -startRestoreNativeVirtualMachineJob";
+            this._logger.name += " -Startrestorenativevirtualmachinejob";
             // Invoke graphql operation startRestoreAzureNativeVirtualMachineJob
             InvokeMutationStartRestoreAzureNativeVirtualMachineJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startExportAzureNativeVirtualMachineJob.
-        protected void ProcessRecord_startExportNativeVirtualMachineJob()
+        protected void ProcessRecord_Startexportnativevirtualmachinejob()
         {
-            this._logger.name += " -startExportNativeVirtualMachineJob";
+            this._logger.name += " -Startexportnativevirtualmachinejob";
             // Invoke graphql operation startExportAzureNativeVirtualMachineJob
             InvokeMutationStartExportAzureNativeVirtualMachineJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // excludeAzureNativeManagedDisksFromSnapshot.
-        protected void ProcessRecord_excludeNativeManagedDisksFromSnapshot()
+        protected void ProcessRecord_Excludenativemanageddisksfromsnapshot()
         {
-            this._logger.name += " -excludeNativeManagedDisksFromSnapshot";
+            this._logger.name += " -Excludenativemanageddisksfromsnapshot";
             // Invoke graphql operation excludeAzureNativeManagedDisksFromSnapshot
             InvokeMutationExcludeAzureNativeManagedDisksFromSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // startCreateAzureNativeVirtualMachineSnapshotsJob.
-        protected void ProcessRecord_startCreateNativeVirtualMachineSnapshotsJob()
+        protected void ProcessRecord_Startcreatenativevirtualmachinesnapshotsjob()
         {
-            this._logger.name += " -startCreateNativeVirtualMachineSnapshotsJob";
+            this._logger.name += " -Startcreatenativevirtualmachinesnapshotsjob";
             // Invoke graphql operation startCreateAzureNativeVirtualMachineSnapshotsJob
             InvokeMutationStartCreateAzureNativeVirtualMachineSnapshotsJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startDisableAzureNativeSubscriptionProtectionJob.
-        protected void ProcessRecord_startDisableNativeSubscriptionProtectionJob()
+        protected void ProcessRecord_Startdisablenativesubscriptionprotectionjob()
         {
-            this._logger.name += " -startDisableNativeSubscriptionProtectionJob";
+            this._logger.name += " -Startdisablenativesubscriptionprotectionjob";
             // Invoke graphql operation startDisableAzureNativeSubscriptionProtectionJob
             InvokeMutationStartDisableAzureNativeSubscriptionProtectionJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startCreateAzureNativeManagedDiskSnapshotsJob.
-        protected void ProcessRecord_startCreateNativeManagedDiskSnapshotsJob()
+        protected void ProcessRecord_Startcreatenativemanageddisksnapshotsjob()
         {
-            this._logger.name += " -startCreateNativeManagedDiskSnapshotsJob";
+            this._logger.name += " -Startcreatenativemanageddisksnapshotsjob";
             // Invoke graphql operation startCreateAzureNativeManagedDiskSnapshotsJob
             InvokeMutationStartCreateAzureNativeManagedDiskSnapshotsJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startExportAzureNativeManagedDiskJob.
-        protected void ProcessRecord_startExportNativeManagedDiskJob()
+        protected void ProcessRecord_Startexportnativemanageddiskjob()
         {
-            this._logger.name += " -startExportNativeManagedDiskJob";
+            this._logger.name += " -Startexportnativemanageddiskjob";
             // Invoke graphql operation startExportAzureNativeManagedDiskJob
             InvokeMutationStartExportAzureNativeManagedDiskJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startExportAzureSqlDatabaseDbJob.
-        protected void ProcessRecord_startExportSqlDatabaseDbJob()
+        protected void ProcessRecord_Startexportsqldatabasedbjob()
         {
-            this._logger.name += " -startExportSqlDatabaseDbJob";
+            this._logger.name += " -Startexportsqldatabasedbjob";
             // Invoke graphql operation startExportAzureSqlDatabaseDbJob
             InvokeMutationStartExportAzureSqlDatabaseDbJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startExportAzureSqlManagedInstanceDbJob.
-        protected void ProcessRecord_startExportSqlManagedInstanceDbJob()
+        protected void ProcessRecord_Startexportsqlmanagedinstancedbjob()
         {
-            this._logger.name += " -startExportSqlManagedInstanceDbJob";
+            this._logger.name += " -Startexportsqlmanagedinstancedbjob";
             // Invoke graphql operation startExportAzureSqlManagedInstanceDbJob
             InvokeMutationStartExportAzureSqlManagedInstanceDbJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAzureAccount.
-        protected void ProcessRecord_createAccount()
+        protected void ProcessRecord_Createaccount()
         {
-            this._logger.name += " -createAccount";
+            this._logger.name += " -Createaccount";
             // Invoke graphql operation createAzureAccount
             InvokeMutationCreateAzureAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAzureAccount.
-        protected void ProcessRecord_updateAccount()
+        protected void ProcessRecord_Updateaccount()
         {
-            this._logger.name += " -updateAccount";
+            this._logger.name += " -Updateaccount";
             // Invoke graphql operation updateAzureAccount
             InvokeMutationUpdateAzureAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAutomaticAzureTargetMapping.
-        protected void ProcessRecord_createAutomaticTargetMapping()
+        protected void ProcessRecord_Createautomatictargetmapping()
         {
-            this._logger.name += " -createAutomaticTargetMapping";
+            this._logger.name += " -Createautomatictargetmapping";
             // Invoke graphql operation createAutomaticAzureTargetMapping
             InvokeMutationCreateAutomaticAzureTargetMapping();
         }
 
         // This parameter set invokes a single graphql operation:
         // createCloudNativeAzureStorageSetting.
-        protected void ProcessRecord_createCloudNativeStorageSetting()
+        protected void ProcessRecord_Createcloudnativestoragesetting()
         {
-            this._logger.name += " -createCloudNativeStorageSetting";
+            this._logger.name += " -Createcloudnativestoragesetting";
             // Invoke graphql operation createCloudNativeAzureStorageSetting
             InvokeMutationCreateCloudNativeAzureStorageSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // createCloudNativeRcvAzureStorageSetting.
-        protected void ProcessRecord_createCloudNativeRcvStorageSetting()
+        protected void ProcessRecord_Createcloudnativercvstoragesetting()
         {
-            this._logger.name += " -createCloudNativeRcvStorageSetting";
+            this._logger.name += " -Createcloudnativercvstoragesetting";
             // Invoke graphql operation createCloudNativeRcvAzureStorageSetting
             InvokeMutationCreateCloudNativeRcvAzureStorageSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAutomaticAzureTargetMapping.
-        protected void ProcessRecord_updateAutomaticTargetMapping()
+        protected void ProcessRecord_Updateautomatictargetmapping()
         {
-            this._logger.name += " -updateAutomaticTargetMapping";
+            this._logger.name += " -Updateautomatictargetmapping";
             // Invoke graphql operation updateAutomaticAzureTargetMapping
             InvokeMutationUpdateAutomaticAzureTargetMapping();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateCloudNativeAzureStorageSetting.
-        protected void ProcessRecord_updateCloudNativeStorageSetting()
+        protected void ProcessRecord_Updatecloudnativestoragesetting()
         {
-            this._logger.name += " -updateCloudNativeStorageSetting";
+            this._logger.name += " -Updatecloudnativestoragesetting";
             // Invoke graphql operation updateCloudNativeAzureStorageSetting
             InvokeMutationUpdateCloudNativeAzureStorageSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateCloudNativeRcvAzureStorageSetting.
-        protected void ProcessRecord_updateCloudNativeRcvStorageSetting()
+        protected void ProcessRecord_Updatecloudnativercvstoragesetting()
         {
-            this._logger.name += " -updateCloudNativeRcvStorageSetting";
+            this._logger.name += " -Updatecloudnativercvstoragesetting";
             // Invoke graphql operation updateCloudNativeRcvAzureStorageSetting
             InvokeMutationUpdateCloudNativeRcvAzureStorageSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAzureTarget.
-        protected void ProcessRecord_createTarget()
+        protected void ProcessRecord_Createtarget()
         {
-            this._logger.name += " -createTarget";
+            this._logger.name += " -Createtarget";
             // Invoke graphql operation createAzureTarget
             InvokeMutationCreateAzureTarget();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAzureTarget.
-        protected void ProcessRecord_updateTarget()
+        protected void ProcessRecord_Updatetarget()
         {
-            this._logger.name += " -updateTarget";
+            this._logger.name += " -Updatetarget";
             // Invoke graphql operation updateAzureTarget
             InvokeMutationUpdateAzureTarget();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAzureReaderTarget.
-        protected void ProcessRecord_createReaderTarget()
+        protected void ProcessRecord_Createreadertarget()
         {
-            this._logger.name += " -createReaderTarget";
+            this._logger.name += " -Createreadertarget";
             // Invoke graphql operation createAzureReaderTarget
             InvokeMutationCreateAzureReaderTarget();
         }
 
         // This parameter set invokes a single graphql operation:
         // startAzureCloudAccountOauth.
-        protected void ProcessRecord_startCloudAccountOauth()
+        protected void ProcessRecord_Startcloudaccountoauth()
         {
-            this._logger.name += " -startCloudAccountOauth";
+            this._logger.name += " -Startcloudaccountoauth";
             // Invoke graphql operation startAzureCloudAccountOauth
             InvokeMutationStartAzureCloudAccountOauth();
         }
 
         // This parameter set invokes a single graphql operation:
         // completeAzureCloudAccountOauth.
-        protected void ProcessRecord_completeCloudAccountOauth()
+        protected void ProcessRecord_Completecloudaccountoauth()
         {
-            this._logger.name += " -completeCloudAccountOauth";
+            this._logger.name += " -Completecloudaccountoauth";
             // Invoke graphql operation completeAzureCloudAccountOauth
             InvokeMutationCompleteAzureCloudAccountOauth();
         }
 
         // This parameter set invokes a single graphql operation:
         // setAzureCloudAccountCustomerAppCredentials.
-        protected void ProcessRecord_setCloudAccountCustomerAppCredential()
+        protected void ProcessRecord_Setcloudaccountcustomerappcredential()
         {
-            this._logger.name += " -setCloudAccountCustomerAppCredential";
+            this._logger.name += " -Setcloudaccountcustomerappcredential";
             // Invoke graphql operation setAzureCloudAccountCustomerAppCredentials
             InvokeMutationSetAzureCloudAccountCustomerAppCredentials();
         }
 
         // This parameter set invokes a single graphql operation:
         // addAzureCloudAccount.
-        protected void ProcessRecord_addCloudAccount()
+        protected void ProcessRecord_Addcloudaccount()
         {
-            this._logger.name += " -addCloudAccount";
+            this._logger.name += " -Addcloudaccount";
             // Invoke graphql operation addAzureCloudAccount
             InvokeMutationAddAzureCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // addAzureCloudAccountWithoutOauth.
-        protected void ProcessRecord_addCloudAccountWithoutOauth()
+        protected void ProcessRecord_Addcloudaccountwithoutoauth()
         {
-            this._logger.name += " -addCloudAccountWithoutOauth";
+            this._logger.name += " -Addcloudaccountwithoutoauth";
             // Invoke graphql operation addAzureCloudAccountWithoutOauth
             InvokeMutationAddAzureCloudAccountWithoutOauth();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAzureCloudAccount.
-        protected void ProcessRecord_deleteCloudAccount()
+        protected void ProcessRecord_Deletecloudaccount()
         {
-            this._logger.name += " -deleteCloudAccount";
+            this._logger.name += " -Deletecloudaccount";
             // Invoke graphql operation deleteAzureCloudAccount
             InvokeMutationDeleteAzureCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAzureCloudAccountWithoutOauth.
-        protected void ProcessRecord_deleteCloudAccountWithoutOauth()
+        protected void ProcessRecord_Deletecloudaccountwithoutoauth()
         {
-            this._logger.name += " -deleteCloudAccountWithoutOauth";
+            this._logger.name += " -Deletecloudaccountwithoutoauth";
             // Invoke graphql operation deleteAzureCloudAccountWithoutOauth
             InvokeMutationDeleteAzureCloudAccountWithoutOauth();
         }
 
         // This parameter set invokes a single graphql operation:
         // upgradeAzureCloudAccount.
-        protected void ProcessRecord_upgradeCloudAccount()
+        protected void ProcessRecord_Upgradecloudaccount()
         {
-            this._logger.name += " -upgradeCloudAccount";
+            this._logger.name += " -Upgradecloudaccount";
             // Invoke graphql operation upgradeAzureCloudAccount
             InvokeMutationUpgradeAzureCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateCustomerAppPermissionForAzureSql.
-        protected void ProcessRecord_updateCustomerAppPermissionForSql()
+        protected void ProcessRecord_Updatecustomerapppermissionforsql()
         {
-            this._logger.name += " -updateCustomerAppPermissionForSql";
+            this._logger.name += " -Updatecustomerapppermissionforsql";
             // Invoke graphql operation updateCustomerAppPermissionForAzureSql
             InvokeMutationUpdateCustomerAppPermissionForAzureSql();
         }
 
         // This parameter set invokes a single graphql operation:
         // startDisableAzureCloudAccountJob.
-        protected void ProcessRecord_startDisableCloudAccountJob()
+        protected void ProcessRecord_Startdisablecloudaccountjob()
         {
-            this._logger.name += " -startDisableCloudAccountJob";
+            this._logger.name += " -Startdisablecloudaccountjob";
             // Invoke graphql operation startDisableAzureCloudAccountJob
             InvokeMutationStartDisableAzureCloudAccountJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAzureCloudAccount.
-        protected void ProcessRecord_updateCloudAccount()
+        protected void ProcessRecord_Updatecloudaccount()
         {
-            this._logger.name += " -updateCloudAccount";
+            this._logger.name += " -Updatecloudaccount";
             // Invoke graphql operation updateAzureCloudAccount
             InvokeMutationUpdateAzureCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // mapAzureCloudAccountToPersistentStorageLocation.
-        protected void ProcessRecord_mapCloudAccountToPersistentStorageLocation()
+        protected void ProcessRecord_Mapcloudaccounttopersistentstoragelocation()
         {
-            this._logger.name += " -mapCloudAccountToPersistentStorageLocation";
+            this._logger.name += " -Mapcloudaccounttopersistentstoragelocation";
             // Invoke graphql operation mapAzureCloudAccountToPersistentStorageLocation
             InvokeMutationMapAzureCloudAccountToPersistentStorageLocation();
         }
 
         // This parameter set invokes a single graphql operation:
         // addAzureCloudAccountExocomputeConfigurations.
-        protected void ProcessRecord_addCloudAccountExocomputeConfiguration()
+        protected void ProcessRecord_Addcloudaccountexocomputeconfiguration()
         {
-            this._logger.name += " -addCloudAccountExocomputeConfiguration";
+            this._logger.name += " -Addcloudaccountexocomputeconfiguration";
             // Invoke graphql operation addAzureCloudAccountExocomputeConfigurations
             InvokeMutationAddAzureCloudAccountExocomputeConfigurations();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAzureCloudAccountExocomputeConfigurations.
-        protected void ProcessRecord_deleteCloudAccountExocomputeConfiguration()
+        protected void ProcessRecord_Deletecloudaccountexocomputeconfiguration()
         {
-            this._logger.name += " -deleteCloudAccountExocomputeConfiguration";
+            this._logger.name += " -Deletecloudaccountexocomputeconfiguration";
             // Invoke graphql operation deleteAzureCloudAccountExocomputeConfigurations
             InvokeMutationDeleteAzureCloudAccountExocomputeConfigurations();
         }
 
         // This parameter set invokes a single graphql operation:
         // mapAzureCloudAccountExocomputeSubscription.
-        protected void ProcessRecord_mapCloudAccountExocomputeSubscription()
+        protected void ProcessRecord_Mapcloudaccountexocomputesubscription()
         {
-            this._logger.name += " -mapCloudAccountExocomputeSubscription";
+            this._logger.name += " -Mapcloudaccountexocomputesubscription";
             // Invoke graphql operation mapAzureCloudAccountExocomputeSubscription
             InvokeMutationMapAzureCloudAccountExocomputeSubscription();
         }
 
         // This parameter set invokes a single graphql operation:
         // unmapAzureCloudAccountExocomputeSubscription.
-        protected void ProcessRecord_unmapCloudAccountExocomputeSubscription()
+        protected void ProcessRecord_Unmapcloudaccountexocomputesubscription()
         {
-            this._logger.name += " -unmapCloudAccountExocomputeSubscription";
+            this._logger.name += " -Unmapcloudaccountexocomputesubscription";
             // Invoke graphql operation unmapAzureCloudAccountExocomputeSubscription
             InvokeMutationUnmapAzureCloudAccountExocomputeSubscription();
         }
 
         // This parameter set invokes a single graphql operation:
         // upgradeAzureCloudAccountPermissionsWithoutOauth.
-        protected void ProcessRecord_upgradeCloudAccountPermissionsWithoutOauth()
+        protected void ProcessRecord_Upgradecloudaccountpermissionswithoutoauth()
         {
-            this._logger.name += " -upgradeCloudAccountPermissionsWithoutOauth";
+            this._logger.name += " -Upgradecloudaccountpermissionswithoutoauth";
             // Invoke graphql operation upgradeAzureCloudAccountPermissionsWithoutOauth
             InvokeMutationUpgradeAzureCloudAccountPermissionsWithoutOauth();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureOauthConsentKickoff.
-        protected void ProcessRecord_OauthConsentKickoff()
+        protected void ProcessRecord_Oauthconsentkickoff()
         {
-            this._logger.name += " -OauthConsentKickoff";
+            this._logger.name += " -Oauthconsentkickoff";
             // Invoke graphql operation azureOauthConsentKickoff
             InvokeMutationAzureOauthConsentKickoff();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureOauthConsentComplete.
-        protected void ProcessRecord_OauthConsentComplete()
+        protected void ProcessRecord_Oauthconsentcomplete()
         {
-            this._logger.name += " -OauthConsentComplete";
+            this._logger.name += " -Oauthconsentcomplete";
             // Invoke graphql operation azureOauthConsentComplete
             InvokeMutationAzureOauthConsentComplete();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAzureSaasAppAad.
-        protected void ProcessRecord_createSaasAppAad()
+        protected void ProcessRecord_Createsaasappaad()
         {
-            this._logger.name += " -createSaasAppAad";
+            this._logger.name += " -Createsaasappaad";
             // Invoke graphql operation createAzureSaasAppAad
             InvokeMutationCreateAzureSaasAppAad();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAzureCluster.
-        protected void ProcessRecord_createCluster()
+        protected void ProcessRecord_Createcluster()
         {
-            this._logger.name += " -createCluster";
+            this._logger.name += " -Createcluster";
             // Invoke graphql operation createAzureCluster
             InvokeMutationCreateAzureCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAzureCluster.
-        protected void ProcessRecord_deleteCluster()
+        protected void ProcessRecord_Deletecluster()
         {
-            this._logger.name += " -deleteCluster";
+            this._logger.name += " -Deletecluster";
             // Invoke graphql operation deleteAzureCluster
             InvokeMutationDeleteAzureCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // kickoffAzureAdAppSetup.
-        protected void ProcessRecord_kickoffAdAppSetup()
+        protected void ProcessRecord_Kickoffadappsetup()
         {
-            this._logger.name += " -kickoffAdAppSetup";
+            this._logger.name += " -Kickoffadappsetup";
             // Invoke graphql operation kickoffAzureAdAppSetup
             InvokeMutationKickoffAzureAdAppSetup();
         }
 
         // This parameter set invokes a single graphql operation:
         // completeAzureAdAppSetup.
-        protected void ProcessRecord_completeAdAppSetup()
+        protected void ProcessRecord_Completeadappsetup()
         {
-            this._logger.name += " -completeAdAppSetup";
+            this._logger.name += " -Completeadappsetup";
             // Invoke graphql operation completeAzureAdAppSetup
             InvokeMutationCompleteAzureAdAppSetup();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAzureAdDirectory.
-        protected void ProcessRecord_deleteAdDirectory()
+        protected void ProcessRecord_Deleteaddirectory()
         {
-            this._logger.name += " -deleteAdDirectory";
+            this._logger.name += " -Deleteaddirectory";
             // Invoke graphql operation deleteAzureAdDirectory
             InvokeMutationDeleteAzureAdDirectory();
         }
 
         // This parameter set invokes a single graphql operation:
         // backupAzureAdDirectory.
-        protected void ProcessRecord_backupAdDirectory()
+        protected void ProcessRecord_Backupaddirectory()
         {
-            this._logger.name += " -backupAdDirectory";
+            this._logger.name += " -Backupaddirectory";
             // Invoke graphql operation backupAzureAdDirectory
             InvokeMutationBackupAzureAdDirectory();
         }

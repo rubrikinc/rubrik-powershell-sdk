@@ -126,25 +126,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configuredSlaDomainId: String! (scalar)
         if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            this.ConfiguredSlaDomainId = new System.String("FETCH");
+            this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaType
         // GraphQL -> configuredSlaType: String! (scalar)
         if (this.ConfiguredSlaType == null && Exploration.Includes(parent + ".configuredSlaType", true))
         {
-            this.ConfiguredSlaType = new System.String("FETCH");
+            this.ConfiguredSlaType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
     }
 

@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? Url
         // GraphQL -> url: String! (scalar)
         if (this.Url == null && Exploration.Includes(parent + ".url", true))
         {
-            this.Url = new System.String("FETCH");
+            this.Url = "FETCH";
         }
     }
 

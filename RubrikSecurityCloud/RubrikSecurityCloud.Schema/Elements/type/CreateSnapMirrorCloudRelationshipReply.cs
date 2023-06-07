@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cloudTargetId: String! (scalar)
         if (this.CloudTargetId == null && Exploration.Includes(parent + ".cloudTargetId", true))
         {
-            this.CloudTargetId = new System.String("FETCH");
+            this.CloudTargetId = "FETCH";
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
         {
-            this.PolicyId = new System.String("FETCH");
+            this.PolicyId = "FETCH";
         }
         //      C# -> System.String? RelationshipId
         // GraphQL -> relationshipId: String! (scalar)
         if (this.RelationshipId == null && Exploration.Includes(parent + ".relationshipId", true))
         {
-            this.RelationshipId = new System.String("FETCH");
+            this.RelationshipId = "FETCH";
         }
     }
 

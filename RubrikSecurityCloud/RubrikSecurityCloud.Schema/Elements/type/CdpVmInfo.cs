@@ -214,37 +214,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicationTarget: String! (scalar)
         if (this.ReplicationTarget == null && Exploration.Includes(parent + ".replicationTarget", true))
         {
-            this.ReplicationTarget = new System.String("FETCH");
+            this.ReplicationTarget = "FETCH";
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
         if (this.SlaDomainName == null && Exploration.Includes(parent + ".slaDomainName", true))
         {
-            this.SlaDomainName = new System.String("FETCH");
+            this.SlaDomainName = "FETCH";
         }
         //      C# -> System.String? SourceCluster
         // GraphQL -> sourceCluster: String! (scalar)
         if (this.SourceCluster == null && Exploration.Includes(parent + ".sourceCluster", true))
         {
-            this.SourceCluster = new System.String("FETCH");
+            this.SourceCluster = "FETCH";
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
         {
-            this.VmId = new System.String("FETCH");
+            this.VmId = "FETCH";
         }
         //      C# -> System.String? VmLocation
         // GraphQL -> vmLocation: String! (scalar)
         if (this.VmLocation == null && Exploration.Includes(parent + ".vmLocation", true))
         {
-            this.VmLocation = new System.String("FETCH");
+            this.VmLocation = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
         {
-            this.VmName = new System.String("FETCH");
+            this.VmName = "FETCH";
         }
     }
 

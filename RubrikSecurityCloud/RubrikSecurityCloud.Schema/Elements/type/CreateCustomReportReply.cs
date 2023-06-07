@@ -272,7 +272,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: Int! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.Int32();
+            this.Id = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsHidden
         // GraphQL -> isHidden: Boolean! (scalar)
@@ -290,7 +290,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> DateTime? NewestSyncDate
         // GraphQL -> newestSyncDate: DateTime (scalar)

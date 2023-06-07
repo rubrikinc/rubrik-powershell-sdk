@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> taskchainUuid: UUID! (scalar)
         if (this.TaskchainUuid == null && Exploration.Includes(parent + ".taskchainUuid", true))
         {
-            this.TaskchainUuid = new System.String("FETCH");
+            this.TaskchainUuid = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
         if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
         {
-            this.WorkloadId = new System.String("FETCH");
+            this.WorkloadId = "FETCH";
         }
     }
 

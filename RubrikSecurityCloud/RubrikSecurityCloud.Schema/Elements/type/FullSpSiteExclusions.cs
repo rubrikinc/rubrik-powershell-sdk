@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> siteFid: String! (scalar)
         if (this.SiteFid == null && Exploration.Includes(parent + ".siteFid", true))
         {
-            this.SiteFid = new System.String("FETCH");
+            this.SiteFid = "FETCH";
         }
         //      C# -> List<FullSpObjectExclusion>? ExcludedObjects
         // GraphQL -> excludedObjects: [FullSpObjectExclusion!]! (type)

@@ -154,25 +154,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Language
         // GraphQL -> language: String! (scalar)
         if (this.Language == null && Exploration.Includes(parent + ".language", true))
         {
-            this.Language = new System.String("FETCH");
+            this.Language = "FETCH";
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         if (this.Title == null && Exploration.Includes(parent + ".title", true))
         {
-            this.Title = new System.String("FETCH");
+            this.Title = "FETCH";
         }
         //      C# -> List<ContentNode>? Contents
         // GraphQL -> contents: [ContentNode!]! (type)

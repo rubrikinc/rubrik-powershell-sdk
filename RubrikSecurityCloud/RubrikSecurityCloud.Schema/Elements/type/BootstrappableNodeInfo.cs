@@ -238,19 +238,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> chassisId: String (scalar)
         if (this.ChassisId == null && Exploration.Includes(parent + ".chassisId", true))
         {
-            this.ChassisId = new System.String("FETCH");
+            this.ChassisId = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? Ipv6
         // GraphQL -> ipv6: String! (scalar)
         if (this.Ipv6 == null && Exploration.Includes(parent + ".ipv6", true))
         {
-            this.Ipv6 = new System.String("FETCH");
+            this.Ipv6 = "FETCH";
         }
         //      C# -> System.Boolean? IsAllCopper
         // GraphQL -> isAllCopper: Boolean (scalar)
@@ -292,19 +292,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodePosition: String (scalar)
         if (this.NodePosition == null && Exploration.Includes(parent + ".nodePosition", true))
         {
-            this.NodePosition = new System.String("FETCH");
+            this.NodePosition = "FETCH";
         }
         //      C# -> System.String? PlatformName
         // GraphQL -> platformName: String (scalar)
         if (this.PlatformName == null && Exploration.Includes(parent + ".platformName", true))
         {
-            this.PlatformName = new System.String("FETCH");
+            this.PlatformName = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
     }
 

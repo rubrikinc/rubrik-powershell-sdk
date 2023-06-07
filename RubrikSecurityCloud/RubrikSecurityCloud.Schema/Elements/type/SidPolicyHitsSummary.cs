@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> principal: String! (scalar)
         if (this.Principal == null && Exploration.Includes(parent + ".principal", true))
         {
-            this.Principal = new System.String("FETCH");
+            this.Principal = "FETCH";
         }
         //      C# -> List<PolicyHitsSummary>? Summary
         // GraphQL -> summary: [PolicyHitsSummary!]! (type)

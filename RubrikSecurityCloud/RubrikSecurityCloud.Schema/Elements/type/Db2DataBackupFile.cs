@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> destinationPath: String! (scalar)
         if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
         {
-            this.DestinationPath = new System.String("FETCH");
+            this.DestinationPath = "FETCH";
         }
         //      C# -> Db2WorkloadDataBackupFile? Db2BackupFile
         // GraphQL -> db2BackupFile: Db2WorkloadDataBackupFile! (type)

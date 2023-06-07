@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> caCerts: String (scalar)
         if (this.CaCerts == null && Exploration.Includes(parent + ".caCerts", true))
         {
-            this.CaCerts = new System.String("FETCH");
+            this.CaCerts = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            this.ConfiguredSlaDomainId = new System.String("FETCH");
+            this.ConfiguredSlaDomainId = "FETCH";
         }
     }
 

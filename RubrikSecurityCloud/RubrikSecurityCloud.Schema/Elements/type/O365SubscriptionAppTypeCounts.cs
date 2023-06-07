@@ -120,7 +120,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subscriptionId: UUID! (scalar)
         if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId", true))
         {
-            this.SubscriptionId = new System.String("FETCH");
+            this.SubscriptionId = "FETCH";
         }
         //      C# -> AuthCounts? ExchangeAppCounts
         // GraphQL -> exchangeAppCounts: AuthCounts! (type)

@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> wildcard: String! (scalar)
         if (this.Wildcard == null && Exploration.Includes(parent + ".wildcard", true))
         {
-            this.Wildcard = new System.String("FETCH");
+            this.Wildcard = "FETCH";
         }
     }
 

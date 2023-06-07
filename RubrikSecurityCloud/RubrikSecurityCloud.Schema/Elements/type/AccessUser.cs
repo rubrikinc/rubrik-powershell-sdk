@@ -154,7 +154,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> email: String! (scalar)
         if (this.Email == null && Exploration.Includes(parent + ".email", true))
         {
-            this.Email = new System.String("FETCH");
+            this.Email = "FETCH";
         }
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
@@ -172,19 +172,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subjectName: String! (scalar)
         if (this.SubjectName == null && Exploration.Includes(parent + ".subjectName", true))
         {
-            this.SubjectName = new System.String("FETCH");
+            this.SubjectName = "FETCH";
         }
         //      C# -> System.String? UserSid
         // GraphQL -> userSid: String! (scalar)
         if (this.UserSid == null && Exploration.Includes(parent + ".userSid", true))
         {
-            this.UserSid = new System.String("FETCH");
+            this.UserSid = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
     }
 

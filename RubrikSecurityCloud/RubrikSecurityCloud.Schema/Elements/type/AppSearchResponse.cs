@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> childObjectId: String! (scalar)
         if (this.ChildObjectId == null && Exploration.Includes(parent + ".childObjectId", true))
         {
-            this.ChildObjectId = new System.String("FETCH");
+            this.ChildObjectId = "FETCH";
         }
         //      C# -> System.String? ChildObjectName
         // GraphQL -> childObjectName: String! (scalar)
         if (this.ChildObjectName == null && Exploration.Includes(parent + ".childObjectName", true))
         {
-            this.ChildObjectName = new System.String("FETCH");
+            this.ChildObjectName = "FETCH";
         }
         //      C# -> SearchResultResponse? SearchResponse
         // GraphQL -> searchResponse: SearchResultResponse (type)

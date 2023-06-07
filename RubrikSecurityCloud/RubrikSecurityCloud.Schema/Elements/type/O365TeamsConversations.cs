@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> channelId: String! (scalar)
         if (this.ChannelId == null && Exploration.Includes(parent + ".channelId", true))
         {
-            this.ChannelId = new System.String("FETCH");
+            this.ChannelId = "FETCH";
         }
         //      C# -> System.String? ChannelName
         // GraphQL -> channelName: String (scalar)
         if (this.ChannelName == null && Exploration.Includes(parent + ".channelName", true))
         {
-            this.ChannelName = new System.String("FETCH");
+            this.ChannelName = "FETCH";
         }
         //      C# -> System.Int32? ChannelPostCount
         // GraphQL -> channelPostCount: Int! (scalar)
         if (this.ChannelPostCount == null && Exploration.Includes(parent + ".channelPostCount", true))
         {
-            this.ChannelPostCount = new System.Int32();
+            this.ChannelPostCount = Int32.MinValue;
         }
     }
 

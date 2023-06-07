@@ -224,19 +224,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> contractBase64: String! (scalar)
         if (this.ContractBase64 == null && Exploration.Includes(parent + ".contractBase64", true))
         {
-            this.ContractBase64 = new System.String("FETCH");
+            this.ContractBase64 = "FETCH";
         }
         //      C# -> System.String? CurrentMajorVersion
         // GraphQL -> currentMajorVersion: String! (scalar)
         if (this.CurrentMajorVersion == null && Exploration.Includes(parent + ".currentMajorVersion", true))
         {
-            this.CurrentMajorVersion = new System.String("FETCH");
+            this.CurrentMajorVersion = "FETCH";
         }
         //      C# -> System.String? CurrentVersion
         // GraphQL -> currentVersion: String! (scalar)
         if (this.CurrentVersion == null && Exploration.Includes(parent + ".currentVersion", true))
         {
-            this.CurrentVersion = new System.String("FETCH");
+            this.CurrentVersion = "FETCH";
         }
         //      C# -> DateTime? Deadline
         // GraphQL -> deadline: DateTime (scalar)
@@ -248,7 +248,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> downloadEndpoint: String! (scalar)
         if (this.DownloadEndpoint == null && Exploration.Includes(parent + ".downloadEndpoint", true))
         {
-            this.DownloadEndpoint = new System.String("FETCH");
+            this.DownloadEndpoint = "FETCH";
         }
         //      C# -> DateTime? EffectiveDate
         // GraphQL -> effectiveDate: DateTime (scalar)
@@ -272,7 +272,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> latestVersionAccepted: String! (scalar)
         if (this.LatestVersionAccepted == null && Exploration.Includes(parent + ".latestVersionAccepted", true))
         {
-            this.LatestVersionAccepted = new System.String("FETCH");
+            this.LatestVersionAccepted = "FETCH";
         }
         //      C# -> List<System.String>? RequiredEmailDomains
         // GraphQL -> requiredEmailDomains: [String!]! (scalar)
@@ -284,7 +284,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> title: String! (scalar)
         if (this.Title == null && Exploration.Includes(parent + ".title", true))
         {
-            this.Title = new System.String("FETCH");
+            this.Title = "FETCH";
         }
     }
 

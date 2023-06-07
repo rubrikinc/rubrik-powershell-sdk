@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> keyName: String! (scalar)
         if (this.KeyName == null && Exploration.Includes(parent + ".keyName", true))
         {
-            this.KeyName = new System.String("FETCH");
+            this.KeyName = "FETCH";
         }
     }
 

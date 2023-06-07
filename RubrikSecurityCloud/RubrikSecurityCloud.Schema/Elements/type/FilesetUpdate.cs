@@ -120,7 +120,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            this.ConfiguredSlaDomainId = new System.String("FETCH");
+            this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean (scalar)
@@ -138,13 +138,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
         if (this.SnapMirrorLabelForFullBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForFullBackup", true))
         {
-            this.SnapMirrorLabelForFullBackup = new System.String("FETCH");
+            this.SnapMirrorLabelForFullBackup = "FETCH";
         }
         //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
         // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
         if (this.SnapMirrorLabelForIncrementalBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForIncrementalBackup", true))
         {
-            this.SnapMirrorLabelForIncrementalBackup = new System.String("FETCH");
+            this.SnapMirrorLabelForIncrementalBackup = "FETCH";
         }
     }
 

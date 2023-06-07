@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> permissionVersion: Int! (scalar)
         if (this.PermissionVersion == null && Exploration.Includes(parent + ".permissionVersion", true))
         {
-            this.PermissionVersion = new System.Int32();
+            this.PermissionVersion = Int32.MinValue;
         }
         //      C# -> List<AzureCloudAccountRolePermission>? RolePermissions
         // GraphQL -> rolePermissions: [AzureCloudAccountRolePermission!]! (type)

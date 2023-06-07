@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vcdVmMoid: String! (scalar)
         if (this.VcdVmMoid == null && Exploration.Includes(parent + ".vcdVmMoid", true))
         {
-            this.VcdVmMoid = new System.String("FETCH");
+            this.VcdVmMoid = "FETCH";
         }
         //      C# -> System.String? VcdVmName
         // GraphQL -> vcdVmName: String! (scalar)
         if (this.VcdVmName == null && Exploration.Includes(parent + ".vcdVmName", true))
         {
-            this.VcdVmName = new System.String("FETCH");
+            this.VcdVmName = "FETCH";
         }
     }
 

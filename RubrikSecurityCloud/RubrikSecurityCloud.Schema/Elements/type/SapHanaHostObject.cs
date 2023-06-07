@@ -134,31 +134,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> System.String? HostType
         // GraphQL -> hostType: String! (scalar)
         if (this.HostType == null && Exploration.Includes(parent + ".hostType", true))
         {
-            this.HostType = new System.String("FETCH");
+            this.HostType = "FETCH";
         }
         //      C# -> System.String? HostUuid
         // GraphQL -> hostUuid: String! (scalar)
         if (this.HostUuid == null && Exploration.Includes(parent + ".hostUuid", true))
         {
-            this.HostUuid = new System.String("FETCH");
+            this.HostUuid = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)

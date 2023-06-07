@@ -132,7 +132,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fileSystemType: String! (scalar)
         if (this.FileSystemType == null && Exploration.Includes(parent + ".fileSystemType", true))
         {
-            this.FileSystemType = new System.String("FETCH");
+            this.FileSystemType = "FETCH";
         }
         //      C# -> List<System.String>? MountPointsOpt
         // GraphQL -> mountPointsOpt: [String!]! (scalar)
@@ -144,7 +144,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> volumeId: String! (scalar)
         if (this.VolumeId == null && Exploration.Includes(parent + ".volumeId", true))
         {
-            this.VolumeId = new System.String("FETCH");
+            this.VolumeId = "FETCH";
         }
     }
 

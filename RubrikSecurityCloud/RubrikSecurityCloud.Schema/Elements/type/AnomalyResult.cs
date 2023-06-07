@@ -488,7 +488,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsAnomaly
         // GraphQL -> isAnomaly: Boolean! (scalar)
@@ -506,13 +506,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.String? ManagedId
         // GraphQL -> managedId: String! (scalar)
         if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
         {
-            this.ManagedId = new System.String("FETCH");
+            this.ManagedId = "FETCH";
         }
         //      C# -> DateTime? PreviousSnapshotDate
         // GraphQL -> previousSnapshotDate: DateTime! (scalar)
@@ -524,7 +524,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> previousSnapshotId: String! (scalar)
         if (this.PreviousSnapshotId == null && Exploration.Includes(parent + ".previousSnapshotId", true))
         {
-            this.PreviousSnapshotId = new System.String("FETCH");
+            this.PreviousSnapshotId = "FETCH";
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime! (scalar)
@@ -536,13 +536,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotFid: UUID! (scalar)
         if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
         {
-            this.SnapshotFid = new System.String("FETCH");
+            this.SnapshotFid = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int64? SuspiciousFilesCount
         // GraphQL -> suspiciousFilesCount: Long (scalar)
@@ -554,19 +554,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> workloadFid: UUID! (scalar)
         if (this.WorkloadFid == null && Exploration.Includes(parent + ".workloadFid", true))
         {
-            this.WorkloadFid = new System.String("FETCH");
+            this.WorkloadFid = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
         {
-            this.WorkloadId = new System.String("FETCH");
+            this.WorkloadId = "FETCH";
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String (scalar)
         if (this.WorkloadName == null && Exploration.Includes(parent + ".workloadName", true))
         {
-            this.WorkloadName = new System.String("FETCH");
+            this.WorkloadName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

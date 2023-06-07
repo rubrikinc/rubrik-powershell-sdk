@@ -158,13 +158,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mfaRememberHours: Int! (scalar)
         if (this.MfaRememberHours == null && Exploration.Includes(parent + ".mfaRememberHours", true))
         {
-            this.MfaRememberHours = new System.Int32();
+            this.MfaRememberHours = Int32.MinValue;
         }
         //      C# -> System.Int32? TotpReminderHours
         // GraphQL -> totpReminderHours: Int! (scalar)
         if (this.TotpReminderHours == null && Exploration.Includes(parent + ".totpReminderHours", true))
         {
-            this.TotpReminderHours = new System.Int32();
+            this.TotpReminderHours = Int32.MinValue;
         }
     }
 

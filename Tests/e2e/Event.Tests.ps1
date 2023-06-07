@@ -1,17 +1,14 @@
-& "$PSScriptRoot\..\..\Utils\import.ps1"
-. "$PSScriptRoot\..\serviceaccount.ps1"
+<#
+.SYNOPSIS
+Run tests around field specs for interface fields
+#>
+BeforeAll {
+    . "$PSScriptRoot\e2eInit.ps1"
+}
 
 Describe -Name 'Event tests' -Fixture {
-    Context -Name 'Event tests' {
-        It -Name 'Connect-Rsc -ServiceAccountFile' -Test {
-            Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
-        }
-        It -Name 'Get-RscEvent' -Test {
-            $events = Get-RscEventSeries -First 1
-            $events | Should -Not -BeNullOrEmpty
-        }
-        It -Name 'Disconnect-Rsc' -Test {
-            Disconnect-Rsc | Should -BeLikeExactly "The Rubrik Security Cloud session has been terminated."
-        }
+    It -Name 'Get-RscEvent' -Test {
+        $events = Get-RscEventSeries -First 1
+        $events | Should -Not -BeNullOrEmpty
     }
 }

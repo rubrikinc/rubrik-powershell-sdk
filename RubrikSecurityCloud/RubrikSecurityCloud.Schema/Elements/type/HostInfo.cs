@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? OracleQueryUser
         // GraphQL -> oracleQueryUser: String! (scalar)
         if (this.OracleQueryUser == null && Exploration.Includes(parent + ".oracleQueryUser", true))
         {
-            this.OracleQueryUser = new System.String("FETCH");
+            this.OracleQueryUser = "FETCH";
         }
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String! (scalar)
         if (this.OracleSysDbaUser == null && Exploration.Includes(parent + ".oracleSysDbaUser", true))
         {
-            this.OracleSysDbaUser = new System.String("FETCH");
+            this.OracleSysDbaUser = "FETCH";
         }
     }
 

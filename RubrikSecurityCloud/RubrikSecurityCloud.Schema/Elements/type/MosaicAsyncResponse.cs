@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> data: String (scalar)
         if (this.Data == null && Exploration.Includes(parent + ".data", true))
         {
-            this.Data = new System.String("FETCH");
+            this.Data = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> System.Int64? ReturnCode
         // GraphQL -> returnCode: Long (scalar)

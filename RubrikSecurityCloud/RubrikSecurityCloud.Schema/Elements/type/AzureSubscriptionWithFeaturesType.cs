@@ -140,25 +140,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> customerTenantId: String! (scalar)
         if (this.CustomerTenantId == null && Exploration.Includes(parent + ".customerTenantId", true))
         {
-            this.CustomerTenantId = new System.String("FETCH");
+            this.CustomerTenantId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
         {
-            this.NativeId = new System.String("FETCH");
+            this.NativeId = "FETCH";
         }
         //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)

@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> crawlId: String! (scalar)
         if (this.CrawlId == null && Exploration.Includes(parent + ".crawlId", true))
         {
-            this.CrawlId = new System.String("FETCH");
+            this.CrawlId = "FETCH";
         }
     }
 

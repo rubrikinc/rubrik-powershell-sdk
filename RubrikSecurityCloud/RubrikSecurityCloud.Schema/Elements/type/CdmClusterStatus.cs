@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> message: String (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> CdmClusterStatusInfo? StatusInfo
         // GraphQL -> statusInfo: CdmClusterStatusInfo (type)

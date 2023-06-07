@@ -27,61 +27,55 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // allIofilterStatus parameter set
+        // Alliofilterstatus parameter set
         //
-        // GraphQL operation: allSlaIofilterStatuses(fid: UUID!):[ComputeClusterIofilterStatus!]!
+        // [GraphQL: allSlaIofilterStatuses]
         //
         [Parameter(
-            ParameterSetName = "allIofilterStatus",
+            ParameterSetName = "Alliofilterstatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The iofilter installation status of the compute clusters related to this SLA Domain.
-                GraphQL operation: allSlaIofilterStatuses(fid: UUID!):[ComputeClusterIofilterStatus!]!
-                ",
+@"The iofilter installation status of the compute clusters related to this SLA Domain.
+[GraphQL: allSlaIofilterStatuses]",
             Position = 0
         )]
-        public SwitchParameter allIofilterStatus { get; set; }
+        public SwitchParameter Alliofilterstatus { get; set; }
 
         [Parameter(
-            ParameterSetName = "allIofilterStatus",
+            ParameterSetName = "Alliofilterstatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik UUID for the object.
-                GraphQL argument fid: UUID!
-                "
+@"The Rubrik UUID for the object.
+GraphQL argument fid: UUID!"
         )]
         public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
-        // allCdpVmName parameter set
+        // Allcdpvmname parameter set
         //
-        // GraphQL operation: allCdpSlaVmNames(fid: UUID!):[String!]!
+        // [GraphQL: allCdpSlaVmNames]
         //
         [Parameter(
-            ParameterSetName = "allCdpVmName",
+            ParameterSetName = "Allcdpvmname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Names of the virtual machines in compute cluster with Continuous Data Protection (CDP) SLA Domain.
-                GraphQL operation: allCdpSlaVmNames(fid: UUID!):[String!]!
-                ",
+@"Names of the virtual machines in compute cluster with Continuous Data Protection (CDP) SLA Domain.
+[GraphQL: allCdpSlaVmNames]",
             Position = 0
         )]
-        public SwitchParameter allCdpVmName { get; set; }
+        public SwitchParameter Allcdpvmname { get; set; }
 
         
         // -------------------------------------------------------------------
         // Domain parameter set
         //
-        // GraphQL operation: slaDomains(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: SlaQuerySortByField,   sortOrder: SortOrder,   filter: [GlobalSlaFilterInput!],   contextFilter: ContextFilterTypeEnum,   contextFilterInput: [ContextFilterInputField!],   shouldShowSyncStatus: Boolean = false,   shouldShowProtectedObjectCount: Boolean = false,   shouldShowUpgradeInfo: Boolean = false,   showRemoteSlas: Boolean,   shouldShowPausedClusters: Boolean = false, ):SlaDomainConnection!
+        // [GraphQL: slaDomains]
         //
         [Parameter(
             ParameterSetName = "Domain",
@@ -89,10 +83,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of SLA Domains.
-                GraphQL operation: slaDomains(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: SlaQuerySortByField,   sortOrder: SortOrder,   filter: [GlobalSlaFilterInput!],   contextFilter: ContextFilterTypeEnum,   contextFilterInput: [ContextFilterInputField!],   shouldShowSyncStatus: Boolean = false,   shouldShowProtectedObjectCount: Boolean = false,   shouldShowUpgradeInfo: Boolean = false,   showRemoteSlas: Boolean,   shouldShowPausedClusters: Boolean = false, ):SlaDomainConnection!
-                ",
+@"Retrieves a list of SLA Domains.
+[GraphQL: slaDomains]",
             Position = 0
         )]
         public SwitchParameter Domain { get; set; }
@@ -103,10 +95,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -115,10 +105,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -127,10 +115,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the last n elements from the list.
-                GraphQL argument last: Int
-                "
+@"Returns the last n elements from the list.
+GraphQL argument last: Int"
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
@@ -139,10 +125,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come before the specified cursor.
-                GraphQL argument before: String
-                "
+@"Returns the elements in the list that come before the specified cursor.
+GraphQL argument before: String"
         )]
         public System.String? Before { get; set; }
         [Parameter(
@@ -151,10 +135,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Field to sort the SLA Domains list.
-                GraphQL argument sortBy: SlaQuerySortByField
-                "
+@"Field to sort the SLA Domains list.
+GraphQL argument sortBy: SlaQuerySortByField"
         )]
         public SlaQuerySortByField? SortBy { get; set; }
         [Parameter(
@@ -163,10 +145,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort order for sorting the SLA Domains returned by the query.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Sort order for sorting the SLA Domains returned by the query.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -175,10 +155,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Filter for the SLA Domain query.
-                GraphQL argument filter: [GlobalSlaFilterInput!]
-                "
+@"Filter for the SLA Domain query.
+GraphQL argument filter: [GlobalSlaFilterInput!]"
         )]
         public List<GlobalSlaFilterInput>? Filter { get; set; }
         [Parameter(
@@ -187,10 +165,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies the context filter to use.
-                GraphQL argument contextFilter: ContextFilterTypeEnum
-                "
+@"Specifies the context filter to use.
+GraphQL argument contextFilter: ContextFilterTypeEnum"
         )]
         public ContextFilterTypeEnum? ContextFilter { get; set; }
         [Parameter(
@@ -199,10 +175,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies the context filter input to use.
-                GraphQL argument contextFilterInput: [ContextFilterInputField!]
-                "
+@"Specifies the context filter input to use.
+GraphQL argument contextFilterInput: [ContextFilterInputField!]"
         )]
         public List<ContextFilterInputField>? ContextFilterInput { get; set; }
         [Parameter(
@@ -211,10 +185,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether to show the SLA Domain sync status on Rubrik CDM.
-                GraphQL argument shouldShowSyncStatus: Boolean
-                "
+@"Specifies whether to show the SLA Domain sync status on Rubrik CDM.
+GraphQL argument shouldShowSyncStatus: Boolean"
         )]
         public System.Boolean? ShouldShowSyncStatus { get; set; }
         [Parameter(
@@ -223,10 +195,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether to show the number of workloads protected by the SLA Domain.
-                GraphQL argument shouldShowProtectedObjectCount: Boolean
-                "
+@"Specifies whether to show the number of workloads protected by the SLA Domain.
+GraphQL argument shouldShowProtectedObjectCount: Boolean"
         )]
         public System.Boolean? ShouldShowProtectedObjectCount { get; set; }
         [Parameter(
@@ -235,10 +205,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether to show the upgrade information for an SLA Domain or not.
-                GraphQL argument shouldShowUpgradeInfo: Boolean
-                "
+@"Specifies whether to show the upgrade information for an SLA Domain or not.
+GraphQL argument shouldShowUpgradeInfo: Boolean"
         )]
         public System.Boolean? ShouldShowUpgradeInfo { get; set; }
         [Parameter(
@@ -247,10 +215,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether to retrieve the remote SLA Domains from Rubrik CDM. By default, remote SLA Domains are not retrieved.
-                GraphQL argument showRemoteSlas: Boolean
-                "
+@"Specifies whether to retrieve the remote SLA Domains from Rubrik CDM. By default, remote SLA Domains are not retrieved.
+GraphQL argument showRemoteSlas: Boolean"
         )]
         public System.Boolean? ShowRemoteSlas { get; set; }
         [Parameter(
@@ -259,550 +225,482 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether to show the Rubrik clusters where this SLA Domain is paused.
-                GraphQL argument shouldShowPausedClusters: Boolean
-                "
+@"Specifies whether to show the Rubrik clusters where this SLA Domain is paused.
+GraphQL argument shouldShowPausedClusters: Boolean"
         )]
         public System.Boolean? ShouldShowPausedClusters { get; set; }
         
         // -------------------------------------------------------------------
-        // DomainWithWarningsList parameter set
+        // Domainwithwarningslist parameter set
         //
-        // GraphQL operation: slaDomainWithWarningsList(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: SlaQuerySortByField,   sortOrder: SortOrder,   filter: [GlobalSlaFilterInput!],   contextFilter: ContextFilterTypeEnum,   objectIds: [UUID!],   applicableSnappableTypes: [WorkloadLevelHierarchy!],   snapshotIds: [UUID!],   operation: SlaWarningsOperation, ):[SlaDomainWithWarnings!]!
+        // [GraphQL: slaDomainWithWarningsList]
         //
         [Parameter(
-            ParameterSetName = "DomainWithWarningsList",
+            ParameterSetName = "Domainwithwarningslist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Query sla list with warnings
-                GraphQL operation: slaDomainWithWarningsList(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: SlaQuerySortByField,   sortOrder: SortOrder,   filter: [GlobalSlaFilterInput!],   contextFilter: ContextFilterTypeEnum,   objectIds: [UUID!],   applicableSnappableTypes: [WorkloadLevelHierarchy!],   snapshotIds: [UUID!],   operation: SlaWarningsOperation, ):[SlaDomainWithWarnings!]!
-                ",
+@"Query sla list with warnings
+[GraphQL: slaDomainWithWarningsList]",
             Position = 0
         )]
-        public SwitchParameter DomainWithWarningsList { get; set; }
+        public SwitchParameter Domainwithwarningslist { get; set; }
 
         [Parameter(
-            ParameterSetName = "DomainWithWarningsList",
+            ParameterSetName = "Domainwithwarningslist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Provide list of object forever IDS you want to assign SLA
-                GraphQL argument objectIds: [UUID!]
-                "
+@"Provide list of object forever IDS you want to assign SLA
+GraphQL argument objectIds: [UUID!]"
         )]
         public List<System.String>? ObjectIds { get; set; }
         [Parameter(
-            ParameterSetName = "DomainWithWarningsList",
+            ParameterSetName = "Domainwithwarningslist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Provide optional snappable types under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. See 'applicableSnappableType' for more details. If more than one is provided, the SLA will be assigned to all.
-                GraphQL argument applicableSnappableTypes: [WorkloadLevelHierarchy!]
-                "
+@"Provide optional snappable types under the object for SLA assignment. This is meant to be used only for objects that support multiple snappable hierarchies. See 'applicableSnappableType' for more details. If more than one is provided, the SLA will be assigned to all.
+GraphQL argument applicableSnappableTypes: [WorkloadLevelHierarchy!]"
         )]
         public List<WorkloadLevelHierarchy>? ApplicableSnappableTypes { get; set; }
         [Parameter(
-            ParameterSetName = "DomainWithWarningsList",
+            ParameterSetName = "Domainwithwarningslist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Provides the forever IDs of the snapshots to assign SLA Domains to.
-                GraphQL argument snapshotIds: [UUID!]
-                "
+@"Provides the forever IDs of the snapshots to assign SLA Domains to.
+GraphQL argument snapshotIds: [UUID!]"
         )]
         public List<System.String>? SnapshotIds { get; set; }
         [Parameter(
-            ParameterSetName = "DomainWithWarningsList",
+            ParameterSetName = "Domainwithwarningslist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Assignment operation with the SLA Domain.
-                GraphQL argument operation: SlaWarningsOperation
-                "
+@"Assignment operation with the SLA Domain.
+GraphQL argument operation: SlaWarningsOperation"
         )]
         public SlaWarningsOperation? Operation { get; set; }
         
         // -------------------------------------------------------------------
-        // globalFilterList parameter set
+        // Globalfilterconnection parameter set
         //
-        // GraphQL operation: globalSlaFilterConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: SlaQuerySortByField,   sortOrder: SortOrder,   filter: [GlobalSlaFilterInput!],   contextFilter: ContextFilterTypeEnum,   contextFilterInput: [ContextFilterInputField!],   shouldShowSyncStatus: Boolean = false,   shouldShowProtectedObjectCount: Boolean = false,   shouldShowUpgradeInfo: Boolean = false,   showRemoteSlas: Boolean,   shouldShowPausedClusters: Boolean = false, ):GlobalSlaForFilterConnection!
+        // [GraphQL: globalSlaFilterConnection]
         //
         [Parameter(
-            ParameterSetName = "globalFilterList",
+            ParameterSetName = "Globalfilterconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: globalSlaFilterConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: SlaQuerySortByField,   sortOrder: SortOrder,   filter: [GlobalSlaFilterInput!],   contextFilter: ContextFilterTypeEnum,   contextFilterInput: [ContextFilterInputField!],   shouldShowSyncStatus: Boolean = false,   shouldShowProtectedObjectCount: Boolean = false,   shouldShowUpgradeInfo: Boolean = false,   showRemoteSlas: Boolean,   shouldShowPausedClusters: Boolean = false, ):GlobalSlaForFilterConnection!
-                ",
+@"
+[GraphQL: globalSlaFilterConnection]",
             Position = 0
         )]
-        public SwitchParameter globalFilterList { get; set; }
+        public SwitchParameter Globalfilterconnection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DomainWithWarning parameter set
+        // Domainwithwarning parameter set
         //
-        // GraphQL operation: slaDomainWithWarnings(id: UUID!, objectIds: [UUID!]!, applicableSnappableTypes: [WorkloadLevelHierarchy!]):SlaDomainWithWarnings!
+        // [GraphQL: slaDomainWithWarnings]
         //
         [Parameter(
-            ParameterSetName = "DomainWithWarning",
+            ParameterSetName = "Domainwithwarning",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: slaDomainWithWarnings(id: UUID!, objectIds: [UUID!]!, applicableSnappableTypes: [WorkloadLevelHierarchy!]):SlaDomainWithWarnings!
-                ",
+@"
+[GraphQL: slaDomainWithWarnings]",
             Position = 0
         )]
-        public SwitchParameter DomainWithWarning { get; set; }
+        public SwitchParameter Domainwithwarning { get; set; }
 
         [Parameter(
-            ParameterSetName = "DomainWithWarning",
+            ParameterSetName = "Domainwithwarning",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                SLA Domain ID.
-                GraphQL argument id: UUID!
-                "
+@"SLA Domain ID.
+GraphQL argument id: UUID!"
         )]
         public System.String? Id { get; set; }
         
         // -------------------------------------------------------------------
-        // ArchivalValidationWarning parameter set
+        // Archivalvalidationwarning parameter set
         //
-        // GraphQL operation: slaArchivalValidationWarnings(input: SlaArchivalWarningsInput!):SlaArchivalValidationWithWarnings!
+        // [GraphQL: slaArchivalValidationWarnings]
         //
         [Parameter(
-            ParameterSetName = "ArchivalValidationWarning",
+            ParameterSetName = "Archivalvalidationwarning",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                SLA Domain warnings related to non-compliant archival retention duration in the archival policy.
-                GraphQL operation: slaArchivalValidationWarnings(input: SlaArchivalWarningsInput!):SlaArchivalValidationWithWarnings!
-                ",
+@"SLA Domain warnings related to non-compliant archival retention duration in the archival policy.
+[GraphQL: slaArchivalValidationWarnings]",
             Position = 0
         )]
-        public SwitchParameter ArchivalValidationWarning { get; set; }
+        public SwitchParameter Archivalvalidationwarning { get; set; }
 
         [Parameter(
-            ParameterSetName = "ArchivalValidationWarning",
+            ParameterSetName = "Archivalvalidationwarning",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for requesting SLA Domain compliance warnings related to archival policy.
-                GraphQL argument input: SlaArchivalWarningsInput!
-                "
+@"Input for requesting SLA Domain compliance warnings related to archival policy.
+GraphQL argument input: SlaArchivalWarningsInput!"
         )]
         public SlaArchivalWarningsInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // countOfObjectsProtected parameter set
+        // Countofobjectsprotected parameter set
         //
-        // GraphQL operation: countOfObjectsProtectedBySlas(,   rootOptionalFid: UUID,   slaIds: [UUID!]!,   filter: [Filter!],   typeFilter: [HierarchyObjectTypeEnum!], ):CountOfObjectsProtectedBySLAsResult!
+        // [GraphQL: countOfObjectsProtectedBySlas]
         //
         [Parameter(
-            ParameterSetName = "countOfObjectsProtected",
+            ParameterSetName = "Countofobjectsprotected",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The number of objects protected by the SLA Domains.
-                GraphQL operation: countOfObjectsProtectedBySlas(,   rootOptionalFid: UUID,   slaIds: [UUID!]!,   filter: [Filter!],   typeFilter: [HierarchyObjectTypeEnum!], ):CountOfObjectsProtectedBySLAsResult!
-                ",
+@"The number of objects protected by the SLA Domains.
+[GraphQL: countOfObjectsProtectedBySlas]",
             Position = 0
         )]
-        public SwitchParameter countOfObjectsProtected { get; set; }
+        public SwitchParameter Countofobjectsprotected { get; set; }
 
         [Parameter(
-            ParameterSetName = "countOfObjectsProtected",
+            ParameterSetName = "Countofobjectsprotected",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Forever UUID of the object root. The value of  `none` represents the global hierarchy root.
-                GraphQL argument rootOptionalFid: UUID
-                "
+@"Forever UUID of the object root. The value of  `none` represents the global hierarchy root.
+GraphQL argument rootOptionalFid: UUID"
         )]
         public System.String? RootOptionalFid { get; set; }
         [Parameter(
-            ParameterSetName = "countOfObjectsProtected",
+            ParameterSetName = "Countofobjectsprotected",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A list of global SLA Domain IDs.
-                GraphQL argument slaIds: [UUID!]!
-                "
+@"A list of global SLA Domain IDs.
+GraphQL argument slaIds: [UUID!]!"
         )]
         public List<System.String>? SlaIds { get; set; }
         [Parameter(
-            ParameterSetName = "countOfObjectsProtected",
+            ParameterSetName = "Countofobjectsprotected",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Types of objects to include.
-                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
-                "
+@"Types of objects to include.
+GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         
         // -------------------------------------------------------------------
-        // AuditDetail parameter set
+        // Auditdetail parameter set
         //
-        // GraphQL operation: slaAuditDetail(,   first: Int,   after: String,   last: Int,   before: String,   SlaId: UUID!,   filter: [SLAAuditDetailFilterInput!],   timezone: String, ):[SlaAuditDetail!]!
+        // [GraphQL: slaAuditDetail]
         //
         [Parameter(
-            ParameterSetName = "AuditDetail",
+            ParameterSetName = "Auditdetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of audit details for a given SLA Domain.
-                GraphQL operation: slaAuditDetail(,   first: Int,   after: String,   last: Int,   before: String,   SlaId: UUID!,   filter: [SLAAuditDetailFilterInput!],   timezone: String, ):[SlaAuditDetail!]!
-                ",
+@"List of audit details for a given SLA Domain.
+[GraphQL: slaAuditDetail]",
             Position = 0
         )]
-        public SwitchParameter AuditDetail { get; set; }
+        public SwitchParameter Auditdetail { get; set; }
 
         [Parameter(
-            ParameterSetName = "AuditDetail",
+            ParameterSetName = "Auditdetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                SLA Domain ID for global SLA Domains and internal ID for SLA Domains created on Rubrik clusters.
-                GraphQL argument SlaId: UUID!
-                "
+@"SLA Domain ID for global SLA Domains and internal ID for SLA Domains created on Rubrik clusters.
+GraphQL argument SlaId: UUID!"
         )]
         public System.String? SlaId { get; set; }
         [Parameter(
-            ParameterSetName = "AuditDetail",
+            ParameterSetName = "Auditdetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Timezone.
-                GraphQL argument timezone: String
-                "
+@"Timezone.
+GraphQL argument timezone: String"
         )]
         public System.String? Timezone { get; set; }
         
         // -------------------------------------------------------------------
-        // SummariesById parameter set
+        // Summariesbyid parameter set
         //
-        // GraphQL operation: slaSummariesByIds(slaIds: [UUID!]!):[SlaDomain!]!
+        // [GraphQL: slaSummariesByIds]
         //
         [Parameter(
-            ParameterSetName = "SummariesById",
+            ParameterSetName = "Summariesbyid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of SLA summaries for the given ids
-                GraphQL operation: slaSummariesByIds(slaIds: [UUID!]!):[SlaDomain!]!
-                ",
+@"List of SLA summaries for the given ids
+[GraphQL: slaSummariesByIds]",
             Position = 0
         )]
-        public SwitchParameter SummariesById { get; set; }
+        public SwitchParameter Summariesbyid { get; set; }
 
         
         // -------------------------------------------------------------------
-        // globalStatus parameter set
+        // Globalstatus parameter set
         //
-        // GraphQL operation: globalSlaStatuses(,   first: Int,   after: String,   last: Int,   before: String,   filter: [SlaStatusFilterInput!],   SlaId: UUID!, ):PolarisSlaStatusConnection!
+        // [GraphQL: globalSlaStatuses]
         //
         [Parameter(
-            ParameterSetName = "globalStatus",
+            ParameterSetName = "Globalstatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Status on the clusters where global SLA is synced.
-                GraphQL operation: globalSlaStatuses(,   first: Int,   after: String,   last: Int,   before: String,   filter: [SlaStatusFilterInput!],   SlaId: UUID!, ):PolarisSlaStatusConnection!
-                ",
+@"Status on the clusters where global SLA is synced.
+[GraphQL: globalSlaStatuses]",
             Position = 0
         )]
-        public SwitchParameter globalStatus { get; set; }
+        public SwitchParameter Globalstatus { get; set; }
 
         
         // -------------------------------------------------------------------
-        // protectedClustersForGlobal parameter set
+        // Protectedclustersforglobal parameter set
         //
-        // GraphQL operation: protectedClustersForGlobalSla(,   first: Int,   after: String,   last: Int,   before: String,   slaId: UUID!, ):ClusterConnection!
+        // [GraphQL: protectedClustersForGlobalSla]
         //
         [Parameter(
-            ParameterSetName = "protectedClustersForGlobal",
+            ParameterSetName = "Protectedclustersforglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Clusters that have object(s) protected by global SLA.
-                GraphQL operation: protectedClustersForGlobalSla(,   first: Int,   after: String,   last: Int,   before: String,   slaId: UUID!, ):ClusterConnection!
-                ",
+@"Clusters that have object(s) protected by global SLA.
+[GraphQL: protectedClustersForGlobalSla]",
             Position = 0
         )]
-        public SwitchParameter protectedClustersForGlobal { get; set; }
+        public SwitchParameter Protectedclustersforglobal { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ConflictObject parameter set
+        // Conflictobject parameter set
         //
-        // GraphQL operation: slaConflictObjects(fids: [UUID!]!):[HierarchyObject!]!
+        // [GraphQL: slaConflictObjects]
         //
         [Parameter(
-            ParameterSetName = "ConflictObject",
+            ParameterSetName = "Conflictobject",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: slaConflictObjects(fids: [UUID!]!):[HierarchyObject!]!
-                ",
+@"
+[GraphQL: slaConflictObjects]",
             Position = 0
         )]
-        public SwitchParameter ConflictObject { get; set; }
+        public SwitchParameter Conflictobject { get; set; }
 
         [Parameter(
-            ParameterSetName = "ConflictObject",
+            ParameterSetName = "Conflictobject",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument fids: [UUID!]!
-                "
+@"
+GraphQL argument fids: [UUID!]!"
         )]
         public List<System.String>? Fids { get; set; }
         
         // -------------------------------------------------------------------
-        // ManagedVolume parameter set
+        // Managedvolume parameter set
         //
-        // GraphQL operation: slaManagedVolumes(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):ManagedVolumeConnection!
+        // [GraphQL: slaManagedVolumes]
         //
         [Parameter(
-            ParameterSetName = "ManagedVolume",
+            ParameterSetName = "Managedvolume",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of SLA Managed Volumes.
-                GraphQL operation: slaManagedVolumes(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):ManagedVolumeConnection!
-                ",
+@"Paginated list of SLA Managed Volumes.
+[GraphQL: slaManagedVolumes]",
             Position = 0
         )]
-        public SwitchParameter ManagedVolume { get; set; }
+        public SwitchParameter Managedvolume { get; set; }
 
         
         // -------------------------------------------------------------------
-        // clusterDomainList parameter set
+        // Clusterdomainconnection parameter set
         //
-        // GraphQL operation: clusterSlaDomainConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainConnection!
+        // [GraphQL: clusterSlaDomainConnection]
         //
         [Parameter(
-            ParameterSetName = "clusterDomainList",
+            ParameterSetName = "Clusterdomainconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: clusterSlaDomainConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainConnection!
-                ",
+@"
+[GraphQL: clusterSlaDomainConnection]",
             Position = 0
         )]
-        public SwitchParameter clusterDomainList { get; set; }
+        public SwitchParameter Clusterdomainconnection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // clusterDomainFilterList parameter set
+        // Clusterdomainfilterconnection parameter set
         //
-        // GraphQL operation: clusterSlaDomainFilterConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainForFilterConnection!
+        // [GraphQL: clusterSlaDomainFilterConnection]
         //
         [Parameter(
-            ParameterSetName = "clusterDomainFilterList",
+            ParameterSetName = "Clusterdomainfilterconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: clusterSlaDomainFilterConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainForFilterConnection!
-                ",
+@"
+[GraphQL: clusterSlaDomainFilterConnection]",
             Position = 0
         )]
-        public SwitchParameter clusterDomainFilterList { get; set; }
+        public SwitchParameter Clusterdomainfilterconnection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // verifyWithReplicationToCluster parameter set
+        // Verifywithreplicationtocluster parameter set
         //
-        // GraphQL operation: verifySLAWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!):VerifySLAWithReplicationToClusterResp!
+        // [GraphQL: verifySLAWithReplicationToCluster]
         //
         [Parameter(
-            ParameterSetName = "verifyWithReplicationToCluster",
+            ParameterSetName = "Verifywithreplicationtocluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: verifySLAWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!):VerifySLAWithReplicationToClusterResp!
-                ",
+@"
+[GraphQL: verifySLAWithReplicationToCluster]",
             Position = 0
         )]
-        public SwitchParameter verifyWithReplicationToCluster { get; set; }
+        public SwitchParameter Verifywithreplicationtocluster { get; set; }
 
         [Parameter(
-            ParameterSetName = "verifyWithReplicationToCluster",
+            ParameterSetName = "Verifywithreplicationtocluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                UUID of the Rubrik cluster.
-                GraphQL argument cdmClusterUUID: UUID!
-                "
+@"UUID of the Rubrik cluster.
+GraphQL argument cdmClusterUUID: UUID!"
         )]
         public System.String? CdmClusterUuid { get; set; }
         [Parameter(
-            ParameterSetName = "verifyWithReplicationToCluster",
+            ParameterSetName = "Verifywithreplicationtocluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Include Archived SLA.
-                GraphQL argument includeArchived: Boolean!
-                "
+@"Include Archived SLA.
+GraphQL argument includeArchived: Boolean!"
         )]
         public System.Boolean? IncludeArchived { get; set; }
         
         // -------------------------------------------------------------------
-        // downloadWithReplicationCsv parameter set
+        // Downloadwithreplicationcsv parameter set
         //
-        // GraphQL operation: downloadSlaWithReplicationCsv(cdmClusterUUID: UUID!, includeArchived: Boolean!):DownloadSlaWithReplicationCsvReply!
+        // [GraphQL: downloadSlaWithReplicationCsv]
         //
         [Parameter(
-            ParameterSetName = "downloadWithReplicationCsv",
+            ParameterSetName = "Downloadwithreplicationcsv",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Download list of Global SLA CSV that have Replication to the given Rubrik Cluster.
-                GraphQL operation: downloadSlaWithReplicationCsv(cdmClusterUUID: UUID!, includeArchived: Boolean!):DownloadSlaWithReplicationCsvReply!
-                ",
+@"Download list of Global SLA CSV that have Replication to the given Rubrik Cluster.
+[GraphQL: downloadSlaWithReplicationCsv]",
             Position = 0
         )]
-        public SwitchParameter downloadWithReplicationCsv { get; set; }
+        public SwitchParameter Downloadwithreplicationcsv { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allClusterGlobal parameter set
+        // Allclusterglobal parameter set
         //
-        // GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!
+        // [GraphQL: allClusterGlobalSlas]
         //
         [Parameter(
-            ParameterSetName = "allClusterGlobal",
+            ParameterSetName = "Allclusterglobal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Global SLA Domains protecting at least one object on the specified Rubrik cluster.
-                GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!
-                ",
+@"Global SLA Domains protecting at least one object on the specified Rubrik cluster.
+[GraphQL: allClusterGlobalSlas]",
             Position = 0
         )]
-        public SwitchParameter allClusterGlobal { get; set; }
+        public SwitchParameter Allclusterglobal { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allObjecttestUserNoteAudit parameter set
+        // Allobjecttestusernoteaudit parameter set
         //
-        // GraphQL operation: allObjectsLatestUserNoteAudit(objectIds: [String!]!):[LatestUserNote!]!
+        // [GraphQL: allObjectsLatestUserNoteAudit]
         //
         [Parameter(
-            ParameterSetName = "allObjecttestUserNoteAudit",
+            ParameterSetName = "Allobjecttestusernoteaudit",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Latest audit with usernote for a list of objects.
-                GraphQL operation: allObjectsLatestUserNoteAudit(objectIds: [String!]!):[LatestUserNote!]!
-                ",
+@"Latest audit with usernote for a list of objects.
+[GraphQL: allObjectsLatestUserNoteAudit]",
             Position = 0
         )]
-        public SwitchParameter allObjecttestUserNoteAudit { get; set; }
+        public SwitchParameter Allobjecttestusernoteaudit { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allNcdComplianceData parameter set
+        // Allncdcompliancedata parameter set
         //
-        // GraphQL operation: allNcdSlaComplianceData(clusters: [UUID!]!):[NcdSlaComplianceData!]!
+        // [GraphQL: allNcdSlaComplianceData]
         //
         [Parameter(
-            ParameterSetName = "allNcdComplianceData",
+            ParameterSetName = "Allncdcompliancedata",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                NAS Cloud Direct SLA Domain compliance data for the requested clusters.
-                GraphQL operation: allNcdSlaComplianceData(clusters: [UUID!]!):[NcdSlaComplianceData!]!
-                ",
+@"NAS Cloud Direct SLA Domain compliance data for the requested clusters.
+[GraphQL: allNcdSlaComplianceData]",
             Position = 0
         )]
-        public SwitchParameter allNcdComplianceData { get; set; }
+        public SwitchParameter Allncdcompliancedata { get; set; }
 
         [Parameter(
-            ParameterSetName = "allNcdComplianceData",
+            ParameterSetName = "Allncdcompliancedata",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of Rubrik clusters to filter.
-                GraphQL argument clusters: [UUID!]!
-                "
+@"List of Rubrik clusters to filter.
+GraphQL argument clusters: [UUID!]!"
         )]
         public List<System.String>? Clusters { get; set; }
 
@@ -812,68 +710,68 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "allIofilterStatus":
-                        this.ProcessRecord_allIofilterStatus();
+                    case "Alliofilterstatus":
+                        this.ProcessRecord_Alliofilterstatus();
                         break;
-                    case "allCdpVmName":
-                        this.ProcessRecord_allCdpVmName();
+                    case "Allcdpvmname":
+                        this.ProcessRecord_Allcdpvmname();
                         break;
                     case "Domain":
                         this.ProcessRecord_Domain();
                         break;
-                    case "DomainWithWarningsList":
-                        this.ProcessRecord_DomainWithWarningsList();
+                    case "Domainwithwarningslist":
+                        this.ProcessRecord_Domainwithwarningslist();
                         break;
-                    case "globalFilterList":
-                        this.ProcessRecord_globalFilterList();
+                    case "Globalfilterconnection":
+                        this.ProcessRecord_Globalfilterconnection();
                         break;
-                    case "DomainWithWarning":
-                        this.ProcessRecord_DomainWithWarning();
+                    case "Domainwithwarning":
+                        this.ProcessRecord_Domainwithwarning();
                         break;
-                    case "ArchivalValidationWarning":
-                        this.ProcessRecord_ArchivalValidationWarning();
+                    case "Archivalvalidationwarning":
+                        this.ProcessRecord_Archivalvalidationwarning();
                         break;
-                    case "countOfObjectsProtected":
-                        this.ProcessRecord_countOfObjectsProtected();
+                    case "Countofobjectsprotected":
+                        this.ProcessRecord_Countofobjectsprotected();
                         break;
-                    case "AuditDetail":
-                        this.ProcessRecord_AuditDetail();
+                    case "Auditdetail":
+                        this.ProcessRecord_Auditdetail();
                         break;
-                    case "SummariesById":
-                        this.ProcessRecord_SummariesById();
+                    case "Summariesbyid":
+                        this.ProcessRecord_Summariesbyid();
                         break;
-                    case "globalStatus":
-                        this.ProcessRecord_globalStatus();
+                    case "Globalstatus":
+                        this.ProcessRecord_Globalstatus();
                         break;
-                    case "protectedClustersForGlobal":
-                        this.ProcessRecord_protectedClustersForGlobal();
+                    case "Protectedclustersforglobal":
+                        this.ProcessRecord_Protectedclustersforglobal();
                         break;
-                    case "ConflictObject":
-                        this.ProcessRecord_ConflictObject();
+                    case "Conflictobject":
+                        this.ProcessRecord_Conflictobject();
                         break;
-                    case "ManagedVolume":
-                        this.ProcessRecord_ManagedVolume();
+                    case "Managedvolume":
+                        this.ProcessRecord_Managedvolume();
                         break;
-                    case "clusterDomainList":
-                        this.ProcessRecord_clusterDomainList();
+                    case "Clusterdomainconnection":
+                        this.ProcessRecord_Clusterdomainconnection();
                         break;
-                    case "clusterDomainFilterList":
-                        this.ProcessRecord_clusterDomainFilterList();
+                    case "Clusterdomainfilterconnection":
+                        this.ProcessRecord_Clusterdomainfilterconnection();
                         break;
-                    case "verifyWithReplicationToCluster":
-                        this.ProcessRecord_verifyWithReplicationToCluster();
+                    case "Verifywithreplicationtocluster":
+                        this.ProcessRecord_Verifywithreplicationtocluster();
                         break;
-                    case "downloadWithReplicationCsv":
-                        this.ProcessRecord_downloadWithReplicationCsv();
+                    case "Downloadwithreplicationcsv":
+                        this.ProcessRecord_Downloadwithreplicationcsv();
                         break;
-                    case "allClusterGlobal":
-                        this.ProcessRecord_allClusterGlobal();
+                    case "Allclusterglobal":
+                        this.ProcessRecord_Allclusterglobal();
                         break;
-                    case "allObjecttestUserNoteAudit":
-                        this.ProcessRecord_allObjecttestUserNoteAudit();
+                    case "Allobjecttestusernoteaudit":
+                        this.ProcessRecord_Allobjecttestusernoteaudit();
                         break;
-                    case "allNcdComplianceData":
-                        this.ProcessRecord_allNcdComplianceData();
+                    case "Allncdcompliancedata":
+                        this.ProcessRecord_Allncdcompliancedata();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -893,18 +791,18 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allSlaIofilterStatuses.
-        protected void ProcessRecord_allIofilterStatus()
+        protected void ProcessRecord_Alliofilterstatus()
         {
-            this._logger.name += " -allIofilterStatus";
+            this._logger.name += " -Alliofilterstatus";
             // Invoke graphql operation allSlaIofilterStatuses
             InvokeQueryAllSlaIofilterStatuses();
         }
 
         // This parameter set invokes a single graphql operation:
         // allCdpSlaVmNames.
-        protected void ProcessRecord_allCdpVmName()
+        protected void ProcessRecord_Allcdpvmname()
         {
-            this._logger.name += " -allCdpVmName";
+            this._logger.name += " -Allcdpvmname";
             // Invoke graphql operation allCdpSlaVmNames
             InvokeQueryAllCdpSlaVmNames();
         }
@@ -920,162 +818,162 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // slaDomainWithWarningsList.
-        protected void ProcessRecord_DomainWithWarningsList()
+        protected void ProcessRecord_Domainwithwarningslist()
         {
-            this._logger.name += " -DomainWithWarningsList";
+            this._logger.name += " -Domainwithwarningslist";
             // Invoke graphql operation slaDomainWithWarningsList
             InvokeQuerySlaDomainWithWarningsList();
         }
 
         // This parameter set invokes a single graphql operation:
         // globalSlaFilterConnection.
-        protected void ProcessRecord_globalFilterList()
+        protected void ProcessRecord_Globalfilterconnection()
         {
-            this._logger.name += " -globalFilterList";
+            this._logger.name += " -Globalfilterconnection";
             // Invoke graphql operation globalSlaFilterConnection
             InvokeQueryGlobalSlaFilterConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // slaDomainWithWarnings.
-        protected void ProcessRecord_DomainWithWarning()
+        protected void ProcessRecord_Domainwithwarning()
         {
-            this._logger.name += " -DomainWithWarning";
+            this._logger.name += " -Domainwithwarning";
             // Invoke graphql operation slaDomainWithWarnings
             InvokeQuerySlaDomainWithWarnings();
         }
 
         // This parameter set invokes a single graphql operation:
         // slaArchivalValidationWarnings.
-        protected void ProcessRecord_ArchivalValidationWarning()
+        protected void ProcessRecord_Archivalvalidationwarning()
         {
-            this._logger.name += " -ArchivalValidationWarning";
+            this._logger.name += " -Archivalvalidationwarning";
             // Invoke graphql operation slaArchivalValidationWarnings
             InvokeQuerySlaArchivalValidationWarnings();
         }
 
         // This parameter set invokes a single graphql operation:
         // countOfObjectsProtectedBySlas.
-        protected void ProcessRecord_countOfObjectsProtected()
+        protected void ProcessRecord_Countofobjectsprotected()
         {
-            this._logger.name += " -countOfObjectsProtected";
+            this._logger.name += " -Countofobjectsprotected";
             // Invoke graphql operation countOfObjectsProtectedBySlas
             InvokeQueryCountOfObjectsProtectedBySlas();
         }
 
         // This parameter set invokes a single graphql operation:
         // slaAuditDetail.
-        protected void ProcessRecord_AuditDetail()
+        protected void ProcessRecord_Auditdetail()
         {
-            this._logger.name += " -AuditDetail";
+            this._logger.name += " -Auditdetail";
             // Invoke graphql operation slaAuditDetail
             InvokeQuerySlaAuditDetail();
         }
 
         // This parameter set invokes a single graphql operation:
         // slaSummariesByIds.
-        protected void ProcessRecord_SummariesById()
+        protected void ProcessRecord_Summariesbyid()
         {
-            this._logger.name += " -SummariesById";
+            this._logger.name += " -Summariesbyid";
             // Invoke graphql operation slaSummariesByIds
             InvokeQuerySlaSummariesByIds();
         }
 
         // This parameter set invokes a single graphql operation:
         // globalSlaStatuses.
-        protected void ProcessRecord_globalStatus()
+        protected void ProcessRecord_Globalstatus()
         {
-            this._logger.name += " -globalStatus";
+            this._logger.name += " -Globalstatus";
             // Invoke graphql operation globalSlaStatuses
             InvokeQueryGlobalSlaStatuses();
         }
 
         // This parameter set invokes a single graphql operation:
         // protectedClustersForGlobalSla.
-        protected void ProcessRecord_protectedClustersForGlobal()
+        protected void ProcessRecord_Protectedclustersforglobal()
         {
-            this._logger.name += " -protectedClustersForGlobal";
+            this._logger.name += " -Protectedclustersforglobal";
             // Invoke graphql operation protectedClustersForGlobalSla
             InvokeQueryProtectedClustersForGlobalSla();
         }
 
         // This parameter set invokes a single graphql operation:
         // slaConflictObjects.
-        protected void ProcessRecord_ConflictObject()
+        protected void ProcessRecord_Conflictobject()
         {
-            this._logger.name += " -ConflictObject";
+            this._logger.name += " -Conflictobject";
             // Invoke graphql operation slaConflictObjects
             InvokeQuerySlaConflictObjects();
         }
 
         // This parameter set invokes a single graphql operation:
         // slaManagedVolumes.
-        protected void ProcessRecord_ManagedVolume()
+        protected void ProcessRecord_Managedvolume()
         {
-            this._logger.name += " -ManagedVolume";
+            this._logger.name += " -Managedvolume";
             // Invoke graphql operation slaManagedVolumes
             InvokeQuerySlaManagedVolumes();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomainConnection.
-        protected void ProcessRecord_clusterDomainList()
+        protected void ProcessRecord_Clusterdomainconnection()
         {
-            this._logger.name += " -clusterDomainList";
+            this._logger.name += " -Clusterdomainconnection";
             // Invoke graphql operation clusterSlaDomainConnection
             InvokeQueryClusterSlaDomainConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomainFilterConnection.
-        protected void ProcessRecord_clusterDomainFilterList()
+        protected void ProcessRecord_Clusterdomainfilterconnection()
         {
-            this._logger.name += " -clusterDomainFilterList";
+            this._logger.name += " -Clusterdomainfilterconnection";
             // Invoke graphql operation clusterSlaDomainFilterConnection
             InvokeQueryClusterSlaDomainFilterConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // verifySLAWithReplicationToCluster.
-        protected void ProcessRecord_verifyWithReplicationToCluster()
+        protected void ProcessRecord_Verifywithreplicationtocluster()
         {
-            this._logger.name += " -verifyWithReplicationToCluster";
+            this._logger.name += " -Verifywithreplicationtocluster";
             // Invoke graphql operation verifySLAWithReplicationToCluster
             InvokeQueryVerifySlaWithReplicationToCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadSlaWithReplicationCsv.
-        protected void ProcessRecord_downloadWithReplicationCsv()
+        protected void ProcessRecord_Downloadwithreplicationcsv()
         {
-            this._logger.name += " -downloadWithReplicationCsv";
+            this._logger.name += " -Downloadwithreplicationcsv";
             // Invoke graphql operation downloadSlaWithReplicationCsv
             InvokeQueryDownloadSlaWithReplicationCsv();
         }
 
         // This parameter set invokes a single graphql operation:
         // allClusterGlobalSlas.
-        protected void ProcessRecord_allClusterGlobal()
+        protected void ProcessRecord_Allclusterglobal()
         {
-            this._logger.name += " -allClusterGlobal";
+            this._logger.name += " -Allclusterglobal";
             // Invoke graphql operation allClusterGlobalSlas
             InvokeQueryAllClusterGlobalSlas();
         }
 
         // This parameter set invokes a single graphql operation:
         // allObjectsLatestUserNoteAudit.
-        protected void ProcessRecord_allObjecttestUserNoteAudit()
+        protected void ProcessRecord_Allobjecttestusernoteaudit()
         {
-            this._logger.name += " -allObjecttestUserNoteAudit";
+            this._logger.name += " -Allobjecttestusernoteaudit";
             // Invoke graphql operation allObjectsLatestUserNoteAudit
             InvokeQueryAllObjectsLatestUserNoteAudit();
         }
 
         // This parameter set invokes a single graphql operation:
         // allNcdSlaComplianceData.
-        protected void ProcessRecord_allNcdComplianceData()
+        protected void ProcessRecord_Allncdcompliancedata()
         {
-            this._logger.name += " -allNcdComplianceData";
+            this._logger.name += " -Allncdcompliancedata";
             // Invoke graphql operation allNcdSlaComplianceData
             InvokeQueryAllNcdSlaComplianceData();
         }

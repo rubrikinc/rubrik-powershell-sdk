@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> eventMessage: String (scalar)
         if (this.EventMessage == null && Exploration.Includes(parent + ".eventMessage", true))
         {
-            this.EventMessage = new System.String("FETCH");
+            this.EventMessage = "FETCH";
         }
         //      C# -> System.String? EventSeriesId
         // GraphQL -> eventSeriesId: String (scalar)
         if (this.EventSeriesId == null && Exploration.Includes(parent + ".eventSeriesId", true))
         {
-            this.EventSeriesId = new System.String("FETCH");
+            this.EventSeriesId = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime (scalar)

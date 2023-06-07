@@ -21,1345 +21,1177 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscQueryAws",
-        DefaultParameterSetName = "allVpc")
+        DefaultParameterSetName = "Allvpc")
     ]
     public class Invoke_RscQueryAws : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // NativeRoot parameter set
+        // Nativeroot parameter set
         //
-        // GraphQL operation: awsNativeRoot:AwsNativeRoot!
+        // [GraphQL: awsNativeRoot]
         //
         [Parameter(
-            ParameterSetName = "NativeRoot",
+            ParameterSetName = "Nativeroot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Root of AWS native hierarchy.
-                GraphQL operation: awsNativeRoot:AwsNativeRoot!
-                ",
+@"Root of AWS native hierarchy.
+[GraphQL: awsNativeRoot]",
             Position = 0
         )]
-        public SwitchParameter NativeRoot { get; set; }
+        public SwitchParameter Nativeroot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // NativeAccount parameter set
+        // Nativeaccount parameter set
         //
-        // GraphQL operation: awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!):AwsNativeAccount!
+        // [GraphQL: awsNativeAccount]
         //
         [Parameter(
-            ParameterSetName = "NativeAccount",
+            ParameterSetName = "Nativeaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
-                GraphQL operation: awsNativeAccount(awsNativeAccountRubrikId: UUID!, awsNativeProtectionFeature: AwsNativeProtectionFeature!):AwsNativeAccount!
-                ",
+@"Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
+[GraphQL: awsNativeAccount]",
             Position = 0
         )]
-        public SwitchParameter NativeAccount { get; set; }
+        public SwitchParameter Nativeaccount { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeAccount",
+            ParameterSetName = "Nativeaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik ID for the AWS Native account.
-                GraphQL argument awsNativeAccountRubrikId: UUID!
-                "
+@"The Rubrik ID for the AWS Native account.
+GraphQL argument awsNativeAccountRubrikId: UUID!"
         )]
         public System.String? AwsNativeAccountRubrikId { get; set; }
         [Parameter(
-            ParameterSetName = "NativeAccount",
+            ParameterSetName = "Nativeaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Cloud native protection feature.
-                GraphQL argument awsNativeProtectionFeature: AwsNativeProtectionFeature!
-                "
+@"Cloud native protection feature.
+GraphQL argument awsNativeProtectionFeature: AwsNativeProtectionFeature!"
         )]
         public AwsNativeProtectionFeature? AwsNativeProtectionFeature { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeEc2Instance parameter set
+        // Nativeec2instance parameter set
         //
-        // GraphQL operation: awsNativeEc2Instance(ec2InstanceRubrikId: UUID!):AwsNativeEc2Instance!
+        // [GraphQL: awsNativeEc2Instance]
         //
         [Parameter(
-            ParameterSetName = "NativeEc2Instance",
+            ParameterSetName = "Nativeec2instance",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
-                GraphQL operation: awsNativeEc2Instance(ec2InstanceRubrikId: UUID!):AwsNativeEc2Instance!
-                ",
+@"Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
+[GraphQL: awsNativeEc2Instance]",
             Position = 0
         )]
-        public SwitchParameter NativeEc2Instance { get; set; }
+        public SwitchParameter Nativeec2instance { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeEc2Instance",
+            ParameterSetName = "Nativeec2instance",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID for the AWS EC2 Instance.
-                GraphQL argument ec2InstanceRubrikId: UUID!
-                "
+@"Rubrik ID for the AWS EC2 Instance.
+GraphQL argument ec2InstanceRubrikId: UUID!"
         )]
         public System.String? Ec2InstanceRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeEbsVolume parameter set
+        // Nativeebsvolume parameter set
         //
-        // GraphQL operation: awsNativeEbsVolume(ebsVolumeRubrikId: UUID!):AwsNativeEbsVolume!
+        // [GraphQL: awsNativeEbsVolume]
         //
         [Parameter(
-            ParameterSetName = "NativeEbsVolume",
+            ParameterSetName = "Nativeebsvolume",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
-                GraphQL operation: awsNativeEbsVolume(ebsVolumeRubrikId: UUID!):AwsNativeEbsVolume!
-                ",
+@"Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
+[GraphQL: awsNativeEbsVolume]",
             Position = 0
         )]
-        public SwitchParameter NativeEbsVolume { get; set; }
+        public SwitchParameter Nativeebsvolume { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeEbsVolume",
+            ParameterSetName = "Nativeebsvolume",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID for the AWS EBS Volume object.
-                GraphQL argument ebsVolumeRubrikId: UUID!
-                "
+@"Rubrik ID for the AWS EBS Volume object.
+GraphQL argument ebsVolumeRubrikId: UUID!"
         )]
         public System.String? EbsVolumeRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeS3Bucket parameter set
+        // Natives3bucket parameter set
         //
-        // GraphQL operation: awsNativeS3Bucket(s3BucketRubrikId: UUID!):AwsNativeS3Bucket!
+        // [GraphQL: awsNativeS3Bucket]
         //
         [Parameter(
-            ParameterSetName = "NativeS3Bucket",
+            ParameterSetName = "Natives3bucket",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
-                GraphQL operation: awsNativeS3Bucket(s3BucketRubrikId: UUID!):AwsNativeS3Bucket!
-                ",
+@"Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
+[GraphQL: awsNativeS3Bucket]",
             Position = 0
         )]
-        public SwitchParameter NativeS3Bucket { get; set; }
+        public SwitchParameter Natives3bucket { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeS3Bucket",
+            ParameterSetName = "Natives3bucket",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID for the AWS S3 bucket object.
-                GraphQL argument s3BucketRubrikId: UUID!
-                "
+@"Rubrik ID for the AWS S3 bucket object.
+GraphQL argument s3BucketRubrikId: UUID!"
         )]
         public System.String? S3BucketRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeEc2InstancesByName parameter set
+        // Nativeec2instancesbyname parameter set
         //
-        // GraphQL operation: awsNativeEc2InstancesByName(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: AwsNativeEc2InstanceSortFields,   sortOrder: SortOrder,   ec2InstanceName: String!, ):AwsNativeEc2InstanceConnection!
+        // [GraphQL: awsNativeEc2InstancesByName]
         //
         [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
+            ParameterSetName = "Nativeec2instancesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of all AWS EC2 Instances by name or substring of name.
-                GraphQL operation: awsNativeEc2InstancesByName(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: AwsNativeEc2InstanceSortFields,   sortOrder: SortOrder,   ec2InstanceName: String!, ):AwsNativeEc2InstanceConnection!
-                ",
+@"Paginated list of all AWS EC2 Instances by name or substring of name.
+[GraphQL: awsNativeEc2InstancesByName]",
             Position = 0
         )]
-        public SwitchParameter NativeEc2InstancesByName { get; set; }
+        public SwitchParameter Nativeec2instancesbyname { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
+            ParameterSetName = "Nativeec2instancesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
+            ParameterSetName = "Nativeec2instancesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
+            ParameterSetName = "Nativeec2instancesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the last n elements from the list.
-                GraphQL argument last: Int
-                "
+@"Returns the last n elements from the list.
+GraphQL argument last: Int"
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
+            ParameterSetName = "Nativeec2instancesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come before the specified cursor.
-                GraphQL argument before: String
-                "
+@"Returns the elements in the list that come before the specified cursor.
+GraphQL argument before: String"
         )]
         public System.String? Before { get; set; }
         [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
+            ParameterSetName = "Nativeec2instancesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort fields for list of AWS EC2 instances.
-                GraphQL argument sortBy: AwsNativeEc2InstanceSortFields
-                "
+@"Sort fields for list of AWS EC2 instances.
+GraphQL argument sortBy: AwsNativeEc2InstanceSortFields"
         )]
         public AwsNativeEc2InstanceSortFields? SortBy { get; set; }
         [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
+            ParameterSetName = "Nativeec2instancesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sorting order for the results.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Sorting order for the results.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
-            ParameterSetName = "NativeEc2InstancesByName",
+            ParameterSetName = "Nativeec2instancesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Native name for the AWS EC2 Instance object.
-                GraphQL argument ec2InstanceName: String!
-                "
+@"Native name for the AWS EC2 Instance object.
+GraphQL argument ec2InstanceName: String!"
         )]
         public System.String? Ec2InstanceName { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeEbsVolumesByName parameter set
+        // Nativeebsvolumesbyname parameter set
         //
-        // GraphQL operation: awsNativeEbsVolumesByName(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: AwsNativeEbsVolumeSortFields,   sortOrder: SortOrder,   ebsVolumeName: String!, ):AwsNativeEbsVolumeConnection!
+        // [GraphQL: awsNativeEbsVolumesByName]
         //
         [Parameter(
-            ParameterSetName = "NativeEbsVolumesByName",
+            ParameterSetName = "Nativeebsvolumesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of all AWS EBS Volumes by name or substring of name.
-                GraphQL operation: awsNativeEbsVolumesByName(,   first: Int,   after: String,   last: Int,   before: String,   sortBy: AwsNativeEbsVolumeSortFields,   sortOrder: SortOrder,   ebsVolumeName: String!, ):AwsNativeEbsVolumeConnection!
-                ",
+@"Paginated list of all AWS EBS Volumes by name or substring of name.
+[GraphQL: awsNativeEbsVolumesByName]",
             Position = 0
         )]
-        public SwitchParameter NativeEbsVolumesByName { get; set; }
+        public SwitchParameter Nativeebsvolumesbyname { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeEbsVolumesByName",
+            ParameterSetName = "Nativeebsvolumesbyname",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The native name for the AWS EBS Volume object.
-                GraphQL argument ebsVolumeName: String!
-                "
+@"The native name for the AWS EBS Volume object.
+GraphQL argument ebsVolumeName: String!"
         )]
         public System.String? EbsVolumeName { get; set; }
         
         // -------------------------------------------------------------------
-        // allVpcsByRegion parameter set
+        // Allvpcsbyregion parameter set
         //
-        // GraphQL operation: allVpcsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[AwsVpc!]!
+        // [GraphQL: allVpcsByRegionFromAws]
         //
         [Parameter(
-            ParameterSetName = "allVpcsByRegion",
+            ParameterSetName = "Allvpcsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
-                GraphQL operation: allVpcsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[AwsVpc!]!
-                ",
+@"List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
+[GraphQL: allVpcsByRegionFromAws]",
             Position = 0
         )]
-        public SwitchParameter allVpcsByRegion { get; set; }
+        public SwitchParameter Allvpcsbyregion { get; set; }
 
         [Parameter(
-            ParameterSetName = "allVpcsByRegion",
+            ParameterSetName = "Allvpcsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID for AWS account.
-                GraphQL argument awsAccountRubrikId: UUID!
-                "
+@"Rubrik ID for AWS account.
+GraphQL argument awsAccountRubrikId: UUID!"
         )]
         public System.String? AwsAccountRubrikId { get; set; }
         [Parameter(
-            ParameterSetName = "allVpcsByRegion",
+            ParameterSetName = "Allvpcsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Region in AWS.
-                GraphQL argument region: AwsNativeRegion!
-                "
+@"Region in AWS.
+GraphQL argument region: AwsNativeRegion!"
         )]
         public AwsNativeRegion? Region { get; set; }
         
         // -------------------------------------------------------------------
-        // allVpc parameter set
+        // Allvpc parameter set
         //
-        // GraphQL operation: allVpcsFromAws(awsAccountRubrikId: UUID):[AwsVpc!]!
+        // [GraphQL: allVpcsFromAws]
         //
         [Parameter(
-            ParameterSetName = "allVpc",
+            ParameterSetName = "Allvpc",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all Virtual Private Clouds (VPCs) in the AWS Native account.
-                GraphQL operation: allVpcsFromAws(awsAccountRubrikId: UUID):[AwsVpc!]!
-                ",
+@"List of all Virtual Private Clouds (VPCs) in the AWS Native account.
+[GraphQL: allVpcsFromAws]",
             Position = 0
         )]
-        public SwitchParameter allVpc { get; set; }
+        public SwitchParameter Allvpc { get; set; }
 
         
         // -------------------------------------------------------------------
-        // isNativeEbsVolumeSnapshotRestorable parameter set
+        // Isnativeebsvolumesnapshotrestorable parameter set
         //
-        // GraphQL operation: isAwsNativeEbsVolumeSnapshotRestorable(snapshotId: String!):IsVolumeSnapshotRestorableReply!
+        // [GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]
         //
         [Parameter(
-            ParameterSetName = "isNativeEbsVolumeSnapshotRestorable",
+            ParameterSetName = "Isnativeebsvolumesnapshotrestorable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
-                GraphQL operation: isAwsNativeEbsVolumeSnapshotRestorable(snapshotId: String!):IsVolumeSnapshotRestorableReply!
-                ",
+@"Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
+[GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]",
             Position = 0
         )]
-        public SwitchParameter isNativeEbsVolumeSnapshotRestorable { get; set; }
+        public SwitchParameter Isnativeebsvolumesnapshotrestorable { get; set; }
 
         [Parameter(
-            ParameterSetName = "isNativeEbsVolumeSnapshotRestorable",
+            ParameterSetName = "Isnativeebsvolumesnapshotrestorable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                UUID of the snapshot
-                GraphQL argument snapshotId: String!
-                "
+@"UUID of the snapshot
+GraphQL argument snapshotId: String!"
         )]
         public System.String? SnapshotId { get; set; }
         
         // -------------------------------------------------------------------
-        // allAvailabilityZonesByRegion parameter set
+        // Allavailabilityzonesbyregion parameter set
         //
-        // GraphQL operation: allAvailabilityZonesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[String!]!
+        // [GraphQL: allAvailabilityZonesByRegionFromAws]
         //
         [Parameter(
-            ParameterSetName = "allAvailabilityZonesByRegion",
+            ParameterSetName = "Allavailabilityzonesbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
-                GraphQL operation: allAvailabilityZonesByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[String!]!
-                ",
+@"List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
+[GraphQL: allAvailabilityZonesByRegionFromAws]",
             Position = 0
         )]
-        public SwitchParameter allAvailabilityZonesByRegion { get; set; }
+        public SwitchParameter Allavailabilityzonesbyregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allKmsEncryptionKeysByRegion parameter set
+        // Allkmsencryptionkeysbyregion parameter set
         //
-        // GraphQL operation: allKmsEncryptionKeysByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[KmsEncryptionKey!]!
+        // [GraphQL: allKmsEncryptionKeysByRegionFromAws]
         //
         [Parameter(
-            ParameterSetName = "allKmsEncryptionKeysByRegion",
+            ParameterSetName = "Allkmsencryptionkeysbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
-                GraphQL operation: allKmsEncryptionKeysByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[KmsEncryptionKey!]!
-                ",
+@"List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
+[GraphQL: allKmsEncryptionKeysByRegionFromAws]",
             Position = 0
         )]
-        public SwitchParameter allKmsEncryptionKeysByRegion { get; set; }
+        public SwitchParameter Allkmsencryptionkeysbyregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // isS3BucketNameAvailable parameter set
+        // Iss3bucketnameavailable parameter set
         //
-        // GraphQL operation: isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!):Boolean!
+        // [GraphQL: isAwsS3BucketNameAvailable]
         //
         [Parameter(
-            ParameterSetName = "isS3BucketNameAvailable",
+            ParameterSetName = "Iss3bucketnameavailable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether an S3 bucket name is available for use in AWS or not. When true, the bucket name is available for use.
-                GraphQL operation: isAwsS3BucketNameAvailable(bucketName: String!, awsAccountRubrikId: UUID!):Boolean!
-                ",
+@"Specifies whether an S3 bucket name is available for use in AWS or not. When true, the bucket name is available for use.
+[GraphQL: isAwsS3BucketNameAvailable]",
             Position = 0
         )]
-        public SwitchParameter isS3BucketNameAvailable { get; set; }
+        public SwitchParameter Iss3bucketnameavailable { get; set; }
 
         [Parameter(
-            ParameterSetName = "isS3BucketNameAvailable",
+            ParameterSetName = "Iss3bucketnameavailable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Name of the AWS S3 bucket.
-                GraphQL argument bucketName: String!
-                "
+@"Name of the AWS S3 bucket.
+GraphQL argument bucketName: String!"
         )]
         public System.String? BucketName { get; set; }
         
         // -------------------------------------------------------------------
-        // allS3Bucket parameter set
+        // Alls3bucket parameter set
         //
-        // GraphQL operation: allS3BucketsFromAws(awsAccountRubrikId: UUID!):[String!]!
+        // [GraphQL: allS3BucketsFromAws]
         //
         [Parameter(
-            ParameterSetName = "allS3Bucket",
+            ParameterSetName = "Alls3bucket",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all S3 bucket names across regions for the AWS Native account.
-                GraphQL operation: allS3BucketsFromAws(awsAccountRubrikId: UUID!):[String!]!
-                ",
+@"List of all S3 bucket names across regions for the AWS Native account.
+[GraphQL: allS3BucketsFromAws]",
             Position = 0
         )]
-        public SwitchParameter allS3Bucket { get; set; }
+        public SwitchParameter Alls3bucket { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allS3BucketsDetail parameter set
+        // Alls3bucketsdetail parameter set
         //
-        // GraphQL operation: allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!):[S3BucketDetails!]!
+        // [GraphQL: allS3BucketsDetailsFromAws]
         //
         [Parameter(
-            ParameterSetName = "allS3BucketsDetail",
+            ParameterSetName = "Alls3bucketsdetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all S3 bucket details across regions for the AWS Native account.
-                GraphQL operation: allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!):[S3BucketDetails!]!
-                ",
+@"List of all S3 bucket details across regions for the AWS Native account.
+[GraphQL: allS3BucketsDetailsFromAws]",
             Position = 0
         )]
-        public SwitchParameter allS3BucketsDetail { get; set; }
+        public SwitchParameter Alls3bucketsdetail { get; set; }
 
         
         // -------------------------------------------------------------------
-        // NativeRdsInstance parameter set
+        // Nativerdsinstance parameter set
         //
-        // GraphQL operation: awsNativeRdsInstance(rdsInstanceRubrikId: UUID!):AwsNativeRdsInstance!
+        // [GraphQL: awsNativeRdsInstance]
         //
         [Parameter(
-            ParameterSetName = "NativeRdsInstance",
+            ParameterSetName = "Nativerdsinstance",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
-                GraphQL operation: awsNativeRdsInstance(rdsInstanceRubrikId: UUID!):AwsNativeRdsInstance!
-                ",
+@"Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
+[GraphQL: awsNativeRdsInstance]",
             Position = 0
         )]
-        public SwitchParameter NativeRdsInstance { get; set; }
+        public SwitchParameter Nativerdsinstance { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeRdsInstance",
+            ParameterSetName = "Nativerdsinstance",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik ID for the AWS RDS Instance.
-                GraphQL argument rdsInstanceRubrikId: UUID!
-                "
+@"The Rubrik ID for the AWS RDS Instance.
+GraphQL argument rdsInstanceRubrikId: UUID!"
         )]
         public System.String? RdsInstanceRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeRdsPointInTimeRestoreWindow parameter set
+        // Nativerdspointintimerestorewindow parameter set
         //
-        // GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):AwsNativeRdsPointInTimeRestoreWindow!
+        // [GraphQL: awsNativeRdsPointInTimeRestoreWindow]
         //
         [Parameter(
-            ParameterSetName = "NativeRdsPointInTimeRestoreWindow",
+            ParameterSetName = "Nativerdspointintimerestorewindow",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
-                GraphQL operation: awsNativeRdsPointInTimeRestoreWindow(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):AwsNativeRdsPointInTimeRestoreWindow!
-                ",
+@"Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
+[GraphQL: awsNativeRdsPointInTimeRestoreWindow]",
             Position = 0
         )]
-        public SwitchParameter NativeRdsPointInTimeRestoreWindow { get; set; }
+        public SwitchParameter Nativerdspointintimerestorewindow { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeRdsPointInTimeRestoreWindow",
+            ParameterSetName = "Nativerdspointintimerestorewindow",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Name of the RDS DB Instance
-                GraphQL argument rdsInstanceName: String!
-                "
+@"Name of the RDS DB Instance
+GraphQL argument rdsInstanceName: String!"
         )]
         public System.String? RdsInstanceName { get; set; }
         [Parameter(
-            ParameterSetName = "NativeRdsPointInTimeRestoreWindow",
+            ParameterSetName = "Nativerdspointintimerestorewindow",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik ID for the AWS RDS database.
-                GraphQL argument rdsDatabaseRubrikId: UUID
-                "
+@"The Rubrik ID for the AWS RDS database.
+GraphQL argument rdsDatabaseRubrikId: UUID"
         )]
         public System.String? RdsDatabaseRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // rdsInstanceDetail parameter set
+        // Rdsinstancedetail parameter set
         //
-        // GraphQL operation: rdsInstanceDetailsFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):RdsInstanceDetailsFromAws!
+        // [GraphQL: rdsInstanceDetailsFromAws]
         //
         [Parameter(
-            ParameterSetName = "rdsInstanceDetail",
+            ParameterSetName = "Rdsinstancedetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Details of the RDS Instance in the AWS Native account.
-                GraphQL operation: rdsInstanceDetailsFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   rdsInstanceName: String!,   rdsDatabaseRubrikId: UUID, ):RdsInstanceDetailsFromAws!
-                ",
+@"Details of the RDS Instance in the AWS Native account.
+[GraphQL: rdsInstanceDetailsFromAws]",
             Position = 0
         )]
-        public SwitchParameter rdsInstanceDetail { get; set; }
+        public SwitchParameter Rdsinstancedetail { get; set; }
 
         
         // -------------------------------------------------------------------
-        // isNativeRdsInstanceLaunchConfigurationValid parameter set
+        // Isnativerdsinstancelaunchconfigurationvalid parameter set
         //
-        // GraphQL operation: isAwsNativeRdsInstanceLaunchConfigurationValid(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   dbClass: AwsNativeRdsDbInstanceClass!,   primaryAz: String,   storageType: AwsNativeRdsStorageType,   isMultiAz: Boolean!,   kmsKeyId: String,   iops: Int, ):Boolean!
+        // [GraphQL: isAwsNativeRdsInstanceLaunchConfigurationValid]
         //
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
-                GraphQL operation: isAwsNativeRdsInstanceLaunchConfigurationValid(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   dbClass: AwsNativeRdsDbInstanceClass!,   primaryAz: String,   storageType: AwsNativeRdsStorageType,   isMultiAz: Boolean!,   kmsKeyId: String,   iops: Int, ):Boolean!
-                ",
+@"Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
+[GraphQL: isAwsNativeRdsInstanceLaunchConfigurationValid]",
             Position = 0
         )]
-        public SwitchParameter isNativeRdsInstanceLaunchConfigurationValid { get; set; }
+        public SwitchParameter Isnativerdsinstancelaunchconfigurationvalid { get; set; }
 
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                DB Engine of RDS Instance.
-                GraphQL argument dbEngine: AwsNativeRdsDbEngine!
-                "
+@"DB Engine of RDS Instance.
+GraphQL argument dbEngine: AwsNativeRdsDbEngine!"
         )]
         public AwsNativeRdsDbEngine? DbEngine { get; set; }
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Version of DB engine.
-                GraphQL argument dbEngineVersion: String!
-                "
+@"Version of DB engine.
+GraphQL argument dbEngineVersion: String!"
         )]
         public System.String? DbEngineVersion { get; set; }
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                DB class of the exported RDS DB instance.
-                GraphQL argument dbClass: AwsNativeRdsDbInstanceClass!
-                "
+@"DB class of the exported RDS DB instance.
+GraphQL argument dbClass: AwsNativeRdsDbInstanceClass!"
         )]
         public AwsNativeRdsDbInstanceClass? DbClass { get; set; }
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                AZ in which the exported RDS DB instance must be launched.
-                GraphQL argument primaryAz: String
-                "
+@"AZ in which the exported RDS DB instance must be launched.
+GraphQL argument primaryAz: String"
         )]
         public System.String? PrimaryAz { get; set; }
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Storage type of the exported RDS DB instance.
-                GraphQL argument storageType: AwsNativeRdsStorageType
-                "
+@"Storage type of the exported RDS DB instance.
+GraphQL argument storageType: AwsNativeRdsStorageType"
         )]
         public AwsNativeRdsStorageType? StorageType { get; set; }
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Whether the exported RDS DB instance is multi-AZ or not.
-                GraphQL argument isMultiAz: Boolean!
-                "
+@"Whether the exported RDS DB instance is multi-AZ or not.
+GraphQL argument isMultiAz: Boolean!"
         )]
         public System.Boolean? IsMultiAz { get; set; }
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                KMS Key ID of the exported RDS DB instance.
-                GraphQL argument kmsKeyId: String
-                "
+@"KMS Key ID of the exported RDS DB instance.
+GraphQL argument kmsKeyId: String"
         )]
         public System.String? KmsKeyId { get; set; }
         [Parameter(
-            ParameterSetName = "isNativeRdsInstanceLaunchConfigurationValid",
+            ParameterSetName = "Isnativerdsinstancelaunchconfigurationvalid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                IOPs of the exported RDS DB instance.
-                GraphQL argument iops: Int
-                "
+@"IOPs of the exported RDS DB instance.
+GraphQL argument iops: Int"
         )]
         public System.Int32? Iops { get; set; }
         
         // -------------------------------------------------------------------
-        // allOptionGroupsByRegion parameter set
+        // Alloptiongroupsbyregion parameter set
         //
-        // GraphQL operation: allOptionGroupsByRegionFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   majorEngineVersion: String!, ):[OptionGroup!]!
+        // [GraphQL: allOptionGroupsByRegionFromAws]
         //
         [Parameter(
-            ParameterSetName = "allOptionGroupsByRegion",
+            ParameterSetName = "Alloptiongroupsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
-                GraphQL operation: allOptionGroupsByRegionFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   majorEngineVersion: String!, ):[OptionGroup!]!
-                ",
+@"List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
+[GraphQL: allOptionGroupsByRegionFromAws]",
             Position = 0
         )]
-        public SwitchParameter allOptionGroupsByRegion { get; set; }
+        public SwitchParameter Alloptiongroupsbyregion { get; set; }
 
         [Parameter(
-            ParameterSetName = "allOptionGroupsByRegion",
+            ParameterSetName = "Alloptiongroupsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Major version of the option group engine.
-                GraphQL argument majorEngineVersion: String!
-                "
+@"Major version of the option group engine.
+GraphQL argument majorEngineVersion: String!"
         )]
         public System.String? MajorEngineVersion { get; set; }
         
         // -------------------------------------------------------------------
-        // allDbParameterGroupsByRegion parameter set
+        // Alldbparametergroupsbyregion parameter set
         //
-        // GraphQL operation: allDbParameterGroupsByRegionFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   rdsType: AwsNativeRdsType, ):[DbParameterGroup!]!
+        // [GraphQL: allDbParameterGroupsByRegionFromAws]
         //
         [Parameter(
-            ParameterSetName = "allDbParameterGroupsByRegion",
+            ParameterSetName = "Alldbparametergroupsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
-                GraphQL operation: allDbParameterGroupsByRegionFromAws(,   awsAccountRubrikId: UUID!,   region: AwsNativeRegion!,   dbEngine: AwsNativeRdsDbEngine!,   dbEngineVersion: String!,   rdsType: AwsNativeRdsType, ):[DbParameterGroup!]!
-                ",
+@"List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
+[GraphQL: allDbParameterGroupsByRegionFromAws]",
             Position = 0
         )]
-        public SwitchParameter allDbParameterGroupsByRegion { get; set; }
+        public SwitchParameter Alldbparametergroupsbyregion { get; set; }
 
         [Parameter(
-            ParameterSetName = "allDbParameterGroupsByRegion",
+            ParameterSetName = "Alldbparametergroupsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Type of RDS deployment.
-                GraphQL argument rdsType: AwsNativeRdsType
-                "
+@"Type of RDS deployment.
+GraphQL argument rdsType: AwsNativeRdsType"
         )]
         public AwsNativeRdsType? RdsType { get; set; }
         
         // -------------------------------------------------------------------
-        // allDbSubnetGroupsByRegion parameter set
+        // Alldbsubnetgroupsbyregion parameter set
         //
-        // GraphQL operation: allDbSubnetGroupsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[SubnetGroup!]!
+        // [GraphQL: allDbSubnetGroupsByRegionFromAws]
         //
         [Parameter(
-            ParameterSetName = "allDbSubnetGroupsByRegion",
+            ParameterSetName = "Alldbsubnetgroupsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
-                GraphQL operation: allDbSubnetGroupsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[SubnetGroup!]!
-                ",
+@"All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
+[GraphQL: allDbSubnetGroupsByRegionFromAws]",
             Position = 0
         )]
-        public SwitchParameter allDbSubnetGroupsByRegion { get; set; }
+        public SwitchParameter Alldbsubnetgroupsbyregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // validateNativeRdsInstanceNameForExport parameter set
+        // Validatenativerdsinstancenameforexport parameter set
         //
-        // GraphQL operation: validateAwsNativeRdsInstanceNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):ValidateAwsNativeRdsInstanceNameForExportReply!
+        // [GraphQL: validateAwsNativeRdsInstanceNameForExport]
         //
         [Parameter(
-            ParameterSetName = "validateNativeRdsInstanceNameForExport",
+            ParameterSetName = "Validatenativerdsinstancenameforexport",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
-                GraphQL operation: validateAwsNativeRdsInstanceNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsInstanceName: String!):ValidateAwsNativeRdsInstanceNameForExportReply!
-                ",
+@"Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
+[GraphQL: validateAwsNativeRdsInstanceNameForExport]",
             Position = 0
         )]
-        public SwitchParameter validateNativeRdsInstanceNameForExport { get; set; }
+        public SwitchParameter Validatenativerdsinstancenameforexport { get; set; }
 
         
         // -------------------------------------------------------------------
-        // validateNativeRdsClusterNameForExport parameter set
+        // Validatenativerdsclusternameforexport parameter set
         //
-        // GraphQL operation: validateAwsNativeRdsClusterNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsClusterName: String!):ValidateAwsNativeRdsClusterNameForExportReply!
+        // [GraphQL: validateAwsNativeRdsClusterNameForExport]
         //
         [Parameter(
-            ParameterSetName = "validateNativeRdsClusterNameForExport",
+            ParameterSetName = "Validatenativerdsclusternameforexport",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
-                GraphQL operation: validateAwsNativeRdsClusterNameForExport(awsAccountRubrikId: UUID!, region: AwsNativeRegion!, rdsClusterName: String!):ValidateAwsNativeRdsClusterNameForExportReply!
-                ",
+@"Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
+[GraphQL: validateAwsNativeRdsClusterNameForExport]",
             Position = 0
         )]
-        public SwitchParameter validateNativeRdsClusterNameForExport { get; set; }
+        public SwitchParameter Validatenativerdsclusternameforexport { get; set; }
 
         [Parameter(
-            ParameterSetName = "validateNativeRdsClusterNameForExport",
+            ParameterSetName = "Validatenativerdsclusternameforexport",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Name of the RDS DB Cluster.
-                GraphQL argument rdsClusterName: String!
-                "
+@"Name of the RDS DB Cluster.
+GraphQL argument rdsClusterName: String!"
         )]
         public System.String? RdsClusterName { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeRdsExportDefault parameter set
+        // Nativerdsexportdefault parameter set
         //
-        // GraphQL operation: awsNativeRdsExportDefaults(rdsInstanceRubrikId: UUID!, snapshotId: String, isPointInTime: Boolean!):RdsInstanceExportDefaults!
+        // [GraphQL: awsNativeRdsExportDefaults]
         //
         [Parameter(
-            ParameterSetName = "NativeRdsExportDefault",
+            ParameterSetName = "Nativerdsexportdefault",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
-                GraphQL operation: awsNativeRdsExportDefaults(rdsInstanceRubrikId: UUID!, snapshotId: String, isPointInTime: Boolean!):RdsInstanceExportDefaults!
-                ",
+@"Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
+[GraphQL: awsNativeRdsExportDefaults]",
             Position = 0
         )]
-        public SwitchParameter NativeRdsExportDefault { get; set; }
+        public SwitchParameter Nativerdsexportdefault { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeRdsExportDefault",
+            ParameterSetName = "Nativerdsexportdefault",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether the export of the instance is manual or Point-in-Time.
-                GraphQL argument isPointInTime: Boolean!
-                "
+@"Specifies whether the export of the instance is manual or Point-in-Time.
+GraphQL argument isPointInTime: Boolean!"
         )]
         public System.Boolean? IsPointInTime { get; set; }
         
         // -------------------------------------------------------------------
-        // allEc2KeyPairsByRegion parameter set
+        // Allec2keypairsbyregion parameter set
         //
-        // GraphQL operation: allEc2KeyPairsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[String!]!
+        // [GraphQL: allEc2KeyPairsByRegionFromAws]
         //
         [Parameter(
-            ParameterSetName = "allEc2KeyPairsByRegion",
+            ParameterSetName = "Allec2keypairsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
-                GraphQL operation: allEc2KeyPairsByRegionFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion!):[String!]!
-                ",
+@"List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
+[GraphQL: allEc2KeyPairsByRegionFromAws]",
             Position = 0
         )]
-        public SwitchParameter allEc2KeyPairsByRegion { get; set; }
+        public SwitchParameter Allec2keypairsbyregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // amiTypeForNativeArchivedSnapshotExport parameter set
+        // Amitypefornativearchivedsnapshotexport parameter set
         //
-        // GraphQL operation: amiTypeForAwsNativeArchivedSnapshotExport(input: AmiTypeForAwsNativeArchivedSnapshotExportInput!):AmiTypeForAwsNativeArchivedSnapshotExportReply!
+        // [GraphQL: amiTypeForAwsNativeArchivedSnapshotExport]
         //
         [Parameter(
-            ParameterSetName = "amiTypeForNativeArchivedSnapshotExport",
+            ParameterSetName = "Amitypefornativearchivedsnapshotexport",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
-                GraphQL operation: amiTypeForAwsNativeArchivedSnapshotExport(input: AmiTypeForAwsNativeArchivedSnapshotExportInput!):AmiTypeForAwsNativeArchivedSnapshotExportReply!
-                ",
+@"Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
+[GraphQL: amiTypeForAwsNativeArchivedSnapshotExport]",
             Position = 0
         )]
-        public SwitchParameter amiTypeForNativeArchivedSnapshotExport { get; set; }
+        public SwitchParameter Amitypefornativearchivedsnapshotexport { get; set; }
 
         [Parameter(
-            ParameterSetName = "amiTypeForNativeArchivedSnapshotExport",
+            ParameterSetName = "Amitypefornativearchivedsnapshotexport",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for AmiTypeForAwsNativeArchivedSnapshotExport.
-                GraphQL argument input: AmiTypeForAwsNativeArchivedSnapshotExportInput!
-                "
+@"Input for AmiTypeForAwsNativeArchivedSnapshotExport.
+GraphQL argument input: AmiTypeForAwsNativeArchivedSnapshotExportInput!"
         )]
         public AmiTypeForAwsNativeArchivedSnapshotExportInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // allRdsAuroraInstanceClass parameter set
+        // Allrdsaurorainstanceclass parameter set
         //
-        // GraphQL operation: allAwsRdsAuroraInstanceClasses:AwsNativeRdsAuroraInstanceClassesReply!
+        // [GraphQL: allAwsRdsAuroraInstanceClasses]
         //
         [Parameter(
-            ParameterSetName = "allRdsAuroraInstanceClass",
+            ParameterSetName = "Allrdsaurorainstanceclass",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all the database instance classes supported by AWS RDS Aurora databases.
-                GraphQL operation: allAwsRdsAuroraInstanceClasses:AwsNativeRdsAuroraInstanceClassesReply!
-                ",
+@"List of all the database instance classes supported by AWS RDS Aurora databases.
+[GraphQL: allAwsRdsAuroraInstanceClasses]",
             Position = 0
         )]
-        public SwitchParameter allRdsAuroraInstanceClass { get; set; }
+        public SwitchParameter Allrdsaurorainstanceclass { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ComputeSetting parameter set
+        // Computesetting parameter set
         //
-        // GraphQL operation: awsComputeSettings(computeSettingId: UUID!):AwsComputeSettings!
+        // [GraphQL: awsComputeSettings]
         //
         [Parameter(
-            ParameterSetName = "ComputeSetting",
+            ParameterSetName = "Computesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieve aws compute settings.
-                GraphQL operation: awsComputeSettings(computeSettingId: UUID!):AwsComputeSettings!
-                ",
+@"Retrieve aws compute settings.
+[GraphQL: awsComputeSettings]",
             Position = 0
         )]
-        public SwitchParameter ComputeSetting { get; set; }
+        public SwitchParameter Computesetting { get; set; }
 
         [Parameter(
-            ParameterSetName = "ComputeSetting",
+            ParameterSetName = "Computesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Corresponds to Compute Setting Id in Rubrik tables
-                GraphQL argument computeSettingId: UUID!
-                "
+@"Corresponds to Compute Setting Id in Rubrik tables
+GraphQL argument computeSettingId: UUID!"
         )]
         public System.String? ComputeSettingId { get; set; }
         
         // -------------------------------------------------------------------
-        // allComputeSetting parameter set
+        // Allcomputesetting parameter set
         //
-        // GraphQL operation: allAwsComputeSettings(,   sortBy: AwsCloudComputeSettingQuerySortByField,   sortOrder: SortOrder,   filter: [AwsCloudComputeSettingFilterInput!],   contextFilter: ContextFilterTypeEnum, ):[AwsComputeSettings!]!
+        // [GraphQL: allAwsComputeSettings]
         //
         [Parameter(
-            ParameterSetName = "allComputeSetting",
+            ParameterSetName = "Allcomputesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List all aws compute settings.
-                GraphQL operation: allAwsComputeSettings(,   sortBy: AwsCloudComputeSettingQuerySortByField,   sortOrder: SortOrder,   filter: [AwsCloudComputeSettingFilterInput!],   contextFilter: ContextFilterTypeEnum, ):[AwsComputeSettings!]!
-                ",
+@"List all aws compute settings.
+[GraphQL: allAwsComputeSettings]",
             Position = 0
         )]
-        public SwitchParameter allComputeSetting { get; set; }
+        public SwitchParameter Allcomputesetting { get; set; }
 
         [Parameter(
-            ParameterSetName = "allComputeSetting",
+            ParameterSetName = "Allcomputesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specification on how to filter a list of compute settings.
-                GraphQL argument filter: [AwsCloudComputeSettingFilterInput!]
-                "
+@"Specification on how to filter a list of compute settings.
+GraphQL argument filter: [AwsCloudComputeSettingFilterInput!]"
         )]
         public List<AwsCloudComputeSettingFilterInput>? Filter { get; set; }
         [Parameter(
-            ParameterSetName = "allComputeSetting",
+            ParameterSetName = "Allcomputesetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies the context filter to use.
-                GraphQL argument contextFilter: ContextFilterTypeEnum
-                "
+@"Specifies the context filter to use.
+GraphQL argument contextFilter: ContextFilterTypeEnum"
         )]
         public ContextFilterTypeEnum? ContextFilter { get; set; }
         
         // -------------------------------------------------------------------
-        // allCloudAccountsWithFeature parameter set
+        // Allcloudaccountswithfeature parameter set
         //
-        // GraphQL operation: allAwsCloudAccountsWithFeatures(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!):[AwsCloudAccountWithFeatures!]!
+        // [GraphQL: allAwsCloudAccountsWithFeatures]
         //
         [Parameter(
-            ParameterSetName = "allCloudAccountsWithFeature",
+            ParameterSetName = "Allcloudaccountswithfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
-                GraphQL operation: allAwsCloudAccountsWithFeatures(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!):[AwsCloudAccountWithFeatures!]!
-                ",
+@"List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
+[GraphQL: allAwsCloudAccountsWithFeatures]",
             Position = 0
         )]
-        public SwitchParameter allCloudAccountsWithFeature { get; set; }
+        public SwitchParameter Allcloudaccountswithfeature { get; set; }
 
         [Parameter(
-            ParameterSetName = "allCloudAccountsWithFeature",
+            ParameterSetName = "Allcloudaccountswithfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Arguments for get cloud accounts.
-                GraphQL argument awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!
-                "
+@"Arguments for get cloud accounts.
+GraphQL argument awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!"
         )]
         public AwsCloudAccountsWithFeaturesInput? AwsCloudAccountsArg { get; set; }
         
         // -------------------------------------------------------------------
-        // CloudAccountWithFeature parameter set
+        // Cloudaccountwithfeature parameter set
         //
-        // GraphQL operation: awsCloudAccountWithFeatures(cloudAccountId: UUID!, awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!):AwsCloudAccountWithFeatures!
+        // [GraphQL: awsCloudAccountWithFeatures]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountWithFeature",
+            ParameterSetName = "Cloudaccountwithfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of AWS cloud accounts and the features for each account, classified by ID.
-                GraphQL operation: awsCloudAccountWithFeatures(cloudAccountId: UUID!, awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!):AwsCloudAccountWithFeatures!
-                ",
+@"List of AWS cloud accounts and the features for each account, classified by ID.
+[GraphQL: awsCloudAccountWithFeatures]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountWithFeature { get; set; }
+        public SwitchParameter Cloudaccountwithfeature { get; set; }
 
         [Parameter(
-            ParameterSetName = "CloudAccountWithFeature",
+            ParameterSetName = "Cloudaccountwithfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik ID of the cloud account.
-                GraphQL argument cloudAccountId: UUID!
-                "
+@"The Rubrik ID of the cloud account.
+GraphQL argument cloudAccountId: UUID!"
         )]
         public System.String? CloudAccountId { get; set; }
         [Parameter(
-            ParameterSetName = "CloudAccountWithFeature",
+            ParameterSetName = "Cloudaccountwithfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Arguments for get cloud account.
-                GraphQL argument awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!
-                "
+@"Arguments for get cloud account.
+GraphQL argument awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!"
         )]
         public AwsCloudAccountWithFeaturesInput? AwsCloudAccountArg { get; set; }
         
         // -------------------------------------------------------------------
-        // CloudAccountListVpc parameter set
+        // Cloudaccountlistvpc parameter set
         //
-        // GraphQL operation: awsCloudAccountListVpcs(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!):AwsCloudAccountListVpcResponse!
+        // [GraphQL: awsCloudAccountListVpcs]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountListVpc",
+            ParameterSetName = "Cloudaccountlistvpc",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
-                GraphQL operation: awsCloudAccountListVpcs(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!):AwsCloudAccountListVpcResponse!
-                ",
+@"Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
+[GraphQL: awsCloudAccountListVpcs]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountListVpc { get; set; }
+        public SwitchParameter Cloudaccountlistvpc { get; set; }
 
         [Parameter(
-            ParameterSetName = "CloudAccountListVpc",
+            ParameterSetName = "Cloudaccountlistvpc",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The ID of the cloud account.
-                GraphQL argument cloudAccountUuid: UUID!
-                "
+@"The ID of the cloud account.
+GraphQL argument cloudAccountUuid: UUID!"
         )]
         public System.String? CloudAccountUuid { get; set; }
         [Parameter(
-            ParameterSetName = "CloudAccountListVpc",
+            ParameterSetName = "Cloudaccountlistvpc",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A cloud account feature of Rubrik Security Cloud.
-                GraphQL argument feature: CloudAccountFeature!
-                "
+@"A cloud account feature of Rubrik Security Cloud.
+GraphQL argument feature: CloudAccountFeature!"
         )]
         public CloudAccountFeature? Feature { get; set; }
         
         // -------------------------------------------------------------------
-        // CloudAccountListSubnet parameter set
+        // Cloudaccountlistsubnet parameter set
         //
-        // GraphQL operation: awsCloudAccountListSubnets(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSubnetsResponse!
+        // [GraphQL: awsCloudAccountListSubnets]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountListSubnet",
+            ParameterSetName = "Cloudaccountlistsubnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC).
-                GraphQL operation: awsCloudAccountListSubnets(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSubnetsResponse!
-                ",
+@"Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC).
+[GraphQL: awsCloudAccountListSubnets]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountListSubnet { get; set; }
+        public SwitchParameter Cloudaccountlistsubnet { get; set; }
 
         [Parameter(
-            ParameterSetName = "CloudAccountListSubnet",
+            ParameterSetName = "Cloudaccountlistsubnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                VPC native ID.
-                GraphQL argument vpcID: String!
-                "
+@"VPC native ID.
+GraphQL argument vpcID: String!"
         )]
         public System.String? VpcId { get; set; }
         
         // -------------------------------------------------------------------
-        // CloudAccountListSecurityGroup parameter set
+        // Cloudaccountlistsecuritygroup parameter set
         //
-        // GraphQL operation: awsCloudAccountListSecurityGroups(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSecurityGroupsResponse!
+        // [GraphQL: awsCloudAccountListSecurityGroups]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountListSecurityGroup",
+            ParameterSetName = "Cloudaccountlistsecuritygroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
-                GraphQL operation: awsCloudAccountListSecurityGroups(,   cloudAccountUuid: UUID!,   feature: CloudAccountFeature!,   region: AwsRegion!,   vpcID: String!, ):AwsCloudAccountListSecurityGroupsResponse!
-                ",
+@"Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
+[GraphQL: awsCloudAccountListSecurityGroups]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountListSecurityGroup { get; set; }
+        public SwitchParameter Cloudaccountlistsecuritygroup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // CloudAccountListKMSKey parameter set
+        // Cloudaccountlistkmskey parameter set
         //
-        // GraphQL operation: AwsCloudAccountListKMSKeys(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!):AwsCloudAccountListKMSKeysResponse!
+        // [GraphQL: AwsCloudAccountListKMSKeys]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountListKMSKey",
+            ParameterSetName = "Cloudaccountlistkmskey",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: AwsCloudAccountListKMSKeys(cloudAccountUuid: UUID!, feature: CloudAccountFeature!, region: AwsRegion!):AwsCloudAccountListKMSKeysResponse!
-                ",
+@"
+[GraphQL: AwsCloudAccountListKMSKeys]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountListKMSKey { get; set; }
+        public SwitchParameter Cloudaccountlistkmskey { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allExocomputeConfig parameter set
+        // Allexocomputeconfig parameter set
         //
-        // GraphQL operation: allAwsExocomputeConfigs(awsNativeAccountIdOrNamePrefix: String!):[AwsExocomputeConfig!]!
+        // [GraphQL: allAwsExocomputeConfigs]
         //
         [Parameter(
-            ParameterSetName = "allExocomputeConfig",
+            ParameterSetName = "Allexocomputeconfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
-                GraphQL operation: allAwsExocomputeConfigs(awsNativeAccountIdOrNamePrefix: String!):[AwsExocomputeConfig!]!
-                ",
+@"List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
+[GraphQL: allAwsExocomputeConfigs]",
             Position = 0
         )]
-        public SwitchParameter allExocomputeConfig { get; set; }
+        public SwitchParameter Allexocomputeconfig { get; set; }
 
         [Parameter(
-            ParameterSetName = "allExocomputeConfig",
+            ParameterSetName = "Allexocomputeconfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
-                GraphQL argument awsNativeAccountIdOrNamePrefix: String!
-                "
+@"A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
+GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
         )]
         public System.String? AwsNativeAccountIdOrNamePrefix { get; set; }
         
         // -------------------------------------------------------------------
-        // allCloudAccountConfig parameter set
+        // Allcloudaccountconfig parameter set
         //
-        // GraphQL operation: allAwsCloudAccountConfigs(awsCloudAccountsArg: AwsCloudAccountConfigsInput!):[AwsFeatureConfig!]!
+        // [GraphQL: allAwsCloudAccountConfigs]
         //
         [Parameter(
-            ParameterSetName = "allCloudAccountConfig",
+            ParameterSetName = "Allcloudaccountconfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all AWS cloud account configurations with the given search query.
-                GraphQL operation: allAwsCloudAccountConfigs(awsCloudAccountsArg: AwsCloudAccountConfigsInput!):[AwsFeatureConfig!]!
-                ",
+@"List of all AWS cloud account configurations with the given search query.
+[GraphQL: allAwsCloudAccountConfigs]",
             Position = 0
         )]
-        public SwitchParameter allCloudAccountConfig { get; set; }
+        public SwitchParameter Allcloudaccountconfig { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allRegion parameter set
+        // Allregion parameter set
         //
-        // GraphQL operation: allAwsRegions(cloudAccountId: String!):[AwsCloudAccountRegion!]!
+        // [GraphQL: allAwsRegions]
         //
         [Parameter(
-            ParameterSetName = "allRegion",
+            ParameterSetName = "Allregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                All valid AWS regions for this cloud account.
-                GraphQL operation: allAwsRegions(cloudAccountId: String!):[AwsCloudAccountRegion!]!
-                ",
+@"All valid AWS regions for this cloud account.
+[GraphQL: allAwsRegions]",
             Position = 0
         )]
-        public SwitchParameter allRegion { get; set; }
+        public SwitchParameter Allregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allCdmVersion parameter set
+        // Allcdmversion parameter set
         //
-        // GraphQL operation: allAwsCdmVersions(input: AwsCdmVersionRequest!):[AwsCdmVersion!]!
+        // [GraphQL: allAwsCdmVersions]
         //
         [Parameter(
-            ParameterSetName = "allCdmVersion",
+            ParameterSetName = "Allcdmversion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get all Rubrik CDM versions in the AWS marketplace.
-                GraphQL operation: allAwsCdmVersions(input: AwsCdmVersionRequest!):[AwsCdmVersion!]!
-                ",
+@"Get all Rubrik CDM versions in the AWS marketplace.
+[GraphQL: allAwsCdmVersions]",
             Position = 0
         )]
-        public SwitchParameter allCdmVersion { get; set; }
+        public SwitchParameter Allcdmversion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allInstanceProfileName parameter set
+        // Allinstanceprofilename parameter set
         //
-        // GraphQL operation: allAwsInstanceProfileNames(cloudAccountId: String!, region: String!):[String!]!
+        // [GraphQL: allAwsInstanceProfileNames]
         //
         [Parameter(
-            ParameterSetName = "allInstanceProfileName",
+            ParameterSetName = "Allinstanceprofilename",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                All Rubrik CC-ES instance profiles in the AWS account.
-                GraphQL operation: allAwsInstanceProfileNames(cloudAccountId: String!, region: String!):[String!]!
-                ",
+@"All Rubrik CC-ES instance profiles in the AWS account.
+[GraphQL: allAwsInstanceProfileNames]",
             Position = 0
         )]
-        public SwitchParameter allInstanceProfileName { get; set; }
+        public SwitchParameter Allinstanceprofilename { get; set; }
 
 
         protected override void ProcessRecord()
@@ -1368,128 +1200,128 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "NativeRoot":
-                        this.ProcessRecord_NativeRoot();
+                    case "Nativeroot":
+                        this.ProcessRecord_Nativeroot();
                         break;
-                    case "NativeAccount":
-                        this.ProcessRecord_NativeAccount();
+                    case "Nativeaccount":
+                        this.ProcessRecord_Nativeaccount();
                         break;
-                    case "NativeEc2Instance":
-                        this.ProcessRecord_NativeEc2Instance();
+                    case "Nativeec2instance":
+                        this.ProcessRecord_Nativeec2instance();
                         break;
-                    case "NativeEbsVolume":
-                        this.ProcessRecord_NativeEbsVolume();
+                    case "Nativeebsvolume":
+                        this.ProcessRecord_Nativeebsvolume();
                         break;
-                    case "NativeS3Bucket":
-                        this.ProcessRecord_NativeS3Bucket();
+                    case "Natives3bucket":
+                        this.ProcessRecord_Natives3bucket();
                         break;
-                    case "NativeEc2InstancesByName":
-                        this.ProcessRecord_NativeEc2InstancesByName();
+                    case "Nativeec2instancesbyname":
+                        this.ProcessRecord_Nativeec2instancesbyname();
                         break;
-                    case "NativeEbsVolumesByName":
-                        this.ProcessRecord_NativeEbsVolumesByName();
+                    case "Nativeebsvolumesbyname":
+                        this.ProcessRecord_Nativeebsvolumesbyname();
                         break;
-                    case "allVpcsByRegion":
-                        this.ProcessRecord_allVpcsByRegion();
+                    case "Allvpcsbyregion":
+                        this.ProcessRecord_Allvpcsbyregion();
                         break;
-                    case "allVpc":
-                        this.ProcessRecord_allVpc();
+                    case "Allvpc":
+                        this.ProcessRecord_Allvpc();
                         break;
-                    case "isNativeEbsVolumeSnapshotRestorable":
-                        this.ProcessRecord_isNativeEbsVolumeSnapshotRestorable();
+                    case "Isnativeebsvolumesnapshotrestorable":
+                        this.ProcessRecord_Isnativeebsvolumesnapshotrestorable();
                         break;
-                    case "allAvailabilityZonesByRegion":
-                        this.ProcessRecord_allAvailabilityZonesByRegion();
+                    case "Allavailabilityzonesbyregion":
+                        this.ProcessRecord_Allavailabilityzonesbyregion();
                         break;
-                    case "allKmsEncryptionKeysByRegion":
-                        this.ProcessRecord_allKmsEncryptionKeysByRegion();
+                    case "Allkmsencryptionkeysbyregion":
+                        this.ProcessRecord_Allkmsencryptionkeysbyregion();
                         break;
-                    case "isS3BucketNameAvailable":
-                        this.ProcessRecord_isS3BucketNameAvailable();
+                    case "Iss3bucketnameavailable":
+                        this.ProcessRecord_Iss3bucketnameavailable();
                         break;
-                    case "allS3Bucket":
-                        this.ProcessRecord_allS3Bucket();
+                    case "Alls3bucket":
+                        this.ProcessRecord_Alls3bucket();
                         break;
-                    case "allS3BucketsDetail":
-                        this.ProcessRecord_allS3BucketsDetail();
+                    case "Alls3bucketsdetail":
+                        this.ProcessRecord_Alls3bucketsdetail();
                         break;
-                    case "NativeRdsInstance":
-                        this.ProcessRecord_NativeRdsInstance();
+                    case "Nativerdsinstance":
+                        this.ProcessRecord_Nativerdsinstance();
                         break;
-                    case "NativeRdsPointInTimeRestoreWindow":
-                        this.ProcessRecord_NativeRdsPointInTimeRestoreWindow();
+                    case "Nativerdspointintimerestorewindow":
+                        this.ProcessRecord_Nativerdspointintimerestorewindow();
                         break;
-                    case "rdsInstanceDetail":
-                        this.ProcessRecord_rdsInstanceDetail();
+                    case "Rdsinstancedetail":
+                        this.ProcessRecord_Rdsinstancedetail();
                         break;
-                    case "isNativeRdsInstanceLaunchConfigurationValid":
-                        this.ProcessRecord_isNativeRdsInstanceLaunchConfigurationValid();
+                    case "Isnativerdsinstancelaunchconfigurationvalid":
+                        this.ProcessRecord_Isnativerdsinstancelaunchconfigurationvalid();
                         break;
-                    case "allOptionGroupsByRegion":
-                        this.ProcessRecord_allOptionGroupsByRegion();
+                    case "Alloptiongroupsbyregion":
+                        this.ProcessRecord_Alloptiongroupsbyregion();
                         break;
-                    case "allDbParameterGroupsByRegion":
-                        this.ProcessRecord_allDbParameterGroupsByRegion();
+                    case "Alldbparametergroupsbyregion":
+                        this.ProcessRecord_Alldbparametergroupsbyregion();
                         break;
-                    case "allDbSubnetGroupsByRegion":
-                        this.ProcessRecord_allDbSubnetGroupsByRegion();
+                    case "Alldbsubnetgroupsbyregion":
+                        this.ProcessRecord_Alldbsubnetgroupsbyregion();
                         break;
-                    case "validateNativeRdsInstanceNameForExport":
-                        this.ProcessRecord_validateNativeRdsInstanceNameForExport();
+                    case "Validatenativerdsinstancenameforexport":
+                        this.ProcessRecord_Validatenativerdsinstancenameforexport();
                         break;
-                    case "validateNativeRdsClusterNameForExport":
-                        this.ProcessRecord_validateNativeRdsClusterNameForExport();
+                    case "Validatenativerdsclusternameforexport":
+                        this.ProcessRecord_Validatenativerdsclusternameforexport();
                         break;
-                    case "NativeRdsExportDefault":
-                        this.ProcessRecord_NativeRdsExportDefault();
+                    case "Nativerdsexportdefault":
+                        this.ProcessRecord_Nativerdsexportdefault();
                         break;
-                    case "allEc2KeyPairsByRegion":
-                        this.ProcessRecord_allEc2KeyPairsByRegion();
+                    case "Allec2keypairsbyregion":
+                        this.ProcessRecord_Allec2keypairsbyregion();
                         break;
-                    case "amiTypeForNativeArchivedSnapshotExport":
-                        this.ProcessRecord_amiTypeForNativeArchivedSnapshotExport();
+                    case "Amitypefornativearchivedsnapshotexport":
+                        this.ProcessRecord_Amitypefornativearchivedsnapshotexport();
                         break;
-                    case "allRdsAuroraInstanceClass":
-                        this.ProcessRecord_allRdsAuroraInstanceClass();
+                    case "Allrdsaurorainstanceclass":
+                        this.ProcessRecord_Allrdsaurorainstanceclass();
                         break;
-                    case "ComputeSetting":
-                        this.ProcessRecord_ComputeSetting();
+                    case "Computesetting":
+                        this.ProcessRecord_Computesetting();
                         break;
-                    case "allComputeSetting":
-                        this.ProcessRecord_allComputeSetting();
+                    case "Allcomputesetting":
+                        this.ProcessRecord_Allcomputesetting();
                         break;
-                    case "allCloudAccountsWithFeature":
-                        this.ProcessRecord_allCloudAccountsWithFeature();
+                    case "Allcloudaccountswithfeature":
+                        this.ProcessRecord_Allcloudaccountswithfeature();
                         break;
-                    case "CloudAccountWithFeature":
-                        this.ProcessRecord_CloudAccountWithFeature();
+                    case "Cloudaccountwithfeature":
+                        this.ProcessRecord_Cloudaccountwithfeature();
                         break;
-                    case "CloudAccountListVpc":
-                        this.ProcessRecord_CloudAccountListVpc();
+                    case "Cloudaccountlistvpc":
+                        this.ProcessRecord_Cloudaccountlistvpc();
                         break;
-                    case "CloudAccountListSubnet":
-                        this.ProcessRecord_CloudAccountListSubnet();
+                    case "Cloudaccountlistsubnet":
+                        this.ProcessRecord_Cloudaccountlistsubnet();
                         break;
-                    case "CloudAccountListSecurityGroup":
-                        this.ProcessRecord_CloudAccountListSecurityGroup();
+                    case "Cloudaccountlistsecuritygroup":
+                        this.ProcessRecord_Cloudaccountlistsecuritygroup();
                         break;
-                    case "CloudAccountListKMSKey":
-                        this.ProcessRecord_CloudAccountListKMSKey();
+                    case "Cloudaccountlistkmskey":
+                        this.ProcessRecord_Cloudaccountlistkmskey();
                         break;
-                    case "allExocomputeConfig":
-                        this.ProcessRecord_allExocomputeConfig();
+                    case "Allexocomputeconfig":
+                        this.ProcessRecord_Allexocomputeconfig();
                         break;
-                    case "allCloudAccountConfig":
-                        this.ProcessRecord_allCloudAccountConfig();
+                    case "Allcloudaccountconfig":
+                        this.ProcessRecord_Allcloudaccountconfig();
                         break;
-                    case "allRegion":
-                        this.ProcessRecord_allRegion();
+                    case "Allregion":
+                        this.ProcessRecord_Allregion();
                         break;
-                    case "allCdmVersion":
-                        this.ProcessRecord_allCdmVersion();
+                    case "Allcdmversion":
+                        this.ProcessRecord_Allcdmversion();
                         break;
-                    case "allInstanceProfileName":
-                        this.ProcessRecord_allInstanceProfileName();
+                    case "Allinstanceprofilename":
+                        this.ProcessRecord_Allinstanceprofilename();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1509,369 +1341,369 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRoot.
-        protected void ProcessRecord_NativeRoot()
+        protected void ProcessRecord_Nativeroot()
         {
-            this._logger.name += " -NativeRoot";
+            this._logger.name += " -Nativeroot";
             // Invoke graphql operation awsNativeRoot
             InvokeQueryAwsNativeRoot();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeAccount.
-        protected void ProcessRecord_NativeAccount()
+        protected void ProcessRecord_Nativeaccount()
         {
-            this._logger.name += " -NativeAccount";
+            this._logger.name += " -Nativeaccount";
             // Invoke graphql operation awsNativeAccount
             InvokeQueryAwsNativeAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEc2Instance.
-        protected void ProcessRecord_NativeEc2Instance()
+        protected void ProcessRecord_Nativeec2instance()
         {
-            this._logger.name += " -NativeEc2Instance";
+            this._logger.name += " -Nativeec2instance";
             // Invoke graphql operation awsNativeEc2Instance
             InvokeQueryAwsNativeEc2Instance();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEbsVolume.
-        protected void ProcessRecord_NativeEbsVolume()
+        protected void ProcessRecord_Nativeebsvolume()
         {
-            this._logger.name += " -NativeEbsVolume";
+            this._logger.name += " -Nativeebsvolume";
             // Invoke graphql operation awsNativeEbsVolume
             InvokeQueryAwsNativeEbsVolume();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeS3Bucket.
-        protected void ProcessRecord_NativeS3Bucket()
+        protected void ProcessRecord_Natives3bucket()
         {
-            this._logger.name += " -NativeS3Bucket";
+            this._logger.name += " -Natives3bucket";
             // Invoke graphql operation awsNativeS3Bucket
             InvokeQueryAwsNativeS3Bucket();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEc2InstancesByName.
-        protected void ProcessRecord_NativeEc2InstancesByName()
+        protected void ProcessRecord_Nativeec2instancesbyname()
         {
-            this._logger.name += " -NativeEc2InstancesByName";
+            this._logger.name += " -Nativeec2instancesbyname";
             // Invoke graphql operation awsNativeEc2InstancesByName
             InvokeQueryAwsNativeEc2InstancesByName();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeEbsVolumesByName.
-        protected void ProcessRecord_NativeEbsVolumesByName()
+        protected void ProcessRecord_Nativeebsvolumesbyname()
         {
-            this._logger.name += " -NativeEbsVolumesByName";
+            this._logger.name += " -Nativeebsvolumesbyname";
             // Invoke graphql operation awsNativeEbsVolumesByName
             InvokeQueryAwsNativeEbsVolumesByName();
         }
 
         // This parameter set invokes a single graphql operation:
         // allVpcsByRegionFromAws.
-        protected void ProcessRecord_allVpcsByRegion()
+        protected void ProcessRecord_Allvpcsbyregion()
         {
-            this._logger.name += " -allVpcsByRegion";
+            this._logger.name += " -Allvpcsbyregion";
             // Invoke graphql operation allVpcsByRegionFromAws
             InvokeQueryAllVpcsByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // allVpcsFromAws.
-        protected void ProcessRecord_allVpc()
+        protected void ProcessRecord_Allvpc()
         {
-            this._logger.name += " -allVpc";
+            this._logger.name += " -Allvpc";
             // Invoke graphql operation allVpcsFromAws
             InvokeQueryAllVpcsFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // isAwsNativeEbsVolumeSnapshotRestorable.
-        protected void ProcessRecord_isNativeEbsVolumeSnapshotRestorable()
+        protected void ProcessRecord_Isnativeebsvolumesnapshotrestorable()
         {
-            this._logger.name += " -isNativeEbsVolumeSnapshotRestorable";
+            this._logger.name += " -Isnativeebsvolumesnapshotrestorable";
             // Invoke graphql operation isAwsNativeEbsVolumeSnapshotRestorable
             InvokeQueryIsAwsNativeEbsVolumeSnapshotRestorable();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAvailabilityZonesByRegionFromAws.
-        protected void ProcessRecord_allAvailabilityZonesByRegion()
+        protected void ProcessRecord_Allavailabilityzonesbyregion()
         {
-            this._logger.name += " -allAvailabilityZonesByRegion";
+            this._logger.name += " -Allavailabilityzonesbyregion";
             // Invoke graphql operation allAvailabilityZonesByRegionFromAws
             InvokeQueryAllAvailabilityZonesByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // allKmsEncryptionKeysByRegionFromAws.
-        protected void ProcessRecord_allKmsEncryptionKeysByRegion()
+        protected void ProcessRecord_Allkmsencryptionkeysbyregion()
         {
-            this._logger.name += " -allKmsEncryptionKeysByRegion";
+            this._logger.name += " -Allkmsencryptionkeysbyregion";
             // Invoke graphql operation allKmsEncryptionKeysByRegionFromAws
             InvokeQueryAllKmsEncryptionKeysByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // isAwsS3BucketNameAvailable.
-        protected void ProcessRecord_isS3BucketNameAvailable()
+        protected void ProcessRecord_Iss3bucketnameavailable()
         {
-            this._logger.name += " -isS3BucketNameAvailable";
+            this._logger.name += " -Iss3bucketnameavailable";
             // Invoke graphql operation isAwsS3BucketNameAvailable
             InvokeQueryIsAwsS3BucketNameAvailable();
         }
 
         // This parameter set invokes a single graphql operation:
         // allS3BucketsFromAws.
-        protected void ProcessRecord_allS3Bucket()
+        protected void ProcessRecord_Alls3bucket()
         {
-            this._logger.name += " -allS3Bucket";
+            this._logger.name += " -Alls3bucket";
             // Invoke graphql operation allS3BucketsFromAws
             InvokeQueryAllS3BucketsFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // allS3BucketsDetailsFromAws.
-        protected void ProcessRecord_allS3BucketsDetail()
+        protected void ProcessRecord_Alls3bucketsdetail()
         {
-            this._logger.name += " -allS3BucketsDetail";
+            this._logger.name += " -Alls3bucketsdetail";
             // Invoke graphql operation allS3BucketsDetailsFromAws
             InvokeQueryAllS3BucketsDetailsFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRdsInstance.
-        protected void ProcessRecord_NativeRdsInstance()
+        protected void ProcessRecord_Nativerdsinstance()
         {
-            this._logger.name += " -NativeRdsInstance";
+            this._logger.name += " -Nativerdsinstance";
             // Invoke graphql operation awsNativeRdsInstance
             InvokeQueryAwsNativeRdsInstance();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRdsPointInTimeRestoreWindow.
-        protected void ProcessRecord_NativeRdsPointInTimeRestoreWindow()
+        protected void ProcessRecord_Nativerdspointintimerestorewindow()
         {
-            this._logger.name += " -NativeRdsPointInTimeRestoreWindow";
+            this._logger.name += " -Nativerdspointintimerestorewindow";
             // Invoke graphql operation awsNativeRdsPointInTimeRestoreWindow
             InvokeQueryAwsNativeRdsPointInTimeRestoreWindow();
         }
 
         // This parameter set invokes a single graphql operation:
         // rdsInstanceDetailsFromAws.
-        protected void ProcessRecord_rdsInstanceDetail()
+        protected void ProcessRecord_Rdsinstancedetail()
         {
-            this._logger.name += " -rdsInstanceDetail";
+            this._logger.name += " -Rdsinstancedetail";
             // Invoke graphql operation rdsInstanceDetailsFromAws
             InvokeQueryRdsInstanceDetailsFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // isAwsNativeRdsInstanceLaunchConfigurationValid.
-        protected void ProcessRecord_isNativeRdsInstanceLaunchConfigurationValid()
+        protected void ProcessRecord_Isnativerdsinstancelaunchconfigurationvalid()
         {
-            this._logger.name += " -isNativeRdsInstanceLaunchConfigurationValid";
+            this._logger.name += " -Isnativerdsinstancelaunchconfigurationvalid";
             // Invoke graphql operation isAwsNativeRdsInstanceLaunchConfigurationValid
             InvokeQueryIsAwsNativeRdsInstanceLaunchConfigurationValid();
         }
 
         // This parameter set invokes a single graphql operation:
         // allOptionGroupsByRegionFromAws.
-        protected void ProcessRecord_allOptionGroupsByRegion()
+        protected void ProcessRecord_Alloptiongroupsbyregion()
         {
-            this._logger.name += " -allOptionGroupsByRegion";
+            this._logger.name += " -Alloptiongroupsbyregion";
             // Invoke graphql operation allOptionGroupsByRegionFromAws
             InvokeQueryAllOptionGroupsByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // allDbParameterGroupsByRegionFromAws.
-        protected void ProcessRecord_allDbParameterGroupsByRegion()
+        protected void ProcessRecord_Alldbparametergroupsbyregion()
         {
-            this._logger.name += " -allDbParameterGroupsByRegion";
+            this._logger.name += " -Alldbparametergroupsbyregion";
             // Invoke graphql operation allDbParameterGroupsByRegionFromAws
             InvokeQueryAllDbParameterGroupsByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // allDbSubnetGroupsByRegionFromAws.
-        protected void ProcessRecord_allDbSubnetGroupsByRegion()
+        protected void ProcessRecord_Alldbsubnetgroupsbyregion()
         {
-            this._logger.name += " -allDbSubnetGroupsByRegion";
+            this._logger.name += " -Alldbsubnetgroupsbyregion";
             // Invoke graphql operation allDbSubnetGroupsByRegionFromAws
             InvokeQueryAllDbSubnetGroupsByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // validateAwsNativeRdsInstanceNameForExport.
-        protected void ProcessRecord_validateNativeRdsInstanceNameForExport()
+        protected void ProcessRecord_Validatenativerdsinstancenameforexport()
         {
-            this._logger.name += " -validateNativeRdsInstanceNameForExport";
+            this._logger.name += " -Validatenativerdsinstancenameforexport";
             // Invoke graphql operation validateAwsNativeRdsInstanceNameForExport
             InvokeQueryValidateAwsNativeRdsInstanceNameForExport();
         }
 
         // This parameter set invokes a single graphql operation:
         // validateAwsNativeRdsClusterNameForExport.
-        protected void ProcessRecord_validateNativeRdsClusterNameForExport()
+        protected void ProcessRecord_Validatenativerdsclusternameforexport()
         {
-            this._logger.name += " -validateNativeRdsClusterNameForExport";
+            this._logger.name += " -Validatenativerdsclusternameforexport";
             // Invoke graphql operation validateAwsNativeRdsClusterNameForExport
             InvokeQueryValidateAwsNativeRdsClusterNameForExport();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeRdsExportDefaults.
-        protected void ProcessRecord_NativeRdsExportDefault()
+        protected void ProcessRecord_Nativerdsexportdefault()
         {
-            this._logger.name += " -NativeRdsExportDefault";
+            this._logger.name += " -Nativerdsexportdefault";
             // Invoke graphql operation awsNativeRdsExportDefaults
             InvokeQueryAwsNativeRdsExportDefaults();
         }
 
         // This parameter set invokes a single graphql operation:
         // allEc2KeyPairsByRegionFromAws.
-        protected void ProcessRecord_allEc2KeyPairsByRegion()
+        protected void ProcessRecord_Allec2keypairsbyregion()
         {
-            this._logger.name += " -allEc2KeyPairsByRegion";
+            this._logger.name += " -Allec2keypairsbyregion";
             // Invoke graphql operation allEc2KeyPairsByRegionFromAws
             InvokeQueryAllEc2KeyPairsByRegionFromAws();
         }
 
         // This parameter set invokes a single graphql operation:
         // amiTypeForAwsNativeArchivedSnapshotExport.
-        protected void ProcessRecord_amiTypeForNativeArchivedSnapshotExport()
+        protected void ProcessRecord_Amitypefornativearchivedsnapshotexport()
         {
-            this._logger.name += " -amiTypeForNativeArchivedSnapshotExport";
+            this._logger.name += " -Amitypefornativearchivedsnapshotexport";
             // Invoke graphql operation amiTypeForAwsNativeArchivedSnapshotExport
             InvokeQueryAmiTypeForAwsNativeArchivedSnapshotExport();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAwsRdsAuroraInstanceClasses.
-        protected void ProcessRecord_allRdsAuroraInstanceClass()
+        protected void ProcessRecord_Allrdsaurorainstanceclass()
         {
-            this._logger.name += " -allRdsAuroraInstanceClass";
+            this._logger.name += " -Allrdsaurorainstanceclass";
             // Invoke graphql operation allAwsRdsAuroraInstanceClasses
             InvokeQueryAllAwsRdsAuroraInstanceClasses();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsComputeSettings.
-        protected void ProcessRecord_ComputeSetting()
+        protected void ProcessRecord_Computesetting()
         {
-            this._logger.name += " -ComputeSetting";
+            this._logger.name += " -Computesetting";
             // Invoke graphql operation awsComputeSettings
             InvokeQueryAwsComputeSettings();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAwsComputeSettings.
-        protected void ProcessRecord_allComputeSetting()
+        protected void ProcessRecord_Allcomputesetting()
         {
-            this._logger.name += " -allComputeSetting";
+            this._logger.name += " -Allcomputesetting";
             // Invoke graphql operation allAwsComputeSettings
             InvokeQueryAllAwsComputeSettings();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAwsCloudAccountsWithFeatures.
-        protected void ProcessRecord_allCloudAccountsWithFeature()
+        protected void ProcessRecord_Allcloudaccountswithfeature()
         {
-            this._logger.name += " -allCloudAccountsWithFeature";
+            this._logger.name += " -Allcloudaccountswithfeature";
             // Invoke graphql operation allAwsCloudAccountsWithFeatures
             InvokeQueryAllAwsCloudAccountsWithFeatures();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountWithFeatures.
-        protected void ProcessRecord_CloudAccountWithFeature()
+        protected void ProcessRecord_Cloudaccountwithfeature()
         {
-            this._logger.name += " -CloudAccountWithFeature";
+            this._logger.name += " -Cloudaccountwithfeature";
             // Invoke graphql operation awsCloudAccountWithFeatures
             InvokeQueryAwsCloudAccountWithFeatures();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountListVpcs.
-        protected void ProcessRecord_CloudAccountListVpc()
+        protected void ProcessRecord_Cloudaccountlistvpc()
         {
-            this._logger.name += " -CloudAccountListVpc";
+            this._logger.name += " -Cloudaccountlistvpc";
             // Invoke graphql operation awsCloudAccountListVpcs
             InvokeQueryAwsCloudAccountListVpcs();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountListSubnets.
-        protected void ProcessRecord_CloudAccountListSubnet()
+        protected void ProcessRecord_Cloudaccountlistsubnet()
         {
-            this._logger.name += " -CloudAccountListSubnet";
+            this._logger.name += " -Cloudaccountlistsubnet";
             // Invoke graphql operation awsCloudAccountListSubnets
             InvokeQueryAwsCloudAccountListSubnets();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountListSecurityGroups.
-        protected void ProcessRecord_CloudAccountListSecurityGroup()
+        protected void ProcessRecord_Cloudaccountlistsecuritygroup()
         {
-            this._logger.name += " -CloudAccountListSecurityGroup";
+            this._logger.name += " -Cloudaccountlistsecuritygroup";
             // Invoke graphql operation awsCloudAccountListSecurityGroups
             InvokeQueryAwsCloudAccountListSecurityGroups();
         }
 
         // This parameter set invokes a single graphql operation:
         // AwsCloudAccountListKMSKeys.
-        protected void ProcessRecord_CloudAccountListKMSKey()
+        protected void ProcessRecord_Cloudaccountlistkmskey()
         {
-            this._logger.name += " -CloudAccountListKMSKey";
+            this._logger.name += " -Cloudaccountlistkmskey";
             // Invoke graphql operation AwsCloudAccountListKMSKeys
             InvokeQueryAwsCloudAccountListKmsKeys();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAwsExocomputeConfigs.
-        protected void ProcessRecord_allExocomputeConfig()
+        protected void ProcessRecord_Allexocomputeconfig()
         {
-            this._logger.name += " -allExocomputeConfig";
+            this._logger.name += " -Allexocomputeconfig";
             // Invoke graphql operation allAwsExocomputeConfigs
             InvokeQueryAllAwsExocomputeConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAwsCloudAccountConfigs.
-        protected void ProcessRecord_allCloudAccountConfig()
+        protected void ProcessRecord_Allcloudaccountconfig()
         {
-            this._logger.name += " -allCloudAccountConfig";
+            this._logger.name += " -Allcloudaccountconfig";
             // Invoke graphql operation allAwsCloudAccountConfigs
             InvokeQueryAllAwsCloudAccountConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAwsRegions.
-        protected void ProcessRecord_allRegion()
+        protected void ProcessRecord_Allregion()
         {
-            this._logger.name += " -allRegion";
+            this._logger.name += " -Allregion";
             // Invoke graphql operation allAwsRegions
             InvokeQueryAllAwsRegions();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAwsCdmVersions.
-        protected void ProcessRecord_allCdmVersion()
+        protected void ProcessRecord_Allcdmversion()
         {
-            this._logger.name += " -allCdmVersion";
+            this._logger.name += " -Allcdmversion";
             // Invoke graphql operation allAwsCdmVersions
             InvokeQueryAllAwsCdmVersions();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAwsInstanceProfileNames.
-        protected void ProcessRecord_allInstanceProfileName()
+        protected void ProcessRecord_Allinstanceprofilename()
         {
-            this._logger.name += " -allInstanceProfileName";
+            this._logger.name += " -Allinstanceprofilename";
             // Invoke graphql operation allAwsInstanceProfileNames
             InvokeQueryAllAwsInstanceProfileNames();
         }

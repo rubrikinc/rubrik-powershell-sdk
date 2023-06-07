@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> projectId: String! (scalar)
         if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
         {
-            this.ProjectId = new System.String("FETCH");
+            this.ProjectId = "FETCH";
         }
     }
 

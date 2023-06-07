@@ -132,19 +132,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId == null && Exploration.Includes(parent + ".locationId", true))
         {
-            this.LocationId = new System.String("FETCH");
+            this.LocationId = "FETCH";
         }
         //      C# -> System.String? NewSnappableId
         // GraphQL -> newSnappableId: String! (scalar)
         if (this.NewSnappableId == null && Exploration.Includes(parent + ".newSnappableId", true))
         {
-            this.NewSnappableId = new System.String("FETCH");
+            this.NewSnappableId = "FETCH";
         }
         //      C# -> System.String? OldSnappableId
         // GraphQL -> oldSnappableId: String! (scalar)
         if (this.OldSnappableId == null && Exploration.Includes(parent + ".oldSnappableId", true))
         {
-            this.OldSnappableId = new System.String("FETCH");
+            this.OldSnappableId = "FETCH";
         }
     }
 

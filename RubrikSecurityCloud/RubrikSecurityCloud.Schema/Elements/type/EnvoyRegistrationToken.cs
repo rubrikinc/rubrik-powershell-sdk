@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> expiration: String! (scalar)
         if (this.Expiration == null && Exploration.Includes(parent + ".expiration", true))
         {
-            this.Expiration = new System.String("FETCH");
+            this.Expiration = "FETCH";
         }
         //      C# -> System.String? TenantNetworkId
         // GraphQL -> tenantNetworkId: String! (scalar)
         if (this.TenantNetworkId == null && Exploration.Includes(parent + ".tenantNetworkId", true))
         {
-            this.TenantNetworkId = new System.String("FETCH");
+            this.TenantNetworkId = "FETCH";
         }
         //      C# -> System.String? Token
         // GraphQL -> token: String! (scalar)
         if (this.Token == null && Exploration.Includes(parent + ".token", true))
         {
-            this.Token = new System.String("FETCH");
+            this.Token = "FETCH";
         }
     }
 

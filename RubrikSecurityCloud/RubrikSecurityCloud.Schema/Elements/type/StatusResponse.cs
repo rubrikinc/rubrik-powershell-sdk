@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> code: String! (scalar)
         if (this.Code == null && Exploration.Includes(parent + ".code", true))
         {
-            this.Code = new System.String("FETCH");
+            this.Code = "FETCH";
         }
         //      C# -> System.String? Excepshuns
         // GraphQL -> excepshuns: String! (scalar)
         if (this.Excepshuns == null && Exploration.Includes(parent + ".excepshuns", true))
         {
-            this.Excepshuns = new System.String("FETCH");
+            this.Excepshuns = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
     }
 

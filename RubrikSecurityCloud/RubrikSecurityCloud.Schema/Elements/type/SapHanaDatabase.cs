@@ -757,25 +757,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmLink
         // GraphQL -> cdmLink: String! (scalar)
         if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink", true))
         {
-            this.CdmLink = new System.String("FETCH");
+            this.CdmLink = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? DataPathType
         // GraphQL -> dataPathType: String! (scalar)
         if (this.DataPathType == null && Exploration.Includes(parent + ".dataPathType", true))
         {
-            this.DataPathType = new System.String("FETCH");
+            this.DataPathType = "FETCH";
         }
         //      C# -> System.Boolean? ForceFull
         // GraphQL -> forceFull: Boolean! (scalar)
@@ -787,7 +787,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -799,25 +799,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? PrimaryClusterUuid
         // GraphQL -> primaryClusterUuid: UUID! (scalar)
         if (this.PrimaryClusterUuid == null && Exploration.Includes(parent + ".primaryClusterUuid", true))
         {
-            this.PrimaryClusterUuid = new System.String("FETCH");
+            this.PrimaryClusterUuid = "FETCH";
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
@@ -829,7 +829,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -841,7 +841,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> systemId: String! (scalar)
         if (this.SystemId == null && Exploration.Includes(parent + ".systemId", true))
         {
-            this.SystemId = new System.String("FETCH");
+            this.SystemId = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

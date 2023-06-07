@@ -270,31 +270,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> createdBy: String! (scalar)
         if (this.CreatedBy == null && Exploration.Includes(parent + ".createdBy", true))
         {
-            this.CreatedBy = new System.String("FETCH");
+            this.CreatedBy = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.Int32? Id
         // GraphQL -> id: Int! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.Int32();
+            this.Id = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? ServerCertificate
         // GraphQL -> serverCertificate: String (scalar)
         if (this.ServerCertificate == null && Exploration.Includes(parent + ".serverCertificate", true))
         {
-            this.ServerCertificate = new System.String("FETCH");
+            this.ServerCertificate = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
@@ -306,7 +306,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> url: URL! (scalar)
         if (this.Url == null && Exploration.Includes(parent + ".url", true))
         {
-            this.Url = new System.String("FETCH");
+            this.Url = "FETCH";
         }
         //      C# -> ErrorInfo? LastFailedErrorInfo
         // GraphQL -> lastFailedErrorInfo: ErrorInfo (type)

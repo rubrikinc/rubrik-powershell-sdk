@@ -132,19 +132,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port == null && Exploration.Includes(parent + ".port", true))
         {
-            this.Port = new System.Int32();
+            this.Port = Int32.MinValue;
         }
         //      C# -> System.String? TrustedCerts
         // GraphQL -> trustedCerts: String! (scalar)
         if (this.TrustedCerts == null && Exploration.Includes(parent + ".trustedCerts", true))
         {
-            this.TrustedCerts = new System.String("FETCH");
+            this.TrustedCerts = "FETCH";
         }
     }
 

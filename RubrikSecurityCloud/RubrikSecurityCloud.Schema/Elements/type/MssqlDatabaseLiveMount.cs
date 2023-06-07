@@ -232,7 +232,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> DateTime? CreationDate
         // GraphQL -> creationDate: DateTime (scalar)
@@ -244,7 +244,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fid: String! (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -256,25 +256,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountRequestId: String! (scalar)
         if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
         {
-            this.MountRequestId = new System.String("FETCH");
+            this.MountRequestId = "FETCH";
         }
         //      C# -> System.String? MountedDatabaseId
         // GraphQL -> mountedDatabaseId: String! (scalar)
         if (this.MountedDatabaseId == null && Exploration.Includes(parent + ".mountedDatabaseId", true))
         {
-            this.MountedDatabaseId = new System.String("FETCH");
+            this.MountedDatabaseId = "FETCH";
         }
         //      C# -> System.String? MountedDatabaseName
         // GraphQL -> mountedDatabaseName: String! (scalar)
         if (this.MountedDatabaseName == null && Exploration.Includes(parent + ".mountedDatabaseName", true))
         {
-            this.MountedDatabaseName = new System.String("FETCH");
+            this.MountedDatabaseName = "FETCH";
         }
         //      C# -> System.String? OwnerId
         // GraphQL -> ownerId: String! (scalar)
         if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId", true))
         {
-            this.OwnerId = new System.String("FETCH");
+            this.OwnerId = "FETCH";
         }
         //      C# -> DateTime? RecoveryPoint
         // GraphQL -> recoveryPoint: DateTime (scalar)
@@ -286,7 +286,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> unmountRequestId: String! (scalar)
         if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
         {
-            this.UnmountRequestId = new System.String("FETCH");
+            this.UnmountRequestId = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)

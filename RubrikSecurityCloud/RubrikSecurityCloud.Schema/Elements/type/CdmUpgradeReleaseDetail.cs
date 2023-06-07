@@ -210,13 +210,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? GaReleaseDate
         // GraphQL -> gaReleaseDate: String! (scalar)
         if (this.GaReleaseDate == null && Exploration.Includes(parent + ".gaReleaseDate", true))
         {
-            this.GaReleaseDate = new System.String("FETCH");
+            this.GaReleaseDate = "FETCH";
         }
         //      C# -> System.Boolean? IsRecommended
         // GraphQL -> isRecommended: Boolean! (scalar)
@@ -234,25 +234,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> md5Sum: String! (scalar)
         if (this.Md5Sum == null && Exploration.Includes(parent + ".md5Sum", true))
         {
-            this.Md5Sum = new System.String("FETCH");
+            this.Md5Sum = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? ReleaseDate
         // GraphQL -> releaseDate: String! (scalar)
         if (this.ReleaseDate == null && Exploration.Includes(parent + ".releaseDate", true))
         {
-            this.ReleaseDate = new System.String("FETCH");
+            this.ReleaseDate = "FETCH";
         }
         //      C# -> System.String? ReleaseNotesLink
         // GraphQL -> releaseNotesLink: String! (scalar)
         if (this.ReleaseNotesLink == null && Exploration.Includes(parent + ".releaseNotesLink", true))
         {
-            this.ReleaseNotesLink = new System.String("FETCH");
+            this.ReleaseNotesLink = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
@@ -264,7 +264,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> tarDownloadLink: String! (scalar)
         if (this.TarDownloadLink == null && Exploration.Includes(parent + ".tarDownloadLink", true))
         {
-            this.TarDownloadLink = new System.String("FETCH");
+            this.TarDownloadLink = "FETCH";
         }
     }
 

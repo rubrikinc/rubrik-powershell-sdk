@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> domain: String (scalar)
         if (this.Domain == null && Exploration.Includes(parent + ".domain", true))
         {
-            this.Domain = new System.String("FETCH");
+            this.Domain = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> BaseGuestCredentialDetail? BaseGuestCredentialDetail
         // GraphQL -> baseGuestCredentialDetail: BaseGuestCredentialDetail (type)

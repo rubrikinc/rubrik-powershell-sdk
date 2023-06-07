@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> moid: String! (scalar)
         if (this.Moid == null && Exploration.Includes(parent + ".moid", true))
         {
-            this.Moid = new System.String("FETCH");
+            this.Moid = "FETCH";
         }
         //      C# -> ComputeClusterSummary? ComputeClusterSummary
         // GraphQL -> computeClusterSummary: ComputeClusterSummary (type)

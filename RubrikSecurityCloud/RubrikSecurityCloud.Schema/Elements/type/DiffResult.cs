@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> previousSnapshotId: String! (scalar)
         if (this.PreviousSnapshotId == null && Exploration.Includes(parent + ".previousSnapshotId", true))
         {
-            this.PreviousSnapshotId = new System.String("FETCH");
+            this.PreviousSnapshotId = "FETCH";
         }
         //      C# -> List<DiffData>? Data
         // GraphQL -> data: [DiffData!]! (type)

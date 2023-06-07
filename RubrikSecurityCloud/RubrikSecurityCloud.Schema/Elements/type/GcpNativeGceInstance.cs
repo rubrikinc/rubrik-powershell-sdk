@@ -586,7 +586,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -598,55 +598,55 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> machineType: String! (scalar)
         if (this.MachineType == null && Exploration.Includes(parent + ".machineType", true))
         {
-            this.MachineType = new System.String("FETCH");
+            this.MachineType = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
         {
-            this.NativeId = new System.String("FETCH");
+            this.NativeId = "FETCH";
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
         if (this.NativeName == null && Exploration.Includes(parent + ".nativeName", true))
         {
-            this.NativeName = new System.String("FETCH");
+            this.NativeName = "FETCH";
         }
         //      C# -> System.String? NetworkHostProjectNativeId
         // GraphQL -> networkHostProjectNativeId: String! (scalar)
         if (this.NetworkHostProjectNativeId == null && Exploration.Includes(parent + ".networkHostProjectNativeId", true))
         {
-            this.NetworkHostProjectNativeId = new System.String("FETCH");
+            this.NetworkHostProjectNativeId = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
         if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
         {
-            this.ProjectId = new System.String("FETCH");
+            this.ProjectId = "FETCH";
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
         if (this.Region == null && Exploration.Includes(parent + ".region", true))
         {
-            this.Region = new System.String("FETCH");
+            this.Region = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -658,13 +658,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vpcName: String! (scalar)
         if (this.VpcName == null && Exploration.Includes(parent + ".vpcName", true))
         {
-            this.VpcName = new System.String("FETCH");
+            this.VpcName = "FETCH";
         }
         //      C# -> System.String? Zone
         // GraphQL -> zone: String! (scalar)
         if (this.Zone == null && Exploration.Includes(parent + ".zone", true))
         {
-            this.Zone = new System.String("FETCH");
+            this.Zone = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: Int! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.Int32();
+            this.Id = Int32.MinValue;
         }
         //      C# -> CommonNotificationConfig? NotificationConf
         // GraphQL -> notificationConf: CommonNotificationConfig (type)

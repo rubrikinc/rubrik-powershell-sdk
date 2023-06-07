@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> blueprintId: id (type)
         if (this.BlueprintId == null && Exploration.Includes(parent + ".blueprintId", true))
         {
-            this.BlueprintId = new System.String("FETCH");
+            this.BlueprintId = "FETCH";
         }
         //      C# -> List<ValidationStatusInfo>? StatusInfos
         // GraphQL -> statusInfos: [ValidationStatusInfo!]! (type)

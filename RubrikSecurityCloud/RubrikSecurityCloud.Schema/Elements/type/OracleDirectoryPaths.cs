@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> archiveDests: String! (scalar)
         if (this.ArchiveDests == null && Exploration.Includes(parent + ".archiveDests", true))
         {
-            this.ArchiveDests = new System.String("FETCH");
+            this.ArchiveDests = "FETCH";
         }
     }
 

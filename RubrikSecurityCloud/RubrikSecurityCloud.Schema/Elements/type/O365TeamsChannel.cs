@@ -141,31 +141,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> folderId: String (scalar)
         if (this.FolderId == null && Exploration.Includes(parent + ".folderId", true))
         {
-            this.FolderId = new System.String("FETCH");
+            this.FolderId = "FETCH";
         }
         //      C# -> System.String? FolderName
         // GraphQL -> folderName: String (scalar)
         if (this.FolderName == null && Exploration.Includes(parent + ".folderName", true))
         {
-            this.FolderName = new System.String("FETCH");
+            this.FolderName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String (scalar)
         if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
         {
-            this.NaturalId = new System.String("FETCH");
+            this.NaturalId = "FETCH";
         }
     }
 

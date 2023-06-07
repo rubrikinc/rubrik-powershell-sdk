@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> caCerts: String! (scalar)
         if (this.CaCerts == null && Exploration.Includes(parent + ".caCerts", true))
         {
-            this.CaCerts = new System.String("FETCH");
+            this.CaCerts = "FETCH";
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)

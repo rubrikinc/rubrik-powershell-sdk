@@ -560,7 +560,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availabilityGroupId: String (scalar)
         if (this.AvailabilityGroupId == null && Exploration.Includes(parent + ".availabilityGroupId", true))
         {
-            this.AvailabilityGroupId = new System.String("FETCH");
+            this.AvailabilityGroupId = "FETCH";
         }
         //      C# -> System.Boolean? CopyOnly
         // GraphQL -> copyOnly: Boolean! (scalar)
@@ -584,13 +584,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostLogRetention: Int (scalar)
         if (this.HostLogRetention == null && Exploration.Includes(parent + ".hostLogRetention", true))
         {
-            this.HostLogRetention = new System.Int32();
+            this.HostLogRetention = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IncludeBackupTaskInfo
         // GraphQL -> includeBackupTaskInfo: Boolean (scalar)
@@ -602,13 +602,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> instanceId: String (scalar)
         if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
         {
-            this.InstanceId = new System.String("FETCH");
+            this.InstanceId = "FETCH";
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String (scalar)
         if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
         {
-            this.InstanceName = new System.String("FETCH");
+            this.InstanceName = "FETCH";
         }
         //      C# -> System.Boolean? IsInAvailabilityGroup
         // GraphQL -> isInAvailabilityGroup: Boolean! (scalar)
@@ -650,37 +650,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> logBackupFrequencyInSeconds: Int! (scalar)
         if (this.LogBackupFrequencyInSeconds == null && Exploration.Includes(parent + ".logBackupFrequencyInSeconds", true))
         {
-            this.LogBackupFrequencyInSeconds = new System.Int32();
+            this.LogBackupFrequencyInSeconds = Int32.MinValue;
         }
         //      C# -> System.Int32? LogBackupRetentionHours
         // GraphQL -> logBackupRetentionHours: Int! (scalar)
         if (this.LogBackupRetentionHours == null && Exploration.Includes(parent + ".logBackupRetentionHours", true))
         {
-            this.LogBackupRetentionHours = new System.Int32();
+            this.LogBackupRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumMissedSnapshot
         // GraphQL -> numMissedSnapshot: Int (scalar)
         if (this.NumMissedSnapshot == null && Exploration.Includes(parent + ".numMissedSnapshot", true))
         {
-            this.NumMissedSnapshot = new System.Int32();
+            this.NumMissedSnapshot = Int32.MinValue;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
         //      C# -> List<System.String>? UnprotectableReasonsV51
         // GraphQL -> unprotectableReasonsV51: [String!]! (scalar)

@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicationTargetRegion: String! (scalar)
         if (this.ReplicationTargetRegion == null && Exploration.Includes(parent + ".replicationTargetRegion", true))
         {
-            this.ReplicationTargetRegion = new System.String("FETCH");
+            this.ReplicationTargetRegion = "FETCH";
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
         if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
         {
-            this.Retention = new System.Int32();
+            this.Retention = Int32.MinValue;
         }
     }
 

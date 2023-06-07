@@ -160,7 +160,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fileName: String! (scalar)
         if (this.FileName == null && Exploration.Includes(parent + ".fileName", true))
         {
-            this.FileName = new System.String("FETCH");
+            this.FileName = "FETCH";
         }
         //      C# -> System.Int64? FileSize
         // GraphQL -> fileSize: Long! (scalar)
@@ -172,7 +172,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> filepath: String! (scalar)
         if (this.Filepath == null && Exploration.Includes(parent + ".filepath", true))
         {
-            this.Filepath = new System.String("FETCH");
+            this.Filepath = "FETCH";
         }
         //      C# -> DateTime? FirstMatchedSnapshotDate
         // GraphQL -> firstMatchedSnapshotDate: DateTime (scalar)

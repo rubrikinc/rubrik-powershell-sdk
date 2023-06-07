@@ -120,7 +120,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> entityId: String! (scalar)
         if (this.EntityId == null && Exploration.Includes(parent + ".entityId", true))
         {
-            this.EntityId = new System.String("FETCH");
+            this.EntityId = "FETCH";
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
@@ -132,19 +132,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OwnerOrgId
         // GraphQL -> ownerOrgId: String! (scalar)
         if (this.OwnerOrgId == null && Exploration.Includes(parent + ".ownerOrgId", true))
         {
-            this.OwnerOrgId = new System.String("FETCH");
+            this.OwnerOrgId = "FETCH";
         }
         //      C# -> System.String? SignInUrl
         // GraphQL -> signInUrl: URL! (scalar)
         if (this.SignInUrl == null && Exploration.Includes(parent + ".signInUrl", true))
         {
-            this.SignInUrl = new System.String("FETCH");
+            this.SignInUrl = "FETCH";
         }
     }
 

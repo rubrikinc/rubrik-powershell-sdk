@@ -232,13 +232,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: String! (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.Int64? LagTimeFromPrimary
         // GraphQL -> lagTimeFromPrimary: Long! (scalar)
@@ -256,7 +256,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogFrequency
         // GraphQL -> logFrequency: Long! (scalar)
@@ -268,13 +268,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> state: String! (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)

@@ -21,289 +21,259 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateCluster",
-        DefaultParameterSetName = "CreateK8s")
+        DefaultParameterSetName = "Createk8s")
     ]
     public class Invoke_RscMutateCluster : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // AddNodesToCloud parameter set
+        // Addnodestocloud parameter set
         //
-        // GraphQL operation: addNodesToCloudCluster(input: AddNodesToCloudClusterInput!):CcProvisionJobReply!
+        // [GraphQL: addNodesToCloudCluster]
         //
         [Parameter(
-            ParameterSetName = "AddNodesToCloud",
+            ParameterSetName = "Addnodestocloud",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Add nodes to cloud cluster.
-                GraphQL operation: addNodesToCloudCluster(input: AddNodesToCloudClusterInput!):CcProvisionJobReply!
-                ",
+@"Add nodes to cloud cluster.
+[GraphQL: addNodesToCloudCluster]",
             Position = 0
         )]
-        public SwitchParameter AddNodesToCloud { get; set; }
+        public SwitchParameter Addnodestocloud { get; set; }
 
         [Parameter(
-            ParameterSetName = "AddNodesToCloud",
+            ParameterSetName = "Addnodestocloud",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for adding nodes to cloud cluster.
-                GraphQL argument input: AddNodesToCloudClusterInput!
-                "
+@"Input for adding nodes to cloud cluster.
+GraphQL argument input: AddNodesToCloudClusterInput!"
         )]
         public AddNodesToCloudClusterInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // RegisterCloud parameter set
+        // Registercloud parameter set
         //
-        // GraphQL operation: registerCloudCluster(input: RegisterCloudClusterInput!):RegisterCloudClusterReply!
+        // [GraphQL: registerCloudCluster]
         //
         [Parameter(
-            ParameterSetName = "RegisterCloud",
+            ParameterSetName = "Registercloud",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Register a cloud cluster.
-                GraphQL operation: registerCloudCluster(input: RegisterCloudClusterInput!):RegisterCloudClusterReply!
-                ",
+@"Register a cloud cluster.
+[GraphQL: registerCloudCluster]",
             Position = 0
         )]
-        public SwitchParameter RegisterCloud { get; set; }
+        public SwitchParameter Registercloud { get; set; }
 
         
         // -------------------------------------------------------------------
-        // CreateFailover parameter set
+        // Createfailover parameter set
         //
-        // GraphQL operation: createFailoverCluster(input: CreateFailoverClusterInput!):CreateFailoverClusterReply!
+        // [GraphQL: createFailoverCluster]
         //
         [Parameter(
-            ParameterSetName = "CreateFailover",
+            ParameterSetName = "Createfailover",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a failover cluster
+@"Create a failover cluster
 
 Supported in v5.2+
 Create a failover cluster.
-                GraphQL operation: createFailoverCluster(input: CreateFailoverClusterInput!):CreateFailoverClusterReply!
-                ",
+[GraphQL: createFailoverCluster]",
             Position = 0
         )]
-        public SwitchParameter CreateFailover { get; set; }
+        public SwitchParameter Createfailover { get; set; }
 
         
         // -------------------------------------------------------------------
-        // UpdateFailover parameter set
+        // Updatefailover parameter set
         //
-        // GraphQL operation: updateFailoverCluster(input: UpdateFailoverClusterInput!):UpdateFailoverClusterReply!
+        // [GraphQL: updateFailoverCluster]
         //
         [Parameter(
-            ParameterSetName = "UpdateFailover",
+            ParameterSetName = "Updatefailover",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update a failover cluster
+@"Update a failover cluster
 
 Supported in v5.2+
 Update failover cluster with specified properties.
-                GraphQL operation: updateFailoverCluster(input: UpdateFailoverClusterInput!):UpdateFailoverClusterReply!
-                ",
+[GraphQL: updateFailoverCluster]",
             Position = 0
         )]
-        public SwitchParameter UpdateFailover { get; set; }
+        public SwitchParameter Updatefailover { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DeleteFailover parameter set
+        // Deletefailover parameter set
         //
-        // GraphQL operation: deleteFailoverCluster(input: DeleteFailoverClusterInput!):ResponseSuccess!
+        // [GraphQL: deleteFailoverCluster]
         //
         [Parameter(
-            ParameterSetName = "DeleteFailover",
+            ParameterSetName = "Deletefailover",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete a failover cluster
+@"Delete a failover cluster
 
 Supported in v5.2+
 Delete a failover cluster.
-                GraphQL operation: deleteFailoverCluster(input: DeleteFailoverClusterInput!):ResponseSuccess!
-                ",
+[GraphQL: deleteFailoverCluster]",
             Position = 0
         )]
-        public SwitchParameter DeleteFailover { get; set; }
+        public SwitchParameter Deletefailover { get; set; }
 
         
         // -------------------------------------------------------------------
-        // BulkDeleteFailover parameter set
+        // Bulkdeletefailover parameter set
         //
-        // GraphQL operation: bulkDeleteFailoverCluster(input: BulkDeleteFailoverClusterInput!):ResponseSuccess!
+        // [GraphQL: bulkDeleteFailoverCluster]
         //
         [Parameter(
-            ParameterSetName = "BulkDeleteFailover",
+            ParameterSetName = "Bulkdeletefailover",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Delete the provided failover clusters
+@"Delete the provided failover clusters
 
 Supported in v5.3+
 Delete the provided failover clusters.
-                GraphQL operation: bulkDeleteFailoverCluster(input: BulkDeleteFailoverClusterInput!):ResponseSuccess!
-                ",
+[GraphQL: bulkDeleteFailoverCluster]",
             Position = 0
         )]
-        public SwitchParameter BulkDeleteFailover { get; set; }
+        public SwitchParameter Bulkdeletefailover { get; set; }
 
         
         // -------------------------------------------------------------------
-        // CreateK8s parameter set
+        // Createk8s parameter set
         //
-        // GraphQL operation: createK8sCluster(input: CreateK8sClusterInput!):CreateK8sClusterReply!
+        // [GraphQL: createK8sCluster]
         //
         [Parameter(
-            ParameterSetName = "CreateK8s",
+            ParameterSetName = "Createk8s",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Add a Kubernetes cluster.
-                GraphQL operation: createK8sCluster(input: CreateK8sClusterInput!):CreateK8sClusterReply!
-                ",
+@"Add a Kubernetes cluster.
+[GraphQL: createK8sCluster]",
             Position = 0
         )]
-        public SwitchParameter CreateK8s { get; set; }
+        public SwitchParameter Createk8s { get; set; }
 
         
         // -------------------------------------------------------------------
-        // RefreshK8s parameter set
+        // Refreshk8s parameter set
         //
-        // GraphQL operation: refreshK8sCluster(input: RefreshK8sClusterInput!):CreateOnDemandJobReply!
+        // [GraphQL: refreshK8sCluster]
         //
         [Parameter(
-            ParameterSetName = "RefreshK8s",
+            ParameterSetName = "Refreshk8s",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refresh resources of a Kubernetes cluster.
-                GraphQL operation: refreshK8sCluster(input: RefreshK8sClusterInput!):CreateOnDemandJobReply!
-                ",
+@"Refresh resources of a Kubernetes cluster.
+[GraphQL: refreshK8sCluster]",
             Position = 0
         )]
-        public SwitchParameter RefreshK8s { get; set; }
+        public SwitchParameter Refreshk8s { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ArchiveK8s parameter set
+        // Archivek8s parameter set
         //
-        // GraphQL operation: archiveK8sCluster(input: ArchiveK8sClusterInput!):ArchiveK8sClusterReply!
+        // [GraphQL: archiveK8sCluster]
         //
         [Parameter(
-            ParameterSetName = "ArchiveK8s",
+            ParameterSetName = "Archivek8s",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Archive a Kubernetes cluster.
-                GraphQL operation: archiveK8sCluster(input: ArchiveK8sClusterInput!):ArchiveK8sClusterReply!
-                ",
+@"Archive a Kubernetes cluster.
+[GraphQL: archiveK8sCluster]",
             Position = 0
         )]
-        public SwitchParameter ArchiveK8s { get; set; }
+        public SwitchParameter Archivek8s { get; set; }
 
         
         // -------------------------------------------------------------------
-        // RemoveCdm parameter set
+        // Removecdm parameter set
         //
-        // GraphQL operation: removeCdmCluster(clusterUUID: UUID!, isForce: Boolean!, expireInDays: Long):Boolean!
+        // [GraphQL: removeCdmCluster]
         //
         [Parameter(
-            ParameterSetName = "RemoveCdm",
+            ParameterSetName = "Removecdm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: removeCdmCluster(clusterUUID: UUID!, isForce: Boolean!, expireInDays: Long):Boolean!
-                ",
+@"
+[GraphQL: removeCdmCluster]",
             Position = 0
         )]
-        public SwitchParameter RemoveCdm { get; set; }
+        public SwitchParameter Removecdm { get; set; }
 
         [Parameter(
-            ParameterSetName = "RemoveCdm",
+            ParameterSetName = "Removecdm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                UUID of the Rubrik cluster.
-                GraphQL argument clusterUUID: UUID!
-                "
+@"UUID of the Rubrik cluster.
+GraphQL argument clusterUUID: UUID!"
         )]
         public System.String? ClusterUuid { get; set; }
         [Parameter(
-            ParameterSetName = "RemoveCdm",
+            ParameterSetName = "Removecdm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument isForce: Boolean!
-                "
+@"
+GraphQL argument isForce: Boolean!"
         )]
         public System.Boolean? IsForce { get; set; }
         [Parameter(
-            ParameterSetName = "RemoveCdm",
+            ParameterSetName = "Removecdm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Number of days after which data from Rubrik is removed.
-                GraphQL argument expireInDays: Long
-                "
+@"Number of days after which data from Rubrik is removed.
+GraphQL argument expireInDays: Long"
         )]
         public System.Int64? ExpireInDays { get; set; }
         
         // -------------------------------------------------------------------
-        // RecoverCloud parameter set
+        // Recovercloud parameter set
         //
-        // GraphQL operation: recoverCloudCluster(input: RecoverCloudClusterInput!):CcProvisionJobReply!
+        // [GraphQL: recoverCloudCluster]
         //
         [Parameter(
-            ParameterSetName = "RecoverCloud",
+            ParameterSetName = "Recovercloud",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Recover a Rubrik Cloud Cluster.
-                GraphQL operation: recoverCloudCluster(input: RecoverCloudClusterInput!):CcProvisionJobReply!
-                ",
+@"Recover a Rubrik Cloud Cluster.
+[GraphQL: recoverCloudCluster]",
             Position = 0
         )]
-        public SwitchParameter RecoverCloud { get; set; }
+        public SwitchParameter Recovercloud { get; set; }
 
 
         protected override void ProcessRecord()
@@ -312,38 +282,38 @@ Delete the provided failover clusters.
             {
                 switch(Op)
                 {
-                    case "AddNodesToCloud":
-                        this.ProcessRecord_AddNodesToCloud();
+                    case "Addnodestocloud":
+                        this.ProcessRecord_Addnodestocloud();
                         break;
-                    case "RegisterCloud":
-                        this.ProcessRecord_RegisterCloud();
+                    case "Registercloud":
+                        this.ProcessRecord_Registercloud();
                         break;
-                    case "CreateFailover":
-                        this.ProcessRecord_CreateFailover();
+                    case "Createfailover":
+                        this.ProcessRecord_Createfailover();
                         break;
-                    case "UpdateFailover":
-                        this.ProcessRecord_UpdateFailover();
+                    case "Updatefailover":
+                        this.ProcessRecord_Updatefailover();
                         break;
-                    case "DeleteFailover":
-                        this.ProcessRecord_DeleteFailover();
+                    case "Deletefailover":
+                        this.ProcessRecord_Deletefailover();
                         break;
-                    case "BulkDeleteFailover":
-                        this.ProcessRecord_BulkDeleteFailover();
+                    case "Bulkdeletefailover":
+                        this.ProcessRecord_Bulkdeletefailover();
                         break;
-                    case "CreateK8s":
-                        this.ProcessRecord_CreateK8s();
+                    case "Createk8s":
+                        this.ProcessRecord_Createk8s();
                         break;
-                    case "RefreshK8s":
-                        this.ProcessRecord_RefreshK8s();
+                    case "Refreshk8s":
+                        this.ProcessRecord_Refreshk8s();
                         break;
-                    case "ArchiveK8s":
-                        this.ProcessRecord_ArchiveK8s();
+                    case "Archivek8s":
+                        this.ProcessRecord_Archivek8s();
                         break;
-                    case "RemoveCdm":
-                        this.ProcessRecord_RemoveCdm();
+                    case "Removecdm":
+                        this.ProcessRecord_Removecdm();
                         break;
-                    case "RecoverCloud":
-                        this.ProcessRecord_RecoverCloud();
+                    case "Recovercloud":
+                        this.ProcessRecord_Recovercloud();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -363,99 +333,99 @@ Delete the provided failover clusters.
 
         // This parameter set invokes a single graphql operation:
         // addNodesToCloudCluster.
-        protected void ProcessRecord_AddNodesToCloud()
+        protected void ProcessRecord_Addnodestocloud()
         {
-            this._logger.name += " -AddNodesToCloud";
+            this._logger.name += " -Addnodestocloud";
             // Invoke graphql operation addNodesToCloudCluster
             InvokeMutationAddNodesToCloudCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // registerCloudCluster.
-        protected void ProcessRecord_RegisterCloud()
+        protected void ProcessRecord_Registercloud()
         {
-            this._logger.name += " -RegisterCloud";
+            this._logger.name += " -Registercloud";
             // Invoke graphql operation registerCloudCluster
             InvokeMutationRegisterCloudCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // createFailoverCluster.
-        protected void ProcessRecord_CreateFailover()
+        protected void ProcessRecord_Createfailover()
         {
-            this._logger.name += " -CreateFailover";
+            this._logger.name += " -Createfailover";
             // Invoke graphql operation createFailoverCluster
             InvokeMutationCreateFailoverCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateFailoverCluster.
-        protected void ProcessRecord_UpdateFailover()
+        protected void ProcessRecord_Updatefailover()
         {
-            this._logger.name += " -UpdateFailover";
+            this._logger.name += " -Updatefailover";
             // Invoke graphql operation updateFailoverCluster
             InvokeMutationUpdateFailoverCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteFailoverCluster.
-        protected void ProcessRecord_DeleteFailover()
+        protected void ProcessRecord_Deletefailover()
         {
-            this._logger.name += " -DeleteFailover";
+            this._logger.name += " -Deletefailover";
             // Invoke graphql operation deleteFailoverCluster
             InvokeMutationDeleteFailoverCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkDeleteFailoverCluster.
-        protected void ProcessRecord_BulkDeleteFailover()
+        protected void ProcessRecord_Bulkdeletefailover()
         {
-            this._logger.name += " -BulkDeleteFailover";
+            this._logger.name += " -Bulkdeletefailover";
             // Invoke graphql operation bulkDeleteFailoverCluster
             InvokeMutationBulkDeleteFailoverCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // createK8sCluster.
-        protected void ProcessRecord_CreateK8s()
+        protected void ProcessRecord_Createk8s()
         {
-            this._logger.name += " -CreateK8s";
+            this._logger.name += " -Createk8s";
             // Invoke graphql operation createK8sCluster
             InvokeMutationCreateK8sCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // refreshK8sCluster.
-        protected void ProcessRecord_RefreshK8s()
+        protected void ProcessRecord_Refreshk8s()
         {
-            this._logger.name += " -RefreshK8s";
+            this._logger.name += " -Refreshk8s";
             // Invoke graphql operation refreshK8sCluster
             InvokeMutationRefreshK8sCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // archiveK8sCluster.
-        protected void ProcessRecord_ArchiveK8s()
+        protected void ProcessRecord_Archivek8s()
         {
-            this._logger.name += " -ArchiveK8s";
+            this._logger.name += " -Archivek8s";
             // Invoke graphql operation archiveK8sCluster
             InvokeMutationArchiveK8sCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // removeCdmCluster.
-        protected void ProcessRecord_RemoveCdm()
+        protected void ProcessRecord_Removecdm()
         {
-            this._logger.name += " -RemoveCdm";
+            this._logger.name += " -Removecdm";
             // Invoke graphql operation removeCdmCluster
             InvokeMutationRemoveCdmCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // recoverCloudCluster.
-        protected void ProcessRecord_RecoverCloud()
+        protected void ProcessRecord_Recovercloud()
         {
-            this._logger.name += " -RecoverCloud";
+            this._logger.name += " -Recovercloud";
             // Invoke graphql operation recoverCloudCluster
             InvokeMutationRecoverCloudCluster();
         }

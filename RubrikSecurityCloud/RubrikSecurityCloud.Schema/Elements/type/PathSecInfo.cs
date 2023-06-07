@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> owner: String! (scalar)
         if (this.Owner == null && Exploration.Includes(parent + ".owner", true))
         {
-            this.Owner = new System.String("FETCH");
+            this.Owner = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> List<SddlPermission>? Permissions
         // GraphQL -> permissions: [SDDLPermission!]! (type)

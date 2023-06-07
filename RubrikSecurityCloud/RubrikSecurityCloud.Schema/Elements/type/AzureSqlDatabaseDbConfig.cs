@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> logRetentionInDays: Int! (scalar)
         if (this.LogRetentionInDays == null && Exploration.Includes(parent + ".logRetentionInDays", true))
         {
-            this.LogRetentionInDays = new System.Int32();
+            this.LogRetentionInDays = Int32.MinValue;
         }
     }
 

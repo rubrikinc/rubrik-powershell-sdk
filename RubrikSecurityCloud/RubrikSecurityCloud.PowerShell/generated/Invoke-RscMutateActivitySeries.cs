@@ -21,40 +21,36 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateActivitySeries",
-        DefaultParameterSetName = "cancel")
+        DefaultParameterSetName = "Cancel")
     ]
     public class Invoke_RscMutateActivitySeries : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // cancel parameter set
+        // Cancel parameter set
         //
-        // GraphQL operation: cancelActivitySeries(input: CancelActivitySeriesInput!):Boolean!
+        // [GraphQL: cancelActivitySeries]
         //
         [Parameter(
-            ParameterSetName = "cancel",
+            ParameterSetName = "Cancel",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Cancel an activity series.
-                GraphQL operation: cancelActivitySeries(input: CancelActivitySeriesInput!):Boolean!
-                ",
+@"Cancel an activity series.
+[GraphQL: cancelActivitySeries]",
             Position = 0
         )]
-        public SwitchParameter cancel { get; set; }
+        public SwitchParameter Cancel { get; set; }
 
         [Parameter(
-            ParameterSetName = "cancel",
+            ParameterSetName = "Cancel",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for canceling an activity series.
-                GraphQL argument input: CancelActivitySeriesInput!
-                "
+@"Input for canceling an activity series.
+GraphQL argument input: CancelActivitySeriesInput!"
         )]
         public CancelActivitySeriesInput? Input { get; set; }
 
@@ -64,8 +60,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "cancel":
-                        this.ProcessRecord_cancel();
+                    case "Cancel":
+                        this.ProcessRecord_Cancel();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -85,9 +81,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // cancelActivitySeries.
-        protected void ProcessRecord_cancel()
+        protected void ProcessRecord_Cancel()
         {
-            this._logger.name += " -cancel";
+            this._logger.name += " -Cancel";
             // Invoke graphql operation cancelActivitySeries
             InvokeMutationCancelActivitySeries();
         }

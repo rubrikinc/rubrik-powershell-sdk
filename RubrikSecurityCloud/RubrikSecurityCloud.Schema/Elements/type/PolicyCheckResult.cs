@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> checkOutput: String (scalar)
         if (this.CheckOutput == null && Exploration.Includes(parent + ".checkOutput", true))
         {
-            this.CheckOutput = new System.String("FETCH");
+            this.CheckOutput = "FETCH";
         }
         //      C# -> System.Boolean? IsCheckPassed
         // GraphQL -> isCheckPassed: Boolean! (scalar)
@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodeId: String! (scalar)
         if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
         {
-            this.NodeId = new System.String("FETCH");
+            this.NodeId = "FETCH";
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
         {
-            this.PolicyId = new System.String("FETCH");
+            this.PolicyId = "FETCH";
         }
     }
 

@@ -463,43 +463,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> categoryId: String! (scalar)
         if (this.CategoryId == null && Exploration.Includes(parent + ".categoryId", true))
         {
-            this.CategoryId = new System.String("FETCH");
+            this.CategoryId = "FETCH";
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: UUID! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.String? PrismCentralId
         // GraphQL -> prismCentralId: String! (scalar)
         if (this.PrismCentralId == null && Exploration.Includes(parent + ".prismCentralId", true))
         {
-            this.PrismCentralId = new System.String("FETCH");
+            this.PrismCentralId = "FETCH";
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hour: Int! (scalar)
         if (this.Hour == null && Exploration.Includes(parent + ".hour", true))
         {
-            this.Hour = new System.Int32();
+            this.Hour = Int32.MinValue;
         }
         //      C# -> System.Int32? Minute
         // GraphQL -> minute: Int! (scalar)
         if (this.Minute == null && Exploration.Includes(parent + ".minute", true))
         {
-            this.Minute = new System.Int32();
+            this.Minute = Int32.MinValue;
         }
         //      C# -> DayOfWeekOpt? DayOfWeek
         // GraphQL -> dayOfWeek: DayOfWeekOpt (type)

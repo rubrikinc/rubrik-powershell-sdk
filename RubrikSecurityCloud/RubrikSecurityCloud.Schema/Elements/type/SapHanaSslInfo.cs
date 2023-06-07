@@ -154,19 +154,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cryptoLibPath: String (scalar)
         if (this.CryptoLibPath == null && Exploration.Includes(parent + ".cryptoLibPath", true))
         {
-            this.CryptoLibPath = new System.String("FETCH");
+            this.CryptoLibPath = "FETCH";
         }
         //      C# -> System.String? HostNameInCertificate
         // GraphQL -> hostNameInCertificate: String (scalar)
         if (this.HostNameInCertificate == null && Exploration.Includes(parent + ".hostNameInCertificate", true))
         {
-            this.HostNameInCertificate = new System.String("FETCH");
+            this.HostNameInCertificate = "FETCH";
         }
         //      C# -> System.String? KeyStorePath
         // GraphQL -> keyStorePath: String! (scalar)
         if (this.KeyStorePath == null && Exploration.Includes(parent + ".keyStorePath", true))
         {
-            this.KeyStorePath = new System.String("FETCH");
+            this.KeyStorePath = "FETCH";
         }
         //      C# -> System.Boolean? ShouldEncrypt
         // GraphQL -> shouldEncrypt: Boolean (scalar)
@@ -184,7 +184,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> trustStorePath: String (scalar)
         if (this.TrustStorePath == null && Exploration.Includes(parent + ".trustStorePath", true))
         {
-            this.TrustStorePath = new System.String("FETCH");
+            this.TrustStorePath = "FETCH";
         }
     }
 

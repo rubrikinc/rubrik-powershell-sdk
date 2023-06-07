@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> csrfToken: String! (scalar)
         if (this.CsrfToken == null && Exploration.Includes(parent + ".csrfToken", true))
         {
-            this.CsrfToken = new System.String("FETCH");
+            this.CsrfToken = "FETCH";
         }
         //      C# -> List<AppIdForType>? AppClientIdsPerType
         // GraphQL -> appClientIdsPerType: [AppIdForType!]! (type)

@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failureReason: String (scalar)
         if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
         {
-            this.FailureReason = new System.String("FETCH");
+            this.FailureReason = "FETCH";
         }
         //      C# -> System.String? ManagedId
         // GraphQL -> managedId: String! (scalar)
         if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
         {
-            this.ManagedId = new System.String("FETCH");
+            this.ManagedId = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
     }
 

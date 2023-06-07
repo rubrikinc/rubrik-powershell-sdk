@@ -162,25 +162,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> baseSnapshotId: String (scalar)
         if (this.BaseSnapshotId == null && Exploration.Includes(parent + ".baseSnapshotId", true))
         {
-            this.BaseSnapshotId = new System.String("FETCH");
+            this.BaseSnapshotId = "FETCH";
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? DbId
         // GraphQL -> dbId: String! (scalar)
         if (this.DbId == null && Exploration.Includes(parent + ".dbId", true))
         {
-            this.DbId = new System.String("FETCH");
+            this.DbId = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
@@ -192,7 +192,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fid: String! (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)

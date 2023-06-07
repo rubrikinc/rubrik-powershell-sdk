@@ -138,7 +138,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> networkInterface: String! (scalar)
         if (this.NetworkInterface == null && Exploration.Includes(parent + ".networkInterface", true))
         {
-            this.NetworkInterface = new System.String("FETCH");
+            this.NetworkInterface = "FETCH";
         }
         //      C# -> List<NetworkThrottleSchedule>? ScheduledThrottles
         // GraphQL -> scheduledThrottles: [NetworkThrottleSchedule!]! (type)

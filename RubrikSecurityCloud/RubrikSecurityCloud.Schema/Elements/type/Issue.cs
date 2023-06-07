@@ -176,7 +176,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? OpenTime
         // GraphQL -> openTime: Long! (scalar)
@@ -188,7 +188,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> paginationId: String! (scalar)
         if (this.PaginationId == null && Exploration.Includes(parent + ".paginationId", true))
         {
-            this.PaginationId = new System.String("FETCH");
+            this.PaginationId = "FETCH";
         }
         //      C# -> System.Int64? ResolvedTime
         // GraphQL -> resolvedTime: Long! (scalar)
@@ -200,7 +200,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> violations: Int! (scalar)
         if (this.Violations == null && Exploration.Includes(parent + ".violations", true))
         {
-            this.Violations = new System.Int32();
+            this.Violations = Int32.MinValue;
         }
         //      C# -> List<IssueEvent>? Events
         // GraphQL -> events: [IssueEvent!]! (type)

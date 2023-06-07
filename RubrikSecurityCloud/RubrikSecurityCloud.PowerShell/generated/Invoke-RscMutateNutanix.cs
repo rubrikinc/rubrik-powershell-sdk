@@ -21,587 +21,537 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateNutanix",
-        DefaultParameterSetName = "updateVm")
+        DefaultParameterSetName = "Updatevm")
     ]
     public class Invoke_RscMutateNutanix : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // createCluster parameter set
+        // Createcluster parameter set
         //
-        // GraphQL operation: createNutanixCluster(input: CreateNutanixClusterInput!):AsyncRequestStatus!
+        // [GraphQL: createNutanixCluster]
         //
         [Parameter(
-            ParameterSetName = "createCluster",
+            ParameterSetName = "Createcluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Add Nutanix cluster
+@"Add Nutanix cluster
 
 Supported in v5.0+
 Create a Nutanix cluster object by providing an address and account credentials for Prism. Initiates an asynchronous job to establish a connection with the cluster and retrieve all metadata. Use GET /nutanix_cluster/{id}/status to check status.
-                GraphQL operation: createNutanixCluster(input: CreateNutanixClusterInput!):AsyncRequestStatus!
-                ",
+[GraphQL: createNutanixCluster]",
             Position = 0
         )]
-        public SwitchParameter createCluster { get; set; }
+        public SwitchParameter Createcluster { get; set; }
 
         [Parameter(
-            ParameterSetName = "createCluster",
+            ParameterSetName = "Createcluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for InternalCreateNutanixCluster.
-                GraphQL argument input: CreateNutanixClusterInput!
-                "
+@"Input for InternalCreateNutanixCluster.
+GraphQL argument input: CreateNutanixClusterInput!"
         )]
         public CreateNutanixClusterInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // refreshCluster parameter set
+        // Refreshcluster parameter set
         //
-        // GraphQL operation: refreshNutanixCluster(input: RefreshNutanixClusterInput!):AsyncRequestStatus!
+        // [GraphQL: refreshNutanixCluster]
         //
         [Parameter(
-            ParameterSetName = "refreshCluster",
+            ParameterSetName = "Refreshcluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refresh Nutanix cluster metadata
+@"Refresh Nutanix cluster metadata
 
 Supported in v5.0+
 Create a job to refresh the metadata for the specified Nutanix cluster.
-                GraphQL operation: refreshNutanixCluster(input: RefreshNutanixClusterInput!):AsyncRequestStatus!
-                ",
+[GraphQL: refreshNutanixCluster]",
             Position = 0
         )]
-        public SwitchParameter refreshCluster { get; set; }
+        public SwitchParameter Refreshcluster { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateCluster parameter set
+        // Updatecluster parameter set
         //
-        // GraphQL operation: updateNutanixCluster(input: UpdateNutanixClusterInput!):UpdateNutanixClusterReply!
+        // [GraphQL: updateNutanixCluster]
         //
         [Parameter(
-            ParameterSetName = "updateCluster",
+            ParameterSetName = "Updatecluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Patch Nutanix cluster
+@"Patch Nutanix cluster
 
 Supported in v5.0+
 Patch the host, credentials, and/or CA certs of the specified Nutanix cluster object.
-                GraphQL operation: updateNutanixCluster(input: UpdateNutanixClusterInput!):UpdateNutanixClusterReply!
-                ",
+[GraphQL: updateNutanixCluster]",
             Position = 0
         )]
-        public SwitchParameter updateCluster { get; set; }
+        public SwitchParameter Updatecluster { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteCluster parameter set
+        // Deletecluster parameter set
         //
-        // GraphQL operation: deleteNutanixCluster(input: DeleteNutanixClusterInput!):AsyncRequestStatus!
+        // [GraphQL: deleteNutanixCluster]
         //
         [Parameter(
-            ParameterSetName = "deleteCluster",
+            ParameterSetName = "Deletecluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Remove Nutanix cluster
+@"Remove Nutanix cluster
 
 Supported in v5.0+
 Initiates an asynchronous job to remove a Nutanix cluster object. The Nutanix cluster cannot have VMs mounted through the Rubrik cluster.
-                GraphQL operation: deleteNutanixCluster(input: DeleteNutanixClusterInput!):AsyncRequestStatus!
-                ",
+[GraphQL: deleteNutanixCluster]",
             Position = 0
         )]
-        public SwitchParameter deleteCluster { get; set; }
+        public SwitchParameter Deletecluster { get; set; }
 
         
         // -------------------------------------------------------------------
-        // registerAgentVm parameter set
+        // Registeragentvm parameter set
         //
-        // GraphQL operation: registerAgentNutanixVm(input: RegisterAgentNutanixVmInput!):RequestSuccess!
+        // [GraphQL: registerAgentNutanixVm]
         //
         [Parameter(
-            ParameterSetName = "registerAgentVm",
+            ParameterSetName = "Registeragentvm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                v5.0-v8.0: Register the agent installed on the Nutanix VM
+@"v5.0-v8.0: Register the agent installed on the Nutanix VM
 v8.1+: Register the agent installed on the Nutanix virtual machine
 
 Supported in v5.0+
 v5.0-v5.3: Register the agent installed on the Nutanix VM
 v6.0-v8.0: Register the agent installed on the Nutanix VM.
 v8.1+: Register the agent installed on the Nutanix virtual machine.
-                GraphQL operation: registerAgentNutanixVm(input: RegisterAgentNutanixVmInput!):RequestSuccess!
-                ",
+[GraphQL: registerAgentNutanixVm]",
             Position = 0
         )]
-        public SwitchParameter registerAgentVm { get; set; }
+        public SwitchParameter Registeragentvm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateVm parameter set
+        // Updatevm parameter set
         //
-        // GraphQL operation: updateNutanixVm(input: UpdateNutanixVmInput!):Void
+        // [GraphQL: updateNutanixVm]
         //
         [Parameter(
-            ParameterSetName = "updateVm",
+            ParameterSetName = "Updatevm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                v5.0-v8.0: Patch VM
+@"v5.0-v8.0: Patch VM
 v8.1+: Patch virtual machine
 
 Supported in v5.0+
 v5.0-v5.3: Patch VM with specified properties
 v6.0-v8.0: Patch VM with specified properties.
 v8.1+: Patch virtual machine with specified properties.
-                GraphQL operation: updateNutanixVm(input: UpdateNutanixVmInput!):Void
-                ",
+[GraphQL: updateNutanixVm]",
             Position = 0
         )]
-        public SwitchParameter updateVm { get; set; }
+        public SwitchParameter Updatevm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createOnDemandBackup parameter set
+        // Createondemandbackup parameter set
         //
-        // GraphQL operation: createOnDemandNutanixBackup(input: CreateOnDemandNutanixBackupInput!):AsyncRequestStatus!
+        // [GraphQL: createOnDemandNutanixBackup]
         //
         [Parameter(
-            ParameterSetName = "createOnDemandBackup",
+            ParameterSetName = "Createondemandbackup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                v5.0-v8.0: Create on-demand VM snapshot
+@"v5.0-v8.0: Create on-demand VM snapshot
 v8.1+: Create on-demand virtual machine snapshot
 
 Supported in v5.0+
 v5.0-v5.3: Create an on-demand snapshot for the given VM ID
 v6.0-v8.0: Create an on-demand snapshot for the given VM ID.
 v8.1+: Create an on-demand snapshot for the given virtual machine ID.
-                GraphQL operation: createOnDemandNutanixBackup(input: CreateOnDemandNutanixBackupInput!):AsyncRequestStatus!
-                ",
+[GraphQL: createOnDemandNutanixBackup]",
             Position = 0
         )]
-        public SwitchParameter createOnDemandBackup { get; set; }
+        public SwitchParameter Createondemandbackup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteSnapshot parameter set
+        // Deletesnapshot parameter set
         //
-        // GraphQL operation: deleteNutanixSnapshots(input: DeleteNutanixSnapshotsInput!):RequestSuccess!
+        // [GraphQL: deleteNutanixSnapshots]
         //
         [Parameter(
-            ParameterSetName = "deleteSnapshot",
+            ParameterSetName = "Deletesnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                v5.0-v8.0: Delete all snapshots of VM
+@"v5.0-v8.0: Delete all snapshots of VM
 v8.1+: Delete all snapshots of virtual machine
 
 Supported in v5.0+
 Delete all snapshots of a virtual machine.
-                GraphQL operation: deleteNutanixSnapshots(input: DeleteNutanixSnapshotsInput!):RequestSuccess!
-                ",
+[GraphQL: deleteNutanixSnapshots]",
             Position = 0
         )]
-        public SwitchParameter deleteSnapshot { get; set; }
+        public SwitchParameter Deletesnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // mountSnapshotV1 parameter set
+        // Mountsnapshotv1 parameter set
         //
-        // GraphQL operation: mountNutanixSnapshotV1(input: MountNutanixSnapshotV1Input!):AsyncRequestStatus!
+        // [GraphQL: mountNutanixSnapshotV1]
         //
         [Parameter(
-            ParameterSetName = "mountSnapshotV1",
+            ParameterSetName = "Mountsnapshotv1",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Initiate a Live Mount of a Nutanix virtual machine snapshot
+@"Initiate a Live Mount of a Nutanix virtual machine snapshot
 
 Supported in v6.0+
 Initiates a request to perform a Live Mount of a Nutanix virtual machine snapshot identified by the snapshot ID.
-                GraphQL operation: mountNutanixSnapshotV1(input: MountNutanixSnapshotV1Input!):AsyncRequestStatus!
-                ",
+[GraphQL: mountNutanixSnapshotV1]",
             Position = 0
         )]
-        public SwitchParameter mountSnapshotV1 { get; set; }
+        public SwitchParameter Mountsnapshotv1 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // patchMountV1 parameter set
+        // Patchmountv1 parameter set
         //
-        // GraphQL operation: patchNutanixMountV1(input: PatchNutanixMountV1Input!):PatchNutanixMountV1Reply!
+        // [GraphQL: patchNutanixMountV1]
         //
         [Parameter(
-            ParameterSetName = "patchMountV1",
+            ParameterSetName = "Patchmountv1",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Change Nutanix Live Mount power status
+@"Change Nutanix Live Mount power status
 
 Supported in v6.0+
 Changes the power status of a mounted Nutanix virtual machine.
-                GraphQL operation: patchNutanixMountV1(input: PatchNutanixMountV1Input!):PatchNutanixMountV1Reply!
-                ",
+[GraphQL: patchNutanixMountV1]",
             Position = 0
         )]
-        public SwitchParameter patchMountV1 { get; set; }
+        public SwitchParameter Patchmountv1 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deleteMountV1 parameter set
+        // Deletemountv1 parameter set
         //
-        // GraphQL operation: deleteNutanixMountV1(input: DeleteNutanixMountV1Input!):AsyncRequestStatus!
+        // [GraphQL: deleteNutanixMountV1]
         //
         [Parameter(
-            ParameterSetName = "deleteMountV1",
+            ParameterSetName = "Deletemountv1",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Remove a Live Mount of a Nutanix virtual machine snapshot
+@"Remove a Live Mount of a Nutanix virtual machine snapshot
 
 Supported in v6.0+
 Initiates a request to remove a Live Mount of a Nutanix virtual machine snapshot identified by the ID of the Live Mount.
-                GraphQL operation: deleteNutanixMountV1(input: DeleteNutanixMountV1Input!):AsyncRequestStatus!
-                ",
+[GraphQL: deleteNutanixMountV1]",
             Position = 0
         )]
-        public SwitchParameter deleteMountV1 { get; set; }
+        public SwitchParameter Deletemountv1 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // migrateMountV1 parameter set
+        // Migratemountv1 parameter set
         //
-        // GraphQL operation: migrateNutanixMountV1(input: MigrateNutanixMountV1Input!):AsyncRequestStatus!
+        // [GraphQL: migrateNutanixMountV1]
         //
         [Parameter(
-            ParameterSetName = "migrateMountV1",
+            ParameterSetName = "Migratemountv1",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Relocate a Nutanix virtual machine to another storage container
+@"Relocate a Nutanix virtual machine to another storage container
 
 Supported in v6.0+
 Initiate a request to migrate the virtual disks of a specified Nutanix Live Mount to another storage container. The destination storage container has been specified when the Live Mount was created. The Live Mount will be deleted when the relocation succeeds.
-                GraphQL operation: migrateNutanixMountV1(input: MigrateNutanixMountV1Input!):AsyncRequestStatus!
-                ",
+[GraphQL: migrateNutanixMountV1]",
             Position = 0
         )]
-        public SwitchParameter migrateMountV1 { get; set; }
+        public SwitchParameter Migratemountv1 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // restoreFilesSnapshot parameter set
+        // Restorefilessnapshot parameter set
         //
-        // GraphQL operation: restoreFilesNutanixSnapshot(input: RestoreFilesNutanixSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: restoreFilesNutanixSnapshot]
         //
         [Parameter(
-            ParameterSetName = "restoreFilesSnapshot",
+            ParameterSetName = "Restorefilessnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Restore files
+@"Restore files
 
 Supported in v5.0+
 Restore files from a snapshot to the source Nutanix virtual machine.
-                GraphQL operation: restoreFilesNutanixSnapshot(input: RestoreFilesNutanixSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: restoreFilesNutanixSnapshot]",
             Position = 0
         )]
-        public SwitchParameter restoreFilesSnapshot { get; set; }
+        public SwitchParameter Restorefilessnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // downloadFilesSnapshot parameter set
+        // Downloadfilessnapshot parameter set
         //
-        // GraphQL operation: downloadFilesNutanixSnapshot(input: DownloadFilesNutanixSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: downloadFilesNutanixSnapshot]
         //
         [Parameter(
-            ParameterSetName = "downloadFilesSnapshot",
+            ParameterSetName = "Downloadfilessnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                v5.0-v8.0: Download files from a Nutanix VM backup
+@"v5.0-v8.0: Download files from a Nutanix VM backup
 v8.1+: Download files from a Nutanix virtual machine backup
 
 Supported in v5.0+
 v5.0-v8.0: Start an asynchronous job to download multiple files and folders from a specified Nutanix VM backup. The response returns an asynchronous request ID. Get the URL for downloading the zip file including the specific files/folders by sending a GET request to 'nutanix/vm/request/{id}'.
 v8.1+: Start an asynchronous job to download multiple files and folders from a specified Nutanix virtual machine backup. The response returns an asynchronous request ID. Get the URL for downloading the zip file including the specific files/folders by sending a GET request to 'nutanix/vm/request/{id}'.
-                GraphQL operation: downloadFilesNutanixSnapshot(input: DownloadFilesNutanixSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: downloadFilesNutanixSnapshot]",
             Position = 0
         )]
-        public SwitchParameter downloadFilesSnapshot { get; set; }
+        public SwitchParameter Downloadfilessnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // exportSnapshot parameter set
+        // Exportsnapshot parameter set
         //
-        // GraphQL operation: exportNutanixSnapshot(input: ExportNutanixSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: exportNutanixSnapshot]
         //
         [Parameter(
-            ParameterSetName = "exportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                v5.0-v8.0: Export VM snapshot
+@"v5.0-v8.0: Export VM snapshot
 v8.1+: Export virtual machine snapshot
 
 Supported in v5.0+
 v5.0-v8.0: Export snapshot of a vm.
 v8.1+: Export snapshot of a virtual machine.
-                GraphQL operation: exportNutanixSnapshot(input: ExportNutanixSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: exportNutanixSnapshot]",
             Position = 0
         )]
-        public SwitchParameter exportSnapshot { get; set; }
+        public SwitchParameter Exportsnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // downloadSnapshot parameter set
+        // Downloadsnapshot parameter set
         //
-        // GraphQL operation: downloadNutanixSnapshot(input: DownloadNutanixSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: downloadNutanixSnapshot]
         //
         [Parameter(
-            ParameterSetName = "downloadSnapshot",
+            ParameterSetName = "Downloadsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Creates a download from archival request
+@"Creates a download from archival request
 
 Supported in v5.0+
 Download a snapshot from archival.
-                GraphQL operation: downloadNutanixSnapshot(input: DownloadNutanixSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: downloadNutanixSnapshot]",
             Position = 0
         )]
-        public SwitchParameter downloadSnapshot { get; set; }
+        public SwitchParameter Downloadsnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // batchExportVm parameter set
+        // Batchexportvm parameter set
         //
-        // GraphQL operation: batchExportNutanixVm(input: BatchExportNutanixVmInput!):BatchExportNutanixVmReply!
+        // [GraphQL: batchExportNutanixVm]
         //
         [Parameter(
-            ParameterSetName = "batchExportVm",
+            ParameterSetName = "Batchexportvm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Exports a snapshot from each member of a set of virtual machines
+@"Exports a snapshot from each member of a set of virtual machines
 
 Supported in v7.0+
 Export a snapshot from each member of a set of virtual machines.
-                GraphQL operation: batchExportNutanixVm(input: BatchExportNutanixVmInput!):BatchExportNutanixVmReply!
-                ",
+[GraphQL: batchExportNutanixVm]",
             Position = 0
         )]
-        public SwitchParameter batchExportVm { get; set; }
+        public SwitchParameter Batchexportvm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // batchMountVm parameter set
+        // Batchmountvm parameter set
         //
-        // GraphQL operation: batchMountNutanixVm(input: BatchMountNutanixVmInput!):BatchMountNutanixVmReply!
+        // [GraphQL: batchMountNutanixVm]
         //
         [Parameter(
-            ParameterSetName = "batchMountVm",
+            ParameterSetName = "Batchmountvm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Mount snapshots from multiple virtual machines
+@"Mount snapshots from multiple virtual machines
 
 Supported in v7.0+
 Mounts a batch of snapshots from a group of specified virtual machines.
-                GraphQL operation: batchMountNutanixVm(input: BatchMountNutanixVmInput!):BatchMountNutanixVmReply!
-                ",
+[GraphQL: batchMountNutanixVm]",
             Position = 0
         )]
-        public SwitchParameter batchMountVm { get; set; }
+        public SwitchParameter Batchmountvm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // downloadVmFromLocation parameter set
+        // Downloadvmfromlocation parameter set
         //
-        // GraphQL operation: downloadNutanixVmFromLocation(input: DownloadNutanixVmFromLocationInput!):AsyncRequestStatus!
+        // [GraphQL: downloadNutanixVmFromLocation]
         //
         [Parameter(
-            ParameterSetName = "downloadVmFromLocation",
+            ParameterSetName = "Downloadvmfromlocation",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Download a snapshot from a replication target
+@"Download a snapshot from a replication target
 
 Supported in v7.0+
 Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location has to be a replication target connected to this Rubrik cluster. If an SLA Domain is not provided, the snapshot will be retained forever.
-                GraphQL operation: downloadNutanixVmFromLocation(input: DownloadNutanixVmFromLocationInput!):AsyncRequestStatus!
-                ",
+[GraphQL: downloadNutanixVmFromLocation]",
             Position = 0
         )]
-        public SwitchParameter downloadVmFromLocation { get; set; }
+        public SwitchParameter Downloadvmfromlocation { get; set; }
 
         
         // -------------------------------------------------------------------
-        // createPrismCentral parameter set
+        // Createprismcentral parameter set
         //
-        // GraphQL operation: createNutanixPrismCentral(input: CreateNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+        // [GraphQL: createNutanixPrismCentral]
         //
         [Parameter(
-            ParameterSetName = "createPrismCentral",
+            ParameterSetName = "Createprismcentral",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Add Nutanix Prism Central and it's corresponding Prism Elements
+@"Add Nutanix Prism Central and it's corresponding Prism Elements
 
 Supported in v9.0
 Create a Nutanix Prism Central object and refresh the Prism Elements present in it.
-                GraphQL operation: createNutanixPrismCentral(input: CreateNutanixPrismCentralInput!):BatchAsyncRequestStatus!
-                ",
+[GraphQL: createNutanixPrismCentral]",
             Position = 0
         )]
-        public SwitchParameter createPrismCentral { get; set; }
+        public SwitchParameter Createprismcentral { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updatePrismCentral parameter set
+        // Updateprismcentral parameter set
         //
-        // GraphQL operation: updateNutanixPrismCentral(input: UpdateNutanixPrismCentralInput!):UpdateNutanixPrismCentralReply!
+        // [GraphQL: updateNutanixPrismCentral]
         //
         [Parameter(
-            ParameterSetName = "updatePrismCentral",
+            ParameterSetName = "Updateprismcentral",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Patch Nutanix Prism Central
+@"Patch Nutanix Prism Central
 
 Supported in v9.0
 Patch the host and credentials of Nutanix Prism Central.
-                GraphQL operation: updateNutanixPrismCentral(input: UpdateNutanixPrismCentralInput!):UpdateNutanixPrismCentralReply!
-                ",
+[GraphQL: updateNutanixPrismCentral]",
             Position = 0
         )]
-        public SwitchParameter updatePrismCentral { get; set; }
+        public SwitchParameter Updateprismcentral { get; set; }
 
         
         // -------------------------------------------------------------------
-        // deletePrismCentral parameter set
+        // Deleteprismcentral parameter set
         //
-        // GraphQL operation: deleteNutanixPrismCentral(input: DeleteNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+        // [GraphQL: deleteNutanixPrismCentral]
         //
         [Parameter(
-            ParameterSetName = "deletePrismCentral",
+            ParameterSetName = "Deleteprismcentral",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Remove Nutanix Prism Central
+@"Remove Nutanix Prism Central
 
 Supported in v9.0
 Initiates an asynchronous job to remove a Nutanix Prism Central object. The Nutanix Clusters attached to the Prism Central cannot have Virtual Machines mounted through the Rubrik cluster.
-                GraphQL operation: deleteNutanixPrismCentral(input: DeleteNutanixPrismCentralInput!):BatchAsyncRequestStatus!
-                ",
+[GraphQL: deleteNutanixPrismCentral]",
             Position = 0
         )]
-        public SwitchParameter deletePrismCentral { get; set; }
+        public SwitchParameter Deleteprismcentral { get; set; }
 
         
         // -------------------------------------------------------------------
-        // refreshPrismCentral parameter set
+        // Refreshprismcentral parameter set
         //
-        // GraphQL operation: refreshNutanixPrismCentral(input: RefreshNutanixPrismCentralInput!):BatchAsyncRequestStatus!
+        // [GraphQL: refreshNutanixPrismCentral]
         //
         [Parameter(
-            ParameterSetName = "refreshPrismCentral",
+            ParameterSetName = "Refreshprismcentral",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Refresh Nutanix Prism Central metadata
+@"Refresh Nutanix Prism Central metadata
 
 Supported in v9.0
 Initiates a job to refresh the metadata for the specified Nutanix Prism Central and all its associated clusters.
-                GraphQL operation: refreshNutanixPrismCentral(input: RefreshNutanixPrismCentralInput!):BatchAsyncRequestStatus!
-                ",
+[GraphQL: refreshNutanixPrismCentral]",
             Position = 0
         )]
-        public SwitchParameter refreshPrismCentral { get; set; }
+        public SwitchParameter Refreshprismcentral { get; set; }
 
         
         // -------------------------------------------------------------------
-        // bulkOnDemandSnapshotVm parameter set
+        // Bulkondemandsnapshotvm parameter set
         //
-        // GraphQL operation: bulkOnDemandSnapshotNutanixVm(input: BulkOnDemandSnapshotNutanixVmInput!):BulkOnDemandSnapshotNutanixVmReply!
+        // [GraphQL: bulkOnDemandSnapshotNutanixVm]
         //
         [Parameter(
-            ParameterSetName = "bulkOnDemandSnapshotVm",
+            ParameterSetName = "Bulkondemandsnapshotvm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Take an on-demand snapshot for selected Nutanix virtual machines
+@"Take an on-demand snapshot for selected Nutanix virtual machines
 
 Supported in v9.0
 Take bulk backups for multiple Nutanix virtual machines.
-                GraphQL operation: bulkOnDemandSnapshotNutanixVm(input: BulkOnDemandSnapshotNutanixVmInput!):BulkOnDemandSnapshotNutanixVmReply!
-                ",
+[GraphQL: bulkOnDemandSnapshotNutanixVm]",
             Position = 0
         )]
-        public SwitchParameter bulkOnDemandSnapshotVm { get; set; }
+        public SwitchParameter Bulkondemandsnapshotvm { get; set; }
 
 
         protected override void ProcessRecord()
@@ -610,77 +560,77 @@ Take bulk backups for multiple Nutanix virtual machines.
             {
                 switch(Op)
                 {
-                    case "createCluster":
-                        this.ProcessRecord_createCluster();
+                    case "Createcluster":
+                        this.ProcessRecord_Createcluster();
                         break;
-                    case "refreshCluster":
-                        this.ProcessRecord_refreshCluster();
+                    case "Refreshcluster":
+                        this.ProcessRecord_Refreshcluster();
                         break;
-                    case "updateCluster":
-                        this.ProcessRecord_updateCluster();
+                    case "Updatecluster":
+                        this.ProcessRecord_Updatecluster();
                         break;
-                    case "deleteCluster":
-                        this.ProcessRecord_deleteCluster();
+                    case "Deletecluster":
+                        this.ProcessRecord_Deletecluster();
                         break;
-                    case "registerAgentVm":
-                        this.ProcessRecord_registerAgentVm();
+                    case "Registeragentvm":
+                        this.ProcessRecord_Registeragentvm();
                         break;
-                    case "updateVm":
-                        this.ProcessRecord_updateVm();
+                    case "Updatevm":
+                        this.ProcessRecord_Updatevm();
                         break;
-                    case "createOnDemandBackup":
-                        this.ProcessRecord_createOnDemandBackup();
+                    case "Createondemandbackup":
+                        this.ProcessRecord_Createondemandbackup();
                         break;
-                    case "deleteSnapshot":
-                        this.ProcessRecord_deleteSnapshot();
+                    case "Deletesnapshot":
+                        this.ProcessRecord_Deletesnapshot();
                         break;
-                    case "mountSnapshotV1":
-                        this.ProcessRecord_mountSnapshotV1();
+                    case "Mountsnapshotv1":
+                        this.ProcessRecord_Mountsnapshotv1();
                         break;
-                    case "patchMountV1":
-                        this.ProcessRecord_patchMountV1();
+                    case "Patchmountv1":
+                        this.ProcessRecord_Patchmountv1();
                         break;
-                    case "deleteMountV1":
-                        this.ProcessRecord_deleteMountV1();
+                    case "Deletemountv1":
+                        this.ProcessRecord_Deletemountv1();
                         break;
-                    case "migrateMountV1":
-                        this.ProcessRecord_migrateMountV1();
+                    case "Migratemountv1":
+                        this.ProcessRecord_Migratemountv1();
                         break;
-                    case "restoreFilesSnapshot":
-                        this.ProcessRecord_restoreFilesSnapshot();
+                    case "Restorefilessnapshot":
+                        this.ProcessRecord_Restorefilessnapshot();
                         break;
-                    case "downloadFilesSnapshot":
-                        this.ProcessRecord_downloadFilesSnapshot();
+                    case "Downloadfilessnapshot":
+                        this.ProcessRecord_Downloadfilessnapshot();
                         break;
-                    case "exportSnapshot":
-                        this.ProcessRecord_exportSnapshot();
+                    case "Exportsnapshot":
+                        this.ProcessRecord_Exportsnapshot();
                         break;
-                    case "downloadSnapshot":
-                        this.ProcessRecord_downloadSnapshot();
+                    case "Downloadsnapshot":
+                        this.ProcessRecord_Downloadsnapshot();
                         break;
-                    case "batchExportVm":
-                        this.ProcessRecord_batchExportVm();
+                    case "Batchexportvm":
+                        this.ProcessRecord_Batchexportvm();
                         break;
-                    case "batchMountVm":
-                        this.ProcessRecord_batchMountVm();
+                    case "Batchmountvm":
+                        this.ProcessRecord_Batchmountvm();
                         break;
-                    case "downloadVmFromLocation":
-                        this.ProcessRecord_downloadVmFromLocation();
+                    case "Downloadvmfromlocation":
+                        this.ProcessRecord_Downloadvmfromlocation();
                         break;
-                    case "createPrismCentral":
-                        this.ProcessRecord_createPrismCentral();
+                    case "Createprismcentral":
+                        this.ProcessRecord_Createprismcentral();
                         break;
-                    case "updatePrismCentral":
-                        this.ProcessRecord_updatePrismCentral();
+                    case "Updateprismcentral":
+                        this.ProcessRecord_Updateprismcentral();
                         break;
-                    case "deletePrismCentral":
-                        this.ProcessRecord_deletePrismCentral();
+                    case "Deleteprismcentral":
+                        this.ProcessRecord_Deleteprismcentral();
                         break;
-                    case "refreshPrismCentral":
-                        this.ProcessRecord_refreshPrismCentral();
+                    case "Refreshprismcentral":
+                        this.ProcessRecord_Refreshprismcentral();
                         break;
-                    case "bulkOnDemandSnapshotVm":
-                        this.ProcessRecord_bulkOnDemandSnapshotVm();
+                    case "Bulkondemandsnapshotvm":
+                        this.ProcessRecord_Bulkondemandsnapshotvm();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -700,216 +650,216 @@ Take bulk backups for multiple Nutanix virtual machines.
 
         // This parameter set invokes a single graphql operation:
         // createNutanixCluster.
-        protected void ProcessRecord_createCluster()
+        protected void ProcessRecord_Createcluster()
         {
-            this._logger.name += " -createCluster";
+            this._logger.name += " -Createcluster";
             // Invoke graphql operation createNutanixCluster
             InvokeMutationCreateNutanixCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // refreshNutanixCluster.
-        protected void ProcessRecord_refreshCluster()
+        protected void ProcessRecord_Refreshcluster()
         {
-            this._logger.name += " -refreshCluster";
+            this._logger.name += " -Refreshcluster";
             // Invoke graphql operation refreshNutanixCluster
             InvokeMutationRefreshNutanixCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateNutanixCluster.
-        protected void ProcessRecord_updateCluster()
+        protected void ProcessRecord_Updatecluster()
         {
-            this._logger.name += " -updateCluster";
+            this._logger.name += " -Updatecluster";
             // Invoke graphql operation updateNutanixCluster
             InvokeMutationUpdateNutanixCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixCluster.
-        protected void ProcessRecord_deleteCluster()
+        protected void ProcessRecord_Deletecluster()
         {
-            this._logger.name += " -deleteCluster";
+            this._logger.name += " -Deletecluster";
             // Invoke graphql operation deleteNutanixCluster
             InvokeMutationDeleteNutanixCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // registerAgentNutanixVm.
-        protected void ProcessRecord_registerAgentVm()
+        protected void ProcessRecord_Registeragentvm()
         {
-            this._logger.name += " -registerAgentVm";
+            this._logger.name += " -Registeragentvm";
             // Invoke graphql operation registerAgentNutanixVm
             InvokeMutationRegisterAgentNutanixVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateNutanixVm.
-        protected void ProcessRecord_updateVm()
+        protected void ProcessRecord_Updatevm()
         {
-            this._logger.name += " -updateVm";
+            this._logger.name += " -Updatevm";
             // Invoke graphql operation updateNutanixVm
             InvokeMutationUpdateNutanixVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // createOnDemandNutanixBackup.
-        protected void ProcessRecord_createOnDemandBackup()
+        protected void ProcessRecord_Createondemandbackup()
         {
-            this._logger.name += " -createOnDemandBackup";
+            this._logger.name += " -Createondemandbackup";
             // Invoke graphql operation createOnDemandNutanixBackup
             InvokeMutationCreateOnDemandNutanixBackup();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixSnapshots.
-        protected void ProcessRecord_deleteSnapshot()
+        protected void ProcessRecord_Deletesnapshot()
         {
-            this._logger.name += " -deleteSnapshot";
+            this._logger.name += " -Deletesnapshot";
             // Invoke graphql operation deleteNutanixSnapshots
             InvokeMutationDeleteNutanixSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // mountNutanixSnapshotV1.
-        protected void ProcessRecord_mountSnapshotV1()
+        protected void ProcessRecord_Mountsnapshotv1()
         {
-            this._logger.name += " -mountSnapshotV1";
+            this._logger.name += " -Mountsnapshotv1";
             // Invoke graphql operation mountNutanixSnapshotV1
             InvokeMutationMountNutanixSnapshotV1();
         }
 
         // This parameter set invokes a single graphql operation:
         // patchNutanixMountV1.
-        protected void ProcessRecord_patchMountV1()
+        protected void ProcessRecord_Patchmountv1()
         {
-            this._logger.name += " -patchMountV1";
+            this._logger.name += " -Patchmountv1";
             // Invoke graphql operation patchNutanixMountV1
             InvokeMutationPatchNutanixMountV1();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixMountV1.
-        protected void ProcessRecord_deleteMountV1()
+        protected void ProcessRecord_Deletemountv1()
         {
-            this._logger.name += " -deleteMountV1";
+            this._logger.name += " -Deletemountv1";
             // Invoke graphql operation deleteNutanixMountV1
             InvokeMutationDeleteNutanixMountV1();
         }
 
         // This parameter set invokes a single graphql operation:
         // migrateNutanixMountV1.
-        protected void ProcessRecord_migrateMountV1()
+        protected void ProcessRecord_Migratemountv1()
         {
-            this._logger.name += " -migrateMountV1";
+            this._logger.name += " -Migratemountv1";
             // Invoke graphql operation migrateNutanixMountV1
             InvokeMutationMigrateNutanixMountV1();
         }
 
         // This parameter set invokes a single graphql operation:
         // restoreFilesNutanixSnapshot.
-        protected void ProcessRecord_restoreFilesSnapshot()
+        protected void ProcessRecord_Restorefilessnapshot()
         {
-            this._logger.name += " -restoreFilesSnapshot";
+            this._logger.name += " -Restorefilessnapshot";
             // Invoke graphql operation restoreFilesNutanixSnapshot
             InvokeMutationRestoreFilesNutanixSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadFilesNutanixSnapshot.
-        protected void ProcessRecord_downloadFilesSnapshot()
+        protected void ProcessRecord_Downloadfilessnapshot()
         {
-            this._logger.name += " -downloadFilesSnapshot";
+            this._logger.name += " -Downloadfilessnapshot";
             // Invoke graphql operation downloadFilesNutanixSnapshot
             InvokeMutationDownloadFilesNutanixSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // exportNutanixSnapshot.
-        protected void ProcessRecord_exportSnapshot()
+        protected void ProcessRecord_Exportsnapshot()
         {
-            this._logger.name += " -exportSnapshot";
+            this._logger.name += " -Exportsnapshot";
             // Invoke graphql operation exportNutanixSnapshot
             InvokeMutationExportNutanixSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadNutanixSnapshot.
-        protected void ProcessRecord_downloadSnapshot()
+        protected void ProcessRecord_Downloadsnapshot()
         {
-            this._logger.name += " -downloadSnapshot";
+            this._logger.name += " -Downloadsnapshot";
             // Invoke graphql operation downloadNutanixSnapshot
             InvokeMutationDownloadNutanixSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // batchExportNutanixVm.
-        protected void ProcessRecord_batchExportVm()
+        protected void ProcessRecord_Batchexportvm()
         {
-            this._logger.name += " -batchExportVm";
+            this._logger.name += " -Batchexportvm";
             // Invoke graphql operation batchExportNutanixVm
             InvokeMutationBatchExportNutanixVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // batchMountNutanixVm.
-        protected void ProcessRecord_batchMountVm()
+        protected void ProcessRecord_Batchmountvm()
         {
-            this._logger.name += " -batchMountVm";
+            this._logger.name += " -Batchmountvm";
             // Invoke graphql operation batchMountNutanixVm
             InvokeMutationBatchMountNutanixVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadNutanixVmFromLocation.
-        protected void ProcessRecord_downloadVmFromLocation()
+        protected void ProcessRecord_Downloadvmfromlocation()
         {
-            this._logger.name += " -downloadVmFromLocation";
+            this._logger.name += " -Downloadvmfromlocation";
             // Invoke graphql operation downloadNutanixVmFromLocation
             InvokeMutationDownloadNutanixVmFromLocation();
         }
 
         // This parameter set invokes a single graphql operation:
         // createNutanixPrismCentral.
-        protected void ProcessRecord_createPrismCentral()
+        protected void ProcessRecord_Createprismcentral()
         {
-            this._logger.name += " -createPrismCentral";
+            this._logger.name += " -Createprismcentral";
             // Invoke graphql operation createNutanixPrismCentral
             InvokeMutationCreateNutanixPrismCentral();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateNutanixPrismCentral.
-        protected void ProcessRecord_updatePrismCentral()
+        protected void ProcessRecord_Updateprismcentral()
         {
-            this._logger.name += " -updatePrismCentral";
+            this._logger.name += " -Updateprismcentral";
             // Invoke graphql operation updateNutanixPrismCentral
             InvokeMutationUpdateNutanixPrismCentral();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteNutanixPrismCentral.
-        protected void ProcessRecord_deletePrismCentral()
+        protected void ProcessRecord_Deleteprismcentral()
         {
-            this._logger.name += " -deletePrismCentral";
+            this._logger.name += " -Deleteprismcentral";
             // Invoke graphql operation deleteNutanixPrismCentral
             InvokeMutationDeleteNutanixPrismCentral();
         }
 
         // This parameter set invokes a single graphql operation:
         // refreshNutanixPrismCentral.
-        protected void ProcessRecord_refreshPrismCentral()
+        protected void ProcessRecord_Refreshprismcentral()
         {
-            this._logger.name += " -refreshPrismCentral";
+            this._logger.name += " -Refreshprismcentral";
             // Invoke graphql operation refreshNutanixPrismCentral
             InvokeMutationRefreshNutanixPrismCentral();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkOnDemandSnapshotNutanixVm.
-        protected void ProcessRecord_bulkOnDemandSnapshotVm()
+        protected void ProcessRecord_Bulkondemandsnapshotvm()
         {
-            this._logger.name += " -bulkOnDemandSnapshotVm";
+            this._logger.name += " -Bulkondemandsnapshotvm";
             // Invoke graphql operation bulkOnDemandSnapshotNutanixVm
             InvokeMutationBulkOnDemandSnapshotNutanixVm();
         }

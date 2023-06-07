@@ -1,16 +1,13 @@
-& "$PSScriptRoot\..\..\Utils\import.ps1"
-. "$PSScriptRoot\..\serviceaccount.ps1"
+<#
+.SYNOPSIS
+Run tests around cluster
+#>
+BeforeAll {
+    . "$PSScriptRoot\e2eInit.ps1"
+}
 
 Describe -Name 'Cluster' -Fixture {
-    Context -Name 'Connections with service account file' {
-        It -Name 'Connect-Rsc' -Test {
-            Connect-Rsc
-        }
-        It -Name 'Get-RscCluster' -Test {
-            Get-RscCluster | Should -Not -BeNullOrEmpty
-        }
-        It -Name 'Disconnect-Rsc' -Test {
-            Disconnect-Rsc | Should -BeLikeExactly "The Rubrik Security Cloud session has been terminated."
-        }
+    It -Name 'Get-RscCluster' -Test {
+        Get-RscCluster | Should -Not -BeNullOrEmpty
     }
 }

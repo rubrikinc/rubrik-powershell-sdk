@@ -112,19 +112,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> newCount: Int! (scalar)
         if (this.NewCount == null && Exploration.Includes(parent + ".newCount", true))
         {
-            this.NewCount = new System.Int32();
+            this.NewCount = Int32.MinValue;
         }
         //      C# -> System.Int32? OldCount
         // GraphQL -> oldCount: Int! (scalar)
         if (this.OldCount == null && Exploration.Includes(parent + ".oldCount", true))
         {
-            this.OldCount = new System.Int32();
+            this.OldCount = Int32.MinValue;
         }
         //      C# -> System.String? TaskchainUuid
         // GraphQL -> taskchainUuid: String! (scalar)
         if (this.TaskchainUuid == null && Exploration.Includes(parent + ".taskchainUuid", true))
         {
-            this.TaskchainUuid = new System.String("FETCH");
+            this.TaskchainUuid = "FETCH";
         }
     }
 

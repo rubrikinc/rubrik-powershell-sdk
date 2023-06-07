@@ -106,19 +106,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sourceNicAdapterType: String! (scalar)
         if (this.SourceNicAdapterType == null && Exploration.Includes(parent + ".sourceNicAdapterType", true))
         {
-            this.SourceNicAdapterType = new System.String("FETCH");
+            this.SourceNicAdapterType = "FETCH";
         }
         //      C# -> System.String? SourceNicId
         // GraphQL -> sourceNicId: String! (scalar)
         if (this.SourceNicId == null && Exploration.Includes(parent + ".sourceNicId", true))
         {
-            this.SourceNicId = new System.String("FETCH");
+            this.SourceNicId = "FETCH";
         }
         //      C# -> System.String? TargetNicId
         // GraphQL -> targetNicId: String! (scalar)
         if (this.TargetNicId == null && Exploration.Includes(parent + ".targetNicId", true))
         {
-            this.TargetNicId = new System.String("FETCH");
+            this.TargetNicId = "FETCH";
         }
         //      C# -> VmNic? SourceNic
         // GraphQL -> sourceNic: VmNic (type)

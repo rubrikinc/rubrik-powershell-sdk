@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> continuousBackupRetentionInDays: Int! (scalar)
         if (this.ContinuousBackupRetentionInDays == null && Exploration.Includes(parent + ".continuousBackupRetentionInDays", true))
         {
-            this.ContinuousBackupRetentionInDays = new System.Int32();
+            this.ContinuousBackupRetentionInDays = Int32.MinValue;
         }
     }
 

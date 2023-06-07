@@ -270,25 +270,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dbEngineVersion: String! (scalar)
         if (this.DbEngineVersion == null && Exploration.Includes(parent + ".dbEngineVersion", true))
         {
-            this.DbEngineVersion = new System.String("FETCH");
+            this.DbEngineVersion = "FETCH";
         }
         //      C# -> System.String? DbParameterGroupName
         // GraphQL -> dbParameterGroupName: String! (scalar)
         if (this.DbParameterGroupName == null && Exploration.Includes(parent + ".dbParameterGroupName", true))
         {
-            this.DbParameterGroupName = new System.String("FETCH");
+            this.DbParameterGroupName = "FETCH";
         }
         //      C# -> System.String? DbSubnetGroupName
         // GraphQL -> dbSubnetGroupName: String! (scalar)
         if (this.DbSubnetGroupName == null && Exploration.Includes(parent + ".dbSubnetGroupName", true))
         {
-            this.DbSubnetGroupName = new System.String("FETCH");
+            this.DbSubnetGroupName = "FETCH";
         }
         //      C# -> System.Int32? Iops
         // GraphQL -> iops: Int! (scalar)
         if (this.Iops == null && Exploration.Includes(parent + ".iops", true))
         {
-            this.Iops = new System.Int32();
+            this.Iops = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsMultiAz
         // GraphQL -> isMultiAz: Boolean! (scalar)
@@ -300,13 +300,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> kmsKeyId: String! (scalar)
         if (this.KmsKeyId == null && Exploration.Includes(parent + ".kmsKeyId", true))
         {
-            this.KmsKeyId = new System.String("FETCH");
+            this.KmsKeyId = "FETCH";
         }
         //      C# -> System.String? OptionGroupName
         // GraphQL -> optionGroupName: String! (scalar)
         if (this.OptionGroupName == null && Exploration.Includes(parent + ".optionGroupName", true))
         {
-            this.OptionGroupName = new System.String("FETCH");
+            this.OptionGroupName = "FETCH";
         }
         //      C# -> System.Int64? Port
         // GraphQL -> port: Long! (scalar)
@@ -318,13 +318,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> primaryAz: String! (scalar)
         if (this.PrimaryAz == null && Exploration.Includes(parent + ".primaryAz", true))
         {
-            this.PrimaryAz = new System.String("FETCH");
+            this.PrimaryAz = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
         {
-            this.VpcId = new System.String("FETCH");
+            this.VpcId = "FETCH";
         }
     }
 

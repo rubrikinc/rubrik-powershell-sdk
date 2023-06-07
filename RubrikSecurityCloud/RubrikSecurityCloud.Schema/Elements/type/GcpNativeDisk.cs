@@ -600,25 +600,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> diskId: String! (scalar)
         if (this.DiskId == null && Exploration.Includes(parent + ".diskId", true))
         {
-            this.DiskId = new System.String("FETCH");
+            this.DiskId = "FETCH";
         }
         //      C# -> System.String? DiskName
         // GraphQL -> diskName: String! (scalar)
         if (this.DiskName == null && Exploration.Includes(parent + ".diskName", true))
         {
-            this.DiskName = new System.String("FETCH");
+            this.DiskName = "FETCH";
         }
         //      C# -> System.String? DiskType
         // GraphQL -> diskType: String! (scalar)
         if (this.DiskType == null && Exploration.Includes(parent + ".diskType", true))
         {
-            this.DiskType = new System.String("FETCH");
+            this.DiskType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -630,37 +630,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> kmsKey: String! (scalar)
         if (this.KmsKey == null && Exploration.Includes(parent + ".kmsKey", true))
         {
-            this.KmsKey = new System.String("FETCH");
+            this.KmsKey = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? ProjectId
         // GraphQL -> projectId: String! (scalar)
         if (this.ProjectId == null && Exploration.Includes(parent + ".projectId", true))
         {
-            this.ProjectId = new System.String("FETCH");
+            this.ProjectId = "FETCH";
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
         if (this.Region == null && Exploration.Includes(parent + ".region", true))
         {
-            this.Region = new System.String("FETCH");
+            this.Region = "FETCH";
         }
         //      C# -> List<System.String>? ReplicaZones
         // GraphQL -> replicaZones: [String!]! (scalar)
@@ -672,7 +672,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sizeInGiBs: Int! (scalar)
         if (this.SizeInGiBs == null && Exploration.Includes(parent + ".sizeInGiBs", true))
         {
-            this.SizeInGiBs = new System.Int32();
+            this.SizeInGiBs = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -684,7 +684,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> zone: String! (scalar)
         if (this.Zone == null && Exploration.Includes(parent + ".zone", true))
         {
-            this.Zone = new System.String("FETCH");
+            this.Zone = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

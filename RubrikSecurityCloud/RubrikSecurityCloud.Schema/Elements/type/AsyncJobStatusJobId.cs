@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> jobId: String! (scalar)
         if (this.JobId == null && Exploration.Includes(parent + ".jobId", true))
         {
-            this.JobId = new System.String("FETCH");
+            this.JobId = "FETCH";
         }
         //      C# -> System.String? RubrikObjectId
         // GraphQL -> rubrikObjectId: String! (scalar)
         if (this.RubrikObjectId == null && Exploration.Includes(parent + ".rubrikObjectId", true))
         {
-            this.RubrikObjectId = new System.String("FETCH");
+            this.RubrikObjectId = "FETCH";
         }
     }
 

@@ -146,7 +146,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> threshold: Int! (scalar)
         if (this.Threshold == null && Exploration.Includes(parent + ".threshold", true))
         {
-            this.Threshold = new System.Int32();
+            this.Threshold = Int32.MinValue;
         }
         //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
         // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)

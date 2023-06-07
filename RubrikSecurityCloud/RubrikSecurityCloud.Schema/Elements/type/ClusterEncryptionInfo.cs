@@ -264,7 +264,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cipher: String! (scalar)
         if (this.Cipher == null && Exploration.Includes(parent + ".cipher", true))
         {
-            this.Cipher = new System.String("FETCH");
+            this.Cipher = "FETCH";
         }
         //      C# -> System.Boolean? IsConnected
         // GraphQL -> isConnected: Boolean! (scalar)
@@ -288,19 +288,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> kmipClientUsername: String! (scalar)
         if (this.KmipClientUsername == null && Exploration.Includes(parent + ".kmipClientUsername", true))
         {
-            this.KmipClientUsername = new System.String("FETCH");
+            this.KmipClientUsername = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? SoftwareVersion
         // GraphQL -> softwareVersion: String! (scalar)
         if (this.SoftwareVersion == null && Exploration.Includes(parent + ".softwareVersion", true))
         {
-            this.SoftwareVersion = new System.String("FETCH");
+            this.SoftwareVersion = "FETCH";
         }
         //      C# -> System.Int64? TotalKmipServers
         // GraphQL -> totalKmipServers: Long! (scalar)
@@ -312,7 +312,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> uuid: UUID! (scalar)
         if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
         {
-            this.Uuid = new System.String("FETCH");
+            this.Uuid = "FETCH";
         }
         //      C# -> ClusterKeyRotation? LatestRotationCompletedInfo
         // GraphQL -> latestRotationCompletedInfo: ClusterKeyRotation (type)

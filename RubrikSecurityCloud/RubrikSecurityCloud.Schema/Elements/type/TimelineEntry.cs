@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> day: String! (scalar)
         if (this.Day == null && Exploration.Includes(parent + ".day", true))
         {
-            this.Day = new System.String("FETCH");
+            this.Day = "FETCH";
         }
         //      C# -> System.String? PolicyId
         // GraphQL -> policyId: String! (scalar)
         if (this.PolicyId == null && Exploration.Includes(parent + ".policyId", true))
         {
-            this.PolicyId = new System.String("FETCH");
+            this.PolicyId = "FETCH";
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits (type)

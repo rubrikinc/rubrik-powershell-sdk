@@ -146,7 +146,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> chartViewId: String! (scalar)
         if (this.ChartViewId == null && Exploration.Includes(parent + ".chartViewId", true))
         {
-            this.ChartViewId = new System.String("FETCH");
+            this.ChartViewId = "FETCH";
         }
         //      C# -> System.Boolean? DefaultChart
         // GraphQL -> defaultChart: Boolean! (scalar)
@@ -164,7 +164,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
     }
 

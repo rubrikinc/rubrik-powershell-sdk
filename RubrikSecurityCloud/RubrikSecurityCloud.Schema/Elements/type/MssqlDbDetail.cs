@@ -600,25 +600,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> latestRecoveryPointV50: String (scalar)
         if (this.LatestRecoveryPointV50 == null && Exploration.Includes(parent + ".latestRecoveryPointV50", true))
         {
-            this.LatestRecoveryPointV50 = new System.String("FETCH");
+            this.LatestRecoveryPointV50 = "FETCH";
         }
         //      C# -> System.String? LatestRecoveryPointV51
         // GraphQL -> latestRecoveryPointV51: String (scalar)
         if (this.LatestRecoveryPointV51 == null && Exploration.Includes(parent + ".latestRecoveryPointV51", true))
         {
-            this.LatestRecoveryPointV51 = new System.String("FETCH");
+            this.LatestRecoveryPointV51 = "FETCH";
         }
         //      C# -> System.String? LatestRecoveryPointV52
         // GraphQL -> latestRecoveryPointV52: String (scalar)
         if (this.LatestRecoveryPointV52 == null && Exploration.Includes(parent + ".latestRecoveryPointV52", true))
         {
-            this.LatestRecoveryPointV52 = new System.String("FETCH");
+            this.LatestRecoveryPointV52 = "FETCH";
         }
         //      C# -> System.String? LatestRecoveryPointV53
         // GraphQL -> latestRecoveryPointV53: String (scalar)
         if (this.LatestRecoveryPointV53 == null && Exploration.Includes(parent + ".latestRecoveryPointV53", true))
         {
-            this.LatestRecoveryPointV53 = new System.String("FETCH");
+            this.LatestRecoveryPointV53 = "FETCH";
         }
         //      C# -> DateTime? LatestRecoveryPointV60
         // GraphQL -> latestRecoveryPointV60: DateTime (scalar)
@@ -660,31 +660,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> maxDataStreams: Int (scalar)
         if (this.MaxDataStreams == null && Exploration.Includes(parent + ".maxDataStreams", true))
         {
-            this.MaxDataStreams = new System.Int32();
+            this.MaxDataStreams = Int32.MinValue;
         }
         //      C# -> System.String? OldestRecoveryPointV50
         // GraphQL -> oldestRecoveryPointV50: String (scalar)
         if (this.OldestRecoveryPointV50 == null && Exploration.Includes(parent + ".oldestRecoveryPointV50", true))
         {
-            this.OldestRecoveryPointV50 = new System.String("FETCH");
+            this.OldestRecoveryPointV50 = "FETCH";
         }
         //      C# -> System.String? OldestRecoveryPointV51
         // GraphQL -> oldestRecoveryPointV51: String (scalar)
         if (this.OldestRecoveryPointV51 == null && Exploration.Includes(parent + ".oldestRecoveryPointV51", true))
         {
-            this.OldestRecoveryPointV51 = new System.String("FETCH");
+            this.OldestRecoveryPointV51 = "FETCH";
         }
         //      C# -> System.String? OldestRecoveryPointV52
         // GraphQL -> oldestRecoveryPointV52: String (scalar)
         if (this.OldestRecoveryPointV52 == null && Exploration.Includes(parent + ".oldestRecoveryPointV52", true))
         {
-            this.OldestRecoveryPointV52 = new System.String("FETCH");
+            this.OldestRecoveryPointV52 = "FETCH";
         }
         //      C# -> System.String? OldestRecoveryPointV53
         // GraphQL -> oldestRecoveryPointV53: String (scalar)
         if (this.OldestRecoveryPointV53 == null && Exploration.Includes(parent + ".oldestRecoveryPointV53", true))
         {
-            this.OldestRecoveryPointV53 = new System.String("FETCH");
+            this.OldestRecoveryPointV53 = "FETCH";
         }
         //      C# -> DateTime? OldestRecoveryPointV60
         // GraphQL -> oldestRecoveryPointV60: DateTime (scalar)
@@ -720,25 +720,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> protectionDateV50: String (scalar)
         if (this.ProtectionDateV50 == null && Exploration.Includes(parent + ".protectionDateV50", true))
         {
-            this.ProtectionDateV50 = new System.String("FETCH");
+            this.ProtectionDateV50 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV51
         // GraphQL -> protectionDateV51: String (scalar)
         if (this.ProtectionDateV51 == null && Exploration.Includes(parent + ".protectionDateV51", true))
         {
-            this.ProtectionDateV51 = new System.String("FETCH");
+            this.ProtectionDateV51 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV52
         // GraphQL -> protectionDateV52: String (scalar)
         if (this.ProtectionDateV52 == null && Exploration.Includes(parent + ".protectionDateV52", true))
         {
-            this.ProtectionDateV52 = new System.String("FETCH");
+            this.ProtectionDateV52 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV53
         // GraphQL -> protectionDateV53: String (scalar)
         if (this.ProtectionDateV53 == null && Exploration.Includes(parent + ".protectionDateV53", true))
         {
-            this.ProtectionDateV53 = new System.String("FETCH");
+            this.ProtectionDateV53 = "FETCH";
         }
         //      C# -> DateTime? ProtectionDateV60
         // GraphQL -> protectionDateV60: DateTime (scalar)
@@ -774,13 +774,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoveryForkGuid: String (scalar)
         if (this.RecoveryForkGuid == null && Exploration.Includes(parent + ".recoveryForkGuid", true))
         {
-            this.RecoveryForkGuid = new System.String("FETCH");
+            this.RecoveryForkGuid = "FETCH";
         }
         //      C# -> System.Int32? SnapshotCount
         // GraphQL -> snapshotCount: Int! (scalar)
         if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
         {
-            this.SnapshotCount = new System.Int32();
+            this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)

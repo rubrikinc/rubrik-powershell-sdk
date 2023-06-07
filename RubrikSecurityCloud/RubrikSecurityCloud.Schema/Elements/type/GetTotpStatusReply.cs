@@ -164,7 +164,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totpReminderHours: Int! (scalar)
         if (this.TotpReminderHours == null && Exploration.Includes(parent + ".totpReminderHours", true))
         {
-            this.TotpReminderHours = new System.Int32();
+            this.TotpReminderHours = Int32.MinValue;
         }
     }
 

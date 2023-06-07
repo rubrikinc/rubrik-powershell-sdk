@@ -126,19 +126,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName == null && Exploration.Includes(parent + ".accountName", true))
         {
-            this.AccountName = new System.String("FETCH");
+            this.AccountName = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
         {
-            this.NativeId = new System.String("FETCH");
+            this.NativeId = "FETCH";
         }
         //      C# -> System.Boolean? SeamlessFlowEnabled
         // GraphQL -> seamlessFlowEnabled: Boolean! (scalar)

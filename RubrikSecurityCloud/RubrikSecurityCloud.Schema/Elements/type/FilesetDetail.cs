@@ -224,13 +224,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> archivedSnapshotCount: Int (scalar)
         if (this.ArchivedSnapshotCount == null && Exploration.Includes(parent + ".archivedSnapshotCount", true))
         {
-            this.ArchivedSnapshotCount = new System.Int32();
+            this.ArchivedSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? BackupScriptErrorHandling
         // GraphQL -> backupScriptErrorHandling: String (scalar)
         if (this.BackupScriptErrorHandling == null && Exploration.Includes(parent + ".backupScriptErrorHandling", true))
         {
-            this.BackupScriptErrorHandling = new System.String("FETCH");
+            this.BackupScriptErrorHandling = "FETCH";
         }
         //      C# -> System.Int64? BackupScriptTimeout
         // GraphQL -> backupScriptTimeout: Long (scalar)
@@ -248,13 +248,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> postBackupScript: String (scalar)
         if (this.PostBackupScript == null && Exploration.Includes(parent + ".postBackupScript", true))
         {
-            this.PostBackupScript = new System.String("FETCH");
+            this.PostBackupScript = "FETCH";
         }
         //      C# -> System.String? PreBackupScript
         // GraphQL -> preBackupScript: String (scalar)
         if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript", true))
         {
-            this.PreBackupScript = new System.String("FETCH");
+            this.PreBackupScript = "FETCH";
         }
         //      C# -> DateTime? ProtectionDate
         // GraphQL -> protectionDate: DateTime (scalar)
@@ -266,7 +266,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotCount: Int! (scalar)
         if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
         {
-            this.SnapshotCount = new System.Int32();
+            this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> FilesetSummary? FilesetSummary
         // GraphQL -> filesetSummary: FilesetSummary (type)

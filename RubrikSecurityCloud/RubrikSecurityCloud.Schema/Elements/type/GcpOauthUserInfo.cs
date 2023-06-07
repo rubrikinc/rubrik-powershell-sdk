@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> domain: String! (scalar)
         if (this.Domain == null && Exploration.Includes(parent + ".domain", true))
         {
-            this.Domain = new System.String("FETCH");
+            this.Domain = "FETCH";
         }
         //      C# -> System.String? EmailId
         // GraphQL -> emailId: String! (scalar)
         if (this.EmailId == null && Exploration.Includes(parent + ".emailId", true))
         {
-            this.EmailId = new System.String("FETCH");
+            this.EmailId = "FETCH";
         }
         //      C# -> System.String? FirstName
         // GraphQL -> firstName: String! (scalar)
         if (this.FirstName == null && Exploration.Includes(parent + ".firstName", true))
         {
-            this.FirstName = new System.String("FETCH");
+            this.FirstName = "FETCH";
         }
     }
 

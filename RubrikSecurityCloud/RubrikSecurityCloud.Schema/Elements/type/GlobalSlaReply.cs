@@ -491,19 +491,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
@@ -527,19 +527,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OwnerOrgName
         // GraphQL -> ownerOrgName: String! (scalar)
         if (this.OwnerOrgName == null && Exploration.Includes(parent + ".ownerOrgName", true))
         {
-            this.OwnerOrgName = new System.String("FETCH");
+            this.OwnerOrgName = "FETCH";
         }
         //      C# -> System.Int32? ProtectedObjectCount
         // GraphQL -> protectedObjectCount: Int! (scalar)
         if (this.ProtectedObjectCount == null && Exploration.Includes(parent + ".protectedObjectCount", true))
         {
-            this.ProtectedObjectCount = new System.Int32();
+            this.ProtectedObjectCount = Int32.MinValue;
         }
         //      C# -> DateTime? SnapshotScheduleLastUpdatedAt
         // GraphQL -> snapshotScheduleLastUpdatedAt: DateTime (scalar)
@@ -557,13 +557,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> uiColor: String! (scalar)
         if (this.UiColor == null && Exploration.Includes(parent + ".uiColor", true))
         {
-            this.UiColor = new System.String("FETCH");
+            this.UiColor = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> List<SlaAssociatedOrganization>? AllOrgsHavingAccess
         // GraphQL -> allOrgsHavingAccess: [SlaAssociatedOrganization!]! (type)

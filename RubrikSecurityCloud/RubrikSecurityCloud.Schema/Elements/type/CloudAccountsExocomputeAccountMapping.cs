@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> applicationCloudAccountId: UUID! (scalar)
         if (this.ApplicationCloudAccountId == null && Exploration.Includes(parent + ".applicationCloudAccountId", true))
         {
-            this.ApplicationCloudAccountId = new System.String("FETCH");
+            this.ApplicationCloudAccountId = "FETCH";
         }
         //      C# -> System.String? ExocomputeCloudAccountId
         // GraphQL -> exocomputeCloudAccountId: UUID! (scalar)
         if (this.ExocomputeCloudAccountId == null && Exploration.Includes(parent + ".exocomputeCloudAccountId", true))
         {
-            this.ExocomputeCloudAccountId = new System.String("FETCH");
+            this.ExocomputeCloudAccountId = "FETCH";
         }
     }
 

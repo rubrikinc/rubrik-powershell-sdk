@@ -312,13 +312,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? FullName
         // GraphQL -> fullName: String! (scalar)
         if (this.FullName == null && Exploration.Includes(parent + ".fullName", true))
         {
-            this.FullName = new System.String("FETCH");
+            this.FullName = "FETCH";
         }
         //      C# -> System.Boolean? HasOwnIdpConfigured
         // GraphQL -> hasOwnIdpConfigured: Boolean! (scalar)
@@ -330,7 +330,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsEnvoyRequired
         // GraphQL -> isEnvoyRequired: Boolean! (scalar)
@@ -342,7 +342,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int64? PhysicalStorageUsed
         // GraphQL -> physicalStorageUsed: Long! (scalar)

@@ -400,19 +400,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> effectiveSlaDomainId: String (scalar)
         if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
         {
-            this.EffectiveSlaDomainId = new System.String("FETCH");
+            this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
         if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
         {
-            this.EffectiveSlaDomainName = new System.String("FETCH");
+            this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
         if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
         {
-            this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
+            this.EffectiveSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.Boolean? EnableHardlinkSupport
         // GraphQL -> enableHardlinkSupport: Boolean (scalar)
@@ -442,25 +442,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failoverClusterAppId: String (scalar)
         if (this.FailoverClusterAppId == null && Exploration.Includes(parent + ".failoverClusterAppId", true))
         {
-            this.FailoverClusterAppId = new System.String("FETCH");
+            this.FailoverClusterAppId = "FETCH";
         }
         //      C# -> System.String? FailoverClusterAppName
         // GraphQL -> failoverClusterAppName: String (scalar)
         if (this.FailoverClusterAppName == null && Exploration.Includes(parent + ".failoverClusterAppName", true))
         {
-            this.FailoverClusterAppName = new System.String("FETCH");
+            this.FailoverClusterAppName = "FETCH";
         }
         //      C# -> System.String? HostId
         // GraphQL -> hostId: String (scalar)
         if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
         {
-            this.HostId = new System.String("FETCH");
+            this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> List<System.String>? Includes
         // GraphQL -> includes: [String!]! (scalar)
@@ -490,37 +490,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> operatingSystemType: String (scalar)
         if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
         {
-            this.OperatingSystemType = new System.String("FETCH");
+            this.OperatingSystemType = "FETCH";
         }
         //      C# -> System.String? ShareId
         // GraphQL -> shareId: String (scalar)
         if (this.ShareId == null && Exploration.Includes(parent + ".shareId", true))
         {
-            this.ShareId = new System.String("FETCH");
+            this.ShareId = "FETCH";
         }
         //      C# -> System.String? SnapMirrorLabelForFullBackup
         // GraphQL -> snapMirrorLabelForFullBackup: String (scalar)
         if (this.SnapMirrorLabelForFullBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForFullBackup", true))
         {
-            this.SnapMirrorLabelForFullBackup = new System.String("FETCH");
+            this.SnapMirrorLabelForFullBackup = "FETCH";
         }
         //      C# -> System.String? SnapMirrorLabelForIncrementalBackup
         // GraphQL -> snapMirrorLabelForIncrementalBackup: String (scalar)
         if (this.SnapMirrorLabelForIncrementalBackup == null && Exploration.Includes(parent + ".snapMirrorLabelForIncrementalBackup", true))
         {
-            this.SnapMirrorLabelForIncrementalBackup = new System.String("FETCH");
+            this.SnapMirrorLabelForIncrementalBackup = "FETCH";
         }
         //      C# -> System.String? TemplateId
         // GraphQL -> templateId: String! (scalar)
         if (this.TemplateId == null && Exploration.Includes(parent + ".templateId", true))
         {
-            this.TemplateId = new System.String("FETCH");
+            this.TemplateId = "FETCH";
         }
         //      C# -> System.String? TemplateName
         // GraphQL -> templateName: String! (scalar)
         if (this.TemplateName == null && Exploration.Includes(parent + ".templateName", true))
         {
-            this.TemplateName = new System.String("FETCH");
+            this.TemplateName = "FETCH";
         }
         //      C# -> FilesetArraySpec? ArraySpec
         // GraphQL -> arraySpec: FilesetArraySpec (type)

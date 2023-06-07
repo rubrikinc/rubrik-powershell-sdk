@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> source: String! (scalar)
         if (this.Source == null && Exploration.Includes(parent + ".source", true))
         {
-            this.Source = new System.String("FETCH");
+            this.Source = "FETCH";
         }
     }
 

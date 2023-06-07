@@ -484,31 +484,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterInstanceAddress: String (scalar)
         if (this.ClusterInstanceAddress == null && Exploration.Includes(parent + ".clusterInstanceAddress", true))
         {
-            this.ClusterInstanceAddress = new System.String("FETCH");
+            this.ClusterInstanceAddress = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainId
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            this.ConfiguredSlaDomainId = new System.String("FETCH");
+            this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String (scalar)
         if (this.ConfiguredSlaDomainName == null && Exploration.Includes(parent + ".configuredSlaDomainName", true))
         {
-            this.ConfiguredSlaDomainName = new System.String("FETCH");
+            this.ConfiguredSlaDomainName = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainType
         // GraphQL -> configuredSlaDomainType: String (scalar)
         if (this.ConfiguredSlaDomainType == null && Exploration.Includes(parent + ".configuredSlaDomainType", true))
         {
-            this.ConfiguredSlaDomainType = new System.String("FETCH");
+            this.ConfiguredSlaDomainType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? InternalTimestamp
         // GraphQL -> internalTimestamp: Long (scalar)
@@ -526,37 +526,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV50
         // GraphQL -> protectionDateV50: String (scalar)
         if (this.ProtectionDateV50 == null && Exploration.Includes(parent + ".protectionDateV50", true))
         {
-            this.ProtectionDateV50 = new System.String("FETCH");
+            this.ProtectionDateV50 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV51
         // GraphQL -> protectionDateV51: String (scalar)
         if (this.ProtectionDateV51 == null && Exploration.Includes(parent + ".protectionDateV51", true))
         {
-            this.ProtectionDateV51 = new System.String("FETCH");
+            this.ProtectionDateV51 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV52
         // GraphQL -> protectionDateV52: String (scalar)
         if (this.ProtectionDateV52 == null && Exploration.Includes(parent + ".protectionDateV52", true))
         {
-            this.ProtectionDateV52 = new System.String("FETCH");
+            this.ProtectionDateV52 = "FETCH";
         }
         //      C# -> System.String? ProtectionDateV53
         // GraphQL -> protectionDateV53: String (scalar)
         if (this.ProtectionDateV53 == null && Exploration.Includes(parent + ".protectionDateV53", true))
         {
-            this.ProtectionDateV53 = new System.String("FETCH");
+            this.ProtectionDateV53 = "FETCH";
         }
         //      C# -> DateTime? ProtectionDateV60
         // GraphQL -> protectionDateV60: DateTime (scalar)
@@ -640,7 +640,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> version: String (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> MssqlNonSlaProperties? MssqlNonSlaProperties
         // GraphQL -> mssqlNonSlaProperties: MssqlNonSlaProperties (type)

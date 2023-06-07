@@ -146,7 +146,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> path: String! (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> System.Int64? UnallocatedBytes
         // GraphQL -> unallocatedBytes: Long (scalar)

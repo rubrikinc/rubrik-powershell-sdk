@@ -132,19 +132,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sslCaCerts: String! (scalar)
         if (this.SslCaCerts == null && Exploration.Includes(parent + ".sslCaCerts", true))
         {
-            this.SslCaCerts = new System.String("FETCH");
+            this.SslCaCerts = "FETCH";
         }
         //      C# -> System.String? SslCertfile
         // GraphQL -> sslCertfile: String! (scalar)
         if (this.SslCertfile == null && Exploration.Includes(parent + ".sslCertfile", true))
         {
-            this.SslCertfile = new System.String("FETCH");
+            this.SslCertfile = "FETCH";
         }
         //      C# -> System.String? SslKeyfile
         // GraphQL -> sslKeyfile: String! (scalar)
         if (this.SslKeyfile == null && Exploration.Includes(parent + ".sslKeyfile", true))
         {
-            this.SslKeyfile = new System.String("FETCH");
+            this.SslKeyfile = "FETCH";
         }
     }
 

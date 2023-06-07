@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numApps: Int! (scalar)
         if (this.NumApps == null && Exploration.Includes(parent + ".numApps", true))
         {
-            this.NumApps = new System.Int32();
+            this.NumApps = Int32.MinValue;
         }
         //      C# -> System.Int32? NumNodes
         // GraphQL -> numNodes: Int! (scalar)
         if (this.NumNodes == null && Exploration.Includes(parent + ".numNodes", true))
         {
-            this.NumNodes = new System.Int32();
+            this.NumNodes = Int32.MinValue;
         }
         //      C# -> FailoverClusterSummary? FailoverClusterSummary
         // GraphQL -> failoverClusterSummary: FailoverClusterSummary (type)

@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cursor: String! (scalar)
         if (this.Cursor == null && Exploration.Includes(parent + ".cursor", true))
         {
-            this.Cursor = new System.String("FETCH");
+            this.Cursor = "FETCH";
         }
         //      C# -> SapHanaLogSnapshot? Node
         // GraphQL -> node: SapHanaLogSnapshot! (type)

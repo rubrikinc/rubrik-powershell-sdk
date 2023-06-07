@@ -791,7 +791,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> defaultAddress: String (scalar)
         if (this.DefaultAddress == null && Exploration.Includes(parent + ".defaultAddress", true))
         {
-            this.DefaultAddress = new System.String("FETCH");
+            this.DefaultAddress = "FETCH";
         }
         //      C# -> System.Boolean? EncryptionEnabled
         // GraphQL -> encryptionEnabled: Boolean! (scalar)
@@ -809,7 +809,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsHealthy
         // GraphQL -> isHealthy: Boolean! (scalar)
@@ -827,13 +827,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NoSqlWorkloadCount
         // GraphQL -> noSqlWorkloadCount: Int! (scalar)
         if (this.NoSqlWorkloadCount == null && Exploration.Includes(parent + ".noSqlWorkloadCount", true))
         {
-            this.NoSqlWorkloadCount = new System.Int32();
+            this.NoSqlWorkloadCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? PassesConnectivityCheck
         // GraphQL -> passesConnectivityCheck: Boolean (scalar)
@@ -857,19 +857,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> systemStatusMessage: String (scalar)
         if (this.SystemStatusMessage == null && Exploration.Includes(parent + ".systemStatusMessage", true))
         {
-            this.SystemStatusMessage = new System.String("FETCH");
+            this.SystemStatusMessage = "FETCH";
         }
         //      C# -> System.String? Timezone
         // GraphQL -> timezone: String (scalar)
         if (this.Timezone == null && Exploration.Includes(parent + ".timezone", true))
         {
-            this.Timezone = new System.String("FETCH");
+            this.Timezone = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> ActivitySeriesConnection? ActivitySeriesConnection
         // GraphQL -> activitySeriesConnection: ActivitySeriesConnection! (type)

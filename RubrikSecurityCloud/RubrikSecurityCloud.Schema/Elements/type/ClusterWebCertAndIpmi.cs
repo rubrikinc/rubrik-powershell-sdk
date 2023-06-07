@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
         if (this.Error == null && Exploration.Includes(parent + ".error", true))
         {
-            this.Error = new System.String("FETCH");
+            this.Error = "FETCH";
         }
         //      C# -> ClusterWebSignedCertificateReply? CertInfo
         // GraphQL -> certInfo: ClusterWebSignedCertificateReply (type)

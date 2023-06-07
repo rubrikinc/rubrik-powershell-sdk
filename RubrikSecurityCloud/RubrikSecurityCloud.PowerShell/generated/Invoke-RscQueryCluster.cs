@@ -29,7 +29,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Cloud parameter set
         //
-        // GraphQL operation: allCloudClusters(cloudVendorType: CcpVendorType!):[CcWithCloudInfo!]!
+        // [GraphQL: allCloudClusters]
         //
         [Parameter(
             ParameterSetName = "Cloud",
@@ -37,10 +37,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of Cloud Clusters with cloud information.
-                GraphQL operation: allCloudClusters(cloudVendorType: CcpVendorType!):[CcWithCloudInfo!]!
-                ",
+@"List of Cloud Clusters with cloud information.
+[GraphQL: allCloudClusters]",
             Position = 0
         )]
         public SwitchParameter Cloud { get; set; }
@@ -51,17 +49,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Cloud vendor name.
-                GraphQL argument cloudVendorType: CcpVendorType!
-                "
+@"Cloud vendor name.
+GraphQL argument cloudVendorType: CcpVendorType!"
         )]
         public CcpVendorType? CloudVendorType { get; set; }
         
         // -------------------------------------------------------------------
         // Node parameter set
         //
-        // GraphQL operation: clusterNodes(input: GetNodesInput!):NodeStatusListResponse!
+        // [GraphQL: clusterNodes]
         //
         [Parameter(
             ParameterSetName = "Node",
@@ -69,13 +65,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get list of nodes in this Rubrik cluster
+@"Get list of nodes in this Rubrik cluster
 
 Supported in v5.0+
 Returns the list of all Rubrik nodes.
-                GraphQL operation: clusterNodes(input: GetNodesInput!):NodeStatusListResponse!
-                ",
+[GraphQL: clusterNodes]",
             Position = 0
         )]
         public SwitchParameter Node { get; set; }
@@ -86,17 +80,15 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for InternalGetNodes.
-                GraphQL argument input: GetNodesInput!
-                "
+@"Input for InternalGetNodes.
+GraphQL argument input: GetNodesInput!"
         )]
         public GetNodesInput? Input { get; set; }
         
         // -------------------------------------------------------------------
         // List parameter set
         //
-        // GraphQL operation: clusterConnection(,   first: Int,   after: String,   last: Int,   before: String,   filter: ClusterFilterInput,   sortOrder: SortOrder = DESC,   sortBy: ClusterSortByEnum = ClusterType, ):ClusterConnection!
+        // [GraphQL: clusterConnection]
         //
         [Parameter(
             ParameterSetName = "List",
@@ -104,10 +96,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of the available cluster objects.
-                GraphQL operation: clusterConnection(,   first: Int,   after: String,   last: Int,   before: String,   filter: ClusterFilterInput,   sortOrder: SortOrder = DESC,   sortBy: ClusterSortByEnum = ClusterType, ):ClusterConnection!
-                ",
+@"List of the available cluster objects.
+[GraphQL: clusterConnection]",
             Position = 0
         )]
         public SwitchParameter List { get; set; }
@@ -118,10 +108,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -130,10 +118,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -142,10 +128,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the last n elements from the list.
-                GraphQL argument last: Int
-                "
+@"Returns the last n elements from the list.
+GraphQL argument last: Int"
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
@@ -154,10 +138,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come before the specified cursor.
-                GraphQL argument before: String
-                "
+@"Returns the elements in the list that come before the specified cursor.
+GraphQL argument before: String"
         )]
         public System.String? Before { get; set; }
         [Parameter(
@@ -166,10 +148,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument filter: ClusterFilterInput
-                "
+@"
+GraphQL argument filter: ClusterFilterInput"
         )]
         public ClusterFilterInput? Filter { get; set; }
         [Parameter(
@@ -178,10 +158,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Cluster sort order.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Cluster sort order.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -190,17 +168,15 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort clusters by field.
-                GraphQL argument sortBy: ClusterSortByEnum
-                "
+@"Sort clusters by field.
+GraphQL argument sortBy: ClusterSortByEnum"
         )]
         public ClusterSortByEnum? SortBy { get; set; }
         
         // -------------------------------------------------------------------
         // Cluster parameter set
         //
-        // GraphQL operation: cluster(clusterUuid: UUID!):Cluster!
+        // [GraphQL: cluster]
         //
         [Parameter(
             ParameterSetName = "Cluster",
@@ -208,10 +184,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A cluster object.
-                GraphQL operation: cluster(clusterUuid: UUID!):Cluster!
-                ",
+@"A cluster object.
+[GraphQL: cluster]",
             Position = 0
         )]
         public SwitchParameter Cluster { get; set; }
@@ -222,49 +196,43 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik cluster ID.
-                GraphQL argument clusterUuid: UUID!
-                "
+@"The Rubrik cluster ID.
+GraphQL argument clusterUuid: UUID!"
         )]
         public System.String? ClusterUuid { get; set; }
         
         // -------------------------------------------------------------------
-        // WithUpgradesInfo parameter set
+        // Withupgradesinfo parameter set
         //
-        // GraphQL operation: clusterWithUpgradesInfo(,   first: Int,   after: String,   last: Int,   before: String,   upgradeFilter: CdmUpgradeInfoFilterInput,   sortOrder: SortOrder = DESC,   sortBy: UpgradeInfoSortByEnum = ClusterType, ):ClusterConnection!
+        // [GraphQL: clusterWithUpgradesInfo]
         //
         [Parameter(
-            ParameterSetName = "WithUpgradesInfo",
+            ParameterSetName = "Withupgradesinfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: clusterWithUpgradesInfo(,   first: Int,   after: String,   last: Int,   before: String,   upgradeFilter: CdmUpgradeInfoFilterInput,   sortOrder: SortOrder = DESC,   sortBy: UpgradeInfoSortByEnum = ClusterType, ):ClusterConnection!
-                ",
+@"
+[GraphQL: clusterWithUpgradesInfo]",
             Position = 0
         )]
-        public SwitchParameter WithUpgradesInfo { get; set; }
+        public SwitchParameter Withupgradesinfo { get; set; }
 
         [Parameter(
-            ParameterSetName = "WithUpgradesInfo",
+            ParameterSetName = "Withupgradesinfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument upgradeFilter: CdmUpgradeInfoFilterInput
-                "
+@"
+GraphQL argument upgradeFilter: CdmUpgradeInfoFilterInput"
         )]
         public CdmUpgradeInfoFilterInput? UpgradeFilter { get; set; }
         
         // -------------------------------------------------------------------
         // Dns parameter set
         //
-        // GraphQL operation: clusterDns(clusterUuid: UUID!):ClusterDnsReply!
+        // [GraphQL: clusterDns]
         //
         [Parameter(
             ParameterSetName = "Dns",
@@ -272,10 +240,8 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik cluster DNS information.
-                GraphQL operation: clusterDns(clusterUuid: UUID!):ClusterDnsReply!
-                ",
+@"Rubrik cluster DNS information.
+[GraphQL: clusterDns]",
             Position = 0
         )]
         public SwitchParameter Dns { get; set; }
@@ -284,7 +250,7 @@ Returns the list of all Rubrik nodes.
         // -------------------------------------------------------------------
         // Proxy parameter set
         //
-        // GraphQL operation: clusterProxy(clusterUuid: UUID!):ClusterProxyReply!
+        // [GraphQL: clusterProxy]
         //
         [Parameter(
             ParameterSetName = "Proxy",
@@ -292,88 +258,80 @@ Returns the list of all Rubrik nodes.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik cluster proxy information.
-                GraphQL operation: clusterProxy(clusterUuid: UUID!):ClusterProxyReply!
-                ",
+@"Rubrik cluster proxy information.
+[GraphQL: clusterProxy]",
             Position = 0
         )]
         public SwitchParameter Proxy { get; set; }
 
         
         // -------------------------------------------------------------------
-        // NtpServer parameter set
+        // Ntpserver parameter set
         //
-        // GraphQL operation: clusterNtpServers(input: GetClusterNtpServersInput!):NtpServerConfigurationListResponse!
+        // [GraphQL: clusterNtpServers]
         //
         [Parameter(
-            ParameterSetName = "NtpServer",
+            ParameterSetName = "Ntpserver",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get NTP Servers
+@"Get NTP Servers
 
 Supported in v5.0+
 Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption keys are not reported.
-                GraphQL operation: clusterNtpServers(input: GetClusterNtpServersInput!):NtpServerConfigurationListResponse!
-                ",
+[GraphQL: clusterNtpServers]",
             Position = 0
         )]
-        public SwitchParameter NtpServer { get; set; }
+        public SwitchParameter Ntpserver { get; set; }
 
         
         // -------------------------------------------------------------------
-        // NetworkInterface parameter set
+        // Networkinterface parameter set
         //
-        // GraphQL operation: clusterNetworkInterfaces(input: GetNetworkInterfaceInput!):NetworkInterfaceListResponse!
+        // [GraphQL: clusterNetworkInterfaces]
         //
         [Parameter(
-            ParameterSetName = "NetworkInterface",
+            ParameterSetName = "Networkinterface",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get network interfaces for a Rubrik Cluster cluster
+@"Get network interfaces for a Rubrik Cluster cluster
 
 Supported in v5.0+
 Retrieves network interfaces(including VLANs) on bond0/bond1.
-                GraphQL operation: clusterNetworkInterfaces(input: GetNetworkInterfaceInput!):NetworkInterfaceListResponse!
-                ",
+[GraphQL: clusterNetworkInterfaces]",
             Position = 0
         )]
-        public SwitchParameter NetworkInterface { get; set; }
+        public SwitchParameter Networkinterface { get; set; }
 
         
         // -------------------------------------------------------------------
-        // FloatingIp parameter set
+        // Floatingip parameter set
         //
-        // GraphQL operation: clusterFloatingIps(input: GetClusterIpsInput!):InternalGetClusterIpsResponse!
+        // [GraphQL: clusterFloatingIps]
         //
         [Parameter(
-            ParameterSetName = "FloatingIp",
+            ParameterSetName = "Floatingip",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get a list of a cluster's always-available Ips
+@"Get a list of a cluster's always-available Ips
 
 Supported in v5.0+
 Get a list of a cluster's always-available Ips.
-                GraphQL operation: clusterFloatingIps(input: GetClusterIpsInput!):InternalGetClusterIpsResponse!
-                ",
+[GraphQL: clusterFloatingIps]",
             Position = 0
         )]
-        public SwitchParameter FloatingIp { get; set; }
+        public SwitchParameter Floatingip { get; set; }
 
         
         // -------------------------------------------------------------------
         // Vlan parameter set
         //
-        // GraphQL operation: clusterVlans(input: GetVlanInput!):VlanConfigListResponse!
+        // [GraphQL: clusterVlans]
         //
         [Parameter(
             ParameterSetName = "Vlan",
@@ -381,65 +339,59 @@ Get a list of a cluster's always-available Ips.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik cluster VLAN information.
-                GraphQL operation: clusterVlans(input: GetVlanInput!):VlanConfigListResponse!
-                ",
+@"Rubrik cluster VLAN information.
+[GraphQL: clusterVlans]",
             Position = 0
         )]
         public SwitchParameter Vlan { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DefaultGateway parameter set
+        // Defaultgateway parameter set
         //
-        // GraphQL operation: clusterDefaultGateway(input: GetDefaultGatewayInput!):InternalGetDefaultGatewayResponse!
+        // [GraphQL: clusterDefaultGateway]
         //
         [Parameter(
-            ParameterSetName = "DefaultGateway",
+            ParameterSetName = "Defaultgateway",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get current default gateway
+@"Get current default gateway
 
 Supported in v5.0+
 Get current default gateway.
-                GraphQL operation: clusterDefaultGateway(input: GetDefaultGatewayInput!):InternalGetDefaultGatewayResponse!
-                ",
+[GraphQL: clusterDefaultGateway]",
             Position = 0
         )]
-        public SwitchParameter DefaultGateway { get; set; }
+        public SwitchParameter Defaultgateway { get; set; }
 
         
         // -------------------------------------------------------------------
-        // WebSignedCertificate parameter set
+        // Websignedcertificate parameter set
         //
-        // GraphQL operation: clusterWebSignedCertificate(input: ClusterWebSignedCertificateInput!):ClusterWebSignedCertificateReply!
+        // [GraphQL: clusterWebSignedCertificate]
         //
         [Parameter(
-            ParameterSetName = "WebSignedCertificate",
+            ParameterSetName = "Websignedcertificate",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get the signed certificate for Web server
+@"Get the signed certificate for Web server
 
 Supported in v5.2+
 If the web server uses a signed certificate, fetch it.
-                GraphQL operation: clusterWebSignedCertificate(input: ClusterWebSignedCertificateInput!):ClusterWebSignedCertificateReply!
-                ",
+[GraphQL: clusterWebSignedCertificate]",
             Position = 0
         )]
-        public SwitchParameter WebSignedCertificate { get; set; }
+        public SwitchParameter Websignedcertificate { get; set; }
 
         
         // -------------------------------------------------------------------
         // Ipmi parameter set
         //
-        // GraphQL operation: clusterIpmi(input: GetIpmiInput!):ModifyIpmiReply!
+        // [GraphQL: clusterIpmi]
         //
         [Parameter(
             ParameterSetName = "Ipmi",
@@ -447,13 +399,11 @@ If the web server uses a signed certificate, fetch it.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get IPMI details
+@"Get IPMI details
 
 Supported in v5.0+
 get IPMI details of availability and enabled access in the cluster.
-                GraphQL operation: clusterIpmi(input: GetIpmiInput!):ModifyIpmiReply!
-                ",
+[GraphQL: clusterIpmi]",
             Position = 0
         )]
         public SwitchParameter Ipmi { get; set; }
@@ -462,7 +412,7 @@ get IPMI details of availability and enabled access in the cluster.
         // -------------------------------------------------------------------
         // Certificate parameter set
         //
-        // GraphQL operation: clusterCertificates(input: QueryCertificatesInput!):CertificateSummaryListResponse!
+        // [GraphQL: clusterCertificates]
         //
         [Parameter(
             ParameterSetName = "Certificate",
@@ -470,82 +420,74 @@ get IPMI details of availability and enabled access in the cluster.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get all certificates
+@"Get all certificates
 
 Supported in v5.1+
 Get all certificates.
-                GraphQL operation: clusterCertificates(input: QueryCertificatesInput!):CertificateSummaryListResponse!
-                ",
+[GraphQL: clusterCertificates]",
             Position = 0
         )]
         public SwitchParameter Certificate { get; set; }
 
         
         // -------------------------------------------------------------------
-        // WebCertsAndIpmi parameter set
+        // Webcertsandipmi parameter set
         //
-        // GraphQL operation: allClusterWebCertsAndIpmis(input: BulkClusterWebCertAndIpmiInput!):[ClusterWebCertAndIpmi!]!
+        // [GraphQL: allClusterWebCertsAndIpmis]
         //
         [Parameter(
-            ParameterSetName = "WebCertsAndIpmi",
+            ParameterSetName = "Webcertsandipmi",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get web server certificate and IPMI details for multiple clusters.
-                GraphQL operation: allClusterWebCertsAndIpmis(input: BulkClusterWebCertAndIpmiInput!):[ClusterWebCertAndIpmi!]!
-                ",
+@"Get web server certificate and IPMI details for multiple clusters.
+[GraphQL: allClusterWebCertsAndIpmis]",
             Position = 0
         )]
-        public SwitchParameter WebCertsAndIpmi { get; set; }
+        public SwitchParameter Webcertsandipmi { get; set; }
 
         
         // -------------------------------------------------------------------
-        // OperationJobProgress parameter set
+        // Operationjobprogress parameter set
         //
-        // GraphQL operation: clusterOperationJobProgress(input: ClusterOperationJobProgressInput!):ClusterOperationJobProgress!
+        // [GraphQL: clusterOperationJobProgress]
         //
         [Parameter(
-            ParameterSetName = "OperationJobProgress",
+            ParameterSetName = "Operationjobprogress",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get updates on the job progress of the Rubrik cluster operation.
-                GraphQL operation: clusterOperationJobProgress(input: ClusterOperationJobProgressInput!):ClusterOperationJobProgress!
-                ",
+@"Get updates on the job progress of the Rubrik cluster operation.
+[GraphQL: clusterOperationJobProgress]",
             Position = 0
         )]
-        public SwitchParameter OperationJobProgress { get; set; }
+        public SwitchParameter Operationjobprogress { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Ipv6Mode parameter set
+        // Ipv6mode parameter set
         //
-        // GraphQL operation: clusterIpv6Mode(input: ClusterIpv6ModeInput!):ClusterIpv6ModeReply!
+        // [GraphQL: clusterIpv6Mode]
         //
         [Parameter(
-            ParameterSetName = "Ipv6Mode",
+            ParameterSetName = "Ipv6mode",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik cluster IPv6 mode.
-                GraphQL operation: clusterIpv6Mode(input: ClusterIpv6ModeInput!):ClusterIpv6ModeReply!
-                ",
+@"Rubrik cluster IPv6 mode.
+[GraphQL: clusterIpv6Mode]",
             Position = 0
         )]
-        public SwitchParameter Ipv6Mode { get; set; }
+        public SwitchParameter Ipv6mode { get; set; }
 
         
         // -------------------------------------------------------------------
         // Csr parameter set
         //
-        // GraphQL operation: clusterCsr(input: GetClusterCsrInput!):ClusterCsr!
+        // [GraphQL: clusterCsr]
         //
         [Parameter(
             ParameterSetName = "Csr",
@@ -553,150 +495,132 @@ Get all certificates.
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get the cluster certificate signing request
+@"Get the cluster certificate signing request
 
 Supported in v7.0+
 Returns the certificate signing request generated from the private key of the Rubrik cluster.
-                GraphQL operation: clusterCsr(input: GetClusterCsrInput!):ClusterCsr!
-                ",
+[GraphQL: clusterCsr]",
             Position = 0
         )]
         public SwitchParameter Csr { get; set; }
 
         
         // -------------------------------------------------------------------
-        // TypeList parameter set
+        // Typelist parameter set
         //
-        // GraphQL operation: clusterTypeList:[GroupCount!]!
+        // [GraphQL: clusterTypeList]
         //
         [Parameter(
-            ParameterSetName = "TypeList",
+            ParameterSetName = "Typelist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: clusterTypeList:[GroupCount!]!
-                ",
+@"
+[GraphQL: clusterTypeList]",
             Position = 0
         )]
-        public SwitchParameter TypeList { get; set; }
+        public SwitchParameter Typelist { get; set; }
 
         
         // -------------------------------------------------------------------
-        // GroupByList parameter set
+        // Groupbyconnection parameter set
         //
-        // GraphQL operation: clusterGroupByConnection(,   first: Int,   after: String,   last: Int,   before: String,   groupBy: ClusterGroupByEnum!,   filter: ClusterFilterInput,   timezoneOffset: Float = 0.0, ):ClusterGroupByConnection!
+        // [GraphQL: clusterGroupByConnection]
         //
         [Parameter(
-            ParameterSetName = "GroupByList",
+            ParameterSetName = "Groupbyconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: clusterGroupByConnection(,   first: Int,   after: String,   last: Int,   before: String,   groupBy: ClusterGroupByEnum!,   filter: ClusterFilterInput,   timezoneOffset: Float = 0.0, ):ClusterGroupByConnection!
-                ",
+@"
+[GraphQL: clusterGroupByConnection]",
             Position = 0
         )]
-        public SwitchParameter GroupByList { get; set; }
+        public SwitchParameter Groupbyconnection { get; set; }
 
         [Parameter(
-            ParameterSetName = "GroupByList",
+            ParameterSetName = "Groupbyconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Group by field.
-                GraphQL argument groupBy: ClusterGroupByEnum!
-                "
+@"Group by field.
+GraphQL argument groupBy: ClusterGroupByEnum!"
         )]
         public ClusterGroupByEnum? GroupBy { get; set; }
         [Parameter(
-            ParameterSetName = "GroupByList",
+            ParameterSetName = "Groupbyconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Offset based on customer timezone.
-                GraphQL argument timezoneOffset: Float
-                "
+@"Offset based on customer timezone.
+GraphQL argument timezoneOffset: Float"
         )]
         public System.Single? TimezoneOffset { get; set; }
         
         // -------------------------------------------------------------------
-        // WithConfigProtectionInfo parameter set
+        // Withconfigprotectioninfo parameter set
         //
-        // GraphQL operation: clusterWithConfigProtectionInfo(,   first: Int,   after: String,   last: Int,   before: String,   configProtectionFilter: ConfigProtectionInfoFilterInput,   sortOrder: SortOrder = DESC,   sortBy: ConfigProtectionInfoSortBy = CLUSTER_NAME, ):ClusterConnection!
+        // [GraphQL: clusterWithConfigProtectionInfo]
         //
         [Parameter(
-            ParameterSetName = "WithConfigProtectionInfo",
+            ParameterSetName = "Withconfigprotectioninfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A cluster object with config protection information.
-                GraphQL operation: clusterWithConfigProtectionInfo(,   first: Int,   after: String,   last: Int,   before: String,   configProtectionFilter: ConfigProtectionInfoFilterInput,   sortOrder: SortOrder = DESC,   sortBy: ConfigProtectionInfoSortBy = CLUSTER_NAME, ):ClusterConnection!
-                ",
+@"A cluster object with config protection information.
+[GraphQL: clusterWithConfigProtectionInfo]",
             Position = 0
         )]
-        public SwitchParameter WithConfigProtectionInfo { get; set; }
+        public SwitchParameter Withconfigprotectioninfo { get; set; }
 
         [Parameter(
-            ParameterSetName = "WithConfigProtectionInfo",
+            ParameterSetName = "Withconfigprotectioninfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Filters for the Configuration Protection page.
-                GraphQL argument configProtectionFilter: ConfigProtectionInfoFilterInput
-                "
+@"Filters for the Configuration Protection page.
+GraphQL argument configProtectionFilter: ConfigProtectionInfoFilterInput"
         )]
         public ConfigProtectionInfoFilterInput? ConfigProtectionFilter { get; set; }
         
         // -------------------------------------------------------------------
-        // RcvLocation parameter set
+        // Rcvlocation parameter set
         //
-        // GraphQL operation: clusterRcvLocations(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   cdmClusterUUID: UUID!, ):RcvLocationBasicInfoConnection!
+        // [GraphQL: clusterRcvLocations]
         //
         [Parameter(
-            ParameterSetName = "RcvLocation",
+            ParameterSetName = "Rcvlocation",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List Rubrik Cloud Vault locations of the cluster.
-                GraphQL operation: clusterRcvLocations(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   cdmClusterUUID: UUID!, ):RcvLocationBasicInfoConnection!
-                ",
+@"List Rubrik Cloud Vault locations of the cluster.
+[GraphQL: clusterRcvLocations]",
             Position = 0
         )]
-        public SwitchParameter RcvLocation { get; set; }
+        public SwitchParameter Rcvlocation { get; set; }
 
         [Parameter(
-            ParameterSetName = "RcvLocation",
+            ParameterSetName = "Rcvlocation",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                UUID of the Rubrik cluster.
-                GraphQL argument cdmClusterUUID: UUID!
-                "
+@"UUID of the Rubrik cluster.
+GraphQL argument cdmClusterUUID: UUID!"
         )]
         public System.String? CdmClusterUuid { get; set; }
         
         // -------------------------------------------------------------------
         // Connected parameter set
         //
-        // GraphQL operation: allConnectedClusters(clusterFilterArg: ClusterTypeEnum):[DataLocationSupportedCluster!]!
+        // [GraphQL: allConnectedClusters]
         //
         [Parameter(
             ParameterSetName = "Connected",
@@ -704,10 +628,8 @@ Returns the certificate signing request generated from the private key of the Ru
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List all connected clusters.
-                GraphQL operation: allConnectedClusters(clusterFilterArg: ClusterTypeEnum):[DataLocationSupportedCluster!]!
-                ",
+@"List all connected clusters.
+[GraphQL: allConnectedClusters]",
             Position = 0
         )]
         public SwitchParameter Connected { get; set; }
@@ -718,181 +640,157 @@ Returns the certificate signing request generated from the private key of the Ru
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specification to filter cluster based on type.
-                GraphQL argument clusterFilterArg: ClusterTypeEnum
-                "
+@"Specification to filter cluster based on type.
+GraphQL argument clusterFilterArg: ClusterTypeEnum"
         )]
         public ClusterTypeEnum? ClusterFilterArg { get; set; }
         
         // -------------------------------------------------------------------
-        // ReplicationTarget parameter set
+        // Replicationtarget parameter set
         //
-        // GraphQL operation: allClusterReplicationTargets(clusterUuid: UUID!):[ClusterReplicationTarget!]!
+        // [GraphQL: allClusterReplicationTargets]
         //
         [Parameter(
-            ParameterSetName = "ReplicationTarget",
+            ParameterSetName = "Replicationtarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                All replication targets for a cluster.
-                GraphQL operation: allClusterReplicationTargets(clusterUuid: UUID!):[ClusterReplicationTarget!]!
-                ",
+@"All replication targets for a cluster.
+[GraphQL: allClusterReplicationTargets]",
             Position = 0
         )]
-        public SwitchParameter ReplicationTarget { get; set; }
+        public SwitchParameter Replicationtarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // EncryptionInfo parameter set
+        // Encryptioninfo parameter set
         //
-        // GraphQL operation: clusterEncryptionInfo(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   clusterName: String,   encryptionStatusFilter: [ClusterEncryptionStatusFilter!]! = [],   keyProtection: [ClusterKeyProtection!]! = [],   clusters: [UUID!]! = [],   encryptionTypes: [ClusterEncryptionType!]! = [], ):ClusterEncryptionInfoConnection!
+        // [GraphQL: clusterEncryptionInfo]
         //
         [Parameter(
-            ParameterSetName = "EncryptionInfo",
+            ParameterSetName = "Encryptioninfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Filter clusters by encryption information.
-                GraphQL operation: clusterEncryptionInfo(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   clusterName: String,   encryptionStatusFilter: [ClusterEncryptionStatusFilter!]! = [],   keyProtection: [ClusterKeyProtection!]! = [],   clusters: [UUID!]! = [],   encryptionTypes: [ClusterEncryptionType!]! = [], ):ClusterEncryptionInfoConnection!
-                ",
+@"Filter clusters by encryption information.
+[GraphQL: clusterEncryptionInfo]",
             Position = 0
         )]
-        public SwitchParameter EncryptionInfo { get; set; }
+        public SwitchParameter Encryptioninfo { get; set; }
 
         [Parameter(
-            ParameterSetName = "EncryptionInfo",
+            ParameterSetName = "Encryptioninfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The prefix of the name of the Rubrik cluster.
-                GraphQL argument clusterName: String
-                "
+@"The prefix of the name of the Rubrik cluster.
+GraphQL argument clusterName: String"
         )]
         public System.String? ClusterName { get; set; }
         [Parameter(
-            ParameterSetName = "EncryptionInfo",
+            ParameterSetName = "Encryptioninfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The encryption status of the Rubrik cluster.
-                GraphQL argument encryptionStatusFilter: [ClusterEncryptionStatusFilter!]!
-                "
+@"The encryption status of the Rubrik cluster.
+GraphQL argument encryptionStatusFilter: [ClusterEncryptionStatusFilter!]!"
         )]
         public List<ClusterEncryptionStatusFilter>? EncryptionStatusFilter { get; set; }
         [Parameter(
-            ParameterSetName = "EncryptionInfo",
+            ParameterSetName = "Encryptioninfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The key type used for the most recent key rotation.
-                GraphQL argument keyProtection: [ClusterKeyProtection!]!
-                "
+@"The key type used for the most recent key rotation.
+GraphQL argument keyProtection: [ClusterKeyProtection!]!"
         )]
         public List<ClusterKeyProtection>? KeyProtection { get; set; }
         [Parameter(
-            ParameterSetName = "EncryptionInfo",
+            ParameterSetName = "Encryptioninfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The IDs of the Rubrik clusters to select.
-                GraphQL argument clusters: [UUID!]!
-                "
+@"The IDs of the Rubrik clusters to select.
+GraphQL argument clusters: [UUID!]!"
         )]
         public List<System.String>? Clusters { get; set; }
         [Parameter(
-            ParameterSetName = "EncryptionInfo",
+            ParameterSetName = "Encryptioninfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The types of encryption.
-                GraphQL argument encryptionTypes: [ClusterEncryptionType!]!
-                "
+@"The types of encryption.
+GraphQL argument encryptionTypes: [ClusterEncryptionType!]!"
         )]
         public List<ClusterEncryptionType>? EncryptionTypes { get; set; }
         
         // -------------------------------------------------------------------
-        // HostFailover parameter set
+        // Hostfailover parameter set
         //
-        // GraphQL operation: hostFailoverCluster(fid: UUID!):HostFailoverCluster!
+        // [GraphQL: hostFailoverCluster]
         //
         [Parameter(
-            ParameterSetName = "HostFailover",
+            ParameterSetName = "Hostfailover",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get details of the given host failover cluster.
-                GraphQL operation: hostFailoverCluster(fid: UUID!):HostFailoverCluster!
-                ",
+@"Get details of the given host failover cluster.
+[GraphQL: hostFailoverCluster]",
             Position = 0
         )]
-        public SwitchParameter HostFailover { get; set; }
+        public SwitchParameter Hostfailover { get; set; }
 
         [Parameter(
-            ParameterSetName = "HostFailover",
+            ParameterSetName = "Hostfailover",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik UUID for the object.
-                GraphQL argument fid: UUID!
-                "
+@"The Rubrik UUID for the object.
+GraphQL argument fid: UUID!"
         )]
         public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
-        // GlobalFileSearchMultiple parameter set
+        // Globalfilesearchmultiple parameter set
         //
-        // GraphQL operation: allGlobalFileSearchMultipleClusters(clusters: [UUID!]! = [], regex: String!):GlobalFileSearchReplyType!
+        // [GraphQL: allGlobalFileSearchMultipleClusters]
         //
         [Parameter(
-            ParameterSetName = "GlobalFileSearchMultiple",
+            ParameterSetName = "Globalfilesearchmultiple",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                All files and folders matching input filters.
-                GraphQL operation: allGlobalFileSearchMultipleClusters(clusters: [UUID!]! = [], regex: String!):GlobalFileSearchReplyType!
-                ",
+@"All files and folders matching input filters.
+[GraphQL: allGlobalFileSearchMultipleClusters]",
             Position = 0
         )]
-        public SwitchParameter GlobalFileSearchMultiple { get; set; }
+        public SwitchParameter Globalfilesearchmultiple { get; set; }
 
         [Parameter(
-            ParameterSetName = "GlobalFileSearchMultiple",
+            ParameterSetName = "Globalfilesearchmultiple",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The regular expression used to filter the files and folders.
-                GraphQL argument regex: String!
-                "
+@"The regular expression used to filter the files and folders.
+GraphQL argument regex: String!"
         )]
         public System.String? Regex { get; set; }
         
         // -------------------------------------------------------------------
         // K8s parameter set
         //
-        // GraphQL operation: k8sClusters(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):K8sClusterConnection!
+        // [GraphQL: k8sClusters]
         //
         [Parameter(
             ParameterSetName = "K8s",
@@ -900,10 +798,8 @@ Returns the certificate signing request generated from the private key of the Ru
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: k8sClusters(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):K8sClusterConnection!
-                ",
+@"
+[GraphQL: k8sClusters]",
             Position = 0
         )]
         public SwitchParameter K8s { get; set; }
@@ -912,7 +808,7 @@ Returns the certificate signing request generated from the private key of the Ru
         // -------------------------------------------------------------------
         // Window parameter set
         //
-        // GraphQL operation: windowsCluster(fid: UUID!):WindowsCluster!
+        // [GraphQL: windowsCluster]
         //
         [Parameter(
             ParameterSetName = "Window",
@@ -920,131 +816,117 @@ Returns the certificate signing request generated from the private key of the Ru
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A Windows Cluster.
-                GraphQL operation: windowsCluster(fid: UUID!):WindowsCluster!
-                ",
+@"A Windows Cluster.
+[GraphQL: windowsCluster]",
             Position = 0
         )]
         public SwitchParameter Window { get; set; }
 
         
         // -------------------------------------------------------------------
-        // laDomainList parameter set
+        // Ladomainconnection parameter set
         //
-        // GraphQL operation: clusterSlaDomainConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainConnection!
+        // [GraphQL: clusterSlaDomainConnection]
         //
         [Parameter(
-            ParameterSetName = "laDomainList",
+            ParameterSetName = "Ladomainconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: clusterSlaDomainConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainConnection!
-                ",
+@"
+[GraphQL: clusterSlaDomainConnection]",
             Position = 0
         )]
-        public SwitchParameter laDomainList { get; set; }
+        public SwitchParameter Ladomainconnection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // laDomainFilterList parameter set
+        // Ladomainfilterconnection parameter set
         //
-        // GraphQL operation: clusterSlaDomainFilterConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainForFilterConnection!
+        // [GraphQL: clusterSlaDomainFilterConnection]
         //
         [Parameter(
-            ParameterSetName = "laDomainFilterList",
+            ParameterSetName = "Ladomainfilterconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: clusterSlaDomainFilterConnection(,   first: Int,   after: String,   last: Int,   before: String, ):ClusterSlaDomainForFilterConnection!
-                ",
+@"
+[GraphQL: clusterSlaDomainFilterConnection]",
             Position = 0
         )]
-        public SwitchParameter laDomainFilterList { get; set; }
+        public SwitchParameter Ladomainfilterconnection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // VerifySlaWithReplicationTo parameter set
+        // Verifyslawithreplicationto parameter set
         //
-        // GraphQL operation: verifySLAWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!):VerifySLAWithReplicationToClusterResp!
+        // [GraphQL: verifySLAWithReplicationToCluster]
         //
         [Parameter(
-            ParameterSetName = "VerifySlaWithReplicationTo",
+            ParameterSetName = "Verifyslawithreplicationto",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: verifySLAWithReplicationToCluster(cdmClusterUUID: UUID!, includeArchived: Boolean!):VerifySLAWithReplicationToClusterResp!
-                ",
+@"
+[GraphQL: verifySLAWithReplicationToCluster]",
             Position = 0
         )]
-        public SwitchParameter VerifySlaWithReplicationTo { get; set; }
+        public SwitchParameter Verifyslawithreplicationto { get; set; }
 
         [Parameter(
-            ParameterSetName = "VerifySlaWithReplicationTo",
+            ParameterSetName = "Verifyslawithreplicationto",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Include Archived SLA.
-                GraphQL argument includeArchived: Boolean!
-                "
+@"Include Archived SLA.
+GraphQL argument includeArchived: Boolean!"
         )]
         public System.Boolean? IncludeArchived { get; set; }
         
         // -------------------------------------------------------------------
-        // GlobalSla parameter set
+        // Globalsla parameter set
         //
-        // GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!
+        // [GraphQL: allClusterGlobalSlas]
         //
         [Parameter(
-            ParameterSetName = "GlobalSla",
+            ParameterSetName = "Globalsla",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Global SLA Domains protecting at least one object on the specified Rubrik cluster.
-                GraphQL operation: allClusterGlobalSlas(cdmClusterUUID: UUID!):[SlaInfo!]!
-                ",
+@"Global SLA Domains protecting at least one object on the specified Rubrik cluster.
+[GraphQL: allClusterGlobalSlas]",
             Position = 0
         )]
-        public SwitchParameter GlobalSla { get; set; }
+        public SwitchParameter Globalsla { get; set; }
 
         
         // -------------------------------------------------------------------
-        // RegistrationProductInfo parameter set
+        // Registrationproductinfo parameter set
         //
-        // GraphQL operation: clusterRegistrationProductInfo:ClusterRegistrationProductInfoType!
+        // [GraphQL: clusterRegistrationProductInfo]
         //
         [Parameter(
-            ParameterSetName = "RegistrationProductInfo",
+            ParameterSetName = "Registrationproductinfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Info about the cluster product types the user is entitled to.
-                GraphQL operation: clusterRegistrationProductInfo:ClusterRegistrationProductInfoType!
-                ",
+@"Info about the cluster product types the user is entitled to.
+[GraphQL: clusterRegistrationProductInfo]",
             Position = 0
         )]
-        public SwitchParameter RegistrationProductInfo { get; set; }
+        public SwitchParameter Registrationproductinfo { get; set; }
 
         
         // -------------------------------------------------------------------
         // Vcd parameter set
         //
-        // GraphQL operation: vcdClusters(input: QueryVcdClusterInput!):VcdClusterSummaryListResponse!
+        // [GraphQL: vcdClusters]
         //
         [Parameter(
             ParameterSetName = "Vcd",
@@ -1052,64 +934,56 @@ Returns the certificate signing request generated from the private key of the Ru
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of vCloud Director clusters.
-                GraphQL operation: vcdClusters(input: QueryVcdClusterInput!):VcdClusterSummaryListResponse!
-                ",
+@"List of vCloud Director clusters.
+[GraphQL: vcdClusters]",
             Position = 0
         )]
         public SwitchParameter Vcd { get; set; }
 
         
         // -------------------------------------------------------------------
-        // isTotpAckNecessary parameter set
+        // Istotpacknecessary parameter set
         //
-        // GraphQL operation: isTotpAckNecessaryForCluster(clusterUuid: UUID!):Boolean!
+        // [GraphQL: isTotpAckNecessaryForCluster]
         //
         [Parameter(
-            ParameterSetName = "isTotpAckNecessary",
+            ParameterSetName = "Istotpacknecessary",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
-                GraphQL operation: isTotpAckNecessaryForCluster(clusterUuid: UUID!):Boolean!
-                ",
+@"Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
+[GraphQL: isTotpAckNecessaryForCluster]",
             Position = 0
         )]
-        public SwitchParameter isTotpAckNecessary { get; set; }
+        public SwitchParameter Istotpacknecessary { get; set; }
 
         
         // -------------------------------------------------------------------
-        // TotpAckStatus parameter set
+        // Totpackstatus parameter set
         //
-        // GraphQL operation: allClustersTotpAckStatus(listClusterUuid: [UUID!]!):[Boolean!]!
+        // [GraphQL: allClustersTotpAckStatus]
         //
         [Parameter(
-            ParameterSetName = "TotpAckStatus",
+            ParameterSetName = "Totpackstatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
-                GraphQL operation: allClustersTotpAckStatus(listClusterUuid: [UUID!]!):[Boolean!]!
-                ",
+@"Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
+[GraphQL: allClustersTotpAckStatus]",
             Position = 0
         )]
-        public SwitchParameter TotpAckStatus { get; set; }
+        public SwitchParameter Totpackstatus { get; set; }
 
         [Parameter(
-            ParameterSetName = "TotpAckStatus",
+            ParameterSetName = "Totpackstatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies the list of cluster UUIDs.
-                GraphQL argument listClusterUuid: [UUID!]!
-                "
+@"Specifies the list of cluster UUIDs.
+GraphQL argument listClusterUuid: [UUID!]!"
         )]
         public List<System.String>? ListClusterUuid { get; set; }
 
@@ -1131,8 +1005,8 @@ Returns the certificate signing request generated from the private key of the Ru
                     case "Cluster":
                         this.ProcessRecord_Cluster();
                         break;
-                    case "WithUpgradesInfo":
-                        this.ProcessRecord_WithUpgradesInfo();
+                    case "Withupgradesinfo":
+                        this.ProcessRecord_Withupgradesinfo();
                         break;
                     case "Dns":
                         this.ProcessRecord_Dns();
@@ -1140,23 +1014,23 @@ Returns the certificate signing request generated from the private key of the Ru
                     case "Proxy":
                         this.ProcessRecord_Proxy();
                         break;
-                    case "NtpServer":
-                        this.ProcessRecord_NtpServer();
+                    case "Ntpserver":
+                        this.ProcessRecord_Ntpserver();
                         break;
-                    case "NetworkInterface":
-                        this.ProcessRecord_NetworkInterface();
+                    case "Networkinterface":
+                        this.ProcessRecord_Networkinterface();
                         break;
-                    case "FloatingIp":
-                        this.ProcessRecord_FloatingIp();
+                    case "Floatingip":
+                        this.ProcessRecord_Floatingip();
                         break;
                     case "Vlan":
                         this.ProcessRecord_Vlan();
                         break;
-                    case "DefaultGateway":
-                        this.ProcessRecord_DefaultGateway();
+                    case "Defaultgateway":
+                        this.ProcessRecord_Defaultgateway();
                         break;
-                    case "WebSignedCertificate":
-                        this.ProcessRecord_WebSignedCertificate();
+                    case "Websignedcertificate":
+                        this.ProcessRecord_Websignedcertificate();
                         break;
                     case "Ipmi":
                         this.ProcessRecord_Ipmi();
@@ -1164,44 +1038,44 @@ Returns the certificate signing request generated from the private key of the Ru
                     case "Certificate":
                         this.ProcessRecord_Certificate();
                         break;
-                    case "WebCertsAndIpmi":
-                        this.ProcessRecord_WebCertsAndIpmi();
+                    case "Webcertsandipmi":
+                        this.ProcessRecord_Webcertsandipmi();
                         break;
-                    case "OperationJobProgress":
-                        this.ProcessRecord_OperationJobProgress();
+                    case "Operationjobprogress":
+                        this.ProcessRecord_Operationjobprogress();
                         break;
-                    case "Ipv6Mode":
-                        this.ProcessRecord_Ipv6Mode();
+                    case "Ipv6mode":
+                        this.ProcessRecord_Ipv6mode();
                         break;
                     case "Csr":
                         this.ProcessRecord_Csr();
                         break;
-                    case "TypeList":
-                        this.ProcessRecord_TypeList();
+                    case "Typelist":
+                        this.ProcessRecord_Typelist();
                         break;
-                    case "GroupByList":
-                        this.ProcessRecord_GroupByList();
+                    case "Groupbyconnection":
+                        this.ProcessRecord_Groupbyconnection();
                         break;
-                    case "WithConfigProtectionInfo":
-                        this.ProcessRecord_WithConfigProtectionInfo();
+                    case "Withconfigprotectioninfo":
+                        this.ProcessRecord_Withconfigprotectioninfo();
                         break;
-                    case "RcvLocation":
-                        this.ProcessRecord_RcvLocation();
+                    case "Rcvlocation":
+                        this.ProcessRecord_Rcvlocation();
                         break;
                     case "Connected":
                         this.ProcessRecord_Connected();
                         break;
-                    case "ReplicationTarget":
-                        this.ProcessRecord_ReplicationTarget();
+                    case "Replicationtarget":
+                        this.ProcessRecord_Replicationtarget();
                         break;
-                    case "EncryptionInfo":
-                        this.ProcessRecord_EncryptionInfo();
+                    case "Encryptioninfo":
+                        this.ProcessRecord_Encryptioninfo();
                         break;
-                    case "HostFailover":
-                        this.ProcessRecord_HostFailover();
+                    case "Hostfailover":
+                        this.ProcessRecord_Hostfailover();
                         break;
-                    case "GlobalFileSearchMultiple":
-                        this.ProcessRecord_GlobalFileSearchMultiple();
+                    case "Globalfilesearchmultiple":
+                        this.ProcessRecord_Globalfilesearchmultiple();
                         break;
                     case "K8s":
                         this.ProcessRecord_K8s();
@@ -1209,29 +1083,29 @@ Returns the certificate signing request generated from the private key of the Ru
                     case "Window":
                         this.ProcessRecord_Window();
                         break;
-                    case "laDomainList":
-                        this.ProcessRecord_laDomainList();
+                    case "Ladomainconnection":
+                        this.ProcessRecord_Ladomainconnection();
                         break;
-                    case "laDomainFilterList":
-                        this.ProcessRecord_laDomainFilterList();
+                    case "Ladomainfilterconnection":
+                        this.ProcessRecord_Ladomainfilterconnection();
                         break;
-                    case "VerifySlaWithReplicationTo":
-                        this.ProcessRecord_VerifySlaWithReplicationTo();
+                    case "Verifyslawithreplicationto":
+                        this.ProcessRecord_Verifyslawithreplicationto();
                         break;
-                    case "GlobalSla":
-                        this.ProcessRecord_GlobalSla();
+                    case "Globalsla":
+                        this.ProcessRecord_Globalsla();
                         break;
-                    case "RegistrationProductInfo":
-                        this.ProcessRecord_RegistrationProductInfo();
+                    case "Registrationproductinfo":
+                        this.ProcessRecord_Registrationproductinfo();
                         break;
                     case "Vcd":
                         this.ProcessRecord_Vcd();
                         break;
-                    case "isTotpAckNecessary":
-                        this.ProcessRecord_isTotpAckNecessary();
+                    case "Istotpacknecessary":
+                        this.ProcessRecord_Istotpacknecessary();
                         break;
-                    case "TotpAckStatus":
-                        this.ProcessRecord_TotpAckStatus();
+                    case "Totpackstatus":
+                        this.ProcessRecord_Totpackstatus();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1287,9 +1161,9 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterWithUpgradesInfo.
-        protected void ProcessRecord_WithUpgradesInfo()
+        protected void ProcessRecord_Withupgradesinfo()
         {
-            this._logger.name += " -WithUpgradesInfo";
+            this._logger.name += " -Withupgradesinfo";
             // Invoke graphql operation clusterWithUpgradesInfo
             InvokeQueryClusterWithUpgradesInfo();
         }
@@ -1314,27 +1188,27 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterNtpServers.
-        protected void ProcessRecord_NtpServer()
+        protected void ProcessRecord_Ntpserver()
         {
-            this._logger.name += " -NtpServer";
+            this._logger.name += " -Ntpserver";
             // Invoke graphql operation clusterNtpServers
             InvokeQueryClusterNtpServers();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterNetworkInterfaces.
-        protected void ProcessRecord_NetworkInterface()
+        protected void ProcessRecord_Networkinterface()
         {
-            this._logger.name += " -NetworkInterface";
+            this._logger.name += " -Networkinterface";
             // Invoke graphql operation clusterNetworkInterfaces
             InvokeQueryClusterNetworkInterfaces();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterFloatingIps.
-        protected void ProcessRecord_FloatingIp()
+        protected void ProcessRecord_Floatingip()
         {
-            this._logger.name += " -FloatingIp";
+            this._logger.name += " -Floatingip";
             // Invoke graphql operation clusterFloatingIps
             InvokeQueryClusterFloatingIps();
         }
@@ -1350,18 +1224,18 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterDefaultGateway.
-        protected void ProcessRecord_DefaultGateway()
+        protected void ProcessRecord_Defaultgateway()
         {
-            this._logger.name += " -DefaultGateway";
+            this._logger.name += " -Defaultgateway";
             // Invoke graphql operation clusterDefaultGateway
             InvokeQueryClusterDefaultGateway();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterWebSignedCertificate.
-        protected void ProcessRecord_WebSignedCertificate()
+        protected void ProcessRecord_Websignedcertificate()
         {
-            this._logger.name += " -WebSignedCertificate";
+            this._logger.name += " -Websignedcertificate";
             // Invoke graphql operation clusterWebSignedCertificate
             InvokeQueryClusterWebSignedCertificate();
         }
@@ -1386,27 +1260,27 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // allClusterWebCertsAndIpmis.
-        protected void ProcessRecord_WebCertsAndIpmi()
+        protected void ProcessRecord_Webcertsandipmi()
         {
-            this._logger.name += " -WebCertsAndIpmi";
+            this._logger.name += " -Webcertsandipmi";
             // Invoke graphql operation allClusterWebCertsAndIpmis
             InvokeQueryAllClusterWebCertsAndIpmis();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterOperationJobProgress.
-        protected void ProcessRecord_OperationJobProgress()
+        protected void ProcessRecord_Operationjobprogress()
         {
-            this._logger.name += " -OperationJobProgress";
+            this._logger.name += " -Operationjobprogress";
             // Invoke graphql operation clusterOperationJobProgress
             InvokeQueryClusterOperationJobProgress();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterIpv6Mode.
-        protected void ProcessRecord_Ipv6Mode()
+        protected void ProcessRecord_Ipv6mode()
         {
-            this._logger.name += " -Ipv6Mode";
+            this._logger.name += " -Ipv6mode";
             // Invoke graphql operation clusterIpv6Mode
             InvokeQueryClusterIpv6Mode();
         }
@@ -1422,36 +1296,36 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterTypeList.
-        protected void ProcessRecord_TypeList()
+        protected void ProcessRecord_Typelist()
         {
-            this._logger.name += " -TypeList";
+            this._logger.name += " -Typelist";
             // Invoke graphql operation clusterTypeList
             InvokeQueryClusterTypeList();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterGroupByConnection.
-        protected void ProcessRecord_GroupByList()
+        protected void ProcessRecord_Groupbyconnection()
         {
-            this._logger.name += " -GroupByList";
+            this._logger.name += " -Groupbyconnection";
             // Invoke graphql operation clusterGroupByConnection
             InvokeQueryClusterGroupByConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterWithConfigProtectionInfo.
-        protected void ProcessRecord_WithConfigProtectionInfo()
+        protected void ProcessRecord_Withconfigprotectioninfo()
         {
-            this._logger.name += " -WithConfigProtectionInfo";
+            this._logger.name += " -Withconfigprotectioninfo";
             // Invoke graphql operation clusterWithConfigProtectionInfo
             InvokeQueryClusterWithConfigProtectionInfo();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterRcvLocations.
-        protected void ProcessRecord_RcvLocation()
+        protected void ProcessRecord_Rcvlocation()
         {
-            this._logger.name += " -RcvLocation";
+            this._logger.name += " -Rcvlocation";
             // Invoke graphql operation clusterRcvLocations
             InvokeQueryClusterRcvLocations();
         }
@@ -1467,36 +1341,36 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // allClusterReplicationTargets.
-        protected void ProcessRecord_ReplicationTarget()
+        protected void ProcessRecord_Replicationtarget()
         {
-            this._logger.name += " -ReplicationTarget";
+            this._logger.name += " -Replicationtarget";
             // Invoke graphql operation allClusterReplicationTargets
             InvokeQueryAllClusterReplicationTargets();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterEncryptionInfo.
-        protected void ProcessRecord_EncryptionInfo()
+        protected void ProcessRecord_Encryptioninfo()
         {
-            this._logger.name += " -EncryptionInfo";
+            this._logger.name += " -Encryptioninfo";
             // Invoke graphql operation clusterEncryptionInfo
             InvokeQueryClusterEncryptionInfo();
         }
 
         // This parameter set invokes a single graphql operation:
         // hostFailoverCluster.
-        protected void ProcessRecord_HostFailover()
+        protected void ProcessRecord_Hostfailover()
         {
-            this._logger.name += " -HostFailover";
+            this._logger.name += " -Hostfailover";
             // Invoke graphql operation hostFailoverCluster
             InvokeQueryHostFailoverCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // allGlobalFileSearchMultipleClusters.
-        protected void ProcessRecord_GlobalFileSearchMultiple()
+        protected void ProcessRecord_Globalfilesearchmultiple()
         {
-            this._logger.name += " -GlobalFileSearchMultiple";
+            this._logger.name += " -Globalfilesearchmultiple";
             // Invoke graphql operation allGlobalFileSearchMultipleClusters
             InvokeQueryAllGlobalFileSearchMultipleClusters();
         }
@@ -1521,45 +1395,45 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomainConnection.
-        protected void ProcessRecord_laDomainList()
+        protected void ProcessRecord_Ladomainconnection()
         {
-            this._logger.name += " -laDomainList";
+            this._logger.name += " -Ladomainconnection";
             // Invoke graphql operation clusterSlaDomainConnection
             InvokeQueryClusterSlaDomainConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomainFilterConnection.
-        protected void ProcessRecord_laDomainFilterList()
+        protected void ProcessRecord_Ladomainfilterconnection()
         {
-            this._logger.name += " -laDomainFilterList";
+            this._logger.name += " -Ladomainfilterconnection";
             // Invoke graphql operation clusterSlaDomainFilterConnection
             InvokeQueryClusterSlaDomainFilterConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // verifySLAWithReplicationToCluster.
-        protected void ProcessRecord_VerifySlaWithReplicationTo()
+        protected void ProcessRecord_Verifyslawithreplicationto()
         {
-            this._logger.name += " -VerifySlaWithReplicationTo";
+            this._logger.name += " -Verifyslawithreplicationto";
             // Invoke graphql operation verifySLAWithReplicationToCluster
             InvokeQueryVerifySlaWithReplicationToCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // allClusterGlobalSlas.
-        protected void ProcessRecord_GlobalSla()
+        protected void ProcessRecord_Globalsla()
         {
-            this._logger.name += " -GlobalSla";
+            this._logger.name += " -Globalsla";
             // Invoke graphql operation allClusterGlobalSlas
             InvokeQueryAllClusterGlobalSlas();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterRegistrationProductInfo.
-        protected void ProcessRecord_RegistrationProductInfo()
+        protected void ProcessRecord_Registrationproductinfo()
         {
-            this._logger.name += " -RegistrationProductInfo";
+            this._logger.name += " -Registrationproductinfo";
             // Invoke graphql operation clusterRegistrationProductInfo
             InvokeQueryClusterRegistrationProductInfo();
         }
@@ -1575,18 +1449,18 @@ Returns the certificate signing request generated from the private key of the Ru
 
         // This parameter set invokes a single graphql operation:
         // isTotpAckNecessaryForCluster.
-        protected void ProcessRecord_isTotpAckNecessary()
+        protected void ProcessRecord_Istotpacknecessary()
         {
-            this._logger.name += " -isTotpAckNecessary";
+            this._logger.name += " -Istotpacknecessary";
             // Invoke graphql operation isTotpAckNecessaryForCluster
             InvokeQueryIsTotpAckNecessaryForCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // allClustersTotpAckStatus.
-        protected void ProcessRecord_TotpAckStatus()
+        protected void ProcessRecord_Totpackstatus()
         {
-            this._logger.name += " -TotpAckStatus";
+            this._logger.name += " -Totpackstatus";
             // Invoke graphql operation allClustersTotpAckStatus
             InvokeQueryAllClustersTotpAckStatus();
         }

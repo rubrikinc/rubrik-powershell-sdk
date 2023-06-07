@@ -224,37 +224,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> domainId: String! (scalar)
         if (this.DomainId == null && Exploration.Includes(parent + ".domainId", true))
         {
-            this.DomainId = new System.String("FETCH");
+            this.DomainId = "FETCH";
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         if (this.DomainName == null && Exploration.Includes(parent + ".domainName", true))
         {
-            this.DomainName = new System.String("FETCH");
+            this.DomainName = "FETCH";
         }
         //      C# -> System.String? FullName
         // GraphQL -> fullName: String! (scalar)
         if (this.FullName == null && Exploration.Includes(parent + ".fullName", true))
         {
-            this.FullName = new System.String("FETCH");
+            this.FullName = "FETCH";
         }
         //      C# -> System.Int32? NumDescendants
         // GraphQL -> numDescendants: Int! (scalar)
         if (this.NumDescendants == null && Exploration.Includes(parent + ".numDescendants", true))
         {
-            this.NumDescendants = new System.Int32();
+            this.NumDescendants = Int32.MinValue;
         }
         //      C# -> System.String? PrincipalId
         // GraphQL -> principalId: String! (scalar)
         if (this.PrincipalId == null && Exploration.Includes(parent + ".principalId", true))
         {
-            this.PrincipalId = new System.String("FETCH");
+            this.PrincipalId = "FETCH";
         }
         //      C# -> System.String? Upn
         // GraphQL -> upn: String! (scalar)
         if (this.Upn == null && Exploration.Includes(parent + ".upn", true))
         {
-            this.Upn = new System.String("FETCH");
+            this.Upn = "FETCH";
         }
         //      C# -> SummaryHits? DeltaSensitiveHits
         // GraphQL -> deltaSensitiveHits: SummaryHits (type)

@@ -202,31 +202,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failed: Int! (scalar)
         if (this.Failed == null && Exploration.Includes(parent + ".failed", true))
         {
-            this.Failed = new System.Int32();
+            this.Failed = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgress
         // GraphQL -> inProgress: Int! (scalar)
         if (this.InProgress == null && Exploration.Includes(parent + ".inProgress", true))
         {
-            this.InProgress = new System.Int32();
+            this.InProgress = Int32.MinValue;
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> System.Int32? ObjectsWithoutSnapshot
         // GraphQL -> objectsWithoutSnapshot: Int! (scalar)
         if (this.ObjectsWithoutSnapshot == null && Exploration.Includes(parent + ".objectsWithoutSnapshot", true))
         {
-            this.ObjectsWithoutSnapshot = new System.Int32();
+            this.ObjectsWithoutSnapshot = Int32.MinValue;
         }
         //      C# -> System.Int32? Seq
         // GraphQL -> seq: Int! (scalar)
         if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
         {
-            this.Seq = new System.Int32();
+            this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
@@ -238,13 +238,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> System.Int32? Total
         // GraphQL -> total: Int! (scalar)
         if (this.Total == null && Exploration.Includes(parent + ".total", true))
         {
-            this.Total = new System.Int32();
+            this.Total = Int32.MinValue;
         }
     }
 

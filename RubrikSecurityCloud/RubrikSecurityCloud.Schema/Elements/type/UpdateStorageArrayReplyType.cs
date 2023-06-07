@@ -120,19 +120,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> errorMessage: String (scalar)
         if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
         {
-            this.ErrorMessage = new System.String("FETCH");
+            this.ErrorMessage = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

@@ -176,13 +176,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> awsRegion: String! (scalar)
         if (this.AwsRegion == null && Exploration.Includes(parent + ".awsRegion", true))
         {
-            this.AwsRegion = new System.String("FETCH");
+            this.AwsRegion = "FETCH";
         }
         //      C# -> System.String? AzureRegion
         // GraphQL -> azureRegion: String! (scalar)
         if (this.AzureRegion == null && Exploration.Includes(parent + ".azureRegion", true))
         {
-            this.AzureRegion = new System.String("FETCH");
+            this.AzureRegion = "FETCH";
         }
         //      C# -> AwsReplicationTarget? AwsTarget
         // GraphQL -> awsTarget: AwsReplicationTarget! (type)

@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.IdField == null && Exploration.Includes(parent + ".id", true))
         {
-            this.IdField = new System.String("FETCH");
+            this.IdField = "FETCH";
         }
     }
 

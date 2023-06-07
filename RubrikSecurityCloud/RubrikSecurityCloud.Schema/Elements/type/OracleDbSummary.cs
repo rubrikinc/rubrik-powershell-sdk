@@ -496,25 +496,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dataGuardGroupId: String (scalar)
         if (this.DataGuardGroupId == null && Exploration.Includes(parent + ".dataGuardGroupId", true))
         {
-            this.DataGuardGroupId = new System.String("FETCH");
+            this.DataGuardGroupId = "FETCH";
         }
         //      C# -> System.String? DataGuardGroupName
         // GraphQL -> dataGuardGroupName: String (scalar)
         if (this.DataGuardGroupName == null && Exploration.Includes(parent + ".dataGuardGroupName", true))
         {
-            this.DataGuardGroupName = new System.String("FETCH");
+            this.DataGuardGroupName = "FETCH";
         }
         //      C# -> System.String? DatabaseRole
         // GraphQL -> databaseRole: String (scalar)
         if (this.DatabaseRole == null && Exploration.Includes(parent + ".databaseRole", true))
         {
-            this.DatabaseRole = new System.String("FETCH");
+            this.DatabaseRole = "FETCH";
         }
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String (scalar)
         if (this.DbUniqueName == null && Exploration.Includes(parent + ".dbUniqueName", true))
         {
-            this.DbUniqueName = new System.String("FETCH");
+            this.DbUniqueName = "FETCH";
         }
         //      C# -> System.Boolean? HasLogConfigFromSla
         // GraphQL -> hasLogConfigFromSla: Boolean (scalar)
@@ -526,13 +526,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostLogRetentionHours: Int (scalar)
         if (this.HostLogRetentionHours == null && Exploration.Includes(parent + ".hostLogRetentionHours", true))
         {
-            this.HostLogRetentionHours = new System.Int32();
+            this.HostLogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IncludeBackupTaskInfo
         // GraphQL -> includeBackupTaskInfo: Boolean (scalar)
@@ -574,67 +574,67 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> logBackupFrequencyInMinutes: Int (scalar)
         if (this.LogBackupFrequencyInMinutes == null && Exploration.Includes(parent + ".logBackupFrequencyInMinutes", true))
         {
-            this.LogBackupFrequencyInMinutes = new System.Int32();
+            this.LogBackupFrequencyInMinutes = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumInstances
         // GraphQL -> numInstances: Int (scalar)
         if (this.NumInstances == null && Exploration.Includes(parent + ".numInstances", true))
         {
-            this.NumInstances = new System.Int32();
+            this.NumInstances = Int32.MinValue;
         }
         //      C# -> System.Int32? NumMissedSnapshot
         // GraphQL -> numMissedSnapshot: Int (scalar)
         if (this.NumMissedSnapshot == null && Exploration.Includes(parent + ".numMissedSnapshot", true))
         {
-            this.NumMissedSnapshot = new System.Int32();
+            this.NumMissedSnapshot = Int32.MinValue;
         }
         //      C# -> System.Int32? NumTablespaces
         // GraphQL -> numTablespaces: Int! (scalar)
         if (this.NumTablespaces == null && Exploration.Includes(parent + ".numTablespaces", true))
         {
-            this.NumTablespaces = new System.Int32();
+            this.NumTablespaces = Int32.MinValue;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? RacId
         // GraphQL -> racId: String (scalar)
         if (this.RacId == null && Exploration.Includes(parent + ".racId", true))
         {
-            this.RacId = new System.String("FETCH");
+            this.RacId = "FETCH";
         }
         //      C# -> System.String? RacName
         // GraphQL -> racName: String (scalar)
         if (this.RacName == null && Exploration.Includes(parent + ".racName", true))
         {
-            this.RacName = new System.String("FETCH");
+            this.RacName = "FETCH";
         }
         //      C# -> System.String? Sid
         // GraphQL -> sid: String (scalar)
         if (this.Sid == null && Exploration.Includes(parent + ".sid", true))
         {
-            this.Sid = new System.String("FETCH");
+            this.Sid = "FETCH";
         }
         //      C# -> System.String? StandaloneHostId
         // GraphQL -> standaloneHostId: String (scalar)
         if (this.StandaloneHostId == null && Exploration.Includes(parent + ".standaloneHostId", true))
         {
-            this.StandaloneHostId = new System.String("FETCH");
+            this.StandaloneHostId = "FETCH";
         }
         //      C# -> System.String? StandaloneHostName
         // GraphQL -> standaloneHostName: String (scalar)
         if (this.StandaloneHostName == null && Exploration.Includes(parent + ".standaloneHostName", true))
         {
-            this.StandaloneHostName = new System.String("FETCH");
+            this.StandaloneHostName = "FETCH";
         }
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)

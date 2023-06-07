@@ -168,19 +168,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configuredSlaDomainId: String! (scalar)
         if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            this.ConfiguredSlaDomainId = new System.String("FETCH");
+            this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String! (scalar)
         if (this.ConfiguredSlaDomainName == null && Exploration.Includes(parent + ".configuredSlaDomainName", true))
         {
-            this.ConfiguredSlaDomainName = new System.String("FETCH");
+            this.ConfiguredSlaDomainName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsConfiguredSlaDomainRetentionLocked
         // GraphQL -> isConfiguredSlaDomainRetentionLocked: Boolean (scalar)
@@ -192,13 +192,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> DateTime? SlaLastUpdateTime
         // GraphQL -> slaLastUpdateTime: DateTime (scalar)

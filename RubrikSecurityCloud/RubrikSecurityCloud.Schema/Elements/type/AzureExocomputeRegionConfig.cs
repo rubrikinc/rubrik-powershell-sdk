@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> podSubnetNativeId: String! (scalar)
         if (this.PodSubnetNativeId == null && Exploration.Includes(parent + ".podSubnetNativeId", true))
         {
-            this.PodSubnetNativeId = new System.String("FETCH");
+            this.PodSubnetNativeId = "FETCH";
         }
         //      C# -> System.String? SubnetNativeId
         // GraphQL -> subnetNativeId: String! (scalar)
         if (this.SubnetNativeId == null && Exploration.Includes(parent + ".subnetNativeId", true))
         {
-            this.SubnetNativeId = new System.String("FETCH");
+            this.SubnetNativeId = "FETCH";
         }
     }
 

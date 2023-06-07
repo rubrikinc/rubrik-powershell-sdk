@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> permissionJson: String! (scalar)
         if (this.PermissionJson == null && Exploration.Includes(parent + ".permissionJson", true))
         {
-            this.PermissionJson = new System.String("FETCH");
+            this.PermissionJson = "FETCH";
         }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.Int32();
+            this.Version = Int32.MinValue;
         }
     }
 

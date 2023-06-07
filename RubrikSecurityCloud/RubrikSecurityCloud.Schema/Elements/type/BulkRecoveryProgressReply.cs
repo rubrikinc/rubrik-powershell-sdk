@@ -348,19 +348,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> bulkRecoveryInstanceId: UUID! (scalar)
         if (this.BulkRecoveryInstanceId == null && Exploration.Includes(parent + ".bulkRecoveryInstanceId", true))
         {
-            this.BulkRecoveryInstanceId = new System.String("FETCH");
+            this.BulkRecoveryInstanceId = "FETCH";
         }
         //      C# -> System.Int32? CanceledObjects
         // GraphQL -> canceledObjects: Int! (scalar)
         if (this.CanceledObjects == null && Exploration.Includes(parent + ".canceledObjects", true))
         {
-            this.CanceledObjects = new System.Int32();
+            this.CanceledObjects = Int32.MinValue;
         }
         //      C# -> System.String? CurrentStep
         // GraphQL -> currentStep: String! (scalar)
         if (this.CurrentStep == null && Exploration.Includes(parent + ".currentStep", true))
         {
-            this.CurrentStep = new System.String("FETCH");
+            this.CurrentStep = "FETCH";
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -378,37 +378,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failedObjects: Int! (scalar)
         if (this.FailedObjects == null && Exploration.Includes(parent + ".failedObjects", true))
         {
-            this.FailedObjects = new System.Int32();
+            this.FailedObjects = Int32.MinValue;
         }
         //      C# -> System.String? FailureReason
         // GraphQL -> failureReason: String (scalar)
         if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
         {
-            this.FailureReason = new System.String("FETCH");
+            this.FailureReason = "FETCH";
         }
         //      C# -> System.Int32? GroupsProcessed
         // GraphQL -> groupsProcessed: Int! (scalar)
         if (this.GroupsProcessed == null && Exploration.Includes(parent + ".groupsProcessed", true))
         {
-            this.GroupsProcessed = new System.Int32();
+            this.GroupsProcessed = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgressObjects
         // GraphQL -> inProgressObjects: Int! (scalar)
         if (this.InProgressObjects == null && Exploration.Includes(parent + ".inProgressObjects", true))
         {
-            this.InProgressObjects = new System.Int32();
+            this.InProgressObjects = Int32.MinValue;
         }
         //      C# -> System.Int32? ObjectsWithoutSnapshot
         // GraphQL -> objectsWithoutSnapshot: Int! (scalar)
         if (this.ObjectsWithoutSnapshot == null && Exploration.Includes(parent + ".objectsWithoutSnapshot", true))
         {
-            this.ObjectsWithoutSnapshot = new System.Int32();
+            this.ObjectsWithoutSnapshot = Int32.MinValue;
         }
         //      C# -> System.String? RecoveryPlanName
         // GraphQL -> recoveryPlanName: String! (scalar)
         if (this.RecoveryPlanName == null && Exploration.Includes(parent + ".recoveryPlanName", true))
         {
-            this.RecoveryPlanName = new System.String("FETCH");
+            this.RecoveryPlanName = "FETCH";
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
@@ -420,25 +420,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> succeededObjects: Int! (scalar)
         if (this.SucceededObjects == null && Exploration.Includes(parent + ".succeededObjects", true))
         {
-            this.SucceededObjects = new System.Int32();
+            this.SucceededObjects = Int32.MinValue;
         }
         //      C# -> System.String? TaskchainId
         // GraphQL -> taskchainId: UUID! (scalar)
         if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
         {
-            this.TaskchainId = new System.String("FETCH");
+            this.TaskchainId = "FETCH";
         }
         //      C# -> System.Int32? TotalGroups
         // GraphQL -> totalGroups: Int! (scalar)
         if (this.TotalGroups == null && Exploration.Includes(parent + ".totalGroups", true))
         {
-            this.TotalGroups = new System.Int32();
+            this.TotalGroups = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
         if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects", true))
         {
-            this.TotalObjects = new System.Int32();
+            this.TotalObjects = Int32.MinValue;
         }
         //      C# -> List<BulkRecoveryGroupProgress>? GroupProgresses
         // GraphQL -> groupProgresses: [BulkRecoveryGroupProgress!]! (type)

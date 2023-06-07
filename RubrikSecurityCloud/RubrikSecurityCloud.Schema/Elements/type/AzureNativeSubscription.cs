@@ -514,37 +514,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accountConnectionId: String! (scalar)
         if (this.AccountConnectionId == null && Exploration.Includes(parent + ".accountConnectionId", true))
         {
-            this.AccountConnectionId = new System.String("FETCH");
+            this.AccountConnectionId = "FETCH";
         }
         //      C# -> System.Int32? AzureSqlDatabaseDbCount
         // GraphQL -> azureSqlDatabaseDbCount: Int! (scalar)
         if (this.AzureSqlDatabaseDbCount == null && Exploration.Includes(parent + ".azureSqlDatabaseDbCount", true))
         {
-            this.AzureSqlDatabaseDbCount = new System.Int32();
+            this.AzureSqlDatabaseDbCount = Int32.MinValue;
         }
         //      C# -> System.Int32? AzureSqlManagedInstanceDbCount
         // GraphQL -> azureSqlManagedInstanceDbCount: Int! (scalar)
         if (this.AzureSqlManagedInstanceDbCount == null && Exploration.Includes(parent + ".azureSqlManagedInstanceDbCount", true))
         {
-            this.AzureSqlManagedInstanceDbCount = new System.Int32();
+            this.AzureSqlManagedInstanceDbCount = Int32.MinValue;
         }
         //      C# -> System.String? AzureSubscriptionNativeId
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         if (this.AzureSubscriptionNativeId == null && Exploration.Includes(parent + ".azureSubscriptionNativeId", true))
         {
-            this.AzureSubscriptionNativeId = new System.String("FETCH");
+            this.AzureSubscriptionNativeId = "FETCH";
         }
         //      C# -> System.Int32? DisksCount
         // GraphQL -> disksCount: Int! (scalar)
         if (this.DisksCount == null && Exploration.Includes(parent + ".disksCount", true))
         {
-            this.DisksCount = new System.Int32();
+            this.DisksCount = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? LastRefreshedAt
         // GraphQL -> lastRefreshedAt: DateTime (scalar)
@@ -556,13 +556,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -574,13 +574,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId == null && Exploration.Includes(parent + ".tenantId", true))
         {
-            this.TenantId = new System.String("FETCH");
+            this.TenantId = "FETCH";
         }
         //      C# -> System.Int32? VmsCount
         // GraphQL -> vmsCount: Int! (scalar)
         if (this.VmsCount == null && Exploration.Includes(parent + ".vmsCount", true))
         {
-            this.VmsCount = new System.Int32();
+            this.VmsCount = Int32.MinValue;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

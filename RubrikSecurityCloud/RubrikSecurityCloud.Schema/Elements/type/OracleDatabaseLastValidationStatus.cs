@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> eventId: String! (scalar)
         if (this.EventId == null && Exploration.Includes(parent + ".eventId", true))
         {
-            this.EventId = new System.String("FETCH");
+            this.EventId = "FETCH";
         }
         //      C# -> System.Boolean? IsSuccess
         // GraphQL -> isSuccess: Boolean! (scalar)
@@ -118,7 +118,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotId: String (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> DateTime? TimestampMs
         // GraphQL -> timestampMs: DateTime (scalar)

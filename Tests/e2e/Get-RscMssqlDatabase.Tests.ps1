@@ -1,6 +1,10 @@
-& "$PSScriptRoot\..\..\Utils\import.ps1"
-. "$PSScriptRoot\..\serviceaccount.ps1"
-
+<#
+.SYNOPSIS
+Run tests around mssql databases
+#>
+BeforeAll {
+    . "$PSScriptRoot\e2eInit.ps1"
+}
 # TODO: SPARK-225907 fix this
 return
 

@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vcenterId: UUID! (scalar)
         if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
         {
-            this.VcenterId = new System.String("FETCH");
+            this.VcenterId = "FETCH";
         }
         //      C# -> RefreshableObjectConnectionStatus? Status
         // GraphQL -> status: RefreshableObjectConnectionStatus! (type)

@@ -144,7 +144,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> remainingDays: Int! (scalar)
         if (this.RemainingDays == null && Exploration.Includes(parent + ".remainingDays", true))
         {
-            this.RemainingDays = new System.Int32();
+            this.RemainingDays = Int32.MinValue;
         }
     }
 

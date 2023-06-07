@@ -134,19 +134,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availability: String! (scalar)
         if (this.Availability == null && Exploration.Includes(parent + ".availability", true))
         {
-            this.Availability = new System.String("FETCH");
+            this.Availability = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? Md5Sum
         // GraphQL -> md5Sum: String! (scalar)
         if (this.Md5Sum == null && Exploration.Includes(parent + ".md5Sum", true))
         {
-            this.Md5Sum = new System.String("FETCH");
+            this.Md5Sum = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)
@@ -158,7 +158,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> DownloadJobInfo? DownloadJobInfo
         // GraphQL -> downloadJobInfo: DownloadJobInfo (type)

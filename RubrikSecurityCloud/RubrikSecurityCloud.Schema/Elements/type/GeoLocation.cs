@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> address: String! (scalar)
         if (this.Address == null && Exploration.Includes(parent + ".address", true))
         {
-            this.Address = new System.String("FETCH");
+            this.Address = "FETCH";
         }
         //      C# -> System.Single? Latitude
         // GraphQL -> latitude: Float! (scalar)

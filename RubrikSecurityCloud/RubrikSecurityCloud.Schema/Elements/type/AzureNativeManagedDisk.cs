@@ -688,13 +688,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
         {
-            this.AvailabilityZone = new System.String("FETCH");
+            this.AvailabilityZone = "FETCH";
         }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (this.CloudNativeId == null && Exploration.Includes(parent + ".cloudNativeId", true))
         {
-            this.CloudNativeId = new System.String("FETCH");
+            this.CloudNativeId = "FETCH";
         }
         //      C# -> System.Int64? DiskIopsReadWrite
         // GraphQL -> diskIopsReadWrite: Long! (scalar)
@@ -712,19 +712,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> diskNativeId: String! (scalar)
         if (this.DiskNativeId == null && Exploration.Includes(parent + ".diskNativeId", true))
         {
-            this.DiskNativeId = new System.String("FETCH");
+            this.DiskNativeId = "FETCH";
         }
         //      C# -> System.Int32? DiskSizeGib
         // GraphQL -> diskSizeGib: Int! (scalar)
         if (this.DiskSizeGib == null && Exploration.Includes(parent + ".diskSizeGib", true))
         {
-            this.DiskSizeGib = new System.Int32();
+            this.DiskSizeGib = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsAdeEnabled
         // GraphQL -> isAdeEnabled: Boolean! (scalar)
@@ -754,25 +754,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
         if (this.NativeName == null && Exploration.Includes(parent + ".nativeName", true))
         {
-            this.NativeName = new System.String("FETCH");
+            this.NativeName = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

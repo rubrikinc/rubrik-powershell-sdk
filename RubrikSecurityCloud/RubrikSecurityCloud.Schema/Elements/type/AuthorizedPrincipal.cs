@@ -182,25 +182,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> authDomainId: String! (scalar)
         if (this.AuthDomainId == null && Exploration.Includes(parent + ".authDomainId", true))
         {
-            this.AuthDomainId = new System.String("FETCH");
+            this.AuthDomainId = "FETCH";
         }
         //      C# -> System.String? AuthDomainName
         // GraphQL -> authDomainName: String! (scalar)
         if (this.AuthDomainName == null && Exploration.Includes(parent + ".authDomainName", true))
         {
-            this.AuthDomainName = new System.String("FETCH");
+            this.AuthDomainName = "FETCH";
         }
         //      C# -> System.String? Email
         // GraphQL -> email: String (scalar)
         if (this.Email == null && Exploration.Includes(parent + ".email", true))
         {
-            this.Email = new System.String("FETCH");
+            this.Email = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
@@ -212,7 +212,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)

@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> azureSubscriptionNativeId: String! (scalar)
         if (this.AzureSubscriptionNativeId == null && Exploration.Includes(parent + ".azureSubscriptionNativeId", true))
         {
-            this.AzureSubscriptionNativeId = new System.String("FETCH");
+            this.AzureSubscriptionNativeId = "FETCH";
         }
         //      C# -> System.String? AzureSubscriptionRubrikId
         // GraphQL -> azureSubscriptionRubrikId: String! (scalar)
         if (this.AzureSubscriptionRubrikId == null && Exploration.Includes(parent + ".azureSubscriptionRubrikId", true))
         {
-            this.AzureSubscriptionRubrikId = new System.String("FETCH");
+            this.AzureSubscriptionRubrikId = "FETCH";
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String! (scalar)
         if (this.Error == null && Exploration.Includes(parent + ".error", true))
         {
-            this.Error = new System.String("FETCH");
+            this.Error = "FETCH";
         }
     }
 

@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> tableName: String! (scalar)
         if (this.TableName == null && Exploration.Includes(parent + ".tableName", true))
         {
-            this.TableName = new System.String("FETCH");
+            this.TableName = "FETCH";
         }
     }
 

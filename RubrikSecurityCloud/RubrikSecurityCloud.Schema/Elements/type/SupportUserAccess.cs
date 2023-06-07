@@ -168,7 +168,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> durationInHours: Int! (scalar)
         if (this.DurationInHours == null && Exploration.Includes(parent + ".durationInHours", true))
         {
-            this.DurationInHours = new System.Int32();
+            this.DurationInHours = Int32.MinValue;
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime! (scalar)
@@ -180,7 +180,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: Int! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.Int32();
+            this.Id = Int32.MinValue;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime! (scalar)
@@ -192,7 +192,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ticketNumber: String! (scalar)
         if (this.TicketNumber == null && Exploration.Includes(parent + ".ticketNumber", true))
         {
-            this.TicketNumber = new System.String("FETCH");
+            this.TicketNumber = "FETCH";
         }
         //      C# -> User? AccessProviderUser
         // GraphQL -> accessProviderUser: User (type)

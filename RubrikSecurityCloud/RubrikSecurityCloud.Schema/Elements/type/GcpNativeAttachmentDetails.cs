@@ -176,37 +176,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> deviceName: String! (scalar)
         if (this.DeviceName == null && Exploration.Includes(parent + ".deviceName", true))
         {
-            this.DeviceName = new System.String("FETCH");
+            this.DeviceName = "FETCH";
         }
         //      C# -> System.String? DiskId
         // GraphQL -> diskId: String! (scalar)
         if (this.DiskId == null && Exploration.Includes(parent + ".diskId", true))
         {
-            this.DiskId = new System.String("FETCH");
+            this.DiskId = "FETCH";
         }
         //      C# -> System.String? DiskName
         // GraphQL -> diskName: String! (scalar)
         if (this.DiskName == null && Exploration.Includes(parent + ".diskName", true))
         {
-            this.DiskName = new System.String("FETCH");
+            this.DiskName = "FETCH";
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
         if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
         {
-            this.InstanceId = new System.String("FETCH");
+            this.InstanceId = "FETCH";
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
         if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
         {
-            this.InstanceName = new System.String("FETCH");
+            this.InstanceName = "FETCH";
         }
         //      C# -> System.String? InstanceZone
         // GraphQL -> instanceZone: String! (scalar)
         if (this.InstanceZone == null && Exploration.Includes(parent + ".instanceZone", true))
         {
-            this.InstanceZone = new System.String("FETCH");
+            this.InstanceZone = "FETCH";
         }
         //      C# -> System.Boolean? IsBootDisk
         // GraphQL -> isBootDisk: Boolean! (scalar)
@@ -224,7 +224,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sizeInGiBs: Int! (scalar)
         if (this.SizeInGiBs == null && Exploration.Includes(parent + ".sizeInGiBs", true))
         {
-            this.SizeInGiBs = new System.Int32();
+            this.SizeInGiBs = Int32.MinValue;
         }
     }
 

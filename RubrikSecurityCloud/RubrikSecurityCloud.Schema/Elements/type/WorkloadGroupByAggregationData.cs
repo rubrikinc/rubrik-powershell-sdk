@@ -168,7 +168,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> count: Int! (scalar)
         if (this.Count == null && Exploration.Includes(parent + ".count", true))
         {
-            this.Count = new System.Int32();
+            this.Count = Int32.MinValue;
         }
         //      C# -> System.Int64? LastSnapshotLogicalBytes
         // GraphQL -> lastSnapshotLogicalBytes: Long! (scalar)
@@ -186,7 +186,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> missedSnapshots: Int! (scalar)
         if (this.MissedSnapshots == null && Exploration.Includes(parent + ".missedSnapshots", true))
         {
-            this.MissedSnapshots = new System.Int32();
+            this.MissedSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long! (scalar)
@@ -204,7 +204,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totalSnapshots: Int! (scalar)
         if (this.TotalSnapshots == null && Exploration.Includes(parent + ".totalSnapshots", true))
         {
-            this.TotalSnapshots = new System.Int32();
+            this.TotalSnapshots = Int32.MinValue;
         }
     }
 

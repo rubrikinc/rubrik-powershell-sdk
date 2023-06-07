@@ -140,13 +140,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> customerSubscriptionId: String! (scalar)
         if (this.CustomerSubscriptionId == null && Exploration.Includes(parent + ".customerSubscriptionId", true))
         {
-            this.CustomerSubscriptionId = new System.String("FETCH");
+            this.CustomerSubscriptionId = "FETCH";
         }
         //      C# -> System.String? CustomerTenantId
         // GraphQL -> customerTenantId: String! (scalar)
         if (this.CustomerTenantId == null && Exploration.Includes(parent + ".customerTenantId", true))
         {
-            this.CustomerTenantId = new System.String("FETCH");
+            this.CustomerTenantId = "FETCH";
         }
         //      C# -> System.Boolean? IsAuthorized
         // GraphQL -> isAuthorized: Boolean! (scalar)
@@ -158,13 +158,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
         {
-            this.NativeId = new System.String("FETCH");
+            this.NativeId = "FETCH";
         }
     }
 

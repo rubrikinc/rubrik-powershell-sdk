@@ -118,7 +118,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> logRetentionTimeInHours: Int (scalar)
         if (this.LogRetentionTimeInHours == null && Exploration.Includes(parent + ".logRetentionTimeInHours", true))
         {
-            this.LogRetentionTimeInHours = new System.Int32();
+            this.LogRetentionTimeInHours = Int32.MinValue;
         }
         //      C# -> System.Boolean? ShouldUseDefaultBackupLocation
         // GraphQL -> shouldUseDefaultBackupLocation: Boolean (scalar)

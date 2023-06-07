@@ -120,25 +120,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> apiToken: String (scalar)
         if (this.ApiToken == null && Exploration.Includes(parent + ".apiToken", true))
         {
-            this.ApiToken = new System.String("FETCH");
+            this.ApiToken = "FETCH";
         }
         //      C# -> System.String? KerberosTicket
         // GraphQL -> kerberosTicket: String (scalar)
         if (this.KerberosTicket == null && Exploration.Includes(parent + ".kerberosTicket", true))
         {
-            this.KerberosTicket = new System.String("FETCH");
+            this.KerberosTicket = "FETCH";
         }
         //      C# -> System.String? Nameservices
         // GraphQL -> nameservices: String (scalar)
         if (this.Nameservices == null && Exploration.Includes(parent + ".nameservices", true))
         {
-            this.Nameservices = new System.String("FETCH");
+            this.Nameservices = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
         //      C# -> List<HdfsHost>? Hosts
         // GraphQL -> hosts: [HdfsHost!]! (type)

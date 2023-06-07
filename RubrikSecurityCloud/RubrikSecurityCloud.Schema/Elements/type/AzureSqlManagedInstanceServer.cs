@@ -486,37 +486,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? InstancePoolName
         // GraphQL -> instancePoolName: String! (scalar)
         if (this.InstancePoolName == null && Exploration.Includes(parent + ".instancePoolName", true))
         {
-            this.InstancePoolName = new System.String("FETCH");
+            this.InstancePoolName = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.String? ServerName
         // GraphQL -> serverName: String! (scalar)
         if (this.ServerName == null && Exploration.Includes(parent + ".serverName", true))
         {
-            this.ServerName = new System.String("FETCH");
+            this.ServerName = "FETCH";
         }
         //      C# -> System.String? ServiceTier
         // GraphQL -> serviceTier: String! (scalar)
         if (this.ServiceTier == null && Exploration.Includes(parent + ".serviceTier", true))
         {
-            this.ServiceTier = new System.String("FETCH");
+            this.ServiceTier = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -534,19 +534,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subnetName: String! (scalar)
         if (this.SubnetName == null && Exploration.Includes(parent + ".subnetName", true))
         {
-            this.SubnetName = new System.String("FETCH");
+            this.SubnetName = "FETCH";
         }
         //      C# -> System.Int32? VcoresCount
         // GraphQL -> vCoresCount: Int! (scalar)
         if (this.VcoresCount == null && Exploration.Includes(parent + ".vCoresCount", true))
         {
-            this.VcoresCount = new System.Int32();
+            this.VcoresCount = Int32.MinValue;
         }
         //      C# -> System.String? VnetName
         // GraphQL -> vnetName: String! (scalar)
         if (this.VnetName == null && Exploration.Includes(parent + ".vnetName", true))
         {
-            this.VnetName = new System.String("FETCH");
+            this.VnetName = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

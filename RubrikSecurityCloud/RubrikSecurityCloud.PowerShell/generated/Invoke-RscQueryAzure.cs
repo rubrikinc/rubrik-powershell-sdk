@@ -21,1295 +21,1139 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscQueryAzure",
-        DefaultParameterSetName = "VNet")
+        DefaultParameterSetName = "Vnet")
     ]
     public class Invoke_RscQueryAzure : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // NativeRoot parameter set
+        // Nativeroot parameter set
         //
-        // GraphQL operation: azureNativeRoot:AzureNativeRoot!
+        // [GraphQL: azureNativeRoot]
         //
         [Parameter(
-            ParameterSetName = "NativeRoot",
+            ParameterSetName = "Nativeroot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Root of Azure native hierarchy.
-                GraphQL operation: azureNativeRoot:AzureNativeRoot!
-                ",
+@"Root of Azure native hierarchy.
+[GraphQL: azureNativeRoot]",
             Position = 0
         )]
-        public SwitchParameter NativeRoot { get; set; }
+        public SwitchParameter Nativeroot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // NativeSubscription parameter set
+        // Nativesubscription parameter set
         //
-        // GraphQL operation: azureNativeSubscription(azureSubscriptionRubrikId: UUID!):AzureNativeSubscription!
+        // [GraphQL: azureNativeSubscription]
         //
         [Parameter(
-            ParameterSetName = "NativeSubscription",
+            ParameterSetName = "Nativesubscription",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
-                GraphQL operation: azureNativeSubscription(azureSubscriptionRubrikId: UUID!):AzureNativeSubscription!
-                ",
+@"Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
+[GraphQL: azureNativeSubscription]",
             Position = 0
         )]
-        public SwitchParameter NativeSubscription { get; set; }
+        public SwitchParameter Nativesubscription { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeSubscription",
+            ParameterSetName = "Nativesubscription",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID of the Azure Subscription.
-                GraphQL argument azureSubscriptionRubrikId: UUID!
-                "
+@"Rubrik ID of the Azure Subscription.
+GraphQL argument azureSubscriptionRubrikId: UUID!"
         )]
         public System.String? AzureSubscriptionRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeResourceGroup parameter set
+        // Nativeresourcegroup parameter set
         //
-        // GraphQL operation: azureNativeResourceGroup(resourceGroupId: UUID!):AzureNativeResourceGroup!
+        // [GraphQL: azureNativeResourceGroup]
         //
         [Parameter(
-            ParameterSetName = "NativeResourceGroup",
+            ParameterSetName = "Nativeresourcegroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
-                GraphQL operation: azureNativeResourceGroup(resourceGroupId: UUID!):AzureNativeResourceGroup!
-                ",
+@"Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
+[GraphQL: azureNativeResourceGroup]",
             Position = 0
         )]
-        public SwitchParameter NativeResourceGroup { get; set; }
+        public SwitchParameter Nativeresourcegroup { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeResourceGroup",
+            ParameterSetName = "Nativeresourcegroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Resource Group ID of Virtual Machine (VM) or Disk.
-                GraphQL argument resourceGroupId: UUID!
-                "
+@"Resource Group ID of Virtual Machine (VM) or Disk.
+GraphQL argument resourceGroupId: UUID!"
         )]
         public System.String? ResourceGroupId { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeVirtualMachine parameter set
+        // Nativevirtualmachine parameter set
         //
-        // GraphQL operation: azureNativeVirtualMachine(azureVirtualMachineRubrikId: UUID!):AzureNativeVirtualMachine!
+        // [GraphQL: azureNativeVirtualMachine]
         //
         [Parameter(
-            ParameterSetName = "NativeVirtualMachine",
+            ParameterSetName = "Nativevirtualmachine",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
-                GraphQL operation: azureNativeVirtualMachine(azureVirtualMachineRubrikId: UUID!):AzureNativeVirtualMachine!
-                ",
+@"Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
+[GraphQL: azureNativeVirtualMachine]",
             Position = 0
         )]
-        public SwitchParameter NativeVirtualMachine { get; set; }
+        public SwitchParameter Nativevirtualmachine { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeVirtualMachine",
+            ParameterSetName = "Nativevirtualmachine",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID of the Azure Virtual Machine.
-                GraphQL argument azureVirtualMachineRubrikId: UUID!
-                "
+@"Rubrik ID of the Azure Virtual Machine.
+GraphQL argument azureVirtualMachineRubrikId: UUID!"
         )]
         public System.String? AzureVirtualMachineRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // NativeManagedDisk parameter set
+        // Nativemanageddisk parameter set
         //
-        // GraphQL operation: azureNativeManagedDisk(azureManagedDiskRubrikId: UUID!):AzureNativeManagedDisk!
+        // [GraphQL: azureNativeManagedDisk]
         //
         [Parameter(
-            ParameterSetName = "NativeManagedDisk",
+            ParameterSetName = "Nativemanageddisk",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
-                GraphQL operation: azureNativeManagedDisk(azureManagedDiskRubrikId: UUID!):AzureNativeManagedDisk!
-                ",
+@"Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
+[GraphQL: azureNativeManagedDisk]",
             Position = 0
         )]
-        public SwitchParameter NativeManagedDisk { get; set; }
+        public SwitchParameter Nativemanageddisk { get; set; }
 
         [Parameter(
-            ParameterSetName = "NativeManagedDisk",
+            ParameterSetName = "Nativemanageddisk",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID of the Azure Managed Disk.
-                GraphQL argument azureManagedDiskRubrikId: UUID!
-                "
+@"Rubrik ID of the Azure Managed Disk.
+GraphQL argument azureManagedDiskRubrikId: UUID!"
         )]
         public System.String? AzureManagedDiskRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // allNativeVirtualNetwork parameter set
+        // Allnativevirtualnetwork parameter set
         //
-        // GraphQL operation: allAzureNativeVirtualNetworks(azureSubscriptionRubrikId: UUID):[AzureNativeVirtualNetwork!]!
+        // [GraphQL: allAzureNativeVirtualNetworks]
         //
         [Parameter(
-            ParameterSetName = "allNativeVirtualNetwork",
+            ParameterSetName = "Allnativevirtualnetwork",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enables secure communication with other VNets, the internet, and on-premise networks. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview.
-                GraphQL operation: allAzureNativeVirtualNetworks(azureSubscriptionRubrikId: UUID):[AzureNativeVirtualNetwork!]!
-                ",
+@"Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enables secure communication with other VNets, the internet, and on-premise networks. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview.
+[GraphQL: allAzureNativeVirtualNetworks]",
             Position = 0
         )]
-        public SwitchParameter allNativeVirtualNetwork { get; set; }
+        public SwitchParameter Allnativevirtualnetwork { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allNativeSubnetsByRegionFromAzure parameter set
+        // Allnativesubnetsbyregionfromazure parameter set
         //
-        // GraphQL operation: allAzureNativeSubnetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeSubnet!]!
+        // [GraphQL: allAzureNativeSubnetsByRegionFromAzure]
         //
         [Parameter(
-            ParameterSetName = "allNativeSubnetsByRegionFromAzure",
+            ParameterSetName = "Allnativesubnetsbyregionfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
-                GraphQL operation: allAzureNativeSubnetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeSubnet!]!
-                ",
+@"Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
+[GraphQL: allAzureNativeSubnetsByRegionFromAzure]",
             Position = 0
         )]
-        public SwitchParameter allNativeSubnetsByRegionFromAzure { get; set; }
+        public SwitchParameter Allnativesubnetsbyregionfromazure { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allNativeSecurityGroupsByRegionFromAzure parameter set
+        // Allnativesecuritygroupsbyregionfromazure parameter set
         //
-        // GraphQL operation: allAzureNativeSecurityGroupsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeSecurityGroup!]!
+        // [GraphQL: allAzureNativeSecurityGroupsByRegionFromAzure]
         //
         [Parameter(
-            ParameterSetName = "allNativeSecurityGroupsByRegionFromAzure",
+            ParameterSetName = "Allnativesecuritygroupsbyregionfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves all security groups in the specified region and subscription. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
-                GraphQL operation: allAzureNativeSecurityGroupsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeSecurityGroup!]!
-                ",
+@"Retrieves all security groups in the specified region and subscription. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
+[GraphQL: allAzureNativeSecurityGroupsByRegionFromAzure]",
             Position = 0
         )]
-        public SwitchParameter allNativeSecurityGroupsByRegionFromAzure { get; set; }
+        public SwitchParameter Allnativesecuritygroupsbyregionfromazure { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allDiskEncryptionSetsByRegion parameter set
+        // Alldiskencryptionsetsbyregion parameter set
         //
-        // GraphQL operation: allAzureDiskEncryptionSetsByRegion(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeDiskEncryptionSet!]!
+        // [GraphQL: allAzureDiskEncryptionSetsByRegion]
         //
         [Parameter(
-            ParameterSetName = "allDiskEncryptionSetsByRegion",
+            ParameterSetName = "Alldiskencryptionsetsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all Azure Disk Encryption Sets in a region.
-                GraphQL operation: allAzureDiskEncryptionSetsByRegion(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeDiskEncryptionSet!]!
-                ",
+@"List of all Azure Disk Encryption Sets in a region.
+[GraphQL: allAzureDiskEncryptionSetsByRegion]",
             Position = 0
         )]
-        public SwitchParameter allDiskEncryptionSetsByRegion { get; set; }
+        public SwitchParameter Alldiskencryptionsetsbyregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allNativeAvailabilitySetsByRegionFromAzure parameter set
+        // Allnativeavailabilitysetsbyregionfromazure parameter set
         //
-        // GraphQL operation: allAzureNativeAvailabilitySetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, resourceGroupName: String!, region: AzureNativeRegion!):[AzureNativeAvailabilitySet!]!
+        // [GraphQL: allAzureNativeAvailabilitySetsByRegionFromAzure]
         //
         [Parameter(
-            ParameterSetName = "allNativeAvailabilitySetsByRegionFromAzure",
+            ParameterSetName = "Allnativeavailabilitysetsbyregionfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
-                GraphQL operation: allAzureNativeAvailabilitySetsByRegionFromAzure(azureSubscriptionRubrikId: UUID!, resourceGroupName: String!, region: AzureNativeRegion!):[AzureNativeAvailabilitySet!]!
-                ",
+@"Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
+[GraphQL: allAzureNativeAvailabilitySetsByRegionFromAzure]",
             Position = 0
         )]
-        public SwitchParameter allNativeAvailabilitySetsByRegionFromAzure { get; set; }
+        public SwitchParameter Allnativeavailabilitysetsbyregionfromazure { get; set; }
 
         [Parameter(
-            ParameterSetName = "allNativeAvailabilitySetsByRegionFromAzure",
+            ParameterSetName = "Allnativeavailabilitysetsbyregionfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Resource Group Name.
-                GraphQL argument resourceGroupName: String!
-                "
+@"Resource Group Name.
+GraphQL argument resourceGroupName: String!"
         )]
         public System.String? ResourceGroupName { get; set; }
         
         // -------------------------------------------------------------------
-        // allNativeExportCompatibleVmSizesByRegionFromAzure parameter set
+        // Allnativeexportcompatiblevmsizesbyregionfromazure parameter set
         //
-        // GraphQL operation: allAzureNativeExportCompatibleVmSizesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!, vmSnapshotId: UUID!):[AzureNativeExportCompatibleVmSizes!]!
+        // [GraphQL: allAzureNativeExportCompatibleVmSizesByRegionFromAzure]
         //
         [Parameter(
-            ParameterSetName = "allNativeExportCompatibleVmSizesByRegionFromAzure",
+            ParameterSetName = "Allnativeexportcompatiblevmsizesbyregionfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves all supported virtual machine (VM) sizes when exporting a particular snapshot. Not all VM sizes are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
-                GraphQL operation: allAzureNativeExportCompatibleVmSizesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!, vmSnapshotId: UUID!):[AzureNativeExportCompatibleVmSizes!]!
-                ",
+@"Retrieves all supported virtual machine (VM) sizes when exporting a particular snapshot. Not all VM sizes are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
+[GraphQL: allAzureNativeExportCompatibleVmSizesByRegionFromAzure]",
             Position = 0
         )]
-        public SwitchParameter allNativeExportCompatibleVmSizesByRegionFromAzure { get; set; }
+        public SwitchParameter Allnativeexportcompatiblevmsizesbyregionfromazure { get; set; }
 
         [Parameter(
-            ParameterSetName = "allNativeExportCompatibleVmSizesByRegionFromAzure",
+            ParameterSetName = "Allnativeexportcompatiblevmsizesbyregionfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Snapshot ID
-                GraphQL argument vmSnapshotId: UUID!
-                "
+@"Snapshot ID
+GraphQL argument vmSnapshotId: UUID!"
         )]
         public System.String? VmSnapshotId { get; set; }
         
         // -------------------------------------------------------------------
-        // allNativeExportCompatibleDiskTypesByRegionFromAzure parameter set
+        // Allnativeexportcompatibledisktypesbyregionfromazure parameter set
         //
-        // GraphQL operation: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeExportCompatibleDiskTypes!]!
+        // [GraphQL: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure]
         //
         [Parameter(
-            ParameterSetName = "allNativeExportCompatibleDiskTypesByRegionFromAzure",
+            ParameterSetName = "Allnativeexportcompatibledisktypesbyregionfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves all supported disk types when exporting a specific snapshot. Not all disk types are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types.
-                GraphQL operation: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure(azureSubscriptionRubrikId: UUID!, region: AzureNativeRegion!):[AzureNativeExportCompatibleDiskTypes!]!
-                ",
+@"Retrieves all supported disk types when exporting a specific snapshot. Not all disk types are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types.
+[GraphQL: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure]",
             Position = 0
         )]
-        public SwitchParameter allNativeExportCompatibleDiskTypesByRegionFromAzure { get; set; }
+        public SwitchParameter Allnativeexportcompatibledisktypesbyregionfromazure { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allNativeVirtualMachineSize parameter set
+        // Allnativevirtualmachinesize parameter set
         //
-        // GraphQL operation: allAzureNativeVirtualMachineSizes(azureSubscriptionRubrikId: UUID):[String!]!
+        // [GraphQL: allAzureNativeVirtualMachineSizes]
         //
         [Parameter(
-            ParameterSetName = "allNativeVirtualMachineSize",
+            ParameterSetName = "Allnativevirtualmachinesize",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
-                GraphQL operation: allAzureNativeVirtualMachineSizes(azureSubscriptionRubrikId: UUID):[String!]!
-                ",
+@"Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
+[GraphQL: allAzureNativeVirtualMachineSizes]",
             Position = 0
         )]
-        public SwitchParameter allNativeVirtualMachineSize { get; set; }
+        public SwitchParameter Allnativevirtualmachinesize { get; set; }
 
         
         // -------------------------------------------------------------------
-        // isNativeManagedDiskSnapshotRestorable parameter set
+        // Isnativemanageddisksnapshotrestorable parameter set
         //
-        // GraphQL operation: isAzureNativeManagedDiskSnapshotRestorable(azureSubscriptionRubrikId: UUID!, diskSnapshotId: UUID!):Boolean!
+        // [GraphQL: isAzureNativeManagedDiskSnapshotRestorable]
         //
         [Parameter(
-            ParameterSetName = "isNativeManagedDiskSnapshotRestorable",
+            ParameterSetName = "Isnativemanageddisksnapshotrestorable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether the Managed Disk snapshot is restorable or not. A managed disk is restorable when the restore settings of the Managed Disk are configured on the Azure portal and on the Rubrik platform. When the value is true, the managed disk snapshot is restorable.
-                GraphQL operation: isAzureNativeManagedDiskSnapshotRestorable(azureSubscriptionRubrikId: UUID!, diskSnapshotId: UUID!):Boolean!
-                ",
+@"Specifies whether the Managed Disk snapshot is restorable or not. A managed disk is restorable when the restore settings of the Managed Disk are configured on the Azure portal and on the Rubrik platform. When the value is true, the managed disk snapshot is restorable.
+[GraphQL: isAzureNativeManagedDiskSnapshotRestorable]",
             Position = 0
         )]
-        public SwitchParameter isNativeManagedDiskSnapshotRestorable { get; set; }
+        public SwitchParameter Isnativemanageddisksnapshotrestorable { get; set; }
 
         [Parameter(
-            ParameterSetName = "isNativeManagedDiskSnapshotRestorable",
+            ParameterSetName = "Isnativemanageddisksnapshotrestorable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Snapshot ID
-                GraphQL argument diskSnapshotId: UUID!
-                "
+@"Snapshot ID
+GraphQL argument diskSnapshotId: UUID!"
         )]
         public System.String? DiskSnapshotId { get; set; }
         
         // -------------------------------------------------------------------
-        // isStorageAccountNameAvailable parameter set
+        // Isstorageaccountnameavailable parameter set
         //
-        // GraphQL operation: isAzureStorageAccountNameAvailable(azureSubscriptionRubrikId: UUID!, storageAccountName: String!):Boolean!
+        // [GraphQL: isAzureStorageAccountNameAvailable]
         //
         [Parameter(
-            ParameterSetName = "isStorageAccountNameAvailable",
+            ParameterSetName = "Isstorageaccountnameavailable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure.
-                GraphQL operation: isAzureStorageAccountNameAvailable(azureSubscriptionRubrikId: UUID!, storageAccountName: String!):Boolean!
-                ",
+@"Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure.
+[GraphQL: isAzureStorageAccountNameAvailable]",
             Position = 0
         )]
-        public SwitchParameter isStorageAccountNameAvailable { get; set; }
+        public SwitchParameter Isstorageaccountnameavailable { get; set; }
 
         [Parameter(
-            ParameterSetName = "isStorageAccountNameAvailable",
+            ParameterSetName = "Isstorageaccountnameavailable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A unique name for the storage account. Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
-                GraphQL argument storageAccountName: String!
-                "
+@"A unique name for the storage account. Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
+GraphQL argument storageAccountName: String!"
         )]
         public System.String? StorageAccountName { get; set; }
         
         // -------------------------------------------------------------------
-        // allNativeStorageAccountsFromAzure parameter set
+        // Allnativestorageaccountsfromazure parameter set
         //
-        // GraphQL operation: allAzureNativeStorageAccountsFromAzure(azureSubscriptionRubrikId: UUID!):[AzureNativeStorageAccount!]!
+        // [GraphQL: allAzureNativeStorageAccountsFromAzure]
         //
         [Parameter(
-            ParameterSetName = "allNativeStorageAccountsFromAzure",
+            ParameterSetName = "Allnativestorageaccountsfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves list of all storage Accounts in a subscription.
-                GraphQL operation: allAzureNativeStorageAccountsFromAzure(azureSubscriptionRubrikId: UUID!):[AzureNativeStorageAccount!]!
-                ",
+@"Retrieves list of all storage Accounts in a subscription.
+[GraphQL: allAzureNativeStorageAccountsFromAzure]",
             Position = 0
         )]
-        public SwitchParameter allNativeStorageAccountsFromAzure { get; set; }
+        public SwitchParameter Allnativestorageaccountsfromazure { get; set; }
 
         
         // -------------------------------------------------------------------
-        // SqlDatabase parameter set
+        // Sqldatabase parameter set
         //
-        // GraphQL operation: azureSqlDatabase(azureSqlDatabaseRubrikId: UUID!):AzureSqlDatabaseDb!
+        // [GraphQL: azureSqlDatabase]
         //
         [Parameter(
-            ParameterSetName = "SqlDatabase",
+            ParameterSetName = "Sqldatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
-                GraphQL operation: azureSqlDatabase(azureSqlDatabaseRubrikId: UUID!):AzureSqlDatabaseDb!
-                ",
+@"Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
+[GraphQL: azureSqlDatabase]",
             Position = 0
         )]
-        public SwitchParameter SqlDatabase { get; set; }
+        public SwitchParameter Sqldatabase { get; set; }
 
         [Parameter(
-            ParameterSetName = "SqlDatabase",
+            ParameterSetName = "Sqldatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID of the Azure SQL Database.
-                GraphQL argument azureSqlDatabaseRubrikId: UUID!
-                "
+@"Rubrik ID of the Azure SQL Database.
+GraphQL argument azureSqlDatabaseRubrikId: UUID!"
         )]
         public System.String? AzureSqlDatabaseRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // SqlDatabaseServer parameter set
+        // Sqldatabaseserver parameter set
         //
-        // GraphQL operation: azureSqlDatabaseServer(azureSqlDatabaseServerRubrikId: UUID!):AzureSqlDatabaseServer!
+        // [GraphQL: azureSqlDatabaseServer]
         //
         [Parameter(
-            ParameterSetName = "SqlDatabaseServer",
+            ParameterSetName = "Sqldatabaseserver",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves an Azure SQL Database Server. Refers to the server that contains the Azure SQL Databases. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers.
-                GraphQL operation: azureSqlDatabaseServer(azureSqlDatabaseServerRubrikId: UUID!):AzureSqlDatabaseServer!
-                ",
+@"Retrieves an Azure SQL Database Server. Refers to the server that contains the Azure SQL Databases. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers.
+[GraphQL: azureSqlDatabaseServer]",
             Position = 0
         )]
-        public SwitchParameter SqlDatabaseServer { get; set; }
+        public SwitchParameter Sqldatabaseserver { get; set; }
 
         [Parameter(
-            ParameterSetName = "SqlDatabaseServer",
+            ParameterSetName = "Sqldatabaseserver",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID of the Azure SQL Database Server.
-                GraphQL argument azureSqlDatabaseServerRubrikId: UUID!
-                "
+@"Rubrik ID of the Azure SQL Database Server.
+GraphQL argument azureSqlDatabaseServerRubrikId: UUID!"
         )]
         public System.String? AzureSqlDatabaseServerRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // SqlManagedInstanceDatabase parameter set
+        // Sqlmanagedinstancedatabase parameter set
         //
-        // GraphQL operation: azureSqlManagedInstanceDatabase(azureSqlManagedInstanceDatabaseRubrikId: UUID!):AzureSqlManagedInstanceDatabase!
+        // [GraphQL: azureSqlManagedInstanceDatabase]
         //
         [Parameter(
-            ParameterSetName = "SqlManagedInstanceDatabase",
+            ParameterSetName = "Sqlmanagedinstancedatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
-                GraphQL operation: azureSqlManagedInstanceDatabase(azureSqlManagedInstanceDatabaseRubrikId: UUID!):AzureSqlManagedInstanceDatabase!
-                ",
+@"Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
+[GraphQL: azureSqlManagedInstanceDatabase]",
             Position = 0
         )]
-        public SwitchParameter SqlManagedInstanceDatabase { get; set; }
+        public SwitchParameter Sqlmanagedinstancedatabase { get; set; }
 
         [Parameter(
-            ParameterSetName = "SqlManagedInstanceDatabase",
+            ParameterSetName = "Sqlmanagedinstancedatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID of the Azure SQL Managed Instance Database.
-                GraphQL argument azureSqlManagedInstanceDatabaseRubrikId: UUID!
-                "
+@"Rubrik ID of the Azure SQL Managed Instance Database.
+GraphQL argument azureSqlManagedInstanceDatabaseRubrikId: UUID!"
         )]
         public System.String? AzureSqlManagedInstanceDatabaseRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // SqlManagedInstanceServer parameter set
+        // Sqlmanagedinstanceserver parameter set
         //
-        // GraphQL operation: azureSqlManagedInstanceServer(azureSqlManagedInstanceServerRubrikId: UUID!):AzureSqlManagedInstanceServer!
+        // [GraphQL: azureSqlManagedInstanceServer]
         //
         [Parameter(
-            ParameterSetName = "SqlManagedInstanceServer",
+            ParameterSetName = "Sqlmanagedinstanceserver",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of.
-                GraphQL operation: azureSqlManagedInstanceServer(azureSqlManagedInstanceServerRubrikId: UUID!):AzureSqlManagedInstanceServer!
-                ",
+@"Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of.
+[GraphQL: azureSqlManagedInstanceServer]",
             Position = 0
         )]
-        public SwitchParameter SqlManagedInstanceServer { get; set; }
+        public SwitchParameter Sqlmanagedinstanceserver { get; set; }
 
         [Parameter(
-            ParameterSetName = "SqlManagedInstanceServer",
+            ParameterSetName = "Sqlmanagedinstanceserver",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik ID of the Azure SQL Managed Instance Server.
-                GraphQL argument azureSqlManagedInstanceServerRubrikId: UUID!
-                "
+@"Rubrik ID of the Azure SQL Managed Instance Server.
+GraphQL argument azureSqlManagedInstanceServerRubrikId: UUID!"
         )]
         public System.String? AzureSqlManagedInstanceServerRubrikId { get; set; }
         
         // -------------------------------------------------------------------
-        // SqlDatabaseDbPointInTimeRestoreWindowFromAzure parameter set
+        // Sqldatabasedbpointintimerestorewindowfromazure parameter set
         //
-        // GraphQL operation: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlDatabaseServerName: String!,   azureSqlDatabaseName: String!, ):AzureNativeSqlDatabasePointInTimeRestoreWindow!
+        // [GraphQL: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure]
         //
         [Parameter(
-            ParameterSetName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+            ParameterSetName = "Sqldatabasedbpointintimerestorewindowfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://azure.microsoft.com/en-in/blog/azure-sql-database-point-in-time-restore/.
-                GraphQL operation: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlDatabaseServerName: String!,   azureSqlDatabaseName: String!, ):AzureNativeSqlDatabasePointInTimeRestoreWindow!
-                ",
+@"Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://azure.microsoft.com/en-in/blog/azure-sql-database-point-in-time-restore/.
+[GraphQL: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure]",
             Position = 0
         )]
-        public SwitchParameter SqlDatabaseDbPointInTimeRestoreWindowFromAzure { get; set; }
+        public SwitchParameter Sqldatabasedbpointintimerestorewindowfromazure { get; set; }
 
         [Parameter(
-            ParameterSetName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+            ParameterSetName = "Sqldatabasedbpointintimerestorewindowfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Subscription ID.
-                GraphQL argument subscriptionId: UUID!
-                "
+@"Subscription ID.
+GraphQL argument subscriptionId: UUID!"
         )]
         public System.String? SubscriptionId { get; set; }
         [Parameter(
-            ParameterSetName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+            ParameterSetName = "Sqldatabasedbpointintimerestorewindowfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Name of the Azure SQL Database server.
-                GraphQL argument azureSqlDatabaseServerName: String!
-                "
+@"Name of the Azure SQL Database server.
+GraphQL argument azureSqlDatabaseServerName: String!"
         )]
         public System.String? AzureSqlDatabaseServerName { get; set; }
         [Parameter(
-            ParameterSetName = "SqlDatabaseDbPointInTimeRestoreWindowFromAzure",
+            ParameterSetName = "Sqldatabasedbpointintimerestorewindowfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Name of the Azure SQL Database.
-                GraphQL argument azureSqlDatabaseName: String!
-                "
+@"Name of the Azure SQL Database.
+GraphQL argument azureSqlDatabaseName: String!"
         )]
         public System.String? AzureSqlDatabaseName { get; set; }
         
         // -------------------------------------------------------------------
-        // SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure parameter set
+        // Sqlmanagedinstancedbpointintimerestorewindowfromazure parameter set
         //
-        // GraphQL operation: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlManagedInstanceName: String!,   azureSqlDatabaseName: String!, ):AzureNativeSqlDatabasePointInTimeRestoreWindow!
+        // [GraphQL: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure]
         //
         [Parameter(
-            ParameterSetName = "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+            ParameterSetName = "Sqlmanagedinstancedbpointintimerestorewindowfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal.
-                GraphQL operation: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlManagedInstanceName: String!,   azureSqlDatabaseName: String!, ):AzureNativeSqlDatabasePointInTimeRestoreWindow!
-                ",
+@"Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal.
+[GraphQL: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure]",
             Position = 0
         )]
-        public SwitchParameter SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure { get; set; }
+        public SwitchParameter Sqlmanagedinstancedbpointintimerestorewindowfromazure { get; set; }
 
         [Parameter(
-            ParameterSetName = "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
+            ParameterSetName = "Sqlmanagedinstancedbpointintimerestorewindowfromazure",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Name of the Azure SQL Managed Instance.
-                GraphQL argument azureSqlManagedInstanceName: String!
-                "
+@"Name of the Azure SQL Managed Instance.
+GraphQL argument azureSqlManagedInstanceName: String!"
         )]
         public System.String? AzureSqlManagedInstanceName { get; set; }
         
         // -------------------------------------------------------------------
-        // validateNativeSqlDatabaseDbNameForExport parameter set
+        // Validatenativesqldatabasedbnameforexport parameter set
         //
-        // GraphQL operation: validateAzureNativeSqlDatabaseDbNameForExport(azureSqlDatabaseName: String!, azureSqlDatabaseServerRubrikId: UUID!):ValidateAzureNativeSqlDatabaseDbNameForExportReply!
+        // [GraphQL: validateAzureNativeSqlDatabaseDbNameForExport]
         //
         [Parameter(
-            ParameterSetName = "validateNativeSqlDatabaseDbNameForExport",
+            ParameterSetName = "Validatenativesqldatabasedbnameforexport",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
-                GraphQL operation: validateAzureNativeSqlDatabaseDbNameForExport(azureSqlDatabaseName: String!, azureSqlDatabaseServerRubrikId: UUID!):ValidateAzureNativeSqlDatabaseDbNameForExportReply!
-                ",
+@"Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
+[GraphQL: validateAzureNativeSqlDatabaseDbNameForExport]",
             Position = 0
         )]
-        public SwitchParameter validateNativeSqlDatabaseDbNameForExport { get; set; }
+        public SwitchParameter Validatenativesqldatabasedbnameforexport { get; set; }
 
         
         // -------------------------------------------------------------------
-        // validateNativeSqlManagedInstanceDbNameForExport parameter set
+        // Validatenativesqlmanagedinstancedbnameforexport parameter set
         //
-        // GraphQL operation: validateAzureNativeSqlManagedInstanceDbNameForExport(azureSqlDatabaseName: String!, azureSqlManagedInstanceServerRubrikId: UUID!):ValidateAzureNativeSqlManagedInstanceDbNameForExportReply!
+        // [GraphQL: validateAzureNativeSqlManagedInstanceDbNameForExport]
         //
         [Parameter(
-            ParameterSetName = "validateNativeSqlManagedInstanceDbNameForExport",
+            ParameterSetName = "Validatenativesqlmanagedinstancedbnameforexport",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Validates the name used for an Managed Instance Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
-                GraphQL operation: validateAzureNativeSqlManagedInstanceDbNameForExport(azureSqlDatabaseName: String!, azureSqlManagedInstanceServerRubrikId: UUID!):ValidateAzureNativeSqlManagedInstanceDbNameForExportReply!
-                ",
+@"Validates the name used for an Managed Instance Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
+[GraphQL: validateAzureNativeSqlManagedInstanceDbNameForExport]",
             Position = 0
         )]
-        public SwitchParameter validateNativeSqlManagedInstanceDbNameForExport { get; set; }
+        public SwitchParameter Validatenativesqlmanagedinstancedbnameforexport { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allSqlDatabaseServerElasticPool parameter set
+        // Allsqldatabaseserverelasticpool parameter set
         //
-        // GraphQL operation: allAzureSqlDatabaseServerElasticPools(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlDatabaseServerName: String!,   azureSqlDatabaseServerRubrikId: UUID!, ):[AzureSqlDatabaseServerElasticPool!]!
+        // [GraphQL: allAzureSqlDatabaseServerElasticPools]
         //
         [Parameter(
-            ParameterSetName = "allSqlDatabaseServerElasticPool",
+            ParameterSetName = "Allsqldatabaseserverelasticpool",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
-                GraphQL operation: allAzureSqlDatabaseServerElasticPools(,   subscriptionId: UUID!,   resourceGroupName: String!,   azureSqlDatabaseServerName: String!,   azureSqlDatabaseServerRubrikId: UUID!, ):[AzureSqlDatabaseServerElasticPool!]!
-                ",
+@"Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
+[GraphQL: allAzureSqlDatabaseServerElasticPools]",
             Position = 0
         )]
-        public SwitchParameter allSqlDatabaseServerElasticPool { get; set; }
+        public SwitchParameter Allsqldatabaseserverelasticpool { get; set; }
 
         
         // -------------------------------------------------------------------
-        // isNativeSqlDatabaseSnapshotPersistent parameter set
+        // Isnativesqldatabasesnapshotpersistent parameter set
         //
-        // GraphQL operation: isAzureNativeSqlDatabaseSnapshotPersistent(snapshotId: UUID!):Boolean!
+        // [GraphQL: isAzureNativeSqlDatabaseSnapshotPersistent]
         //
         [Parameter(
-            ParameterSetName = "isNativeSqlDatabaseSnapshotPersistent",
+            ParameterSetName = "Isnativesqldatabasesnapshotpersistent",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Database Snapshot is a persistent snapshot.
-                GraphQL operation: isAzureNativeSqlDatabaseSnapshotPersistent(snapshotId: UUID!):Boolean!
-                ",
+@"Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Database Snapshot is a persistent snapshot.
+[GraphQL: isAzureNativeSqlDatabaseSnapshotPersistent]",
             Position = 0
         )]
-        public SwitchParameter isNativeSqlDatabaseSnapshotPersistent { get; set; }
+        public SwitchParameter Isnativesqldatabasesnapshotpersistent { get; set; }
 
         [Parameter(
-            ParameterSetName = "isNativeSqlDatabaseSnapshotPersistent",
+            ParameterSetName = "Isnativesqldatabasesnapshotpersistent",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Snapshot ID
-                GraphQL argument snapshotId: UUID!
-                "
+@"Snapshot ID
+GraphQL argument snapshotId: UUID!"
         )]
         public System.String? SnapshotId { get; set; }
         
         // -------------------------------------------------------------------
-        // allKeyVaultsByRegion parameter set
+        // Allkeyvaultsbyregion parameter set
         //
-        // GraphQL operation: allAzureKeyVaultsByRegion(azureKeyVaultsInput: AzureKeyVaultsInput!):[AzureKeyVault!]!
+        // [GraphQL: allAzureKeyVaultsByRegion]
         //
         [Parameter(
-            ParameterSetName = "allKeyVaultsByRegion",
+            ParameterSetName = "Allkeyvaultsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all Azure Key Vaults in a region.
-                GraphQL operation: allAzureKeyVaultsByRegion(azureKeyVaultsInput: AzureKeyVaultsInput!):[AzureKeyVault!]!
-                ",
+@"List of all Azure Key Vaults in a region.
+[GraphQL: allAzureKeyVaultsByRegion]",
             Position = 0
         )]
-        public SwitchParameter allKeyVaultsByRegion { get; set; }
+        public SwitchParameter Allkeyvaultsbyregion { get; set; }
 
         [Parameter(
-            ParameterSetName = "allKeyVaultsByRegion",
+            ParameterSetName = "Allkeyvaultsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for fetching Key Vaults in an Azure region.
-                GraphQL argument azureKeyVaultsInput: AzureKeyVaultsInput!
-                "
+@"Input for fetching Key Vaults in an Azure region.
+GraphQL argument azureKeyVaultsInput: AzureKeyVaultsInput!"
         )]
         public AzureKeyVaultsInput? AzureKeyVaultsInput { get; set; }
         
         // -------------------------------------------------------------------
-        // allEncryptionKey parameter set
+        // Allencryptionkey parameter set
         //
-        // GraphQL operation: allAzureEncryptionKeys(azureEncryptionKeysInput: AzureEncryptionKeysInput!):[AzureEncryptionKey!]!
+        // [GraphQL: allAzureEncryptionKeys]
         //
         [Parameter(
-            ParameterSetName = "allEncryptionKey",
+            ParameterSetName = "Allencryptionkey",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of all Encryption Keys in an Azure Key Vault.
-                GraphQL operation: allAzureEncryptionKeys(azureEncryptionKeysInput: AzureEncryptionKeysInput!):[AzureEncryptionKey!]!
-                ",
+@"List of all Encryption Keys in an Azure Key Vault.
+[GraphQL: allAzureEncryptionKeys]",
             Position = 0
         )]
-        public SwitchParameter allEncryptionKey { get; set; }
+        public SwitchParameter Allencryptionkey { get; set; }
 
         [Parameter(
-            ParameterSetName = "allEncryptionKey",
+            ParameterSetName = "Allencryptionkey",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for fetching Encryption Keys in an Azure Key Vault.
-                GraphQL argument azureEncryptionKeysInput: AzureEncryptionKeysInput!
-                "
+@"Input for fetching Encryption Keys in an Azure Key Vault.
+GraphQL argument azureEncryptionKeysInput: AzureEncryptionKeysInput!"
         )]
         public AzureEncryptionKeysInput? AzureEncryptionKeysInput { get; set; }
         
         // -------------------------------------------------------------------
-        // CloudAccountTenant parameter set
+        // Cloudaccounttenant parameter set
         //
-        // GraphQL operation: azureCloudAccountTenant(,   tenantId: UUID!,   feature: CloudAccountFeature!,   subscriptionStatusFilters: [CloudAccountStatus!]!,   subscriptionSearchText: String!,   subscriptionIdsFilter: [UUID!], ):AzureCloudAccountTenant!
+        // [GraphQL: azureCloudAccountTenant]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountTenant",
+            ParameterSetName = "Cloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature.
-                GraphQL operation: azureCloudAccountTenant(,   tenantId: UUID!,   feature: CloudAccountFeature!,   subscriptionStatusFilters: [CloudAccountStatus!]!,   subscriptionSearchText: String!,   subscriptionIdsFilter: [UUID!], ):AzureCloudAccountTenant!
-                ",
+@"Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature.
+[GraphQL: azureCloudAccountTenant]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountTenant { get; set; }
+        public SwitchParameter Cloudaccounttenant { get; set; }
 
         [Parameter(
-            ParameterSetName = "CloudAccountTenant",
+            ParameterSetName = "Cloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Tenant ID of the Azure tenant.
-                GraphQL argument tenantId: UUID!
-                "
+@"Tenant ID of the Azure tenant.
+GraphQL argument tenantId: UUID!"
         )]
         public System.String? TenantId { get; set; }
         [Parameter(
-            ParameterSetName = "CloudAccountTenant",
+            ParameterSetName = "Cloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A cloud account feature of Rubrik Security Cloud.
-                GraphQL argument feature: CloudAccountFeature!
-                "
+@"A cloud account feature of Rubrik Security Cloud.
+GraphQL argument feature: CloudAccountFeature!"
         )]
         public CloudAccountFeature? Feature { get; set; }
         [Parameter(
-            ParameterSetName = "CloudAccountTenant",
+            ParameterSetName = "Cloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of subscription status filters to apply.
-                GraphQL argument subscriptionStatusFilters: [CloudAccountStatus!]!
-                "
+@"List of subscription status filters to apply.
+GraphQL argument subscriptionStatusFilters: [CloudAccountStatus!]!"
         )]
         public List<CloudAccountStatus>? SubscriptionStatusFilters { get; set; }
         [Parameter(
-            ParameterSetName = "CloudAccountTenant",
+            ParameterSetName = "Cloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Search text for subscription name and native ID.
-                GraphQL argument subscriptionSearchText: String!
-                "
+@"Search text for subscription name and native ID.
+GraphQL argument subscriptionSearchText: String!"
         )]
         public System.String? SubscriptionSearchText { get; set; }
         [Parameter(
-            ParameterSetName = "CloudAccountTenant",
+            ParameterSetName = "Cloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of subscription IDs to filter on.
-                GraphQL argument subscriptionIdsFilter: [UUID!]
-                "
+@"List of subscription IDs to filter on.
+GraphQL argument subscriptionIdsFilter: [UUID!]"
         )]
         public List<System.String>? SubscriptionIdsFilter { get; set; }
         
         // -------------------------------------------------------------------
-        // CloudAccountTenantWithExoConfig parameter set
+        // Cloudaccounttenantwithexoconfig parameter set
         //
-        // GraphQL operation: azureCloudAccountTenantWithExoConfigs(,   tenantId: UUID!,   feature: CloudAccountFeature!,   subscriptionStatusFilters: [CloudAccountStatus!]!,   subscriptionSearchText: String!,   subscriptionIdsFilter: [UUID!], ):AzureCloudAccountTenantWithExoConfigs!
+        // [GraphQL: azureCloudAccountTenantWithExoConfigs]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountTenantWithExoConfig",
+            ParameterSetName = "Cloudaccounttenantwithexoconfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
-                GraphQL operation: azureCloudAccountTenantWithExoConfigs(,   tenantId: UUID!,   feature: CloudAccountFeature!,   subscriptionStatusFilters: [CloudAccountStatus!]!,   subscriptionSearchText: String!,   subscriptionIdsFilter: [UUID!], ):AzureCloudAccountTenantWithExoConfigs!
-                ",
+@"Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
+[GraphQL: azureCloudAccountTenantWithExoConfigs]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountTenantWithExoConfig { get; set; }
+        public SwitchParameter Cloudaccounttenantwithexoconfig { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allCloudAccountTenant parameter set
+        // Allcloudaccounttenant parameter set
         //
-        // GraphQL operation: allAzureCloudAccountTenants(features: [CloudAccountFeature!], feature: CloudAccountFeature!, includeSubscriptionDetails: Boolean!):[AzureCloudAccountTenant!]!
+        // [GraphQL: allAzureCloudAccountTenants]
         //
         [Parameter(
-            ParameterSetName = "allCloudAccountTenant",
+            ParameterSetName = "Allcloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
-                GraphQL operation: allAzureCloudAccountTenants(features: [CloudAccountFeature!], feature: CloudAccountFeature!, includeSubscriptionDetails: Boolean!):[AzureCloudAccountTenant!]!
-                ",
+@"Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
+[GraphQL: allAzureCloudAccountTenants]",
             Position = 0
         )]
-        public SwitchParameter allCloudAccountTenant { get; set; }
+        public SwitchParameter Allcloudaccounttenant { get; set; }
 
         [Parameter(
-            ParameterSetName = "allCloudAccountTenant",
+            ParameterSetName = "Allcloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
-                GraphQL argument features: [CloudAccountFeature!]
-                "
+@"Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
+GraphQL argument features: [CloudAccountFeature!]"
         )]
         public List<CloudAccountFeature>? Features { get; set; }
         [Parameter(
-            ParameterSetName = "allCloudAccountTenant",
+            ParameterSetName = "Allcloudaccounttenant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Specifies whether the details about the subscriptions in the tenants are included in the response or not.
-                GraphQL argument includeSubscriptionDetails: Boolean!
-                "
+@"Specifies whether the details about the subscriptions in the tenants are included in the response or not.
+GraphQL argument includeSubscriptionDetails: Boolean!"
         )]
         public System.Boolean? IncludeSubscriptionDetails { get; set; }
         
         // -------------------------------------------------------------------
-        // CloudAccountSubscriptionWithFeature parameter set
+        // Cloudaccountsubscriptionwithfeature parameter set
         //
-        // GraphQL operation: azureCloudAccountSubscriptionWithFeatures(cloudAccountId: UUID!):AzureCloudAccountSubscriptionWithFeatures!
+        // [GraphQL: azureCloudAccountSubscriptionWithFeatures]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountSubscriptionWithFeature",
+            ParameterSetName = "Cloudaccountsubscriptionwithfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves the details of the Azure cloud account.
-                GraphQL operation: azureCloudAccountSubscriptionWithFeatures(cloudAccountId: UUID!):AzureCloudAccountSubscriptionWithFeatures!
-                ",
+@"Retrieves the details of the Azure cloud account.
+[GraphQL: azureCloudAccountSubscriptionWithFeatures]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountSubscriptionWithFeature { get; set; }
+        public SwitchParameter Cloudaccountsubscriptionwithfeature { get; set; }
 
         [Parameter(
-            ParameterSetName = "CloudAccountSubscriptionWithFeature",
+            ParameterSetName = "Cloudaccountsubscriptionwithfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik ID of the cloud account.
-                GraphQL argument cloudAccountId: UUID!
-                "
+@"The Rubrik ID of the cloud account.
+GraphQL argument cloudAccountId: UUID!"
         )]
         public System.String? CloudAccountId { get; set; }
         
         // -------------------------------------------------------------------
-        // allCloudAccountSubscriptionsByFeature parameter set
+        // Allcloudaccountsubscriptionsbyfeature parameter set
         //
-        // GraphQL operation: allAzureCloudAccountSubscriptionsByFeature(feature: CloudAccountFeature!, subscriptionStatusFilters: [CloudAccountStatus!]!):[AzureSubscriptionWithFeaturesType!]!
+        // [GraphQL: allAzureCloudAccountSubscriptionsByFeature]
         //
         [Parameter(
-            ParameterSetName = "allCloudAccountSubscriptionsByFeature",
+            ParameterSetName = "Allcloudaccountsubscriptionsbyfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
-                GraphQL operation: allAzureCloudAccountSubscriptionsByFeature(feature: CloudAccountFeature!, subscriptionStatusFilters: [CloudAccountStatus!]!):[AzureSubscriptionWithFeaturesType!]!
-                ",
+@"Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
+[GraphQL: allAzureCloudAccountSubscriptionsByFeature]",
             Position = 0
         )]
-        public SwitchParameter allCloudAccountSubscriptionsByFeature { get; set; }
+        public SwitchParameter Allcloudaccountsubscriptionsbyfeature { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allSubscriptionWithExocomputeMapping parameter set
+        // Allsubscriptionwithexocomputemapping parameter set
         //
-        // GraphQL operation: allAzureSubscriptionWithExocomputeMappings(features: [CloudAccountFeature!], exocomputeSubscriptionIdsFilter: [UUID!]):[AzureSubscriptionWithExocomputeMapping!]!
+        // [GraphQL: allAzureSubscriptionWithExocomputeMappings]
         //
         [Parameter(
-            ParameterSetName = "allSubscriptionWithExocomputeMapping",
+            ParameterSetName = "Allsubscriptionwithexocomputemapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
-                GraphQL operation: allAzureSubscriptionWithExocomputeMappings(features: [CloudAccountFeature!], exocomputeSubscriptionIdsFilter: [UUID!]):[AzureSubscriptionWithExocomputeMapping!]!
-                ",
+@"Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
+[GraphQL: allAzureSubscriptionWithExocomputeMappings]",
             Position = 0
         )]
-        public SwitchParameter allSubscriptionWithExocomputeMapping { get; set; }
+        public SwitchParameter Allsubscriptionwithexocomputemapping { get; set; }
 
         [Parameter(
-            ParameterSetName = "allSubscriptionWithExocomputeMapping",
+            ParameterSetName = "Allsubscriptionwithexocomputemapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of mapped Exocompute subscription IDs.
-                GraphQL argument exocomputeSubscriptionIdsFilter: [UUID!]
-                "
+@"List of mapped Exocompute subscription IDs.
+GraphQL argument exocomputeSubscriptionIdsFilter: [UUID!]"
         )]
         public List<System.String>? ExocomputeSubscriptionIdsFilter { get; set; }
         
         // -------------------------------------------------------------------
-        // allResourceGroupsFrom parameter set
+        // Allresourcegroupsfrom parameter set
         //
-        // GraphQL operation: allResourceGroupsFromAzure(cloudAccountId: UUID!, azureSubscriptionNativeId: UUID!, feature: CloudAccountFeature!):[AzureResourceGroup!]!
+        // [GraphQL: allResourceGroupsFromAzure]
         //
         [Parameter(
-            ParameterSetName = "allResourceGroupsFrom",
+            ParameterSetName = "Allresourcegroupsfrom",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list og all resource groups in the specified account.
-                GraphQL operation: allResourceGroupsFromAzure(cloudAccountId: UUID!, azureSubscriptionNativeId: UUID!, feature: CloudAccountFeature!):[AzureResourceGroup!]!
-                ",
+@"Retrieves a list og all resource groups in the specified account.
+[GraphQL: allResourceGroupsFromAzure]",
             Position = 0
         )]
-        public SwitchParameter allResourceGroupsFrom { get; set; }
+        public SwitchParameter Allresourcegroupsfrom { get; set; }
 
         [Parameter(
-            ParameterSetName = "allResourceGroupsFrom",
+            ParameterSetName = "Allresourcegroupsfrom",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Native ID of the subscription.
-                GraphQL argument azureSubscriptionNativeId: UUID!
-                "
+@"The Native ID of the subscription.
+GraphQL argument azureSubscriptionNativeId: UUID!"
         )]
         public System.String? AzureSubscriptionNativeId { get; set; }
         
         // -------------------------------------------------------------------
-        // doesNativeResourceGroupExist parameter set
+        // Doesnativeresourcegroupexist parameter set
         //
-        // GraphQL operation: doesAzureNativeResourceGroupExist(,   cloudAccountId: UUID!,   azureSubscriptionNativeId: UUID!,   resourceGroupName: String!,   feature: CloudAccountFeature!, ):Boolean!
+        // [GraphQL: doesAzureNativeResourceGroupExist]
         //
         [Parameter(
-            ParameterSetName = "doesNativeResourceGroupExist",
+            ParameterSetName = "Doesnativeresourcegroupexist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Checks if a resource group with the specified name exists in the specified account.
-                GraphQL operation: doesAzureNativeResourceGroupExist(,   cloudAccountId: UUID!,   azureSubscriptionNativeId: UUID!,   resourceGroupName: String!,   feature: CloudAccountFeature!, ):Boolean!
-                ",
+@"Checks if a resource group with the specified name exists in the specified account.
+[GraphQL: doesAzureNativeResourceGroupExist]",
             Position = 0
         )]
-        public SwitchParameter doesNativeResourceGroupExist { get; set; }
+        public SwitchParameter Doesnativeresourcegroupexist { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allNativeResourceGroupsInfoIfExist parameter set
+        // Allnativeresourcegroupsinfoifexist parameter set
         //
-        // GraphQL operation: allAzureNativeResourceGroupsInfoIfExist(input: AzureGetResourceGroupsInfoIfExistInput!):[AzureResourceGroupInfo!]!
+        // [GraphQL: allAzureNativeResourceGroupsInfoIfExist]
         //
         [Parameter(
-            ParameterSetName = "allNativeResourceGroupsInfoIfExist",
+            ParameterSetName = "Allnativeresourcegroupsinfoifexist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of resource groups with the specified names which exist in the specified account.
-                GraphQL operation: allAzureNativeResourceGroupsInfoIfExist(input: AzureGetResourceGroupsInfoIfExistInput!):[AzureResourceGroupInfo!]!
-                ",
+@"Retrieves a list of resource groups with the specified names which exist in the specified account.
+[GraphQL: allAzureNativeResourceGroupsInfoIfExist]",
             Position = 0
         )]
-        public SwitchParameter allNativeResourceGroupsInfoIfExist { get; set; }
+        public SwitchParameter Allnativeresourcegroupsinfoifexist { get; set; }
 
         [Parameter(
-            ParameterSetName = "allNativeResourceGroupsInfoIfExist",
+            ParameterSetName = "Allnativeresourcegroupsinfoifexist",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input to get Azure Resource Groups if they exist.
-                GraphQL argument input: AzureGetResourceGroupsInfoIfExistInput!
-                "
+@"Input to get Azure Resource Groups if they exist.
+GraphQL argument input: AzureGetResourceGroupsInfoIfExistInput!"
         )]
         public AzureGetResourceGroupsInfoIfExistInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // allCloudAccountMissingPermission parameter set
+        // Allcloudaccountmissingpermission parameter set
         //
-        // GraphQL operation: allAzureCloudAccountMissingPermissions(sessionId: String!, subscriptionIds: [UUID!]!, cloudAccountAction: CloudAccountAction!):[AzureSubscriptionMissingPermissions!]!
+        // [GraphQL: allAzureCloudAccountMissingPermissions]
         //
         [Parameter(
-            ParameterSetName = "allCloudAccountMissingPermission",
+            ParameterSetName = "Allcloudaccountmissingpermission",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
-                GraphQL operation: allAzureCloudAccountMissingPermissions(sessionId: String!, subscriptionIds: [UUID!]!, cloudAccountAction: CloudAccountAction!):[AzureSubscriptionMissingPermissions!]!
-                ",
+@"Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
+[GraphQL: allAzureCloudAccountMissingPermissions]",
             Position = 0
         )]
-        public SwitchParameter allCloudAccountMissingPermission { get; set; }
+        public SwitchParameter Allcloudaccountmissingpermission { get; set; }
 
         [Parameter(
-            ParameterSetName = "allCloudAccountMissingPermission",
+            ParameterSetName = "Allcloudaccountmissingpermission",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Session ID of the current OAuth session.
-                GraphQL argument sessionId: String!
-                "
+@"Session ID of the current OAuth session.
+GraphQL argument sessionId: String!"
         )]
         public System.String? SessionId { get; set; }
         [Parameter(
-            ParameterSetName = "allCloudAccountMissingPermission",
+            ParameterSetName = "Allcloudaccountmissingpermission",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of Azure subscription IDs.
-                GraphQL argument subscriptionIds: [UUID!]!
-                "
+@"List of Azure subscription IDs.
+GraphQL argument subscriptionIds: [UUID!]!"
         )]
         public List<System.String>? SubscriptionIds { get; set; }
         [Parameter(
-            ParameterSetName = "allCloudAccountMissingPermission",
+            ParameterSetName = "Allcloudaccountmissingpermission",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The cloud account action to be performed. Some examples are: isCreate, isUpdateRegions, isDelete.
-                GraphQL argument cloudAccountAction: CloudAccountAction!
-                "
+@"The cloud account action to be performed. Some examples are: isCreate, isUpdateRegions, isDelete.
+GraphQL argument cloudAccountAction: CloudAccountAction!"
         )]
         public CloudAccountAction? CloudAccountAction { get; set; }
         
         // -------------------------------------------------------------------
-        // CloudAccountPermissionConfig parameter set
+        // Cloudaccountpermissionconfig parameter set
         //
-        // GraphQL operation: azureCloudAccountPermissionConfig(feature: CloudAccountFeature!):AzureCloudAccountPermissionConfigResponse!
+        // [GraphQL: azureCloudAccountPermissionConfig]
         //
         [Parameter(
-            ParameterSetName = "CloudAccountPermissionConfig",
+            ParameterSetName = "Cloudaccountpermissionconfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
-                GraphQL operation: azureCloudAccountPermissionConfig(feature: CloudAccountFeature!):AzureCloudAccountPermissionConfigResponse!
-                ",
+@"Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
+[GraphQL: azureCloudAccountPermissionConfig]",
             Position = 0
         )]
-        public SwitchParameter CloudAccountPermissionConfig { get; set; }
+        public SwitchParameter Cloudaccountpermissionconfig { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allExocomputeConfigsInAccount parameter set
+        // Allexocomputeconfigsinaccount parameter set
         //
-        // GraphQL operation: allAzureExocomputeConfigsInAccount(azureExocomputeSearchQuery: String, cloudAccountIDs: [UUID!]):[AzureExocomputeConfigsInAccount!]!
+        // [GraphQL: allAzureExocomputeConfigsInAccount]
         //
         [Parameter(
-            ParameterSetName = "allExocomputeConfigsInAccount",
+            ParameterSetName = "Allexocomputeconfigsinaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
-                GraphQL operation: allAzureExocomputeConfigsInAccount(azureExocomputeSearchQuery: String, cloudAccountIDs: [UUID!]):[AzureExocomputeConfigsInAccount!]!
-                ",
+@"Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
+[GraphQL: allAzureExocomputeConfigsInAccount]",
             Position = 0
         )]
-        public SwitchParameter allExocomputeConfigsInAccount { get; set; }
+        public SwitchParameter Allexocomputeconfigsinaccount { get; set; }
 
         [Parameter(
-            ParameterSetName = "allExocomputeConfigsInAccount",
+            ParameterSetName = "Allexocomputeconfigsinaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
-                GraphQL argument azureExocomputeSearchQuery: String
-                "
+@"A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query.
+GraphQL argument azureExocomputeSearchQuery: String"
         )]
         public System.String? AzureExocomputeSearchQuery { get; set; }
         [Parameter(
-            ParameterSetName = "allExocomputeConfigsInAccount",
+            ParameterSetName = "Allexocomputeconfigsinaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                IDs of cloud accounts.
-                GraphQL argument cloudAccountIDs: [UUID!]
-                "
+@"IDs of cloud accounts.
+GraphQL argument cloudAccountIDs: [UUID!]"
         )]
         public List<System.String>? CloudAccountIds { get; set; }
         
         // -------------------------------------------------------------------
-        // allCloudAccountSubnetsByRegion parameter set
+        // Allcloudaccountsubnetsbyregion parameter set
         //
-        // GraphQL operation: allAzureCloudAccountSubnetsByRegion(cloudAccountId: UUID!, region: AzureCloudAccountRegion!):[AzureNativeSubnet!]!
+        // [GraphQL: allAzureCloudAccountSubnetsByRegion]
         //
         [Parameter(
-            ParameterSetName = "allCloudAccountSubnetsByRegion",
+            ParameterSetName = "Allcloudaccountsubnetsbyregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
-                GraphQL operation: allAzureCloudAccountSubnetsByRegion(cloudAccountId: UUID!, region: AzureCloudAccountRegion!):[AzureNativeSubnet!]!
-                ",
+@"Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
+[GraphQL: allAzureCloudAccountSubnetsByRegion]",
             Position = 0
         )]
-        public SwitchParameter allCloudAccountSubnetsByRegion { get; set; }
+        public SwitchParameter Allcloudaccountsubnetsbyregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // validateCloudAccountExocomputeConfiguration parameter set
+        // Validatecloudaccountexocomputeconfiguration parameter set
         //
-        // GraphQL operation: validateAzureCloudAccountExocomputeConfigurations(input: ValidateAzureCloudAccountExocomputeConfigurationsInput!):ValidateAzureSubnetsForCloudAccountExocomputeReply!
+        // [GraphQL: validateAzureCloudAccountExocomputeConfigurations]
         //
         [Parameter(
-            ParameterSetName = "validateCloudAccountExocomputeConfiguration",
+            ParameterSetName = "Validatecloudaccountexocomputeconfiguration",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
-                GraphQL operation: validateAzureCloudAccountExocomputeConfigurations(input: ValidateAzureCloudAccountExocomputeConfigurationsInput!):ValidateAzureSubnetsForCloudAccountExocomputeReply!
-                ",
+@"Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
+[GraphQL: validateAzureCloudAccountExocomputeConfigurations]",
             Position = 0
         )]
-        public SwitchParameter validateCloudAccountExocomputeConfiguration { get; set; }
+        public SwitchParameter Validatecloudaccountexocomputeconfiguration { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allArmTemplatesByFeature parameter set
+        // Allarmtemplatesbyfeature parameter set
         //
-        // GraphQL operation: allAzureArmTemplatesByFeature(input: AzureArmTemplatesByFeatureInput!):[AzureArmTemplateByFeature!]!
+        // [GraphQL: allAzureArmTemplatesByFeature]
         //
         [Parameter(
-            ParameterSetName = "allArmTemplatesByFeature",
+            ParameterSetName = "Allarmtemplatesbyfeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieve ARM templates for role definition and role assignment.
-                GraphQL operation: allAzureArmTemplatesByFeature(input: AzureArmTemplatesByFeatureInput!):[AzureArmTemplateByFeature!]!
-                ",
+@"Retrieve ARM templates for role definition and role assignment.
+[GraphQL: allAzureArmTemplatesByFeature]",
             Position = 0
         )]
-        public SwitchParameter allArmTemplatesByFeature { get; set; }
+        public SwitchParameter Allarmtemplatesbyfeature { get; set; }
 
         
         // -------------------------------------------------------------------
         // Subscription parameter set
         //
-        // GraphQL operation: azureSubscriptions(tenantId: String!):AzureSubscriptionConnection!
+        // [GraphQL: azureSubscriptions]
         //
         [Parameter(
             ParameterSetName = "Subscription",
@@ -1317,10 +1161,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Gets the subscriptions for the given Azure tenant.
-                GraphQL operation: azureSubscriptions(tenantId: String!):AzureSubscriptionConnection!
-                ",
+@"Gets the subscriptions for the given Azure tenant.
+[GraphQL: azureSubscriptions]",
             Position = 0
         )]
         public SwitchParameter Subscription { get; set; }
@@ -1329,7 +1171,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Region parameter set
         //
-        // GraphQL operation: azureRegions(tenantId: String!, subscriptionId: UUID!):RegionConnection!
+        // [GraphQL: azureRegions]
         //
         [Parameter(
             ParameterSetName = "Region",
@@ -1337,71 +1179,63 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Gets the Azure regions for the given subscription.
-                GraphQL operation: azureRegions(tenantId: String!, subscriptionId: UUID!):RegionConnection!
-                ",
+@"Gets the Azure regions for the given subscription.
+[GraphQL: azureRegions]",
             Position = 0
         )]
         public SwitchParameter Region { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ResourceGroup parameter set
+        // Resourcegroup parameter set
         //
-        // GraphQL operation: azureResourceGroups(tenantId: String!, subscriptionId: UUID!):ResourceGroupConnection!
+        // [GraphQL: azureResourceGroups]
         //
         [Parameter(
-            ParameterSetName = "ResourceGroup",
+            ParameterSetName = "Resourcegroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Gets the Azure resource groups for the given subscription.
-                GraphQL operation: azureResourceGroups(tenantId: String!, subscriptionId: UUID!):ResourceGroupConnection!
-                ",
+@"Gets the Azure resource groups for the given subscription.
+[GraphQL: azureResourceGroups]",
             Position = 0
         )]
-        public SwitchParameter ResourceGroup { get; set; }
+        public SwitchParameter Resourcegroup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // VNet parameter set
+        // Vnet parameter set
         //
-        // GraphQL operation: azureVNets(tenantId: String!, subscriptionId: UUID!, regionName: String!):VnetConnection!
+        // [GraphQL: azureVNets]
         //
         [Parameter(
-            ParameterSetName = "VNet",
+            ParameterSetName = "Vnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Gets the VNets for the given subscription.
-                GraphQL operation: azureVNets(tenantId: String!, subscriptionId: UUID!, regionName: String!):VnetConnection!
-                ",
+@"Gets the VNets for the given subscription.
+[GraphQL: azureVNets]",
             Position = 0
         )]
-        public SwitchParameter VNet { get; set; }
+        public SwitchParameter Vnet { get; set; }
 
         [Parameter(
-            ParameterSetName = "VNet",
+            ParameterSetName = "Vnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument regionName: String!
-                "
+@"
+GraphQL argument regionName: String!"
         )]
         public System.String? RegionName { get; set; }
         
         // -------------------------------------------------------------------
         // Subnet parameter set
         //
-        // GraphQL operation: azureSubnets(tenantId: String!, subscriptionId: UUID!, vNetId: String!):SubnetConnection!
+        // [GraphQL: azureSubnets]
         //
         [Parameter(
             ParameterSetName = "Subnet",
@@ -1409,10 +1243,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Gets the subnets for the given subscription.
-                GraphQL operation: azureSubnets(tenantId: String!, subscriptionId: UUID!, vNetId: String!):SubnetConnection!
-                ",
+@"Gets the subnets for the given subscription.
+[GraphQL: azureSubnets]",
             Position = 0
         )]
         public SwitchParameter Subnet { get; set; }
@@ -1423,374 +1255,326 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument vNetId: String!
-                "
+@"
+GraphQL argument vNetId: String!"
         )]
         public System.String? VnetId { get; set; }
         
         // -------------------------------------------------------------------
-        // StorageAccount parameter set
+        // Storageaccount parameter set
         //
-        // GraphQL operation: azureStorageAccounts(tenantId: String!, subscriptionId: UUID!, regionName: String!):StorageAccountConnection!
+        // [GraphQL: azureStorageAccounts]
         //
         [Parameter(
-            ParameterSetName = "StorageAccount",
+            ParameterSetName = "Storageaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Gets the storage accounts for the given subscription.
-                GraphQL operation: azureStorageAccounts(tenantId: String!, subscriptionId: UUID!, regionName: String!):StorageAccountConnection!
-                ",
+@"Gets the storage accounts for the given subscription.
+[GraphQL: azureStorageAccounts]",
             Position = 0
         )]
-        public SwitchParameter StorageAccount { get; set; }
+        public SwitchParameter Storageaccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allHostedRegion parameter set
+        // Allhostedregion parameter set
         //
-        // GraphQL operation: allHostedAzureRegions:AzureRegionsResp!
+        // [GraphQL: allHostedAzureRegions]
         //
         [Parameter(
-            ParameterSetName = "allHostedRegion",
+            ParameterSetName = "Allhostedregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
-                GraphQL operation: allHostedAzureRegions:AzureRegionsResp!
-                ",
+@"Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
+[GraphQL: allHostedAzureRegions]",
             Position = 0
         )]
-        public SwitchParameter allHostedRegion { get; set; }
+        public SwitchParameter Allhostedregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allResourceGroup parameter set
+        // Allresourcegroup parameter set
         //
-        // GraphQL operation: allAzureResourceGroups(cloudAccountId: String!, azureRegion: String!):[String!]!
+        // [GraphQL: allAzureResourceGroups]
         //
         [Parameter(
-            ParameterSetName = "allResourceGroup",
+            ParameterSetName = "Allresourcegroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get resource groups for a service principal in Azure.
-                GraphQL operation: allAzureResourceGroups(cloudAccountId: String!, azureRegion: String!):[String!]!
-                ",
+@"Get resource groups for a service principal in Azure.
+[GraphQL: allAzureResourceGroups]",
             Position = 0
         )]
-        public SwitchParameter allResourceGroup { get; set; }
+        public SwitchParameter Allresourcegroup { get; set; }
 
         [Parameter(
-            ParameterSetName = "allResourceGroup",
+            ParameterSetName = "Allresourcegroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Region for Azure cloud account.
-                GraphQL argument azureRegion: String!
-                "
+@"Region for Azure cloud account.
+GraphQL argument azureRegion: String!"
         )]
         public System.String? AzureRegion { get; set; }
         
         // -------------------------------------------------------------------
-        // allVnet parameter set
+        // Allvnet parameter set
         //
-        // GraphQL operation: allAzureVnets(vnetRequest: AzureVnetReq!):[String!]!
+        // [GraphQL: allAzureVnets]
         //
         [Parameter(
-            ParameterSetName = "allVnet",
+            ParameterSetName = "Allvnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get VNets for a given account in Azure.
-                GraphQL operation: allAzureVnets(vnetRequest: AzureVnetReq!):[String!]!
-                ",
+@"Get VNets for a given account in Azure.
+[GraphQL: allAzureVnets]",
             Position = 0
         )]
-        public SwitchParameter allVnet { get; set; }
+        public SwitchParameter Allvnet { get; set; }
 
         [Parameter(
-            ParameterSetName = "allVnet",
+            ParameterSetName = "Allvnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                VNet request parameters for Azure.
-                GraphQL argument vnetRequest: AzureVnetReq!
-                "
+@"VNet request parameters for Azure.
+GraphQL argument vnetRequest: AzureVnetReq!"
         )]
         public AzureVnetReq? VnetRequest { get; set; }
         
         // -------------------------------------------------------------------
-        // allSubnet parameter set
+        // Allsubnet parameter set
         //
-        // GraphQL operation: allAzureSubnets(subnetRequest: AzureSubnetReq!):[String!]!
+        // [GraphQL: allAzureSubnets]
         //
         [Parameter(
-            ParameterSetName = "allSubnet",
+            ParameterSetName = "Allsubnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get subnets for a given account in Azure.
-                GraphQL operation: allAzureSubnets(subnetRequest: AzureSubnetReq!):[String!]!
-                ",
+@"Get subnets for a given account in Azure.
+[GraphQL: allAzureSubnets]",
             Position = 0
         )]
-        public SwitchParameter allSubnet { get; set; }
+        public SwitchParameter Allsubnet { get; set; }
 
         [Parameter(
-            ParameterSetName = "allSubnet",
+            ParameterSetName = "Allsubnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Subnet request parameters for Azure.
-                GraphQL argument subnetRequest: AzureSubnetReq!
-                "
+@"Subnet request parameters for Azure.
+GraphQL argument subnetRequest: AzureSubnetReq!"
         )]
         public AzureSubnetReq? SubnetRequest { get; set; }
         
         // -------------------------------------------------------------------
-        // allCdmVersion parameter set
+        // Allcdmversion parameter set
         //
-        // GraphQL operation: allAzureCdmVersions(cdmVersionRequest: AzureCdmVersionReq!):[AzureCdmVersion!]!
+        // [GraphQL: allAzureCdmVersions]
         //
         [Parameter(
-            ParameterSetName = "allCdmVersion",
+            ParameterSetName = "Allcdmversion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get all Rubrik CDM versions in the Azure marketplace.
-                GraphQL operation: allAzureCdmVersions(cdmVersionRequest: AzureCdmVersionReq!):[AzureCdmVersion!]!
-                ",
+@"Get all Rubrik CDM versions in the Azure marketplace.
+[GraphQL: allAzureCdmVersions]",
             Position = 0
         )]
-        public SwitchParameter allCdmVersion { get; set; }
+        public SwitchParameter Allcdmversion { get; set; }
 
         [Parameter(
-            ParameterSetName = "allCdmVersion",
+            ParameterSetName = "Allcdmversion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Rubrik CDM version request parameters for Azure.
-                GraphQL argument cdmVersionRequest: AzureCdmVersionReq!
-                "
+@"Rubrik CDM version request parameters for Azure.
+GraphQL argument cdmVersionRequest: AzureCdmVersionReq!"
         )]
         public AzureCdmVersionReq? CdmVersionRequest { get; set; }
         
         // -------------------------------------------------------------------
-        // allRegion parameter set
+        // Allregion parameter set
         //
-        // GraphQL operation: allAzureRegions(cloudAccountId: String!):[AzureCloudAccountRegion!]!
+        // [GraphQL: allAzureRegions]
         //
         [Parameter(
-            ParameterSetName = "allRegion",
+            ParameterSetName = "Allregion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get all available regions for Azure.
-                GraphQL operation: allAzureRegions(cloudAccountId: String!):[AzureCloudAccountRegion!]!
-                ",
+@"Get all available regions for Azure.
+[GraphQL: allAzureRegions]",
             Position = 0
         )]
-        public SwitchParameter allRegion { get; set; }
+        public SwitchParameter Allregion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allNsg parameter set
+        // Allnsg parameter set
         //
-        // GraphQL operation: allAzureNsgs(nsgRequest: AzureNsgRequest!):[String!]!
+        // [GraphQL: allAzureNsgs]
         //
         [Parameter(
-            ParameterSetName = "allNsg",
+            ParameterSetName = "Allnsg",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get all available network security groups for Azure.
-                GraphQL operation: allAzureNsgs(nsgRequest: AzureNsgRequest!):[String!]!
-                ",
+@"Get all available network security groups for Azure.
+[GraphQL: allAzureNsgs]",
             Position = 0
         )]
-        public SwitchParameter allNsg { get; set; }
+        public SwitchParameter Allnsg { get; set; }
 
         [Parameter(
-            ParameterSetName = "allNsg",
+            ParameterSetName = "Allnsg",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Nsg request parameters for Azure.
-                GraphQL argument nsgRequest: AzureNsgRequest!
-                "
+@"Nsg request parameters for Azure.
+GraphQL argument nsgRequest: AzureNsgRequest!"
         )]
         public AzureNsgRequest? NsgRequest { get; set; }
         
         // -------------------------------------------------------------------
-        // allStorageAccount parameter set
+        // Allstorageaccount parameter set
         //
-        // GraphQL operation: allAzureStorageAccounts(storageAccountsRequest: AzureStorageAccountsReq!):[String!]!
+        // [GraphQL: allAzureStorageAccounts]
         //
         [Parameter(
-            ParameterSetName = "allStorageAccount",
+            ParameterSetName = "Allstorageaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List all storage accounts from Azure.
-                GraphQL operation: allAzureStorageAccounts(storageAccountsRequest: AzureStorageAccountsReq!):[String!]!
-                ",
+@"List all storage accounts from Azure.
+[GraphQL: allAzureStorageAccounts]",
             Position = 0
         )]
-        public SwitchParameter allStorageAccount { get; set; }
+        public SwitchParameter Allstorageaccount { get; set; }
 
         [Parameter(
-            ParameterSetName = "allStorageAccount",
+            ParameterSetName = "Allstorageaccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Storage accounts request params for Azure.
-                GraphQL argument storageAccountsRequest: AzureStorageAccountsReq!
-                "
+@"Storage accounts request params for Azure.
+GraphQL argument storageAccountsRequest: AzureStorageAccountsReq!"
         )]
         public AzureStorageAccountsReq? StorageAccountsRequest { get; set; }
         
         // -------------------------------------------------------------------
-        // AdDirectorie parameter set
+        // Addirectorie parameter set
         //
-        // GraphQL operation: azureAdDirectories(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):AzureAdDirectoryConnection!
+        // [GraphQL: azureAdDirectories]
         //
         [Parameter(
-            ParameterSetName = "AdDirectorie",
+            ParameterSetName = "Addirectorie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                All Azure AD directories for the account.
-                GraphQL operation: azureAdDirectories(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):AzureAdDirectoryConnection!
-                ",
+@"All Azure AD directories for the account.
+[GraphQL: azureAdDirectories]",
             Position = 0
         )]
-        public SwitchParameter AdDirectorie { get; set; }
+        public SwitchParameter Addirectorie { get; set; }
 
         [Parameter(
-            ParameterSetName = "AdDirectorie",
+            ParameterSetName = "Addirectorie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
-            ParameterSetName = "AdDirectorie",
+            ParameterSetName = "Addirectorie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
-            ParameterSetName = "AdDirectorie",
+            ParameterSetName = "Addirectorie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort hierarchy objects by hierarchy field.
-                GraphQL argument sortBy: HierarchySortByField
-                "
+@"Sort hierarchy objects by hierarchy field.
+GraphQL argument sortBy: HierarchySortByField"
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
-            ParameterSetName = "AdDirectorie",
+            ParameterSetName = "Addirectorie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sorting order for the results.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Sorting order for the results.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
-            ParameterSetName = "AdDirectorie",
+            ParameterSetName = "Addirectorie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The hierarchy object filter.
-                GraphQL argument filter: [Filter!]
-                "
+@"The hierarchy object filter.
+GraphQL argument filter: [Filter!]"
         )]
         public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
-        // AdDirectory parameter set
+        // Addirectory parameter set
         //
-        // GraphQL operation: azureAdDirectory(workloadFid: UUID!):AzureAdDirectory!
+        // [GraphQL: azureAdDirectory]
         //
         [Parameter(
-            ParameterSetName = "AdDirectory",
+            ParameterSetName = "Addirectory",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Details of the Azure AD corresponds to the workload ID.
-                GraphQL operation: azureAdDirectory(workloadFid: UUID!):AzureAdDirectory!
-                ",
+@"Details of the Azure AD corresponds to the workload ID.
+[GraphQL: azureAdDirectory]",
             Position = 0
         )]
-        public SwitchParameter AdDirectory { get; set; }
+        public SwitchParameter Addirectory { get; set; }
 
         [Parameter(
-            ParameterSetName = "AdDirectory",
+            ParameterSetName = "Addirectory",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The FID of the workload.
-                GraphQL argument workloadFid: UUID!
-                "
+@"The FID of the workload.
+GraphQL argument workloadFid: UUID!"
         )]
         public System.String? WorkloadFid { get; set; }
 
@@ -1800,134 +1584,134 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "NativeRoot":
-                        this.ProcessRecord_NativeRoot();
+                    case "Nativeroot":
+                        this.ProcessRecord_Nativeroot();
                         break;
-                    case "NativeSubscription":
-                        this.ProcessRecord_NativeSubscription();
+                    case "Nativesubscription":
+                        this.ProcessRecord_Nativesubscription();
                         break;
-                    case "NativeResourceGroup":
-                        this.ProcessRecord_NativeResourceGroup();
+                    case "Nativeresourcegroup":
+                        this.ProcessRecord_Nativeresourcegroup();
                         break;
-                    case "NativeVirtualMachine":
-                        this.ProcessRecord_NativeVirtualMachine();
+                    case "Nativevirtualmachine":
+                        this.ProcessRecord_Nativevirtualmachine();
                         break;
-                    case "NativeManagedDisk":
-                        this.ProcessRecord_NativeManagedDisk();
+                    case "Nativemanageddisk":
+                        this.ProcessRecord_Nativemanageddisk();
                         break;
-                    case "allNativeVirtualNetwork":
-                        this.ProcessRecord_allNativeVirtualNetwork();
+                    case "Allnativevirtualnetwork":
+                        this.ProcessRecord_Allnativevirtualnetwork();
                         break;
-                    case "allNativeSubnetsByRegionFromAzure":
-                        this.ProcessRecord_allNativeSubnetsByRegionFromAzure();
+                    case "Allnativesubnetsbyregionfromazure":
+                        this.ProcessRecord_Allnativesubnetsbyregionfromazure();
                         break;
-                    case "allNativeSecurityGroupsByRegionFromAzure":
-                        this.ProcessRecord_allNativeSecurityGroupsByRegionFromAzure();
+                    case "Allnativesecuritygroupsbyregionfromazure":
+                        this.ProcessRecord_Allnativesecuritygroupsbyregionfromazure();
                         break;
-                    case "allDiskEncryptionSetsByRegion":
-                        this.ProcessRecord_allDiskEncryptionSetsByRegion();
+                    case "Alldiskencryptionsetsbyregion":
+                        this.ProcessRecord_Alldiskencryptionsetsbyregion();
                         break;
-                    case "allNativeAvailabilitySetsByRegionFromAzure":
-                        this.ProcessRecord_allNativeAvailabilitySetsByRegionFromAzure();
+                    case "Allnativeavailabilitysetsbyregionfromazure":
+                        this.ProcessRecord_Allnativeavailabilitysetsbyregionfromazure();
                         break;
-                    case "allNativeExportCompatibleVmSizesByRegionFromAzure":
-                        this.ProcessRecord_allNativeExportCompatibleVmSizesByRegionFromAzure();
+                    case "Allnativeexportcompatiblevmsizesbyregionfromazure":
+                        this.ProcessRecord_Allnativeexportcompatiblevmsizesbyregionfromazure();
                         break;
-                    case "allNativeExportCompatibleDiskTypesByRegionFromAzure":
-                        this.ProcessRecord_allNativeExportCompatibleDiskTypesByRegionFromAzure();
+                    case "Allnativeexportcompatibledisktypesbyregionfromazure":
+                        this.ProcessRecord_Allnativeexportcompatibledisktypesbyregionfromazure();
                         break;
-                    case "allNativeVirtualMachineSize":
-                        this.ProcessRecord_allNativeVirtualMachineSize();
+                    case "Allnativevirtualmachinesize":
+                        this.ProcessRecord_Allnativevirtualmachinesize();
                         break;
-                    case "isNativeManagedDiskSnapshotRestorable":
-                        this.ProcessRecord_isNativeManagedDiskSnapshotRestorable();
+                    case "Isnativemanageddisksnapshotrestorable":
+                        this.ProcessRecord_Isnativemanageddisksnapshotrestorable();
                         break;
-                    case "isStorageAccountNameAvailable":
-                        this.ProcessRecord_isStorageAccountNameAvailable();
+                    case "Isstorageaccountnameavailable":
+                        this.ProcessRecord_Isstorageaccountnameavailable();
                         break;
-                    case "allNativeStorageAccountsFromAzure":
-                        this.ProcessRecord_allNativeStorageAccountsFromAzure();
+                    case "Allnativestorageaccountsfromazure":
+                        this.ProcessRecord_Allnativestorageaccountsfromazure();
                         break;
-                    case "SqlDatabase":
-                        this.ProcessRecord_SqlDatabase();
+                    case "Sqldatabase":
+                        this.ProcessRecord_Sqldatabase();
                         break;
-                    case "SqlDatabaseServer":
-                        this.ProcessRecord_SqlDatabaseServer();
+                    case "Sqldatabaseserver":
+                        this.ProcessRecord_Sqldatabaseserver();
                         break;
-                    case "SqlManagedInstanceDatabase":
-                        this.ProcessRecord_SqlManagedInstanceDatabase();
+                    case "Sqlmanagedinstancedatabase":
+                        this.ProcessRecord_Sqlmanagedinstancedatabase();
                         break;
-                    case "SqlManagedInstanceServer":
-                        this.ProcessRecord_SqlManagedInstanceServer();
+                    case "Sqlmanagedinstanceserver":
+                        this.ProcessRecord_Sqlmanagedinstanceserver();
                         break;
-                    case "SqlDatabaseDbPointInTimeRestoreWindowFromAzure":
-                        this.ProcessRecord_SqlDatabaseDbPointInTimeRestoreWindowFromAzure();
+                    case "Sqldatabasedbpointintimerestorewindowfromazure":
+                        this.ProcessRecord_Sqldatabasedbpointintimerestorewindowfromazure();
                         break;
-                    case "SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure":
-                        this.ProcessRecord_SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure();
+                    case "Sqlmanagedinstancedbpointintimerestorewindowfromazure":
+                        this.ProcessRecord_Sqlmanagedinstancedbpointintimerestorewindowfromazure();
                         break;
-                    case "validateNativeSqlDatabaseDbNameForExport":
-                        this.ProcessRecord_validateNativeSqlDatabaseDbNameForExport();
+                    case "Validatenativesqldatabasedbnameforexport":
+                        this.ProcessRecord_Validatenativesqldatabasedbnameforexport();
                         break;
-                    case "validateNativeSqlManagedInstanceDbNameForExport":
-                        this.ProcessRecord_validateNativeSqlManagedInstanceDbNameForExport();
+                    case "Validatenativesqlmanagedinstancedbnameforexport":
+                        this.ProcessRecord_Validatenativesqlmanagedinstancedbnameforexport();
                         break;
-                    case "allSqlDatabaseServerElasticPool":
-                        this.ProcessRecord_allSqlDatabaseServerElasticPool();
+                    case "Allsqldatabaseserverelasticpool":
+                        this.ProcessRecord_Allsqldatabaseserverelasticpool();
                         break;
-                    case "isNativeSqlDatabaseSnapshotPersistent":
-                        this.ProcessRecord_isNativeSqlDatabaseSnapshotPersistent();
+                    case "Isnativesqldatabasesnapshotpersistent":
+                        this.ProcessRecord_Isnativesqldatabasesnapshotpersistent();
                         break;
-                    case "allKeyVaultsByRegion":
-                        this.ProcessRecord_allKeyVaultsByRegion();
+                    case "Allkeyvaultsbyregion":
+                        this.ProcessRecord_Allkeyvaultsbyregion();
                         break;
-                    case "allEncryptionKey":
-                        this.ProcessRecord_allEncryptionKey();
+                    case "Allencryptionkey":
+                        this.ProcessRecord_Allencryptionkey();
                         break;
-                    case "CloudAccountTenant":
-                        this.ProcessRecord_CloudAccountTenant();
+                    case "Cloudaccounttenant":
+                        this.ProcessRecord_Cloudaccounttenant();
                         break;
-                    case "CloudAccountTenantWithExoConfig":
-                        this.ProcessRecord_CloudAccountTenantWithExoConfig();
+                    case "Cloudaccounttenantwithexoconfig":
+                        this.ProcessRecord_Cloudaccounttenantwithexoconfig();
                         break;
-                    case "allCloudAccountTenant":
-                        this.ProcessRecord_allCloudAccountTenant();
+                    case "Allcloudaccounttenant":
+                        this.ProcessRecord_Allcloudaccounttenant();
                         break;
-                    case "CloudAccountSubscriptionWithFeature":
-                        this.ProcessRecord_CloudAccountSubscriptionWithFeature();
+                    case "Cloudaccountsubscriptionwithfeature":
+                        this.ProcessRecord_Cloudaccountsubscriptionwithfeature();
                         break;
-                    case "allCloudAccountSubscriptionsByFeature":
-                        this.ProcessRecord_allCloudAccountSubscriptionsByFeature();
+                    case "Allcloudaccountsubscriptionsbyfeature":
+                        this.ProcessRecord_Allcloudaccountsubscriptionsbyfeature();
                         break;
-                    case "allSubscriptionWithExocomputeMapping":
-                        this.ProcessRecord_allSubscriptionWithExocomputeMapping();
+                    case "Allsubscriptionwithexocomputemapping":
+                        this.ProcessRecord_Allsubscriptionwithexocomputemapping();
                         break;
-                    case "allResourceGroupsFrom":
-                        this.ProcessRecord_allResourceGroupsFrom();
+                    case "Allresourcegroupsfrom":
+                        this.ProcessRecord_Allresourcegroupsfrom();
                         break;
-                    case "doesNativeResourceGroupExist":
-                        this.ProcessRecord_doesNativeResourceGroupExist();
+                    case "Doesnativeresourcegroupexist":
+                        this.ProcessRecord_Doesnativeresourcegroupexist();
                         break;
-                    case "allNativeResourceGroupsInfoIfExist":
-                        this.ProcessRecord_allNativeResourceGroupsInfoIfExist();
+                    case "Allnativeresourcegroupsinfoifexist":
+                        this.ProcessRecord_Allnativeresourcegroupsinfoifexist();
                         break;
-                    case "allCloudAccountMissingPermission":
-                        this.ProcessRecord_allCloudAccountMissingPermission();
+                    case "Allcloudaccountmissingpermission":
+                        this.ProcessRecord_Allcloudaccountmissingpermission();
                         break;
-                    case "CloudAccountPermissionConfig":
-                        this.ProcessRecord_CloudAccountPermissionConfig();
+                    case "Cloudaccountpermissionconfig":
+                        this.ProcessRecord_Cloudaccountpermissionconfig();
                         break;
-                    case "allExocomputeConfigsInAccount":
-                        this.ProcessRecord_allExocomputeConfigsInAccount();
+                    case "Allexocomputeconfigsinaccount":
+                        this.ProcessRecord_Allexocomputeconfigsinaccount();
                         break;
-                    case "allCloudAccountSubnetsByRegion":
-                        this.ProcessRecord_allCloudAccountSubnetsByRegion();
+                    case "Allcloudaccountsubnetsbyregion":
+                        this.ProcessRecord_Allcloudaccountsubnetsbyregion();
                         break;
-                    case "validateCloudAccountExocomputeConfiguration":
-                        this.ProcessRecord_validateCloudAccountExocomputeConfiguration();
+                    case "Validatecloudaccountexocomputeconfiguration":
+                        this.ProcessRecord_Validatecloudaccountexocomputeconfiguration();
                         break;
-                    case "allArmTemplatesByFeature":
-                        this.ProcessRecord_allArmTemplatesByFeature();
+                    case "Allarmtemplatesbyfeature":
+                        this.ProcessRecord_Allarmtemplatesbyfeature();
                         break;
                     case "Subscription":
                         this.ProcessRecord_Subscription();
@@ -1935,47 +1719,47 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "Region":
                         this.ProcessRecord_Region();
                         break;
-                    case "ResourceGroup":
-                        this.ProcessRecord_ResourceGroup();
+                    case "Resourcegroup":
+                        this.ProcessRecord_Resourcegroup();
                         break;
-                    case "VNet":
-                        this.ProcessRecord_VNet();
+                    case "Vnet":
+                        this.ProcessRecord_Vnet();
                         break;
                     case "Subnet":
                         this.ProcessRecord_Subnet();
                         break;
-                    case "StorageAccount":
-                        this.ProcessRecord_StorageAccount();
+                    case "Storageaccount":
+                        this.ProcessRecord_Storageaccount();
                         break;
-                    case "allHostedRegion":
-                        this.ProcessRecord_allHostedRegion();
+                    case "Allhostedregion":
+                        this.ProcessRecord_Allhostedregion();
                         break;
-                    case "allResourceGroup":
-                        this.ProcessRecord_allResourceGroup();
+                    case "Allresourcegroup":
+                        this.ProcessRecord_Allresourcegroup();
                         break;
-                    case "allVnet":
-                        this.ProcessRecord_allVnet();
+                    case "Allvnet":
+                        this.ProcessRecord_Allvnet();
                         break;
-                    case "allSubnet":
-                        this.ProcessRecord_allSubnet();
+                    case "Allsubnet":
+                        this.ProcessRecord_Allsubnet();
                         break;
-                    case "allCdmVersion":
-                        this.ProcessRecord_allCdmVersion();
+                    case "Allcdmversion":
+                        this.ProcessRecord_Allcdmversion();
                         break;
-                    case "allRegion":
-                        this.ProcessRecord_allRegion();
+                    case "Allregion":
+                        this.ProcessRecord_Allregion();
                         break;
-                    case "allNsg":
-                        this.ProcessRecord_allNsg();
+                    case "Allnsg":
+                        this.ProcessRecord_Allnsg();
                         break;
-                    case "allStorageAccount":
-                        this.ProcessRecord_allStorageAccount();
+                    case "Allstorageaccount":
+                        this.ProcessRecord_Allstorageaccount();
                         break;
-                    case "AdDirectorie":
-                        this.ProcessRecord_AdDirectorie();
+                    case "Addirectorie":
+                        this.ProcessRecord_Addirectorie();
                         break;
-                    case "AdDirectory":
-                        this.ProcessRecord_AdDirectory();
+                    case "Addirectory":
+                        this.ProcessRecord_Addirectory();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1995,387 +1779,387 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureNativeRoot.
-        protected void ProcessRecord_NativeRoot()
+        protected void ProcessRecord_Nativeroot()
         {
-            this._logger.name += " -NativeRoot";
+            this._logger.name += " -Nativeroot";
             // Invoke graphql operation azureNativeRoot
             InvokeQueryAzureNativeRoot();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureNativeSubscription.
-        protected void ProcessRecord_NativeSubscription()
+        protected void ProcessRecord_Nativesubscription()
         {
-            this._logger.name += " -NativeSubscription";
+            this._logger.name += " -Nativesubscription";
             // Invoke graphql operation azureNativeSubscription
             InvokeQueryAzureNativeSubscription();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureNativeResourceGroup.
-        protected void ProcessRecord_NativeResourceGroup()
+        protected void ProcessRecord_Nativeresourcegroup()
         {
-            this._logger.name += " -NativeResourceGroup";
+            this._logger.name += " -Nativeresourcegroup";
             // Invoke graphql operation azureNativeResourceGroup
             InvokeQueryAzureNativeResourceGroup();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureNativeVirtualMachine.
-        protected void ProcessRecord_NativeVirtualMachine()
+        protected void ProcessRecord_Nativevirtualmachine()
         {
-            this._logger.name += " -NativeVirtualMachine";
+            this._logger.name += " -Nativevirtualmachine";
             // Invoke graphql operation azureNativeVirtualMachine
             InvokeQueryAzureNativeVirtualMachine();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureNativeManagedDisk.
-        protected void ProcessRecord_NativeManagedDisk()
+        protected void ProcessRecord_Nativemanageddisk()
         {
-            this._logger.name += " -NativeManagedDisk";
+            this._logger.name += " -Nativemanageddisk";
             // Invoke graphql operation azureNativeManagedDisk
             InvokeQueryAzureNativeManagedDisk();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeVirtualNetworks.
-        protected void ProcessRecord_allNativeVirtualNetwork()
+        protected void ProcessRecord_Allnativevirtualnetwork()
         {
-            this._logger.name += " -allNativeVirtualNetwork";
+            this._logger.name += " -Allnativevirtualnetwork";
             // Invoke graphql operation allAzureNativeVirtualNetworks
             InvokeQueryAllAzureNativeVirtualNetworks();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeSubnetsByRegionFromAzure.
-        protected void ProcessRecord_allNativeSubnetsByRegionFromAzure()
+        protected void ProcessRecord_Allnativesubnetsbyregionfromazure()
         {
-            this._logger.name += " -allNativeSubnetsByRegionFromAzure";
+            this._logger.name += " -Allnativesubnetsbyregionfromazure";
             // Invoke graphql operation allAzureNativeSubnetsByRegionFromAzure
             InvokeQueryAllAzureNativeSubnetsByRegionFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeSecurityGroupsByRegionFromAzure.
-        protected void ProcessRecord_allNativeSecurityGroupsByRegionFromAzure()
+        protected void ProcessRecord_Allnativesecuritygroupsbyregionfromazure()
         {
-            this._logger.name += " -allNativeSecurityGroupsByRegionFromAzure";
+            this._logger.name += " -Allnativesecuritygroupsbyregionfromazure";
             // Invoke graphql operation allAzureNativeSecurityGroupsByRegionFromAzure
             InvokeQueryAllAzureNativeSecurityGroupsByRegionFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureDiskEncryptionSetsByRegion.
-        protected void ProcessRecord_allDiskEncryptionSetsByRegion()
+        protected void ProcessRecord_Alldiskencryptionsetsbyregion()
         {
-            this._logger.name += " -allDiskEncryptionSetsByRegion";
+            this._logger.name += " -Alldiskencryptionsetsbyregion";
             // Invoke graphql operation allAzureDiskEncryptionSetsByRegion
             InvokeQueryAllAzureDiskEncryptionSetsByRegion();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeAvailabilitySetsByRegionFromAzure.
-        protected void ProcessRecord_allNativeAvailabilitySetsByRegionFromAzure()
+        protected void ProcessRecord_Allnativeavailabilitysetsbyregionfromazure()
         {
-            this._logger.name += " -allNativeAvailabilitySetsByRegionFromAzure";
+            this._logger.name += " -Allnativeavailabilitysetsbyregionfromazure";
             // Invoke graphql operation allAzureNativeAvailabilitySetsByRegionFromAzure
             InvokeQueryAllAzureNativeAvailabilitySetsByRegionFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeExportCompatibleVmSizesByRegionFromAzure.
-        protected void ProcessRecord_allNativeExportCompatibleVmSizesByRegionFromAzure()
+        protected void ProcessRecord_Allnativeexportcompatiblevmsizesbyregionfromazure()
         {
-            this._logger.name += " -allNativeExportCompatibleVmSizesByRegionFromAzure";
+            this._logger.name += " -Allnativeexportcompatiblevmsizesbyregionfromazure";
             // Invoke graphql operation allAzureNativeExportCompatibleVmSizesByRegionFromAzure
             InvokeQueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeExportCompatibleDiskTypesByRegionFromAzure.
-        protected void ProcessRecord_allNativeExportCompatibleDiskTypesByRegionFromAzure()
+        protected void ProcessRecord_Allnativeexportcompatibledisktypesbyregionfromazure()
         {
-            this._logger.name += " -allNativeExportCompatibleDiskTypesByRegionFromAzure";
+            this._logger.name += " -Allnativeexportcompatibledisktypesbyregionfromazure";
             // Invoke graphql operation allAzureNativeExportCompatibleDiskTypesByRegionFromAzure
             InvokeQueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeVirtualMachineSizes.
-        protected void ProcessRecord_allNativeVirtualMachineSize()
+        protected void ProcessRecord_Allnativevirtualmachinesize()
         {
-            this._logger.name += " -allNativeVirtualMachineSize";
+            this._logger.name += " -Allnativevirtualmachinesize";
             // Invoke graphql operation allAzureNativeVirtualMachineSizes
             InvokeQueryAllAzureNativeVirtualMachineSizes();
         }
 
         // This parameter set invokes a single graphql operation:
         // isAzureNativeManagedDiskSnapshotRestorable.
-        protected void ProcessRecord_isNativeManagedDiskSnapshotRestorable()
+        protected void ProcessRecord_Isnativemanageddisksnapshotrestorable()
         {
-            this._logger.name += " -isNativeManagedDiskSnapshotRestorable";
+            this._logger.name += " -Isnativemanageddisksnapshotrestorable";
             // Invoke graphql operation isAzureNativeManagedDiskSnapshotRestorable
             InvokeQueryIsAzureNativeManagedDiskSnapshotRestorable();
         }
 
         // This parameter set invokes a single graphql operation:
         // isAzureStorageAccountNameAvailable.
-        protected void ProcessRecord_isStorageAccountNameAvailable()
+        protected void ProcessRecord_Isstorageaccountnameavailable()
         {
-            this._logger.name += " -isStorageAccountNameAvailable";
+            this._logger.name += " -Isstorageaccountnameavailable";
             // Invoke graphql operation isAzureStorageAccountNameAvailable
             InvokeQueryIsAzureStorageAccountNameAvailable();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeStorageAccountsFromAzure.
-        protected void ProcessRecord_allNativeStorageAccountsFromAzure()
+        protected void ProcessRecord_Allnativestorageaccountsfromazure()
         {
-            this._logger.name += " -allNativeStorageAccountsFromAzure";
+            this._logger.name += " -Allnativestorageaccountsfromazure";
             // Invoke graphql operation allAzureNativeStorageAccountsFromAzure
             InvokeQueryAllAzureNativeStorageAccountsFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureSqlDatabase.
-        protected void ProcessRecord_SqlDatabase()
+        protected void ProcessRecord_Sqldatabase()
         {
-            this._logger.name += " -SqlDatabase";
+            this._logger.name += " -Sqldatabase";
             // Invoke graphql operation azureSqlDatabase
             InvokeQueryAzureSqlDatabase();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureSqlDatabaseServer.
-        protected void ProcessRecord_SqlDatabaseServer()
+        protected void ProcessRecord_Sqldatabaseserver()
         {
-            this._logger.name += " -SqlDatabaseServer";
+            this._logger.name += " -Sqldatabaseserver";
             // Invoke graphql operation azureSqlDatabaseServer
             InvokeQueryAzureSqlDatabaseServer();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceDatabase.
-        protected void ProcessRecord_SqlManagedInstanceDatabase()
+        protected void ProcessRecord_Sqlmanagedinstancedatabase()
         {
-            this._logger.name += " -SqlManagedInstanceDatabase";
+            this._logger.name += " -Sqlmanagedinstancedatabase";
             // Invoke graphql operation azureSqlManagedInstanceDatabase
             InvokeQueryAzureSqlManagedInstanceDatabase();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceServer.
-        protected void ProcessRecord_SqlManagedInstanceServer()
+        protected void ProcessRecord_Sqlmanagedinstanceserver()
         {
-            this._logger.name += " -SqlManagedInstanceServer";
+            this._logger.name += " -Sqlmanagedinstanceserver";
             // Invoke graphql operation azureSqlManagedInstanceServer
             InvokeQueryAzureSqlManagedInstanceServer();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure.
-        protected void ProcessRecord_SqlDatabaseDbPointInTimeRestoreWindowFromAzure()
+        protected void ProcessRecord_Sqldatabasedbpointintimerestorewindowfromazure()
         {
-            this._logger.name += " -SqlDatabaseDbPointInTimeRestoreWindowFromAzure";
+            this._logger.name += " -Sqldatabasedbpointintimerestorewindowfromazure";
             // Invoke graphql operation azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure
             InvokeQueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure.
-        protected void ProcessRecord_SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure()
+        protected void ProcessRecord_Sqlmanagedinstancedbpointintimerestorewindowfromazure()
         {
-            this._logger.name += " -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure";
+            this._logger.name += " -Sqlmanagedinstancedbpointintimerestorewindowfromazure";
             // Invoke graphql operation azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
             InvokeQueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // validateAzureNativeSqlDatabaseDbNameForExport.
-        protected void ProcessRecord_validateNativeSqlDatabaseDbNameForExport()
+        protected void ProcessRecord_Validatenativesqldatabasedbnameforexport()
         {
-            this._logger.name += " -validateNativeSqlDatabaseDbNameForExport";
+            this._logger.name += " -Validatenativesqldatabasedbnameforexport";
             // Invoke graphql operation validateAzureNativeSqlDatabaseDbNameForExport
             InvokeQueryValidateAzureNativeSqlDatabaseDbNameForExport();
         }
 
         // This parameter set invokes a single graphql operation:
         // validateAzureNativeSqlManagedInstanceDbNameForExport.
-        protected void ProcessRecord_validateNativeSqlManagedInstanceDbNameForExport()
+        protected void ProcessRecord_Validatenativesqlmanagedinstancedbnameforexport()
         {
-            this._logger.name += " -validateNativeSqlManagedInstanceDbNameForExport";
+            this._logger.name += " -Validatenativesqlmanagedinstancedbnameforexport";
             // Invoke graphql operation validateAzureNativeSqlManagedInstanceDbNameForExport
             InvokeQueryValidateAzureNativeSqlManagedInstanceDbNameForExport();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureSqlDatabaseServerElasticPools.
-        protected void ProcessRecord_allSqlDatabaseServerElasticPool()
+        protected void ProcessRecord_Allsqldatabaseserverelasticpool()
         {
-            this._logger.name += " -allSqlDatabaseServerElasticPool";
+            this._logger.name += " -Allsqldatabaseserverelasticpool";
             // Invoke graphql operation allAzureSqlDatabaseServerElasticPools
             InvokeQueryAllAzureSqlDatabaseServerElasticPools();
         }
 
         // This parameter set invokes a single graphql operation:
         // isAzureNativeSqlDatabaseSnapshotPersistent.
-        protected void ProcessRecord_isNativeSqlDatabaseSnapshotPersistent()
+        protected void ProcessRecord_Isnativesqldatabasesnapshotpersistent()
         {
-            this._logger.name += " -isNativeSqlDatabaseSnapshotPersistent";
+            this._logger.name += " -Isnativesqldatabasesnapshotpersistent";
             // Invoke graphql operation isAzureNativeSqlDatabaseSnapshotPersistent
             InvokeQueryIsAzureNativeSqlDatabaseSnapshotPersistent();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureKeyVaultsByRegion.
-        protected void ProcessRecord_allKeyVaultsByRegion()
+        protected void ProcessRecord_Allkeyvaultsbyregion()
         {
-            this._logger.name += " -allKeyVaultsByRegion";
+            this._logger.name += " -Allkeyvaultsbyregion";
             // Invoke graphql operation allAzureKeyVaultsByRegion
             InvokeQueryAllAzureKeyVaultsByRegion();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureEncryptionKeys.
-        protected void ProcessRecord_allEncryptionKey()
+        protected void ProcessRecord_Allencryptionkey()
         {
-            this._logger.name += " -allEncryptionKey";
+            this._logger.name += " -Allencryptionkey";
             // Invoke graphql operation allAzureEncryptionKeys
             InvokeQueryAllAzureEncryptionKeys();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountTenant.
-        protected void ProcessRecord_CloudAccountTenant()
+        protected void ProcessRecord_Cloudaccounttenant()
         {
-            this._logger.name += " -CloudAccountTenant";
+            this._logger.name += " -Cloudaccounttenant";
             // Invoke graphql operation azureCloudAccountTenant
             InvokeQueryAzureCloudAccountTenant();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountTenantWithExoConfigs.
-        protected void ProcessRecord_CloudAccountTenantWithExoConfig()
+        protected void ProcessRecord_Cloudaccounttenantwithexoconfig()
         {
-            this._logger.name += " -CloudAccountTenantWithExoConfig";
+            this._logger.name += " -Cloudaccounttenantwithexoconfig";
             // Invoke graphql operation azureCloudAccountTenantWithExoConfigs
             InvokeQueryAzureCloudAccountTenantWithExoConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountTenants.
-        protected void ProcessRecord_allCloudAccountTenant()
+        protected void ProcessRecord_Allcloudaccounttenant()
         {
-            this._logger.name += " -allCloudAccountTenant";
+            this._logger.name += " -Allcloudaccounttenant";
             // Invoke graphql operation allAzureCloudAccountTenants
             InvokeQueryAllAzureCloudAccountTenants();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountSubscriptionWithFeatures.
-        protected void ProcessRecord_CloudAccountSubscriptionWithFeature()
+        protected void ProcessRecord_Cloudaccountsubscriptionwithfeature()
         {
-            this._logger.name += " -CloudAccountSubscriptionWithFeature";
+            this._logger.name += " -Cloudaccountsubscriptionwithfeature";
             // Invoke graphql operation azureCloudAccountSubscriptionWithFeatures
             InvokeQueryAzureCloudAccountSubscriptionWithFeatures();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountSubscriptionsByFeature.
-        protected void ProcessRecord_allCloudAccountSubscriptionsByFeature()
+        protected void ProcessRecord_Allcloudaccountsubscriptionsbyfeature()
         {
-            this._logger.name += " -allCloudAccountSubscriptionsByFeature";
+            this._logger.name += " -Allcloudaccountsubscriptionsbyfeature";
             // Invoke graphql operation allAzureCloudAccountSubscriptionsByFeature
             InvokeQueryAllAzureCloudAccountSubscriptionsByFeature();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureSubscriptionWithExocomputeMappings.
-        protected void ProcessRecord_allSubscriptionWithExocomputeMapping()
+        protected void ProcessRecord_Allsubscriptionwithexocomputemapping()
         {
-            this._logger.name += " -allSubscriptionWithExocomputeMapping";
+            this._logger.name += " -Allsubscriptionwithexocomputemapping";
             // Invoke graphql operation allAzureSubscriptionWithExocomputeMappings
             InvokeQueryAllAzureSubscriptionWithExocomputeMappings();
         }
 
         // This parameter set invokes a single graphql operation:
         // allResourceGroupsFromAzure.
-        protected void ProcessRecord_allResourceGroupsFrom()
+        protected void ProcessRecord_Allresourcegroupsfrom()
         {
-            this._logger.name += " -allResourceGroupsFrom";
+            this._logger.name += " -Allresourcegroupsfrom";
             // Invoke graphql operation allResourceGroupsFromAzure
             InvokeQueryAllResourceGroupsFromAzure();
         }
 
         // This parameter set invokes a single graphql operation:
         // doesAzureNativeResourceGroupExist.
-        protected void ProcessRecord_doesNativeResourceGroupExist()
+        protected void ProcessRecord_Doesnativeresourcegroupexist()
         {
-            this._logger.name += " -doesNativeResourceGroupExist";
+            this._logger.name += " -Doesnativeresourcegroupexist";
             // Invoke graphql operation doesAzureNativeResourceGroupExist
             InvokeQueryDoesAzureNativeResourceGroupExist();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNativeResourceGroupsInfoIfExist.
-        protected void ProcessRecord_allNativeResourceGroupsInfoIfExist()
+        protected void ProcessRecord_Allnativeresourcegroupsinfoifexist()
         {
-            this._logger.name += " -allNativeResourceGroupsInfoIfExist";
+            this._logger.name += " -Allnativeresourcegroupsinfoifexist";
             // Invoke graphql operation allAzureNativeResourceGroupsInfoIfExist
             InvokeQueryAllAzureNativeResourceGroupsInfoIfExist();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountMissingPermissions.
-        protected void ProcessRecord_allCloudAccountMissingPermission()
+        protected void ProcessRecord_Allcloudaccountmissingpermission()
         {
-            this._logger.name += " -allCloudAccountMissingPermission";
+            this._logger.name += " -Allcloudaccountmissingpermission";
             // Invoke graphql operation allAzureCloudAccountMissingPermissions
             InvokeQueryAllAzureCloudAccountMissingPermissions();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureCloudAccountPermissionConfig.
-        protected void ProcessRecord_CloudAccountPermissionConfig()
+        protected void ProcessRecord_Cloudaccountpermissionconfig()
         {
-            this._logger.name += " -CloudAccountPermissionConfig";
+            this._logger.name += " -Cloudaccountpermissionconfig";
             // Invoke graphql operation azureCloudAccountPermissionConfig
             InvokeQueryAzureCloudAccountPermissionConfig();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureExocomputeConfigsInAccount.
-        protected void ProcessRecord_allExocomputeConfigsInAccount()
+        protected void ProcessRecord_Allexocomputeconfigsinaccount()
         {
-            this._logger.name += " -allExocomputeConfigsInAccount";
+            this._logger.name += " -Allexocomputeconfigsinaccount";
             // Invoke graphql operation allAzureExocomputeConfigsInAccount
             InvokeQueryAllAzureExocomputeConfigsInAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCloudAccountSubnetsByRegion.
-        protected void ProcessRecord_allCloudAccountSubnetsByRegion()
+        protected void ProcessRecord_Allcloudaccountsubnetsbyregion()
         {
-            this._logger.name += " -allCloudAccountSubnetsByRegion";
+            this._logger.name += " -Allcloudaccountsubnetsbyregion";
             // Invoke graphql operation allAzureCloudAccountSubnetsByRegion
             InvokeQueryAllAzureCloudAccountSubnetsByRegion();
         }
 
         // This parameter set invokes a single graphql operation:
         // validateAzureCloudAccountExocomputeConfigurations.
-        protected void ProcessRecord_validateCloudAccountExocomputeConfiguration()
+        protected void ProcessRecord_Validatecloudaccountexocomputeconfiguration()
         {
-            this._logger.name += " -validateCloudAccountExocomputeConfiguration";
+            this._logger.name += " -Validatecloudaccountexocomputeconfiguration";
             // Invoke graphql operation validateAzureCloudAccountExocomputeConfigurations
             InvokeQueryValidateAzureCloudAccountExocomputeConfigurations();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureArmTemplatesByFeature.
-        protected void ProcessRecord_allArmTemplatesByFeature()
+        protected void ProcessRecord_Allarmtemplatesbyfeature()
         {
-            this._logger.name += " -allArmTemplatesByFeature";
+            this._logger.name += " -Allarmtemplatesbyfeature";
             // Invoke graphql operation allAzureArmTemplatesByFeature
             InvokeQueryAllAzureArmTemplatesByFeature();
         }
@@ -2400,18 +2184,18 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureResourceGroups.
-        protected void ProcessRecord_ResourceGroup()
+        protected void ProcessRecord_Resourcegroup()
         {
-            this._logger.name += " -ResourceGroup";
+            this._logger.name += " -Resourcegroup";
             // Invoke graphql operation azureResourceGroups
             InvokeQueryAzureResourceGroups();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureVNets.
-        protected void ProcessRecord_VNet()
+        protected void ProcessRecord_Vnet()
         {
-            this._logger.name += " -VNet";
+            this._logger.name += " -Vnet";
             // Invoke graphql operation azureVNets
             InvokeQueryAzureVnets();
         }
@@ -2427,99 +2211,99 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // azureStorageAccounts.
-        protected void ProcessRecord_StorageAccount()
+        protected void ProcessRecord_Storageaccount()
         {
-            this._logger.name += " -StorageAccount";
+            this._logger.name += " -Storageaccount";
             // Invoke graphql operation azureStorageAccounts
             InvokeQueryAzureStorageAccounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // allHostedAzureRegions.
-        protected void ProcessRecord_allHostedRegion()
+        protected void ProcessRecord_Allhostedregion()
         {
-            this._logger.name += " -allHostedRegion";
+            this._logger.name += " -Allhostedregion";
             // Invoke graphql operation allHostedAzureRegions
             InvokeQueryAllHostedAzureRegions();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureResourceGroups.
-        protected void ProcessRecord_allResourceGroup()
+        protected void ProcessRecord_Allresourcegroup()
         {
-            this._logger.name += " -allResourceGroup";
+            this._logger.name += " -Allresourcegroup";
             // Invoke graphql operation allAzureResourceGroups
             InvokeQueryAllAzureResourceGroups();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureVnets.
-        protected void ProcessRecord_allVnet()
+        protected void ProcessRecord_Allvnet()
         {
-            this._logger.name += " -allVnet";
+            this._logger.name += " -Allvnet";
             // Invoke graphql operation allAzureVnets
             InvokeQueryAllAzureVnets();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureSubnets.
-        protected void ProcessRecord_allSubnet()
+        protected void ProcessRecord_Allsubnet()
         {
-            this._logger.name += " -allSubnet";
+            this._logger.name += " -Allsubnet";
             // Invoke graphql operation allAzureSubnets
             InvokeQueryAllAzureSubnets();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureCdmVersions.
-        protected void ProcessRecord_allCdmVersion()
+        protected void ProcessRecord_Allcdmversion()
         {
-            this._logger.name += " -allCdmVersion";
+            this._logger.name += " -Allcdmversion";
             // Invoke graphql operation allAzureCdmVersions
             InvokeQueryAllAzureCdmVersions();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureRegions.
-        protected void ProcessRecord_allRegion()
+        protected void ProcessRecord_Allregion()
         {
-            this._logger.name += " -allRegion";
+            this._logger.name += " -Allregion";
             // Invoke graphql operation allAzureRegions
             InvokeQueryAllAzureRegions();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureNsgs.
-        protected void ProcessRecord_allNsg()
+        protected void ProcessRecord_Allnsg()
         {
-            this._logger.name += " -allNsg";
+            this._logger.name += " -Allnsg";
             // Invoke graphql operation allAzureNsgs
             InvokeQueryAllAzureNsgs();
         }
 
         // This parameter set invokes a single graphql operation:
         // allAzureStorageAccounts.
-        protected void ProcessRecord_allStorageAccount()
+        protected void ProcessRecord_Allstorageaccount()
         {
-            this._logger.name += " -allStorageAccount";
+            this._logger.name += " -Allstorageaccount";
             // Invoke graphql operation allAzureStorageAccounts
             InvokeQueryAllAzureStorageAccounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureAdDirectories.
-        protected void ProcessRecord_AdDirectorie()
+        protected void ProcessRecord_Addirectorie()
         {
-            this._logger.name += " -AdDirectorie";
+            this._logger.name += " -Addirectorie";
             // Invoke graphql operation azureAdDirectories
             InvokeQueryAzureAdDirectories();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureAdDirectory.
-        protected void ProcessRecord_AdDirectory()
+        protected void ProcessRecord_Addirectory()
         {
-            this._logger.name += " -AdDirectory";
+            this._logger.name += " -Addirectory";
             // Invoke graphql operation azureAdDirectory
             InvokeQueryAzureAdDirectory();
         }

@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
         {
-            this.AvailabilityZone = new System.String("FETCH");
+            this.AvailabilityZone = "FETCH";
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
         if (this.SubnetId == null && Exploration.Includes(parent + ".subnetId", true))
         {
-            this.SubnetId = new System.String("FETCH");
+            this.SubnetId = "FETCH";
         }
     }
 

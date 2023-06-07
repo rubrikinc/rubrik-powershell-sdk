@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> scriptPath: String! (scalar)
         if (this.ScriptPath == null && Exploration.Includes(parent + ".scriptPath", true))
         {
-            this.ScriptPath = new System.String("FETCH");
+            this.ScriptPath = "FETCH";
         }
         //      C# -> System.Int64? TimeoutMs
         // GraphQL -> timeoutMs: Long! (scalar)

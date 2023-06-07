@@ -154,13 +154,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> destinationPath: String! (scalar)
         if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
         {
-            this.DestinationPath = new System.String("FETCH");
+            this.DestinationPath = "FETCH";
         }
         //      C# -> System.String? ExternalBackupId
         // GraphQL -> externalBackupId: String! (scalar)
         if (this.ExternalBackupId == null && Exploration.Includes(parent + ".externalBackupId", true))
         {
-            this.ExternalBackupId = new System.String("FETCH");
+            this.ExternalBackupId = "FETCH";
         }
         //      C# -> System.Int64? RedoLogPositionOpt
         // GraphQL -> redoLogPositionOpt: Long (scalar)
@@ -172,7 +172,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> serviceType: String! (scalar)
         if (this.ServiceType == null && Exploration.Includes(parent + ".serviceType", true))
         {
-            this.ServiceType = new System.String("FETCH");
+            this.ServiceType = "FETCH";
         }
         //      C# -> System.Int64? SourceId
         // GraphQL -> sourceId: Long! (scalar)
@@ -184,7 +184,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sourceType: String! (scalar)
         if (this.SourceType == null && Exploration.Includes(parent + ".sourceType", true))
         {
-            this.SourceType = new System.String("FETCH");
+            this.SourceType = "FETCH";
         }
     }
 

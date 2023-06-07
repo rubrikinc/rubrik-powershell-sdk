@@ -166,7 +166,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> naturalId: String (scalar)
         if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
         {
-            this.NaturalId = new System.String("FETCH");
+            this.NaturalId = "FETCH";
         }
         //      C# -> HypervVirtualMachineSummary? HypervVirtualMachineSummary
         // GraphQL -> hypervVirtualMachineSummary: HypervVirtualMachineSummary! (type)

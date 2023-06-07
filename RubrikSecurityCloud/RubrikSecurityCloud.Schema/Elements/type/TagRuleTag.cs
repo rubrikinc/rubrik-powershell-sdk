@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> tagKey: String! (scalar)
         if (this.TagKey == null && Exploration.Includes(parent + ".tagKey", true))
         {
-            this.TagKey = new System.String("FETCH");
+            this.TagKey = "FETCH";
         }
         //      C# -> System.String? TagValue
         // GraphQL -> tagValue: String! (scalar)
         if (this.TagValue == null && Exploration.Includes(parent + ".tagValue", true))
         {
-            this.TagValue = new System.String("FETCH");
+            this.TagValue = "FETCH";
         }
     }
 

@@ -140,7 +140,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> errorMessage: String (scalar)
         if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
         {
-            this.ErrorMessage = new System.String("FETCH");
+            this.ErrorMessage = "FETCH";
         }
         //      C# -> System.Int64? InactivityTimeoutInSeconds
         // GraphQL -> inactivityTimeoutInSeconds: Long (scalar)

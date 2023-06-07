@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cursor: String! (scalar)
         if (this.Cursor == null && Exploration.Includes(parent + ".cursor", true))
         {
-            this.Cursor = new System.String("FETCH");
+            this.Cursor = "FETCH";
         }
         //      C# -> SonarReportRow? Node
         // GraphQL -> node: SonarReportRow! (type)

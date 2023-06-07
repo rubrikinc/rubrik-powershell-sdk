@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> eventSeriesId: String! (scalar)
         if (this.EventSeriesId == null && Exploration.Includes(parent + ".eventSeriesId", true))
         {
-            this.EventSeriesId = new System.String("FETCH");
+            this.EventSeriesId = "FETCH";
         }
         //      C# -> System.Boolean? IsCancelable
         // GraphQL -> isCancelable: Boolean! (scalar)

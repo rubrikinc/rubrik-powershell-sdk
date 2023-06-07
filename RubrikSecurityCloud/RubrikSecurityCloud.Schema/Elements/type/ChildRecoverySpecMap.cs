@@ -172,25 +172,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoverySpecFid: String! (scalar)
         if (this.RecoverySpecFid == null && Exploration.Includes(parent + ".recoverySpecFid", true))
         {
-            this.RecoverySpecFid = new System.String("FETCH");
+            this.RecoverySpecFid = "FETCH";
         }
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String (scalar)
         if (this.SlaId == null && Exploration.Includes(parent + ".slaId", true))
         {
-            this.SlaId = new System.String("FETCH");
+            this.SlaId = "FETCH";
         }
         //      C# -> System.String? SnappableFid
         // GraphQL -> snappableFid: String! (scalar)
         if (this.SnappableFid == null && Exploration.Includes(parent + ".snappableFid", true))
         {
-            this.SnappableFid = new System.String("FETCH");
+            this.SnappableFid = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
     }
 

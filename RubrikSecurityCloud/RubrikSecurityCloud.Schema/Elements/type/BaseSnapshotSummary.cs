@@ -334,7 +334,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> consistencyLevel: String (scalar)
         if (this.ConsistencyLevel == null && Exploration.Includes(parent + ".consistencyLevel", true))
         {
-            this.ConsistencyLevel = new System.String("FETCH");
+            this.ConsistencyLevel = "FETCH";
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime (scalar)
@@ -352,7 +352,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? IndexState
         // GraphQL -> indexState: Long (scalar)
@@ -388,7 +388,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> parentSnapshotId: String (scalar)
         if (this.ParentSnapshotId == null && Exploration.Includes(parent + ".parentSnapshotId", true))
         {
-            this.ParentSnapshotId = new System.String("FETCH");
+            this.ParentSnapshotId = "FETCH";
         }
         //      C# -> List<System.String>? ReplicationLocationIds
         // GraphQL -> replicationLocationIds: [String!]! (scalar)
@@ -400,19 +400,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> slaId: String! (scalar)
         if (this.SlaId == null && Exploration.Includes(parent + ".slaId", true))
         {
-            this.SlaId = new System.String("FETCH");
+            this.SlaId = "FETCH";
         }
         //      C# -> System.String? SlaName
         // GraphQL -> slaName: String! (scalar)
         if (this.SlaName == null && Exploration.Includes(parent + ".slaName", true))
         {
-            this.SlaName = new System.String("FETCH");
+            this.SlaName = "FETCH";
         }
         //      C# -> System.String? SourceObjectType
         // GraphQL -> sourceObjectType: String (scalar)
         if (this.SourceObjectType == null && Exploration.Includes(parent + ".sourceObjectType", true))
         {
-            this.SourceObjectType = new System.String("FETCH");
+            this.SourceObjectType = "FETCH";
         }
         //      C# -> List<PerLocationCloudStorageTier>? CloudStorageTiers
         // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)

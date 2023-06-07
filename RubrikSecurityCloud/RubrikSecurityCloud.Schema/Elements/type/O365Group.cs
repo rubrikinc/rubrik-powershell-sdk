@@ -424,7 +424,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configuredGroupSpec: String! (scalar)
         if (this.ConfiguredGroupSpec == null && Exploration.Includes(parent + ".configuredGroupSpec", true))
         {
-            this.ConfiguredGroupSpec = new System.String("FETCH");
+            this.ConfiguredGroupSpec = "FETCH";
         }
         //      C# -> System.Boolean? DeletedInAzure
         // GraphQL -> deletedInAzure: Boolean! (scalar)
@@ -436,37 +436,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> displayName: String! (scalar)
         if (this.DisplayName == null && Exploration.Includes(parent + ".displayName", true))
         {
-            this.DisplayName = new System.String("FETCH");
+            this.DisplayName = "FETCH";
         }
         //      C# -> System.String? GroupId
         // GraphQL -> groupID: String! (scalar)
         if (this.GroupId == null && Exploration.Includes(parent + ".groupID", true))
         {
-            this.GroupId = new System.String("FETCH");
+            this.GroupId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalID: String! (scalar)
         if (this.NaturalId == null && Exploration.Includes(parent + ".naturalID", true))
         {
-            this.NaturalId = new System.String("FETCH");
+            this.NaturalId = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

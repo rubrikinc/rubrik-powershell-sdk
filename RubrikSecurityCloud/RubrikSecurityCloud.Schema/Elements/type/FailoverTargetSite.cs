@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> targetSite: String! (scalar)
         if (this.TargetSite == null && Exploration.Includes(parent + ".targetSite", true))
         {
-            this.TargetSite = new System.String("FETCH");
+            this.TargetSite = "FETCH";
         }
     }
 

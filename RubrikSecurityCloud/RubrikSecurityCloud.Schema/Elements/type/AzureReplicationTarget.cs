@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subscriptionId: String! (scalar)
         if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId", true))
         {
-            this.SubscriptionId = new System.String("FETCH");
+            this.SubscriptionId = "FETCH";
         }
         //      C# -> System.String? SubscriptionName
         // GraphQL -> subscriptionName: String! (scalar)
         if (this.SubscriptionName == null && Exploration.Includes(parent + ".subscriptionName", true))
         {
-            this.SubscriptionName = new System.String("FETCH");
+            this.SubscriptionName = "FETCH";
         }
     }
 

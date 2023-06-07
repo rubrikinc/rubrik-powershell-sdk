@@ -264,19 +264,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
         {
-            this.ClusterId = new System.String("FETCH");
+            this.ClusterId = "FETCH";
         }
         //      C# -> System.String? DiskId
         // GraphQL -> diskId: String! (scalar)
         if (this.DiskId == null && Exploration.Includes(parent + ".diskId", true))
         {
-            this.DiskId = new System.String("FETCH");
+            this.DiskId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsEncrypted
         // GraphQL -> isEncrypted: Boolean! (scalar)
@@ -300,19 +300,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodeId: String (scalar)
         if (this.NodeId == null && Exploration.Includes(parent + ".nodeId", true))
         {
-            this.NodeId = new System.String("FETCH");
+            this.NodeId = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> System.String? Serial
         // GraphQL -> serial: String (scalar)
         if (this.Serial == null && Exploration.Includes(parent + ".serial", true))
         {
-            this.Serial = new System.String("FETCH");
+            this.Serial = "FETCH";
         }
         //      C# -> System.Int64? UnallocatedBytes
         // GraphQL -> unallocatedBytes: Long (scalar)

@@ -106,19 +106,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> arn: String! (scalar)
         if (this.Arn == null && Exploration.Includes(parent + ".arn", true))
         {
-            this.Arn = new System.String("FETCH");
+            this.Arn = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
         {
-            this.VpcId = new System.String("FETCH");
+            this.VpcId = "FETCH";
         }
         //      C# -> List<AwsNativeSubnet>? Subnets
         // GraphQL -> subnets: [AwsNativeSubnet!]! (type)

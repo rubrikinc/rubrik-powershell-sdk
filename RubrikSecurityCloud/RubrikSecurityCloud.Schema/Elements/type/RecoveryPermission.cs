@@ -138,13 +138,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoveryFid: UUID! (scalar)
         if (this.RecoveryFid == null && Exploration.Includes(parent + ".recoveryFid", true))
         {
-            this.RecoveryFid = new System.String("FETCH");
+            this.RecoveryFid = "FETCH";
         }
         //      C# -> System.String? RecoveryName
         // GraphQL -> recoveryName: String! (scalar)
         if (this.RecoveryName == null && Exploration.Includes(parent + ".recoveryName", true))
         {
-            this.RecoveryName = new System.String("FETCH");
+            this.RecoveryName = "FETCH";
         }
     }
 

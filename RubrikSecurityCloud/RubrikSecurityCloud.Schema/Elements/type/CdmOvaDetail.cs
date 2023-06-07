@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmVersion: String! (scalar)
         if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
         {
-            this.CdmVersion = new System.String("FETCH");
+            this.CdmVersion = "FETCH";
         }
         //      C# -> System.String? OvaDownloadLink
         // GraphQL -> ovaDownloadLink: String! (scalar)
         if (this.OvaDownloadLink == null && Exploration.Includes(parent + ".ovaDownloadLink", true))
         {
-            this.OvaDownloadLink = new System.String("FETCH");
+            this.OvaDownloadLink = "FETCH";
         }
         //      C# -> System.String? OvaSize
         // GraphQL -> ovaSize: String! (scalar)
         if (this.OvaSize == null && Exploration.Includes(parent + ".ovaSize", true))
         {
-            this.OvaSize = new System.String("FETCH");
+            this.OvaSize = "FETCH";
         }
     }
 

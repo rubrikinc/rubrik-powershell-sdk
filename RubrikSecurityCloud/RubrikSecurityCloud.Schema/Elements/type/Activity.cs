@@ -242,37 +242,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> activityInfo: String (scalar)
         if (this.ActivityInfo == null && Exploration.Includes(parent + ".activityInfo", true))
         {
-            this.ActivityInfo = new System.String("FETCH");
+            this.ActivityInfo = "FETCH";
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
         {
-            this.ClusterId = new System.String("FETCH");
+            this.ClusterId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: ID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
         {
-            this.ObjectId = new System.String("FETCH");
+            this.ObjectId = "FETCH";
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String (scalar)
         if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
         {
-            this.Progress = new System.String("FETCH");
+            this.Progress = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)

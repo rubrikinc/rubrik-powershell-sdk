@@ -6,7 +6,10 @@ Describe -Name "Send a generic GraphQL call" -Fixture {
     It -Name 'Invoke-RscGraphQLCall' -Test {
 
         $response = Invoke-Rsc -Query "query accountSettings{accountSettings{isEulaAccepted}}"
-        $response | Should -Not -BeNullOrEmpty
-        $response | Should -BeLikeExactly $(ConvertFrom-Json -InputObject '{"accountSettings":{"isEulaAccepted":false}}')
+        $response.GetType().Name | Should -BeExactly 'AccountSetting'
+        $fields =  ($response|gm -MemberType Property).Name
+        $fields | Should -BeExactly @('IsEmailNotificationEnabled','IsEulaAccepted')
+        $response.IsEmailNotificationEnabled | Should -BeNullOrEmpty
+        $response.IsEulaAccepted | Should -Not -BeNullOrEmpty
     }
 }

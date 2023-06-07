@@ -168,7 +168,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ipAddress: String (scalar)
         if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
         {
-            this.IpAddress = new System.String("FETCH");
+            this.IpAddress = "FETCH";
         }
         //      C# -> System.Boolean? IsConnected
         // GraphQL -> isConnected: Boolean! (scalar)
@@ -180,25 +180,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> macAddress: String (scalar)
         if (this.MacAddress == null && Exploration.Includes(parent + ".macAddress", true))
         {
-            this.MacAddress = new System.String("FETCH");
+            this.MacAddress = "FETCH";
         }
         //      C# -> System.String? NetworkAdapterType
         // GraphQL -> networkAdapterType: String (scalar)
         if (this.NetworkAdapterType == null && Exploration.Includes(parent + ".networkAdapterType", true))
         {
-            this.NetworkAdapterType = new System.String("FETCH");
+            this.NetworkAdapterType = "FETCH";
         }
         //      C# -> System.Int32? NicIndex
         // GraphQL -> nicIndex: Int! (scalar)
         if (this.NicIndex == null && Exploration.Includes(parent + ".nicIndex", true))
         {
-            this.NicIndex = new System.Int32();
+            this.NicIndex = Int32.MinValue;
         }
         //      C# -> System.String? VappNetworkName
         // GraphQL -> vappNetworkName: String (scalar)
         if (this.VappNetworkName == null && Exploration.Includes(parent + ".vappNetworkName", true))
         {
-            this.VappNetworkName = new System.String("FETCH");
+            this.VappNetworkName = "FETCH";
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)

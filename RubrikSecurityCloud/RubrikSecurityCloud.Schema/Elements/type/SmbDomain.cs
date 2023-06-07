@@ -154,19 +154,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName == null && Exploration.Includes(parent + ".accountName", true))
         {
-            this.AccountName = new System.String("FETCH");
+            this.AccountName = "FETCH";
         }
         //      C# -> System.String? DomainId
         // GraphQL -> domainId: String! (scalar)
         if (this.DomainId == null && Exploration.Includes(parent + ".domainId", true))
         {
-            this.DomainId = new System.String("FETCH");
+            this.DomainId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
@@ -178,7 +178,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

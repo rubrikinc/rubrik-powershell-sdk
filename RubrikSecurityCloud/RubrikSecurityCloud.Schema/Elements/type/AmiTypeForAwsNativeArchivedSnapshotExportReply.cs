@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> amiId: String! (scalar)
         if (this.AmiId == null && Exploration.Includes(parent + ".amiId", true))
         {
-            this.AmiId = new System.String("FETCH");
+            this.AmiId = "FETCH";
         }
         //      C# -> System.String? AwsAccountRubrikId
         // GraphQL -> awsAccountRubrikId: String! (scalar)
         if (this.AwsAccountRubrikId == null && Exploration.Includes(parent + ".awsAccountRubrikId", true))
         {
-            this.AwsAccountRubrikId = new System.String("FETCH");
+            this.AwsAccountRubrikId = "FETCH";
         }
     }
 

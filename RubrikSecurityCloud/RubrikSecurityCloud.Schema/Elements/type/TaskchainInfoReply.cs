@@ -196,7 +196,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> account: String! (scalar)
         if (this.Account == null && Exploration.Includes(parent + ".account", true))
         {
-            this.Account = new System.String("FETCH");
+            this.Account = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
@@ -208,7 +208,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> error: String! (scalar)
         if (this.Error == null && Exploration.Includes(parent + ".error", true))
         {
-            this.Error = new System.String("FETCH");
+            this.Error = "FETCH";
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long! (scalar)
@@ -220,13 +220,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> jobType: String! (scalar)
         if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
         {
-            this.JobType = new System.String("FETCH");
+            this.JobType = "FETCH";
         }
         //      C# -> System.String? PlatformConfig
         // GraphQL -> platformConfig: String (scalar)
         if (this.PlatformConfig == null && Exploration.Includes(parent + ".platformConfig", true))
         {
-            this.PlatformConfig = new System.String("FETCH");
+            this.PlatformConfig = "FETCH";
         }
         //      C# -> System.Int64? Progress
         // GraphQL -> progress: Long! (scalar)
@@ -244,7 +244,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> taskchainId: String! (scalar)
         if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
         {
-            this.TaskchainId = new System.String("FETCH");
+            this.TaskchainId = "FETCH";
         }
     }
 

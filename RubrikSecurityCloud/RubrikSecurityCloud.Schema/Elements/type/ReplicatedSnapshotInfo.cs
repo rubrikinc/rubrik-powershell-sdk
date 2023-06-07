@@ -132,13 +132,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
         {
-            this.SnappableId = new System.String("FETCH");
+            this.SnappableId = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> Cluster? AssociatedCdm
         // GraphQL -> associatedCdm: Cluster (type)

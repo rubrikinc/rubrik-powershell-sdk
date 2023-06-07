@@ -134,37 +134,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> debianHashSha256: String! (scalar)
         if (this.DebianHashSha256 == null && Exploration.Includes(parent + ".debianHashSha256", true))
         {
-            this.DebianHashSha256 = new System.String("FETCH");
+            this.DebianHashSha256 = "FETCH";
         }
         //      C# -> System.String? DebianUrl
         // GraphQL -> debianUrl: String! (scalar)
         if (this.DebianUrl == null && Exploration.Includes(parent + ".debianUrl", true))
         {
-            this.DebianUrl = new System.String("FETCH");
+            this.DebianUrl = "FETCH";
         }
         //      C# -> System.String? RpmHashSha256
         // GraphQL -> rpmHashSha256: String! (scalar)
         if (this.RpmHashSha256 == null && Exploration.Includes(parent + ".rpmHashSha256", true))
         {
-            this.RpmHashSha256 = new System.String("FETCH");
+            this.RpmHashSha256 = "FETCH";
         }
         //      C# -> System.String? RpmUrl
         // GraphQL -> rpmUrl: String! (scalar)
         if (this.RpmUrl == null && Exploration.Includes(parent + ".rpmUrl", true))
         {
-            this.RpmUrl = new System.String("FETCH");
+            this.RpmUrl = "FETCH";
         }
         //      C# -> System.String? WindowsHashSha256
         // GraphQL -> windowsHashSha256: String! (scalar)
         if (this.WindowsHashSha256 == null && Exploration.Includes(parent + ".windowsHashSha256", true))
         {
-            this.WindowsHashSha256 = new System.String("FETCH");
+            this.WindowsHashSha256 = "FETCH";
         }
         //      C# -> System.String? WindowsUrl
         // GraphQL -> windowsUrl: String! (scalar)
         if (this.WindowsUrl == null && Exploration.Includes(parent + ".windowsUrl", true))
         {
-            this.WindowsUrl = new System.String("FETCH");
+            this.WindowsUrl = "FETCH";
         }
     }
 

@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nextReleaseRecommendation: String! (scalar)
         if (this.NextReleaseRecommendation == null && Exploration.Includes(parent + ".nextReleaseRecommendation", true))
         {
-            this.NextReleaseRecommendation = new System.String("FETCH");
+            this.NextReleaseRecommendation = "FETCH";
         }
         //      C# -> System.String? Recommendation
         // GraphQL -> recommendation: String! (scalar)
         if (this.Recommendation == null && Exploration.Includes(parent + ".recommendation", true))
         {
-            this.Recommendation = new System.String("FETCH");
+            this.Recommendation = "FETCH";
         }
         //      C# -> List<System.String>? Upgradability
         // GraphQL -> upgradability: [String!]! (scalar)

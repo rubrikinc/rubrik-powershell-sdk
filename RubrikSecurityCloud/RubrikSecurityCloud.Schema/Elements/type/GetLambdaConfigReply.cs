@@ -134,19 +134,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accountId: String! (scalar)
         if (this.AccountId == null && Exploration.Includes(parent + ".accountId", true))
         {
-            this.AccountId = new System.String("FETCH");
+            this.AccountId = "FETCH";
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: String! (scalar)
         if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
         {
-            this.ClusterId = new System.String("FETCH");
+            this.ClusterId = "FETCH";
         }
         //      C# -> System.String? DefaultDiffFmdUploadPrefix
         // GraphQL -> defaultDiffFmdUploadPrefix: String! (scalar)
         if (this.DefaultDiffFmdUploadPrefix == null && Exploration.Includes(parent + ".defaultDiffFmdUploadPrefix", true))
         {
-            this.DefaultDiffFmdUploadPrefix = new System.String("FETCH");
+            this.DefaultDiffFmdUploadPrefix = "FETCH";
         }
         //      C# -> System.Boolean? EnableAutomaticFmdUpload
         // GraphQL -> enableAutomaticFmdUpload: Boolean! (scalar)
@@ -164,7 +164,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)
         if (this.MaxSnapshotsToUploadAutomatically == null && Exploration.Includes(parent + ".maxSnapshotsToUploadAutomatically", true))
         {
-            this.MaxSnapshotsToUploadAutomatically = new System.Int32();
+            this.MaxSnapshotsToUploadAutomatically = Int32.MinValue;
         }
     }
 

@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> data: String! (scalar)
         if (this.Data == null && Exploration.Includes(parent + ".data", true))
         {
-            this.Data = new System.String("FETCH");
+            this.Data = "FETCH";
         }
     }
 

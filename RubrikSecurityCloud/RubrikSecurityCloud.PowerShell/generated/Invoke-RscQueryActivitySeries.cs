@@ -29,7 +29,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // ActivitySeries parameter set
         //
-        // GraphQL operation: activitySeries(input: ActivitySeriesInput!):ActivitySeries!
+        // [GraphQL: activitySeries]
         //
         [Parameter(
             ParameterSetName = "ActivitySeries",
@@ -37,10 +37,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieve an activity series.
-                GraphQL operation: activitySeries(input: ActivitySeriesInput!):ActivitySeries!
-                ",
+@"Retrieve an activity series.
+[GraphQL: activitySeries]",
             Position = 0
         )]
         public SwitchParameter ActivitySeries { get; set; }
@@ -51,17 +49,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for retrieving an activity series.
-                GraphQL argument input: ActivitySeriesInput!
-                "
+@"Input for retrieving an activity series.
+GraphQL argument input: ActivitySeriesInput!"
         )]
         public ActivitySeriesInput? Input { get; set; }
         
         // -------------------------------------------------------------------
         // List parameter set
         //
-        // GraphQL operation: activitySeriesConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: ActivitySeriesSortField,   filters: ActivitySeriesFilter, ):ActivitySeriesConnection!
+        // [GraphQL: activitySeriesConnection]
         //
         [Parameter(
             ParameterSetName = "List",
@@ -69,10 +65,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: activitySeriesConnection(,   first: Int,   after: String,   last: Int,   before: String,   sortOrder: SortOrder,   sortBy: ActivitySeriesSortField,   filters: ActivitySeriesFilter, ):ActivitySeriesConnection!
-                ",
+@"
+[GraphQL: activitySeriesConnection]",
             Position = 0
         )]
         public SwitchParameter List { get; set; }
@@ -83,10 +77,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
@@ -95,10 +87,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
@@ -107,10 +97,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the last n elements from the list.
-                GraphQL argument last: Int
-                "
+@"Returns the last n elements from the list.
+GraphQL argument last: Int"
         )]
         public System.Int32? Last { get; set; }
         [Parameter(
@@ -119,10 +107,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come before the specified cursor.
-                GraphQL argument before: String
-                "
+@"Returns the elements in the list that come before the specified cursor.
+GraphQL argument before: String"
         )]
         public System.String? Before { get; set; }
         [Parameter(
@@ -131,10 +117,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Activity sort order
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Activity sort order
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
@@ -143,10 +127,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort activity series by field.
-                GraphQL argument sortBy: ActivitySeriesSortField
-                "
+@"Sort activity series by field.
+GraphQL argument sortBy: ActivitySeriesSortField"
         )]
         public ActivitySeriesSortField? SortBy { get; set; }
         [Parameter(
@@ -155,54 +137,46 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument filters: ActivitySeriesFilter
-                "
+@"
+GraphQL argument filters: ActivitySeriesFilter"
         )]
         public ActivitySeriesFilter? Filters { get; set; }
         
         // -------------------------------------------------------------------
-        // GroupByList parameter set
+        // Groupbyconnection parameter set
         //
-        // GraphQL operation: activitySeriesGroupByConnection(,   first: Int,   after: String,   last: Int,   before: String,   groupBy: ActivitySeriesGroupByEnum!,   filters: ActivitySeriesFilterInput,   timezoneOffset: Float = 0.0, ):ActivitySeriesGroupByConnection!
+        // [GraphQL: activitySeriesGroupByConnection]
         //
         [Parameter(
-            ParameterSetName = "GroupByList",
+            ParameterSetName = "Groupbyconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: activitySeriesGroupByConnection(,   first: Int,   after: String,   last: Int,   before: String,   groupBy: ActivitySeriesGroupByEnum!,   filters: ActivitySeriesFilterInput,   timezoneOffset: Float = 0.0, ):ActivitySeriesGroupByConnection!
-                ",
+@"
+[GraphQL: activitySeriesGroupByConnection]",
             Position = 0
         )]
-        public SwitchParameter GroupByList { get; set; }
+        public SwitchParameter Groupbyconnection { get; set; }
 
         [Parameter(
-            ParameterSetName = "GroupByList",
+            ParameterSetName = "Groupbyconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                group activity series by a field
-                GraphQL argument groupBy: ActivitySeriesGroupByEnum!
-                "
+@"group activity series by a field
+GraphQL argument groupBy: ActivitySeriesGroupByEnum!"
         )]
         public ActivitySeriesGroupByEnum? GroupBy { get; set; }
         [Parameter(
-            ParameterSetName = "GroupByList",
+            ParameterSetName = "Groupbyconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Offset based on customer timezone.
-                GraphQL argument timezoneOffset: Float
-                "
+@"Offset based on customer timezone.
+GraphQL argument timezoneOffset: Float"
         )]
         public System.Single? TimezoneOffset { get; set; }
 
@@ -218,8 +192,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "List":
                         this.ProcessRecord_List();
                         break;
-                    case "GroupByList":
-                        this.ProcessRecord_GroupByList();
+                    case "Groupbyconnection":
+                        this.ProcessRecord_Groupbyconnection();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -257,9 +231,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // activitySeriesGroupByConnection.
-        protected void ProcessRecord_GroupByList()
+        protected void ProcessRecord_Groupbyconnection()
         {
-            this._logger.name += " -GroupByList";
+            this._logger.name += " -Groupbyconnection";
             // Invoke graphql operation activitySeriesGroupByConnection
             InvokeQueryActivitySeriesGroupByConnection();
         }

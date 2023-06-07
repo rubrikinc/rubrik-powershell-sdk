@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: UUID! (scalar)
         if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
         {
-            this.Uuid = new System.String("FETCH");
+            this.Uuid = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
     }
 

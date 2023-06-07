@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> value: String! (scalar)
         if (this.Value == null && Exploration.Includes(parent + ".value", true))
         {
-            this.Value = new System.String("FETCH");
+            this.Value = "FETCH";
         }
         //      C# -> AspKey? Key
         // GraphQL -> key: ASPKey (type)

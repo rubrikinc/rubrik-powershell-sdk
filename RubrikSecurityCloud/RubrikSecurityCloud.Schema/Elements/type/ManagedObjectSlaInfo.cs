@@ -196,43 +196,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configuredSlaDomainId: String! (scalar)
         if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            this.ConfiguredSlaDomainId = new System.String("FETCH");
+            this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? ConfiguredSlaDomainName
         // GraphQL -> configuredSlaDomainName: String! (scalar)
         if (this.ConfiguredSlaDomainName == null && Exploration.Includes(parent + ".configuredSlaDomainName", true))
         {
-            this.ConfiguredSlaDomainName = new System.String("FETCH");
+            this.ConfiguredSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String! (scalar)
         if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
         {
-            this.EffectiveSlaDomainId = new System.String("FETCH");
+            this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String! (scalar)
         if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
         {
-            this.EffectiveSlaDomainName = new System.String("FETCH");
+            this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainSourceId
         // GraphQL -> effectiveSlaDomainSourceId: String (scalar)
         if (this.EffectiveSlaDomainSourceId == null && Exploration.Includes(parent + ".effectiveSlaDomainSourceId", true))
         {
-            this.EffectiveSlaDomainSourceId = new System.String("FETCH");
+            this.EffectiveSlaDomainSourceId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainSourceName
         // GraphQL -> effectiveSlaDomainSourceName: String (scalar)
         if (this.EffectiveSlaDomainSourceName == null && Exploration.Includes(parent + ".effectiveSlaDomainSourceName", true))
         {
-            this.EffectiveSlaDomainSourceName = new System.String("FETCH");
+            this.EffectiveSlaDomainSourceName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaPolarisManagedId
         // GraphQL -> effectiveSlaPolarisManagedId: String (scalar)
         if (this.EffectiveSlaPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaPolarisManagedId", true))
         {
-            this.EffectiveSlaPolarisManagedId = new System.String("FETCH");
+            this.EffectiveSlaPolarisManagedId = "FETCH";
         }
         //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
         // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
@@ -244,7 +244,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
         {
-            this.ObjectId = new System.String("FETCH");
+            this.ObjectId = "FETCH";
         }
     }
 

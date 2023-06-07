@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostId: String (scalar)
         if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
         {
-            this.HostId = new System.String("FETCH");
+            this.HostId = "FETCH";
         }
         //      C# -> System.String? NodeName
         // GraphQL -> nodeName: String! (scalar)
         if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
         {
-            this.NodeName = new System.String("FETCH");
+            this.NodeName = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
     }
 

@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> queryUser: String! (scalar)
         if (this.QueryUser == null && Exploration.Includes(parent + ".queryUser", true))
         {
-            this.QueryUser = new System.String("FETCH");
+            this.QueryUser = "FETCH";
         }
         //      C# -> System.String? SysDbaUser
         // GraphQL -> sysDbaUser: String! (scalar)
         if (this.SysDbaUser == null && Exploration.Includes(parent + ".sysDbaUser", true))
         {
-            this.SysDbaUser = new System.String("FETCH");
+            this.SysDbaUser = "FETCH";
         }
     }
 

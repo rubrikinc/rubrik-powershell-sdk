@@ -338,7 +338,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Boolean? HasSnapshotsWithPolicy
         // GraphQL -> hasSnapshotsWithPolicy: Boolean! (scalar)
@@ -350,7 +350,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRemote
         // GraphQL -> isRemote: Boolean (scalar)
@@ -368,25 +368,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? RetentionSlaDomainId
         // GraphQL -> retentionSlaDomainId: String! (scalar)
         if (this.RetentionSlaDomainId == null && Exploration.Includes(parent + ".retentionSlaDomainId", true))
         {
-            this.RetentionSlaDomainId = new System.String("FETCH");
+            this.RetentionSlaDomainId = "FETCH";
         }
         //      C# -> System.String? RetentionSlaDomainName
         // GraphQL -> retentionSlaDomainName: String! (scalar)
         if (this.RetentionSlaDomainName == null && Exploration.Includes(parent + ".retentionSlaDomainName", true))
         {
-            this.RetentionSlaDomainName = new System.String("FETCH");
+            this.RetentionSlaDomainName = "FETCH";
         }
         //      C# -> System.String? RetentionSlaDomainPolarisManagedId
         // GraphQL -> retentionSlaDomainPolarisManagedId: String (scalar)
         if (this.RetentionSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".retentionSlaDomainPolarisManagedId", true))
         {
-            this.RetentionSlaDomainPolarisManagedId = new System.String("FETCH");
+            this.RetentionSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.Int64? SnapshotCount
         // GraphQL -> snapshotCount: Long! (scalar)

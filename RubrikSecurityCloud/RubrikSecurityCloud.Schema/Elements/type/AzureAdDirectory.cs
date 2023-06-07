@@ -488,25 +488,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> directoryId: String! (scalar)
         if (this.DirectoryId == null && Exploration.Includes(parent + ".directoryId", true))
         {
-            this.DirectoryId = new System.String("FETCH");
+            this.DirectoryId = "FETCH";
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         if (this.DomainName == null && Exploration.Includes(parent + ".domainName", true))
         {
-            this.DomainName = new System.String("FETCH");
+            this.DomainName = "FETCH";
         }
         //      C# -> System.String? ExocomputeId
         // GraphQL -> exocomputeId: String! (scalar)
         if (this.ExocomputeId == null && Exploration.Includes(parent + ".exocomputeId", true))
         {
-            this.ExocomputeId = new System.String("FETCH");
+            this.ExocomputeId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -518,25 +518,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
         if (this.Region == null && Exploration.Includes(parent + ".region", true))
         {
-            this.Region = new System.String("FETCH");
+            this.Region = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

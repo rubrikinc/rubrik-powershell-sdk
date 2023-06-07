@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ownerId: String (scalar)
         if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId", true))
         {
-            this.OwnerId = new System.String("FETCH");
+            this.OwnerId = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)

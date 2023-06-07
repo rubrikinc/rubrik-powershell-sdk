@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> count: Int! (scalar)
         if (this.Count == null && Exploration.Includes(parent + ".count", true))
         {
-            this.Count = new System.Int32();
+            this.Count = Int32.MinValue;
         }
         //      C# -> System.String? Day
         // GraphQL -> day: String! (scalar)
         if (this.Day == null && Exploration.Includes(parent + ".day", true))
         {
-            this.Day = new System.String("FETCH");
+            this.Day = "FETCH";
         }
     }
 

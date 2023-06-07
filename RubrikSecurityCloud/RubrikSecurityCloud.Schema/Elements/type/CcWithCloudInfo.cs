@@ -210,55 +210,55 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cloudAccount: String! (scalar)
         if (this.CloudAccount == null && Exploration.Includes(parent + ".cloudAccount", true))
         {
-            this.CloudAccount = new System.String("FETCH");
+            this.CloudAccount = "FETCH";
         }
         //      C# -> System.String? CloudAccountId
         // GraphQL -> cloudAccountId: UUID! (scalar)
         if (this.CloudAccountId == null && Exploration.Includes(parent + ".cloudAccountId", true))
         {
-            this.CloudAccountId = new System.String("FETCH");
+            this.CloudAccountId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeCloudAccountId
         // GraphQL -> nativeCloudAccountId: String! (scalar)
         if (this.NativeCloudAccountId == null && Exploration.Includes(parent + ".nativeCloudAccountId", true))
         {
-            this.NativeCloudAccountId = new System.String("FETCH");
+            this.NativeCloudAccountId = "FETCH";
         }
         //      C# -> System.String? NativeCloudAccountName
         // GraphQL -> nativeCloudAccountName: String! (scalar)
         if (this.NativeCloudAccountName == null && Exploration.Includes(parent + ".nativeCloudAccountName", true))
         {
-            this.NativeCloudAccountName = new System.String("FETCH");
+            this.NativeCloudAccountName = "FETCH";
         }
         //      C# -> System.String? NetworkName
         // GraphQL -> networkName: String! (scalar)
         if (this.NetworkName == null && Exploration.Includes(parent + ".networkName", true))
         {
-            this.NetworkName = new System.String("FETCH");
+            this.NetworkName = "FETCH";
         }
         //      C# -> System.String? Region
         // GraphQL -> region: String! (scalar)
         if (this.Region == null && Exploration.Includes(parent + ".region", true))
         {
-            this.Region = new System.String("FETCH");
+            this.Region = "FETCH";
         }
         //      C# -> System.String? RegionId
         // GraphQL -> regionId: String! (scalar)
         if (this.RegionId == null && Exploration.Includes(parent + ".regionId", true))
         {
-            this.RegionId = new System.String("FETCH");
+            this.RegionId = "FETCH";
         }
         //      C# -> System.String? Uuid
         // GraphQL -> uuid: UUID! (scalar)
         if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
         {
-            this.Uuid = new System.String("FETCH");
+            this.Uuid = "FETCH";
         }
         //      C# -> ElasticStorageConfig? StorageConfig
         // GraphQL -> storageConfig: ElasticStorageConfig (type)

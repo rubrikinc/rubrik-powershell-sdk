@@ -120,25 +120,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accountName: String! (scalar)
         if (this.AccountName == null && Exploration.Includes(parent + ".accountName", true))
         {
-            this.AccountName = new System.String("FETCH");
+            this.AccountName = "FETCH";
         }
         //      C# -> System.String? OrgFullName
         // GraphQL -> orgFullName: String! (scalar)
         if (this.OrgFullName == null && Exploration.Includes(parent + ".orgFullName", true))
         {
-            this.OrgFullName = new System.String("FETCH");
+            this.OrgFullName = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
         if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
         {
-            this.OrgName = new System.String("FETCH");
+            this.OrgName = "FETCH";
         }
         //      C# -> User? User
         // GraphQL -> user: User! (type)

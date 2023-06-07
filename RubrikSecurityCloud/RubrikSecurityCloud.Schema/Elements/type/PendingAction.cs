@@ -182,13 +182,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> actionTypeStr: String! (scalar)
         if (this.ActionTypeStr == null && Exploration.Includes(parent + ".actionTypeStr", true))
         {
-            this.ActionTypeStr = new System.String("FETCH");
+            this.ActionTypeStr = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
@@ -200,19 +200,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? Info
         // GraphQL -> info: String! (scalar)
         if (this.Info == null && Exploration.Includes(parent + ".info", true))
         {
-            this.Info = new System.String("FETCH");
+            this.Info = "FETCH";
         }
         //      C# -> System.String? PendingActionId
         // GraphQL -> pendingActionId: String! (scalar)
         if (this.PendingActionId == null && Exploration.Includes(parent + ".pendingActionId", true))
         {
-            this.PendingActionId = new System.String("FETCH");
+            this.PendingActionId = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)

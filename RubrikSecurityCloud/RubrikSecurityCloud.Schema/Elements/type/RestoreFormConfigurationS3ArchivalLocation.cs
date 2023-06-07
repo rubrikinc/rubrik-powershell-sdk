@@ -162,37 +162,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> bucket: String (scalar)
         if (this.Bucket == null && Exploration.Includes(parent + ".bucket", true))
         {
-            this.Bucket = new System.String("FETCH");
+            this.Bucket = "FETCH";
         }
         //      C# -> System.String? CloudRehydrationSpeed
         // GraphQL -> cloudRehydrationSpeed: String (scalar)
         if (this.CloudRehydrationSpeed == null && Exploration.Includes(parent + ".cloudRehydrationSpeed", true))
         {
-            this.CloudRehydrationSpeed = new System.String("FETCH");
+            this.CloudRehydrationSpeed = "FETCH";
         }
         //      C# -> System.String? DefaultRegion
         // GraphQL -> defaultRegion: String (scalar)
         if (this.DefaultRegion == null && Exploration.Includes(parent + ".defaultRegion", true))
         {
-            this.DefaultRegion = new System.String("FETCH");
+            this.DefaultRegion = "FETCH";
         }
         //      C# -> System.String? EncryptionType
         // GraphQL -> encryptionType: String (scalar)
         if (this.EncryptionType == null && Exploration.Includes(parent + ".encryptionType", true))
         {
-            this.EncryptionType = new System.String("FETCH");
+            this.EncryptionType = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? StorageClass
         // GraphQL -> storageClass: String (scalar)
         if (this.StorageClass == null && Exploration.Includes(parent + ".storageClass", true))
         {
-            this.StorageClass = new System.String("FETCH");
+            this.StorageClass = "FETCH";
         }
         //      C# -> RestoreFormArchivalProxyConfig? ArchivalProxyConfig
         // GraphQL -> archivalProxyConfig: RestoreFormArchivalProxyConfig (type)

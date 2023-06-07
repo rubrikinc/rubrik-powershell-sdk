@@ -210,31 +210,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumDbs
         // GraphQL -> numDbs: Int! (scalar)
         if (this.NumDbs == null && Exploration.Includes(parent + ".numDbs", true))
         {
-            this.NumDbs = new System.Int32();
+            this.NumDbs = Int32.MinValue;
         }
         //      C# -> System.Int32? NumNodes
         // GraphQL -> numNodes: Int! (scalar)
         if (this.NumNodes == null && Exploration.Includes(parent + ".numNodes", true))
         {
-            this.NumNodes = new System.Int32();
+            this.NumNodes = Int32.MinValue;
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.Boolean? ShouldDistributeBackupsAutomatically
         // GraphQL -> shouldDistributeBackupsAutomatically: Boolean (scalar)
@@ -246,7 +246,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> List<OracleNodeOrder>? NodeOrder
         // GraphQL -> nodeOrder: [OracleNodeOrder!]! (type)

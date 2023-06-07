@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> newName: String (scalar)
         if (this.NewName == null && Exploration.Includes(parent + ".newName", true))
         {
-            this.NewName = new System.String("FETCH");
+            this.NewName = "FETCH";
         }
         //      C# -> VappNetworkSummary? VappNetworkSummary
         // GraphQL -> vappNetworkSummary: VappNetworkSummary (type)

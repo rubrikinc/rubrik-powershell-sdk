@@ -158,7 +158,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> version: Int! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.Int32();
+            this.Version = Int32.MinValue;
         }
         //      C# -> System.Single? Weight
         // GraphQL -> weight: Float! (scalar)

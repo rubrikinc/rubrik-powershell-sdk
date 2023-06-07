@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> objectFid: UUID! (scalar)
         if (this.ObjectFid == null && Exploration.Includes(parent + ".objectFid", true))
         {
-            this.ObjectFid = new System.String("FETCH");
+            this.ObjectFid = "FETCH";
         }
     }
 

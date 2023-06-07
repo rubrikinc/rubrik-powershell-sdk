@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> attachedToVmId: String! (scalar)
         if (this.AttachedToVmId == null && Exploration.Includes(parent + ".attachedToVmId", true))
         {
-            this.AttachedToVmId = new System.String("FETCH");
+            this.AttachedToVmId = "FETCH";
         }
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lun: Int! (scalar)
         if (this.Lun == null && Exploration.Includes(parent + ".lun", true))
         {
-            this.Lun = new System.Int32();
+            this.Lun = Int32.MinValue;
         }
     }
 

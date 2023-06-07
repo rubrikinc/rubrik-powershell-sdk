@@ -104,7 +104,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snappableFid: String! (scalar)
         if (this.SnappableFid == null && Exploration.Includes(parent + ".snappableFid", true))
         {
-            this.SnappableFid = new System.String("FETCH");
+            this.SnappableFid = "FETCH";
         }
     }
 

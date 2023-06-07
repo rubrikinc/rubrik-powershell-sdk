@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId == null && Exploration.Includes(parent + ".tenantId", true))
         {
-            this.TenantId = new System.String("FETCH");
+            this.TenantId = "FETCH";
         }
         //      C# -> List<AddAzureCloudAccountStatus>? Status
         // GraphQL -> status: [AddAzureCloudAccountStatus!]! (type)

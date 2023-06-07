@@ -204,7 +204,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
@@ -216,7 +216,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> info: String! (scalar)
         if (this.Info == null && Exploration.Includes(parent + ".info", true))
         {
-            this.Info = new System.String("FETCH");
+            this.Info = "FETCH";
         }
         //      C# -> System.Boolean? IsCompleted
         // GraphQL -> isCompleted: Boolean! (scalar)
@@ -228,7 +228,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> managedId: String! (scalar)
         if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
         {
-            this.ManagedId = new System.String("FETCH");
+            this.ManagedId = "FETCH";
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
@@ -240,7 +240,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotId: String! (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)
@@ -252,19 +252,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
         {
-            this.WorkloadId = new System.String("FETCH");
+            this.WorkloadId = "FETCH";
         }
         //      C# -> System.String? WorkloadName
         // GraphQL -> workloadName: String! (scalar)
         if (this.WorkloadName == null && Exploration.Includes(parent + ".workloadName", true))
         {
-            this.WorkloadName = new System.String("FETCH");
+            this.WorkloadName = "FETCH";
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
         if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
         {
-            this.WorkloadType = new System.String("FETCH");
+            this.WorkloadType = "FETCH";
         }
     }
 

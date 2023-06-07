@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> key: String! (scalar)
         if (this.Key == null && Exploration.Includes(parent + ".key", true))
         {
-            this.Key = new System.String("FETCH");
+            this.Key = "FETCH";
         }
         //      C# -> System.String? KeyRing
         // GraphQL -> keyRing: String! (scalar)
         if (this.KeyRing == null && Exploration.Includes(parent + ".keyRing", true))
         {
-            this.KeyRing = new System.String("FETCH");
+            this.KeyRing = "FETCH";
         }
         //      C# -> System.String? Location
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.String? ProjectNativeId
         // GraphQL -> projectNativeId: String! (scalar)
         if (this.ProjectNativeId == null && Exploration.Includes(parent + ".projectNativeId", true))
         {
-            this.ProjectNativeId = new System.String("FETCH");
+            this.ProjectNativeId = "FETCH";
         }
     }
 

@@ -112,19 +112,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> defaultValue: Int! (scalar)
         if (this.DefaultValue == null && Exploration.Includes(parent + ".defaultValue", true))
         {
-            this.DefaultValue = new System.Int32();
+            this.DefaultValue = Int32.MinValue;
         }
         //      C# -> System.Int32? MaxValue
         // GraphQL -> maxValue: Int! (scalar)
         if (this.MaxValue == null && Exploration.Includes(parent + ".maxValue", true))
         {
-            this.MaxValue = new System.Int32();
+            this.MaxValue = Int32.MinValue;
         }
         //      C# -> System.Int32? MinValue
         // GraphQL -> minValue: Int! (scalar)
         if (this.MinValue == null && Exploration.Includes(parent + ".minValue", true))
         {
-            this.MinValue = new System.Int32();
+            this.MinValue = Int32.MinValue;
         }
     }
 

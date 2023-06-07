@@ -120,25 +120,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? CustomerAccount
         // GraphQL -> customerAccount: String! (scalar)
         if (this.CustomerAccount == null && Exploration.Includes(parent + ".customerAccount", true))
         {
-            this.CustomerAccount = new System.String("FETCH");
+            this.CustomerAccount = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> JobMetadata? Metadata
         // GraphQL -> metadata: JobMetadata (type)

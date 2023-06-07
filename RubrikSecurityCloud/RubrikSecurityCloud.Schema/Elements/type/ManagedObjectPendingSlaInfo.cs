@@ -112,19 +112,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
         {
-            this.ObjectId = new System.String("FETCH");
+            this.ObjectId = "FETCH";
         }
         //      C# -> System.String? PendingSlaDomainId
         // GraphQL -> pendingSlaDomainId: String! (scalar)
         if (this.PendingSlaDomainId == null && Exploration.Includes(parent + ".pendingSlaDomainId", true))
         {
-            this.PendingSlaDomainId = new System.String("FETCH");
+            this.PendingSlaDomainId = "FETCH";
         }
         //      C# -> System.String? PendingSlaDomainName
         // GraphQL -> pendingSlaDomainName: String! (scalar)
         if (this.PendingSlaDomainName == null && Exploration.Includes(parent + ".pendingSlaDomainName", true))
         {
-            this.PendingSlaDomainName = new System.String("FETCH");
+            this.PendingSlaDomainName = "FETCH";
         }
     }
 

@@ -134,37 +134,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dbUniqueName: String! (scalar)
         if (this.DbUniqueName == null && Exploration.Includes(parent + ".dbUniqueName", true))
         {
-            this.DbUniqueName = new System.String("FETCH");
+            this.DbUniqueName = "FETCH";
         }
         //      C# -> System.String? RacId
         // GraphQL -> racId: String (scalar)
         if (this.RacId == null && Exploration.Includes(parent + ".racId", true))
         {
-            this.RacId = new System.String("FETCH");
+            this.RacId = "FETCH";
         }
         //      C# -> System.String? RacName
         // GraphQL -> racName: String (scalar)
         if (this.RacName == null && Exploration.Includes(parent + ".racName", true))
         {
-            this.RacName = new System.String("FETCH");
+            this.RacName = "FETCH";
         }
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
         if (this.Role == null && Exploration.Includes(parent + ".role", true))
         {
-            this.Role = new System.String("FETCH");
+            this.Role = "FETCH";
         }
         //      C# -> System.String? StandaloneHostId
         // GraphQL -> standaloneHostId: String (scalar)
         if (this.StandaloneHostId == null && Exploration.Includes(parent + ".standaloneHostId", true))
         {
-            this.StandaloneHostId = new System.String("FETCH");
+            this.StandaloneHostId = "FETCH";
         }
         //      C# -> System.String? StandaloneHostName
         // GraphQL -> standaloneHostName: String (scalar)
         if (this.StandaloneHostName == null && Exploration.Includes(parent + ".standaloneHostName", true))
         {
-            this.StandaloneHostName = new System.String("FETCH");
+            this.StandaloneHostName = "FETCH";
         }
     }
 

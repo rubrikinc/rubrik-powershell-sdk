@@ -316,7 +316,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -328,13 +328,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountPath: String (scalar)
         if (this.MountPath == null && Exploration.Includes(parent + ".mountPath", true))
         {
-            this.MountPath = new System.String("FETCH");
+            this.MountPath = "FETCH";
         }
         //      C# -> System.String? MountRequestId
         // GraphQL -> mountRequestId: String (scalar)
         if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
         {
-            this.MountRequestId = new System.String("FETCH");
+            this.MountRequestId = "FETCH";
         }
         //      C# -> DateTime? MountTimestamp
         // GraphQL -> mountTimestamp: DateTime (scalar)
@@ -346,55 +346,55 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NodeCompositeId
         // GraphQL -> nodeCompositeId: String (scalar)
         if (this.NodeCompositeId == null && Exploration.Includes(parent + ".nodeCompositeId", true))
         {
-            this.NodeCompositeId = new System.String("FETCH");
+            this.NodeCompositeId = "FETCH";
         }
         //      C# -> System.String? NodeIp
         // GraphQL -> nodeIp: String (scalar)
         if (this.NodeIp == null && Exploration.Includes(parent + ".nodeIp", true))
         {
-            this.NodeIp = new System.String("FETCH");
+            this.NodeIp = "FETCH";
         }
         //      C# -> System.String? RestoreScriptPath
         // GraphQL -> restoreScriptPath: String (scalar)
         if (this.RestoreScriptPath == null && Exploration.Includes(parent + ".restoreScriptPath", true))
         {
-            this.RestoreScriptPath = new System.String("FETCH");
+            this.RestoreScriptPath = "FETCH";
         }
         //      C# -> System.String? SmbShareName
         // GraphQL -> smbShareName: String (scalar)
         if (this.SmbShareName == null && Exploration.Includes(parent + ".smbShareName", true))
         {
-            this.SmbShareName = new System.String("FETCH");
+            this.SmbShareName = "FETCH";
         }
         //      C# -> System.String? SourceVolumeGroupId
         // GraphQL -> sourceVolumeGroupId: String! (scalar)
         if (this.SourceVolumeGroupId == null && Exploration.Includes(parent + ".sourceVolumeGroupId", true))
         {
-            this.SourceVolumeGroupId = new System.String("FETCH");
+            this.SourceVolumeGroupId = "FETCH";
         }
         //      C# -> System.String? TargetHostId
         // GraphQL -> targetHostId: String (scalar)
         if (this.TargetHostId == null && Exploration.Includes(parent + ".targetHostId", true))
         {
-            this.TargetHostId = new System.String("FETCH");
+            this.TargetHostId = "FETCH";
         }
         //      C# -> System.String? TargetHostName
         // GraphQL -> targetHostName: String (scalar)
         if (this.TargetHostName == null && Exploration.Includes(parent + ".targetHostName", true))
         {
-            this.TargetHostName = new System.String("FETCH");
+            this.TargetHostName = "FETCH";
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
         if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
         {
-            this.UnmountRequestId = new System.String("FETCH");
+            this.UnmountRequestId = "FETCH";
         }
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)

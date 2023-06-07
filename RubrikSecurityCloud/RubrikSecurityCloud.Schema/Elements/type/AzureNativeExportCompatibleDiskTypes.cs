@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
         {
-            this.AvailabilityZone = new System.String("FETCH");
+            this.AvailabilityZone = "FETCH";
         }
     }
 

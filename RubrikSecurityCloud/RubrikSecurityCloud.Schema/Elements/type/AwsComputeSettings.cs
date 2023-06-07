@@ -219,7 +219,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
@@ -237,25 +237,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
         if (this.SecurityGroupId == null && Exploration.Includes(parent + ".securityGroupId", true))
         {
-            this.SecurityGroupId = new System.String("FETCH");
+            this.SecurityGroupId = "FETCH";
         }
         //      C# -> System.String? SubnetId
         // GraphQL -> subnetId: String! (scalar)
         if (this.SubnetId == null && Exploration.Includes(parent + ".subnetId", true))
         {
-            this.SubnetId = new System.String("FETCH");
+            this.SubnetId = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
         {
-            this.VpcId = new System.String("FETCH");
+            this.VpcId = "FETCH";
         }
         //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
         // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)

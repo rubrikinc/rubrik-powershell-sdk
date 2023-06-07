@@ -112,13 +112,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? Site
         // GraphQL -> site: String! (scalar)
         if (this.Site == null && Exploration.Includes(parent + ".site", true))
         {
-            this.Site = new System.String("FETCH");
+            this.Site = "FETCH";
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)

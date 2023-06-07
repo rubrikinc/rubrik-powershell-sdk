@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> scriptCommand: String! (scalar)
         if (this.ScriptCommand == null && Exploration.Includes(parent + ".scriptCommand", true))
         {
-            this.ScriptCommand = new System.String("FETCH");
+            this.ScriptCommand = "FETCH";
         }
         //      C# -> System.Int64? Timeout
         // GraphQL -> timeout: Long! (scalar)

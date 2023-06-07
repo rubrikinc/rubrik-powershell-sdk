@@ -162,13 +162,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: UUID! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -180,13 +180,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodeCompositeId: String! (scalar)
         if (this.NodeCompositeId == null && Exploration.Includes(parent + ".nodeCompositeId", true))
         {
-            this.NodeCompositeId = new System.String("FETCH");
+            this.NodeCompositeId = "FETCH";
         }
         //      C# -> System.String? NodeIp
         // GraphQL -> nodeIp: String! (scalar)
         if (this.NodeIp == null && Exploration.Includes(parent + ".nodeIp", true))
         {
-            this.NodeIp = new System.String("FETCH");
+            this.NodeIp = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

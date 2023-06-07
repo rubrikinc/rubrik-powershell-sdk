@@ -157,13 +157,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? EditedPolicy
         // GraphQL -> editedPolicy: String (scalar)
         if (this.EditedPolicy == null && Exploration.Includes(parent + ".editedPolicy", true))
         {
-            this.EditedPolicy = new System.String("FETCH");
+            this.EditedPolicy = "FETCH";
         }
         //      C# -> List<ClusterSummary>? Clusters
         // GraphQL -> clusters: [ClusterSummary!]! (type)

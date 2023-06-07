@@ -270,37 +270,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: ID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> System.String? ObjectId
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
         {
-            this.ObjectId = new System.String("FETCH");
+            this.ObjectId = "FETCH";
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String (scalar)
         if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
         {
-            this.ObjectName = new System.String("FETCH");
+            this.ObjectName = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
         if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
         {
-            this.OrgName = new System.String("FETCH");
+            this.OrgName = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
@@ -312,13 +312,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userName: String (scalar)
         if (this.UserName == null && Exploration.Includes(parent + ".userName", true))
         {
-            this.UserName = new System.String("FETCH");
+            this.UserName = "FETCH";
         }
         //      C# -> System.String? UserNote
         // GraphQL -> userNote: String (scalar)
         if (this.UserNote == null && Exploration.Includes(parent + ".userNote", true))
         {
-            this.UserNote = new System.String("FETCH");
+            this.UserNote = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)

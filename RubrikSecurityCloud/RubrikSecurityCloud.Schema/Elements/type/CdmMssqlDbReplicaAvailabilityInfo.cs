@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availabilityMode: String! (scalar)
         if (this.AvailabilityMode == null && Exploration.Includes(parent + ".availabilityMode", true))
         {
-            this.AvailabilityMode = new System.String("FETCH");
+            this.AvailabilityMode = "FETCH";
         }
         //      C# -> System.String? ReplicaId
         // GraphQL -> replicaId: String! (scalar)
         if (this.ReplicaId == null && Exploration.Includes(parent + ".replicaId", true))
         {
-            this.ReplicaId = new System.String("FETCH");
+            this.ReplicaId = "FETCH";
         }
         //      C# -> System.String? Role
         // GraphQL -> role: String! (scalar)
         if (this.Role == null && Exploration.Includes(parent + ".role", true))
         {
-            this.Role = new System.String("FETCH");
+            this.Role = "FETCH";
         }
     }
 

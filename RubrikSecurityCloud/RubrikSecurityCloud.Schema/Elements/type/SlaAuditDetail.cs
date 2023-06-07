@@ -198,13 +198,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userAction: String! (scalar)
         if (this.UserAction == null && Exploration.Includes(parent + ".userAction", true))
         {
-            this.UserAction = new System.String("FETCH");
+            this.UserAction = "FETCH";
         }
         //      C# -> System.String? UserName
         // GraphQL -> userName: String! (scalar)
         if (this.UserName == null && Exploration.Includes(parent + ".userName", true))
         {
-            this.UserName = new System.String("FETCH");
+            this.UserName = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)

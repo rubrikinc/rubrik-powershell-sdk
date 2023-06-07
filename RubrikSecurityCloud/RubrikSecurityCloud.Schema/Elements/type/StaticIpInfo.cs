@@ -112,7 +112,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> gateway: String (scalar)
         if (this.Gateway == null && Exploration.Includes(parent + ".gateway", true))
         {
-            this.Gateway = new System.String("FETCH");
+            this.Gateway = "FETCH";
         }
         //      C# -> List<System.String>? IpAddresses
         // GraphQL -> ipAddresses: [String!]! (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subnetMask: String! (scalar)
         if (this.SubnetMask == null && Exploration.Includes(parent + ".subnetMask", true))
         {
-            this.SubnetMask = new System.String("FETCH");
+            this.SubnetMask = "FETCH";
         }
     }
 

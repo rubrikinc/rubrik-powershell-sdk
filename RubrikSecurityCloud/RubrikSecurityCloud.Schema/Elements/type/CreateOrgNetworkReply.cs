@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> orgNetworkId: UUID! (scalar)
         if (this.OrgNetworkId == null && Exploration.Includes(parent + ".orgNetworkId", true))
         {
-            this.OrgNetworkId = new System.String("FETCH");
+            this.OrgNetworkId = "FETCH";
         }
     }
 

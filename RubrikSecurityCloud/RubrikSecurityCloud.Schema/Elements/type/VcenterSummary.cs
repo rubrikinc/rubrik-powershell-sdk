@@ -252,13 +252,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configuredSlaDomainPolarisManagedId: String (scalar)
         if (this.ConfiguredSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".configuredSlaDomainPolarisManagedId", true))
         {
-            this.ConfiguredSlaDomainPolarisManagedId = new System.String("FETCH");
+            this.ConfiguredSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.Boolean? IsHotAddProxyEnabledForOnPremVcenter
         // GraphQL -> isHotAddProxyEnabledForOnPremVcenter: Boolean (scalar)
@@ -288,19 +288,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> username: String! (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
         //      C# -> System.String? VcenterUuid
         // GraphQL -> vcenterUuid: String (scalar)
         if (this.VcenterUuid == null && Exploration.Includes(parent + ".vcenterUuid", true))
         {
-            this.VcenterUuid = new System.String("FETCH");
+            this.VcenterUuid = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> List<ClusterVisibilityInfo>? ComputeVisibilityFilter
         // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)

@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> roleDefinitionAssignmentTemplate: String! (scalar)
         if (this.RoleDefinitionAssignmentTemplate == null && Exploration.Includes(parent + ".roleDefinitionAssignmentTemplate", true))
         {
-            this.RoleDefinitionAssignmentTemplate = new System.String("FETCH");
+            this.RoleDefinitionAssignmentTemplate = "FETCH";
         }
         //      C# -> System.Int32? Version
         // GraphQL -> version: Int! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.Int32();
+            this.Version = Int32.MinValue;
         }
     }
 

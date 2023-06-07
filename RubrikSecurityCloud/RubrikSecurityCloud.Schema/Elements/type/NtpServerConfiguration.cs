@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> server: String! (scalar)
         if (this.Server == null && Exploration.Includes(parent + ".server", true))
         {
-            this.Server = new System.String("FETCH");
+            this.Server = "FETCH";
         }
         //      C# -> NtpSymmKeyConfiguration? SymmetricKey
         // GraphQL -> symmetricKey: NtpSymmKeyConfiguration (type)

@@ -258,13 +258,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? InstanceNumber
         // GraphQL -> instanceNumber: String! (scalar)
         if (this.InstanceNumber == null && Exploration.Includes(parent + ".instanceNumber", true))
         {
-            this.InstanceNumber = new System.String("FETCH");
+            this.InstanceNumber = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
@@ -282,25 +282,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numDbs: Int! (scalar)
         if (this.NumDbs == null && Exploration.Includes(parent + ".numDbs", true))
         {
-            this.NumDbs = new System.Int32();
+            this.NumDbs = Int32.MinValue;
         }
         //      C# -> System.String? Sid
         // GraphQL -> sid: String! (scalar)
         if (this.Sid == null && Exploration.Includes(parent + ".sid", true))
         {
-            this.Sid = new System.String("FETCH");
+            this.Sid = "FETCH";
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String (scalar)
         if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
         {
-            this.StatusMessage = new System.String("FETCH");
+            this.StatusMessage = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
         //      C# -> List<SapHanaHost>? Hosts
         // GraphQL -> hosts: [SapHanaHost!]! (type)

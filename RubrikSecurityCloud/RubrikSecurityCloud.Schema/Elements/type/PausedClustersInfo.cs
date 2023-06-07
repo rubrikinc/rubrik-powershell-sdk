@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> pausedClustersCount: Int! (scalar)
         if (this.PausedClustersCount == null && Exploration.Includes(parent + ".pausedClustersCount", true))
         {
-            this.PausedClustersCount = new System.Int32();
+            this.PausedClustersCount = Int32.MinValue;
         }
         //      C# -> List<Cluster>? PausedClusters
         // GraphQL -> pausedClusters: [Cluster!] (type)

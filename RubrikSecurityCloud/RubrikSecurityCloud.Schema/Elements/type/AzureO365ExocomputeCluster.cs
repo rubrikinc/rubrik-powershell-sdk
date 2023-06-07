@@ -424,37 +424,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> acrId: String! (scalar)
         if (this.AcrId == null && Exploration.Includes(parent + ".acrId", true))
         {
-            this.AcrId = new System.String("FETCH");
+            this.AcrId = "FETCH";
         }
         //      C# -> System.String? AksId
         // GraphQL -> aksId: String! (scalar)
         if (this.AksId == null && Exploration.Includes(parent + ".aksId", true))
         {
-            this.AksId = new System.String("FETCH");
+            this.AksId = "FETCH";
         }
         //      C# -> System.String? AksVersion
         // GraphQL -> aksVersion: String! (scalar)
         if (this.AksVersion == null && Exploration.Includes(parent + ".aksVersion", true))
         {
-            this.AksVersion = new System.String("FETCH");
+            this.AksVersion = "FETCH";
         }
         //      C# -> System.String? AzureAppId
         // GraphQL -> azureAppId: String! (scalar)
         if (this.AzureAppId == null && Exploration.Includes(parent + ".azureAppId", true))
         {
-            this.AzureAppId = new System.String("FETCH");
+            this.AzureAppId = "FETCH";
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
         if (this.GroupName == null && Exploration.Includes(parent + ".groupName", true))
         {
-            this.GroupName = new System.String("FETCH");
+            this.GroupName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsProvisioned
         // GraphQL -> isProvisioned: Boolean! (scalar)
@@ -466,67 +466,67 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> kmsId: String! (scalar)
         if (this.KmsId == null && Exploration.Includes(parent + ".kmsId", true))
         {
-            this.KmsId = new System.String("FETCH");
+            this.KmsId = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
         if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
         {
-            this.OrgName = new System.String("FETCH");
+            this.OrgName = "FETCH";
         }
         //      C# -> System.String? OrgStatus
         // GraphQL -> orgStatus: String! (scalar)
         if (this.OrgStatus == null && Exploration.Includes(parent + ".orgStatus", true))
         {
-            this.OrgStatus = new System.String("FETCH");
+            this.OrgStatus = "FETCH";
         }
         //      C# -> System.String? OrgTenantId
         // GraphQL -> orgTenantId: String! (scalar)
         if (this.OrgTenantId == null && Exploration.Includes(parent + ".orgTenantId", true))
         {
-            this.OrgTenantId = new System.String("FETCH");
+            this.OrgTenantId = "FETCH";
         }
         //      C# -> System.String? PolarisAccount
         // GraphQL -> polarisAccount: String! (scalar)
         if (this.PolarisAccount == null && Exploration.Includes(parent + ".polarisAccount", true))
         {
-            this.PolarisAccount = new System.String("FETCH");
+            this.PolarisAccount = "FETCH";
         }
         //      C# -> System.String? RegionName
         // GraphQL -> regionName: String! (scalar)
         if (this.RegionName == null && Exploration.Includes(parent + ".regionName", true))
         {
-            this.RegionName = new System.String("FETCH");
+            this.RegionName = "FETCH";
         }
         //      C# -> System.String? SetupConfiguration
         // GraphQL -> setupConfiguration: String! (scalar)
         if (this.SetupConfiguration == null && Exploration.Includes(parent + ".setupConfiguration", true))
         {
-            this.SetupConfiguration = new System.String("FETCH");
+            this.SetupConfiguration = "FETCH";
         }
         //      C# -> System.String? StorageId
         // GraphQL -> storageId: String! (scalar)
         if (this.StorageId == null && Exploration.Includes(parent + ".storageId", true))
         {
-            this.StorageId = new System.String("FETCH");
+            this.StorageId = "FETCH";
         }
         //      C# -> System.String? SubscriptionId
         // GraphQL -> subscriptionId: String! (scalar)
         if (this.SubscriptionId == null && Exploration.Includes(parent + ".subscriptionId", true))
         {
-            this.SubscriptionId = new System.String("FETCH");
+            this.SubscriptionId = "FETCH";
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId == null && Exploration.Includes(parent + ".tenantId", true))
         {
-            this.TenantId = new System.String("FETCH");
+            this.TenantId = "FETCH";
         }
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)

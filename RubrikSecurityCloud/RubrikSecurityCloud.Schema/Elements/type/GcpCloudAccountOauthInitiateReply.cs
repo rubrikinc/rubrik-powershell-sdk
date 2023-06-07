@@ -120,13 +120,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
         {
-            this.ClientId = new System.String("FETCH");
+            this.ClientId = "FETCH";
         }
         //      C# -> System.String? RedirectUrl
         // GraphQL -> redirectUrl: String! (scalar)
         if (this.RedirectUrl == null && Exploration.Includes(parent + ".redirectUrl", true))
         {
-            this.RedirectUrl = new System.String("FETCH");
+            this.RedirectUrl = "FETCH";
         }
         //      C# -> List<System.String>? Scope
         // GraphQL -> scope: [String!]! (scalar)
@@ -138,13 +138,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sessionId: String! (scalar)
         if (this.SessionId == null && Exploration.Includes(parent + ".sessionId", true))
         {
-            this.SessionId = new System.String("FETCH");
+            this.SessionId = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
     }
 

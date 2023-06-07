@@ -472,19 +472,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ebsVolumeCount: Int! (scalar)
         if (this.EbsVolumeCount == null && Exploration.Includes(parent + ".ebsVolumeCount", true))
         {
-            this.EbsVolumeCount = new System.Int32();
+            this.EbsVolumeCount = Int32.MinValue;
         }
         //      C# -> System.Int32? Ec2InstanceCount
         // GraphQL -> ec2InstanceCount: Int! (scalar)
         if (this.Ec2InstanceCount == null && Exploration.Includes(parent + ".ec2InstanceCount", true))
         {
-            this.Ec2InstanceCount = new System.Int32();
+            this.Ec2InstanceCount = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? LastRefreshedAt
         // GraphQL -> lastRefreshedAt: DateTime (scalar)
@@ -496,25 +496,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? RdsInstanceCount
         // GraphQL -> rdsInstanceCount: Int! (scalar)
         if (this.RdsInstanceCount == null && Exploration.Includes(parent + ".rdsInstanceCount", true))
         {
-            this.RdsInstanceCount = new System.Int32();
+            this.RdsInstanceCount = Int32.MinValue;
         }
         //      C# -> System.Int32? S3BucketCount
         // GraphQL -> s3BucketCount: Int! (scalar)
         if (this.S3BucketCount == null && Exploration.Includes(parent + ".s3BucketCount", true))
         {
-            this.S3BucketCount = new System.Int32();
+            this.S3BucketCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

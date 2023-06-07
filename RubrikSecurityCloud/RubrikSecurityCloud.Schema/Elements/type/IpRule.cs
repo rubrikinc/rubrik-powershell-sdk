@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ip: String! (scalar)
         if (this.Ip == null && Exploration.Includes(parent + ".ip", true))
         {
-            this.Ip = new System.String("FETCH");
+            this.Ip = "FETCH";
         }
     }
 

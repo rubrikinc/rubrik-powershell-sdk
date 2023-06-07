@@ -21,64 +21,56 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateAzureO365",
-        DefaultParameterSetName = "setupExocompute")
+        DefaultParameterSetName = "Setupexocompute")
     ]
     public class Invoke_RscMutateAzureO365 : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // setupExocompute parameter set
+        // Setupexocompute parameter set
         //
-        // GraphQL operation: setupAzureO365Exocompute(tenantId: String!, subscriptionId: UUID!, exocomputeConfig: AzureO365ExocomputeConfig!):SetupAzureO365ExocomputeResp!
+        // [GraphQL: setupAzureO365Exocompute]
         //
         [Parameter(
-            ParameterSetName = "setupExocompute",
+            ParameterSetName = "Setupexocompute",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sets up Exocompute for an O365 subscription.
-                GraphQL operation: setupAzureO365Exocompute(tenantId: String!, subscriptionId: UUID!, exocomputeConfig: AzureO365ExocomputeConfig!):SetupAzureO365ExocomputeResp!
-                ",
+@"Sets up Exocompute for an O365 subscription.
+[GraphQL: setupAzureO365Exocompute]",
             Position = 0
         )]
-        public SwitchParameter setupExocompute { get; set; }
+        public SwitchParameter Setupexocompute { get; set; }
 
         [Parameter(
-            ParameterSetName = "setupExocompute",
+            ParameterSetName = "Setupexocompute",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument tenantId: String!
-                "
+@"
+GraphQL argument tenantId: String!"
         )]
         public System.String? TenantId { get; set; }
         [Parameter(
-            ParameterSetName = "setupExocompute",
+            ParameterSetName = "Setupexocompute",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument subscriptionId: UUID!
-                "
+@"
+GraphQL argument subscriptionId: UUID!"
         )]
         public System.String? SubscriptionId { get; set; }
         [Parameter(
-            ParameterSetName = "setupExocompute",
+            ParameterSetName = "Setupexocompute",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!
-                "
+@"
+GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!"
         )]
         public AzureO365ExocomputeConfig? ExocomputeConfig { get; set; }
 
@@ -88,8 +80,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "setupExocompute":
-                        this.ProcessRecord_setupExocompute();
+                    case "Setupexocompute":
+                        this.ProcessRecord_Setupexocompute();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -109,9 +101,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // setupAzureO365Exocompute.
-        protected void ProcessRecord_setupExocompute()
+        protected void ProcessRecord_Setupexocompute()
         {
-            this._logger.name += " -setupExocompute";
+            this._logger.name += " -Setupexocompute";
             // Invoke graphql operation setupAzureO365Exocompute
             InvokeMutationSetupAzureO365Exocompute();
         }

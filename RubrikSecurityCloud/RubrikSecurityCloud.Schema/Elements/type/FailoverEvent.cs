@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> System.Int32? Seq
         // GraphQL -> seq: Int! (scalar)
         if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
         {
-            this.Seq = new System.Int32();
+            this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
     }
 

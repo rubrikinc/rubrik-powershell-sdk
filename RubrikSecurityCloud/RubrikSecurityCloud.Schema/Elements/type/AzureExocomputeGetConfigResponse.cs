@@ -154,7 +154,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configUuid: String! (scalar)
         if (this.ConfigUuid == null && Exploration.Includes(parent + ".configUuid", true))
         {
-            this.ConfigUuid = new System.String("FETCH");
+            this.ConfigUuid = "FETCH";
         }
         //      C# -> System.Boolean? IsRscManaged
         // GraphQL -> isRscManaged: Boolean! (scalar)
@@ -166,19 +166,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> System.String? PodSubnetNativeId
         // GraphQL -> podSubnetNativeId: String! (scalar)
         if (this.PodSubnetNativeId == null && Exploration.Includes(parent + ".podSubnetNativeId", true))
         {
-            this.PodSubnetNativeId = new System.String("FETCH");
+            this.PodSubnetNativeId = "FETCH";
         }
         //      C# -> System.String? SubnetNativeId
         // GraphQL -> subnetNativeId: String! (scalar)
         if (this.SubnetNativeId == null && Exploration.Includes(parent + ".subnetNativeId", true))
         {
-            this.SubnetNativeId = new System.String("FETCH");
+            this.SubnetNativeId = "FETCH";
         }
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)

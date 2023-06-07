@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> caseId: String! (scalar)
         if (this.CaseId == null && Exploration.Includes(parent + ".caseId", true))
         {
-            this.CaseId = new System.String("FETCH");
+            this.CaseId = "FETCH";
         }
         //      C# -> System.String? CaseLink
         // GraphQL -> caseLink: URL! (scalar)
         if (this.CaseLink == null && Exploration.Includes(parent + ".caseLink", true))
         {
-            this.CaseLink = new System.String("FETCH");
+            this.CaseLink = "FETCH";
         }
         //      C# -> System.String? CaseNumber
         // GraphQL -> caseNumber: String! (scalar)
         if (this.CaseNumber == null && Exploration.Includes(parent + ".caseNumber", true))
         {
-            this.CaseNumber = new System.String("FETCH");
+            this.CaseNumber = "FETCH";
         }
     }
 

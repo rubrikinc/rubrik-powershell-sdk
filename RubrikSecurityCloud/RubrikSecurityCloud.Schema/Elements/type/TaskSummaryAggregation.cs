@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> NumOfCanceled: Int! (scalar)
         if (this.NumOfCanceled == null && Exploration.Includes(parent + ".NumOfCanceled", true))
         {
-            this.NumOfCanceled = new System.Int32();
+            this.NumOfCanceled = Int32.MinValue;
         }
         //      C# -> System.Int32? NumOfExpected
         // GraphQL -> NumOfExpected: Int! (scalar)
         if (this.NumOfExpected == null && Exploration.Includes(parent + ".NumOfExpected", true))
         {
-            this.NumOfExpected = new System.Int32();
+            this.NumOfExpected = Int32.MinValue;
         }
         //      C# -> System.Int32? NumOfFailed
         // GraphQL -> NumOfFailed: Int! (scalar)
         if (this.NumOfFailed == null && Exploration.Includes(parent + ".NumOfFailed", true))
         {
-            this.NumOfFailed = new System.Int32();
+            this.NumOfFailed = Int32.MinValue;
         }
         //      C# -> System.Int32? NumOfSucceeded
         // GraphQL -> NumOfSucceeded: Int! (scalar)
         if (this.NumOfSucceeded == null && Exploration.Includes(parent + ".NumOfSucceeded", true))
         {
-            this.NumOfSucceeded = new System.Int32();
+            this.NumOfSucceeded = Int32.MinValue;
         }
     }
 

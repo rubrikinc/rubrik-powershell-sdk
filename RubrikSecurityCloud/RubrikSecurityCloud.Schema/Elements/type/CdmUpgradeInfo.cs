@@ -398,7 +398,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Single? CurrentStateProgress
         // GraphQL -> currentStateProgress: Float (scalar)
@@ -410,7 +410,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> downloadedVersion: String (scalar)
         if (this.DownloadedVersion == null && Exploration.Includes(parent + ".downloadedVersion", true))
         {
-            this.DownloadedVersion = new System.String("FETCH");
+            this.DownloadedVersion = "FETCH";
         }
         //      C# -> System.Boolean? FastUpgradePreferred
         // GraphQL -> fastUpgradePreferred: Boolean (scalar)
@@ -422,7 +422,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> finishedStates: String (scalar)
         if (this.FinishedStates == null && Exploration.Includes(parent + ".finishedStates", true))
         {
-            this.FinishedStates = new System.String("FETCH");
+            this.FinishedStates = "FETCH";
         }
         //      C# -> System.Single? OverallProgress
         // GraphQL -> overallProgress: Float (scalar)
@@ -434,19 +434,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> pendingStates: String (scalar)
         if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates", true))
         {
-            this.PendingStates = new System.String("FETCH");
+            this.PendingStates = "FETCH";
         }
         //      C# -> System.String? PreviousVersion
         // GraphQL -> previousVersion: String (scalar)
         if (this.PreviousVersion == null && Exploration.Includes(parent + ".previousVersion", true))
         {
-            this.PreviousVersion = new System.String("FETCH");
+            this.PreviousVersion = "FETCH";
         }
         //      C# -> System.String? ScheduleUpgradeAction
         // GraphQL -> scheduleUpgradeAction: String (scalar)
         if (this.ScheduleUpgradeAction == null && Exploration.Includes(parent + ".scheduleUpgradeAction", true))
         {
-            this.ScheduleUpgradeAction = new System.String("FETCH");
+            this.ScheduleUpgradeAction = "FETCH";
         }
         //      C# -> DateTime? ScheduleUpgradeAt
         // GraphQL -> scheduleUpgradeAt: DateTime (scalar)
@@ -458,13 +458,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> scheduleUpgradeMode: String (scalar)
         if (this.ScheduleUpgradeMode == null && Exploration.Includes(parent + ".scheduleUpgradeMode", true))
         {
-            this.ScheduleUpgradeMode = new System.String("FETCH");
+            this.ScheduleUpgradeMode = "FETCH";
         }
         //      C# -> System.String? StateMachineStatus
         // GraphQL -> stateMachineStatus: String (scalar)
         if (this.StateMachineStatus == null && Exploration.Includes(parent + ".stateMachineStatus", true))
         {
-            this.StateMachineStatus = new System.String("FETCH");
+            this.StateMachineStatus = "FETCH";
         }
         //      C# -> DateTime? StateMachineStatusAt
         // GraphQL -> stateMachineStatusAt: DateTime (scalar)
@@ -482,7 +482,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> upgradeEventSeriesId: String (scalar)
         if (this.UpgradeEventSeriesId == null && Exploration.Includes(parent + ".upgradeEventSeriesId", true))
         {
-            this.UpgradeEventSeriesId = new System.String("FETCH");
+            this.UpgradeEventSeriesId = "FETCH";
         }
         //      C# -> DateTime? UpgradeStartAt
         // GraphQL -> upgradeStartAt: DateTime (scalar)
@@ -494,7 +494,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)

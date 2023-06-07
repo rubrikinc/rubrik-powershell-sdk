@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> errorMessage: String! (scalar)
         if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
         {
-            this.ErrorMessage = new System.String("FETCH");
+            this.ErrorMessage = "FETCH";
         }
         //      C# -> System.String? InputFieldName
         // GraphQL -> inputFieldName: String! (scalar)
         if (this.InputFieldName == null && Exploration.Includes(parent + ".inputFieldName", true))
         {
-            this.InputFieldName = new System.String("FETCH");
+            this.InputFieldName = "FETCH";
         }
     }
 

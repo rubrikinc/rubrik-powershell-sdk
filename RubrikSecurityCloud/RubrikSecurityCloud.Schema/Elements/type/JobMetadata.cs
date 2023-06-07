@@ -342,7 +342,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> currentInstance: Int! (scalar)
         if (this.CurrentInstance == null && Exploration.Includes(parent + ".currentInstance", true))
         {
-            this.CurrentInstance = new System.Int32();
+            this.CurrentInstance = Int32.MinValue;
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -354,13 +354,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> info: String! (scalar)
         if (this.Info == null && Exploration.Includes(parent + ".info", true))
         {
-            this.Info = new System.String("FETCH");
+            this.Info = "FETCH";
         }
         //      C# -> System.String? JobType
         // GraphQL -> jobType: String! (scalar)
         if (this.JobType == null && Exploration.Includes(parent + ".jobType", true))
         {
-            this.JobType = new System.String("FETCH");
+            this.JobType = "FETCH";
         }
         //      C# -> DateTime? LastFailure
         // GraphQL -> lastFailure: DateTime (scalar)
@@ -372,7 +372,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lastOwner: String! (scalar)
         if (this.LastOwner == null && Exploration.Includes(parent + ".lastOwner", true))
         {
-            this.LastOwner = new System.String("FETCH");
+            this.LastOwner = "FETCH";
         }
         //      C# -> DateTime? LastSkipped
         // GraphQL -> lastSkipped: DateTime (scalar)
@@ -390,25 +390,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numScheduledRuns: Int! (scalar)
         if (this.NumScheduledRuns == null && Exploration.Includes(parent + ".numScheduledRuns", true))
         {
-            this.NumScheduledRuns = new System.Int32();
+            this.NumScheduledRuns = Int32.MinValue;
         }
         //      C# -> System.Int32? NumSuccessfulRuns
         // GraphQL -> numSuccessfulRuns: Int! (scalar)
         if (this.NumSuccessfulRuns == null && Exploration.Includes(parent + ".numSuccessfulRuns", true))
         {
-            this.NumSuccessfulRuns = new System.Int32();
+            this.NumSuccessfulRuns = Int32.MinValue;
         }
         //      C# -> System.String? Owner
         // GraphQL -> owner: String! (scalar)
         if (this.Owner == null && Exploration.Includes(parent + ".owner", true))
         {
-            this.Owner = new System.String("FETCH");
+            this.Owner = "FETCH";
         }
         //      C# -> System.String? Progress
         // GraphQL -> progress: String! (scalar)
         if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
         {
-            this.Progress = new System.String("FETCH");
+            this.Progress = "FETCH";
         }
         //      C# -> DateTime? ProgressedAt
         // GraphQL -> progressedAt: DateTime (scalar)
@@ -420,7 +420,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> retryAttempts: Int! (scalar)
         if (this.RetryAttempts == null && Exploration.Includes(parent + ".retryAttempts", true))
         {
-            this.RetryAttempts = new System.Int32();
+            this.RetryAttempts = Int32.MinValue;
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)
@@ -438,7 +438,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> state: String! (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
         //      C# -> DateTime? UpdatedAt
         // GraphQL -> updatedAt: DateTime (scalar)

@@ -180,7 +180,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numClusters: Int! (scalar)
         if (this.NumClusters == null && Exploration.Includes(parent + ".numClusters", true))
         {
-            this.NumClusters = new System.Int32();
+            this.NumClusters = Int32.MinValue;
         }
         //      C# -> List<System.String>? ProductTypes
         // GraphQL -> productTypes: [String!]! (scalar)

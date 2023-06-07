@@ -148,13 +148,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostCount: Int (scalar)
         if (this.HostCount == null && Exploration.Includes(parent + ".hostCount", true))
         {
-            this.HostCount = new System.Int32();
+            this.HostCount = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean (scalar)
@@ -172,13 +172,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.Int32? ShareCount
         // GraphQL -> shareCount: Int (scalar)
         if (this.ShareCount == null && Exploration.Includes(parent + ".shareCount", true))
         {
-            this.ShareCount = new System.Int32();
+            this.ShareCount = Int32.MinValue;
         }
         //      C# -> FilesetTemplateCreate? FilesetTemplateCreate
         // GraphQL -> filesetTemplateCreate: FilesetTemplateCreate (type)

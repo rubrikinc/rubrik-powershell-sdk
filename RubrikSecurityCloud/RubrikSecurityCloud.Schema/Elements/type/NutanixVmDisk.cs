@@ -134,7 +134,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> deviceType: String! (scalar)
         if (this.DeviceType == null && Exploration.Includes(parent + ".deviceType", true))
         {
-            this.DeviceType = new System.String("FETCH");
+            this.DeviceType = "FETCH";
         }
         //      C# -> System.Boolean? IsSnapshottable
         // GraphQL -> isSnapshottable: Boolean! (scalar)
@@ -146,7 +146,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> label: String! (scalar)
         if (this.Label == null && Exploration.Includes(parent + ".label", true))
         {
-            this.Label = new System.String("FETCH");
+            this.Label = "FETCH";
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long! (scalar)
@@ -158,13 +158,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> uuid: String! (scalar)
         if (this.Uuid == null && Exploration.Includes(parent + ".uuid", true))
         {
-            this.Uuid = new System.String("FETCH");
+            this.Uuid = "FETCH";
         }
         //      C# -> System.String? VmDiskUuid
         // GraphQL -> vmDiskUuid: String! (scalar)
         if (this.VmDiskUuid == null && Exploration.Includes(parent + ".vmDiskUuid", true))
         {
-            this.VmDiskUuid = new System.String("FETCH");
+            this.VmDiskUuid = "FETCH";
         }
     }
 

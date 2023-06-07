@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> groupId: UUID! (scalar)
         if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
         {
-            this.GroupId = new System.String("FETCH");
+            this.GroupId = "FETCH";
         }
     }
 

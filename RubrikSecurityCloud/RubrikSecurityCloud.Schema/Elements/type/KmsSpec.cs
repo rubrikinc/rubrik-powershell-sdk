@@ -154,37 +154,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appId: String! (scalar)
         if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
         {
-            this.AppId = new System.String("FETCH");
+            this.AppId = "FETCH";
         }
         //      C# -> System.String? AppSecret
         // GraphQL -> appSecret: String! (scalar)
         if (this.AppSecret == null && Exploration.Includes(parent + ".appSecret", true))
         {
-            this.AppSecret = new System.String("FETCH");
+            this.AppSecret = "FETCH";
         }
         //      C# -> System.String? KekNameColossus
         // GraphQL -> kekNameColossus: String! (scalar)
         if (this.KekNameColossus == null && Exploration.Includes(parent + ".kekNameColossus", true))
         {
-            this.KekNameColossus = new System.String("FETCH");
+            this.KekNameColossus = "FETCH";
         }
         //      C# -> System.String? KeyName
         // GraphQL -> keyName: String! (scalar)
         if (this.KeyName == null && Exploration.Includes(parent + ".keyName", true))
         {
-            this.KeyName = new System.String("FETCH");
+            this.KeyName = "FETCH";
         }
         //      C# -> System.String? KmsId
         // GraphQL -> kmsId: String! (scalar)
         if (this.KmsId == null && Exploration.Includes(parent + ".kmsId", true))
         {
-            this.KmsId = new System.String("FETCH");
+            this.KmsId = "FETCH";
         }
         //      C# -> System.String? TenantId
         // GraphQL -> tenantId: String! (scalar)
         if (this.TenantId == null && Exploration.Includes(parent + ".tenantId", true))
         {
-            this.TenantId = new System.String("FETCH");
+            this.TenantId = "FETCH";
         }
     }
 

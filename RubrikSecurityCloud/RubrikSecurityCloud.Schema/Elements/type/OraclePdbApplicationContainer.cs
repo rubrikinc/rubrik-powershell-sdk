@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> applicationRoot: String! (scalar)
         if (this.ApplicationRoot == null && Exploration.Includes(parent + ".applicationRoot", true))
         {
-            this.ApplicationRoot = new System.String("FETCH");
+            this.ApplicationRoot = "FETCH";
         }
     }
 

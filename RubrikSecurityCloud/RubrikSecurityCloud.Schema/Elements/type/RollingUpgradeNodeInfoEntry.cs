@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodeName: String! (scalar)
         if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
         {
-            this.NodeName = new System.String("FETCH");
+            this.NodeName = "FETCH";
         }
         //      C# -> RollingUpgradeNodeInfo? RuNodeInfo
         // GraphQL -> ruNodeInfo: RollingUpgradeNodeInfo (type)

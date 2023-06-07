@@ -182,7 +182,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> filename: String! (scalar)
         if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
         {
-            this.Filename = new System.String("FETCH");
+            this.Filename = "FETCH";
         }
         //      C# -> System.Boolean? IsFile
         // GraphQL -> isFile: Boolean! (scalar)
@@ -200,7 +200,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numSnapshots: Int (scalar)
         if (this.NumSnapshots == null && Exploration.Includes(parent + ".numSnapshots", true))
         {
-            this.NumSnapshots = new System.Int32();
+            this.NumSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? SizeInBytes
         // GraphQL -> sizeInBytes: Long (scalar)
@@ -212,13 +212,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
         {
-            this.SnappableId = new System.String("FETCH");
+            this.SnappableId = "FETCH";
         }
         //      C# -> System.String? SnappableName
         // GraphQL -> snappableName: String! (scalar)
         if (this.SnappableName == null && Exploration.Includes(parent + ".snappableName", true))
         {
-            this.SnappableName = new System.String("FETCH");
+            this.SnappableName = "FETCH";
         }
         //      C# -> System.Int64? SnapshotTime
         // GraphQL -> snapshotTime: Long (scalar)

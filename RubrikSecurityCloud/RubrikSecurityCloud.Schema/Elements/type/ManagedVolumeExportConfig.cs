@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subnet: String (scalar)
         if (this.Subnet == null && Exploration.Includes(parent + ".subnet", true))
         {
-            this.Subnet = new System.String("FETCH");
+            this.Subnet = "FETCH";
         }
         //      C# -> ManagedVolumePatchConfig? ManagedVolumePatchConfig
         // GraphQL -> managedVolumePatchConfig: ManagedVolumePatchConfig (type)

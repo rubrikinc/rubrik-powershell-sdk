@@ -238,7 +238,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> canceledWorkloads: Int! (scalar)
         if (this.CanceledWorkloads == null && Exploration.Includes(parent + ".canceledWorkloads", true))
         {
-            this.CanceledWorkloads = new System.Int32();
+            this.CanceledWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -256,19 +256,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failedWorkloads: Int! (scalar)
         if (this.FailedWorkloads == null && Exploration.Includes(parent + ".failedWorkloads", true))
         {
-            this.FailedWorkloads = new System.Int32();
+            this.FailedWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? InProgressWorkloads
         // GraphQL -> inProgressWorkloads: Int! (scalar)
         if (this.InProgressWorkloads == null && Exploration.Includes(parent + ".inProgressWorkloads", true))
         {
-            this.InProgressWorkloads = new System.Int32();
+            this.InProgressWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? Seq
         // GraphQL -> seq: Int! (scalar)
         if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
         {
-            this.Seq = new System.Int32();
+            this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)
@@ -280,25 +280,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> succeededWorkloads: Int! (scalar)
         if (this.SucceededWorkloads == null && Exploration.Includes(parent + ".succeededWorkloads", true))
         {
-            this.SucceededWorkloads = new System.Int32();
+            this.SucceededWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalWorkloads
         // GraphQL -> totalWorkloads: Int! (scalar)
         if (this.TotalWorkloads == null && Exploration.Includes(parent + ".totalWorkloads", true))
         {
-            this.TotalWorkloads = new System.Int32();
+            this.TotalWorkloads = Int32.MinValue;
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
         if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
         {
-            this.WorkloadType = new System.String("FETCH");
+            this.WorkloadType = "FETCH";
         }
         //      C# -> System.Int32? WorkloadsWithoutSnapshot
         // GraphQL -> workloadsWithoutSnapshot: Int! (scalar)
         if (this.WorkloadsWithoutSnapshot == null && Exploration.Includes(parent + ".workloadsWithoutSnapshot", true))
         {
-            this.WorkloadsWithoutSnapshot = new System.Int32();
+            this.WorkloadsWithoutSnapshot = Int32.MinValue;
         }
         //      C# -> List<BulkRecoverySelectorStep>? SelectorSteps
         // GraphQL -> selectorSteps: [BulkRecoverySelectorStep!]! (type)

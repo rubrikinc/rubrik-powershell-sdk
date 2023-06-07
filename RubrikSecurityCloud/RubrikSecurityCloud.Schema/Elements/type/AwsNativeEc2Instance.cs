@@ -766,49 +766,49 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
         {
-            this.AvailabilityZone = new System.String("FETCH");
+            this.AvailabilityZone = "FETCH";
         }
         //      C# -> System.String? AwsAccountRubrikId
         // GraphQL -> awsAccountRubrikId: String! (scalar)
         if (this.AwsAccountRubrikId == null && Exploration.Includes(parent + ".awsAccountRubrikId", true))
         {
-            this.AwsAccountRubrikId = new System.String("FETCH");
+            this.AwsAccountRubrikId = "FETCH";
         }
         //      C# -> System.String? AwsNativeAccountName
         // GraphQL -> awsNativeAccountName: String! (scalar)
         if (this.AwsNativeAccountName == null && Exploration.Includes(parent + ".awsNativeAccountName", true))
         {
-            this.AwsNativeAccountName = new System.String("FETCH");
+            this.AwsNativeAccountName = "FETCH";
         }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (this.CloudNativeId == null && Exploration.Includes(parent + ".cloudNativeId", true))
         {
-            this.CloudNativeId = new System.String("FETCH");
+            this.CloudNativeId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
         if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
         {
-            this.InstanceName = new System.String("FETCH");
+            this.InstanceName = "FETCH";
         }
         //      C# -> System.String? InstanceNativeId
         // GraphQL -> instanceNativeId: String! (scalar)
         if (this.InstanceNativeId == null && Exploration.Includes(parent + ".instanceNativeId", true))
         {
-            this.InstanceNativeId = new System.String("FETCH");
+            this.InstanceNativeId = "FETCH";
         }
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
         if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
         {
-            this.InstanceType = new System.String("FETCH");
+            this.InstanceType = "FETCH";
         }
         //      C# -> System.Boolean? IsExocomputeConfigured
         // GraphQL -> isExocomputeConfigured: Boolean! (scalar)
@@ -838,37 +838,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
         if (this.NativeName == null && Exploration.Includes(parent + ".nativeName", true))
         {
-            this.NativeName = new System.String("FETCH");
+            this.NativeName = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? PrivateIp
         // GraphQL -> privateIp: String! (scalar)
         if (this.PrivateIp == null && Exploration.Includes(parent + ".privateIp", true))
         {
-            this.PrivateIp = new System.String("FETCH");
+            this.PrivateIp = "FETCH";
         }
         //      C# -> System.String? PublicIp
         // GraphQL -> publicIp: String! (scalar)
         if (this.PublicIp == null && Exploration.Includes(parent + ".publicIp", true))
         {
-            this.PublicIp = new System.String("FETCH");
+            this.PublicIp = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -880,19 +880,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sshKeyPairName: String! (scalar)
         if (this.SshKeyPairName == null && Exploration.Includes(parent + ".sshKeyPairName", true))
         {
-            this.SshKeyPairName = new System.String("FETCH");
+            this.SshKeyPairName = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
         {
-            this.VpcId = new System.String("FETCH");
+            this.VpcId = "FETCH";
         }
         //      C# -> System.String? VpcName
         // GraphQL -> vpcName: String! (scalar)
         if (this.VpcName == null && Exploration.Includes(parent + ".vpcName", true))
         {
-            this.VpcName = new System.String("FETCH");
+            this.VpcName = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

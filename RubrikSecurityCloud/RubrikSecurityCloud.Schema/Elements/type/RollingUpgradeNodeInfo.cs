@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> ruEndTs: String! (scalar)
         if (this.RuEndTs == null && Exploration.Includes(parent + ".ruEndTs", true))
         {
-            this.RuEndTs = new System.String("FETCH");
+            this.RuEndTs = "FETCH";
         }
         //      C# -> System.String? RuStartTs
         // GraphQL -> ruStartTs: String! (scalar)
         if (this.RuStartTs == null && Exploration.Includes(parent + ".ruStartTs", true))
         {
-            this.RuStartTs = new System.String("FETCH");
+            this.RuStartTs = "FETCH";
         }
         //      C# -> CurrentStateInfo? CurrentStateInfo
         // GraphQL -> currentStateInfo: CurrentStateInfo (type)

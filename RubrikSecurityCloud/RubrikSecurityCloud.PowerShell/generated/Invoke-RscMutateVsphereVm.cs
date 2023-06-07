@@ -27,410 +27,362 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // RecoverFile parameter set
+        // Recoverfile parameter set
         //
-        // GraphQL operation: vsphereVmRecoverFiles(input: VsphereVmRecoverFilesInput!):VsphereAsyncRequestStatus!
+        // [GraphQL: vsphereVmRecoverFiles]
         //
         [Parameter(
-            ParameterSetName = "RecoverFile",
+            ParameterSetName = "Recoverfile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Restores multiple files/directories from snapshot.
-                GraphQL operation: vsphereVmRecoverFiles(input: VsphereVmRecoverFilesInput!):VsphereAsyncRequestStatus!
-                ",
+@"Restores multiple files/directories from snapshot.
+[GraphQL: vsphereVmRecoverFiles]",
             Position = 0
         )]
-        public SwitchParameter RecoverFile { get; set; }
+        public SwitchParameter Recoverfile { get; set; }
 
         [Parameter(
-            ParameterSetName = "RecoverFile",
+            ParameterSetName = "Recoverfile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Vsphere recover files input.
-                GraphQL argument input: VsphereVmRecoverFilesInput!
-                "
+@"Vsphere recover files input.
+GraphQL argument input: VsphereVmRecoverFilesInput!"
         )]
         public VsphereVmRecoverFilesInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // RecoverFilesNew parameter set
+        // Recoverfilesnew parameter set
         //
-        // GraphQL operation: vsphereVmRecoverFilesNew(input: VsphereVmRecoverFilesNewInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmRecoverFilesNew]
         //
         [Parameter(
-            ParameterSetName = "RecoverFilesNew",
+            ParameterSetName = "Recoverfilesnew",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Restores multiple files/directories from snapshot.
-                GraphQL operation: vsphereVmRecoverFilesNew(input: VsphereVmRecoverFilesNewInput!):AsyncRequestStatus!
-                ",
+@"Restores multiple files/directories from snapshot.
+[GraphQL: vsphereVmRecoverFilesNew]",
             Position = 0
         )]
-        public SwitchParameter RecoverFilesNew { get; set; }
+        public SwitchParameter Recoverfilesnew { get; set; }
 
         
         // -------------------------------------------------------------------
-        // RegisterAgent parameter set
+        // Registeragent parameter set
         //
-        // GraphQL operation: vsphereVmRegisterAgent(input: VsphereVmRegisterAgentInput!):RequestSuccess!
+        // [GraphQL: vsphereVmRegisterAgent]
         //
         [Parameter(
-            ParameterSetName = "RegisterAgent",
+            ParameterSetName = "Registeragent",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Register Rubrik Backup Service
+@"Register Rubrik Backup Service
 
 Supported in v5.0+
 Register the Rubrik Backup Service that is running on a specified host with the specified Rubrik cluster.
-                GraphQL operation: vsphereVmRegisterAgent(input: VsphereVmRegisterAgentInput!):RequestSuccess!
-                ",
+[GraphQL: vsphereVmRegisterAgent]",
             Position = 0
         )]
-        public SwitchParameter RegisterAgent { get; set; }
+        public SwitchParameter Registeragent { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DownloadSnapshot parameter set
+        // Downloadsnapshot parameter set
         //
-        // GraphQL operation: vsphereVmDownloadSnapshot(input: VsphereVmDownloadSnapshotInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmDownloadSnapshot]
         //
         [Parameter(
-            ParameterSetName = "DownloadSnapshot",
+            ParameterSetName = "Downloadsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Download snapshot from archive
+@"Download snapshot from archive
 
 Supported in v5.0+
 Provides a method for retrieving a snapshot, that is not available locally, from an archival location.
-                GraphQL operation: vsphereVmDownloadSnapshot(input: VsphereVmDownloadSnapshotInput!):AsyncRequestStatus!
-                ",
+[GraphQL: vsphereVmDownloadSnapshot]",
             Position = 0
         )]
-        public SwitchParameter DownloadSnapshot { get; set; }
+        public SwitchParameter Downloadsnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ExportSnapshot parameter set
+        // Exportsnapshot parameter set
         //
-        // GraphQL operation: vsphereVMExportSnapshot(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostID: String,   datastoreId: UUID!,   unregsiterVm: Boolean,   shouldRecoverTags: Boolean, ):VsphereAsyncRequestStatus!
+        // [GraphQL: vsphereVMExportSnapshot]
         //
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVMExportSnapshot(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostID: String,   datastoreId: UUID!,   unregsiterVm: Boolean,   shouldRecoverTags: Boolean, ):VsphereAsyncRequestStatus!
-                ",
+@"
+[GraphQL: vsphereVMExportSnapshot]",
             Position = 0
         )]
-        public SwitchParameter ExportSnapshot { get; set; }
+        public SwitchParameter Exportsnapshot { get; set; }
 
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Snapshot forever UUID in Rubrik Security Cloud.
-                GraphQL argument snapshotFid: UUID!
-                "
+@"Snapshot forever UUID in Rubrik Security Cloud.
+GraphQL argument snapshotFid: UUID!"
         )]
         public System.String? SnapshotFid { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument vmName: String
-                "
+@"
+GraphQL argument vmName: String"
         )]
         public System.String? VmName { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument disableNetwork: Boolean
-                "
+@"
+GraphQL argument disableNetwork: Boolean"
         )]
         public System.Boolean? DisableNetwork { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument removeNetworkDevices: Boolean
-                "
+@"
+GraphQL argument removeNetworkDevices: Boolean"
         )]
         public System.Boolean? RemoveNetworkDevices { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument powerOn: Boolean
-                "
+@"
+GraphQL argument powerOn: Boolean"
         )]
         public System.Boolean? PowerOn { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument keepMacAddresses: Boolean
-                "
+@"
+GraphQL argument keepMacAddresses: Boolean"
         )]
         public System.Boolean? KeepMacAddresses { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument hostID: String
-                "
+@"
+GraphQL argument hostID: String"
         )]
         public System.String? HostId { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument datastoreId: UUID!
-                "
+@"
+GraphQL argument datastoreId: UUID!"
         )]
         public System.String? DatastoreId { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument unregsiterVm: Boolean
-                "
+@"
+GraphQL argument unregsiterVm: Boolean"
         )]
         public System.Boolean? UnregsiterVm { get; set; }
         [Parameter(
-            ParameterSetName = "ExportSnapshot",
+            ParameterSetName = "Exportsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument shouldRecoverTags: Boolean
-                "
+@"
+GraphQL argument shouldRecoverTags: Boolean"
         )]
         public System.Boolean? ShouldRecoverTags { get; set; }
         
         // -------------------------------------------------------------------
-        // ExportSnapshotV2 parameter set
+        // Exportsnapshotv2 parameter set
         //
-        // GraphQL operation: vsphereVmExportSnapshotV2(input: VsphereVmExportSnapshotV2Input!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmExportSnapshotV2]
         //
         [Parameter(
-            ParameterSetName = "ExportSnapshotV2",
+            ParameterSetName = "Exportsnapshotv2",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a vSphere Export from a snapshot or a point-in-time.
-                GraphQL operation: vsphereVmExportSnapshotV2(input: VsphereVmExportSnapshotV2Input!):AsyncRequestStatus!
-                ",
+@"Create a vSphere Export from a snapshot or a point-in-time.
+[GraphQL: vsphereVmExportSnapshotV2]",
             Position = 0
         )]
-        public SwitchParameter ExportSnapshotV2 { get; set; }
+        public SwitchParameter Exportsnapshotv2 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ExportSnapshotV3 parameter set
+        // Exportsnapshotv3 parameter set
         //
-        // GraphQL operation: vsphereVmExportSnapshotV3(input: VsphereVmExportSnapshotV3Input!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmExportSnapshotV3]
         //
         [Parameter(
-            ParameterSetName = "ExportSnapshotV3",
+            ParameterSetName = "Exportsnapshotv3",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a vSphere Export from a snapshot or a point-in-time with datastore cluster and virtual disk mapping support.
-                GraphQL operation: vsphereVmExportSnapshotV3(input: VsphereVmExportSnapshotV3Input!):AsyncRequestStatus!
-                ",
+@"Create a vSphere Export from a snapshot or a point-in-time with datastore cluster and virtual disk mapping support.
+[GraphQL: vsphereVmExportSnapshotV3]",
             Position = 0
         )]
-        public SwitchParameter ExportSnapshotV3 { get; set; }
+        public SwitchParameter Exportsnapshotv3 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // BatchExport parameter set
+        // Batchexport parameter set
         //
-        // GraphQL operation: vsphereVmBatchExport(input: VsphereVmBatchExportInput!):BatchAsyncRequestStatus!
+        // [GraphQL: vsphereVmBatchExport]
         //
         [Parameter(
-            ParameterSetName = "BatchExport",
+            ParameterSetName = "Batchexport",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a mass export for a group of virtual machines.
-                GraphQL operation: vsphereVmBatchExport(input: VsphereVmBatchExportInput!):BatchAsyncRequestStatus!
-                ",
+@"Create a mass export for a group of virtual machines.
+[GraphQL: vsphereVmBatchExport]",
             Position = 0
         )]
-        public SwitchParameter BatchExport { get; set; }
+        public SwitchParameter Batchexport { get; set; }
 
         
         // -------------------------------------------------------------------
-        // BatchExportV3 parameter set
+        // Batchexportv3 parameter set
         //
-        // GraphQL operation: vsphereVmBatchExportV3(input: VsphereVmBatchExportV3Input!):BatchAsyncRequestStatus!
+        // [GraphQL: vsphereVmBatchExportV3]
         //
         [Parameter(
-            ParameterSetName = "BatchExportV3",
+            ParameterSetName = "Batchexportv3",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a batch export for a group of virtual machines with datastore cluster support.
-                GraphQL operation: vsphereVmBatchExportV3(input: VsphereVmBatchExportV3Input!):BatchAsyncRequestStatus!
-                ",
+@"Create a batch export for a group of virtual machines with datastore cluster support.
+[GraphQL: vsphereVmBatchExportV3]",
             Position = 0
         )]
-        public SwitchParameter BatchExportV3 { get; set; }
+        public SwitchParameter Batchexportv3 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // InitiateInPlaceRecovery parameter set
+        // Initiateinplacerecovery parameter set
         //
-        // GraphQL operation: vsphereVmInitiateInPlaceRecovery(input: VsphereVmInitiateInPlaceRecoveryInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmInitiateInPlaceRecovery]
         //
         [Parameter(
-            ParameterSetName = "InitiateInPlaceRecovery",
+            ParameterSetName = "Initiateinplacerecovery",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Trigger an in-place recovery from a snapshot or point-in-time.
-                GraphQL operation: vsphereVmInitiateInPlaceRecovery(input: VsphereVmInitiateInPlaceRecoveryInput!):AsyncRequestStatus!
-                ",
+@"Trigger an in-place recovery from a snapshot or point-in-time.
+[GraphQL: vsphereVmInitiateInPlaceRecovery]",
             Position = 0
         )]
-        public SwitchParameter InitiateInPlaceRecovery { get; set; }
+        public SwitchParameter Initiateinplacerecovery { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ExportSnapshotWithDownloadFromCloud parameter set
+        // Exportsnapshotwithdownloadfromcloud parameter set
         //
-        // GraphQL operation: vsphereVmExportSnapshotWithDownloadFromCloud(input: VsphereVmExportSnapshotWithDownloadFromCloudInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmExportSnapshotWithDownloadFromCloud]
         //
         [Parameter(
-            ParameterSetName = "ExportSnapshotWithDownloadFromCloud",
+            ParameterSetName = "Exportsnapshotwithdownloadfromcloud",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Download a snapshot from an archival location, then export a virtual machine using the downloaded snapshot
+@"Download a snapshot from an archival location, then export a virtual machine using the downloaded snapshot
 
 Supported in v5.3+
 Download a snapshot from an archival location and then export a virtual machine using the downloaded snapshot.
-                GraphQL operation: vsphereVmExportSnapshotWithDownloadFromCloud(input: VsphereVmExportSnapshotWithDownloadFromCloudInput!):AsyncRequestStatus!
-                ",
+[GraphQL: vsphereVmExportSnapshotWithDownloadFromCloud]",
             Position = 0
         )]
-        public SwitchParameter ExportSnapshotWithDownloadFromCloud { get; set; }
+        public SwitchParameter Exportsnapshotwithdownloadfromcloud { get; set; }
 
         
         // -------------------------------------------------------------------
-        // BatchInPlaceRecovery parameter set
+        // Batchinplacerecovery parameter set
         //
-        // GraphQL operation: vsphereVmBatchInPlaceRecovery(input: VsphereVmBatchInPlaceRecoveryInput!):BatchAsyncRequestStatus!
+        // [GraphQL: vsphereVmBatchInPlaceRecovery]
         //
         [Parameter(
-            ParameterSetName = "BatchInPlaceRecovery",
+            ParameterSetName = "Batchinplacerecovery",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Supported in v6.0+. Export a snapshot each from a set of virtual machines.
-                GraphQL operation: vsphereVmBatchInPlaceRecovery(input: VsphereVmBatchInPlaceRecoveryInput!):BatchAsyncRequestStatus!
-                ",
+@"Supported in v6.0+. Export a snapshot each from a set of virtual machines.
+[GraphQL: vsphereVmBatchInPlaceRecovery]",
             Position = 0
         )]
-        public SwitchParameter BatchInPlaceRecovery { get; set; }
+        public SwitchParameter Batchinplacerecovery { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DeleteSnapshot parameter set
+        // Deletesnapshot parameter set
         //
-        // GraphQL operation: vsphereVmDeleteSnapshot(input: VsphereVmDeleteSnapshotInput!):Void
+        // [GraphQL: vsphereVmDeleteSnapshot]
         //
         [Parameter(
-            ParameterSetName = "DeleteSnapshot",
+            ParameterSetName = "Deletesnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Designate a snapshot as expired and available for garbage collection. The snapshot must be an on-demand snapshot or a snapshot from a virtual machine that is not assigned to an SLA Domain.
-                GraphQL operation: vsphereVmDeleteSnapshot(input: VsphereVmDeleteSnapshotInput!):Void
-                ",
+@"Designate a snapshot as expired and available for garbage collection. The snapshot must be an on-demand snapshot or a snapshot from a virtual machine that is not assigned to an SLA Domain.
+[GraphQL: vsphereVmDeleteSnapshot]",
             Position = 0
         )]
-        public SwitchParameter DeleteSnapshot { get; set; }
+        public SwitchParameter Deletesnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
         // Update parameter set
         //
-        // GraphQL operation: vsphereVMUpdate(,   snappableFid: UUID!,   snapshotConsistencyMandate: String,   preBackupScript: PreBackupScriptInputType,   postBackupScript: PostBackupScriptInputType,   postSnapScript: PostSnapScriptInputType,   isArrayIntegrationEnabled: Boolean, ):RequestSuccess!
+        // [GraphQL: vsphereVMUpdate]
         //
         [Parameter(
             ParameterSetName = "Update",
@@ -438,10 +390,8 @@ Download a snapshot from an archival location and then export a virtual machine 
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVMUpdate(,   snappableFid: UUID!,   snapshotConsistencyMandate: String,   preBackupScript: PreBackupScriptInputType,   postBackupScript: PostBackupScriptInputType,   postSnapScript: PostSnapScriptInputType,   isArrayIntegrationEnabled: Boolean, ):RequestSuccess!
-                ",
+@"
+[GraphQL: vsphereVMUpdate]",
             Position = 0
         )]
         public SwitchParameter Update { get; set; }
@@ -452,10 +402,8 @@ Download a snapshot from an archival location and then export a virtual machine 
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument snappableFid: UUID!
-                "
+@"
+GraphQL argument snappableFid: UUID!"
         )]
         public System.String? SnappableFid { get; set; }
         [Parameter(
@@ -464,10 +412,8 @@ Download a snapshot from an archival location and then export a virtual machine 
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The snapshot consistency mandate of the workload.
-                GraphQL argument snapshotConsistencyMandate: String
-                "
+@"The snapshot consistency mandate of the workload.
+GraphQL argument snapshotConsistencyMandate: String"
         )]
         public System.String? SnapshotConsistencyMandate { get; set; }
         [Parameter(
@@ -476,10 +422,8 @@ Download a snapshot from an archival location and then export a virtual machine 
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument preBackupScript: PreBackupScriptInputType
-                "
+@"
+GraphQL argument preBackupScript: PreBackupScriptInputType"
         )]
         public PreBackupScriptInputType? PreBackupScript { get; set; }
         [Parameter(
@@ -488,10 +432,8 @@ Download a snapshot from an archival location and then export a virtual machine 
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument postBackupScript: PostBackupScriptInputType
-                "
+@"
+GraphQL argument postBackupScript: PostBackupScriptInputType"
         )]
         public PostBackupScriptInputType? PostBackupScript { get; set; }
         [Parameter(
@@ -500,10 +442,8 @@ Download a snapshot from an archival location and then export a virtual machine 
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument postSnapScript: PostSnapScriptInputType
-                "
+@"
+GraphQL argument postSnapScript: PostSnapScriptInputType"
         )]
         public PostSnapScriptInputType? PostSnapScript { get; set; }
         [Parameter(
@@ -512,475 +452,371 @@ Download a snapshot from an archival location and then export a virtual machine 
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument isArrayIntegrationEnabled: Boolean
-                "
+@"
+GraphQL argument isArrayIntegrationEnabled: Boolean"
         )]
         public System.Boolean? IsArrayIntegrationEnabled { get; set; }
         
         // -------------------------------------------------------------------
-        // InitiateInstantRecovery parameter set
+        // Initiateinstantrecovery parameter set
         //
-        // GraphQL operation: vsphereVMInitiateInstantRecovery(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostID: String,   preserveMOID: Boolean,   vlan: Int,   shouldRecoverTags: Boolean, ):VsphereAsyncRequestStatus!
+        // [GraphQL: vsphereVMInitiateInstantRecovery]
         //
         [Parameter(
-            ParameterSetName = "InitiateInstantRecovery",
+            ParameterSetName = "Initiateinstantrecovery",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVMInitiateInstantRecovery(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostID: String,   preserveMOID: Boolean,   vlan: Int,   shouldRecoverTags: Boolean, ):VsphereAsyncRequestStatus!
-                ",
+@"
+[GraphQL: vsphereVMInitiateInstantRecovery]",
             Position = 0
         )]
-        public SwitchParameter InitiateInstantRecovery { get; set; }
+        public SwitchParameter Initiateinstantrecovery { get; set; }
 
         [Parameter(
-            ParameterSetName = "InitiateInstantRecovery",
+            ParameterSetName = "Initiateinstantrecovery",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument preserveMOID: Boolean
-                "
+@"
+GraphQL argument preserveMOID: Boolean"
         )]
         public System.Boolean? PreserveMoid { get; set; }
         [Parameter(
-            ParameterSetName = "InitiateInstantRecovery",
+            ParameterSetName = "Initiateinstantrecovery",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument vlan: Int
-                "
+@"
+GraphQL argument vlan: Int"
         )]
         public System.Int32? Vlan { get; set; }
         
         // -------------------------------------------------------------------
-        // InitiateInstantRecoveryV2 parameter set
+        // Initiateinstantrecoveryv2 parameter set
         //
-        // GraphQL operation: vsphereVmInitiateInstantRecoveryV2(input: VsphereVmInitiateInstantRecoveryV2Input!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmInitiateInstantRecoveryV2]
         //
         [Parameter(
-            ParameterSetName = "InitiateInstantRecoveryV2",
+            ParameterSetName = "Initiateinstantrecoveryv2",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
-                GraphQL operation: vsphereVmInitiateInstantRecoveryV2(input: VsphereVmInitiateInstantRecoveryV2Input!):AsyncRequestStatus!
-                ",
+@"Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
+[GraphQL: vsphereVmInitiateInstantRecoveryV2]",
             Position = 0
         )]
-        public SwitchParameter InitiateInstantRecoveryV2 { get; set; }
+        public SwitchParameter Initiateinstantrecoveryv2 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // InitiateBatchInstantRecovery parameter set
+        // Initiatebatchinstantrecovery parameter set
         //
-        // GraphQL operation: vsphereVmInitiateBatchInstantRecovery(input: VsphereVmInitiateBatchInstantRecoveryInput!):BatchAsyncRequestStatus!
+        // [GraphQL: vsphereVmInitiateBatchInstantRecovery]
         //
         [Parameter(
-            ParameterSetName = "InitiateBatchInstantRecovery",
+            ParameterSetName = "Initiatebatchinstantrecovery",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Initiate a mass instant recovery for a group of VMs.
-                GraphQL operation: vsphereVmInitiateBatchInstantRecovery(input: VsphereVmInitiateBatchInstantRecoveryInput!):BatchAsyncRequestStatus!
-                ",
+@"Initiate a mass instant recovery for a group of VMs.
+[GraphQL: vsphereVmInitiateBatchInstantRecovery]",
             Position = 0
         )]
-        public SwitchParameter InitiateBatchInstantRecovery { get; set; }
+        public SwitchParameter Initiatebatchinstantrecovery { get; set; }
 
         
         // -------------------------------------------------------------------
-        // InitiateDiskMount parameter set
+        // Initiatediskmount parameter set
         //
-        // GraphQL operation: vsphereVmInitiateDiskMount(input: VsphereVmInitiateDiskMountInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmInitiateDiskMount]
         //
         [Parameter(
-            ParameterSetName = "InitiateDiskMount",
+            ParameterSetName = "Initiatediskmount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Attaching disks from a snapshot to an existing virtual machine
+@"Attaching disks from a snapshot to an existing virtual machine
 
 Supported in v5.0+
 Requests a snapshot mount to attach disks to an existing virtual machine.
-                GraphQL operation: vsphereVmInitiateDiskMount(input: VsphereVmInitiateDiskMountInput!):AsyncRequestStatus!
-                ",
+[GraphQL: vsphereVmInitiateDiskMount]",
             Position = 0
         )]
-        public SwitchParameter InitiateDiskMount { get; set; }
+        public SwitchParameter Initiatediskmount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // InitiateLiveMount parameter set
+        // Initiatelivemount parameter set
         //
-        // GraphQL operation: vsphereVMInitiateLiveMount(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostID: String,   datastoreName: String,   createDatastoreOnly: Boolean,   vlan: Int,   shouldRecoverTags: Boolean, ):VsphereAsyncRequestStatus!
+        // [GraphQL: vsphereVMInitiateLiveMount]
         //
         [Parameter(
-            ParameterSetName = "InitiateLiveMount",
+            ParameterSetName = "Initiatelivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVMInitiateLiveMount(,   snapshotFid: UUID!,   vmName: String,   disableNetwork: Boolean,   removeNetworkDevices: Boolean,   powerOn: Boolean,   keepMacAddresses: Boolean,   hostID: String,   datastoreName: String,   createDatastoreOnly: Boolean,   vlan: Int,   shouldRecoverTags: Boolean, ):VsphereAsyncRequestStatus!
-                ",
+@"
+[GraphQL: vsphereVMInitiateLiveMount]",
             Position = 0
         )]
-        public SwitchParameter InitiateLiveMount { get; set; }
+        public SwitchParameter Initiatelivemount { get; set; }
 
         [Parameter(
-            ParameterSetName = "InitiateLiveMount",
+            ParameterSetName = "Initiatelivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument datastoreName: String
-                "
+@"
+GraphQL argument datastoreName: String"
         )]
         public System.String? DatastoreName { get; set; }
         [Parameter(
-            ParameterSetName = "InitiateLiveMount",
+            ParameterSetName = "Initiatelivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument createDatastoreOnly: Boolean
-                "
+@"
+GraphQL argument createDatastoreOnly: Boolean"
         )]
         public System.Boolean? CreateDatastoreOnly { get; set; }
         
         // -------------------------------------------------------------------
-        // InitiateLiveMountV2 parameter set
+        // Initiatelivemountv2 parameter set
         //
-        // GraphQL operation: vsphereVmInitiateLiveMountV2(input: VsphereVmInitiateLiveMountV2Input!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmInitiateLiveMountV2]
         //
         [Parameter(
-            ParameterSetName = "InitiateLiveMountV2",
+            ParameterSetName = "Initiatelivemountv2",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a vSphere Live Mount from a snapshot or point-in-time.
-                GraphQL operation: vsphereVmInitiateLiveMountV2(input: VsphereVmInitiateLiveMountV2Input!):AsyncRequestStatus!
-                ",
+@"Create a vSphere Live Mount from a snapshot or point-in-time.
+[GraphQL: vsphereVmInitiateLiveMountV2]",
             Position = 0
         )]
-        public SwitchParameter InitiateLiveMountV2 { get; set; }
+        public SwitchParameter Initiatelivemountv2 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // BatchLiveMount parameter set
+        // Batchlivemount parameter set
         //
-        // GraphQL operation: vSphereVMBatchLiveMount(clusterUuid: UUID!, config: BatchMountSnapshotJobConfigInput!):BatchAsyncRequestStatus!
+        // [GraphQL: vSphereVMBatchLiveMount]
         //
         [Parameter(
-            ParameterSetName = "BatchLiveMount",
+            ParameterSetName = "Batchlivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereVMBatchLiveMount(clusterUuid: UUID!, config: BatchMountSnapshotJobConfigInput!):BatchAsyncRequestStatus!
-                ",
+@"
+[GraphQL: vSphereVMBatchLiveMount]",
             Position = 0
         )]
-        public SwitchParameter BatchLiveMount { get; set; }
+        public SwitchParameter Batchlivemount { get; set; }
 
         [Parameter(
-            ParameterSetName = "BatchLiveMount",
+            ParameterSetName = "Batchlivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument clusterUuid: UUID!
-                "
+@"
+GraphQL argument clusterUuid: UUID!"
         )]
         public System.String? ClusterUuid { get; set; }
         [Parameter(
-            ParameterSetName = "BatchLiveMount",
+            ParameterSetName = "Batchlivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Configuration object containing an array of virtual machine IDs, a way to indicate the snapshot to be chosen and mount configs.
-                GraphQL argument config: BatchMountSnapshotJobConfigInput!
-                "
+@"Configuration object containing an array of virtual machine IDs, a way to indicate the snapshot to be chosen and mount configs.
+GraphQL argument config: BatchMountSnapshotJobConfigInput!"
         )]
         public BatchMountSnapshotJobConfigInput? Config { get; set; }
         
         // -------------------------------------------------------------------
-        // InitiateBatchLiveMountV2 parameter set
+        // Initiatebatchlivemountv2 parameter set
         //
-        // GraphQL operation: vsphereVmInitiateBatchLiveMountV2(input: VsphereVmInitiateBatchLiveMountV2Input!):BatchAsyncRequestStatus!
+        // [GraphQL: vsphereVmInitiateBatchLiveMountV2]
         //
         [Parameter(
-            ParameterSetName = "InitiateBatchLiveMountV2",
+            ParameterSetName = "Initiatebatchlivemountv2",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Initiate a mass live mount for a group of VMs.
-                GraphQL operation: vsphereVmInitiateBatchLiveMountV2(input: VsphereVmInitiateBatchLiveMountV2Input!):BatchAsyncRequestStatus!
-                ",
+@"Initiate a mass live mount for a group of VMs.
+[GraphQL: vsphereVmInitiateBatchLiveMountV2]",
             Position = 0
         )]
-        public SwitchParameter InitiateBatchLiveMountV2 { get; set; }
+        public SwitchParameter Initiatebatchlivemountv2 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // PowerOnOffLiveMount parameter set
+        // Poweronofflivemount parameter set
         //
-        // GraphQL operation: vsphereVmPowerOnOffLiveMount(input: VsphereVmPowerOnOffLiveMountInput!):VsphereVmPowerOnOffLiveMountReply!
+        // [GraphQL: vsphereVmPowerOnOffLiveMount]
         //
         [Parameter(
-            ParameterSetName = "PowerOnOffLiveMount",
+            ParameterSetName = "Poweronofflivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Power a Live Mount on and off
+@"Power a Live Mount on and off
 
 Supported in v5.0+
 Power a specified Live Mount virtual machine on or off. Pass **_true_** to power the virtual machine on and pass **_false_** to power the virtual machine off.
-                GraphQL operation: vsphereVmPowerOnOffLiveMount(input: VsphereVmPowerOnOffLiveMountInput!):VsphereVmPowerOnOffLiveMountReply!
-                ",
+[GraphQL: vsphereVmPowerOnOffLiveMount]",
             Position = 0
         )]
-        public SwitchParameter PowerOnOffLiveMount { get; set; }
+        public SwitchParameter Poweronofflivemount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DeleteLiveMount parameter set
+        // Deletelivemount parameter set
         //
-        // GraphQL operation: vsphereVMDeleteLiveMount(livemountId: UUID!, force: Boolean):VsphereAsyncRequestStatus!
+        // [GraphQL: vsphereVMDeleteLiveMount]
         //
         [Parameter(
-            ParameterSetName = "DeleteLiveMount",
+            ParameterSetName = "Deletelivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVMDeleteLiveMount(livemountId: UUID!, force: Boolean):VsphereAsyncRequestStatus!
-                ",
+@"
+[GraphQL: vsphereVMDeleteLiveMount]",
             Position = 0
         )]
-        public SwitchParameter DeleteLiveMount { get; set; }
+        public SwitchParameter Deletelivemount { get; set; }
 
         [Parameter(
-            ParameterSetName = "DeleteLiveMount",
+            ParameterSetName = "Deletelivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument livemountId: UUID!
-                "
+@"
+GraphQL argument livemountId: UUID!"
         )]
         public System.String? LivemountId { get; set; }
         [Parameter(
-            ParameterSetName = "DeleteLiveMount",
+            ParameterSetName = "Deletelivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument force: Boolean
-                "
+@"
+GraphQL argument force: Boolean"
         )]
         public System.Boolean? Force { get; set; }
         
         // -------------------------------------------------------------------
-        // ListEsxiDatastore parameter set
+        // Listesxidatastore parameter set
         //
-        // GraphQL operation: vsphereVmListEsxiDatastores(input: VsphereVmListEsxiDatastoresInput!):VsphereVmListEsxiDatastoresReply!
+        // [GraphQL: vsphereVmListEsxiDatastores]
         //
         [Parameter(
-            ParameterSetName = "ListEsxiDatastore",
+            ParameterSetName = "Listesxidatastore",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List ESXi datastores
+@"List ESXi datastores
 
 Supported in v5.0+
 Retrieve a list of the datastores for a specified ESXi host.
-                GraphQL operation: vsphereVmListEsxiDatastores(input: VsphereVmListEsxiDatastoresInput!):VsphereVmListEsxiDatastoresReply!
-                ",
+[GraphQL: vsphereVmListEsxiDatastores]",
             Position = 0
         )]
-        public SwitchParameter ListEsxiDatastore { get; set; }
+        public SwitchParameter Listesxidatastore { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ListEsXiDatastore parameter set
+        // Mountrelocate parameter set
         //
-        // GraphQL operation: vsphereVMListESXiDatastores(,   clusterUuid: UUID!,   ipAddress: String!,   username: String!,   password: String!, ):DatastoresListResponse!
-        //
-        [Parameter(
-            ParameterSetName = "ListEsXiDatastore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-                @"
-                Retrieve a list of the datastores for a specified ESXi host
-                GraphQL operation: vsphereVMListESXiDatastores(,   clusterUuid: UUID!,   ipAddress: String!,   username: String!,   password: String!, ):DatastoresListResponse!
-                ",
-            Position = 0
-        )]
-        public SwitchParameter ListEsXiDatastore { get; set; }
-
-        [Parameter(
-            ParameterSetName = "ListEsXiDatastore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-                @"
-                
-                GraphQL argument ipAddress: String!
-                "
-        )]
-        public System.String? IpAddress { get; set; }
-        [Parameter(
-            ParameterSetName = "ListEsXiDatastore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-                @"
-                
-                GraphQL argument username: String!
-                "
-        )]
-        public System.String? Username { get; set; }
-        [Parameter(
-            ParameterSetName = "ListEsXiDatastore",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-                @"
-                
-                GraphQL argument password: String!
-                "
-        )]
-        public System.String? Password { get; set; }
-        
-        // -------------------------------------------------------------------
-        // MountRelocate parameter set
-        //
-        // GraphQL operation: vsphereVmMountRelocate(input: VsphereVmMountRelocateInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmMountRelocate]
         //
         [Parameter(
-            ParameterSetName = "MountRelocate",
+            ParameterSetName = "Mountrelocate",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Relocate a virtual machine to another datastore
+@"Relocate a virtual machine to another datastore
 
 Supported in v5.0+
 Run storage VMotion to relocate a specified Live Mount into another data store.
-                GraphQL operation: vsphereVmMountRelocate(input: VsphereVmMountRelocateInput!):AsyncRequestStatus!
-                ",
+[GraphQL: vsphereVmMountRelocate]",
             Position = 0
         )]
-        public SwitchParameter MountRelocate { get; set; }
+        public SwitchParameter Mountrelocate { get; set; }
 
         
         // -------------------------------------------------------------------
-        // MountRelocateV2 parameter set
+        // Mountrelocatev2 parameter set
         //
-        // GraphQL operation: vsphereVmMountRelocateV2(input: VsphereVmMountRelocateV2Input!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmMountRelocateV2]
         //
         [Parameter(
-            ParameterSetName = "MountRelocateV2",
+            ParameterSetName = "Mountrelocatev2",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Create a Live Mount migration to a datastore or datastore cluster with virtual disk mapping support.
-                GraphQL operation: vsphereVmMountRelocateV2(input: VsphereVmMountRelocateV2Input!):AsyncRequestStatus!
-                ",
+@"Create a Live Mount migration to a datastore or datastore cluster with virtual disk mapping support.
+[GraphQL: vsphereVmMountRelocateV2]",
             Position = 0
         )]
-        public SwitchParameter MountRelocateV2 { get; set; }
+        public SwitchParameter Mountrelocatev2 { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ExcludeVmDisk parameter set
+        // Excludevmdisk parameter set
         //
-        // GraphQL operation: vsphereExcludeVmDisks(input: [VsphereExcludeVmDisksInput!]!):RequestSuccess!
+        // [GraphQL: vsphereExcludeVmDisks]
         //
         [Parameter(
-            ParameterSetName = "ExcludeVmDisk",
+            ParameterSetName = "Excludevmdisk",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Exclude or include virtual disks during snapshot.
-                GraphQL operation: vsphereExcludeVmDisks(input: [VsphereExcludeVmDisksInput!]!):RequestSuccess!
-                ",
+@"Exclude or include virtual disks during snapshot.
+[GraphQL: vsphereExcludeVmDisks]",
             Position = 0
         )]
-        public SwitchParameter ExcludeVmDisk { get; set; }
+        public SwitchParameter Excludevmdisk { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DownloadSnapshotFile parameter set
+        // Downloadsnapshotfile parameter set
         //
-        // GraphQL operation: vsphereVmDownloadSnapshotFiles(input: VsphereVmDownloadSnapshotFilesInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereVmDownloadSnapshotFiles]
         //
         [Parameter(
-            ParameterSetName = "DownloadSnapshotFile",
+            ParameterSetName = "Downloadsnapshotfile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Download files from snapshot.
-                GraphQL operation: vsphereVmDownloadSnapshotFiles(input: VsphereVmDownloadSnapshotFilesInput!):AsyncRequestStatus!
-                ",
+@"Download files from snapshot.
+[GraphQL: vsphereVmDownloadSnapshotFiles]",
             Position = 0
         )]
-        public SwitchParameter DownloadSnapshotFile { get; set; }
+        public SwitchParameter Downloadsnapshotfile { get; set; }
 
 
         protected override void ProcessRecord()
@@ -989,95 +825,92 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             {
                 switch(Op)
                 {
-                    case "RecoverFile":
-                        this.ProcessRecord_RecoverFile();
+                    case "Recoverfile":
+                        this.ProcessRecord_Recoverfile();
                         break;
-                    case "RecoverFilesNew":
-                        this.ProcessRecord_RecoverFilesNew();
+                    case "Recoverfilesnew":
+                        this.ProcessRecord_Recoverfilesnew();
                         break;
-                    case "RegisterAgent":
-                        this.ProcessRecord_RegisterAgent();
+                    case "Registeragent":
+                        this.ProcessRecord_Registeragent();
                         break;
-                    case "DownloadSnapshot":
-                        this.ProcessRecord_DownloadSnapshot();
+                    case "Downloadsnapshot":
+                        this.ProcessRecord_Downloadsnapshot();
                         break;
-                    case "ExportSnapshot":
-                        this.ProcessRecord_ExportSnapshot();
+                    case "Exportsnapshot":
+                        this.ProcessRecord_Exportsnapshot();
                         break;
-                    case "ExportSnapshotV2":
-                        this.ProcessRecord_ExportSnapshotV2();
+                    case "Exportsnapshotv2":
+                        this.ProcessRecord_Exportsnapshotv2();
                         break;
-                    case "ExportSnapshotV3":
-                        this.ProcessRecord_ExportSnapshotV3();
+                    case "Exportsnapshotv3":
+                        this.ProcessRecord_Exportsnapshotv3();
                         break;
-                    case "BatchExport":
-                        this.ProcessRecord_BatchExport();
+                    case "Batchexport":
+                        this.ProcessRecord_Batchexport();
                         break;
-                    case "BatchExportV3":
-                        this.ProcessRecord_BatchExportV3();
+                    case "Batchexportv3":
+                        this.ProcessRecord_Batchexportv3();
                         break;
-                    case "InitiateInPlaceRecovery":
-                        this.ProcessRecord_InitiateInPlaceRecovery();
+                    case "Initiateinplacerecovery":
+                        this.ProcessRecord_Initiateinplacerecovery();
                         break;
-                    case "ExportSnapshotWithDownloadFromCloud":
-                        this.ProcessRecord_ExportSnapshotWithDownloadFromCloud();
+                    case "Exportsnapshotwithdownloadfromcloud":
+                        this.ProcessRecord_Exportsnapshotwithdownloadfromcloud();
                         break;
-                    case "BatchInPlaceRecovery":
-                        this.ProcessRecord_BatchInPlaceRecovery();
+                    case "Batchinplacerecovery":
+                        this.ProcessRecord_Batchinplacerecovery();
                         break;
-                    case "DeleteSnapshot":
-                        this.ProcessRecord_DeleteSnapshot();
+                    case "Deletesnapshot":
+                        this.ProcessRecord_Deletesnapshot();
                         break;
                     case "Update":
                         this.ProcessRecord_Update();
                         break;
-                    case "InitiateInstantRecovery":
-                        this.ProcessRecord_InitiateInstantRecovery();
+                    case "Initiateinstantrecovery":
+                        this.ProcessRecord_Initiateinstantrecovery();
                         break;
-                    case "InitiateInstantRecoveryV2":
-                        this.ProcessRecord_InitiateInstantRecoveryV2();
+                    case "Initiateinstantrecoveryv2":
+                        this.ProcessRecord_Initiateinstantrecoveryv2();
                         break;
-                    case "InitiateBatchInstantRecovery":
-                        this.ProcessRecord_InitiateBatchInstantRecovery();
+                    case "Initiatebatchinstantrecovery":
+                        this.ProcessRecord_Initiatebatchinstantrecovery();
                         break;
-                    case "InitiateDiskMount":
-                        this.ProcessRecord_InitiateDiskMount();
+                    case "Initiatediskmount":
+                        this.ProcessRecord_Initiatediskmount();
                         break;
-                    case "InitiateLiveMount":
-                        this.ProcessRecord_InitiateLiveMount();
+                    case "Initiatelivemount":
+                        this.ProcessRecord_Initiatelivemount();
                         break;
-                    case "InitiateLiveMountV2":
-                        this.ProcessRecord_InitiateLiveMountV2();
+                    case "Initiatelivemountv2":
+                        this.ProcessRecord_Initiatelivemountv2();
                         break;
-                    case "BatchLiveMount":
-                        this.ProcessRecord_BatchLiveMount();
+                    case "Batchlivemount":
+                        this.ProcessRecord_Batchlivemount();
                         break;
-                    case "InitiateBatchLiveMountV2":
-                        this.ProcessRecord_InitiateBatchLiveMountV2();
+                    case "Initiatebatchlivemountv2":
+                        this.ProcessRecord_Initiatebatchlivemountv2();
                         break;
-                    case "PowerOnOffLiveMount":
-                        this.ProcessRecord_PowerOnOffLiveMount();
+                    case "Poweronofflivemount":
+                        this.ProcessRecord_Poweronofflivemount();
                         break;
-                    case "DeleteLiveMount":
-                        this.ProcessRecord_DeleteLiveMount();
+                    case "Deletelivemount":
+                        this.ProcessRecord_Deletelivemount();
                         break;
-                    case "ListEsxiDatastore":
-                        this.ProcessRecord_ListEsxiDatastore();
+                    case "Listesxidatastore":
+                        this.ProcessRecord_Listesxidatastore();
                         break;
-                    case "ListEsXiDatastore":
-                        this.ProcessRecord_ListEsXiDatastore();
+                    case "Mountrelocate":
+                        this.ProcessRecord_Mountrelocate();
                         break;
-                    case "MountRelocate":
-                        this.ProcessRecord_MountRelocate();
+                    case "Mountrelocatev2":
+                        this.ProcessRecord_Mountrelocatev2();
                         break;
-                    case "MountRelocateV2":
-                        this.ProcessRecord_MountRelocateV2();
+                    case "Excludevmdisk":
+                        this.ProcessRecord_Excludevmdisk();
                         break;
-                    case "ExcludeVmDisk":
-                        this.ProcessRecord_ExcludeVmDisk();
-                        break;
-                    case "DownloadSnapshotFile":
-                        this.ProcessRecord_DownloadSnapshotFile();
+                    case "Downloadsnapshotfile":
+                        this.ProcessRecord_Downloadsnapshotfile();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1097,117 +930,117 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmRecoverFiles.
-        protected void ProcessRecord_RecoverFile()
+        protected void ProcessRecord_Recoverfile()
         {
-            this._logger.name += " -RecoverFile";
+            this._logger.name += " -Recoverfile";
             // Invoke graphql operation vsphereVmRecoverFiles
             InvokeMutationVsphereVmRecoverFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmRecoverFilesNew.
-        protected void ProcessRecord_RecoverFilesNew()
+        protected void ProcessRecord_Recoverfilesnew()
         {
-            this._logger.name += " -RecoverFilesNew";
+            this._logger.name += " -Recoverfilesnew";
             // Invoke graphql operation vsphereVmRecoverFilesNew
             InvokeMutationVsphereVmRecoverFilesNew();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmRegisterAgent.
-        protected void ProcessRecord_RegisterAgent()
+        protected void ProcessRecord_Registeragent()
         {
-            this._logger.name += " -RegisterAgent";
+            this._logger.name += " -Registeragent";
             // Invoke graphql operation vsphereVmRegisterAgent
             InvokeMutationVsphereVmRegisterAgent();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmDownloadSnapshot.
-        protected void ProcessRecord_DownloadSnapshot()
+        protected void ProcessRecord_Downloadsnapshot()
         {
-            this._logger.name += " -DownloadSnapshot";
+            this._logger.name += " -Downloadsnapshot";
             // Invoke graphql operation vsphereVmDownloadSnapshot
             InvokeMutationVsphereVmDownloadSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMExportSnapshot.
-        protected void ProcessRecord_ExportSnapshot()
+        protected void ProcessRecord_Exportsnapshot()
         {
-            this._logger.name += " -ExportSnapshot";
+            this._logger.name += " -Exportsnapshot";
             // Invoke graphql operation vsphereVMExportSnapshot
             InvokeMutationVsphereVmExportSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmExportSnapshotV2.
-        protected void ProcessRecord_ExportSnapshotV2()
+        protected void ProcessRecord_Exportsnapshotv2()
         {
-            this._logger.name += " -ExportSnapshotV2";
+            this._logger.name += " -Exportsnapshotv2";
             // Invoke graphql operation vsphereVmExportSnapshotV2
             InvokeMutationVsphereVmExportSnapshotV2();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmExportSnapshotV3.
-        protected void ProcessRecord_ExportSnapshotV3()
+        protected void ProcessRecord_Exportsnapshotv3()
         {
-            this._logger.name += " -ExportSnapshotV3";
+            this._logger.name += " -Exportsnapshotv3";
             // Invoke graphql operation vsphereVmExportSnapshotV3
             InvokeMutationVsphereVmExportSnapshotV3();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmBatchExport.
-        protected void ProcessRecord_BatchExport()
+        protected void ProcessRecord_Batchexport()
         {
-            this._logger.name += " -BatchExport";
+            this._logger.name += " -Batchexport";
             // Invoke graphql operation vsphereVmBatchExport
             InvokeMutationVsphereVmBatchExport();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmBatchExportV3.
-        protected void ProcessRecord_BatchExportV3()
+        protected void ProcessRecord_Batchexportv3()
         {
-            this._logger.name += " -BatchExportV3";
+            this._logger.name += " -Batchexportv3";
             // Invoke graphql operation vsphereVmBatchExportV3
             InvokeMutationVsphereVmBatchExportV3();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateInPlaceRecovery.
-        protected void ProcessRecord_InitiateInPlaceRecovery()
+        protected void ProcessRecord_Initiateinplacerecovery()
         {
-            this._logger.name += " -InitiateInPlaceRecovery";
+            this._logger.name += " -Initiateinplacerecovery";
             // Invoke graphql operation vsphereVmInitiateInPlaceRecovery
             InvokeMutationVsphereVmInitiateInPlaceRecovery();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmExportSnapshotWithDownloadFromCloud.
-        protected void ProcessRecord_ExportSnapshotWithDownloadFromCloud()
+        protected void ProcessRecord_Exportsnapshotwithdownloadfromcloud()
         {
-            this._logger.name += " -ExportSnapshotWithDownloadFromCloud";
+            this._logger.name += " -Exportsnapshotwithdownloadfromcloud";
             // Invoke graphql operation vsphereVmExportSnapshotWithDownloadFromCloud
             InvokeMutationVsphereVmExportSnapshotWithDownloadFromCloud();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmBatchInPlaceRecovery.
-        protected void ProcessRecord_BatchInPlaceRecovery()
+        protected void ProcessRecord_Batchinplacerecovery()
         {
-            this._logger.name += " -BatchInPlaceRecovery";
+            this._logger.name += " -Batchinplacerecovery";
             // Invoke graphql operation vsphereVmBatchInPlaceRecovery
             InvokeMutationVsphereVmBatchInPlaceRecovery();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmDeleteSnapshot.
-        protected void ProcessRecord_DeleteSnapshot()
+        protected void ProcessRecord_Deletesnapshot()
         {
-            this._logger.name += " -DeleteSnapshot";
+            this._logger.name += " -Deletesnapshot";
             // Invoke graphql operation vsphereVmDeleteSnapshot
             InvokeMutationVsphereVmDeleteSnapshot();
         }
@@ -1223,144 +1056,135 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMInitiateInstantRecovery.
-        protected void ProcessRecord_InitiateInstantRecovery()
+        protected void ProcessRecord_Initiateinstantrecovery()
         {
-            this._logger.name += " -InitiateInstantRecovery";
+            this._logger.name += " -Initiateinstantrecovery";
             // Invoke graphql operation vsphereVMInitiateInstantRecovery
             InvokeMutationVsphereVmInitiateInstantRecovery();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateInstantRecoveryV2.
-        protected void ProcessRecord_InitiateInstantRecoveryV2()
+        protected void ProcessRecord_Initiateinstantrecoveryv2()
         {
-            this._logger.name += " -InitiateInstantRecoveryV2";
+            this._logger.name += " -Initiateinstantrecoveryv2";
             // Invoke graphql operation vsphereVmInitiateInstantRecoveryV2
             InvokeMutationVsphereVmInitiateInstantRecoveryV2();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateBatchInstantRecovery.
-        protected void ProcessRecord_InitiateBatchInstantRecovery()
+        protected void ProcessRecord_Initiatebatchinstantrecovery()
         {
-            this._logger.name += " -InitiateBatchInstantRecovery";
+            this._logger.name += " -Initiatebatchinstantrecovery";
             // Invoke graphql operation vsphereVmInitiateBatchInstantRecovery
             InvokeMutationVsphereVmInitiateBatchInstantRecovery();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateDiskMount.
-        protected void ProcessRecord_InitiateDiskMount()
+        protected void ProcessRecord_Initiatediskmount()
         {
-            this._logger.name += " -InitiateDiskMount";
+            this._logger.name += " -Initiatediskmount";
             // Invoke graphql operation vsphereVmInitiateDiskMount
             InvokeMutationVsphereVmInitiateDiskMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMInitiateLiveMount.
-        protected void ProcessRecord_InitiateLiveMount()
+        protected void ProcessRecord_Initiatelivemount()
         {
-            this._logger.name += " -InitiateLiveMount";
+            this._logger.name += " -Initiatelivemount";
             // Invoke graphql operation vsphereVMInitiateLiveMount
             InvokeMutationVsphereVmInitiateLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateLiveMountV2.
-        protected void ProcessRecord_InitiateLiveMountV2()
+        protected void ProcessRecord_Initiatelivemountv2()
         {
-            this._logger.name += " -InitiateLiveMountV2";
+            this._logger.name += " -Initiatelivemountv2";
             // Invoke graphql operation vsphereVmInitiateLiveMountV2
             InvokeMutationVsphereVmInitiateLiveMountV2();
         }
 
         // This parameter set invokes a single graphql operation:
         // vSphereVMBatchLiveMount.
-        protected void ProcessRecord_BatchLiveMount()
+        protected void ProcessRecord_Batchlivemount()
         {
-            this._logger.name += " -BatchLiveMount";
+            this._logger.name += " -Batchlivemount";
             // Invoke graphql operation vSphereVMBatchLiveMount
             InvokeMutationVsphereVmBatchLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmInitiateBatchLiveMountV2.
-        protected void ProcessRecord_InitiateBatchLiveMountV2()
+        protected void ProcessRecord_Initiatebatchlivemountv2()
         {
-            this._logger.name += " -InitiateBatchLiveMountV2";
+            this._logger.name += " -Initiatebatchlivemountv2";
             // Invoke graphql operation vsphereVmInitiateBatchLiveMountV2
             InvokeMutationVsphereVmInitiateBatchLiveMountV2();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmPowerOnOffLiveMount.
-        protected void ProcessRecord_PowerOnOffLiveMount()
+        protected void ProcessRecord_Poweronofflivemount()
         {
-            this._logger.name += " -PowerOnOffLiveMount";
+            this._logger.name += " -Poweronofflivemount";
             // Invoke graphql operation vsphereVmPowerOnOffLiveMount
             InvokeMutationVsphereVmPowerOnOffLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMDeleteLiveMount.
-        protected void ProcessRecord_DeleteLiveMount()
+        protected void ProcessRecord_Deletelivemount()
         {
-            this._logger.name += " -DeleteLiveMount";
+            this._logger.name += " -Deletelivemount";
             // Invoke graphql operation vsphereVMDeleteLiveMount
             InvokeMutationVsphereVmDeleteLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmListEsxiDatastores.
-        protected void ProcessRecord_ListEsxiDatastore()
+        protected void ProcessRecord_Listesxidatastore()
         {
-            this._logger.name += " -ListEsxiDatastore";
+            this._logger.name += " -Listesxidatastore";
             // Invoke graphql operation vsphereVmListEsxiDatastores
             InvokeMutationVsphereVmListEsxiDatastores();
         }
 
         // This parameter set invokes a single graphql operation:
-        // vsphereVMListESXiDatastores.
-        protected void ProcessRecord_ListEsXiDatastore()
-        {
-            this._logger.name += " -ListEsXiDatastore";
-            // Invoke graphql operation vsphereVMListESXiDatastores
-            InvokeMutationVsphereVmListEsXiDatastores();
-        }
-
-        // This parameter set invokes a single graphql operation:
         // vsphereVmMountRelocate.
-        protected void ProcessRecord_MountRelocate()
+        protected void ProcessRecord_Mountrelocate()
         {
-            this._logger.name += " -MountRelocate";
+            this._logger.name += " -Mountrelocate";
             // Invoke graphql operation vsphereVmMountRelocate
             InvokeMutationVsphereVmMountRelocate();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmMountRelocateV2.
-        protected void ProcessRecord_MountRelocateV2()
+        protected void ProcessRecord_Mountrelocatev2()
         {
-            this._logger.name += " -MountRelocateV2";
+            this._logger.name += " -Mountrelocatev2";
             // Invoke graphql operation vsphereVmMountRelocateV2
             InvokeMutationVsphereVmMountRelocateV2();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereExcludeVmDisks.
-        protected void ProcessRecord_ExcludeVmDisk()
+        protected void ProcessRecord_Excludevmdisk()
         {
-            this._logger.name += " -ExcludeVmDisk";
+            this._logger.name += " -Excludevmdisk";
             // Invoke graphql operation vsphereExcludeVmDisks
             InvokeMutationVsphereExcludeVmDisks();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmDownloadSnapshotFiles.
-        protected void ProcessRecord_DownloadSnapshotFile()
+        protected void ProcessRecord_Downloadsnapshotfile()
         {
-            this._logger.name += " -DownloadSnapshotFile";
+            this._logger.name += " -Downloadsnapshotfile";
             // Invoke graphql operation vsphereVmDownloadSnapshotFiles
             InvokeMutationVsphereVmDownloadSnapshotFiles();
         }
@@ -2339,50 +2163,6 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
             vars.Variables = this._input.GetArgDict();
             var result = this._rbkClient.Invoke(
                 request, vars, "VsphereVmListEsxiDatastoresReply", this._logger, GetMetricTags());
-            WriteObject(result, true);
-        }
-
-        // Invoke GraphQL Mutation:
-        // vsphereVMListESXiDatastores(
-        //     clusterUuid: UUID!
-        //     ipAddress: String!
-        //     username: String!
-        //     password: String!
-        //   ): DatastoresListResponse!
-        protected void InvokeMutationVsphereVmListEsXiDatastores()
-        {
-            Tuple<string, string>[] argDefs = {
-                Tuple.Create("clusterUuid", "UUID!"),
-                Tuple.Create("ipAddress", "String!"),
-                Tuple.Create("username", "String!"),
-                Tuple.Create("password", "String!"),
-            };
-            DatastoresListResponse? fields = null ;
-            if (this.Field != null)
-            {
-                if (this.Field is PSObject psObject) {
-                    fields = (DatastoresListResponse)psObject.BaseObject;
-                } else {
-                    fields = (DatastoresListResponse)this.Field;
-                }
-            }
-            string document = Mutation.VsphereVmListEsXiDatastores(ref fields);
-            this._input.Initialize(argDefs, fields, "Mutation.VsphereVmListEsXiDatastores");
-            var parameters = "($clusterUuid: UUID!,$ipAddress: String!,$username: String!,$password: String!)\n";
-            var request = new GraphQL.GraphQLRequest
-            {
-                Query = "mutation MutationVsphereVmListEsXiDatastores" + parameters + "{" + document + "}",
-                OperationName = "MutationVsphereVmListEsXiDatastores",
-            };
-            OperationVariableSet vars = new();
-            if (this.GetInputs) {
-                this._logger.Debug("Query: " + request.Query);
-                this.WriteObject(this._input);
-                return;
-            }
-            vars.Variables = this._input.GetArgDict();
-            var result = this._rbkClient.Invoke(
-                request, vars, "DatastoresListResponse", this._logger, GetMetricTags());
             WriteObject(result, true);
         }
 

@@ -533,19 +533,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? LastRefreshTime
         // GraphQL -> lastRefreshTime: DateTime! (scalar)
@@ -557,25 +557,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
         if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
         {
-            this.NaturalId = new System.String("FETCH");
+            this.NaturalId = "FETCH";
         }
         //      C# -> System.String? NosVersion
         // GraphQL -> nosVersion: String (scalar)
         if (this.NosVersion == null && Exploration.Includes(parent + ".nosVersion", true))
         {
-            this.NosVersion = new System.String("FETCH");
+            this.NosVersion = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> List<System.String>? NutanixClusterIds
         // GraphQL -> nutanixClusterIds: [String!]! (scalar)
@@ -587,7 +587,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -599,7 +599,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userName: String! (scalar)
         if (this.UserName == null && Exploration.Includes(parent + ".userName", true))
         {
-            this.UserName = new System.String("FETCH");
+            this.UserName = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

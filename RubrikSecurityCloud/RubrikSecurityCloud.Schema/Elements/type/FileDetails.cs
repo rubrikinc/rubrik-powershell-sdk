@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fileName: String! (scalar)
         if (this.FileName == null && Exploration.Includes(parent + ".fileName", true))
         {
-            this.FileName = new System.String("FETCH");
+            this.FileName = "FETCH";
         }
     }
 

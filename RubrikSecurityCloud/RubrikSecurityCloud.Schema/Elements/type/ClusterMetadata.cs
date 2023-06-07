@@ -214,13 +214,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Int64? JobStartTime
         // GraphQL -> jobStartTime: Long! (scalar)
@@ -232,19 +232,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> marshaledConfig: String! (scalar)
         if (this.MarshaledConfig == null && Exploration.Includes(parent + ".marshaledConfig", true))
         {
-            this.MarshaledConfig = new System.String("FETCH");
+            this.MarshaledConfig = "FETCH";
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
         if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
         {
-            this.Progress = new System.Int32();
+            this.Progress = Int32.MinValue;
         }
         //      C# -> System.String? StatusMessage
         // GraphQL -> statusMessage: String! (scalar)
         if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
         {
-            this.StatusMessage = new System.String("FETCH");
+            this.StatusMessage = "FETCH";
         }
     }
 

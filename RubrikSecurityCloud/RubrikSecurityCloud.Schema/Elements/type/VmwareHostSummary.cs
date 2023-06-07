@@ -258,49 +258,49 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> computeClusterId: String (scalar)
         if (this.ComputeClusterId == null && Exploration.Includes(parent + ".computeClusterId", true))
         {
-            this.ComputeClusterId = new System.String("FETCH");
+            this.ComputeClusterId = "FETCH";
         }
         //      C# -> System.String? DatacenterId
         // GraphQL -> datacenterId: String (scalar)
         if (this.DatacenterId == null && Exploration.Includes(parent + ".datacenterId", true))
         {
-            this.DatacenterId = new System.String("FETCH");
+            this.DatacenterId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainId
         // GraphQL -> effectiveSlaDomainId: String (scalar)
         if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
         {
-            this.EffectiveSlaDomainId = new System.String("FETCH");
+            this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
         if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
         {
-            this.EffectiveSlaDomainName = new System.String("FETCH");
+            this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
         if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
         {
-            this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
+            this.EffectiveSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaSourceObjectId
         // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
         if (this.EffectiveSlaSourceObjectId == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectId", true))
         {
-            this.EffectiveSlaSourceObjectId = new System.String("FETCH");
+            this.EffectiveSlaSourceObjectId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaSourceObjectName
         // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
         if (this.EffectiveSlaSourceObjectName == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectName", true))
         {
-            this.EffectiveSlaSourceObjectName = new System.String("FETCH");
+            this.EffectiveSlaSourceObjectName = "FETCH";
         }
         //      C# -> System.String? EsxiVersion
         // GraphQL -> esxiVersion: String (scalar)
         if (this.EsxiVersion == null && Exploration.Includes(parent + ".esxiVersion", true))
         {
-            this.EsxiVersion = new System.String("FETCH");
+            this.EsxiVersion = "FETCH";
         }
         //      C# -> System.Boolean? IsInVmc
         // GraphQL -> isInVmc: Boolean (scalar)

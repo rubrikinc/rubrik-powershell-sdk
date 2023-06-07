@@ -120,31 +120,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OwnerId
         // GraphQL -> ownerId: String! (scalar)
         if (this.OwnerId == null && Exploration.Includes(parent + ".ownerId", true))
         {
-            this.OwnerId = new System.String("FETCH");
+            this.OwnerId = "FETCH";
         }
         //      C# -> System.String? SecurityGroupId
         // GraphQL -> securityGroupId: String! (scalar)
         if (this.SecurityGroupId == null && Exploration.Includes(parent + ".securityGroupId", true))
         {
-            this.SecurityGroupId = new System.String("FETCH");
+            this.SecurityGroupId = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
         {
-            this.VpcId = new System.String("FETCH");
+            this.VpcId = "FETCH";
         }
     }
 

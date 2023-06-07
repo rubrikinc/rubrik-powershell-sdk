@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> disconnectReason: String (scalar)
         if (this.DisconnectReason == null && Exploration.Includes(parent + ".disconnectReason", true))
         {
-            this.DisconnectReason = new System.String("FETCH");
+            this.DisconnectReason = "FETCH";
         }
     }
 

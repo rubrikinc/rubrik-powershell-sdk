@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> reason: String! (scalar)
         if (this.Reason == null && Exploration.Includes(parent + ".reason", true))
         {
-            this.Reason = new System.String("FETCH");
+            this.Reason = "FETCH";
         }
     }
 

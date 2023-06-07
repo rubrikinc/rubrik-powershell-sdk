@@ -112,7 +112,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> domainName: String! (scalar)
         if (this.DomainName == null && Exploration.Includes(parent + ".domainName", true))
         {
-            this.DomainName = new System.String("FETCH");
+            this.DomainName = "FETCH";
         }
         //      C# -> List<System.String>? ValidIps
         // GraphQL -> validIps: [String!]! (scalar)

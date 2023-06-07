@@ -246,19 +246,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> effectiveSlaDomainId: String (scalar)
         if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
         {
-            this.EffectiveSlaDomainId = new System.String("FETCH");
+            this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String (scalar)
         if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
         {
-            this.EffectiveSlaDomainName = new System.String("FETCH");
+            this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
         if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
         {
-            this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
+            this.EffectiveSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
         // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)
@@ -276,49 +276,49 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nasNamespaceId: String! (scalar)
         if (this.NasNamespaceId == null && Exploration.Includes(parent + ".nasNamespaceId", true))
         {
-            this.NasNamespaceId = new System.String("FETCH");
+            this.NasNamespaceId = "FETCH";
         }
         //      C# -> System.String? NasNamespaceName
         // GraphQL -> nasNamespaceName: String! (scalar)
         if (this.NasNamespaceName == null && Exploration.Includes(parent + ".nasNamespaceName", true))
         {
-            this.NasNamespaceName = new System.String("FETCH");
+            this.NasNamespaceName = "FETCH";
         }
         //      C# -> System.String? NasSystemId
         // GraphQL -> nasSystemId: String! (scalar)
         if (this.NasSystemId == null && Exploration.Includes(parent + ".nasSystemId", true))
         {
-            this.NasSystemId = new System.String("FETCH");
+            this.NasSystemId = "FETCH";
         }
         //      C# -> System.String? NasSystemName
         // GraphQL -> nasSystemName: String! (scalar)
         if (this.NasSystemName == null && Exploration.Includes(parent + ".nasSystemName", true))
         {
-            this.NasSystemName = new System.String("FETCH");
+            this.NasSystemName = "FETCH";
         }
         //      C# -> System.String? NasVolumeId
         // GraphQL -> nasVolumeId: String! (scalar)
         if (this.NasVolumeId == null && Exploration.Includes(parent + ".nasVolumeId", true))
         {
-            this.NasVolumeId = new System.String("FETCH");
+            this.NasVolumeId = "FETCH";
         }
         //      C# -> System.String? NasVolumeName
         // GraphQL -> nasVolumeName: String! (scalar)
         if (this.NasVolumeName == null && Exploration.Includes(parent + ".nasVolumeName", true))
         {
-            this.NasVolumeName = new System.String("FETCH");
+            this.NasVolumeName = "FETCH";
         }
         //      C# -> System.String? RelationshipUuid
         // GraphQL -> relationshipUuid: String (scalar)
         if (this.RelationshipUuid == null && Exploration.Includes(parent + ".relationshipUuid", true))
         {
-            this.RelationshipUuid = new System.String("FETCH");
+            this.RelationshipUuid = "FETCH";
         }
         //      C# -> System.String? SnapMirrorLabel
         // GraphQL -> snapMirrorLabel: String (scalar)
         if (this.SnapMirrorLabel == null && Exploration.Includes(parent + ".snapMirrorLabel", true))
         {
-            this.SnapMirrorLabel = new System.String("FETCH");
+            this.SnapMirrorLabel = "FETCH";
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)

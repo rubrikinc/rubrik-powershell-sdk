@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numEnabled: Int! (scalar)
         if (this.NumEnabled == null && Exploration.Includes(parent + ".numEnabled", true))
         {
-            this.NumEnabled = new System.Int32();
+            this.NumEnabled = Int32.MinValue;
         }
         //      C# -> System.Int32? NumInProcess
         // GraphQL -> numInProcess: Int! (scalar)
         if (this.NumInProcess == null && Exploration.Includes(parent + ".numInProcess", true))
         {
-            this.NumInProcess = new System.Int32();
+            this.NumInProcess = Int32.MinValue;
         }
         //      C# -> System.Int32? NumIncompleteFirstFull
         // GraphQL -> numIncompleteFirstFull: Int! (scalar)
         if (this.NumIncompleteFirstFull == null && Exploration.Includes(parent + ".numIncompleteFirstFull", true))
         {
-            this.NumIncompleteFirstFull = new System.Int32();
+            this.NumIncompleteFirstFull = Int32.MinValue;
         }
         //      C# -> System.Int32? NumNotEnabled
         // GraphQL -> numNotEnabled: Int! (scalar)
         if (this.NumNotEnabled == null && Exploration.Includes(parent + ".numNotEnabled", true))
         {
-            this.NumNotEnabled = new System.Int32();
+            this.NumNotEnabled = Int32.MinValue;
         }
     }
 

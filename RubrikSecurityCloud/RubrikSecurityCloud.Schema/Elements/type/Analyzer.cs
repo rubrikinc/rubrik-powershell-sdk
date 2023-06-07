@@ -180,25 +180,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dictionaryCsv: String! (scalar)
         if (this.DictionaryCsv == null && Exploration.Includes(parent + ".dictionaryCsv", true))
         {
-            this.DictionaryCsv = new System.String("FETCH");
+            this.DictionaryCsv = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? Regex
         // GraphQL -> regex: String! (scalar)
         if (this.Regex == null && Exploration.Includes(parent + ".regex", true))
         {
-            this.Regex = new System.String("FETCH");
+            this.Regex = "FETCH";
         }
         //      C# -> AnalyzerRiskInstance? AnalyzerRiskInstance
         // GraphQL -> analyzerRiskInstance: AnalyzerRiskInstance (type)

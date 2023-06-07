@@ -182,43 +182,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> computeClusterName: String (scalar)
         if (this.ComputeClusterName == null && Exploration.Includes(parent + ".computeClusterName", true))
         {
-            this.ComputeClusterName = new System.String("FETCH");
+            this.ComputeClusterName = "FETCH";
         }
         //      C# -> System.String? DatastoreName
         // GraphQL -> datastoreName: String! (scalar)
         if (this.DatastoreName == null && Exploration.Includes(parent + ".datastoreName", true))
         {
-            this.DatastoreName = new System.String("FETCH");
+            this.DatastoreName = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? UsedPortCount
         // GraphQL -> usedPortCount: Int! (scalar)
         if (this.UsedPortCount == null && Exploration.Includes(parent + ".usedPortCount", true))
         {
-            this.UsedPortCount = new System.Int32();
+            this.UsedPortCount = Int32.MinValue;
         }
         //      C# -> System.String? VcenterName
         // GraphQL -> vcenterName: String! (scalar)
         if (this.VcenterName == null && Exploration.Includes(parent + ".vcenterName", true))
         {
-            this.VcenterName = new System.String("FETCH");
+            this.VcenterName = "FETCH";
         }
         //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
         // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)

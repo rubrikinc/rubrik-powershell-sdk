@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> locationId: String! (scalar)
         if (this.LocationId == null && Exploration.Includes(parent + ".locationId", true))
         {
-            this.LocationId = new System.String("FETCH");
+            this.LocationId = "FETCH";
         }
         //      C# -> System.String? LocationName
         // GraphQL -> locationName: String! (scalar)
         if (this.LocationName == null && Exploration.Includes(parent + ".locationName", true))
         {
-            this.LocationName = new System.String("FETCH");
+            this.LocationName = "FETCH";
         }
     }
 

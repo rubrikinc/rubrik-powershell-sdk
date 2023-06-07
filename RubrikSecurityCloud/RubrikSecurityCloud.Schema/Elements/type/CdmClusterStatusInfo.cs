@@ -246,85 +246,85 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> completedNodes: String (scalar)
         if (this.CompletedNodes == null && Exploration.Includes(parent + ".completedNodes", true))
         {
-            this.CompletedNodes = new System.String("FETCH");
+            this.CompletedNodes = "FETCH";
         }
         //      C# -> System.String? CurrentNode
         // GraphQL -> currentNode: String (scalar)
         if (this.CurrentNode == null && Exploration.Includes(parent + ".currentNode", true))
         {
-            this.CurrentNode = new System.String("FETCH");
+            this.CurrentNode = "FETCH";
         }
         //      C# -> System.String? CurrentNodeState
         // GraphQL -> currentNodeState: String (scalar)
         if (this.CurrentNodeState == null && Exploration.Includes(parent + ".currentNodeState", true))
         {
-            this.CurrentNodeState = new System.String("FETCH");
+            this.CurrentNodeState = "FETCH";
         }
         //      C# -> System.String? CurrentState
         // GraphQL -> currentState: String (scalar)
         if (this.CurrentState == null && Exploration.Includes(parent + ".currentState", true))
         {
-            this.CurrentState = new System.String("FETCH");
+            this.CurrentState = "FETCH";
         }
         //      C# -> System.String? CurrentStateProgress
         // GraphQL -> currentStateProgress: String (scalar)
         if (this.CurrentStateProgress == null && Exploration.Includes(parent + ".currentStateProgress", true))
         {
-            this.CurrentStateProgress = new System.String("FETCH");
+            this.CurrentStateProgress = "FETCH";
         }
         //      C# -> System.String? CurrentTask
         // GraphQL -> currentTask: String (scalar)
         if (this.CurrentTask == null && Exploration.Includes(parent + ".currentTask", true))
         {
-            this.CurrentTask = new System.String("FETCH");
+            this.CurrentTask = "FETCH";
         }
         //      C# -> System.String? DownloadJobStatus
         // GraphQL -> downloadJobStatus: String (scalar)
         if (this.DownloadJobStatus == null && Exploration.Includes(parent + ".downloadJobStatus", true))
         {
-            this.DownloadJobStatus = new System.String("FETCH");
+            this.DownloadJobStatus = "FETCH";
         }
         //      C# -> System.String? DownloadProgress
         // GraphQL -> downloadProgress: String (scalar)
         if (this.DownloadProgress == null && Exploration.Includes(parent + ".downloadProgress", true))
         {
-            this.DownloadProgress = new System.String("FETCH");
+            this.DownloadProgress = "FETCH";
         }
         //      C# -> System.String? DownloadRemainingTimeEstimateInSeconds
         // GraphQL -> downloadRemainingTimeEstimateInSeconds: String (scalar)
         if (this.DownloadRemainingTimeEstimateInSeconds == null && Exploration.Includes(parent + ".downloadRemainingTimeEstimateInSeconds", true))
         {
-            this.DownloadRemainingTimeEstimateInSeconds = new System.String("FETCH");
+            this.DownloadRemainingTimeEstimateInSeconds = "FETCH";
         }
         //      C# -> System.String? DownloadVersion
         // GraphQL -> downloadVersion: String (scalar)
         if (this.DownloadVersion == null && Exploration.Includes(parent + ".downloadVersion", true))
         {
-            this.DownloadVersion = new System.String("FETCH");
+            this.DownloadVersion = "FETCH";
         }
         //      C# -> System.String? FinishedStates
         // GraphQL -> finishedStates: String (scalar)
         if (this.FinishedStates == null && Exploration.Includes(parent + ".finishedStates", true))
         {
-            this.FinishedStates = new System.String("FETCH");
+            this.FinishedStates = "FETCH";
         }
         //      C# -> System.String? OverallProgress
         // GraphQL -> overallProgress: String (scalar)
         if (this.OverallProgress == null && Exploration.Includes(parent + ".overallProgress", true))
         {
-            this.OverallProgress = new System.String("FETCH");
+            this.OverallProgress = "FETCH";
         }
         //      C# -> System.String? PendingStates
         // GraphQL -> pendingStates: String (scalar)
         if (this.PendingStates == null && Exploration.Includes(parent + ".pendingStates", true))
         {
-            this.PendingStates = new System.String("FETCH");
+            this.PendingStates = "FETCH";
         }
         //      C# -> System.String? TotalNodes
         // GraphQL -> totalNodes: String (scalar)
         if (this.TotalNodes == null && Exploration.Includes(parent + ".totalNodes", true))
         {
-            this.TotalNodes = new System.String("FETCH");
+            this.TotalNodes = "FETCH";
         }
     }
 

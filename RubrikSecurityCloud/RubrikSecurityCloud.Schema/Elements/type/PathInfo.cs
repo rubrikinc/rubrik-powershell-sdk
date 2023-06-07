@@ -134,7 +134,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> aclDetails: String (scalar)
         if (this.AclDetails == null && Exploration.Includes(parent + ".aclDetails", true))
         {
-            this.AclDetails = new System.String("FETCH");
+            this.AclDetails = "FETCH";
         }
         //      C# -> DateTime? CreationTime
         // GraphQL -> creationTime: DateTime (scalar)
@@ -152,7 +152,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> path: String! (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> List<HashDetail>? RequestedHashDetails
         // GraphQL -> requestedHashDetails: [HashDetail!]! (type)

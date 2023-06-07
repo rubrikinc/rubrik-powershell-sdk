@@ -47,7 +47,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 obj is int ||
                 obj is bool ||
                 obj is IFieldSpec ||
-                obj is IInput
+                obj is IInput ||
+                obj is Array
             )
             {
                 return obj;

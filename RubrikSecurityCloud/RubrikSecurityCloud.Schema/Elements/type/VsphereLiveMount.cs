@@ -266,13 +266,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> attachingDiskCount: Int! (scalar)
         if (this.AttachingDiskCount == null && Exploration.Includes(parent + ".attachingDiskCount", true))
         {
-            this.AttachingDiskCount = new System.Int32();
+            this.AttachingDiskCount = Int32.MinValue;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.Boolean? HasAttachingDisk
         // GraphQL -> hasAttachingDisk: Boolean! (scalar)
@@ -284,7 +284,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -296,7 +296,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> migrateDatastoreRequestId: String! (scalar)
         if (this.MigrateDatastoreRequestId == null && Exploration.Includes(parent + ".migrateDatastoreRequestId", true))
         {
-            this.MigrateDatastoreRequestId = new System.String("FETCH");
+            this.MigrateDatastoreRequestId = "FETCH";
         }
         //      C# -> DateTime? MountTimestamp
         // GraphQL -> mountTimestamp: DateTime (scalar)
@@ -308,13 +308,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> newVmName: String (scalar)
         if (this.NewVmName == null && Exploration.Includes(parent + ".newVmName", true))
         {
-            this.NewVmName = new System.String("FETCH");
+            this.NewVmName = "FETCH";
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)
         if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
         {
-            this.VcenterId = new System.String("FETCH");
+            this.VcenterId = "FETCH";
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)

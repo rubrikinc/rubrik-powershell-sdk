@@ -120,7 +120,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> communityString: String (scalar)
         if (this.CommunityString == null && Exploration.Includes(parent + ".communityString", true))
         {
-            this.CommunityString = new System.String("FETCH");
+            this.CommunityString = "FETCH";
         }
         //      C# -> System.Boolean? IsEnabled
         // GraphQL -> isEnabled: Boolean! (scalar)
@@ -132,7 +132,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snmpAgentPort: Int! (scalar)
         if (this.SnmpAgentPort == null && Exploration.Includes(parent + ".snmpAgentPort", true))
         {
-            this.SnmpAgentPort = new System.Int32();
+            this.SnmpAgentPort = Int32.MinValue;
         }
         //      C# -> List<System.String>? Users
         // GraphQL -> users: [String!]! (scalar)

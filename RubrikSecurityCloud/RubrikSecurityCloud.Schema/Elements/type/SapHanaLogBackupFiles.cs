@@ -202,31 +202,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> destinationPath: String (scalar)
         if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
         {
-            this.DestinationPath = new System.String("FETCH");
+            this.DestinationPath = "FETCH";
         }
         //      C# -> System.String? DestinationType
         // GraphQL -> destinationType: String (scalar)
         if (this.DestinationType == null && Exploration.Includes(parent + ".destinationType", true))
         {
-            this.DestinationType = new System.String("FETCH");
+            this.DestinationType = "FETCH";
         }
         //      C# -> System.String? ExternalBackupId
         // GraphQL -> externalBackupId: String (scalar)
         if (this.ExternalBackupId == null && Exploration.Includes(parent + ".externalBackupId", true))
         {
-            this.ExternalBackupId = new System.String("FETCH");
+            this.ExternalBackupId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> System.String? ServiceTypeName
         // GraphQL -> serviceTypeName: String (scalar)
         if (this.ServiceTypeName == null && Exploration.Includes(parent + ".serviceTypeName", true))
         {
-            this.ServiceTypeName = new System.String("FETCH");
+            this.ServiceTypeName = "FETCH";
         }
         //      C# -> System.Int64? SourceId
         // GraphQL -> sourceId: Long (scalar)
@@ -238,7 +238,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sourceTypeName: String (scalar)
         if (this.SourceTypeName == null && Exploration.Includes(parent + ".sourceTypeName", true))
         {
-            this.SourceTypeName = new System.String("FETCH");
+            this.SourceTypeName = "FETCH";
         }
         //      C# -> SapHanaLogPositionInterval? LogPositionInterval
         // GraphQL -> logPositionInterval: SapHanaLogPositionInterval (type)

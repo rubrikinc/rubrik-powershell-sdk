@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cidr: String! (scalar)
         if (this.Cidr == null && Exploration.Includes(parent + ".cidr", true))
         {
-            this.Cidr = new System.String("FETCH");
+            this.Cidr = "FETCH";
         }
         //      C# -> System.String? InterfaceName
         // GraphQL -> interfaceName: String! (scalar)
         if (this.InterfaceName == null && Exploration.Includes(parent + ".interfaceName", true))
         {
-            this.InterfaceName = new System.String("FETCH");
+            this.InterfaceName = "FETCH";
         }
     }
 

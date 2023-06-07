@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> columnName: String (scalar)
         if (this.ColumnName == null && Exploration.Includes(parent + ".columnName", true))
         {
-            this.ColumnName = new System.String("FETCH");
+            this.ColumnName = "FETCH";
         }
         //      C# -> System.String? ColumnType
         // GraphQL -> columnType: String (scalar)
         if (this.ColumnType == null && Exploration.Includes(parent + ".columnType", true))
         {
-            this.ColumnType = new System.String("FETCH");
+            this.ColumnType = "FETCH";
         }
     }
 

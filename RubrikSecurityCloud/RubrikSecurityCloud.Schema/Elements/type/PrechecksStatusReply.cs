@@ -126,13 +126,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numPrechecks: Int! (scalar)
         if (this.NumPrechecks == null && Exploration.Includes(parent + ".numPrechecks", true))
         {
-            this.NumPrechecks = new System.Int32();
+            this.NumPrechecks = Int32.MinValue;
         }
         //      C# -> System.Int32? RunPeriodInMinutes
         // GraphQL -> runPeriodInMinutes: Int! (scalar)
         if (this.RunPeriodInMinutes == null && Exploration.Includes(parent + ".runPeriodInMinutes", true))
         {
-            this.RunPeriodInMinutes = new System.Int32();
+            this.RunPeriodInMinutes = Int32.MinValue;
         }
         //      C# -> List<PrecheckFailure>? FailureResults
         // GraphQL -> failureResults: [PrecheckFailure!]! (type)

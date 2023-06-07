@@ -194,25 +194,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> groupId: UUID! (scalar)
         if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
         {
-            this.GroupId = new System.String("FETCH");
+            this.GroupId = "FETCH";
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
         if (this.GroupName == null && Exploration.Includes(parent + ".groupName", true))
         {
-            this.GroupName = new System.String("FETCH");
+            this.GroupName = "FETCH";
         }
         //      C# -> System.String? GroupType
         // GraphQL -> groupType: String! (scalar)
         if (this.GroupType == null && Exploration.Includes(parent + ".groupType", true))
         {
-            this.GroupType = new System.String("FETCH");
+            this.GroupType = "FETCH";
         }
         //      C# -> System.Int32? Seq
         // GraphQL -> seq: Int! (scalar)
         if (this.Seq == null && Exploration.Includes(parent + ".seq", true))
         {
-            this.Seq = new System.Int32();
+            this.Seq = Int32.MinValue;
         }
         //      C# -> System.Int64? StartTime
         // GraphQL -> startTime: Long! (scalar)

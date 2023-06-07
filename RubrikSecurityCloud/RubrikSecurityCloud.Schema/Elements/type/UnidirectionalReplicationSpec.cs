@@ -126,19 +126,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicationTargetId: String! (scalar)
         if (this.ReplicationTargetId == null && Exploration.Includes(parent + ".replicationTargetId", true))
         {
-            this.ReplicationTargetId = new System.String("FETCH");
+            this.ReplicationTargetId = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String! (scalar)
         if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
         {
-            this.ReplicationTargetName = new System.String("FETCH");
+            this.ReplicationTargetName = "FETCH";
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
         if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
         {
-            this.Retention = new System.Int32();
+            this.Retention = Int32.MinValue;
         }
         //      C# -> Cluster? TargetCluster
         // GraphQL -> targetCluster: Cluster (type)

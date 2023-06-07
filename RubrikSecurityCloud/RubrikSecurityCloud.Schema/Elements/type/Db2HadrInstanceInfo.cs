@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> role: String! (scalar)
         if (this.Role == null && Exploration.Includes(parent + ".role", true))
         {
-            this.Role = new System.String("FETCH");
+            this.Role = "FETCH";
         }
         //      C# -> Db2Instance? Db2Instance
         // GraphQL -> db2Instance: Db2Instance! (type)

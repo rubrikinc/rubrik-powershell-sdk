@@ -132,7 +132,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> namespace: String! (scalar)
         if (this.Namespace == null && Exploration.Includes(parent + ".namespace", true))
         {
-            this.Namespace = new System.String("FETCH");
+            this.Namespace = "FETCH";
         }
         //      C# -> DateTime? SnapshotTime
         // GraphQL -> snapshotTime: DateTime! (scalar)

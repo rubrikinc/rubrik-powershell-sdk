@@ -140,7 +140,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
@@ -152,7 +152,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> errorType: String! (scalar)
         if (this.ErrorType == null && Exploration.Includes(parent + ".errorType", true))
         {
-            this.ErrorType = new System.String("FETCH");
+            this.ErrorType = "FETCH";
         }
         //      C# -> MssqlMissedRecoverableRangeError? FirstError
         // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)

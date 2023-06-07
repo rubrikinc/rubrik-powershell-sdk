@@ -93,19 +93,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> azureRegion: String! (scalar)
         if (this.AzureRegion == null && Exploration.Includes(parent + ".azureRegion", true))
         {
-            this.AzureRegion = new System.String("FETCH");
+            this.AzureRegion = "FETCH";
         }
         //      C# -> System.String? SubscriptionRubrikId
         // GraphQL -> subscriptionRubrikId: String (scalar)
         if (this.SubscriptionRubrikId == null && Exploration.Includes(parent + ".subscriptionRubrikId", true))
         {
-            this.SubscriptionRubrikId = new System.String("FETCH");
+            this.SubscriptionRubrikId = "FETCH";
         }
         //      C# -> System.String? SubscriptionRubrikName
         // GraphQL -> subscriptionRubrikName: String (scalar)
         if (this.SubscriptionRubrikName == null && Exploration.Includes(parent + ".subscriptionRubrikName", true))
         {
-            this.SubscriptionRubrikName = new System.String("FETCH");
+            this.SubscriptionRubrikName = "FETCH";
         }
     }
 

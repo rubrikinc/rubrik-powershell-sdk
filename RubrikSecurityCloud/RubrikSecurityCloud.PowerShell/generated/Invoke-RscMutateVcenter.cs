@@ -29,7 +29,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Create parameter set
         //
-        // GraphQL operation: vsphereCreateVCenter(,   clusterUuid: UUID!,   hostname: String!,   username: String!,   password: String!,   conflictResolutionAuthz: ConflictResolutionAuthzEnum!,   caCert: String, ):VsphereAsyncRequestStatus!
+        // [GraphQL: vsphereCreateVCenter]
         //
         [Parameter(
             ParameterSetName = "Create",
@@ -37,10 +37,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereCreateVCenter(,   clusterUuid: UUID!,   hostname: String!,   username: String!,   password: String!,   conflictResolutionAuthz: ConflictResolutionAuthzEnum!,   caCert: String, ):VsphereAsyncRequestStatus!
-                ",
+@"
+[GraphQL: vsphereCreateVCenter]",
             Position = 0
         )]
         public SwitchParameter Create { get; set; }
@@ -51,10 +49,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument clusterUuid: UUID!
-                "
+@"
+GraphQL argument clusterUuid: UUID!"
         )]
         public System.String? ClusterUuid { get; set; }
         [Parameter(
@@ -63,10 +59,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument hostname: String!
-                "
+@"
+GraphQL argument hostname: String!"
         )]
         public System.String? Hostname { get; set; }
         [Parameter(
@@ -75,10 +69,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument username: String!
-                "
+@"
+GraphQL argument username: String!"
         )]
         public System.String? Username { get; set; }
         [Parameter(
@@ -87,10 +79,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument password: String!
-                "
+@"
+GraphQL argument password: String!"
         )]
         public System.String? Password { get; set; }
         [Parameter(
@@ -99,10 +89,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument conflictResolutionAuthz: ConflictResolutionAuthzEnum!
-                "
+@"
+GraphQL argument conflictResolutionAuthz: ConflictResolutionAuthzEnum!"
         )]
         public ConflictResolutionAuthzEnum? ConflictResolutionAuthz { get; set; }
         [Parameter(
@@ -111,17 +99,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument caCert: String
-                "
+@"
+GraphQL argument caCert: String"
         )]
         public System.String? CaCert { get; set; }
         
         // -------------------------------------------------------------------
         // Delete parameter set
         //
-        // GraphQL operation: vsphereDeleteVcenter(input: VsphereDeleteVcenterInput!):AsyncRequestStatus!
+        // [GraphQL: vsphereDeleteVcenter]
         //
         [Parameter(
             ParameterSetName = "Delete",
@@ -129,13 +115,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Remove vCenter Server
+@"Remove vCenter Server
 
 Supported in v5.0+
 Initiates an asynchronous job to remove a vCenter Server object. The vCenter Server cannot have VMs mounted through the Rubrik cluster.
-                GraphQL operation: vsphereDeleteVcenter(input: VsphereDeleteVcenterInput!):AsyncRequestStatus!
-                ",
+[GraphQL: vsphereDeleteVcenter]",
             Position = 0
         )]
         public SwitchParameter Delete { get; set; }
@@ -146,17 +130,15 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for V1DeleteVcenter.
-                GraphQL argument input: VsphereDeleteVcenterInput!
-                "
+@"Input for V1DeleteVcenter.
+GraphQL argument input: VsphereDeleteVcenterInput!"
         )]
         public VsphereDeleteVcenterInput? Input { get; set; }
         
         // -------------------------------------------------------------------
         // Edit parameter set
         //
-        // GraphQL operation: vsphereEditVCenter(,   vcenterId: UUID!,   hostname: String!,   username: String!,   password: String!,   conflictResolutionAuthz: ConflictResolutionAuthzEnum!,   caCert: String, ):RequestSuccess!
+        // [GraphQL: vsphereEditVCenter]
         //
         [Parameter(
             ParameterSetName = "Edit",
@@ -164,10 +146,8 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereEditVCenter(,   vcenterId: UUID!,   hostname: String!,   username: String!,   password: String!,   conflictResolutionAuthz: ConflictResolutionAuthzEnum!,   caCert: String, ):RequestSuccess!
-                ",
+@"
+[GraphQL: vsphereEditVCenter]",
             Position = 0
         )]
         public SwitchParameter Edit { get; set; }
@@ -178,17 +158,15 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument vcenterId: UUID!
-                "
+@"
+GraphQL argument vcenterId: UUID!"
         )]
         public System.String? VcenterId { get; set; }
         
         // -------------------------------------------------------------------
         // Refresh parameter set
         //
-        // GraphQL operation: vsphereRefreshVCenter(vcenterId: UUID!):VsphereAsyncRequestStatus!
+        // [GraphQL: vsphereRefreshVCenter]
         //
         [Parameter(
             ParameterSetName = "Refresh",
@@ -196,82 +174,74 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereRefreshVCenter(vcenterId: UUID!):VsphereAsyncRequestStatus!
-                ",
+@"
+[GraphQL: vsphereRefreshVCenter]",
             Position = 0
         )]
         public SwitchParameter Refresh { get; set; }
 
         
         // -------------------------------------------------------------------
-        // update parameter set
+        // Update parameter set
         //
-        // GraphQL operation: updateVcenter(input: UpdateVcenterInput!):UpdateVcenterReply!
+        // [GraphQL: updateVcenter]
         //
         [Parameter(
-            ParameterSetName = "update",
+            ParameterSetName = "Update",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Update vCenter Server
+@"Update vCenter Server
 
 Supported in v5.0+
 Update the address, username and password of the specified vCenter Server object.
-                GraphQL operation: updateVcenter(input: UpdateVcenterInput!):UpdateVcenterReply!
-                ",
+[GraphQL: updateVcenter]",
             Position = 0
         )]
-        public SwitchParameter update { get; set; }
+        public SwitchParameter Update { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateHotAddNetwork parameter set
+        // Updatehotaddnetwork parameter set
         //
-        // GraphQL operation: updateVcenterHotAddNetwork(input: UpdateVcenterHotAddNetworkInput!):RequestSuccess!
+        // [GraphQL: updateVcenterHotAddNetwork]
         //
         [Parameter(
-            ParameterSetName = "updateHotAddNetwork",
+            ParameterSetName = "Updatehotaddnetwork",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Set the user-configured network for HotAdd backup and recovery
+@"Set the user-configured network for HotAdd backup and recovery
 
 Supported in v5.3+
 Set the user-configured network for HotAdd backup and recovery operations on VMware on AWS.
-                GraphQL operation: updateVcenterHotAddNetwork(input: UpdateVcenterHotAddNetworkInput!):RequestSuccess!
-                ",
+[GraphQL: updateVcenterHotAddNetwork]",
             Position = 0
         )]
-        public SwitchParameter updateHotAddNetwork { get; set; }
+        public SwitchParameter Updatehotaddnetwork { get; set; }
 
         
         // -------------------------------------------------------------------
-        // updateHotAddBandwidth parameter set
+        // Updatehotaddbandwidth parameter set
         //
-        // GraphQL operation: updateVcenterHotAddBandwidth(input: UpdateVcenterHotAddBandwidthInput!):RequestSuccess!
+        // [GraphQL: updateVcenterHotAddBandwidth]
         //
         [Parameter(
-            ParameterSetName = "updateHotAddBandwidth",
+            ParameterSetName = "Updatehotaddbandwidth",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Set the ingest and export bandwidth limits for HotAdd with the vCenter
+@"Set the ingest and export bandwidth limits for HotAdd with the vCenter
 
 Supported in v5.3+
 Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vCenter. These limits are shared across all HotAdd proxies for the Center.
-                GraphQL operation: updateVcenterHotAddBandwidth(input: UpdateVcenterHotAddBandwidthInput!):RequestSuccess!
-                ",
+[GraphQL: updateVcenterHotAddBandwidth]",
             Position = 0
         )]
-        public SwitchParameter updateHotAddBandwidth { get; set; }
+        public SwitchParameter Updatehotaddbandwidth { get; set; }
 
 
         protected override void ProcessRecord()
@@ -292,14 +262,14 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                     case "Refresh":
                         this.ProcessRecord_Refresh();
                         break;
-                    case "update":
-                        this.ProcessRecord_update();
+                    case "Update":
+                        this.ProcessRecord_Update();
                         break;
-                    case "updateHotAddNetwork":
-                        this.ProcessRecord_updateHotAddNetwork();
+                    case "Updatehotaddnetwork":
+                        this.ProcessRecord_Updatehotaddnetwork();
                         break;
-                    case "updateHotAddBandwidth":
-                        this.ProcessRecord_updateHotAddBandwidth();
+                    case "Updatehotaddbandwidth":
+                        this.ProcessRecord_Updatehotaddbandwidth();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -355,27 +325,27 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // This parameter set invokes a single graphql operation:
         // updateVcenter.
-        protected void ProcessRecord_update()
+        protected void ProcessRecord_Update()
         {
-            this._logger.name += " -update";
+            this._logger.name += " -Update";
             // Invoke graphql operation updateVcenter
             InvokeMutationUpdateVcenter();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateVcenterHotAddNetwork.
-        protected void ProcessRecord_updateHotAddNetwork()
+        protected void ProcessRecord_Updatehotaddnetwork()
         {
-            this._logger.name += " -updateHotAddNetwork";
+            this._logger.name += " -Updatehotaddnetwork";
             // Invoke graphql operation updateVcenterHotAddNetwork
             InvokeMutationUpdateVcenterHotAddNetwork();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateVcenterHotAddBandwidth.
-        protected void ProcessRecord_updateHotAddBandwidth()
+        protected void ProcessRecord_Updatehotaddbandwidth()
         {
-            this._logger.name += " -updateHotAddBandwidth";
+            this._logger.name += " -Updatehotaddbandwidth";
             // Invoke graphql operation updateVcenterHotAddBandwidth
             InvokeMutationUpdateVcenterHotAddBandwidth();
         }

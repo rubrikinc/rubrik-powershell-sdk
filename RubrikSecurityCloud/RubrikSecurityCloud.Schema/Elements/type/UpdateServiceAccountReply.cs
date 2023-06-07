@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
         {
-            this.ClientId = new System.String("FETCH");
+            this.ClientId = "FETCH";
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> DateTime? LastLogin
         // GraphQL -> lastLogin: DateTime (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
     }
 

@@ -146,25 +146,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> postScriptTimeoutInSeconds: Int! (scalar)
         if (this.PostScriptTimeoutInSeconds == null && Exploration.Includes(parent + ".postScriptTimeoutInSeconds", true))
         {
-            this.PostScriptTimeoutInSeconds = new System.Int32();
+            this.PostScriptTimeoutInSeconds = Int32.MinValue;
         }
         //      C# -> System.String? PostSnapshotScriptPath
         // GraphQL -> postSnapshotScriptPath: String! (scalar)
         if (this.PostSnapshotScriptPath == null && Exploration.Includes(parent + ".postSnapshotScriptPath", true))
         {
-            this.PostSnapshotScriptPath = new System.String("FETCH");
+            this.PostSnapshotScriptPath = "FETCH";
         }
         //      C# -> System.Int32? PreScriptTimeoutInSeconds
         // GraphQL -> preScriptTimeoutInSeconds: Int! (scalar)
         if (this.PreScriptTimeoutInSeconds == null && Exploration.Includes(parent + ".preScriptTimeoutInSeconds", true))
         {
-            this.PreScriptTimeoutInSeconds = new System.Int32();
+            this.PreScriptTimeoutInSeconds = Int32.MinValue;
         }
         //      C# -> System.String? PreSnapshotScriptPath
         // GraphQL -> preSnapshotScriptPath: String! (scalar)
         if (this.PreSnapshotScriptPath == null && Exploration.Includes(parent + ".preSnapshotScriptPath", true))
         {
-            this.PreSnapshotScriptPath = new System.String("FETCH");
+            this.PreSnapshotScriptPath = "FETCH";
         }
     }
 

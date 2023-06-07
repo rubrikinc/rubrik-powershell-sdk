@@ -328,7 +328,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failedObjectCount: Int! (scalar)
         if (this.FailedObjectCount == null && Exploration.Includes(parent + ".failedObjectCount", true))
         {
-            this.FailedObjectCount = new System.Int32();
+            this.FailedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Int64? FilesAnalyzeable
         // GraphQL -> filesAnalyzeable: Long! (scalar)
@@ -358,13 +358,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Single? Progress
         // GraphQL -> progress: Float! (scalar)
@@ -382,7 +382,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totalHits: Int! (scalar)
         if (this.TotalHits == null && Exploration.Includes(parent + ".totalHits", true))
         {
-            this.TotalHits = new System.Int32();
+            this.TotalHits = Int32.MinValue;
         }
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)

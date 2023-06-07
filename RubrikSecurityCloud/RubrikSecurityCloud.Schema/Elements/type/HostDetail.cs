@@ -202,7 +202,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> agentId: String (scalar)
         if (this.AgentId == null && Exploration.Includes(parent + ".agentId", true))
         {
-            this.AgentId = new System.String("FETCH");
+            this.AgentId = "FETCH";
         }
         //      C# -> System.Boolean? CompressionEnabled
         // GraphQL -> compressionEnabled: Boolean (scalar)
@@ -232,13 +232,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> oracleQueryUser: String (scalar)
         if (this.OracleQueryUser == null && Exploration.Includes(parent + ".oracleQueryUser", true))
         {
-            this.OracleQueryUser = new System.String("FETCH");
+            this.OracleQueryUser = "FETCH";
         }
         //      C# -> System.String? OracleSysDbaUser
         // GraphQL -> oracleSysDbaUser: String (scalar)
         if (this.OracleSysDbaUser == null && Exploration.Includes(parent + ".oracleSysDbaUser", true))
         {
-            this.OracleSysDbaUser = new System.String("FETCH");
+            this.OracleSysDbaUser = "FETCH";
         }
         //      C# -> HostSummary? HostSummary
         // GraphQL -> hostSummary: HostSummary (type)

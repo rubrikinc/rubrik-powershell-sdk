@@ -120,25 +120,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> bucket: String (scalar)
         if (this.Bucket == null && Exploration.Includes(parent + ".bucket", true))
         {
-            this.Bucket = new System.String("FETCH");
+            this.Bucket = "FETCH";
         }
         //      C# -> System.String? EncryptionType
         // GraphQL -> encryptionType: String (scalar)
         if (this.EncryptionType == null && Exploration.Includes(parent + ".encryptionType", true))
         {
-            this.EncryptionType = new System.String("FETCH");
+            this.EncryptionType = "FETCH";
         }
         //      C# -> System.String? Endpoint
         // GraphQL -> endpoint: String (scalar)
         if (this.Endpoint == null && Exploration.Includes(parent + ".endpoint", true))
         {
-            this.Endpoint = new System.String("FETCH");
+            this.Endpoint = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int64? NumBuckets
         // GraphQL -> numBuckets: Long (scalar)

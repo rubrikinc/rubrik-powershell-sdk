@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> objectId: String! (scalar)
         if (this.ObjectId == null && Exploration.Includes(parent + ".objectId", true))
         {
-            this.ObjectId = new System.String("FETCH");
+            this.ObjectId = "FETCH";
         }
         //      C# -> DateTime? Time
         // GraphQL -> time: DateTime! (scalar)
@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userName: String (scalar)
         if (this.UserName == null && Exploration.Includes(parent + ".userName", true))
         {
-            this.UserName = new System.String("FETCH");
+            this.UserName = "FETCH";
         }
         //      C# -> System.String? UserNote
         // GraphQL -> userNote: String (scalar)
         if (this.UserNote == null && Exploration.Includes(parent + ".userNote", true))
         {
-            this.UserNote = new System.String("FETCH");
+            this.UserNote = "FETCH";
         }
     }
 

@@ -148,7 +148,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> brikId: String! (scalar)
         if (this.BrikId == null && Exploration.Includes(parent + ".brikId", true))
         {
-            this.BrikId = new System.String("FETCH");
+            this.BrikId = "FETCH";
         }
         //      C# -> System.Boolean? HasUnavailableDisks
         // GraphQL -> hasUnavailableDisks: Boolean (scalar)
@@ -160,25 +160,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostname: String (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
         if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
         {
-            this.IpAddress = new System.String("FETCH");
+            this.IpAddress = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> SupportTunnelInfo? SupportTunnel
         // GraphQL -> supportTunnel: SupportTunnelInfo (type)

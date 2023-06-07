@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> downloadLink: String! (scalar)
         if (this.DownloadLink == null && Exploration.Includes(parent + ".downloadLink", true))
         {
-            this.DownloadLink = new System.String("FETCH");
+            this.DownloadLink = "FETCH";
         }
     }
 

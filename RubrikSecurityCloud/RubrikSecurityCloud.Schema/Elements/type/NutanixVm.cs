@@ -831,19 +831,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmLink
         // GraphQL -> cdmLink: String! (scalar)
         if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink", true))
         {
-            this.CdmLink = new System.String("FETCH");
+            this.CdmLink = "FETCH";
         }
         //      C# -> System.String? CurrentHostId
         // GraphQL -> currentHostId: String (scalar)
         if (this.CurrentHostId == null && Exploration.Includes(parent + ".currentHostId", true))
         {
-            this.CurrentHostId = new System.String("FETCH");
+            this.CurrentHostId = "FETCH";
         }
         //      C# -> List<System.String>? ExcludedDisks
         // GraphQL -> excludedDisks: [String!]! (scalar)
@@ -855,13 +855,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hypervisorType: String (scalar)
         if (this.HypervisorType == null && Exploration.Includes(parent + ".hypervisorType", true))
         {
-            this.HypervisorType = new System.String("FETCH");
+            this.HypervisorType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsAgentRegistered
         // GraphQL -> isAgentRegistered: Boolean! (scalar)
@@ -879,31 +879,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? NutanixVmMountCount
         // GraphQL -> nutanixVmMountCount: Int! (scalar)
         if (this.NutanixVmMountCount == null && Exploration.Includes(parent + ".nutanixVmMountCount", true))
         {
-            this.NutanixVmMountCount = new System.Int32();
+            this.NutanixVmMountCount = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -915,7 +915,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmUuid: UUID! (scalar)
         if (this.VmUuid == null && Exploration.Includes(parent + ".vmUuid", true))
         {
-            this.VmUuid = new System.String("FETCH");
+            this.VmUuid = "FETCH";
         }
         //      C# -> NutanixVmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: NutanixVmAgentStatus! (type)

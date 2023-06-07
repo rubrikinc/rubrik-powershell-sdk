@@ -308,19 +308,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> attachingDiskCount: Int (scalar)
         if (this.AttachingDiskCount == null && Exploration.Includes(parent + ".attachingDiskCount", true))
         {
-            this.AttachingDiskCount = new System.Int32();
+            this.AttachingDiskCount = Int32.MinValue;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.Boolean? HasAttachingDisk
         // GraphQL -> hasAttachingDisk: Boolean (scalar)
@@ -332,7 +332,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -344,13 +344,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> migrateDatastoreRequestId: String (scalar)
         if (this.MigrateDatastoreRequestId == null && Exploration.Includes(parent + ".migrateDatastoreRequestId", true))
         {
-            this.MigrateDatastoreRequestId = new System.String("FETCH");
+            this.MigrateDatastoreRequestId = "FETCH";
         }
         //      C# -> System.String? MountRequestId
         // GraphQL -> mountRequestId: String (scalar)
         if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
         {
-            this.MountRequestId = new System.String("FETCH");
+            this.MountRequestId = "FETCH";
         }
         //      C# -> DateTime? MountTimestamp
         // GraphQL -> mountTimestamp: DateTime (scalar)
@@ -362,13 +362,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> newVmName: String (scalar)
         if (this.NewVmName == null && Exploration.Includes(parent + ".newVmName", true))
         {
-            this.NewVmName = new System.String("FETCH");
+            this.NewVmName = "FETCH";
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
         if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
         {
-            this.UnmountRequestId = new System.String("FETCH");
+            this.UnmountRequestId = "FETCH";
         }
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)

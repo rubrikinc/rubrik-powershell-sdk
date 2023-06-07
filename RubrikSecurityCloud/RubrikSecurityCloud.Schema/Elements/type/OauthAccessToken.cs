@@ -120,31 +120,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
         {
-            this.ClientId = new System.String("FETCH");
+            this.ClientId = "FETCH";
         }
         //      C# -> System.String? Code
         // GraphQL -> code: String! (scalar)
         if (this.Code == null && Exploration.Includes(parent + ".code", true))
         {
-            this.Code = new System.String("FETCH");
+            this.Code = "FETCH";
         }
         //      C# -> System.String? CodeVerifier
         // GraphQL -> codeVerifier: String! (scalar)
         if (this.CodeVerifier == null && Exploration.Includes(parent + ".codeVerifier", true))
         {
-            this.CodeVerifier = new System.String("FETCH");
+            this.CodeVerifier = "FETCH";
         }
         //      C# -> System.String? ExpiryTime
         // GraphQL -> expiryTime: String! (scalar)
         if (this.ExpiryTime == null && Exploration.Includes(parent + ".expiryTime", true))
         {
-            this.ExpiryTime = new System.String("FETCH");
+            this.ExpiryTime = "FETCH";
         }
         //      C# -> System.String? RedirectUri
         // GraphQL -> redirectUri: String! (scalar)
         if (this.RedirectUri == null && Exploration.Includes(parent + ".redirectUri", true))
         {
-            this.RedirectUri = new System.String("FETCH");
+            this.RedirectUri = "FETCH";
         }
     }
 

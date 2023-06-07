@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> networkName: String (scalar)
         if (this.NetworkName == null && Exploration.Includes(parent + ".networkName", true))
         {
-            this.NetworkName = new System.String("FETCH");
+            this.NetworkName = "FETCH";
         }
         //      C# -> StaticIpInfo? StaticIpConfig
         // GraphQL -> staticIpConfig: StaticIpInfo (type)

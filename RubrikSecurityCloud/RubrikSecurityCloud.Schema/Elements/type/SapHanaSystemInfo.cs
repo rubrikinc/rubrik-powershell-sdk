@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hanaVersion: String! (scalar)
         if (this.HanaVersion == null && Exploration.Includes(parent + ".hanaVersion", true))
         {
-            this.HanaVersion = new System.String("FETCH");
+            this.HanaVersion = "FETCH";
         }
         //      C# -> System.Boolean? IsSystemReplicationEnabled
         // GraphQL -> isSystemReplicationEnabled: Boolean! (scalar)

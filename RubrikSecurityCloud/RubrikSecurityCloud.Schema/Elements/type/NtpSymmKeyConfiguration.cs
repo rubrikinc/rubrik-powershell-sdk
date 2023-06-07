@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> key: String! (scalar)
         if (this.Key == null && Exploration.Includes(parent + ".key", true))
         {
-            this.Key = new System.String("FETCH");
+            this.Key = "FETCH";
         }
         //      C# -> System.Int32? KeyId
         // GraphQL -> keyId: Int! (scalar)
         if (this.KeyId == null && Exploration.Includes(parent + ".keyId", true))
         {
-            this.KeyId = new System.Int32();
+            this.KeyId = Int32.MinValue;
         }
         //      C# -> System.String? KeyType
         // GraphQL -> keyType: String! (scalar)
         if (this.KeyType == null && Exploration.Includes(parent + ".keyType", true))
         {
-            this.KeyType = new System.String("FETCH");
+            this.KeyType = "FETCH";
         }
     }
 

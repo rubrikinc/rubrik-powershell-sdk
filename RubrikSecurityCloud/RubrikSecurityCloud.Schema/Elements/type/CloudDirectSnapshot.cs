@@ -377,13 +377,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cloudDirectId: UUID! (scalar)
         if (this.CloudDirectId == null && Exploration.Includes(parent + ".cloudDirectId", true))
         {
-            this.CloudDirectId = new System.String("FETCH");
+            this.CloudDirectId = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
@@ -407,7 +407,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? IndexTime
         // GraphQL -> indexTime: DateTime (scalar)
@@ -467,13 +467,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
         {
-            this.SnappableId = new System.String("FETCH");
+            this.SnappableId = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
         //      C# -> DateTime? TimeCompleted
         // GraphQL -> timeCompleted: DateTime (scalar)
@@ -491,7 +491,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> type: String! (scalar)
         if (this.Type == null && Exploration.Includes(parent + ".type", true))
         {
-            this.Type = new System.String("FETCH");
+            this.Type = "FETCH";
         }
     }
 

@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> objectCount: Int! (scalar)
         if (this.ObjectCount == null && Exploration.Includes(parent + ".objectCount", true))
         {
-            this.ObjectCount = new System.Int32();
+            this.ObjectCount = Int32.MinValue;
         }
         //      C# -> System.String? SlaId
         // GraphQL -> slaId: String! (scalar)
         if (this.SlaId == null && Exploration.Includes(parent + ".slaId", true))
         {
-            this.SlaId = new System.String("FETCH");
+            this.SlaId = "FETCH";
         }
     }
 

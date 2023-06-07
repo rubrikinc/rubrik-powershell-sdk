@@ -154,7 +154,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> adapterType: String (scalar)
         if (this.AdapterType == null && Exploration.Includes(parent + ".adapterType", true))
         {
-            this.AdapterType = new System.String("FETCH");
+            this.AdapterType = "FETCH";
         }
         //      C# -> System.Boolean? IsConnected
         // GraphQL -> isConnected: Boolean! (scalar)
@@ -166,19 +166,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> macAddress: String (scalar)
         if (this.MacAddress == null && Exploration.Includes(parent + ".macAddress", true))
         {
-            this.MacAddress = new System.String("FETCH");
+            this.MacAddress = "FETCH";
         }
         //      C# -> System.String? NetworkName
         // GraphQL -> networkName: String (scalar)
         if (this.NetworkName == null && Exploration.Includes(parent + ".networkName", true))
         {
-            this.NetworkName = new System.String("FETCH");
+            this.NetworkName = "FETCH";
         }
         //      C# -> System.Int32? NicIndex
         // GraphQL -> nicIndex: Int! (scalar)
         if (this.NicIndex == null && Exploration.Includes(parent + ".nicIndex", true))
         {
-            this.NicIndex = new System.Int32();
+            this.NicIndex = Int32.MinValue;
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)

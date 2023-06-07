@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> executionMaxTimeoutHours: Int! (scalar)
         if (this.ExecutionMaxTimeoutHours == null && Exploration.Includes(parent + ".executionMaxTimeoutHours", true))
         {
-            this.ExecutionMaxTimeoutHours = new System.Int32();
+            this.ExecutionMaxTimeoutHours = Int32.MinValue;
         }
         //      C# -> System.Boolean? IsTprEnabled
         // GraphQL -> isTprEnabled: Boolean! (scalar)
@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> reminderHours: Int! (scalar)
         if (this.ReminderHours == null && Exploration.Includes(parent + ".reminderHours", true))
         {
-            this.ReminderHours = new System.Int32();
+            this.ReminderHours = Int32.MinValue;
         }
         //      C# -> System.Int32? RequestTimeoutHours
         // GraphQL -> requestTimeoutHours: Int! (scalar)
         if (this.RequestTimeoutHours == null && Exploration.Includes(parent + ".requestTimeoutHours", true))
         {
-            this.RequestTimeoutHours = new System.Int32();
+            this.RequestTimeoutHours = Int32.MinValue;
         }
     }
 

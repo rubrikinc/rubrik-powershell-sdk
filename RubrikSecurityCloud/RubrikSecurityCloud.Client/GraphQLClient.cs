@@ -41,6 +41,7 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
     public partial class RscGraphQLClient
     {
         private readonly string _clientId;
+        private string _clientName;
         private readonly string _clientSecret;
         private readonly string _polarisBaseUrl;
         private readonly string _polarisUrlScheme;
@@ -67,6 +68,14 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             get
             {
                 return _clientId;
+            }
+        }
+
+        public string ClientName
+        {
+            get
+            {
+                return _clientName;
             }
         }
 
@@ -132,6 +141,38 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 else
                 {
                     _polarisUrlScheme = "https";
+                }
+            }
+        }
+
+        public void SetClientName()
+        {
+            _clientName = "Unknown";
+            var serviceAccountQuery = @"
+                query ServiceAccounts {
+                    serviceAccounts {
+                        nodes {
+                            clientId
+                            name
+                        }
+                    }
+                }
+            ";
+
+            Rubrik.SecurityCloud.Types.ServiceAccountConnection reply =
+                (Rubrik.SecurityCloud.Types.ServiceAccountConnection)
+                    this
+                        .InvokeRawQuery(
+                            serviceAccountQuery,
+                            null // variables
+                        );
+
+            foreach (Rubrik.SecurityCloud.Types.ServiceAccount account in reply.Nodes)
+            {
+                if (account.ClientId == this.ClientId)
+                {
+                    this._clientName = account.Name;
+                    break;
                 }
             }
         }

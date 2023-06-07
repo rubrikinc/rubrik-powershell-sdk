@@ -134,31 +134,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> effectiveSlaDomainId: String! (scalar)
         if (this.EffectiveSlaDomainId == null && Exploration.Includes(parent + ".effectiveSlaDomainId", true))
         {
-            this.EffectiveSlaDomainId = new System.String("FETCH");
+            this.EffectiveSlaDomainId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainName
         // GraphQL -> effectiveSlaDomainName: String! (scalar)
         if (this.EffectiveSlaDomainName == null && Exploration.Includes(parent + ".effectiveSlaDomainName", true))
         {
-            this.EffectiveSlaDomainName = new System.String("FETCH");
+            this.EffectiveSlaDomainName = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaDomainPolarisManagedId
         // GraphQL -> effectiveSlaDomainPolarisManagedId: String (scalar)
         if (this.EffectiveSlaDomainPolarisManagedId == null && Exploration.Includes(parent + ".effectiveSlaDomainPolarisManagedId", true))
         {
-            this.EffectiveSlaDomainPolarisManagedId = new System.String("FETCH");
+            this.EffectiveSlaDomainPolarisManagedId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaSourceObjectId
         // GraphQL -> effectiveSlaSourceObjectId: String (scalar)
         if (this.EffectiveSlaSourceObjectId == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectId", true))
         {
-            this.EffectiveSlaSourceObjectId = new System.String("FETCH");
+            this.EffectiveSlaSourceObjectId = "FETCH";
         }
         //      C# -> System.String? EffectiveSlaSourceObjectName
         // GraphQL -> effectiveSlaSourceObjectName: String (scalar)
         if (this.EffectiveSlaSourceObjectName == null && Exploration.Includes(parent + ".effectiveSlaSourceObjectName", true))
         {
-            this.EffectiveSlaSourceObjectName = new System.String("FETCH");
+            this.EffectiveSlaSourceObjectName = "FETCH";
         }
         //      C# -> System.Boolean? IsEffectiveSlaDomainRetentionLocked
         // GraphQL -> isEffectiveSlaDomainRetentionLocked: Boolean (scalar)

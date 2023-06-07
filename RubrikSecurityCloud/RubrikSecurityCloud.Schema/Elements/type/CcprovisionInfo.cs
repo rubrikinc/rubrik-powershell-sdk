@@ -138,13 +138,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> marshaledConfig: String! (scalar)
         if (this.MarshaledConfig == null && Exploration.Includes(parent + ".marshaledConfig", true))
         {
-            this.MarshaledConfig = new System.String("FETCH");
+            this.MarshaledConfig = "FETCH";
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
         if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
         {
-            this.Progress = new System.Int32();
+            this.Progress = Int32.MinValue;
         }
     }
 

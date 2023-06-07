@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> groupId: String! (scalar)
         if (this.GroupId == null && Exploration.Includes(parent + ".groupId", true))
         {
-            this.GroupId = new System.String("FETCH");
+            this.GroupId = "FETCH";
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
         if (this.GroupName == null && Exploration.Includes(parent + ".groupName", true))
         {
-            this.GroupName = new System.String("FETCH");
+            this.GroupName = "FETCH";
         }
     }
 

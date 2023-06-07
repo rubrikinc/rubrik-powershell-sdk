@@ -132,7 +132,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> principalName: String! (scalar)
         if (this.PrincipalName == null && Exploration.Includes(parent + ".principalName", true))
         {
-            this.PrincipalName = new System.String("FETCH");
+            this.PrincipalName = "FETCH";
         }
         //      C# -> System.Int64? RiskHits
         // GraphQL -> riskHits: Long! (scalar)
@@ -144,7 +144,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sid: String! (scalar)
         if (this.Sid == null && Exploration.Includes(parent + ".sid", true))
         {
-            this.Sid = new System.String("FETCH");
+            this.Sid = "FETCH";
         }
     }
 

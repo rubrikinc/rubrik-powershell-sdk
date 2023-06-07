@@ -216,13 +216,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> instanceId: String! (scalar)
         if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
         {
-            this.InstanceId = new System.String("FETCH");
+            this.InstanceId = "FETCH";
         }
         //      C# -> System.String? InstanceName
         // GraphQL -> instanceName: String! (scalar)
         if (this.InstanceName == null && Exploration.Includes(parent + ".instanceName", true))
         {
-            this.InstanceName = new System.String("FETCH");
+            this.InstanceName = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
@@ -246,13 +246,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoveryForkGuid: String (scalar)
         if (this.RecoveryForkGuid == null && Exploration.Includes(parent + ".recoveryForkGuid", true))
         {
-            this.RecoveryForkGuid = new System.String("FETCH");
+            this.RecoveryForkGuid = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
         //      C# -> MssqlDbReplicaAvailabilityInfo? AvailabilityInfo
         // GraphQL -> availabilityInfo: MssqlDbReplicaAvailabilityInfo (type)

@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmId: String (scalar)
         if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
         {
-            this.VmId = new System.String("FETCH");
+            this.VmId = "FETCH";
         }
     }
 

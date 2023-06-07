@@ -182,49 +182,49 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backintPath: String! (scalar)
         if (this.BackintPath == null && Exploration.Includes(parent + ".backintPath", true))
         {
-            this.BackintPath = new System.String("FETCH");
+            this.BackintPath = "FETCH";
         }
         //      C# -> System.String? DatabaseType
         // GraphQL -> databaseType: String! (scalar)
         if (this.DatabaseType == null && Exploration.Includes(parent + ".databaseType", true))
         {
-            this.DatabaseType = new System.String("FETCH");
+            this.DatabaseType = "FETCH";
         }
         //      C# -> System.Int32? LogBackupIntervalSecs
         // GraphQL -> logBackupIntervalSecs: Int! (scalar)
         if (this.LogBackupIntervalSecs == null && Exploration.Includes(parent + ".logBackupIntervalSecs", true))
         {
-            this.LogBackupIntervalSecs = new System.Int32();
+            this.LogBackupIntervalSecs = Int32.MinValue;
         }
         //      C# -> System.String? LogMode
         // GraphQL -> logMode: String! (scalar)
         if (this.LogMode == null && Exploration.Includes(parent + ".logMode", true))
         {
-            this.LogMode = new System.String("FETCH");
+            this.LogMode = "FETCH";
         }
         //      C# -> System.Int32? NumChannels
         // GraphQL -> numChannels: Int! (scalar)
         if (this.NumChannels == null && Exploration.Includes(parent + ".numChannels", true))
         {
-            this.NumChannels = new System.Int32();
+            this.NumChannels = Int32.MinValue;
         }
         //      C# -> System.String? ParamFilePath
         // GraphQL -> paramFilePath: String! (scalar)
         if (this.ParamFilePath == null && Exploration.Includes(parent + ".paramFilePath", true))
         {
-            this.ParamFilePath = new System.String("FETCH");
+            this.ParamFilePath = "FETCH";
         }
         //      C# -> System.String? RestoreConfiguredSrcDatabaseId
         // GraphQL -> restoreConfiguredSrcDatabaseId: String! (scalar)
         if (this.RestoreConfiguredSrcDatabaseId == null && Exploration.Includes(parent + ".restoreConfiguredSrcDatabaseId", true))
         {
-            this.RestoreConfiguredSrcDatabaseId = new System.String("FETCH");
+            this.RestoreConfiguredSrcDatabaseId = "FETCH";
         }
         //      C# -> System.String? Status
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
     }
 

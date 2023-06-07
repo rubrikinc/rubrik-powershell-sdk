@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> lastModified: String! (scalar)
         if (this.LastModified == null && Exploration.Includes(parent + ".lastModified", true))
         {
-            this.LastModified = new System.String("FETCH");
+            this.LastModified = "FETCH";
         }
         //      C# -> System.Int64? Size
         // GraphQL -> size: Long! (scalar)

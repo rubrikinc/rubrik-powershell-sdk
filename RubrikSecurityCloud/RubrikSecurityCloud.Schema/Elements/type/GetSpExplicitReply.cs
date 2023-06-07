@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> applicationCallbackUrl: String! (scalar)
         if (this.ApplicationCallbackUrl == null && Exploration.Includes(parent + ".applicationCallbackUrl", true))
         {
-            this.ApplicationCallbackUrl = new System.String("FETCH");
+            this.ApplicationCallbackUrl = "FETCH";
         }
         //      C# -> System.String? EncryptionCertificate
         // GraphQL -> encryptionCertificate: String! (scalar)
         if (this.EncryptionCertificate == null && Exploration.Includes(parent + ".encryptionCertificate", true))
         {
-            this.EncryptionCertificate = new System.String("FETCH");
+            this.EncryptionCertificate = "FETCH";
         }
         //      C# -> System.String? SigningCertificate
         // GraphQL -> signingCertificate: String! (scalar)
         if (this.SigningCertificate == null && Exploration.Includes(parent + ".signingCertificate", true))
         {
-            this.SigningCertificate = new System.String("FETCH");
+            this.SigningCertificate = "FETCH";
         }
         //      C# -> System.String? SpEntityId
         // GraphQL -> spEntityId: String! (scalar)
         if (this.SpEntityId == null && Exploration.Includes(parent + ".spEntityId", true))
         {
-            this.SpEntityId = new System.String("FETCH");
+            this.SpEntityId = "FETCH";
         }
     }
 

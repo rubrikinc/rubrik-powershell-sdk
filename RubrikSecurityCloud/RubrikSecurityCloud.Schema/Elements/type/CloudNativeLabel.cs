@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> labelKey: String! (scalar)
         if (this.LabelKey == null && Exploration.Includes(parent + ".labelKey", true))
         {
-            this.LabelKey = new System.String("FETCH");
+            this.LabelKey = "FETCH";
         }
         //      C# -> System.String? LabelValue
         // GraphQL -> labelValue: String! (scalar)
         if (this.LabelValue == null && Exploration.Includes(parent + ".labelValue", true))
         {
-            this.LabelValue = new System.String("FETCH");
+            this.LabelValue = "FETCH";
         }
         //      C# -> System.Boolean? MatchAllValues
         // GraphQL -> matchAllValues: Boolean! (scalar)

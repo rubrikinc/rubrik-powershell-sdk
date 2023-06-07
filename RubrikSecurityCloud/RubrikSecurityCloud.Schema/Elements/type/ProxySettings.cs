@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> portNumber: Int! (scalar)
         if (this.PortNumber == null && Exploration.Includes(parent + ".portNumber", true))
         {
-            this.PortNumber = new System.Int32();
+            this.PortNumber = Int32.MinValue;
         }
         //      C# -> System.String? Protocol
         // GraphQL -> protocol: String! (scalar)
         if (this.Protocol == null && Exploration.Includes(parent + ".protocol", true))
         {
-            this.Protocol = new System.String("FETCH");
+            this.Protocol = "FETCH";
         }
         //      C# -> System.String? ProxyServer
         // GraphQL -> proxyServer: String! (scalar)
         if (this.ProxyServer == null && Exploration.Includes(parent + ".proxyServer", true))
         {
-            this.ProxyServer = new System.String("FETCH");
+            this.ProxyServer = "FETCH";
         }
         //      C# -> System.String? Username
         // GraphQL -> username: String! (scalar)
         if (this.Username == null && Exploration.Includes(parent + ".username", true))
         {
-            this.Username = new System.String("FETCH");
+            this.Username = "FETCH";
         }
     }
 

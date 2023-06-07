@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> managedId: UUID! (scalar)
         if (this.ManagedId == null && Exploration.Includes(parent + ".managedId", true))
         {
-            this.ManagedId = new System.String("FETCH");
+            this.ManagedId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
     }
 

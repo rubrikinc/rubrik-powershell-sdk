@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> total: Int (scalar)
         if (this.Total == null && Exploration.Includes(parent + ".total", true))
         {
-            this.Total = new System.Int32();
+            this.Total = Int32.MinValue;
         }
         //      C# -> List<MssqlLogShippingSummaryV2>? Data
         // GraphQL -> data: [MssqlLogShippingSummaryV2!]! (type)

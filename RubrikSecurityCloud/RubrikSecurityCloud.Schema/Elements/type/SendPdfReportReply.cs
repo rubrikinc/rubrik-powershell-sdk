@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> taskchainUuid: String! (scalar)
         if (this.TaskchainUuid == null && Exploration.Includes(parent + ".taskchainUuid", true))
         {
-            this.TaskchainUuid = new System.String("FETCH");
+            this.TaskchainUuid = "FETCH";
         }
     }
 

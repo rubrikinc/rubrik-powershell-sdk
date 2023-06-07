@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> duration: Int! (scalar)
         if (this.DurationField == null && Exploration.Includes(parent + ".duration", true))
         {
-            this.DurationField = new System.Int32();
+            this.DurationField = Int32.MinValue;
         }
     }
 

@@ -190,7 +190,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Boolean? HasPermissions
         // GraphQL -> hasPermissions: Boolean! (scalar)
@@ -202,7 +202,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> instanceRootId: String! (scalar)
         if (this.InstanceRootId == null && Exploration.Includes(parent + ".instanceRootId", true))
         {
-            this.InstanceRootId = new System.String("FETCH");
+            this.InstanceRootId = "FETCH";
         }
         //      C# -> System.Boolean? IsArchived
         // GraphQL -> isArchived: Boolean! (scalar)
@@ -220,7 +220,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoveryModel: String! (scalar)
         if (this.RecoveryModel == null && Exploration.Includes(parent + ".recoveryModel", true))
         {
-            this.RecoveryModel = new System.String("FETCH");
+            this.RecoveryModel = "FETCH";
         }
         //      C# -> System.Boolean? SnapshotNeeded
         // GraphQL -> snapshotNeeded: Boolean! (scalar)
@@ -232,7 +232,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> state: String! (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
         //      C# -> CdmMssqlDbReplicaAvailabilityInfo? AvailabilityInfo
         // GraphQL -> availabilityInfo: CdmMssqlDbReplicaAvailabilityInfo (type)

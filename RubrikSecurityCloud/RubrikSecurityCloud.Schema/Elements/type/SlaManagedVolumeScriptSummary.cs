@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> runAsUser: String! (scalar)
         if (this.RunAsUser == null && Exploration.Includes(parent + ".runAsUser", true))
         {
-            this.RunAsUser = new System.String("FETCH");
+            this.RunAsUser = "FETCH";
         }
         //      C# -> System.String? ScriptCommand
         // GraphQL -> scriptCommand: String! (scalar)
         if (this.ScriptCommand == null && Exploration.Includes(parent + ".scriptCommand", true))
         {
-            this.ScriptCommand = new System.String("FETCH");
+            this.ScriptCommand = "FETCH";
         }
         //      C# -> System.Int64? Timeout
         // GraphQL -> timeout: Long (scalar)

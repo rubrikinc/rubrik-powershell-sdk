@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> magnitude: Int! (scalar)
         if (this.Magnitude == null && Exploration.Includes(parent + ".magnitude", true))
         {
-            this.Magnitude = new System.Int32();
+            this.Magnitude = Int32.MinValue;
         }
     }
 

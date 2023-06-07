@@ -84,7 +84,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> iocValue: String! (scalar)
         if (this.IocValue == null && Exploration.Includes(parent + ".iocValue", true))
         {
-            this.IocValue = new System.String("FETCH");
+            this.IocValue = "FETCH";
         }
     }
 

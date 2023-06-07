@@ -29,7 +29,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Setting parameter set
         //
-        // GraphQL operation: accountSettings:AccountSetting!
+        // [GraphQL: accountSettings]
         //
         [Parameter(
             ParameterSetName = "Setting",
@@ -37,75 +37,65 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                This endpoint is deprecated.
-                GraphQL operation: accountSettings:AccountSetting!
-                ",
+@"This endpoint is deprecated.
+[GraphQL: accountSettings]",
             Position = 0
         )]
         public SwitchParameter Setting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // sWithExocomputeMapping parameter set
+        // Swithexocomputemapping parameter set
         //
-        // GraphQL operation: allAccountsWithExocomputeMappings(cloudVendor: CloudVendor!, features: [CloudAccountFeature!]! = [], exocomputeAccountIdsFilter: [UUID!]! = []):[CloudAccountWithExocomputeMapping!]!
+        // [GraphQL: allAccountsWithExocomputeMappings]
         //
         [Parameter(
-            ParameterSetName = "sWithExocomputeMapping",
+            ParameterSetName = "Swithexocomputemapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Retrieves the list of all accounts with their Exocompute account mapping, if exists.
-                GraphQL operation: allAccountsWithExocomputeMappings(cloudVendor: CloudVendor!, features: [CloudAccountFeature!]! = [], exocomputeAccountIdsFilter: [UUID!]! = []):[CloudAccountWithExocomputeMapping!]!
-                ",
+@"Retrieves the list of all accounts with their Exocompute account mapping, if exists.
+[GraphQL: allAccountsWithExocomputeMappings]",
             Position = 0
         )]
-        public SwitchParameter sWithExocomputeMapping { get; set; }
+        public SwitchParameter Swithexocomputemapping { get; set; }
 
         [Parameter(
-            ParameterSetName = "sWithExocomputeMapping",
+            ParameterSetName = "Swithexocomputemapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Vendor of the cloud account.
-                GraphQL argument cloudVendor: CloudVendor!
-                "
+@"Vendor of the cloud account.
+GraphQL argument cloudVendor: CloudVendor!"
         )]
         public CloudVendor? CloudVendor { get; set; }
         [Parameter(
-            ParameterSetName = "sWithExocomputeMapping",
+            ParameterSetName = "Swithexocomputemapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
-                GraphQL argument features: [CloudAccountFeature!]!
-                "
+@"Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
+GraphQL argument features: [CloudAccountFeature!]!"
         )]
         public List<CloudAccountFeature>? Features { get; set; }
         [Parameter(
-            ParameterSetName = "sWithExocomputeMapping",
+            ParameterSetName = "Swithexocomputemapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of mapped Exocompute account IDs.
-                GraphQL argument exocomputeAccountIdsFilter: [UUID!]!
-                "
+@"List of mapped Exocompute account IDs.
+GraphQL argument exocomputeAccountIdsFilter: [UUID!]!"
         )]
         public List<System.String>? ExocomputeAccountIdsFilter { get; set; }
         
         // -------------------------------------------------------------------
         // Product parameter set
         //
-        // GraphQL operation: allAccountProducts(,   nameFilter: [ProductName!]!,   typeFilter: [ProductType!]!,   stateFilter: [ProductState!]!,   startDateArg: DateTime,   endDateArg: DateTime, ):[AccountProduct!]!
+        // [GraphQL: allAccountProducts]
         //
         [Parameter(
             ParameterSetName = "Product",
@@ -113,10 +103,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: allAccountProducts(,   nameFilter: [ProductName!]!,   typeFilter: [ProductType!]!,   stateFilter: [ProductState!]!,   startDateArg: DateTime,   endDateArg: DateTime, ):[AccountProduct!]!
-                ",
+@"
+[GraphQL: allAccountProducts]",
             Position = 0
         )]
         public SwitchParameter Product { get; set; }
@@ -127,10 +115,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Name of product (Data Protection, Ransomware Investigation, etc.).
-                GraphQL argument nameFilter: [ProductName!]!
-                "
+@"Name of product (Data Protection, Ransomware Investigation, etc.).
+GraphQL argument nameFilter: [ProductName!]!"
         )]
         public List<ProductName>? NameFilter { get; set; }
         [Parameter(
@@ -139,10 +125,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Type of product (Revenue, POC, etc.).
-                GraphQL argument typeFilter: [ProductType!]!
-                "
+@"Type of product (Revenue, POC, etc.).
+GraphQL argument typeFilter: [ProductType!]!"
         )]
         public List<ProductType>? TypeFilter { get; set; }
         [Parameter(
@@ -151,10 +135,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                State of product (Active, Expired, etc.).
-                GraphQL argument stateFilter: [ProductState!]!
-                "
+@"State of product (Active, Expired, etc.).
+GraphQL argument stateFilter: [ProductState!]!"
         )]
         public List<ProductState>? StateFilter { get; set; }
         [Parameter(
@@ -163,10 +145,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Start date of product (yyyy-mm-dd).
-                GraphQL argument startDateArg: DateTime
-                "
+@"Start date of product (yyyy-mm-dd).
+GraphQL argument startDateArg: DateTime"
         )]
         public DateTime? StartDateArg { get; set; }
         [Parameter(
@@ -175,17 +155,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                End date of product (yyyy-mm-dd).
-                GraphQL argument endDateArg: DateTime
-                "
+@"End date of product (yyyy-mm-dd).
+GraphQL argument endDateArg: DateTime"
         )]
         public DateTime? EndDateArg { get; set; }
         
         // -------------------------------------------------------------------
         // Id parameter set
         //
-        // GraphQL operation: accountId:String!
+        // [GraphQL: accountId]
         //
         [Parameter(
             ParameterSetName = "Id",
@@ -193,10 +171,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Account ID.
-                GraphQL operation: accountId:String!
-                ",
+@"Account ID.
+[GraphQL: accountId]",
             Position = 0
         )]
         public SwitchParameter Id { get; set; }
@@ -205,7 +181,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Owner parameter set
         //
-        // GraphQL operation: allAccountOwners:[User!]!
+        // [GraphQL: allAccountOwners]
         //
         [Parameter(
             ParameterSetName = "Owner",
@@ -213,10 +189,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of account owners.
-                GraphQL operation: allAccountOwners:[User!]!
-                ",
+@"List of account owners.
+[GraphQL: allAccountOwners]",
             Position = 0
         )]
         public SwitchParameter Owner { get; set; }
@@ -231,8 +205,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "Setting":
                         this.ProcessRecord_Setting();
                         break;
-                    case "sWithExocomputeMapping":
-                        this.ProcessRecord_sWithExocomputeMapping();
+                    case "Swithexocomputemapping":
+                        this.ProcessRecord_Swithexocomputemapping();
                         break;
                     case "Product":
                         this.ProcessRecord_Product();
@@ -270,9 +244,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // allAccountsWithExocomputeMappings.
-        protected void ProcessRecord_sWithExocomputeMapping()
+        protected void ProcessRecord_Swithexocomputemapping()
         {
-            this._logger.name += " -sWithExocomputeMapping";
+            this._logger.name += " -Swithexocomputemapping";
             // Invoke graphql operation allAccountsWithExocomputeMappings
             InvokeQueryAllAccountsWithExocomputeMappings();
         }

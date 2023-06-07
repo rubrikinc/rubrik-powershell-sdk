@@ -106,19 +106,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotId: UUID! (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> System.String? VcdVmMoid
         // GraphQL -> vcdVmMoid: String! (scalar)
         if (this.VcdVmMoid == null && Exploration.Includes(parent + ".vcdVmMoid", true))
         {
-            this.VcdVmMoid = new System.String("FETCH");
+            this.VcdVmMoid = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
         {
-            this.VmName = new System.String("FETCH");
+            this.VmName = "FETCH";
         }
         //      C# -> List<VmNetworkConnection>? NetworkConnections
         // GraphQL -> networkConnections: [VmNetworkConnection!]! (type)

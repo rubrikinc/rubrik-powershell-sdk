@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostId: String! (scalar)
         if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
         {
-            this.HostId = new System.String("FETCH");
+            this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> System.String? OperatingSystemType
         // GraphQL -> operatingSystemType: String! (scalar)
         if (this.OperatingSystemType == null && Exploration.Includes(parent + ".operatingSystemType", true))
         {
-            this.OperatingSystemType = new System.String("FETCH");
+            this.OperatingSystemType = "FETCH";
         }
         //      C# -> System.String? RubrikBackupServiceStatus
         // GraphQL -> rubrikBackupServiceStatus: String! (scalar)
         if (this.RubrikBackupServiceStatus == null && Exploration.Includes(parent + ".rubrikBackupServiceStatus", true))
         {
-            this.RubrikBackupServiceStatus = new System.String("FETCH");
+            this.RubrikBackupServiceStatus = "FETCH";
         }
     }
 

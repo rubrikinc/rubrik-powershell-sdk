@@ -290,25 +290,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID! (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String! (scalar)
         if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
         {
-            this.OrgName = new System.String("FETCH");
+            this.OrgName = "FETCH";
         }
         //      C# -> System.String? TriggeredTprRule
         // GraphQL -> triggeredTprRule: String! (scalar)
         if (this.TriggeredTprRule == null && Exploration.Includes(parent + ".triggeredTprRule", true))
         {
-            this.TriggeredTprRule = new System.String("FETCH");
+            this.TriggeredTprRule = "FETCH";
         }
         //      C# -> List<System.String>? TriggeredTprRules
         // GraphQL -> triggeredTprRules: [String!]! (scalar)

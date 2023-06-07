@@ -134,19 +134,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fileSystemType: String! (scalar)
         if (this.FileSystemType == null && Exploration.Includes(parent + ".fileSystemType", true))
         {
-            this.FileSystemType = new System.String("FETCH");
+            this.FileSystemType = "FETCH";
         }
         //      C# -> System.String? HostMountPath
         // GraphQL -> hostMountPath: String (scalar)
         if (this.HostMountPath == null && Exploration.Includes(parent + ".hostMountPath", true))
         {
-            this.HostMountPath = new System.String("FETCH");
+            this.HostMountPath = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> List<System.String>? OriginalMountPoints
         // GraphQL -> originalMountPoints: [String!]! (scalar)
@@ -164,7 +164,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> smbPath: String (scalar)
         if (this.SmbPath == null && Exploration.Includes(parent + ".smbPath", true))
         {
-            this.SmbPath = new System.String("FETCH");
+            this.SmbPath = "FETCH";
         }
     }
 

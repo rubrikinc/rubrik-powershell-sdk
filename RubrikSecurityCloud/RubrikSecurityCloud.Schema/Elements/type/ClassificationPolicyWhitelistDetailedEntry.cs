@@ -129,13 +129,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nativePath: String! (scalar)
         if (this.NativePath == null && Exploration.Includes(parent + ".nativePath", true))
         {
-            this.NativePath = new System.String("FETCH");
+            this.NativePath = "FETCH";
         }
         //      C# -> System.String? StdPath
         // GraphQL -> stdPath: String! (scalar)
         if (this.StdPath == null && Exploration.Includes(parent + ".stdPath", true))
         {
-            this.StdPath = new System.String("FETCH");
+            this.StdPath = "FETCH";
         }
         //      C# -> System.Int64? UpdateTs
         // GraphQL -> updateTs: Long! (scalar)
@@ -147,7 +147,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> updateUsername: String! (scalar)
         if (this.UpdateUsername == null && Exploration.Includes(parent + ".updateUsername", true))
         {
-            this.UpdateUsername = new System.String("FETCH");
+            this.UpdateUsername = "FETCH";
         }
     }
 

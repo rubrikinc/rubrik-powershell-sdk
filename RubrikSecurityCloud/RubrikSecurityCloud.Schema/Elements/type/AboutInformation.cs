@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> apiType: String! (scalar)
         if (this.ApiType == null && Exploration.Includes(parent + ".apiType", true))
         {
-            this.ApiType = new System.String("FETCH");
+            this.ApiType = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OsType
         // GraphQL -> osType: String! (scalar)
         if (this.OsType == null && Exploration.Includes(parent + ".osType", true))
         {
-            this.OsType = new System.String("FETCH");
+            this.OsType = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
     }
 

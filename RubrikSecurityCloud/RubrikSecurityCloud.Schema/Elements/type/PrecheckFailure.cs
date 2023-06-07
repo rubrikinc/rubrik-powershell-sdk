@@ -106,19 +106,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cause: String! (scalar)
         if (this.Cause == null && Exploration.Includes(parent + ".cause", true))
         {
-            this.Cause = new System.String("FETCH");
+            this.Cause = "FETCH";
         }
         //      C# -> System.String? PrecheckName
         // GraphQL -> precheckName: String! (scalar)
         if (this.PrecheckName == null && Exploration.Includes(parent + ".precheckName", true))
         {
-            this.PrecheckName = new System.String("FETCH");
+            this.PrecheckName = "FETCH";
         }
         //      C# -> System.String? Remedy
         // GraphQL -> remedy: String! (scalar)
         if (this.Remedy == null && Exploration.Includes(parent + ".remedy", true))
         {
-            this.Remedy = new System.String("FETCH");
+            this.Remedy = "FETCH";
         }
         //      C# -> System.Boolean? UpgradeBlocker
         // GraphQL -> upgradeBlocker: Boolean! (scalar)

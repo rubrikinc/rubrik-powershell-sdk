@@ -29,7 +29,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // New parameter set
         //
-        // GraphQL operation: vSphereVmNew(fid: UUID!):VsphereVm!
+        // [GraphQL: vSphereVmNew]
         //
         [Parameter(
             ParameterSetName = "New",
@@ -37,10 +37,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereVmNew(fid: UUID!):VsphereVm!
-                ",
+@"
+[GraphQL: vSphereVmNew]",
             Position = 0
         )]
         public SwitchParameter New { get; set; }
@@ -51,242 +49,208 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik UUID for the object.
-                GraphQL argument fid: UUID!
-                "
+@"The Rubrik UUID for the object.
+GraphQL argument fid: UUID!"
         )]
         public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
-        // NewList parameter set
+        // Newconnection parameter set
         //
-        // GraphQL operation: vSphereVmNewConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereVmConnection!
+        // [GraphQL: vSphereVmNewConnection]
         //
         [Parameter(
-            ParameterSetName = "NewList",
+            ParameterSetName = "Newconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereVmNewConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereVmConnection!
-                ",
+@"
+[GraphQL: vSphereVmNewConnection]",
             Position = 0
         )]
-        public SwitchParameter NewList { get; set; }
+        public SwitchParameter Newconnection { get; set; }
 
         [Parameter(
-            ParameterSetName = "NewList",
+            ParameterSetName = "Newconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
-            ParameterSetName = "NewList",
+            ParameterSetName = "Newconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
-            ParameterSetName = "NewList",
+            ParameterSetName = "Newconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort hierarchy objects by hierarchy field.
-                GraphQL argument sortBy: HierarchySortByField
-                "
+@"Sort hierarchy objects by hierarchy field.
+GraphQL argument sortBy: HierarchySortByField"
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
-            ParameterSetName = "NewList",
+            ParameterSetName = "Newconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sorting order for the results.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Sorting order for the results.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
-            ParameterSetName = "NewList",
+            ParameterSetName = "Newconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The hierarchy object filter.
-                GraphQL argument filter: [Filter!]
-                "
+@"The hierarchy object filter.
+GraphQL argument filter: [Filter!]"
         )]
         public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
-        // RecoverableRange parameter set
+        // Recoverablerange parameter set
         //
-        // GraphQL operation: vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime):RecoverableRangeResponse!
+        // [GraphQL: vsphereVMRecoverableRange]
         //
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Recoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVMRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime):RecoverableRangeResponse!
-                ",
+@"
+[GraphQL: vsphereVMRecoverableRange]",
             Position = 0
         )]
-        public SwitchParameter RecoverableRange { get; set; }
+        public SwitchParameter Recoverablerange { get; set; }
 
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Recoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument snappableFid: UUID!
-                "
+@"
+GraphQL argument snappableFid: UUID!"
         )]
         public System.String? SnappableFid { get; set; }
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Recoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument beforeTime: DateTime
-                "
+@"
+GraphQL argument beforeTime: DateTime"
         )]
         public DateTime? BeforeTime { get; set; }
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Recoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument afterTime: DateTime
-                "
+@"
+GraphQL argument afterTime: DateTime"
         )]
         public DateTime? AfterTime { get; set; }
         
         // -------------------------------------------------------------------
-        // RecoverableRangeInBatch parameter set
+        // Recoverablerangeinbatch parameter set
         //
-        // GraphQL operation: vsphereVMRecoverableRangeInBatch(requestInfo: BatchVmwareVmRecoverableRangesRequestInput!):BatchVmwareVmRecoverableRanges!
+        // [GraphQL: vsphereVMRecoverableRangeInBatch]
         //
         [Parameter(
-            ParameterSetName = "RecoverableRangeInBatch",
+            ParameterSetName = "Recoverablerangeinbatch",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVMRecoverableRangeInBatch(requestInfo: BatchVmwareVmRecoverableRangesRequestInput!):BatchVmwareVmRecoverableRanges!
-                ",
+@"
+[GraphQL: vsphereVMRecoverableRangeInBatch]",
             Position = 0
         )]
-        public SwitchParameter RecoverableRangeInBatch { get; set; }
+        public SwitchParameter Recoverablerangeinbatch { get; set; }
 
         [Parameter(
-            ParameterSetName = "RecoverableRangeInBatch",
+            ParameterSetName = "Recoverablerangeinbatch",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The batch request, which includes the ID of each CDP-enabled virtual machine for which recoverable ranges are being retrieved, and optionally the date ranges as a filter.
-                GraphQL argument requestInfo: BatchVmwareVmRecoverableRangesRequestInput!
-                "
+@"The batch request, which includes the ID of each CDP-enabled virtual machine for which recoverable ranges are being retrieved, and optionally the date ranges as a filter.
+GraphQL argument requestInfo: BatchVmwareVmRecoverableRangesRequestInput!"
         )]
         public BatchVmwareVmRecoverableRangesRequestInput? RequestInfo { get; set; }
         
         // -------------------------------------------------------------------
-        // MissedRecoverableRange parameter set
+        // Missedrecoverablerange parameter set
         //
-        // GraphQL operation: vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime):RecoverableRangeResponse!
+        // [GraphQL: vsphereVMMissedRecoverableRange]
         //
         [Parameter(
-            ParameterSetName = "MissedRecoverableRange",
+            ParameterSetName = "Missedrecoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVMMissedRecoverableRange(snappableFid: UUID!, beforeTime: DateTime, afterTime: DateTime):RecoverableRangeResponse!
-                ",
+@"
+[GraphQL: vsphereVMMissedRecoverableRange]",
             Position = 0
         )]
-        public SwitchParameter MissedRecoverableRange { get; set; }
+        public SwitchParameter Missedrecoverablerange { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AsyncRequestStatus parameter set
+        // Asyncrequeststatus parameter set
         //
-        // GraphQL operation: vSphereVMAsyncRequestStatus(clusterUuid: UUID!, id: String!):AsyncRequestStatus!
+        // [GraphQL: vSphereVMAsyncRequestStatus]
         //
         [Parameter(
-            ParameterSetName = "AsyncRequestStatus",
+            ParameterSetName = "Asyncrequeststatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereVMAsyncRequestStatus(clusterUuid: UUID!, id: String!):AsyncRequestStatus!
-                ",
+@"
+[GraphQL: vSphereVMAsyncRequestStatus]",
             Position = 0
         )]
-        public SwitchParameter AsyncRequestStatus { get; set; }
+        public SwitchParameter Asyncrequeststatus { get; set; }
 
         [Parameter(
-            ParameterSetName = "AsyncRequestStatus",
+            ParameterSetName = "Asyncrequeststatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument clusterUuid: UUID!
-                "
+@"
+GraphQL argument clusterUuid: UUID!"
         )]
         public System.String? ClusterUuid { get; set; }
         [Parameter(
-            ParameterSetName = "AsyncRequestStatus",
+            ParameterSetName = "Asyncrequeststatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                ID of an asynchronous request.
-                GraphQL argument id: String!
-                "
+@"ID of an asynchronous request.
+GraphQL argument id: String!"
         )]
         public System.String? Id { get; set; }
 
@@ -299,20 +263,20 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                     case "New":
                         this.ProcessRecord_New();
                         break;
-                    case "NewList":
-                        this.ProcessRecord_NewList();
+                    case "Newconnection":
+                        this.ProcessRecord_Newconnection();
                         break;
-                    case "RecoverableRange":
-                        this.ProcessRecord_RecoverableRange();
+                    case "Recoverablerange":
+                        this.ProcessRecord_Recoverablerange();
                         break;
-                    case "RecoverableRangeInBatch":
-                        this.ProcessRecord_RecoverableRangeInBatch();
+                    case "Recoverablerangeinbatch":
+                        this.ProcessRecord_Recoverablerangeinbatch();
                         break;
-                    case "MissedRecoverableRange":
-                        this.ProcessRecord_MissedRecoverableRange();
+                    case "Missedrecoverablerange":
+                        this.ProcessRecord_Missedrecoverablerange();
                         break;
-                    case "AsyncRequestStatus":
-                        this.ProcessRecord_AsyncRequestStatus();
+                    case "Asyncrequeststatus":
+                        this.ProcessRecord_Asyncrequeststatus();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -341,45 +305,45 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // vSphereVmNewConnection.
-        protected void ProcessRecord_NewList()
+        protected void ProcessRecord_Newconnection()
         {
-            this._logger.name += " -NewList";
+            this._logger.name += " -Newconnection";
             // Invoke graphql operation vSphereVmNewConnection
             InvokeQueryVsphereVmNewConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMRecoverableRange.
-        protected void ProcessRecord_RecoverableRange()
+        protected void ProcessRecord_Recoverablerange()
         {
-            this._logger.name += " -RecoverableRange";
+            this._logger.name += " -Recoverablerange";
             // Invoke graphql operation vsphereVMRecoverableRange
             InvokeQueryVsphereVmRecoverableRange();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMRecoverableRangeInBatch.
-        protected void ProcessRecord_RecoverableRangeInBatch()
+        protected void ProcessRecord_Recoverablerangeinbatch()
         {
-            this._logger.name += " -RecoverableRangeInBatch";
+            this._logger.name += " -Recoverablerangeinbatch";
             // Invoke graphql operation vsphereVMRecoverableRangeInBatch
             InvokeQueryVsphereVmRecoverableRangeInBatch();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVMMissedRecoverableRange.
-        protected void ProcessRecord_MissedRecoverableRange()
+        protected void ProcessRecord_Missedrecoverablerange()
         {
-            this._logger.name += " -MissedRecoverableRange";
+            this._logger.name += " -Missedrecoverablerange";
             // Invoke graphql operation vsphereVMMissedRecoverableRange
             InvokeQueryVsphereVmMissedRecoverableRange();
         }
 
         // This parameter set invokes a single graphql operation:
         // vSphereVMAsyncRequestStatus.
-        protected void ProcessRecord_AsyncRequestStatus()
+        protected void ProcessRecord_Asyncrequeststatus()
         {
-            this._logger.name += " -AsyncRequestStatus";
+            this._logger.name += " -Asyncrequeststatus";
             // Invoke graphql operation vSphereVMAsyncRequestStatus
             InvokeQueryVsphereVmAsyncRequestStatus();
         }

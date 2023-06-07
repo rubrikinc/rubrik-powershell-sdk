@@ -204,25 +204,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> apiCertificate: String (scalar)
         if (this.ApiCertificate == null && Exploration.Includes(parent + ".apiCertificate", true))
         {
-            this.ApiCertificate = new System.String("FETCH");
+            this.ApiCertificate = "FETCH";
         }
         //      C# -> System.String? ApiEndpoint
         // GraphQL -> apiEndpoint: String (scalar)
         if (this.ApiEndpoint == null && Exploration.Includes(parent + ".apiEndpoint", true))
         {
-            this.ApiEndpoint = new System.String("FETCH");
+            this.ApiEndpoint = "FETCH";
         }
         //      C# -> System.String? ApiHostname
         // GraphQL -> apiHostname: String (scalar)
         if (this.ApiHostname == null && Exploration.Includes(parent + ".apiHostname", true))
         {
-            this.ApiHostname = new System.String("FETCH");
+            this.ApiHostname = "FETCH";
         }
         //      C# -> System.String? ApiUsername
         // GraphQL -> apiUsername: String (scalar)
         if (this.ApiUsername == null && Exploration.Includes(parent + ".apiUsername", true))
         {
-            this.ApiUsername = new System.String("FETCH");
+            this.ApiUsername = "FETCH";
         }
         //      C# -> System.Boolean? IsIsilonChangelistEnabled
         // GraphQL -> isIsilonChangelistEnabled: Boolean (scalar)
@@ -258,13 +258,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vendorType: String! (scalar)
         if (this.VendorType == null && Exploration.Includes(parent + ".vendorType", true))
         {
-            this.VendorType = new System.String("FETCH");
+            this.VendorType = "FETCH";
         }
         //      C# -> System.String? ZoneName
         // GraphQL -> zoneName: String (scalar)
         if (this.ZoneName == null && Exploration.Includes(parent + ".zoneName", true))
         {
-            this.ZoneName = new System.String("FETCH");
+            this.ZoneName = "FETCH";
         }
     }
 

@@ -138,7 +138,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotCount: Int (scalar)
         if (this.SnapshotCount == null && Exploration.Includes(parent + ".snapshotCount", true))
         {
-            this.SnapshotCount = new System.Int32();
+            this.SnapshotCount = Int32.MinValue;
         }
         //      C# -> CreateSnapMirrorCloudReply? SnapMirrorCloudSummary
         // GraphQL -> snapMirrorCloudSummary: CreateSnapMirrorCloudReply (type)

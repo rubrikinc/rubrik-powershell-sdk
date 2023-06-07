@@ -678,13 +678,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> archivalSnapshotLag: Int (scalar)
         if (this.ArchivalSnapshotLag == null && Exploration.Includes(parent + ".archivalSnapshotLag", true))
         {
-            this.ArchivalSnapshotLag = new System.Int32();
+            this.ArchivalSnapshotLag = Int32.MinValue;
         }
         //      C# -> System.Int32? ArchiveSnapshots
         // GraphQL -> archiveSnapshots: Int (scalar)
         if (this.ArchiveSnapshots == null && Exploration.Includes(parent + ".archiveSnapshots", true))
         {
-            this.ArchiveSnapshots = new System.Int32();
+            this.ArchiveSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? ArchiveStorage
         // GraphQL -> archiveStorage: Long (scalar)
@@ -708,13 +708,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fid: UUID (scalar)
         if (this.Fid == null && Exploration.Includes(parent + ".fid", true))
         {
-            this.Fid = new System.String("FETCH");
+            this.Fid = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? LastSnapshot
         // GraphQL -> lastSnapshot: DateTime (scalar)
@@ -756,7 +756,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> localOnDemandSnapshots: Int (scalar)
         if (this.LocalOnDemandSnapshots == null && Exploration.Includes(parent + ".localOnDemandSnapshots", true))
         {
-            this.LocalOnDemandSnapshots = new System.Int32();
+            this.LocalOnDemandSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? LocalProtectedData
         // GraphQL -> localProtectedData: Long (scalar)
@@ -768,13 +768,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> localSlaSnapshots: Int (scalar)
         if (this.LocalSlaSnapshots == null && Exploration.Includes(parent + ".localSlaSnapshots", true))
         {
-            this.LocalSlaSnapshots = new System.Int32();
+            this.LocalSlaSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int32? LocalSnapshots
         // GraphQL -> localSnapshots: Int (scalar)
         if (this.LocalSnapshots == null && Exploration.Includes(parent + ".localSnapshots", true))
         {
-            this.LocalSnapshots = new System.Int32();
+            this.LocalSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? LocalStorage
         // GraphQL -> localStorage: Long (scalar)
@@ -786,7 +786,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long (scalar)
@@ -804,25 +804,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> missedSnapshots: Int (scalar)
         if (this.MissedSnapshots == null && Exploration.Includes(parent + ".missedSnapshots", true))
         {
-            this.MissedSnapshots = new System.Int32();
+            this.MissedSnapshots = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: UUID (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
         if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
         {
-            this.OrgName = new System.String("FETCH");
+            this.OrgName = "FETCH";
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long (scalar)
@@ -852,7 +852,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicaSnapshots: Int (scalar)
         if (this.ReplicaSnapshots == null && Exploration.Includes(parent + ".replicaSnapshots", true))
         {
-            this.ReplicaSnapshots = new System.Int32();
+            this.ReplicaSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? ReplicaStorage
         // GraphQL -> replicaStorage: Long (scalar)
@@ -864,13 +864,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicationSnapshotLag: Int (scalar)
         if (this.ReplicationSnapshotLag == null && Exploration.Includes(parent + ".replicationSnapshotLag", true))
         {
-            this.ReplicationSnapshotLag = new System.Int32();
+            this.ReplicationSnapshotLag = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalSnapshots
         // GraphQL -> totalSnapshots: Int (scalar)
         if (this.TotalSnapshots == null && Exploration.Includes(parent + ".totalSnapshots", true))
         {
-            this.TotalSnapshots = new System.Int32();
+            this.TotalSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? TransferredBytes
         // GraphQL -> transferredBytes: Long (scalar)

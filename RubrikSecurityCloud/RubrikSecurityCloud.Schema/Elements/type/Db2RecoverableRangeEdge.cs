@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cursor: String! (scalar)
         if (this.Cursor == null && Exploration.Includes(parent + ".cursor", true))
         {
-            this.Cursor = new System.String("FETCH");
+            this.Cursor = "FETCH";
         }
         //      C# -> Db2RecoverableRange? Node
         // GraphQL -> node: Db2RecoverableRange! (type)

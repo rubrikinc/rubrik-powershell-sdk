@@ -112,13 +112,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> naturalId: String! (scalar)
         if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
         {
-            this.NaturalId = new System.String("FETCH");
+            this.NaturalId = "FETCH";
         }
         //      C# -> System.String? VolumeGroupId
         // GraphQL -> volumeGroupId: String (scalar)
         if (this.VolumeGroupId == null && Exploration.Includes(parent + ".volumeGroupId", true))
         {
-            this.VolumeGroupId = new System.String("FETCH");
+            this.VolumeGroupId = "FETCH";
         }
         //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
         // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)

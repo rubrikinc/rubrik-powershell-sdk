@@ -198,25 +198,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Int32? MaxMatchesPerSnapshot
         // GraphQL -> maxMatchesPerSnapshot: Int (scalar)
         if (this.MaxMatchesPerSnapshot == null && Exploration.Includes(parent + ".maxMatchesPerSnapshot", true))
         {
-            this.MaxMatchesPerSnapshot = new System.Int32();
+            this.MaxMatchesPerSnapshot = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? Notes
         // GraphQL -> notes: String! (scalar)
         if (this.Notes == null && Exploration.Includes(parent + ".notes", true))
         {
-            this.Notes = new System.String("FETCH");
+            this.Notes = "FETCH";
         }
         //      C# -> System.Boolean? ShouldTrustFilesystemTimeInfo
         // GraphQL -> shouldTrustFilesystemTimeInfo: Boolean! (scalar)

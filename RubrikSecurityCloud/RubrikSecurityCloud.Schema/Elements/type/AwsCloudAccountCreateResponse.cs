@@ -168,37 +168,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cloudFormationUrl: String! (scalar)
         if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl", true))
         {
-            this.CloudFormationUrl = new System.String("FETCH");
+            this.CloudFormationUrl = "FETCH";
         }
         //      C# -> System.String? ExternalId
         // GraphQL -> externalId: String! (scalar)
         if (this.ExternalId == null && Exploration.Includes(parent + ".externalId", true))
         {
-            this.ExternalId = new System.String("FETCH");
+            this.ExternalId = "FETCH";
         }
         //      C# -> System.String? RoleArn
         // GraphQL -> roleArn: String! (scalar)
         if (this.RoleArn == null && Exploration.Includes(parent + ".roleArn", true))
         {
-            this.RoleArn = new System.String("FETCH");
+            this.RoleArn = "FETCH";
         }
         //      C# -> System.String? StackName
         // GraphQL -> stackName: String (scalar)
         if (this.StackName == null && Exploration.Includes(parent + ".stackName", true))
         {
-            this.StackName = new System.String("FETCH");
+            this.StackName = "FETCH";
         }
         //      C# -> System.String? StackSetName
         // GraphQL -> stackSetName: String (scalar)
         if (this.StackSetName == null && Exploration.Includes(parent + ".stackSetName", true))
         {
-            this.StackSetName = new System.String("FETCH");
+            this.StackSetName = "FETCH";
         }
         //      C# -> System.String? TemplateUrl
         // GraphQL -> templateUrl: String! (scalar)
         if (this.TemplateUrl == null && Exploration.Includes(parent + ".templateUrl", true))
         {
-            this.TemplateUrl = new System.String("FETCH");
+            this.TemplateUrl = "FETCH";
         }
         //      C# -> List<AwsCloudAccountFeatureVersion>? FeatureVersions
         // GraphQL -> featureVersions: [AwsCloudAccountFeatureVersion!]! (type)

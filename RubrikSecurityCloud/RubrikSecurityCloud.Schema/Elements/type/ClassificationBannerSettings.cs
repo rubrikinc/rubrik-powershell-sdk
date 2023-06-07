@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> bannerText: String! (scalar)
         if (this.BannerText == null && Exploration.Includes(parent + ".bannerText", true))
         {
-            this.BannerText = new System.String("FETCH");
+            this.BannerText = "FETCH";
         }
         //      C# -> System.Boolean? IsBannerEnabled
         // GraphQL -> isBannerEnabled: Boolean! (scalar)

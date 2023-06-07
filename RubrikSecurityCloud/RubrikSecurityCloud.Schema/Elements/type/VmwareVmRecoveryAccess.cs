@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmwareVmId: UUID! (scalar)
         if (this.VmwareVmId == null && Exploration.Includes(parent + ".vmwareVmId", true))
         {
-            this.VmwareVmId = new System.String("FETCH");
+            this.VmwareVmId = "FETCH";
         }
         //      C# -> System.String? VmwareVmName
         // GraphQL -> vmwareVmName: String! (scalar)
         if (this.VmwareVmName == null && Exploration.Includes(parent + ".vmwareVmName", true))
         {
-            this.VmwareVmName = new System.String("FETCH");
+            this.VmwareVmName = "FETCH";
         }
     }
 

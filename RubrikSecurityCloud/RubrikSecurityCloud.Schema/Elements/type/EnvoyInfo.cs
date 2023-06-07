@@ -112,7 +112,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> envoyHostname: String! (scalar)
         if (this.EnvoyHostname == null && Exploration.Includes(parent + ".envoyHostname", true))
         {
-            this.EnvoyHostname = new System.String("FETCH");
+            this.EnvoyHostname = "FETCH";
         }
         //      C# -> List<System.String>? EnvoyIps
         // GraphQL -> envoyIps: [String!]! (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> envoyUuid: UUID! (scalar)
         if (this.EnvoyUuid == null && Exploration.Includes(parent + ".envoyUuid", true))
         {
-            this.EnvoyUuid = new System.String("FETCH");
+            this.EnvoyUuid = "FETCH";
         }
     }
 

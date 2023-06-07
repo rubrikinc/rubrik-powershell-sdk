@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> earliestTimestamp: String (scalar)
         if (this.EarliestTimestamp == null && Exploration.Includes(parent + ".earliestTimestamp", true))
         {
-            this.EarliestTimestamp = new System.String("FETCH");
+            this.EarliestTimestamp = "FETCH";
         }
         //      C# -> System.String? LatestTimestamp
         // GraphQL -> latestTimestamp: String (scalar)
         if (this.LatestTimestamp == null && Exploration.Includes(parent + ".latestTimestamp", true))
         {
-            this.LatestTimestamp = new System.String("FETCH");
+            this.LatestTimestamp = "FETCH";
         }
     }
 

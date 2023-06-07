@@ -78,7 +78,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> durationInHours: Int! (scalar)
         if (this.DurationInHours == null && Exploration.Includes(parent + ".durationInHours", true))
         {
-            this.DurationInHours = new System.Int32();
+            this.DurationInHours = Int32.MinValue;
         }
         //      C# -> StartTimeAttributes? StartTimeAttributes
         // GraphQL -> startTimeAttributes: StartTimeAttributes (type)

@@ -92,7 +92,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> day: String! (scalar)
         if (this.Day == null && Exploration.Includes(parent + ".day", true))
         {
-            this.Day = new System.String("FETCH");
+            this.Day = "FETCH";
         }
         //      C# -> List<ActivityResult>? ActivityResults
         // GraphQL -> activityResults: [ActivityResult!]! (type)

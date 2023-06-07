@@ -79,6 +79,39 @@
             $secret = $(Get-Content service_account_file.json | ConvertFrom-Json).client_secret | ConvertTo-SecureString -AsPlainText
             </summary>
         </member>
+        <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscCmdlet">
+            <summary>
+            Return info about SDK cmdlets
+            </summary>
+            <description>
+            Look up a GraphQL Operation and
+            return info about the cmdlet that implements it.
+            </description>
+            <example>
+            Retrieve the name of the cmdlet that implements the
+            GraphQL query clusterConnection
+            <code>
+            PS> Get-RscCmdlet -Operation clusterConnection
+            </code>
+            </example>
+            <example>
+            Retrieve info for a GraphQL operation that is
+            not implemented by a cmdlet.
+            <code>
+            PS> Get-RscCmdlet -Operation notImplementedOperation
+            </code>
+            </example>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscCmdlet.ExistingGqlOpName">
+            <summary>
+            The name of the GraphQL Operation to look up.
+            </summary>
+        </member>
+        <member name="P:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscCmdlet.AnyGqlOpName">
+            <summary>
+            The name of the GraphQL Operation to look up.
+            </summary>
+        </member>
         <member name="T:Rubrik.SecurityCloud.PowerShell.Cmdlets.Get_RscMssqlDatabase">
             <summary>
             Retrieve one or more Mssql Databases managed by

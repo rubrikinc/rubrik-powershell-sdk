@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostMountPoint: String (scalar)
         if (this.HostMountPoint == null && Exploration.Includes(parent + ".hostMountPoint", true))
         {
-            this.HostMountPoint = new System.String("FETCH");
+            this.HostMountPoint = "FETCH";
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String! (scalar)
         if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
         {
-            this.IpAddress = new System.String("FETCH");
+            this.IpAddress = "FETCH";
         }
         //      C# -> System.String? MountPoint
         // GraphQL -> mountPoint: String! (scalar)
         if (this.MountPoint == null && Exploration.Includes(parent + ".mountPoint", true))
         {
-            this.MountPoint = new System.String("FETCH");
+            this.MountPoint = "FETCH";
         }
     }
 

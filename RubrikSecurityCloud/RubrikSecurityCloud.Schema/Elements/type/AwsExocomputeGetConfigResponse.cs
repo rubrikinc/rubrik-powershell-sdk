@@ -202,31 +202,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> clusterSecurityGroupId: String! (scalar)
         if (this.ClusterSecurityGroupId == null && Exploration.Includes(parent + ".clusterSecurityGroupId", true))
         {
-            this.ClusterSecurityGroupId = new System.String("FETCH");
+            this.ClusterSecurityGroupId = "FETCH";
         }
         //      C# -> System.String? ConfigUuid
         // GraphQL -> configUuid: String! (scalar)
         if (this.ConfigUuid == null && Exploration.Includes(parent + ".configUuid", true))
         {
-            this.ConfigUuid = new System.String("FETCH");
+            this.ConfigUuid = "FETCH";
         }
         //      C# -> System.String? Message
         // GraphQL -> message: String! (scalar)
         if (this.Message == null && Exploration.Includes(parent + ".message", true))
         {
-            this.Message = new System.String("FETCH");
+            this.Message = "FETCH";
         }
         //      C# -> System.String? NodeSecurityGroupId
         // GraphQL -> nodeSecurityGroupId: String! (scalar)
         if (this.NodeSecurityGroupId == null && Exploration.Includes(parent + ".nodeSecurityGroupId", true))
         {
-            this.NodeSecurityGroupId = new System.String("FETCH");
+            this.NodeSecurityGroupId = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
         {
-            this.VpcId = new System.String("FETCH");
+            this.VpcId = "FETCH";
         }
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)

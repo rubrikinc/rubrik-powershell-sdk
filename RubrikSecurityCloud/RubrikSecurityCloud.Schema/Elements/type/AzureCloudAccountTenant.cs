@@ -154,31 +154,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appName: String! (scalar)
         if (this.AppName == null && Exploration.Includes(parent + ".appName", true))
         {
-            this.AppName = new System.String("FETCH");
+            this.AppName = "FETCH";
         }
         //      C# -> System.String? AzureCloudAccountTenantRubrikId
         // GraphQL -> azureCloudAccountTenantRubrikId: String! (scalar)
         if (this.AzureCloudAccountTenantRubrikId == null && Exploration.Includes(parent + ".azureCloudAccountTenantRubrikId", true))
         {
-            this.AzureCloudAccountTenantRubrikId = new System.String("FETCH");
+            this.AzureCloudAccountTenantRubrikId = "FETCH";
         }
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
         {
-            this.ClientId = new System.String("FETCH");
+            this.ClientId = "FETCH";
         }
         //      C# -> System.String? DomainName
         // GraphQL -> domainName: String! (scalar)
         if (this.DomainName == null && Exploration.Includes(parent + ".domainName", true))
         {
-            this.DomainName = new System.String("FETCH");
+            this.DomainName = "FETCH";
         }
         //      C# -> System.Int32? SubscriptionCount
         // GraphQL -> subscriptionCount: Int! (scalar)
         if (this.SubscriptionCount == null && Exploration.Includes(parent + ".subscriptionCount", true))
         {
-            this.SubscriptionCount = new System.Int32();
+            this.SubscriptionCount = Int32.MinValue;
         }
         //      C# -> List<AzureCloudAccountSubscriptionDetail>? Subscriptions
         // GraphQL -> subscriptions: [AzureCloudAccountSubscriptionDetail!]! (type)

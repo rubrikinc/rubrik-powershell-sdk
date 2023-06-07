@@ -188,37 +188,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> httpsCertificate: String! (scalar)
         if (this.HttpsCertificate == null && Exploration.Includes(parent + ".httpsCertificate", true))
         {
-            this.HttpsCertificate = new System.String("FETCH");
+            this.HttpsCertificate = "FETCH";
         }
         //      C# -> System.String? JmxUser
         // GraphQL -> jmxUser: String! (scalar)
         if (this.JmxUser == null && Exploration.Includes(parent + ".jmxUser", true))
         {
-            this.JmxUser = new System.String("FETCH");
+            this.JmxUser = "FETCH";
         }
         //      C# -> System.String? SourceDbUser
         // GraphQL -> sourceDbUser: String! (scalar)
         if (this.SourceDbUser == null && Exploration.Includes(parent + ".sourceDbUser", true))
         {
-            this.SourceDbUser = new System.String("FETCH");
+            this.SourceDbUser = "FETCH";
         }
         //      C# -> System.Int32? SourceHttpsPort
         // GraphQL -> sourceHttpsPort: Int! (scalar)
         if (this.SourceHttpsPort == null && Exploration.Includes(parent + ".sourceHttpsPort", true))
         {
-            this.SourceHttpsPort = new System.Int32();
+            this.SourceHttpsPort = Int32.MinValue;
         }
         //      C# -> System.Int32? SourcePort
         // GraphQL -> sourcePort: Int! (scalar)
         if (this.SourcePort == null && Exploration.Includes(parent + ".sourcePort", true))
         {
-            this.SourcePort = new System.Int32();
+            this.SourcePort = Int32.MinValue;
         }
         //      C# -> System.Int32? SourceRpcPort
         // GraphQL -> sourceRpcPort: Int! (scalar)
         if (this.SourceRpcPort == null && Exploration.Includes(parent + ".sourceRpcPort", true))
         {
-            this.SourceRpcPort = new System.Int32();
+            this.SourceRpcPort = Int32.MinValue;
         }
         //      C# -> CassandraSslOptions? SslOptions
         // GraphQL -> sslOptions: CassandraSslOptions (type)

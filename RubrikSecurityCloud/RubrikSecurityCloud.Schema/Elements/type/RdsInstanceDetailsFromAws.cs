@@ -314,43 +314,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dbEngine: String! (scalar)
         if (this.DbEngine == null && Exploration.Includes(parent + ".dbEngine", true))
         {
-            this.DbEngine = new System.String("FETCH");
+            this.DbEngine = "FETCH";
         }
         //      C# -> System.String? DbInstanceClass
         // GraphQL -> dbInstanceClass: String! (scalar)
         if (this.DbInstanceClass == null && Exploration.Includes(parent + ".dbInstanceClass", true))
         {
-            this.DbInstanceClass = new System.String("FETCH");
+            this.DbInstanceClass = "FETCH";
         }
         //      C# -> System.String? DbInstanceStatus
         // GraphQL -> dbInstanceStatus: String! (scalar)
         if (this.DbInstanceStatus == null && Exploration.Includes(parent + ".dbInstanceStatus", true))
         {
-            this.DbInstanceStatus = new System.String("FETCH");
+            this.DbInstanceStatus = "FETCH";
         }
         //      C# -> System.String? DbMaintenanceWindow
         // GraphQL -> dbMaintenanceWindow: String! (scalar)
         if (this.DbMaintenanceWindow == null && Exploration.Includes(parent + ".dbMaintenanceWindow", true))
         {
-            this.DbMaintenanceWindow = new System.String("FETCH");
+            this.DbMaintenanceWindow = "FETCH";
         }
         //      C# -> System.String? DbParameterGroupName
         // GraphQL -> dbParameterGroupName: String! (scalar)
         if (this.DbParameterGroupName == null && Exploration.Includes(parent + ".dbParameterGroupName", true))
         {
-            this.DbParameterGroupName = new System.String("FETCH");
+            this.DbParameterGroupName = "FETCH";
         }
         //      C# -> System.String? DbSubnetGroupName
         // GraphQL -> dbSubnetGroupName: String! (scalar)
         if (this.DbSubnetGroupName == null && Exploration.Includes(parent + ".dbSubnetGroupName", true))
         {
-            this.DbSubnetGroupName = new System.String("FETCH");
+            this.DbSubnetGroupName = "FETCH";
         }
         //      C# -> System.String? EngineVersion
         // GraphQL -> engineVersion: String! (scalar)
         if (this.EngineVersion == null && Exploration.Includes(parent + ".engineVersion", true))
         {
-            this.EngineVersion = new System.String("FETCH");
+            this.EngineVersion = "FETCH";
         }
         //      C# -> System.Int64? Iops
         // GraphQL -> iops: Long! (scalar)
@@ -368,13 +368,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> kmsKeyId: String! (scalar)
         if (this.KmsKeyId == null && Exploration.Includes(parent + ".kmsKeyId", true))
         {
-            this.KmsKeyId = new System.String("FETCH");
+            this.KmsKeyId = "FETCH";
         }
         //      C# -> System.String? OptionGroupName
         // GraphQL -> optionGroupName: String! (scalar)
         if (this.OptionGroupName == null && Exploration.Includes(parent + ".optionGroupName", true))
         {
-            this.OptionGroupName = new System.String("FETCH");
+            this.OptionGroupName = "FETCH";
         }
         //      C# -> System.Int64? Port
         // GraphQL -> port: Long! (scalar)
@@ -386,25 +386,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> primaryAz: String! (scalar)
         if (this.PrimaryAz == null && Exploration.Includes(parent + ".primaryAz", true))
         {
-            this.PrimaryAz = new System.String("FETCH");
+            this.PrimaryAz = "FETCH";
         }
         //      C# -> System.String? RdsInstanceArn
         // GraphQL -> rdsInstanceArn: String! (scalar)
         if (this.RdsInstanceArn == null && Exploration.Includes(parent + ".rdsInstanceArn", true))
         {
-            this.RdsInstanceArn = new System.String("FETCH");
+            this.RdsInstanceArn = "FETCH";
         }
         //      C# -> System.String? StorageType
         // GraphQL -> storageType: String! (scalar)
         if (this.StorageType == null && Exploration.Includes(parent + ".storageType", true))
         {
-            this.StorageType = new System.String("FETCH");
+            this.StorageType = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
         {
-            this.VpcId = new System.String("FETCH");
+            this.VpcId = "FETCH";
         }
     }
 

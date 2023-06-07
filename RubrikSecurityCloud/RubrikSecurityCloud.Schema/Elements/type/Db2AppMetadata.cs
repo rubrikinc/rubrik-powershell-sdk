@@ -250,19 +250,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backupId: String (scalar)
         if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
         {
-            this.BackupId = new System.String("FETCH");
+            this.BackupId = "FETCH";
         }
         //      C# -> System.String? BaseBackupId
         // GraphQL -> baseBackupId: String (scalar)
         if (this.BaseBackupId == null && Exploration.Includes(parent + ".baseBackupId", true))
         {
-            this.BaseBackupId = new System.String("FETCH");
+            this.BaseBackupId = "FETCH";
         }
         //      C# -> System.String? BaseSnapshotId
         // GraphQL -> baseSnapshotId: String (scalar)
         if (this.BaseSnapshotId == null && Exploration.Includes(parent + ".baseSnapshotId", true))
         {
-            this.BaseSnapshotId = new System.String("FETCH");
+            this.BaseSnapshotId = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)
@@ -286,7 +286,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotId: String (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime (scalar)

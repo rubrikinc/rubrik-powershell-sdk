@@ -264,37 +264,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> brikId: String! (scalar)
         if (this.BrikId == null && Exploration.Includes(parent + ".brikId", true))
         {
-            this.BrikId = new System.String("FETCH");
+            this.BrikId = "FETCH";
         }
         //      C# -> System.String? ClusterId
         // GraphQL -> clusterId: UUID! (scalar)
         if (this.ClusterId == null && Exploration.Includes(parent + ".clusterId", true))
         {
-            this.ClusterId = new System.String("FETCH");
+            this.ClusterId = "FETCH";
         }
         //      C# -> System.Int32? CpuCores
         // GraphQL -> cpuCores: Int (scalar)
         if (this.CpuCores == null && Exploration.Includes(parent + ".cpuCores", true))
         {
-            this.CpuCores = new System.Int32();
+            this.CpuCores = Int32.MinValue;
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? IpAddress
         // GraphQL -> ipAddress: String (scalar)
         if (this.IpAddress == null && Exploration.Includes(parent + ".ipAddress", true))
         {
-            this.IpAddress = new System.String("FETCH");
+            this.IpAddress = "FETCH";
         }
         //      C# -> System.Boolean? NeedsInspection
         // GraphQL -> needsInspection: Boolean (scalar)
@@ -306,7 +306,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> networkSpeed: String (scalar)
         if (this.NetworkSpeed == null && Exploration.Includes(parent + ".networkSpeed", true))
         {
-            this.NetworkSpeed = new System.String("FETCH");
+            this.NetworkSpeed = "FETCH";
         }
         //      C# -> System.Int64? Ram
         // GraphQL -> ram: Long (scalar)

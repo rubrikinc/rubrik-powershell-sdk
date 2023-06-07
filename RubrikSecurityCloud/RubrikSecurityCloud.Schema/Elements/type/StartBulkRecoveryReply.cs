@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> bulkRecoveryInstanceId: UUID (scalar)
         if (this.BulkRecoveryInstanceId == null && Exploration.Includes(parent + ".bulkRecoveryInstanceId", true))
         {
-            this.BulkRecoveryInstanceId = new System.String("FETCH");
+            this.BulkRecoveryInstanceId = "FETCH";
         }
         //      C# -> System.String? Error
         // GraphQL -> error: String (scalar)
         if (this.Error == null && Exploration.Includes(parent + ".error", true))
         {
-            this.Error = new System.String("FETCH");
+            this.Error = "FETCH";
         }
         //      C# -> System.Int64? JobId
         // GraphQL -> jobId: Long (scalar)
@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> taskchainId: UUID (scalar)
         if (this.TaskchainId == null && Exploration.Includes(parent + ".taskchainId", true))
         {
-            this.TaskchainId = new System.String("FETCH");
+            this.TaskchainId = "FETCH";
         }
     }
 

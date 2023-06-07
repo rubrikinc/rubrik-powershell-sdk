@@ -162,19 +162,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> analyzers: Int! (scalar)
         if (this.Analyzers == null && Exploration.Includes(parent + ".analyzers", true))
         {
-            this.Analyzers = new System.Int32();
+            this.Analyzers = Int32.MinValue;
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
@@ -186,19 +186,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? PendingAnalysisObjects
         // GraphQL -> pendingAnalysisObjects: Int! (scalar)
         if (this.PendingAnalysisObjects == null && Exploration.Includes(parent + ".pendingAnalysisObjects", true))
         {
-            this.PendingAnalysisObjects = new System.Int32();
+            this.PendingAnalysisObjects = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
         if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects", true))
         {
-            this.TotalObjects = new System.Int32();
+            this.TotalObjects = Int32.MinValue;
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)

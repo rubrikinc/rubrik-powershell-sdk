@@ -154,19 +154,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> currentState: String! (scalar)
         if (this.CurrentState == null && Exploration.Includes(parent + ".currentState", true))
         {
-            this.CurrentState = new System.String("FETCH");
+            this.CurrentState = "FETCH";
         }
         //      C# -> System.String? CurrentTaskIndex
         // GraphQL -> currentTaskIndex: String! (scalar)
         if (this.CurrentTaskIndex == null && Exploration.Includes(parent + ".currentTaskIndex", true))
         {
-            this.CurrentTaskIndex = new System.String("FETCH");
+            this.CurrentTaskIndex = "FETCH";
         }
         //      C# -> System.String? CurrentTaskName
         // GraphQL -> currentTaskName: String! (scalar)
         if (this.CurrentTaskName == null && Exploration.Includes(parent + ".currentTaskName", true))
         {
-            this.CurrentTaskName = new System.String("FETCH");
+            this.CurrentTaskName = "FETCH";
         }
         //      C# -> List<System.String>? PendingStates
         // GraphQL -> pendingStates: [String!]! (scalar)
@@ -178,7 +178,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> result: String! (scalar)
         if (this.Result == null && Exploration.Includes(parent + ".result", true))
         {
-            this.Result = new System.String("FETCH");
+            this.Result = "FETCH";
         }
         //      C# -> StatusResponse? Status
         // GraphQL -> status: StatusResponse (type)

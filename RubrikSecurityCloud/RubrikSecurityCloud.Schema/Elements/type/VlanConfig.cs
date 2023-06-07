@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> netmask: String! (scalar)
         if (this.Netmask == null && Exploration.Includes(parent + ".netmask", true))
         {
-            this.Netmask = new System.String("FETCH");
+            this.Netmask = "FETCH";
         }
         //      C# -> System.Int32? Vlan
         // GraphQL -> vlan: Int! (scalar)
         if (this.Vlan == null && Exploration.Includes(parent + ".vlan", true))
         {
-            this.Vlan = new System.Int32();
+            this.Vlan = Int32.MinValue;
         }
         //      C# -> List<NodeIp>? Interfaces
         // GraphQL -> interfaces: [NodeIp!]! (type)

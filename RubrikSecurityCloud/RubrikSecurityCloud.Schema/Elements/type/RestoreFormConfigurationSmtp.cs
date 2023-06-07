@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> fromEmailId: String! (scalar)
         if (this.FromEmailId == null && Exploration.Includes(parent + ".fromEmailId", true))
         {
-            this.FromEmailId = new System.String("FETCH");
+            this.FromEmailId = "FETCH";
         }
         //      C# -> System.String? SmtpHostname
         // GraphQL -> smtpHostname: String! (scalar)
         if (this.SmtpHostname == null && Exploration.Includes(parent + ".smtpHostname", true))
         {
-            this.SmtpHostname = new System.String("FETCH");
+            this.SmtpHostname = "FETCH";
         }
         //      C# -> System.Int64? SmtpPort
         // GraphQL -> smtpPort: Long! (scalar)

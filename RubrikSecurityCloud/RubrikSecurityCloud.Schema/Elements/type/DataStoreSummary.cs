@@ -140,19 +140,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> dataCenterName: String (scalar)
         if (this.DataCenterName == null && Exploration.Includes(parent + ".dataCenterName", true))
         {
-            this.DataCenterName = new System.String("FETCH");
+            this.DataCenterName = "FETCH";
         }
         //      C# -> System.String? DataStoreType
         // GraphQL -> dataStoreType: String (scalar)
         if (this.DataStoreType == null && Exploration.Includes(parent + ".dataStoreType", true))
         {
-            this.DataStoreType = new System.String("FETCH");
+            this.DataStoreType = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsLocal
         // GraphQL -> isLocal: Boolean (scalar)
@@ -164,7 +164,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
     }
 

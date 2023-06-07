@@ -126,25 +126,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> roleAssignmentName: String! (scalar)
         if (this.RoleAssignmentName == null && Exploration.Includes(parent + ".roleAssignmentName", true))
         {
-            this.RoleAssignmentName = new System.String("FETCH");
+            this.RoleAssignmentName = "FETCH";
         }
         //      C# -> System.String? RoleDefinitionId
         // GraphQL -> roleDefinitionId: UUID! (scalar)
         if (this.RoleDefinitionId == null && Exploration.Includes(parent + ".roleDefinitionId", true))
         {
-            this.RoleDefinitionId = new System.String("FETCH");
+            this.RoleDefinitionId = "FETCH";
         }
         //      C# -> System.String? RoleDisplayName
         // GraphQL -> roleDisplayName: String! (scalar)
         if (this.RoleDisplayName == null && Exploration.Includes(parent + ".roleDisplayName", true))
         {
-            this.RoleDisplayName = new System.String("FETCH");
+            this.RoleDisplayName = "FETCH";
         }
         //      C# -> System.String? Scope
         // GraphQL -> scope: String! (scalar)
         if (this.Scope == null && Exploration.Includes(parent + ".scope", true))
         {
-            this.Scope = new System.String("FETCH");
+            this.Scope = "FETCH";
         }
     }
 

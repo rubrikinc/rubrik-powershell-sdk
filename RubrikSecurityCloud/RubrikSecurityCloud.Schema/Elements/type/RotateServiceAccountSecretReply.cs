@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> accessTokenUri: String! (scalar)
         if (this.AccessTokenUri == null && Exploration.Includes(parent + ".accessTokenUri", true))
         {
-            this.AccessTokenUri = new System.String("FETCH");
+            this.AccessTokenUri = "FETCH";
         }
         //      C# -> System.String? ClientId
         // GraphQL -> clientId: String! (scalar)
         if (this.ClientId == null && Exploration.Includes(parent + ".clientId", true))
         {
-            this.ClientId = new System.String("FETCH");
+            this.ClientId = "FETCH";
         }
         //      C# -> System.String? ClientSecret
         // GraphQL -> clientSecret: String! (scalar)
         if (this.ClientSecret == null && Exploration.Includes(parent + ".clientSecret", true))
         {
-            this.ClientSecret = new System.String("FETCH");
+            this.ClientSecret = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
     }
 

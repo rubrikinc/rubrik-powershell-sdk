@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> errorMessage: String! (scalar)
         if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
         {
-            this.ErrorMessage = new System.String("FETCH");
+            this.ErrorMessage = "FETCH";
         }
         //      C# -> System.String? RmStatus
         // GraphQL -> rmStatus: String! (scalar)
         if (this.RmStatus == null && Exploration.Includes(parent + ".rmStatus", true))
         {
-            this.RmStatus = new System.String("FETCH");
+            this.RmStatus = "FETCH";
         }
         //      C# -> System.Boolean? Success
         // GraphQL -> success: Boolean! (scalar)

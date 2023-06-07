@@ -780,25 +780,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availabilitySetNativeId: String! (scalar)
         if (this.AvailabilitySetNativeId == null && Exploration.Includes(parent + ".availabilitySetNativeId", true))
         {
-            this.AvailabilitySetNativeId = new System.String("FETCH");
+            this.AvailabilitySetNativeId = "FETCH";
         }
         //      C# -> System.String? AvailabilityZone
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
         {
-            this.AvailabilityZone = new System.String("FETCH");
+            this.AvailabilityZone = "FETCH";
         }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (this.CloudNativeId == null && Exploration.Includes(parent + ".cloudNativeId", true))
         {
-            this.CloudNativeId = new System.String("FETCH");
+            this.CloudNativeId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsAcceleratedNetworkingEnabled
         // GraphQL -> isAcceleratedNetworkingEnabled: Boolean! (scalar)
@@ -846,37 +846,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
         if (this.NativeName == null && Exploration.Includes(parent + ".nativeName", true))
         {
-            this.NativeName = new System.String("FETCH");
+            this.NativeName = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.String? PrivateIp
         // GraphQL -> privateIp: String! (scalar)
         if (this.PrivateIp == null && Exploration.Includes(parent + ".privateIp", true))
         {
-            this.PrivateIp = new System.String("FETCH");
+            this.PrivateIp = "FETCH";
         }
         //      C# -> System.String? SizeType
         // GraphQL -> sizeType: String! (scalar)
         if (this.SizeType == null && Exploration.Includes(parent + ".sizeType", true))
         {
-            this.SizeType = new System.String("FETCH");
+            this.SizeType = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -888,25 +888,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> subnetName: String! (scalar)
         if (this.SubnetName == null && Exploration.Includes(parent + ".subnetName", true))
         {
-            this.SubnetName = new System.String("FETCH");
+            this.SubnetName = "FETCH";
         }
         //      C# -> System.String? VirtuaMachineNativeId
         // GraphQL -> virtuaMachineNativeId: String! (scalar)
         if (this.VirtuaMachineNativeId == null && Exploration.Includes(parent + ".virtuaMachineNativeId", true))
         {
-            this.VirtuaMachineNativeId = new System.String("FETCH");
+            this.VirtuaMachineNativeId = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
         {
-            this.VmName = new System.String("FETCH");
+            this.VmName = "FETCH";
         }
         //      C# -> System.String? VnetName
         // GraphQL -> vnetName: String! (scalar)
         if (this.VnetName == null && Exploration.Includes(parent + ".vnetName", true))
         {
-            this.VnetName = new System.String("FETCH");
+            this.VnetName = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

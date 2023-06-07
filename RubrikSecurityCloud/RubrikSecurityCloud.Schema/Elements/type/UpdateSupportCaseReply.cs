@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> caseId: String! (scalar)
         if (this.CaseId == null && Exploration.Includes(parent + ".caseId", true))
         {
-            this.CaseId = new System.String("FETCH");
+            this.CaseId = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> List<SupportCaseAttachmentResponse>? Attachments
         // GraphQL -> attachments: [SupportCaseAttachmentResponse!]! (type)

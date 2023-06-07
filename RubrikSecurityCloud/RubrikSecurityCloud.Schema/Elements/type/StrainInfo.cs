@@ -160,7 +160,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> strainId: String! (scalar)
         if (this.StrainId == null && Exploration.Includes(parent + ".strainId", true))
         {
-            this.StrainId = new System.String("FETCH");
+            this.StrainId = "FETCH";
         }
         //      C# -> System.Int64? TotalAffectedFiles
         // GraphQL -> totalAffectedFiles: Long! (scalar)

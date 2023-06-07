@@ -246,13 +246,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> city: String! (scalar)
         if (this.City == null && Exploration.Includes(parent + ".city", true))
         {
-            this.City = new System.String("FETCH");
+            this.City = "FETCH";
         }
         //      C# -> System.String? Country
         // GraphQL -> country: String! (scalar)
         if (this.Country == null && Exploration.Includes(parent + ".country", true))
         {
-            this.Country = new System.String("FETCH");
+            this.Country = "FETCH";
         }
         //      C# -> DateTime? CreatedAt
         // GraphQL -> createdAt: DateTime (scalar)
@@ -264,13 +264,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> creatorEmail: String! (scalar)
         if (this.CreatorEmail == null && Exploration.Includes(parent + ".creatorEmail", true))
         {
-            this.CreatorEmail = new System.String("FETCH");
+            this.CreatorEmail = "FETCH";
         }
         //      C# -> System.String? CsrField
         // GraphQL -> csr: String! (scalar)
         if (this.CsrField == null && Exploration.Includes(parent + ".csr", true))
         {
-            this.CsrField = new System.String("FETCH");
+            this.CsrField = "FETCH";
         }
         //      C# -> System.Int64? CsrId
         // GraphQL -> csrId: Long! (scalar)
@@ -282,7 +282,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> email: String! (scalar)
         if (this.Email == null && Exploration.Includes(parent + ".email", true))
         {
-            this.Email = new System.String("FETCH");
+            this.Email = "FETCH";
         }
         //      C# -> List<System.String>? Hostnames
         // GraphQL -> hostnames: [String!]! (scalar)
@@ -294,37 +294,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? Organization
         // GraphQL -> organization: String! (scalar)
         if (this.Organization == null && Exploration.Includes(parent + ".organization", true))
         {
-            this.Organization = new System.String("FETCH");
+            this.Organization = "FETCH";
         }
         //      C# -> System.String? OrganizationUnit
         // GraphQL -> organizationUnit: String! (scalar)
         if (this.OrganizationUnit == null && Exploration.Includes(parent + ".organizationUnit", true))
         {
-            this.OrganizationUnit = new System.String("FETCH");
+            this.OrganizationUnit = "FETCH";
         }
         //      C# -> System.String? State
         // GraphQL -> state: String! (scalar)
         if (this.State == null && Exploration.Includes(parent + ".state", true))
         {
-            this.State = new System.String("FETCH");
+            this.State = "FETCH";
         }
         //      C# -> System.String? Surname
         // GraphQL -> surname: String! (scalar)
         if (this.Surname == null && Exploration.Includes(parent + ".surname", true))
         {
-            this.Surname = new System.String("FETCH");
+            this.Surname = "FETCH";
         }
         //      C# -> System.String? UserId
         // GraphQL -> userId: String! (scalar)
         if (this.UserId == null && Exploration.Includes(parent + ".userId", true))
         {
-            this.UserId = new System.String("FETCH");
+            this.UserId = "FETCH";
         }
     }
 

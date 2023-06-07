@@ -124,7 +124,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> timestamp: String! (scalar)
         if (this.Timestamp == null && Exploration.Includes(parent + ".timestamp", true))
         {
-            this.Timestamp = new System.String("FETCH");
+            this.Timestamp = "FETCH";
         }
     }
 

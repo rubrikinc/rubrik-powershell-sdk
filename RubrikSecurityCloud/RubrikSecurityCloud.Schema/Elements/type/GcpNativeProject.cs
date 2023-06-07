@@ -452,13 +452,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> diskCount: Int! (scalar)
         if (this.DiskCount == null && Exploration.Includes(parent + ".diskCount", true))
         {
-            this.DiskCount = new System.Int32();
+            this.DiskCount = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? LastRefreshedAt
         // GraphQL -> lastRefreshedAt: DateTime (scalar)
@@ -470,37 +470,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeId
         // GraphQL -> nativeId: String! (scalar)
         if (this.NativeId == null && Exploration.Includes(parent + ".nativeId", true))
         {
-            this.NativeId = new System.String("FETCH");
+            this.NativeId = "FETCH";
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
         if (this.NativeName == null && Exploration.Includes(parent + ".nativeName", true))
         {
-            this.NativeName = new System.String("FETCH");
+            this.NativeName = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.String? OrganizationName
         // GraphQL -> organizationName: String! (scalar)
         if (this.OrganizationName == null && Exploration.Includes(parent + ".organizationName", true))
         {
-            this.OrganizationName = new System.String("FETCH");
+            this.OrganizationName = "FETCH";
         }
         //      C# -> System.String? ProjectNumber
         // GraphQL -> projectNumber: String! (scalar)
         if (this.ProjectNumber == null && Exploration.Includes(parent + ".projectNumber", true))
         {
-            this.ProjectNumber = new System.String("FETCH");
+            this.ProjectNumber = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -512,7 +512,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> vmCount: Int! (scalar)
         if (this.VmCount == null && Exploration.Includes(parent + ".vmCount", true))
         {
-            this.VmCount = new System.Int32();
+            this.VmCount = Int32.MinValue;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

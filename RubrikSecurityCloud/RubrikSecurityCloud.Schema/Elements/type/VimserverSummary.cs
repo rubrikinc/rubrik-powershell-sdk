@@ -148,37 +148,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostname: String! (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? VcdClusterId
         // GraphQL -> vcdClusterId: String! (scalar)
         if (this.VcdClusterId == null && Exploration.Includes(parent + ".vcdClusterId", true))
         {
-            this.VcdClusterId = new System.String("FETCH");
+            this.VcdClusterId = "FETCH";
         }
         //      C# -> System.String? VcdClusterName
         // GraphQL -> vcdClusterName: String! (scalar)
         if (this.VcdClusterName == null && Exploration.Includes(parent + ".vcdClusterName", true))
         {
-            this.VcdClusterName = new System.String("FETCH");
+            this.VcdClusterName = "FETCH";
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String (scalar)
         if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
         {
-            this.VcenterId = new System.String("FETCH");
+            this.VcenterId = "FETCH";
         }
         //      C# -> VcdConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: VcdConnectionStatus (type)

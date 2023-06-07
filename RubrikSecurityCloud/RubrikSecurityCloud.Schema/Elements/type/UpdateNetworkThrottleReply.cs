@@ -140,7 +140,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> archivalThrottlePort: Int (scalar)
         if (this.ArchivalThrottlePort == null && Exploration.Includes(parent + ".archivalThrottlePort", true))
         {
-            this.ArchivalThrottlePort = new System.Int32();
+            this.ArchivalThrottlePort = Int32.MinValue;
         }
         //      C# -> System.Single? DefaultThrottleLimit
         // GraphQL -> defaultThrottleLimit: Float (scalar)
@@ -158,7 +158,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> networkInterface: String (scalar)
         if (this.NetworkInterface == null && Exploration.Includes(parent + ".networkInterface", true))
         {
-            this.NetworkInterface = new System.String("FETCH");
+            this.NetworkInterface = "FETCH";
         }
         //      C# -> List<NetworkThrottleScheduleSummary>? ScheduledThrottles
         // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)

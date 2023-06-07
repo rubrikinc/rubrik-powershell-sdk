@@ -875,43 +875,43 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmLink
         // GraphQL -> cdmLink: String! (scalar)
         if (this.CdmLink == null && Exploration.Includes(parent + ".cdmLink", true))
         {
-            this.CdmLink = new System.String("FETCH");
+            this.CdmLink = "FETCH";
         }
         //      C# -> System.String? DataGuardGroupId
         // GraphQL -> dataGuardGroupId: String (scalar)
         if (this.DataGuardGroupId == null && Exploration.Includes(parent + ".dataGuardGroupId", true))
         {
-            this.DataGuardGroupId = new System.String("FETCH");
+            this.DataGuardGroupId = "FETCH";
         }
         //      C# -> System.String? DbRole
         // GraphQL -> dbRole: String! (scalar)
         if (this.DbRole == null && Exploration.Includes(parent + ".dbRole", true))
         {
-            this.DbRole = new System.String("FETCH");
+            this.DbRole = "FETCH";
         }
         //      C# -> System.String? DbUniqueName
         // GraphQL -> dbUniqueName: String! (scalar)
         if (this.DbUniqueName == null && Exploration.Includes(parent + ".dbUniqueName", true))
         {
-            this.DbUniqueName = new System.String("FETCH");
+            this.DbUniqueName = "FETCH";
         }
         //      C# -> System.Int32? HostLogRetentionHours
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
         if (this.HostLogRetentionHours == null && Exploration.Includes(parent + ".hostLogRetentionHours", true))
         {
-            this.HostLogRetentionHours = new System.Int32();
+            this.HostLogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -923,19 +923,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> logBackupFrequency: Int! (scalar)
         if (this.LogBackupFrequency == null && Exploration.Includes(parent + ".logBackupFrequency", true))
         {
-            this.LogBackupFrequency = new System.Int32();
+            this.LogBackupFrequency = Int32.MinValue;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (this.LogRetentionHours == null && Exploration.Includes(parent + ".logRetentionHours", true))
         {
-            this.LogRetentionHours = new System.Int32();
+            this.LogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int64? NumChannels
         // GraphQL -> numChannels: Long! (scalar)
@@ -947,31 +947,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numInstances: Int! (scalar)
         if (this.NumInstances == null && Exploration.Includes(parent + ".numInstances", true))
         {
-            this.NumInstances = new System.Int32();
+            this.NumInstances = Int32.MinValue;
         }
         //      C# -> System.Int32? NumLogSnapshots
         // GraphQL -> numLogSnapshots: Int! (scalar)
         if (this.NumLogSnapshots == null && Exploration.Includes(parent + ".numLogSnapshots", true))
         {
-            this.NumLogSnapshots = new System.Int32();
+            this.NumLogSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int32? NumTablespaces
         // GraphQL -> numTablespaces: Int! (scalar)
         if (this.NumTablespaces == null && Exploration.Includes(parent + ".numTablespaces", true))
         {
-            this.NumTablespaces = new System.Int32();
+            this.NumTablespaces = Int32.MinValue;
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> List<System.String>? PreferredDataGuardMemberUniqueNames
         // GraphQL -> preferredDataGuardMemberUniqueNames: [String!]! (scalar)
@@ -983,13 +983,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
-            this.ReplicatedObjectCount = new System.Int32();
+            this.ReplicatedObjectCount = Int32.MinValue;
         }
         //      C# -> System.Int32? SectionSizeInGigabytes
         // GraphQL -> sectionSizeInGigabytes: Int! (scalar)
         if (this.SectionSizeInGigabytes == null && Exploration.Includes(parent + ".sectionSizeInGigabytes", true))
         {
-            this.SectionSizeInGigabytes = new System.Int32();
+            this.SectionSizeInGigabytes = Int32.MinValue;
         }
         //      C# -> System.Boolean? ShouldBackupFromPrimaryOnly
         // GraphQL -> shouldBackupFromPrimaryOnly: Boolean! (scalar)

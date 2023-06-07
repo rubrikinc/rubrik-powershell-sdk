@@ -146,25 +146,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> caCertName: String (scalar)
         if (this.CaCertName == null && Exploration.Includes(parent + ".caCertName", true))
         {
-            this.CaCertName = new System.String("FETCH");
+            this.CaCertName = "FETCH";
         }
         //      C# -> System.String? CaCertUuid
         // GraphQL -> caCertUuid: UUID (scalar)
         if (this.CaCertUuid == null && Exploration.Includes(parent + ".caCertUuid", true))
         {
-            this.CaCertUuid = new System.String("FETCH");
+            this.CaCertUuid = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetName
         // GraphQL -> replicationTargetName: String (scalar)
         if (this.ReplicationTargetName == null && Exploration.Includes(parent + ".replicationTargetName", true))
         {
-            this.ReplicationTargetName = new System.String("FETCH");
+            this.ReplicationTargetName = "FETCH";
         }
         //      C# -> System.String? ReplicationTargetUuid
         // GraphQL -> replicationTargetUuid: UUID (scalar)
         if (this.ReplicationTargetUuid == null && Exploration.Includes(parent + ".replicationTargetUuid", true))
         {
-            this.ReplicationTargetUuid = new System.String("FETCH");
+            this.ReplicationTargetUuid = "FETCH";
         }
     }
 

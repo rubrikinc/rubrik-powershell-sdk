@@ -31270,6 +31270,12 @@ type Db2Database implements CdmHierarchyObject , CdmHierarchySnappableNew , Hier
   # Type of Db2 database: STANDALONE, PARTITIONED, HADR, or UNKNOWN.
   db2DbType: Db2DatabaseType!
 
+  # Specifies the value of the configuration parameter for parallelism in backup operations.
+  backupParallelism: Int!
+
+  # Specifies the value of the configuration parameter for sessions in backup operations.
+  backupSessions: Int!
+
   # Stats for DB2 database.
   reportWorkload: Snappable
 
@@ -40058,6 +40064,9 @@ type GetLambdaConfigReply {
 
   # The maximum number of snapshots to upload automatically.
   maxSnapshotsToUploadAutomatically: Int!
+
+  # Enable or disable threat monitoring.
+  isThreatMonitoringEnabled: Boolean!
 }
 # Information about the licensed products the customer has.
 type GetLicensedProductsInfoReply {
@@ -41357,6 +41366,9 @@ enum HierarchyFilterField {
   # Filter whether the sharepoint is relic or contains relic object.
   DOES_SHAREPOINT_HAVE_RELIC_OBJECTS
 
+  # Filter by the Active Directory domain controller connection status.
+  DOMAIN_CONTROLLER_CONNECTION_STATUS
+
   # Filter by FSMO role of a domain controller.
   DOMAIN_CONTROLLER_FSMO_ROLE
 
@@ -41612,6 +41624,9 @@ enum HierarchyFilterField {
 
   # Filter Managed Volume Type.
   MANAGED_VOLUME_TYPE
+
+  # Filter to show all migrated hosts, including ghost objects.
+  MIGRATED_HOSTS_WITH_GHOST_OBJECTS
 
   # Filter by ID of parent MongoDB Keyspace.
   MONGODB_DATABASE_ID
@@ -63413,6 +63428,9 @@ enum Operation {
 
   # Manage GPS to RSC upgrade.
   MANAGE_GPS_TO_RSC_UPGRADE
+
+  # Manage Guest OS credentials.
+  MANAGE_GUEST_OS_CREDENTIAL
   MANAGE_LEGAL_HOLD
 
   # Manage recoveries within Orchestrated Recovery.
@@ -63445,6 +63463,9 @@ enum Operation {
   MANAGE_TPR_POLICY
   MANAGE_WEBHOOKS
   MODIFY_CLUSTER
+
+  # Modify event cluster settings.
+  MODIFY_EVENT_CLUSTER_SETTING
   MODIFY_INVENTORY
   MODIFY_REPORT
   MODIFY_SLA
@@ -63488,7 +63509,13 @@ enum Operation {
 
   # View account-wide data security risk metrics, scores, and recommendations.
   VIEW_DATA_SECURITY_DETAILS
+
+  # View event cluster settings.
+  VIEW_EVENT_CLUSTER_SETTING
   VIEW_GCP_CLOUD_ACCOUNT
+
+  # View Guest OS credentials.
+  VIEW_GUEST_OS_CREDENTIAL
   VIEW_INVENTORY
 
   # View Network Throttle Settings.

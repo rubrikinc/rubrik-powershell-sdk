@@ -106,7 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> count: Int! (scalar)
         if (this.Count == null && Exploration.Includes(parent + ".count", true))
         {
-            this.Count = new System.Int32();
+            this.Count = Int32.MinValue;
         }
         //      C# -> List<O365OnedriveEdge>? Edges
         // GraphQL -> edges: [O365OnedriveEdge!]! (type)

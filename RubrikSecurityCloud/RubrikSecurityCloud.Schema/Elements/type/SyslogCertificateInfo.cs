@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> serverCertificate: String (scalar)
         if (this.ServerCertificate == null && Exploration.Includes(parent + ".serverCertificate", true))
         {
-            this.ServerCertificate = new System.String("FETCH");
+            this.ServerCertificate = "FETCH";
         }
         //      C# -> System.String? ServerCertificateName
         // GraphQL -> serverCertificateName: String (scalar)
         if (this.ServerCertificateName == null && Exploration.Includes(parent + ".serverCertificateName", true))
         {
-            this.ServerCertificateName = new System.String("FETCH");
+            this.ServerCertificateName = "FETCH";
         }
     }
 

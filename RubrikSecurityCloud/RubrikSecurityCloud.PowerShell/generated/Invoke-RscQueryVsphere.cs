@@ -29,7 +29,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Blueprint parameter set
         //
-        // GraphQL operation: vSphereBlueprint(fid: UUID!):VSphereBlueprint!
+        // [GraphQL: vSphereBlueprint]
         //
         [Parameter(
             ParameterSetName = "Blueprint",
@@ -37,10 +37,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereBlueprint(fid: UUID!):VSphereBlueprint!
-                ",
+@"
+[GraphQL: vSphereBlueprint]",
             Position = 0
         )]
         public SwitchParameter Blueprint { get; set; }
@@ -51,17 +49,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik UUID for the object.
-                GraphQL argument fid: UUID!
-                "
+@"The Rubrik UUID for the object.
+GraphQL argument fid: UUID!"
         )]
         public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
         // Datacenter parameter set
         //
-        // GraphQL operation: vSphereDatacenter(fid: UUID!):VsphereDatacenter!
+        // [GraphQL: vSphereDatacenter]
         //
         [Parameter(
             ParameterSetName = "Datacenter",
@@ -69,59 +65,53 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereDatacenter(fid: UUID!):VsphereDatacenter!
-                ",
+@"
+[GraphQL: vSphereDatacenter]",
             Position = 0
         )]
         public SwitchParameter Datacenter { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ComputeCluster parameter set
+        // Computecluster parameter set
         //
-        // GraphQL operation: vSphereComputeCluster(fid: UUID!):VsphereComputeCluster!
+        // [GraphQL: vSphereComputeCluster]
         //
         [Parameter(
-            ParameterSetName = "ComputeCluster",
+            ParameterSetName = "Computecluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereComputeCluster(fid: UUID!):VsphereComputeCluster!
-                ",
+@"
+[GraphQL: vSphereComputeCluster]",
             Position = 0
         )]
-        public SwitchParameter ComputeCluster { get; set; }
+        public SwitchParameter Computecluster { get; set; }
 
         
         // -------------------------------------------------------------------
-        // ResourcePool parameter set
+        // Resourcepool parameter set
         //
-        // GraphQL operation: vSphereResourcePool(fid: UUID!):VsphereResourcePool!
+        // [GraphQL: vSphereResourcePool]
         //
         [Parameter(
-            ParameterSetName = "ResourcePool",
+            ParameterSetName = "Resourcepool",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereResourcePool(fid: UUID!):VsphereResourcePool!
-                ",
+@"
+[GraphQL: vSphereResourcePool]",
             Position = 0
         )]
-        public SwitchParameter ResourcePool { get; set; }
+        public SwitchParameter Resourcepool { get; set; }
 
         
         // -------------------------------------------------------------------
         // Folder parameter set
         //
-        // GraphQL operation: vSphereFolder(fid: UUID!):VsphereFolder!
+        // [GraphQL: vSphereFolder]
         //
         [Parameter(
             ParameterSetName = "Folder",
@@ -129,10 +119,8 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereFolder(fid: UUID!):VsphereFolder!
-                ",
+@"
+[GraphQL: vSphereFolder]",
             Position = 0
         )]
         public SwitchParameter Folder { get; set; }
@@ -141,7 +129,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
         // -------------------------------------------------------------------
         // Host parameter set
         //
-        // GraphQL operation: vSphereHost(fid: UUID!):VsphereHost!
+        // [GraphQL: vSphereHost]
         //
         [Parameter(
             ParameterSetName = "Host",
@@ -149,39 +137,35 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereHost(fid: UUID!):VsphereHost!
-                ",
+@"
+[GraphQL: vSphereHost]",
             Position = 0
         )]
         public new SwitchParameter Host { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DatastoreCluster parameter set
+        // Datastorecluster parameter set
         //
-        // GraphQL operation: vSphereDatastoreCluster(fid: UUID!):VsphereDatastoreCluster!
+        // [GraphQL: vSphereDatastoreCluster]
         //
         [Parameter(
-            ParameterSetName = "DatastoreCluster",
+            ParameterSetName = "Datastorecluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Vsphere datastore cluster based on id passed in.
-                GraphQL operation: vSphereDatastoreCluster(fid: UUID!):VsphereDatastoreCluster!
-                ",
+@"Vsphere datastore cluster based on id passed in.
+[GraphQL: vSphereDatastoreCluster]",
             Position = 0
         )]
-        public SwitchParameter DatastoreCluster { get; set; }
+        public SwitchParameter Datastorecluster { get; set; }
 
         
         // -------------------------------------------------------------------
         // Datastore parameter set
         //
-        // GraphQL operation: vSphereDatastore(fid: UUID!):VsphereDatastore!
+        // [GraphQL: vSphereDatastore]
         //
         [Parameter(
             ParameterSetName = "Datastore",
@@ -189,51 +173,45 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Vsphere datastore based on id passed in.
-                GraphQL operation: vSphereDatastore(fid: UUID!):VsphereDatastore!
-                ",
+@"Vsphere datastore based on id passed in.
+[GraphQL: vSphereDatastore]",
             Position = 0
         )]
         public SwitchParameter Datastore { get; set; }
 
         
         // -------------------------------------------------------------------
-        // HostsByFid parameter set
+        // Hostsbyfid parameter set
         //
-        // GraphQL operation: vSphereHostsByFids(fids: [UUID!]!):[VsphereHost!]!
+        // [GraphQL: vSphereHostsByFids]
         //
         [Parameter(
-            ParameterSetName = "HostsByFid",
+            ParameterSetName = "Hostsbyfid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                All of the VSphere hosts based on fids passed in.
-                GraphQL operation: vSphereHostsByFids(fids: [UUID!]!):[VsphereHost!]!
-                ",
+@"All of the VSphere hosts based on fids passed in.
+[GraphQL: vSphereHostsByFids]",
             Position = 0
         )]
-        public SwitchParameter HostsByFid { get; set; }
+        public SwitchParameter Hostsbyfid { get; set; }
 
         [Parameter(
-            ParameterSetName = "HostsByFid",
+            ParameterSetName = "Hostsbyfid",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL argument fids: [UUID!]!
-                "
+@"
+GraphQL argument fids: [UUID!]!"
         )]
         public List<System.String>? Fids { get; set; }
         
         // -------------------------------------------------------------------
         // Tag parameter set
         //
-        // GraphQL operation: vSphereTag(fid: UUID!):VsphereTag!
+        // [GraphQL: vSphereTag]
         //
         [Parameter(
             ParameterSetName = "Tag",
@@ -241,39 +219,35 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereTag(fid: UUID!):VsphereTag!
-                ",
+@"
+[GraphQL: vSphereTag]",
             Position = 0
         )]
         public SwitchParameter Tag { get; set; }
 
         
         // -------------------------------------------------------------------
-        // TagCategory parameter set
+        // Tagcategory parameter set
         //
-        // GraphQL operation: vSphereTagCategory(fid: UUID!):VsphereTagCategory!
+        // [GraphQL: vSphereTagCategory]
         //
         [Parameter(
-            ParameterSetName = "TagCategory",
+            ParameterSetName = "Tagcategory",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereTagCategory(fid: UUID!):VsphereTagCategory!
-                ",
+@"
+[GraphQL: vSphereTagCategory]",
             Position = 0
         )]
-        public SwitchParameter TagCategory { get; set; }
+        public SwitchParameter Tagcategory { get; set; }
 
         
         // -------------------------------------------------------------------
         // Network parameter set
         //
-        // GraphQL operation: vSphereNetwork(fid: UUID!):VsphereNetwork!
+        // [GraphQL: vSphereNetwork]
         //
         [Parameter(
             ParameterSetName = "Network",
@@ -281,211 +255,185 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereNetwork(fid: UUID!):VsphereNetwork!
-                ",
+@"
+[GraphQL: vSphereNetwork]",
             Position = 0
         )]
         public SwitchParameter Network { get; set; }
 
         
         // -------------------------------------------------------------------
-        // TopLevelDescendantsList parameter set
+        // Topleveldescendantsconnection parameter set
         //
-        // GraphQL operation: vSphereTopLevelDescendantsConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):CdmHierarchyObjectConnection!
+        // [GraphQL: vSphereTopLevelDescendantsConnection]
         //
         [Parameter(
-            ParameterSetName = "TopLevelDescendantsList",
+            ParameterSetName = "Topleveldescendantsconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereTopLevelDescendantsConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):CdmHierarchyObjectConnection!
-                ",
+@"
+[GraphQL: vSphereTopLevelDescendantsConnection]",
             Position = 0
         )]
-        public SwitchParameter TopLevelDescendantsList { get; set; }
+        public SwitchParameter Topleveldescendantsconnection { get; set; }
 
         [Parameter(
-            ParameterSetName = "TopLevelDescendantsList",
+            ParameterSetName = "Topleveldescendantsconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendantsList",
+            ParameterSetName = "Topleveldescendantsconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendantsList",
+            ParameterSetName = "Topleveldescendantsconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort hierarchy objects by hierarchy field.
-                GraphQL argument sortBy: HierarchySortByField
-                "
+@"Sort hierarchy objects by hierarchy field.
+GraphQL argument sortBy: HierarchySortByField"
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendantsList",
+            ParameterSetName = "Topleveldescendantsconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sorting order for the results.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Sorting order for the results.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendantsList",
+            ParameterSetName = "Topleveldescendantsconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Types of objects to include.
-                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
-                "
+@"Types of objects to include.
+GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendantsList",
+            ParameterSetName = "Topleveldescendantsconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The hierarchy object filter.
-                GraphQL argument filter: [Filter!]
-                "
+@"The hierarchy object filter.
+GraphQL argument filter: [Filter!]"
         )]
         public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
-        // RootRecoveryHierarchy parameter set
+        // Rootrecoveryhierarchy parameter set
         //
-        // GraphQL operation: vSphereRootRecoveryHierarchy(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CdmHierarchyObjectConnection!
+        // [GraphQL: vSphereRootRecoveryHierarchy]
         //
         [Parameter(
-            ParameterSetName = "RootRecoveryHierarchy",
+            ParameterSetName = "Rootrecoveryhierarchy",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
-                GraphQL operation: vSphereRootRecoveryHierarchy(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):CdmHierarchyObjectConnection!
-                ",
+@"The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
+[GraphQL: vSphereRootRecoveryHierarchy]",
             Position = 0
         )]
-        public SwitchParameter RootRecoveryHierarchy { get; set; }
+        public SwitchParameter Rootrecoveryhierarchy { get; set; }
 
         
         // -------------------------------------------------------------------
-        // HostList parameter set
+        // Hostconnection parameter set
         //
-        // GraphQL operation: vSphereHostConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereHostConnection!
+        // [GraphQL: vSphereHostConnection]
         //
         [Parameter(
-            ParameterSetName = "HostList",
+            ParameterSetName = "Hostconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereHostConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereHostConnection!
-                ",
+@"
+[GraphQL: vSphereHostConnection]",
             Position = 0
         )]
-        public SwitchParameter HostList { get; set; }
+        public SwitchParameter Hostconnection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DatastoreList parameter set
+        // Datastoreconnection parameter set
         //
-        // GraphQL operation: vSphereDatastoreConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereDatastoreConnection!
+        // [GraphQL: vSphereDatastoreConnection]
         //
         [Parameter(
-            ParameterSetName = "DatastoreList",
+            ParameterSetName = "Datastoreconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vSphereDatastoreConnection(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):VsphereDatastoreConnection!
-                ",
+@"
+[GraphQL: vSphereDatastoreConnection]",
             Position = 0
         )]
-        public SwitchParameter DatastoreList { get; set; }
+        public SwitchParameter Datastoreconnection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // LiveMount parameter set
+        // Livemount parameter set
         //
-        // GraphQL operation: vSphereLiveMounts(,   first: Int,   after: String,   filter: [VsphereLiveMountFilterInput!],   sortBy: VsphereLiveMountSortBy, ):VsphereLiveMountConnection!
+        // [GraphQL: vSphereLiveMounts]
         //
         [Parameter(
-            ParameterSetName = "LiveMount",
+            ParameterSetName = "Livemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of vSphere Live Mounts.
-                GraphQL operation: vSphereLiveMounts(,   first: Int,   after: String,   filter: [VsphereLiveMountFilterInput!],   sortBy: VsphereLiveMountSortBy, ):VsphereLiveMountConnection!
-                ",
+@"List of vSphere Live Mounts.
+[GraphQL: vSphereLiveMounts]",
             Position = 0
         )]
-        public SwitchParameter LiveMount { get; set; }
+        public SwitchParameter Livemount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // MountList parameter set
+        // Mountconnection parameter set
         //
-        // GraphQL operation: vSphereMountConnection(,   first: Int,   after: String,   filter: VSphereMountFilter,   sortBy: VsphereMountSortBy,   sortOrder: SortOrder, ):VsphereMountConnection!
+        // [GraphQL: vSphereMountConnection]
         //
         [Parameter(
-            ParameterSetName = "MountList",
+            ParameterSetName = "Mountconnection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                vSphere Live Mount Connection
-                GraphQL operation: vSphereMountConnection(,   first: Int,   after: String,   filter: VSphereMountFilter,   sortBy: VsphereMountSortBy,   sortOrder: SortOrder, ):VsphereMountConnection!
-                ",
+@"vSphere Live Mount Connection
+[GraphQL: vSphereMountConnection]",
             Position = 0
         )]
-        public SwitchParameter MountList { get; set; }
+        public SwitchParameter Mountconnection { get; set; }
 
         
         // -------------------------------------------------------------------
         // Mount parameter set
         //
-        // GraphQL operation: vSphereMount(fid: UUID!):VsphereMount!
+        // [GraphQL: vSphereMount]
         //
         [Parameter(
             ParameterSetName = "Mount",
@@ -493,79 +441,69 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get a vSphere Live Mount by id
-                GraphQL operation: vSphereMount(fid: UUID!):VsphereMount!
-                ",
+@"Get a vSphere Live Mount by id
+[GraphQL: vSphereMount]",
             Position = 0
         )]
         public SwitchParameter Mount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // HostDetail parameter set
+        // Hostdetail parameter set
         //
-        // GraphQL operation: vSphereHostDetails(input: GetVmwareHostInput!):VmwareHostDetail!
+        // [GraphQL: vSphereHostDetails]
         //
         [Parameter(
-            ParameterSetName = "HostDetail",
+            ParameterSetName = "Hostdetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Get details of a ESXi hypervisor
+@"Get details of a ESXi hypervisor
 
 Supported in v5.0+
 Get details of a ESXi hypervisor.
-                GraphQL operation: vSphereHostDetails(input: GetVmwareHostInput!):VmwareHostDetail!
-                ",
+[GraphQL: vSphereHostDetails]",
             Position = 0
         )]
-        public SwitchParameter HostDetail { get; set; }
+        public SwitchParameter Hostdetail { get; set; }
 
         [Parameter(
-            ParameterSetName = "HostDetail",
+            ParameterSetName = "Hostdetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for V1GetVmwareHost.
-                GraphQL argument input: GetVmwareHostInput!
-                "
+@"Input for V1GetVmwareHost.
+GraphQL argument input: GetVmwareHostInput!"
         )]
         public GetVmwareHostInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // VmwareCdpLiveInfo parameter set
+        // Vmwarecdpliveinfo parameter set
         //
-        // GraphQL operation: vsphereVmwareCdpLiveInfo(ids: [String!]!):BatchVmwareCdpLiveInfo!
+        // [GraphQL: vsphereVmwareCdpLiveInfo]
         //
         [Parameter(
-            ParameterSetName = "VmwareCdpLiveInfo",
+            ParameterSetName = "Vmwarecdpliveinfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                
-                GraphQL operation: vsphereVmwareCdpLiveInfo(ids: [String!]!):BatchVmwareCdpLiveInfo!
-                ",
+@"
+[GraphQL: vsphereVmwareCdpLiveInfo]",
             Position = 0
         )]
-        public SwitchParameter VmwareCdpLiveInfo { get; set; }
+        public SwitchParameter Vmwarecdpliveinfo { get; set; }
 
         [Parameter(
-            ParameterSetName = "VmwareCdpLiveInfo",
+            ParameterSetName = "Vmwarecdpliveinfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The ID of each CDP-enabled virtual machine for which live info is being retrieved.
-                GraphQL argument ids: [String!]!
-                "
+@"The ID of each CDP-enabled virtual machine for which live info is being retrieved.
+GraphQL argument ids: [String!]!"
         )]
         public List<System.String>? Ids { get; set; }
 
@@ -581,11 +519,11 @@ Get details of a ESXi hypervisor.
                     case "Datacenter":
                         this.ProcessRecord_Datacenter();
                         break;
-                    case "ComputeCluster":
-                        this.ProcessRecord_ComputeCluster();
+                    case "Computecluster":
+                        this.ProcessRecord_Computecluster();
                         break;
-                    case "ResourcePool":
-                        this.ProcessRecord_ResourcePool();
+                    case "Resourcepool":
+                        this.ProcessRecord_Resourcepool();
                         break;
                     case "Folder":
                         this.ProcessRecord_Folder();
@@ -593,50 +531,50 @@ Get details of a ESXi hypervisor.
                     case "Host":
                         this.ProcessRecord_Host();
                         break;
-                    case "DatastoreCluster":
-                        this.ProcessRecord_DatastoreCluster();
+                    case "Datastorecluster":
+                        this.ProcessRecord_Datastorecluster();
                         break;
                     case "Datastore":
                         this.ProcessRecord_Datastore();
                         break;
-                    case "HostsByFid":
-                        this.ProcessRecord_HostsByFid();
+                    case "Hostsbyfid":
+                        this.ProcessRecord_Hostsbyfid();
                         break;
                     case "Tag":
                         this.ProcessRecord_Tag();
                         break;
-                    case "TagCategory":
-                        this.ProcessRecord_TagCategory();
+                    case "Tagcategory":
+                        this.ProcessRecord_Tagcategory();
                         break;
                     case "Network":
                         this.ProcessRecord_Network();
                         break;
-                    case "TopLevelDescendantsList":
-                        this.ProcessRecord_TopLevelDescendantsList();
+                    case "Topleveldescendantsconnection":
+                        this.ProcessRecord_Topleveldescendantsconnection();
                         break;
-                    case "RootRecoveryHierarchy":
-                        this.ProcessRecord_RootRecoveryHierarchy();
+                    case "Rootrecoveryhierarchy":
+                        this.ProcessRecord_Rootrecoveryhierarchy();
                         break;
-                    case "HostList":
-                        this.ProcessRecord_HostList();
+                    case "Hostconnection":
+                        this.ProcessRecord_Hostconnection();
                         break;
-                    case "DatastoreList":
-                        this.ProcessRecord_DatastoreList();
+                    case "Datastoreconnection":
+                        this.ProcessRecord_Datastoreconnection();
                         break;
-                    case "LiveMount":
-                        this.ProcessRecord_LiveMount();
+                    case "Livemount":
+                        this.ProcessRecord_Livemount();
                         break;
-                    case "MountList":
-                        this.ProcessRecord_MountList();
+                    case "Mountconnection":
+                        this.ProcessRecord_Mountconnection();
                         break;
                     case "Mount":
                         this.ProcessRecord_Mount();
                         break;
-                    case "HostDetail":
-                        this.ProcessRecord_HostDetail();
+                    case "Hostdetail":
+                        this.ProcessRecord_Hostdetail();
                         break;
-                    case "VmwareCdpLiveInfo":
-                        this.ProcessRecord_VmwareCdpLiveInfo();
+                    case "Vmwarecdpliveinfo":
+                        this.ProcessRecord_Vmwarecdpliveinfo();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -674,18 +612,18 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereComputeCluster.
-        protected void ProcessRecord_ComputeCluster()
+        protected void ProcessRecord_Computecluster()
         {
-            this._logger.name += " -ComputeCluster";
+            this._logger.name += " -Computecluster";
             // Invoke graphql operation vSphereComputeCluster
             InvokeQueryVsphereComputeCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // vSphereResourcePool.
-        protected void ProcessRecord_ResourcePool()
+        protected void ProcessRecord_Resourcepool()
         {
-            this._logger.name += " -ResourcePool";
+            this._logger.name += " -Resourcepool";
             // Invoke graphql operation vSphereResourcePool
             InvokeQueryVsphereResourcePool();
         }
@@ -710,9 +648,9 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereDatastoreCluster.
-        protected void ProcessRecord_DatastoreCluster()
+        protected void ProcessRecord_Datastorecluster()
         {
-            this._logger.name += " -DatastoreCluster";
+            this._logger.name += " -Datastorecluster";
             // Invoke graphql operation vSphereDatastoreCluster
             InvokeQueryVsphereDatastoreCluster();
         }
@@ -728,9 +666,9 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereHostsByFids.
-        protected void ProcessRecord_HostsByFid()
+        protected void ProcessRecord_Hostsbyfid()
         {
-            this._logger.name += " -HostsByFid";
+            this._logger.name += " -Hostsbyfid";
             // Invoke graphql operation vSphereHostsByFids
             InvokeQueryVsphereHostsByFids();
         }
@@ -746,9 +684,9 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereTagCategory.
-        protected void ProcessRecord_TagCategory()
+        protected void ProcessRecord_Tagcategory()
         {
-            this._logger.name += " -TagCategory";
+            this._logger.name += " -Tagcategory";
             // Invoke graphql operation vSphereTagCategory
             InvokeQueryVsphereTagCategory();
         }
@@ -764,54 +702,54 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereTopLevelDescendantsConnection.
-        protected void ProcessRecord_TopLevelDescendantsList()
+        protected void ProcessRecord_Topleveldescendantsconnection()
         {
-            this._logger.name += " -TopLevelDescendantsList";
+            this._logger.name += " -Topleveldescendantsconnection";
             // Invoke graphql operation vSphereTopLevelDescendantsConnection
             InvokeQueryVsphereTopLevelDescendantsConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // vSphereRootRecoveryHierarchy.
-        protected void ProcessRecord_RootRecoveryHierarchy()
+        protected void ProcessRecord_Rootrecoveryhierarchy()
         {
-            this._logger.name += " -RootRecoveryHierarchy";
+            this._logger.name += " -Rootrecoveryhierarchy";
             // Invoke graphql operation vSphereRootRecoveryHierarchy
             InvokeQueryVsphereRootRecoveryHierarchy();
         }
 
         // This parameter set invokes a single graphql operation:
         // vSphereHostConnection.
-        protected void ProcessRecord_HostList()
+        protected void ProcessRecord_Hostconnection()
         {
-            this._logger.name += " -HostList";
+            this._logger.name += " -Hostconnection";
             // Invoke graphql operation vSphereHostConnection
             InvokeQueryVsphereHostConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // vSphereDatastoreConnection.
-        protected void ProcessRecord_DatastoreList()
+        protected void ProcessRecord_Datastoreconnection()
         {
-            this._logger.name += " -DatastoreList";
+            this._logger.name += " -Datastoreconnection";
             // Invoke graphql operation vSphereDatastoreConnection
             InvokeQueryVsphereDatastoreConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // vSphereLiveMounts.
-        protected void ProcessRecord_LiveMount()
+        protected void ProcessRecord_Livemount()
         {
-            this._logger.name += " -LiveMount";
+            this._logger.name += " -Livemount";
             // Invoke graphql operation vSphereLiveMounts
             InvokeQueryVsphereLiveMounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // vSphereMountConnection.
-        protected void ProcessRecord_MountList()
+        protected void ProcessRecord_Mountconnection()
         {
-            this._logger.name += " -MountList";
+            this._logger.name += " -Mountconnection";
             // Invoke graphql operation vSphereMountConnection
             InvokeQueryVsphereMountConnection();
         }
@@ -827,18 +765,18 @@ Get details of a ESXi hypervisor.
 
         // This parameter set invokes a single graphql operation:
         // vSphereHostDetails.
-        protected void ProcessRecord_HostDetail()
+        protected void ProcessRecord_Hostdetail()
         {
-            this._logger.name += " -HostDetail";
+            this._logger.name += " -Hostdetail";
             // Invoke graphql operation vSphereHostDetails
             InvokeQueryVsphereHostDetails();
         }
 
         // This parameter set invokes a single graphql operation:
         // vsphereVmwareCdpLiveInfo.
-        protected void ProcessRecord_VmwareCdpLiveInfo()
+        protected void ProcessRecord_Vmwarecdpliveinfo()
         {
-            this._logger.name += " -VmwareCdpLiveInfo";
+            this._logger.name += " -Vmwarecdpliveinfo";
             // Invoke graphql operation vsphereVmwareCdpLiveInfo
             InvokeQueryVsphereVmwareCdpLiveInfo();
         }

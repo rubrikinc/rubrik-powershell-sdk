@@ -258,7 +258,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backupScriptErrorHandling: String (scalar)
         if (this.BackupScriptErrorHandling == null && Exploration.Includes(parent + ".backupScriptErrorHandling", true))
         {
-            this.BackupScriptErrorHandling = new System.String("FETCH");
+            this.BackupScriptErrorHandling = "FETCH";
         }
         //      C# -> System.Int64? BackupScriptTimeout
         // GraphQL -> backupScriptTimeout: Long (scalar)
@@ -306,19 +306,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? PostBackupScript
         // GraphQL -> postBackupScript: String (scalar)
         if (this.PostBackupScript == null && Exploration.Includes(parent + ".postBackupScript", true))
         {
-            this.PostBackupScript = new System.String("FETCH");
+            this.PostBackupScript = "FETCH";
         }
         //      C# -> System.String? PreBackupScript
         // GraphQL -> preBackupScript: String (scalar)
         if (this.PreBackupScript == null && Exploration.Includes(parent + ".preBackupScript", true))
         {
-            this.PreBackupScript = new System.String("FETCH");
+            this.PreBackupScript = "FETCH";
         }
         //      C# -> FilesetOptions? FilesetOptions
         // GraphQL -> filesetOptions: FilesetOptions (type)

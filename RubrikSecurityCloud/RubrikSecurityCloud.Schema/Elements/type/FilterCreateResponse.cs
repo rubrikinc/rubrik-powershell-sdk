@@ -106,19 +106,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> condition: String! (scalar)
         if (this.Condition == null && Exploration.Includes(parent + ".condition", true))
         {
-            this.Condition = new System.String("FETCH");
+            this.Condition = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)

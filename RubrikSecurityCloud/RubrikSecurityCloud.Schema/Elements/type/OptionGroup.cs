@@ -120,31 +120,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> arn: String! (scalar)
         if (this.Arn == null && Exploration.Includes(parent + ".arn", true))
         {
-            this.Arn = new System.String("FETCH");
+            this.Arn = "FETCH";
         }
         //      C# -> System.String? Engine
         // GraphQL -> engine: String! (scalar)
         if (this.Engine == null && Exploration.Includes(parent + ".engine", true))
         {
-            this.Engine = new System.String("FETCH");
+            this.Engine = "FETCH";
         }
         //      C# -> System.String? MajorEngineVersion
         // GraphQL -> majorEngineVersion: String! (scalar)
         if (this.MajorEngineVersion == null && Exploration.Includes(parent + ".majorEngineVersion", true))
         {
-            this.MajorEngineVersion = new System.String("FETCH");
+            this.MajorEngineVersion = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? VpcId
         // GraphQL -> vpcId: String! (scalar)
         if (this.VpcId == null && Exploration.Includes(parent + ".vpcId", true))
         {
-            this.VpcId = new System.String("FETCH");
+            this.VpcId = "FETCH";
         }
     }
 

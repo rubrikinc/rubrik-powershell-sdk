@@ -106,19 +106,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            this.ConfiguredSlaDomainId = new System.String("FETCH");
+            this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? Hostname
         // GraphQL -> hostname: String (scalar)
         if (this.Hostname == null && Exploration.Includes(parent + ".hostname", true))
         {
-            this.Hostname = new System.String("FETCH");
+            this.Hostname = "FETCH";
         }
         //      C# -> System.String? RunAsAccount
         // GraphQL -> runAsAccount: String (scalar)
         if (this.RunAsAccount == null && Exploration.Includes(parent + ".runAsAccount", true))
         {
-            this.RunAsAccount = new System.String("FETCH");
+            this.RunAsAccount = "FETCH";
         }
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean (scalar)

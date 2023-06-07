@@ -118,13 +118,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> frequency: Int! (scalar)
         if (this.Frequency == null && Exploration.Includes(parent + ".frequency", true))
         {
-            this.Frequency = new System.Int32();
+            this.Frequency = Int32.MinValue;
         }
         //      C# -> System.Int32? Retention
         // GraphQL -> retention: Int! (scalar)
         if (this.Retention == null && Exploration.Includes(parent + ".retention", true))
         {
-            this.Retention = new System.Int32();
+            this.Retention = Int32.MinValue;
         }
     }
 

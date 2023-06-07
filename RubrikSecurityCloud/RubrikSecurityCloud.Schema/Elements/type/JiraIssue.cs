@@ -154,25 +154,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> jiraProjectId: String! (scalar)
         if (this.JiraProjectId == null && Exploration.Includes(parent + ".jiraProjectId", true))
         {
-            this.JiraProjectId = new System.String("FETCH");
+            this.JiraProjectId = "FETCH";
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
         if (this.Key == null && Exploration.Includes(parent + ".key", true))
         {
-            this.Key = new System.String("FETCH");
+            this.Key = "FETCH";
         }
         //      C# -> System.String? NaturalId
         // GraphQL -> naturalId: String! (scalar)
         if (this.NaturalId == null && Exploration.Includes(parent + ".naturalId", true))
         {
-            this.NaturalId = new System.String("FETCH");
+            this.NaturalId = "FETCH";
         }
         //      C# -> System.String? Summary
         // GraphQL -> summary: String! (scalar)
         if (this.Summary == null && Exploration.Includes(parent + ".summary", true))
         {
-            this.Summary = new System.String("FETCH");
+            this.Summary = "FETCH";
         }
         //      C# -> JiraUser? Assignee
         // GraphQL -> assignee: JiraUser (type)

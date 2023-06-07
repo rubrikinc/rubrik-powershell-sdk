@@ -27,101 +27,87 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // TopLevelDescendant parameter set
+        // Topleveldescendant parameter set
         //
-        // GraphQL operation: mssqlTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):MssqlTopLevelDescendantTypeConnection!
+        // [GraphQL: mssqlTopLevelDescendants]
         //
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "Topleveldescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
-                GraphQL operation: mssqlTopLevelDescendants(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   typeFilter: [HierarchyObjectTypeEnum!],   filter: [Filter!], ):MssqlTopLevelDescendantTypeConnection!
-                ",
+@"Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
+[GraphQL: mssqlTopLevelDescendants]",
             Position = 0
         )]
-        public SwitchParameter TopLevelDescendant { get; set; }
+        public SwitchParameter Topleveldescendant { get; set; }
 
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "Topleveldescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the first n elements from the list.
-                GraphQL argument first: Int
-                "
+@"Returns the first n elements from the list.
+GraphQL argument first: Int"
         )]
         public System.Int32? First { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "Topleveldescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns the elements in the list that come after the specified cursor.
-                GraphQL argument after: String
-                "
+@"Returns the elements in the list that come after the specified cursor.
+GraphQL argument after: String"
         )]
         public System.String? After { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "Topleveldescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sort hierarchy objects by hierarchy field.
-                GraphQL argument sortBy: HierarchySortByField
-                "
+@"Sort hierarchy objects by hierarchy field.
+GraphQL argument sortBy: HierarchySortByField"
         )]
         public HierarchySortByField? SortBy { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "Topleveldescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Sorting order for the results.
-                GraphQL argument sortOrder: SortOrder
-                "
+@"Sorting order for the results.
+GraphQL argument sortOrder: SortOrder"
         )]
         public SortOrder? SortOrder { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "Topleveldescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Types of objects to include.
-                GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]
-                "
+@"Types of objects to include.
+GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
         )]
         public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
         [Parameter(
-            ParameterSetName = "TopLevelDescendant",
+            ParameterSetName = "Topleveldescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The hierarchy object filter.
-                GraphQL argument filter: [Filter!]
-                "
+@"The hierarchy object filter.
+GraphQL argument filter: [Filter!]"
         )]
         public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
         // Database parameter set
         //
-        // GraphQL operation: mssqlDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MssqlDatabaseConnection!
+        // [GraphQL: mssqlDatabases]
         //
         [Parameter(
             ParameterSetName = "Database",
@@ -129,51 +115,45 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of Microsoft SQL Databases.
-                GraphQL operation: mssqlDatabases(,   first: Int,   after: String,   sortBy: HierarchySortByField,   sortOrder: SortOrder,   filter: [Filter!], ):MssqlDatabaseConnection!
-                ",
+@"Paginated list of Microsoft SQL Databases.
+[GraphQL: mssqlDatabases]",
             Position = 0
         )]
         public SwitchParameter Database { get; set; }
 
         
         // -------------------------------------------------------------------
-        // AvailabilityGroup parameter set
+        // Availabilitygroup parameter set
         //
-        // GraphQL operation: mssqlAvailabilityGroup(fid: UUID!):MssqlAvailabilityGroup!
+        // [GraphQL: mssqlAvailabilityGroup]
         //
         [Parameter(
-            ParameterSetName = "AvailabilityGroup",
+            ParameterSetName = "Availabilitygroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A Microsoft SQL Availability Group.
-                GraphQL operation: mssqlAvailabilityGroup(fid: UUID!):MssqlAvailabilityGroup!
-                ",
+@"A Microsoft SQL Availability Group.
+[GraphQL: mssqlAvailabilityGroup]",
             Position = 0
         )]
-        public SwitchParameter AvailabilityGroup { get; set; }
+        public SwitchParameter Availabilitygroup { get; set; }
 
         [Parameter(
-            ParameterSetName = "AvailabilityGroup",
+            ParameterSetName = "Availabilitygroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The Rubrik UUID for the object.
-                GraphQL argument fid: UUID!
-                "
+@"The Rubrik UUID for the object.
+GraphQL argument fid: UUID!"
         )]
         public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
         // Instance parameter set
         //
-        // GraphQL operation: mssqlInstance(fid: UUID!):MssqlInstance!
+        // [GraphQL: mssqlInstance]
         //
         [Parameter(
             ParameterSetName = "Instance",
@@ -181,237 +161,211 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                A Microsoft SQL Instance.
-                GraphQL operation: mssqlInstance(fid: UUID!):MssqlInstance!
-                ",
+@"A Microsoft SQL Instance.
+[GraphQL: mssqlInstance]",
             Position = 0
         )]
         public SwitchParameter Instance { get; set; }
 
         
         // -------------------------------------------------------------------
-        // RecoverableRange parameter set
+        // Recoverablerange parameter set
         //
-        // GraphQL operation: mssqlRecoverableRanges(input: GetMssqlDbRecoverableRangesInput!):MssqlRecoverableRangeListResponse!
+        // [GraphQL: mssqlRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Recoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of recoverable ranges for a Microsoft SQL Database.
-                GraphQL operation: mssqlRecoverableRanges(input: GetMssqlDbRecoverableRangesInput!):MssqlRecoverableRangeListResponse!
-                ",
+@"List of recoverable ranges for a Microsoft SQL Database.
+[GraphQL: mssqlRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter RecoverableRange { get; set; }
+        public SwitchParameter Recoverablerange { get; set; }
 
         [Parameter(
-            ParameterSetName = "RecoverableRange",
+            ParameterSetName = "Recoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Input for V1GetMssqlDbRecoverableRanges.
-                GraphQL argument input: GetMssqlDbRecoverableRangesInput!
-                "
+@"Input for V1GetMssqlDbRecoverableRanges.
+GraphQL argument input: GetMssqlDbRecoverableRangesInput!"
         )]
         public GetMssqlDbRecoverableRangesInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // DatabaseMissedSnapshot parameter set
+        // Databasemissedsnapshot parameter set
         //
-        // GraphQL operation: mssqlDatabaseMissedSnapshots(input: GetMissedMssqlDbSnapshotsInput!):MissedSnapshotListResponse!
+        // [GraphQL: mssqlDatabaseMissedSnapshots]
         //
         [Parameter(
-            ParameterSetName = "DatabaseMissedSnapshot",
+            ParameterSetName = "Databasemissedsnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of missed snapshots for a Microsoft SQL Database.
-                GraphQL operation: mssqlDatabaseMissedSnapshots(input: GetMissedMssqlDbSnapshotsInput!):MissedSnapshotListResponse!
-                ",
+@"List of missed snapshots for a Microsoft SQL Database.
+[GraphQL: mssqlDatabaseMissedSnapshots]",
             Position = 0
         )]
-        public SwitchParameter DatabaseMissedSnapshot { get; set; }
+        public SwitchParameter Databasemissedsnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // CompatibleInstance parameter set
+        // Compatibleinstance parameter set
         //
-        // GraphQL operation: mssqlCompatibleInstances(input: GetCompatibleMssqlInstancesV1Input!):MssqlInstanceSummaryListResponse!
+        // [GraphQL: mssqlCompatibleInstances]
         //
         [Parameter(
-            ParameterSetName = "CompatibleInstance",
+            ParameterSetName = "Compatibleinstance",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns all compatible instances for export for the specified recovery time.
-                GraphQL operation: mssqlCompatibleInstances(input: GetCompatibleMssqlInstancesV1Input!):MssqlInstanceSummaryListResponse!
-                ",
+@"Returns all compatible instances for export for the specified recovery time.
+[GraphQL: mssqlCompatibleInstances]",
             Position = 0
         )]
-        public SwitchParameter CompatibleInstance { get; set; }
+        public SwitchParameter Compatibleinstance { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DatabaseMissedRecoverableRange parameter set
+        // Databasemissedrecoverablerange parameter set
         //
-        // GraphQL operation: mssqlDatabaseMissedRecoverableRanges(input: GetMssqlDbMissedRecoverableRangesInput!):MssqlMissedRecoverableRangeListResponse!
+        // [GraphQL: mssqlDatabaseMissedRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "DatabaseMissedRecoverableRange",
+            ParameterSetName = "Databasemissedrecoverablerange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of missed recoverable ranges for a Microsoft SQL Database.
-                GraphQL operation: mssqlDatabaseMissedRecoverableRanges(input: GetMssqlDbMissedRecoverableRangesInput!):MssqlMissedRecoverableRangeListResponse!
-                ",
+@"List of missed recoverable ranges for a Microsoft SQL Database.
+[GraphQL: mssqlDatabaseMissedRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter DatabaseMissedRecoverableRange { get; set; }
+        public SwitchParameter Databasemissedrecoverablerange { get; set; }
 
         
         // -------------------------------------------------------------------
-        // allDatabaseRestoreFile parameter set
+        // Alldatabaserestorefile parameter set
         //
-        // GraphQL operation: allMssqlDatabaseRestoreFiles(input: MssqlGetRestoreFilesV1Input!):V1MssqlGetRestoreFilesV1Response!
+        // [GraphQL: allMssqlDatabaseRestoreFiles]
         //
         [Parameter(
-            ParameterSetName = "allDatabaseRestoreFile",
+            ParameterSetName = "Alldatabaserestorefile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Provides a list of database files to be restored for the specified restore or export operation.
-                GraphQL operation: allMssqlDatabaseRestoreFiles(input: MssqlGetRestoreFilesV1Input!):V1MssqlGetRestoreFilesV1Response!
-                ",
+@"Provides a list of database files to be restored for the specified restore or export operation.
+[GraphQL: allMssqlDatabaseRestoreFiles]",
             Position = 0
         )]
-        public SwitchParameter allDatabaseRestoreFile { get; set; }
+        public SwitchParameter Alldatabaserestorefile { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DatabaseLiveMount parameter set
+        // Databaselivemount parameter set
         //
-        // GraphQL operation: mssqlDatabaseLiveMounts(,   first: Int,   after: String,   sortBy: MssqlDatabaseLiveMountSortByInput,   filters: [MssqlDatabaseLiveMountFilterInput!], ):MssqlDatabaseLiveMountConnection!
+        // [GraphQL: mssqlDatabaseLiveMounts]
         //
         [Parameter(
-            ParameterSetName = "DatabaseLiveMount",
+            ParameterSetName = "Databaselivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of Microsoft SQL Database live mounts.
-                GraphQL operation: mssqlDatabaseLiveMounts(,   first: Int,   after: String,   sortBy: MssqlDatabaseLiveMountSortByInput,   filters: [MssqlDatabaseLiveMountFilterInput!], ):MssqlDatabaseLiveMountConnection!
-                ",
+@"Paginated list of Microsoft SQL Database live mounts.
+[GraphQL: mssqlDatabaseLiveMounts]",
             Position = 0
         )]
-        public SwitchParameter DatabaseLiveMount { get; set; }
+        public SwitchParameter Databaselivemount { get; set; }
 
         [Parameter(
-            ParameterSetName = "DatabaseLiveMount",
+            ParameterSetName = "Databaselivemount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Filters for Mssql database live mounts.
-                GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]
-                "
+@"Filters for Mssql database live mounts.
+GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
         )]
         public List<MssqlDatabaseLiveMountFilterInput>? Filters { get; set; }
         
         // -------------------------------------------------------------------
-        // DefaultPropertie parameter set
+        // Defaultpropertie parameter set
         //
-        // GraphQL operation: mssqlDefaultProperties(input: GetDefaultDbPropertiesV1Input!):UpdateMssqlDefaultPropertiesReply!
+        // [GraphQL: mssqlDefaultProperties]
         //
         [Parameter(
-            ParameterSetName = "DefaultPropertie",
+            ParameterSetName = "Defaultpropertie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                The current default properties for Microsoft SQL databases.
-                GraphQL operation: mssqlDefaultProperties(input: GetDefaultDbPropertiesV1Input!):UpdateMssqlDefaultPropertiesReply!
-                ",
+@"The current default properties for Microsoft SQL databases.
+[GraphQL: mssqlDefaultProperties]",
             Position = 0
         )]
-        public SwitchParameter DefaultPropertie { get; set; }
+        public SwitchParameter Defaultpropertie { get; set; }
 
         
         // -------------------------------------------------------------------
-        // DatabaseRestoreEstimate parameter set
+        // Databaserestoreestimate parameter set
         //
-        // GraphQL operation: mssqlDatabaseRestoreEstimate(input: MssqlRestoreEstimateV1Input!):MssqlRestoreEstimateResult!
+        // [GraphQL: mssqlDatabaseRestoreEstimate]
         //
         [Parameter(
-            ParameterSetName = "DatabaseRestoreEstimate",
+            ParameterSetName = "Databaserestoreestimate",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Returns a size estimate for a restore, export, or mount.
-                GraphQL operation: mssqlDatabaseRestoreEstimate(input: MssqlRestoreEstimateV1Input!):MssqlRestoreEstimateResult!
-                ",
+@"Returns a size estimate for a restore, export, or mount.
+[GraphQL: mssqlDatabaseRestoreEstimate]",
             Position = 0
         )]
-        public SwitchParameter DatabaseRestoreEstimate { get; set; }
+        public SwitchParameter Databaserestoreestimate { get; set; }
 
         
         // -------------------------------------------------------------------
-        // cdmLogShippingTarget parameter set
+        // Cdmlogshippingtarget parameter set
         //
-        // GraphQL operation: cdmMssqlLogShippingTargets(,   first: Int,   after: String,   sortBy: MssqlLogShippingTargetSortByInput,   filters: [MssqlLogShippingTargetFilterInput!], ):MssqlLogShippingTargetConnection!
+        // [GraphQL: cdmMssqlLogShippingTargets]
         //
         [Parameter(
-            ParameterSetName = "cdmLogShippingTarget",
+            ParameterSetName = "Cdmlogshippingtarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                Paginated list of Microsoft SQL log shipping target.
-                GraphQL operation: cdmMssqlLogShippingTargets(,   first: Int,   after: String,   sortBy: MssqlLogShippingTargetSortByInput,   filters: [MssqlLogShippingTargetFilterInput!], ):MssqlLogShippingTargetConnection!
-                ",
+@"Paginated list of Microsoft SQL log shipping target.
+[GraphQL: cdmMssqlLogShippingTargets]",
             Position = 0
         )]
-        public SwitchParameter cdmLogShippingTarget { get; set; }
+        public SwitchParameter Cdmlogshippingtarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // LogShippingTarget parameter set
+        // Logshippingtarget parameter set
         //
-        // GraphQL operation: mssqlLogShippingTargets(input: QueryLogShippingConfigurationsV2Input!):MssqlLogShippingSummaryV2ListResponse
+        // [GraphQL: mssqlLogShippingTargets]
         //
         [Parameter(
-            ParameterSetName = "LogShippingTarget",
+            ParameterSetName = "Logshippingtarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
             HelpMessage =
-                @"
-                List of filtered Microsoft SQL log shipping targets.
-                GraphQL operation: mssqlLogShippingTargets(input: QueryLogShippingConfigurationsV2Input!):MssqlLogShippingSummaryV2ListResponse
-                ",
+@"List of filtered Microsoft SQL log shipping targets.
+[GraphQL: mssqlLogShippingTargets]",
             Position = 0
         )]
-        public SwitchParameter LogShippingTarget { get; set; }
+        public SwitchParameter Logshippingtarget { get; set; }
 
 
         protected override void ProcessRecord()
@@ -420,47 +374,47 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             {
                 switch(Op)
                 {
-                    case "TopLevelDescendant":
-                        this.ProcessRecord_TopLevelDescendant();
+                    case "Topleveldescendant":
+                        this.ProcessRecord_Topleveldescendant();
                         break;
                     case "Database":
                         this.ProcessRecord_Database();
                         break;
-                    case "AvailabilityGroup":
-                        this.ProcessRecord_AvailabilityGroup();
+                    case "Availabilitygroup":
+                        this.ProcessRecord_Availabilitygroup();
                         break;
                     case "Instance":
                         this.ProcessRecord_Instance();
                         break;
-                    case "RecoverableRange":
-                        this.ProcessRecord_RecoverableRange();
+                    case "Recoverablerange":
+                        this.ProcessRecord_Recoverablerange();
                         break;
-                    case "DatabaseMissedSnapshot":
-                        this.ProcessRecord_DatabaseMissedSnapshot();
+                    case "Databasemissedsnapshot":
+                        this.ProcessRecord_Databasemissedsnapshot();
                         break;
-                    case "CompatibleInstance":
-                        this.ProcessRecord_CompatibleInstance();
+                    case "Compatibleinstance":
+                        this.ProcessRecord_Compatibleinstance();
                         break;
-                    case "DatabaseMissedRecoverableRange":
-                        this.ProcessRecord_DatabaseMissedRecoverableRange();
+                    case "Databasemissedrecoverablerange":
+                        this.ProcessRecord_Databasemissedrecoverablerange();
                         break;
-                    case "allDatabaseRestoreFile":
-                        this.ProcessRecord_allDatabaseRestoreFile();
+                    case "Alldatabaserestorefile":
+                        this.ProcessRecord_Alldatabaserestorefile();
                         break;
-                    case "DatabaseLiveMount":
-                        this.ProcessRecord_DatabaseLiveMount();
+                    case "Databaselivemount":
+                        this.ProcessRecord_Databaselivemount();
                         break;
-                    case "DefaultPropertie":
-                        this.ProcessRecord_DefaultPropertie();
+                    case "Defaultpropertie":
+                        this.ProcessRecord_Defaultpropertie();
                         break;
-                    case "DatabaseRestoreEstimate":
-                        this.ProcessRecord_DatabaseRestoreEstimate();
+                    case "Databaserestoreestimate":
+                        this.ProcessRecord_Databaserestoreestimate();
                         break;
-                    case "cdmLogShippingTarget":
-                        this.ProcessRecord_cdmLogShippingTarget();
+                    case "Cdmlogshippingtarget":
+                        this.ProcessRecord_Cdmlogshippingtarget();
                         break;
-                    case "LogShippingTarget":
-                        this.ProcessRecord_LogShippingTarget();
+                    case "Logshippingtarget":
+                        this.ProcessRecord_Logshippingtarget();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -480,9 +434,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // mssqlTopLevelDescendants.
-        protected void ProcessRecord_TopLevelDescendant()
+        protected void ProcessRecord_Topleveldescendant()
         {
-            this._logger.name += " -TopLevelDescendant";
+            this._logger.name += " -Topleveldescendant";
             // Invoke graphql operation mssqlTopLevelDescendants
             InvokeQueryMssqlTopLevelDescendants();
         }
@@ -498,9 +452,9 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // mssqlAvailabilityGroup.
-        protected void ProcessRecord_AvailabilityGroup()
+        protected void ProcessRecord_Availabilitygroup()
         {
-            this._logger.name += " -AvailabilityGroup";
+            this._logger.name += " -Availabilitygroup";
             // Invoke graphql operation mssqlAvailabilityGroup
             InvokeQueryMssqlAvailabilityGroup();
         }
@@ -516,90 +470,90 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
         // This parameter set invokes a single graphql operation:
         // mssqlRecoverableRanges.
-        protected void ProcessRecord_RecoverableRange()
+        protected void ProcessRecord_Recoverablerange()
         {
-            this._logger.name += " -RecoverableRange";
+            this._logger.name += " -Recoverablerange";
             // Invoke graphql operation mssqlRecoverableRanges
             InvokeQueryMssqlRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseMissedSnapshots.
-        protected void ProcessRecord_DatabaseMissedSnapshot()
+        protected void ProcessRecord_Databasemissedsnapshot()
         {
-            this._logger.name += " -DatabaseMissedSnapshot";
+            this._logger.name += " -Databasemissedsnapshot";
             // Invoke graphql operation mssqlDatabaseMissedSnapshots
             InvokeQueryMssqlDatabaseMissedSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlCompatibleInstances.
-        protected void ProcessRecord_CompatibleInstance()
+        protected void ProcessRecord_Compatibleinstance()
         {
-            this._logger.name += " -CompatibleInstance";
+            this._logger.name += " -Compatibleinstance";
             // Invoke graphql operation mssqlCompatibleInstances
             InvokeQueryMssqlCompatibleInstances();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseMissedRecoverableRanges.
-        protected void ProcessRecord_DatabaseMissedRecoverableRange()
+        protected void ProcessRecord_Databasemissedrecoverablerange()
         {
-            this._logger.name += " -DatabaseMissedRecoverableRange";
+            this._logger.name += " -Databasemissedrecoverablerange";
             // Invoke graphql operation mssqlDatabaseMissedRecoverableRanges
             InvokeQueryMssqlDatabaseMissedRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // allMssqlDatabaseRestoreFiles.
-        protected void ProcessRecord_allDatabaseRestoreFile()
+        protected void ProcessRecord_Alldatabaserestorefile()
         {
-            this._logger.name += " -allDatabaseRestoreFile";
+            this._logger.name += " -Alldatabaserestorefile";
             // Invoke graphql operation allMssqlDatabaseRestoreFiles
             InvokeQueryAllMssqlDatabaseRestoreFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseLiveMounts.
-        protected void ProcessRecord_DatabaseLiveMount()
+        protected void ProcessRecord_Databaselivemount()
         {
-            this._logger.name += " -DatabaseLiveMount";
+            this._logger.name += " -Databaselivemount";
             // Invoke graphql operation mssqlDatabaseLiveMounts
             InvokeQueryMssqlDatabaseLiveMounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDefaultProperties.
-        protected void ProcessRecord_DefaultPropertie()
+        protected void ProcessRecord_Defaultpropertie()
         {
-            this._logger.name += " -DefaultPropertie";
+            this._logger.name += " -Defaultpropertie";
             // Invoke graphql operation mssqlDefaultProperties
             InvokeQueryMssqlDefaultProperties();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseRestoreEstimate.
-        protected void ProcessRecord_DatabaseRestoreEstimate()
+        protected void ProcessRecord_Databaserestoreestimate()
         {
-            this._logger.name += " -DatabaseRestoreEstimate";
+            this._logger.name += " -Databaserestoreestimate";
             // Invoke graphql operation mssqlDatabaseRestoreEstimate
             InvokeQueryMssqlDatabaseRestoreEstimate();
         }
 
         // This parameter set invokes a single graphql operation:
         // cdmMssqlLogShippingTargets.
-        protected void ProcessRecord_cdmLogShippingTarget()
+        protected void ProcessRecord_Cdmlogshippingtarget()
         {
-            this._logger.name += " -cdmLogShippingTarget";
+            this._logger.name += " -Cdmlogshippingtarget";
             // Invoke graphql operation cdmMssqlLogShippingTargets
             InvokeQueryCdmMssqlLogShippingTargets();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlLogShippingTargets.
-        protected void ProcessRecord_LogShippingTarget()
+        protected void ProcessRecord_Logshippingtarget()
         {
-            this._logger.name += " -LogShippingTarget";
+            this._logger.name += " -Logshippingtarget";
             // Invoke graphql operation mssqlLogShippingTargets
             InvokeQueryMssqlLogShippingTargets();
         }

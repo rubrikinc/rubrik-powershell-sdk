@@ -112,19 +112,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> manifest: String! (scalar)
         if (this.Manifest == null && Exploration.Includes(parent + ".manifest", true))
         {
-            this.Manifest = new System.String("FETCH");
+            this.Manifest = "FETCH";
         }
         //      C# -> System.String? ShaAlgorithm
         // GraphQL -> shaAlgorithm: String! (scalar)
         if (this.ShaAlgorithm == null && Exploration.Includes(parent + ".shaAlgorithm", true))
         {
-            this.ShaAlgorithm = new System.String("FETCH");
+            this.ShaAlgorithm = "FETCH";
         }
         //      C# -> System.String? ShaChecksum
         // GraphQL -> shaChecksum: String! (scalar)
         if (this.ShaChecksum == null && Exploration.Includes(parent + ".shaChecksum", true))
         {
-            this.ShaChecksum = new System.String("FETCH");
+            this.ShaChecksum = "FETCH";
         }
     }
 

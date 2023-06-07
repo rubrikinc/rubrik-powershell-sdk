@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> productType: String! (scalar)
         if (this.ProductType == null && Exploration.Includes(parent + ".productType", true))
         {
-            this.ProductType = new System.String("FETCH");
+            this.ProductType = "FETCH";
         }
         //      C# -> System.String? Pubkey
         // GraphQL -> pubkey: String! (scalar)
         if (this.Pubkey == null && Exploration.Includes(parent + ".pubkey", true))
         {
-            this.Pubkey = new System.String("FETCH");
+            this.Pubkey = "FETCH";
         }
         //      C# -> System.String? Token
         // GraphQL -> token: String! (scalar)
         if (this.Token == null && Exploration.Includes(parent + ".token", true))
         {
-            this.Token = new System.String("FETCH");
+            this.Token = "FETCH";
         }
     }
 

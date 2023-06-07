@@ -330,25 +330,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
-            this.CdmId = new System.String("FETCH");
+            this.CdmId = "FETCH";
         }
         //      C# -> System.String? CdmVersion
         // GraphQL -> cdmVersion: String! (scalar)
         if (this.CdmVersion == null && Exploration.Includes(parent + ".cdmVersion", true))
         {
-            this.CdmVersion = new System.String("FETCH");
+            this.CdmVersion = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.String? Date
         // GraphQL -> date: String! (scalar)
         if (this.Date == null && Exploration.Includes(parent + ".date", true))
         {
-            this.Date = new System.String("FETCH");
+            this.Date = "FETCH";
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime (scalar)
@@ -366,7 +366,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? IndexingAttempts
         // GraphQL -> indexingAttempts: Long! (scalar)
@@ -414,19 +414,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> retentionInfo: String! (scalar)
         if (this.RetentionInfo == null && Exploration.Includes(parent + ".retentionInfo", true))
         {
-            this.RetentionInfo = new System.String("FETCH");
+            this.RetentionInfo = "FETCH";
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: String! (scalar)
         if (this.WorkloadId == null && Exploration.Includes(parent + ".workloadId", true))
         {
-            this.WorkloadId = new System.String("FETCH");
+            this.WorkloadId = "FETCH";
         }
         //      C# -> System.String? WorkloadType
         // GraphQL -> workloadType: String! (scalar)
         if (this.WorkloadType == null && Exploration.Includes(parent + ".workloadType", true))
         {
-            this.WorkloadType = new System.String("FETCH");
+            this.WorkloadType = "FETCH";
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)

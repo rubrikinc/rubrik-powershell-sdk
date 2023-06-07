@@ -138,7 +138,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> account: String! (scalar)
         if (this.Account == null && Exploration.Includes(parent + ".account", true))
         {
-            this.Account = new System.String("FETCH");
+            this.Account = "FETCH";
         }
         //      C# -> DateTime? ExpirationDate
         // GraphQL -> expirationDate: DateTime! (scalar)

@@ -224,7 +224,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backupPrefix: String (scalar)
         if (this.BackupPrefix == null && Exploration.Includes(parent + ".backupPrefix", true))
         {
-            this.BackupPrefix = new System.String("FETCH");
+            this.BackupPrefix = "FETCH";
         }
         //      C# -> System.Int64? BaseBackupId
         // GraphQL -> baseBackupId: Long (scalar)
@@ -236,7 +236,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> baseFullSnapshotId: String (scalar)
         if (this.BaseFullSnapshotId == null && Exploration.Includes(parent + ".baseFullSnapshotId", true))
         {
-            this.BaseFullSnapshotId = new System.String("FETCH");
+            this.BaseFullSnapshotId = "FETCH";
         }
         //      C# -> System.Boolean? IsExternalBackup
         // GraphQL -> isExternalBackup: Boolean (scalar)
@@ -278,7 +278,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotType: String (scalar)
         if (this.SnapshotType == null && Exploration.Includes(parent + ".snapshotType", true))
         {
-            this.SnapshotType = new System.String("FETCH");
+            this.SnapshotType = "FETCH";
         }
         //      C# -> List<SapHanaDataBackupFile>? Files
         // GraphQL -> files: [SapHanaDataBackupFile!] (type)

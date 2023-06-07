@@ -134,19 +134,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> aggregateK8sPvcs: Int! (scalar)
         if (this.AggregateK8sPvcs == null && Exploration.Includes(parent + ".aggregateK8sPvcs", true))
         {
-            this.AggregateK8sPvcs = new System.Int32();
+            this.AggregateK8sPvcs = Int32.MinValue;
         }
         //      C# -> System.Int32? AggregateK8sWorkloads
         // GraphQL -> aggregateK8sWorkloads: Int! (scalar)
         if (this.AggregateK8sWorkloads == null && Exploration.Includes(parent + ".aggregateK8sWorkloads", true))
         {
-            this.AggregateK8sWorkloads = new System.Int32();
+            this.AggregateK8sWorkloads = Int32.MinValue;
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
         if (this.Count == null && Exploration.Includes(parent + ".count", true))
         {
-            this.Count = new System.Int32();
+            this.Count = Int32.MinValue;
         }
         //      C# -> List<K8sNamespaceEdge>? Edges
         // GraphQL -> edges: [K8sNamespaceEdge!]! (type)

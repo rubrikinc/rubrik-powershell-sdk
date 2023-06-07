@@ -98,13 +98,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> keyVaultName: String! (scalar)
         if (this.KeyVaultName == null && Exploration.Includes(parent + ".keyVaultName", true))
         {
-            this.KeyVaultName = new System.String("FETCH");
+            this.KeyVaultName = "FETCH";
         }
         //      C# -> System.String? ResourceGroupName
         // GraphQL -> resourceGroupName: String! (scalar)
         if (this.ResourceGroupName == null && Exploration.Includes(parent + ".resourceGroupName", true))
         {
-            this.ResourceGroupName = new System.String("FETCH");
+            this.ResourceGroupName = "FETCH";
         }
     }
 

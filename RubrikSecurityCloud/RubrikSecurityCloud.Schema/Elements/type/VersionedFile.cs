@@ -120,25 +120,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> absolutePath: String! (scalar)
         if (this.AbsolutePath == null && Exploration.Includes(parent + ".absolutePath", true))
         {
-            this.AbsolutePath = new System.String("FETCH");
+            this.AbsolutePath = "FETCH";
         }
         //      C# -> System.String? DisplayPath
         // GraphQL -> displayPath: String! (scalar)
         if (this.DisplayPath == null && Exploration.Includes(parent + ".displayPath", true))
         {
-            this.DisplayPath = new System.String("FETCH");
+            this.DisplayPath = "FETCH";
         }
         //      C# -> System.String? Filename
         // GraphQL -> filename: String! (scalar)
         if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
         {
-            this.Filename = new System.String("FETCH");
+            this.Filename = "FETCH";
         }
         //      C# -> System.String? Path
         // GraphQL -> path: String! (scalar)
         if (this.Path == null && Exploration.Includes(parent + ".path", true))
         {
-            this.Path = new System.String("FETCH");
+            this.Path = "FETCH";
         }
         //      C# -> List<HierarchySnappableFileVersion>? FileVersions
         // GraphQL -> fileVersions: [HierarchySnappableFileVersion!]! (type)

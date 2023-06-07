@@ -146,19 +146,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> firstDetectedSnapshotFid: String! (scalar)
         if (this.FirstDetectedSnapshotFid == null && Exploration.Includes(parent + ".firstDetectedSnapshotFid", true))
         {
-            this.FirstDetectedSnapshotFid = new System.String("FETCH");
+            this.FirstDetectedSnapshotFid = "FETCH";
         }
         //      C# -> System.String? IntelSource
         // GraphQL -> intelSource: String! (scalar)
         if (this.IntelSource == null && Exploration.Includes(parent + ".intelSource", true))
         {
-            this.IntelSource = new System.String("FETCH");
+            this.IntelSource = "FETCH";
         }
         //      C# -> System.String? IocAttribute
         // GraphQL -> iocAttribute: String! (scalar)
         if (this.IocAttribute == null && Exploration.Includes(parent + ".iocAttribute", true))
         {
-            this.IocAttribute = new System.String("FETCH");
+            this.IocAttribute = "FETCH";
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)

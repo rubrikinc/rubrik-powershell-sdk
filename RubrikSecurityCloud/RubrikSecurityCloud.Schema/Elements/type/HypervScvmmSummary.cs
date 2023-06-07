@@ -148,25 +148,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? PrimaryClusterId
         // GraphQL -> primaryClusterId: String! (scalar)
         if (this.PrimaryClusterId == null && Exploration.Includes(parent + ".primaryClusterId", true))
         {
-            this.PrimaryClusterId = new System.String("FETCH");
+            this.PrimaryClusterId = "FETCH";
         }
         //      C# -> System.String? RunAsAccount
         // GraphQL -> runAsAccount: String! (scalar)
         if (this.RunAsAccount == null && Exploration.Includes(parent + ".runAsAccount", true))
         {
-            this.RunAsAccount = new System.String("FETCH");
+            this.RunAsAccount = "FETCH";
         }
         //      C# -> System.String? ScvmmVersion
         // GraphQL -> scvmmVersion: String (scalar)
         if (this.ScvmmVersion == null && Exploration.Includes(parent + ".scvmmVersion", true))
         {
-            this.ScvmmVersion = new System.String("FETCH");
+            this.ScvmmVersion = "FETCH";
         }
         //      C# -> System.Boolean? ShouldDeployAgent
         // GraphQL -> shouldDeployAgent: Boolean! (scalar)
@@ -178,7 +178,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)

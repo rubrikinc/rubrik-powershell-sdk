@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> href: String! (scalar)
         if (this.Href == null && Exploration.Includes(parent + ".href", true))
         {
-            this.Href = new System.String("FETCH");
+            this.Href = "FETCH";
         }
         //      C# -> System.String? Rel
         // GraphQL -> rel: String! (scalar)
         if (this.Rel == null && Exploration.Includes(parent + ".rel", true))
         {
-            this.Rel = new System.String("FETCH");
+            this.Rel = "FETCH";
         }
     }
 

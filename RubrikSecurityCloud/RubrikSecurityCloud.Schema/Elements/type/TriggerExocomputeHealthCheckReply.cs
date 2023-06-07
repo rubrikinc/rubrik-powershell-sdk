@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> healthCheckJobId: String! (scalar)
         if (this.HealthCheckJobId == null && Exploration.Includes(parent + ".healthCheckJobId", true))
         {
-            this.HealthCheckJobId = new System.String("FETCH");
+            this.HealthCheckJobId = "FETCH";
         }
     }
 

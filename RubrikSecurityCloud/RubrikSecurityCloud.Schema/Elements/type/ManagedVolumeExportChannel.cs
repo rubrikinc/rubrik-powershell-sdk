@@ -140,19 +140,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> floatingIpAddress: String! (scalar)
         if (this.FloatingIpAddress == null && Exploration.Includes(parent + ".floatingIpAddress", true))
         {
-            this.FloatingIpAddress = new System.String("FETCH");
+            this.FloatingIpAddress = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? MountPath
         // GraphQL -> mountPath: String! (scalar)
         if (this.MountPath == null && Exploration.Includes(parent + ".mountPath", true))
         {
-            this.MountPath = new System.String("FETCH");
+            this.MountPath = "FETCH";
         }
         //      C# -> ManagedVolumeExportChannelStats? ChannelStats
         // GraphQL -> channelStats: ManagedVolumeExportChannelStats! (type)

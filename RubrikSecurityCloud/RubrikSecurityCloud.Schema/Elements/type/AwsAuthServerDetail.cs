@@ -140,7 +140,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> agency: String! (scalar)
         if (this.Agency == null && Exploration.Includes(parent + ".agency", true))
         {
-            this.Agency = new System.String("FETCH");
+            this.Agency = "FETCH";
         }
         //      C# -> System.Int64? AuthServerCaCertId
         // GraphQL -> authServerCaCertId: Long! (scalar)
@@ -152,7 +152,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> authServerHostName: String! (scalar)
         if (this.AuthServerHostName == null && Exploration.Includes(parent + ".authServerHostName", true))
         {
-            this.AuthServerHostName = new System.String("FETCH");
+            this.AuthServerHostName = "FETCH";
         }
         //      C# -> System.Int64? AuthServerUserClientCertId
         // GraphQL -> authServerUserClientCertId: Long! (scalar)
@@ -164,7 +164,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> roleName: String! (scalar)
         if (this.RoleName == null && Exploration.Includes(parent + ".roleName", true))
         {
-            this.RoleName = new System.String("FETCH");
+            this.RoleName = "FETCH";
         }
     }
 

@@ -106,19 +106,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> directories: Int! (scalar)
         if (this.Directories == null && Exploration.Includes(parent + ".directories", true))
         {
-            this.Directories = new System.Int32();
+            this.Directories = Int32.MinValue;
         }
         //      C# -> System.Int32? Files
         // GraphQL -> files: Int! (scalar)
         if (this.Files == null && Exploration.Includes(parent + ".files", true))
         {
-            this.Files = new System.Int32();
+            this.Files = Int32.MinValue;
         }
         //      C# -> System.Int32? Links
         // GraphQL -> links: Int! (scalar)
         if (this.Links == null && Exploration.Includes(parent + ".links", true))
         {
-            this.Links = new System.Int32();
+            this.Links = Int32.MinValue;
         }
         //      C# -> DateTime? Timestamp
         // GraphQL -> timestamp: DateTime (scalar)

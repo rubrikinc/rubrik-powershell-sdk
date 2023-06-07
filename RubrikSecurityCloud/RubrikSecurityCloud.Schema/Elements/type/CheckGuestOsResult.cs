@@ -126,19 +126,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> errorMessage: String! (scalar)
         if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
         {
-            this.ErrorMessage = new System.String("FETCH");
+            this.ErrorMessage = "FETCH";
         }
         //      C# -> System.String? InstanceId
         // GraphQL -> instanceId: String! (scalar)
         if (this.InstanceId == null && Exploration.Includes(parent + ".instanceId", true))
         {
-            this.InstanceId = new System.String("FETCH");
+            this.InstanceId = "FETCH";
         }
         //      C# -> System.String? InstanceType
         // GraphQL -> instanceType: String! (scalar)
         if (this.InstanceType == null && Exploration.Includes(parent + ".instanceType", true))
         {
-            this.InstanceType = new System.String("FETCH");
+            this.InstanceType = "FETCH";
         }
         //      C# -> VsphereVm? Instance
         // GraphQL -> instance: VsphereVm! (type)

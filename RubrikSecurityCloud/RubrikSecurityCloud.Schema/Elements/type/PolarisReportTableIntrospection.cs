@@ -112,13 +112,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> defaultSortByColumn: String! (scalar)
         if (this.DefaultSortByColumn == null && Exploration.Includes(parent + ".defaultSortByColumn", true))
         {
-            this.DefaultSortByColumn = new System.String("FETCH");
+            this.DefaultSortByColumn = "FETCH";
         }
         //      C# -> System.Int32? PageSize
         // GraphQL -> pageSize: Int! (scalar)
         if (this.PageSize == null && Exploration.Includes(parent + ".pageSize", true))
         {
-            this.PageSize = new System.Int32();
+            this.PageSize = Int32.MinValue;
         }
         //      C# -> List<PolarisReportColumn>? Columns
         // GraphQL -> columns: [PolarisReportColumn!]! (type)

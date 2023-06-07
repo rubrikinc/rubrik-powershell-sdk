@@ -106,19 +106,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? StoragePolicyId
         // GraphQL -> storagePolicyId: String (scalar)
         if (this.StoragePolicyId == null && Exploration.Includes(parent + ".storagePolicyId", true))
         {
-            this.StoragePolicyId = new System.String("FETCH");
+            this.StoragePolicyId = "FETCH";
         }
         //      C# -> System.String? VcdMoid
         // GraphQL -> vcdMoid: String! (scalar)
         if (this.VcdMoid == null && Exploration.Includes(parent + ".vcdMoid", true))
         {
-            this.VcdMoid = new System.String("FETCH");
+            this.VcdMoid = "FETCH";
         }
         //      C# -> List<VappVmNetworkConnection>? NetworkConnections
         // GraphQL -> networkConnections: [VappVmNetworkConnection!]! (type)

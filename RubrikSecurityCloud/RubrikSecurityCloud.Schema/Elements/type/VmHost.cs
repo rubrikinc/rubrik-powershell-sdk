@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostId: String! (scalar)
         if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
         {
-            this.HostId = new System.String("FETCH");
+            this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String! (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> System.String? VcenterId
         // GraphQL -> vcenterId: String! (scalar)
         if (this.VcenterId == null && Exploration.Includes(parent + ".vcenterId", true))
         {
-            this.VcenterId = new System.String("FETCH");
+            this.VcenterId = "FETCH";
         }
         //      C# -> System.String? VcenterName
         // GraphQL -> vcenterName: String! (scalar)
         if (this.VcenterName == null && Exploration.Includes(parent + ".vcenterName", true))
         {
-            this.VcenterName = new System.String("FETCH");
+            this.VcenterName = "FETCH";
         }
     }
 

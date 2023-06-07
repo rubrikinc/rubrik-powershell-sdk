@@ -525,7 +525,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? IndexTime
         // GraphQL -> indexTime: DateTime (scalar)
@@ -615,31 +615,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> parentSnapshotId: String (scalar)
         if (this.ParentSnapshotId == null && Exploration.Includes(parent + ".parentSnapshotId", true))
         {
-            this.ParentSnapshotId = new System.String("FETCH");
+            this.ParentSnapshotId = "FETCH";
         }
         //      C# -> System.Int32? SequenceNumber
         // GraphQL -> sequenceNumber: Int! (scalar)
         if (this.SequenceNumber == null && Exploration.Includes(parent + ".sequenceNumber", true))
         {
-            this.SequenceNumber = new System.Int32();
+            this.SequenceNumber = Int32.MinValue;
         }
         //      C# -> System.String? SnappableId
         // GraphQL -> snappableId: String! (scalar)
         if (this.SnappableId == null && Exploration.Includes(parent + ".snappableId", true))
         {
-            this.SnappableId = new System.String("FETCH");
+            this.SnappableId = "FETCH";
         }
         //      C# -> System.Int32? UnexpiredArchivedSnapshotCount
         // GraphQL -> unexpiredArchivedSnapshotCount: Int! (scalar)
         if (this.UnexpiredArchivedSnapshotCount == null && Exploration.Includes(parent + ".unexpiredArchivedSnapshotCount", true))
         {
-            this.UnexpiredArchivedSnapshotCount = new System.Int32();
+            this.UnexpiredArchivedSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.Int32? UnexpiredReplicaCount
         // GraphQL -> unexpiredReplicaCount: Int! (scalar)
         if (this.UnexpiredReplicaCount == null && Exploration.Includes(parent + ".unexpiredReplicaCount", true))
         {
-            this.UnexpiredReplicaCount = new System.Int32();
+            this.UnexpiredReplicaCount = Int32.MinValue;
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)

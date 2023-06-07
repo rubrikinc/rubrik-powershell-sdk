@@ -188,7 +188,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsVersioningEnabled
         // GraphQL -> isVersioningEnabled: Boolean! (scalar)
@@ -200,19 +200,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> kind: String! (scalar)
         if (this.Kind == null && Exploration.Includes(parent + ".kind", true))
         {
-            this.Kind = new System.String("FETCH");
+            this.Kind = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? RegionName
         // GraphQL -> regionName: String! (scalar)
         if (this.RegionName == null && Exploration.Includes(parent + ".regionName", true))
         {
-            this.RegionName = new System.String("FETCH");
+            this.RegionName = "FETCH";
         }
         //      C# -> NetworkRuleSet? NetworkRuleSet
         // GraphQL -> networkRuleSet: NetworkRuleSet (type)

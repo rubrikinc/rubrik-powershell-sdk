@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> awsNativeEc2InstanceId: String! (scalar)
         if (this.AwsNativeEc2InstanceId == null && Exploration.Includes(parent + ".awsNativeEc2InstanceId", true))
         {
-            this.AwsNativeEc2InstanceId = new System.String("FETCH");
+            this.AwsNativeEc2InstanceId = "FETCH";
         }
         //      C# -> System.String? DevicePath
         // GraphQL -> devicePath: String! (scalar)
         if (this.DevicePath == null && Exploration.Includes(parent + ".devicePath", true))
         {
-            this.DevicePath = new System.String("FETCH");
+            this.DevicePath = "FETCH";
         }
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)

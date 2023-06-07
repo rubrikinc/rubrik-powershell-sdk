@@ -274,7 +274,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -286,13 +286,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> migrationStatus: String (scalar)
         if (this.MigrationStatus == null && Exploration.Includes(parent + ".migrationStatus", true))
         {
-            this.MigrationStatus = new System.String("FETCH");
+            this.MigrationStatus = "FETCH";
         }
         //      C# -> System.String? MountRequestId
         // GraphQL -> mountRequestId: String (scalar)
         if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
         {
-            this.MountRequestId = new System.String("FETCH");
+            this.MountRequestId = "FETCH";
         }
         //      C# -> DateTime? MountedDate
         // GraphQL -> mountedDate: DateTime (scalar)
@@ -304,25 +304,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountedVmId: String (scalar)
         if (this.MountedVmId == null && Exploration.Includes(parent + ".mountedVmId", true))
         {
-            this.MountedVmId = new System.String("FETCH");
+            this.MountedVmId = "FETCH";
         }
         //      C# -> System.String? MountedVmIpAddress
         // GraphQL -> mountedVmIpAddress: String (scalar)
         if (this.MountedVmIpAddress == null && Exploration.Includes(parent + ".mountedVmIpAddress", true))
         {
-            this.MountedVmIpAddress = new System.String("FETCH");
+            this.MountedVmIpAddress = "FETCH";
         }
         //      C# -> System.String? MountedVmName
         // GraphQL -> mountedVmName: String (scalar)
         if (this.MountedVmName == null && Exploration.Includes(parent + ".mountedVmName", true))
         {
-            this.MountedVmName = new System.String("FETCH");
+            this.MountedVmName = "FETCH";
         }
         //      C# -> System.String? PowerStatus
         // GraphQL -> powerStatus: String (scalar)
         if (this.PowerStatus == null && Exploration.Includes(parent + ".powerStatus", true))
         {
-            this.PowerStatus = new System.String("FETCH");
+            this.PowerStatus = "FETCH";
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
@@ -334,37 +334,37 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> storageContainerName: String (scalar)
         if (this.StorageContainerName == null && Exploration.Includes(parent + ".storageContainerName", true))
         {
-            this.StorageContainerName = new System.String("FETCH");
+            this.StorageContainerName = "FETCH";
         }
         //      C# -> System.String? TargetNutanixClusterId
         // GraphQL -> targetNutanixClusterId: String! (scalar)
         if (this.TargetNutanixClusterId == null && Exploration.Includes(parent + ".targetNutanixClusterId", true))
         {
-            this.TargetNutanixClusterId = new System.String("FETCH");
+            this.TargetNutanixClusterId = "FETCH";
         }
         //      C# -> System.String? TargetNutanixClusterName
         // GraphQL -> targetNutanixClusterName: String (scalar)
         if (this.TargetNutanixClusterName == null && Exploration.Includes(parent + ".targetNutanixClusterName", true))
         {
-            this.TargetNutanixClusterName = new System.String("FETCH");
+            this.TargetNutanixClusterName = "FETCH";
         }
         //      C# -> System.String? UnmountRequestId
         // GraphQL -> unmountRequestId: String (scalar)
         if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
         {
-            this.UnmountRequestId = new System.String("FETCH");
+            this.UnmountRequestId = "FETCH";
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
         {
-            this.VmId = new System.String("FETCH");
+            this.VmId = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String (scalar)
         if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
         {
-            this.VmName = new System.String("FETCH");
+            this.VmName = "FETCH";
         }
     }
 

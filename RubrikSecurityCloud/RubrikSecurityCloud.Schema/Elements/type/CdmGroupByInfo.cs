@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> group: String! (scalar)
         if (this.Group == null && Exploration.Includes(parent + ".group", true))
         {
-            this.Group = new System.String("FETCH");
+            this.Group = "FETCH";
         }
         //      C# -> DateTime? Start
         // GraphQL -> start: DateTime (scalar)

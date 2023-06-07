@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> awsNativeEbsVolumeId: String! (scalar)
         if (this.AwsNativeEbsVolumeId == null && Exploration.Includes(parent + ".awsNativeEbsVolumeId", true))
         {
-            this.AwsNativeEbsVolumeId = new System.String("FETCH");
+            this.AwsNativeEbsVolumeId = "FETCH";
         }
         //      C# -> System.String? DevicePath
         // GraphQL -> devicePath: String! (scalar)
         if (this.DevicePath == null && Exploration.Includes(parent + ".devicePath", true))
         {
-            this.DevicePath = new System.String("FETCH");
+            this.DevicePath = "FETCH";
         }
         //      C# -> System.Boolean? IsExcludedFromSnapshot
         // GraphQL -> isExcludedFromSnapshot: Boolean! (scalar)

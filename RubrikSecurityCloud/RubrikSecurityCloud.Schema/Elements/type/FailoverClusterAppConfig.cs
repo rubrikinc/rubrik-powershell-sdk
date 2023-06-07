@@ -126,19 +126,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> configuredSlaDomainId: String (scalar)
         if (this.ConfiguredSlaDomainId == null && Exploration.Includes(parent + ".configuredSlaDomainId", true))
         {
-            this.ConfiguredSlaDomainId = new System.String("FETCH");
+            this.ConfiguredSlaDomainId = "FETCH";
         }
         //      C# -> System.String? FailoverClusterId
         // GraphQL -> failoverClusterId: String! (scalar)
         if (this.FailoverClusterId == null && Exploration.Includes(parent + ".failoverClusterId", true))
         {
-            this.FailoverClusterId = new System.String("FETCH");
+            this.FailoverClusterId = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> FailoverClusterAppSource? FailoverClusterAppSource
         // GraphQL -> failoverClusterAppSource: FailoverClusterAppSource (type)

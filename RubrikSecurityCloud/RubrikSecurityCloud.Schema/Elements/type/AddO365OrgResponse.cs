@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> orgId: String! (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.String? RefreshOrgTaskchainId
         // GraphQL -> refreshOrgTaskchainId: String! (scalar)
         if (this.RefreshOrgTaskchainId == null && Exploration.Includes(parent + ".refreshOrgTaskchainId", true))
         {
-            this.RefreshOrgTaskchainId = new System.String("FETCH");
+            this.RefreshOrgTaskchainId = "FETCH";
         }
     }
 

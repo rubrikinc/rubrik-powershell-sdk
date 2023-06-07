@@ -106,25 +106,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cloudFormationName: String! (scalar)
         if (this.CloudFormationName == null && Exploration.Includes(parent + ".cloudFormationName", true))
         {
-            this.CloudFormationName = new System.String("FETCH");
+            this.CloudFormationName = "FETCH";
         }
         //      C# -> System.String? CloudFormationTemplateUrl
         // GraphQL -> cloudFormationTemplateUrl: String! (scalar)
         if (this.CloudFormationTemplateUrl == null && Exploration.Includes(parent + ".cloudFormationTemplateUrl", true))
         {
-            this.CloudFormationTemplateUrl = new System.String("FETCH");
+            this.CloudFormationTemplateUrl = "FETCH";
         }
         //      C# -> System.String? CloudFormationUrl
         // GraphQL -> cloudFormationUrl: String! (scalar)
         if (this.CloudFormationUrl == null && Exploration.Includes(parent + ".cloudFormationUrl", true))
         {
-            this.CloudFormationUrl = new System.String("FETCH");
+            this.CloudFormationUrl = "FETCH";
         }
         //      C# -> System.String? ErrorMessage
         // GraphQL -> errorMessage: String! (scalar)
         if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
         {
-            this.ErrorMessage = new System.String("FETCH");
+            this.ErrorMessage = "FETCH";
         }
     }
 

@@ -126,19 +126,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> k8sVersion: String (scalar)
         if (this.K8sVersion == null && Exploration.Includes(parent + ".k8sVersion", true))
         {
-            this.K8sVersion = new System.String("FETCH");
+            this.K8sVersion = "FETCH";
         }
         //      C# -> System.String? KuprClusterUuid
         // GraphQL -> kuprClusterUuid: UUID! (scalar)
         if (this.KuprClusterUuid == null && Exploration.Includes(parent + ".kuprClusterUuid", true))
         {
-            this.KuprClusterUuid = new System.String("FETCH");
+            this.KuprClusterUuid = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port == null && Exploration.Includes(parent + ".port", true))
         {
-            this.Port = new System.Int32();
+            this.Port = Int32.MinValue;
         }
         //      C# -> Cluster? AssociatedCdm
         // GraphQL -> associatedCdm: Cluster (type)

@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> host: String! (scalar)
         if (this.Host == null && Exploration.Includes(parent + ".host", true))
         {
-            this.Host = new System.String("FETCH");
+            this.Host = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port == null && Exploration.Includes(parent + ".port", true))
         {
-            this.Port = new System.Int32();
+            this.Port = Int32.MinValue;
         }
     }
 

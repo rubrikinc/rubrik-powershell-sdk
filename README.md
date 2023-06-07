@@ -4,7 +4,7 @@ Thank you for using the Rubrik PowerShell SDK.
 
 We rely on your feedback to improve the SDK !
 
-## Installation
+## :hammer: Installation
 
 ### Powershell >= 6.0
 
@@ -51,6 +51,8 @@ Import-Module RubrikSecurityCloud
 
 ## Getting Started
 
+### :key: Service Account files
+
 Retrieve a service account file from the RSC UI,
 and store it locally, say: `/path/to/service/account/file.json`.
 
@@ -72,6 +74,9 @@ after you have generated the encrypted one to avoid any security issues
 retrieved from the RSC UI).
 
 You only need to do the step with `Set-RscServiceAccountFile` once.
+
+### :electric_plug: Connecting to RSC
+
 After that, you can connect to RSC with:
 
 ```powershell
@@ -89,6 +94,31 @@ top, and it will re-use any connection existing in the session, or
 create a new one if needed. Note also that any existing connection in
 the session is only visible within your session and is not visible
 to other sessions, or to other users.
+
+### :hourglass: SDK version vs API version
+
+Now that you're connected, it's good to make sure your version
+of the SDK is not too far off from the version of the API server.
+Run:
+
+```powershell
+PS> Get-RscVersion
+
+SdkSchemaVersion ServerVersion
+---------------- -------------
+v20230524-16     v20230524-16
+```
+
+If your SDK version is too old, you will see a warning.
+You can still use the SDK, but you may not be able to use
+the latest features of the API server, and you may see
+some deprecation errors in your scripts. It's important to note
+that the SDK is backward compatible, but only for a limited
+time. If when running your scripts, you see deprecation errors,
+you should upgrade your SDK to the latest version as soon as
+possible before the deprecated features are removed from the API server.
+
+### :running: Running commands
 
 You can then run any of the commands in the SDK,
 for example, to retrieve the current account info:
@@ -124,6 +154,8 @@ To see all cmdlets in the SDK:
 (Get-Module RubrikSecurityCloud).ExportedCommands.Keys | Sort-Object
 ```
 
+### :electric_plug: Disconnecting
+
 Then to disconnect:
 
 ```powershell
@@ -135,12 +167,20 @@ with `Disconnect-Rsc`. Note however that it is not strictly
 necessary, as the connection will be closed automatically
 when the session ends.
 
-## Samples
+## Learning more about this SDK
 
-_Samples_ are scripts that demonstrate how to use the SDK.
-They are located in the `Samples` directory.
+:point_right: Start with the
+[RSC PowerShell SDK Developer Manual](docs/developer_manual.md).
+Once you've covered the basics on this page, the developer manual
+will teach you how to use the SDK to build your own scripts.
 
-## Documentation
+It refers to _samples_ that demonstrate how to use the SDK;
+you can also peruse the [samples](Samples/) directly.
 
-- [RSC PowerShell SDK Developer Manual](docs/developer_manual.md)
-- [Schema reference](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference)
+Another great way to learn about the SDK is to look at its
+end-to-end (e2e) tests: [tests/e2e](Tests/e2e/)
+
+GraphQL schema reference:
+
+- [Online schema reference](https://rubrikinc.github.io/rubrik-api-documentation/schema/reference)
+- [Local schema reference](docs/graphql/rsc_schema.graphql.json)

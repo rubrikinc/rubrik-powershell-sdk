@@ -120,25 +120,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? TargetClusterAddress
         // GraphQL -> targetClusterAddress: String (scalar)
         if (this.TargetClusterAddress == null && Exploration.Includes(parent + ".targetClusterAddress", true))
         {
-            this.TargetClusterAddress = new System.String("FETCH");
+            this.TargetClusterAddress = "FETCH";
         }
         //      C# -> System.String? TargetClusterName
         // GraphQL -> targetClusterName: String! (scalar)
         if (this.TargetClusterName == null && Exploration.Includes(parent + ".targetClusterName", true))
         {
-            this.TargetClusterName = new System.String("FETCH");
+            this.TargetClusterName = "FETCH";
         }
         //      C# -> System.String? TargetClusterUuid
         // GraphQL -> targetClusterUuid: UUID! (scalar)
         if (this.TargetClusterUuid == null && Exploration.Includes(parent + ".targetClusterUuid", true))
         {
-            this.TargetClusterUuid = new System.String("FETCH");
+            this.TargetClusterUuid = "FETCH";
         }
         //      C# -> System.Int64? TotalStorage
         // GraphQL -> totalStorage: Long (scalar)

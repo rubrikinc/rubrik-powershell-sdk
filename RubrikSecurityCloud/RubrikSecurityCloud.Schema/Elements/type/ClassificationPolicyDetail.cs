@@ -320,7 +320,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> List<System.String>? HierarchyObjectIds
         // GraphQL -> hierarchyObjectIds: [String!]! (scalar)
@@ -332,7 +332,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? LastUpdatedTime
         // GraphQL -> lastUpdatedTime: Long! (scalar)
@@ -344,19 +344,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? NumAnalyzers
         // GraphQL -> numAnalyzers: Int! (scalar)
         if (this.NumAnalyzers == null && Exploration.Includes(parent + ".numAnalyzers", true))
         {
-            this.NumAnalyzers = new System.Int32();
+            this.NumAnalyzers = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalObjects
         // GraphQL -> totalObjects: Int! (scalar)
         if (this.TotalObjects == null && Exploration.Includes(parent + ".totalObjects", true))
         {
-            this.TotalObjects = new System.Int32();
+            this.TotalObjects = Int32.MinValue;
         }
         //      C# -> List<Analyzer>? Analyzers
         // GraphQL -> analyzers: [Analyzer!]! (type)

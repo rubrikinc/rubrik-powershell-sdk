@@ -134,19 +134,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> sourceDbUser: String! (scalar)
         if (this.SourceDbUser == null && Exploration.Includes(parent + ".sourceDbUser", true))
         {
-            this.SourceDbUser = new System.String("FETCH");
+            this.SourceDbUser = "FETCH";
         }
         //      C# -> System.String? SourceNodeUser
         // GraphQL -> sourceNodeUser: String! (scalar)
         if (this.SourceNodeUser == null && Exploration.Includes(parent + ".sourceNodeUser", true))
         {
-            this.SourceNodeUser = new System.String("FETCH");
+            this.SourceNodeUser = "FETCH";
         }
         //      C# -> System.Int32? SourceSshPort
         // GraphQL -> sourceSshPort: Int! (scalar)
         if (this.SourceSshPort == null && Exploration.Includes(parent + ".sourceSshPort", true))
         {
-            this.SourceSshPort = new System.Int32();
+            this.SourceSshPort = Int32.MinValue;
         }
         //      C# -> List<MongodbHost>? IgnoreSecondaries
         // GraphQL -> ignoreSecondaries: [MongodbHost!]! (type)

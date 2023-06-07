@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> endTime: String (scalar)
         if (this.EndTime == null && Exploration.Includes(parent + ".endTime", true))
         {
-            this.EndTime = new System.String("FETCH");
+            this.EndTime = "FETCH";
         }
         //      C# -> System.String? StartTime
         // GraphQL -> startTime: String! (scalar)
         if (this.StartTime == null && Exploration.Includes(parent + ".startTime", true))
         {
-            this.StartTime = new System.String("FETCH");
+            this.StartTime = "FETCH";
         }
     }
 

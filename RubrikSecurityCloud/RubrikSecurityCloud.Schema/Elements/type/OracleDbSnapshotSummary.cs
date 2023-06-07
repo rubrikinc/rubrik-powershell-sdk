@@ -134,19 +134,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> databaseName: String! (scalar)
         if (this.DatabaseName == null && Exploration.Includes(parent + ".databaseName", true))
         {
-            this.DatabaseName = new System.String("FETCH");
+            this.DatabaseName = "FETCH";
         }
         //      C# -> System.String? HostOrRacManagedId
         // GraphQL -> hostOrRacManagedId: String (scalar)
         if (this.HostOrRacManagedId == null && Exploration.Includes(parent + ".hostOrRacManagedId", true))
         {
-            this.HostOrRacManagedId = new System.String("FETCH");
+            this.HostOrRacManagedId = "FETCH";
         }
         //      C# -> System.String? HostOrRacName
         // GraphQL -> hostOrRacName: String (scalar)
         if (this.HostOrRacName == null && Exploration.Includes(parent + ".hostOrRacName", true))
         {
-            this.HostOrRacName = new System.String("FETCH");
+            this.HostOrRacName = "FETCH";
         }
         //      C# -> System.Boolean? IsValid
         // GraphQL -> isValid: Boolean (scalar)

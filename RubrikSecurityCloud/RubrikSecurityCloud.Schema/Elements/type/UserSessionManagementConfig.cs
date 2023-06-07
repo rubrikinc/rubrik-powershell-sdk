@@ -192,13 +192,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> maxConcurrentSessions: Int! (scalar)
         if (this.MaxConcurrentSessions == null && Exploration.Includes(parent + ".maxConcurrentSessions", true))
         {
-            this.MaxConcurrentSessions = new System.Int32();
+            this.MaxConcurrentSessions = Int32.MinValue;
         }
         //      C# -> System.Int32? MaxConcurrentSessionsMaxLimit
         // GraphQL -> maxConcurrentSessionsMaxLimit: Int! (scalar)
         if (this.MaxConcurrentSessionsMaxLimit == null && Exploration.Includes(parent + ".maxConcurrentSessionsMaxLimit", true))
         {
-            this.MaxConcurrentSessionsMaxLimit = new System.Int32();
+            this.MaxConcurrentSessionsMaxLimit = Int32.MinValue;
         }
         //      C# -> System.Int64? SessionTimeoutInSeconds
         // GraphQL -> sessionTimeoutInSeconds: Long! (scalar)

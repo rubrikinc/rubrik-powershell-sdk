@@ -162,19 +162,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> contractFile: String! (scalar)
         if (this.ContractFile == null && Exploration.Includes(parent + ".contractFile", true))
         {
-            this.ContractFile = new System.String("FETCH");
+            this.ContractFile = "FETCH";
         }
         //      C# -> System.String? ContractId
         // GraphQL -> contractId: String! (scalar)
         if (this.ContractId == null && Exploration.Includes(parent + ".contractId", true))
         {
-            this.ContractId = new System.String("FETCH");
+            this.ContractId = "FETCH";
         }
         //      C# -> System.String? DownloadEndpoint
         // GraphQL -> downloadEndpoint: URL! (scalar)
         if (this.DownloadEndpoint == null && Exploration.Includes(parent + ".downloadEndpoint", true))
         {
-            this.DownloadEndpoint = new System.String("FETCH");
+            this.DownloadEndpoint = "FETCH";
         }
         //      C# -> DateTime? EffectiveDate
         // GraphQL -> effectiveDate: DateTime! (scalar)
@@ -192,19 +192,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> majorVersionId: String! (scalar)
         if (this.MajorVersionId == null && Exploration.Includes(parent + ".majorVersionId", true))
         {
-            this.MajorVersionId = new System.String("FETCH");
+            this.MajorVersionId = "FETCH";
         }
         //      C# -> System.String? PublishedVersionId
         // GraphQL -> publishedVersionId: String! (scalar)
         if (this.PublishedVersionId == null && Exploration.Includes(parent + ".publishedVersionId", true))
         {
-            this.PublishedVersionId = new System.String("FETCH");
+            this.PublishedVersionId = "FETCH";
         }
         //      C# -> System.String? Title
         // GraphQL -> title: String! (scalar)
         if (this.Title == null && Exploration.Includes(parent + ".title", true))
         {
-            this.Title = new System.String("FETCH");
+            this.Title = "FETCH";
         }
     }
 

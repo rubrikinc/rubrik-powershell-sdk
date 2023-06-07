@@ -690,31 +690,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> availabilityZone: String! (scalar)
         if (this.AvailabilityZone == null && Exploration.Includes(parent + ".availabilityZone", true))
         {
-            this.AvailabilityZone = new System.String("FETCH");
+            this.AvailabilityZone = "FETCH";
         }
         //      C# -> System.String? AwsAccountRubrikId
         // GraphQL -> awsAccountRubrikId: String! (scalar)
         if (this.AwsAccountRubrikId == null && Exploration.Includes(parent + ".awsAccountRubrikId", true))
         {
-            this.AwsAccountRubrikId = new System.String("FETCH");
+            this.AwsAccountRubrikId = "FETCH";
         }
         //      C# -> System.String? AwsNativeAccountName
         // GraphQL -> awsNativeAccountName: String! (scalar)
         if (this.AwsNativeAccountName == null && Exploration.Includes(parent + ".awsNativeAccountName", true))
         {
-            this.AwsNativeAccountName = new System.String("FETCH");
+            this.AwsNativeAccountName = "FETCH";
         }
         //      C# -> System.String? CloudNativeId
         // GraphQL -> cloudNativeId: String! (scalar)
         if (this.CloudNativeId == null && Exploration.Includes(parent + ".cloudNativeId", true))
         {
-            this.CloudNativeId = new System.String("FETCH");
+            this.CloudNativeId = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Int64? Iops
         // GraphQL -> iops: Long! (scalar)
@@ -750,31 +750,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.String? NativeName
         // GraphQL -> nativeName: String! (scalar)
         if (this.NativeName == null && Exploration.Includes(parent + ".nativeName", true))
         {
-            this.NativeName = new System.String("FETCH");
+            this.NativeName = "FETCH";
         }
         //      C# -> System.Int32? NumWorkloadDescendants
         // GraphQL -> numWorkloadDescendants: Int! (scalar)
         if (this.NumWorkloadDescendants == null && Exploration.Includes(parent + ".numWorkloadDescendants", true))
         {
-            this.NumWorkloadDescendants = new System.Int32();
+            this.NumWorkloadDescendants = Int32.MinValue;
         }
         //      C# -> System.Int32? OnDemandSnapshotCount
         // GraphQL -> onDemandSnapshotCount: Int! (scalar)
         if (this.OnDemandSnapshotCount == null && Exploration.Includes(parent + ".onDemandSnapshotCount", true))
         {
-            this.OnDemandSnapshotCount = new System.Int32();
+            this.OnDemandSnapshotCount = Int32.MinValue;
         }
         //      C# -> System.Int32? SizeInGiBs
         // GraphQL -> sizeInGiBs: Int! (scalar)
         if (this.SizeInGiBs == null && Exploration.Includes(parent + ".sizeInGiBs", true))
         {
-            this.SizeInGiBs = new System.Int32();
+            this.SizeInGiBs = Int32.MinValue;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -786,19 +786,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> volumeName: String! (scalar)
         if (this.VolumeName == null && Exploration.Includes(parent + ".volumeName", true))
         {
-            this.VolumeName = new System.String("FETCH");
+            this.VolumeName = "FETCH";
         }
         //      C# -> System.String? VolumeNativeId
         // GraphQL -> volumeNativeId: String! (scalar)
         if (this.VolumeNativeId == null && Exploration.Includes(parent + ".volumeNativeId", true))
         {
-            this.VolumeNativeId = new System.String("FETCH");
+            this.VolumeNativeId = "FETCH";
         }
         //      C# -> System.String? VolumeType
         // GraphQL -> volumeType: String! (scalar)
         if (this.VolumeType == null && Exploration.Includes(parent + ".volumeType", true))
         {
-            this.VolumeType = new System.String("FETCH");
+            this.VolumeType = "FETCH";
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

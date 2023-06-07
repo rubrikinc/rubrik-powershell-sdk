@@ -232,79 +232,79 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> numBlueprintsReady: Int! (scalar)
         if (this.NumBlueprintsReady == null && Exploration.Includes(parent + ".numBlueprintsReady", true))
         {
-            this.NumBlueprintsReady = new System.Int32();
+            this.NumBlueprintsReady = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBlueprintsWithIssues
         // GraphQL -> numBlueprintsWithIssues: Int! (scalar)
         if (this.NumBlueprintsWithIssues == null && Exploration.Includes(parent + ".numBlueprintsWithIssues", true))
         {
-            this.NumBlueprintsWithIssues = new System.Int32();
+            this.NumBlueprintsWithIssues = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpFailedLastFailover
         // GraphQL -> numBpFailedLastFailover: Int! (scalar)
         if (this.NumBpFailedLastFailover == null && Exploration.Includes(parent + ".numBpFailedLastFailover", true))
         {
-            this.NumBpFailedLastFailover = new System.Int32();
+            this.NumBpFailedLastFailover = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpFailedLastTestFailover
         // GraphQL -> numBpFailedLastTestFailover: Int! (scalar)
         if (this.NumBpFailedLastTestFailover == null && Exploration.Includes(parent + ".numBpFailedLastTestFailover", true))
         {
-            this.NumBpFailedLastTestFailover = new System.Int32();
+            this.NumBpFailedLastTestFailover = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpFailedTestFailoverLastQuarter
         // GraphQL -> numBpFailedTestFailoverLastQuarter: Int! (scalar)
         if (this.NumBpFailedTestFailoverLastQuarter == null && Exploration.Includes(parent + ".numBpFailedTestFailoverLastQuarter", true))
         {
-            this.NumBpFailedTestFailoverLastQuarter = new System.Int32();
+            this.NumBpFailedTestFailoverLastQuarter = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpPassedLastFailover
         // GraphQL -> numBpPassedLastFailover: Int! (scalar)
         if (this.NumBpPassedLastFailover == null && Exploration.Includes(parent + ".numBpPassedLastFailover", true))
         {
-            this.NumBpPassedLastFailover = new System.Int32();
+            this.NumBpPassedLastFailover = Int32.MinValue;
         }
         //      C# -> System.Int32? NumBpPassedLastTestFailover
         // GraphQL -> numBpPassedLastTestFailover: Int! (scalar)
         if (this.NumBpPassedLastTestFailover == null && Exploration.Includes(parent + ".numBpPassedLastTestFailover", true))
         {
-            this.NumBpPassedLastTestFailover = new System.Int32();
+            this.NumBpPassedLastTestFailover = Int32.MinValue;
         }
         //      C# -> System.Int32? NumDrPlansReady
         // GraphQL -> numDrPlansReady: Int! (scalar)
         if (this.NumDrPlansReady == null && Exploration.Includes(parent + ".numDrPlansReady", true))
         {
-            this.NumDrPlansReady = new System.Int32();
+            this.NumDrPlansReady = Int32.MinValue;
         }
         //      C# -> System.Int32? NumDrPlansWithIssues
         // GraphQL -> numDrPlansWithIssues: Int! (scalar)
         if (this.NumDrPlansWithIssues == null && Exploration.Includes(parent + ".numDrPlansWithIssues", true))
         {
-            this.NumDrPlansWithIssues = new System.Int32();
+            this.NumDrPlansWithIssues = Int32.MinValue;
         }
         //      C# -> System.Int32? NumVmwareVmsProtected
         // GraphQL -> numVmwareVmsProtected: Int! (scalar)
         if (this.NumVmwareVmsProtected == null && Exploration.Includes(parent + ".numVmwareVmsProtected", true))
         {
-            this.NumVmwareVmsProtected = new System.Int32();
+            this.NumVmwareVmsProtected = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalBlueprints
         // GraphQL -> totalBlueprints: Int! (scalar)
         if (this.TotalBlueprints == null && Exploration.Includes(parent + ".totalBlueprints", true))
         {
-            this.TotalBlueprints = new System.Int32();
+            this.TotalBlueprints = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalDrPlans
         // GraphQL -> totalDrPlans: Int! (scalar)
         if (this.TotalDrPlans == null && Exploration.Includes(parent + ".totalDrPlans", true))
         {
-            this.TotalDrPlans = new System.Int32();
+            this.TotalDrPlans = Int32.MinValue;
         }
         //      C# -> System.Int32? TotalVmwareVms
         // GraphQL -> totalVmwareVms: Int! (scalar)
         if (this.TotalVmwareVms == null && Exploration.Includes(parent + ".totalVmwareVms", true))
         {
-            this.TotalVmwareVms = new System.Int32();
+            this.TotalVmwareVms = Int32.MinValue;
         }
     }
 

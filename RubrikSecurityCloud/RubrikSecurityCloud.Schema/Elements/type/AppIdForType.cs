@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appId: String! (scalar)
         if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
         {
-            this.AppId = new System.String("FETCH");
+            this.AppId = "FETCH";
         }
         //      C# -> System.String? AppType
         // GraphQL -> appType: String! (scalar)
         if (this.AppType == null && Exploration.Includes(parent + ".appType", true))
         {
-            this.AppType = new System.String("FETCH");
+            this.AppType = "FETCH";
         }
     }
 

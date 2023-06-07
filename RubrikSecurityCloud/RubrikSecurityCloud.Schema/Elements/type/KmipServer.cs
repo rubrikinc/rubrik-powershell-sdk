@@ -92,13 +92,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> address: String! (scalar)
         if (this.Address == null && Exploration.Includes(parent + ".address", true))
         {
-            this.Address = new System.String("FETCH");
+            this.Address = "FETCH";
         }
         //      C# -> System.Int32? Port
         // GraphQL -> port: Int! (scalar)
         if (this.Port == null && Exploration.Includes(parent + ".port", true))
         {
-            this.Port = new System.Int32();
+            this.Port = Int32.MinValue;
         }
         //      C# -> List<CdmKmipServerInfo>? Clusters
         // GraphQL -> clusters: [CdmKmipServerInfo!]! (type)

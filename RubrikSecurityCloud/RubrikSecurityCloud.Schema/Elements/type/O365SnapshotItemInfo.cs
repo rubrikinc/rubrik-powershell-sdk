@@ -140,25 +140,25 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? ParentFolderId
         // GraphQL -> parentFolderId: String (scalar)
         if (this.ParentFolderId == null && Exploration.Includes(parent + ".parentFolderId", true))
         {
-            this.ParentFolderId = new System.String("FETCH");
+            this.ParentFolderId = "FETCH";
         }
         //      C# -> System.String? SnapshotId
         // GraphQL -> snapshotId: String (scalar)
         if (this.SnapshotId == null && Exploration.Includes(parent + ".snapshotId", true))
         {
-            this.SnapshotId = new System.String("FETCH");
+            this.SnapshotId = "FETCH";
         }
         //      C# -> System.Int32? SnapshotNum
         // GraphQL -> snapshotNum: Int (scalar)
         if (this.SnapshotNum == null && Exploration.Includes(parent + ".snapshotNum", true))
         {
-            this.SnapshotNum = new System.Int32();
+            this.SnapshotNum = Int32.MinValue;
         }
         //      C# -> O365ReplyFields? O365ReplyFields
         // GraphQL -> o365ReplyFields: O365ReplyFields! (type)

@@ -1,13 +1,12 @@
+<#
+.SYNOPSIS
+Run tests around account settings
+#>
 BeforeAll {
-    & "$PSScriptRoot\..\..\Utils\import.ps1"
-    . "$PSScriptRoot\..\serviceaccount.ps1"
+    . "$PSScriptRoot\e2eInit.ps1"
 }
 
 Describe -Name 'Connect to API' -Fixture {
-    BeforeAll {
-        Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
-    }
-
     It -Name 'Invoke-RscQueryAccount' -Test {
         $accountSetting = Invoke-RscQueryAccount -Setting
         $accountSetting.IsEulaAccepted | Should -Not -BeNullOrEmpty

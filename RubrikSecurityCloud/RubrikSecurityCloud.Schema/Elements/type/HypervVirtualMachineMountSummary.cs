@@ -224,19 +224,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostId: String (scalar)
         if (this.HostId == null && Exploration.Includes(parent + ".hostId", true))
         {
-            this.HostId = new System.String("FETCH");
+            this.HostId = "FETCH";
         }
         //      C# -> System.String? HostName
         // GraphQL -> hostName: String (scalar)
         if (this.HostName == null && Exploration.Includes(parent + ".hostName", true))
         {
-            this.HostName = new System.String("FETCH");
+            this.HostName = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.Boolean? IsReady
         // GraphQL -> isReady: Boolean! (scalar)
@@ -248,19 +248,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> mountRequestId: String (scalar)
         if (this.MountRequestId == null && Exploration.Includes(parent + ".mountRequestId", true))
         {
-            this.MountRequestId = new System.String("FETCH");
+            this.MountRequestId = "FETCH";
         }
         //      C# -> System.String? MountedVmId
         // GraphQL -> mountedVmId: String (scalar)
         if (this.MountedVmId == null && Exploration.Includes(parent + ".mountedVmId", true))
         {
-            this.MountedVmId = new System.String("FETCH");
+            this.MountedVmId = "FETCH";
         }
         //      C# -> System.String? MountedVmName
         // GraphQL -> mountedVmName: String (scalar)
         if (this.MountedVmName == null && Exploration.Includes(parent + ".mountedVmName", true))
         {
-            this.MountedVmName = new System.String("FETCH");
+            this.MountedVmName = "FETCH";
         }
         //      C# -> DateTime? SnapshotDate
         // GraphQL -> snapshotDate: DateTime (scalar)
@@ -272,19 +272,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> unmountRequestId: String (scalar)
         if (this.UnmountRequestId == null && Exploration.Includes(parent + ".unmountRequestId", true))
         {
-            this.UnmountRequestId = new System.String("FETCH");
+            this.UnmountRequestId = "FETCH";
         }
         //      C# -> System.String? VmId
         // GraphQL -> vmId: String! (scalar)
         if (this.VmId == null && Exploration.Includes(parent + ".vmId", true))
         {
-            this.VmId = new System.String("FETCH");
+            this.VmId = "FETCH";
         }
         //      C# -> System.String? VmName
         // GraphQL -> vmName: String! (scalar)
         if (this.VmName == null && Exploration.Includes(parent + ".vmName", true))
         {
-            this.VmName = new System.String("FETCH");
+            this.VmName = "FETCH";
         }
     }
 

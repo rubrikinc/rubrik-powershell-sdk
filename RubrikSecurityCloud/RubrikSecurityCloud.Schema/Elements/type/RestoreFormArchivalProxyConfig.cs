@@ -64,7 +64,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> proxyServer: String (scalar)
         if (this.ProxyServer == null && Exploration.Includes(parent + ".proxyServer", true))
         {
-            this.ProxyServer = new System.String("FETCH");
+            this.ProxyServer = "FETCH";
         }
     }
 

@@ -112,13 +112,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> backupId: String (scalar)
         if (this.BackupId == null && Exploration.Includes(parent + ".backupId", true))
         {
-            this.BackupId = new System.String("FETCH");
+            this.BackupId = "FETCH";
         }
         //      C# -> System.String? DestinationPath
         // GraphQL -> destinationPath: String (scalar)
         if (this.DestinationPath == null && Exploration.Includes(parent + ".destinationPath", true))
         {
-            this.DestinationPath = new System.String("FETCH");
+            this.DestinationPath = "FETCH";
         }
         //      C# -> DateTime? EndTime
         // GraphQL -> endTime: DateTime (scalar)

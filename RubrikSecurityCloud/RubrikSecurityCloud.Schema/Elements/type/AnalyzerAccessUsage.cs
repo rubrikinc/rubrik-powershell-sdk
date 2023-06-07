@@ -106,13 +106,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> count: Int! (scalar)
         if (this.Count == null && Exploration.Includes(parent + ".count", true))
         {
-            this.Count = new System.Int32();
+            this.Count = Int32.MinValue;
         }
         //      C# -> System.Int32? CountDelta
         // GraphQL -> countDelta: Int! (scalar)
         if (this.CountDelta == null && Exploration.Includes(parent + ".countDelta", true))
         {
-            this.CountDelta = new System.Int32();
+            this.CountDelta = Int32.MinValue;
         }
         //      C# -> Analyzer? Analyzer
         // GraphQL -> analyzer: Analyzer (type)

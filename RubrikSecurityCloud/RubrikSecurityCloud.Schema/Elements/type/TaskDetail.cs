@@ -582,31 +582,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> archivalTarget: String (scalar)
         if (this.ArchivalTarget == null && Exploration.Includes(parent + ".archivalTarget", true))
         {
-            this.ArchivalTarget = new System.String("FETCH");
+            this.ArchivalTarget = "FETCH";
         }
         //      C# -> System.String? ClusterLocation
         // GraphQL -> clusterLocation: String! (scalar)
         if (this.ClusterLocation == null && Exploration.Includes(parent + ".clusterLocation", true))
         {
-            this.ClusterLocation = new System.String("FETCH");
+            this.ClusterLocation = "FETCH";
         }
         //      C# -> System.String? ClusterName
         // GraphQL -> clusterName: String! (scalar)
         if (this.ClusterName == null && Exploration.Includes(parent + ".clusterName", true))
         {
-            this.ClusterName = new System.String("FETCH");
+            this.ClusterName = "FETCH";
         }
         //      C# -> System.String? ClusterType
         // GraphQL -> clusterType: String! (scalar)
         if (this.ClusterType == null && Exploration.Includes(parent + ".clusterType", true))
         {
-            this.ClusterType = new System.String("FETCH");
+            this.ClusterType = "FETCH";
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: UUID! (scalar)
         if (this.ClusterUuid == null && Exploration.Includes(parent + ".clusterUuid", true))
         {
-            this.ClusterUuid = new System.String("FETCH");
+            this.ClusterUuid = "FETCH";
         }
         //      C# -> System.Single? DataReduction
         // GraphQL -> dataReduction: Float (scalar)
@@ -630,7 +630,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> directArchive: String (scalar)
         if (this.DirectArchive == null && Exploration.Includes(parent + ".directArchive", true))
         {
-            this.DirectArchive = new System.String("FETCH");
+            this.DirectArchive = "FETCH";
         }
         //      C# -> System.Int64? Duration
         // GraphQL -> duration: Long! (scalar)
@@ -648,7 +648,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failureReason: String (scalar)
         if (this.FailureReason == null && Exploration.Includes(parent + ".failureReason", true))
         {
-            this.FailureReason = new System.String("FETCH");
+            this.FailureReason = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -660,7 +660,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.Int64? LogicalBytes
         // GraphQL -> logicalBytes: Long (scalar)
@@ -684,31 +684,31 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> objectFid: String! (scalar)
         if (this.ObjectFid == null && Exploration.Includes(parent + ".objectFid", true))
         {
-            this.ObjectFid = new System.String("FETCH");
+            this.ObjectFid = "FETCH";
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
         if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
         {
-            this.ObjectName = new System.String("FETCH");
+            this.ObjectName = "FETCH";
         }
         //      C# -> System.String? ObjectType
         // GraphQL -> objectType: String! (scalar)
         if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
         {
-            this.ObjectType = new System.String("FETCH");
+            this.ObjectType = "FETCH";
         }
         //      C# -> System.String? OrgId
         // GraphQL -> orgId: String (scalar)
         if (this.OrgId == null && Exploration.Includes(parent + ".orgId", true))
         {
-            this.OrgId = new System.String("FETCH");
+            this.OrgId = "FETCH";
         }
         //      C# -> System.String? OrgName
         // GraphQL -> orgName: String (scalar)
         if (this.OrgName == null && Exploration.Includes(parent + ".orgName", true))
         {
-            this.OrgName = new System.String("FETCH");
+            this.OrgName = "FETCH";
         }
         //      C# -> System.Int64? PhysicalBytes
         // GraphQL -> physicalBytes: Long (scalar)
@@ -720,55 +720,55 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> protectedVolume: String (scalar)
         if (this.ProtectedVolume == null && Exploration.Includes(parent + ".protectedVolume", true))
         {
-            this.ProtectedVolume = new System.String("FETCH");
+            this.ProtectedVolume = "FETCH";
         }
         //      C# -> System.String? RecoveryPoint
         // GraphQL -> recoveryPoint: String (scalar)
         if (this.RecoveryPoint == null && Exploration.Includes(parent + ".recoveryPoint", true))
         {
-            this.RecoveryPoint = new System.String("FETCH");
+            this.RecoveryPoint = "FETCH";
         }
         //      C# -> System.String? RecoveryPointType
         // GraphQL -> recoveryPointType: String (scalar)
         if (this.RecoveryPointType == null && Exploration.Includes(parent + ".recoveryPointType", true))
         {
-            this.RecoveryPointType = new System.String("FETCH");
+            this.RecoveryPointType = "FETCH";
         }
         //      C# -> System.String? ReplicationSource
         // GraphQL -> replicationSource: String (scalar)
         if (this.ReplicationSource == null && Exploration.Includes(parent + ".replicationSource", true))
         {
-            this.ReplicationSource = new System.String("FETCH");
+            this.ReplicationSource = "FETCH";
         }
         //      C# -> System.String? ReplicationTarget
         // GraphQL -> replicationTarget: String (scalar)
         if (this.ReplicationTarget == null && Exploration.Includes(parent + ".replicationTarget", true))
         {
-            this.ReplicationTarget = new System.String("FETCH");
+            this.ReplicationTarget = "FETCH";
         }
         //      C# -> System.String? ReportJobInstanceId
         // GraphQL -> reportJobInstanceId: String! (scalar)
         if (this.ReportJobInstanceId == null && Exploration.Includes(parent + ".reportJobInstanceId", true))
         {
-            this.ReportJobInstanceId = new System.String("FETCH");
+            this.ReportJobInstanceId = "FETCH";
         }
         //      C# -> System.String? SlaDomainId
         // GraphQL -> slaDomainId: String! (scalar)
         if (this.SlaDomainId == null && Exploration.Includes(parent + ".slaDomainId", true))
         {
-            this.SlaDomainId = new System.String("FETCH");
+            this.SlaDomainId = "FETCH";
         }
         //      C# -> System.String? SlaDomainName
         // GraphQL -> slaDomainName: String! (scalar)
         if (this.SlaDomainName == null && Exploration.Includes(parent + ".slaDomainName", true))
         {
-            this.SlaDomainName = new System.String("FETCH");
+            this.SlaDomainName = "FETCH";
         }
         //      C# -> System.String? SnapshotConsistency
         // GraphQL -> snapshotConsistency: String (scalar)
         if (this.SnapshotConsistency == null && Exploration.Includes(parent + ".snapshotConsistency", true))
         {
-            this.SnapshotConsistency = new System.String("FETCH");
+            this.SnapshotConsistency = "FETCH";
         }
         //      C# -> DateTime? StartTime
         // GraphQL -> startTime: DateTime! (scalar)
@@ -780,19 +780,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> status: String! (scalar)
         if (this.Status == null && Exploration.Includes(parent + ".status", true))
         {
-            this.Status = new System.String("FETCH");
+            this.Status = "FETCH";
         }
         //      C# -> System.String? TaskCategory
         // GraphQL -> taskCategory: String! (scalar)
         if (this.TaskCategory == null && Exploration.Includes(parent + ".taskCategory", true))
         {
-            this.TaskCategory = new System.String("FETCH");
+            this.TaskCategory = "FETCH";
         }
         //      C# -> System.String? TaskType
         // GraphQL -> taskType: String! (scalar)
         if (this.TaskType == null && Exploration.Includes(parent + ".taskType", true))
         {
-            this.TaskType = new System.String("FETCH");
+            this.TaskType = "FETCH";
         }
         //      C# -> System.Int64? TotalFilesTransferred
         // GraphQL -> totalFilesTransferred: Long (scalar)
@@ -804,7 +804,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> userName: String (scalar)
         if (this.UserName == null && Exploration.Includes(parent + ".userName", true))
         {
-            this.UserName = new System.String("FETCH");
+            this.UserName = "FETCH";
         }
     }
 

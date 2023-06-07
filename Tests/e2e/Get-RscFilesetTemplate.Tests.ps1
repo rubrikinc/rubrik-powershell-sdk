@@ -1,13 +1,13 @@
-#& "$PSScriptRoot\..\..\Utils\import.ps1"
-Import-Module "$PSScriptRoot\..\..\Output\RubrikSecurityCloud.psd1"
-
-. "$PSScriptRoot\..\serviceaccount.ps1"
+<#
+.SYNOPSIS
+Run tests around fileset templates
+#>
+BeforeAll {
+    . "$PSScriptRoot\e2eInit.ps1"
+}
 
 
 Describe -Name 'Get-RscFilesetTemplate' -Tag 'Public' -Fixture{
-    BeforeAll {
-        Connect-Rsc -ServiceAccountFile (Get-ServiceAccountFile)
-    }
     Context -Name 'Parameter Validation' {
         It -Name 'Parameter Name can be $null' -Test {
             { Get-RscFilesetTemplate -OsType Windows -Name $null } |

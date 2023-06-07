@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> targetClusterAddress: String! (scalar)
         if (this.TargetClusterAddress == null && Exploration.Includes(parent + ".targetClusterAddress", true))
         {
-            this.TargetClusterAddress = new System.String("FETCH");
+            this.TargetClusterAddress = "FETCH";
         }
         //      C# -> System.String? TargetClusterName
         // GraphQL -> targetClusterName: String (scalar)
         if (this.TargetClusterName == null && Exploration.Includes(parent + ".targetClusterName", true))
         {
-            this.TargetClusterName = new System.String("FETCH");
+            this.TargetClusterName = "FETCH";
         }
     }
 

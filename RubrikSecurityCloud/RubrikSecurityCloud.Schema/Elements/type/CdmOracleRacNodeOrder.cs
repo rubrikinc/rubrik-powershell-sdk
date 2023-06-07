@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> nodeName: String! (scalar)
         if (this.NodeName == null && Exploration.Includes(parent + ".nodeName", true))
         {
-            this.NodeName = new System.String("FETCH");
+            this.NodeName = "FETCH";
         }
         //      C# -> System.Int32? Order
         // GraphQL -> order: Int! (scalar)
         if (this.Order == null && Exploration.Includes(parent + ".order", true))
         {
-            this.Order = new System.Int32();
+            this.Order = Int32.MinValue;
         }
     }
 

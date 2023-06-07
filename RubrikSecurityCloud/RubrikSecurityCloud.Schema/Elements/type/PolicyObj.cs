@@ -397,13 +397,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> System.String? SnapshotFid
         // GraphQL -> snapshotFid: String! (scalar)
         if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
         {
-            this.SnapshotFid = new System.String("FETCH");
+            this.SnapshotFid = "FETCH";
         }
         //      C# -> System.Int64? SnapshotTimestamp
         // GraphQL -> snapshotTimestamp: Long! (scalar)
@@ -415,7 +415,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> timeContext: String! (scalar)
         if (this.TimeContext == null && Exploration.Includes(parent + ".timeContext", true))
         {
-            this.TimeContext = new System.String("FETCH");
+            this.TimeContext = "FETCH";
         }
         //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
         // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)

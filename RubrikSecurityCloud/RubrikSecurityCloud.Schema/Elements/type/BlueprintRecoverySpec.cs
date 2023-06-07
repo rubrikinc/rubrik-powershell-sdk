@@ -174,7 +174,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> failoverId: UUID (scalar)
         if (this.FailoverId == null && Exploration.Includes(parent + ".failoverId", true))
         {
-            this.FailoverId = new System.String("FETCH");
+            this.FailoverId = "FETCH";
         }
         //      C# -> System.Boolean? IsPending
         // GraphQL -> isPending: Boolean! (scalar)
@@ -186,13 +186,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> recoverySpecId: UUID! (scalar)
         if (this.RecoverySpecId == null && Exploration.Includes(parent + ".recoverySpecId", true))
         {
-            this.RecoverySpecId = new System.String("FETCH");
+            this.RecoverySpecId = "FETCH";
         }
         //      C# -> System.String? UserData
         // GraphQL -> userData: String (scalar)
         if (this.UserData == null && Exploration.Includes(parent + ".userData", true))
         {
-            this.UserData = new System.String("FETCH");
+            this.UserData = "FETCH";
         }
         //      C# -> System.Int64? Version
         // GraphQL -> version: Long! (scalar)

@@ -182,19 +182,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> description: String! (scalar)
         if (this.Description == null && Exploration.Includes(parent + ".description", true))
         {
-            this.Description = new System.String("FETCH");
+            this.Description = "FETCH";
         }
         //      C# -> System.String? HelpUrl
         // GraphQL -> helpUrl: URL (scalar)
         if (this.HelpUrl == null && Exploration.Includes(parent + ".helpUrl", true))
         {
-            this.HelpUrl = new System.String("FETCH");
+            this.HelpUrl = "FETCH";
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
-            this.Id = new System.String("FETCH");
+            this.Id = "FETCH";
         }
         //      C# -> DateTime? ReleaseDate
         // GraphQL -> releaseDate: DateTime (scalar)
@@ -206,13 +206,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> title: String! (scalar)
         if (this.Title == null && Exploration.Includes(parent + ".title", true))
         {
-            this.Title = new System.String("FETCH");
+            this.Title = "FETCH";
         }
         //      C# -> System.String? Version
         // GraphQL -> version: String! (scalar)
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
-            this.Version = new System.String("FETCH");
+            this.Version = "FETCH";
         }
         //      C# -> ReleaseNoteFeatureFlag? FeatureFlag
         // GraphQL -> featureFlag: ReleaseNoteFeatureFlag (type)

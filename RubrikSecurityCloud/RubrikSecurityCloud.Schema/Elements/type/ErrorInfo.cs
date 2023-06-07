@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> errorMessage: String! (scalar)
         if (this.ErrorMessage == null && Exploration.Includes(parent + ".errorMessage", true))
         {
-            this.ErrorMessage = new System.String("FETCH");
+            this.ErrorMessage = "FETCH";
         }
         //      C# -> System.Int32? StatusCode
         // GraphQL -> statusCode: Int! (scalar)
         if (this.StatusCode == null && Exploration.Includes(parent + ".statusCode", true))
         {
-            this.StatusCode = new System.Int32();
+            this.StatusCode = Int32.MinValue;
         }
     }
 

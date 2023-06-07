@@ -217,7 +217,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> location: String! (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
-            this.Location = new System.String("FETCH");
+            this.Location = "FETCH";
         }
         //      C# -> System.Int64? TotalMatchedPaths
         // GraphQL -> totalMatchedPaths: Long! (scalar)
@@ -229,7 +229,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> totalMatchedSnapshots: Int! (scalar)
         if (this.TotalMatchedSnapshots == null && Exploration.Includes(parent + ".totalMatchedSnapshots", true))
         {
-            this.TotalMatchedSnapshots = new System.Int32();
+            this.TotalMatchedSnapshots = Int32.MinValue;
         }
         //      C# -> System.Int64? TotalUniqueMatchedPaths
         // GraphQL -> totalUniqueMatchedPaths: Long! (scalar)

@@ -92,19 +92,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> hostLogRetentionHours: Int! (scalar)
         if (this.HostLogRetentionHours == null && Exploration.Includes(parent + ".hostLogRetentionHours", true))
         {
-            this.HostLogRetentionHours = new System.Int32();
+            this.HostLogRetentionHours = Int32.MinValue;
         }
         //      C# -> System.Int32? LogBackupFrequencyMin
         // GraphQL -> logBackupFrequencyMin: Int! (scalar)
         if (this.LogBackupFrequencyMin == null && Exploration.Includes(parent + ".logBackupFrequencyMin", true))
         {
-            this.LogBackupFrequencyMin = new System.Int32();
+            this.LogBackupFrequencyMin = Int32.MinValue;
         }
         //      C# -> System.Int32? LogRetentionHours
         // GraphQL -> logRetentionHours: Int! (scalar)
         if (this.LogRetentionHours == null && Exploration.Includes(parent + ".logRetentionHours", true))
         {
-            this.LogRetentionHours = new System.Int32();
+            this.LogRetentionHours = Int32.MinValue;
         }
     }
 

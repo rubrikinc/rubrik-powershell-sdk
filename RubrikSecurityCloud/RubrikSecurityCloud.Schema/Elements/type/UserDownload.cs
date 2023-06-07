@@ -160,13 +160,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> completeTime: String! (scalar)
         if (this.CompleteTime == null && Exploration.Includes(parent + ".completeTime", true))
         {
-            this.CompleteTime = new System.String("FETCH");
+            this.CompleteTime = "FETCH";
         }
         //      C# -> System.String? CreateTime
         // GraphQL -> createTime: String! (scalar)
         if (this.CreateTime == null && Exploration.Includes(parent + ".createTime", true))
         {
-            this.CreateTime = new System.String("FETCH");
+            this.CreateTime = "FETCH";
         }
         //      C# -> System.Int64? Id
         // GraphQL -> id: Long! (scalar)
@@ -178,13 +178,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
-            this.Name = new System.String("FETCH");
+            this.Name = "FETCH";
         }
         //      C# -> System.Int32? Progress
         // GraphQL -> progress: Int! (scalar)
         if (this.Progress == null && Exploration.Includes(parent + ".progress", true))
         {
-            this.Progress = new System.Int32();
+            this.Progress = Int32.MinValue;
         }
     }
 

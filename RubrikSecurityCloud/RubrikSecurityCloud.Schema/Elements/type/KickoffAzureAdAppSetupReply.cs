@@ -78,13 +78,13 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> appId: String! (scalar)
         if (this.AppId == null && Exploration.Includes(parent + ".appId", true))
         {
-            this.AppId = new System.String("FETCH");
+            this.AppId = "FETCH";
         }
         //      C# -> System.String? CsrfToken
         // GraphQL -> csrfToken: String! (scalar)
         if (this.CsrfToken == null && Exploration.Includes(parent + ".csrfToken", true))
         {
-            this.CsrfToken = new System.String("FETCH");
+            this.CsrfToken = "FETCH";
         }
     }
 

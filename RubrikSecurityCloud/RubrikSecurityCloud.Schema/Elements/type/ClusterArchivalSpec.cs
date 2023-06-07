@@ -146,19 +146,19 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> archivalLocationId: String! (scalar)
         if (this.ArchivalLocationId == null && Exploration.Includes(parent + ".archivalLocationId", true))
         {
-            this.ArchivalLocationId = new System.String("FETCH");
+            this.ArchivalLocationId = "FETCH";
         }
         //      C# -> System.String? ArchivalLocationName
         // GraphQL -> archivalLocationName: String! (scalar)
         if (this.ArchivalLocationName == null && Exploration.Includes(parent + ".archivalLocationName", true))
         {
-            this.ArchivalLocationName = new System.String("FETCH");
+            this.ArchivalLocationName = "FETCH";
         }
         //      C# -> System.Int32? Threshold
         // GraphQL -> threshold: Int! (scalar)
         if (this.Threshold == null && Exploration.Includes(parent + ".threshold", true))
         {
-            this.Threshold = new System.Int32();
+            this.Threshold = Int32.MinValue;
         }
         //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)

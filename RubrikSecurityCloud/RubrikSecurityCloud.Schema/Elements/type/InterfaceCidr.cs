@@ -98,7 +98,7 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> cidr: String! (scalar)
         if (this.Cidr == null && Exploration.Includes(parent + ".cidr", true))
         {
-            this.Cidr = new System.String("FETCH");
+            this.Cidr = "FETCH";
         }
         //      C# -> System.Boolean? Selected
         // GraphQL -> selected: Boolean! (scalar)
