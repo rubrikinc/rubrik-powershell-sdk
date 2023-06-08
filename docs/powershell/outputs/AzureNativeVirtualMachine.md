@@ -1,0 +1,99 @@
+### AzureNativeVirtualMachine
+An Azure Native Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
+
+- region: AzureNativeRegion
+  - Azure region where the virtual machine (VM) is located.
+- vmName: System.String
+  - Name of the Virtual Machine (VM).
+- sizeType: System.String
+  - Size type of the virtual machine (VM). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-general.
+- vnetName: System.String
+  - Name of the Virtual Network (VNet) associated with the virtual machine (VM).
+- subnetName: System.String
+  - Name of the subnet associated with the virtual machine (VM).
+- isRelic: System.Boolean
+  - Specifies whether the virtual machine is a relic or not. A virtual machine is a relic when it is unprotected or deleted, but the previously taken snapshots of the virtual machine continue to exist within the Rubrik ecosystem.
+- tags: list of AzureTags
+  - List of tags associated with the virtual machine (VM).
+- attachmentSpecs: list of AttachmentSpecsForVirtualMachines
+  - Sequence of attachment specs for the virtual machine (VM).
+- isAdeEnabled: System.Boolean
+  - Specifies whether Azure Disk Encryption (ADE) exists on the virtual machine (VM) or not.
+- osType: AzureNativeVmOsType
+  - Type of the Operating System (OS) installed on the virtual machine (VM).
+- availabilityZone: System.String
+  - Availability Zone associated with the virtual machine (VM).
+- virtuaMachineNativeId: System.String
+  - Native ID of the the virtual machine (VM).
+- isPreOrPostScriptEnabled: System.Boolean
+  - Specifies whether pre-script or post-script framework is enabled on the the virtual machine (VM) or not. When true, it facilitates application-consistent backups.
+- vmAppConsistentSpecs: VmAppConsistentSpecsInternal
+  - Application Consistent Specifications of the virtual machine (VM).
+- isAppConsistencyEnabled: System.Boolean
+  - Specifies whether application consistent snapshots are enabled for this virtual machine (VM) or not. When enabled, Rubrik informs the Azure applications before taking snapshots, so apps can prepare. During the preparation phrase, Rubrik waits for the IO to be frozen and then the snapshot is taken. Once snapshot is taken, IO is unfreezed and the apps resume normal operation.
+- availabilitySetNativeId: System.String
+  - Native ID of the availability set associated with the virtual machine (VM).
+- isAcceleratedNetworkingEnabled: System.Boolean
+  - Specifies whether accelerated networking is enabled on the virtual machine (VM) or not. Accelerated Networking improves the network performance on the VM. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking.
+- isExocomputeConfigured: System.Boolean
+  - Specifies whether exocompute is configured for the region in which the virtual machine (VM) exists, or not. When the value is true, exocompute can be used to perform tasks like file indexing.
+- isFileIndexingEnabled: System.Boolean
+  - Specifies whether file indexing is enabled for this virtual machine or not. When enabled, Rubrik can scan through the file structure inside the virtual machine in a protected environment where only the metadata, like folder structure, file names, and file sizes will be readable by Rubrik.
+- privateIp: System.String
+  - Private IP address of the virtual machine.
+- cloudNativeId: System.String
+  - Native ID of the the virtual machine (VM).
+- nativeName: System.String
+  - Azure Native name of the object.
+- authorizedOperations: list of PolarisSnappableAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- resourceGroup: AzureNativeResourceGroup
+  - Resource Group of the Azure Virtual Machine (VM).
+- attachedManagedDisks: list of AzureNativeManagedDisks
+  - List of Managed Disks attached to the Azure Virtual Machine (VM).
+- hostInfo: PhysicalHost
+  - Rubrik CDM host information for the Azure Virtual Machine added as a host to the cluster. The value is Null when the virtual machine is not added as a host on any Rubrik cluster.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- snapshotConnection: PolarisSnapshotConnection
+  - The list of snapshots taken for this workload.
+- workloadSnapshotConnection: GenericSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: PolarisSnapshotGroupByConnection
+  - GroupBy connection for this workload's snapshots.
+- snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection
+  - GroupBy connection for this workload's snapshots.
+- newestSnapshot: PolarisSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: PolarisSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestIndexedSnapshot: PolarisSnapshot
+  - The newest snapshot that is indexed and unexpired, and therefore restorable.

@@ -738,7 +738,7 @@ namespace Rubrik.SecurityCloud.Types
             ref System.String? fieldSpec
         )
         {
-            string args = "\n(\npolicyIds: $policyIds\nobjectIds: $objectIds\n)";
+            string args = "\n(\npolicyIds: $policyIds\nobjectIds: $objectIds\nobjectRootIds: $objectRootIds\nclusterIds: $clusterIds\n)";
             if ( fieldSpec == null ) {
                 // there is no field spec for scalar types, but we still
                 // populate the fieldSpec so that caller can see the type 
@@ -880,6 +880,21 @@ namespace Rubrik.SecurityCloud.Types
                 fieldSpec = true ;
             }
             return new string("changePassword" + args + "\n");
+        }
+
+        //      C# -> System.String? CompleteAzureAdAppUpdate
+        // GraphQL -> completeAzureAdAppUpdate: Void (scalar)
+        public static string CompleteAzureAdAppUpdate(
+            ref System.String? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = "FETCH" ;
+            }
+            return new string("completeAzureAdAppUpdate" + args + "\n");
         }
 
         //      C# -> System.Boolean? ConfigureDns
@@ -1863,7 +1878,7 @@ namespace Rubrik.SecurityCloud.Types
             ref List<System.String>? fieldSpec
         )
         {
-            string args = "\n(\npolicyIds: $policyIds\nobjectIds: $objectIds\nrunAsync: $runAsync\n)";
+            string args = "\n(\npolicyIds: $policyIds\nobjectIds: $objectIds\nobjectRootIds: $objectRootIds\nclusterIds: $clusterIds\nrunAsync: $runAsync\n)";
             if ( fieldSpec == null ) {
                 // there is no field spec for scalar types, but we still
                 // populate the fieldSpec so that caller can see the type 
@@ -4172,6 +4187,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "bulkRotateClusterEncryptionKey" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AsyncRequestStatus? BulkTierExistingSnapshots
+        // GraphQL -> bulkTierExistingSnapshots: AsyncRequestStatus! (type)
+        public static string BulkTierExistingSnapshots(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "bulkTierExistingSnapshots" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -8406,6 +8439,24 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> InitiateAzureAdAppUpdateReply? InitiateAzureAdAppUpdate
+        // GraphQL -> initiateAzureAdAppUpdate: InitiateAzureAdAppUpdateReply! (type)
+        public static string InitiateAzureAdAppUpdate(
+            ref InitiateAzureAdAppUpdateReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new InitiateAzureAdAppUpdateReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "initiateAzureAdAppUpdate" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> RequestStatus? InsertCustomerO365App
         // GraphQL -> insertCustomerO365App: RequestStatus! (type)
         public static string InsertCustomerO365App(
@@ -8636,6 +8687,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "modifyIpmi" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AsyncJobStatus? MountDisk
+        // GraphQL -> mountDisk: AsyncJobStatus! (type)
+        public static string MountDisk(
+            ref AsyncJobStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncJobStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "mountDisk" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9014,6 +9083,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "recoverCloudCluster" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AsyncRequestStatus? RecoverCloudDirectMultiPaths
+        // GraphQL -> recoverCloudDirectMultiPaths: AsyncRequestStatus! (type)
+        public static string RecoverCloudDirectMultiPaths(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "recoverCloudDirectMultiPaths" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

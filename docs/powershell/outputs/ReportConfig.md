@@ -1,0 +1,15 @@
+### ReportConfig
+- id: System.Int64
+- name: System.String
+  - Report name.
+- dataViewType: DataViewTypeEnum
+  - Type of report.
+- columns: list of System.Strings
+  - Column selection for the report.
+- groupBy: configGroupBy
+  - GroupBy selection for the report.
+- aggregations: list of System.Strings
+- filters: list of ConfigFilters
+  - Filter selection for the report.
+- sortBy: System.String
+- sortOrder: SortOrder

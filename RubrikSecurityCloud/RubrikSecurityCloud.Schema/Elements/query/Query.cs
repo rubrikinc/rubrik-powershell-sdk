@@ -864,6 +864,21 @@ namespace Rubrik.SecurityCloud.Types
             return new string("allS3BucketsFromAws" + args + "\n");
         }
 
+        //      C# -> List<System.String>? AllSupportedAwsRdsDatabaseInstanceClasses
+        // GraphQL -> allSupportedAwsRdsDatabaseInstanceClasses: [String!]! (scalar)
+        public static string AllSupportedAwsRdsDatabaseInstanceClasses(
+            ref List<System.String>? fieldSpec
+        )
+        {
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = new List<System.String>() ;
+            }
+            return new string("allSupportedAwsRdsDatabaseInstanceClasses" + args + "\n");
+        }
+
         //      C# -> System.Boolean? AreMultiGeoBackupsEnabled
         // GraphQL -> areMultiGeoBackupsEnabled: Boolean! (scalar)
         public static string AreMultiGeoBackupsEnabled(
@@ -1595,6 +1610,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "allAwsCloudAccountConfigs" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<AwsCloudAccountFeaturesWithExoConfigs>? AllAwsCloudAccountsFeaturesWithExoConfigs
+        // GraphQL -> allAwsCloudAccountsFeaturesWithExoConfigs: [AwsCloudAccountFeaturesWithExoConfigs!]! (type)
+        public static string AllAwsCloudAccountsFeaturesWithExoConfigs(
+            ref List<AwsCloudAccountFeaturesWithExoConfigs>? fieldSpec
+        )
+        {
+            string args = "\n(\nawsCloudAccountsArg: $awsCloudAccountsArg\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<AwsCloudAccountFeaturesWithExoConfigs>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allAwsCloudAccountsFeaturesWithExoConfigs" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3189,7 +3222,7 @@ namespace Rubrik.SecurityCloud.Types
             ref List<S3BucketDetails>? fieldSpec
         )
         {
-            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\n)";
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new List<S3BucketDetails>() ;
@@ -8367,6 +8400,24 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> JiraUserConnection? JiraIssueAssignees
+        // GraphQL -> jiraIssueAssignees: JiraUserConnection! (type)
+        public static string JiraIssueAssignees(
+            ref JiraUserConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\njiraProjectId: $jiraProjectId\nsortBy: $sortBy\nsortOrder: $sortOrder\nsearchTerm: $searchTerm\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new JiraUserConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "jiraIssueAssignees" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> JiraIssueConnection? JiraIssues
         // GraphQL -> jiraIssues: JiraIssueConnection! (type)
         public static string JiraIssues(
@@ -8381,6 +8432,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "jiraIssues" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> JiraUserConnection? JiraProjectLeads
+        // GraphQL -> jiraProjectLeads: JiraUserConnection! (type)
+        public static string JiraProjectLeads(
+            ref JiraUserConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsiteId: $siteId\nsortBy: $sortBy\nsortOrder: $sortOrder\nsearchTerm: $searchTerm\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new JiraUserConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "jiraProjectLeads" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11397,7 +11466,7 @@ namespace Rubrik.SecurityCloud.Types
             ref ClassificationPolicyDetail? fieldSpec
         )
         {
-            string args = "\n(\npolicyId: $policyId\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nclusterIdsFilter: $clusterIdsFilter\nreplicationFilter: $replicationFilter\nsearchObjectName: $searchObjectName\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            string args = "\n(\npolicyId: $policyId\nworkloadTypes: $workloadTypes\nsortBy: $sortBy\nsortOrder: $sortOrder\nclusterIdsFilter: $clusterIdsFilter\nreplicationFilter: $replicationFilter\nsearchObjectName: $searchObjectName\nhierarchyAncestorIdFilter: $hierarchyAncestorIdFilter\npolicyAssignmentType: $policyAssignmentType\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new ClassificationPolicyDetail() ;

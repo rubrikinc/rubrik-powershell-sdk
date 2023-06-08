@@ -1,0 +1,11 @@
+### CreateCustomAnalyzerInput
+- analyzerType: AnalyzerTypeEnum
+- id: System.String
+- name: System.String
+- dictionaryCsv: System.String
+- dictionary: list of System.Strings
+- regex: System.String
+- analyzerRiskInstance: AnalyzerRiskInstanceInput
+  - Represents the latest analyzer risk.
+- risk: RiskLevelType
+  - Represents risk associated with the given analyzer.

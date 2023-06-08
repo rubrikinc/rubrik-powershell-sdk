@@ -74,6 +74,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("isUpdateCertAndAgentIdEnabled")]
         public System.Boolean? IsUpdateCertAndAgentIdEnabled { get; set; }
 
+        //      C# -> System.Boolean? IsRefreshPaused
+        // GraphQL -> isRefreshPaused: Boolean (scalar)
+        [JsonProperty("isRefreshPaused")]
+        public System.Boolean? IsRefreshPaused { get; set; }
+
         //      C# -> HostVfdInstallConfig? HostVfdEnabled
         // GraphQL -> hostVfdEnabled: HostVfdInstallConfig (enum)
         [JsonProperty("hostVfdEnabled")]

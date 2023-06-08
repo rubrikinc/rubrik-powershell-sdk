@@ -1,0 +1,7 @@
+### PastDurationEnum
+- NONE
+- PAST_24_HOURS
+- PAST_7_DAYS
+- PAST_30_DAYS
+- PAST_12_MONTHS
+- PAST_3_DAYS

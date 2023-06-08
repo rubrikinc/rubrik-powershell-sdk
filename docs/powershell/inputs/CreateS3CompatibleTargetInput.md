@@ -1,0 +1,31 @@
+### CreateS3CompatibleTargetInput
+Input to create S3-compatible target.
+
+- clusterUuid: System.String
+  - Cluster UUID of the S3-compatible target.
+- name: System.String
+  - Name of the S3-compatible target.
+- accessKey: System.String
+  - Access key of the S3-compatible target.
+- secretKey: System.String
+  - Secret key of the S3-compatible target.
+- endpoint: System.String
+  - Endpoint of the S3-compatible target.
+- bucketPrefix: System.String
+  - Bucket prefix of the S3-compatible target.
+- numberOfBuckets: System.Int32
+  - Number of buckets of the S3-compatible target.
+- encryptionKeyInDer: System.String
+  - RSA key of the S3-compatible target for encryption.
+- isConsolidationEnabled: System.Boolean
+  - Specifies whether consolidation is enabled for the S3-compatible target.
+- useSystemProxy: System.Boolean
+  - Specifies whether system proxy will be used or not.
+- subType: S3CompatibleSubType
+  - Subtype of an S3-compatible target.
+- encryptionPassword: System.String
+  - Encryption password for the S3-compatible archival target.
+- immutabilitySettings: LocationImmutabilitySettings
+  - S3-compatible immutability settings.
+- ibmDetails: IbmCosDetails
+  - IBM subtype location specific details.

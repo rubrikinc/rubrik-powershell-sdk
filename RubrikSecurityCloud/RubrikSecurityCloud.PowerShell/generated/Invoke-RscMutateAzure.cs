@@ -891,6 +891,42 @@ GraphQL argument workloadFid: UUID!"
         )]
         public SwitchParameter Backupaddirectory { get; set; }
 
+        
+        // -------------------------------------------------------------------
+        // Initiateadappupdate parameter set
+        //
+        // [GraphQL: initiateAzureAdAppUpdate]
+        //
+        [Parameter(
+            ParameterSetName = "Initiateadappupdate",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Initiates an update to the Azure AD directory App.
+[GraphQL: initiateAzureAdAppUpdate]",
+            Position = 0
+        )]
+        public SwitchParameter Initiateadappupdate { get; set; }
+
+        
+        // -------------------------------------------------------------------
+        // Completeadappupdate parameter set
+        //
+        // [GraphQL: completeAzureAdAppUpdate]
+        //
+        [Parameter(
+            ParameterSetName = "Completeadappupdate",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Completes an update to the Azure AD directory App.
+[GraphQL: completeAzureAdAppUpdate]",
+            Position = 0
+        )]
+        public SwitchParameter Completeadappupdate { get; set; }
+
 
         protected override void ProcessRecord()
         {
@@ -1038,6 +1074,12 @@ GraphQL argument workloadFid: UUID!"
                         break;
                     case "Backupaddirectory":
                         this.ProcessRecord_Backupaddirectory();
+                        break;
+                    case "Initiateadappupdate":
+                        this.ProcessRecord_Initiateadappupdate();
+                        break;
+                    case "Completeadappupdate":
+                        this.ProcessRecord_Completeadappupdate();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1476,6 +1518,24 @@ GraphQL argument workloadFid: UUID!"
             this._logger.name += " -Backupaddirectory";
             // Invoke graphql operation backupAzureAdDirectory
             InvokeMutationBackupAzureAdDirectory();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // initiateAzureAdAppUpdate.
+        protected void ProcessRecord_Initiateadappupdate()
+        {
+            this._logger.name += " -Initiateadappupdate";
+            // Invoke graphql operation initiateAzureAdAppUpdate
+            InvokeMutationInitiateAzureAdAppUpdate();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // completeAzureAdAppUpdate.
+        protected void ProcessRecord_Completeadappupdate()
+        {
+            this._logger.name += " -Completeadappupdate";
+            // Invoke graphql operation completeAzureAdAppUpdate
+            InvokeMutationCompleteAzureAdAppUpdate();
         }
 
 
@@ -3162,6 +3222,78 @@ GraphQL argument workloadFid: UUID!"
             vars.Variables = this._input.GetArgDict();
             var result = this._rbkClient.Invoke(
                 request, vars, "List<CreateOnDemandJobReply>", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // initiateAzureAdAppUpdate(input: InitiateAzureAdAppUpdateInput!): InitiateAzureAdAppUpdateReply!
+        protected void InvokeMutationInitiateAzureAdAppUpdate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "InitiateAzureAdAppUpdateInput!"),
+            };
+            InitiateAzureAdAppUpdateReply? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (InitiateAzureAdAppUpdateReply)psObject.BaseObject;
+                } else {
+                    fields = (InitiateAzureAdAppUpdateReply)this.Field;
+                }
+            }
+            string document = Mutation.InitiateAzureAdAppUpdate(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.InitiateAzureAdAppUpdate");
+            var parameters = "($input: InitiateAzureAdAppUpdateInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationInitiateAzureAdAppUpdate" + parameters + "{" + document + "}",
+                OperationName = "MutationInitiateAzureAdAppUpdate",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "InitiateAzureAdAppUpdateReply", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Mutation:
+        // completeAzureAdAppUpdate(input: CompleteAzureAdAppUpdateInput!): Void
+        protected void InvokeMutationCompleteAzureAdAppUpdate()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("input", "CompleteAzureAdAppUpdateInput!"),
+            };
+            System.String? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (System.String)psObject.BaseObject;
+                } else {
+                    fields = (System.String)this.Field;
+                }
+            }
+            string document = Mutation.CompleteAzureAdAppUpdate(ref fields);
+            this._input.Initialize(argDefs, fields, "Mutation.CompleteAzureAdAppUpdate");
+            var parameters = "($input: CompleteAzureAdAppUpdateInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "mutation MutationCompleteAzureAdAppUpdate" + parameters + "{" + document + "}",
+                OperationName = "MutationCompleteAzureAdAppUpdate",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "System.String", this._logger, GetMetricTags());
             WriteObject(result, true);
         }
 

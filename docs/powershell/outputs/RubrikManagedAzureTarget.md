@@ -1,0 +1,69 @@
+### RubrikManagedAzureTarget
+Specific information for Azure target created on Rubrik.
+
+- computeSettings: AzureComputeSettings
+  - Compute settings of the Azure target.
+- connectionStatus: ConnectionStatusType
+  - Connection status of the Azure target.
+- cloudNativeCompanion: AzureCloudNativeTargetCompanion
+  - Cloud native information of the Azure target.
+- cloudAccount: CloudAccount
+  - Cloud account details of the Azure target.
+- instanceType: InstanceTypeEnum
+  - Instance type of the Azure location.
+- immutabilitySettings: AzureImmutabilitySettingsType
+  - Immutability settings of the Azure target.
+- storageAccountName: System.String
+  - Storage account name of the Azure target.
+- containerName: System.String
+  - Container name of the Azure target.
+- proxySettings: ProxySettings
+  - Proxy settings of the AWS target.
+- accessKey: System.String
+  - Access key of the Azure target.
+- syncStatus: TargetSyncStatus
+  - Sync status of Azure location.
+- isConsolidationEnabled: System.Boolean
+  - Flag to check if consolidation is enabled or not in this target.
+- syncFailureReason: System.String
+  - Reason why sync of this target with CDM failed.
+- isAzureTieringSupported: System.Boolean
+  - Flag to determine if tiering is supported in the Azure target.
+- bypassProxy: System.Boolean
+  - Specifies whether the proxy settings should be bypassed for creating this target location.
+- retrievalTier: AzureRetrievalTier
+  - Retrieval tier of the Azure target.
+- cluster: Cluster
+  - The cluster to which this target belongs.
+- targetType: TargetType
+  - The type of this target.
+- id: System.String
+  - The ID of this target.
+- name: System.String
+  - The name of this target.
+- locationScope: LocationScope
+  - The scope of location of this target. Possible values are Global or Local.
+- isActive: System.Boolean
+  - Specifies whether this target is active. When false, the target is either paused or not enabled.
+- isArchived: System.Boolean
+  - Specifies whether this target is archived.
+- targetMapping: TargetMappingBasic
+  - Archival location to which the mapping target belongs.
+- clusterName: System.String
+  - Name of the Rubrik cluster that archives to this archival location.
+- status: ArchivalLocationStatus
+  - Status of the target.
+- upgradeStatus: UpgradeStatus
+  - Upgrade status of the target.
+- consumedBytes: System.Int64
+  - Number of bytes stored on the target.
+- runningTasks: System.Int32
+  - Number of archiving tasks running on this target.
+- failedTasks: System.Int32
+  - Number of archiving tasks failed on this target.
+- readerRetrievalMethod: ReaderRetrievalMethod
+  - The retrieval method of the reader target.
+- targetMappingBasic: list of TargetMappingBasics
+  - List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+- locationConnectionStatus: ConnectionStatusType
+  - Connected or Disconnected status of the target.

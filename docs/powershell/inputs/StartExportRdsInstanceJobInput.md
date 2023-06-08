@@ -1,0 +1,51 @@
+### StartExportRdsInstanceJobInput
+Input to trigger AWS native RDS Instance export job.
+
+- rdsInstanceId: System.String
+  - Rubrik ID of the RDS Instance to be exported.
+- isPointInTime: System.Boolean
+  - Specifies whether the export of the instance is from snapshot or point-in-time.
+- snapshotId: System.String
+  - ID of the snapshot if the export is from snapshot.
+- exportTime: DateTime
+  - Export timestamp for Point in Time recovery of the instance.
+- dbInstanceName: System.String
+  - Name of the exported RDS DB instance.
+- destinationAwsNativeAccountId: System.String
+  - AWS account in which the exported RDS instance will be launched.
+- destinationRegionNativeId: AwsNativeRegion
+  - Region in which the exported RDS DB instance will be launched.
+- dbInstanceClass: AwsNativeRdsDbInstanceClass
+  - Instance class of RDS instance.
+- primaryAz: System.String
+  - Availability Zone (AZ) in which the exported RDS DB instance must be launched.
+- port: System.Int64
+  - Port on which the exported RDS DB instance accepts connections.
+- optionGroupName: System.String
+  - Name of the option group selected by the user for the new RDS instance.
+- parameterGroupName: System.String
+  - Name of the DB parameter group selected by the user for the new RDS instance.
+- subnetGroupName: System.String
+  - Name of the subnet group for the new RDS instance.
+- storageType: AwsNativeRdsStorageType
+  - Storage type of the exported RDS DB instance.
+- securityGroupIds: list of System.Strings
+  - List of security group IDs for the new RDS instance. Default security group is used if empty list is provided here.
+- iops: System.Int32
+  - Input Output (I/O) per second of the exported RDS DB instance.
+- isPubliclyAccessible: System.Boolean
+  - Specifies whether the new RDS instance is publicly accessible or not.
+- shouldExportTags: System.Boolean
+  - Specifies whether tags will be exported to the new RDS instance.
+- isMultiAz: System.Boolean
+  - Specifies whether the exported RDS DB instance is multi-AZ or not.
+- kmsKeyId: System.String
+  - KMS Key ID of the exported RDS DB instance.
+- subnetIds: list of System.Strings
+  - List of subnet IDs for the newly created subnet group, which will be associated with the exported RDS DB instance. Default subnet ids are used if empty list is provided here.
+- snapshotType: SnapshotType
+  - Type of snapshot used for export. Required only if export is from a snapshot.
+- dbClusterName: System.String
+  - Name of the DB cluster.
+- dbClusterParameterGroupName: System.String
+  - Name of the DB cluster parameter group.

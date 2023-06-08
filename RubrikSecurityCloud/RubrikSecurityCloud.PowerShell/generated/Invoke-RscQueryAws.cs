@@ -861,6 +861,24 @@ GraphQL argument input: AmiTypeForAwsNativeArchivedSnapshotExportInput!"
 
         
         // -------------------------------------------------------------------
+        // Allsupportedrdsdatabaseinstanceclass parameter set
+        //
+        // [GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]
+        //
+        [Parameter(
+            ParameterSetName = "Allsupportedrdsdatabaseinstanceclass",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
+[GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]",
+            Position = 0
+        )]
+        public SwitchParameter Allsupportedrdsdatabaseinstanceclass { get; set; }
+
+        
+        // -------------------------------------------------------------------
         // Computesetting parameter set
         //
         // [GraphQL: awsComputeSettings]
@@ -953,6 +971,24 @@ GraphQL argument contextFilter: ContextFilterTypeEnum"
 GraphQL argument awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!"
         )]
         public AwsCloudAccountsWithFeaturesInput? AwsCloudAccountsArg { get; set; }
+        
+        // -------------------------------------------------------------------
+        // Allcloudaccountsfeatureswithexoconfig parameter set
+        //
+        // [GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]
+        //
+        [Parameter(
+            ParameterSetName = "Allcloudaccountsfeatureswithexoconfig",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
+[GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]",
+            Position = 0
+        )]
+        public SwitchParameter Allcloudaccountsfeatureswithexoconfig { get; set; }
+
         
         // -------------------------------------------------------------------
         // Cloudaccountwithfeature parameter set
@@ -1284,6 +1320,9 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                     case "Allrdsaurorainstanceclass":
                         this.ProcessRecord_Allrdsaurorainstanceclass();
                         break;
+                    case "Allsupportedrdsdatabaseinstanceclass":
+                        this.ProcessRecord_Allsupportedrdsdatabaseinstanceclass();
+                        break;
                     case "Computesetting":
                         this.ProcessRecord_Computesetting();
                         break;
@@ -1292,6 +1331,9 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                         break;
                     case "Allcloudaccountswithfeature":
                         this.ProcessRecord_Allcloudaccountswithfeature();
+                        break;
+                    case "Allcloudaccountsfeatureswithexoconfig":
+                        this.ProcessRecord_Allcloudaccountsfeatureswithexoconfig();
                         break;
                     case "Cloudaccountwithfeature":
                         this.ProcessRecord_Cloudaccountwithfeature();
@@ -1592,6 +1634,15 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
         }
 
         // This parameter set invokes a single graphql operation:
+        // allSupportedAwsRdsDatabaseInstanceClasses.
+        protected void ProcessRecord_Allsupportedrdsdatabaseinstanceclass()
+        {
+            this._logger.name += " -Allsupportedrdsdatabaseinstanceclass";
+            // Invoke graphql operation allSupportedAwsRdsDatabaseInstanceClasses
+            InvokeQueryAllSupportedAwsRdsDatabaseInstanceClasses();
+        }
+
+        // This parameter set invokes a single graphql operation:
         // awsComputeSettings.
         protected void ProcessRecord_Computesetting()
         {
@@ -1616,6 +1667,15 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
             this._logger.name += " -Allcloudaccountswithfeature";
             // Invoke graphql operation allAwsCloudAccountsWithFeatures
             InvokeQueryAllAwsCloudAccountsWithFeatures();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAwsCloudAccountsFeaturesWithExoConfigs.
+        protected void ProcessRecord_Allcloudaccountsfeatureswithexoconfig()
+        {
+            this._logger.name += " -Allcloudaccountsfeatureswithexoconfig";
+            // Invoke graphql operation allAwsCloudAccountsFeaturesWithExoConfigs
+            InvokeQueryAllAwsCloudAccountsFeaturesWithExoConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -2245,11 +2305,12 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
         }
 
         // Invoke GraphQL Query:
-        // allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!): [S3BucketDetails!]!
+        // allS3BucketsDetailsFromAws(awsAccountRubrikId: UUID!, region: AwsNativeRegion): [S3BucketDetails!]!
         protected void InvokeQueryAllS3BucketsDetailsFromAws()
         {
             Tuple<string, string>[] argDefs = {
                 Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("region", "AwsNativeRegion"),
             };
             List<S3BucketDetails>? fields = null ;
             if (this.Field != null)
@@ -2262,7 +2323,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
             }
             string document = Query.AllS3BucketsDetailsFromAws(ref fields);
             this._input.Initialize(argDefs, fields, "Query.AllS3BucketsDetailsFromAws");
-            var parameters = "($awsAccountRubrikId: UUID!)\n";
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion)\n";
             var request = new GraphQL.GraphQLRequest
             {
                 Query = "query QueryAllS3BucketsDetailsFromAws" + parameters + "{" + document + "}",
@@ -2811,6 +2872,50 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
         }
 
         // Invoke GraphQL Query:
+        // allSupportedAwsRdsDatabaseInstanceClasses(
+        //     awsAccountRubrikId: UUID!
+        //     region: AwsNativeRegion!
+        //     dbEngine: AwsNativeRdsDbEngine!
+        //     dbEngineVersion: String
+        //   ): [String!]!
+        protected void InvokeQueryAllSupportedAwsRdsDatabaseInstanceClasses()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("awsAccountRubrikId", "UUID!"),
+                Tuple.Create("region", "AwsNativeRegion!"),
+                Tuple.Create("dbEngine", "AwsNativeRdsDbEngine!"),
+                Tuple.Create("dbEngineVersion", "String"),
+            };
+            List<System.String>? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (List<System.String>)psObject.BaseObject;
+                } else {
+                    fields = (List<System.String>)this.Field;
+                }
+            }
+            string document = Query.AllSupportedAwsRdsDatabaseInstanceClasses(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.AllSupportedAwsRdsDatabaseInstanceClasses");
+            var parameters = "($awsAccountRubrikId: UUID!,$region: AwsNativeRegion!,$dbEngine: AwsNativeRdsDbEngine!,$dbEngineVersion: String)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryAllSupportedAwsRdsDatabaseInstanceClasses" + parameters + "{" + document + "}",
+                OperationName = "QueryAllSupportedAwsRdsDatabaseInstanceClasses",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<System.String>", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
         // awsComputeSettings(computeSettingId: UUID!): AwsComputeSettings!
         protected void InvokeQueryAwsComputeSettings()
         {
@@ -2923,6 +3028,42 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
             vars.Variables = this._input.GetArgDict();
             var result = this._rbkClient.Invoke(
                 request, vars, "List<AwsCloudAccountWithFeatures>", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // allAwsCloudAccountsFeaturesWithExoConfigs(awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!): [AwsCloudAccountFeaturesWithExoConfigs!]!
+        protected void InvokeQueryAllAwsCloudAccountsFeaturesWithExoConfigs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("awsCloudAccountsArg", "AwsCloudAccountsWithFeaturesInput!"),
+            };
+            List<AwsCloudAccountFeaturesWithExoConfigs>? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (List<AwsCloudAccountFeaturesWithExoConfigs>)psObject.BaseObject;
+                } else {
+                    fields = (List<AwsCloudAccountFeaturesWithExoConfigs>)this.Field;
+                }
+            }
+            string document = Query.AllAwsCloudAccountsFeaturesWithExoConfigs(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.AllAwsCloudAccountsFeaturesWithExoConfigs");
+            var parameters = "($awsCloudAccountsArg: AwsCloudAccountsWithFeaturesInput!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryAllAwsCloudAccountsFeaturesWithExoConfigs" + parameters + "{" + document + "}",
+                OperationName = "QueryAllAwsCloudAccountsFeaturesWithExoConfigs",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AwsCloudAccountFeaturesWithExoConfigs>", this._logger, GetMetricTags());
             WriteObject(result, true);
         }
 

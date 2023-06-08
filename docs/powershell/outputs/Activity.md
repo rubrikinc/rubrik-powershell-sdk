@@ -1,0 +1,13 @@
+### Activity
+- time: DateTime
+- type: ActivityTypeEnum
+- status: ActivityStatusEnum
+- severity: ActivitySeverityEnum
+- message: System.String
+- objectId: System.String
+- objectType: ActivityObjectTypeEnum
+- clusterId: System.String
+- progress: System.String
+- activityInfo: System.String
+- id: System.String
+- activitySeries: ActivitySeries

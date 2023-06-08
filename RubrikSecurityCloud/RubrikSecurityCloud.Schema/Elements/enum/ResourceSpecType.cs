@@ -18,6 +18,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "INSTANCE")]
         INSTANCE,
 
+        [EnumMember(Value = "PROMOTION")]
+        PROMOTION,
+
         [EnumMember(Value = "TEMPLATE")]
         TEMPLATE,
 

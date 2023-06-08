@@ -1,0 +1,3 @@
+### FileTypeEnum
+- CSV
+- PDF

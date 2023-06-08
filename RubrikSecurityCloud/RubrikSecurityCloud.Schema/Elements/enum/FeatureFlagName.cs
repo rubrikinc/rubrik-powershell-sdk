@@ -249,6 +249,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "CASCADING_ARCHIVAL_ENABLED")]
         CASCADING_ARCHIVAL_ENABLED,
 
+        [EnumMember(Value = "CDM_9_UPGRADE_ENABLED")]
+        CDM_9_UPGRADE_ENABLED,
+
         [EnumMember(Value = "CDM_CUSTOMER_ADOPTION_ENABLED")]
         CDM_CUSTOMER_ADOPTION_ENABLED,
 
@@ -464,6 +467,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "DB2_ARCHIVAL_ENABLED")]
         DB2_ARCHIVAL_ENABLED,
+
+        [EnumMember(Value = "DB2_BACKUP_CONFIG_ENABLED")]
+        DB2_BACKUP_CONFIG_ENABLED,
 
         [EnumMember(Value = "DB2_ENABLED")]
         DB2_ENABLED,
@@ -762,6 +768,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "MULTITENANCY_ARCHIVAL_PARITY_ENABLED")]
         MULTITENANCY_ARCHIVAL_PARITY_ENABLED,
 
+        [EnumMember(Value = "MULTITENANCY_TENANT_QUOTAS_ENABLED")]
+        MULTITENANCY_TENANT_QUOTAS_ENABLED,
+
         [EnumMember(Value = "MULTITENANCY_TENANT_SLA_SELF_SERVICE_ENABLED")]
         MULTITENANCY_TENANT_SLA_SELF_SERVICE_ENABLED,
 
@@ -1017,6 +1026,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "RADAR_FOR_NAS_CD_ENABLED")]
         RADAR_FOR_NAS_CD_ENABLED,
 
+        [EnumMember(Value = "RADAR_FOR_NAS_CD_NON_RCV_ENABLED")]
+        RADAR_FOR_NAS_CD_NON_RCV_ENABLED,
+
         [EnumMember(Value = "RADAR_INTERNAL_TEST_MODE_DEV_ONLY_MODE_ENABLED")]
         RADAR_INTERNAL_TEST_MODE_DEV_ONLY_MODE_ENABLED,
 
@@ -1109,6 +1121,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "RETENTION_LOCK_SLA_ENABLED")]
         RETENTION_LOCK_SLA_ENABLED,
+
+        [EnumMember(Value = "ROLLING_UPGRADE")]
+        ROLLING_UPGRADE,
 
         [EnumMember(Value = "RSC_AUTO_UPGRADE_ENABLED")]
         RSC_AUTO_UPGRADE_ENABLED,

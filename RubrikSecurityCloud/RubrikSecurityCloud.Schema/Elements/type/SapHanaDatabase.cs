@@ -251,6 +251,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("snapshotGroupBySummary")]
         public CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary { get; set; }
 
+        //      C# -> SapHanaDatabase? SourceDatabaseDetails
+        // GraphQL -> sourceDatabaseDetails: SapHanaDatabase (type)
+        [JsonProperty("sourceDatabaseDetails")]
+        public SapHanaDatabase? SourceDatabaseDetails { get; set; }
+
 
         #endregion
 
@@ -302,7 +307,8 @@ namespace Rubrik.SecurityCloud.Types
         CdmSnapshotConnection? SnapshotConnection = null,
         SnapshotDistribution? SnapshotDistribution = null,
         CdmSnapshotGroupByConnection? SnapshotGroupByConnection = null,
-        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary = null
+        CdmSnapshotGroupBySummaryConnection? SnapshotGroupBySummary = null,
+        SapHanaDatabase? SourceDatabaseDetails = null
     ) 
     {
         if ( AuthorizedOperations != null ) {
@@ -442,6 +448,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( SnapshotGroupBySummary != null ) {
             this.SnapshotGroupBySummary = SnapshotGroupBySummary;
+        }
+        if ( SourceDatabaseDetails != null ) {
+            this.SourceDatabaseDetails = SourceDatabaseDetails;
         }
         return this;
     }
@@ -687,6 +696,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection (type)
         if (this.SnapshotGroupBySummary != null) {
             s += ind + "snapshotGroupBySummary {\n" + this.SnapshotGroupBySummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SapHanaDatabase? SourceDatabaseDetails
+        // GraphQL -> sourceDatabaseDetails: SapHanaDatabase (type)
+        if (this.SourceDatabaseDetails != null) {
+            s += ind + "sourceDatabaseDetails {\n" + this.SourceDatabaseDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
         return s;
     }
@@ -1003,6 +1017,13 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.SnapshotGroupBySummary = new CdmSnapshotGroupBySummaryConnection();
             this.SnapshotGroupBySummary.ApplyExploratoryFieldSpec(parent + ".snapshotGroupBySummary");
+        }
+        //      C# -> SapHanaDatabase? SourceDatabaseDetails
+        // GraphQL -> sourceDatabaseDetails: SapHanaDatabase (type)
+        if (this.SourceDatabaseDetails == null && Exploration.Includes(parent + ".sourceDatabaseDetails"))
+        {
+            this.SourceDatabaseDetails = new SapHanaDatabase();
+            this.SourceDatabaseDetails.ApplyExploratoryFieldSpec(parent + ".sourceDatabaseDetails");
         }
     }
 

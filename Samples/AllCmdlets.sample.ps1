@@ -1120,6 +1120,30 @@ Backs up the Azure AD directory.
 "@ "[GraphQL: backupAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
+# -------------------------------------------------------------------
+# Invoke-RscMutateAzure -Initiateadappupdate
+# -------------------------------------------------------------------
+
+$inputs = Invoke-RscMutateAzure -Initiateadappupdate -GetInputs
+$fieldTypeName = $inputs.Field.GetType().Name
+$argNames = $inputs.Arg.Keys
+Write-Message "Invoke-RscMutateAzure -Initiateadappupdate" @"
+Initiates an update to the Azure AD directory App.
+"@ "[GraphQL: initiateAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+
+
+# -------------------------------------------------------------------
+# Invoke-RscMutateAzure -Completeadappupdate
+# -------------------------------------------------------------------
+
+$inputs = Invoke-RscMutateAzure -Completeadappupdate -GetInputs
+$fieldTypeName = $inputs.Field.GetType().Name
+$argNames = $inputs.Arg.Keys
+Write-Message "Invoke-RscMutateAzure -Completeadappupdate" @"
+Completes an update to the Azure AD directory App.
+"@ "[GraphQL: completeAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+
+
 
 # -------------------------------------------------------------------
 # Invoke-RscMutateAzureO365 -Setupexocompute
@@ -4298,6 +4322,18 @@ List of all the database instance classes supported by AWS RDS Aurora databases.
 
 
 # -------------------------------------------------------------------
+# Invoke-RscQueryAws -Allsupportedrdsdatabaseinstanceclass
+# -------------------------------------------------------------------
+
+$inputs = Invoke-RscQueryAws -Allsupportedrdsdatabaseinstanceclass -GetInputs
+$fieldTypeName = $inputs.Field.GetType().Name
+$argNames = $inputs.Arg.Keys
+Write-Message "Invoke-RscQueryAws -Allsupportedrdsdatabaseinstanceclass" @"
+List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
+"@ "[GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+
+
+# -------------------------------------------------------------------
 # Invoke-RscQueryAws -Computesetting
 # -------------------------------------------------------------------
 
@@ -4331,6 +4367,18 @@ $argNames = $inputs.Arg.Keys
 Write-Message "Invoke-RscQueryAws -Allcloudaccountswithfeature" @"
 List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 "@ "[GraphQL: allAwsCloudAccountsWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+
+
+# -------------------------------------------------------------------
+# Invoke-RscQueryAws -Allcloudaccountsfeatureswithexoconfig
+# -------------------------------------------------------------------
+
+$inputs = Invoke-RscQueryAws -Allcloudaccountsfeatureswithexoconfig -GetInputs
+$fieldTypeName = $inputs.Field.GetType().Name
+$argNames = $inputs.Arg.Keys
+Write-Message "Invoke-RscQueryAws -Allcloudaccountsfeatureswithexoconfig" @"
+List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
+"@ "[GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------

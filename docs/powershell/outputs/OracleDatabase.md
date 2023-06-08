@@ -1,0 +1,111 @@
+### OracleDatabase
+- cdmId: System.String
+  - CDM ID of the Oracle database.
+- isRelic: System.Boolean
+  - Whether the Oracle database is a relic in CDM.
+- dbUniqueName: System.String
+  - The DB unique name of the Oracle database.
+- numTablespaces: System.Int32
+  - The number of tablespaces contained in the Oracle database.
+- tablespaces: list of System.Strings
+  - The list of tablespaces in the Oracle database.
+- numLogSnapshots: System.Int32
+  - The number of log snapshots taken of the Oracle database.
+- pdbs: list of OraclePdbs
+  - The Pluggable Databases of an Oracle database.
+- dbRole: System.String
+  - The role of the Oracle database.
+- dataGuardType: DataGuardType
+  - The Data Guard type of the Oracle database.
+- logBackupFrequency: System.Int32
+  - The log backup frequency, in minutes, of the Oracle database.
+- lastValidationResult: OracleDatabaseLastValidationStatus
+  - The last validation result of the Oracle database.
+- instances: list of OracleDatabaseInstances
+  - Specifies details of the Oracle database instances.
+- numInstances: System.Int32
+  - The number of instances of the Oracle database.
+- numChannels: System.Int64
+  - The number of RMAN channels used for backup and restore of the Oracle database.
+- directoryPaths: OracleDirectoryPaths
+  - The directory paths of the Oracle database.
+- archiveLogMode: System.String
+  - ARCHIVELOGMODE of the Oracle database.
+- isLiveMount: System.Boolean
+  - Specifies whether the Oracle database is live mounted.
+- sectionSizeInGigabytes: System.Int32
+  - Specifies the section size, in gigabytes, to be used during backups.
+- logRetentionHours: System.Int32
+  - The log retention, in hours, of the Oracle database.
+- hostLogRetentionHours: System.Int32
+  - The host log retention, in hours, of the Oracle database.
+- dataGuardGroup: OracleDataGuardGroup
+  - The Oracle Data Guard Group corresponding to the Oracle Data Guard member database.
+- liveMounts: OracleLiveMountConnection
+  - List of live mounts for an Oracle database.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from objectID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- cdmLink: System.String
+  - A link to view the workload on the CDM cluster. For dev use only.
+- missedSnapshotConnection: MissedSnapshotCommonConnection
+  - The list of missed snapshots for this workload.
+- missedSnapshotGroupByConnection: MissedSnapshotGroupByConnection
+  - The list of missed snapshots for this workload.
+- snapshotConnection: CdmSnapshotConnection
+  - The list of snapshots taken for this workload.
+- snapshotGroupByConnection: CdmSnapshotGroupByConnection
+  - GroupBy connection for the snapshots of this workload.
+- snapshotGroupBySummary: CdmSnapshotGroupBySummaryConnection
+  - GroupBy connection for the snapshots of this workload.
+- newestSnapshot: CdmSnapshot
+  - The most recent snapshot of this workload.
+- oldestSnapshot: CdmSnapshot
+  - The oldest snapshot of this workload.
+- onDemandSnapshotCount: System.Int32
+  - The number of on-demand snapshots.
+- newestArchivedSnapshot: CdmSnapshot
+  - The newest snapshot archived to AWS.
+- newestReplicatedSnapshot: CdmSnapshot
+  - The newest snapshot replicated to a cluster.

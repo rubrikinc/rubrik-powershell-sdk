@@ -45,6 +45,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.Boolean? IsRefreshPaused
+        // GraphQL -> isRefreshPaused: Boolean (scalar)
+        [JsonProperty("isRefreshPaused")]
+        public System.Boolean? IsRefreshPaused { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
         [JsonProperty("name")]
@@ -101,6 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? Alias = null,
         System.String? Hostname = null,
         System.String? Id = null,
+        System.Boolean? IsRefreshPaused = null,
         System.String? Name = null,
         System.String? OperatingSystem = null,
         System.String? OperatingSystemType = null,
@@ -126,6 +132,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Id != null ) {
             this.Id = Id;
+        }
+        if ( IsRefreshPaused != null ) {
+            this.IsRefreshPaused = IsRefreshPaused;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -188,6 +197,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> id: String! (scalar)
         if (this.Id != null) {
             s += ind + "id\n" ;
+        }
+        //      C# -> System.Boolean? IsRefreshPaused
+        // GraphQL -> isRefreshPaused: Boolean (scalar)
+        if (this.IsRefreshPaused != null) {
+            s += ind + "isRefreshPaused\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)
@@ -271,6 +285,12 @@ namespace Rubrik.SecurityCloud.Types
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
         {
             this.Id = "FETCH";
+        }
+        //      C# -> System.Boolean? IsRefreshPaused
+        // GraphQL -> isRefreshPaused: Boolean (scalar)
+        if (this.IsRefreshPaused == null && Exploration.Includes(parent + ".isRefreshPaused", true))
+        {
+            this.IsRefreshPaused = true;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String (scalar)

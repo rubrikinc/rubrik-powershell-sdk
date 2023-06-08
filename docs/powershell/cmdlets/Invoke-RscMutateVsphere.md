@@ -1,0 +1,68 @@
+# Invoke-RscMutateVsphere
+## Subcommands
+### Bulkondemandsnapshot
+Trigger a bulk on demand snapshot.
+
+- There is a single argument of type VsphereBulkOnDemandSnapshotInput.
+- Returns BatchAsyncRequestStatus.
+### Createadvancedtag
+Create a multi-tag filter for vSphere tags
+
+Supported in v7.0+
+Create a filter consisting of vSphere tags joined with logical operators.
+
+- There is a single argument of type CreateVsphereAdvancedTagInput.
+- Returns CreateVsphereAdvancedTagReply.
+### Deleteadvancedtag
+Remove the multi-tag filter
+
+Supported in v7.0+
+Remove the multi-tag filter.
+
+- There is a single argument of type DeleteVsphereAdvancedTagInput.
+- Returns RequestSuccess.
+### Deletelivemount
+Delete a Live Mount VM
+
+Supported in v5.0+
+Create a request to delete a Live Mount virtual machine.
+
+- There is a single argument of type DeleteVsphereLiveMountInput.
+- Returns AsyncRequestStatus.
+### Downloadvirtualmachinefile
+Download Virtual Machine files from a snapshot
+
+Supported in v9.0
+Start an asynchronous job to download multiple Virtual Machine files, such as .vmdk, .vmx, and .nvram files, from the specified Virtual Machine snapshot.
+
+- There is a single argument of type DownloadVsphereVirtualMachineFilesInput.
+- Returns AsyncRequestStatus.
+### Exportsnapshottostandalonehost
+- There are 10 arguments.
+    - snapshotFid - System.String: Snapshot forever UUID in Rubrik Security Cloud.
+    - vmName - System.String
+    - disableNetwork - System.Boolean
+    - removeNetworkDevices - System.Boolean
+    - powerOn - System.Boolean
+    - keepMacAddresses - System.Boolean
+    - hostIpAddress - System.String
+    - datastoreName - System.String
+    - hostUsername - System.String
+    - hostPassword - System.String
+- Returns VsphereAsyncRequestStatus.
+### Exportsnapshottostandalonehostv2
+Export snapshot of a virtual machine to standalone ESXi server.
+
+- There is a single argument of type VsphereExportSnapshotToStandaloneHostV2Input.
+- Returns AsyncRequestStatus.
+### Ondemandsnapshot
+- There is a single argument of type VsphereOnDemandSnapshotInput.
+- Returns AsyncRequestStatus.
+### Updateadvancedtag
+Update the multi-tag filter
+
+Supported in v7.0+
+Updates the name, condition, and description of the specified multi-tag filter.
+
+- There is a single argument of type UpdateVsphereAdvancedTagInput.
+- Returns UpdateVsphereAdvancedTagReply.

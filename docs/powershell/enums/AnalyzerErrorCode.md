@@ -1,0 +1,6 @@
+### AnalyzerErrorCode
+- NOERROR
+- READING
+- PARSING
+- ANALYZER
+- OTHER

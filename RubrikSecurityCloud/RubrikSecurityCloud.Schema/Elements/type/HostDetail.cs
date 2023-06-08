@@ -45,6 +45,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("isOracleHost")]
         public System.Boolean? IsOracleHost { get; set; }
 
+        //      C# -> System.Boolean? IsRefreshPaused
+        // GraphQL -> isRefreshPaused: Boolean (scalar)
+        [JsonProperty("isRefreshPaused")]
+        public System.Boolean? IsRefreshPaused { get; set; }
+
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
@@ -81,6 +86,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? AgentId = null,
         System.Boolean? CompressionEnabled = null,
         System.Boolean? IsOracleHost = null,
+        System.Boolean? IsRefreshPaused = null,
         System.Boolean? IsRelic = null,
         System.Boolean? MssqlCbtDriverInstalled = null,
         System.String? OracleQueryUser = null,
@@ -102,6 +108,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( IsOracleHost != null ) {
             this.IsOracleHost = IsOracleHost;
+        }
+        if ( IsRefreshPaused != null ) {
+            this.IsRefreshPaused = IsRefreshPaused;
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
@@ -152,6 +161,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isOracleHost: Boolean (scalar)
         if (this.IsOracleHost != null) {
             s += ind + "isOracleHost\n" ;
+        }
+        //      C# -> System.Boolean? IsRefreshPaused
+        // GraphQL -> isRefreshPaused: Boolean (scalar)
+        if (this.IsRefreshPaused != null) {
+            s += ind + "isRefreshPaused\n" ;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)
@@ -215,6 +229,12 @@ namespace Rubrik.SecurityCloud.Types
         if (this.IsOracleHost == null && Exploration.Includes(parent + ".isOracleHost", true))
         {
             this.IsOracleHost = true;
+        }
+        //      C# -> System.Boolean? IsRefreshPaused
+        // GraphQL -> isRefreshPaused: Boolean (scalar)
+        if (this.IsRefreshPaused == null && Exploration.Includes(parent + ".isRefreshPaused", true))
+        {
+            this.IsRefreshPaused = true;
         }
         //      C# -> System.Boolean? IsRelic
         // GraphQL -> isRelic: Boolean! (scalar)

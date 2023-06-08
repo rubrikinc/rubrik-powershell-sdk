@@ -1,0 +1,107 @@
+### UserAuditObjectTypeEnum
+User audit object type.
+
+- ArchivalLocation
+- K8S_CLUSTER - Kubernetes Cluster type.
+- OracleRac
+- IpWhitelist
+- HypervVm
+- DataLocation
+- DB2_INSTANCE
+- DB2_DATABASE
+- HypervScvmm
+- O365Onedrive
+- CASSANDRA_SOURCE - Cassandra source type.
+- O365_SHAREPOINT_SITE - O365 SharePoint Site type.
+- AWS_NATIVE_S3_BUCKET - AWS native S3 bucket.
+- SapHanaSystem
+- GcpNativeProject
+- AwsNativeRdsInstance
+- O365Organization
+- VolumeGroup
+- MONGO_COLLECTION - MongoDB Collection type.
+- O365Group - O365 Group type.
+- NutanixVm
+- MONGODB_SOURCE - MongoDB source type.
+- HypervServer
+- MSSQL_MOUNT - MSSQL Mount type.
+- Vcenter
+- AzureNativeDisk
+- PublicCloudMachineInstance
+- HostFailoverCluster
+- ShareFileset
+- AwsNativeEc2Instance
+- Ldap
+- Upgrade
+- LinuxHost
+- O365Mailbox
+- AwsNativeAccount
+- AZURE_STORAGE_ACCOUNT - Azure storage account.
+- EXCHANGE_DATABASE - Exchange Database type.
+- AzureSqlManagedInstance
+- AzureNativeVm
+- ORGANIZATION - Organization type.
+- O365Team
+- WindowsFileset
+- CloudNativeTagRule
+- StorageArray
+- UserGroup
+- AuthDomain
+- CERTIFICATE_MANAGEMENT - Certificate management type.
+- Mssql
+- AZURE_AD_DIRECTORY - Azure AD Directory type.
+- VmwareVm
+- JobInstance
+- SlaDomain
+- AwsEventType
+- Snapshot
+- VMWARE_COMPUTE_CLUSTER - VMware Compute Cluster type.
+- SmbDomain
+- O365Calendar
+- MssqlDatabase
+- SupportTunnel
+- MONGO_SOURCE - MongoDB Source type.
+- MSSQL_OBJECT - MSSQL object type.
+- AwsNativeEbsVolume
+- UserActionAudit
+- CASSANDRA_COLUMN_FAMILY - Cassandra column family type.
+- EXCHANGE_SERVER - Exchange Server type.
+- ENCRYPTION_MANAGEMENT - Encryption Management type.
+- ManagedVolume
+- Vcd
+- AzureSqlDatabase
+- LinuxFileset
+- VmwareMount
+- NasHost
+- FederatedAccess
+- User
+- SystemPreference
+- VcdVapp
+- O365SharepointDrive
+- UserRole
+- WindowsHost
+- O365SharepointList
+- Storm
+- Sla
+- Blueprint
+- Ec2Instance
+- StorageArrayVolumeGroup
+- StorageSettings
+- K8S_RESOURCE_SET - Kubernetes Resource Set type.
+- GcpNativeGceInstance
+- Cluster
+- Unknown
+- AppBlueprint
+- AzureNativeSubscription
+- EXCHANGE_DAG - Exchange DAG type.
+- OracleDb
+- FailoverClusterApp
+- Host
+- GcpNativeDisk
+- NutanixCluster
+- ORACLE_MOUNT - Oracle Mount type.
+- CASSANDRA_KEYSPACE - Cassandra keyspace type.
+- SapHanaDb
+- AwsAccount
+- OracleHost
+- MOSAIC_STORAGE_LOCATION - NoSQL storage location type.

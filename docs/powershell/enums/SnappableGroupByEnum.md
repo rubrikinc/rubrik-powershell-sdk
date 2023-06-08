@@ -1,0 +1,14 @@
+### SnappableGroupByEnum
+- ComplianceStatus
+- ProtectionStatus
+- Month
+- ClusterType
+- Quarter
+- Year
+- Day
+- SlaDomain
+- Week
+- Hour
+- Cluster
+- PullTimeWithOffset
+- ObjectType

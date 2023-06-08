@@ -18,6 +18,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "AHV_VMS_CDM")]
         AHV_VMS_CDM,
 
+        [EnumMember(Value = "ATLASSIAN")]
+        ATLASSIAN,
+
         [EnumMember(Value = "AWS_EC2")]
         AWS_EC2,
 

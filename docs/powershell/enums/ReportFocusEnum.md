@@ -1,0 +1,14 @@
+### ReportFocusEnum
+- Audit
+- RecoveryTaskDetail
+- Activity
+- Compliance
+- Infrastructure
+- TaskSummary
+- Failover
+- Sonar
+- SonarContent
+- Anomaly
+- Protection
+- ProtectionTaskDetail
+- Capacity

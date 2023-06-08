@@ -53,6 +53,20 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
         {
             base.BeginProcessing();
             this._input = new RscCmdletInput(this);
+            if (! this.GetInputs )
+            {
+                RetrieveConnection();
+            }
+            _validOperations = RscCmdletHelper.GetCmdletValidGraphQLOperations(this.MyInvocation.MyCommand.Name);
+        }
+
+        protected override void EndProcessing()
+        {
+            base.EndProcessing();
+        }
+
+        protected void RetrieveConnection() 
+        {
             try
             {
                 this._rbkClient = (RscGraphQLClient)SessionState.PSVariable.GetValue("RscConnectionClient");
@@ -60,8 +74,6 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                 {
                     throw new Exception("No active session found. Use 'Connect-Rsc'. ");
                 }
-                _validOperations = RscCmdletHelper.GetCmdletValidGraphQLOperations(this.MyInvocation.MyCommand.Name);
-
             }
             catch (Exception ex)
             {
@@ -73,11 +85,6 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
                     null);
                 ThrowTerminatingError(error);
             }
-        }
-
-        protected override void EndProcessing()
-        {
-            base.EndProcessing();
         }
 
         protected string GetSnappableTypeNameById(string id)

@@ -1,0 +1,3 @@
+### PrePostScriptFailureHandlingEnum
+- abort
+- continue

@@ -29,6 +29,26 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("storageLocationId")]
         public System.String? StorageLocationId { get; set; }
 
+        //      C# -> System.String? ComputeClusterId
+        // GraphQL -> computeClusterId: String (scalar)
+        [JsonProperty("computeClusterId")]
+        public System.String? ComputeClusterId { get; set; }
+
+        //      C# -> System.String? HostId
+        // GraphQL -> hostId: String (scalar)
+        [JsonProperty("hostId")]
+        public System.String? HostId { get; set; }
+
+        //      C# -> List<VmwareDeviceKeywithNetworkNameV2Input>? NetworkDeviceKeyToNetworkName
+        // GraphQL -> networkDeviceKeyToNetworkName: [VmwareDeviceKeywithNetworkNameV2Input!] (input)
+        [JsonProperty("networkDeviceKeyToNetworkName")]
+        public List<VmwareDeviceKeywithNetworkNameV2Input>? NetworkDeviceKeyToNetworkName { get; set; }
+
+        //      C# -> System.String? ResourcePoolId
+        // GraphQL -> resourcePoolId: String (scalar)
+        [JsonProperty("resourcePoolId")]
+        public System.String? ResourcePoolId { get; set; }
+
 
         #endregion
 

@@ -1,0 +1,33 @@
+### TprRequestDetailReply
+Reply for getting TPR Request Detail.
+
+- id: System.String
+  - ID of the TPR request.
+- requester: TprRequester
+  - User making the TPR request.
+- orgName: System.String
+  - Name of the org.
+- createdAt: DateTime
+  - Time the request was created.
+- updatedAt: DateTime
+  - Time the request was last updated.
+- expiresAt: DateTime
+  - Time the request expires.
+- executionExpiresAt: DateTime
+  - Time the request's execution window expires.
+- statusLog: list of TprReqStatusChanges
+  - Log of the changes to the request.
+- triggeredTprRule: System.String
+  - Highest priority rule triggered by the request.
+- triggeredTprRules: list of System.Strings
+  - All rules triggered by the request.
+- triggeredTprPolicies: list of TriggeredTprPolicys
+  - Policies triggered by the request.
+- details: TprRequestDetail
+  - Details of the request.
+- status: TprReqStatus
+  - Status of the request.
+- executionType: TprExecutionType
+  - Execution type for the request.
+- orgId: System.String
+  - ID of the org.

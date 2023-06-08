@@ -1,0 +1,4 @@
+### InodeType
+- UNKNOWN_INODE
+- DIRECTORY
+- FILE

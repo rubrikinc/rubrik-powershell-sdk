@@ -1,0 +1,14 @@
+### AppflowsSummary
+- totalVmwareVms: System.Int32
+- numVmwareVmsProtected: System.Int32
+- totalBlueprints: System.Int32
+- numBlueprintsReady: System.Int32
+- numBlueprintsWithIssues: System.Int32
+- totalDrPlans: System.Int32
+- numDrPlansReady: System.Int32
+- numDrPlansWithIssues: System.Int32
+- numBpFailedLastFailover: System.Int32
+- numBpPassedLastFailover: System.Int32
+- numBpFailedLastTestFailover: System.Int32
+- numBpPassedLastTestFailover: System.Int32
+- numBpFailedTestFailoverLastQuarter: System.Int32

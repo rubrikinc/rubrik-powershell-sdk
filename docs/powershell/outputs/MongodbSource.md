@@ -1,0 +1,55 @@
+### MongodbSource
+Information about MongoDB Source.
+
+- clusterUuid: System.String
+  - UUID of the Nosql cluster.
+- sourceIp: System.String
+  - IP of the MongoDB source.
+- nodeCount: System.Int32
+  - Number of nodes in MongoDB source node.
+- size: System.Int64
+  - Overall data size of MongoDB source cluster in bytes.
+- backupCount: System.Int32
+  - Number of backups for the MongoDB source cluster.
+- status: MongodbSourceStatus
+  - Source connectivity status.
+- watcherEnabled: System.Boolean
+  - Watcher status for the MongoDB source cluster.
+- backupParams: MongodbBackupParams
+  - Backup Parameters for the MongoDB source cluster.
+- configParams: MongodbSourceConfigParams
+  - Configuration Params for the MongoDB source cluster.
+- descendantConnection: MongodbSourceDescendantTypeConnection
+  - List of descendants.
+- physicalChildConnection: MongodbSourcePhysicalChildTypeConnection
+  - List of physical children.
+- cluster: Cluster
+  - Information about NoSql cluster for this MongoDB cluster.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.

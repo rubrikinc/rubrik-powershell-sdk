@@ -35,6 +35,16 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("openAccessType")]
         public OpenAccessType? OpenAccessType { get; set; }
 
+        //      C# -> RiskLevelType? RiskLevel
+        // GraphQL -> riskLevel: RiskLevelType! (enum)
+        [JsonProperty("riskLevel")]
+        public RiskLevelType? RiskLevel { get; set; }
+
+        //      C# -> List<RiskReason>? RiskReasons
+        // GraphQL -> riskReasons: [RiskReason!]! (enum)
+        [JsonProperty("riskReasons")]
+        public List<RiskReason>? RiskReasons { get; set; }
+
         //      C# -> StalenessType? StalenessType
         // GraphQL -> stalenessType: StalenessType! (enum)
         [JsonProperty("stalenessType")]
@@ -160,6 +170,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("analyzerResults")]
         public List<AnalyzerResult>? AnalyzerResults { get; set; }
 
+        //      C# -> AnalyzerHits? AnalyzerRiskHits
+        // GraphQL -> analyzerRiskHits: AnalyzerHits (type)
+        [JsonProperty("analyzerRiskHits")]
+        public AnalyzerHits? AnalyzerRiskHits { get; set; }
+
         //      C# -> Hits? FilesWithHits
         // GraphQL -> filesWithHits: Hits (type)
         [JsonProperty("filesWithHits")]
@@ -195,6 +210,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("openAccessStaleFiles")]
         public Hits? OpenAccessStaleFiles { get; set; }
 
+        //      C# -> SensitiveFiles? SensitiveFiles
+        // GraphQL -> sensitiveFiles: SensitiveFiles (type)
+        [JsonProperty("sensitiveFiles")]
+        public SensitiveFiles? SensitiveFiles { get; set; }
+
         //      C# -> Hits? StaleFiles
         // GraphQL -> staleFiles: Hits (type)
         [JsonProperty("staleFiles")]
@@ -214,6 +234,8 @@ namespace Rubrik.SecurityCloud.Types
         AnalyzerErrorCode? ErrorCode = null,
         DataGovFileMode? Mode = null,
         OpenAccessType? OpenAccessType = null,
+        RiskLevelType? RiskLevel = null,
+        List<RiskReason>? RiskReasons = null,
         StalenessType? StalenessType = null,
         UserAccessType? UserAccessType = null,
         HierarchyObject? Snappable = null,
@@ -239,6 +261,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? StdPath = null,
         List<AnalyzerGroupResult>? AnalyzerGroupResults = null,
         List<AnalyzerResult>? AnalyzerResults = null,
+        AnalyzerHits? AnalyzerRiskHits = null,
         Hits? FilesWithHits = null,
         Hits? Hits = null,
         List<ActivityResult>? NumActivitiesBreakdown = null,
@@ -246,6 +269,7 @@ namespace Rubrik.SecurityCloud.Types
         Hits? OpenAccessFilesWithHits = null,
         Hits? OpenAccessFolders = null,
         Hits? OpenAccessStaleFiles = null,
+        SensitiveFiles? SensitiveFiles = null,
         Hits? StaleFiles = null,
         Hits? StaleFilesWithHits = null
     ) 
@@ -258,6 +282,12 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( OpenAccessType != null ) {
             this.OpenAccessType = OpenAccessType;
+        }
+        if ( RiskLevel != null ) {
+            this.RiskLevel = RiskLevel;
+        }
+        if ( RiskReasons != null ) {
+            this.RiskReasons = RiskReasons;
         }
         if ( StalenessType != null ) {
             this.StalenessType = StalenessType;
@@ -334,6 +364,9 @@ namespace Rubrik.SecurityCloud.Types
         if ( AnalyzerResults != null ) {
             this.AnalyzerResults = AnalyzerResults;
         }
+        if ( AnalyzerRiskHits != null ) {
+            this.AnalyzerRiskHits = AnalyzerRiskHits;
+        }
         if ( FilesWithHits != null ) {
             this.FilesWithHits = FilesWithHits;
         }
@@ -354,6 +387,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( OpenAccessStaleFiles != null ) {
             this.OpenAccessStaleFiles = OpenAccessStaleFiles;
+        }
+        if ( SensitiveFiles != null ) {
+            this.SensitiveFiles = SensitiveFiles;
         }
         if ( StaleFiles != null ) {
             this.StaleFiles = StaleFiles;
@@ -385,6 +421,16 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> openAccessType: OpenAccessType! (enum)
         if (this.OpenAccessType != null) {
             s += ind + "openAccessType\n" ;
+        }
+        //      C# -> RiskLevelType? RiskLevel
+        // GraphQL -> riskLevel: RiskLevelType! (enum)
+        if (this.RiskLevel != null) {
+            s += ind + "riskLevel\n" ;
+        }
+        //      C# -> List<RiskReason>? RiskReasons
+        // GraphQL -> riskReasons: [RiskReason!]! (enum)
+        if (this.RiskReasons != null) {
+            s += ind + "riskReasons\n" ;
         }
         //      C# -> StalenessType? StalenessType
         // GraphQL -> stalenessType: StalenessType! (enum)
@@ -512,6 +558,11 @@ namespace Rubrik.SecurityCloud.Types
         if (this.AnalyzerResults != null) {
             s += ind + "analyzerResults {\n" + this.AnalyzerResults.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
+        //      C# -> AnalyzerHits? AnalyzerRiskHits
+        // GraphQL -> analyzerRiskHits: AnalyzerHits (type)
+        if (this.AnalyzerRiskHits != null) {
+            s += ind + "analyzerRiskHits {\n" + this.AnalyzerRiskHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
         //      C# -> Hits? FilesWithHits
         // GraphQL -> filesWithHits: Hits (type)
         if (this.FilesWithHits != null) {
@@ -546,6 +597,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> openAccessStaleFiles: Hits (type)
         if (this.OpenAccessStaleFiles != null) {
             s += ind + "openAccessStaleFiles {\n" + this.OpenAccessStaleFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> SensitiveFiles? SensitiveFiles
+        // GraphQL -> sensitiveFiles: SensitiveFiles (type)
+        if (this.SensitiveFiles != null) {
+            s += ind + "sensitiveFiles {\n" + this.SensitiveFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
         //      C# -> Hits? StaleFiles
         // GraphQL -> staleFiles: Hits (type)
@@ -582,6 +638,18 @@ namespace Rubrik.SecurityCloud.Types
         if (this.OpenAccessType == null && Exploration.Includes(parent + ".openAccessType", true))
         {
             this.OpenAccessType = new OpenAccessType();
+        }
+        //      C# -> RiskLevelType? RiskLevel
+        // GraphQL -> riskLevel: RiskLevelType! (enum)
+        if (this.RiskLevel == null && Exploration.Includes(parent + ".riskLevel", true))
+        {
+            this.RiskLevel = new RiskLevelType();
+        }
+        //      C# -> List<RiskReason>? RiskReasons
+        // GraphQL -> riskReasons: [RiskReason!]! (enum)
+        if (this.RiskReasons == null && Exploration.Includes(parent + ".riskReasons", true))
+        {
+            this.RiskReasons = new List<RiskReason>();
         }
         //      C# -> StalenessType? StalenessType
         // GraphQL -> stalenessType: StalenessType! (enum)
@@ -737,6 +805,13 @@ namespace Rubrik.SecurityCloud.Types
             this.AnalyzerResults = new List<AnalyzerResult>();
             this.AnalyzerResults.ApplyExploratoryFieldSpec(parent + ".analyzerResults");
         }
+        //      C# -> AnalyzerHits? AnalyzerRiskHits
+        // GraphQL -> analyzerRiskHits: AnalyzerHits (type)
+        if (this.AnalyzerRiskHits == null && Exploration.Includes(parent + ".analyzerRiskHits"))
+        {
+            this.AnalyzerRiskHits = new AnalyzerHits();
+            this.AnalyzerRiskHits.ApplyExploratoryFieldSpec(parent + ".analyzerRiskHits");
+        }
         //      C# -> Hits? FilesWithHits
         // GraphQL -> filesWithHits: Hits (type)
         if (this.FilesWithHits == null && Exploration.Includes(parent + ".filesWithHits"))
@@ -785,6 +860,13 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.OpenAccessStaleFiles = new Hits();
             this.OpenAccessStaleFiles.ApplyExploratoryFieldSpec(parent + ".openAccessStaleFiles");
+        }
+        //      C# -> SensitiveFiles? SensitiveFiles
+        // GraphQL -> sensitiveFiles: SensitiveFiles (type)
+        if (this.SensitiveFiles == null && Exploration.Includes(parent + ".sensitiveFiles"))
+        {
+            this.SensitiveFiles = new SensitiveFiles();
+            this.SensitiveFiles.ApplyExploratoryFieldSpec(parent + ".sensitiveFiles");
         }
         //      C# -> Hits? StaleFiles
         // GraphQL -> staleFiles: Hits (type)

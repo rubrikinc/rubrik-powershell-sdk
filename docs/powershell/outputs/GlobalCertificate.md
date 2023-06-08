@@ -1,0 +1,41 @@
+### GlobalCertificate
+Information about a certificate on RSC.
+
+- certificateId: System.String
+  - The ID of the certificate.
+- name: System.String
+  - The display name of the certificate.
+- description: System.String
+  - The description of the certificate.
+- hasKey: System.Boolean
+  - Specifies whether the certificate has a private key.
+- expiringAt: DateTime
+  - The expiration date of the certificate.
+- certificate: System.String
+  - The certificate in raw PEM format.
+- issuedTo: System.String
+  - To whom the certificate was issued.
+- issuedBy: System.String
+  - The issuer of the certificate.
+- issuedOn: DateTime
+  - The date on which the certificate was issued.
+- isCaSigned: System.Boolean
+  - Specifies if the certificate is signed by a Certificate Authority.
+- status: GlobalCertificateStatus
+  - The expiration status of the certificate.
+- sha1Fingerprint: System.String
+  - The SHA-1 fingerprint of the certificate, in hexadecimal format.
+- sha256Fingerprint: System.String
+  - The SHA-256 fingerprint of the certificate, in hexadecimal format.
+- serialNumber: System.String
+  - The serial number of the certificate, in hexadecimal format.
+- isCdmBorn: System.Boolean
+  - Specifies whether the certificate was imported directly from Rubrik CDM.
+- certificateFid: System.String
+  - The FID of the certificate.
+- clusters: list of CertificateClusterInfos
+  - The Rubrik clusters on which the certificate has been uploaded.
+- cdmUsages: list of CdmCertificateUsageInfos
+  - The usages for the certificate on Rubrik clusters.
+- usages: list of CertificateUsageInfos
+  - The usages for the certificate on Rubrik Security Cloud.

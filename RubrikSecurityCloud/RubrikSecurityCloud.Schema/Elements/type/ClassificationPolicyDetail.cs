@@ -85,6 +85,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("analyzers")]
         public List<Analyzer>? Analyzers { get; set; }
 
+        //      C# -> AssignmentResourceDetailsConnection? AssignmentResources
+        // GraphQL -> assignmentResources: AssignmentResourceDetailsConnection! (type)
+        [JsonProperty("assignmentResources")]
+        public AssignmentResourceDetailsConnection? AssignmentResources { get; set; }
+
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
         [JsonProperty("creator")]
@@ -124,6 +129,7 @@ namespace Rubrik.SecurityCloud.Types
         System.Int32? NumAnalyzers = null,
         System.Int32? TotalObjects = null,
         List<Analyzer>? Analyzers = null,
+        AssignmentResourceDetailsConnection? AssignmentResources = null,
         User? Creator = null,
         HierarchyObjectConnection? HierarchyObjectConnection = null,
         List<ObjectStatus>? ObjectStatuses = null,
@@ -168,6 +174,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Analyzers != null ) {
             this.Analyzers = Analyzers;
+        }
+        if ( AssignmentResources != null ) {
+            this.AssignmentResources = AssignmentResources;
         }
         if ( Creator != null ) {
             this.Creator = Creator;
@@ -256,6 +265,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> analyzers: [Analyzer!]! (type)
         if (this.Analyzers != null) {
             s += ind + "analyzers {\n" + this.Analyzers.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> AssignmentResourceDetailsConnection? AssignmentResources
+        // GraphQL -> assignmentResources: AssignmentResourceDetailsConnection! (type)
+        if (this.AssignmentResources != null) {
+            s += ind + "assignmentResources {\n" + this.AssignmentResources.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
@@ -364,6 +378,13 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.Analyzers = new List<Analyzer>();
             this.Analyzers.ApplyExploratoryFieldSpec(parent + ".analyzers");
+        }
+        //      C# -> AssignmentResourceDetailsConnection? AssignmentResources
+        // GraphQL -> assignmentResources: AssignmentResourceDetailsConnection! (type)
+        if (this.AssignmentResources == null && Exploration.Includes(parent + ".assignmentResources"))
+        {
+            this.AssignmentResources = new AssignmentResourceDetailsConnection();
+            this.AssignmentResources.ApplyExploratoryFieldSpec(parent + ".assignmentResources");
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)

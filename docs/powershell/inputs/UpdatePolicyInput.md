@@ -1,0 +1,11 @@
+### UpdatePolicyInput
+- id: System.String
+- name: System.String
+- description: System.String
+- colorEnum: ClassificationPolicyColor
+- mode: ClassificationPolicyMode
+- analyzerIds: list of System.Strings
+- updateName: System.Boolean
+- updateDescription: System.Boolean
+- updateMode: System.Boolean
+- updateAnalyzerIds: System.Boolean

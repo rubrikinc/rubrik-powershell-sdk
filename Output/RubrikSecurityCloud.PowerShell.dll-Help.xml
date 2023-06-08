@@ -330,7 +330,7 @@
         <maml:name>ExistingGqlOpName</maml:name>
         <maml:description>
           <maml:para>The name of the GraphQL Operation to look up. </maml:para>
-          <maml:para>```yaml Type: GqlOperationName Parameter Sets: LookupExistingOperation Aliases: Accepted values: Unknown, AwsCloudAccountListKMSKeys, accountId, accountSettings, activitySeries, activitySeriesConnection, activitySeriesGroupByConnection, addAwsAuthenticationServerBasedCloudAccount, addAwsIamUserBasedCloudAccount, addAzureCloudAccount, addAzureCloudAccountExocomputeConfigurations, addAzureCloudAccountWithoutOauth, addMongoSource, addNodesToCloudCluster, addO365Org, allAccountOwners, allAccountProducts, allAccountsWithExocomputeMappings, allAvailabilityZonesByRegionFromAws, allAwsCdmVersions, allAwsCloudAccountConfigs, allAwsCloudAccountsWithFeatures, allAwsComputeSettings, allAwsExocomputeConfigs, allAwsInstanceProfileNames, allAwsRdsAuroraInstanceClasses, allAwsRegions, allAzureArmTemplatesByFeature, allAzureCdmVersions, allAzureCloudAccountMissingPermissions, allAzureCloudAccountSubnetsByRegion, allAzureCloudAccountSubscriptionsByFeature, allAzureCloudAccountTenants, allAzureDiskEncryptionSetsByRegion, allAzureEncryptionKeys, allAzureExocomputeConfigsInAccount, allAzureKeyVaultsByRegion, allAzureNativeAvailabilitySetsByRegionFromAzure, allAzureNativeExportCompatibleDiskTypesByRegionFromAzure, allAzureNativeExportCompatibleVmSizesByRegionFromAzure, allAzureNativeResourceGroupsInfoIfExist, allAzureNativeSecurityGroupsByRegionFromAzure, allAzureNativeStorageAccountsFromAzure, allAzureNativeSubnetsByRegionFromAzure, allAzureNativeVirtualMachineSizes, allAzureNativeVirtualNetworks, allAzureNsgs, allAzureRegions, allAzureResourceGroups, allAzureSqlDatabaseServerElasticPools, allAzureStorageAccounts, allAzureSubnets, allAzureSubscriptionWithExocomputeMappings, allAzureVnets, allCdpSlaVmNames, allCloudClusters, allClusterGlobalSlas, allClusterReplicationTargets, allClusterWebCertsAndIpmis, allClustersTotpAckStatus, allConnectedClusters, allDbParameterGroupsByRegionFromAws, allDbSubnetGroupsByRegionFromAws, allEc2KeyPairsByRegionFromAws, allGlobalFileSearchMultipleClusters, allHostedAzureRegions, allKmsEncryptionKeysByRegionFromAws, allMssqlDatabaseRestoreFiles, allNcdSlaComplianceData, allO365AdGroups, allO365OrgStatuses, allO365SubscriptionsAppTypeCounts, allObjectsLatestUserNoteAudit, allOptionGroupsByRegionFromAws, allResourceGroupsFromAzure, allS3BucketsDetailsFromAws, allS3BucketsFromAws, allSlaIofilterStatuses, allVcenterHotAddProxyVms, allVpcsByRegionFromAws, allVpcsFromAws, amiTypeForAwsNativeArchivedSnapshotExport, archiveK8sCluster, assignMssqlSlaDomainProperties, assignMssqlSlaDomainPropertiesAsync, assignRetentionSLAToSnappables, assignRetentionSLAToSnapshots, assignSla, assignSlaToMongoDbCollection, assignSlasForSnappableHierarchies, awsCloudAccountInitiate, awsCloudAccountListSecurityGroups, awsCloudAccountListSubnets, awsCloudAccountListVpcs, awsCloudAccountUpdateFeature, awsCloudAccountValidate, awsCloudAccountWithFeatures, awsComputeSettings, awsNativeAccount, awsNativeEbsVolume, awsNativeEbsVolumesByName, awsNativeEc2Instance, awsNativeEc2InstancesByName, awsNativeProtectionAccountAdd, awsNativeRdsExportDefaults, awsNativeRdsInstance, awsNativeRdsPointInTimeRestoreWindow, awsNativeRoot, awsNativeS3Bucket, azureAdDirectories, azureAdDirectory, azureCloudAccountPermissionConfig, azureCloudAccountSubscriptionWithFeatures, azureCloudAccountTenant, azureCloudAccountTenantWithExoConfigs, azureNativeManagedDisk, azureNativeResourceGroup, azureNativeRoot, azureNativeSubscription, azureNativeVirtualMachine, azureO365CheckNSGOutboundRules, azureO365CheckNetworkSubnet, azureO365CheckResourceGroupName, azureO365CheckStorageAccountAccessibility, azureO365CheckStorageAccountName, azureO365CheckSubscriptionQuota, azureO365CheckVirtualNetworkName, azureO365Exocompute, azureO365GetAzureHostType, azureO365GetNetworkSubnetUnusedAddr, azureO365ValidateUserRoles, azureOauthConsentComplete, azureOauthConsentKickoff, azureRegions, azureResourceGroups, azureSqlDatabase, azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure, azureSqlDatabaseServer, azureSqlManagedInstanceDatabase, azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, azureSqlManagedInstanceServer, azureStorageAccounts, azureSubnets, azureSubscriptions, azureVNets, backupAzureAdDirectory, backupO365Mailbox, backupO365Onedrive, backupO365SharePointSite, backupO365SharepointDrive, backupO365SharepointList, backupO365Team, batchExportHypervVm, batchExportNutanixVm, batchInstantRecoverHypervVm, batchMountHypervVm, batchMountNutanixVm, batchOnDemandBackupHypervVm, browseMssqlDatabaseSnapshot, browseO365TeamConvChannels, bulkCreateOnDemandMssqlBackup, bulkDeleteCassandraSources, bulkDeleteFailoverCluster, bulkDeleteMongodbSources, bulkOnDemandSnapshotNutanixVm, bulkUpdateMssqlDbs, bulkUpdateOracleDatabases, bulkUpdateOracleHosts, bulkUpdateOracleRacs, cancelActivitySeries, cassandraColumnFamilies, cassandraColumnFamilyRecoverableRange, cassandraColumnFamilySchema, cassandraKeyspaces, cassandraSources, cdmMssqlLogShippingTargets, cluster, clusterCertificates, clusterConnection, clusterCsr, clusterDefaultGateway, clusterDns, clusterEncryptionInfo, clusterFloatingIps, clusterGroupByConnection, clusterIpmi, clusterIpv6Mode, clusterNetworkInterfaces, clusterNodes, clusterNtpServers, clusterOperationJobProgress, clusterProxy, clusterRcvLocations, clusterRegistrationProductInfo, clusterSlaDomainConnection, clusterSlaDomainFilterConnection, clusterTypeList, clusterVlans, clusterWebSignedCertificate, clusterWithConfigProtectionInfo, clusterWithUpgradesInfo, completeAzureAdAppSetup, completeAzureCloudAccountOauth, countOfObjectsProtectedBySlas, createAutomaticAwsTargetMapping, createAutomaticAzureTargetMapping, createAwsAccount, createAwsCluster, createAwsComputeSetting, createAwsExocomputeConfigs, createAwsReaderTarget, createAwsTarget, createAzureAccount, createAzureCluster, createAzureReaderTarget, createAzureSaasAppAad, createAzureTarget, createCassandraSource, createCloudNativeAwsStorageSetting, createCloudNativeAzureStorageSetting, createCloudNativeRcvAzureStorageSetting, createFailoverCluster, createGlobalSla, createHypervVirtualMachineSnapshotMount, createK8sCluster, createMongodbSource, createMssqlLiveMount, createMssqlLogShippingConfiguration, createNutanixCluster, createNutanixPrismCentral, createO365AppComplete, createO365AppKickoff, createOnDemandMssqlBackup, createOnDemandNutanixBackup, createOraclePdbRestore, createVsphereAdvancedTag, deleteAllOracleDatabaseSnapshots, deleteAwsCloudAccountWithoutCft, deleteAwsCluster, deleteAwsComputeSetting, deleteAwsExocomputeConfigs, deleteAwsIamUserBasedCloudAccount, deleteAzureAdDirectory, deleteAzureCloudAccount, deleteAzureCloudAccountExocomputeConfigurations, deleteAzureCloudAccountWithoutOauth, deleteAzureCluster, deleteCassandraSource, deleteFailoverCluster, deleteGlobalSla, deleteHypervVirtualMachineSnapshot, deleteHypervVirtualMachineSnapshotMount, deleteLdapPrincipals, deleteMongoSource, deleteMongodbSource, deleteMssqlDbSnapshots, deleteMssqlLiveMount, deleteNutanixCluster, deleteNutanixMountV1, deleteNutanixPrismCentral, deleteNutanixSnapshots, deleteO365AzureApp, deleteO365Org, deleteO365ServiceAccount, deleteOracleMount, deleteVsphereAdvancedTag, deleteVsphereLiveMount, discoverMongoSource, doesAzureNativeResourceGroupExist, downloadFilesNutanixSnapshot, downloadHypervSnapshotFromLocation, downloadHypervVirtualMachineSnapshot, downloadHypervVirtualMachineSnapshotFiles, downloadMssqlDatabaseBackupFiles, downloadMssqlDatabaseFilesFromArchivalLocation, downloadNutanixSnapshot, downloadNutanixVmFromLocation, downloadOracleDatabaseSnapshot, downloadSlaWithReplicationCsv, downloadVsphereVirtualMachineFiles, editGlobalSla, enableO365SharePoint, enableO365Teams, excludeAwsNativeEbsVolumesFromSnapshot, excludeAzureNativeManagedDisksFromSnapshot, exportHypervVirtualMachine, exportMssqlDatabase, exportNutanixSnapshot, exportO365Mailbox, exportOracleDatabase, exportOracleTablespace, exportSlaManagedVolumeSnapshot, finalizeAwsCloudAccountDeletion, finalizeAwsCloudAccountProtection, getPendingSlaAssignments, globalSlaFilterConnection, globalSlaStatuses, hostFailoverCluster, hypervCluster, hypervDeleteAllSnapshots, hypervHostAsyncRequestStatus, hypervMounts, hypervOnDemandSnapshot, hypervScvmm, hypervScvmmAsyncRequestStatus, hypervScvmmDelete, hypervScvmmUpdate, hypervServer, hypervTopLevelDescendants, hypervVirtualMachineAsyncRequestStatus, hypervVirtualMachines, hypervVmDetail, insertCustomerO365App, instantRecoverHypervVirtualMachineSnapshot, instantRecoverOracleSnapshot, isAwsNativeEbsVolumeSnapshotRestorable, isAwsNativeRdsInstanceLaunchConfigurationValid, isAwsS3BucketNameAvailable, isAzureNativeManagedDiskSnapshotRestorable, isAzureNativeSqlDatabaseSnapshotPersistent, isAzureStorageAccountNameAvailable, isTotpAckNecessaryForCluster, k8sClusters, kickoffAzureAdAppSetup, ldapAuthorizedPrincipalConnection, ldapIntegrationConnection, ldapPrincipalConnection, listO365Apps, mapAzureCloudAccountExocomputeSubscription, mapAzureCloudAccountToPersistentStorageLocation, migrateNutanixMountV1, mongoCollections, mongoDatabases, mongoRecoverableRanges, mongoSources, mongodbBulkRecoverableRange, mongodbCollectionRecoverableRange, mongodbCollections, mongodbDatabases, mongodbSources, mountNutanixSnapshotV1, mountOracleDatabase, mssqlAvailabilityGroup, mssqlCompatibleInstances, mssqlDatabaseLiveMounts, mssqlDatabaseMissedRecoverableRanges, mssqlDatabaseMissedSnapshots, mssqlDatabaseRestoreEstimate, mssqlDatabases, mssqlDefaultProperties, mssqlInstance, mssqlLogShippingTargets, mssqlRecoverableRanges, mssqlTopLevelDescendants, nutanixBrowseSnapshot, nutanixCategories, nutanixCategoryValueVms, nutanixCategoryValues, nutanixCluster, nutanixClusterAsyncRequestStatus, nutanixClusterContainers, nutanixClusterNetworks, nutanixMounts, nutanixPrismCentrals, nutanixSnapshotDetail, nutanixTopLevelDescendants, nutanixTopLevelDescendantsV2, nutanixVm, nutanixVmAsyncRequestStatus, nutanixVmMissedSnapshots, o365Calendar, o365Groups, o365License, o365Mailbox, o365Mailboxes, o365OauthConsentComplete, o365OauthConsentKickoff, o365ObjectAncestors, o365Onedrive, o365Org, o365OrgAtSnappableLevel, o365OrgSummaries, o365PdlGroups, o365SaaSSetupKickoff, o365SaasSetupComplete, o365ServiceAccount, o365ServiceStatus, o365SetupKickoff, o365SharepointDrive, o365SharepointList, o365SharepointObjectList, o365SharepointObjects, o365SharepointSite, o365Site, o365StorageStats, o365Team, o365TeamChannels, o365TeamConversationsFolderID, o365TeamPostedBy, o365User, o365UserObjects, oracleAcoExampleDownloadLink, oracleAcoParameters, oracleDataGuardGroup, oracleDatabaseLogBackupConfig, oracleDatabases, oracleHost, oracleHostLogBackupConfig, oracleLiveMounts, oracleMissedRecoverableRanges, oracleMissedSnapshots, oraclePdbDetails, oracleRac, oracleRacLogBackupConfig, oracleRecoverableRanges, oracleTopLevelDescendants, patchAwsAuthenticationServerBasedCloudAccount, patchAwsIamUserBasedCloudAccount, patchMongoSource, patchNutanixMountV1, pauseSla, prepareAwsCloudAccountDeletion, prepareFeatureUpdateForAwsCloudAccount, protectedClustersForGlobalSla, rdsInstanceDetailsFromAws, recoverCassandraSource, recoverCloudCluster, recoverMongoSource, recoverMongodbSource, refreshHypervScvmm, refreshHypervServer, refreshK8sCluster, refreshNutanixCluster, refreshNutanixPrismCentral, refreshO365Org, refreshOracleDatabase, registerAgentHypervVirtualMachine, registerAgentNutanixVm, registerCloudCluster, registerHypervScvmm, removeCdmCluster, removeLdapIntegration, restoreFilesNutanixSnapshot, restoreHypervVirtualMachineSnapshotFiles, restoreMssqlDatabase, restoreO365Mailbox, restoreO365Snappable, restoreO365TeamsConversations, restoreO365TeamsFiles, restoreOracleLogs, retryAddMongoSource, searchNutanixVm, setAzureCloudAccountCustomerAppCredentials, setLdapMfaSetting, setO365ServiceAccount, setupAzureO365Exocompute, slaArchivalValidationWarnings, slaAuditDetail, slaConflictObjects, slaDomainWithWarnings, slaDomainWithWarningsList, slaDomains, slaManagedVolumes, slaSummariesByIds, startAwsExocomputeDisableJob, startAwsNativeAccountDisableJob, startAwsNativeEc2InstanceSnapshotsJob, startAwsNativeRdsInstanceSnapshotsJob, startAzureCloudAccountOauth, startCreateAwsNativeEbsVolumeSnapshotsJob, startCreateAzureNativeManagedDiskSnapshotsJob, startCreateAzureNativeVirtualMachineSnapshotsJob, startDisableAzureCloudAccountJob, startDisableAzureNativeSubscriptionProtectionJob, startExportAwsNativeEbsVolumeSnapshotJob, startExportAzureNativeManagedDiskJob, startExportAzureNativeVirtualMachineJob, startExportAzureSqlDatabaseDbJob, startExportAzureSqlManagedInstanceDbJob, startRefreshAwsNativeAccountsJob, startRefreshAzureNativeSubscriptionsJob, startRestoreAwsNativeEc2InstanceSnapshotJob, startRestoreAzureNativeVirtualMachineJob, takeMssqlLogBackup, takeOnDemandOracleDatabaseSnapshot, takeOnDemandOracleLogSnapshot, uniqueHypervServersCount, uniqueVSphereVCenterCount, unmapAzureCloudAccountExocomputeSubscription, updateAutomaticAwsTargetMapping, updateAutomaticAzureTargetMapping, updateAwsAccount, updateAwsCloudAccount, updateAwsCloudAccountFeature, updateAwsComputeSetting, updateAwsExocomputeConfigs, updateAwsTarget, updateAzureAccount, updateAzureCloudAccount, updateAzureTarget, updateCassandraSource, updateCloudNativeAwsStorageSetting, updateCloudNativeAzureStorageSetting, updateCloudNativeRcvAzureStorageSetting, updateCustomerAppPermissionForAzureSql, updateFailoverCluster, updateGlobalSla, updateHypervVirtualMachine, updateHypervVirtualMachineSnapshotMount, updateLdapIntegration, updateMongodbSource, updateMssqlDefaultProperties, updateMssqlLogShippingConfiguration, updateNutanixCluster, updateNutanixPrismCentral, updateNutanixVm, updateO365AppAuthStatus, updateO365AppPermissions, updateO365OrgCustomName, updateOracleDataGuardGroup, updateVcenter, updateVcenterHotAddBandwidth, updateVcenterHotAddNetwork, updateVsphereAdvancedTag, upgradeAwsCloudAccountFeaturesWithoutCft, upgradeAwsIamUserBasedCloudAccountPermissions, upgradeAzureCloudAccount, upgradeAzureCloudAccountPermissionsWithoutOauth, upgradeSlas, vCenterAdvancedTagPreview, vCenterHotAddBandwidth, vCenterHotAddNetwork, vCenterNetworks, vCenterNumProxiesNeeded, vCenterPreAddInfo, vSphereBlueprint, vSphereComputeCluster, vSphereDatacenter, vSphereDatastore, vSphereDatastoreCluster, vSphereDatastoreConnection, vSphereFolder, vSphereHost, vSphereHostConnection, vSphereHostDetails, vSphereHostsByFids, vSphereLiveMounts, vSphereMount, vSphereMountConnection, vSphereNetwork, vSphereResourcePool, vSphereRootRecoveryHierarchy, vSphereTag, vSphereTagCategory, vSphereTopLevelDescendantsConnection, vSphereVCenter, vSphereVCenterConnection, vSphereVMAsyncRequestStatus, vSphereVMBatchLiveMount, vSphereVmNew, vSphereVmNewConnection, validateAndCreateAwsCloudAccount, validateAwsNativeRdsClusterNameForExport, validateAwsNativeRdsInstanceNameForExport, validateAzureCloudAccountExocomputeConfigurations, validateAzureNativeSqlDatabaseDbNameForExport, validateAzureNativeSqlManagedInstanceDbNameForExport, validateOracleAcoFile, validateOracleDatabaseBackups, vcdClusters, verifySLAWithReplicationToCluster, vsphereBulkOnDemandSnapshot, vsphereCreateVCenter, vsphereDeleteVcenter, vsphereEditVCenter, vsphereExcludeVmDisks, vsphereExportSnapshotToStandaloneHost, vsphereExportSnapshotToStandaloneHostV2, vsphereOnDemandSnapshot, vsphereRefreshVCenter, vsphereVMDeleteLiveMount, vsphereVMExportSnapshot, vsphereVMInitiateInstantRecovery, vsphereVMInitiateLiveMount, vsphereVMMissedRecoverableRange, vsphereVMRecoverableRange, vsphereVMRecoverableRangeInBatch, vsphereVMUpdate, vsphereVmBatchExport, vsphereVmBatchExportV3, vsphereVmBatchInPlaceRecovery, vsphereVmDeleteSnapshot, vsphereVmDownloadSnapshot, vsphereVmDownloadSnapshotFiles, vsphereVmExportSnapshotV2, vsphereVmExportSnapshotV3, vsphereVmExportSnapshotWithDownloadFromCloud, vsphereVmInitiateBatchInstantRecovery, vsphereVmInitiateBatchLiveMountV2, vsphereVmInitiateDiskMount, vsphereVmInitiateInPlaceRecovery, vsphereVmInitiateInstantRecoveryV2, vsphereVmInitiateLiveMountV2, vsphereVmListEsxiDatastores, vsphereVmMountRelocate, vsphereVmMountRelocateV2, vsphereVmPowerOnOffLiveMount, vsphereVmRecoverFiles, vsphereVmRecoverFilesNew, vsphereVmRegisterAgent, vsphereVmwareCdpLiveInfo, windowsCluster</maml:para>
+          <maml:para>```yaml Type: GqlOperationName Parameter Sets: LookupExistingOperation Aliases: Accepted values: Unknown, AwsCloudAccountListKMSKeys, accountId, accountSettings, activitySeries, activitySeriesConnection, activitySeriesGroupByConnection, addAwsAuthenticationServerBasedCloudAccount, addAwsIamUserBasedCloudAccount, addAzureCloudAccount, addAzureCloudAccountExocomputeConfigurations, addAzureCloudAccountWithoutOauth, addMongoSource, addNodesToCloudCluster, addO365Org, allAccountOwners, allAccountProducts, allAccountsWithExocomputeMappings, allAvailabilityZonesByRegionFromAws, allAwsCdmVersions, allAwsCloudAccountConfigs, allAwsCloudAccountsFeaturesWithExoConfigs, allAwsCloudAccountsWithFeatures, allAwsComputeSettings, allAwsExocomputeConfigs, allAwsInstanceProfileNames, allAwsRdsAuroraInstanceClasses, allAwsRegions, allAzureArmTemplatesByFeature, allAzureCdmVersions, allAzureCloudAccountMissingPermissions, allAzureCloudAccountSubnetsByRegion, allAzureCloudAccountSubscriptionsByFeature, allAzureCloudAccountTenants, allAzureDiskEncryptionSetsByRegion, allAzureEncryptionKeys, allAzureExocomputeConfigsInAccount, allAzureKeyVaultsByRegion, allAzureNativeAvailabilitySetsByRegionFromAzure, allAzureNativeExportCompatibleDiskTypesByRegionFromAzure, allAzureNativeExportCompatibleVmSizesByRegionFromAzure, allAzureNativeResourceGroupsInfoIfExist, allAzureNativeSecurityGroupsByRegionFromAzure, allAzureNativeStorageAccountsFromAzure, allAzureNativeSubnetsByRegionFromAzure, allAzureNativeVirtualMachineSizes, allAzureNativeVirtualNetworks, allAzureNsgs, allAzureRegions, allAzureResourceGroups, allAzureSqlDatabaseServerElasticPools, allAzureStorageAccounts, allAzureSubnets, allAzureSubscriptionWithExocomputeMappings, allAzureVnets, allCdpSlaVmNames, allCloudClusters, allClusterGlobalSlas, allClusterReplicationTargets, allClusterWebCertsAndIpmis, allClustersTotpAckStatus, allConnectedClusters, allDbParameterGroupsByRegionFromAws, allDbSubnetGroupsByRegionFromAws, allEc2KeyPairsByRegionFromAws, allGlobalFileSearchMultipleClusters, allHostedAzureRegions, allKmsEncryptionKeysByRegionFromAws, allMssqlDatabaseRestoreFiles, allNcdSlaComplianceData, allO365AdGroups, allO365OrgStatuses, allO365SubscriptionsAppTypeCounts, allObjectsLatestUserNoteAudit, allOptionGroupsByRegionFromAws, allResourceGroupsFromAzure, allS3BucketsDetailsFromAws, allS3BucketsFromAws, allSlaIofilterStatuses, allSupportedAwsRdsDatabaseInstanceClasses, allVcenterHotAddProxyVms, allVpcsByRegionFromAws, allVpcsFromAws, amiTypeForAwsNativeArchivedSnapshotExport, archiveK8sCluster, assignMssqlSlaDomainProperties, assignMssqlSlaDomainPropertiesAsync, assignRetentionSLAToSnappables, assignRetentionSLAToSnapshots, assignSla, assignSlaToMongoDbCollection, assignSlasForSnappableHierarchies, awsCloudAccountInitiate, awsCloudAccountListSecurityGroups, awsCloudAccountListSubnets, awsCloudAccountListVpcs, awsCloudAccountUpdateFeature, awsCloudAccountValidate, awsCloudAccountWithFeatures, awsComputeSettings, awsNativeAccount, awsNativeEbsVolume, awsNativeEbsVolumesByName, awsNativeEc2Instance, awsNativeEc2InstancesByName, awsNativeProtectionAccountAdd, awsNativeRdsExportDefaults, awsNativeRdsInstance, awsNativeRdsPointInTimeRestoreWindow, awsNativeRoot, awsNativeS3Bucket, azureAdDirectories, azureAdDirectory, azureCloudAccountPermissionConfig, azureCloudAccountSubscriptionWithFeatures, azureCloudAccountTenant, azureCloudAccountTenantWithExoConfigs, azureNativeManagedDisk, azureNativeResourceGroup, azureNativeRoot, azureNativeSubscription, azureNativeVirtualMachine, azureO365CheckNSGOutboundRules, azureO365CheckNetworkSubnet, azureO365CheckResourceGroupName, azureO365CheckStorageAccountAccessibility, azureO365CheckStorageAccountName, azureO365CheckSubscriptionQuota, azureO365CheckVirtualNetworkName, azureO365Exocompute, azureO365GetAzureHostType, azureO365GetNetworkSubnetUnusedAddr, azureO365ValidateUserRoles, azureOauthConsentComplete, azureOauthConsentKickoff, azureRegions, azureResourceGroups, azureSqlDatabase, azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure, azureSqlDatabaseServer, azureSqlManagedInstanceDatabase, azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure, azureSqlManagedInstanceServer, azureStorageAccounts, azureSubnets, azureSubscriptions, azureVNets, backupAzureAdDirectory, backupO365Mailbox, backupO365Onedrive, backupO365SharePointSite, backupO365SharepointDrive, backupO365SharepointList, backupO365Team, batchExportHypervVm, batchExportNutanixVm, batchInstantRecoverHypervVm, batchMountHypervVm, batchMountNutanixVm, batchOnDemandBackupHypervVm, browseMssqlDatabaseSnapshot, browseO365TeamConvChannels, bulkCreateOnDemandMssqlBackup, bulkDeleteCassandraSources, bulkDeleteFailoverCluster, bulkDeleteMongodbSources, bulkOnDemandSnapshotNutanixVm, bulkUpdateMssqlDbs, bulkUpdateOracleDatabases, bulkUpdateOracleHosts, bulkUpdateOracleRacs, cancelActivitySeries, cassandraColumnFamilies, cassandraColumnFamilyRecoverableRange, cassandraColumnFamilySchema, cassandraKeyspaces, cassandraSources, cdmMssqlLogShippingTargets, cluster, clusterCertificates, clusterConnection, clusterCsr, clusterDefaultGateway, clusterDns, clusterEncryptionInfo, clusterFloatingIps, clusterGroupByConnection, clusterIpmi, clusterIpv6Mode, clusterNetworkInterfaces, clusterNodes, clusterNtpServers, clusterOperationJobProgress, clusterProxy, clusterRcvLocations, clusterRegistrationProductInfo, clusterSlaDomainConnection, clusterSlaDomainFilterConnection, clusterTypeList, clusterVlans, clusterWebSignedCertificate, clusterWithConfigProtectionInfo, clusterWithUpgradesInfo, completeAzureAdAppSetup, completeAzureAdAppUpdate, completeAzureCloudAccountOauth, countOfObjectsProtectedBySlas, createAutomaticAwsTargetMapping, createAutomaticAzureTargetMapping, createAwsAccount, createAwsCluster, createAwsComputeSetting, createAwsExocomputeConfigs, createAwsReaderTarget, createAwsTarget, createAzureAccount, createAzureCluster, createAzureReaderTarget, createAzureSaasAppAad, createAzureTarget, createCassandraSource, createCloudNativeAwsStorageSetting, createCloudNativeAzureStorageSetting, createCloudNativeRcvAzureStorageSetting, createFailoverCluster, createGlobalSla, createHypervVirtualMachineSnapshotMount, createK8sCluster, createMongodbSource, createMssqlLiveMount, createMssqlLogShippingConfiguration, createNutanixCluster, createNutanixPrismCentral, createO365AppComplete, createO365AppKickoff, createOnDemandMssqlBackup, createOnDemandNutanixBackup, createOraclePdbRestore, createVsphereAdvancedTag, deleteAllOracleDatabaseSnapshots, deleteAwsCloudAccountWithoutCft, deleteAwsCluster, deleteAwsComputeSetting, deleteAwsExocomputeConfigs, deleteAwsIamUserBasedCloudAccount, deleteAzureAdDirectory, deleteAzureCloudAccount, deleteAzureCloudAccountExocomputeConfigurations, deleteAzureCloudAccountWithoutOauth, deleteAzureCluster, deleteCassandraSource, deleteFailoverCluster, deleteGlobalSla, deleteHypervVirtualMachineSnapshot, deleteHypervVirtualMachineSnapshotMount, deleteLdapPrincipals, deleteMongoSource, deleteMongodbSource, deleteMssqlDbSnapshots, deleteMssqlLiveMount, deleteNutanixCluster, deleteNutanixMountV1, deleteNutanixPrismCentral, deleteNutanixSnapshots, deleteO365AzureApp, deleteO365Org, deleteO365ServiceAccount, deleteOracleMount, deleteVsphereAdvancedTag, deleteVsphereLiveMount, discoverMongoSource, doesAzureNativeResourceGroupExist, downloadFilesNutanixSnapshot, downloadHypervSnapshotFromLocation, downloadHypervVirtualMachineSnapshot, downloadHypervVirtualMachineSnapshotFiles, downloadMssqlDatabaseBackupFiles, downloadMssqlDatabaseFilesFromArchivalLocation, downloadNutanixSnapshot, downloadNutanixVmFromLocation, downloadOracleDatabaseSnapshot, downloadSlaWithReplicationCsv, downloadVsphereVirtualMachineFiles, editGlobalSla, enableO365SharePoint, enableO365Teams, excludeAwsNativeEbsVolumesFromSnapshot, excludeAzureNativeManagedDisksFromSnapshot, exportHypervVirtualMachine, exportMssqlDatabase, exportNutanixSnapshot, exportO365Mailbox, exportOracleDatabase, exportOracleTablespace, exportSlaManagedVolumeSnapshot, finalizeAwsCloudAccountDeletion, finalizeAwsCloudAccountProtection, getPendingSlaAssignments, globalSlaFilterConnection, globalSlaStatuses, hostFailoverCluster, hypervCluster, hypervDeleteAllSnapshots, hypervHostAsyncRequestStatus, hypervMounts, hypervOnDemandSnapshot, hypervScvmm, hypervScvmmAsyncRequestStatus, hypervScvmmDelete, hypervScvmmUpdate, hypervServer, hypervTopLevelDescendants, hypervVirtualMachineAsyncRequestStatus, hypervVirtualMachines, hypervVmDetail, initiateAzureAdAppUpdate, insertCustomerO365App, instantRecoverHypervVirtualMachineSnapshot, instantRecoverOracleSnapshot, isAwsNativeEbsVolumeSnapshotRestorable, isAwsNativeRdsInstanceLaunchConfigurationValid, isAwsS3BucketNameAvailable, isAzureNativeManagedDiskSnapshotRestorable, isAzureNativeSqlDatabaseSnapshotPersistent, isAzureStorageAccountNameAvailable, isTotpAckNecessaryForCluster, k8sClusters, kickoffAzureAdAppSetup, ldapAuthorizedPrincipalConnection, ldapIntegrationConnection, ldapPrincipalConnection, listO365Apps, mapAzureCloudAccountExocomputeSubscription, mapAzureCloudAccountToPersistentStorageLocation, migrateNutanixMountV1, mongoCollections, mongoDatabases, mongoRecoverableRanges, mongoSources, mongodbBulkRecoverableRange, mongodbCollectionRecoverableRange, mongodbCollections, mongodbDatabases, mongodbSources, mountNutanixSnapshotV1, mountOracleDatabase, mssqlAvailabilityGroup, mssqlCompatibleInstances, mssqlDatabaseLiveMounts, mssqlDatabaseMissedRecoverableRanges, mssqlDatabaseMissedSnapshots, mssqlDatabaseRestoreEstimate, mssqlDatabases, mssqlDefaultProperties, mssqlInstance, mssqlLogShippingTargets, mssqlRecoverableRanges, mssqlTopLevelDescendants, nutanixBrowseSnapshot, nutanixCategories, nutanixCategoryValueVms, nutanixCategoryValues, nutanixCluster, nutanixClusterAsyncRequestStatus, nutanixClusterContainers, nutanixClusterNetworks, nutanixMounts, nutanixPrismCentrals, nutanixSnapshotDetail, nutanixTopLevelDescendants, nutanixTopLevelDescendantsV2, nutanixVm, nutanixVmAsyncRequestStatus, nutanixVmMissedSnapshots, o365Calendar, o365Groups, o365License, o365Mailbox, o365Mailboxes, o365OauthConsentComplete, o365OauthConsentKickoff, o365ObjectAncestors, o365Onedrive, o365Org, o365OrgAtSnappableLevel, o365OrgSummaries, o365PdlGroups, o365SaaSSetupKickoff, o365SaasSetupComplete, o365ServiceAccount, o365ServiceStatus, o365SetupKickoff, o365SharepointDrive, o365SharepointList, o365SharepointObjectList, o365SharepointObjects, o365SharepointSite, o365Site, o365StorageStats, o365Team, o365TeamChannels, o365TeamConversationsFolderID, o365TeamPostedBy, o365User, o365UserObjects, oracleAcoExampleDownloadLink, oracleAcoParameters, oracleDataGuardGroup, oracleDatabaseLogBackupConfig, oracleDatabases, oracleHost, oracleHostLogBackupConfig, oracleLiveMounts, oracleMissedRecoverableRanges, oracleMissedSnapshots, oraclePdbDetails, oracleRac, oracleRacLogBackupConfig, oracleRecoverableRanges, oracleTopLevelDescendants, patchAwsAuthenticationServerBasedCloudAccount, patchAwsIamUserBasedCloudAccount, patchMongoSource, patchNutanixMountV1, pauseSla, prepareAwsCloudAccountDeletion, prepareFeatureUpdateForAwsCloudAccount, protectedClustersForGlobalSla, rdsInstanceDetailsFromAws, recoverCassandraSource, recoverCloudCluster, recoverMongoSource, recoverMongodbSource, refreshHypervScvmm, refreshHypervServer, refreshK8sCluster, refreshNutanixCluster, refreshNutanixPrismCentral, refreshO365Org, refreshOracleDatabase, registerAgentHypervVirtualMachine, registerAgentNutanixVm, registerCloudCluster, registerHypervScvmm, removeCdmCluster, removeLdapIntegration, restoreFilesNutanixSnapshot, restoreHypervVirtualMachineSnapshotFiles, restoreMssqlDatabase, restoreO365Mailbox, restoreO365Snappable, restoreO365TeamsConversations, restoreO365TeamsFiles, restoreOracleLogs, retryAddMongoSource, searchNutanixVm, setAzureCloudAccountCustomerAppCredentials, setLdapMfaSetting, setO365ServiceAccount, setupAzureO365Exocompute, slaArchivalValidationWarnings, slaAuditDetail, slaConflictObjects, slaDomainWithWarnings, slaDomainWithWarningsList, slaDomains, slaManagedVolumes, slaSummariesByIds, startAwsExocomputeDisableJob, startAwsNativeAccountDisableJob, startAwsNativeEc2InstanceSnapshotsJob, startAwsNativeRdsInstanceSnapshotsJob, startAzureCloudAccountOauth, startCreateAwsNativeEbsVolumeSnapshotsJob, startCreateAzureNativeManagedDiskSnapshotsJob, startCreateAzureNativeVirtualMachineSnapshotsJob, startDisableAzureCloudAccountJob, startDisableAzureNativeSubscriptionProtectionJob, startExportAwsNativeEbsVolumeSnapshotJob, startExportAzureNativeManagedDiskJob, startExportAzureNativeVirtualMachineJob, startExportAzureSqlDatabaseDbJob, startExportAzureSqlManagedInstanceDbJob, startRefreshAwsNativeAccountsJob, startRefreshAzureNativeSubscriptionsJob, startRestoreAwsNativeEc2InstanceSnapshotJob, startRestoreAzureNativeVirtualMachineJob, takeMssqlLogBackup, takeOnDemandOracleDatabaseSnapshot, takeOnDemandOracleLogSnapshot, uniqueHypervServersCount, uniqueVSphereVCenterCount, unmapAzureCloudAccountExocomputeSubscription, updateAutomaticAwsTargetMapping, updateAutomaticAzureTargetMapping, updateAwsAccount, updateAwsCloudAccount, updateAwsCloudAccountFeature, updateAwsComputeSetting, updateAwsExocomputeConfigs, updateAwsTarget, updateAzureAccount, updateAzureCloudAccount, updateAzureTarget, updateCassandraSource, updateCloudNativeAwsStorageSetting, updateCloudNativeAzureStorageSetting, updateCloudNativeRcvAzureStorageSetting, updateCustomerAppPermissionForAzureSql, updateFailoverCluster, updateGlobalSla, updateHypervVirtualMachine, updateHypervVirtualMachineSnapshotMount, updateLdapIntegration, updateMongodbSource, updateMssqlDefaultProperties, updateMssqlLogShippingConfiguration, updateNutanixCluster, updateNutanixPrismCentral, updateNutanixVm, updateO365AppAuthStatus, updateO365AppPermissions, updateO365OrgCustomName, updateOracleDataGuardGroup, updateVcenter, updateVcenterHotAddBandwidth, updateVcenterHotAddNetwork, updateVsphereAdvancedTag, upgradeAwsCloudAccountFeaturesWithoutCft, upgradeAwsIamUserBasedCloudAccountPermissions, upgradeAzureCloudAccount, upgradeAzureCloudAccountPermissionsWithoutOauth, upgradeSlas, vCenterAdvancedTagPreview, vCenterHotAddBandwidth, vCenterHotAddNetwork, vCenterNetworks, vCenterNumProxiesNeeded, vCenterPreAddInfo, vSphereBlueprint, vSphereComputeCluster, vSphereDatacenter, vSphereDatastore, vSphereDatastoreCluster, vSphereDatastoreConnection, vSphereFolder, vSphereHost, vSphereHostConnection, vSphereHostDetails, vSphereHostsByFids, vSphereLiveMounts, vSphereMount, vSphereMountConnection, vSphereNetwork, vSphereResourcePool, vSphereRootRecoveryHierarchy, vSphereTag, vSphereTagCategory, vSphereTopLevelDescendantsConnection, vSphereVCenter, vSphereVCenterConnection, vSphereVMAsyncRequestStatus, vSphereVMBatchLiveMount, vSphereVmNew, vSphereVmNewConnection, validateAndCreateAwsCloudAccount, validateAwsNativeRdsClusterNameForExport, validateAwsNativeRdsInstanceNameForExport, validateAzureCloudAccountExocomputeConfigurations, validateAzureNativeSqlDatabaseDbNameForExport, validateAzureNativeSqlManagedInstanceDbNameForExport, validateOracleAcoFile, validateOracleDatabaseBackups, vcdClusters, verifySLAWithReplicationToCluster, vsphereBulkOnDemandSnapshot, vsphereCreateVCenter, vsphereDeleteVcenter, vsphereEditVCenter, vsphereExcludeVmDisks, vsphereExportSnapshotToStandaloneHost, vsphereExportSnapshotToStandaloneHostV2, vsphereOnDemandSnapshot, vsphereRefreshVCenter, vsphereVMDeleteLiveMount, vsphereVMExportSnapshot, vsphereVMInitiateInstantRecovery, vsphereVMInitiateLiveMount, vsphereVMMissedRecoverableRange, vsphereVMRecoverableRange, vsphereVMRecoverableRangeInBatch, vsphereVMUpdate, vsphereVmBatchExport, vsphereVmBatchExportV3, vsphereVmBatchInPlaceRecovery, vsphereVmDeleteSnapshot, vsphereVmDownloadSnapshot, vsphereVmDownloadSnapshotFiles, vsphereVmExportSnapshotV2, vsphereVmExportSnapshotV3, vsphereVmExportSnapshotWithDownloadFromCloud, vsphereVmInitiateBatchInstantRecovery, vsphereVmInitiateBatchLiveMountV2, vsphereVmInitiateDiskMount, vsphereVmInitiateInPlaceRecovery, vsphereVmInitiateInstantRecoveryV2, vsphereVmInitiateLiveMountV2, vsphereVmListEsxiDatastores, vsphereVmMountRelocate, vsphereVmMountRelocateV2, vsphereVmPowerOnOffLiveMount, vsphereVmRecoverFiles, vsphereVmRecoverFilesNew, vsphereVmRegisterAgent, vsphereVmwareCdpLiveInfo, windowsCluster</maml:para>
           <maml:para>Required: False Position: 0 Default value: None Accept pipeline input: True (ByValue) Accept wildcard characters: False ```</maml:para>
           <maml:para>### CommonParameters This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).</maml:para>
           <maml:para>## INPUTS</maml:para>
@@ -354,14 +354,14 @@
     <command:examples>
       <command:example>
         <maml:title>-------------------------- Example 1 --------------------------</maml:title>
-        <dev:code>PS&gt; Get-RscCmdlet -Operation clusterConnection</dev:code>
+        <dev:code>PS&gt; Get-RscCmdlet clusterConnection</dev:code>
         <dev:remarks>
           <maml:para>Retrieve the name of the cmdlet that implements the GraphQL query clusterConnection</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
         <maml:title>-------------------------- Example 2 --------------------------</maml:title>
-        <dev:code>PS&gt; Get-RscCmdlet -Operation notImplementedOperation</dev:code>
+        <dev:code>PS&gt; Get-RscCmdlet notImplementedOperation</dev:code>
         <dev:remarks>
           <maml:para>Retrieve info for a GraphQL operation that is not implemented by a cmdlet.</maml:para>
         </dev:remarks>
@@ -8711,6 +8711,17 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Initiateadappupdate</maml:name>
+          <maml:description>
+            <maml:para>Initiates an update to the Azure AD directory App. [GraphQL: initiateAzureAdAppUpdate]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
           <maml:name>Op</maml:name>
           <maml:description>
@@ -8777,6 +8788,17 @@
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Invoke-RscMutateAzure</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Completeadappupdate</maml:name>
+          <maml:description>
+            <maml:para>Completes an update to the Azure AD directory App. [GraphQL: completeAzureAdAppUpdate]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>Updateautomatictargetmapping</maml:name>
           <maml:description>
@@ -9928,6 +9950,18 @@
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Completeadappupdate</maml:name>
+        <maml:description>
+          <maml:para>Completes an update to the Azure AD directory App. [GraphQL: completeAzureAdAppUpdate]</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
         <maml:name>Completecloudaccountoauth</maml:name>
         <maml:description>
           <maml:para>Complete the Azure OAuth flow and pass the authorization code. [GraphQL: completeAzureCloudAccountOauth]</maml:para>
@@ -10123,6 +10157,18 @@
         <maml:name>GetInputs</maml:name>
         <maml:description>
           <maml:para>{{ Fill GetInputs Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Initiateadappupdate</maml:name>
+        <maml:description>
+          <maml:para>Initiates an update to the Azure AD directory App. [GraphQL: initiateAzureAdAppUpdate]</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -34852,9 +34898,9 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Allregion</maml:name>
+          <maml:name>Allexocomputeconfig</maml:name>
           <maml:description>
-            <maml:para>All valid AWS regions for this cloud account. [GraphQL: allAwsRegions]</maml:para>
+            <maml:para>List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix. [GraphQL: allAwsExocomputeConfigs]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -34940,6 +34986,18 @@
           <maml:name>After</maml:name>
           <maml:description>
             <maml:para>Returns the elements in the list that come after the specified cursor. GraphQL argument after: String</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>AwsNativeAccountIdOrNamePrefix</maml:name>
+          <maml:description>
+            <maml:para>A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query. GraphQL argument awsNativeAccountIdOrNamePrefix: String!</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -35047,6 +35105,17 @@
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Allinstanceprofilename</maml:name>
+          <maml:description>
+            <maml:para>All Rubrik CC-ES instance profiles in the AWS account. [GraphQL: allAwsInstanceProfileNames]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
           <maml:name>Op</maml:name>
           <maml:description>
@@ -35117,6 +35186,106 @@
           <maml:name>Allcdmversion</maml:name>
           <maml:description>
             <maml:para>Get all Rubrik CDM versions in the AWS marketplace. [GraphQL: allAwsCdmVersions]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Isnativeebsvolumesnapshotrestorable</maml:name>
+          <maml:description>
+            <maml:para>Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached. [GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Field Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>SnapshotId</maml:name>
+          <maml:description>
+            <maml:para>UUID of the snapshot GraphQL argument snapshotId: String!</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Invoke-RscQueryAws</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Allcloudaccountconfig</maml:name>
+          <maml:description>
+            <maml:para>List of all AWS cloud account configurations with the given search query. [GraphQL: allAwsCloudAccountConfigs]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -35214,9 +35383,9 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Allcloudaccountconfig</maml:name>
+          <maml:name>Allcloudaccountsfeatureswithexoconfig</maml:name>
           <maml:description>
-            <maml:para>List of all AWS cloud account configurations with the given search query. [GraphQL: allAwsCloudAccountConfigs]</maml:para>
+            <maml:para>List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform. [GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -35225,9 +35394,9 @@
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Natives3bucket</maml:name>
+          <maml:name>Allvpc</maml:name>
           <maml:description>
-            <maml:para>Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/. [GraphQL: awsNativeS3Bucket]</maml:para>
+            <maml:para>List of all Virtual Private Clouds (VPCs) in the AWS Native account. [GraphQL: allVpcsFromAws]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -35294,18 +35463,6 @@
           <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
           <dev:type>
             <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>S3BucketRubrikId</maml:name>
-          <maml:description>
-            <maml:para>Rubrik ID for the AWS S3 bucket object. GraphQL argument s3BucketRubrikId: UUID!</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -35757,260 +35914,6 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Allexocomputeconfig</maml:name>
-          <maml:description>
-            <maml:para>List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix. [GraphQL: allAwsExocomputeConfigs]</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Nativeebsvolume</maml:name>
-          <maml:description>
-            <maml:para>Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/. [GraphQL: awsNativeEbsVolume]</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
-          <maml:name>Op</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Op Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
-          <maml:name>Arg</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Arg Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
-          <maml:name>Field</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Field Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
-          <maml:name>GetInputs</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill GetInputs Description }}</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
-          <maml:name>InputProfile</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill InputProfile Description }}</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
-          <dev:type>
-            <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>AwsNativeAccountIdOrNamePrefix</maml:name>
-          <maml:description>
-            <maml:para>A query that searches for Exocompute configurations with an account name or account native ID that is prefixed by the search query. GraphQL argument awsNativeAccountIdOrNamePrefix: String!</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>EbsVolumeRubrikId</maml:name>
-          <maml:description>
-            <maml:para>Rubrik ID for the AWS EBS Volume object. GraphQL argument ebsVolumeRubrikId: UUID!</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Invoke-RscQueryAws</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Allinstanceprofilename</maml:name>
-          <maml:description>
-            <maml:para>All Rubrik CC-ES instance profiles in the AWS account. [GraphQL: allAwsInstanceProfileNames]</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Allvpcsbyregion</maml:name>
-          <maml:description>
-            <maml:para>List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region. [GraphQL: allVpcsByRegionFromAws]</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
-          <maml:name>Op</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Op Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
-          <maml:name>Arg</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Arg Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
-          <maml:name>Field</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Field Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
-          <maml:name>GetInputs</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill GetInputs Description }}</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
-          <maml:name>InputProfile</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill InputProfile Description }}</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
-          <dev:type>
-            <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>AwsAccountRubrikId</maml:name>
-          <maml:description>
-            <maml:para>Rubrik ID for AWS account. GraphQL argument awsAccountRubrikId: UUID!</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>Region</maml:name>
-          <maml:description>
-            <maml:para>Region in AWS. GraphQL argument region: AwsNativeRegion!</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">AF_SOUTH_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AP_EAST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AP_NORTHEAST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AP_NORTHEAST_2</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AP_SOUTHEAST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AP_SOUTHEAST_2</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AP_SOUTH_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CA_CENTRAL_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CN_NORTHWEST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CN_NORTH_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EU_CENTRAL_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EU_NORTH_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EU_SOUTH_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EU_WEST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EU_WEST_2</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EU_WEST_3</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ME_SOUTH_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">NOT_SPECIFIED</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SA_EAST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_EAST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_EAST_2</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_GOV_EAST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_GOV_WEST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_ISOB_EAST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_ISO_EAST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_ISO_WEST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_WEST_1</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">US_WEST_2</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">AwsNativeRegion</command:parameterValue>
-          <dev:type>
-            <maml:name>AwsNativeRegion</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Invoke-RscQueryAws</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>Allkmsencryptionkeysbyregion</maml:name>
           <maml:description>
             <maml:para>List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/. [GraphQL: allKmsEncryptionKeysByRegionFromAws]</maml:para>
@@ -36254,6 +36157,148 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Allregion</maml:name>
+          <maml:description>
+            <maml:para>All valid AWS regions for this cloud account. [GraphQL: allAwsRegions]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Allvpcsbyregion</maml:name>
+          <maml:description>
+            <maml:para>List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region. [GraphQL: allVpcsByRegionFromAws]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Field Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>AwsAccountRubrikId</maml:name>
+          <maml:description>
+            <maml:para>Rubrik ID for AWS account. GraphQL argument awsAccountRubrikId: UUID!</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>Region</maml:name>
+          <maml:description>
+            <maml:para>Region in AWS. GraphQL argument region: AwsNativeRegion!</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">AF_SOUTH_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AP_EAST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AP_NORTHEAST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AP_NORTHEAST_2</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AP_SOUTHEAST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AP_SOUTHEAST_2</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AP_SOUTH_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CA_CENTRAL_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CN_NORTHWEST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CN_NORTH_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">EU_CENTRAL_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">EU_NORTH_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">EU_SOUTH_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">EU_WEST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">EU_WEST_2</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">EU_WEST_3</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">ME_SOUTH_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">NOT_SPECIFIED</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">SA_EAST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_EAST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_EAST_2</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_GOV_EAST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_GOV_WEST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_ISOB_EAST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_ISO_EAST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_ISO_WEST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_WEST_1</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">US_WEST_2</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">AwsNativeRegion</command:parameterValue>
+          <dev:type>
+            <maml:name>AwsNativeRegion</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Invoke-RscQueryAws</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
           <maml:name>Alls3bucket</maml:name>
           <maml:description>
             <maml:para>List of all S3 bucket names across regions for the AWS Native account. [GraphQL: allS3BucketsFromAws]</maml:para>
@@ -36408,20 +36453,9 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Allvpc</maml:name>
+          <maml:name>Allsupportedrdsdatabaseinstanceclass</maml:name>
           <maml:description>
-            <maml:para>List of all Virtual Private Clouds (VPCs) in the AWS Native account. [GraphQL: allVpcsFromAws]</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Cloudaccountlistvpc</maml:name>
-          <maml:description>
-            <maml:para>Retrieves a list of virtual private clouds (VPCs) in the specific cloud account. [GraphQL: awsCloudAccountListVpcs]</maml:para>
+            <maml:para>List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version. [GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -36488,47 +36522,6 @@
           <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
           <dev:type>
             <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>CloudAccountUuid</maml:name>
-          <maml:description>
-            <maml:para>The ID of the cloud account. GraphQL argument cloudAccountUuid: UUID!</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>Feature</maml:name>
-          <maml:description>
-            <maml:para>A cloud account feature of Rubrik Security Cloud. GraphQL argument feature: CloudAccountFeature!</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">ALL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">APP_FLOWS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">ARCHIVAL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AZURE_SQL_DB_PROTECTION</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">AZURE_SQL_MI_PROTECTION</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CLOUDACCOUNTS</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_ARCHIVAL</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_ARCHIVAL_ENCRYPTION</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_BLOB_PROTECTION</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_PROTECTION</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_S3_PROTECTION</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">EXOCOMPUTE</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">GCP_SHARED_VPC_HOST</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">RDS_PROTECTION</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">SERVERS_AND_APPS</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">CloudAccountFeature</command:parameterValue>
-          <dev:type>
-            <maml:name>CloudAccountFeature</maml:name>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
@@ -36626,9 +36619,9 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Cloudaccountlistsubnet</maml:name>
+          <maml:name>Cloudaccountwithfeature</maml:name>
           <maml:description>
-            <maml:para>Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC). [GraphQL: awsCloudAccountListSubnets]</maml:para>
+            <maml:para>List of AWS cloud accounts and the features for each account, classified by ID. [GraphQL: awsCloudAccountWithFeatures]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -36711,9 +36704,21 @@
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>VpcId</maml:name>
+          <maml:name>AwsCloudAccountArg</maml:name>
           <maml:description>
-            <maml:para>VPC native ID. GraphQL argument vpcID: String!</maml:para>
+            <maml:para>Arguments for get cloud account. GraphQL argument awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AwsCloudAccountWithFeaturesInput</command:parameterValue>
+          <dev:type>
+            <maml:name>AwsCloudAccountWithFeaturesInput</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>CloudAccountId</maml:name>
+          <maml:description>
+            <maml:para>The Rubrik ID of the cloud account. GraphQL argument cloudAccountId: UUID!</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -36726,9 +36731,9 @@
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Cloudaccountlistsecuritygroup</maml:name>
+          <maml:name>Cloudaccountlistvpc</maml:name>
           <maml:description>
-            <maml:para>Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC). [GraphQL: awsCloudAccountListSecurityGroups]</maml:para>
+            <maml:para>Retrieves a list of virtual private clouds (VPCs) in the specific cloud account. [GraphQL: awsCloudAccountListVpcs]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -36839,13 +36844,54 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>CloudAccountUuid</maml:name>
+          <maml:description>
+            <maml:para>The ID of the cloud account. GraphQL argument cloudAccountUuid: UUID!</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>Feature</maml:name>
+          <maml:description>
+            <maml:para>A cloud account feature of Rubrik Security Cloud. GraphQL argument feature: CloudAccountFeature!</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">ALL</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">APP_FLOWS</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">ARCHIVAL</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AZURE_SQL_DB_PROTECTION</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">AZURE_SQL_MI_PROTECTION</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CLOUDACCOUNTS</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_ARCHIVAL</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_ARCHIVAL_ENCRYPTION</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_BLOB_PROTECTION</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_PROTECTION</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">CLOUD_NATIVE_S3_PROTECTION</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">EXOCOMPUTE</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">GCP_SHARED_VPC_HOST</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">RDS_PROTECTION</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">SERVERS_AND_APPS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">CloudAccountFeature</command:parameterValue>
+          <dev:type>
+            <maml:name>CloudAccountFeature</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Cloudaccountlistkmskey</maml:name>
+          <maml:name>Cloudaccountlistsubnet</maml:name>
           <maml:description>
-            <maml:para>[GraphQL: AwsCloudAccountListKMSKeys]</maml:para>
+            <maml:para>Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC). [GraphQL: awsCloudAccountListSubnets]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -36939,13 +36985,36 @@
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>VpcId</maml:name>
+          <maml:description>
+            <maml:para>VPC native ID. GraphQL argument vpcID: String!</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Invoke-RscQueryAws</maml:name>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Isnativeebsvolumesnapshotrestorable</maml:name>
+          <maml:name>Cloudaccountlistsecuritygroup</maml:name>
           <maml:description>
-            <maml:para>Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached. [GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]</maml:para>
+            <maml:para>Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC). [GraphQL: awsCloudAccountListSecurityGroups]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Nativeebsvolume</maml:name>
+          <maml:description>
+            <maml:para>Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/. [GraphQL: awsNativeEbsVolume]</maml:para>
           </maml:description>
           <dev:type>
             <maml:name>SwitchParameter</maml:name>
@@ -37017,9 +37086,109 @@
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>SnapshotId</maml:name>
+          <maml:name>EbsVolumeRubrikId</maml:name>
           <maml:description>
-            <maml:para>UUID of the snapshot GraphQL argument snapshotId: String!</maml:para>
+            <maml:para>Rubrik ID for the AWS EBS Volume object. GraphQL argument ebsVolumeRubrikId: UUID!</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Invoke-RscQueryAws</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Cloudaccountlistkmskey</maml:name>
+          <maml:description>
+            <maml:para>[GraphQL: AwsCloudAccountListKMSKeys]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Natives3bucket</maml:name>
+          <maml:description>
+            <maml:para>Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/. [GraphQL: awsNativeS3Bucket]</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
+          <maml:name>Op</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Op Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
+          <maml:name>Arg</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Arg Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill Field Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
+          <dev:type>
+            <maml:name>Object</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>GetInputs</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill GetInputs Description }}</maml:para>
+          </maml:description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>InputProfile</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill InputProfile Description }}</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
+            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
+          </command:parameterValueGroup>
+          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
+          <dev:type>
+            <maml:name>Profile</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
+          <maml:name>S3BucketRubrikId</maml:name>
+          <maml:description>
+            <maml:para>Rubrik ID for the AWS S3 bucket object. GraphQL argument s3BucketRubrikId: UUID!</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
           <dev:type>
@@ -38078,107 +38247,6 @@
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
-      <command:syntaxItem>
-        <maml:name>Invoke-RscQueryAws</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
-          <maml:name>Cloudaccountwithfeature</maml:name>
-          <maml:description>
-            <maml:para>List of AWS cloud accounts and the features for each account, classified by ID. [GraphQL: awsCloudAccountWithFeatures]</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="1" aliases="none">
-          <maml:name>Op</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Op Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="2" aliases="none">
-          <maml:name>Arg</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Arg Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="3" aliases="none">
-          <maml:name>Field</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill Field Description }}</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">Object</command:parameterValue>
-          <dev:type>
-            <maml:name>Object</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
-          <maml:name>GetInputs</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill GetInputs Description }}</maml:para>
-          </maml:description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
-          <maml:name>InputProfile</maml:name>
-          <maml:description>
-            <maml:para>{{ Fill InputProfile Description }}</maml:para>
-          </maml:description>
-          <command:parameterValueGroup>
-            <command:parameterValue required="false" command:variableLength="false">DEFAULT</command:parameterValue>
-            <command:parameterValue required="false" command:variableLength="false">DETAILS</command:parameterValue>
-          </command:parameterValueGroup>
-          <command:parameterValue required="true" variableLength="false">Profile</command:parameterValue>
-          <dev:type>
-            <maml:name>Profile</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>AwsCloudAccountArg</maml:name>
-          <maml:description>
-            <maml:para>Arguments for get cloud account. GraphQL argument awsCloudAccountArg: AwsCloudAccountWithFeaturesInput!</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AwsCloudAccountWithFeaturesInput</command:parameterValue>
-          <dev:type>
-            <maml:name>AwsCloudAccountWithFeaturesInput</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
-          <maml:name>CloudAccountId</maml:name>
-          <maml:description>
-            <maml:para>The Rubrik ID of the cloud account. GraphQL argument cloudAccountId: UUID!</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-          <dev:type>
-            <maml:name>String</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>None</dev:defaultValue>
-        </command:parameter>
-      </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="none">
@@ -38221,6 +38289,18 @@
         <maml:name>Allcloudaccountconfig</maml:name>
         <maml:description>
           <maml:para>List of all AWS cloud account configurations with the given search query. [GraphQL: allAwsCloudAccountConfigs]</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Allcloudaccountsfeatureswithexoconfig</maml:name>
+        <maml:description>
+          <maml:para>List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform. [GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -38377,6 +38457,18 @@
         <maml:name>Alls3bucketsdetail</maml:name>
         <maml:description>
           <maml:para>List of all S3 bucket details across regions for the AWS Native account. [GraphQL: allS3BucketsDetailsFromAws]</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Allsupportedrdsdatabaseinstanceclass</maml:name>
+        <maml:description>
+          <maml:para>List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version. [GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>

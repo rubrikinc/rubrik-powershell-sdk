@@ -21,6 +21,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "PROTECTION_TASKS_DETAIL_REPORT")]
         PROTECTION_TASKS_DETAIL_REPORT,
 
+        [EnumMember(Value = "RECOVERY_TASKS_DETAIL_REPORT")]
+        RECOVERY_TASKS_DETAIL_REPORT,
+
         [EnumMember(Value = "REPORT_UNSPECIFIED")]
         REPORT_UNSPECIFIED
 

@@ -1,0 +1,12 @@
+### UserAuditGroupByEnum
+- Month
+- ClusterType
+- Quarter
+- Year
+- Day
+- UserAuditStatus
+- Week
+- UserAuditType
+- Hour
+- Cluster
+- ObjectType

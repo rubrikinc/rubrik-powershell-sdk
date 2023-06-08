@@ -31,14 +31,14 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     /// Retrieve the name of the cmdlet that implements the
     /// GraphQL query clusterConnection
     /// <code>
-    /// PS> Get-RscCmdlet -Operation clusterConnection
+    /// PS> Get-RscCmdlet clusterConnection
     /// </code>
     /// </example>
     /// <example>
     /// Retrieve info for a GraphQL operation that is
     /// not implemented by a cmdlet.
     /// <code>
-    /// PS> Get-RscCmdlet -Operation notImplementedOperation
+    /// PS> Get-RscCmdlet notImplementedOperation
     /// </code>
     /// </example>
     [Cmdlet(VerbsCommon.Get, "RscCmdlet", DefaultParameterSetName = "LookupExistingOperation")]

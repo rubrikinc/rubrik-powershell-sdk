@@ -1,0 +1,10 @@
+### AnalyzerGroupTypeEnum
+- UNDEFINED
+- CUSTOM
+- GLBA
+- HIPAA
+- PCI_DSS
+- US_FINANCE
+- US_PII
+- UK_PII
+- CCPA

@@ -420,6 +420,15 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "IS_UNMANAGED_OBJECT")]
         IS_UNMANAGED_OBJECT,
 
+        [EnumMember(Value = "JIRA_PROJECT_KEY")]
+        JIRA_PROJECT_KEY,
+
+        [EnumMember(Value = "JIRA_PROJECT_LEAD")]
+        JIRA_PROJECT_LEAD,
+
+        [EnumMember(Value = "JIRA_PROJECT_TYPE")]
+        JIRA_PROJECT_TYPE,
+
         [EnumMember(Value = "KUPR_CDM_CLUSTER_ID")]
         KUPR_CDM_CLUSTER_ID,
 
@@ -503,6 +512,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_PRISM_CENTRAL_ID")]
         NUTANIX_PRISM_CENTRAL_ID,
+
+        [EnumMember(Value = "NUTANIX_SHOW_ONLY_STANDALONE_CLUSTERS")]
+        NUTANIX_SHOW_ONLY_STANDALONE_CLUSTERS,
 
         [EnumMember(Value = "NUTANIX_VM_BY_AGENT_STATUS")]
         NUTANIX_VM_BY_AGENT_STATUS,

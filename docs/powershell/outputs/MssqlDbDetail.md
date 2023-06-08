@@ -1,0 +1,81 @@
+### MssqlDbDetail
+Supported in v5.0+
+
+- archiveStorage: System.Int64
+  - Supported in v5.0+
+- isLocal: System.Boolean
+  - Supported in v5.0+
+- isStandby: System.Boolean
+  - Supported in v5.0+
+  This field is deprecated. Use the isStandby field on the replicas list instead. This field will continue to work for non-availability databases, but it is meaningless for availability databases.
+- localStorage: System.Int64
+  - Supported in v5.0+
+- maxDataStreams: System.Int32
+  - Supported in v5.0+
+- postBackupScript: MssqlScriptDetail
+  - Supported in v5.0+
+- preBackupScript: MssqlScriptDetail
+  - Supported in v5.0+
+- recoveryForkGuid: System.String
+  - Supported in v5.0+
+  This field is deprecated. Use the recoveryForkGuid field on the replicas list instead. This field will continue to work for non-availability databases, but it is meaningless for availability databases.
+- snapshotCount: System.Int32
+  - Required. Supported in v5.0+
+- blackoutWindowResponseInfo: BlackoutWindowResponseInfo
+  - 
+- latestRecoveryPointV50: System.String
+  - 
+- latestRecoveryPointV51: System.String
+  - 
+- latestRecoveryPointV52: System.String
+  - 
+- latestRecoveryPointV53: System.String
+  - 
+- latestRecoveryPointV60: DateTime
+  - 
+- latestRecoveryPointV70: DateTime
+  - 
+- latestRecoveryPointV80: DateTime
+  - 
+- latestRecoveryPointV81: DateTime
+  - 
+- latestRecoveryPointV90: DateTime
+  - 
+- mssqlDbSummary: MssqlDbSummary
+  - 
+- oldestRecoveryPointV50: System.String
+  - 
+- oldestRecoveryPointV51: System.String
+  - 
+- oldestRecoveryPointV52: System.String
+  - 
+- oldestRecoveryPointV53: System.String
+  - 
+- oldestRecoveryPointV60: DateTime
+  - 
+- oldestRecoveryPointV70: DateTime
+  - 
+- oldestRecoveryPointV80: DateTime
+  - 
+- oldestRecoveryPointV81: DateTime
+  - 
+- oldestRecoveryPointV90: DateTime
+  - 
+- protectionDateV50: System.String
+  - 
+- protectionDateV51: System.String
+  - 
+- protectionDateV52: System.String
+  - 
+- protectionDateV53: System.String
+  - 
+- protectionDateV60: DateTime
+  - 
+- protectionDateV70: DateTime
+  - 
+- protectionDateV80: DateTime
+  - 
+- protectionDateV81: DateTime
+  - 
+- protectionDateV90: DateTime
+  - 

@@ -102,7 +102,7 @@ namespace Rubrik.SecurityCloud.Types
         public System.Boolean? IsRelic { get; set; }
 
         //      C# -> System.String? Location
-        // GraphQL -> location: String! (scalar)
+        // GraphQL -> location: String (scalar)
         [JsonProperty("location")]
         public System.String? Location { get; set; }
 
@@ -521,7 +521,7 @@ namespace Rubrik.SecurityCloud.Types
             s += ind + "isRelic\n" ;
         }
         //      C# -> System.String? Location
-        // GraphQL -> location: String! (scalar)
+        // GraphQL -> location: String (scalar)
         if (this.Location != null) {
             s += ind + "location\n" ;
         }
@@ -774,7 +774,7 @@ namespace Rubrik.SecurityCloud.Types
             this.IsRelic = true;
         }
         //      C# -> System.String? Location
-        // GraphQL -> location: String! (scalar)
+        // GraphQL -> location: String (scalar)
         if (this.Location == null && Exploration.Includes(parent + ".location", true))
         {
             this.Location = "FETCH";

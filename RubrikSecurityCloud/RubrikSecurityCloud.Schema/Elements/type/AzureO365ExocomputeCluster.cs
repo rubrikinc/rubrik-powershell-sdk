@@ -60,6 +60,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("azureAppId")]
         public System.String? AzureAppId { get; set; }
 
+        //      C# -> System.String? ColossusBackupStorageAccountId
+        // GraphQL -> colossusBackupStorageAccountId: String! (scalar)
+        [JsonProperty("colossusBackupStorageAccountId")]
+        public System.String? ColossusBackupStorageAccountId { get; set; }
+
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
         [JsonProperty("groupName")]
@@ -159,6 +164,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? AksId = null,
         System.String? AksVersion = null,
         System.String? AzureAppId = null,
+        System.String? ColossusBackupStorageAccountId = null,
         System.String? GroupName = null,
         System.String? Id = null,
         System.Boolean? IsProvisioned = null,
@@ -201,6 +207,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( AzureAppId != null ) {
             this.AzureAppId = AzureAppId;
+        }
+        if ( ColossusBackupStorageAccountId != null ) {
+            this.ColossusBackupStorageAccountId = ColossusBackupStorageAccountId;
         }
         if ( GroupName != null ) {
             this.GroupName = GroupName;
@@ -302,6 +311,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> azureAppId: String! (scalar)
         if (this.AzureAppId != null) {
             s += ind + "azureAppId\n" ;
+        }
+        //      C# -> System.String? ColossusBackupStorageAccountId
+        // GraphQL -> colossusBackupStorageAccountId: String! (scalar)
+        if (this.ColossusBackupStorageAccountId != null) {
+            s += ind + "colossusBackupStorageAccountId\n" ;
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)
@@ -443,6 +457,12 @@ namespace Rubrik.SecurityCloud.Types
         if (this.AzureAppId == null && Exploration.Includes(parent + ".azureAppId", true))
         {
             this.AzureAppId = "FETCH";
+        }
+        //      C# -> System.String? ColossusBackupStorageAccountId
+        // GraphQL -> colossusBackupStorageAccountId: String! (scalar)
+        if (this.ColossusBackupStorageAccountId == null && Exploration.Includes(parent + ".colossusBackupStorageAccountId", true))
+        {
+            this.ColossusBackupStorageAccountId = "FETCH";
         }
         //      C# -> System.String? GroupName
         // GraphQL -> groupName: String! (scalar)

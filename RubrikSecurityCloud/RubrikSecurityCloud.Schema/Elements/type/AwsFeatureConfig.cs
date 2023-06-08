@@ -35,6 +35,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("featureDetail")]
         public FeatureDetail? FeatureDetail { get; set; }
 
+        //      C# -> CloudAccountDetails? MappedExocomputeAccount
+        // GraphQL -> mappedExocomputeAccount: CloudAccountDetails (type)
+        [JsonProperty("mappedExocomputeAccount")]
+        public CloudAccountDetails? MappedExocomputeAccount { get; set; }
+
 
         #endregion
 
@@ -43,7 +48,8 @@ namespace Rubrik.SecurityCloud.Types
     public AwsFeatureConfig Set(
         AwsCloudAccount? AwsCloudAccount = null,
         List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs = null,
-        FeatureDetail? FeatureDetail = null
+        FeatureDetail? FeatureDetail = null,
+        CloudAccountDetails? MappedExocomputeAccount = null
     ) 
     {
         if ( AwsCloudAccount != null ) {
@@ -54,6 +60,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( FeatureDetail != null ) {
             this.FeatureDetail = FeatureDetail;
+        }
+        if ( MappedExocomputeAccount != null ) {
+            this.MappedExocomputeAccount = MappedExocomputeAccount;
         }
         return this;
     }
@@ -79,6 +88,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> featureDetail: FeatureDetail! (type)
         if (this.FeatureDetail != null) {
             s += ind + "featureDetail {\n" + this.FeatureDetail.AsFieldSpec(indent+1) + ind + "}\n" ;
+        }
+        //      C# -> CloudAccountDetails? MappedExocomputeAccount
+        // GraphQL -> mappedExocomputeAccount: CloudAccountDetails (type)
+        if (this.MappedExocomputeAccount != null) {
+            s += ind + "mappedExocomputeAccount {\n" + this.MappedExocomputeAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
         }
         return s;
     }
@@ -108,6 +122,13 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.FeatureDetail = new FeatureDetail();
             this.FeatureDetail.ApplyExploratoryFieldSpec(parent + ".featureDetail");
+        }
+        //      C# -> CloudAccountDetails? MappedExocomputeAccount
+        // GraphQL -> mappedExocomputeAccount: CloudAccountDetails (type)
+        if (this.MappedExocomputeAccount == null && Exploration.Includes(parent + ".mappedExocomputeAccount"))
+        {
+            this.MappedExocomputeAccount = new CloudAccountDetails();
+            this.MappedExocomputeAccount.ApplyExploratoryFieldSpec(parent + ".mappedExocomputeAccount");
         }
     }
 

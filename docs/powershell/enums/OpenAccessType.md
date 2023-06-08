@@ -1,0 +1,5 @@
+### OpenAccessType
+- NOT_OPEN
+- INHERITED
+- EXPLICIT
+- UNKNOWN_ACCESS

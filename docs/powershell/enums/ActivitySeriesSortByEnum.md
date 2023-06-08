@@ -1,0 +1,10 @@
+### ActivitySeriesSortByEnum
+- Location
+- ClusterName
+- LastUpdated
+- StartTime
+- ObjectName
+- ActivityStatus
+- ObjectType
+- ActivityType
+- Severity

@@ -1,0 +1,12 @@
+### ActivityTableColumnEnum
+- ComplianceStatus
+- Location
+- ClusterName
+- ClusterType
+- LastUpdated
+- StartTime
+- SlaDomain
+- ObjectName
+- ActivityStatus
+- ObjectType
+- ActivityType

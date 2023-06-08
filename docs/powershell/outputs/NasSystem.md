@@ -1,0 +1,75 @@
+### NasSystem
+Instance of a registered NAS system.
+
+- osVersion: System.String
+  - OS version of the registered NAS system.
+- lastRefreshTime: DateTime
+  - UTC timestamp of the most recent NAS system refresh job instance.
+- vendorType: System.String
+  - Vendor type of the registered NAS system.
+- isChangelistEnabled: System.Boolean
+  - Specifies whether the Changelist option is enabled.
+- isSmbSupported: System.Boolean
+  - Specifies whether SMB is supported by the NAS System.
+- isNfsSupported: System.Boolean
+  - Specifies whether NFS is supported by the NAS System.
+- lastStatus: NasSystemConnectivityStatus
+  - Specifies the connectivity status of the NAS System.
+- isRelic: System.Boolean
+  - Specifies whether this object is a relic.
+- cdmId: System.String
+  - Rubrik CDM ID of the registered NAS system.
+- id: System.String
+  - Object ID.
+- descendantConnection: NasSystemDescendantTypeConnection
+  - List of descendants.
+- logicalChildConnection: NasSystemLogicalChildTypeConnection
+  - List of logical children.
+- volumeCount: System.Int32
+  - The total number of volumes in this NAS system.
+- shareCount: System.Int32
+  - The total number of shares in this NAS system.
+- namespaceCount: System.Int32
+  - The total number of namespaces in this NAS system.
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from objectID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.

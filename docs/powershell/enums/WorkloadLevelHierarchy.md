@@ -1,0 +1,20 @@
+### WorkloadLevelHierarchy
+- KuprNamespace
+- O365Teams
+- O365Onedrive
+- AWS_NATIVE_S3_BUCKET - AWS native S3 Bucket.
+- AwsNativeRdsInstance
+- O365SharePointList
+- AllSubHierarchyType
+- AzureSqlManagedInstanceDb
+- O365SharePointDrive
+- AwsNativeEc2Instance
+- O365Mailbox
+- AZURE_STORAGE_ACCOUNT - Azure storage account.
+- GcpNativeGCEInstance
+- AZURE_AD_DIRECTORY - Azure AD Directory.
+- AwsNativeEbsVolume
+- AzureSqlDatabaseDb
+- AzureNativeManagedDisk
+- O365Site
+- AzureNativeVirtualMachine

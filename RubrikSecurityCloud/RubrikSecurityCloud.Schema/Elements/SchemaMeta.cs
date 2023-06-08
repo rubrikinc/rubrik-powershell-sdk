@@ -12,7 +12,7 @@ namespace Rubrik.SecurityCloud.Types
 {
     public static class SchemaMeta
     {
-        public static string GraphqlSchemaVersion = "v20230524-16" ;
+        public static string GraphqlSchemaVersion = "v20230531-17" ;
 
         public static HashSet<string> InterfaceImpls( string interfaceName )
         {
@@ -1651,6 +1651,7 @@ namespace Rubrik.SecurityCloud.Types
             allAvailabilityZonesByRegionFromAws,
             allAwsCdmVersions,
             allAwsCloudAccountConfigs,
+            allAwsCloudAccountsFeaturesWithExoConfigs,
             allAwsCloudAccountsWithFeatures,
             allAwsComputeSettings,
             allAwsExocomputeConfigs,
@@ -1708,6 +1709,7 @@ namespace Rubrik.SecurityCloud.Types
             allS3BucketsDetailsFromAws,
             allS3BucketsFromAws,
             allSlaIofilterStatuses,
+            allSupportedAwsRdsDatabaseInstanceClasses,
             allVcenterHotAddProxyVms,
             allVpcsByRegionFromAws,
             allVpcsFromAws,
@@ -1832,6 +1834,7 @@ namespace Rubrik.SecurityCloud.Types
             clusterWithConfigProtectionInfo,
             clusterWithUpgradesInfo,
             completeAzureAdAppSetup,
+            completeAzureAdAppUpdate,
             completeAzureCloudAccountOauth,
             countOfObjectsProtectedBySlas,
             createAutomaticAwsTargetMapping,
@@ -1942,6 +1945,7 @@ namespace Rubrik.SecurityCloud.Types
             hypervVirtualMachineAsyncRequestStatus,
             hypervVirtualMachines,
             hypervVmDetail,
+            initiateAzureAdAppUpdate,
             insertCustomerO365App,
             instantRecoverHypervVirtualMachineSnapshot,
             instantRecoverOracleSnapshot,
@@ -2328,6 +2332,10 @@ namespace Rubrik.SecurityCloud.Types
                     "Invoke-RscQueryAws -Allcloudaccountconfig"
                 },
                 {
+                    GqlOperationName.allAwsCloudAccountsFeaturesWithExoConfigs,
+                    "Invoke-RscQueryAws -Allcloudaccountsfeatureswithexoconfig"
+                },
+                {
                     GqlOperationName.allAwsCloudAccountsWithFeatures,
                     "Invoke-RscQueryAws -Allcloudaccountswithfeature"
                 },
@@ -2554,6 +2562,10 @@ namespace Rubrik.SecurityCloud.Types
                 {
                     GqlOperationName.allSlaIofilterStatuses,
                     "Invoke-RscQuerySla -Alliofilterstatus"
+                },
+                {
+                    GqlOperationName.allSupportedAwsRdsDatabaseInstanceClasses,
+                    "Invoke-RscQueryAws -Allsupportedrdsdatabaseinstanceclass"
                 },
                 {
                     GqlOperationName.allVcenterHotAddProxyVms,
@@ -3052,6 +3064,10 @@ namespace Rubrik.SecurityCloud.Types
                     "Invoke-RscMutateAzure -Completeadappsetup"
                 },
                 {
+                    GqlOperationName.completeAzureAdAppUpdate,
+                    "Invoke-RscMutateAzure -Completeadappupdate"
+                },
+                {
                     GqlOperationName.completeAzureCloudAccountOauth,
                     "Invoke-RscMutateAzure -Completecloudaccountoauth"
                 },
@@ -3490,6 +3506,10 @@ namespace Rubrik.SecurityCloud.Types
                 {
                     GqlOperationName.hypervVmDetail,
                     "Invoke-RscQueryHyperv -Vmdetail"
+                },
+                {
+                    GqlOperationName.initiateAzureAdAppUpdate,
+                    "Invoke-RscMutateAzure -Initiateadappupdate"
                 },
                 {
                     GqlOperationName.insertCustomerO365App,

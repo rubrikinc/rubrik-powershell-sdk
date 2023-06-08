@@ -45,6 +45,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("csr")]
         public System.String? CsrField { get; set; }
 
+        //      C# -> System.String? CsrFid
+        // GraphQL -> csrFid: UUID! (scalar)
+        [JsonProperty("csrFid")]
+        public System.String? CsrFid { get; set; }
+
         //      C# -> System.Int64? CsrId
         // GraphQL -> csrId: Long! (scalar)
         [JsonProperty("csrId")]
@@ -101,6 +106,7 @@ namespace Rubrik.SecurityCloud.Types
         DateTime? CreatedAt = null,
         System.String? CreatorEmail = null,
         System.String? CsrField = null,
+        System.String? CsrFid = null,
         System.Int64? CsrId = null,
         System.String? Email = null,
         List<System.String>? Hostnames = null,
@@ -126,6 +132,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( CsrField != null ) {
             this.CsrField = CsrField;
+        }
+        if ( CsrFid != null ) {
+            this.CsrFid = CsrFid;
         }
         if ( CsrId != null ) {
             this.CsrId = CsrId;
@@ -188,6 +197,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> csr: String! (scalar)
         if (this.CsrField != null) {
             s += ind + "csr\n" ;
+        }
+        //      C# -> System.String? CsrFid
+        // GraphQL -> csrFid: UUID! (scalar)
+        if (this.CsrFid != null) {
+            s += ind + "csrFid\n" ;
         }
         //      C# -> System.Int64? CsrId
         // GraphQL -> csrId: Long! (scalar)
@@ -271,6 +285,12 @@ namespace Rubrik.SecurityCloud.Types
         if (this.CsrField == null && Exploration.Includes(parent + ".csr", true))
         {
             this.CsrField = "FETCH";
+        }
+        //      C# -> System.String? CsrFid
+        // GraphQL -> csrFid: UUID! (scalar)
+        if (this.CsrFid == null && Exploration.Includes(parent + ".csrFid", true))
+        {
+            this.CsrFid = "FETCH";
         }
         //      C# -> System.Int64? CsrId
         // GraphQL -> csrId: Long! (scalar)

@@ -1,0 +1,38 @@
+### PolarisSnapshot
+- id: System.String
+- date: DateTime
+- expirationDate: DateTime
+- expiryHint: System.Boolean
+- snappableId: System.String
+- parentSnapshotId: System.String
+- isCorrupted: System.Boolean
+- indexingAttempts: System.Int64
+- indexTime: DateTime
+- isUnindexable: System.Boolean
+- isOnDemandSnapshot: System.Boolean
+- isDeletedFromSource: System.Boolean
+- isReplicated: System.Boolean
+- unexpiredReplicaCount: System.Int32
+- isArchived: System.Boolean
+- unexpiredArchivedSnapshotCount: System.Int32
+- sequenceNumber: System.Int32
+- consistencyLevel: SnapshotConsistencyLevel
+- isDownloadedSnapshot: System.Boolean
+- isReplica: System.Boolean
+- isArchivalCopy: System.Boolean
+- isQuarantined: System.Boolean
+  - Specifies whether the snapshot is quarantined.
+- replicationLocations: list of DataLocations
+- hasUnexpiredReplica: System.Boolean
+  - Indicates whether the snapshot has a valid replica.
+- hasUnexpiredArchivedCopy: System.Boolean
+  - Indicates whether the snapshot has a valid archived copy.
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- polarisSpecificSnapshot: PolarisSpecificSnapshot
+  - Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and O365 Site snapshots.
+- slaDomain: SlaDomain
+- isIndexed: System.Boolean
+  - Specifies whether or not the snapshot is indexed.
+- isExpired: System.Boolean
+  - Specifies whether or not the snapshot is expired.

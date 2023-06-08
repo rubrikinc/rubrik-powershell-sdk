@@ -1,0 +1,4 @@
+### DataGovOsType
+- NONE
+- WINDOWS
+- LINUX

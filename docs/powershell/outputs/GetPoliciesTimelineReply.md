@@ -1,0 +1,27 @@
+### GetPoliciesTimelineReply
+- policyHitsEntries: list of TimelineEntrys
+- totalHitsEntries: list of TimelineEntrys
+- policyFilesHitsEntries: list of TimelineEntrys
+- totalFilesHitsEntries: list of TimelineEntrys
+- policyOaFilesHitsEntries: list of TimelineEntrys
+- totalOaFilesHitsEntries: list of TimelineEntrys
+- policyStaleFilesHitsEntries: list of TimelineEntrys
+- totalStaleFilesHitsEntries: list of TimelineEntrys
+- totalOaFilesEntries: list of TimelineEntrys
+- totalOaFoldersEntries: list of TimelineEntrys
+- totalStaleOaFilesEntries: list of TimelineEntrys
+- highRiskObjects: list of TimelineEntrys
+  - Count of high-risk objects.
+- lowRiskObjects: list of TimelineEntrys
+  - Count of low-risk objects.
+- noRiskObjects: list of TimelineEntrys
+  - Count of no-risk objects.
+- initialAnalysisStatus: list of TimelineCountEntrys
+  - Count of workloads undergoing initial analysis.
+- upToDateStatus: list of TimelineCountEntrys
+  - Count of workloads that are up to date.
+- outOfDateStatus: list of TimelineCountEntrys
+  - Count of workloads that are not up to date.
+- mediumRiskObjects: list of TimelineEntrys
+  - Count of medium-risk objects.
+- policySummaries: list of ClassificationPolicySummarys

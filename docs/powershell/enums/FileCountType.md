@@ -1,0 +1,7 @@
+### FileCountType
+- ANY
+- HITS
+- STALE
+- OPEN_ACCESS
+- STALE_HITS
+- OPEN_ACCESS_HITS

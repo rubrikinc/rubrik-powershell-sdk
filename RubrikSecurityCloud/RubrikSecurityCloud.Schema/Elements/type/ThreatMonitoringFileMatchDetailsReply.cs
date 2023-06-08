@@ -50,6 +50,21 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("isQuarantined")]
         public System.Boolean? IsQuarantined { get; set; }
 
+        //      C# -> System.String? MatchedFileMd5
+        // GraphQL -> matchedFileMd5: String! (scalar)
+        [JsonProperty("matchedFileMd5")]
+        public System.String? MatchedFileMd5 { get; set; }
+
+        //      C# -> System.String? MatchedFileSha1
+        // GraphQL -> matchedFileSha1: String! (scalar)
+        [JsonProperty("matchedFileSha1")]
+        public System.String? MatchedFileSha1 { get; set; }
+
+        //      C# -> System.String? MatchedFileSha256
+        // GraphQL -> matchedFileSha256: String! (scalar)
+        [JsonProperty("matchedFileSha256")]
+        public System.String? MatchedFileSha256 { get; set; }
+
 
         #endregion
 
@@ -61,7 +76,10 @@ namespace Rubrik.SecurityCloud.Types
         System.String? FirstDetectedSnapshotFid = null,
         System.String? IntelSource = null,
         System.String? IocAttribute = null,
-        System.Boolean? IsQuarantined = null
+        System.Boolean? IsQuarantined = null,
+        System.String? MatchedFileMd5 = null,
+        System.String? MatchedFileSha1 = null,
+        System.String? MatchedFileSha256 = null
     ) 
     {
         if ( MatchType != null ) {
@@ -81,6 +99,15 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
+        }
+        if ( MatchedFileMd5 != null ) {
+            this.MatchedFileMd5 = MatchedFileMd5;
+        }
+        if ( MatchedFileSha1 != null ) {
+            this.MatchedFileSha1 = MatchedFileSha1;
+        }
+        if ( MatchedFileSha256 != null ) {
+            this.MatchedFileSha256 = MatchedFileSha256;
         }
         return this;
     }
@@ -121,6 +148,21 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isQuarantined: Boolean! (scalar)
         if (this.IsQuarantined != null) {
             s += ind + "isQuarantined\n" ;
+        }
+        //      C# -> System.String? MatchedFileMd5
+        // GraphQL -> matchedFileMd5: String! (scalar)
+        if (this.MatchedFileMd5 != null) {
+            s += ind + "matchedFileMd5\n" ;
+        }
+        //      C# -> System.String? MatchedFileSha1
+        // GraphQL -> matchedFileSha1: String! (scalar)
+        if (this.MatchedFileSha1 != null) {
+            s += ind + "matchedFileSha1\n" ;
+        }
+        //      C# -> System.String? MatchedFileSha256
+        // GraphQL -> matchedFileSha256: String! (scalar)
+        if (this.MatchedFileSha256 != null) {
+            s += ind + "matchedFileSha256\n" ;
         }
         return s;
     }
@@ -165,6 +207,24 @@ namespace Rubrik.SecurityCloud.Types
         if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined", true))
         {
             this.IsQuarantined = true;
+        }
+        //      C# -> System.String? MatchedFileMd5
+        // GraphQL -> matchedFileMd5: String! (scalar)
+        if (this.MatchedFileMd5 == null && Exploration.Includes(parent + ".matchedFileMd5", true))
+        {
+            this.MatchedFileMd5 = "FETCH";
+        }
+        //      C# -> System.String? MatchedFileSha1
+        // GraphQL -> matchedFileSha1: String! (scalar)
+        if (this.MatchedFileSha1 == null && Exploration.Includes(parent + ".matchedFileSha1", true))
+        {
+            this.MatchedFileSha1 = "FETCH";
+        }
+        //      C# -> System.String? MatchedFileSha256
+        // GraphQL -> matchedFileSha256: String! (scalar)
+        if (this.MatchedFileSha256 == null && Exploration.Includes(parent + ".matchedFileSha256", true))
+        {
+            this.MatchedFileSha256 = "FETCH";
         }
     }
 

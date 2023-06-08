@@ -1,0 +1,48 @@
+### ClusterTimezoneType
+Cluster timezone.
+
+- CLUSTER_TIMEZONE_UNSPECIFIED - Cluster timezone unknown.
+- CLUSTER_TIMEZONE_AFRICA_JOHANNESBURG - Cluster timezone Johannesburg.
+- CLUSTER_TIMEZONE_AFRICA_LAGOS - Cluster timezone Lagos.
+- CLUSTER_TIMEZONE_AFRICA_NAIROBI - Cluster timezone Nairobi.
+- CLUSTER_TIMEZONE_AMERICA_ANCHORAGE - Cluster timezone Anchorage.
+- CLUSTER_TIMEZONE_AMERICA_ARAGUAINA - Cluster timezone Araguaina.
+- CLUSTER_TIMEZONE_AMERICA_ATIKOKAN - Cluster timezone Atikokan.
+- CLUSTER_TIMEZONE_AMERICA_BARBADOS - Cluster timezone Barbados.
+- CLUSTER_TIMEZONE_AMERICA_BOGOTA - Cluster timezone Bogota.
+- CLUSTER_TIMEZONE_AMERICA_CHICAGO - Cluster timezone Chicago.
+- CLUSTER_TIMEZONE_AMERICA_COSTA_RICA - Cluster timezone Costa Rica.
+- CLUSTER_TIMEZONE_AMERICA_DENVER - Cluster timezone Denver.
+- CLUSTER_TIMEZONE_AMERICA_LOS_ANGELES - Cluster timezone Los Angeles.
+- CLUSTER_TIMEZONE_AMERICA_MEXICO_CITY - Cluster timezone Mexico City.
+- CLUSTER_TIMEZONE_AMERICA_NEW_YORK - Cluster timezone New York.
+- CLUSTER_TIMEZONE_AMERICA_NORONHA - Cluster timezone Noronha.
+- CLUSTER_TIMEZONE_AMERICA_PANAMA - Cluster timezone Panama.
+- CLUSTER_TIMEZONE_AMERICA_PHOENIX - Cluster timezone Phoenix.
+- CLUSTER_TIMEZONE_AMERICA_SANTIAGO - Cluster timezone Santiago.
+- CLUSTER_TIMEZONE_AMERICA_ST_JOHNS - Cluster timezone St. Johns.
+- CLUSTER_TIMEZONE_AMERICA_TORONTO - Cluster timezone Toronto.
+- CLUSTER_TIMEZONE_AMERICA_VANCOUVER - Cluster timezone Vancouver.
+- CLUSTER_TIMEZONE_ASIA_BANGKOK - Cluster timezone Bangkok.
+- CLUSTER_TIMEZONE_ASIA_DHAKA - Cluster timezone Dhaka.
+- CLUSTER_TIMEZONE_ASIA_DUBAI - Cluster timezone Dubai.
+- CLUSTER_TIMEZONE_ASIA_HONG_KONG - Cluster timezone Hong Kong.
+- CLUSTER_TIMEZONE_ASIA_KARACHI - Cluster timezone Karachi.
+- CLUSTER_TIMEZONE_ASIA_KATHMANDU - Cluster timezone Kathmandu.
+- CLUSTER_TIMEZONE_ASIA_KOLKATA - Cluster timezone Kolkata.
+- CLUSTER_TIMEZONE_ASIA_MAGADAN - Cluster timezone Magadan.
+- CLUSTER_TIMEZONE_ASIA_SINGAPORE - Cluster timezone Singapore.
+- CLUSTER_TIMEZONE_ASIA_TOKYO - Cluster timezone Tokyo.
+- CLUSTER_TIMEZONE_ATLANTIC_CAPE_VERDE - Cluster timezone Cape Verde.
+- CLUSTER_TIMEZONE_AUSTRALIA_ADELAIDE - Cluster timezone Adelaide.
+- CLUSTER_TIMEZONE_AUSTRALIA_BRISBANE - Cluster timezone Brisbane.
+- CLUSTER_TIMEZONE_AUSTRALIA_PERTH - Cluster timezone Perth.
+- CLUSTER_TIMEZONE_AUSTRALIA_SYDNEY - Cluster timezone Sydney.
+- CLUSTER_TIMEZONE_EUROPE_AMSTERDAM - Cluster timezone Amsterdam.
+- CLUSTER_TIMEZONE_EUROPE_ATHENS - Cluster timezone Athens.
+- CLUSTER_TIMEZONE_EUROPE_LONDON - Cluster timezone London.
+- CLUSTER_TIMEZONE_EUROPE_MOSCOW - Cluster timezone Moscow.
+- CLUSTER_TIMEZONE_PACIFIC_AUCKLAND - Cluster timezone Auckland.
+- CLUSTER_TIMEZONE_PACIFIC_HONOLULU - Cluster timezone Honolulu.
+- CLUSTER_TIMEZONE_PACIFIC_MIDWAY - Cluster timezone Midway.
+- CLUSTER_TIMEZONE_UTC - Cluster timezone UTC.

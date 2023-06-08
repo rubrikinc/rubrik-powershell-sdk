@@ -1,0 +1,41 @@
+### VolumeGroupLiveMount
+Volume group live mount.
+
+- name: System.String
+  - Name of the live mount.
+- sourceVolumeGroupId: System.String
+  - Id of the source volume group in the live mount.
+- targetHostId: System.String
+  - Id of the target host.
+- targetHostName: System.String
+  - Name of the target host.
+- mountTimestamp: DateTime
+  - Timestamp when the mount was created.
+- mountRequestId: System.String
+  - Id of the mount request.
+- unmountRequestId: System.String
+  - Id of the unmount request.
+- smbShareName: System.String
+  - Name of SMB share.
+- restoreScriptPath: System.String
+  - Path of the bare-metal restore script.
+- isReady: System.Boolean
+  - Describes if the live mount is ready.
+- mountedVolumes: list of MountedVolumes
+  - Mounted volumes in the live mount.
+- mountPath: System.String
+  - Path where the live mount is mounted.
+- nodeIp: System.String
+  - IP of the node in the live mount.
+- nodeCompositeId: System.String
+  - Composite Id of the node in the live mount.
+- sourceHost: PhysicalHost
+  - Source host of the live mount.
+- id: System.String
+  - Fid of the live mount.
+- sourceSnapshot: CdmSnapshot
+  - Source snapshot of the live mount.
+- cluster: Cluster
+  - Cluster of the live mount.
+- authorizedOperations: AuthorizedOperations
+  - Operations that the user is authorized to perform.

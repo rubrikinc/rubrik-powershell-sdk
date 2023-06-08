@@ -156,6 +156,7 @@
     <Compile Include="./input/BatchVmwareVmRecoverableRangesRequestInput.cs" />
     <Compile Include="./input/BulkUpdateHostInput.cs" />
     <Compile Include="./input/StartCreateAzureNativeManagedDiskSnapshotsJobInput.cs" />
+    <Compile Include="./input/BulkTierExistingSnapshotsInput.cs" />
     <Compile Include="./input/ClusterFilterInput.cs" />
     <Compile Include="./input/AddClusterNodesInput.cs" />
     <Compile Include="./input/SnappableInfoType.cs" />
@@ -401,6 +402,7 @@
     <Compile Include="./input/HotAddNetworkConfigWithIdInput.cs" />
     <Compile Include="./input/PortRange.cs" />
     <Compile Include="./input/UpdateCertificateHostInput.cs" />
+    <Compile Include="./input/NascdRestorePathPairInput.cs" />
     <Compile Include="./input/TimeRangeFilter.cs" />
     <Compile Include="./input/ChangePasswordInput.cs" />
     <Compile Include="./input/RegisterAgentNutanixVmInput.cs" />
@@ -779,6 +781,7 @@
     <Compile Include="./input/VmwareSnapshotDownloadRequestInput.cs" />
     <Compile Include="./input/MssqlDbUpdateInput.cs" />
     <Compile Include="./input/AzureNativeVmExocomputeConnectedFilter.cs" />
+    <Compile Include="./input/InitiateAzureAdAppUpdateInput.cs" />
     <Compile Include="./input/NutanixVirtualMachineScriptDetailInput.cs" />
     <Compile Include="./input/InstantRecoveryJobConfigV2Input.cs" />
     <Compile Include="./input/Db2DownloadRecoverableRangeRequestInput.cs" />
@@ -970,6 +973,7 @@
     <Compile Include="./input/ManagedVolumeLogConfigInput.cs" />
     <Compile Include="./input/DeleteAdGroupsFromHierarchyInput.cs" />
     <Compile Include="./input/CloudNativeFilter.cs" />
+    <Compile Include="./input/RecoverCloudDirectMultiPathsInput.cs" />
     <Compile Include="./input/RotateServiceAccountSecretInput.cs" />
     <Compile Include="./input/ThreatMonitoringEnablementStatusInput.cs" />
     <Compile Include="./input/HideRevealNasSharesInput.cs" />
@@ -1193,6 +1197,7 @@
     <Compile Include="./input/CalendarRestoreConfig.cs" />
     <Compile Include="./input/GetHotAddNetworkInput.cs" />
     <Compile Include="./input/DeleteCloudNativeLabelRuleInput.cs" />
+    <Compile Include="./input/CompleteAzureAdAppUpdateInput.cs" />
     <Compile Include="./input/VlanConfigInput.cs" />
     <Compile Include="./input/SetWebSignedCertificateInput.cs" />
     <Compile Include="./input/GetDefaultDbPropertiesV1Input.cs" />
@@ -1531,6 +1536,7 @@
     <Compile Include="./input/QueryUnmanagedObjectSnapshotsV1Input.cs" />
     <Compile Include="./input/MountSnapshotJobConfigV1Input.cs" />
     <Compile Include="./input/ExistingComputeConfig.cs" />
+    <Compile Include="./input/VmwareDeviceKeywithNetworkNameV2Input.cs" />
     <Compile Include="./input/EnableThreatMonitoringInput.cs" />
     <Compile Include="./input/LabelFilterParams.cs" />
     <Compile Include="./input/FinalizeAwsCloudAccountProtectionInput.cs" />
@@ -1666,8 +1672,10 @@
     <Compile Include="./input/VappSnapshotInstantRecoveryOptionsInput.cs" />
     <Compile Include="./input/AssignProtectionInput.cs" />
     <Compile Include="./input/SearchVappFilesInput.cs" />
+    <Compile Include="./input/BulkTierSnapshotsConfigInput.cs" />
     <Compile Include="./input/GlobalFileSearchQueryInput.cs" />
     <Compile Include="./input/VappNetworkSummaryInput.cs" />
+    <Compile Include="./input/MountDiskInput.cs" />
     <Compile Include="./input/GetOraclePdbDetailsRequestInput.cs" />
     <Compile Include="./input/EndSnapshotManagedVolumeRequestInput.cs" />
     <Compile Include="./input/FinalizeAwsCloudAccountDeletionInput.cs" />
@@ -1696,6 +1704,7 @@
     <Compile Include="./enum/CdmNutanixSnapshotConsistencyMandate.cs" />
     <Compile Include="./enum/KuprClusterPortsType.cs" />
     <Compile Include="./enum/IoFilterStatus.cs" />
+    <Compile Include="./enum/JiraUserSortByField.cs" />
     <Compile Include="./enum/NetworkThrottleResourceId.cs" />
     <Compile Include="./enum/AzureNativeRegionForReplication.cs" />
     <Compile Include="./enum/SapHanaSystemStatus.cs" />
@@ -2036,6 +2045,7 @@
     <Compile Include="./enum/ChannelMembershipType.cs" />
     <Compile Include="./enum/SapHanaLogSnapshotSortBy.cs" />
     <Compile Include="./enum/SourceSourceType.cs" />
+    <Compile Include="./enum/PolicyAssignmentType.cs" />
     <Compile Include="./enum/VmPowerStatus.cs" />
     <Compile Include="./enum/MongoSourceType.cs" />
     <Compile Include="./enum/CertMgmtSortBy.cs" />
@@ -2458,6 +2468,7 @@
     <Compile Include="./type/NcdObjectsOverTimeData.cs" />
     <Compile Include="./type/ScaleRuntime.cs" />
     <Compile Include="./type/GlobalSlaSyncStatus.cs" />
+    <Compile Include="./type/AwsCloudAccountFeaturesWithExoConfigs.cs" />
     <Compile Include="./type/Region.cs" />
     <Compile Include="./type/InvestigationCsvDownloadLinkReply.cs" />
     <Compile Include="./type/AwsCloudAccountWithFeatures.cs" />
@@ -2629,6 +2640,7 @@
     <Compile Include="./type/GcpNativeGceInstance.cs" />
     <Compile Include="./type/CertificateClusterInfo.cs" />
     <Compile Include="./type/MongoCollectionSet.cs" />
+    <Compile Include="./type/InitiateAzureAdAppUpdateReply.cs" />
     <Compile Include="./type/UserActivityResultEdge.cs" />
     <Compile Include="./type/DatastoreFreespaceThresholdType.cs" />
     <Compile Include="./type/M365RegionsResp.cs" />
@@ -2945,6 +2957,7 @@
     <Compile Include="./type/DownloadCsvReply.cs" />
     <Compile Include="./type/FailoverClusterAppDescendantTypeConnection.cs" />
     <Compile Include="./type/VsphereDatastoreEdge.cs" />
+    <Compile Include="./type/AssignmentResourceDetailsConnection.cs" />
     <Compile Include="./type/PrincipalSummaryConnection.cs" />
     <Compile Include="./type/UpdateClusterRegisteredModeReply.cs" />
     <Compile Include="./type/RunCustomAnalyzerReply.cs" />
@@ -3012,6 +3025,7 @@
     <Compile Include="./type/FailoverEdge.cs" />
     <Compile Include="./type/UnmapAzureCloudAccountExocomputeSubscriptionReply.cs" />
     <Compile Include="./type/GenericSnapshotConnection.cs" />
+    <Compile Include="./type/AssignmentResourceDetails.cs" />
     <Compile Include="./type/YaraMatchDetail.cs" />
     <Compile Include="./type/AddManagedVolumeReply.cs" />
     <Compile Include="./type/ClusterEncryptionInfo.cs" />
@@ -3877,6 +3891,7 @@
     <Compile Include="./type/AzureRegionsResp.cs" />
     <Compile Include="./type/SupportPortalRole.cs" />
     <Compile Include="./type/ListVersionResponse.cs" />
+    <Compile Include="./type/JiraUserEdge.cs" />
     <Compile Include="./type/PendingSnapshotDeletion.cs" />
     <Compile Include="./type/SlaAssociatedOrganization.cs" />
     <Compile Include="./type/SapHanaRecoverableRangeConnection.cs" />
@@ -4389,6 +4404,7 @@
     <Compile Include="./type/RefreshHostReply.cs" />
     <Compile Include="./type/RefreshVcdInstanceReplyType.cs" />
     <Compile Include="./type/ManagedVolumeSnapshotLinks.cs" />
+    <Compile Include="./type/JiraUserConnection.cs" />
     <Compile Include="./type/UpdateAutoEnablePolicyClusterConfigReply.cs" />
     <Compile Include="./type/UpdateSnapMirrorCloudReply.cs" />
     <Compile Include="./type/GetImplicitlyAuthorizedAncestorSummariesResponse.cs" />
@@ -4415,6 +4431,7 @@
     <Compile Include="./type/BrowseResponseListResponse.cs" />
     <Compile Include="./type/PausedClustersInfo.cs" />
     <Compile Include="./type/AwsNativeEbsVolume.cs" />
+    <Compile Include="./type/AssignmentResourceDetailsEdge.cs" />
     <Compile Include="./type/DhrcKeyValue.cs" />
     <Compile Include="./type/ClusterVisibilityInfo.cs" />
     <Compile Include="./type/UpdateScheduledReportReply.cs" />

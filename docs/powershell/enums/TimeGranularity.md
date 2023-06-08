@@ -1,0 +1,3 @@
+### TimeGranularity
+- DAY
+- MONTH
