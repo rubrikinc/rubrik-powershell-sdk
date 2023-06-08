@@ -1,8 +1,14 @@
-# rubrik-powershell-sdk
+# Rubrik Security Cloud SDK
 
-Thank you for using the Rubrik PowerShell SDK.
+:warning: This is a **beta release** - use at your own risks! :warning:
+
+Thank you for using the Rubrik Security Cloud PowerShell SDK.
 
 We rely on your feedback to improve the SDK !
+
+This is a fully supported SDK to work with Rubrik Security Cloud (RSC).
+
+If you need to work with the CDM SDK, please see: https://github.com/rubrikinc/rubrik-sdk-for-powershell
 
 ## :hammer: Installation
 
@@ -53,7 +59,8 @@ Import-Module RubrikSecurityCloud
 
 ### :key: Service Account files
 
-Retrieve a service account file from the RSC UI,
+Retrieve a [service account file from the RSC UI](https://docs.rubrik.com/en-us/saas/saas/service_account.html),
+
 and store it locally, say: `/path/to/service/account/file.json`.
 
 Note that JSON files retrieved from the RSC UI are
