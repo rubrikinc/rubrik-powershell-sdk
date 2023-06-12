@@ -553,22 +553,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
         if (this.BlackoutWindowResponseInfo != null) {
-            s += ind + "blackoutWindowResponseInfo {\n" + this.BlackoutWindowResponseInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "blackoutWindowResponseInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlDbSummary? MssqlDbSummary
         // GraphQL -> mssqlDbSummary: MssqlDbSummary (type)
         if (this.MssqlDbSummary != null) {
-            s += ind + "mssqlDbSummary {\n" + this.MssqlDbSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MssqlDbSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mssqlDbSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlScriptDetail? PostBackupScript
         // GraphQL -> postBackupScript: MssqlScriptDetail (type)
         if (this.PostBackupScript != null) {
-            s += ind + "postBackupScript {\n" + this.PostBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PostBackupScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "postBackupScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlScriptDetail? PreBackupScript
         // GraphQL -> preBackupScript: MssqlScriptDetail (type)
         if (this.PreBackupScript != null) {
-            s += ind + "preBackupScript {\n" + this.PreBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PreBackupScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "preBackupScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -837,8 +849,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MssqlDbDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

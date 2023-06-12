@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Link? ExportLink
         // GraphQL -> exportLink: Link (type)
         if (this.ExportLink != null) {
-            s += ind + "exportLink {\n" + this.ExportLink.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ExportLink.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "exportLink {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Link? Self
         // GraphQL -> self: Link (type)
         if (this.Self != null) {
-            s += ind + "self {\n" + this.Self.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Self.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "self {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ManagedVolumeSnapshotLinks> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

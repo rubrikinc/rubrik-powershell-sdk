@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Analyzer? Analyzer
         // GraphQL -> analyzer: Analyzer! (type)
         if (this.Analyzer != null) {
-            s += ind + "analyzer {\n" + this.Analyzer.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Analyzer.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzer {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
         if (this.Hits != null) {
-            s += ind + "hits {\n" + this.Hits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Hits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hits {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AnalyzerResult> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

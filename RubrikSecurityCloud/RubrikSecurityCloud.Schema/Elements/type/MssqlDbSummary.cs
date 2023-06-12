@@ -515,32 +515,50 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)
         if (this.CurrentBackupTaskInfo != null) {
-            s += ind + "currentBackupTaskInfo {\n" + this.CurrentBackupTaskInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CurrentBackupTaskInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "currentBackupTaskInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
-            s += ind + "pendingSlaDomain {\n" + this.PendingSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PendingSlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<MssqlDbReplica>? Replicas
         // GraphQL -> replicas: [MssqlDbReplica!]! (type)
         if (this.Replicas != null) {
-            s += ind + "replicas {\n" + this.Replicas.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Replicas.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicas {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
         if (this.RootProperties != null) {
-            s += ind + "rootProperties {\n" + this.RootProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RootProperties.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
-            s += ind + "snappable {\n" + this.Snappable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snappable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<MssqlUnprotectableReason>? UnprotectableReasonsV50
         // GraphQL -> unprotectableReasonsV50: [MssqlUnprotectableReason!]! (type)
         if (this.UnprotectableReasonsV50 != null) {
-            s += ind + "unprotectableReasonsV50 {\n" + this.UnprotectableReasonsV50.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UnprotectableReasonsV50.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "unprotectableReasonsV50 {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -799,8 +817,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MssqlDbSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

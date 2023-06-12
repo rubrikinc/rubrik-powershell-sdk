@@ -230,37 +230,58 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OracleDatabase? MountedDatabase
         // GraphQL -> mountedDatabase: OracleDatabase (type)
         if (this.MountedDatabase != null) {
-            s += ind + "mountedDatabase {\n" + this.MountedDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MountedDatabase.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mountedDatabase {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> User? Owner
         // GraphQL -> owner: User! (type)
         if (this.Owner != null) {
-            s += ind + "owner {\n" + this.Owner.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Owner.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "owner {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OracleDatabase? SourceDatabase
         // GraphQL -> sourceDatabase: OracleDatabase (type)
         if (this.SourceDatabase != null) {
-            s += ind + "sourceDatabase {\n" + this.SourceDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceDatabase.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceDatabase {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
         if (this.SourceSnapshot != null) {
-            s += ind + "sourceSnapshot {\n" + this.SourceSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceSnapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OracleHost? TargetOracleHost
         // GraphQL -> targetOracleHost: OracleHost (type)
         if (this.TargetOracleHost != null) {
-            s += ind + "targetOracleHost {\n" + this.TargetOracleHost.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetOracleHost.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetOracleHost {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OracleRac? TargetOracleRac
         // GraphQL -> targetOracleRac: OracleRac (type)
         if (this.TargetOracleRac != null) {
-            s += ind + "targetOracleRac {\n" + this.TargetOracleRac.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetOracleRac.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetOracleRac {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -400,8 +421,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<OracleLiveMount> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

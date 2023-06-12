@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<RollingUpgradeNodeInfoEntry>? RuNodeInfoList
         // GraphQL -> ruNodeInfoList: [RollingUpgradeNodeInfoEntry!]! (type)
         if (this.RuNodeInfoList != null) {
-            s += ind + "ruNodeInfoList {\n" + this.RuNodeInfoList.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RuNodeInfoList.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ruNodeInfoList {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RollingUpgradeInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

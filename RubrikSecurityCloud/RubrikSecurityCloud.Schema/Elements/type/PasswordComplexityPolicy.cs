@@ -104,37 +104,58 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> PasswordComplexityPolicyTemplate? LengthPolicy
         // GraphQL -> lengthPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.LengthPolicy != null) {
-            s += ind + "lengthPolicy {\n" + this.LengthPolicy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LengthPolicy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lengthPolicy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PasswordComplexityPolicyTemplate? LowercasePolicy
         // GraphQL -> lowercasePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.LowercasePolicy != null) {
-            s += ind + "lowercasePolicy {\n" + this.LowercasePolicy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LowercasePolicy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lowercasePolicy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PasswordComplexityPolicyTemplate? NumericPolicy
         // GraphQL -> numericPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.NumericPolicy != null) {
-            s += ind + "numericPolicy {\n" + this.NumericPolicy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NumericPolicy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "numericPolicy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PasswordComplexityPolicyTemplate? PasswordExpirationPolicy
         // GraphQL -> passwordExpirationPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.PasswordExpirationPolicy != null) {
-            s += ind + "passwordExpirationPolicy {\n" + this.PasswordExpirationPolicy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PasswordExpirationPolicy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "passwordExpirationPolicy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PasswordComplexityPolicyTemplate? PasswordReusePolicy
         // GraphQL -> passwordReusePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.PasswordReusePolicy != null) {
-            s += ind + "passwordReusePolicy {\n" + this.PasswordReusePolicy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PasswordReusePolicy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "passwordReusePolicy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PasswordComplexityPolicyTemplate? SpecialCharsPolicy
         // GraphQL -> specialCharsPolicy: PasswordComplexityPolicyTemplate (type)
         if (this.SpecialCharsPolicy != null) {
-            s += ind + "specialCharsPolicy {\n" + this.SpecialCharsPolicy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SpecialCharsPolicy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "specialCharsPolicy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PasswordComplexityPolicyTemplate? UppercasePolicy
         // GraphQL -> uppercasePolicy: PasswordComplexityPolicyTemplate (type)
         if (this.UppercasePolicy != null) {
-            s += ind + "uppercasePolicy {\n" + this.UppercasePolicy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UppercasePolicy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "uppercasePolicy {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -220,8 +241,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PasswordComplexityPolicy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

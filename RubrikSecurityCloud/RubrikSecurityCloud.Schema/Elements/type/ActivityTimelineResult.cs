@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ActivityResult>? ActivityResults
         // GraphQL -> activityResults: [ActivityResult!]! (type)
         if (this.ActivityResults != null) {
-            s += ind + "activityResults {\n" + this.ActivityResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ActivityResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "activityResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FileAccessResult>? TopFiles
         // GraphQL -> topFiles: [FileAccessResult!]! (type)
         if (this.TopFiles != null) {
-            s += ind + "topFiles {\n" + this.TopFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TopFiles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "topFiles {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ActivityTimelineResult> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

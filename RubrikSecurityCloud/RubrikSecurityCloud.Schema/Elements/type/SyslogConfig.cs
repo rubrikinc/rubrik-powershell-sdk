@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CommonNotificationConfig? NotificationConf
         // GraphQL -> notificationConf: CommonNotificationConfig (type)
         if (this.NotificationConf != null) {
-            s += ind + "notificationConf {\n" + this.NotificationConf.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NotificationConf.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "notificationConf {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SyslogSetting? SyslogConf
         // GraphQL -> syslogConf: SyslogSetting (type)
         if (this.SyslogConf != null) {
-            s += ind + "syslogConf {\n" + this.SyslogConf.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SyslogConf.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "syslogConf {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SyslogConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

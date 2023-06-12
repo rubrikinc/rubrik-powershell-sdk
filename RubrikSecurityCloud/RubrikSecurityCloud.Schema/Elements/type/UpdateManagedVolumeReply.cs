@@ -324,27 +324,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Link>? Links
         // GraphQL -> links: [Link!]! (type)
         if (this.Links != null) {
-            s += ind + "links {\n" + this.Links.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Links.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "links {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeExport? MainExport
         // GraphQL -> mainExport: ManagedVolumeExport (type)
         if (this.MainExport != null) {
-            s += ind + "mainExport {\n" + this.MainExport.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MainExport.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mainExport {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
-            s += ind + "pendingSlaDomain {\n" + this.PendingSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PendingSlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaManagedVolumeDetail? SlaManagedVolumeDetails
         // GraphQL -> slaManagedVolumeDetails: SlaManagedVolumeDetail (type)
         if (this.SlaManagedVolumeDetails != null) {
-            s += ind + "slaManagedVolumeDetails {\n" + this.SlaManagedVolumeDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SlaManagedVolumeDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaManagedVolumeDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
-            s += ind + "snappable {\n" + this.Snappable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snappable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -518,8 +533,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpdateManagedVolumeReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

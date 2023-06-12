@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies
         // GraphQL -> availableStoragePolicies: [VcdOrgVdcStorageProfile!]! (type)
         if (this.AvailableStoragePolicies != null) {
-            s += ind + "availableStoragePolicies {\n" + this.AvailableStoragePolicies.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AvailableStoragePolicies.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "availableStoragePolicies {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VappTemplateExportOptions> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

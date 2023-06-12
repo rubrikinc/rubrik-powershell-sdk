@@ -226,27 +226,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VsphereHost? Host
         // GraphQL -> host: VsphereHost (type)
         if (this.Host != null) {
-            s += ind + "host {\n" + this.Host.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Host.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "host {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VsphereVm? MountedVm
         // GraphQL -> mountedVm: VsphereVm (type)
         if (this.MountedVm != null) {
-            s += ind + "mountedVm {\n" + this.MountedVm.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MountedVm.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mountedVm {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot (type)
         if (this.SourceSnapshot != null) {
-            s += ind + "sourceSnapshot {\n" + this.SourceSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceSnapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VsphereVm? SourceVm
         // GraphQL -> sourceVm: VsphereVm (type)
         if (this.SourceVm != null) {
-            s += ind + "sourceVm {\n" + this.SourceVm.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceVm.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceVm {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -378,8 +393,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VsphereLiveMount> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

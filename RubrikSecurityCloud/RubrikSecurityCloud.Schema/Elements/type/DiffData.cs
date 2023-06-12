@@ -232,7 +232,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AnomalyInfo? AnomalyInfo
         // GraphQL -> anomalyInfo: AnomalyInfo (type)
         if (this.AnomalyInfo != null) {
-            s += ind + "anomalyInfo {\n" + this.AnomalyInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnomalyInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "anomalyInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -354,8 +357,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<DiffData> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

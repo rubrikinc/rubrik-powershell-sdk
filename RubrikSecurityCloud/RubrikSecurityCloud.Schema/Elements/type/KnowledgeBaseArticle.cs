@@ -142,27 +142,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ContentNode>? Cause
         // GraphQL -> cause: [ContentNode!]! (type)
         if (this.Cause != null) {
-            s += ind + "cause {\n" + this.Cause.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cause.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cause {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ContentNode>? Environment
         // GraphQL -> environment: [ContentNode!]! (type)
         if (this.Environment != null) {
-            s += ind + "environment {\n" + this.Environment.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Environment.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "environment {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ContentNode>? Notes
         // GraphQL -> notes: [ContentNode!]! (type)
         if (this.Notes != null) {
-            s += ind + "notes {\n" + this.Notes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Notes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "notes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ContentNode>? Resolution
         // GraphQL -> resolution: [ContentNode!]! (type)
         if (this.Resolution != null) {
-            s += ind + "resolution {\n" + this.Resolution.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Resolution.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "resolution {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ContentNode>? Summary
         // GraphQL -> summary: [ContentNode!]! (type)
         if (this.Summary != null) {
-            s += ind + "summary {\n" + this.Summary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Summary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "summary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -258,8 +273,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<KnowledgeBaseArticle> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

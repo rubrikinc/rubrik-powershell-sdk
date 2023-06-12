@@ -110,17 +110,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ThreatHuntConfig? Config
         // GraphQL -> config: ThreatHuntConfig! (type)
         if (this.Config != null) {
-            s += ind + "config {\n" + this.Config.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Config.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "config {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<WorkloadIdToSnapshotIds>? Snapshots
         // GraphQL -> snapshots: [WorkloadIdToSnapshotIds!]! (type)
         if (this.Snapshots != null) {
-            s += ind + "snapshots {\n" + this.Snapshots.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snapshots.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -196,8 +205,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ThreatHuntDetails> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

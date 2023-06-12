@@ -208,17 +208,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlDatabase? SourceDatabase
         // GraphQL -> sourceDatabase: MssqlDatabase (type)
         if (this.SourceDatabase != null) {
-            s += ind + "sourceDatabase {\n" + this.SourceDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceDatabase.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceDatabase {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlInstance? TargetInstance
         // GraphQL -> targetInstance: MssqlInstance (type)
         if (this.TargetInstance != null) {
-            s += ind + "targetInstance {\n" + this.TargetInstance.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetInstance.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetInstance {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -336,8 +345,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MssqlDatabaseLiveMount> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

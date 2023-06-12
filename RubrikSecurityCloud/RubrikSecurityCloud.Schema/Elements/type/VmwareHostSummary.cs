@@ -222,17 +222,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<DataStoreSummary>? Datastores
         // GraphQL -> datastores: [DataStoreSummary!]! (type)
         if (this.Datastores != null) {
-            s += ind + "datastores {\n" + this.Datastores.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Datastores.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "datastores {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
         if (this.EffectiveSlaHolder != null) {
-            s += ind + "effectiveSlaHolder {\n" + this.EffectiveSlaHolder.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSlaHolder.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaHolder {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            s += ind + "slaAssignable {\n" + this.SlaAssignable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -356,8 +365,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VmwareHostSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

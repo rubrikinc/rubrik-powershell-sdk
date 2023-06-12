@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AwsCloudAccount>? AwsChildAccounts
         // GraphQL -> awsChildAccounts: [AwsCloudAccount!]! (type)
         if (this.AwsChildAccounts != null) {
-            s += ind + "awsChildAccounts {\n" + this.AwsChildAccounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsChildAccounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsChildAccounts {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<FinalizeAwsCloudAccountProtectionReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

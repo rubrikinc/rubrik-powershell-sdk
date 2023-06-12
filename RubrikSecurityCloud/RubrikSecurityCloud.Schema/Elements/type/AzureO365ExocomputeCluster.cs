@@ -390,17 +390,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> KmsSpec? KmsSpec
         // GraphQL -> kmsSpec: KmsSpec (type)
         if (this.KmsSpec != null) {
-            s += ind + "kmsSpec {\n" + this.KmsSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.KmsSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "kmsSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ScaleRuntime? ScaleRuntime
         // GraphQL -> scaleRuntime: ScaleRuntime (type)
         if (this.ScaleRuntime != null) {
-            s += ind + "scaleRuntime {\n" + this.ScaleRuntime.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ScaleRuntime.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "scaleRuntime {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ExocomputeStorageAccountIds? StorageIds
         // GraphQL -> storageIds: ExocomputeStorageAccountIds (type)
         if (this.StorageIds != null) {
-            s += ind + "storageIds {\n" + this.StorageIds.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.StorageIds.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "storageIds {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -596,8 +605,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureO365ExocomputeCluster> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

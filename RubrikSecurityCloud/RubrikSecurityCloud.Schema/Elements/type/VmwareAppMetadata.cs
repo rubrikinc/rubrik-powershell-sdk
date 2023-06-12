@@ -50,7 +50,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> VmwareSnapshotVmConfig? VmConfig
         // GraphQL -> vmConfig: VmwareSnapshotVmConfig (type)
         if (this.VmConfig != null) {
-            s += ind + "vmConfig {\n" + this.VmConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VmConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -94,8 +97,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VmwareAppMetadata> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

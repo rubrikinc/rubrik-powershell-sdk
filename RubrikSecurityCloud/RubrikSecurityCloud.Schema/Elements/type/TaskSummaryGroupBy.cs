@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> TaskSummaryConnection? TaskSummaryConnection
         // GraphQL -> taskSummaryConnection: TaskSummaryConnection! (type)
         if (this.TaskSummaryConnection != null) {
-            s += ind + "taskSummaryConnection {\n" + this.TaskSummaryConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TaskSummaryConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "taskSummaryConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<TaskSummaryGroupBy>? TaskSummaryGroupByField
         // GraphQL -> taskSummaryGroupBy: [TaskSummaryGroupBy!]! (type)
         if (this.TaskSummaryGroupByField != null) {
-            s += ind + "taskSummaryGroupBy {\n" + this.TaskSummaryGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TaskSummaryGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "taskSummaryGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TaskSummaryGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: TaskSummaryGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<TaskSummaryGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

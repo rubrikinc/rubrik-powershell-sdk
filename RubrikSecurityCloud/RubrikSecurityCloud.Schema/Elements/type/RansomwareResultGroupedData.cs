@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<RansomwareResultGroupedData>? RansomwareResultGroupedDataField
         // GraphQL -> ransomwareResultGroupedData: [RansomwareResultGroupedData!]! (type)
         if (this.RansomwareResultGroupedDataField != null) {
-            s += ind + "ransomwareResultGroupedData {\n" + this.RansomwareResultGroupedDataField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RansomwareResultGroupedDataField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ransomwareResultGroupedData {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RansomwareResultConnection? RansomwareResults
         // GraphQL -> ransomwareResults: RansomwareResultConnection! (type)
         if (this.RansomwareResults != null) {
-            s += ind + "ransomwareResults {\n" + this.RansomwareResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RansomwareResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ransomwareResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RansomwareResultGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: RansomwareResultGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RansomwareResultGroupedData> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

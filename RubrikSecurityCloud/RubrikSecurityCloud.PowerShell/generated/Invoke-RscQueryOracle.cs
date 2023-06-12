@@ -461,13 +461,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
            }
            catch (Exception ex)
            {
-                this._logger.Flush();
-                var error = new ErrorRecord(
-                    ex,
-                    "Invoke-RscQueryOracle",
-                    ErrorCategory.InvalidOperation,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
            }
         }
 

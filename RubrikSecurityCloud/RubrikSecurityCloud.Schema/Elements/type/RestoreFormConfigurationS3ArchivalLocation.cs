@@ -143,12 +143,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> RestoreFormArchivalProxyConfig? ArchivalProxyConfig
         // GraphQL -> archivalProxyConfig: RestoreFormArchivalProxyConfig (type)
         if (this.ArchivalProxyConfig != null) {
-            s += ind + "archivalProxyConfig {\n" + this.ArchivalProxyConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalProxyConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalProxyConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RestoreFormComputeProxyConfig? ComputeProxyConfig
         // GraphQL -> computeProxyConfig: RestoreFormComputeProxyConfig (type)
         if (this.ComputeProxyConfig != null) {
-            s += ind + "computeProxyConfig {\n" + this.ComputeProxyConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ComputeProxyConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "computeProxyConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -235,8 +241,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RestoreFormConfigurationS3ArchivalLocation> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

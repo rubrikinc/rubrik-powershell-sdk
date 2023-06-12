@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> GlobalSlaReply? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: GlobalSlaReply! (type)
         if (this.ConfiguredSlaDomain != null) {
-            s += ind + "configuredSlaDomain {\n" + this.ConfiguredSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ConfiguredSlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> GlobalSlaReply? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: GlobalSlaReply! (type)
         if (this.EffectiveSlaDomain != null) {
-            s += ind + "effectiveSlaDomain {\n" + this.EffectiveSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureNativeResourceGroupSlaAssignment> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -368,13 +368,7 @@ Get details about a Hyper-V vm related async request.
            }
            catch (Exception ex)
            {
-                this._logger.Flush();
-                var error = new ErrorRecord(
-                    ex,
-                    "Invoke-RscQueryHyperv",
-                    ErrorCategory.InvalidOperation,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
            }
         }
 

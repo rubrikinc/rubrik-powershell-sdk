@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ErrorInfo? TestError
         // GraphQL -> testError: ErrorInfo (type)
         if (this.TestError != null) {
-            s += ind + "testError {\n" + this.TestError.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TestError.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "testError {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Webhook? Webhook
         // GraphQL -> webhook: Webhook! (type)
         if (this.Webhook != null) {
-            s += ind + "webhook {\n" + this.Webhook.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Webhook.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "webhook {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpdateWebhookReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

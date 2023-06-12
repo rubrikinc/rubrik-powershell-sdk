@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> PrincipalRiskCount? HighRiskPrincipals
         // GraphQL -> highRiskPrincipals: PrincipalRiskCount (type)
         if (this.HighRiskPrincipals != null) {
-            s += ind + "highRiskPrincipals {\n" + this.HighRiskPrincipals.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HighRiskPrincipals.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "highRiskPrincipals {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PrincipalRiskCount? LowRiskPrincipals
         // GraphQL -> lowRiskPrincipals: PrincipalRiskCount (type)
         if (this.LowRiskPrincipals != null) {
-            s += ind + "lowRiskPrincipals {\n" + this.LowRiskPrincipals.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LowRiskPrincipals.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lowRiskPrincipals {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PrincipalRiskCount? MediumRiskPrincipals
         // GraphQL -> mediumRiskPrincipals: PrincipalRiskCount (type)
         if (this.MediumRiskPrincipals != null) {
-            s += ind + "mediumRiskPrincipals {\n" + this.MediumRiskPrincipals.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MediumRiskPrincipals.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mediumRiskPrincipals {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -136,8 +145,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RiskSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

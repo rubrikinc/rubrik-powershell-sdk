@@ -779,13 +779,7 @@ GraphQL argument clusters: [UUID!]!"
            }
            catch (Exception ex)
            {
-                this._logger.Flush();
-                var error = new ErrorRecord(
-                    ex,
-                    "Invoke-RscQuerySla",
-                    ErrorCategory.InvalidOperation,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
            }
         }
 

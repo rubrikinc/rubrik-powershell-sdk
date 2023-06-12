@@ -82,17 +82,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> PolarisHierarchyObjectConnection? ChildConnection
         // GraphQL -> childConnection: PolarisHierarchyObjectConnection! (type)
         if (this.ChildConnection != null) {
-            s += ind + "childConnection {\n" + this.ChildConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ChildConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "childConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisHierarchyObjectConnection? DescendantConnection
         // GraphQL -> descendantConnection: PolarisHierarchyObjectConnection! (type)
         if (this.DescendantConnection != null) {
-            s += ind + "descendantConnection {\n" + this.DescendantConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.DescendantConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisHierarchyObjectConnection? TopLevelDescendantConnection
         // GraphQL -> topLevelDescendantConnection: PolarisHierarchyObjectConnection! (type)
         if (this.TopLevelDescendantConnection != null) {
-            s += ind + "topLevelDescendantConnection {\n" + this.TopLevelDescendantConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TopLevelDescendantConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "topLevelDescendantConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -156,8 +165,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PolarisInventorySubHierarchyRoot> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

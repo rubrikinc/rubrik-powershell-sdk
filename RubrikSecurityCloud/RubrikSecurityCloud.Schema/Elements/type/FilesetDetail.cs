@@ -194,17 +194,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> FilesetSummary? FilesetSummary
         // GraphQL -> filesetSummary: FilesetSummary (type)
         if (this.FilesetSummary != null) {
-            s += ind + "filesetSummary {\n" + this.FilesetSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FilesetSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filesetSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FilesetUpdate? FilesetUpdate
         // GraphQL -> filesetUpdate: FilesetUpdate (type)
         if (this.FilesetUpdate != null) {
-            s += ind + "filesetUpdate {\n" + this.FilesetUpdate.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FilesetUpdate.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filesetUpdate {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FilesetSnapshotSummary>? Snapshots
         // GraphQL -> snapshots: [FilesetSnapshotSummary!]! (type)
         if (this.Snapshots != null) {
-            s += ind + "snapshots {\n" + this.Snapshots.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snapshots.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -316,8 +325,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<FilesetDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

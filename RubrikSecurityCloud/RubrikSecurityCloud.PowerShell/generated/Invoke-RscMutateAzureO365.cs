@@ -89,13 +89,7 @@ GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!"
            }
            catch (Exception ex)
            {
-                this._logger.Flush();
-                var error = new ErrorRecord(
-                    ex,
-                    "Invoke-RscMutateAzureO365",
-                    ErrorCategory.InvalidOperation,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
            }
         }
 

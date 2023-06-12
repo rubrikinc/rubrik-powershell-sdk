@@ -147,22 +147,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<IssueEvent>? Events
         // GraphQL -> events: [IssueEvent!]! (type)
         if (this.Events != null) {
-            s += ind + "events {\n" + this.Events.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Events.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "events {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FileResult? FileResult
         // GraphQL -> fileResult: FileResult! (type)
         if (this.FileResult != null) {
-            s += ind + "fileResult {\n" + this.FileResult.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FileResult.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "fileResult {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolicyObj? LatestPolicyObj
         // GraphQL -> latestPolicyObj: PolicyObj! (type)
         if (this.LatestPolicyObj != null) {
-            s += ind + "latestPolicyObj {\n" + this.LatestPolicyObj.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestPolicyObj.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestPolicyObj {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClassificationPolicySummary>? Policies
         // GraphQL -> policies: [ClassificationPolicySummary!]! (type)
         if (this.Policies != null) {
-            s += ind + "policies {\n" + this.Policies.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Policies.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "policies {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -257,8 +269,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Issue> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

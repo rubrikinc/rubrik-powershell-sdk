@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AnomalyResultGroupedData>? AnomalyResultGroupedDataField
         // GraphQL -> anomalyResultGroupedData: [AnomalyResultGroupedData!]! (type)
         if (this.AnomalyResultGroupedDataField != null) {
-            s += ind + "anomalyResultGroupedData {\n" + this.AnomalyResultGroupedDataField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnomalyResultGroupedDataField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "anomalyResultGroupedData {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AnomalyResultConnection? AnomalyResults
         // GraphQL -> anomalyResults: AnomalyResultConnection! (type)
         if (this.AnomalyResults != null) {
-            s += ind + "anomalyResults {\n" + this.AnomalyResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnomalyResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "anomalyResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AnomalyResultGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: AnomalyResultGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AnomalyResultGroupedData> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -322,13 +322,7 @@ Supported in m3.2.0-m4.2.0.
            }
            catch (Exception ex)
            {
-                this._logger.Flush();
-                var error = new ErrorRecord(
-                    ex,
-                    "Invoke-RscMutateMongo",
-                    ErrorCategory.InvalidOperation,
-                    null);
-                ThrowTerminatingError(error);
+                ThrowTerminatingException(ex);
            }
         }
 

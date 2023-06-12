@@ -109,8 +109,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-            s += ind + "effectiveSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? Fid
         // GraphQL -> fid: UUID! (scalar)
@@ -120,22 +122,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
-            s += ind + "effectiveSlaSourceObject {\n" + this.EffectiveSlaSourceObject.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Snappable? ReportWorkload
         // GraphQL -> reportWorkload: Snappable (type)
         if (this.ReportWorkload != null) {
-            s += ind + "reportWorkload {\n" + this.ReportWorkload.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReportWorkload.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "reportWorkload {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            s += ind + "snapshotDistribution {\n" + this.SnapshotDistribution.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -220,8 +234,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<DuplicatedVm> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

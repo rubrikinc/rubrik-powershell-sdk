@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<SddlPermission>? Permissions
         // GraphQL -> permissions: [SDDLPermission!]! (type)
         if (this.Permissions != null) {
-            s += ind + "permissions {\n" + this.Permissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Permissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PathSecInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

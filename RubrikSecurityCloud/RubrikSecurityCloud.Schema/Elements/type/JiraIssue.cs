@@ -129,12 +129,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> JiraUser? Assignee
         // GraphQL -> assignee: JiraUser (type)
         if (this.Assignee != null) {
-            s += ind + "assignee {\n" + this.Assignee.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Assignee.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "assignee {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> JiraIssueType? IssueType
         // GraphQL -> issueType: JiraIssueType! (type)
         if (this.IssueType != null) {
-            s += ind + "issueType {\n" + this.IssueType.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.IssueType.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "issueType {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -215,8 +221,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<JiraIssue> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

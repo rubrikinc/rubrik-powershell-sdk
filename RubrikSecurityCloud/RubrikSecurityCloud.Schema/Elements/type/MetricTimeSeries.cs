@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ClusterMetric? Metric
         // GraphQL -> metric: ClusterMetric! (type)
         if (this.Metric != null) {
-            s += ind + "metric {\n" + this.Metric.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Metric.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "metric {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ClusterMetricGroupByInfo? TimeInfo
         // GraphQL -> timeInfo: ClusterMetricGroupByInfo! (union)
         if (this.TimeInfo != null) {
-            s += ind + "timeInfo {\n" + this.TimeInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TimeInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "timeInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -116,8 +122,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MetricTimeSeries> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

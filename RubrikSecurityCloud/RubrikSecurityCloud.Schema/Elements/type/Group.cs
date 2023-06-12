@@ -96,17 +96,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            s += ind + "allOrgs {\n" + this.AllOrgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
         if (this.Roles != null) {
-            s += ind + "roles {\n" + this.Roles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Roles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "roles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<User>? Users
         // GraphQL -> users: [User!]! (type)
         if (this.Users != null) {
-            s += ind + "users {\n" + this.Users.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Users.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "users {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -176,8 +185,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Group> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

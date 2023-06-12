@@ -104,37 +104,58 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<FilterOption>? ClusterLocation
         // GraphQL -> cluster_location: [FilterOption!]! (type)
         if (this.ClusterLocation != null) {
-            s += ind + "cluster_location {\n" + this.ClusterLocation.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterLocation.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster_location {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FilterOption>? ClusterType
         // GraphQL -> cluster_type: [FilterOption!]! (type)
         if (this.ClusterType != null) {
-            s += ind + "cluster_type {\n" + this.ClusterType.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterType.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster_type {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FilterOption>? ObjectType
         // GraphQL -> object_type: [FilterOption!]! (type)
         if (this.ObjectType != null) {
-            s += ind + "object_type {\n" + this.ObjectType.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectType.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "object_type {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FilterOption>? ReplicationSource
         // GraphQL -> replication_source: [FilterOption!]! (type)
         if (this.ReplicationSource != null) {
-            s += ind + "replication_source {\n" + this.ReplicationSource.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationSource.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replication_source {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FilterOption>? Status
         // GraphQL -> status: [FilterOption!]! (type)
         if (this.Status != null) {
-            s += ind + "status {\n" + this.Status.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Status.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "status {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FilterOption>? TaskCategory
         // GraphQL -> task_category: [FilterOption!]! (type)
         if (this.TaskCategory != null) {
-            s += ind + "task_category {\n" + this.TaskCategory.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TaskCategory.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "task_category {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FilterOption>? TaskType
         // GraphQL -> task_type: [FilterOption!]! (type)
         if (this.TaskType != null) {
-            s += ind + "task_type {\n" + this.TaskType.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TaskType.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "task_type {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -220,8 +241,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ProtectionTaskDetailsTableFilter> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -91,22 +91,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AuthCounts? ExchangeAppCounts
         // GraphQL -> exchangeAppCounts: AuthCounts! (type)
         if (this.ExchangeAppCounts != null) {
-            s += ind + "exchangeAppCounts {\n" + this.ExchangeAppCounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ExchangeAppCounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "exchangeAppCounts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AuthCounts? OnedriveAppCounts
         // GraphQL -> onedriveAppCounts: AuthCounts! (type)
         if (this.OnedriveAppCounts != null) {
-            s += ind + "onedriveAppCounts {\n" + this.OnedriveAppCounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OnedriveAppCounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "onedriveAppCounts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AuthCounts? SharepointAppCounts
         // GraphQL -> sharepointAppCounts: AuthCounts! (type)
         if (this.SharepointAppCounts != null) {
-            s += ind + "sharepointAppCounts {\n" + this.SharepointAppCounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SharepointAppCounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sharepointAppCounts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AuthCounts? TeamsAppCounts
         // GraphQL -> teamsAppCounts: AuthCounts! (type)
         if (this.TeamsAppCounts != null) {
-            s += ind + "teamsAppCounts {\n" + this.TeamsAppCounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TeamsAppCounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "teamsAppCounts {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -177,8 +189,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<O365SubscriptionAppTypeCounts> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

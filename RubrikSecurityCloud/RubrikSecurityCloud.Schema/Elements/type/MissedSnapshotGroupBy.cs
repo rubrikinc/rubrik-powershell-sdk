@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> MissedSnapshotCommonConnection? MissedSnapshotConnection
         // GraphQL -> missedSnapshotConnection: MissedSnapshotCommonConnection! (type)
         if (this.MissedSnapshotConnection != null) {
-            s += ind + "missedSnapshotConnection {\n" + this.MissedSnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MissedSnapshotConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "missedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField
         // GraphQL -> missedSnapshotGroupBy: [MissedSnapshotGroupBy!]! (type)
         if (this.MissedSnapshotGroupByField != null) {
-            s += ind + "missedSnapshotGroupBy {\n" + this.MissedSnapshotGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MissedSnapshotGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "missedSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MissedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MissedSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MissedSnapshotGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

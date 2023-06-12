@@ -59,8 +59,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> NasShareLogicalChildType? Node
         // GraphQL -> node: NasShareLogicalChildType! (interface)
         if (this.Node != null) {
-            s += ind + "node {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.Node).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Node).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "node {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? Cursor
         // GraphQL -> cursor: String! (scalar)
@@ -116,8 +118,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<NasShareLogicalChildTypeEdge> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

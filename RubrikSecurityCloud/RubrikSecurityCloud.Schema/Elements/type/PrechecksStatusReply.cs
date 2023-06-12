@@ -101,12 +101,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<PrecheckFailure>? FailureResults
         // GraphQL -> failureResults: [PrecheckFailure!]! (type)
         if (this.FailureResults != null) {
-            s += ind + "failureResults {\n" + this.FailureResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FailureResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "failureResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PrecheckStatusNextRunInfo? NextRunInfo
         // GraphQL -> nextRunInfo: PrecheckStatusNextRunInfo (type)
         if (this.NextRunInfo != null) {
-            s += ind + "nextRunInfo {\n" + this.NextRunInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NextRunInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nextRunInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -175,8 +181,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PrechecksStatusReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

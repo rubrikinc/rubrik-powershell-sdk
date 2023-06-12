@@ -227,12 +227,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<HealthPolicyStatus>? HardwareHealth
         // GraphQL -> hardwareHealth: [HealthPolicyStatus!] (type)
         if (this.HardwareHealth != null) {
-            s += ind + "hardwareHealth {\n" + this.HardwareHealth.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HardwareHealth.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hardwareHealth {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClusterNodeInterfaceCidr>? InterfaceCidrs
         // GraphQL -> interfaceCidrs: [ClusterNodeInterfaceCidr!] (type)
         if (this.InterfaceCidrs != null) {
-            s += ind + "interfaceCidrs {\n" + this.InterfaceCidrs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.InterfaceCidrs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "interfaceCidrs {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -355,8 +361,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ClusterNode> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

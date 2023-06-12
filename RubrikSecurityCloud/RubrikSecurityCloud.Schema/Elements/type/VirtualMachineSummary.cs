@@ -328,37 +328,58 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AdvancedVirtualMachineSummary? AdvancedSummary
         // GraphQL -> advancedSummary: AdvancedVirtualMachineSummary (type)
         if (this.AdvancedSummary != null) {
-            s += ind + "advancedSummary {\n" + this.AdvancedSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AdvancedSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "advancedSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmAgentStatus? AgentStatus
         // GraphQL -> agentStatus: CdmAgentStatus (type)
         if (this.AgentStatus != null) {
-            s += ind + "agentStatus {\n" + this.AgentStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AgentStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "agentStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
         if (this.CloudInstantiationSpec != null) {
-            s += ind + "cloudInstantiationSpec {\n" + this.CloudInstantiationSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudInstantiationSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudInstantiationSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VmPathPoint>? FolderPath
         // GraphQL -> folderPath: [VmPathPoint!]! (type)
         if (this.FolderPath != null) {
-            s += ind + "folderPath {\n" + this.FolderPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FolderPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "folderPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VmPathPoint>? InfraPath
         // GraphQL -> infraPath: [VmPathPoint!]! (type)
         if (this.InfraPath != null) {
-            s += ind + "infraPath {\n" + this.InfraPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.InfraPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ParentAppInfo? ParentAppInfo
         // GraphQL -> parentAppInfo: ParentAppInfo (type)
         if (this.ParentAppInfo != null) {
-            s += ind + "parentAppInfo {\n" + this.ParentAppInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ParentAppInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "parentAppInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
-            s += ind + "snappable {\n" + this.Snappable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snappable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -540,8 +561,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VirtualMachineSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

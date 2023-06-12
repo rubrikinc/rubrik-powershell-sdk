@@ -241,12 +241,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> HdfsBaseConfig? HdfsBaseConfig
         // GraphQL -> hdfsBaseConfig: HdfsBaseConfig (type)
         if (this.HdfsBaseConfig != null) {
-            s += ind + "hdfsBaseConfig {\n" + this.HdfsBaseConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HdfsBaseConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hdfsBaseConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> NasBaseConfig? NasBaseConfig
         // GraphQL -> nasBaseConfig: NasBaseConfig (type)
         if (this.NasBaseConfig != null) {
-            s += ind + "nasBaseConfig {\n" + this.NasBaseConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NasBaseConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nasBaseConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -375,8 +381,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<HostSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

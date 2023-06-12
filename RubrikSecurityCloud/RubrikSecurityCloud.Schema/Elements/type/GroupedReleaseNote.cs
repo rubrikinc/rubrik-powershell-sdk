@@ -96,17 +96,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ReleaseNote>? BugFixes
         // GraphQL -> bugFixes: [ReleaseNote!]! (type)
         if (this.BugFixes != null) {
-            s += ind + "bugFixes {\n" + this.BugFixes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BugFixes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "bugFixes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReleaseNote>? NewFeatures
         // GraphQL -> newFeatures: [ReleaseNote!]! (type)
         if (this.NewFeatures != null) {
-            s += ind + "newFeatures {\n" + this.NewFeatures.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NewFeatures.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "newFeatures {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReleaseNote>? ProductChanges
         // GraphQL -> productChanges: [ReleaseNote!]! (type)
         if (this.ProductChanges != null) {
-            s += ind + "productChanges {\n" + this.ProductChanges.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ProductChanges.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "productChanges {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -176,8 +185,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GroupedReleaseNote> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -157,12 +157,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> NetworkRuleSet? NetworkRuleSet
         // GraphQL -> networkRuleSet: NetworkRuleSet (type)
         if (this.NetworkRuleSet != null) {
-            s += ind + "networkRuleSet {\n" + this.NetworkRuleSet.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NetworkRuleSet.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "networkRuleSet {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: ResourceGroup (type)
         if (this.ResourceGroup != null) {
-            s += ind + "resourceGroup {\n" + this.ResourceGroup.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ResourceGroup.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "resourceGroup {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -255,8 +261,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<StorageAccount> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

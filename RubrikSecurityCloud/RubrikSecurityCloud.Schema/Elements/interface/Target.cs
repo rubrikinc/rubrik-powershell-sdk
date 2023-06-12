@@ -135,7 +135,10 @@ namespace Rubrik.SecurityCloud.Types
             string fieldspecs = "";
             foreach (Target item in list) 
             {
-                fieldspecs += ind + " ... on " + item.GetType().Name + " {\n" + item.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = item.AsFieldSpec(indent+1);
+                if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                    fieldspecs += ind + " ... on " + item.GetType().Name + " {\n" + fspec + ind + "}\n";
+                }
             }
             return fieldspecs;
         }

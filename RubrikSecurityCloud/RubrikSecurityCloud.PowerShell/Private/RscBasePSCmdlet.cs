@@ -100,6 +100,22 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             this._logger.Flush();
         }
 
+        protected void ThrowTerminatingException(Exception ex)
+        {
+            this._logger?.Flush();
+            string message = ex.Message;
+            if (ex.InnerException != null)
+            {
+                message += $"\nInner exception:\n{ex.InnerException.Message}";
+            }
+            var error = new ErrorRecord(
+                new Exception(message),
+                this.GetType().Name,
+                ErrorCategory.InvalidOperation,
+                null);
+            ThrowTerminatingError(error);
+        }
+
         // For debugging purposes,
         // Create a report of all inputs with their types and values,
         // using introspection to get the names of the parameters.

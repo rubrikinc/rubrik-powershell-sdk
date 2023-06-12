@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<MosaicSnapshotGroupByType>? AllSnapshotGroupBys
         // GraphQL -> allSnapshotGroupBys: [MosaicSnapshotGroupByType!]! (type)
         if (this.AllSnapshotGroupBys != null) {
-            s += ind + "allSnapshotGroupBys {\n" + this.AllSnapshotGroupBys.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllSnapshotGroupBys.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allSnapshotGroupBys {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MosaicSnapshotConnection? Snapshots
         // GraphQL -> snapshots: MosaicSnapshotConnection! (type)
         if (this.Snapshots != null) {
-            s += ind + "snapshots {\n" + this.Snapshots.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snapshots.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshots {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MosaicSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MosaicSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MosaicSnapshotGroupByType> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

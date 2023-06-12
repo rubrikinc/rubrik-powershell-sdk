@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SummaryCount? HighRiskCount
         // GraphQL -> highRiskCount: SummaryCount (type)
         if (this.HighRiskCount != null) {
-            s += ind + "highRiskCount {\n" + this.HighRiskCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HighRiskCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "highRiskCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryCount? LowRiskCount
         // GraphQL -> lowRiskCount: SummaryCount (type)
         if (this.LowRiskCount != null) {
-            s += ind + "lowRiskCount {\n" + this.LowRiskCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LowRiskCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lowRiskCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryCount? MediumRiskCount
         // GraphQL -> mediumRiskCount: SummaryCount (type)
         if (this.MediumRiskCount != null) {
-            s += ind + "mediumRiskCount {\n" + this.MediumRiskCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MediumRiskCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mediumRiskCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -136,8 +145,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PrincipalCounts> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

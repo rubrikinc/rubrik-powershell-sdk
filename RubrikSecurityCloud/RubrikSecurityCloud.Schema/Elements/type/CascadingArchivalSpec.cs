@@ -82,18 +82,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Target? ArchivalLocation
         // GraphQL -> archivalLocation: Target (interface)
         if (this.ArchivalLocation != null) {
-            s += ind + "archivalLocation {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.ArchivalLocation).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ArchivalLocation).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalLocation {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> Duration? ArchivalThreshold
         // GraphQL -> archivalThreshold: Duration (type)
         if (this.ArchivalThreshold != null) {
-            s += ind + "archivalThreshold {\n" + this.ArchivalThreshold.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalThreshold.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalThreshold {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
         if (this.ArchivalTieringSpec != null) {
-            s += ind + "archivalTieringSpec {\n" + this.ArchivalTieringSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalTieringSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalTieringSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -158,8 +166,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CascadingArchivalSpec> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<NodeIp>? Interfaces
         // GraphQL -> interfaces: [NodeIp!]! (type)
         if (this.Interfaces != null) {
-            s += ind + "interfaces {\n" + this.Interfaces.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Interfaces.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "interfaces {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VlanConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

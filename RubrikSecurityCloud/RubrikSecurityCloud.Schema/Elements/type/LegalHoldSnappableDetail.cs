@@ -115,12 +115,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<LocationPathPoint>? PhysicalLocation
         // GraphQL -> physicalLocation: [LocationPathPoint!]! (type)
         if (this.PhysicalLocation != null) {
-            s += ind + "physicalLocation {\n" + this.PhysicalLocation.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PhysicalLocation.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "physicalLocation {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<LegalHoldSnapshotDetail>? SnapshotDetails
         // GraphQL -> snapshotDetails: [LegalHoldSnapshotDetail!]! (type)
         if (this.SnapshotDetails != null) {
-            s += ind + "snapshotDetails {\n" + this.SnapshotDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -195,8 +201,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<LegalHoldSnappableDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

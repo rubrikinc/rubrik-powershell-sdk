@@ -59,13 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain! (interface)
         if (this.SlaDomain != null) {
-            s += ind + "slaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> List<SlaWarning>? Warnings
         // GraphQL -> warnings: [SlaWarning!]! (type)
         if (this.Warnings != null) {
-            s += ind + "warnings {\n" + this.Warnings.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Warnings.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "warnings {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -117,8 +122,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SlaDomainWithWarnings> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

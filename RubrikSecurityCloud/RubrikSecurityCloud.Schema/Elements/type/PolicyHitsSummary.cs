@@ -169,42 +169,66 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SensitiveHits? SidAnalyzerHits
         // GraphQL -> sidAnalyzerHits: SensitiveHits (type)
         if (this.SidAnalyzerHits != null) {
-            s += ind + "sidAnalyzerHits {\n" + this.SidAnalyzerHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SidAnalyzerHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sidAnalyzerHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveHits? SidDeltaAnalyzerHits
         // GraphQL -> sidDeltaAnalyzerHits: SensitiveHits (type)
         if (this.SidDeltaAnalyzerHits != null) {
-            s += ind + "sidDeltaAnalyzerHits {\n" + this.SidDeltaAnalyzerHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SidDeltaAnalyzerHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sidDeltaAnalyzerHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveObjects? SidDeltaObjectCount
         // GraphQL -> sidDeltaObjectCount: SensitiveObjects (type)
         if (this.SidDeltaObjectCount != null) {
-            s += ind + "sidDeltaObjectCount {\n" + this.SidDeltaObjectCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SidDeltaObjectCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sidDeltaObjectCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveHits? SidDeltaRiskHits
         // GraphQL -> sidDeltaRiskHits: SensitiveHits (type)
         if (this.SidDeltaRiskHits != null) {
-            s += ind + "sidDeltaRiskHits {\n" + this.SidDeltaRiskHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SidDeltaRiskHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sidDeltaRiskHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveFiles? SidDeltaSensitiveFiles
         // GraphQL -> sidDeltaSensitiveFiles: SensitiveFiles (type)
         if (this.SidDeltaSensitiveFiles != null) {
-            s += ind + "sidDeltaSensitiveFiles {\n" + this.SidDeltaSensitiveFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SidDeltaSensitiveFiles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sidDeltaSensitiveFiles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveObjects? SidObjectCount
         // GraphQL -> sidObjectCount: SensitiveObjects (type)
         if (this.SidObjectCount != null) {
-            s += ind + "sidObjectCount {\n" + this.SidObjectCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SidObjectCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sidObjectCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveHits? SidRiskHits
         // GraphQL -> sidRiskHits: SensitiveHits (type)
         if (this.SidRiskHits != null) {
-            s += ind + "sidRiskHits {\n" + this.SidRiskHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SidRiskHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sidRiskHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveFiles? SidSensitiveFiles
         // GraphQL -> sidSensitiveFiles: SensitiveFiles (type)
         if (this.SidSensitiveFiles != null) {
-            s += ind + "sidSensitiveFiles {\n" + this.SidSensitiveFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SidSensitiveFiles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sidSensitiveFiles {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -321,8 +345,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PolicyHitsSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

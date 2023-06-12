@@ -138,17 +138,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> VmHost? Host
         // GraphQL -> host: VmHost (type)
         if (this.Host != null) {
-            s += ind + "host {\n" + this.Host.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Host.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "host {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VmNicMapEntry>? NicMap
         // GraphQL -> nicMap: [VmNicMapEntry!]! (type)
         if (this.NicMap != null) {
-            s += ind + "nicMap {\n" + this.NicMap.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NicMap.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nicMap {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VmDiskMapEntry>? VolumeMap
         // GraphQL -> volumeMap: [VmDiskMapEntry!]! (type)
         if (this.VolumeMap != null) {
-            s += ind + "volumeMap {\n" + this.VolumeMap.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VolumeMap.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "volumeMap {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -236,8 +245,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VsphereBlueprintChildSnapshotInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

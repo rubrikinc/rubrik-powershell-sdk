@@ -598,132 +598,210 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ActivitySeriesConnection? ActivitySeriesConnection
         // GraphQL -> activitySeriesConnection: ActivitySeriesConnection! (type)
         if (this.ActivitySeriesConnection != null) {
-            s += ind + "activitySeriesConnection {\n" + this.ActivitySeriesConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ActivitySeriesConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "activitySeriesConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            s += ind + "allOrgs {\n" + this.AllOrgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
         if (this.AuthorizedOperations != null) {
-            s += ind + "authorizedOperations {\n" + this.AuthorizedOperations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AuthorizedOperations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "authorizedOperations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CcprovisionInfo? CcprovisionInfo
         // GraphQL -> ccprovisionInfo: CcprovisionInfo (type)
         if (this.CcprovisionInfo != null) {
-            s += ind + "ccprovisionInfo {\n" + this.CcprovisionInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CcprovisionInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ccprovisionInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CdmNodeDetail>? CdmClusterNodeDetails
         // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
         if (this.CdmClusterNodeDetails != null) {
-            s += ind + "cdmClusterNodeDetails {\n" + this.CdmClusterNodeDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CdmClusterNodeDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cdmClusterNodeDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmUpgradeInfo? CdmUpgradeInfo
         // GraphQL -> cdmUpgradeInfo: CdmUpgradeInfo (type)
         if (this.CdmUpgradeInfo != null) {
-            s += ind + "cdmUpgradeInfo {\n" + this.CdmUpgradeInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CdmUpgradeInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cdmUpgradeInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CcWithCloudInfo? CloudInfo
         // GraphQL -> cloudInfo: CcWithCloudInfo (type)
         if (this.CloudInfo != null) {
-            s += ind + "cloudInfo {\n" + this.CloudInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ClusterDiskConnection? ClusterDiskConnection
         // GraphQL -> clusterDiskConnection: ClusterDiskConnection! (type)
         if (this.ClusterDiskConnection != null) {
-            s += ind + "clusterDiskConnection {\n" + this.ClusterDiskConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterDiskConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusterDiskConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ClusterNodeConnection? ClusterNodeConnection
         // GraphQL -> clusterNodeConnection: ClusterNodeConnection! (type)
         if (this.ClusterNodeConnection != null) {
-            s += ind + "clusterNodeConnection {\n" + this.ClusterNodeConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterNodeConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusterNodeConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClusterNodeStats>? ClusterNodeStats
         // GraphQL -> clusterNodeStats: [ClusterNodeStats!]! (type)
         if (this.ClusterNodeStats != null) {
-            s += ind + "clusterNodeStats {\n" + this.ClusterNodeStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterNodeStats.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusterNodeStats {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ConfigProtectionInfo? ConfigProtectionInfo
         // GraphQL -> configProtectionInfo: ConfigProtectionInfo (type)
         if (this.ConfigProtectionInfo != null) {
-            s += ind + "configProtectionInfo {\n" + this.ConfigProtectionInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ConfigProtectionInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configProtectionInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AutoEnablePolicyClusterConfigReply? DatagovAutoEnablePolicyConfig
         // GraphQL -> datagovAutoEnablePolicyConfig: AutoEnablePolicyClusterConfigReply! (type)
         if (this.DatagovAutoEnablePolicyConfig != null) {
-            s += ind + "datagovAutoEnablePolicyConfig {\n" + this.DatagovAutoEnablePolicyConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.DatagovAutoEnablePolicyConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "datagovAutoEnablePolicyConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PreviewerClusterConfig? DatagovPreviewerConfig
         // GraphQL -> datagovPreviewerConfig: PreviewerClusterConfig! (type)
         if (this.DatagovPreviewerConfig != null) {
-            s += ind + "datagovPreviewerConfig {\n" + this.DatagovPreviewerConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.DatagovPreviewerConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "datagovPreviewerConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> GeoLocation? GeoLocation
         // GraphQL -> geoLocation: GeoLocation (type)
         if (this.GeoLocation != null) {
-            s += ind + "geoLocation {\n" + this.GeoLocation.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GeoLocation.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "geoLocation {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> GlobalManagerConnectivity? GlobalManagerConnectivityStatus
         // GraphQL -> globalManagerConnectivityStatus: GlobalManagerConnectivity (type)
         if (this.GlobalManagerConnectivityStatus != null) {
-            s += ind + "globalManagerConnectivityStatus {\n" + this.GlobalManagerConnectivityStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GlobalManagerConnectivityStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "globalManagerConnectivityStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> GetLambdaConfigReply? LambdaConfig
         // GraphQL -> lambdaConfig: GetLambdaConfigReply (type)
         if (this.LambdaConfig != null) {
-            s += ind + "lambdaConfig {\n" + this.LambdaConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LambdaConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lambdaConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> LambdaFeatureHistory? LambdaFeatureHistory
         // GraphQL -> lambdaFeatureHistory: LambdaFeatureHistory (type)
         if (this.LambdaFeatureHistory != null) {
-            s += ind + "lambdaFeatureHistory {\n" + this.LambdaFeatureHistory.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LambdaFeatureHistory.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lambdaFeatureHistory {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> JobsReply? MetadataPullScheduler
         // GraphQL -> metadataPullScheduler: JobsReply (type)
         if (this.MetadataPullScheduler != null) {
-            s += ind + "metadataPullScheduler {\n" + this.MetadataPullScheduler.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MetadataPullScheduler.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "metadataPullScheduler {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ClusterMetric? Metric
         // GraphQL -> metric: ClusterMetric (type)
         if (this.Metric != null) {
-            s += ind + "metric {\n" + this.Metric.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Metric.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "metric {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<MetricTimeSeries>? MetricTimeSeries
         // GraphQL -> metricTimeSeries: [metricTimeSeries!]! (type)
         if (this.MetricTimeSeries != null) {
-            s += ind + "metricTimeSeries {\n" + this.MetricTimeSeries.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MetricTimeSeries.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "metricTimeSeries {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReplicationSource>? ReplicationSources
         // GraphQL -> replicationSources: [ReplicationSource!]! (type)
         if (this.ReplicationSources != null) {
-            s += ind + "replicationSources {\n" + this.ReplicationSources.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationSources.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationSources {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReplicationTarget>? ReplicationTargets
         // GraphQL -> replicationTargets: [ReplicationTarget!]! (type)
         if (this.ReplicationTargets != null) {
-            s += ind + "replicationTargets {\n" + this.ReplicationTargets.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationTargets.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationTargets {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RubrikSyncStatus? RubrikSyncStatus
         // GraphQL -> rubrikSyncStatus: RubrikSyncStatus! (type)
         if (this.RubrikSyncStatus != null) {
-            s += ind + "rubrikSyncStatus {\n" + this.RubrikSyncStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RubrikSyncStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "rubrikSyncStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnappableConnection? SnappableConnection
         // GraphQL -> snappableConnection: SnappableConnection! (type)
         if (this.SnappableConnection != null) {
-            s += ind + "snappableConnection {\n" + this.SnappableConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnappableConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappableConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ClusterState? State
         // GraphQL -> state: clusterState! (type)
         if (this.State != null) {
-            s += ind + "state {\n" + this.State.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.State.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "state {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClusterNode>? SystemStatusAffectedNodes
         // GraphQL -> systemStatusAffectedNodes: [ClusterNode!] (type)
         if (this.SystemStatusAffectedNodes != null) {
-            s += ind + "systemStatusAffectedNodes {\n" + this.SystemStatusAffectedNodes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SystemStatusAffectedNodes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "systemStatusAffectedNodes {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -1080,8 +1158,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Cluster> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

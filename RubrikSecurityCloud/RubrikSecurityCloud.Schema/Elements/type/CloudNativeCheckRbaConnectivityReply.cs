@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Failure>? Failures
         // GraphQL -> failures: [Failure!]! (type)
         if (this.Failures != null) {
-            s += ind + "failures {\n" + this.Failures.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Failures.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "failures {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Success>? Successes
         // GraphQL -> successes: [Success!]! (type)
         if (this.Successes != null) {
-            s += ind + "successes {\n" + this.Successes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Successes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "successes {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CloudNativeCheckRbaConnectivityReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

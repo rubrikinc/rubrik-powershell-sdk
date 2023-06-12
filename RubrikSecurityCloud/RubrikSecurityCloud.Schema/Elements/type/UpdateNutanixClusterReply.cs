@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus (type)
         if (this.ConnectionStatus != null) {
-            s += ind + "connectionStatus {\n" + this.ConnectionStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ConnectionStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> NutanixClusterSummary? NutanixClusterSummary
         // GraphQL -> nutanixClusterSummary: NutanixClusterSummary (type)
         if (this.NutanixClusterSummary != null) {
-            s += ind + "nutanixClusterSummary {\n" + this.NutanixClusterSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NutanixClusterSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nutanixClusterSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpdateNutanixClusterReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

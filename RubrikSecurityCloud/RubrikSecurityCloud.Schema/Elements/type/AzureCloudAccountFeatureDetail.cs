@@ -119,22 +119,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> PersistentStorage? PersistentStorage
         // GraphQL -> persistentStorage: PersistentStorage (type)
         if (this.PersistentStorage != null) {
-            s += ind + "persistentStorage {\n" + this.PersistentStorage.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PersistentStorage.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "persistentStorage {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: AzureResourceGroup! (type)
         if (this.ResourceGroup != null) {
-            s += ind + "resourceGroup {\n" + this.ResourceGroup.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ResourceGroup.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "resourceGroup {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureRole? Role
         // GraphQL -> role: AzureRole! (type)
         if (this.Role != null) {
-            s += ind + "role {\n" + this.Role.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Role.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "role {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureUserAssignedManagedIdentity? UserAssignedManagedIdentity
         // GraphQL -> userAssignedManagedIdentity: AzureUserAssignedManagedIdentity (type)
         if (this.UserAssignedManagedIdentity != null) {
-            s += ind + "userAssignedManagedIdentity {\n" + this.UserAssignedManagedIdentity.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UserAssignedManagedIdentity.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "userAssignedManagedIdentity {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -217,8 +229,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureCloudAccountFeatureDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (this.AsyncRequestStatus != null) {
-            s += ind + "asyncRequestStatus {\n" + this.AsyncRequestStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AsyncRequestStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeSnapshotSummary? ManagedVolumeSnapshotSummary
         // GraphQL -> managedVolumeSnapshotSummary: ManagedVolumeSnapshotSummary (type)
         if (this.ManagedVolumeSnapshotSummary != null) {
-            s += ind + "managedVolumeSnapshotSummary {\n" + this.ManagedVolumeSnapshotSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ManagedVolumeSnapshotSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "managedVolumeSnapshotSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<EndManagedVolumeSnapshotReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

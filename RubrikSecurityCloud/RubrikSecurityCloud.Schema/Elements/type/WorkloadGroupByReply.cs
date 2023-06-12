@@ -50,7 +50,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<WorkloadGroupByPrimaryGroupByItem>? PrimaryGroupBys
         // GraphQL -> primaryGroupBys: [WorkloadGroupByPrimaryGroupByItem!]! (type)
         if (this.PrimaryGroupBys != null) {
-            s += ind + "primaryGroupBys {\n" + this.PrimaryGroupBys.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PrimaryGroupBys.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "primaryGroupBys {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -94,8 +97,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<WorkloadGroupByReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

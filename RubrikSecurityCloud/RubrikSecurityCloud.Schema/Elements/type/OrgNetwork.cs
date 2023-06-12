@@ -110,17 +110,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<EnvoyInfo>? EnvoyInfoList
         // GraphQL -> envoyInfoList: [EnvoyInfo!]! (type)
         if (this.EnvoyInfoList != null) {
-            s += ind + "envoyInfoList {\n" + this.EnvoyInfoList.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EnvoyInfoList.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "envoyInfoList {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Org? Org
         // GraphQL -> org: Org! (type)
         if (this.Org != null) {
-            s += ind + "org {\n" + this.Org.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Org.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "org {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -196,8 +205,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<OrgNetwork> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

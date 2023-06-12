@@ -226,27 +226,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CustomReportFilters? Filters
         // GraphQL -> filters: CustomReportFilters! (type)
         if (this.Filters != null) {
-            s += ind + "filters {\n" + this.Filters.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Filters.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filters {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> User? Owner
         // GraphQL -> owner: User! (type)
         if (this.Owner != null) {
-            s += ind + "owner {\n" + this.Owner.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Owner.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "owner {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ScheduledReportConnection? ScheduledReports
         // GraphQL -> scheduledReports: ScheduledReportConnection! (type)
         if (this.ScheduledReports != null) {
-            s += ind + "scheduledReports {\n" + this.ScheduledReports.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ScheduledReports.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "scheduledReports {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReportChartType>? Charts
         // GraphQL -> charts: [ReportChartType!]! (union)
         if (this.Charts != null) {
-            s += ind + "charts {\n" + this.Charts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Charts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "charts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReportTableType>? Tables
         // GraphQL -> tables: [ReportTableType!]! (union)
         if (this.Tables != null) {
-            s += ind + "tables {\n" + this.Tables.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Tables.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "tables {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -378,8 +393,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CustomReport> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

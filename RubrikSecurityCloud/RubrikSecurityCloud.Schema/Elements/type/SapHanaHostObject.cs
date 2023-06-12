@@ -120,7 +120,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> PhysicalHost? Host
         // GraphQL -> host: PhysicalHost! (type)
         if (this.Host != null) {
-            s += ind + "host {\n" + this.Host.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Host.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "host {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -194,8 +197,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SapHanaHostObject> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

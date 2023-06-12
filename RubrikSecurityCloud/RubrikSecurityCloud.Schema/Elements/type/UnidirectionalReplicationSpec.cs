@@ -106,7 +106,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? TargetCluster
         // GraphQL -> targetCluster: Cluster (type)
         if (this.TargetCluster != null) {
-            s += ind + "targetCluster {\n" + this.TargetCluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetCluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetCluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -174,8 +177,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UnidirectionalReplicationSpec> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

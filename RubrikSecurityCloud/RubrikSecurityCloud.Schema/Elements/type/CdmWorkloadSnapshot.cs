@@ -306,17 +306,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
-            s += ind + "latestUserNote {\n" + this.LatestUserNote.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestUserNote.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaConfig? SlaDomain
         // GraphQL -> slaDomain: SlaConfig (type)
         if (this.SlaDomain != null) {
-            s += ind + "slaDomain {\n" + this.SlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnapshotSubObject>? SubObjs
         // GraphQL -> subObjs: [SnapshotSubObject!]! (type)
         if (this.SubObjs != null) {
-            s += ind + "subObjs {\n" + this.SubObjs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SubObjs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subObjs {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -476,8 +485,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CdmWorkloadSnapshot> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -222,17 +222,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ErrorInfo? LastFailedErrorInfo
         // GraphQL -> lastFailedErrorInfo: ErrorInfo (type)
         if (this.LastFailedErrorInfo != null) {
-            s += ind + "lastFailedErrorInfo {\n" + this.LastFailedErrorInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LastFailedErrorInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lastFailedErrorInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SubscriptionSeverity? SubscriptionSeverity
         // GraphQL -> subscriptionSeverity: SubscriptionSeverity! (type)
         if (this.SubscriptionSeverity != null) {
-            s += ind + "subscriptionSeverity {\n" + this.SubscriptionSeverity.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SubscriptionSeverity.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subscriptionSeverity {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SubscriptionType? SubscriptionType
         // GraphQL -> subscriptionType: SubscriptionType! (type)
         if (this.SubscriptionType != null) {
-            s += ind + "subscriptionType {\n" + this.SubscriptionType.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SubscriptionType.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subscriptionType {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -356,8 +365,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Webhook> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

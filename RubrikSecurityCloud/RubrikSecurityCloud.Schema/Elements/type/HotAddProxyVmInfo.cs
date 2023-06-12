@@ -162,7 +162,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> HotAddNetworkConfigWithName? ProxyNetworkInfo
         // GraphQL -> proxyNetworkInfo: HotAddNetworkConfigWithName (type)
         if (this.ProxyNetworkInfo != null) {
-            s += ind + "proxyNetworkInfo {\n" + this.ProxyNetworkInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ProxyNetworkInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "proxyNetworkInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -254,8 +257,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<HotAddProxyVmInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Duration? Frequency
         // GraphQL -> frequency: Duration (type)
         if (this.Frequency != null) {
-            s += ind + "frequency {\n" + this.Frequency.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Frequency.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "frequency {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Duration? HostLogRetention
         // GraphQL -> hostLogRetention: Duration (type)
         if (this.HostLogRetention != null) {
-            s += ind + "hostLogRetention {\n" + this.HostLogRetention.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HostLogRetention.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hostLogRetention {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
         if (this.LogRetention != null) {
-            s += ind + "logRetention {\n" + this.LogRetention.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LogRetention.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -136,8 +145,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<OracleConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

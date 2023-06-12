@@ -87,12 +87,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AppManifestInfo? ToApply
         // GraphQL -> toApply: AppManifestInfo (type)
         if (this.ToApply != null) {
-            s += ind + "toApply {\n" + this.ToApply.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ToApply.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "toApply {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AppManifestInfo? ToDelete
         // GraphQL -> toDelete: AppManifestInfo (type)
         if (this.ToDelete != null) {
-            s += ind + "toDelete {\n" + this.ToDelete.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ToDelete.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "toDelete {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -155,8 +161,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<K8sAppManifest> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -113,14 +113,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? CurrentSlaSummary
         // GraphQL -> currentSlaSummary: SlaDomain (interface)
         if (this.CurrentSlaSummary != null) {
-            s += ind + "currentSlaSummary {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.CurrentSlaSummary).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CurrentSlaSummary).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "currentSlaSummary {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? PreviousSlaSummary
         // GraphQL -> previousSlaSummary: SlaDomain (interface)
         if (this.PreviousSlaSummary != null) {
-            s += ind + "previousSlaSummary {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.PreviousSlaSummary).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PreviousSlaSummary).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "previousSlaSummary {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.Boolean? ApplyToExistingSnapshots
         // GraphQL -> applyToExistingSnapshots: Boolean! (scalar)
@@ -150,7 +154,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -240,8 +247,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SlaAuditDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

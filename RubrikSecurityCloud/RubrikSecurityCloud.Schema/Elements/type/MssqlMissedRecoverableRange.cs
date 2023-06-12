@@ -115,12 +115,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> MssqlMissedRecoverableRangeError? FirstError
         // GraphQL -> firstError: MssqlMissedRecoverableRangeError (type)
         if (this.FirstError != null) {
-            s += ind + "firstError {\n" + this.FirstError.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FirstError.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "firstError {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlMissedRecoverableRangeError? LastError
         // GraphQL -> lastError: MssqlMissedRecoverableRangeError (type)
         if (this.LastError != null) {
-            s += ind + "lastError {\n" + this.LastError.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LastError.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lastError {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -195,8 +201,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MssqlMissedRecoverableRange> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

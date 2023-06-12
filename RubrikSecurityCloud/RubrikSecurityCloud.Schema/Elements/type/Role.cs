@@ -175,22 +175,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Permission>? EffectivePermissions
         // GraphQL -> effectivePermissions: [Permission!]! (type)
         if (this.EffectivePermissions != null) {
-            s += ind + "effectivePermissions {\n" + this.EffectivePermissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectivePermissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectivePermissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RbacPermission>? EffectiveRbacPermissions
         // GraphQL -> effectiveRbacPermissions: [RbacPermission!]! (type)
         if (this.EffectiveRbacPermissions != null) {
-            s += ind + "effectiveRbacPermissions {\n" + this.EffectiveRbacPermissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveRbacPermissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveRbacPermissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Permission>? ExplicitlyAssignedPermissions
         // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
         if (this.ExplicitlyAssignedPermissions != null) {
-            s += ind + "explicitlyAssignedPermissions {\n" + this.ExplicitlyAssignedPermissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ExplicitlyAssignedPermissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "explicitlyAssignedPermissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)
         if (this.Permissions != null) {
-            s += ind + "permissions {\n" + this.Permissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Permissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -297,8 +309,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Role> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

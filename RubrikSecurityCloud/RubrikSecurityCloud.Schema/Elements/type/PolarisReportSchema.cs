@@ -77,22 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ChartViewWithName>? Charts
         // GraphQL -> charts: [ChartViewWithName!]! (type)
         if (this.Charts != null) {
-            s += ind + "charts {\n" + this.Charts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Charts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "charts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisReportSchemaConfig? Config
         // GraphQL -> config: PolarisReportSchemaConfig! (type)
         if (this.Config != null) {
-            s += ind + "config {\n" + this.Config.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Config.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "config {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PolarisReportFilter>? Filters
         // GraphQL -> filters: [PolarisReportFilter!]! (type)
         if (this.Filters != null) {
-            s += ind + "filters {\n" + this.Filters.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Filters.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filters {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<TableViewWithName>? Tables
         // GraphQL -> tables: [TableViewWithName!]! (type)
         if (this.Tables != null) {
-            s += ind + "tables {\n" + this.Tables.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Tables.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "tables {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -157,8 +169,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PolarisReportSchema> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

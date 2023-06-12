@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ConfigProtectionBackups>? LatestConfigProtectionBackupsByVersion
         // GraphQL -> latestConfigProtectionBackupsByVersion: [ConfigProtectionBackups!]! (type)
         if (this.LatestConfigProtectionBackupsByVersion != null) {
-            s += ind + "latestConfigProtectionBackupsByVersion {\n" + this.LatestConfigProtectionBackupsByVersion.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestConfigProtectionBackupsByVersion.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestConfigProtectionBackupsByVersion {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<LatestConfigProtectionBackups> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

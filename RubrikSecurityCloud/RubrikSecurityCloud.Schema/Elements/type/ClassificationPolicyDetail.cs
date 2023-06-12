@@ -213,8 +213,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<HierarchyObject>? HierarchyObjects
         // GraphQL -> hierarchyObjects: [HierarchyObject]! (interface)
         if (this.HierarchyObjects != null) {
-            s += ind + "hierarchyObjects {\n" +
-                this.HierarchyObjects.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.HierarchyObjects.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hierarchyObjects {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.Int64? CreatedTime
         // GraphQL -> createdTime: Long! (scalar)
@@ -264,32 +266,50 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Analyzer>? Analyzers
         // GraphQL -> analyzers: [Analyzer!]! (type)
         if (this.Analyzers != null) {
-            s += ind + "analyzers {\n" + this.Analyzers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Analyzers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzers {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AssignmentResourceDetailsConnection? AssignmentResources
         // GraphQL -> assignmentResources: AssignmentResourceDetailsConnection! (type)
         if (this.AssignmentResources != null) {
-            s += ind + "assignmentResources {\n" + this.AssignmentResources.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AssignmentResources.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "assignmentResources {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> User? Creator
         // GraphQL -> creator: User (type)
         if (this.Creator != null) {
-            s += ind + "creator {\n" + this.Creator.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Creator.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "creator {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> HierarchyObjectConnection? HierarchyObjectConnection
         // GraphQL -> hierarchyObjectConnection: HierarchyObjectConnection! (type)
         if (this.HierarchyObjectConnection != null) {
-            s += ind + "hierarchyObjectConnection {\n" + this.HierarchyObjectConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HierarchyObjectConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hierarchyObjectConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ObjectStatus>? ObjectStatuses
         // GraphQL -> objectStatuses: [ObjectStatus!]! (type)
         if (this.ObjectStatuses != null) {
-            s += ind + "objectStatuses {\n" + this.ObjectStatuses.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectStatuses.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objectStatuses {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClassificationPolicyWhitelistDetailedEntry>? Whitelists
         // GraphQL -> whitelists: [ClassificationPolicyWhitelistDetailedEntry!]! (type)
         if (this.Whitelists != null) {
-            s += ind + "whitelists {\n" + this.Whitelists.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Whitelists.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "whitelists {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -441,8 +461,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ClassificationPolicyDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

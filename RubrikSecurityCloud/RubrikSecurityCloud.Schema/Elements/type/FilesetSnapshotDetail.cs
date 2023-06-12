@@ -87,12 +87,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> FilesetSnapshotSummary? FilesetSnapshotSummary
         // GraphQL -> filesetSnapshotSummary: FilesetSnapshotSummary (type)
         if (this.FilesetSnapshotSummary != null) {
-            s += ind + "filesetSnapshotSummary {\n" + this.FilesetSnapshotSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FilesetSnapshotSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filesetSnapshotSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FilesetSnapshotVerbose? Verbose
         // GraphQL -> verbose: FilesetSnapshotVerbose (type)
         if (this.Verbose != null) {
-            s += ind + "verbose {\n" + this.Verbose.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Verbose.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "verbose {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -155,8 +161,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<FilesetSnapshotDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

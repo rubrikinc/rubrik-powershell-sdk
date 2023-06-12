@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> RoleStatus? GlobalAdministrator
         // GraphQL -> globalAdministrator: RoleStatus (type)
         if (this.GlobalAdministrator != null) {
-            s += ind + "globalAdministrator {\n" + this.GlobalAdministrator.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GlobalAdministrator.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "globalAdministrator {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RoleStatus? SubscriptionOwner
         // GraphQL -> subscriptionOwner: RoleStatus (type)
         if (this.SubscriptionOwner != null) {
-            s += ind + "subscriptionOwner {\n" + this.SubscriptionOwner.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SubscriptionOwner.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subscriptionOwner {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureUserRoleResp> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

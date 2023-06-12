@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> GatewayInfo? SourceGateway
         // GraphQL -> sourceGateway: GatewayInfo (type)
         if (this.SourceGateway != null) {
-            s += ind + "sourceGateway {\n" + this.SourceGateway.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceGateway.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceGateway {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> GatewayInfo? TargetGateway
         // GraphQL -> targetGateway: GatewayInfo (type)
         if (this.TargetGateway != null) {
-            s += ind + "targetGateway {\n" + this.TargetGateway.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetGateway.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetGateway {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReplicationPairConfigDetails> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -296,27 +296,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<WorkloadAnomaly>? AnomalousChildren
         // GraphQL -> anomalousChildren: [WorkloadAnomaly!]! (type)
         if (this.AnomalousChildren != null) {
-            s += ind + "anomalousChildren {\n" + this.AnomalousChildren.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnomalousChildren.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "anomalousChildren {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AnomalyInfo? AnomalyInfo
         // GraphQL -> anomalyInfo: AnomalyInfo (type)
         if (this.AnomalyInfo != null) {
-            s += ind + "anomalyInfo {\n" + this.AnomalyInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnomalyInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "anomalyInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolicyObj? PreviousPolicyObj
         // GraphQL -> previousPolicyObj: PolicyObj (type)
         if (this.PreviousPolicyObj != null) {
-            s += ind + "previousPolicyObj {\n" + this.PreviousPolicyObj.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PreviousPolicyObj.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "previousPolicyObj {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnappableLocationType? Location
         // GraphQL -> location: SnappableLocationType! (union)
         if (this.Location != null) {
-            s += ind + "location {\n" + this.Location.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Location.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "location {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -479,8 +494,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<WorkloadAnomaly> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

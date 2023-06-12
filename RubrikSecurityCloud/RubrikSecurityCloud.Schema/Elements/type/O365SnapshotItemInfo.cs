@@ -120,7 +120,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> O365ReplyFields? O365ReplyFields
         // GraphQL -> o365ReplyFields: O365ReplyFields! (type)
         if (this.O365ReplyFields != null) {
-            s += ind + "o365ReplyFields {\n" + this.O365ReplyFields.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.O365ReplyFields.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "o365ReplyFields {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -194,8 +197,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<O365SnapshotItemInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

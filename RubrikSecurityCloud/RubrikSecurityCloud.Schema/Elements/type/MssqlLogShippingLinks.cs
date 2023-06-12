@@ -77,22 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Link? PrimaryDatabase
         // GraphQL -> primaryDatabase: Link (type)
         if (this.PrimaryDatabase != null) {
-            s += ind + "primaryDatabase {\n" + this.PrimaryDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PrimaryDatabase.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "primaryDatabase {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Link? SecondaryDatabase
         // GraphQL -> secondaryDatabase: Link (type)
         if (this.SecondaryDatabase != null) {
-            s += ind + "secondaryDatabase {\n" + this.SecondaryDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SecondaryDatabase.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "secondaryDatabase {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Link? SecondaryInstance
         // GraphQL -> secondaryInstance: Link (type)
         if (this.SecondaryInstance != null) {
-            s += ind + "secondaryInstance {\n" + this.SecondaryInstance.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SecondaryInstance.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "secondaryInstance {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Link? SeedRequest
         // GraphQL -> seedRequest: Link (type)
         if (this.SeedRequest != null) {
-            s += ind + "seedRequest {\n" + this.SeedRequest.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SeedRequest.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "seedRequest {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -157,8 +169,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MssqlLogShippingLinks> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

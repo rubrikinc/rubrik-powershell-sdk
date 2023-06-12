@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<InterfaceCidr>? InterfaceCidr
         // GraphQL -> interfaceCidr: [InterfaceCidr!]! (type)
         if (this.InterfaceCidr != null) {
-            s += ind + "interfaceCidr {\n" + this.InterfaceCidr.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.InterfaceCidr.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "interfaceCidr {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ClusterInfCidrs> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

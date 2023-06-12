@@ -317,14 +317,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> PolarisSpecificSnapshot? PolarisSpecificSnapshot
         // GraphQL -> polarisSpecificSnapshot: PolarisSpecificSnapshot (interface)
         if (this.PolarisSpecificSnapshot != null) {
-            s += ind + "polarisSpecificSnapshot {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.PolarisSpecificSnapshot).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PolarisSpecificSnapshot).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "polarisSpecificSnapshot {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
-            s += ind + "slaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> DateTime? Date
         // GraphQL -> date: DateTime! (scalar)
@@ -454,12 +458,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
-            s += ind + "latestUserNote {\n" + this.LatestUserNote.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestUserNote.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         if (this.ReplicationLocations != null) {
-            s += ind + "replicationLocations {\n" + this.ReplicationLocations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationLocations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationLocations {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -682,8 +692,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PolarisSnapshot> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

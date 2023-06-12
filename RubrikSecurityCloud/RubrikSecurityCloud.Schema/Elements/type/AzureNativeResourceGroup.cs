@@ -314,20 +314,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
-            s += ind + "configuredSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
-            s += ind + "effectiveRetentionSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-            s += ind + "effectiveSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.Int32? AzureSqlDatabaseCount
         // GraphQL -> azureSqlDatabaseCount: Int! (scalar)
@@ -377,62 +383,98 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            s += ind + "allOrgs {\n" + this.AllOrgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureNativeVirtualMachineConnection? AzureNativeVirtualMachines
         // GraphQL -> azureNativeVirtualMachines: AzureNativeVirtualMachineConnection! (type)
         if (this.AzureNativeVirtualMachines != null) {
-            s += ind + "azureNativeVirtualMachines {\n" + this.AzureNativeVirtualMachines.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AzureNativeVirtualMachines.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "azureNativeVirtualMachines {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureNativeResourceGroupSlaAssignment? DiskSla
         // GraphQL -> diskSla: AzureNativeResourceGroupSlaAssignment! (type)
         if (this.DiskSla != null) {
-            s += ind + "diskSla {\n" + this.DiskSla.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.DiskSla.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "diskSla {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
-            s += ind + "effectiveSlaSourceObject {\n" + this.EffectiveSlaSourceObject.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            s += ind + "logicalPath {\n" + this.LogicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
-            s += ind + "physicalPath {\n" + this.PhysicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PhysicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ProtectedObjectTypeToSla>? ProtectedObjectTypeToSla
         // GraphQL -> protectedObjectTypeToSla: [ProtectedObjectTypeToSla!]! (type)
         if (this.ProtectedObjectTypeToSla != null) {
-            s += ind + "protectedObjectTypeToSla {\n" + this.ProtectedObjectTypeToSla.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ProtectedObjectTypeToSla.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "protectedObjectTypeToSla {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<WorkloadTypeToBackupSetupSpecs>? SnappableTypeToBackupSetupSpecs
         // GraphQL -> snappableTypeToBackupSetupSpecs: [WorkloadTypeToBackupSetupSpecs!]! (type)
         if (this.SnappableTypeToBackupSetupSpecs != null) {
-            s += ind + "snappableTypeToBackupSetupSpecs {\n" + this.SnappableTypeToBackupSetupSpecs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnappableTypeToBackupSetupSpecs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappableTypeToBackupSetupSpecs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            s += ind + "snapshotDistribution {\n" + this.SnapshotDistribution.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureNativeSubscription? Subscription
         // GraphQL -> subscription: AzureNativeSubscription! (type)
         if (this.Subscription != null) {
-            s += ind + "subscription {\n" + this.Subscription.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Subscription.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subscription {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AzureTag>? Tags
         // GraphQL -> tags: [AzureTag!]! (type)
         if (this.Tags != null) {
-            s += ind + "tags {\n" + this.Tags.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Tags.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "tags {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureNativeResourceGroupSlaAssignment? VmSla
         // GraphQL -> vmSla: AzureNativeResourceGroupSlaAssignment! (type)
         if (this.VmSla != null) {
-            s += ind + "vmSla {\n" + this.VmSla.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VmSla.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmSla {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -655,8 +697,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureNativeResourceGroup> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

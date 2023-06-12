@@ -499,20 +499,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
-            s += ind + "configuredSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
-            s += ind + "effectiveRetentionSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-            s += ind + "effectiveSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? AvailabilitySetNativeId
         // GraphQL -> availabilitySetNativeId: String! (scalar)
@@ -627,92 +633,146 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            s += ind + "allOrgs {\n" + this.AllOrgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AzureNativeManagedDisk>? AttachedManagedDisks
         // GraphQL -> attachedManagedDisks: [AzureNativeManagedDisk!]! (type)
         if (this.AttachedManagedDisks != null) {
-            s += ind + "attachedManagedDisks {\n" + this.AttachedManagedDisks.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AttachedManagedDisks.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "attachedManagedDisks {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AttachmentSpecsForVirtualMachine>? AttachmentSpecs
         // GraphQL -> attachmentSpecs: [AttachmentSpecsForVirtualMachine!]! (type)
         if (this.AttachmentSpecs != null) {
-            s += ind + "attachmentSpecs {\n" + this.AttachmentSpecs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AttachmentSpecs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "attachmentSpecs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
-            s += ind + "effectiveSlaSourceObject {\n" + this.EffectiveSlaSourceObject.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PhysicalHost? HostInfo
         // GraphQL -> hostInfo: PhysicalHost (type)
         if (this.HostInfo != null) {
-            s += ind + "hostInfo {\n" + this.HostInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HostInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hostInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            s += ind + "logicalPath {\n" + this.LogicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisSnapshot? NewestIndexedSnapshot
         // GraphQL -> newestIndexedSnapshot: PolarisSnapshot (type)
         if (this.NewestIndexedSnapshot != null) {
-            s += ind + "newestIndexedSnapshot {\n" + this.NewestIndexedSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NewestIndexedSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "newestIndexedSnapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisSnapshot? NewestSnapshot
         // GraphQL -> newestSnapshot: PolarisSnapshot (type)
         if (this.NewestSnapshot != null) {
-            s += ind + "newestSnapshot {\n" + this.NewestSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NewestSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "newestSnapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisSnapshot? OldestSnapshot
         // GraphQL -> oldestSnapshot: PolarisSnapshot (type)
         if (this.OldestSnapshot != null) {
-            s += ind + "oldestSnapshot {\n" + this.OldestSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OldestSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "oldestSnapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
-            s += ind + "physicalPath {\n" + this.PhysicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PhysicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureNativeResourceGroup? ResourceGroup
         // GraphQL -> resourceGroup: AzureNativeResourceGroup! (type)
         if (this.ResourceGroup != null) {
-            s += ind + "resourceGroup {\n" + this.ResourceGroup.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ResourceGroup.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "resourceGroup {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: PolarisSnapshotConnection (type)
         if (this.SnapshotConnection != null) {
-            s += ind + "snapshotConnection {\n" + this.SnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            s += ind + "snapshotDistribution {\n" + this.SnapshotDistribution.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisSnapshotGroupByConnection? SnapshotGroupByConnection
         // GraphQL -> snapshotGroupByConnection: PolarisSnapshotGroupByConnection (type)
         if (this.SnapshotGroupByConnection != null) {
-            s += ind + "snapshotGroupByConnection {\n" + this.SnapshotGroupByConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotGroupByConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotGroupByConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PolarisSnapshotGroupByNewConnection? SnapshotGroupByNewConnection
         // GraphQL -> snapshotGroupByNewConnection: PolarisSnapshotGroupByNewConnection (type)
         if (this.SnapshotGroupByNewConnection != null) {
-            s += ind + "snapshotGroupByNewConnection {\n" + this.SnapshotGroupByNewConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotGroupByNewConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotGroupByNewConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AzureTag>? Tags
         // GraphQL -> tags: [AzureTag!]! (type)
         if (this.Tags != null) {
-            s += ind + "tags {\n" + this.Tags.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Tags.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "tags {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VmAppConsistentSpecsInternal? VmAppConsistentSpecs
         // GraphQL -> vmAppConsistentSpecs: VmAppConsistentSpecsInternal (type)
         if (this.VmAppConsistentSpecs != null) {
-            s += ind + "vmAppConsistentSpecs {\n" + this.VmAppConsistentSpecs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VmAppConsistentSpecs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmAppConsistentSpecs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> GenericSnapshotConnection? WorkloadSnapshotConnection
         // GraphQL -> workloadSnapshotConnection: GenericSnapshotConnection (type)
         if (this.WorkloadSnapshotConnection != null) {
-            s += ind + "workloadSnapshotConnection {\n" + this.WorkloadSnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.WorkloadSnapshotConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "workloadSnapshotConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -1061,8 +1121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureNativeVirtualMachine> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

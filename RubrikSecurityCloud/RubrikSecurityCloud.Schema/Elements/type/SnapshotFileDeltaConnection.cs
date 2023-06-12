@@ -100,27 +100,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CdmSnapshot? CurrentSnapshot
         // GraphQL -> currentSnapshot: CdmSnapshot! (type)
         if (this.CurrentSnapshot != null) {
-            s += ind + "currentSnapshot {\n" + this.CurrentSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CurrentSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "currentSnapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnapshotFileDeltaEdge>? Edges
         // GraphQL -> edges: [SnapshotFileDeltaEdge!]! (type)
         if (this.Edges != null) {
-            s += ind + "edges {\n" + this.Edges.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Edges.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "edges {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnapshotFileDelta>? Nodes
         // GraphQL -> nodes: [SnapshotFileDelta!]! (type)
         if (this.Nodes != null) {
-            s += ind + "nodes {\n" + this.Nodes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Nodes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nodes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
-            s += ind + "pageInfo {\n" + this.PageInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PageInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshot? PreviousSnapshot
         // GraphQL -> previousSnapshot: CdmSnapshot (type)
         if (this.PreviousSnapshot != null) {
-            s += ind + "previousSnapshot {\n" + this.PreviousSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PreviousSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "previousSnapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -198,8 +213,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SnapshotFileDeltaConnection> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AddClusterCertificateReply? Cert
         // GraphQL -> cert: AddClusterCertificateReply (type)
         if (this.Cert != null) {
-            s += ind + "cert {\n" + this.Cert.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cert.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cert {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ClusterWebSignedCertificateReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

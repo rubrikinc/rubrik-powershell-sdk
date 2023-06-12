@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
         if (this.OracleNonSlaProperties != null) {
-            s += ind + "oracleNonSlaProperties {\n" + this.OracleNonSlaProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OracleNonSlaProperties.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "oracleNonSlaProperties {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OracleRacSummary? OracleRacSummary
         // GraphQL -> oracleRacSummary: OracleRacSummary (type)
         if (this.OracleRacSummary != null) {
-            s += ind + "oracleRacSummary {\n" + this.OracleRacSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OracleRacSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "oracleRacSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<OracleRacDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

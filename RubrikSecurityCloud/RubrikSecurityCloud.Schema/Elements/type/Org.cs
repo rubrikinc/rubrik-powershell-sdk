@@ -254,27 +254,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Role? OrgAdminRole
         // GraphQL -> orgAdminRole: Role! (type)
         if (this.OrgAdminRole != null) {
-            s += ind + "orgAdminRole {\n" + this.OrgAdminRole.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OrgAdminRole.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "orgAdminRole {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)
         if (this.Permissions != null) {
-            s += ind + "permissions {\n" + this.Permissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Permissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SelfServicePermission>? SelfServicePermissions
         // GraphQL -> selfServicePermissions: [SelfServicePermission!]! (type)
         if (this.SelfServicePermissions != null) {
-            s += ind + "selfServicePermissions {\n" + this.SelfServicePermissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SelfServicePermissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "selfServicePermissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SsoGroup>? SsoGroups
         // GraphQL -> ssoGroups: [SsoGroup!]! (type)
         if (this.SsoGroups != null) {
-            s += ind + "ssoGroups {\n" + this.SsoGroups.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SsoGroups.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ssoGroups {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ExistingUser>? Users
         // GraphQL -> users: [ExistingUser!]! (type)
         if (this.Users != null) {
-            s += ind + "users {\n" + this.Users.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Users.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "users {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -418,8 +433,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Org> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

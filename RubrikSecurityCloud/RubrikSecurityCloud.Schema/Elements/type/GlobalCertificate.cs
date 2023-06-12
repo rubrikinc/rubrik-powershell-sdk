@@ -292,17 +292,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<CdmCertificateUsageInfo>? CdmUsages
         // GraphQL -> cdmUsages: [CdmCertificateUsageInfo!]! (type)
         if (this.CdmUsages != null) {
-            s += ind + "cdmUsages {\n" + this.CdmUsages.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CdmUsages.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cdmUsages {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CertificateClusterInfo>? Clusters
         // GraphQL -> clusters: [CertificateClusterInfo!] (type)
         if (this.Clusters != null) {
-            s += ind + "clusters {\n" + this.Clusters.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Clusters.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusters {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CertificateUsageInfo>? Usages
         // GraphQL -> usages: [CertificateUsageInfo!]! (type)
         if (this.Usages != null) {
-            s += ind + "usages {\n" + this.Usages.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Usages.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "usages {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -456,8 +465,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GlobalCertificate> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

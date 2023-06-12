@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (this.AsyncRequestStatus != null) {
-            s += ind + "asyncRequestStatus {\n" + this.AsyncRequestStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AsyncRequestStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SapHanaSystemSummary? SystemSummary
         // GraphQL -> systemSummary: SapHanaSystemSummary (type)
         if (this.SystemSummary != null) {
-            s += ind + "systemSummary {\n" + this.SystemSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SystemSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "systemSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PatchSapHanaSystemReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

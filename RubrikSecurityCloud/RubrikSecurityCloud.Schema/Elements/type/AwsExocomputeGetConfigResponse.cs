@@ -166,17 +166,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         if (this.HealthCheckStatus != null) {
-            s += ind + "healthCheckStatus {\n" + this.HealthCheckStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HealthCheckStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "healthCheckStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AwsExocomputeSubnetType? Subnet1
         // GraphQL -> subnet1: AwsExocomputeSubnetType! (type)
         if (this.Subnet1 != null) {
-            s += ind + "subnet1 {\n" + this.Subnet1.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Subnet1.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subnet1 {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AwsExocomputeSubnetType? Subnet2
         // GraphQL -> subnet2: AwsExocomputeSubnetType! (type)
         if (this.Subnet2 != null) {
-            s += ind + "subnet2 {\n" + this.Subnet2.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Subnet2.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subnet2 {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -276,8 +285,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AwsExocomputeGetConfigResponse> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

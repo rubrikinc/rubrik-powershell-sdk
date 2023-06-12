@@ -77,22 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> BidirectionalReplicationSpec? BidirectionalSpec
         // GraphQL -> bidirectionalSpec: BidirectionalReplicationSpec (type)
         if (this.BidirectionalSpec != null) {
-            s += ind + "bidirectionalSpec {\n" + this.BidirectionalSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BidirectionalSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "bidirectionalSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ReplicationToCloudLocationSpec? CloudLocationSpec
         // GraphQL -> cloudLocationSpec: ReplicationToCloudLocationSpec (type)
         if (this.CloudLocationSpec != null) {
-            s += ind + "cloudLocationSpec {\n" + this.CloudLocationSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudLocationSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudLocationSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ReplicationToCloudRegionSpec? CloudRegionSpec
         // GraphQL -> cloudRegionSpec: ReplicationToCloudRegionSpec (type)
         if (this.CloudRegionSpec != null) {
-            s += ind + "cloudRegionSpec {\n" + this.CloudRegionSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudRegionSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudRegionSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> UnidirectionalReplicationSpec? UnidirectionalSpec
         // GraphQL -> unidirectionalSpec: UnidirectionalReplicationSpec (type)
         if (this.UnidirectionalSpec != null) {
-            s += ind + "unidirectionalSpec {\n" + this.UnidirectionalSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UnidirectionalSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "unidirectionalSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -157,8 +169,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SpecificReplicationSpec> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

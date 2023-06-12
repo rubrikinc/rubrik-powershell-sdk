@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ClusterConnection? ClusterConnection
         // GraphQL -> clusterConnection: ClusterConnection! (type)
         if (this.ClusterConnection != null) {
-            s += ind + "clusterConnection {\n" + this.ClusterConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusterConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClusterGroupBy>? ClusterGroupByField
         // GraphQL -> clusterGroupBy: [ClusterGroupBy!]! (type)
         if (this.ClusterGroupByField != null) {
-            s += ind + "clusterGroupBy {\n" + this.ClusterGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusterGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ClusterGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ClusterGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ClusterGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

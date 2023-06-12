@@ -106,7 +106,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CloudAccountAddressBlockV4? CidrBlock
         // GraphQL -> cidrBlock: CloudAccountAddressBlockV4 (type)
         if (this.CidrBlock != null) {
-            s += ind + "cidrBlock {\n" + this.CidrBlock.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CidrBlock.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cidrBlock {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -174,8 +177,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CloudAccountSubnet> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

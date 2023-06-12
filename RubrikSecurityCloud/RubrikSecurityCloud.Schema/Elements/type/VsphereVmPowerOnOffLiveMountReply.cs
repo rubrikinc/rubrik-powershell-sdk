@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> VmwareVmMountSummaryV1? VmwareVmMountSummaryV1
         // GraphQL -> vmwareVmMountSummaryV1: VmwareVmMountSummaryV1 (type)
         if (this.VmwareVmMountSummaryV1 != null) {
-            s += ind + "vmwareVmMountSummaryV1 {\n" + this.VmwareVmMountSummaryV1.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VmwareVmMountSummaryV1.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmwareVmMountSummaryV1 {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VsphereVmPowerOnOffLiveMountReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

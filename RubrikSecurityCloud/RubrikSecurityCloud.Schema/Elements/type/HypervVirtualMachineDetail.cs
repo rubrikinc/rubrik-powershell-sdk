@@ -124,17 +124,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> HypervVirtualMachineSummary? HypervVirtualMachineSummary
         // GraphQL -> hypervVirtualMachineSummary: HypervVirtualMachineSummary (type)
         if (this.HypervVirtualMachineSummary != null) {
-            s += ind + "hypervVirtualMachineSummary {\n" + this.HypervVirtualMachineSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HypervVirtualMachineSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hypervVirtualMachineSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> HypervVirtualMachineUpdate? HypervVirtualMachineUpdate
         // GraphQL -> hypervVirtualMachineUpdate: HypervVirtualMachineUpdate (type)
         if (this.HypervVirtualMachineUpdate != null) {
-            s += ind + "hypervVirtualMachineUpdate {\n" + this.HypervVirtualMachineUpdate.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HypervVirtualMachineUpdate.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hypervVirtualMachineUpdate {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<HypervVirtualDiskInfo>? VirtualDiskInfo
         // GraphQL -> virtualDiskInfo: [HypervVirtualDiskInfo!]! (type)
         if (this.VirtualDiskInfo != null) {
-            s += ind + "virtualDiskInfo {\n" + this.VirtualDiskInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VirtualDiskInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "virtualDiskInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -216,8 +225,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<HypervVirtualMachineDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

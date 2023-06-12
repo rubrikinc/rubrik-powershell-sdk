@@ -92,7 +92,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> VolumeGroupSnapshotVolumeSummary? VolumeGroupSnapshotVolumeSummary
         // GraphQL -> volumeGroupSnapshotVolumeSummary: VolumeGroupSnapshotVolumeSummary (type)
         if (this.VolumeGroupSnapshotVolumeSummary != null) {
-            s += ind + "volumeGroupSnapshotVolumeSummary {\n" + this.VolumeGroupSnapshotVolumeSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VolumeGroupSnapshotVolumeSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "volumeGroupSnapshotVolumeSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -154,8 +157,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<HostVolumeSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

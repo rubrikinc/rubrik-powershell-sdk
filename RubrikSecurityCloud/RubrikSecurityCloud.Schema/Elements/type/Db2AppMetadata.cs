@@ -213,12 +213,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Db2WorkloadDataSnapshotMetadata? Db2SnapshotMetadata
         // GraphQL -> db2SnapshotMetadata: Db2WorkloadDataSnapshotMetadata (type)
         if (this.Db2SnapshotMetadata != null) {
-            s += ind + "db2SnapshotMetadata {\n" + this.Db2SnapshotMetadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Db2SnapshotMetadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "db2SnapshotMetadata {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Db2DataBackupFile>? Files
         // GraphQL -> files: [Db2DataBackupFile!]! (type)
         if (this.Files != null) {
-            s += ind + "files {\n" + this.Files.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Files.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "files {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -335,8 +341,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Db2AppMetadata> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

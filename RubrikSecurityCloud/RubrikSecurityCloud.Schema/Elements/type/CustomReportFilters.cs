@@ -372,8 +372,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<SlaDomain>? SlaDomain
         // GraphQL -> slaDomain: [SlaDomain!] (interface)
         if (this.SlaDomain != null) {
-            s += ind + "slaDomain {\n" +
-                this.SlaDomain.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.SlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> List<System.String>? ClusterLocation
         // GraphQL -> clusterLocation: [String!] (scalar)
@@ -438,12 +440,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Cluster>? Cluster
         // GraphQL -> cluster: [Cluster!] (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> GenericTimeRange? TimeRange
         // GraphQL -> timeRange: GenericTimeRange (type)
         if (this.TimeRange != null) {
-            s += ind + "timeRange {\n" + this.TimeRange.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TimeRange.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "timeRange {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -657,8 +665,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CustomReportFilters> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -301,20 +301,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
-            s += ind + "configuredSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
-            s += ind + "effectiveRetentionSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-            s += ind + "effectiveSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.Int32? EbsVolumeCount
         // GraphQL -> ebsVolumeCount: Int! (scalar)
@@ -364,47 +370,74 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            s += ind + "allOrgs {\n" + this.AllOrgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AwsNativeEbsVolumeConnection? AwsNativeEbsVolumes
         // GraphQL -> awsNativeEbsVolumes: AwsNativeEbsVolumeConnection! (type)
         if (this.AwsNativeEbsVolumes != null) {
-            s += ind + "awsNativeEbsVolumes {\n" + this.AwsNativeEbsVolumes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsNativeEbsVolumes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsNativeEbsVolumes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AwsNativeEc2InstanceConnection? AwsNativeEc2Instances
         // GraphQL -> awsNativeEc2Instances: AwsNativeEc2InstanceConnection! (type)
         if (this.AwsNativeEc2Instances != null) {
-            s += ind + "awsNativeEc2Instances {\n" + this.AwsNativeEc2Instances.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsNativeEc2Instances.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsNativeEc2Instances {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AwsNativeRdsInstanceConnection? AwsNativeRdsInstances
         // GraphQL -> awsNativeRdsInstances: AwsNativeRdsInstanceConnection! (type)
         if (this.AwsNativeRdsInstances != null) {
-            s += ind + "awsNativeRdsInstances {\n" + this.AwsNativeRdsInstances.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsNativeRdsInstances.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsNativeRdsInstances {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
-            s += ind + "effectiveSlaSourceObject {\n" + this.EffectiveSlaSourceObject.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            s += ind + "logicalPath {\n" + this.LogicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
-            s += ind + "physicalPath {\n" + this.PhysicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PhysicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AwsNativeRegionSpec>? RegionSpecs
         // GraphQL -> regionSpecs: [AwsNativeRegionSpec!]! (type)
         if (this.RegionSpecs != null) {
-            s += ind + "regionSpecs {\n" + this.RegionSpecs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RegionSpecs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "regionSpecs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            s += ind + "snapshotDistribution {\n" + this.SnapshotDistribution.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -612,8 +645,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AwsNativeAccount> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

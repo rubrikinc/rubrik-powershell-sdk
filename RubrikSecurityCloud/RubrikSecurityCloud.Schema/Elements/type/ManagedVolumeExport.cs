@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ManagedVolumeChannelConfig>? Channels
         // GraphQL -> channels: [ManagedVolumeChannelConfig!]! (type)
         if (this.Channels != null) {
-            s += ind + "channels {\n" + this.Channels.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Channels.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "channels {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeExportConfig? Config
         // GraphQL -> config: ManagedVolumeExportConfig (type)
         if (this.Config != null) {
-            s += ind + "config {\n" + this.Config.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Config.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "config {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ManagedVolumeExport> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

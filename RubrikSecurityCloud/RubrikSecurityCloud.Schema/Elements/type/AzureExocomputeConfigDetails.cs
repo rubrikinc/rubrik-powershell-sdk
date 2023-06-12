@@ -134,7 +134,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ExocomputeHealthCheckStatus? HealthCheckStatus
         // GraphQL -> healthCheckStatus: ExocomputeHealthCheckStatus! (type)
         if (this.HealthCheckStatus != null) {
-            s += ind + "healthCheckStatus {\n" + this.HealthCheckStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HealthCheckStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "healthCheckStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -214,8 +217,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureExocomputeConfigDetails> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

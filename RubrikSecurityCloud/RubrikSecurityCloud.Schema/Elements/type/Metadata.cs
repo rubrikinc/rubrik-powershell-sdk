@@ -59,8 +59,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Value? Value
         // GraphQL -> value: Value (interface)
         if (this.Value != null) {
-            s += ind + "value {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.Value).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Value).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "value {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? Key
         // GraphQL -> key: String! (scalar)
@@ -116,8 +118,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Metadata> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

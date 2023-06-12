@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AsyncRequestStatus? AsyncRequestStatus
         // GraphQL -> asyncRequestStatus: AsyncRequestStatus (type)
         if (this.AsyncRequestStatus != null) {
-            s += ind + "asyncRequestStatus {\n" + this.AsyncRequestStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AsyncRequestStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "asyncRequestStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Db2InstanceSummary? Db2InstanceSummary
         // GraphQL -> db2InstanceSummary: Db2InstanceSummary (type)
         if (this.Db2InstanceSummary != null) {
-            s += ind + "db2InstanceSummary {\n" + this.Db2InstanceSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Db2InstanceSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "db2InstanceSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PatchDb2InstanceReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

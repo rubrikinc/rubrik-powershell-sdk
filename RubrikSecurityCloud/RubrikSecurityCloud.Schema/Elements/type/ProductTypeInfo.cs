@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<License>? Licenses
         // GraphQL -> licenses: [License!]! (type)
         if (this.Licenses != null) {
-            s += ind + "licenses {\n" + this.Licenses.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Licenses.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "licenses {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ProductTypeInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

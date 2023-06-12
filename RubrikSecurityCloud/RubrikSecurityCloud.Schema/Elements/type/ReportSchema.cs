@@ -118,37 +118,58 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Column>? AggregateColumns
         // GraphQL -> aggregateColumns: [Column!]! (type)
         if (this.AggregateColumns != null) {
-            s += ind + "aggregateColumns {\n" + this.AggregateColumns.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AggregateColumns.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "aggregateColumns {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Column>? AllColumns
         // GraphQL -> allColumns: [Column!]! (type)
         if (this.AllColumns != null) {
-            s += ind + "allColumns {\n" + this.AllColumns.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllColumns.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allColumns {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ChartConfig>? ChartConfigs
         // GraphQL -> chartConfigs: [ChartConfig!]! (type)
         if (this.ChartConfigs != null) {
-            s += ind + "chartConfigs {\n" + this.ChartConfigs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ChartConfigs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "chartConfigs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReportFilterDetail>? Filters
         // GraphQL -> filters: [ReportFilterDetail!]! (type)
         if (this.Filters != null) {
-            s += ind + "filters {\n" + this.Filters.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Filters.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filters {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReportGroupByDetail>? GroupBys
         // GraphQL -> groupBys: [ReportGroupByDetail!]! (type)
         if (this.GroupBys != null) {
-            s += ind + "groupBys {\n" + this.GroupBys.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupBys.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupBys {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Column? SortBy
         // GraphQL -> sortBy: Column! (type)
         if (this.SortBy != null) {
-            s += ind + "sortBy {\n" + this.SortBy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SortBy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sortBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Column>? TableColumns
         // GraphQL -> tableColumns: [Column!]! (type)
         if (this.TableColumns != null) {
-            s += ind + "tableColumns {\n" + this.TableColumns.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TableColumns.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "tableColumns {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -240,8 +261,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReportSchema> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

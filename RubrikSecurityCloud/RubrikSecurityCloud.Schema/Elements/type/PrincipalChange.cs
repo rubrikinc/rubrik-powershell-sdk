@@ -101,12 +101,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CountChange? CountChange
         // GraphQL -> countChange: CountChange (type)
         if (this.CountChange != null) {
-            s += ind + "countChange {\n" + this.CountChange.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CountChange.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "countChange {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RiskLevelChange? RiskLevelChange
         // GraphQL -> riskLevelChange: RiskLevelChange (type)
         if (this.RiskLevelChange != null) {
-            s += ind + "riskLevelChange {\n" + this.RiskLevelChange.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RiskLevelChange.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "riskLevelChange {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -175,8 +181,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PrincipalChange> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

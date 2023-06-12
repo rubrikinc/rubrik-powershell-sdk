@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AwsCloudAccountCreateResponse? InitiateResponse
         // GraphQL -> initiateResponse: AwsCloudAccountCreateResponse (type)
         if (this.InitiateResponse != null) {
-            s += ind + "initiateResponse {\n" + this.InitiateResponse.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.InitiateResponse.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "initiateResponse {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AwsCloudAccountValidateResponse? ValidateResponse
         // GraphQL -> validateResponse: AwsCloudAccountValidateResponse (type)
         if (this.ValidateResponse != null) {
-            s += ind + "validateResponse {\n" + this.ValidateResponse.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ValidateResponse.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "validateResponse {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ValidateAndCreateAwsCloudAccountReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

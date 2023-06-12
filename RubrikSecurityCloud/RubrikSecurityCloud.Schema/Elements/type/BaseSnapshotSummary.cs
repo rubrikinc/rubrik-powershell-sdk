@@ -297,12 +297,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<PerLocationCloudStorageTier>? CloudStorageTiers
         // GraphQL -> cloudStorageTiers: [PerLocationCloudStorageTier!]! (type)
         if (this.CloudStorageTiers != null) {
-            s += ind + "cloudStorageTiers {\n" + this.CloudStorageTiers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudStorageTiers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudStorageTiers {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
         if (this.SnapshotRetentionInfo != null) {
-            s += ind + "snapshotRetentionInfo {\n" + this.SnapshotRetentionInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -455,8 +461,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<BaseSnapshotSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

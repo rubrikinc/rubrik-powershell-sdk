@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CurrentStateInfo? CurrentStateInfo
         // GraphQL -> currentStateInfo: CurrentStateInfo (type)
         if (this.CurrentStateInfo != null) {
-            s += ind + "currentStateInfo {\n" + this.CurrentStateInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CurrentStateInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "currentStateInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RollingUpgradeNodeInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

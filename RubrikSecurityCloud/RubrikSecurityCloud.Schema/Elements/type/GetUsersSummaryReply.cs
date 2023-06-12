@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SummaryCount? SecureUsers
         // GraphQL -> secureUsers: SummaryCount! (type)
         if (this.SecureUsers != null) {
-            s += ind + "secureUsers {\n" + this.SecureUsers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SecureUsers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "secureUsers {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryCount? VulnerableUsers
         // GraphQL -> vulnerableUsers: SummaryCount! (type)
         if (this.VulnerableUsers != null) {
-            s += ind + "vulnerableUsers {\n" + this.VulnerableUsers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VulnerableUsers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vulnerableUsers {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GetUsersSummaryReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

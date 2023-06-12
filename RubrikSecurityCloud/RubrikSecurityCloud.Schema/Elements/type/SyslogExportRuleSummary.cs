@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SyslogCertificateInfo? SyslogCertificateInfo
         // GraphQL -> syslogCertificateInfo: SyslogCertificateInfo (type)
         if (this.SyslogCertificateInfo != null) {
-            s += ind + "syslogCertificateInfo {\n" + this.SyslogCertificateInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SyslogCertificateInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "syslogCertificateInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SyslogExportRuleFull? SyslogExportRuleFull
         // GraphQL -> syslogExportRuleFull: SyslogExportRuleFull (type)
         if (this.SyslogExportRuleFull != null) {
-            s += ind + "syslogExportRuleFull {\n" + this.SyslogExportRuleFull.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SyslogExportRuleFull.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "syslogExportRuleFull {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SyslogExportRuleSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

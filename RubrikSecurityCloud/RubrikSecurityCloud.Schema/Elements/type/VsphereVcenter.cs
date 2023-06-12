@@ -404,32 +404,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain != null) {
-            s += ind + "configuredSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.ConfiguredSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configuredSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? EffectiveRetentionSlaDomain
         // GraphQL -> effectiveRetentionSlaDomain: SlaDomain (interface)
         if (this.EffectiveRetentionSlaDomain != null) {
-            s += ind + "effectiveRetentionSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveRetentionSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveRetentionSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? EffectiveSlaDomain
         // GraphQL -> effectiveSlaDomain: SlaDomain! (interface)
         if (this.EffectiveSlaDomain != null) {
-            s += ind + "effectiveSlaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.EffectiveSlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         if (this.PendingSla != null) {
-            s += ind + "pendingSla {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> List<CdmHierarchyObject>? ReplicatedObjects
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
         if (this.ReplicatedObjects != null) {
-            s += ind + "replicatedObjects {\n" +
-                this.ReplicatedObjects.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.ReplicatedObjects.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? CaCerts
         // GraphQL -> caCerts: String! (scalar)
@@ -494,87 +504,138 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AboutInformation? AboutInfo
         // GraphQL -> aboutInfo: AboutInformation (type)
         if (this.AboutInfo != null) {
-            s += ind + "aboutInfo {\n" + this.AboutInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AboutInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "aboutInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            s += ind + "allOrgs {\n" + this.AllOrgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClusterVisibilityInfo>? ComputeVisibilityFilter
         // GraphQL -> computeVisibilityFilter: [ClusterVisibilityInfo!]! (type)
         if (this.ComputeVisibilityFilter != null) {
-            s += ind + "computeVisibilityFilter {\n" + this.ComputeVisibilityFilter.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ComputeVisibilityFilter.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "computeVisibilityFilter {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
         if (this.ConnectionStatus != null) {
-            s += ind + "connectionStatus {\n" + this.ConnectionStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ConnectionStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VsphereVcenterDescendantTypeConnection? DescendantConnection
         // GraphQL -> descendantConnection: VsphereVcenterDescendantTypeConnection! (type)
         if (this.DescendantConnection != null) {
-            s += ind + "descendantConnection {\n" + this.DescendantConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.DescendantConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "descendantConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject != null) {
-            s += ind + "effectiveSlaSourceObject {\n" + this.EffectiveSlaSourceObject.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSlaSourceObject.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaSourceObject {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
-            s += ind + "latestUserNote {\n" + this.LatestUserNote.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestUserNote.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VsphereVcenterLogicalChildTypeConnection? LogicalChildConnection
         // GraphQL -> logicalChildConnection: VsphereVcenterLogicalChildTypeConnection! (type)
         if (this.LogicalChildConnection != null) {
-            s += ind + "logicalChildConnection {\n" + this.LogicalChildConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LogicalChildConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logicalChildConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            s += ind + "logicalPath {\n" + this.LogicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PendingSnapshotsOfObjectDeletion? PendingObjectDeletionStatus
         // GraphQL -> pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion (type)
         if (this.PendingObjectDeletionStatus != null) {
-            s += ind + "pendingObjectDeletionStatus {\n" + this.PendingObjectDeletionStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PendingObjectDeletionStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pendingObjectDeletionStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VsphereVcenterPhysicalChildTypeConnection? PhysicalChildConnection
         // GraphQL -> physicalChildConnection: VsphereVcenterPhysicalChildTypeConnection! (type)
         if (this.PhysicalChildConnection != null) {
-            s += ind + "physicalChildConnection {\n" + this.PhysicalChildConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PhysicalChildConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "physicalChildConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? PhysicalPath
         // GraphQL -> physicalPath: [PathNode!]! (type)
         if (this.PhysicalPath != null) {
-            s += ind + "physicalPath {\n" + this.PhysicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PhysicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "physicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> DataLocation? PrimaryClusterLocation
         // GraphQL -> primaryClusterLocation: DataLocation! (type)
         if (this.PrimaryClusterLocation != null) {
-            s += ind + "primaryClusterLocation {\n" + this.PrimaryClusterLocation.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PrimaryClusterLocation.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "primaryClusterLocation {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            s += ind + "snapshotDistribution {\n" + this.SnapshotDistribution.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VsphereVcenterTagChildTypeConnection? TagChildConnection
         // GraphQL -> tagChildConnection: VsphereVcenterTagChildTypeConnection! (type)
         if (this.TagChildConnection != null) {
-            s += ind + "tagChildConnection {\n" + this.TagChildConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TagChildConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "tagChildConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? VsphereTagPath
         // GraphQL -> vsphereTagPath: [PathNode!]! (type)
         if (this.VsphereTagPath != null) {
-            s += ind + "vsphereTagPath {\n" + this.VsphereTagPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VsphereTagPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vsphereTagPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -865,8 +926,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VsphereVcenter> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

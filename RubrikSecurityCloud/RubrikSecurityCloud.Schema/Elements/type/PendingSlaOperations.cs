@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ManagedObjectSlaInfo>? ObjectsWithNoOp
         // GraphQL -> objectsWithNoOp: [ManagedObjectSlaInfo!]! (type)
         if (this.ObjectsWithNoOp != null) {
-            s += ind + "objectsWithNoOp {\n" + this.ObjectsWithNoOp.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectsWithNoOp.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objectsWithNoOp {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ManagedObjectPendingSlaInfo>? ObjectsWithPendingOp
         // GraphQL -> objectsWithPendingOp: [ManagedObjectPendingSlaInfo!]! (type)
         if (this.ObjectsWithPendingOp != null) {
-            s += ind + "objectsWithPendingOp {\n" + this.ObjectsWithPendingOp.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectsWithPendingOp.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objectsWithPendingOp {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PendingSlaOperations> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

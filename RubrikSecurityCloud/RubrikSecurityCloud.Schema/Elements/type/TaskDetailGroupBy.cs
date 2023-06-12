@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> TaskDetailConnection? TaskDetailConnection
         // GraphQL -> taskDetailConnection: TaskDetailConnection! (type)
         if (this.TaskDetailConnection != null) {
-            s += ind + "taskDetailConnection {\n" + this.TaskDetailConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TaskDetailConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "taskDetailConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<TaskDetailGroupBy>? TaskDetailGroupByField
         // GraphQL -> taskDetailGroupBy: [TaskDetailGroupBy!]! (type)
         if (this.TaskDetailGroupByField != null) {
-            s += ind + "taskDetailGroupBy {\n" + this.TaskDetailGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TaskDetailGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "taskDetailGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TaskDetailGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: TaskDetailGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<TaskDetailGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

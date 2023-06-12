@@ -120,7 +120,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: SnapshotRetentionInfo (type)
         if (this.SnapshotRetentionInfo != null) {
-            s += ind + "snapshotRetentionInfo {\n" + this.SnapshotRetentionInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -194,8 +197,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SnapshotSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

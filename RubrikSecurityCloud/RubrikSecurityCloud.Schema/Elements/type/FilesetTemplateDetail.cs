@@ -134,7 +134,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> FilesetTemplateCreate? FilesetTemplateCreate
         // GraphQL -> filesetTemplateCreate: FilesetTemplateCreate (type)
         if (this.FilesetTemplateCreate != null) {
-            s += ind + "filesetTemplateCreate {\n" + this.FilesetTemplateCreate.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FilesetTemplateCreate.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filesetTemplateCreate {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -214,8 +217,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<FilesetTemplateDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

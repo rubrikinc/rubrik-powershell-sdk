@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> RcvEntitlement? ArchiveEntitlement
         // GraphQL -> archiveEntitlement: RcvEntitlement (type)
         if (this.ArchiveEntitlement != null) {
-            s += ind + "archiveEntitlement {\n" + this.ArchiveEntitlement.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchiveEntitlement.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archiveEntitlement {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RcvEntitlement? BackupEntitlement
         // GraphQL -> backupEntitlement: RcvEntitlement (type)
         if (this.BackupEntitlement != null) {
-            s += ind + "backupEntitlement {\n" + this.BackupEntitlement.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BackupEntitlement.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "backupEntitlement {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RcvEntitlementsUsageDetails>? Entitlements
         // GraphQL -> entitlements: [RcvEntitlementsUsageDetails!]! (type)
         if (this.Entitlements != null) {
-            s += ind + "entitlements {\n" + this.Entitlements.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Entitlements.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "entitlements {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -136,8 +145,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RcvAccountEntitlement> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

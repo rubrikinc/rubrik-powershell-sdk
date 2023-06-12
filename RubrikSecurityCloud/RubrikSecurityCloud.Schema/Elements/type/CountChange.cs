@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SummaryCount? From
         // GraphQL -> from: SummaryCount! (type)
         if (this.From != null) {
-            s += ind + "from {\n" + this.From.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.From.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "from {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryCount? To
         // GraphQL -> to: SummaryCount! (type)
         if (this.To != null) {
-            s += ind + "to {\n" + this.To.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.To.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "to {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CountChange> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

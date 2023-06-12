@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> UnidirectionalReplicationSpec? ReplicationSpec1
         // GraphQL -> replicationSpec1: UnidirectionalReplicationSpec (type)
         if (this.ReplicationSpec1 != null) {
-            s += ind + "replicationSpec1 {\n" + this.ReplicationSpec1.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationSpec1.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationSpec1 {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> UnidirectionalReplicationSpec? ReplicationSpec2
         // GraphQL -> replicationSpec2: UnidirectionalReplicationSpec (type)
         if (this.ReplicationSpec2 != null) {
-            s += ind + "replicationSpec2 {\n" + this.ReplicationSpec2.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationSpec2.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationSpec2 {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<BidirectionalReplicationSpec> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

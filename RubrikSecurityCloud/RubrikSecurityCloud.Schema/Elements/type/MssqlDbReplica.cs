@@ -185,12 +185,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> MssqlDbReplicaAvailabilityInfo? AvailabilityInfo
         // GraphQL -> availabilityInfo: MssqlDbReplicaAvailabilityInfo (type)
         if (this.AvailabilityInfo != null) {
-            s += ind + "availabilityInfo {\n" + this.AvailabilityInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AvailabilityInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "availabilityInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
         if (this.RootProperties != null) {
-            s += ind + "rootProperties {\n" + this.RootProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RootProperties.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -295,8 +301,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MssqlDbReplica> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

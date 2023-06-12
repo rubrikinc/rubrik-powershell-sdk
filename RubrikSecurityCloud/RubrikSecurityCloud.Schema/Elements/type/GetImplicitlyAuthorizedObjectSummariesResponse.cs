@@ -50,7 +50,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ObjectSummary>? ObjectSummaries
         // GraphQL -> objectSummaries: [ObjectSummary!]! (type)
         if (this.ObjectSummaries != null) {
-            s += ind + "objectSummaries {\n" + this.ObjectSummaries.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectSummaries.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objectSummaries {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -94,8 +97,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GetImplicitlyAuthorizedObjectSummariesResponse> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

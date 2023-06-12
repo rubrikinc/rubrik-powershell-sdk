@@ -131,8 +131,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CdmHierarchySnappableNew? Object
         // GraphQL -> object: CdmHierarchySnappableNew (interface)
         if (this.Object != null) {
-            s += ind + "object {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.Object).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Object).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "object {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> DateTime? EarliestMatchedSnapshotDate
         // GraphQL -> earliestMatchedSnapshotDate: DateTime (scalar)
@@ -172,12 +174,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<IndicatorOfCompromise>? MatchTypes
         // GraphQL -> matchTypes: [IndicatorOfCompromise!]! (type)
         if (this.MatchTypes != null) {
-            s += ind + "matchTypes {\n" + this.MatchTypes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MatchTypes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "matchTypes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ThreatHuntResultSnapshotStats>? SnapshotsStats
         // GraphQL -> snapshotsStats: [ThreatHuntResultSnapshotStats!]! (type)
         if (this.SnapshotsStats != null) {
-            s += ind + "snapshotsStats {\n" + this.SnapshotsStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotsStats.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotsStats {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -278,8 +286,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ThreatHuntResultObjectsSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

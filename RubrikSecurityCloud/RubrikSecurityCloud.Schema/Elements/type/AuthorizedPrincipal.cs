@@ -157,12 +157,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
         if (this.Roles != null) {
-            s += ind + "roles {\n" + this.Roles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Roles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "roles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> LdapTotpStatus? TotpStatus
         // GraphQL -> totpStatus: LdapTotpStatus (type)
         if (this.TotpStatus != null) {
-            s += ind + "totpStatus {\n" + this.TotpStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TotpStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "totpStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -255,8 +261,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AuthorizedPrincipal> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

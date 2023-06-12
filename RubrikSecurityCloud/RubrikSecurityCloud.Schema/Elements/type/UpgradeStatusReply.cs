@@ -241,12 +241,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> RollingUpgradeInfo? RuInfo
         // GraphQL -> ruInfo: RollingUpgradeInfo (type)
         if (this.RuInfo != null) {
-            s += ind + "ruInfo {\n" + this.RuInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RuInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ruInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> StatusResponse? UpgradeStatus
         // GraphQL -> upgradeStatus: StatusResponse (type)
         if (this.UpgradeStatus != null) {
-            s += ind + "upgradeStatus {\n" + this.UpgradeStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UpgradeStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "upgradeStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -375,8 +381,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpgradeStatusReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

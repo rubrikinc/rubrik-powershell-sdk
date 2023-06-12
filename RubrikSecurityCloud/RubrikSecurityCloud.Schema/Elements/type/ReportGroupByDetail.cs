@@ -104,14 +104,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<DisplayableValue>? Aggregations
         // GraphQL -> aggregations: [DisplayableValue!]! (interface)
         if (this.Aggregations != null) {
-            s += ind + "aggregations {\n" +
-                this.Aggregations.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.Aggregations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "aggregations {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> List<DisplayableValue>? AllValues
         // GraphQL -> allValues: [DisplayableValue!]! (interface)
         if (this.AllValues != null) {
-            s += ind + "allValues {\n" +
-                this.AllValues.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.AllValues.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allValues {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
@@ -217,8 +221,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReportGroupByDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> GlobalSearchFile? FileData
         // GraphQL -> fileData: GlobalSearchFile (type)
         if (this.FileData != null) {
-            s += ind + "fileData {\n" + this.FileData.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FileData.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "fileData {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GlobalFileEntry> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> GlobalCertificate? Certificate
         // GraphQL -> certificate: GlobalCertificate! (type)
         if (this.Certificate != null) {
-            s += ind + "certificate {\n" + this.Certificate.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Certificate.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "certificate {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CertificateClusterOperationError>? ClusterErrors
         // GraphQL -> clusterErrors: [CertificateClusterOperationError!]! (type)
         if (this.ClusterErrors != null) {
-            s += ind + "clusterErrors {\n" + this.ClusterErrors.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterErrors.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusterErrors {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AddGlobalCertificateReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

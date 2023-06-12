@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CloudAccountDetails? ApplicationAccount
         // GraphQL -> applicationAccount: CloudAccountDetails! (type)
         if (this.ApplicationAccount != null) {
-            s += ind + "applicationAccount {\n" + this.ApplicationAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ApplicationAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "applicationAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CloudAccountDetails? ExocomputeAccount
         // GraphQL -> exocomputeAccount: CloudAccountDetails (type)
         if (this.ExocomputeAccount != null) {
-            s += ind + "exocomputeAccount {\n" + this.ExocomputeAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ExocomputeAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "exocomputeAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CloudAccountWithExocomputeMapping> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

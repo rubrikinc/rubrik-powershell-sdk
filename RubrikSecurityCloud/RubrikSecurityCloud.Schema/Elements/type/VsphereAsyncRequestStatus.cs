@@ -143,12 +143,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> VsphereRequestErrorInfo? Error
         // GraphQL -> error: VsphereRequestErrorInfo (type)
         if (this.Error != null) {
-            s += ind + "error {\n" + this.Error.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Error.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "error {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VsphereLink>? Links
         // GraphQL -> links: [VsphereLink!]! (type)
         if (this.Links != null) {
-            s += ind + "links {\n" + this.Links.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Links.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "links {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -235,8 +241,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VsphereAsyncRequestStatus> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

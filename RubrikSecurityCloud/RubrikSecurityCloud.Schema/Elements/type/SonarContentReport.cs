@@ -273,22 +273,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
         if (this.AnalyzerGroupResults != null) {
-            s += ind + "analyzerGroupResults {\n" + this.AnalyzerGroupResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerGroupResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerGroupResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
-            s += ind + "analyzerResults {\n" + this.AnalyzerResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits (type)
         if (this.Hits != null) {
-            s += ind + "hits {\n" + this.Hits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Hits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PathNode>? LogicalPath
         // GraphQL -> logicalPath: [PathNode!]! (type)
         if (this.LogicalPath != null) {
-            s += ind + "logicalPath {\n" + this.LogicalPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LogicalPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logicalPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -437,8 +449,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SonarContentReport> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

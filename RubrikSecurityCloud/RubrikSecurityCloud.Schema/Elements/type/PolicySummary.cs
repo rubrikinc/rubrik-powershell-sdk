@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> TimelineEntry? HighRiskFiles
         // GraphQL -> highRiskFiles: TimelineEntry (type)
         if (this.HighRiskFiles != null) {
-            s += ind + "highRiskFiles {\n" + this.HighRiskFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HighRiskFiles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "highRiskFiles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TimelineEntry? LowRiskFiles
         // GraphQL -> lowRiskFiles: TimelineEntry (type)
         if (this.LowRiskFiles != null) {
-            s += ind + "lowRiskFiles {\n" + this.LowRiskFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LowRiskFiles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lowRiskFiles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ClassificationPolicySummary? Summary
         // GraphQL -> summary: ClassificationPolicySummary (type)
         if (this.Summary != null) {
-            s += ind + "summary {\n" + this.Summary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Summary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "summary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -136,8 +145,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PolicySummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -156,27 +156,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ReplicationPairConfigDetails? ConfigDetails
         // GraphQL -> configDetails: ReplicationPairConfigDetails (type)
         if (this.ConfigDetails != null) {
-            s += ind + "configDetails {\n" + this.ConfigDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ConfigDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ConnectionStatusDetails? ConnectionDetails
         // GraphQL -> connectionDetails: ConnectionStatusDetails! (type)
         if (this.ConnectionDetails != null) {
-            s += ind + "connectionDetails {\n" + this.ConnectionDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ConnectionDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "connectionDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> NetworkThrottle? NetworkThrottle
         // GraphQL -> networkThrottle: NetworkThrottle (type)
         if (this.NetworkThrottle != null) {
-            s += ind + "networkThrottle {\n" + this.NetworkThrottle.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NetworkThrottle.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "networkThrottle {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ReplicationCluster? SourceCluster
         // GraphQL -> sourceCluster: ReplicationCluster! (type)
         if (this.SourceCluster != null) {
-            s += ind + "sourceCluster {\n" + this.SourceCluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceCluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceCluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ReplicationCluster? TargetCluster
         // GraphQL -> targetCluster: ReplicationCluster! (type)
         if (this.TargetCluster != null) {
-            s += ind + "targetCluster {\n" + this.TargetCluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetCluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetCluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -278,8 +293,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReplicationPair> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> TimeRange? AbsoluteTimeRange
         // GraphQL -> absoluteTimeRange: TimeRange (type)
         if (this.AbsoluteTimeRange != null) {
-            s += ind + "absoluteTimeRange {\n" + this.AbsoluteTimeRange.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AbsoluteTimeRange.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "absoluteTimeRange {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RelativeTimeRange? RelativeTimeRange
         // GraphQL -> relativeTimeRange: RelativeTimeRange (type)
         if (this.RelativeTimeRange != null) {
-            s += ind + "relativeTimeRange {\n" + this.RelativeTimeRange.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RelativeTimeRange.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "relativeTimeRange {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GenericTimeRange> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

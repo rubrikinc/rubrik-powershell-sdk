@@ -459,32 +459,50 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<HostInfo>? HostsInfo
         // GraphQL -> hostsInfo: [HostInfo!]! (type)
         if (this.HostsInfo != null) {
-            s += ind + "hostsInfo {\n" + this.HostsInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HostsInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hostsInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OracleLastValidationResult? LastValidationResult
         // GraphQL -> lastValidationResult: OracleLastValidationResult (type)
         if (this.LastValidationResult != null) {
-            s += ind + "lastValidationResult {\n" + this.LastValidationResult.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LastValidationResult.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lastValidationResult {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OracleDbSummary? OracleDbSummary
         // GraphQL -> oracleDbSummary: OracleDbSummary (type)
         if (this.OracleDbSummary != null) {
-            s += ind + "oracleDbSummary {\n" + this.OracleDbSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OracleDbSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "oracleDbSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OracleNonSlaProperties? OracleNonSlaProperties
         // GraphQL -> oracleNonSlaProperties: OracleNonSlaProperties (type)
         if (this.OracleNonSlaProperties != null) {
-            s += ind + "oracleNonSlaProperties {\n" + this.OracleNonSlaProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OracleNonSlaProperties.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "oracleNonSlaProperties {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> OraclePdbDetails? PdbDetails
         // GraphQL -> pdbDetails: OraclePdbDetails (type)
         if (this.PdbDetails != null) {
-            s += ind + "pdbDetails {\n" + this.PdbDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PdbDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pdbDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
-            s += ind + "pendingSlaDomain {\n" + this.PendingSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PendingSlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -719,8 +737,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<OracleDbDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

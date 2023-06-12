@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ActivitySeriesConnection? ActivitySeriesConnection
         // GraphQL -> activitySeriesConnection: ActivitySeriesConnection! (type)
         if (this.ActivitySeriesConnection != null) {
-            s += ind + "activitySeriesConnection {\n" + this.ActivitySeriesConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ActivitySeriesConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "activitySeriesConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ActivitySeriesGroupBy>? ActivitySeriesGroupByField
         // GraphQL -> activitySeriesGroupBy: [ActivitySeriesGroupBy!]! (type)
         if (this.ActivitySeriesGroupByField != null) {
-            s += ind + "activitySeriesGroupBy {\n" + this.ActivitySeriesGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ActivitySeriesGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "activitySeriesGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ActivitySeriesGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ActivitySeriesGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ActivitySeriesGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

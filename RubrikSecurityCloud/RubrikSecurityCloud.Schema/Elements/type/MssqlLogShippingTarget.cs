@@ -198,27 +198,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Cluster? PrimaryCluster
         // GraphQL -> primaryCluster: Cluster (type)
         if (this.PrimaryCluster != null) {
-            s += ind + "primaryCluster {\n" + this.PrimaryCluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PrimaryCluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "primaryCluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlDatabase? PrimaryDatabase
         // GraphQL -> primaryDatabase: MssqlDatabase (type)
         if (this.PrimaryDatabase != null) {
-            s += ind + "primaryDatabase {\n" + this.PrimaryDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PrimaryDatabase.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "primaryDatabase {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlDatabase? SecondaryDatabase
         // GraphQL -> secondaryDatabase: MssqlDatabase (type)
         if (this.SecondaryDatabase != null) {
-            s += ind + "secondaryDatabase {\n" + this.SecondaryDatabase.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SecondaryDatabase.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "secondaryDatabase {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlInstance? SecondaryInstance
         // GraphQL -> secondaryInstance: MssqlInstance (type)
         if (this.SecondaryInstance != null) {
-            s += ind + "secondaryInstance {\n" + this.SecondaryInstance.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SecondaryInstance.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "secondaryInstance {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -338,8 +353,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MssqlLogShippingTarget> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -133,22 +133,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ManagedVolumeSlaScriptConfig? BackupScript
         // GraphQL -> backupScript: ManagedVolumeSlaScriptConfig! (type)
         if (this.BackupScript != null) {
-            s += ind + "backupScript {\n" + this.BackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BackupScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "backupScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeSlaScriptConfig? FailedPostBackupScript
         // GraphQL -> failedPostBackupScript: ManagedVolumeSlaScriptConfig (type)
         if (this.FailedPostBackupScript != null) {
-            s += ind + "failedPostBackupScript {\n" + this.FailedPostBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FailedPostBackupScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "failedPostBackupScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeSlaScriptConfig? PreBackupScript
         // GraphQL -> preBackupScript: ManagedVolumeSlaScriptConfig (type)
         if (this.PreBackupScript != null) {
-            s += ind + "preBackupScript {\n" + this.PreBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PreBackupScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "preBackupScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeSlaScriptConfig? SuccessfulPostBackupScript
         // GraphQL -> successfulPostBackupScript: ManagedVolumeSlaScriptConfig (type)
         if (this.SuccessfulPostBackupScript != null) {
-            s += ind + "successfulPostBackupScript {\n" + this.SuccessfulPostBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SuccessfulPostBackupScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "successfulPostBackupScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -237,8 +249,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ManagedVolumeSlaClientConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AsyncRequestStatus? NasDiscoverJobStatus
         // GraphQL -> nasDiscoverJobStatus: AsyncRequestStatus (type)
         if (this.NasDiscoverJobStatus != null) {
-            s += ind + "nasDiscoverJobStatus {\n" + this.NasDiscoverJobStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NasDiscoverJobStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nasDiscoverJobStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> UpdateNasSystemReply? NasSystemSummary
         // GraphQL -> nasSystemSummary: UpdateNasSystemReply (type)
         if (this.NasSystemSummary != null) {
-            s += ind + "nasSystemSummary {\n" + this.NasSystemSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NasSystemSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nasSystemSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RegisterNasSystemReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

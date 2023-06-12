@@ -133,22 +133,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AzureExocomputeConfigDetails>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
         if (this.ExocomputeConfigs != null) {
-            s += ind + "exocomputeConfigs {\n" + this.ExocomputeConfigs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ExocomputeConfigs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "exocomputeConfigs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureCloudAccountFeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: AzureCloudAccountFeatureDetail! (type)
         if (this.FeatureDetail != null) {
-            s += ind + "featureDetail {\n" + this.FeatureDetail.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FeatureDetail.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
         // GraphQL -> mappedExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
         if (this.MappedExocomputeConfigs != null) {
-            s += ind + "mappedExocomputeConfigs {\n" + this.MappedExocomputeConfigs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MappedExocomputeConfigs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mappedExocomputeConfigs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureMappedExocomputeSubscription? MappedExocomputeSubscription
         // GraphQL -> mappedExocomputeSubscription: AzureMappedExocomputeSubscription (type)
         if (this.MappedExocomputeSubscription != null) {
-            s += ind + "mappedExocomputeSubscription {\n" + this.MappedExocomputeSubscription.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MappedExocomputeSubscription.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mappedExocomputeSubscription {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -237,8 +249,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureSubscriptionWithExoConfigs> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

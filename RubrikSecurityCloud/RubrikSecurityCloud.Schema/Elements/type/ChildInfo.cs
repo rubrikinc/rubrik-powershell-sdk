@@ -50,7 +50,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> VsphereBlueprintChildSnapshotInfo? VsphereVmInfo
         // GraphQL -> vSphereVmInfo: VsphereBlueprintChildSnapshotInfo! (type)
         if (this.VsphereVmInfo != null) {
-            s += ind + "vSphereVmInfo {\n" + this.VsphereVmInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VsphereVmInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vSphereVmInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -94,8 +97,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ChildInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

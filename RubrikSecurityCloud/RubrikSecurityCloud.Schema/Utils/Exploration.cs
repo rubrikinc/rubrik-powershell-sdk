@@ -59,18 +59,21 @@ namespace RubrikSecurityCloud.Schema.Utils
             int depth, 
             bool isLeaf)
         {
-            // depth is 0 except for "nodes"
-            // that is: we only explore fields at the root level
-            // except for "nodes", in which we go down one level.
             if (!isLeaf) {
-                return lastNode == "nodes";
+                return lastNode == "nodes" ||
+                    lastNode == "effectivesladomain" ;
             }
-            // basic fields
+
             if ( lastNode == "id" || 
                  lastNode == "name" ||
+                 lastNode == "description" ||
+                 lastNode == "version" ||
                  lastNode == "email" ||
                  lastNode == "username" ||
-                 lastNode == "type" ) 
+                 lastNode == "type" ||
+                 lastNode == "objecttype" ||
+                 lastNode == "slaassignment" ||
+                 lastNode == "numworkloaddescendants") 
             {
                 return true;
             }
@@ -94,7 +97,16 @@ namespace RubrikSecurityCloud.Schema.Utils
             int depth,
             bool isLeaf)
         {
-            return isLeaf || depth <= 1 ;
+            if ( lastNode == "edges" ) {
+                return false; // we use nodes, not edges.
+            }
+            // WORKAROUND for api server bug
+            // TODO: SPARK-230377
+            if ( lastNode == "datagovautoenablepolicyconfig")
+            {
+                return false ;
+            }
+            return isLeaf || depth <= 1 || lastNode == "nodes";
         }
 
     }

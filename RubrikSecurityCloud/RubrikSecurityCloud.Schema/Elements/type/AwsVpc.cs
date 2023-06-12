@@ -87,12 +87,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AwsSecurityGroup>? SecurityGroups
         // GraphQL -> securityGroups: [AwsSecurityGroup!]! (type)
         if (this.SecurityGroups != null) {
-            s += ind + "securityGroups {\n" + this.SecurityGroups.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SecurityGroups.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "securityGroups {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AwsSubnet>? Subnets
         // GraphQL -> subnets: [AwsSubnet!]! (type)
         if (this.Subnets != null) {
-            s += ind + "subnets {\n" + this.Subnets.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Subnets.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subnets {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -155,8 +161,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AwsVpc> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

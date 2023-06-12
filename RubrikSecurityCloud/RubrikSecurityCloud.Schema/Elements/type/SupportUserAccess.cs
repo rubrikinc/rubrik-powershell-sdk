@@ -143,12 +143,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> User? AccessProviderUser
         // GraphQL -> accessProviderUser: User (type)
         if (this.AccessProviderUser != null) {
-            s += ind + "accessProviderUser {\n" + this.AccessProviderUser.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AccessProviderUser.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "accessProviderUser {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> User? ImpersonatedUser
         // GraphQL -> impersonatedUser: User (type)
         if (this.ImpersonatedUser != null) {
-            s += ind + "impersonatedUser {\n" + this.ImpersonatedUser.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ImpersonatedUser.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "impersonatedUser {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -235,8 +241,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SupportUserAccess> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

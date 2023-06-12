@@ -235,32 +235,50 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
         if (this.AllOrgs != null) {
-            s += ind + "allOrgs {\n" + this.AllOrgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllOrgs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allOrgs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<EventDigest>? EmailConfig
         // GraphQL -> emailConfig: [EventDigest!]! (type)
         if (this.EmailConfig != null) {
-            s += ind + "emailConfig {\n" + this.EmailConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EmailConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "emailConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> EulaState? EulaState
         // GraphQL -> eulaState: EulaState! (type)
         if (this.EulaState != null) {
-            s += ind + "eulaState {\n" + this.EulaState.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EulaState.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "eulaState {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> LockoutState? LockoutState
         // GraphQL -> lockoutState: LockoutState! (type)
         if (this.LockoutState != null) {
-            s += ind + "lockoutState {\n" + this.LockoutState.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LockoutState.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lockoutState {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Role>? Roles
         // GraphQL -> roles: [Role!]! (type)
         if (this.Roles != null) {
-            s += ind + "roles {\n" + this.Roles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Roles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "roles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TotpStatus? TotpStatus
         // GraphQL -> totpStatus: TotpStatus! (type)
         if (this.TotpStatus != null) {
-            s += ind + "totpStatus {\n" + this.TotpStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TotpStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "totpStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -399,8 +417,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<User> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

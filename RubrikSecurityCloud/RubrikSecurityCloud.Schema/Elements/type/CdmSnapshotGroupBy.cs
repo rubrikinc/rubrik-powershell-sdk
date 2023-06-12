@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<CdmSnapshotGroupBy>? CdmSnapshotGroupByField
         // GraphQL -> cdmSnapshotGroupBy: [CdmSnapshotGroupBy!]! (type)
         if (this.CdmSnapshotGroupByField != null) {
-            s += ind + "cdmSnapshotGroupBy {\n" + this.CdmSnapshotGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CdmSnapshotGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cdmSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshotConnection? SnapshotConnection
         // GraphQL -> snapshotConnection: CdmSnapshotConnection! (type)
         if (this.SnapshotConnection != null) {
-            s += ind + "snapshotConnection {\n" + this.SnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: CdmSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CdmSnapshotGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

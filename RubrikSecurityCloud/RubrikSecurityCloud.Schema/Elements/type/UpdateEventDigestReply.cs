@@ -50,7 +50,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<EventDigest>? EventDigests
         // GraphQL -> eventDigests: [EventDigest!]! (type)
         if (this.EventDigests != null) {
-            s += ind + "eventDigests {\n" + this.EventDigests.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EventDigests.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "eventDigests {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -94,8 +97,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpdateEventDigestReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

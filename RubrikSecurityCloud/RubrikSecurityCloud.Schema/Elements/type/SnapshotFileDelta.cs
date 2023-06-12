@@ -77,22 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<SnapshotDelta>? ChildrenDeltas
         // GraphQL -> childrenDeltas: [SnapshotDelta!]! (type)
         if (this.ChildrenDeltas != null) {
-            s += ind + "childrenDeltas {\n" + this.ChildrenDeltas.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ChildrenDeltas.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "childrenDeltas {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotFile? File
         // GraphQL -> file: SnapshotFile! (type)
         if (this.File != null) {
-            s += ind + "file {\n" + this.File.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.File.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "file {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> QuarantineInfo? PreviousSnapshotQuarantineInfo
         // GraphQL -> previousSnapshotQuarantineInfo: QuarantineInfo (type)
         if (this.PreviousSnapshotQuarantineInfo != null) {
-            s += ind + "previousSnapshotQuarantineInfo {\n" + this.PreviousSnapshotQuarantineInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PreviousSnapshotQuarantineInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "previousSnapshotQuarantineInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnapshotDelta>? SelfDeltas
         // GraphQL -> selfDeltas: [SnapshotDelta!]! (type)
         if (this.SelfDeltas != null) {
-            s += ind + "selfDeltas {\n" + this.SelfDeltas.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SelfDeltas.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "selfDeltas {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -157,8 +169,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SnapshotFileDelta> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<FailoverClusterNodeOrder>? NodeOrders
         // GraphQL -> nodeOrders: [FailoverClusterNodeOrder!]! (type)
         if (this.NodeOrders != null) {
-            s += ind + "nodeOrders {\n" + this.NodeOrders.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NodeOrders.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nodeOrders {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<FailoverClusterAppSource> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

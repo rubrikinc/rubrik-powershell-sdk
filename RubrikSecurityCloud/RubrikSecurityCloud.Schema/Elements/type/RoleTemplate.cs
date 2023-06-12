@@ -101,12 +101,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Permission>? ExplicitlyAssignedPermissions
         // GraphQL -> explicitlyAssignedPermissions: [Permission!]! (type)
         if (this.ExplicitlyAssignedPermissions != null) {
-            s += ind + "explicitlyAssignedPermissions {\n" + this.ExplicitlyAssignedPermissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ExplicitlyAssignedPermissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "explicitlyAssignedPermissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<Permission>? Permissions
         // GraphQL -> permissions: [Permission!]! (type)
         if (this.Permissions != null) {
-            s += ind + "permissions {\n" + this.Permissions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Permissions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "permissions {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -175,8 +181,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RoleTemplate> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

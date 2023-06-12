@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SnapshotResult? LatestSnapshotResult
         // GraphQL -> latestSnapshotResult: SnapshotResult (type)
         if (this.LatestSnapshotResult != null) {
-            s += ind + "latestSnapshotResult {\n" + this.LatestSnapshotResult.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestSnapshotResult.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestSnapshotResult {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<PolicyStatus>? PolicyStatuses
         // GraphQL -> policyStatuses: [PolicyStatus!]! (type)
         if (this.PolicyStatuses != null) {
-            s += ind + "policyStatuses {\n" + this.PolicyStatuses.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PolicyStatuses.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "policyStatuses {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ObjectStatus> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

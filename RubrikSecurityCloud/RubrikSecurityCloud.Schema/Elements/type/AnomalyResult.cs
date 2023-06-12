@@ -404,17 +404,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RansomwareResult? RansomwareResult
         // GraphQL -> ransomwareResult: RansomwareResult (type)
         if (this.RansomwareResult != null) {
-            s += ind + "ransomwareResult {\n" + this.RansomwareResult.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RansomwareResult.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ransomwareResult {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshot? Snapshot
         // GraphQL -> snapshot: CdmSnapshot (type)
         if (this.Snapshot != null) {
-            s += ind + "snapshot {\n" + this.Snapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -616,8 +625,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AnomalyResult> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

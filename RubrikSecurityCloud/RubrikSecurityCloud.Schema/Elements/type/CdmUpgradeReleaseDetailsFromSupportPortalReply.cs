@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<CdmUpgradeReleaseDetail>? ReleaseDetails
         // GraphQL -> releaseDetails: [CdmUpgradeReleaseDetail!]! (type)
         if (this.ReleaseDetails != null) {
-            s += ind + "releaseDetails {\n" + this.ReleaseDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReleaseDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "releaseDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CdmUpgradeReleaseDetailsFromSupportPortalReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

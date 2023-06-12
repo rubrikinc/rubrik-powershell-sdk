@@ -106,7 +106,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ContentNodeAttribute>? Attributes
         // GraphQL -> attributes: [ContentNodeAttribute!]! (type)
         if (this.Attributes != null) {
-            s += ind + "attributes {\n" + this.Attributes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Attributes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "attributes {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -174,8 +177,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ContentNode> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

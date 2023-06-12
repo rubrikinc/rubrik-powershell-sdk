@@ -450,27 +450,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> BackupTaskDiagnosticInfo? CurrentBackupTaskInfo
         // GraphQL -> currentBackupTaskInfo: BackupTaskDiagnosticInfo (type)
         if (this.CurrentBackupTaskInfo != null) {
-            s += ind + "currentBackupTaskInfo {\n" + this.CurrentBackupTaskInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CurrentBackupTaskInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "currentBackupTaskInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<DataGuardGroupMember>? DataGuardGroupMembers
         // GraphQL -> dataGuardGroupMembers: [DataGuardGroupMember!]! (type)
         if (this.DataGuardGroupMembers != null) {
-            s += ind + "dataGuardGroupMembers {\n" + this.DataGuardGroupMembers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.DataGuardGroupMembers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "dataGuardGroupMembers {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ManagedHierarchyObjectAncestor>? InfraPath
         // GraphQL -> infraPath: [ManagedHierarchyObjectAncestor!]! (type)
         if (this.InfraPath != null) {
-            s += ind + "infraPath {\n" + this.InfraPath.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.InfraPath.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "infraPath {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<OracleInstanceProperties>? Instances
         // GraphQL -> instances: [OracleInstanceProperties!]! (type)
         if (this.Instances != null) {
-            s += ind + "instances {\n" + this.Instances.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Instances.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "instances {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmWorkload? Snappable
         // GraphQL -> snappable: CdmWorkload (type)
         if (this.Snappable != null) {
-            s += ind + "snappable {\n" + this.Snappable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snappable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappable {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -698,8 +713,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<OracleDbSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

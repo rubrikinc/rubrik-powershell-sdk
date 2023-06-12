@@ -282,27 +282,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
         if (this.AuthorizedOperations != null) {
-            s += ind + "authorizedOperations {\n" + this.AuthorizedOperations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AuthorizedOperations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "authorizedOperations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<MountedVolume>? MountedVolumes
         // GraphQL -> mountedVolumes: [MountedVolume!]! (type)
         if (this.MountedVolumes != null) {
-            s += ind + "mountedVolumes {\n" + this.MountedVolumes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MountedVolumes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mountedVolumes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PhysicalHost? SourceHost
         // GraphQL -> sourceHost: PhysicalHost! (type)
         if (this.SourceHost != null) {
-            s += ind + "sourceHost {\n" + this.SourceHost.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceHost.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceHost {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
         if (this.SourceSnapshot != null) {
-            s += ind + "sourceSnapshot {\n" + this.SourceSnapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SourceSnapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sourceSnapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -458,8 +473,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VolumeGroupLiveMount> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

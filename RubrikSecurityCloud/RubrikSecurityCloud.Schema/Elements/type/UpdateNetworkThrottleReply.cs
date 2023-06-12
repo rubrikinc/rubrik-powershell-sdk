@@ -120,7 +120,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<NetworkThrottleScheduleSummary>? ScheduledThrottles
         // GraphQL -> scheduledThrottles: [NetworkThrottleScheduleSummary!]! (type)
         if (this.ScheduledThrottles != null) {
-            s += ind + "scheduledThrottles {\n" + this.ScheduledThrottles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ScheduledThrottles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "scheduledThrottles {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -194,8 +197,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpdateNetworkThrottleReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

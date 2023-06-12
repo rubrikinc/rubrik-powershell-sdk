@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CdmWorkloadSnapshotConnection? CdmSnapshots
         // GraphQL -> cdmSnapshots: CdmWorkloadSnapshotConnection! (type)
         if (this.CdmSnapshots != null) {
-            s += ind + "cdmSnapshots {\n" + this.CdmSnapshots.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CdmSnapshots.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cdmSnapshots {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: CdmGroupByInfo (type)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CdmGroupedSnapshot> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

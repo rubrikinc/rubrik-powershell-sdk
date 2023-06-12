@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Db2Instance? Db2Instance
         // GraphQL -> db2Instance: Db2Instance! (type)
         if (this.Db2Instance != null) {
-            s += ind + "db2Instance {\n" + this.Db2Instance.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Db2Instance.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "db2Instance {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Db2HadrInstanceInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

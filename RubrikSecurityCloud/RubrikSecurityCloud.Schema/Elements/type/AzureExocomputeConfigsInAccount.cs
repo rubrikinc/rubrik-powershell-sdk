@@ -82,17 +82,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AzureCloudAccountSubscriptionDetail? AzureCloudAccount
         // GraphQL -> azureCloudAccount: AzureCloudAccountSubscriptionDetail! (type)
         if (this.AzureCloudAccount != null) {
-            s += ind + "azureCloudAccount {\n" + this.AzureCloudAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AzureCloudAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "azureCloudAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AzureExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AzureExocomputeGetConfigResponse!]! (type)
         if (this.Configs != null) {
-            s += ind + "configs {\n" + this.Configs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Configs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureCloudAccountFeatureDetail? FeatureDetails
         // GraphQL -> featureDetails: AzureCloudAccountFeatureDetail! (type)
         if (this.FeatureDetails != null) {
-            s += ind + "featureDetails {\n" + this.FeatureDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FeatureDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "featureDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -156,8 +165,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureExocomputeConfigsInAccount> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

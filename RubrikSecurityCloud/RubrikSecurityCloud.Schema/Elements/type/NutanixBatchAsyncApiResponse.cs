@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<NutanixAsyncRequestFailureSummary>? FailedRequests
         // GraphQL -> failedRequests: [NutanixAsyncRequestFailureSummary!]! (type)
         if (this.FailedRequests != null) {
-            s += ind + "failedRequests {\n" + this.FailedRequests.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FailedRequests.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "failedRequests {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<NutanixAsyncRequestSuccessSummary>? SuccessfulRequests
         // GraphQL -> successfulRequests: [NutanixAsyncRequestSuccessSummary!]! (type)
         if (this.SuccessfulRequests != null) {
-            s += ind + "successfulRequests {\n" + this.SuccessfulRequests.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SuccessfulRequests.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "successfulRequests {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<NutanixBatchAsyncApiResponse> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

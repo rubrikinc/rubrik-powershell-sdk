@@ -96,17 +96,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AnalyzerHits? AnalyzerHits
         // GraphQL -> analyzerHits: AnalyzerHits (type)
         if (this.AnalyzerHits != null) {
-            s += ind + "analyzerHits {\n" + this.AnalyzerHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
         if (this.SensitiveFiles != null) {
-            s += ind + "sensitiveFiles {\n" + this.SensitiveFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SensitiveFiles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sensitiveFiles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveHits? SensitiveHits
         // GraphQL -> sensitiveHits: SensitiveHits (type)
         if (this.SensitiveHits != null) {
-            s += ind + "sensitiveHits {\n" + this.SensitiveHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SensitiveHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sensitiveHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -176,8 +185,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PrincipalRisk> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -285,67 +285,106 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ClusterArchivalSpec? ArchivalSpec
         // GraphQL -> archivalSpec: ClusterArchivalSpec (type)
         if (this.ArchivalSpec != null) {
-            s += ind + "archivalSpec {\n" + this.ArchivalSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClusterArchivalSpec>? ArchivalSpecs
         // GraphQL -> archivalSpecs: [ClusterArchivalSpec!]! (type)
         if (this.ArchivalSpecs != null) {
-            s += ind + "archivalSpecs {\n" + this.ArchivalSpecs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalSpecs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalSpecs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<BackupWindow>? BackupWindows
         // GraphQL -> backupWindows: [BackupWindow!]! (type)
         if (this.BackupWindows != null) {
-            s += ind + "backupWindows {\n" + this.BackupWindows.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BackupWindows.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "backupWindows {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Duration? BaseFrequency
         // GraphQL -> baseFrequency: Duration (type)
         if (this.BaseFrequency != null) {
-            s += ind + "baseFrequency {\n" + this.BaseFrequency.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BaseFrequency.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "baseFrequency {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<BackupWindow>? FirstFullBackupWindows
         // GraphQL -> firstFullBackupWindows: [BackupWindow!]! (type)
         if (this.FirstFullBackupWindows != null) {
-            s += ind + "firstFullBackupWindows {\n" + this.FirstFullBackupWindows.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FirstFullBackupWindows.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "firstFullBackupWindows {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Duration? LocalRetentionLimit
         // GraphQL -> localRetentionLimit: Duration (type)
         if (this.LocalRetentionLimit != null) {
-            s += ind + "localRetentionLimit {\n" + this.LocalRetentionLimit.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LocalRetentionLimit.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "localRetentionLimit {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ObjectSpecificConfigs? ObjectSpecificConfigs
         // GraphQL -> objectSpecificConfigs: ObjectSpecificConfigs (type)
         if (this.ObjectSpecificConfigs != null) {
-            s += ind + "objectSpecificConfigs {\n" + this.ObjectSpecificConfigs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectSpecificConfigs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objectSpecificConfigs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaAssociatedOrganization? OwnerOrg
         // GraphQL -> ownerOrg: SlaAssociatedOrganization! (type)
         if (this.OwnerOrg != null) {
-            s += ind + "ownerOrg {\n" + this.OwnerOrg.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OwnerOrg.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ownerOrg {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ReplicationSpec? ReplicationSpec
         // GraphQL -> replicationSpec: ReplicationSpec (type)
         if (this.ReplicationSpec != null) {
-            s += ind + "replicationSpec {\n" + this.ReplicationSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReplicationSpecV2>? ReplicationSpecsV2
         // GraphQL -> replicationSpecsV2: [ReplicationSpecV2!]! (type)
         if (this.ReplicationSpecsV2 != null) {
-            s += ind + "replicationSpecsV2 {\n" + this.ReplicationSpecsV2.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationSpecsV2.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationSpecsV2 {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotSchedule? SnapshotSchedule
         // GraphQL -> snapshotSchedule: SnapshotSchedule (type)
         if (this.SnapshotSchedule != null) {
-            s += ind + "snapshotSchedule {\n" + this.SnapshotSchedule.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotSchedule.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotSchedule {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaUpgradeInfo? UpgradeInfo
         // GraphQL -> upgradeInfo: SlaUpgradeInfo (type)
         if (this.UpgradeInfo != null) {
-            s += ind + "upgradeInfo {\n" + this.UpgradeInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UpgradeInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "upgradeInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -527,8 +566,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ClusterSlaDomain> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

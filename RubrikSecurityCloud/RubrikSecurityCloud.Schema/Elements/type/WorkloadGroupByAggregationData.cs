@@ -233,8 +233,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<WorkloadGroupByAggregationData> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

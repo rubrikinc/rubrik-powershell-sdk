@@ -110,17 +110,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<MongodbHost>? IgnoreSecondaries
         // GraphQL -> ignoreSecondaries: [MongodbHost!]! (type)
         if (this.IgnoreSecondaries != null) {
-            s += ind + "ignoreSecondaries {\n" + this.IgnoreSecondaries.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.IgnoreSecondaries.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ignoreSecondaries {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<MongodbHost>? MongodbHosts
         // GraphQL -> mongodbHosts: [MongodbHost!]! (type)
         if (this.MongodbHosts != null) {
-            s += ind + "mongodbHosts {\n" + this.MongodbHosts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MongodbHosts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mongodbHosts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MongodbSslOptions? SslOptions
         // GraphQL -> sslOptions: MongodbSslOptions (type)
         if (this.SslOptions != null) {
-            s += ind + "sslOptions {\n" + this.SslOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SslOptions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sslOptions {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -196,8 +205,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MongodbSourceConfigParams> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

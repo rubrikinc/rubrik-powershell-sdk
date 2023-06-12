@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SnappableConnection? SnappableConnection
         // GraphQL -> snappableConnection: SnappableConnection! (type)
         if (this.SnappableConnection != null) {
-            s += ind + "snappableConnection {\n" + this.SnappableConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnappableConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappableConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnappableGroupBy>? SnappableGroupByField
         // GraphQL -> snappableGroupBy: [SnappableGroupBy!]! (type)
         if (this.SnappableGroupByField != null) {
-            s += ind + "snappableGroupBy {\n" + this.SnappableGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnappableGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappableGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnappableGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: SnappableGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SnappableGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

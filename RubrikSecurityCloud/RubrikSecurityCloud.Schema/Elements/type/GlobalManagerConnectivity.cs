@@ -50,7 +50,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<GlobalManagerUrl>? Urls
         // GraphQL -> urls: [GlobalManagerUrl!]! (type)
         if (this.Urls != null) {
-            s += ind + "urls {\n" + this.Urls.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Urls.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "urls {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -94,8 +97,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GlobalManagerConnectivity> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

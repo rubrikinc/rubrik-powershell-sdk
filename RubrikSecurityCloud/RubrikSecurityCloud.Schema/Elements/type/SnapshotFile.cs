@@ -171,12 +171,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
         if (this.QuarantineInfo != null) {
-            s += ind + "quarantineInfo {\n" + this.QuarantineInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.QuarantineInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "quarantineInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> WorkloadFields? WorkloadFields
         // GraphQL -> workloadFields: WorkloadFields (type)
         if (this.WorkloadFields != null) {
-            s += ind + "workloadFields {\n" + this.WorkloadFields.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.WorkloadFields.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "workloadFields {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -275,8 +281,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SnapshotFile> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

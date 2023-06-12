@@ -128,14 +128,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> TargetTemplate? TargetTemplate
         // GraphQL -> targetTemplate: TargetTemplate (interface)
         if (this.TargetTemplate != null) {
-            s += ind + "targetTemplate {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.TargetTemplate).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.TargetTemplate).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetTemplate {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> List<Target>? Targets
         // GraphQL -> targets: [Target!] (interface)
         if (this.Targets != null) {
-            s += ind + "targets {\n" +
-                this.Targets.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.Targets.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targets {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
@@ -150,7 +154,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ArchivalGroupConnectionStatus? ConnectionStatus
         // GraphQL -> connectionStatus: ArchivalGroupConnectionStatus (type)
         if (this.ConnectionStatus != null) {
-            s += ind + "connectionStatus {\n" + this.ConnectionStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ConnectionStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -239,8 +246,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<TargetMapping> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

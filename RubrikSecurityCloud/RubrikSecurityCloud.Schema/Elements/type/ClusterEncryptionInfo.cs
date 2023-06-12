@@ -227,12 +227,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ClusterKeyRotation? LatestRotationCompletedInfo
         // GraphQL -> latestRotationCompletedInfo: ClusterKeyRotation (type)
         if (this.LatestRotationCompletedInfo != null) {
-            s += ind + "latestRotationCompletedInfo {\n" + this.LatestRotationCompletedInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestRotationCompletedInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestRotationCompletedInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RscKeyRotationRequest? MostRecentRscRequest
         // GraphQL -> mostRecentRscRequest: RscKeyRotationRequest (type)
         if (this.MostRecentRscRequest != null) {
-            s += ind + "mostRecentRscRequest {\n" + this.MostRecentRscRequest.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MostRecentRscRequest.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mostRecentRscRequest {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -355,8 +361,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ClusterEncryptionInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Duration? RetentionDuration
         // GraphQL -> retentionDuration: Duration (type)
         if (this.RetentionDuration != null) {
-            s += ind + "retentionDuration {\n" + this.RetentionDuration.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RetentionDuration.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "retentionDuration {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TargetMapping? TargetMapping
         // GraphQL -> targetMapping: TargetMapping (type)
         if (this.TargetMapping != null) {
-            s += ind + "targetMapping {\n" + this.TargetMapping.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetMapping.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetMapping {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReplicationToCloudLocationSpec> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

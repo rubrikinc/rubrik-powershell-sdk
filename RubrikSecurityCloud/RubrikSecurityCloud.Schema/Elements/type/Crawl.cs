@@ -272,37 +272,58 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AnalyzerGroupResult>? AnalyzerGroupResults
         // GraphQL -> analyzerGroupResults: [AnalyzerGroupResult!]! (type)
         if (this.AnalyzerGroupResults != null) {
-            s += ind + "analyzerGroupResults {\n" + this.AnalyzerGroupResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerGroupResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerGroupResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
-            s += ind + "analyzerResults {\n" + this.AnalyzerResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CrawlObj? CrawlObj
         // GraphQL -> crawlObj: CrawlObj! (type)
         if (this.CrawlObj != null) {
-            s += ind + "crawlObj {\n" + this.CrawlObj.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CrawlObj.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "crawlObj {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CrawlObjConnection? CrawlObjConnection
         // GraphQL -> crawlObjConnection: CrawlObjConnection! (type)
         if (this.CrawlObjConnection != null) {
-            s += ind + "crawlObjConnection {\n" + this.CrawlObjConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CrawlObjConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "crawlObjConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FileResultConnection? FileResultConnection
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         if (this.FileResultConnection != null) {
-            s += ind + "fileResultConnection {\n" + this.FileResultConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FileResultConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "fileResultConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnappableTypeSummary>? SnappableTypeSummaries
         // GraphQL -> snappableTypeSummaries: [SnappableTypeSummary!]! (type)
         if (this.SnappableTypeSummaries != null) {
-            s += ind + "snappableTypeSummaries {\n" + this.SnappableTypeSummaries.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnappableTypeSummaries.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappableTypeSummaries {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> User? User
         // GraphQL -> user: User (type)
         if (this.User != null) {
-            s += ind + "user {\n" + this.User.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.User.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "user {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -460,8 +481,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Crawl> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

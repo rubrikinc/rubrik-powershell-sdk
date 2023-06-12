@@ -77,22 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
         if (this.AwsCloudAccount != null) {
-            s += ind + "awsCloudAccount {\n" + this.AwsCloudAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsCloudAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsCloudAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs
         // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigResponse!]! (type)
         if (this.ExocomputeConfigs != null) {
-            s += ind + "exocomputeConfigs {\n" + this.ExocomputeConfigs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ExocomputeConfigs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "exocomputeConfigs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: FeatureDetail! (type)
         if (this.FeatureDetail != null) {
-            s += ind + "featureDetail {\n" + this.FeatureDetail.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FeatureDetail.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CloudAccountDetails? MappedExocomputeAccount
         // GraphQL -> mappedExocomputeAccount: CloudAccountDetails (type)
         if (this.MappedExocomputeAccount != null) {
-            s += ind + "mappedExocomputeAccount {\n" + this.MappedExocomputeAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MappedExocomputeAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mappedExocomputeAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -157,8 +169,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AwsFeatureConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

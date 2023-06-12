@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Duration? DifferentialFrequency
         // GraphQL -> differentialFrequency: Duration (type)
         if (this.DifferentialFrequency != null) {
-            s += ind + "differentialFrequency {\n" + this.DifferentialFrequency.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.DifferentialFrequency.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "differentialFrequency {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Duration? IncrementalFrequency
         // GraphQL -> incrementalFrequency: Duration (type)
         if (this.IncrementalFrequency != null) {
-            s += ind + "incrementalFrequency {\n" + this.IncrementalFrequency.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.IncrementalFrequency.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "incrementalFrequency {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Duration? LogRetention
         // GraphQL -> logRetention: Duration (type)
         if (this.LogRetention != null) {
-            s += ind + "logRetention {\n" + this.LogRetention.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LogRetention.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "logRetention {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -136,8 +145,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SapHanaConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

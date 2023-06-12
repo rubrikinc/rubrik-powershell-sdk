@@ -157,12 +157,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ReleaseNoteFeatureFlag? FeatureFlag
         // GraphQL -> featureFlag: ReleaseNoteFeatureFlag (type)
         if (this.FeatureFlag != null) {
-            s += ind + "featureFlag {\n" + this.FeatureFlag.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FeatureFlag.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "featureFlag {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ReleaseNoteTag>? Tags
         // GraphQL -> tags: [ReleaseNoteTag!]! (type)
         if (this.Tags != null) {
-            s += ind + "tags {\n" + this.Tags.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Tags.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "tags {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -255,8 +261,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReleaseNote> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

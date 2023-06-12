@@ -114,12 +114,13 @@ or if you already have a GraphQL query that you want to run.
 
 `Invoke-Rsc` is the cmdlet that allows you to do that.
 
-Try: `Get-Help Invoke-Rsc -Full`
+Try: `Get-Help Invoke-Rsc -Full` for docs and examples.
 
 To continue with our cluster id list example, you could do:
 
 ```powershell
-PS> (Invoke-Rsc  "query {clusterConnection(sortBy:RegisteredAt){nodes{id}}}").Nodes.Id
+PS> $query = "query Clusters{clusterConnection(sortBy:RegisteredAt){nodes{id}}}"
+PS> (Invoke-Rsc  $query).Nodes.Id
 9b429c53-2afe-44b5-b4e4-e3a4308a69fb
 fd326eaa-534d-4f2a-861e-250d192fbaae
 ```
@@ -135,6 +136,15 @@ to run them. For example:
 ```powershell
 $query = Get-Content -Path Samples/GetVsphereVmList.query.json -Raw
 Invoke-Rsc -OperationText $query
+```
+
+You can also pass arguments to your query. For example if you wanted to
+retrieve only the first cluster:
+
+```powershell
+PS> $query = "query Clusters(`$first: Int){clusterConnection(first: `$first, sortBy:RegisteredAt){nodes{id}}}"
+PS> (Invoke-Rsc $query -Variables @{first=1}).Nodes.Id
+9b429c53-2afe-44b5-b4e4-e3a4308a69fb
 ```
 
 ## Cmdlets

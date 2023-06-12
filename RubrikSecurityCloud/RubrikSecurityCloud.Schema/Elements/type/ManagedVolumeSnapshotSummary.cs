@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> BaseSnapshotSummary? BaseSnapshotSummary
         // GraphQL -> baseSnapshotSummary: BaseSnapshotSummary (type)
         if (this.BaseSnapshotSummary != null) {
-            s += ind + "baseSnapshotSummary {\n" + this.BaseSnapshotSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BaseSnapshotSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "baseSnapshotSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeSnapshotLinks? Links
         // GraphQL -> links: ManagedVolumeSnapshotLinks (type)
         if (this.Links != null) {
-            s += ind + "links {\n" + this.Links.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Links.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "links {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ManagedVolumeSnapshotSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

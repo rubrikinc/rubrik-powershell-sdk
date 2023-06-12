@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> HierarchyObjectCommon? Subscription
         // GraphQL -> subscription: HierarchyObjectCommon! (type)
         if (this.Subscription != null) {
-            s += ind + "subscription {\n" + this.Subscription.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Subscription.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subscription {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Microsoft365RansomwareInvestigationEnablement> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -231,22 +231,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> TprRequestDetail? Details
         // GraphQL -> details: TprRequestDetail (type)
         if (this.Details != null) {
-            s += ind + "details {\n" + this.Details.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Details.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "details {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TprRequester? Requester
         // GraphQL -> requester: TprRequester (type)
         if (this.Requester != null) {
-            s += ind + "requester {\n" + this.Requester.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Requester.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "requester {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<TprReqStatusChange>? StatusLog
         // GraphQL -> statusLog: [TprReqStatusChange!]! (type)
         if (this.StatusLog != null) {
-            s += ind + "statusLog {\n" + this.StatusLog.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.StatusLog.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "statusLog {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<TriggeredTprPolicy>? TriggeredTprPolicies
         // GraphQL -> triggeredTprPolicies: [TriggeredTprPolicy!]! (type)
         if (this.TriggeredTprPolicies != null) {
-            s += ind + "triggeredTprPolicies {\n" + this.TriggeredTprPolicies.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TriggeredTprPolicies.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "triggeredTprPolicies {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -377,8 +389,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<TprRequestDetailReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -78,8 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaArchivalWarningsDetails? WarningDetails
         // GraphQL -> warningDetails: SlaArchivalWarningsDetails (interface)
         if (this.WarningDetails != null) {
-            s += ind + "warningDetails {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.WarningDetails).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.WarningDetails).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "warningDetails {\n" + fspec + ind + "}\n";
+            }
         }
         return s;
     }
@@ -136,8 +138,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SlaArchivalValidationWithWarnings> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

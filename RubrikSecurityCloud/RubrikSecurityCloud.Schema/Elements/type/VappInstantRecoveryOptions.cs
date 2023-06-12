@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<VappNetworkSummary>? AvailableVappNetworks
         // GraphQL -> availableVappNetworks: [VappNetworkSummary!]! (type)
         if (this.AvailableVappNetworks != null) {
-            s += ind + "availableVappNetworks {\n" + this.AvailableVappNetworks.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AvailableVappNetworks.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "availableVappNetworks {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VappVmRestoreSpec>? RestorableVms
         // GraphQL -> restorableVms: [VappVmRestoreSpec!]! (type)
         if (this.RestorableVms != null) {
-            s += ind + "restorableVms {\n" + this.RestorableVms.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RestorableVms.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "restorableVms {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VappInstantRecoveryOptions> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -87,12 +87,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ThreatHuntDetails? HuntDetails
         // GraphQL -> huntDetails: ThreatHuntDetails! (type)
         if (this.HuntDetails != null) {
-            s += ind + "huntDetails {\n" + this.HuntDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HuntDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "huntDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ThreatHuntStats? Stats
         // GraphQL -> stats: ThreatHuntStats (type)
         if (this.Stats != null) {
-            s += ind + "stats {\n" + this.Stats.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Stats.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "stats {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -155,8 +161,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ThreatHunt> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

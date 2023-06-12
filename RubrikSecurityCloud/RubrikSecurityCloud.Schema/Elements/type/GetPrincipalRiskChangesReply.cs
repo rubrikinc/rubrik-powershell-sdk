@@ -50,7 +50,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<PrincipalChange>? PrincipalChanges
         // GraphQL -> principalChanges: [PrincipalChange!]! (type)
         if (this.PrincipalChanges != null) {
-            s += ind + "principalChanges {\n" + this.PrincipalChanges.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PrincipalChanges.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "principalChanges {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -94,8 +97,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GetPrincipalRiskChangesReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

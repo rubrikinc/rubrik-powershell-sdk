@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Microsoft365RansomwareInvestigationEnablement>? Microsoft365Subscriptions
         // GraphQL -> microsoft365Subscriptions: [Microsoft365RansomwareInvestigationEnablement!] (type)
         if (this.Microsoft365Subscriptions != null) {
-            s += ind + "microsoft365Subscriptions {\n" + this.Microsoft365Subscriptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Microsoft365Subscriptions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "microsoft365Subscriptions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RubrikCloudVaultRansomwareInvestigationEnablement>? RubrikCloudVaultLocations
         // GraphQL -> rubrikCloudVaultLocations: [RubrikCloudVaultRansomwareInvestigationEnablement!] (type)
         if (this.RubrikCloudVaultLocations != null) {
-            s += ind + "rubrikCloudVaultLocations {\n" + this.RubrikCloudVaultLocations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RubrikCloudVaultLocations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "rubrikCloudVaultLocations {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RansomwareInvestigationEnablementReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

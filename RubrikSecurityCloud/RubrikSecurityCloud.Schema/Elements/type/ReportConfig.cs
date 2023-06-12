@@ -157,12 +157,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ConfigFilter>? Filters
         // GraphQL -> filters: [ConfigFilter!]! (type)
         if (this.Filters != null) {
-            s += ind + "filters {\n" + this.Filters.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Filters.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "filters {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ConfigGroupBy? GroupBy
         // GraphQL -> groupBy: configGroupBy! (type)
         if (this.GroupBy != null) {
-            s += ind + "groupBy {\n" + this.GroupBy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupBy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -255,8 +261,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReportConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

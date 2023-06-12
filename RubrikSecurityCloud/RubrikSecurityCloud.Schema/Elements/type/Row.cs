@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
         if (this.Metadata != null) {
-            s += ind + "metadata {\n" + this.Metadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Metadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "metadata {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CellData>? Values
         // GraphQL -> values: [CellData!]! (type)
         if (this.Values != null) {
-            s += ind + "values {\n" + this.Values.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Values.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "values {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Row> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

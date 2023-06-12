@@ -105,22 +105,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> BlackoutWindowResponseInfo? BlackoutWindowResponseInfo
         // GraphQL -> blackoutWindowResponseInfo: BlackoutWindowResponseInfo (type)
         if (this.BlackoutWindowResponseInfo != null) {
-            s += ind + "blackoutWindowResponseInfo {\n" + this.BlackoutWindowResponseInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BlackoutWindowResponseInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "blackoutWindowResponseInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedObjectPendingSlaInfo? PendingSlaDomain
         // GraphQL -> pendingSlaDomain: ManagedObjectPendingSlaInfo (type)
         if (this.PendingSlaDomain != null) {
-            s += ind + "pendingSlaDomain {\n" + this.PendingSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PendingSlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pendingSlaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VolumeGroupSummary? VolumeGroupSummary
         // GraphQL -> volumeGroupSummary: VolumeGroupSummary (type)
         if (this.VolumeGroupSummary != null) {
-            s += ind + "volumeGroupSummary {\n" + this.VolumeGroupSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VolumeGroupSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "volumeGroupSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<HostVolumeSummary>? Volumes
         // GraphQL -> volumes: [HostVolumeSummary!]! (type)
         if (this.Volumes != null) {
-            s += ind + "volumes {\n" + this.Volumes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Volumes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "volumes {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -197,8 +209,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpdateVolumeGroupReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

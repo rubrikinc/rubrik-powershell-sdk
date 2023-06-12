@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AzureCloudAccountFeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [AzureCloudAccountFeatureDetail!]! (type)
         if (this.FeatureDetails != null) {
-            s += ind + "featureDetails {\n" + this.FeatureDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FeatureDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "featureDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureCloudAccountSubscription? Subscription
         // GraphQL -> subscription: AzureCloudAccountSubscription (type)
         if (this.Subscription != null) {
-            s += ind + "subscription {\n" + this.Subscription.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Subscription.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subscription {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureCloudAccountSubscriptionWithFeatures> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

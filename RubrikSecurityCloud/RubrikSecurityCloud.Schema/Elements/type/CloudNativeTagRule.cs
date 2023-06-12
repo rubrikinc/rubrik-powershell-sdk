@@ -138,17 +138,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<CloudNativeAccountIdWithName>? CloudNativeAccounts
         // GraphQL -> cloudNativeAccounts: [CloudNativeAccountIdWithName!]! (type)
         if (this.CloudNativeAccounts != null) {
-            s += ind + "cloudNativeAccounts {\n" + this.CloudNativeAccounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudNativeAccounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudNativeAccounts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TagRuleEffectiveSla? EffectiveSla
         // GraphQL -> effectiveSla: TagRuleEffectiveSla (type)
         if (this.EffectiveSla != null) {
-            s += ind + "effectiveSla {\n" + this.EffectiveSla.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSla.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSla {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TagRuleTag? Tag
         // GraphQL -> tag: TagRuleTag (type)
         if (this.Tag != null) {
-            s += ind + "tag {\n" + this.Tag.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Tag.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "tag {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -236,8 +245,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CloudNativeTagRule> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

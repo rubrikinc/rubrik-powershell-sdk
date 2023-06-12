@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> MssqlLogShippingLinks? Links
         // GraphQL -> links: MssqlLogShippingLinks (type)
         if (this.Links != null) {
-            s += ind + "links {\n" + this.Links.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Links.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "links {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlLogShippingSummaryV2? MssqlLogShippingSummaryV2
         // GraphQL -> mssqlLogShippingSummaryV2: MssqlLogShippingSummaryV2 (type)
         if (this.MssqlLogShippingSummaryV2 != null) {
-            s += ind + "mssqlLogShippingSummaryV2 {\n" + this.MssqlLogShippingSummaryV2.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MssqlLogShippingSummaryV2.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mssqlLogShippingSummaryV2 {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpdateMssqlLogShippingConfigurationReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

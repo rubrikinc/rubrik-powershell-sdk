@@ -92,7 +92,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AzureNativeVirtualNetwork? Vnet
         // GraphQL -> vnet: AzureNativeVirtualNetwork! (type)
         if (this.Vnet != null) {
-            s += ind + "vnet {\n" + this.Vnet.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Vnet.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vnet {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -154,8 +157,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureNativeSubnet> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

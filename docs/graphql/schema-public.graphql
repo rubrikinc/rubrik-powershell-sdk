@@ -4817,7 +4817,10 @@ type Query {
   policyDetails: PolicyDetailConnection!
 
   # Returns details for one policy object.
-  policyObj(snappableFid: String!, snapshotFid: String!): PolicyObj!
+  policyObj(snappableFid: String!, snapshotFid: String!,
+
+    # Include whitelisted objects in the results.
+    includeWhitelistedResults: Boolean): PolicyObj!
 
   # Returns the policies assigned to each object.
   policyObjectUsages(objectIds: [String!]! = []): PolicyObjectUsageConnection!
@@ -8772,6 +8775,14 @@ type Mutation {
     # Input to update IAM user-based AWS cloud account.
     input: PatchAwsIamUserBasedCloudAccountInput!): Boolean!
 
+  # Update a Db2 database
+  # 
+  # Supported in v9.0
+  # Updating a Db2 database involves modifying the metadata associated with the Db2 database using the provided input values.
+  patchDb2Database(
+    # Input for V1PatchDb2Database.
+    input: PatchDb2DatabaseInput!): PatchDb2DatabaseReply!
+
   # Mutation to update an existing Db2 instance.
   patchDb2Instance(
     # Input for V1PatchDb2Instance.
@@ -8994,7 +9005,7 @@ type Mutation {
 
   # Remove healthy nodes from a cluster.
   removeClusterNodes(
-    # Input for removing nodes from a cluster.
+    # Input for removing nodes from a Rubrik cluster.
     input: RemoveClusterNodesInput!): CcProvisionJobReply!
 
   # Marks the disk removed and updates cluster metadata
@@ -10678,6 +10689,9 @@ enum ActivityObjectTypeEnum {
   UnknownObjectType
   Upgrade
   User
+
+  # Specifies that the activity object type is a VSphere host.
+  VMWARE_HOST
   Vcd
   VcdVapp
   Vcenter
@@ -12960,6 +12974,12 @@ type AttachmentSpecsForVirtualMachine {
 }
 # Represents all the object types for which we expect to see audits.
 enum AuditObjectType {
+  # Active Directory domain.
+  ACTIVE_DIRECTORY_DOMAIN
+
+  # Active Directory domain controller.
+  ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
+
   # App blueprint audit object.
   APP_BLUEPRINT
 
@@ -13142,6 +13162,9 @@ enum AuditObjectType {
 
   # Nutanix cluster audit object.
   NUTANIX_CLUSTER
+
+  # Nutanix prism central audit object.
+  NUTANIX_PRISM_CENTRAL
 
   # Nutanix virtual machine object.
   NUTANIX_VM
@@ -23650,7 +23673,7 @@ enum CcpJobStatus {
 }
 # Type of cluster job.
 enum CcpJobType {
-  # Add a node to cluster.
+  # Add nodes to a Rubrik cluster.
   ADD_NODE
 
   # Create cluster job.
@@ -23659,8 +23682,11 @@ enum CcpJobType {
   # Delete cluster job.
   CLUSTER_DELETE
 
-  # Remove node from cluster.
+  # Remove nodes from a Rubrik cluster.
   REMOVE_NODE
+
+  # Replace a node on a Rubrik cluster.
+  REPLACE_NODE
 }
 # Cloud vendor provider.
 enum CcpVendorType {
@@ -24003,6 +24029,9 @@ enum CdmFeatureFlagType {
 
   # ORACLEDB_TAKE_TLOG_BACKUP.
   ORACLEDB_TAKE_TLOG_BACKUP
+
+  # Support for replication setup type update.
+  REPLICATION_TARGET_SETUP_UPDATE
 
   # Support for SAP HANA static retention.
   SAP_HANA_STATIC_RETENTION
@@ -31518,6 +31547,14 @@ type Db2Database implements CdmHierarchyObject , CdmHierarchySnappableNew , Hier
   # The newest snapshot replicated to a cluster.
   newestReplicatedSnapshot: CdmSnapshot
 }
+# The request object includes parameters such as backupSessions and backupParallelism to update the Db2 database properties on the Rubrik cluster.
+input Db2DatabaseConfigInput {
+  # Specifies the value of the configuration parameter for parallelism in backup operations.
+  backupParallelism: Int
+
+  # Specifies the value of the configuration parameter for sessions in backup operations.
+  backupSessions: Int
+}
 # Paginated list of Db2Database objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type Db2DatabaseConnection {
   # List of Db2Database objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
@@ -34438,6 +34475,9 @@ enum EventObjectType {
   # VMware compute cluster.
   VMWARE_COMPUTE_CLUSTER
 
+  # VMware host.
+  VMWARE_HOST
+
   # VMware virtual machine.
   VMWARE_VM
 
@@ -37036,6 +37076,12 @@ type FileResult {
 
   # File access risk reasons.
   riskReasons: [RiskReason!]!
+
+  # Represents if file has direct ACL.
+  isDirectAcl: Boolean!
+
+  # Represents principal access information for the file.
+  principalAccessInfo: PrincipalAccessInfo
   snappable: HierarchyObject!
 }
 # Paginated list of FileResult objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -48464,6 +48510,12 @@ enum ManagedObjectType {
 
   # NAS volume.
   NAS_VOLUME
+
+  # Nutanix Category.
+  NUTANIX_CATEGORY
+
+  # Nutanix Category Value.
+  NUTANIX_CATEGORY_VALUE
 
   # Nutanix cluster.
   NUTANIX_CLUSTER
@@ -63487,6 +63539,9 @@ enum Operation {
   TRANSFER_ACCOUNT_OWNERSHIP
   UPDATE_ACCOUNT_OWNERSHIP
   UPGRADE_CLUSTER
+
+  # Use the Rubrik cluster as a replication target.
+  USE_AS_REPLICATION_TARGET
   VIEW_ACCESS
 
   # View archival location.
@@ -66289,6 +66344,22 @@ input PatchAwsIamUserBasedCloudAccountInput {
   # AWS role ARN for native protection.
   awsRoleArn: AwsRoleArnInput
 }
+# Input for patching Db2 database.
+input PatchDb2DatabaseInput {
+  # Required. The request object includes parameters such as backupSessions and backupParallelism to update the Db2 database properties on the Rubrik cluster.
+  db2DatabaseConfig: Db2DatabaseConfigInput!
+
+  # Required. ID of the Db2 database.
+  id: String!
+}
+# The request object includes parameters such as backupSessions and backupParallelism to update the Db2 database properties on the Rubrik cluster.
+type PatchDb2DatabaseReply {
+  # Specifies the value of the configuration parameter for parallelism in backup operations.
+  backupParallelism: Int
+
+  # Specifies the value of the configuration parameter for sessions in backup operations.
+  backupSessions: Int
+}
 # Input for editing a DB2 instance.
 input PatchDb2InstanceInput {
   # Required. The request object containing parameters like username, password, and list of hosts required to update a Db2 instance on the Rubrik cluster.
@@ -66613,6 +66684,9 @@ type PhysicalHost implements CdmHierarchyObject , HierarchyObject , MssqlTopLeve
 
   # Specifies whether the Changelist option is enabled.
   isChangelistEnabled: Boolean!
+
+  # ID of the Rubrik Backup Service (RBS) installed on the host.
+  agentId: String
 
   # The operating system type of the physical host.
   osType: GuestOsType
@@ -67806,6 +67880,14 @@ type Principal {
   name: String!
   email: String
   description: String
+}
+# PrincipalAccessInfo represents the principal access info.
+type PrincipalAccessInfo {
+  # Represents the user count.
+  userCount: Long!
+
+  # Represents the group count.
+  groupCount: Long!
 }
 # Paginated list of Principal objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type PrincipalConnection {
@@ -81411,6 +81493,9 @@ input UserAuditFilter {
   # Filter by object IDs.
   objectIds: [String!]
 
+  # Filter by object forever IDs.
+  objectFids: [String!]
+
   # Filter audits that have time after the specified value.
   timeGt: DateTime
 
@@ -81441,6 +81526,12 @@ enum UserAuditGroupByEnum {
 }
 # User audit object type.
 enum UserAuditObjectTypeEnum {
+  # Active Directory domain type.
+  ACTIVE_DIRECTORY_DOMAIN
+
+  # Active Directory domain controller type.
+  ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
+
   # AWS native S3 bucket.
   AWS_NATIVE_S3_BUCKET
 
@@ -81536,6 +81627,9 @@ enum UserAuditObjectTypeEnum {
   ManagedVolume
   Mssql
   MssqlDatabase
+
+  # Nutanix Prism Central type.
+  NUTANIX_PRISM_CENTRAL
   NasHost
   NutanixCluster
   NutanixVm

@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<BlackoutWindow>? GlobalBlackoutWindows
         // GraphQL -> globalBlackoutWindows: [BlackoutWindow!]! (type)
         if (this.GlobalBlackoutWindows != null) {
-            s += ind + "globalBlackoutWindows {\n" + this.GlobalBlackoutWindows.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GlobalBlackoutWindows.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "globalBlackoutWindows {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<BlackoutWindow>? SnappableBlackoutWindows
         // GraphQL -> snappableBlackoutWindows: [BlackoutWindow!]! (type)
         if (this.SnappableBlackoutWindows != null) {
-            s += ind + "snappableBlackoutWindows {\n" + this.SnappableBlackoutWindows.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnappableBlackoutWindows.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappableBlackoutWindows {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<BlackoutWindows> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

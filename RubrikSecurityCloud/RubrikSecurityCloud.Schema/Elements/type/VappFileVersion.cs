@@ -129,12 +129,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> QuarantineInfo? QuarantineInfo
         // GraphQL -> quarantineInfo: QuarantineInfo (type)
         if (this.QuarantineInfo != null) {
-            s += ind + "quarantineInfo {\n" + this.QuarantineInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.QuarantineInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "quarantineInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshot? Snapshot
         // GraphQL -> snapshot: CdmSnapshot (type)
         if (this.Snapshot != null) {
-            s += ind + "snapshot {\n" + this.Snapshot.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Snapshot.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshot {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -215,8 +221,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VappFileVersion> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

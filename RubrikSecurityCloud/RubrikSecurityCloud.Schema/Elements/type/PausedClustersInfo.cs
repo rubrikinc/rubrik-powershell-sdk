@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<Cluster>? PausedClusters
         // GraphQL -> pausedClusters: [Cluster!] (type)
         if (this.PausedClusters != null) {
-            s += ind + "pausedClusters {\n" + this.PausedClusters.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PausedClusters.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pausedClusters {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PausedClustersInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

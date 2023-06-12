@@ -101,12 +101,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CloudNativeAccountIdWithName? CloudNativeAccountId
         // GraphQL -> cloudNativeAccountId: CloudNativeAccountIdWithName (type)
         if (this.CloudNativeAccountId != null) {
-            s += ind + "cloudNativeAccountId {\n" + this.CloudNativeAccountId.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudNativeAccountId.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudNativeAccountId {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CloudNativeRegion? SnapshotRegion
         // GraphQL -> snapshotRegion: CloudNativeRegion! (type)
         if (this.SnapshotRegion != null) {
-            s += ind + "snapshotRegion {\n" + this.SnapshotRegion.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotRegion.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotRegion {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -175,8 +181,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CloudNativeSnapshotDetailsForRecovery> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

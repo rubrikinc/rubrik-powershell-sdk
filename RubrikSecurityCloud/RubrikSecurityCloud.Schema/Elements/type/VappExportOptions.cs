@@ -77,22 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<VappVmRestoreSpec>? AllChildVmsWithDefaultNetworkConnections
         // GraphQL -> allChildVmsWithDefaultNetworkConnections: [VappVmRestoreSpec!]! (type)
         if (this.AllChildVmsWithDefaultNetworkConnections != null) {
-            s += ind + "allChildVmsWithDefaultNetworkConnections {\n" + this.AllChildVmsWithDefaultNetworkConnections.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllChildVmsWithDefaultNetworkConnections.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allChildVmsWithDefaultNetworkConnections {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies
         // GraphQL -> availableStoragePolicies: [VcdOrgVdcStorageProfile!]! (type)
         if (this.AvailableStoragePolicies != null) {
-            s += ind + "availableStoragePolicies {\n" + this.AvailableStoragePolicies.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AvailableStoragePolicies.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "availableStoragePolicies {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CreateVappNetworkParams>? RestorableNetworks
         // GraphQL -> restorableNetworks: [CreateVappNetworkParams!]! (type)
         if (this.RestorableNetworks != null) {
-            s += ind + "restorableNetworks {\n" + this.RestorableNetworks.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RestorableNetworks.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "restorableNetworks {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VappNetworkSummary>? TargetVappNetworks
         // GraphQL -> targetVappNetworks: [VappNetworkSummary!]! (type)
         if (this.TargetVappNetworks != null) {
-            s += ind + "targetVappNetworks {\n" + this.TargetVappNetworks.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetVappNetworks.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetVappNetworks {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -157,8 +169,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VappExportOptions> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

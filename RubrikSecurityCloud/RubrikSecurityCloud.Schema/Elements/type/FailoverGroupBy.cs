@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> FailoverConnection? FailoverConnection
         // GraphQL -> failoverConnection: FailoverConnection! (type)
         if (this.FailoverConnection != null) {
-            s += ind + "failoverConnection {\n" + this.FailoverConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FailoverConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "failoverConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FailoverGroupBy>? FailoverGroupByField
         // GraphQL -> failoverGroupBy: [FailoverGroupBy!]! (type)
         if (this.FailoverGroupByField != null) {
-            s += ind + "failoverGroupBy {\n" + this.FailoverGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FailoverGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "failoverGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FailoverGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: FailoverGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<FailoverGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

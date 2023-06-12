@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
-            s += ind + "analyzerResults {\n" + this.AnalyzerResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AnalyzerGroupResult>? PolicyResults
         // GraphQL -> policyResults: [AnalyzerGroupResult!]! (type)
         if (this.PolicyResults != null) {
-            s += ind + "policyResults {\n" + this.PolicyResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PolicyResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "policyResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GetDashboardSummaryReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -132,37 +132,58 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AwsReplicationTarget? AwsTarget
         // GraphQL -> awsTarget: AwsReplicationTarget! (type)
         if (this.AwsTarget != null) {
-            s += ind + "awsTarget {\n" + this.AwsTarget.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsTarget.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsTarget {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AzureReplicationTarget? AzureTarget
         // GraphQL -> azureTarget: AzureReplicationTarget! (type)
         if (this.AzureTarget != null) {
-            s += ind + "azureTarget {\n" + this.AzureTarget.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AzureTarget.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "azureTarget {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CascadingArchivalSpec>? CascadingArchivalSpecs
         // GraphQL -> cascadingArchivalSpecs: [CascadingArchivalSpec!]! (type)
         if (this.CascadingArchivalSpecs != null) {
-            s += ind + "cascadingArchivalSpecs {\n" + this.CascadingArchivalSpecs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CascadingArchivalSpecs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cascadingArchivalSpecs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaReplicationCluster? Cluster
         // GraphQL -> cluster: SlaReplicationCluster (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Duration? ReplicationLocalRetentionDuration
         // GraphQL -> replicationLocalRetentionDuration: Duration (type)
         if (this.ReplicationLocalRetentionDuration != null) {
-            s += ind + "replicationLocalRetentionDuration {\n" + this.ReplicationLocalRetentionDuration.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationLocalRetentionDuration.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationLocalRetentionDuration {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Duration? RetentionDuration
         // GraphQL -> retentionDuration: Duration (type)
         if (this.RetentionDuration != null) {
-            s += ind + "retentionDuration {\n" + this.RetentionDuration.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RetentionDuration.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "retentionDuration {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TargetMapping? TargetMapping
         // GraphQL -> targetMapping: TargetMapping (type)
         if (this.TargetMapping != null) {
-            s += ind + "targetMapping {\n" + this.TargetMapping.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetMapping.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetMapping {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -260,8 +281,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReplicationSpecV2> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

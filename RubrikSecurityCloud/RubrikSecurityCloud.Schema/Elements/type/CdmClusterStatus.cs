@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CdmClusterStatusInfo? StatusInfo
         // GraphQL -> statusInfo: CdmClusterStatusInfo (type)
         if (this.StatusInfo != null) {
-            s += ind + "statusInfo {\n" + this.StatusInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.StatusInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "statusInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CdmClusterStatus> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

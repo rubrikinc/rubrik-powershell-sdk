@@ -82,17 +82,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<CdmSnapshotLocationRetentionInfo>? ArchivalInfos
         // GraphQL -> archivalInfos: [CdmSnapshotLocationRetentionInfo!] (type)
         if (this.ArchivalInfos != null) {
-            s += ind + "archivalInfos {\n" + this.ArchivalInfos.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalInfos.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalInfos {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshotLocationRetentionInfo? LocalInfo
         // GraphQL -> localInfo: CdmSnapshotLocationRetentionInfo (type)
         if (this.LocalInfo != null) {
-            s += ind + "localInfo {\n" + this.LocalInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LocalInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "localInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CdmSnapshotLocationRetentionInfo>? ReplicationInfos
         // GraphQL -> replicationInfos: [CdmSnapshotLocationRetentionInfo!] (type)
         if (this.ReplicationInfos != null) {
-            s += ind + "replicationInfos {\n" + this.ReplicationInfos.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationInfos.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationInfos {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -156,8 +165,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CdmSnapshotRetentionInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

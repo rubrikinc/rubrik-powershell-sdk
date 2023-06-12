@@ -114,27 +114,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> DataCenterSummary? Datacenter
         // GraphQL -> datacenter: DataCenterSummary (type)
         if (this.Datacenter != null) {
-            s += ind + "datacenter {\n" + this.Datacenter.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Datacenter.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "datacenter {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<DataStoreSummary>? Datastores
         // GraphQL -> datastores: [DataStoreSummary!]! (type)
         if (this.Datastores != null) {
-            s += ind + "datastores {\n" + this.Datastores.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Datastores.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "datastores {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VirtualMachineSummary>? VirtualMachines
         // GraphQL -> virtualMachines: [VirtualMachineSummary!]! (type)
         if (this.VirtualMachines != null) {
-            s += ind + "virtualMachines {\n" + this.VirtualMachines.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VirtualMachines.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "virtualMachines {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VmwareHostSummary? VmwareHostSummary
         // GraphQL -> vmwareHostSummary: VmwareHostSummary (type)
         if (this.VmwareHostSummary != null) {
-            s += ind + "vmwareHostSummary {\n" + this.VmwareHostSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VmwareHostSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmwareHostSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VmwareHostUpdate? VmwareHostUpdate
         // GraphQL -> vmwareHostUpdate: VmwareHostUpdate (type)
         if (this.VmwareHostUpdate != null) {
-            s += ind + "vmwareHostUpdate {\n" + this.VmwareHostUpdate.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VmwareHostUpdate.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmwareHostUpdate {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -218,8 +233,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VmwareHostDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

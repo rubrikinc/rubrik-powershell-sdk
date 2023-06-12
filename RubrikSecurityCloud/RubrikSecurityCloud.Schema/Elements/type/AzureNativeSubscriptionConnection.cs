@@ -82,17 +82,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AzureNativeSubscriptionEdge>? Edges
         // GraphQL -> edges: [AzureNativeSubscriptionEdge!]! (type)
         if (this.Edges != null) {
-            s += ind + "edges {\n" + this.Edges.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Edges.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "edges {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AzureNativeSubscription>? Nodes
         // GraphQL -> nodes: [AzureNativeSubscription!]! (type)
         if (this.Nodes != null) {
-            s += ind + "nodes {\n" + this.Nodes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Nodes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nodes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
-            s += ind + "pageInfo {\n" + this.PageInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PageInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -156,8 +165,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AzureNativeSubscriptionConnection> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

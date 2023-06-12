@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AwsAccountValidationResponse>? InvalidAwsAccounts
         // GraphQL -> invalidAwsAccounts: [AwsAccountValidationResponse!]! (type)
         if (this.InvalidAwsAccounts != null) {
-            s += ind + "invalidAwsAccounts {\n" + this.InvalidAwsAccounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.InvalidAwsAccounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "invalidAwsAccounts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AwsAccountValidationResponse? InvalidAwsAdminAccount
         // GraphQL -> invalidAwsAdminAccount: AwsAccountValidationResponse (type)
         if (this.InvalidAwsAdminAccount != null) {
-            s += ind + "invalidAwsAdminAccount {\n" + this.InvalidAwsAdminAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.InvalidAwsAdminAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "invalidAwsAdminAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AwsCloudAccountValidateResponse> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

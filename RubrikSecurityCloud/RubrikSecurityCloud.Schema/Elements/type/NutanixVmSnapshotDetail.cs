@@ -50,7 +50,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> NutanixVmSnapshotSummary? NutanixVmSnapshotSummary
         // GraphQL -> nutanixVmSnapshotSummary: NutanixVmSnapshotSummary (type)
         if (this.NutanixVmSnapshotSummary != null) {
-            s += ind + "nutanixVmSnapshotSummary {\n" + this.NutanixVmSnapshotSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NutanixVmSnapshotSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nutanixVmSnapshotSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -94,8 +97,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<NutanixVmSnapshotDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

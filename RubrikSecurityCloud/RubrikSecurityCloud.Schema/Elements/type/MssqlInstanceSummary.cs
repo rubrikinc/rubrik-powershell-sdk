@@ -455,22 +455,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> MssqlNonSlaProperties? MssqlNonSlaProperties
         // GraphQL -> mssqlNonSlaProperties: MssqlNonSlaProperties (type)
         if (this.MssqlNonSlaProperties != null) {
-            s += ind + "mssqlNonSlaProperties {\n" + this.MssqlNonSlaProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MssqlNonSlaProperties.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mssqlNonSlaProperties {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlSlaRelatedProperties? MssqlSlaRelatedProperties
         // GraphQL -> mssqlSlaRelatedProperties: MssqlSlaRelatedProperties (type)
         if (this.MssqlSlaRelatedProperties != null) {
-            s += ind + "mssqlSlaRelatedProperties {\n" + this.MssqlSlaRelatedProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MssqlSlaRelatedProperties.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mssqlSlaRelatedProperties {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MssqlRootProperties? RootProperties
         // GraphQL -> rootProperties: MssqlRootProperties (type)
         if (this.RootProperties != null) {
-            s += ind + "rootProperties {\n" + this.RootProperties.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RootProperties.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "rootProperties {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<MssqlUnprotectableReason>? UnprotectableReasonsV50
         // GraphQL -> unprotectableReasonsV50: [MssqlUnprotectableReason!]! (type)
         if (this.UnprotectableReasonsV50 != null) {
-            s += ind + "unprotectableReasonsV50 {\n" + this.UnprotectableReasonsV50.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UnprotectableReasonsV50.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "unprotectableReasonsV50 {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -697,8 +709,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MssqlInstanceSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

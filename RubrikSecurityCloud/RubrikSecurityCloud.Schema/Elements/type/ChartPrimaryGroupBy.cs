@@ -77,24 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> DisplayableValue? Name
         // GraphQL -> name: DisplayableValue (interface)
         if (this.Name != null) {
-            s += ind + "name {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.Name).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Name).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "name {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> DisplayableValue? Value
         // GraphQL -> value: DisplayableValue (interface)
         if (this.Value != null) {
-            s += ind + "value {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.Value).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Value).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "value {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> List<Metadata>? Metadata
         // GraphQL -> metadata: [Metadata!]! (type)
         if (this.Metadata != null) {
-            s += ind + "metadata {\n" + this.Metadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Metadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "metadata {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ChartSecondaryGroupBy>? SecondaryGroupBy
         // GraphQL -> secondaryGroupBy: [ChartSecondaryGroupBy!]! (type)
         if (this.SecondaryGroupBy != null) {
-            s += ind + "secondaryGroupBy {\n" + this.SecondaryGroupBy.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SecondaryGroupBy.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "secondaryGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -161,8 +171,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ChartPrimaryGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

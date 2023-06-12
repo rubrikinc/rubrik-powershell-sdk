@@ -445,8 +445,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
-            s += ind + "slaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.Int32? ArchivalSnapshotLag
         // GraphQL -> archivalSnapshotLag: Int (scalar)
@@ -626,7 +628,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -918,8 +923,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Snappable> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

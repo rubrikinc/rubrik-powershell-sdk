@@ -218,7 +218,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<LdapServer>? LdapServers
         // GraphQL -> ldapServers: [LdapServer!]! (type)
         if (this.LdapServers != null) {
-            s += ind + "ldapServers {\n" + this.LdapServers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LdapServers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ldapServers {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -334,8 +337,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<LdapIntegration> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -114,27 +114,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaManagedVolumeScriptSummary? BackupScriptDetails
         // GraphQL -> backupScriptDetails: SlaManagedVolumeScriptSummary (type)
         if (this.BackupScriptDetails != null) {
-            s += ind + "backupScriptDetails {\n" + this.BackupScriptDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BackupScriptDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "backupScriptDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaManagedVolumeHostSummary? HostDetails
         // GraphQL -> hostDetails: SlaManagedVolumeHostSummary (type)
         if (this.HostDetails != null) {
-            s += ind + "hostDetails {\n" + this.HostDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HostDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hostDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupFailureDetails
         // GraphQL -> postBackupScriptOnBackupFailureDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PostBackupScriptOnBackupFailureDetails != null) {
-            s += ind + "postBackupScriptOnBackupFailureDetails {\n" + this.PostBackupScriptOnBackupFailureDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PostBackupScriptOnBackupFailureDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "postBackupScriptOnBackupFailureDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaManagedVolumeScriptSummary? PostBackupScriptOnBackupSuccessDetails
         // GraphQL -> postBackupScriptOnBackupSuccessDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PostBackupScriptOnBackupSuccessDetails != null) {
-            s += ind + "postBackupScriptOnBackupSuccessDetails {\n" + this.PostBackupScriptOnBackupSuccessDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PostBackupScriptOnBackupSuccessDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "postBackupScriptOnBackupSuccessDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaManagedVolumeScriptSummary? PreBackupScriptDetails
         // GraphQL -> preBackupScriptDetails: SlaManagedVolumeScriptSummary (type)
         if (this.PreBackupScriptDetails != null) {
-            s += ind + "preBackupScriptDetails {\n" + this.PreBackupScriptDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PreBackupScriptDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "preBackupScriptDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -218,8 +233,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SlaManagedVolumeDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

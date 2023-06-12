@@ -87,12 +87,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ClusterWebSignedCertificateReply? CertInfo
         // GraphQL -> certInfo: ClusterWebSignedCertificateReply (type)
         if (this.CertInfo != null) {
-            s += ind + "certInfo {\n" + this.CertInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CertInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "certInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ModifyIpmiReply? IpmiInfo
         // GraphQL -> ipmiInfo: ModifyIpmiReply (type)
         if (this.IpmiInfo != null) {
-            s += ind + "ipmiInfo {\n" + this.IpmiInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.IpmiInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ipmiInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -155,8 +161,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ClusterWebCertAndIpmi> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

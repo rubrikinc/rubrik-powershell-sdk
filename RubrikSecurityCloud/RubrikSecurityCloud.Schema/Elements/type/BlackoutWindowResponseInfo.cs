@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> BlackoutWindowStatus? BlackoutWindowStatus
         // GraphQL -> blackoutWindowStatus: BlackoutWindowStatus (type)
         if (this.BlackoutWindowStatus != null) {
-            s += ind + "blackoutWindowStatus {\n" + this.BlackoutWindowStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BlackoutWindowStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "blackoutWindowStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> BlackoutWindows? BlackoutWindows
         // GraphQL -> blackoutWindows: BlackoutWindows (type)
         if (this.BlackoutWindows != null) {
-            s += ind + "blackoutWindows {\n" + this.BlackoutWindows.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BlackoutWindows.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "blackoutWindows {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<BlackoutWindowResponseInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

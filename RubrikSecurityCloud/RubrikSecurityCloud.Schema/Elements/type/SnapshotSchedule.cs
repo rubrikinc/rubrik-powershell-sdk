@@ -104,37 +104,58 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> DailySnapshotSchedule? Daily
         // GraphQL -> daily: DailySnapshotSchedule (type)
         if (this.Daily != null) {
-            s += ind + "daily {\n" + this.Daily.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Daily.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "daily {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> HourlySnapshotSchedule? Hourly
         // GraphQL -> hourly: HourlySnapshotSchedule (type)
         if (this.Hourly != null) {
-            s += ind + "hourly {\n" + this.Hourly.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Hourly.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hourly {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MinuteSnapshotSchedule? Minute
         // GraphQL -> minute: MinuteSnapshotSchedule (type)
         if (this.Minute != null) {
-            s += ind + "minute {\n" + this.Minute.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Minute.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "minute {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MonthlySnapshotSchedule? Monthly
         // GraphQL -> monthly: MonthlySnapshotSchedule (type)
         if (this.Monthly != null) {
-            s += ind + "monthly {\n" + this.Monthly.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Monthly.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "monthly {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> QuarterlySnapshotSchedule? Quarterly
         // GraphQL -> quarterly: QuarterlySnapshotSchedule (type)
         if (this.Quarterly != null) {
-            s += ind + "quarterly {\n" + this.Quarterly.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Quarterly.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "quarterly {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> WeeklySnapshotSchedule? Weekly
         // GraphQL -> weekly: WeeklySnapshotSchedule (type)
         if (this.Weekly != null) {
-            s += ind + "weekly {\n" + this.Weekly.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Weekly.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "weekly {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> YearlySnapshotSchedule? Yearly
         // GraphQL -> yearly: YearlySnapshotSchedule (type)
         if (this.Yearly != null) {
-            s += ind + "yearly {\n" + this.Yearly.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Yearly.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "yearly {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -220,8 +241,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SnapshotSchedule> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

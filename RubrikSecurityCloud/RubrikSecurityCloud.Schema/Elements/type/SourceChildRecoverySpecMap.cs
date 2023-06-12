@@ -59,8 +59,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> RecoverySpec? RecoverySpec
         // GraphQL -> recoverySpec: RecoverySpec! (interface)
         if (this.RecoverySpec != null) {
-            s += ind + "recoverySpec {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.RecoverySpec).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.RecoverySpec).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "recoverySpec {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? WorkloadId
         // GraphQL -> workloadId: UUID! (scalar)
@@ -116,8 +118,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SourceChildRecoverySpecMap> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

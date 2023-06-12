@@ -105,14 +105,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<DisplayableValue>? DefaultValues
         // GraphQL -> defaultValues: [DisplayableValue!]! (interface)
         if (this.DefaultValues != null) {
-            s += ind + "defaultValues {\n" +
-                this.DefaultValues.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.DefaultValues.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "defaultValues {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> List<DisplayableValue>? Values
         // GraphQL -> values: [DisplayableValue!]! (interface)
         if (this.Values != null) {
-            s += ind + "values {\n" +
-                this.Values.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.Values.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "values {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? DisplayName
         // GraphQL -> displayName: String! (scalar)
@@ -197,8 +201,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ReportFilterDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

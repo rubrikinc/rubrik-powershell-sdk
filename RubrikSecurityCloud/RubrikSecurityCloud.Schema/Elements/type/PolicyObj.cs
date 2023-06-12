@@ -264,8 +264,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> HierarchyObject? Snappable
         // GraphQL -> snappable: HierarchyObject (interface)
         if (this.Snappable != null) {
-            s += ind + "snappable {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.Snappable).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.Snappable).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappable {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -290,62 +292,98 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<AnalyzerMapping>? AllAnalyzerMappings
         // GraphQL -> allAnalyzerMappings: [AnalyzerMapping!]! (type)
         if (this.AllAnalyzerMappings != null) {
-            s += ind + "allAnalyzerMappings {\n" + this.AllAnalyzerMappings.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AllAnalyzerMappings.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "allAnalyzerMappings {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AnalyzerHits? AnalyzerHits
         // GraphQL -> analyzerHits: AnalyzerHits (type)
         if (this.AnalyzerHits != null) {
-            s += ind + "analyzerHits {\n" + this.AnalyzerHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FileResultConnection? FileResultConnection
         // GraphQL -> fileResultConnection: FileResultConnection! (type)
         if (this.FileResultConnection != null) {
-            s += ind + "fileResultConnection {\n" + this.FileResultConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FileResultConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "fileResultConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FileResultConnection? FolderChildConnection
         // GraphQL -> folderChildConnection: FileResultConnection! (type)
         if (this.FolderChildConnection != null) {
-            s += ind + "folderChildConnection {\n" + this.FolderChildConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FolderChildConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "folderChildConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ObjectStatus? ObjectStatus
         // GraphQL -> objectStatus: ObjectStatus! (type)
         if (this.ObjectStatus != null) {
-            s += ind + "objectStatus {\n" + this.ObjectStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objectStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ClassificationPolicySummary>? PolicySummaries
         // GraphQL -> policySummaries: [ClassificationPolicySummary!]! (type)
         if (this.PolicySummaries != null) {
-            s += ind + "policySummaries {\n" + this.PolicySummaries.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PolicySummaries.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "policySummaries {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveHits? RiskHits
         // GraphQL -> riskHits: SensitiveHits (type)
         if (this.RiskHits != null) {
-            s += ind + "riskHits {\n" + this.RiskHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RiskHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "riskHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FileResult? RootFileResult
         // GraphQL -> rootFileResult: FileResult! (type)
         if (this.RootFileResult != null) {
-            s += ind + "rootFileResult {\n" + this.RootFileResult.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RootFileResult.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "rootFileResult {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
         if (this.SensitiveFiles != null) {
-            s += ind + "sensitiveFiles {\n" + this.SensitiveFiles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SensitiveFiles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sensitiveFiles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryHits? TotalSensitiveHits
         // GraphQL -> totalSensitiveHits: SummaryHits (type)
         if (this.TotalSensitiveHits != null) {
-            s += ind + "totalSensitiveHits {\n" + this.TotalSensitiveHits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TotalSensitiveHits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "totalSensitiveHits {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PrincipalCounts? UserCounts
         // GraphQL -> userCounts: PrincipalCounts (type)
         if (this.UserCounts != null) {
-            s += ind + "userCounts {\n" + this.UserCounts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UserCounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "userCounts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<WhitelistedAnalyzer>? WhitelistedAnalyzerList
         // GraphQL -> whitelistedAnalyzerList: [WhitelistedAnalyzer!]! (type)
         if (this.WhitelistedAnalyzerList != null) {
-            s += ind + "whitelistedAnalyzerList {\n" + this.WhitelistedAnalyzerList.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.WhitelistedAnalyzerList.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "whitelistedAnalyzerList {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -528,8 +566,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<PolicyObj> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

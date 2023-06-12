@@ -77,22 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SummaryCount? HighRiskFileCount
         // GraphQL -> highRiskFileCount: SummaryCount (type)
         if (this.HighRiskFileCount != null) {
-            s += ind + "highRiskFileCount {\n" + this.HighRiskFileCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.HighRiskFileCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "highRiskFileCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryCount? LowRiskFileCount
         // GraphQL -> lowRiskFileCount: SummaryCount (type)
         if (this.LowRiskFileCount != null) {
-            s += ind + "lowRiskFileCount {\n" + this.LowRiskFileCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LowRiskFileCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lowRiskFileCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryCount? MediumRiskFileCount
         // GraphQL -> mediumRiskFileCount: SummaryCount (type)
         if (this.MediumRiskFileCount != null) {
-            s += ind + "mediumRiskFileCount {\n" + this.MediumRiskFileCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MediumRiskFileCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mediumRiskFileCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SummaryCount? TotalFileCount
         // GraphQL -> totalFileCount: SummaryCount (type)
         if (this.TotalFileCount != null) {
-            s += ind + "totalFileCount {\n" + this.TotalFileCount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TotalFileCount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "totalFileCount {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -157,8 +169,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SensitiveFiles> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

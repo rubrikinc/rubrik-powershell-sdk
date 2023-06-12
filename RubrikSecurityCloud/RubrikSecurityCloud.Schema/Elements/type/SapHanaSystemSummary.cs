@@ -217,22 +217,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<SapHanaHost>? Hosts
         // GraphQL -> hosts: [SapHanaHost!]! (type)
         if (this.Hosts != null) {
-            s += ind + "hosts {\n" + this.Hosts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Hosts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hosts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            s += ind + "slaAssignable {\n" + this.SlaAssignable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SapHanaSslInfo? SslInfo
         // GraphQL -> sslInfo: SapHanaSslInfo (type)
         if (this.SslInfo != null) {
-            s += ind + "sslInfo {\n" + this.SslInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SslInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sslInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SapHanaSystemInfo? SystemInfo
         // GraphQL -> systemInfo: SapHanaSystemInfo (type)
         if (this.SystemInfo != null) {
-            s += ind + "systemInfo {\n" + this.SystemInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SystemInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "systemInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -357,8 +369,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SapHanaSystemSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

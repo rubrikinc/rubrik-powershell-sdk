@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CdmSnapshotConnection? MongoSnapshotConnection
         // GraphQL -> mongoSnapshotConnection: CdmSnapshotConnection! (type)
         if (this.MongoSnapshotConnection != null) {
-            s += ind + "mongoSnapshotConnection {\n" + this.MongoSnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MongoSnapshotConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mongoSnapshotConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<MongoSnapshotGroupBy>? MongoSnapshotGroupByField
         // GraphQL -> mongoSnapshotGroupBy: [MongoSnapshotGroupBy!]! (type)
         if (this.MongoSnapshotGroupByField != null) {
-            s += ind + "mongoSnapshotGroupBy {\n" + this.MongoSnapshotGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.MongoSnapshotGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mongoSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MongoSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: MongoSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<MongoSnapshotGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

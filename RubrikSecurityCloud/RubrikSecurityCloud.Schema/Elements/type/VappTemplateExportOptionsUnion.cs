@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> VappTemplateExportOptions? AdvancedExportOptions
         // GraphQL -> advancedExportOptions: VappTemplateExportOptions (type)
         if (this.AdvancedExportOptions != null) {
-            s += ind + "advancedExportOptions {\n" + this.AdvancedExportOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AdvancedExportOptions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "advancedExportOptions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VappTemplateExportOptions? DefaultCatalogExportOptions
         // GraphQL -> defaultCatalogExportOptions: VappTemplateExportOptions (type)
         if (this.DefaultCatalogExportOptions != null) {
-            s += ind + "defaultCatalogExportOptions {\n" + this.DefaultCatalogExportOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.DefaultCatalogExportOptions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "defaultCatalogExportOptions {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VappTemplateExportOptions? OriginalVdcExportOptions
         // GraphQL -> originalVdcExportOptions: VappTemplateExportOptions (type)
         if (this.OriginalVdcExportOptions != null) {
-            s += ind + "originalVdcExportOptions {\n" + this.OriginalVdcExportOptions.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.OriginalVdcExportOptions.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "originalVdcExportOptions {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -136,8 +145,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<VappTemplateExportOptionsUnion> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

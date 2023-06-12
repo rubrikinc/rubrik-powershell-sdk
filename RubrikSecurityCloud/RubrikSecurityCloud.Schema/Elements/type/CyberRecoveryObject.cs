@@ -254,27 +254,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CyberRecoveryLocationPathPoint>? PhysicalLocation
         // GraphQL -> physicalLocation: [CyberRecoveryLocationPathPoint!]! (type)
         if (this.PhysicalLocation != null) {
-            s += ind + "physicalLocation {\n" + this.PhysicalLocation.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PhysicalLocation.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "physicalLocation {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RecoveryInfo>? RecoveryInfos
         // GraphQL -> recoveryInfos: [RecoveryInfo!]! (type)
         if (this.RecoveryInfos != null) {
-            s += ind + "recoveryInfos {\n" + this.RecoveryInfos.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RecoveryInfos.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "recoveryInfos {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RecoveryPlanDetails>? RecoveryPlansInfo
         // GraphQL -> recoveryPlansInfo: [RecoveryPlanDetails!]! (type)
         if (this.RecoveryPlansInfo != null) {
-            s += ind + "recoveryPlansInfo {\n" + this.RecoveryPlansInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RecoveryPlansInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "recoveryPlansInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotDistribution? SnapshotDistribution
         // GraphQL -> snapshotDistribution: SnapshotDistribution! (type)
         if (this.SnapshotDistribution != null) {
-            s += ind + "snapshotDistribution {\n" + this.SnapshotDistribution.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotDistribution.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotDistribution {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -418,8 +433,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CyberRecoveryObject> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

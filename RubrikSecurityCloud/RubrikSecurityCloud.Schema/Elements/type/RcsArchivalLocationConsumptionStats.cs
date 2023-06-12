@@ -91,22 +91,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<RcsArchivalLocationStatsRecord>? BlobCapacityStats
         // GraphQL -> blobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
         if (this.BlobCapacityStats != null) {
-            s += ind + "blobCapacityStats {\n" + this.BlobCapacityStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.BlobCapacityStats.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "blobCapacityStats {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? EgressStats
         // GraphQL -> egressStats: [RcsArchivalLocationStatsRecord!]! (type)
         if (this.EgressStats != null) {
-            s += ind + "egressStats {\n" + this.EgressStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EgressStats.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "egressStats {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? ForecastedBlobCapacityStats
         // GraphQL -> forecastedBlobCapacityStats: [RcsArchivalLocationStatsRecord!]! (type)
         if (this.ForecastedBlobCapacityStats != null) {
-            s += ind + "forecastedBlobCapacityStats {\n" + this.ForecastedBlobCapacityStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ForecastedBlobCapacityStats.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "forecastedBlobCapacityStats {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RcsArchivalLocationStatsRecord>? IngressStats
         // GraphQL -> ingressStats: [RcsArchivalLocationStatsRecord!]! (type)
         if (this.IngressStats != null) {
-            s += ind + "ingressStats {\n" + this.IngressStats.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.IngressStats.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ingressStats {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -177,8 +189,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RcsArchivalLocationConsumptionStats> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

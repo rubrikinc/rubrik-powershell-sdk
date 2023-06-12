@@ -87,12 +87,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ActivityResult>? NumActivitiesBreakdown
         // GraphQL -> numActivitiesBreakdown: [ActivityResult!]! (type)
         if (this.NumActivitiesBreakdown != null) {
-            s += ind + "numActivitiesBreakdown {\n" + this.NumActivitiesBreakdown.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NumActivitiesBreakdown.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "numActivitiesBreakdown {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> AccessUser? User
         // GraphQL -> user: AccessUser (type)
         if (this.User != null) {
-            s += ind + "user {\n" + this.User.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.User.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "user {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -155,8 +161,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UserActivityResult> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

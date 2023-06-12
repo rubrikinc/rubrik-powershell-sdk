@@ -106,8 +106,18 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
         {
             // Verbose log request and variables:
             string parentSelectorName = "";
-            GraphQLDocument queryDocument = GraphQLParser.Parser
-                .Parse(request.Query);
+            GraphQLDocument queryDocument;
+            try
+            {
+                queryDocument = GraphQLParser.Parser
+                    .Parse(request.Query);
+            }
+            catch( GraphQLParser.Exceptions.GraphQLSyntaxErrorException ex)
+            {
+                throw new ParseException(
+                    $"Could not parse query:\n\n{request.Query}\n\n{ex}"
+                );
+            }
             if (queryDocument.Definitions != null)
             {
                 var parent = (ASTNode)(

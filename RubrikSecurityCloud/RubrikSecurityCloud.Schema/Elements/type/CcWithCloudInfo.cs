@@ -190,7 +190,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ElasticStorageConfig? StorageConfig
         // GraphQL -> storageConfig: ElasticStorageConfig (type)
         if (this.StorageConfig != null) {
-            s += ind + "storageConfig {\n" + this.StorageConfig.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.StorageConfig.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "storageConfig {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -294,8 +297,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CcWithCloudInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

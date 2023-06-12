@@ -77,22 +77,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<SnapshotLocationRetentionInfo>? ArchivalInfos
         // GraphQL -> archivalInfos: [SnapshotLocationRetentionInfo!]! (type)
         if (this.ArchivalInfos != null) {
-            s += ind + "archivalInfos {\n" + this.ArchivalInfos.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalInfos.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalInfos {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnapshotLocationRetentionInfo>? CloudNativeLocationInfo
         // GraphQL -> cloudNativeLocationInfo: [SnapshotLocationRetentionInfo!]! (type)
         if (this.CloudNativeLocationInfo != null) {
-            s += ind + "cloudNativeLocationInfo {\n" + this.CloudNativeLocationInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudNativeLocationInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudNativeLocationInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SnapshotLocationRetentionInfo? LocalInfo
         // GraphQL -> localInfo: SnapshotLocationRetentionInfo (type)
         if (this.LocalInfo != null) {
-            s += ind + "localInfo {\n" + this.LocalInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LocalInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "localInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnapshotLocationRetentionInfo>? ReplicationInfos
         // GraphQL -> replicationInfos: [SnapshotLocationRetentionInfo!]! (type)
         if (this.ReplicationInfos != null) {
-            s += ind + "replicationInfos {\n" + this.ReplicationInfos.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationInfos.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationInfos {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -157,8 +169,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SnapshotRetentionInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

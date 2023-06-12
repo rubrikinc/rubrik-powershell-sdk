@@ -73,12 +73,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<OracleAcoParameterDetail>? AcoMap
         // GraphQL -> acoMap: [OracleAcoParameterDetail!]! (type)
         if (this.AcoMap != null) {
-            s += ind + "acoMap {\n" + this.AcoMap.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AcoMap.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "acoMap {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<OracleAcoValueErrorDetail>? AcoValueValidationErrors
         // GraphQL -> acoValueValidationErrors: [OracleAcoValueErrorDetail!]! (type)
         if (this.AcoValueValidationErrors != null) {
-            s += ind + "acoValueValidationErrors {\n" + this.AcoValueValidationErrors.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AcoValueValidationErrors.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "acoValueValidationErrors {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -135,8 +141,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ValidateOracleAcoFileReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

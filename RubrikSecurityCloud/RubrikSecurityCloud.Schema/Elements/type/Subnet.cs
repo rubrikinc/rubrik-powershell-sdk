@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SecurityGroup? SecurityGroup
         // GraphQL -> securityGroup: SecurityGroup (type)
         if (this.SecurityGroup != null) {
-            s += ind + "securityGroup {\n" + this.SecurityGroup.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SecurityGroup.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "securityGroup {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Subnet> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

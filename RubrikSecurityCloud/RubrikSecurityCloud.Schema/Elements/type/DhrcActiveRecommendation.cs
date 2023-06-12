@@ -134,7 +134,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<DhrcKeyValue>? TranslationArgs
         // GraphQL -> translationArgs: [DhrcKeyValue!]! (type)
         if (this.TranslationArgs != null) {
-            s += ind + "translationArgs {\n" + this.TranslationArgs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TranslationArgs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "translationArgs {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -214,8 +217,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<DhrcActiveRecommendation> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

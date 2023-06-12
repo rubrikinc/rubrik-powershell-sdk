@@ -352,27 +352,42 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AuthorizedOperations? AuthorizedOperations
         // GraphQL -> authorizedOperations: AuthorizedOperations! (type)
         if (this.AuthorizedOperations != null) {
-            s += ind + "authorizedOperations {\n" + this.AuthorizedOperations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AuthorizedOperations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "authorizedOperations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CdmNodeDetail>? CdmClusterNodeDetails
         // GraphQL -> cdmClusterNodeDetails: [CdmNodeDetail!]! (type)
         if (this.CdmClusterNodeDetails != null) {
-            s += ind + "cdmClusterNodeDetails {\n" + this.CdmClusterNodeDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CdmClusterNodeDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cdmClusterNodeDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmClusterStatus? ClusterStatus
         // GraphQL -> clusterStatus: CdmClusterStatus (type)
         if (this.ClusterStatus != null) {
-            s += ind + "clusterStatus {\n" + this.ClusterStatus.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusterStatus {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> UpgradeDurationReply? LastUpgradeDuration
         // GraphQL -> lastUpgradeDuration: UpgradeDurationReply (type)
         if (this.LastUpgradeDuration != null) {
-            s += ind + "lastUpgradeDuration {\n" + this.LastUpgradeDuration.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LastUpgradeDuration.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "lastUpgradeDuration {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> UpgradeRecommendationInfo? UpgradeRecommendationInfo
         // GraphQL -> upgradeRecommendationInfo: UpgradeRecommendationInfo (type)
         if (this.UpgradeRecommendationInfo != null) {
-            s += ind + "upgradeRecommendationInfo {\n" + this.UpgradeRecommendationInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.UpgradeRecommendationInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "upgradeRecommendationInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -558,8 +573,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CdmUpgradeInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

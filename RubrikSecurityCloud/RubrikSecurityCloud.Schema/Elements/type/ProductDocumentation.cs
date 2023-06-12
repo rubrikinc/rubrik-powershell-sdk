@@ -129,12 +129,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ContentNode>? Contents
         // GraphQL -> contents: [ContentNode!]! (type)
         if (this.Contents != null) {
-            s += ind + "contents {\n" + this.Contents.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Contents.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "contents {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RelatedContent>? Related
         // GraphQL -> related: [RelatedContent!]! (type)
         if (this.Related != null) {
-            s += ind + "related {\n" + this.Related.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Related.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "related {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -215,8 +221,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ProductDocumentation> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

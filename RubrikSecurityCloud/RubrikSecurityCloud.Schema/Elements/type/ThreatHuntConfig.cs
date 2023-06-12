@@ -131,8 +131,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<CdmHierarchySnappableNew>? Objects
         // GraphQL -> objects: [CdmHierarchySnappableNew!]! (interface)
         if (this.Objects != null) {
-            s += ind + "objects {\n" +
-                this.Objects.AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = this.Objects.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objects {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? ClusterUuid
         // GraphQL -> clusterUuid: String! (scalar)
@@ -162,22 +164,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> MalwareScanFileCriteria? FileScanCriteria
         // GraphQL -> fileScanCriteria: MalwareScanFileCriteria (type)
         if (this.FileScanCriteria != null) {
-            s += ind + "fileScanCriteria {\n" + this.FileScanCriteria.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FileScanCriteria.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "fileScanCriteria {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<IndicatorOfCompromise>? IndicatorsOfCompromise
         // GraphQL -> indicatorsOfCompromise: [IndicatorOfCompromise!]! (type)
         if (this.IndicatorsOfCompromise != null) {
-            s += ind + "indicatorsOfCompromise {\n" + this.IndicatorsOfCompromise.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.IndicatorsOfCompromise.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "indicatorsOfCompromise {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RequestedMatchDetails? RequestedMatchDetails
         // GraphQL -> requestedMatchDetails: RequestedMatchDetails (type)
         if (this.RequestedMatchDetails != null) {
-            s += ind + "requestedMatchDetails {\n" + this.RequestedMatchDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RequestedMatchDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "requestedMatchDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> MalwareScanSnapshotLimit? SnapshotScanLimit
         // GraphQL -> snapshotScanLimit: MalwareScanSnapshotLimit (type)
         if (this.SnapshotScanLimit != null) {
-            s += ind + "snapshotScanLimit {\n" + this.SnapshotScanLimit.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotScanLimit.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotScanLimit {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -279,8 +293,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ThreatHuntConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

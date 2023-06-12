@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount (type)
         if (this.AwsCloudAccount != null) {
-            s += ind + "awsCloudAccount {\n" + this.AwsCloudAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsCloudAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsCloudAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
         if (this.FeatureDetails != null) {
-            s += ind + "featureDetails {\n" + this.FeatureDetails.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FeatureDetails.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "featureDetails {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AwsCloudAccountWithFeatures> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ProtectionTaskDetailsTableFilter? ProtectionTaskDetailsTable
         // GraphQL -> ProtectionTaskDetailsTable: ProtectionTaskDetailsTableFilter! (type)
         if (this.ProtectionTaskDetailsTable != null) {
-            s += ind + "ProtectionTaskDetailsTable {\n" + this.ProtectionTaskDetailsTable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ProtectionTaskDetailsTable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ProtectionTaskDetailsTable {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> RecoveryTaskDetailsTableFilter? RecoveryTaskDetailsTable
         // GraphQL -> RecoveryTaskDetailsTable: RecoveryTaskDetailsTableFilter! (type)
         if (this.RecoveryTaskDetailsTable != null) {
-            s += ind + "RecoveryTaskDetailsTable {\n" + this.RecoveryTaskDetailsTable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.RecoveryTaskDetailsTable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "RecoveryTaskDetailsTable {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<TableFilters> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

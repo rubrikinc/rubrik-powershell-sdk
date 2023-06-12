@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AnalyzerGroup? AnalyzerGroup
         // GraphQL -> analyzerGroup: AnalyzerGroup! (type)
         if (this.AnalyzerGroup != null) {
-            s += ind + "analyzerGroup {\n" + this.AnalyzerGroup.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerGroup.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerGroup {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AnalyzerResult>? AnalyzerResults
         // GraphQL -> analyzerResults: [AnalyzerResult!]! (type)
         if (this.AnalyzerResults != null) {
-            s += ind + "analyzerResults {\n" + this.AnalyzerResults.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AnalyzerResults.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "analyzerResults {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Hits? Hits
         // GraphQL -> hits: Hits! (type)
         if (this.Hits != null) {
-            s += ind + "hits {\n" + this.Hits.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Hits.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "hits {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -136,8 +145,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AnalyzerGroupResult> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

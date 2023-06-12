@@ -110,17 +110,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ArchivalLocationToClusterMapping>? ArchivalLocationToClusterMapping
         // GraphQL -> archivalLocationToClusterMapping: [ArchivalLocationToClusterMapping!]! (type)
         if (this.ArchivalLocationToClusterMapping != null) {
-            s += ind + "archivalLocationToClusterMapping {\n" + this.ArchivalLocationToClusterMapping.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalLocationToClusterMapping.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalLocationToClusterMapping {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ArchivalTieringSpec? ArchivalTieringSpec
         // GraphQL -> archivalTieringSpec: ArchivalTieringSpec (type)
         if (this.ArchivalTieringSpec != null) {
-            s += ind + "archivalTieringSpec {\n" + this.ArchivalTieringSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalTieringSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalTieringSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> TargetMapping? StorageSetting
         // GraphQL -> storageSetting: TargetMapping (type)
         if (this.StorageSetting != null) {
-            s += ind + "storageSetting {\n" + this.StorageSetting.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.StorageSetting.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "storageSetting {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -196,8 +205,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ArchivalSpec> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

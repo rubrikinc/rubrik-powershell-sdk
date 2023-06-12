@@ -439,20 +439,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaDomain? PendingSla
         // GraphQL -> pendingSla: SlaDomain (interface)
         if (this.PendingSla != null) {
-            s += ind + "pendingSla {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PendingSla).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pendingSla {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> SlaDomain? SlaDomain
         // GraphQL -> slaDomain: SlaDomain (interface)
         if (this.SlaDomain != null) {
-            s += ind + "slaDomain {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SlaDomain).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaDomain {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> CdmHierarchySnappableNew? SnappableNew
         // GraphQL -> snappableNew: CdmHierarchySnappableNew! (interface)
         if (this.SnappableNew != null) {
-            s += ind + "snappableNew {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.SnappableNew).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.SnappableNew).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snappableNew {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
@@ -567,82 +573,130 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<DataLocation>? ArchivalLocations
         // GraphQL -> archivalLocations: [DataLocation!] (type)
         if (this.ArchivalLocations != null) {
-            s += ind + "archivalLocations {\n" + this.ArchivalLocations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ArchivalLocations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "archivalLocations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<CdmSnapshot>? ChildSnapshots
         // GraphQL -> childSnapshots: [CdmSnapshot!]! (type)
         if (this.ChildSnapshots != null) {
-            s += ind + "childSnapshots {\n" + this.ChildSnapshots.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ChildSnapshots.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "childSnapshots {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<DataLocation>? CloudNativeLocations
         // GraphQL -> cloudNativeLocations: [DataLocation!] (type)
         if (this.CloudNativeLocations != null) {
-            s += ind + "cloudNativeLocations {\n" + this.CloudNativeLocations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudNativeLocations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudNativeLocations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
-            s += ind + "cluster {\n" + this.Cluster.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Cluster.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> Db2AppMetadata? Db2AppMetadata
         // GraphQL -> db2AppMetadata: Db2AppMetadata (type)
         if (this.Db2AppMetadata != null) {
-            s += ind + "db2AppMetadata {\n" + this.Db2AppMetadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Db2AppMetadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "db2AppMetadata {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> LatestUserNote? LatestUserNote
         // GraphQL -> latestUserNote: LatestUserNote (type)
         if (this.LatestUserNote != null) {
-            s += ind + "latestUserNote {\n" + this.LatestUserNote.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestUserNote.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestUserNote {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> LegalHoldInfo? LegalHoldInfo
         // GraphQL -> legalHoldInfo: LegalHoldInfo (type)
         if (this.LegalHoldInfo != null) {
-            s += ind + "legalHoldInfo {\n" + this.LegalHoldInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LegalHoldInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "legalHoldInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<DataLocation>? LocalLocations
         // GraphQL -> localLocations: [DataLocation!] (type)
         if (this.LocalLocations != null) {
-            s += ind + "localLocations {\n" + this.LocalLocations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LocalLocations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "localLocations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<DataLocation>? Locations
         // GraphQL -> locations: [DataLocation!] (type)
         if (this.Locations != null) {
-            s += ind + "locations {\n" + this.Locations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Locations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "locations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeAppMetadata? ManagedVolumeAppMetadata
         // GraphQL -> managedVolumeAppMetadata: ManagedVolumeAppMetadata (type)
         if (this.ManagedVolumeAppMetadata != null) {
-            s += ind + "managedVolumeAppMetadata {\n" + this.ManagedVolumeAppMetadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ManagedVolumeAppMetadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "managedVolumeAppMetadata {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PendingSnapshotDeletion? PendingSnapshotDeletion
         // GraphQL -> pendingSnapshotDeletion: PendingSnapshotDeletion (type)
         if (this.PendingSnapshotDeletion != null) {
-            s += ind + "pendingSnapshotDeletion {\n" + this.PendingSnapshotDeletion.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PendingSnapshotDeletion.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pendingSnapshotDeletion {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<DataLocation>? ReplicationLocations
         // GraphQL -> replicationLocations: [DataLocation!] (type)
         if (this.ReplicationLocations != null) {
-            s += ind + "replicationLocations {\n" + this.ReplicationLocations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationLocations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationLocations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SapHanaAppMetadata? SapHanaAppMetadata
         // GraphQL -> sapHanaAppMetadata: SapHanaAppMetadata (type)
         if (this.SapHanaAppMetadata != null) {
-            s += ind + "sapHanaAppMetadata {\n" + this.SapHanaAppMetadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SapHanaAppMetadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "sapHanaAppMetadata {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> CdmSnapshotRetentionInfo? SnapshotRetentionInfo
         // GraphQL -> snapshotRetentionInfo: CdmSnapshotRetentionInfo (type)
         if (this.SnapshotRetentionInfo != null) {
-            s += ind + "snapshotRetentionInfo {\n" + this.SnapshotRetentionInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnapshotRetentionInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snapshotRetentionInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<VappAppMetadata>? VappAppMetadata
         // GraphQL -> vappAppMetadata: [VappAppMetadata!] (type)
         if (this.VappAppMetadata != null) {
-            s += ind + "vappAppMetadata {\n" + this.VappAppMetadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VappAppMetadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vappAppMetadata {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VmwareAppMetadata? VmwareAppMetadata
         // GraphQL -> vmwareAppMetadata: VmwareAppMetadata (type)
         if (this.VmwareAppMetadata != null) {
-            s += ind + "vmwareAppMetadata {\n" + this.VmwareAppMetadata.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VmwareAppMetadata.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vmwareAppMetadata {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -959,8 +1013,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<CdmSnapshot> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

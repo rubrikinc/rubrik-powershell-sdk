@@ -87,12 +87,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> NcdFilesObjectProtectionStatusData? Files
         // GraphQL -> files: NcdFilesObjectProtectionStatusData (type)
         if (this.Files != null) {
-            s += ind + "files {\n" + this.Files.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Files.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "files {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> NcdSharesObjectProtectionStatusData? Shares
         // GraphQL -> shares: NcdSharesObjectProtectionStatusData (type)
         if (this.Shares != null) {
-            s += ind + "shares {\n" + this.Shares.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Shares.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "shares {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -155,8 +161,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<NcdObjectProtectionStatus> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

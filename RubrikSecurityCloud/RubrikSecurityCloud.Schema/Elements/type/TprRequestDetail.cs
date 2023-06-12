@@ -104,8 +104,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> RequestedChangesTemplate? RequestedChangesTemplate
         // GraphQL -> requestedChangesTemplate: RequestedChangesTemplate! (interface)
         if (this.RequestedChangesTemplate != null) {
-            s += ind + "requestedChangesTemplate {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.RequestedChangesTemplate).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.RequestedChangesTemplate).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "requestedChangesTemplate {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? Description
         // GraphQL -> description: String (scalar)
@@ -120,22 +122,34 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ClusterSummary>? Clusters
         // GraphQL -> clusters: [ClusterSummary!]! (type)
         if (this.Clusters != null) {
-            s += ind + "clusters {\n" + this.Clusters.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Clusters.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusters {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ManagedObjectSummary>? Objects
         // GraphQL -> objects: [ManagedObjectSummary!]! (type)
         if (this.Objects != null) {
-            s += ind + "objects {\n" + this.Objects.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Objects.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objects {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaDomainSummary? SlaDomain
         // GraphQL -> slaDomain: SlaDomainSummary (type)
         if (this.SlaDomain != null) {
-            s += ind + "slaDomain {\n" + this.SlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaDomainSummary? TargetSlaDomain
         // GraphQL -> targetSlaDomain: SlaDomainSummary (type)
         if (this.TargetSlaDomain != null) {
-            s += ind + "targetSlaDomain {\n" + this.TargetSlaDomain.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.TargetSlaDomain.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "targetSlaDomain {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -220,8 +234,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<TprRequestDetail> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AzureNativeResourceGroupSlaAssignment? SlaAssignment
         // GraphQL -> slaAssignment: AzureNativeResourceGroupSlaAssignment! (type)
         if (this.SlaAssignment != null) {
-            s += ind + "slaAssignment {\n" + this.SlaAssignment.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SlaAssignment.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaAssignment {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ProtectedObjectTypeToSla> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

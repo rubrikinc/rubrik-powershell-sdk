@@ -59,12 +59,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> SlaUpgradeEligibility? Eligibility
         // GraphQL -> eligibility: SlaUpgradeEligibility (type)
         if (this.Eligibility != null) {
-            s += ind + "eligibility {\n" + this.Eligibility.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Eligibility.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "eligibility {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaUpgrade? LatestUpgrade
         // GraphQL -> latestUpgrade: SlaUpgrade (type)
         if (this.LatestUpgrade != null) {
-            s += ind + "latestUpgrade {\n" + this.LatestUpgrade.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LatestUpgrade.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "latestUpgrade {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -115,8 +121,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SlaUpgradeInfo> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

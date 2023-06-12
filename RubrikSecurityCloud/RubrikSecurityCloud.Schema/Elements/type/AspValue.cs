@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AspKey? Key
         // GraphQL -> key: ASPKey (type)
         if (this.Key != null) {
-            s += ind + "key {\n" + this.Key.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Key.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "key {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AspValue> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

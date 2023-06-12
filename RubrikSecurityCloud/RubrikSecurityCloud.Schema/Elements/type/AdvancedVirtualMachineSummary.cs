@@ -82,17 +82,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> VirtualMachineScriptDetail? PostBackupScript
         // GraphQL -> postBackupScript: VirtualMachineScriptDetail (type)
         if (this.PostBackupScript != null) {
-            s += ind + "postBackupScript {\n" + this.PostBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PostBackupScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "postBackupScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VirtualMachineScriptDetail? PostSnapScript
         // GraphQL -> postSnapScript: VirtualMachineScriptDetail (type)
         if (this.PostSnapScript != null) {
-            s += ind + "postSnapScript {\n" + this.PostSnapScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PostSnapScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "postSnapScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> VirtualMachineScriptDetail? PreBackupScript
         // GraphQL -> preBackupScript: VirtualMachineScriptDetail (type)
         if (this.PreBackupScript != null) {
-            s += ind + "preBackupScript {\n" + this.PreBackupScript.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PreBackupScript.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "preBackupScript {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -156,8 +165,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AdvancedVirtualMachineSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

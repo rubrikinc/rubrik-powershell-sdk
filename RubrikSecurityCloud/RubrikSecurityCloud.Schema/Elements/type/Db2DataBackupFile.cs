@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> Db2WorkloadDataBackupFile? Db2BackupFile
         // GraphQL -> db2BackupFile: Db2WorkloadDataBackupFile! (type)
         if (this.Db2BackupFile != null) {
-            s += ind + "db2BackupFile {\n" + this.Db2BackupFile.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Db2BackupFile.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "db2BackupFile {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<Db2DataBackupFile> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

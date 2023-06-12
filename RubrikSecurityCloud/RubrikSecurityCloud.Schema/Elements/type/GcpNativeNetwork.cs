@@ -87,12 +87,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<GcpNativeFirewallRule>? FirewallRules
         // GraphQL -> firewallRules: [GcpNativeFirewallRule!]! (type)
         if (this.FirewallRules != null) {
-            s += ind + "firewallRules {\n" + this.FirewallRules.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FirewallRules.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "firewallRules {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<GcpNativeSubnetwork>? Subnetworks
         // GraphQL -> subnetworks: [GcpNativeSubnetwork!]! (type)
         if (this.Subnetworks != null) {
-            s += ind + "subnetworks {\n" + this.Subnetworks.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Subnetworks.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "subnetworks {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -155,8 +161,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<GcpNativeNetwork> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

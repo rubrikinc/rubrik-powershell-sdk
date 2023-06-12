@@ -68,17 +68,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ManagedVolumeQueuedSnapshotConnection? ManagedVolumeQueuedSnapshotConnection
         // GraphQL -> managedVolumeQueuedSnapshotConnection: ManagedVolumeQueuedSnapshotConnection! (type)
         if (this.ManagedVolumeQueuedSnapshotConnection != null) {
-            s += ind + "managedVolumeQueuedSnapshotConnection {\n" + this.ManagedVolumeQueuedSnapshotConnection.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ManagedVolumeQueuedSnapshotConnection.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "managedVolumeQueuedSnapshotConnection {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ManagedVolumeQueuedSnapshotGroupBy>? ManagedVolumeQueuedSnapshotGroupByField
         // GraphQL -> managedVolumeQueuedSnapshotGroupBy: [ManagedVolumeQueuedSnapshotGroupBy!]! (type)
         if (this.ManagedVolumeQueuedSnapshotGroupByField != null) {
-            s += ind + "managedVolumeQueuedSnapshotGroupBy {\n" + this.ManagedVolumeQueuedSnapshotGroupByField.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ManagedVolumeQueuedSnapshotGroupByField.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "managedVolumeQueuedSnapshotGroupBy {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ManagedVolumeQueuedSnapshotGroupByInfo? GroupByInfo
         // GraphQL -> groupByInfo: ManagedVolumeQueuedSnapshotGroupByInfo! (union)
         if (this.GroupByInfo != null) {
-            s += ind + "groupByInfo {\n" + this.GroupByInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GroupByInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "groupByInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -137,8 +146,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ManagedVolumeQueuedSnapshotGroupBy> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

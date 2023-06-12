@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ErrorInfo? ErrorInfo
         // GraphQL -> errorInfo: ErrorInfo (type)
         if (this.ErrorInfo != null) {
-            s += ind + "errorInfo {\n" + this.ErrorInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ErrorInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "errorInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<TestWebhookReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

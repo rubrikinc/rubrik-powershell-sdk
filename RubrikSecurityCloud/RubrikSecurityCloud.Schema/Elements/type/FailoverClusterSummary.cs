@@ -152,17 +152,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> EffectiveSlaHolder? EffectiveSlaHolder
         // GraphQL -> effectiveSlaHolder: EffectiveSlaHolder (type)
         if (this.EffectiveSlaHolder != null) {
-            s += ind + "effectiveSlaHolder {\n" + this.EffectiveSlaHolder.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.EffectiveSlaHolder.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "effectiveSlaHolder {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<FailoverClusterNode>? Nodes
         // GraphQL -> nodes: [FailoverClusterNode!]! (type)
         if (this.Nodes != null) {
-            s += ind + "nodes {\n" + this.Nodes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Nodes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nodes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> SlaAssignable? SlaAssignable
         // GraphQL -> slaAssignable: SlaAssignable (type)
         if (this.SlaAssignable != null) {
-            s += ind + "slaAssignable {\n" + this.SlaAssignable.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SlaAssignable.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaAssignable {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -256,8 +265,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<FailoverClusterSummary> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

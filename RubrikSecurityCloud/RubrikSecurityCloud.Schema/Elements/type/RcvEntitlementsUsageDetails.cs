@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> RcvEntitlement? Entitlement
         // GraphQL -> entitlement: RcvEntitlement (type)
         if (this.Entitlement != null) {
-            s += ind + "entitlement {\n" + this.Entitlement.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Entitlement.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "entitlement {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RcvEntitlementsUsageDetails> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

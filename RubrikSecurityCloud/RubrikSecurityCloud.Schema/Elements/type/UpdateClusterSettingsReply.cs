@@ -171,12 +171,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ClusterGeolocation? Geolocation
         // GraphQL -> geolocation: ClusterGeolocation (type)
         if (this.Geolocation != null) {
-            s += ind + "geolocation {\n" + this.Geolocation.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Geolocation.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "geolocation {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ClusterTimezone? Timezone
         // GraphQL -> timezone: ClusterTimezone (type)
         if (this.Timezone != null) {
-            s += ind + "timezone {\n" + this.Timezone.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Timezone.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "timezone {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -275,8 +281,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<UpdateClusterSettingsReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

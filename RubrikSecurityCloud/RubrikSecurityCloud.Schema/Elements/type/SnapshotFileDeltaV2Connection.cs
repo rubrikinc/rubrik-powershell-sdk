@@ -95,14 +95,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> GenericSnapshot? CurrentSnapshot
         // GraphQL -> currentSnapshot: GenericSnapshot! (interface)
         if (this.CurrentSnapshot != null) {
-            s += ind + "currentSnapshot {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.CurrentSnapshot).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CurrentSnapshot).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "currentSnapshot {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> GenericSnapshot? PreviousSnapshot
         // GraphQL -> previousSnapshot: GenericSnapshot (interface)
         if (this.PreviousSnapshot != null) {
-            s += ind + "previousSnapshot {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.PreviousSnapshot).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.PreviousSnapshot).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "previousSnapshot {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.Int32? Count
         // GraphQL -> count: Int! (scalar)
@@ -112,17 +116,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<SnapshotFileDeltaV2Edge>? Edges
         // GraphQL -> edges: [SnapshotFileDeltaV2Edge!]! (type)
         if (this.Edges != null) {
-            s += ind + "edges {\n" + this.Edges.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Edges.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "edges {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<SnapshotFileDeltaV2>? Nodes
         // GraphQL -> nodes: [SnapshotFileDeltaV2!]! (type)
         if (this.Nodes != null) {
-            s += ind + "nodes {\n" + this.Nodes.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Nodes.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nodes {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> PageInfo? PageInfo
         // GraphQL -> pageInfo: PageInfo! (type)
         if (this.PageInfo != null) {
-            s += ind + "pageInfo {\n" + this.PageInfo.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.PageInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "pageInfo {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -202,8 +215,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<SnapshotFileDeltaV2Connection> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

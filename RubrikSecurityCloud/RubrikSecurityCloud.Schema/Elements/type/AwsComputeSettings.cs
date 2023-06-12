@@ -145,8 +145,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CloudAccount? CloudAccount
         // GraphQL -> cloudAccount: CloudAccount (interface)
         if (this.CloudAccount != null) {
-            s += ind + "cloudAccount {\n" +
-                InterfaceHelper.MakeListFromComposite((BaseType)this.CloudAccount).AsFieldSpec(indent+1) + ind + "}\n";
+                var fspec = InterfaceHelper.MakeListFromComposite((BaseType)this.CloudAccount).AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudAccount {\n" + fspec + ind + "}\n";
+            }
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -186,12 +188,18 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<ClusterInfCidrs>? ClusterInterfaceCidrs
         // GraphQL -> clusterInterfaceCidrs: [ClusterInfCidrs!]! (type)
         if (this.ClusterInterfaceCidrs != null) {
-            s += ind + "clusterInterfaceCidrs {\n" + this.ClusterInterfaceCidrs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ClusterInterfaceCidrs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "clusterInterfaceCidrs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ProxySettings? ProxySettings
         // GraphQL -> proxySettings: ProxySettings (type)
         if (this.ProxySettings != null) {
-            s += ind + "proxySettings {\n" + this.ProxySettings.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ProxySettings.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "proxySettings {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -298,8 +306,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AwsComputeSettings> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

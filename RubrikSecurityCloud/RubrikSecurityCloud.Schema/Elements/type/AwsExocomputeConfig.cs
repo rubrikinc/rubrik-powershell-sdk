@@ -96,17 +96,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AwsCloudAccount? AwsCloudAccount
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
         if (this.AwsCloudAccount != null) {
-            s += ind + "awsCloudAccount {\n" + this.AwsCloudAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsCloudAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsCloudAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<AwsExocomputeGetConfigResponse>? Configs
         // GraphQL -> configs: [AwsExocomputeGetConfigResponse!]! (type)
         if (this.Configs != null) {
-            s += ind + "configs {\n" + this.Configs.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Configs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "configs {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> FeatureDetail? FeatureDetail
         // GraphQL -> featureDetail: FeatureDetail! (type)
         if (this.FeatureDetail != null) {
-            s += ind + "featureDetail {\n" + this.FeatureDetail.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.FeatureDetail.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -176,8 +185,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AwsExocomputeConfig> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

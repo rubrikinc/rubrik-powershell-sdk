@@ -185,82 +185,130 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> List<RestoreFormConfigurationGuestOs>? GuestOsCredentials
         // GraphQL -> guestOsCredentials: [RestoreFormConfigurationGuestOs!]! (type)
         if (this.GuestOsCredentials != null) {
-            s += ind + "guestOsCredentials {\n" + this.GuestOsCredentials.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.GuestOsCredentials.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "guestOsCredentials {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationKmipServer>? KmipServers
         // GraphQL -> kmipServers: [RestoreFormConfigurationKmipServer!]! (type)
         if (this.KmipServers != null) {
-            s += ind + "kmipServers {\n" + this.KmipServers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.KmipServers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "kmipServers {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationLdapServer>? LdapServers
         // GraphQL -> ldapServers: [RestoreFormConfigurationLdapServer!]! (type)
         if (this.LdapServers != null) {
-            s += ind + "ldapServers {\n" + this.LdapServers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.LdapServers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "ldapServers {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationNasHost>? NasHosts
         // GraphQL -> nasHosts: [RestoreFormConfigurationNasHost!]! (type)
         if (this.NasHosts != null) {
-            s += ind + "nasHosts {\n" + this.NasHosts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.NasHosts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "nasHosts {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationObjectStoreArchivalLocation>? ObjectStoreArchivalLocations
         // GraphQL -> objectStoreArchivalLocations: [RestoreFormConfigurationObjectStoreArchivalLocation!]! (type)
         if (this.ObjectStoreArchivalLocations != null) {
-            s += ind + "objectStoreArchivalLocations {\n" + this.ObjectStoreArchivalLocations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectStoreArchivalLocations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objectStoreArchivalLocations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationOrganization>? Organizations
         // GraphQL -> organizations: [RestoreFormConfigurationOrganization!]! (type)
         if (this.Organizations != null) {
-            s += ind + "organizations {\n" + this.Organizations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Organizations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "organizations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationReplicationTarget>? ReplicationTargets
         // GraphQL -> replicationTargets: [RestoreFormConfigurationReplicationTarget!]! (type)
         if (this.ReplicationTargets != null) {
-            s += ind + "replicationTargets {\n" + this.ReplicationTargets.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ReplicationTargets.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "replicationTargets {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationReport>? Reports
         // GraphQL -> reports: [RestoreFormConfigurationReport!]! (type)
         if (this.Reports != null) {
-            s += ind + "reports {\n" + this.Reports.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Reports.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "reports {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationRole>? Roles
         // GraphQL -> roles: [RestoreFormConfigurationRole!]! (type)
         if (this.Roles != null) {
-            s += ind + "roles {\n" + this.Roles.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Roles.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "roles {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationS3ArchivalLocation>? S3ArchivalLocations
         // GraphQL -> s3ArchivalLocations: [RestoreFormConfigurationS3ArchivalLocation!]! (type)
         if (this.S3ArchivalLocations != null) {
-            s += ind + "s3ArchivalLocations {\n" + this.S3ArchivalLocations.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.S3ArchivalLocations.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "s3ArchivalLocations {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationSlaDomain>? SlaDomains
         // GraphQL -> slaDomains: [RestoreFormConfigurationSlaDomain!]! (type)
         if (this.SlaDomains != null) {
-            s += ind + "slaDomains {\n" + this.SlaDomains.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SlaDomains.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "slaDomains {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationSmtp>? SmtpSettings
         // GraphQL -> smtpSettings: [RestoreFormConfigurationSmtp!]! (type)
         if (this.SmtpSettings != null) {
-            s += ind + "smtpSettings {\n" + this.SmtpSettings.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SmtpSettings.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "smtpSettings {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationSnmp>? SnmpSettings
         // GraphQL -> snmpSettings: [RestoreFormConfigurationSnmp!]! (type)
         if (this.SnmpSettings != null) {
-            s += ind + "snmpSettings {\n" + this.SnmpSettings.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.SnmpSettings.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "snmpSettings {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationUser>? Users
         // GraphQL -> users: [RestoreFormConfigurationUser!]! (type)
         if (this.Users != null) {
-            s += ind + "users {\n" + this.Users.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Users.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "users {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationVcenterServer>? VcenterServers
         // GraphQL -> vcenterServers: [RestoreFormConfigurationVcenterServer!]! (type)
         if (this.VcenterServers != null) {
-            s += ind + "vcenterServers {\n" + this.VcenterServers.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.VcenterServers.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "vcenterServers {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<RestoreFormConfigurationWinAndUnixHost>? WinAndUnixHosts
         // GraphQL -> winAndUnixHosts: [RestoreFormConfigurationWinAndUnixHost!]! (type)
         if (this.WinAndUnixHosts != null) {
-            s += ind + "winAndUnixHosts {\n" + this.WinAndUnixHosts.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.WinAndUnixHosts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "winAndUnixHosts {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -409,8 +457,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<RestoreFormConfigurations> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -96,17 +96,26 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> ThreatHuntConfig? Config
         // GraphQL -> config: ThreatHuntConfig (type)
         if (this.Config != null) {
-            s += ind + "config {\n" + this.Config.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Config.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "config {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> List<ThreatHuntResultObjectsSummary>? ObjectsSummary
         // GraphQL -> objectsSummary: [ThreatHuntResultObjectsSummary!]! (type)
         if (this.ObjectsSummary != null) {
-            s += ind + "objectsSummary {\n" + this.ObjectsSummary.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.ObjectsSummary.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "objectsSummary {\n" + fspec + ind + "}\n" ;
+            }
         }
         //      C# -> ThreatHuntStats? Stats
         // GraphQL -> stats: ThreatHuntStats (type)
         if (this.Stats != null) {
-            s += ind + "stats {\n" + this.Stats.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.Stats.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "stats {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -176,8 +185,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<ThreatHuntSummaryReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

@@ -64,7 +64,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> AwsCloudAccount? AwsAccount
         // GraphQL -> awsAccount: AwsCloudAccount (type)
         if (this.AwsAccount != null) {
-            s += ind + "awsAccount {\n" + this.AwsAccount.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.AwsAccount.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "awsAccount {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -114,8 +117,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<AddAwsAuthenticationServerBasedCloudAccountReply> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(

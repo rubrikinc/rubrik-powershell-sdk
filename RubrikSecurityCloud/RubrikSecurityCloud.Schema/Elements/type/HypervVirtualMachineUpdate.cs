@@ -78,7 +78,10 @@ namespace Rubrik.SecurityCloud.Types
         //      C# -> CloudInstantiationSpec? CloudInstantiationSpec
         // GraphQL -> cloudInstantiationSpec: CloudInstantiationSpec (type)
         if (this.CloudInstantiationSpec != null) {
-            s += ind + "cloudInstantiationSpec {\n" + this.CloudInstantiationSpec.AsFieldSpec(indent+1) + ind + "}\n" ;
+            var fspec = this.CloudInstantiationSpec.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "cloudInstantiationSpec {\n" + fspec + ind + "}\n" ;
+            }
         }
         return s;
     }
@@ -134,8 +137,7 @@ namespace Rubrik.SecurityCloud.Types
             this List<HypervVirtualMachineUpdate> list,
             int indent=0)
         {
-            string ind = new string(' ', indent*2);
-            return ind + list[0].AsFieldSpec();
+            return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(
