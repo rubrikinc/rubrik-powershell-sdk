@@ -1,2 +1,0 @@
-### RecoverySpecId
-- fid: System.String

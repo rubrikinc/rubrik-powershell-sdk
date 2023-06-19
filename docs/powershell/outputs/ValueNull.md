@@ -1,2 +1,0 @@
-### ValueNull
-- serializedValue: System.String

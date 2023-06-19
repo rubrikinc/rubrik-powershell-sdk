@@ -1,7 +1,0 @@
-### SonarReportRowEdge
-Wrapper around the SonarReportRow object. This wrapper is used for pagination.
-
-- cursor: System.String
-  - String used to identify this edge.
-- node: SonarReportRow
-  - The actual SonarReportRow object wrapped by this edge.

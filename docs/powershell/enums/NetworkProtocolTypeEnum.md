@@ -1,3 +1,0 @@
-### NetworkProtocolTypeEnum
-- UDP
-- TCP

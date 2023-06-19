@@ -1,8 +1,0 @@
-### HotAddProxyVmStatusType
-Supported in v5.3+
-  The type of the HotAdd proxy virtual machine.
-
-- HOT_ADD_PROXY_VM_STATUS_TYPE_EXPIRED
-- HOT_ADD_PROXY_VM_STATUS_TYPE_FAILED
-- HOT_ADD_PROXY_VM_STATUS_TYPE_MAINTAINING
-- HOT_ADD_PROXY_VM_STATUS_TYPE_RUNNING

@@ -1,5 +1,0 @@
-### ListAccessUsersSort
-- USERNAME
-- EMAIL
-- NUM_ACTIVITIES
-- NUM_ACTIVITY_DELTA

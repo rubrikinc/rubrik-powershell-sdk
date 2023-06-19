@@ -1,4 +1,0 @@
-### TimeDuration
-- HOUR
-- DAY
-- MONTH

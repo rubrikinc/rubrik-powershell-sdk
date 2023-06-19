@@ -1,2 +1,0 @@
-### VerifySLAWithReplicationToClusterResp
-- isActiveSla: System.Boolean

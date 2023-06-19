@@ -1,3 +1,0 @@
-### IssueStatus
-- OPEN
-- RESOLVED

@@ -1,5 +1,0 @@
-### ResolutionType
-- UNRESOLVED
-- WELL_KNOWN
-- RESOLVED_AD
-- RESOLVED_ON_HOST

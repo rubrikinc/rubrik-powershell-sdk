@@ -1,5 +1,0 @@
-### DownloadStatusEnum
-- PENDING
-- IN_PROGRESS
-- COMPLETED
-- FAILED

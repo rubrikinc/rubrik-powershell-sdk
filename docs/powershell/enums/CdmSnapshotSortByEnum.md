@@ -1,4 +1,0 @@
-### CdmSnapshotSortByEnum
-- SnappableId
-- SnapshotId
-- Date

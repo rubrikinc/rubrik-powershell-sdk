@@ -1,4 +1,0 @@
-### ActivitySeverityEnum
-- Critical
-- Warning
-- Info

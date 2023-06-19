@@ -1,4 +1,0 @@
-### FileModeEnum
-- FILE
-- DIRECTORY
-- SYMLINK

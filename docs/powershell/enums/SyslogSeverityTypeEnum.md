@@ -1,5 +1,0 @@
-### SyslogSeverityTypeEnum
-- ALL_SEVERITY
-- CRITICAL
-- WARNING
-- INFORMATIONAL

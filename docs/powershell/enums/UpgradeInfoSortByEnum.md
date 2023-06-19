@@ -1,9 +1,0 @@
-### UpgradeInfoSortByEnum
-- ClusterName
-- ClusterLocation
-- VersionStatus
-- ClusterType
-- InstalledVersion
-- DownloadedVersion
-- RegisteredAt
-- ClusterJobStatus

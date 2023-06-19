@@ -1,4 +1,0 @@
-### AwsInstanceTenancy
-- DEDICATED
-- DEFAULT
-- HOST

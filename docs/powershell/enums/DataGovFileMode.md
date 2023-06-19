@@ -1,5 +1,0 @@
-### DataGovFileMode
-- UNKNOWN
-- FILE
-- DIRECTORY
-- SYMLINK

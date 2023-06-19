@@ -1,2 +1,0 @@
-### CustomReportGroupByEnum
-- ReportFocus

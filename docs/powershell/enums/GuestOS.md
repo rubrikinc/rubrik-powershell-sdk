@@ -1,6 +1,0 @@
-### GuestOS
-- WINDOWS
-- UBUNTU
-- CENTOS
-- RHEL
-- UNKNOWN

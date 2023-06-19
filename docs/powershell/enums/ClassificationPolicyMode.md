@@ -1,3 +1,0 @@
-### ClassificationPolicyMode
-- DISCOVERY
-- COMPLIANCE

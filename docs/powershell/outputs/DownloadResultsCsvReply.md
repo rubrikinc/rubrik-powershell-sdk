@@ -1,2 +1,0 @@
-### DownloadResultsCsvReply
-- downloadLink: System.String

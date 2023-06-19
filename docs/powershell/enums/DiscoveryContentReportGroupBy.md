@@ -1,8 +1,0 @@
-### DiscoveryContentReportGroupBy
-- SLA_DOMAIN
-- POLICY
-- FILE
-- CLUSTER
-- ANALYZER
-- TIME
-- OBJECT_NAME

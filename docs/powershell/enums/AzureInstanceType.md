@@ -1,8 +1,0 @@
-### AzureInstanceType
-Azure instance types.
-
-- TYPE_UNSPECIFIED - No instance type selected.
-- STANDARD_DS5_V2 - V2 Dense Node.
-- STANDARD_D16S_V5 - V5 Dense Node.
-- STANDARD_D8S_V5 - V5 Standard Node.
-- STANDARD_D32S_V5 - V5 Custom Node Type - STANDARD_D32S_V5.

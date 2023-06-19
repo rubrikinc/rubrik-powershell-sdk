@@ -1,2 +1,0 @@
-### Status
-- stringValue: System.String
