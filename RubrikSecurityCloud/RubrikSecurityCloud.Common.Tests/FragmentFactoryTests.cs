@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
 using NUnit.Framework;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud.Types;
 
-namespace Rubrik.SecurityCloud.Schema.Tests
+namespace RubrikSecurityCloud.Tests
 {
     [TestFixture]
     public class FragmentFactoryTests
@@ -158,8 +158,8 @@ namespace Rubrik.SecurityCloud.Schema.Tests
                     {
                         Assert.IsNotNull(inputObjectVal);
                         Assert.That(
-                            inputObjectVal.GetType().Name,
-                            Is.EqualTo(expectedVal.GetType().Name)
+                            inputObjectVal?.GetType().Name,
+                            Is.EqualTo(expectedVal?.GetType().Name)
                         );
                     }
                     else

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Schema.Tests
+namespace RubrikSecurityCloud.Tests
 
 {
     [TestFixture]
@@ -42,7 +42,79 @@ namespace Rubrik.SecurityCloud.Schema.Tests
                 if (result != expectedOutput)
                 {
                     throw new Exception(
-                        $"Test case failed for input: {inputStr}. Expected: {expectedOutput}, but got: {result}."
+                        "Test case failed for input: " + inputStr +
+                        $". Expected: {expectedOutput}, but got: {result}."
+                    );
+                }
+            }
+        }
+
+        [Test]
+        public void TestInsertTypeNamesInGqlQuery()
+        {
+            var testCases = new Dictionary<string, string>() {
+                { "query {id}", "query {id __typename }"},
+                { "query {id  \n}\n   \t", "query {id  \n __typename }\n   \t"},
+                { "query __typename{id}", "query {id __typename }"},
+                { "query {id}__typename", "query {id __typename }"},
+                { "query {id __typename}", "query {id  __typename }"},
+                { "{a{b{c}}}", "{a{b{c __typename } __typename } __typename }"},
+                {
+                    "op(filter: [{field: NAME, texts: $instance}])",
+                    "op(filter: [{field: NAME, texts: $instance}])"
+                },
+                {
+                    @"mutation { createPerson(person: {
+                            name: ""John"",
+                            address: {
+                                zipCode: ""10001""
+                            }
+                        }) {
+                            name address { zipCode }
+                        }
+                    }",
+                    @"mutation { createPerson(person: {
+                            name: ""John"",
+                            address: {
+                                zipCode: ""10001""
+                            }
+                        }) {
+                            name address { zipCode  __typename }
+                         __typename }
+                     __typename }"
+                },
+                {
+                    @"op(a: "") { x }"") { y }",
+                    @"op(a: "") { x }"") { y  __typename }"
+                },
+                {
+                    @"mutation { createPerson(person: {
+                        name: ""John (Doe)"",
+                        hobbies: ""Reading, programming, and sleeping.""
+                    }) { id name } }",
+                    @"mutation { createPerson(person: {
+                        name: ""John (Doe)"",
+                        hobbies: ""Reading, programming, and sleeping.""
+                    }) { id name  __typename }  __typename }"
+                },
+                {
+                    @"query { persons(filter: {
+                        name: ""John \""The Duke\"" Doe""}) { id name } }",
+                    @"query { persons(filter: {
+                        name: ""John \""The Duke\"" Doe""}) { id name  __typename }  __typename }"
+                },
+            };
+
+            foreach (var testCase in testCases)
+            {
+                var query = testCase.Key;
+                var expected = testCase.Value;
+                var result = StringUtils.InsertTypeNamesInGqlQuery(query);
+                if (result != expected)
+                {
+                    throw new Exception(
+                        "Test case failed for input: " + query +
+                        $". Expected: {expected}, but got: {result}."
                     );
                 }
             }
