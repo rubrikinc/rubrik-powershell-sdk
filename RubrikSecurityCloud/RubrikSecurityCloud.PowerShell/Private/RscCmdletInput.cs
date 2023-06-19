@@ -6,9 +6,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud.Types;
 
-namespace Rubrik.SecurityCloud.PowerShell.Private
+namespace RubrikSecurityCloud.PowerShell.Private
 {
     public class RscCmdletInput
     {

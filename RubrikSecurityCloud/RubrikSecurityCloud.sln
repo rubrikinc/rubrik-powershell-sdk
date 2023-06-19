@@ -9,7 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Client"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Schema", "RubrikSecurityCloud.Schema\RubrikSecurityCloud.Schema.csproj", "{0E9D7EC7-E238-46F7-AADF-CD94C4B0C2E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Schema.Tests", "RubrikSecurityCloud.Schema.Tests\RubrikSecurityCloud.Schema.Tests.csproj", "{42975AE7-8245-46C5-9566-D23C71FAF6E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Common.Tests", "RubrikSecurityCloud.Common.Tests\RubrikSecurityCloud.Common.Tests.csproj", "{42975AE7-8245-46C5-9566-D23C71FAF6E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RubrikSecurityCloud.Common", "RubrikSecurityCloud.Common\RubrikSecurityCloud.Common.csproj", "{58FD176D-FB34-44D2-BD77-6C1F278FEE19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{42975AE7-8245-46C5-9566-D23C71FAF6E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42975AE7-8245-46C5-9566-D23C71FAF6E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42975AE7-8245-46C5-9566-D23C71FAF6E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58FD176D-FB34-44D2-BD77-6C1F278FEE19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FD176D-FB34-44D2-BD77-6C1F278FEE19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FD176D-FB34-44D2-BD77-6C1F278FEE19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FD176D-FB34-44D2-BD77-6C1F278FEE19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region NutanixCategoryValue
  
@@ -111,6 +111,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
 
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
+        [JsonProperty("connectionStatus")]
+        public RefreshableObjectConnectionStatus? ConnectionStatus { get; set; }
+
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         [JsonProperty("effectiveSlaSourceObject")]
@@ -170,6 +175,7 @@ namespace Rubrik.SecurityCloud.Types
         System.Boolean? SlaPauseStatus = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
+        RefreshableObjectConnectionStatus? ConnectionStatus = null,
         PathNode? EffectiveSlaSourceObject = null,
         LatestUserNote? LatestUserNote = null,
         List<PathNode>? LogicalPath = null,
@@ -232,6 +238,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( ConnectionStatus != null ) {
+            this.ConnectionStatus = ConnectionStatus;
         }
         if ( EffectiveSlaSourceObject != null ) {
             this.EffectiveSlaSourceObject = EffectiveSlaSourceObject;
@@ -373,6 +382,14 @@ namespace Rubrik.SecurityCloud.Types
             var fspec = this.Cluster.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
+        if (this.ConnectionStatus != null) {
+            var fspec = this.ConnectionStatus.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "connectionStatus {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> PathNode? EffectiveSlaSourceObject
@@ -558,6 +575,13 @@ namespace Rubrik.SecurityCloud.Types
             this.Cluster = new Cluster();
             this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
         }
+        //      C# -> RefreshableObjectConnectionStatus? ConnectionStatus
+        // GraphQL -> connectionStatus: RefreshableObjectConnectionStatus! (type)
+        if (this.ConnectionStatus == null && Exploration.Includes(parent + ".connectionStatus"))
+        {
+            this.ConnectionStatus = new RefreshableObjectConnectionStatus();
+            this.ConnectionStatus.ApplyExploratoryFieldSpec(parent + ".connectionStatus");
+        }
         //      C# -> PathNode? EffectiveSlaSourceObject
         // GraphQL -> effectiveSlaSourceObject: PathNode (type)
         if (this.EffectiveSlaSourceObject == null && Exploration.Includes(parent + ".effectiveSlaSourceObject"))
@@ -649,4 +673,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

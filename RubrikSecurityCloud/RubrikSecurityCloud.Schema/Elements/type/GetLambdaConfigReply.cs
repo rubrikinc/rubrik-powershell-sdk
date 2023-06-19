@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region GetLambdaConfigReply
     public class GetLambdaConfigReply: BaseType
@@ -45,6 +45,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("enableFmdUploadForAllResources")]
         public System.Boolean? EnableFmdUploadForAllResources { get; set; }
 
+        //      C# -> System.Boolean? IsThreatMonitoringEnabled
+        // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
+        [JsonProperty("isThreatMonitoringEnabled")]
+        public System.Boolean? IsThreatMonitoringEnabled { get; set; }
+
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)
         [JsonProperty("maxSnapshotsToUploadAutomatically")]
@@ -61,6 +66,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? DefaultDiffFmdUploadPrefix = null,
         System.Boolean? EnableAutomaticFmdUpload = null,
         System.Boolean? EnableFmdUploadForAllResources = null,
+        System.Boolean? IsThreatMonitoringEnabled = null,
         System.Int32? MaxSnapshotsToUploadAutomatically = null
     ) 
     {
@@ -78,6 +84,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( EnableFmdUploadForAllResources != null ) {
             this.EnableFmdUploadForAllResources = EnableFmdUploadForAllResources;
+        }
+        if ( IsThreatMonitoringEnabled != null ) {
+            this.IsThreatMonitoringEnabled = IsThreatMonitoringEnabled;
         }
         if ( MaxSnapshotsToUploadAutomatically != null ) {
             this.MaxSnapshotsToUploadAutomatically = MaxSnapshotsToUploadAutomatically;
@@ -116,6 +125,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> enableFmdUploadForAllResources: Boolean! (scalar)
         if (this.EnableFmdUploadForAllResources != null) {
             s += ind + "enableFmdUploadForAllResources\n" ;
+        }
+        //      C# -> System.Boolean? IsThreatMonitoringEnabled
+        // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
+        if (this.IsThreatMonitoringEnabled != null) {
+            s += ind + "isThreatMonitoringEnabled\n" ;
         }
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)
@@ -159,6 +173,12 @@ namespace Rubrik.SecurityCloud.Types
         if (this.EnableFmdUploadForAllResources == null && Exploration.Includes(parent + ".enableFmdUploadForAllResources", true))
         {
             this.EnableFmdUploadForAllResources = true;
+        }
+        //      C# -> System.Boolean? IsThreatMonitoringEnabled
+        // GraphQL -> isThreatMonitoringEnabled: Boolean! (scalar)
+        if (this.IsThreatMonitoringEnabled == null && Exploration.Includes(parent + ".isThreatMonitoringEnabled", true))
+        {
+            this.IsThreatMonitoringEnabled = true;
         }
         //      C# -> System.Int32? MaxSnapshotsToUploadAutomatically
         // GraphQL -> maxSnapshotsToUploadAutomatically: Int! (scalar)
@@ -208,4 +228,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

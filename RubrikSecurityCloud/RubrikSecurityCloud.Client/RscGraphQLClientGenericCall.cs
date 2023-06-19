@@ -7,13 +7,12 @@ using GraphQL;
 using GraphQLParser.AST;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 using System.Management.Automation;
 using RubrikSecurityCloud.Client;
 using System.Reflection;
-using System.Text.RegularExpressions;
 
-namespace Rubrik.SecurityCloud.NetSDK.Client
+namespace RubrikSecurityCloud.NetSDK.Client
 {
     public partial class RscGraphQLClient
     {
@@ -135,7 +134,7 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             {
                 try
                 {
-                    request.Variables = variables.AsJson();
+                    request.Variables = variables.AsJson(logger);
                 }
                 catch (Exception ex)
                 {
@@ -146,17 +145,8 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 }
             }
 
-            // inserting __typename field into all response objects
-            const string typename = "__typename";
-            // this regex pattern ensures that we are only inserting
-            // __typename where character '}' is part of the query
-            // body. i.e. there are no commas or closing parenthesis
-            // that follow
-            string pattern = @"}(?!\s*[\),])";
-            string replacement = string.Format(" {0} }}", typename);
-            request.Query = request.Query.Replace(typename, String.Empty);
-            request.Query = Regex.Replace(request.Query, pattern, replacement);
-
+            request.Query = StringUtils.InsertTypeNamesInGqlQuery(
+                request.Query);
             JObject response =
                 await InvokeGraphQLQuery<JObject>(request, logger, metricsTags)
                 ?? throw new InvalidOperationException(
@@ -204,9 +194,9 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             Type queryType = null;
             queryStr = queryStr.Trim();
             if (queryStr.StartsWith("query")) {
-                queryType = typeof(Rubrik.SecurityCloud.Types.Query);
+                queryType = typeof(RubrikSecurityCloud.Types.Query);
             } else if (queryStr.StartsWith("mutation")) {
-                queryType = typeof(Rubrik.SecurityCloud.Types.Mutation);
+                queryType = typeof(RubrikSecurityCloud.Types.Mutation);
 
             } else {
                 throw new InvalidOperationException(

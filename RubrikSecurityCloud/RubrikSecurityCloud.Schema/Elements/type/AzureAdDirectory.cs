@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region AzureAdDirectory
  
@@ -75,6 +75,16 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         [JsonProperty("isRelic")]
         public System.Boolean? IsRelic { get; set; }
+
+        //      C# -> System.Int32? LatestGroupCount
+        // GraphQL -> latestGroupCount: Int! (scalar)
+        [JsonProperty("latestGroupCount")]
+        public System.Int32? LatestGroupCount { get; set; }
+
+        //      C# -> System.Int32? LatestUserCount
+        // GraphQL -> latestUserCount: Int! (scalar)
+        [JsonProperty("latestUserCount")]
+        public System.Int32? LatestUserCount { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -178,6 +188,8 @@ namespace Rubrik.SecurityCloud.Types
         System.String? ExocomputeId = null,
         System.String? Id = null,
         System.Boolean? IsRelic = null,
+        System.Int32? LatestGroupCount = null,
+        System.Int32? LatestUserCount = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
         System.Int32? OnDemandSnapshotCount = null,
@@ -229,6 +241,12 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( IsRelic != null ) {
             this.IsRelic = IsRelic;
+        }
+        if ( LatestGroupCount != null ) {
+            this.LatestGroupCount = LatestGroupCount;
+        }
+        if ( LatestUserCount != null ) {
+            this.LatestUserCount = LatestUserCount;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -354,6 +372,16 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> isRelic: Boolean! (scalar)
         if (this.IsRelic != null) {
             s += ind + "isRelic\n" ;
+        }
+        //      C# -> System.Int32? LatestGroupCount
+        // GraphQL -> latestGroupCount: Int! (scalar)
+        if (this.LatestGroupCount != null) {
+            s += ind + "latestGroupCount\n" ;
+        }
+        //      C# -> System.Int32? LatestUserCount
+        // GraphQL -> latestUserCount: Int! (scalar)
+        if (this.LatestUserCount != null) {
+            s += ind + "latestUserCount\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -556,6 +584,18 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.IsRelic = true;
         }
+        //      C# -> System.Int32? LatestGroupCount
+        // GraphQL -> latestGroupCount: Int! (scalar)
+        if (this.LatestGroupCount == null && Exploration.Includes(parent + ".latestGroupCount", true))
+        {
+            this.LatestGroupCount = Int32.MinValue;
+        }
+        //      C# -> System.Int32? LatestUserCount
+        // GraphQL -> latestUserCount: Int! (scalar)
+        if (this.LatestUserCount == null && Exploration.Includes(parent + ".latestUserCount", true))
+        {
+            this.LatestUserCount = Int32.MinValue;
+        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
@@ -712,4 +752,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

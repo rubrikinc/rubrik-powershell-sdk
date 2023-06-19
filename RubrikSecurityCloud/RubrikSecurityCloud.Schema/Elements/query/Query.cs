@@ -11,9 +11,9 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region Query
     public class Query
@@ -1524,6 +1524,24 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> AdVolumeExportConnection? AdVolumeExports
+        // GraphQL -> adVolumeExports: AdVolumeExportConnection! (type)
+        public static string AdVolumeExports(
+            ref AdVolumeExportConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nfilters: $filters\nsortBy: $sortBy\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AdVolumeExportConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "adVolumeExports" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> List<User>? AllAccountOwners
         // GraphQL -> allAccountOwners: [User!]! (type)
         public static string AllAccountOwners(
@@ -1808,6 +1826,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "allAzureCloudAccountTenants" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<AzureCloudAccountTenantWithExoConfigs>? AllAzureCloudAccountTenantsWithExoConfigs
+        // GraphQL -> allAzureCloudAccountTenantsWithExoConfigs: [AzureCloudAccountTenantWithExoConfigs!]! (type)
+        public static string AllAzureCloudAccountTenantsWithExoConfigs(
+            ref List<AzureCloudAccountTenantWithExoConfigs>? fieldSpec
+        )
+        {
+            string args = "\n(\nfeatures: $features\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<AzureCloudAccountTenantWithExoConfigs>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allAzureCloudAccountTenantsWithExoConfigs" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3716,6 +3752,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "archivalEntities" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> GlobalCertificateConnection? AssignableGlobalCertificates
+        // GraphQL -> assignableGlobalCertificates: GlobalCertificateConnection! (type)
+        public static string AssignableGlobalCertificates(
+            ref GlobalCertificateConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nsortOrder: $sortOrder\nsortBy: $sortBy\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new GlobalCertificateConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "assignableGlobalCertificates" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11600,6 +11654,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "prechecksStatusWithNextJobInfo" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> PrincipalDetails? PrincipalDetails
+        // GraphQL -> principalDetails: PrincipalDetails! (type)
+        public static string PrincipalDetails(
+            ref PrincipalDetails? fieldSpec
+        )
+        {
+            string args = "\n(\nsid: $sid\ntimelineDate: $timelineDate\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new PrincipalDetails() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "principalDetails" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

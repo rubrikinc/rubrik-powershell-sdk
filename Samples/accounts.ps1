@@ -66,11 +66,11 @@ Query-RscAccount -Setting -ResponseType
 
 Write-Message @"
 
-4. The response type is Rubrik.SecurityCloud.Types.AccountSetting.
+4. The response type is RubrikSecurityCloud.Types.AccountSetting.
    You can use it to create an instance of the type, and then specify
    the fields you want to fetch:
 "@
-$accountSetting = [Rubrik.SecurityCloud.Types.AccountSetting]@{}
+$accountSetting = [RubrikSecurityCloud.Types.AccountSetting]@{}
 $accountSetting.IsEulaAccepted = 1
 Query-RscAccount -Setting -Field $accountSetting
 
@@ -115,7 +115,7 @@ Write-Message @"
    meant to be used in production code.
    In production code, you should always specify the fields you want to fetch.
 "@
-$accountSetting = [Rubrik.SecurityCloud.Types.AccountSetting]@{}
+$accountSetting = [RubrikSecurityCloud.Types.AccountSetting]@{}
 $accountSetting
 $accountSetting.ApplyExploratoryFieldSpec()
 $accountSetting

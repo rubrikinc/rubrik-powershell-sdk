@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region FailoverJobReport
     public class FailoverJobReport: BaseType
@@ -29,6 +29,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> blueprintName: String! (scalar)
         [JsonProperty("blueprintName")]
         public System.String? BlueprintName { get; set; }
+
+        //      C# -> System.String? DataTransferType
+        // GraphQL -> dataTransferType: String! (scalar)
+        [JsonProperty("dataTransferType")]
+        public System.String? DataTransferType { get; set; }
 
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -103,6 +108,7 @@ namespace Rubrik.SecurityCloud.Types
     public FailoverJobReport Set(
         System.String? BlueprintId = null,
         System.String? BlueprintName = null,
+        System.String? DataTransferType = null,
         System.Int64? ElapsedTime = null,
         System.Int64? EndTime = null,
         System.Boolean? IsArchived = null,
@@ -123,6 +129,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( BlueprintName != null ) {
             this.BlueprintName = BlueprintName;
+        }
+        if ( DataTransferType != null ) {
+            this.DataTransferType = DataTransferType;
         }
         if ( ElapsedTime != null ) {
             this.ElapsedTime = ElapsedTime;
@@ -182,6 +191,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> blueprintName: String! (scalar)
         if (this.BlueprintName != null) {
             s += ind + "blueprintName\n" ;
+        }
+        //      C# -> System.String? DataTransferType
+        // GraphQL -> dataTransferType: String! (scalar)
+        if (this.DataTransferType != null) {
+            s += ind + "dataTransferType\n" ;
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -270,6 +284,12 @@ namespace Rubrik.SecurityCloud.Types
         if (this.BlueprintName == null && Exploration.Includes(parent + ".blueprintName", true))
         {
             this.BlueprintName = "FETCH";
+        }
+        //      C# -> System.String? DataTransferType
+        // GraphQL -> dataTransferType: String! (scalar)
+        if (this.DataTransferType == null && Exploration.Includes(parent + ".dataTransferType", true))
+        {
+            this.DataTransferType = "FETCH";
         }
         //      C# -> System.Int64? ElapsedTime
         // GraphQL -> elapsedTime: Long! (scalar)
@@ -392,4 +412,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region ListObjectFilesFiltersInput
 
@@ -120,4 +120,4 @@ namespace Rubrik.SecurityCloud.Types
     } // class ListObjectFilesFiltersInput
     #endregion
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

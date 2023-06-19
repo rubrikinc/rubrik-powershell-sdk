@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum VersionSourceType
     {
@@ -24,4 +24,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum VersionSourceType
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

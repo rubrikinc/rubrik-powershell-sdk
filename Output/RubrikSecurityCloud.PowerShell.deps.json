@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "RubrikSecurityCloud.PowerShell/1.0.0": {
         "dependencies": {
-          "RubrikSecurityCloud.Client": "1.0.0"
+          "RubrikSecurityCloud.Client": "1.0.0",
+          "RubrikSecurityCloud.Common": "1.0.0"
         },
         "runtime": {
           "RubrikSecurityCloud.PowerShell.dll": {}
@@ -1457,6 +1458,7 @@
           "GraphQL.Client": "5.1.0",
           "GraphQL.Client.Serializer.Newtonsoft": "5.1.0",
           "GraphQL.Query.Builder": "2.0.1",
+          "RubrikSecurityCloud.Common": "1.0.0",
           "RubrikSecurityCloud.Schema": "1.0.0",
           "System.Management.Automation": "6.0.4"
         },
@@ -1464,11 +1466,28 @@
           "RubrikSecurityCloud.Client.dll": {}
         }
       },
+      "RubrikSecurityCloud.Common/1.0.0": {
+        "dependencies": {
+          "GraphQL": "7.2.2",
+          "GraphQL-Parser": "8.1.0",
+          "GraphQL.Client": "5.1.0",
+          "GraphQL.Client.Abstractions": "5.1.0",
+          "GraphQL.Client.Serializer.Newtonsoft": "5.1.0",
+          "GraphQL.Query.Builder": "2.0.1",
+          "Newtonsoft.Json": "13.0.3",
+          "System.ComponentModel.Annotations": "5.0.0",
+          "System.Management.Automation": "6.0.4"
+        },
+        "runtime": {
+          "RubrikSecurityCloud.Common.dll": {}
+        }
+      },
       "RubrikSecurityCloud.Schema/1.0.0": {
         "dependencies": {
           "GraphQL": "7.2.2",
           "GraphQL.Client.Abstractions": "5.1.0",
           "Newtonsoft.Json": "13.0.3",
+          "RubrikSecurityCloud.Common": "1.0.0",
           "System.ComponentModel.Annotations": "5.0.0"
         },
         "runtime": {
@@ -2226,6 +2245,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "RubrikSecurityCloud.Client/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RubrikSecurityCloud.Common/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

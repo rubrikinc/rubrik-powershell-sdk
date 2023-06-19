@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum RefreshableObjectConnectionStatusType
     {
@@ -36,4 +36,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum RefreshableObjectConnectionStatusType
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

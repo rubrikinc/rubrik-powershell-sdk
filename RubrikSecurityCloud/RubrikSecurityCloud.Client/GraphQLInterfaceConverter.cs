@@ -5,7 +5,7 @@ using GraphQL;
 using GraphQLParser.AST;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 using System.Management.Automation;
 using RubrikSecurityCloud.Client;
 using System.Reflection;
@@ -30,7 +30,7 @@ public class GraphQLInterfaceConverter : JsonConverter
         var gqlTypeName = jsonObject.Last.First.Value<string>();
         var gqlType = Type.GetType(
             String.Format(
-                "Rubrik.SecurityCloud.Types.{0}, RubrikSecurityCloud.Schema",
+                "RubrikSecurityCloud.Types.{0}, RubrikSecurityCloud.Schema",
                 gqlTypeName)
         );
         object gqlObject = Activator.CreateInstance(gqlType);

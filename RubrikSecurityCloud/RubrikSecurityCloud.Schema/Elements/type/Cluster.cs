@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region Cluster
  
@@ -70,6 +70,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> defaultAddress: String (scalar)
         [JsonProperty("defaultAddress")]
         public System.String? DefaultAddress { get; set; }
+
+        //      C# -> System.Int32? DefaultPort
+        // GraphQL -> defaultPort: Int (scalar)
+        [JsonProperty("defaultPort")]
+        public System.Int32? DefaultPort { get; set; }
 
         //      C# -> System.Boolean? EncryptionEnabled
         // GraphQL -> encryptionEnabled: Boolean! (scalar)
@@ -282,6 +287,7 @@ namespace Rubrik.SecurityCloud.Types
         ClusterTypeEnum? Type = null,
         DateTime? ConnectivityLastUpdated = null,
         System.String? DefaultAddress = null,
+        System.Int32? DefaultPort = null,
         System.Boolean? EncryptionEnabled = null,
         System.Int64? EstimatedRunway = null,
         System.String? Id = null,
@@ -352,6 +358,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( DefaultAddress != null ) {
             this.DefaultAddress = DefaultAddress;
+        }
+        if ( DefaultPort != null ) {
+            this.DefaultPort = DefaultPort;
         }
         if ( EncryptionEnabled != null ) {
             this.EncryptionEnabled = EncryptionEnabled;
@@ -529,6 +538,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> defaultAddress: String (scalar)
         if (this.DefaultAddress != null) {
             s += ind + "defaultAddress\n" ;
+        }
+        //      C# -> System.Int32? DefaultPort
+        // GraphQL -> defaultPort: Int (scalar)
+        if (this.DefaultPort != null) {
+            s += ind + "defaultPort\n" ;
         }
         //      C# -> System.Boolean? EncryptionEnabled
         // GraphQL -> encryptionEnabled: Boolean! (scalar)
@@ -871,6 +885,12 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.DefaultAddress = "FETCH";
         }
+        //      C# -> System.Int32? DefaultPort
+        // GraphQL -> defaultPort: Int (scalar)
+        if (this.DefaultPort == null && Exploration.Includes(parent + ".defaultPort", true))
+        {
+            this.DefaultPort = Int32.MinValue;
+        }
         //      C# -> System.Boolean? EncryptionEnabled
         // GraphQL -> encryptionEnabled: Boolean! (scalar)
         if (this.EncryptionEnabled == null && Exploration.Includes(parent + ".encryptionEnabled", true))
@@ -1173,4 +1193,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

@@ -13,13 +13,13 @@ Describe 'Get-RscType' {
     Context 'When called with the -Name parameter' {
         It 'Should return an empty object of the specified Rsc type' {
             $result = Get-RscType -Name "AccountSetting"
-            $result | Should -BeOfType Rubrik.SecurityCloud.Types.AccountSetting
+            $result | Should -BeOfType RubrikSecurityCloud.Types.AccountSetting
             $result | Should -Not -BeNull
         }
 
         It 'Should initialize specified properties if -InitialProperties parameter is used' {
             $result = Get-RscType -Name "AccountSetting" -InitialProperties @("IsEulaAccepted")
-            $result | Should -BeOfType Rubrik.SecurityCloud.Types.AccountSetting
+            $result | Should -BeOfType RubrikSecurityCloud.Types.AccountSetting
             $result | Should -Not -BeNull
             $result.IsEulaAccepted | Should -Be $true
         }

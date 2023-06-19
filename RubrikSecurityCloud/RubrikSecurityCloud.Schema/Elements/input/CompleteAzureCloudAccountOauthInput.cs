@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region CompleteAzureCloudAccountOauthInput
 
@@ -115,4 +115,4 @@ namespace Rubrik.SecurityCloud.Types
     } // class CompleteAzureCloudAccountOauthInput
     #endregion
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

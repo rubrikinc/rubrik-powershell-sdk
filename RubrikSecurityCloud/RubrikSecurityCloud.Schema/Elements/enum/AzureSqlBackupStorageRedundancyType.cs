@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum AzureSqlBackupStorageRedundancyType
     {
@@ -27,4 +27,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum AzureSqlBackupStorageRedundancyType
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

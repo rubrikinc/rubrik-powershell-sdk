@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
 
-namespace Rubrik.SecurityCloud.PowerShell.Private
+namespace RubrikSecurityCloud.PowerShell.Private
 {
     internal class RscCmdletHelper
     {

@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region AzureSubscriptionWithExoConfigs
     public class AzureSubscriptionWithExoConfigs: BaseType
@@ -50,6 +50,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("featureDetail")]
         public AzureCloudAccountFeatureDetail? FeatureDetail { get; set; }
 
+        //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
+        // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
+        [JsonProperty("mappedCloudAccounts")]
+        public List<CloudAccountDetails>? MappedCloudAccounts { get; set; }
+
         //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
         // GraphQL -> mappedExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
         [JsonProperty("mappedExocomputeConfigs")]
@@ -72,6 +77,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? SubscriptionName = null,
         List<AzureExocomputeConfigDetails>? ExocomputeConfigs = null,
         AzureCloudAccountFeatureDetail? FeatureDetail = null,
+        List<CloudAccountDetails>? MappedCloudAccounts = null,
         List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs = null,
         AzureMappedExocomputeSubscription? MappedExocomputeSubscription = null
     ) 
@@ -93,6 +99,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( FeatureDetail != null ) {
             this.FeatureDetail = FeatureDetail;
+        }
+        if ( MappedCloudAccounts != null ) {
+            this.MappedCloudAccounts = MappedCloudAccounts;
         }
         if ( MappedExocomputeConfigs != null ) {
             this.MappedExocomputeConfigs = MappedExocomputeConfigs;
@@ -144,6 +153,14 @@ namespace Rubrik.SecurityCloud.Types
             var fspec = this.FeatureDetail.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "featureDetail {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
+        // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
+        if (this.MappedCloudAccounts != null) {
+            var fspec = this.MappedCloudAccounts.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "mappedCloudAccounts {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
@@ -208,6 +225,13 @@ namespace Rubrik.SecurityCloud.Types
             this.FeatureDetail = new AzureCloudAccountFeatureDetail();
             this.FeatureDetail.ApplyExploratoryFieldSpec(parent + ".featureDetail");
         }
+        //      C# -> List<CloudAccountDetails>? MappedCloudAccounts
+        // GraphQL -> mappedCloudAccounts: [CloudAccountDetails!]! (type)
+        if (this.MappedCloudAccounts == null && Exploration.Includes(parent + ".mappedCloudAccounts"))
+        {
+            this.MappedCloudAccounts = new List<CloudAccountDetails>();
+            this.MappedCloudAccounts.ApplyExploratoryFieldSpec(parent + ".mappedCloudAccounts");
+        }
         //      C# -> List<AzureExocomputeConfigDetails>? MappedExocomputeConfigs
         // GraphQL -> mappedExocomputeConfigs: [AzureExocomputeConfigDetails!]! (type)
         if (this.MappedExocomputeConfigs == null && Exploration.Includes(parent + ".mappedExocomputeConfigs"))
@@ -264,4 +288,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

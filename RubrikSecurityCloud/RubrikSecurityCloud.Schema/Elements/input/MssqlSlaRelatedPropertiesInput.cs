@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region MssqlSlaRelatedPropertiesInput
 
@@ -39,10 +39,10 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("hasLogConfigFromSla")]
         public System.Boolean? HasLogConfigFromSla { get; set; }
 
-        //      C# -> System.Int32? HostLogRetention
-        // GraphQL -> hostLogRetention: Int (scalar)
-        [JsonProperty("hostLogRetention")]
-        public System.Int32? HostLogRetention { get; set; }
+        //      C# -> System.Int32? HostLogRetentionInSeconds
+        // GraphQL -> hostLogRetentionInSeconds: Int (scalar)
+        [JsonProperty("hostLogRetentionInSeconds")]
+        public System.Int32? HostLogRetentionInSeconds { get; set; }
 
 
         #endregion
@@ -73,4 +73,4 @@ namespace Rubrik.SecurityCloud.Types
     } // class MssqlSlaRelatedPropertiesInput
     #endregion
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

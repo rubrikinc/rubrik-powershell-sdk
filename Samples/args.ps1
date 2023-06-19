@@ -60,17 +60,17 @@ type VsphereVmConnection {
   count: Int!
 }#>
 
-$nodes = New-Object System.Collections.Generic.List[Rubrik.SecurityCloud.Types.VsphereVm]
-$node = [Rubrik.SecurityCloud.Types.VsphereVm]@{
+$nodes = New-Object System.Collections.Generic.List[RubrikSecurityCloud.Types.VsphereVm]
+$node = [RubrikSecurityCloud.Types.VsphereVm]@{
    "id" = "fetch"
    "name" = "fetch"
-   "cluster" = [Rubrik.SecurityCloud.Types.Cluster]@{
+   "cluster" = [RubrikSecurityCloud.Types.Cluster]@{
       "id" = "fetch"
       "name" = "fetch"
    }
 }
 $nodes.Add($node)
-$reply = [Rubrik.SecurityCloud.Types.VsphereVmConnection]@{
+$reply = [RubrikSecurityCloud.Types.VsphereVmConnection]@{
    "nodes" = $nodes
 }
 Get-RscVsphere -VmNewConnection -Input $in -Reply $reply -Debug

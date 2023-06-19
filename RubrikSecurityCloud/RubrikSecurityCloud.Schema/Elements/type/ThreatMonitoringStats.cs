@@ -11,19 +11,14 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region ThreatMonitoringStats
     public class ThreatMonitoringStats: BaseType
     {
         #region members
-
-        //      C# -> System.Int64? ObjectsFailedScans
-        // GraphQL -> objectsFailedScans: Long! (scalar)
-        [JsonProperty("objectsFailedScans")]
-        public System.Int64? ObjectsFailedScans { get; set; }
 
         //      C# -> System.Int64? ObjectsWithMatches
         // GraphQL -> objectsWithMatches: Long! (scalar)
@@ -46,15 +41,11 @@ namespace Rubrik.SecurityCloud.Types
     #region methods
 
     public ThreatMonitoringStats Set(
-        System.Int64? ObjectsFailedScans = null,
         System.Int64? ObjectsWithMatches = null,
         System.Int64? ObjectsWithNoMatches = null,
         System.Int64? TotalObjectsScanned = null
     ) 
     {
-        if ( ObjectsFailedScans != null ) {
-            this.ObjectsFailedScans = ObjectsFailedScans;
-        }
         if ( ObjectsWithMatches != null ) {
             this.ObjectsWithMatches = ObjectsWithMatches;
         }
@@ -74,11 +65,6 @@ namespace Rubrik.SecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
-        //      C# -> System.Int64? ObjectsFailedScans
-        // GraphQL -> objectsFailedScans: Long! (scalar)
-        if (this.ObjectsFailedScans != null) {
-            s += ind + "objectsFailedScans\n" ;
-        }
         //      C# -> System.Int64? ObjectsWithMatches
         // GraphQL -> objectsWithMatches: Long! (scalar)
         if (this.ObjectsWithMatches != null) {
@@ -102,12 +88,6 @@ namespace Rubrik.SecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
-        //      C# -> System.Int64? ObjectsFailedScans
-        // GraphQL -> objectsFailedScans: Long! (scalar)
-        if (this.ObjectsFailedScans == null && Exploration.Includes(parent + ".objectsFailedScans", true))
-        {
-            this.ObjectsFailedScans = new System.Int64();
-        }
         //      C# -> System.Int64? ObjectsWithMatches
         // GraphQL -> objectsWithMatches: Long! (scalar)
         if (this.ObjectsWithMatches == null && Exploration.Includes(parent + ".objectsWithMatches", true))
@@ -168,4 +148,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

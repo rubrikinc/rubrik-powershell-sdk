@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RubrikSecurityCloud.Client\RubrikSecurityCloud.Client.csproj" />
+    <ProjectReference Include="..\RubrikSecurityCloud.Common\RubrikSecurityCloud.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="RubrikSecurityCloud.psd1">

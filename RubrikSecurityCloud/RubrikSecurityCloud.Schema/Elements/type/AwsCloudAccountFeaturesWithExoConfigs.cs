@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region AwsCloudAccountFeaturesWithExoConfigs
     public class AwsCloudAccountFeaturesWithExoConfigs: BaseType
@@ -24,6 +24,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> awsCloudAccount: AwsCloudAccount! (type)
         [JsonProperty("awsCloudAccount")]
         public AwsCloudAccount? AwsCloudAccount { get; set; }
+
+        //      C# -> List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs
+        // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigResponse!]! (type)
+        [JsonProperty("exocomputeConfigs")]
+        public List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs { get; set; }
 
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
@@ -42,12 +47,16 @@ namespace Rubrik.SecurityCloud.Types
 
     public AwsCloudAccountFeaturesWithExoConfigs Set(
         AwsCloudAccount? AwsCloudAccount = null,
+        List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs = null,
         List<FeatureDetail>? FeatureDetails = null,
         CloudAccountDetails? MappedExocomputeAccount = null
     ) 
     {
         if ( AwsCloudAccount != null ) {
             this.AwsCloudAccount = AwsCloudAccount;
+        }
+        if ( ExocomputeConfigs != null ) {
+            this.ExocomputeConfigs = ExocomputeConfigs;
         }
         if ( FeatureDetails != null ) {
             this.FeatureDetails = FeatureDetails;
@@ -71,6 +80,14 @@ namespace Rubrik.SecurityCloud.Types
             var fspec = this.AwsCloudAccount.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "awsCloudAccount {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs
+        // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigResponse!]! (type)
+        if (this.ExocomputeConfigs != null) {
+            var fspec = this.ExocomputeConfigs.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "exocomputeConfigs {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> List<FeatureDetail>? FeatureDetails
@@ -103,6 +120,13 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.AwsCloudAccount = new AwsCloudAccount();
             this.AwsCloudAccount.ApplyExploratoryFieldSpec(parent + ".awsCloudAccount");
+        }
+        //      C# -> List<AwsExocomputeGetConfigResponse>? ExocomputeConfigs
+        // GraphQL -> exocomputeConfigs: [AwsExocomputeGetConfigResponse!]! (type)
+        if (this.ExocomputeConfigs == null && Exploration.Includes(parent + ".exocomputeConfigs"))
+        {
+            this.ExocomputeConfigs = new List<AwsExocomputeGetConfigResponse>();
+            this.ExocomputeConfigs.ApplyExploratoryFieldSpec(parent + ".exocomputeConfigs");
         }
         //      C# -> List<FeatureDetail>? FeatureDetails
         // GraphQL -> featureDetails: [FeatureDetail!]! (type)
@@ -160,4 +184,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

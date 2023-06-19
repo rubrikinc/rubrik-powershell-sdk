@@ -25,7 +25,7 @@ function Backup-SlaDomain
       Mandatory = $true, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.SlaAssignTypeEnum]$SlaDomainAssignType,
+    [RubrikSecurityCloud.Types.SlaAssignTypeEnum]$SlaDomainAssignType,
     # Corresponds to optional SLA Domain ID.
     [Parameter(
       Mandatory = $false, 
@@ -43,7 +43,7 @@ function Backup-SlaDomain
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.WorkloadLevelHierarchy]$ApplicableWorkloadType,
+    [RubrikSecurityCloud.Types.WorkloadLevelHierarchy]$ApplicableWorkloadType,
     # Boolean value to indicate whether to apply changes made to the SLA Domain to existing snapshots.
     [Parameter(
       Mandatory = $false, 
@@ -61,7 +61,7 @@ function Backup-SlaDomain
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.GlobalExistingSnapshotRetention]$ExistingSnapshotRetention,
+    [RubrikSecurityCloud.Types.GlobalExistingSnapshotRetention]$ExistingSnapshotRetention,
     # Optional User note.
     [Parameter(
       Mandatory = $false, 

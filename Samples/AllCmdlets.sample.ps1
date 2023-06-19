@@ -4863,6 +4863,18 @@ Retrieves details about the Azure cloud account tenant including the Exocompute 
 
 
 # -------------------------------------------------------------------
+# Invoke-RscQueryAzure -Allcloudaccounttenantswithexoconfig
+# -------------------------------------------------------------------
+
+$inputs = Invoke-RscQueryAzure -Allcloudaccounttenantswithexoconfig -GetInputs
+$fieldTypeName = $inputs.Field.GetType().Name
+$argNames = $inputs.Arg.Keys
+Write-Message "Invoke-RscQueryAzure -Allcloudaccounttenantswithexoconfig" @"
+Retrieves details about all the Azure cloud account tenants including the Exocompute configurations for the tenant subscriptions, for specified set of features.
+"@ "[GraphQL: allAzureCloudAccountTenantsWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
+
+
+# -------------------------------------------------------------------
 # Invoke-RscQueryAzure -Allcloudaccounttenant
 # -------------------------------------------------------------------
 

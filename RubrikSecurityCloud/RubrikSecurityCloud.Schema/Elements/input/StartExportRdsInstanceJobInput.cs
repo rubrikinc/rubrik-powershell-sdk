@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region StartExportRdsInstanceJobInput
 
@@ -188,4 +188,4 @@ namespace Rubrik.SecurityCloud.Types
     } // class StartExportRdsInstanceJobInput
     #endregion
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

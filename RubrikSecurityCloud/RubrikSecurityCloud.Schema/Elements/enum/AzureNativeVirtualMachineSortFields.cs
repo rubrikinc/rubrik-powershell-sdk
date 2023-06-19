@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum AzureNativeVirtualMachineSortFields
     {
@@ -45,4 +45,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum AzureNativeVirtualMachineSortFields
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

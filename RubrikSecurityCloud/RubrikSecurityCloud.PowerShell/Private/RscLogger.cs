@@ -3,7 +3,7 @@ using System.Management.Automation;
 using System.Runtime.CompilerServices;
 using RubrikSecurityCloud.Client;
 using System.Collections.Generic;
-namespace Rubrik.SecurityCloud.PowerShell.Private
+namespace RubrikSecurityCloud.PowerShell.Private
 {
     public class RscLogger : IRscLogger
     {

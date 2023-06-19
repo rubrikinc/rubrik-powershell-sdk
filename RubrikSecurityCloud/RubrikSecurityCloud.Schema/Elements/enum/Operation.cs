@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum Operation
     {
@@ -189,6 +189,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "MANAGE_GPS_TO_RSC_UPGRADE")]
         MANAGE_GPS_TO_RSC_UPGRADE,
 
+        [EnumMember(Value = "MANAGE_GUEST_OS_CREDENTIAL")]
+        MANAGE_GUEST_OS_CREDENTIAL,
+
         [EnumMember(Value = "MANAGE_LEGAL_HOLD")]
         MANAGE_LEGAL_HOLD,
 
@@ -327,6 +330,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "VIEW_GCP_CLOUD_ACCOUNT")]
         VIEW_GCP_CLOUD_ACCOUNT,
 
+        [EnumMember(Value = "VIEW_GUEST_OS_CREDENTIAL")]
+        VIEW_GUEST_OS_CREDENTIAL,
+
         [EnumMember(Value = "VIEW_INVENTORY")]
         VIEW_INVENTORY,
 
@@ -396,4 +402,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum Operation
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

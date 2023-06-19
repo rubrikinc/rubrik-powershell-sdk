@@ -28,8 +28,13 @@ Describe -Name "Test field specs for interface fields" -Fixture {
         $inlineFragments = [regex]::Matches($fieldSpecString, '\.\.\. on (\w+)')
         $names = $inlineFragments | ForEach-Object { $_.Groups[1].Value } | Sort-Object
         $expectedNames = $impls | ForEach-Object { $_.Name } | Sort-Object
-        Compare-Object $names $expectedNames -SyncWindow 0 | Measure-Object | ForEach-Object { $_.Count } | Should -Be 0
-        
-        
+        # There may be other names because subfields may have fragments too.
+        # So we only want to make sure that $expectedNames is a subset of $names
+        # convert $names to a set
+        $nameSet = $names | Select-Object -Unique
+        # convert $expectedNames to a set
+        $expectedNameSet = $expectedNames | Select-Object -Unique
+        # $expectedNameSet should be a subset of $nameSet
+        ($expectedNameSet | ForEach-Object { $nameSet -Contains $_ }) -notcontains $false | Should -Be $true
     }
 }

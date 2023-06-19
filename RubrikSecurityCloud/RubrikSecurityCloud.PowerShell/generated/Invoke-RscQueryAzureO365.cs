@@ -4,19 +4,19 @@
 // Manual changes to this file may be lost.
 
 #nullable enable
-using Rubrik.SecurityCloud.Types;
-using Rubrik.SecurityCloud.NetSDK.Client;
-using Rubrik.SecurityCloud.PowerShell.Private;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
+using RubrikSecurityCloud.NetSDK.Client;
+using RubrikSecurityCloud.PowerShell.Private;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     [Cmdlet(
         "Invoke",

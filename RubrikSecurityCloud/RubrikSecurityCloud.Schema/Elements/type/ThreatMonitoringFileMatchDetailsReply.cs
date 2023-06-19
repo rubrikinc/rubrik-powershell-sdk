@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region ThreatMonitoringFileMatchDetailsReply
     public class ThreatMonitoringFileMatchDetailsReply: BaseType
@@ -40,10 +40,20 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("intelSource")]
         public System.String? IntelSource { get; set; }
 
-        //      C# -> System.String? IocAttribute
-        // GraphQL -> iocAttribute: String! (scalar)
-        [JsonProperty("iocAttribute")]
-        public System.String? IocAttribute { get; set; }
+        //      C# -> System.String? IocRuleAuthor
+        // GraphQL -> iocRuleAuthor: String! (scalar)
+        [JsonProperty("iocRuleAuthor")]
+        public System.String? IocRuleAuthor { get; set; }
+
+        //      C# -> System.String? IocRuleDescription
+        // GraphQL -> iocRuleDescription: String! (scalar)
+        [JsonProperty("iocRuleDescription")]
+        public System.String? IocRuleDescription { get; set; }
+
+        //      C# -> System.String? IocRuleName
+        // GraphQL -> iocRuleName: String! (scalar)
+        [JsonProperty("iocRuleName")]
+        public System.String? IocRuleName { get; set; }
 
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
@@ -75,7 +85,9 @@ namespace Rubrik.SecurityCloud.Types
         DateTime? DetectedSnapshotDate = null,
         System.String? FirstDetectedSnapshotFid = null,
         System.String? IntelSource = null,
-        System.String? IocAttribute = null,
+        System.String? IocRuleAuthor = null,
+        System.String? IocRuleDescription = null,
+        System.String? IocRuleName = null,
         System.Boolean? IsQuarantined = null,
         System.String? MatchedFileMd5 = null,
         System.String? MatchedFileSha1 = null,
@@ -94,8 +106,14 @@ namespace Rubrik.SecurityCloud.Types
         if ( IntelSource != null ) {
             this.IntelSource = IntelSource;
         }
-        if ( IocAttribute != null ) {
-            this.IocAttribute = IocAttribute;
+        if ( IocRuleAuthor != null ) {
+            this.IocRuleAuthor = IocRuleAuthor;
+        }
+        if ( IocRuleDescription != null ) {
+            this.IocRuleDescription = IocRuleDescription;
+        }
+        if ( IocRuleName != null ) {
+            this.IocRuleName = IocRuleName;
         }
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
@@ -139,10 +157,20 @@ namespace Rubrik.SecurityCloud.Types
         if (this.IntelSource != null) {
             s += ind + "intelSource\n" ;
         }
-        //      C# -> System.String? IocAttribute
-        // GraphQL -> iocAttribute: String! (scalar)
-        if (this.IocAttribute != null) {
-            s += ind + "iocAttribute\n" ;
+        //      C# -> System.String? IocRuleAuthor
+        // GraphQL -> iocRuleAuthor: String! (scalar)
+        if (this.IocRuleAuthor != null) {
+            s += ind + "iocRuleAuthor\n" ;
+        }
+        //      C# -> System.String? IocRuleDescription
+        // GraphQL -> iocRuleDescription: String! (scalar)
+        if (this.IocRuleDescription != null) {
+            s += ind + "iocRuleDescription\n" ;
+        }
+        //      C# -> System.String? IocRuleName
+        // GraphQL -> iocRuleName: String! (scalar)
+        if (this.IocRuleName != null) {
+            s += ind + "iocRuleName\n" ;
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
@@ -196,11 +224,23 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.IntelSource = "FETCH";
         }
-        //      C# -> System.String? IocAttribute
-        // GraphQL -> iocAttribute: String! (scalar)
-        if (this.IocAttribute == null && Exploration.Includes(parent + ".iocAttribute", true))
+        //      C# -> System.String? IocRuleAuthor
+        // GraphQL -> iocRuleAuthor: String! (scalar)
+        if (this.IocRuleAuthor == null && Exploration.Includes(parent + ".iocRuleAuthor", true))
         {
-            this.IocAttribute = "FETCH";
+            this.IocRuleAuthor = "FETCH";
+        }
+        //      C# -> System.String? IocRuleDescription
+        // GraphQL -> iocRuleDescription: String! (scalar)
+        if (this.IocRuleDescription == null && Exploration.Includes(parent + ".iocRuleDescription", true))
+        {
+            this.IocRuleDescription = "FETCH";
+        }
+        //      C# -> System.String? IocRuleName
+        // GraphQL -> iocRuleName: String! (scalar)
+        if (this.IocRuleName == null && Exploration.Includes(parent + ".iocRuleName", true))
+        {
+            this.IocRuleName = "FETCH";
         }
         //      C# -> System.Boolean? IsQuarantined
         // GraphQL -> isQuarantined: Boolean! (scalar)
@@ -268,4 +308,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

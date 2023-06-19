@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Types>
   <Type>
-    <Name>Rubrik.SecurityCloud.Types.VsphereVm</Name>
+    <Name>RubrikSecurityCloud.Types.VsphereVm</Name>
     <Members>
       <MemberSet>
         <Name>PSStandardMembers</Name>
@@ -21,7 +21,7 @@
     </Members>
   </Type>
   <Type>
-    <Name>Rubrik.SecurityCloud.Types.MssqlDatabase</Name>
+    <Name>RubrikSecurityCloud.Types.MssqlDatabase</Name>
     <Members>
       <MemberSet>
         <Name>PSStandardMembers</Name>

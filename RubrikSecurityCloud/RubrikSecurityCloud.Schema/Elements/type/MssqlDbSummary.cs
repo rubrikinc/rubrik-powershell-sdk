@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region MssqlDbSummary
     public class MssqlDbSummary: BaseType
@@ -45,10 +45,10 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("hasPermissions")]
         public System.Boolean? HasPermissions { get; set; }
 
-        //      C# -> System.Int32? HostLogRetention
-        // GraphQL -> hostLogRetention: Int (scalar)
-        [JsonProperty("hostLogRetention")]
-        public System.Int32? HostLogRetention { get; set; }
+        //      C# -> System.Int32? HostLogRetentionInSeconds
+        // GraphQL -> hostLogRetentionInSeconds: Int (scalar)
+        [JsonProperty("hostLogRetentionInSeconds")]
+        public System.Int32? HostLogRetentionInSeconds { get; set; }
 
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -211,7 +211,7 @@ namespace Rubrik.SecurityCloud.Types
         System.Boolean? CopyOnly = null,
         System.Boolean? HasLogConfigFromSla = null,
         System.Boolean? HasPermissions = null,
-        System.Int32? HostLogRetention = null,
+        System.Int32? HostLogRetentionInSeconds = null,
         System.String? Id = null,
         System.Boolean? IncludeBackupTaskInfo = null,
         System.String? InstanceId = null,
@@ -259,8 +259,8 @@ namespace Rubrik.SecurityCloud.Types
         if ( HasPermissions != null ) {
             this.HasPermissions = HasPermissions;
         }
-        if ( HostLogRetention != null ) {
-            this.HostLogRetention = HostLogRetention;
+        if ( HostLogRetentionInSeconds != null ) {
+            this.HostLogRetentionInSeconds = HostLogRetentionInSeconds;
         }
         if ( Id != null ) {
             this.Id = Id;
@@ -387,10 +387,10 @@ namespace Rubrik.SecurityCloud.Types
         if (this.HasPermissions != null) {
             s += ind + "hasPermissions\n" ;
         }
-        //      C# -> System.Int32? HostLogRetention
-        // GraphQL -> hostLogRetention: Int (scalar)
-        if (this.HostLogRetention != null) {
-            s += ind + "hostLogRetention\n" ;
+        //      C# -> System.Int32? HostLogRetentionInSeconds
+        // GraphQL -> hostLogRetentionInSeconds: Int (scalar)
+        if (this.HostLogRetentionInSeconds != null) {
+            s += ind + "hostLogRetentionInSeconds\n" ;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -598,11 +598,11 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.HasPermissions = true;
         }
-        //      C# -> System.Int32? HostLogRetention
-        // GraphQL -> hostLogRetention: Int (scalar)
-        if (this.HostLogRetention == null && Exploration.Includes(parent + ".hostLogRetention", true))
+        //      C# -> System.Int32? HostLogRetentionInSeconds
+        // GraphQL -> hostLogRetentionInSeconds: Int (scalar)
+        if (this.HostLogRetentionInSeconds == null && Exploration.Includes(parent + ".hostLogRetentionInSeconds", true))
         {
-            this.HostLogRetention = Int32.MinValue;
+            this.HostLogRetentionInSeconds = Int32.MinValue;
         }
         //      C# -> System.String? Id
         // GraphQL -> id: String! (scalar)
@@ -832,4 +832,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

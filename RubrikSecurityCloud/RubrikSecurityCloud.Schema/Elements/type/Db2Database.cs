@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region Db2Database
  
@@ -65,6 +65,16 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> replicatedObjects: [CdmHierarchyObject!]! (interface)
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
+
+        //      C# -> System.Int32? BackupParallelism
+        // GraphQL -> backupParallelism: Int! (scalar)
+        [JsonProperty("backupParallelism")]
+        public System.Int32? BackupParallelism { get; set; }
+
+        //      C# -> System.Int32? BackupSessions
+        // GraphQL -> backupSessions: Int! (scalar)
+        [JsonProperty("backupSessions")]
+        public System.Int32? BackupSessions { get; set; }
 
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
@@ -261,6 +271,8 @@ namespace Rubrik.SecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.Int32? BackupParallelism = null,
+        System.Int32? BackupSessions = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
         System.String? Id = null,
@@ -325,6 +337,12 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( BackupParallelism != null ) {
+            this.BackupParallelism = BackupParallelism;
+        }
+        if ( BackupSessions != null ) {
+            this.BackupSessions = BackupSessions;
         }
         if ( CdmId != null ) {
             this.CdmId = CdmId;
@@ -503,6 +521,16 @@ namespace Rubrik.SecurityCloud.Types
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
             }
+        }
+        //      C# -> System.Int32? BackupParallelism
+        // GraphQL -> backupParallelism: Int! (scalar)
+        if (this.BackupParallelism != null) {
+            s += ind + "backupParallelism\n" ;
+        }
+        //      C# -> System.Int32? BackupSessions
+        // GraphQL -> backupSessions: Int! (scalar)
+        if (this.BackupSessions != null) {
+            s += ind + "backupSessions\n" ;
         }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
@@ -824,6 +852,18 @@ namespace Rubrik.SecurityCloud.Types
             this.ReplicatedObjects = new List<CdmHierarchyObject>();
             this.ReplicatedObjects.ApplyExploratoryFieldSpec(parent + ".replicatedObjects");
         }
+        //      C# -> System.Int32? BackupParallelism
+        // GraphQL -> backupParallelism: Int! (scalar)
+        if (this.BackupParallelism == null && Exploration.Includes(parent + ".backupParallelism", true))
+        {
+            this.BackupParallelism = Int32.MinValue;
+        }
+        //      C# -> System.Int32? BackupSessions
+        // GraphQL -> backupSessions: Int! (scalar)
+        if (this.BackupSessions == null && Exploration.Includes(parent + ".backupSessions", true))
+        {
+            this.BackupSessions = Int32.MinValue;
+        }
         //      C# -> System.String? CdmId
         // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
@@ -1105,4 +1145,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum O365ServiceStatusIndication
     {
@@ -24,4 +24,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum O365ServiceStatusIndication
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

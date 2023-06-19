@@ -5,10 +5,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Collections;
 using System.Management.Automation;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.Client;
-using RubrikSecurityCloud.Schema.Utils;
-using Rubrik.SecurityCloud.PowerShell.Private;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Private
 {
@@ -40,28 +40,27 @@ namespace RubrikSecurityCloud.PowerShell.Private
         }
 
         public static List<RscTypeSummary> GetAllTypeNames(
-               string namefilter = null,
+               string nameFilter = null,
                bool interfaces = false)
         {
             List<RscTypeSummary> types = new List<RscTypeSummary>();
+            Type baseType = typeof(BaseType);
+            Type fieldSpecInterface = typeof(IFieldSpec);
             var assembly = Assembly.Load("RubrikSecurityCloud.Schema");
             if (assembly == null)
             {
                 throw new Exception(
                     "Unable to load RubrikSecurityCloud.Schema");
             }
-
-            Type baseType = assembly.GetTypes().FirstOrDefault(t => t.Name == "BaseType" && t.IsClass);
-            Type fieldSpecInterface = assembly.GetTypes().FirstOrDefault(t => t.Name == "IFieldSpec" && t.IsInterface);
-
-            foreach (var type in assembly.GetTypes())
+            var allTypes = assembly.GetTypes();
+            foreach (var type in allTypes)
             {
-                if (type.Namespace != "Rubrik.SecurityCloud.Types")
+                if (type.Namespace != "RubrikSecurityCloud.Types")
                 {
                     continue;
                 }
-                if (namefilter != null
-                    && !type.Name.ToLower().Contains(namefilter.ToLower()))
+                if (nameFilter != null
+                    && !type.Name.ToLower().Contains(nameFilter.ToLower()))
                 {
                     continue;
                 }
@@ -118,7 +117,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
             if (assembly != null)
             {
-                var type = assembly.GetType("Rubrik.SecurityCloud.Types." + name, false, true);
+                var type = assembly.GetType("RubrikSecurityCloud.Types." + name, false, true);
                 return type;
             }
             else

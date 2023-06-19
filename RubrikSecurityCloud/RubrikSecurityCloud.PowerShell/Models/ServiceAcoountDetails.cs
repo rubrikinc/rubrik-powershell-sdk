@@ -1,6 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
-namespace Rubrik.SecurityCloud.PowerShell.Models
+namespace RubrikSecurityCloud.PowerShell.Models
 {
     public class ServiceAcoountDetails
     {

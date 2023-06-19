@@ -4,19 +4,19 @@
 // Manual changes to this file may be lost.
 
 #nullable enable
-using Rubrik.SecurityCloud.Types;
-using Rubrik.SecurityCloud.NetSDK.Client;
-using Rubrik.SecurityCloud.PowerShell.Private;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using RubrikSecurityCloud.Schema.Utils;
 using GraphQL;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
+using RubrikSecurityCloud.NetSDK.Client;
+using RubrikSecurityCloud.PowerShell.Private;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     [Cmdlet(
         "Invoke",
@@ -807,6 +807,34 @@ GraphQL argument subscriptionIdsFilter: [UUID!]"
 
         
         // -------------------------------------------------------------------
+        // Allcloudaccounttenantswithexoconfig parameter set
+        //
+        // [GraphQL: allAzureCloudAccountTenantsWithExoConfigs]
+        //
+        [Parameter(
+            ParameterSetName = "Allcloudaccounttenantswithexoconfig",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Retrieves details about all the Azure cloud account tenants including the Exocompute configurations for the tenant subscriptions, for specified set of features.
+[GraphQL: allAzureCloudAccountTenantsWithExoConfigs]",
+            Position = 0
+        )]
+        public SwitchParameter Allcloudaccounttenantswithexoconfig { get; set; }
+
+        [Parameter(
+            ParameterSetName = "Allcloudaccounttenantswithexoconfig",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = false,
+            HelpMessage =
+@"Cloud Account Features.
+GraphQL argument features: [CloudAccountFeature!]!"
+        )]
+        public List<CloudAccountFeature>? Features { get; set; }
+        
+        // -------------------------------------------------------------------
         // Allcloudaccounttenant parameter set
         //
         // [GraphQL: allAzureCloudAccountTenants]
@@ -823,16 +851,6 @@ GraphQL argument subscriptionIdsFilter: [UUID!]"
         )]
         public SwitchParameter Allcloudaccounttenant { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Allcloudaccounttenant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
-GraphQL argument features: [CloudAccountFeature!]"
-        )]
-        public List<CloudAccountFeature>? Features { get; set; }
         [Parameter(
             ParameterSetName = "Allcloudaccounttenant",
             Mandatory = false,
@@ -1674,6 +1692,9 @@ GraphQL argument workloadFid: UUID!"
                     case "Cloudaccounttenantwithexoconfig":
                         this.ProcessRecord_Cloudaccounttenantwithexoconfig();
                         break;
+                    case "Allcloudaccounttenantswithexoconfig":
+                        this.ProcessRecord_Allcloudaccounttenantswithexoconfig();
+                        break;
                     case "Allcloudaccounttenant":
                         this.ProcessRecord_Allcloudaccounttenant();
                         break;
@@ -2039,6 +2060,15 @@ GraphQL argument workloadFid: UUID!"
             this._logger.name += " -Cloudaccounttenantwithexoconfig";
             // Invoke graphql operation azureCloudAccountTenantWithExoConfigs
             InvokeQueryAzureCloudAccountTenantWithExoConfigs();
+        }
+
+        // This parameter set invokes a single graphql operation:
+        // allAzureCloudAccountTenantsWithExoConfigs.
+        protected void ProcessRecord_Allcloudaccounttenantswithexoconfig()
+        {
+            this._logger.name += " -Allcloudaccounttenantswithexoconfig";
+            // Invoke graphql operation allAzureCloudAccountTenantsWithExoConfigs
+            InvokeQueryAllAzureCloudAccountTenantsWithExoConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
@@ -3434,6 +3464,42 @@ GraphQL argument workloadFid: UUID!"
             vars.Variables = this._input.GetArgDict();
             var result = this._rbkClient.Invoke(
                 request, vars, "AzureCloudAccountTenantWithExoConfigs", this._logger, GetMetricTags());
+            WriteObject(result, true);
+        }
+
+        // Invoke GraphQL Query:
+        // allAzureCloudAccountTenantsWithExoConfigs(features: [CloudAccountFeature!]!): [AzureCloudAccountTenantWithExoConfigs!]!
+        protected void InvokeQueryAllAzureCloudAccountTenantsWithExoConfigs()
+        {
+            Tuple<string, string>[] argDefs = {
+                Tuple.Create("features", "[CloudAccountFeature!]!"),
+            };
+            List<AzureCloudAccountTenantWithExoConfigs>? fields = null ;
+            if (this.Field != null)
+            {
+                if (this.Field is PSObject psObject) {
+                    fields = (List<AzureCloudAccountTenantWithExoConfigs>)psObject.BaseObject;
+                } else {
+                    fields = (List<AzureCloudAccountTenantWithExoConfigs>)this.Field;
+                }
+            }
+            string document = Query.AllAzureCloudAccountTenantsWithExoConfigs(ref fields);
+            this._input.Initialize(argDefs, fields, "Query.AllAzureCloudAccountTenantsWithExoConfigs");
+            var parameters = "($features: [CloudAccountFeature!]!)\n";
+            var request = new GraphQL.GraphQLRequest
+            {
+                Query = "query QueryAllAzureCloudAccountTenantsWithExoConfigs" + parameters + "{" + document + "}",
+                OperationName = "QueryAllAzureCloudAccountTenantsWithExoConfigs",
+            };
+            OperationVariableSet vars = new();
+            if (this.GetInputs) {
+                this._logger.Debug("Query: " + request.Query);
+                this.WriteObject(this._input);
+                return;
+            }
+            vars.Variables = this._input.GetArgDict();
+            var result = this._rbkClient.Invoke(
+                request, vars, "List<AzureCloudAccountTenantWithExoConfigs>", this._logger, GetMetricTags());
             WriteObject(result, true);
         }
 

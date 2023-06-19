@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region UpdateClusterDefaultAddressInput
 
@@ -30,6 +30,11 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> address: String (scalar)
         [JsonProperty("address")]
         public System.String? Address { get; set; }
+
+        //      C# -> System.Int32? Port
+        // GraphQL -> port: Int (scalar)
+        [JsonProperty("port")]
+        public System.Int32? Port { get; set; }
 
 
         #endregion
@@ -60,4 +65,4 @@ namespace Rubrik.SecurityCloud.Types
     } // class UpdateClusterDefaultAddressInput
     #endregion
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

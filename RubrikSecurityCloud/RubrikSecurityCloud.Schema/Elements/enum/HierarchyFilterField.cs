@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum HierarchyFilterField
     {
@@ -212,6 +212,9 @@ namespace Rubrik.SecurityCloud.Types
 
         [EnumMember(Value = "DOES_SHAREPOINT_HAVE_RELIC_OBJECTS")]
         DOES_SHAREPOINT_HAVE_RELIC_OBJECTS,
+
+        [EnumMember(Value = "DOMAIN_CONTROLLER_CONNECTION_STATUS")]
+        DOMAIN_CONTROLLER_CONNECTION_STATUS,
 
         [EnumMember(Value = "DOMAIN_CONTROLLER_FSMO_ROLE")]
         DOMAIN_CONTROLLER_FSMO_ROLE,
@@ -456,6 +459,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "MANAGED_VOLUME_TYPE")]
         MANAGED_VOLUME_TYPE,
 
+        [EnumMember(Value = "MIGRATED_HOSTS_WITH_GHOST_OBJECTS")]
+        MIGRATED_HOSTS_WITH_GHOST_OBJECTS,
+
         [EnumMember(Value = "MONGODB_DATABASE_ID")]
         MONGODB_DATABASE_ID,
 
@@ -609,4 +615,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum HierarchyFilterField
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

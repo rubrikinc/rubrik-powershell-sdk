@@ -47,58 +47,58 @@ function Write-SlaDomain
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.GlobalSnapshotScheduleInput]$SnapshotSchedule,
+    [RubrikSecurityCloud.Types.GlobalSnapshotScheduleInput]$SnapshotSchedule,
     # Replication specification of the SLA Domain.
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.ReplicationSpecInput]$ReplicationSpecInput,
+    [RubrikSecurityCloud.Types.ReplicationSpecInput]$ReplicationSpecInput,
     # Retention limit for snapshots on the local Rubrik system. If none, they will remain as long as SLA requires.
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.SlaDurationInput]$LocalRetentionLimit,
+    [RubrikSecurityCloud.Types.SlaDurationInput]$LocalRetentionLimit,
     # Backup Window specifications of first full backup for SLA Domain.
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.BackupWindowInput[]]$FirstFullBackupWindows,
+    [RubrikSecurityCloud.Types.BackupWindowInput[]]$FirstFullBackupWindows,
     # Backup Window specifications for SLA Domain.
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.BackupWindowInput[]]$BackupWindows,
+    [RubrikSecurityCloud.Types.BackupWindowInput[]]$BackupWindows,
     # Log configuration of the SLA Domain.
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.LogConfig]$LogConfig,
+    [RubrikSecurityCloud.Types.LogConfig]$LogConfig,
     # Object-specific configuration of the SLA Domain.
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.ObjectSpecificConfigsInput]$ObjectSpecificConfigsInput,
+    [RubrikSecurityCloud.Types.ObjectSpecificConfigsInput]$ObjectSpecificConfigsInput,
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.ArchivalSpecInput[]]$ArchivalSpecs,
+    [RubrikSecurityCloud.Types.ArchivalSpecInput[]]$ArchivalSpecs,
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.ReplicationSpecV2Input[]]$ReplicationSpecsV2,
+    [RubrikSecurityCloud.Types.ReplicationSpecV2Input[]]$ReplicationSpecsV2,
     [Parameter(
       Mandatory = $false, 
       ValueFromPipelineByPropertyName = $true
     )]
-    [Rubrik.SecurityCloud.Types.SlaObjectType[]]$ObjectTypes,
+    [RubrikSecurityCloud.Types.SlaObjectType[]]$ObjectTypes,
     # Recovery Point desired in the form of DateTime value
     [Parameter(
       Mandatory = $false, 

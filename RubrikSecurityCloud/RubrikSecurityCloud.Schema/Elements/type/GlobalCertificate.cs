@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region GlobalCertificate
     public class GlobalCertificate: BaseType
@@ -110,6 +110,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("clusters")]
         public List<CertificateClusterInfo>? Clusters { get; set; }
 
+        //      C# -> Org? Org
+        // GraphQL -> org: Org (type)
+        [JsonProperty("org")]
+        public Org? Org { get; set; }
+
         //      C# -> List<CertificateUsageInfo>? Usages
         // GraphQL -> usages: [CertificateUsageInfo!]! (type)
         [JsonProperty("usages")]
@@ -139,6 +144,7 @@ namespace Rubrik.SecurityCloud.Types
         System.String? Sha256Fingerprint = null,
         List<CdmCertificateUsageInfo>? CdmUsages = null,
         List<CertificateClusterInfo>? Clusters = null,
+        Org? Org = null,
         List<CertificateUsageInfo>? Usages = null
     ) 
     {
@@ -195,6 +201,9 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Clusters != null ) {
             this.Clusters = Clusters;
+        }
+        if ( Org != null ) {
+            this.Org = Org;
         }
         if ( Usages != null ) {
             this.Usages = Usages;
@@ -303,6 +312,14 @@ namespace Rubrik.SecurityCloud.Types
             var fspec = this.Clusters.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "clusters {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> Org? Org
+        // GraphQL -> org: Org (type)
+        if (this.Org != null) {
+            var fspec = this.Org.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "org {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> List<CertificateUsageInfo>? Usages
@@ -431,6 +448,13 @@ namespace Rubrik.SecurityCloud.Types
             this.Clusters = new List<CertificateClusterInfo>();
             this.Clusters.ApplyExploratoryFieldSpec(parent + ".clusters");
         }
+        //      C# -> Org? Org
+        // GraphQL -> org: Org (type)
+        if (this.Org == null && Exploration.Includes(parent + ".org"))
+        {
+            this.Org = new Org();
+            this.Org.ApplyExploratoryFieldSpec(parent + ".org");
+        }
         //      C# -> List<CertificateUsageInfo>? Usages
         // GraphQL -> usages: [CertificateUsageInfo!]! (type)
         if (this.Usages == null && Exploration.Includes(parent + ".usages"))
@@ -480,4 +504,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

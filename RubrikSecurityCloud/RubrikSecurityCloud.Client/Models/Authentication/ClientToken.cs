@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication
+namespace RubrikSecurityCloud.NetSDK.Client.Models.Authentication
 {
     public class ClientToken
     {

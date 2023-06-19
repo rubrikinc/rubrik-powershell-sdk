@@ -11,13 +11,13 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region NutanixCluster
  
-    public class NutanixCluster: BaseType, CdmHierarchyObject, HierarchyObject, NutanixTopLevelDescendantType
+    public class NutanixCluster: BaseType, CdmHierarchyObject, HierarchyObject, NutanixPrismCentralDescendantType, NutanixPrismCentralLogicalChildType, NutanixTopLevelDescendantType
     {
         #region members
 
@@ -781,4 +781,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

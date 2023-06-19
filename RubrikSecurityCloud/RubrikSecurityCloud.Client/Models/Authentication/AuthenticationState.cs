@@ -1,4 +1,4 @@
-﻿namespace Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication
+﻿namespace RubrikSecurityCloud.NetSDK.Client.Models.Authentication
 {
     public enum AuthenticationState
     {

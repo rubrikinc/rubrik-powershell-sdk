@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region KickoffAzureAdAppSetupInput
 
@@ -26,12 +26,12 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("domainName")]
         public System.String? DomainName { get; set; }
 
-        //      C# -> AzureCommonRegion? Region
-        // GraphQL -> region: AzureCommonRegion! (enum)
+        //      C# -> AzureAdRegion? Region
+        // GraphQL -> region: AzureAdRegion! (enum)
         [Required]
         [JsonRequired]
         [JsonProperty("region")]
-        public AzureCommonRegion? Region { get; set; }
+        public AzureAdRegion? Region { get; set; }
 
         //      C# -> AzureAdApp? AzureAdApp
         // GraphQL -> azureADApp: AzureADApp (input)
@@ -67,4 +67,4 @@ namespace Rubrik.SecurityCloud.Types
     } // class KickoffAzureAdAppSetupInput
     #endregion
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

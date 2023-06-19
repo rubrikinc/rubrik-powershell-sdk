@@ -7,12 +7,12 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Newtonsoft.Json;
-using Rubrik.SecurityCloud.NetSDK.Client;
-using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
-using RubrikSecurityCloud.Schema.Utils;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud.NetSDK.Client;
+using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
 
-namespace Rubrik.SecurityCloud.PowerShell.Private
+namespace RubrikSecurityCloud.PowerShell.Private
 {
     /// <summary>
     /// Base class for all Rubrik Security Cloud PowerShell cmdlets.

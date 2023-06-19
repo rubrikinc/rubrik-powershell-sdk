@@ -6,12 +6,12 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Newtonsoft.Json;
-using Rubrik.SecurityCloud.NetSDK.Client;
-using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
-using RubrikSecurityCloud.Schema.Utils;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud.NetSDK.Client;
+using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
 
-namespace Rubrik.SecurityCloud.PowerShell.Private
+namespace RubrikSecurityCloud.PowerShell.Private
 {
     public class GqlTypeName
     {
@@ -70,7 +70,21 @@ namespace Rubrik.SecurityCloud.PowerShell.Private
             try
             {
                 this._rbkClient = (RscGraphQLClient)SessionState.PSVariable.GetValue("RscConnectionClient");
-                if (_rbkClient == null || _rbkClient.AuthenticationState != AuthenticationState.AUTHORIZED)
+
+                //Check if the token has expired. If it has, attempt a new the session and return.
+                if (this._rbkClient != null && _rbkClient.AuthenticationState == AuthenticationState.EXPIRED)
+                {
+                    Console.WriteLine("Client session expired, attempting to renew...");
+                    Task AuthTask = _rbkClient.AuthAsync();
+                    AuthTask.Wait();
+                    if (this._rbkClient.AuthenticationState == AuthenticationState.AUTHORIZED)
+                    {
+                        Console.WriteLine("Client session renewed.");
+                        return;
+                    }
+                }
+
+                if (this._rbkClient == null || _rbkClient.AuthenticationState != AuthenticationState.AUTHORIZED)
                 {
                     throw new Exception("No active session found. Use 'Connect-Rsc'. ");
                 }

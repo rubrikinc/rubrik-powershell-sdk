@@ -14,9 +14,10 @@ using GraphQL.Client.Serializer.Newtonsoft;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 using RubrikSecurityCloud.Client;
-namespace Rubrik.SecurityCloud.NetSDK.Client
+namespace RubrikSecurityCloud.NetSDK.Client
 {
     public class LoggingDelegatingHandler : DelegatingHandler
     {
@@ -159,15 +160,15 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
                 }
             ";
 
-            Rubrik.SecurityCloud.Types.ServiceAccountConnection reply =
-                (Rubrik.SecurityCloud.Types.ServiceAccountConnection)
+            RubrikSecurityCloud.Types.ServiceAccountConnection reply =
+                (RubrikSecurityCloud.Types.ServiceAccountConnection)
                     this
                         .InvokeRawQuery(
                             serviceAccountQuery,
                             null // variables
                         );
 
-            foreach (Rubrik.SecurityCloud.Types.ServiceAccount account in reply.Nodes)
+            foreach (RubrikSecurityCloud.Types.ServiceAccount account in reply.Nodes)
             {
                 if (account.ClientId == this.ClientId)
                 {
@@ -231,7 +232,7 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
 
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            apiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _clientToken.AccessToken);
+            apiClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _clientToken.AccessToken);            
             if (metricsTags != null) {
                 foreach (var header in metricsTags) {
                     apiClient
@@ -257,6 +258,11 @@ namespace Rubrik.SecurityCloud.NetSDK.Client
             }
             catch (Exception ex)
             {
+                //When a token has expired, set the authentication state to EXPIRED
+                if (ex.Message.Contains("TIME_CONSTRAINT_FAILURE"))
+                {
+                    this.AuthenticationState = AuthenticationState.EXPIRED;
+                }
                 Console.WriteLine(
                     $"ERROR: API Server responded: \"{ex.Message}\"" +
                     this.GraphQLRequestToString(Request) +

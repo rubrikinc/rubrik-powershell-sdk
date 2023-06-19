@@ -51,6 +51,7 @@
     <Compile Include="./interface/VcdVappLogicalChildType.cs" />
     <Compile Include="./interface/VcdOrgDescendantType.cs" />
     <Compile Include="./interface/VsphereResourcePoolDescendantType.cs" />
+    <Compile Include="./interface/NutanixPrismCentralDescendantType.cs" />
     <Compile Include="./interface/VsphereComputeClusterPhysicalChildType.cs" />
     <Compile Include="./interface/MongoDatabasePhysicalChildType.cs" />
     <Compile Include="./interface/VsphereFolderLogicalChildType.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="./interface/FailoverClusterTopLevelDescendantType.cs" />
     <Compile Include="./interface/Value.cs" />
     <Compile Include="./interface/HyperVscvmmLogicalChildType.cs" />
+    <Compile Include="./interface/NutanixPrismCentralLogicalChildType.cs" />
     <Compile Include="./interface/TargetTemplate.cs" />
     <Compile Include="./interface/MongoSourcePhysicalChildType.cs" />
     <Compile Include="./interface/NutanixClusterDescendantType.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="./input/NutanixRestoreFileConfigInput.cs" />
     <Compile Include="./input/MssqlDatabaseLiveMountFilterInput.cs" />
     <Compile Include="./input/ResumeTargetInput.cs" />
+    <Compile Include="./input/UnmountDiskInput.cs" />
     <Compile Include="./input/VolumeGroupRestoreFilesConfigInput.cs" />
     <Compile Include="./input/NutanixBulkOnDemandSnapshotJobConfigInput.cs" />
     <Compile Include="./input/MssqlDownloadFromArchiveConfigInput.cs" />
@@ -655,6 +658,7 @@
     <Compile Include="./input/EffectiveSlaFilter.cs" />
     <Compile Include="./input/StopJobInstanceInput.cs" />
     <Compile Include="./input/EnableDisableAppConsistencyInput.cs" />
+    <Compile Include="./input/DomainControllerRestoreConfigInput.cs" />
     <Compile Include="./input/NutanixBatchExportSnapshotJobConfigInput.cs" />
     <Compile Include="./input/RestoreFilesNutanixSnapshotInput.cs" />
     <Compile Include="./input/CreateAutomaticRcsTargetMappingInput.cs" />
@@ -806,6 +810,7 @@
     <Compile Include="./input/StartRecoverS3SnapshotJobInput.cs" />
     <Compile Include="./input/CustomizedRestoreFormConfigurationGuestOsInput.cs" />
     <Compile Include="./input/CreateFailoverClusterInput.cs" />
+    <Compile Include="./input/AdVolumeExportFilter.cs" />
     <Compile Include="./input/UpdateVcdInstancesInput.cs" />
     <Compile Include="./input/ConfigProtectionCaCert.cs" />
     <Compile Include="./input/AddNodesConfigInput.cs" />
@@ -900,6 +905,7 @@
     <Compile Include="./input/GlobalCertificatesQueryInput.cs" />
     <Compile Include="./input/DeleteAzureCloudAccountExocomputeConfigurationsInput.cs" />
     <Compile Include="./input/MosaicSlaInfoInput.cs" />
+    <Compile Include="./input/AdVolumeExportSortByInput.cs" />
     <Compile Include="./input/GroupConfig.cs" />
     <Compile Include="./input/RcsConsumptionStatsInput.cs" />
     <Compile Include="./input/MssqlLogShippingUpdateV2Input.cs" />
@@ -1228,6 +1234,7 @@
     <Compile Include="./input/InviteSsoGroupInput.cs" />
     <Compile Include="./input/ClusterUpdateInput.cs" />
     <Compile Include="./input/MssqlDbUpdateIdInput.cs" />
+    <Compile Include="./input/RestoreDomainControllerSnapshotInput.cs" />
     <Compile Include="./input/CloudDownloadLocationDetailsInput.cs" />
     <Compile Include="./input/MountNutanixSnapshotV1Input.cs" />
     <Compile Include="./input/GenerateClusterRegistrationTokenInput.cs" />
@@ -1369,6 +1376,7 @@
     <Compile Include="./input/QueryVcdVimServerInput.cs" />
     <Compile Include="./input/VsphereLoginInfoInput.cs" />
     <Compile Include="./input/DeleteAwsExocomputeConfigsInput.cs" />
+    <Compile Include="./input/ActiveDirectoryRestoreConfigInput.cs" />
     <Compile Include="./input/HdfsBaseConfigInput.cs" />
     <Compile Include="./input/UpdateVcdVappInput.cs" />
     <Compile Include="./input/ManagedVolumePatchConfigInput.cs" />
@@ -1760,6 +1768,7 @@
     <Compile Include="./enum/DefaultActionType.cs" />
     <Compile Include="./enum/ListAccessUsersSort.cs" />
     <Compile Include="./enum/NetworkProtocolTypeEnum.cs" />
+    <Compile Include="./enum/AdVolumeExportFilterField.cs" />
     <Compile Include="./enum/K8sClusterStatus.cs" />
     <Compile Include="./enum/SourceSslCertReqs.cs" />
     <Compile Include="./enum/Db2SnapshotType.cs" />
@@ -1778,6 +1787,7 @@
     <Compile Include="./enum/TransportLayerProtocol.cs" />
     <Compile Include="./enum/AppBlueprintFailoverStatus.cs" />
     <Compile Include="./enum/ComponentEnum.cs" />
+    <Compile Include="./enum/AdVolumeExportSortByField.cs" />
     <Compile Include="./enum/NutanixSnapshotConsistencyMandate.cs" />
     <Compile Include="./enum/WorkloadType.cs" />
     <Compile Include="./enum/CdmManagedVolumeType.cs" />
@@ -2013,7 +2023,6 @@
     <Compile Include="./enum/MosaicRecoverableRangeRequestSourceType.cs" />
     <Compile Include="./enum/FeatureName.cs" />
     <Compile Include="./enum/ClusterLicenseInfoType.cs" />
-    <Compile Include="./enum/AzureCommonRegion.cs" />
     <Compile Include="./enum/DataGuardType.cs" />
     <Compile Include="./enum/VcenterSummaryConflictResolutionAuthz.cs" />
     <Compile Include="./enum/CloudInstanceRbsConnectionStatus.cs" />
@@ -2353,6 +2362,7 @@
     <Compile Include="./enum/MssqlDbReplicaRecoveryModel.cs" />
     <Compile Include="./enum/VirtualMachineSummarySnapshotConsistencyMandate.cs" />
     <Compile Include="./enum/HypervLiveMountSortByField.cs" />
+    <Compile Include="./enum/AzureAdRegion.cs" />
     <Compile Include="./enum/OnedriveSearchObjectType.cs" />
     <Compile Include="./enum/AzureNativeManagedDiskType.cs" />
     <Compile Include="./enum/InventorySubHierarchyRootEnum.cs" />
@@ -2528,6 +2538,7 @@
     <Compile Include="./type/CrawlConnection.cs" />
     <Compile Include="./type/CreateCloudNativeTagRuleReply.cs" />
     <Compile Include="./type/NutanixCategory.cs" />
+    <Compile Include="./type/AdVolumeExportEdge.cs" />
     <Compile Include="./type/FilesetTemplate.cs" />
     <Compile Include="./type/SnapshotFile.cs" />
     <Compile Include="./type/UpdateTunnelStatusReply.cs" />
@@ -2861,6 +2872,7 @@
     <Compile Include="./type/VsphereVcenterPhysicalChildTypeEdge.cs" />
     <Compile Include="./type/TakeScreenshotReply.cs" />
     <Compile Include="./type/VsphereAsyncRequestStatus.cs" />
+    <Compile Include="./type/AdVolumeExportConnection.cs" />
     <Compile Include="./type/NutanixVmConnection.cs" />
     <Compile Include="./type/SnapshotFileEdge.cs" />
     <Compile Include="./type/UnifiedFeatureFlag.cs" />
@@ -3051,6 +3063,7 @@
     <Compile Include="./type/SlaReplicationCluster.cs" />
     <Compile Include="./type/FilesetSummary.cs" />
     <Compile Include="./type/LegalHoldSnappableDetailConnection.cs" />
+    <Compile Include="./type/UserAccessGroup.cs" />
     <Compile Include="./type/UserSettings.cs" />
     <Compile Include="./type/EnvoyRegistrationToken.cs" />
     <Compile Include="./type/AnalyzerGroupEdge.cs" />
@@ -3153,6 +3166,7 @@
     <Compile Include="./type/RcsArchivalLocationConsumptionStats.cs" />
     <Compile Include="./type/NasSystem.cs" />
     <Compile Include="./type/ExchangeDagEdge.cs" />
+    <Compile Include="./type/PrincipalDetails.cs" />
     <Compile Include="./type/ClassificationPolicyDetailEdge.cs" />
     <Compile Include="./type/Db2WorkloadDataSnapshotMetadata.cs" />
     <Compile Include="./type/UserAuditGroupByInfo.cs" />
@@ -3221,6 +3235,7 @@
     <Compile Include="./type/AtlassianSiteEdge.cs" />
     <Compile Include="./type/CrawlObjConnection.cs" />
     <Compile Include="./type/O365PdlGroupsReply.cs" />
+    <Compile Include="./type/NutanixPrismCentralDescendantTypeConnection.cs" />
     <Compile Include="./type/FileVersion.cs" />
     <Compile Include="./type/LegalHoldSnapshotDetailEdge.cs" />
     <Compile Include="./type/AzureOauthConsentKickoffReply.cs" />
@@ -3608,7 +3623,6 @@
     <Compile Include="./type/ManagedVolumeMountPhysicalChildTypeEdge.cs" />
     <Compile Include="./type/ClusterRegistrationToken.cs" />
     <Compile Include="./type/VmwareNetworkDeviceInfo.cs" />
-    <Compile Include="./type/ReleaseNoteFeatureFlag.cs" />
     <Compile Include="./type/CreateOnDemandJobReply.cs" />
     <Compile Include="./type/PhoenixRolloutProgress.cs" />
     <Compile Include="./type/ComputeClusterDetail.cs" />
@@ -3828,6 +3842,7 @@
     <Compile Include="./type/SonarReportRowConnection.cs" />
     <Compile Include="./type/AzureAdDirectoryEdge.cs" />
     <Compile Include="./type/SyslogExportRuleSummary.cs" />
+    <Compile Include="./type/NutanixPrismCentralLogicalChildTypeEdge.cs" />
     <Compile Include="./type/ActiveDirectoryDomain.cs" />
     <Compile Include="./type/EnableTargetReply.cs" />
     <Compile Include="./type/VappNetworkSummary.cs" />
@@ -4483,6 +4498,7 @@
     <Compile Include="./type/FailoverStep.cs" />
     <Compile Include="./type/Db2DataBackupFile.cs" />
     <Compile Include="./type/GetSyslogConfigurationReply.cs" />
+    <Compile Include="./type/NutanixPrismCentralLogicalChildTypeConnection.cs" />
     <Compile Include="./type/PatchDb2InstanceReply.cs" />
     <Compile Include="./type/AzureNativeSubscriptionEnabledFeature.cs" />
     <Compile Include="./type/VsphereFolder.cs" />
@@ -4535,6 +4551,7 @@
     <Compile Include="./type/MongodbSourcePhysicalChildTypeEdge.cs" />
     <Compile Include="./type/GetAzureHostTypeResp.cs" />
     <Compile Include="./type/MssqlInstanceLogicalChildTypeConnection.cs" />
+    <Compile Include="./type/NutanixPrismCentralDescendantTypeEdge.cs" />
     <Compile Include="./type/VcdInstanceDetailType.cs" />
     <Compile Include="./type/CreateRcvPrivateEndpointApprovalRequestReply.cs" />
     <Compile Include="./type/GetPrincipalRiskTrendReply.cs" />
@@ -4711,6 +4728,7 @@
     <Compile Include="./type/VcdVcenterConnectionInfo.cs" />
     <Compile Include="./type/SonarContentReport.cs" />
     <Compile Include="./type/CassandraKeyspacePhysicalChildTypeEdge.cs" />
+    <Compile Include="./type/AdVolumeExport.cs" />
     <Compile Include="./type/ActiveDirectoryDomainDescendantTypeConnection.cs" />
     <Compile Include="./type/BatchOnDemandBackupHypervVmReply.cs" />
     <Compile Include="./type/SnappableGroupByAtSpecifiedTimeEdge.cs" />

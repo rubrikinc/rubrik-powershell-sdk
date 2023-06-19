@@ -1,4 +1,4 @@
-// ReleaseNoteFeatureFlag.cs
+// UserAccessGroup.cs
 //
 // This generated file is part of the Rubrik PowerShell SDK.
 // Manual changes to this file may be lost.
@@ -11,49 +11,40 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
-    #region ReleaseNoteFeatureFlag
-    public class ReleaseNoteFeatureFlag: BaseType
+    #region UserAccessGroup
+    public class UserAccessGroup: BaseType
     {
         #region members
-
-        //      C# -> System.Boolean? IsEnabled
-        // GraphQL -> isEnabled: Boolean! (scalar)
-        [JsonProperty("isEnabled")]
-        public System.Boolean? IsEnabled { get; set; }
 
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
         public System.String? Name { get; set; }
 
-        //      C# -> System.Int32? Rollout
-        // GraphQL -> rollout: Int! (scalar)
-        [JsonProperty("rollout")]
-        public System.Int32? Rollout { get; set; }
+        //      C# -> System.String? Sid
+        // GraphQL -> sid: String! (scalar)
+        [JsonProperty("sid")]
+        public System.String? Sid { get; set; }
 
 
         #endregion
 
     #region methods
 
-    public ReleaseNoteFeatureFlag Set(
-        System.Boolean? IsEnabled = null,
+    public UserAccessGroup Set(
         System.String? Name = null,
-        System.Int32? Rollout = null
+        System.String? Sid = null
     ) 
     {
-        if ( IsEnabled != null ) {
-            this.IsEnabled = IsEnabled;
-        }
         if ( Name != null ) {
             this.Name = Name;
         }
-        if ( Rollout != null ) {
-            this.Rollout = Rollout;
+        if ( Sid != null ) {
+            this.Sid = Sid;
         }
         return this;
     }
@@ -65,20 +56,15 @@ namespace Rubrik.SecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
-        //      C# -> System.Boolean? IsEnabled
-        // GraphQL -> isEnabled: Boolean! (scalar)
-        if (this.IsEnabled != null) {
-            s += ind + "isEnabled\n" ;
-        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name != null) {
             s += ind + "name\n" ;
         }
-        //      C# -> System.Int32? Rollout
-        // GraphQL -> rollout: Int! (scalar)
-        if (this.Rollout != null) {
-            s += ind + "rollout\n" ;
+        //      C# -> System.String? Sid
+        // GraphQL -> sid: String! (scalar)
+        if (this.Sid != null) {
+            s += ind + "sid\n" ;
         }
         return s;
     }
@@ -88,34 +74,28 @@ namespace Rubrik.SecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
-        //      C# -> System.Boolean? IsEnabled
-        // GraphQL -> isEnabled: Boolean! (scalar)
-        if (this.IsEnabled == null && Exploration.Includes(parent + ".isEnabled", true))
-        {
-            this.IsEnabled = true;
-        }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         if (this.Name == null && Exploration.Includes(parent + ".name", true))
         {
             this.Name = "FETCH";
         }
-        //      C# -> System.Int32? Rollout
-        // GraphQL -> rollout: Int! (scalar)
-        if (this.Rollout == null && Exploration.Includes(parent + ".rollout", true))
+        //      C# -> System.String? Sid
+        // GraphQL -> sid: String! (scalar)
+        if (this.Sid == null && Exploration.Includes(parent + ".sid", true))
         {
-            this.Rollout = Int32.MinValue;
+            this.Sid = "FETCH";
         }
     }
 
 
     #endregion
 
-    } // class ReleaseNoteFeatureFlag
+    } // class UserAccessGroup
     
     #endregion
 
-    public static class ListReleaseNoteFeatureFlagExtensions
+    public static class ListUserAccessGroupExtensions
     {
         // This SDK uses the convention of defining field specs as
         // the collection of fields that are not null in an object.
@@ -130,22 +110,22 @@ namespace Rubrik.SecurityCloud.Types
         // we include the fieldspec of each item in the list
         // as an inline fragment (... on)
         public static string AsFieldSpec(
-            this List<ReleaseNoteFeatureFlag> list,
+            this List<UserAccessGroup> list,
             int indent=0)
         {
             return list[0].AsFieldSpec(indent);
         }
 
         public static void ApplyExploratoryFieldSpec(
-            this List<ReleaseNoteFeatureFlag> list, 
+            this List<UserAccessGroup> list, 
             String parent = "")
         {
             if ( list.Count == 0 ) {
-                list.Add(new ReleaseNoteFeatureFlag());
+                list.Add(new UserAccessGroup());
             }
             list[0].ApplyExploratoryFieldSpec(parent);
         }
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

@@ -6,13 +6,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public static class SchemaMeta
     {
-        public static string GraphqlSchemaVersion = "v20230531-17" ;
+        public static string GraphqlSchemaVersion = "v20230607-42" ;
 
         public static HashSet<string> InterfaceImpls( string interfaceName )
         {
@@ -758,6 +758,18 @@ namespace Rubrik.SecurityCloud.Types
                     new HashSet<string> {
                     "NutanixClusterLogicalChildType",
                     "NutanixVm",
+                    }
+                },
+                {
+                    "NutanixPrismCentralDescendantType",
+                    new HashSet<string> {
+                    "NutanixCluster",
+                    }
+                },
+                {
+                    "NutanixPrismCentralLogicalChildType",
+                    new HashSet<string> {
+                    "NutanixCluster",
                     }
                 },
                 {
@@ -1664,6 +1676,7 @@ namespace Rubrik.SecurityCloud.Types
             allAzureCloudAccountSubnetsByRegion,
             allAzureCloudAccountSubscriptionsByFeature,
             allAzureCloudAccountTenants,
+            allAzureCloudAccountTenantsWithExoConfigs,
             allAzureDiskEncryptionSetsByRegion,
             allAzureEncryptionKeys,
             allAzureExocomputeConfigsInAccount,
@@ -2382,6 +2395,10 @@ namespace Rubrik.SecurityCloud.Types
                 {
                     GqlOperationName.allAzureCloudAccountTenants,
                     "Invoke-RscQueryAzure -Allcloudaccounttenant"
+                },
+                {
+                    GqlOperationName.allAzureCloudAccountTenantsWithExoConfigs,
+                    "Invoke-RscQueryAzure -Allcloudaccounttenantswithexoconfig"
                 },
                 {
                     GqlOperationName.allAzureDiskEncryptionSetsByRegion,

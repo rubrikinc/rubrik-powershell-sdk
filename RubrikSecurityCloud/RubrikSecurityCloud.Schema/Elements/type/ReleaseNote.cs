@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region ReleaseNote
     public class ReleaseNote: BaseType
@@ -40,6 +40,11 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("id")]
         public System.String? Id { get; set; }
 
+        //      C# -> System.String? JiraKey
+        // GraphQL -> jiraKey: String! (scalar)
+        [JsonProperty("jiraKey")]
+        public System.String? JiraKey { get; set; }
+
         //      C# -> DateTime? ReleaseDate
         // GraphQL -> releaseDate: DateTime (scalar)
         [JsonProperty("releaseDate")]
@@ -54,11 +59,6 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> version: String! (scalar)
         [JsonProperty("version")]
         public System.String? Version { get; set; }
-
-        //      C# -> ReleaseNoteFeatureFlag? FeatureFlag
-        // GraphQL -> featureFlag: ReleaseNoteFeatureFlag (type)
-        [JsonProperty("featureFlag")]
-        public ReleaseNoteFeatureFlag? FeatureFlag { get; set; }
 
         //      C# -> List<ReleaseNoteTag>? Tags
         // GraphQL -> tags: [ReleaseNoteTag!]! (type)
@@ -75,10 +75,10 @@ namespace Rubrik.SecurityCloud.Types
         System.String? Description = null,
         System.String? HelpUrl = null,
         System.String? Id = null,
+        System.String? JiraKey = null,
         DateTime? ReleaseDate = null,
         System.String? Title = null,
         System.String? Version = null,
-        ReleaseNoteFeatureFlag? FeatureFlag = null,
         List<ReleaseNoteTag>? Tags = null
     ) 
     {
@@ -94,6 +94,9 @@ namespace Rubrik.SecurityCloud.Types
         if ( Id != null ) {
             this.Id = Id;
         }
+        if ( JiraKey != null ) {
+            this.JiraKey = JiraKey;
+        }
         if ( ReleaseDate != null ) {
             this.ReleaseDate = ReleaseDate;
         }
@@ -102,9 +105,6 @@ namespace Rubrik.SecurityCloud.Types
         }
         if ( Version != null ) {
             this.Version = Version;
-        }
-        if ( FeatureFlag != null ) {
-            this.FeatureFlag = FeatureFlag;
         }
         if ( Tags != null ) {
             this.Tags = Tags;
@@ -139,6 +139,11 @@ namespace Rubrik.SecurityCloud.Types
         if (this.Id != null) {
             s += ind + "id\n" ;
         }
+        //      C# -> System.String? JiraKey
+        // GraphQL -> jiraKey: String! (scalar)
+        if (this.JiraKey != null) {
+            s += ind + "jiraKey\n" ;
+        }
         //      C# -> DateTime? ReleaseDate
         // GraphQL -> releaseDate: DateTime (scalar)
         if (this.ReleaseDate != null) {
@@ -153,14 +158,6 @@ namespace Rubrik.SecurityCloud.Types
         // GraphQL -> version: String! (scalar)
         if (this.Version != null) {
             s += ind + "version\n" ;
-        }
-        //      C# -> ReleaseNoteFeatureFlag? FeatureFlag
-        // GraphQL -> featureFlag: ReleaseNoteFeatureFlag (type)
-        if (this.FeatureFlag != null) {
-            var fspec = this.FeatureFlag.AsFieldSpec(indent+1);
-            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                s += ind + "featureFlag {\n" + fspec + ind + "}\n" ;
-            }
         }
         //      C# -> List<ReleaseNoteTag>? Tags
         // GraphQL -> tags: [ReleaseNoteTag!]! (type)
@@ -202,6 +199,12 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.Id = "FETCH";
         }
+        //      C# -> System.String? JiraKey
+        // GraphQL -> jiraKey: String! (scalar)
+        if (this.JiraKey == null && Exploration.Includes(parent + ".jiraKey", true))
+        {
+            this.JiraKey = "FETCH";
+        }
         //      C# -> DateTime? ReleaseDate
         // GraphQL -> releaseDate: DateTime (scalar)
         if (this.ReleaseDate == null && Exploration.Includes(parent + ".releaseDate", true))
@@ -219,13 +222,6 @@ namespace Rubrik.SecurityCloud.Types
         if (this.Version == null && Exploration.Includes(parent + ".version", true))
         {
             this.Version = "FETCH";
-        }
-        //      C# -> ReleaseNoteFeatureFlag? FeatureFlag
-        // GraphQL -> featureFlag: ReleaseNoteFeatureFlag (type)
-        if (this.FeatureFlag == null && Exploration.Includes(parent + ".featureFlag"))
-        {
-            this.FeatureFlag = new ReleaseNoteFeatureFlag();
-            this.FeatureFlag.ApplyExploratoryFieldSpec(parent + ".featureFlag");
         }
         //      C# -> List<ReleaseNoteTag>? Tags
         // GraphQL -> tags: [ReleaseNoteTag!]! (type)
@@ -276,4 +272,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

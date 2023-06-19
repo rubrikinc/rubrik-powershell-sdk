@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum FailoverGroupByEnum
     {
@@ -51,4 +51,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum FailoverGroupByEnum
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

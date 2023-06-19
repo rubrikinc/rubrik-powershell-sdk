@@ -11,9 +11,9 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region MssqlSlaRelatedProperties
     public class MssqlSlaRelatedProperties: BaseType
@@ -30,10 +30,10 @@ namespace Rubrik.SecurityCloud.Types
         [JsonProperty("hasLogConfigFromSla")]
         public System.Boolean? HasLogConfigFromSla { get; set; }
 
-        //      C# -> System.Int32? HostLogRetention
-        // GraphQL -> hostLogRetention: Int (scalar)
-        [JsonProperty("hostLogRetention")]
-        public System.Int32? HostLogRetention { get; set; }
+        //      C# -> System.Int32? HostLogRetentionInSeconds
+        // GraphQL -> hostLogRetentionInSeconds: Int (scalar)
+        [JsonProperty("hostLogRetentionInSeconds")]
+        public System.Int32? HostLogRetentionInSeconds { get; set; }
 
         //      C# -> System.Int32? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Int (scalar)
@@ -53,7 +53,7 @@ namespace Rubrik.SecurityCloud.Types
     public MssqlSlaRelatedProperties Set(
         System.Boolean? CopyOnly = null,
         System.Boolean? HasLogConfigFromSla = null,
-        System.Int32? HostLogRetention = null,
+        System.Int32? HostLogRetentionInSeconds = null,
         System.Int32? LogBackupFrequencyInSeconds = null,
         System.Int32? LogRetentionHours = null
     ) 
@@ -64,8 +64,8 @@ namespace Rubrik.SecurityCloud.Types
         if ( HasLogConfigFromSla != null ) {
             this.HasLogConfigFromSla = HasLogConfigFromSla;
         }
-        if ( HostLogRetention != null ) {
-            this.HostLogRetention = HostLogRetention;
+        if ( HostLogRetentionInSeconds != null ) {
+            this.HostLogRetentionInSeconds = HostLogRetentionInSeconds;
         }
         if ( LogBackupFrequencyInSeconds != null ) {
             this.LogBackupFrequencyInSeconds = LogBackupFrequencyInSeconds;
@@ -93,10 +93,10 @@ namespace Rubrik.SecurityCloud.Types
         if (this.HasLogConfigFromSla != null) {
             s += ind + "hasLogConfigFromSla\n" ;
         }
-        //      C# -> System.Int32? HostLogRetention
-        // GraphQL -> hostLogRetention: Int (scalar)
-        if (this.HostLogRetention != null) {
-            s += ind + "hostLogRetention\n" ;
+        //      C# -> System.Int32? HostLogRetentionInSeconds
+        // GraphQL -> hostLogRetentionInSeconds: Int (scalar)
+        if (this.HostLogRetentionInSeconds != null) {
+            s += ind + "hostLogRetentionInSeconds\n" ;
         }
         //      C# -> System.Int32? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Int (scalar)
@@ -128,11 +128,11 @@ namespace Rubrik.SecurityCloud.Types
         {
             this.HasLogConfigFromSla = true;
         }
-        //      C# -> System.Int32? HostLogRetention
-        // GraphQL -> hostLogRetention: Int (scalar)
-        if (this.HostLogRetention == null && Exploration.Includes(parent + ".hostLogRetention", true))
+        //      C# -> System.Int32? HostLogRetentionInSeconds
+        // GraphQL -> hostLogRetentionInSeconds: Int (scalar)
+        if (this.HostLogRetentionInSeconds == null && Exploration.Includes(parent + ".hostLogRetentionInSeconds", true))
         {
-            this.HostLogRetention = Int32.MinValue;
+            this.HostLogRetentionInSeconds = Int32.MinValue;
         }
         //      C# -> System.Int32? LogBackupFrequencyInSeconds
         // GraphQL -> logBackupFrequencyInSeconds: Int (scalar)
@@ -188,4 +188,4 @@ namespace Rubrik.SecurityCloud.Types
     }
 
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

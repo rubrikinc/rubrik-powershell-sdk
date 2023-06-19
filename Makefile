@@ -8,7 +8,9 @@ build:
 
 # clean: removes all compiled files.
 clean:
+	rm -rf Tests/testResults.xml
 	$(MAKE) -C RubrikSecurityCloud clean
+	rm -rf docs/powershell docs/graphql/*.graphql
 	if [ -d Tests/mock_api_server ]; then $(MAKE) -C Tests/mock_api_server clean ; fi
 
 # test: run unit tests and mock tests.

@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum Db2LogSnapshotSortBy
     {
@@ -21,4 +21,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum Db2LogSnapshotSortBy
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

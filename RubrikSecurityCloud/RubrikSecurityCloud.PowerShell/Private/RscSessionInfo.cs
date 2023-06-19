@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Threading.Tasks;
-using Rubrik.SecurityCloud.NetSDK.Client;
-using Rubrik.SecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud.NetSDK.Client;
+using RubrikSecurityCloud.PowerShell.Private;
+using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.Client;
-using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
+using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 using RubrikSecurityCloud.PowerShell.Models;
 
 namespace RubrikSecurityCloud.PowerShell.Private

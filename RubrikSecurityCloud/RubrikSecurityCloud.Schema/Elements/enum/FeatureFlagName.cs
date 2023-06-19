@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum FeatureFlagName
     {
@@ -633,6 +633,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "IAM_MULTITENANCY_ENABLED")]
         IAM_MULTITENANCY_ENABLED,
 
+        [EnumMember(Value = "IAM_WEB_AUTHN")]
+        IAM_WEB_AUTHN,
+
         [EnumMember(Value = "IBM_COS_ENABLED")]
         IBM_COS_ENABLED,
 
@@ -1116,6 +1119,9 @@ namespace Rubrik.SecurityCloud.Types
         [EnumMember(Value = "REPLICATION_TARGETS_ENABLED")]
         REPLICATION_TARGETS_ENABLED,
 
+        [EnumMember(Value = "REPORT_FOR_NAS_CD_ENABLED")]
+        REPORT_FOR_NAS_CD_ENABLED,
+
         [EnumMember(Value = "RETENTION_LOCK_SLA_CNW_ENABLED")]
         RETENTION_LOCK_SLA_CNW_ENABLED,
 
@@ -1446,4 +1452,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum FeatureFlagName
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

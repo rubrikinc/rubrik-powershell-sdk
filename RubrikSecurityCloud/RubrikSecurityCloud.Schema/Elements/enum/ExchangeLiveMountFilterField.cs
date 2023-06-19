@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     public enum ExchangeLiveMountFilterField
     {
@@ -30,4 +30,4 @@ namespace Rubrik.SecurityCloud.Types
 
     } // enum ExchangeLiveMountFilterField
 
-} // namespace Rubrik.SecurityCloud.Types
+} // namespace RubrikSecurityCloud.Types

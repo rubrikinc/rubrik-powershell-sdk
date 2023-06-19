@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
 
-namespace Rubrik.SecurityCloud.Types
+namespace RubrikSecurityCloud.Types
 {
     #region Mutation
     public class Mutation
@@ -9699,6 +9699,24 @@ namespace Rubrik.SecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> AsyncRequestStatus? RestoreDomainControllerSnapshot
+        // GraphQL -> restoreDomainControllerSnapshot: AsyncRequestStatus! (type)
+        public static string RestoreDomainControllerSnapshot(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "restoreDomainControllerSnapshot" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> AsyncRequestStatus? RestoreFilesNutanixSnapshot
         // GraphQL -> restoreFilesNutanixSnapshot: AsyncRequestStatus! (type)
         public static string RestoreFilesNutanixSnapshot(
@@ -11261,6 +11279,24 @@ namespace Rubrik.SecurityCloud.Types
             }
             return new string(
                 "unmapCloudAccountExocomputeAccount" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AsyncJobStatus? UnmountDisk
+        // GraphQL -> unmountDisk: AsyncJobStatus! (type)
+        public static string UnmountDisk(
+            ref AsyncJobStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncJobStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "unmountDisk" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

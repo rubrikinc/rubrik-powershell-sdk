@@ -1,5 +1,5 @@
 ﻿using System;
-using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
+using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
 
 namespace RubrikSecurityCloud.PowerShell.Models
 {
