@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using RubrikSecurityCloud.Schema.Utils;
-using Rubrik.SecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.PowerShell.Private;
+using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Private;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
@@ -171,7 +171,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
             try
             {
                 // Create a new GQL Request Object
-                GraphQL.GraphQLRequest request = new GraphQL.GraphQLRequest();
+                GraphQL.GraphQLRequest request = new();
 
                 // Define a new variableset container, uninitialized.
                 OperationVariableSet vars;
@@ -181,7 +181,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                     // ACT ON PARAMETERSET 'Query'
                     //We are returning a list of templates here based on a query
                     case "Query":
-
+                    {
                         PhysicalHost nodeObj = (PhysicalHost)RscTypeInitializer
                             .InitializeTypeWithSelectedProperties("PhysicalHost",
                             new string[]
@@ -195,7 +195,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         switch (hostOsType)
                         {
                             case "LINUX":
-                                nodeObj.PhysicalChildConnection.Nodes.Add(new LinuxFileset());
+                                nodeObj.PhysicalChildConnection.Nodes.Add(
+                                    new LinuxFileset());
                                 nodeObj.PhysicalChildConnection.Nodes[0].InitializeToDefaultValues(0);
                                 break;
 
@@ -205,7 +206,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                                 break;
 
                             default:
-                                throw new Exception("The prodived physical host operating " +
+                                throw new Exception(
+                                    "The prodived physical host operating " +
                                     "system type could not be determined. Please ensure " +
                                     "that the Rubrik Backup Service is running and " +
                                     "registered with CDM and RSC.");
@@ -236,7 +238,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         //Initialize the variable set
                         vars = new OperationVariableSet
                         {
-                            Filters = new List<Filter>(),
                             Variables = new Dictionary<string, object>
                             {
                                 {"fid", HostId },
@@ -260,12 +261,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
                         if (!String.IsNullOrEmpty(Name))
                         {
-                            vars.Filters.Add(new Filter
-                            {
-                                Field = HierarchyFilterField.NAME,
-                                Texts = new List<string>
-                                {
-                                    Name
+                            vars.Variables.Add("filter", new List<Filter>() {
+                                new Filter {
+                                    Field = HierarchyFilterField.NAME,
+                                    Texts = new List<string>
+                                    { Name }
                                 }
                             });
                         }
@@ -282,11 +282,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         WriteObject(hostListTask.Result.PhysicalChildConnection.Nodes, true);
 
                         break;
-
+                    }
 
                     // ACT ON PARAMETERSET 'Id'
                     // We are returning a single fileset template here based on an ID
                     case "Id":
+                    {
                         string queryName = "";
                         string filesetType = this.GetFilesetTypeFromId();
                         PhysicalHost requestFields = new PhysicalHost();
@@ -364,6 +365,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         }
 
                         break;
+                    }
                 }
             }
             catch (Exception ex)

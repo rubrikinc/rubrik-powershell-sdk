@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using RubrikSecurityCloud.Schema.Utils;
-using Rubrik.SecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Private;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Retrieves all of the snapshots (backups) for any given object

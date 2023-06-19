@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using RubrikSecurityCloud.Schema.Utils;
-using Rubrik.SecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.PowerShell.Private;
+using RubrikSecurityCloud.Types;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
@@ -139,6 +139,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     //We are returning a list of templates here based on a query
                     case "Query":
+                    {
                         FilesetTemplateConnection listQuery = new FilesetTemplateConnection();
 
                         listQuery.Nodes = new List<FilesetTemplate>();
@@ -160,7 +161,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         //Initialize the variable set
                         vars = new OperationVariableSet
                         {
-                            Filters = new List<Filter>(),
                             Variables = new Dictionary<string, object>
                             {
                                 {"hostRoot", hostRoot },
@@ -184,14 +184,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
                         if (!String.IsNullOrEmpty(Name))
                         {
-                            vars.Filters.Add(new Filter
+                            var f = new Filter
                             {
                                 Field = HierarchyFilterField.NAME,
                                 Texts = new List<string>
                                 {
                                     Name
                                 }
-                            });
+                            };
+                            vars.Variables.Add("filter",
+                                new List<Filter>() { f });
                         }
 
                         request.Query = listQueryString;
@@ -206,9 +208,10 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         WriteObject(hostListTask.Result.Nodes, true);
 
                         break;
-
+                    }
                     // We are returning a single fileset template here based on an ID
                     case "Id":
+                    {
                         string hostQueryText = $"query FilesetTemplateById(" +
                             $"$fid: UUID!)" +
                             $"{{\n" +
@@ -237,6 +240,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         // Return the result
                         WriteObject(hostRequest.Result, false);
                         break;
+                    }
                 }
             }
             catch (Exception ex)

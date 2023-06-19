@@ -1,16 +1,15 @@
-﻿using Rubrik.SecurityCloud.Types;
-using Rubrik.SecurityCloud.NetSDK.Client;
-using Rubrik.SecurityCloud.PowerShell.Models;
-using Rubrik.SecurityCloud.PowerShell.Private;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
+using RubrikSecurityCloud.NetSDK.Client;
 using RubrikSecurityCloud.PowerShell.Private;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud.PowerShell.Models;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Retrieve one or more Mssql Databases managed by
@@ -96,6 +95,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 switch (ParameterSetName)
                 {
                     case "Query":
+                    {
                         string operationString =
                             $"query MssqlDatabaseListQuery(" +
                             $"$first: Int, " +
@@ -107,31 +107,31 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                             $"{Query.MssqlDatabases(ref listFields)}" +
                             $"\n}}";
 
-                        if (String.IsNullOrEmpty(Name))
+                        if (string.IsNullOrEmpty(Name))
                         {
                             request.OperationName = "MssqlDatabaseListQuery";
                             request.Query = operationString;
 
                             Task<MssqlDatabaseConnection> getListTask =
-                                _rbkClient.InvokeGenericCallAsync<MssqlDatabaseConnection>(request);
+                                _rbkClient.
+                                InvokeGenericCallAsync<MssqlDatabaseConnection>
+                                (request);
 
                             getListTask.Wait();
                             WriteObject(getListTask.Result.Nodes, true);
                         }
                         else
                         {
-                            OperationVariableSet variables = new OperationVariableSet
+                            var f = new Filter
                             {
-                                Filters = new List<Filter>
-                                {
-                                    new Filter
-                                    {
-                                        Field = HierarchyFilterField.NAME,
-                                        Texts = new List<string>
-                                        {
-                                            Name
-                                        }
-                                    }
+                                Field = HierarchyFilterField.NAME,
+                                Texts = new List<string>
+                                { Name }
+                            };
+                            var variables = new OperationVariableSet
+                            {
+                                Variables = new Dictionary<string, object> {
+                                    {"filter", new List<Filter>(){ f } }
                                 }
                             };
 
@@ -139,23 +139,23 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                             request.Query = operationString;
 
                             Task<MssqlDatabaseConnection> nameFilterListTask =
-                                _rbkClient.InvokeGenericCallAsync<MssqlDatabaseConnection>
+                                _rbkClient.
+                                InvokeGenericCallAsync<MssqlDatabaseConnection>
                                 (request, variables);
                             nameFilterListTask.Wait();
                             WriteObject(nameFilterListTask.Result.Nodes, true);
                         }
 
                         break;
-
+                    }
                     case "Id":
-                        OperationVariableSet vars = new OperationVariableSet();
-                        vars.Variables = new Dictionary<string, object>()
-                        {
-                            {"fid", Id }
+                    {
+                        OperationVariableSet vars = new() {
+                            Variables = new Dictionary<string, object>() {
+                                {"fid", Id }
+                            }
                         };
-
                         MssqlDatabase detailFields = null;
-
                         if (Fields == null)
                         {
                             detailFields = new MssqlDatabase();
@@ -182,7 +182,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         WriteObject(getDetailTask.Result, false);
 
                         break;
-
+                    }
                     default:
 
                         break;

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using RubrikSecurityCloud;
 using RubrikSecurityCloud.PowerShell.Models;
 using RubrikSecurityCloud.PowerShell.Private;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
 
     /// <summary>
@@ -20,7 +21,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
     /// 
     /// The cmdlet will return a .NET object by name.
     /// The -ListAvailable parameter will return a list of
-    /// valid Rubrik.SecurityCloud.Types.
+    /// valid RubrikSecurityCloud.Types.
     /// </description>
     /// <example>
     /// Get a list of all available Rsc .NET types

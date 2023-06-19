@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using RubrikSecurityCloud.Schema.Utils;
-using Rubrik.SecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.PowerShell.Private;
+using RubrikSecurityCloud.Types;
 
 namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
@@ -156,7 +156,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                 {
                     //We are returning a list of hosts here based on a query
                     case "Query":
-                        PhysicalHostConnection hostListQuery = new PhysicalHostConnection();
+                    {
+                        var hostListQuery = new PhysicalHostConnection();
 
                         hostListQuery.Nodes = new List<PhysicalHost>();
                         hostListQuery.Nodes.Add(nodeObj);
@@ -175,9 +176,9 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         string hostRoot = $"{OsType.ToUpper()}_HOST_ROOT";
 
                         //Initialize the variable set
+                        var filters = new List<Filter>();
                         vars = new OperationVariableSet
                         {
-                            Filters = new List<Filter>(),
                             Variables = new Dictionary<string, object>
                             {
                                 {"hostRoot", hostRoot },
@@ -201,7 +202,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
                         if (!String.IsNullOrEmpty(Name))
                         {
-                            vars.Filters.Add(new Filter
+                            filters.Add(new Filter
                             {
                                 Field = HierarchyFilterField.NAME,
                                 Texts = new List<string>
@@ -211,7 +212,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             });
                         }
 
-                        vars.Filters.Add(new Filter
+                        filters.Add(new Filter
                         {
                             Field = HierarchyFilterField.IS_RELIC,
                             Texts = new List<string>
@@ -220,7 +221,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                             }
                         });
 
-                        vars.Filters.Add(new Filter
+                        filters.Add(new Filter
                         {
                             Field = HierarchyFilterField.IS_REPLICATED,
                             Texts = new List<string>
@@ -231,7 +232,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
                         request.Query = listQueryString;
                         request.OperationName = "PhysicalHostListQuery";
-
+                        vars.Variables.Add("filter", filters);
                         Task<PhysicalHostConnection> hostListTask =
                             _rbkClient.InvokeGenericCallAsync<PhysicalHostConnection>
                             (request, vars);
@@ -241,9 +242,11 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         WriteObject(hostListTask.Result.Nodes, true);
 
                         break;
+                    }
 
                     // We are returning a single host here based on an ID
                     case "Id":
+                    {
                         string hostQueryText = $"query PhysicalHostById(" +
                             $"$fid: UUID!)" +
                             $"{{\n" +
@@ -272,6 +275,7 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
                         // Return the result
                         WriteObject(hostRequest.Result, false);
                         break;
+                    }
                 }
             }
             catch (Exception ex)

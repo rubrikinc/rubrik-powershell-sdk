@@ -3,9 +3,10 @@ using System.Collections;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Rubrik.SecurityCloud.PowerShell.Private;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.PowerShell.Private;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     /// <summary>
     /// Send a custom GraphQL query to the Rubrik Security Cloud (RSC) API.
@@ -139,11 +140,11 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
             var type = Type.GetType(typeName);
             if (type != null)
                 return type;
-            // type = Type.GetType("Rubrik.SecurityCloud.Operations." + typeName + ", RubrikSecurityCloud.Schema");
+            // type = Type.GetType("RubrikSecurityCloud.Operations." + typeName + ", RubrikSecurityCloud.Schema");
             // if (type != null)
             //     return type;
             type = Type.GetType(
-                "Rubrik.SecurityCloud.Types." + typeName
+                "RubrikSecurityCloud.Types." + typeName
                     + ", RubrikSecurityCloud.Schema"
             );
             if (type != null)

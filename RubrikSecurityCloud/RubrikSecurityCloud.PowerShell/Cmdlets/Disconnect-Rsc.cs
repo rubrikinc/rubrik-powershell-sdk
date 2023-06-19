@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     [Cmdlet(VerbsCommunications.Disconnect, "Rsc")]
     public class Disconnect_Rsc : PSCmdlet

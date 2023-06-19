@@ -3,8 +3,8 @@ using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Rubrik.SecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Models;
 using RubrikSecurityCloud.PowerShell.Private;
 

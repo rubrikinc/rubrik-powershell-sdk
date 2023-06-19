@@ -1,13 +1,12 @@
-﻿using Rubrik.SecurityCloud.Types;
-using Rubrik.SecurityCloud.PowerShell.Private;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using RubrikSecurityCloud.Schema.Utils;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.Types;
 using RubrikSecurityCloud.PowerShell.Private;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
 
     /// <summary>
@@ -112,7 +111,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                 switch (ParameterSetName)
                 {
                     case "Query":
-
+                    {
                         //string operationStringOld = RscGqlOperationBuilder.BuildOperation(
                         //                RscOperationType.query, "VsphereVmListQuery",
                         //                Query.VsphereVmNewConnection(ref listFields),
@@ -136,7 +135,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                                     $"{Query.VsphereVmNewConnection(ref listFields)}" +
                                     $"\n}}";
 
-                        if (String.IsNullOrEmpty(Name))
+                        if (string.IsNullOrEmpty(Name))
                         {
 
                             request.OperationName = "VsphereVmListQuery";
@@ -144,55 +143,53 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
 
 
                             Task<VsphereVmConnection> getListTask =
-                                _rbkClient.InvokeGenericCallAsync<VsphereVmConnection>(request);
+                                _rbkClient.
+                                InvokeGenericCallAsync<VsphereVmConnection>
+                                (request);
 
                             getListTask.Wait();
                             WriteObject(getListTask.Result.Nodes, true);
                         }
                         else
                         {
-                            if (!String.IsNullOrEmpty(Name))                            {
-                                OperationVariableSet variables = new OperationVariableSet
+                            if (!string.IsNullOrEmpty(Name)) {
+                                var f = new Filter {
+                                    Field = HierarchyFilterField.NAME,
+                                    Texts = new List<string> { Name }
+                                };
+                                var variables = new OperationVariableSet
                                 {
-                                    Filters = new List<Filter>
-                                {
-                                    new Filter
+                                    Variables = new Dictionary<string, object>
                                     {
-                                        Field = HierarchyFilterField.NAME,
-                                        Texts = new List<string>
-                                        {
-                                            Name
-                                        }
+                                        {"filter", new List<Filter>(){ f } }
                                     }
-                                }
                                 };
 
                                 request.OperationName = "VsphereVmListQuery";
                                 request.Query = operationString;
 
                                 Task<VsphereVmConnection> nameFilterListTask =
-                                        _rbkClient.InvokeGenericCallAsync<VsphereVmConnection>
+                                    _rbkClient.
+                                    InvokeGenericCallAsync<VsphereVmConnection>
                                         (request, variables);
                                 nameFilterListTask.Wait();
-                                WriteObject(nameFilterListTask.Result.Nodes, true);
+                                WriteObject(
+                                    nameFilterListTask.Result.Nodes, true);
                             }
                         }
                         break;
+                    }
 
                     case "ID":
-
-                        OperationVariableSet vars = new OperationVariableSet();
-                        vars.Variables = new Dictionary<string, object>()
-                        {
-                            { "fid",Id }
+                    {
+                        OperationVariableSet vars = new() {
+                            Variables = new Dictionary<string, object>() {
+                                { "fid",Id }
+                            }
                         };
-
-
                         VsphereVm detailFields = null;
-
                         if (Fields == null)
                         {
-
                             detailFields = new VsphereVm();
                             detailFields.ApplyExploratoryFieldSpec();
                             detailFields.Cluster = new Cluster
@@ -203,15 +200,15 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         }
                         else
                         {
-                            bool allNull = RscCmdletHelper.CheckAllPropertiesAreNull(Fields);
-                            if (allNull)
-                            {
-                                throw new Exception("At least one property of the object" +
-                                    " passed to the -Fields parameter must be not null");
+                            bool allNull = RscCmdletHelper.
+                                CheckAllPropertiesAreNull(Fields);
+                            if (allNull) {
+                                throw new Exception(
+                                    "At least one property of the object" +
+                                    " passed to the -Fields parameter" +
+                                    " must be not null");
 
-                            }
-                            else
-                            {
+                            } else {
                                 detailFields = Fields;
                             }
                         }
@@ -236,6 +233,7 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                         WriteObject(getDetailTask.Result, false);
 
                         break;
+                    }
 
                     default:
 

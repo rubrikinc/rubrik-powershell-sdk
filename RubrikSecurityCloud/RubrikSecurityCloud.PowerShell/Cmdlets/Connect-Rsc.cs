@@ -6,17 +6,18 @@ using System.Security;
 using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
-using Rubrik.SecurityCloud.NetSDK.Client;
-using Rubrik.SecurityCloud.NetSDK.Client.Models.Authentication;
-using Rubrik.SecurityCloud.PowerShell.Models;
+using RubrikSecurityCloud;
+using RubrikSecurityCloud.NetSDK.Client;
+using RubrikSecurityCloud.NetSDK.Client.Models.Authentication;
+using RubrikSecurityCloud.PowerShell.Models;
 using RubrikSecurityCloud.PowerShell.Models;
 using RubrikSecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.PowerShell.Private;
+using RubrikSecurityCloud.PowerShell.Private;
 using System.Xml.Linq;
 using System.Management.Automation.Runspaces;
 using System.Collections;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     ///  <summary>
     ///  Establishes a user session with Rubrik Security Cloud
@@ -192,7 +193,12 @@ namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
                                 ServiceAccountFile = Path.Combine(psProfileDir,
                                                                   "rubrik-powershell-sdk",
                                                                   "rsc_service_account_default.xml");
+                            }
 
+                            if (!File.Exists(ServiceAccountFile))
+                            {
+                                throw new FileNotFoundException($"Service account file not found: { ServiceAccountFile }." +
+                                    $"\nUse Set-RscServiceAccountFile to configure service account authentication.");
                             }
 
                             using (Runspace runspace = RunspaceFactory.CreateRunspace())

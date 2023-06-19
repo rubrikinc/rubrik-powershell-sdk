@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using RubrikSecurityCloud;
 using RubrikSecurityCloud.PowerShell.Models;
 using RubrikSecurityCloud.PowerShell.Private;
-using Rubrik.SecurityCloud.Types;
+using RubrikSecurityCloud.Types;
 
-namespace Rubrik.SecurityCloud.PowerShell.Cmdlets
+namespace RubrikSecurityCloud.PowerShell.Cmdlets
 {
     public class RscInvokeCommandInfo
     {
