@@ -800,7 +800,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereBlueprint" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereBlueprint",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -836,7 +836,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereDatacenter" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereDatacenter",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -872,7 +872,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereComputeCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereComputeCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -908,7 +908,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereResourcePool" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereResourcePool",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -944,7 +944,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereFolder" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereFolder",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -980,7 +980,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereHost" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereHost",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1016,7 +1016,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereDatastoreCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereDatastoreCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1052,7 +1052,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereDatastore" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereDatastore",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1088,7 +1088,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereHostsByFids" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereHostsByFids",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1124,7 +1124,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereTag" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereTag",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1160,7 +1160,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereTagCategory" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereTagCategory",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1196,7 +1196,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereNetwork" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereNetwork",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1244,7 +1244,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereTopLevelDescendantsConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereTopLevelDescendantsConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1290,7 +1290,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereRootRecoveryHierarchy" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereRootRecoveryHierarchy",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1336,7 +1336,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereHostConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereHostConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1382,7 +1382,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereDatastoreConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereDatastoreConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1426,7 +1426,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereLiveMounts" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereLiveMounts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1472,7 +1472,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereMountConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereMountConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1508,7 +1508,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereMount" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1544,7 +1544,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereHostDetails" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereHostDetails",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1580,7 +1580,7 @@ GraphQL argument ids: [String!]!"
                 Query = "query QueryVsphereVmwareCdpLiveInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmwareCdpLiveInfo",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

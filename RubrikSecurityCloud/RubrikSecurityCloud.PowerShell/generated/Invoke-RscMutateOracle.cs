@@ -672,7 +672,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationBulkUpdateOracleHosts" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkUpdateOracleHosts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -708,7 +708,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationRefreshOracleDatabase" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshOracleDatabase",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -744,7 +744,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationUpdateOracleDataGuardGroup" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateOracleDataGuardGroup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -780,7 +780,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationDeleteAllOracleDatabaseSnapshots" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAllOracleDatabaseSnapshots",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -816,7 +816,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationTakeOnDemandOracleDatabaseSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationTakeOnDemandOracleDatabaseSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -852,7 +852,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationTakeOnDemandOracleLogSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationTakeOnDemandOracleLogSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -888,7 +888,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationBulkUpdateOracleRacs" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkUpdateOracleRacs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -924,7 +924,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationExportOracleTablespace" + parameters + "{" + document + "}",
                 OperationName = "MutationExportOracleTablespace",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -960,7 +960,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationValidateOracleAcoFile" + parameters + "{" + document + "}",
                 OperationName = "MutationValidateOracleAcoFile",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -996,7 +996,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationValidateOracleDatabaseBackups" + parameters + "{" + document + "}",
                 OperationName = "MutationValidateOracleDatabaseBackups",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1032,7 +1032,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationBulkUpdateOracleDatabases" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkUpdateOracleDatabases",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1068,7 +1068,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationInstantRecoverOracleSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationInstantRecoverOracleSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1104,7 +1104,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationMountOracleDatabase" + parameters + "{" + document + "}",
                 OperationName = "MutationMountOracleDatabase",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1140,7 +1140,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationExportOracleDatabase" + parameters + "{" + document + "}",
                 OperationName = "MutationExportOracleDatabase",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1176,7 +1176,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationCreateOraclePdbRestore" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateOraclePdbRestore",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1212,7 +1212,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationDownloadOracleDatabaseSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadOracleDatabaseSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1248,7 +1248,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationDeleteOracleMount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteOracleMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1284,7 +1284,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
                 Query = "mutation MutationRestoreOracleLogs" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreOracleLogs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

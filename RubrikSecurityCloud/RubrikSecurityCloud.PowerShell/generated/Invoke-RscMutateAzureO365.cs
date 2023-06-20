@@ -129,7 +129,7 @@ GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!"
                 Query = "mutation MutationSetupAzureO365Exocompute" + parameters + "{" + document + "}",
                 OperationName = "MutationSetupAzureO365Exocompute",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

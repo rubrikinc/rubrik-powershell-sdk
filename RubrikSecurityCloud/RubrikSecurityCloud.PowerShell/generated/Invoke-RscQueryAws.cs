@@ -1786,7 +1786,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeRoot" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeRoot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1822,7 +1822,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeAccount" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1858,7 +1858,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeEc2Instance" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeEc2Instance",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1894,7 +1894,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeEbsVolume" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeEbsVolume",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1930,7 +1930,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeS3Bucket" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeS3Bucket",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1980,7 +1980,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeEc2InstancesByName" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeEc2InstancesByName",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2030,7 +2030,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeEbsVolumesByName" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeEbsVolumesByName",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2067,7 +2067,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllVpcsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllVpcsByRegionFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2103,7 +2103,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllVpcsFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllVpcsFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2139,7 +2139,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryIsAwsNativeEbsVolumeSnapshotRestorable" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAwsNativeEbsVolumeSnapshotRestorable",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2176,7 +2176,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAvailabilityZonesByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAvailabilityZonesByRegionFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2213,7 +2213,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllKmsEncryptionKeysByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllKmsEncryptionKeysByRegionFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2250,7 +2250,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryIsAwsS3BucketNameAvailable" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAwsS3BucketNameAvailable",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2286,7 +2286,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllS3BucketsFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllS3BucketsFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2323,7 +2323,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllS3BucketsDetailsFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllS3BucketsDetailsFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2359,7 +2359,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeRdsInstance" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeRdsInstance",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2403,7 +2403,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeRdsPointInTimeRestoreWindow" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeRdsPointInTimeRestoreWindow",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2447,7 +2447,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryRdsInstanceDetailsFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryRdsInstanceDetailsFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2503,7 +2503,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryIsAwsNativeRdsInstanceLaunchConfigurationValid" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAwsNativeRdsInstanceLaunchConfigurationValid",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2549,7 +2549,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllOptionGroupsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllOptionGroupsByRegionFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2595,7 +2595,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllDbParameterGroupsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllDbParameterGroupsByRegionFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2632,7 +2632,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllDbSubnetGroupsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllDbSubnetGroupsByRegionFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2670,7 +2670,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryValidateAwsNativeRdsInstanceNameForExport" + parameters + "{" + document + "}",
                 OperationName = "QueryValidateAwsNativeRdsInstanceNameForExport",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2708,7 +2708,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryValidateAwsNativeRdsClusterNameForExport" + parameters + "{" + document + "}",
                 OperationName = "QueryValidateAwsNativeRdsClusterNameForExport",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2746,7 +2746,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsNativeRdsExportDefaults" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsNativeRdsExportDefaults",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2783,7 +2783,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllEc2KeyPairsByRegionFromAws" + parameters + "{" + document + "}",
                 OperationName = "QueryAllEc2KeyPairsByRegionFromAws",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2819,7 +2819,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAmiTypeForAwsNativeArchivedSnapshotExport" + parameters + "{" + document + "}",
                 OperationName = "QueryAmiTypeForAwsNativeArchivedSnapshotExport",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2854,7 +2854,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsRdsAuroraInstanceClasses" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsRdsAuroraInstanceClasses",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2897,7 +2897,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllSupportedAwsRdsDatabaseInstanceClasses" + parameters + "{" + document + "}",
                 OperationName = "QueryAllSupportedAwsRdsDatabaseInstanceClasses",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2933,7 +2933,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsComputeSettings" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsComputeSettings",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2977,7 +2977,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsComputeSettings" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsComputeSettings",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3013,7 +3013,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsCloudAccountsWithFeatures" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsCloudAccountsWithFeatures",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3049,7 +3049,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsCloudAccountsFeaturesWithExoConfigs" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsCloudAccountsFeaturesWithExoConfigs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3086,7 +3086,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsCloudAccountWithFeatures" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountWithFeatures",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3124,7 +3124,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsCloudAccountListVpcs" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountListVpcs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3168,7 +3168,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsCloudAccountListSubnets" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountListSubnets",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3212,7 +3212,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsCloudAccountListSecurityGroups" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountListSecurityGroups",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3250,7 +3250,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAwsCloudAccountListKmsKeys" + parameters + "{" + document + "}",
                 OperationName = "QueryAwsCloudAccountListKmsKeys",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3286,7 +3286,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsExocomputeConfigs" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsExocomputeConfigs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3322,7 +3322,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsCloudAccountConfigs" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsCloudAccountConfigs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3358,7 +3358,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsRegions" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsRegions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3394,7 +3394,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsCdmVersions" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsCdmVersions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3431,7 +3431,7 @@ GraphQL argument awsNativeAccountIdOrNamePrefix: String!"
                 Query = "query QueryAllAwsInstanceProfileNames" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAwsInstanceProfileNames",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

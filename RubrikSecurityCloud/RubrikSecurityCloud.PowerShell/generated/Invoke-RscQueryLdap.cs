@@ -259,7 +259,7 @@ GraphQL argument roleIds: [UUID!]"
                 Query = "query QueryLdapIntegrationConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryLdapIntegrationConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -311,7 +311,7 @@ GraphQL argument roleIds: [UUID!]"
                 Query = "query QueryLdapPrincipalConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryLdapPrincipalConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -363,7 +363,7 @@ GraphQL argument roleIds: [UUID!]"
                 Query = "query QueryLdapAuthorizedPrincipalConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryLdapAuthorizedPrincipalConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

@@ -707,7 +707,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixTopLevelDescendants" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixTopLevelDescendants",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -755,7 +755,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixTopLevelDescendantsV2" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixTopLevelDescendantsV2",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -791,7 +791,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -837,7 +837,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixPrismCentrals" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixPrismCentrals",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -883,7 +883,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixCategories" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixCategories",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -919,7 +919,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixCategoryValues" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixCategoryValues",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -965,7 +965,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixCategoryValueVms" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixCategoryValueVms",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1001,7 +1001,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1045,7 +1045,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixMounts" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixMounts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1081,7 +1081,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixClusterContainers" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixClusterContainers",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1117,7 +1117,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixClusterNetworks" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixClusterNetworks",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1153,7 +1153,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixClusterAsyncRequestStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixClusterAsyncRequestStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1189,7 +1189,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixVmAsyncRequestStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixVmAsyncRequestStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1225,7 +1225,7 @@ Lists all files and directories in a given path.
                 Query = "query QuerySearchNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "QuerySearchNutanixVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1261,7 +1261,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixVmMissedSnapshots" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixVmMissedSnapshots",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1297,7 +1297,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixBrowseSnapshot" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixBrowseSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1333,7 +1333,7 @@ Lists all files and directories in a given path.
                 Query = "query QueryNutanixSnapshotDetail" + parameters + "{" + document + "}",
                 OperationName = "QueryNutanixSnapshotDetail",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

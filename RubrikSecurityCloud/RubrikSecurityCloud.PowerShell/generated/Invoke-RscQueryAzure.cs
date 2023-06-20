@@ -2356,7 +2356,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureNativeRoot" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureNativeRoot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2391,7 +2391,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureNativeSubscription" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureNativeSubscription",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2427,7 +2427,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureNativeResourceGroup" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureNativeResourceGroup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2463,7 +2463,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureNativeVirtualMachine" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureNativeVirtualMachine",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2499,7 +2499,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureNativeManagedDisk" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureNativeManagedDisk",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2535,7 +2535,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeVirtualNetworks" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeVirtualNetworks",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2572,7 +2572,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeSubnetsByRegionFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeSubnetsByRegionFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2609,7 +2609,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeSecurityGroupsByRegionFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeSecurityGroupsByRegionFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2646,7 +2646,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureDiskEncryptionSetsByRegion" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureDiskEncryptionSetsByRegion",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2684,7 +2684,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeAvailabilitySetsByRegionFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeAvailabilitySetsByRegionFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2722,7 +2722,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeExportCompatibleVmSizesByRegionFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2759,7 +2759,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeExportCompatibleDiskTypesByRegionFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2795,7 +2795,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeVirtualMachineSizes" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeVirtualMachineSizes",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2832,7 +2832,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryIsAzureNativeManagedDiskSnapshotRestorable" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAzureNativeManagedDiskSnapshotRestorable",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2869,7 +2869,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryIsAzureStorageAccountNameAvailable" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAzureStorageAccountNameAvailable",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2905,7 +2905,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeStorageAccountsFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeStorageAccountsFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2941,7 +2941,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureSqlDatabase" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureSqlDatabase",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2977,7 +2977,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureSqlDatabaseServer" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureSqlDatabaseServer",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3013,7 +3013,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureSqlManagedInstanceDatabase" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureSqlManagedInstanceDatabase",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3049,7 +3049,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureSqlManagedInstanceServer" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureSqlManagedInstanceServer",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3093,7 +3093,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureSqlDatabaseDbPointInTimeRestoreWindowFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3137,7 +3137,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3174,7 +3174,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryValidateAzureNativeSqlDatabaseDbNameForExport" + parameters + "{" + document + "}",
                 OperationName = "QueryValidateAzureNativeSqlDatabaseDbNameForExport",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3211,7 +3211,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryValidateAzureNativeSqlManagedInstanceDbNameForExport" + parameters + "{" + document + "}",
                 OperationName = "QueryValidateAzureNativeSqlManagedInstanceDbNameForExport",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3255,7 +3255,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureSqlDatabaseServerElasticPools" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureSqlDatabaseServerElasticPools",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3291,7 +3291,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryIsAzureNativeSqlDatabaseSnapshotPersistent" + parameters + "{" + document + "}",
                 OperationName = "QueryIsAzureNativeSqlDatabaseSnapshotPersistent",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3327,7 +3327,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureKeyVaultsByRegion" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureKeyVaultsByRegion",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3363,7 +3363,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureEncryptionKeys" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureEncryptionKeys",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3409,7 +3409,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureCloudAccountTenant" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureCloudAccountTenant",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3455,7 +3455,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureCloudAccountTenantWithExoConfigs" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureCloudAccountTenantWithExoConfigs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3491,7 +3491,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureCloudAccountTenantsWithExoConfigs" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureCloudAccountTenantsWithExoConfigs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3529,7 +3529,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureCloudAccountTenants" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureCloudAccountTenants",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3565,7 +3565,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureCloudAccountSubscriptionWithFeatures" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureCloudAccountSubscriptionWithFeatures",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3602,7 +3602,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureCloudAccountSubscriptionsByFeature" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureCloudAccountSubscriptionsByFeature",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3639,7 +3639,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureSubscriptionWithExocomputeMappings" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureSubscriptionWithExocomputeMappings",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3677,7 +3677,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllResourceGroupsFromAzure" + parameters + "{" + document + "}",
                 OperationName = "QueryAllResourceGroupsFromAzure",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3721,7 +3721,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryDoesAzureNativeResourceGroupExist" + parameters + "{" + document + "}",
                 OperationName = "QueryDoesAzureNativeResourceGroupExist",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3757,7 +3757,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNativeResourceGroupsInfoIfExist" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNativeResourceGroupsInfoIfExist",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3795,7 +3795,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureCloudAccountMissingPermissions" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureCloudAccountMissingPermissions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3831,7 +3831,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureCloudAccountPermissionConfig" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureCloudAccountPermissionConfig",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3868,7 +3868,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureExocomputeConfigsInAccount" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureExocomputeConfigsInAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3905,7 +3905,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureCloudAccountSubnetsByRegion" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureCloudAccountSubnetsByRegion",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3941,7 +3941,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryValidateAzureCloudAccountExocomputeConfigurations" + parameters + "{" + document + "}",
                 OperationName = "QueryValidateAzureCloudAccountExocomputeConfigurations",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3977,7 +3977,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureArmTemplatesByFeature" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureArmTemplatesByFeature",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4013,7 +4013,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureSubscriptions" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureSubscriptions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4050,7 +4050,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureRegions" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureRegions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4087,7 +4087,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureResourceGroups" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureResourceGroups",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4125,7 +4125,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureVnets" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureVnets",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4163,7 +4163,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureSubnets" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureSubnets",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4201,7 +4201,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureStorageAccounts" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureStorageAccounts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4236,7 +4236,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllHostedAzureRegions" + parameters + "{" + document + "}",
                 OperationName = "QueryAllHostedAzureRegions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4272,7 +4272,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureResourceGroups" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureResourceGroups",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4308,7 +4308,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureVnets" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureVnets",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4344,7 +4344,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureSubnets" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureSubnets",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4380,7 +4380,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureCdmVersions" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureCdmVersions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4416,7 +4416,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureRegions" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureRegions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4452,7 +4452,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureNsgs" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureNsgs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4488,7 +4488,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAllAzureStorageAccounts" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAzureStorageAccounts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4534,7 +4534,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureAdDirectories" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureAdDirectories",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -4570,7 +4570,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "query QueryAzureAdDirectory" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureAdDirectory",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

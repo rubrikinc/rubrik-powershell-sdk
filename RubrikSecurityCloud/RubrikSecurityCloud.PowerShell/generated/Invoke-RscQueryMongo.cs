@@ -407,7 +407,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongoSources" + parameters + "{" + document + "}",
                 OperationName = "QueryMongoSources",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -453,7 +453,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongoDatabases" + parameters + "{" + document + "}",
                 OperationName = "QueryMongoDatabases",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -499,7 +499,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongoCollections" + parameters + "{" + document + "}",
                 OperationName = "QueryMongoCollections",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -535,7 +535,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongoRecoverableRanges" + parameters + "{" + document + "}",
                 OperationName = "QueryMongoRecoverableRanges",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -581,7 +581,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongodbSources" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbSources",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -627,7 +627,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongodbDatabases" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbDatabases",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -673,7 +673,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongodbCollections" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbCollections",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -709,7 +709,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongodbCollectionRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbCollectionRecoverableRange",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -745,7 +745,7 @@ GraphQL argument input: RecoverableRangeInput!"
                 Query = "query QueryMongodbBulkRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryMongodbBulkRecoverableRange",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

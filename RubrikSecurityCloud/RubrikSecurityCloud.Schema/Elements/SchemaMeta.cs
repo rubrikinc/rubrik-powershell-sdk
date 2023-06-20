@@ -12,7 +12,7 @@ namespace RubrikSecurityCloud.Types
 {
     public static class SchemaMeta
     {
-        public static string GraphqlSchemaVersion = "v20230607-42" ;
+        public static string GraphqlSchemaVersion = "v20230607-45" ;
 
         public static HashSet<string> InterfaceImpls( string interfaceName )
         {

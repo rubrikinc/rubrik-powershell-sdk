@@ -637,7 +637,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleTopLevelDescendants" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleTopLevelDescendants",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -683,7 +683,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleDatabases" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleDatabases",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -719,7 +719,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleHost" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleHost",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -755,7 +755,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleRac" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleRac",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -791,7 +791,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleDataGuardGroup" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleDataGuardGroup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -835,7 +835,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleLiveMounts" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleLiveMounts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -871,7 +871,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleAcoParameters" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleAcoParameters",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -907,7 +907,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleRecoverableRanges" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleRecoverableRanges",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -943,7 +943,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleMissedRecoverableRanges" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleMissedRecoverableRanges",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -979,7 +979,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleMissedSnapshots" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleMissedSnapshots",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1015,7 +1015,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleAcoExampleDownloadLink" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleAcoExampleDownloadLink",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1051,7 +1051,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOraclePdbDetails" + parameters + "{" + document + "}",
                 OperationName = "QueryOraclePdbDetails",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1087,7 +1087,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleHostLogBackupConfig" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleHostLogBackupConfig",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1123,7 +1123,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleDatabaseLogBackupConfig" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleDatabaseLogBackupConfig",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1159,7 +1159,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                 Query = "query QueryOracleRacLogBackupConfig" + parameters + "{" + document + "}",
                 OperationName = "QueryOracleRacLogBackupConfig",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

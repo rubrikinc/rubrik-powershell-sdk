@@ -883,7 +883,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationCreateNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateNutanixCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -919,7 +919,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationRefreshNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshNutanixCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -955,7 +955,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationUpdateNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateNutanixCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -991,7 +991,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationDeleteNutanixCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteNutanixCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1027,7 +1027,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationRegisterAgentNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationRegisterAgentNutanixVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1063,7 +1063,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationUpdateNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateNutanixVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1099,7 +1099,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationCreateOnDemandNutanixBackup" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateOnDemandNutanixBackup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1135,7 +1135,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationDeleteNutanixSnapshots" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteNutanixSnapshots",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1171,7 +1171,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationMountNutanixSnapshotV1" + parameters + "{" + document + "}",
                 OperationName = "MutationMountNutanixSnapshotV1",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1207,7 +1207,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationPatchNutanixMountV1" + parameters + "{" + document + "}",
                 OperationName = "MutationPatchNutanixMountV1",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1243,7 +1243,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationDeleteNutanixMountV1" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteNutanixMountV1",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1279,7 +1279,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationMigrateNutanixMountV1" + parameters + "{" + document + "}",
                 OperationName = "MutationMigrateNutanixMountV1",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1315,7 +1315,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationRestoreFilesNutanixSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreFilesNutanixSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1351,7 +1351,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationDownloadFilesNutanixSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadFilesNutanixSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1387,7 +1387,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationExportNutanixSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationExportNutanixSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1423,7 +1423,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationDownloadNutanixSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadNutanixSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1459,7 +1459,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationBatchExportNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchExportNutanixVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1495,7 +1495,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationBatchMountNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchMountNutanixVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1531,7 +1531,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationDownloadNutanixVmFromLocation" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadNutanixVmFromLocation",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1567,7 +1567,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationCreateNutanixPrismCentral" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateNutanixPrismCentral",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1603,7 +1603,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationUpdateNutanixPrismCentral" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateNutanixPrismCentral",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1639,7 +1639,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationDeleteNutanixPrismCentral" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteNutanixPrismCentral",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1675,7 +1675,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationRefreshNutanixPrismCentral" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshNutanixPrismCentral",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1711,7 +1711,7 @@ Take bulk backups for multiple Nutanix virtual machines.
                 Query = "mutation MutationBulkOnDemandSnapshotNutanixVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkOnDemandSnapshotNutanixVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

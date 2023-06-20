@@ -1177,7 +1177,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365Org" + parameters + "{" + document + "}",
                 OperationName = "QueryO365Org",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1214,7 +1214,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365OrgAtSnappableLevel" + parameters + "{" + document + "}",
                 OperationName = "QueryO365OrgAtSnappableLevel",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1251,7 +1251,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryAllO365AdGroups" + parameters + "{" + document + "}",
                 OperationName = "QueryAllO365AdGroups",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1287,7 +1287,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365User" + parameters + "{" + document + "}",
                 OperationName = "QueryO365User",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1323,7 +1323,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365Mailbox" + parameters + "{" + document + "}",
                 OperationName = "QueryO365Mailbox",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1373,7 +1373,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365Groups" + parameters + "{" + document + "}",
                 OperationName = "QueryO365Groups",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1421,7 +1421,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365Mailboxes" + parameters + "{" + document + "}",
                 OperationName = "QueryO365Mailboxes",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1457,7 +1457,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365Onedrive" + parameters + "{" + document + "}",
                 OperationName = "QueryO365Onedrive",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1493,7 +1493,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365Site" + parameters + "{" + document + "}",
                 OperationName = "QueryO365Site",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1529,7 +1529,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365SharepointDrive" + parameters + "{" + document + "}",
                 OperationName = "QueryO365SharepointDrive",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1565,7 +1565,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365SharepointList" + parameters + "{" + document + "}",
                 OperationName = "QueryO365SharepointList",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1601,7 +1601,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365SharepointSite" + parameters + "{" + document + "}",
                 OperationName = "QueryO365SharepointSite",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1637,7 +1637,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365Team" + parameters + "{" + document + "}",
                 OperationName = "QueryO365Team",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1685,7 +1685,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365TeamChannels" + parameters + "{" + document + "}",
                 OperationName = "QueryO365TeamChannels",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1723,7 +1723,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365TeamConversationsFolderId" + parameters + "{" + document + "}",
                 OperationName = "QueryO365TeamConversationsFolderId",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1769,7 +1769,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365TeamPostedBy" + parameters + "{" + document + "}",
                 OperationName = "QueryO365TeamPostedBy",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1805,7 +1805,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365Calendar" + parameters + "{" + document + "}",
                 OperationName = "QueryO365Calendar",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1857,7 +1857,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365SharepointObjectList" + parameters + "{" + document + "}",
                 OperationName = "QueryO365SharepointObjectList",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1905,7 +1905,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365SharepointObjects" + parameters + "{" + document + "}",
                 OperationName = "QueryO365SharepointObjects",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1953,7 +1953,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365UserObjects" + parameters + "{" + document + "}",
                 OperationName = "QueryO365UserObjects",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1988,7 +1988,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365OrgSummaries" + parameters + "{" + document + "}",
                 OperationName = "QueryO365OrgSummaries",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2023,7 +2023,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365ObjectAncestors" + parameters + "{" + document + "}",
                 OperationName = "QueryO365ObjectAncestors",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2075,7 +2075,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryBrowseO365TeamConvChannels" + parameters + "{" + document + "}",
                 OperationName = "QueryBrowseO365TeamConvChannels",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2111,7 +2111,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365ServiceAccount" + parameters + "{" + document + "}",
                 OperationName = "QueryO365ServiceAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2146,7 +2146,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryAllO365OrgStatuses" + parameters + "{" + document + "}",
                 OperationName = "QueryAllO365OrgStatuses",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2180,7 +2180,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365License" + parameters + "{" + document + "}",
                 OperationName = "QueryO365License",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2223,7 +2223,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryListO365Apps" + parameters + "{" + document + "}",
                 OperationName = "QueryListO365Apps",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2258,7 +2258,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryAllO365SubscriptionsAppTypeCounts" + parameters + "{" + document + "}",
                 OperationName = "QueryAllO365SubscriptionsAppTypeCounts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2293,7 +2293,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365StorageStats" + parameters + "{" + document + "}",
                 OperationName = "QueryO365StorageStats",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2329,7 +2329,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                 Query = "query QueryO365ServiceStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryO365ServiceStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

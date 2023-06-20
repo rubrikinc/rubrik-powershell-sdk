@@ -508,7 +508,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervTopLevelDescendants" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervTopLevelDescendants",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -554,7 +554,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervVirtualMachines" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervVirtualMachines",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -590,7 +590,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervScvmm" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervScvmm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -626,7 +626,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -662,7 +662,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervServer" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervServer",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -698,7 +698,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryUniqueHypervServersCount" + parameters + "{" + document + "}",
                 OperationName = "QueryUniqueHypervServersCount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -742,7 +742,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervMounts" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervMounts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -778,7 +778,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervVmDetail" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervVmDetail",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -814,7 +814,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervHostAsyncRequestStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervHostAsyncRequestStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -850,7 +850,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervScvmmAsyncRequestStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervScvmmAsyncRequestStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -886,7 +886,7 @@ Get details about a Hyper-V vm related async request.
                 Query = "query QueryHypervVirtualMachineAsyncRequestStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryHypervVirtualMachineAsyncRequestStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

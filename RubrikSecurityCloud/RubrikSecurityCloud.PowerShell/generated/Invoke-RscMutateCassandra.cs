@@ -227,7 +227,7 @@ GraphQL argument input: MosaicRestoreDataInput!"
                 Query = "mutation MutationRecoverCassandraSource" + parameters + "{" + document + "}",
                 OperationName = "MutationRecoverCassandraSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -263,7 +263,7 @@ GraphQL argument input: MosaicRestoreDataInput!"
                 Query = "mutation MutationCreateCassandraSource" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateCassandraSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -299,7 +299,7 @@ GraphQL argument input: MosaicRestoreDataInput!"
                 Query = "mutation MutationUpdateCassandraSource" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCassandraSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -335,7 +335,7 @@ GraphQL argument input: MosaicRestoreDataInput!"
                 Query = "mutation MutationDeleteCassandraSource" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteCassandraSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -371,7 +371,7 @@ GraphQL argument input: MosaicRestoreDataInput!"
                 Query = "mutation MutationBulkDeleteCassandraSources" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkDeleteCassandraSources",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

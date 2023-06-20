@@ -465,7 +465,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryVsphereVcenter" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVcenter",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -511,7 +511,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryVsphereVcenterConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVcenterConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -547,7 +547,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryUniqueVsphereVcenterCount" + parameters + "{" + document + "}",
                 OperationName = "QueryUniqueVsphereVcenterCount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -583,7 +583,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryVcenterPreAddInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterPreAddInfo",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -619,7 +619,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryVcenterNetworks" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterNetworks",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -655,7 +655,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryVcenterHotAddNetwork" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterHotAddNetwork",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -691,7 +691,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryVcenterNumProxiesNeeded" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterNumProxiesNeeded",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -727,7 +727,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryAllVcenterHotAddProxyVms" + parameters + "{" + document + "}",
                 OperationName = "QueryAllVcenterHotAddProxyVms",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -763,7 +763,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryVcenterHotAddBandwidth" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterHotAddBandwidth",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -799,7 +799,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                 Query = "query QueryVcenterAdvancedTagPreview" + parameters + "{" + document + "}",
                 OperationName = "QueryVcenterAdvancedTagPreview",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

@@ -1208,7 +1208,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmRecoverFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmRecoverFiles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1244,7 +1244,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmRecoverFilesNew" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmRecoverFilesNew",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1280,7 +1280,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmRegisterAgent" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmRegisterAgent",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1316,7 +1316,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmDownloadSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmDownloadSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1372,7 +1372,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmExportSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmExportSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1408,7 +1408,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmExportSnapshotV2" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmExportSnapshotV2",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1444,7 +1444,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmExportSnapshotV3" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmExportSnapshotV3",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1480,7 +1480,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmBatchExport" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmBatchExport",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1516,7 +1516,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmBatchExportV3" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmBatchExportV3",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1552,7 +1552,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmInitiateInPlaceRecovery" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmInitiateInPlaceRecovery",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1588,7 +1588,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmExportSnapshotWithDownloadFromCloud" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmExportSnapshotWithDownloadFromCloud",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1624,7 +1624,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmBatchInPlaceRecovery" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmBatchInPlaceRecovery",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1660,7 +1660,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmDeleteSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmDeleteSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1708,7 +1708,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmUpdate" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmUpdate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1764,7 +1764,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmInitiateInstantRecovery" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmInitiateInstantRecovery",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1800,7 +1800,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmInitiateInstantRecoveryV2" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmInitiateInstantRecoveryV2",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1836,7 +1836,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmInitiateBatchInstantRecovery" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmInitiateBatchInstantRecovery",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1872,7 +1872,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmInitiateDiskMount" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmInitiateDiskMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1930,7 +1930,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmInitiateLiveMount" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmInitiateLiveMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1966,7 +1966,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmInitiateLiveMountV2" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmInitiateLiveMountV2",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2003,7 +2003,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmBatchLiveMount" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmBatchLiveMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2039,7 +2039,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmInitiateBatchLiveMountV2" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmInitiateBatchLiveMountV2",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2075,7 +2075,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmPowerOnOffLiveMount" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmPowerOnOffLiveMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2112,7 +2112,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmDeleteLiveMount" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmDeleteLiveMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2148,7 +2148,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmListEsxiDatastores" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmListEsxiDatastores",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2184,7 +2184,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmMountRelocate" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmMountRelocate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2220,7 +2220,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmMountRelocateV2" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmMountRelocateV2",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2256,7 +2256,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereExcludeVmDisks" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereExcludeVmDisks",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2292,7 +2292,7 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
                 Query = "mutation MutationVsphereVmDownloadSnapshotFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereVmDownloadSnapshotFiles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

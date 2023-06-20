@@ -997,7 +997,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryAllSlaIofilterStatuses" + parameters + "{" + document + "}",
                 OperationName = "QueryAllSlaIofilterStatuses",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1033,7 +1033,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryAllCdpSlaVmNames" + parameters + "{" + document + "}",
                 OperationName = "QueryAllCdpSlaVmNames",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1097,7 +1097,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QuerySlaDomains" + parameters + "{" + document + "}",
                 OperationName = "QuerySlaDomains",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1157,7 +1157,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QuerySlaDomainWithWarningsList" + parameters + "{" + document + "}",
                 OperationName = "QuerySlaDomainWithWarningsList",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1221,7 +1221,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryGlobalSlaFilterConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryGlobalSlaFilterConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1259,7 +1259,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QuerySlaDomainWithWarnings" + parameters + "{" + document + "}",
                 OperationName = "QuerySlaDomainWithWarnings",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1295,7 +1295,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QuerySlaArchivalValidationWarnings" + parameters + "{" + document + "}",
                 OperationName = "QuerySlaArchivalValidationWarnings",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1339,7 +1339,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryCountOfObjectsProtectedBySlas" + parameters + "{" + document + "}",
                 OperationName = "QueryCountOfObjectsProtectedBySlas",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1389,7 +1389,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QuerySlaAuditDetail" + parameters + "{" + document + "}",
                 OperationName = "QuerySlaAuditDetail",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1425,7 +1425,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QuerySlaSummariesByIds" + parameters + "{" + document + "}",
                 OperationName = "QuerySlaSummariesByIds",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1473,7 +1473,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryGlobalSlaStatuses" + parameters + "{" + document + "}",
                 OperationName = "QueryGlobalSlaStatuses",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1519,7 +1519,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryProtectedClustersForGlobalSla" + parameters + "{" + document + "}",
                 OperationName = "QueryProtectedClustersForGlobalSla",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1555,7 +1555,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QuerySlaConflictObjects" + parameters + "{" + document + "}",
                 OperationName = "QuerySlaConflictObjects",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1601,7 +1601,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QuerySlaManagedVolumes" + parameters + "{" + document + "}",
                 OperationName = "QuerySlaManagedVolumes",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1645,7 +1645,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryClusterSlaDomainConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterSlaDomainConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1689,7 +1689,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryClusterSlaDomainFilterConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterSlaDomainFilterConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1726,7 +1726,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryVerifySlaWithReplicationToCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryVerifySlaWithReplicationToCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1763,7 +1763,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryDownloadSlaWithReplicationCsv" + parameters + "{" + document + "}",
                 OperationName = "QueryDownloadSlaWithReplicationCsv",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1799,7 +1799,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryAllClusterGlobalSlas" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClusterGlobalSlas",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1835,7 +1835,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryAllObjectsLatestUserNoteAudit" + parameters + "{" + document + "}",
                 OperationName = "QueryAllObjectsLatestUserNoteAudit",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1871,7 +1871,7 @@ GraphQL argument clusters: [UUID!]!"
                 Query = "query QueryAllNcdSlaComplianceData" + parameters + "{" + document + "}",
                 OperationName = "QueryAllNcdSlaComplianceData",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

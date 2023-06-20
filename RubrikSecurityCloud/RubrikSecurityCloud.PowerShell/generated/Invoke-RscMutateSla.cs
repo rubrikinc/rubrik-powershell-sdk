@@ -563,7 +563,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationCreateGlobalSla" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateGlobalSla",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -599,7 +599,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationEditGlobalSla" + parameters + "{" + document + "}",
                 OperationName = "MutationEditGlobalSla",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -635,7 +635,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationUpdateGlobalSla" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateGlobalSla",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -672,7 +672,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationDeleteGlobalSla" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteGlobalSla",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -708,7 +708,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationAssignSla" + parameters + "{" + document + "}",
                 OperationName = "MutationAssignSla",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -760,7 +760,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationAssignSlasForSnappableHierarchies" + parameters + "{" + document + "}",
                 OperationName = "MutationAssignSlasForSnappableHierarchies",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -808,7 +808,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationAssignRetentionSlaToSnappables" + parameters + "{" + document + "}",
                 OperationName = "MutationAssignRetentionSlaToSnappables",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -852,7 +852,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationAssignRetentionSlaToSnapshots" + parameters + "{" + document + "}",
                 OperationName = "MutationAssignRetentionSlaToSnapshots",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -888,7 +888,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationPauseSla" + parameters + "{" + document + "}",
                 OperationName = "MutationPauseSla",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -924,7 +924,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationUpgradeSlas" + parameters + "{" + document + "}",
                 OperationName = "MutationUpgradeSlas",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -960,7 +960,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationGetPendingSlaAssignments" + parameters + "{" + document + "}",
                 OperationName = "MutationGetPendingSlaAssignments",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -996,7 +996,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
                 Query = "mutation MutationExportSlaManagedVolumeSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationExportSlaManagedVolumeSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

@@ -824,7 +824,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationRegisterHypervScvmm" + parameters + "{" + document + "}",
                 OperationName = "MutationRegisterHypervScvmm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -860,7 +860,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationHypervScvmmUpdate" + parameters + "{" + document + "}",
                 OperationName = "MutationHypervScvmmUpdate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -896,7 +896,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationHypervScvmmDelete" + parameters + "{" + document + "}",
                 OperationName = "MutationHypervScvmmDelete",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -932,7 +932,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationRefreshHypervScvmm" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshHypervScvmm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -968,7 +968,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationHypervOnDemandSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationHypervOnDemandSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1004,7 +1004,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationHypervDeleteAllSnapshots" + parameters + "{" + document + "}",
                 OperationName = "MutationHypervDeleteAllSnapshots",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1040,7 +1040,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationExportHypervVirtualMachine" + parameters + "{" + document + "}",
                 OperationName = "MutationExportHypervVirtualMachine",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1076,7 +1076,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationDownloadHypervVirtualMachineSnapshotFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadHypervVirtualMachineSnapshotFiles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1112,7 +1112,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationInstantRecoverHypervVirtualMachineSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationInstantRecoverHypervVirtualMachineSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1148,7 +1148,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationRestoreHypervVirtualMachineSnapshotFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreHypervVirtualMachineSnapshotFiles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1184,7 +1184,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationRegisterAgentHypervVirtualMachine" + parameters + "{" + document + "}",
                 OperationName = "MutationRegisterAgentHypervVirtualMachine",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1220,7 +1220,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationDeleteHypervVirtualMachineSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteHypervVirtualMachineSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1256,7 +1256,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationDownloadHypervVirtualMachineSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadHypervVirtualMachineSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1292,7 +1292,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationCreateHypervVirtualMachineSnapshotMount" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateHypervVirtualMachineSnapshotMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1328,7 +1328,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationUpdateHypervVirtualMachineSnapshotMount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateHypervVirtualMachineSnapshotMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1364,7 +1364,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationDeleteHypervVirtualMachineSnapshotMount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteHypervVirtualMachineSnapshotMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1400,7 +1400,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationRefreshHypervServer" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshHypervServer",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1436,7 +1436,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationBatchOnDemandBackupHypervVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchOnDemandBackupHypervVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1472,7 +1472,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationBatchExportHypervVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchExportHypervVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1508,7 +1508,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationBatchMountHypervVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchMountHypervVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1544,7 +1544,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationBatchInstantRecoverHypervVm" + parameters + "{" + document + "}",
                 OperationName = "MutationBatchInstantRecoverHypervVm",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1580,7 +1580,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationUpdateHypervVirtualMachine" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateHypervVirtualMachine",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1616,7 +1616,7 @@ Initiates a job to download a snapshot from the specified location when the snap
                 Query = "mutation MutationDownloadHypervSnapshotFromLocation" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadHypervSnapshotFromLocation",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

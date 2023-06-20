@@ -593,7 +593,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationBrowseMssqlDatabaseSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationBrowseMssqlDatabaseSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -629,7 +629,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationExportMssqlDatabase" + parameters + "{" + document + "}",
                 OperationName = "MutationExportMssqlDatabase",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -665,7 +665,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationRestoreMssqlDatabase" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreMssqlDatabase",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -701,7 +701,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationBulkUpdateMssqlDbs" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkUpdateMssqlDbs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -737,7 +737,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationTakeMssqlLogBackup" + parameters + "{" + document + "}",
                 OperationName = "MutationTakeMssqlLogBackup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -773,7 +773,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationCreateOnDemandMssqlBackup" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateOnDemandMssqlBackup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -809,7 +809,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationDeleteMssqlDbSnapshots" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteMssqlDbSnapshots",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -845,7 +845,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationDeleteMssqlLiveMount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteMssqlLiveMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -881,7 +881,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationBulkCreateOnDemandMssqlBackup" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkCreateOnDemandMssqlBackup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -917,7 +917,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationCreateMssqlLiveMount" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateMssqlLiveMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -953,7 +953,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationUpdateMssqlLogShippingConfiguration" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateMssqlLogShippingConfiguration",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -989,7 +989,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationDownloadMssqlDatabaseFilesFromArchivalLocation" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadMssqlDatabaseFilesFromArchivalLocation",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1025,7 +1025,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationDownloadMssqlDatabaseBackupFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadMssqlDatabaseBackupFiles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1061,7 +1061,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationAssignMssqlSlaDomainProperties" + parameters + "{" + document + "}",
                 OperationName = "MutationAssignMssqlSlaDomainProperties",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1097,7 +1097,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationUpdateMssqlDefaultProperties" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateMssqlDefaultProperties",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1133,7 +1133,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationCreateMssqlLogShippingConfiguration" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateMssqlLogShippingConfiguration",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1169,7 +1169,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
                 Query = "mutation MutationAssignMssqlSlaDomainPropertiesAsync" + parameters + "{" + document + "}",
                 OperationName = "MutationAssignMssqlSlaDomainPropertiesAsync",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

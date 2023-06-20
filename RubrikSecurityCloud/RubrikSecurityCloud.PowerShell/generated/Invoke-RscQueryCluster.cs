@@ -1484,7 +1484,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryAllCloudClusters" + parameters + "{" + document + "}",
                 OperationName = "QueryAllCloudClusters",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1520,7 +1520,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterNodes" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterNodes",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1570,7 +1570,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1606,7 +1606,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1656,7 +1656,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterWithUpgradesInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterWithUpgradesInfo",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1692,7 +1692,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterDns" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterDns",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1728,7 +1728,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterProxy" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterProxy",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1764,7 +1764,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterNtpServers" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterNtpServers",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1800,7 +1800,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterNetworkInterfaces" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterNetworkInterfaces",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1836,7 +1836,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterFloatingIps" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterFloatingIps",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1872,7 +1872,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterVlans" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterVlans",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1908,7 +1908,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterDefaultGateway" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterDefaultGateway",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1944,7 +1944,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterWebSignedCertificate" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterWebSignedCertificate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1980,7 +1980,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterIpmi" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterIpmi",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2016,7 +2016,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterCertificates" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterCertificates",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2052,7 +2052,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryAllClusterWebCertsAndIpmis" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClusterWebCertsAndIpmis",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2088,7 +2088,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterOperationJobProgress" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterOperationJobProgress",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2124,7 +2124,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterIpv6Mode" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterIpv6Mode",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2160,7 +2160,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterCsr" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterCsr",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2195,7 +2195,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterTypeList" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterTypeList",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2244,7 +2244,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterGroupByConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterGroupByConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2294,7 +2294,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterWithConfigProtectionInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterWithConfigProtectionInfo",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2342,7 +2342,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterRcvLocations" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterRcvLocations",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2378,7 +2378,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryAllConnectedClusters" + parameters + "{" + document + "}",
                 OperationName = "QueryAllConnectedClusters",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2414,7 +2414,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryAllClusterReplicationTargets" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClusterReplicationTargets",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2470,7 +2470,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterEncryptionInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterEncryptionInfo",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2506,7 +2506,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryHostFailoverCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryHostFailoverCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2543,7 +2543,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryAllGlobalFileSearchMultipleClusters" + parameters + "{" + document + "}",
                 OperationName = "QueryAllGlobalFileSearchMultipleClusters",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2589,7 +2589,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryK8sClusters" + parameters + "{" + document + "}",
                 OperationName = "QueryK8sClusters",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2625,7 +2625,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryWindowsCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryWindowsCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2669,7 +2669,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterSlaDomainConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterSlaDomainConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2713,7 +2713,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterSlaDomainFilterConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterSlaDomainFilterConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2750,7 +2750,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryVerifySlaWithReplicationToCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryVerifySlaWithReplicationToCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2786,7 +2786,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryAllClusterGlobalSlas" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClusterGlobalSlas",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2821,7 +2821,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryClusterRegistrationProductInfo" + parameters + "{" + document + "}",
                 OperationName = "QueryClusterRegistrationProductInfo",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2856,7 +2856,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryVcdClusters" + parameters + "{" + document + "}",
                 OperationName = "QueryVcdClusters",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2892,7 +2892,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryIsTotpAckNecessaryForCluster" + parameters + "{" + document + "}",
                 OperationName = "QueryIsTotpAckNecessaryForCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2928,7 +2928,7 @@ GraphQL argument listClusterUuid: [UUID!]!"
                 Query = "query QueryAllClustersTotpAckStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryAllClustersTotpAckStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

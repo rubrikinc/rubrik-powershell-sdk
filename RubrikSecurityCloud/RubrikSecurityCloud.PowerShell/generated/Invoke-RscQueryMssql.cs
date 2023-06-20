@@ -589,7 +589,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlTopLevelDescendants" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlTopLevelDescendants",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -635,7 +635,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlDatabases" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlDatabases",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -671,7 +671,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlAvailabilityGroup" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlAvailabilityGroup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -707,7 +707,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlInstance" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlInstance",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -743,7 +743,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlRecoverableRanges" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlRecoverableRanges",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -779,7 +779,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlDatabaseMissedSnapshots" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlDatabaseMissedSnapshots",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -815,7 +815,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlCompatibleInstances" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlCompatibleInstances",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -851,7 +851,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlDatabaseMissedRecoverableRanges" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlDatabaseMissedRecoverableRanges",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -887,7 +887,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryAllMssqlDatabaseRestoreFiles" + parameters + "{" + document + "}",
                 OperationName = "QueryAllMssqlDatabaseRestoreFiles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -931,7 +931,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlDatabaseLiveMounts" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlDatabaseLiveMounts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -967,7 +967,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlDefaultProperties" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlDefaultProperties",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1003,7 +1003,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlDatabaseRestoreEstimate" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlDatabaseRestoreEstimate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1047,7 +1047,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryCdmMssqlLogShippingTargets" + parameters + "{" + document + "}",
                 OperationName = "QueryCdmMssqlLogShippingTargets",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1083,7 +1083,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
                 Query = "query QueryMssqlLogShippingTargets" + parameters + "{" + document + "}",
                 OperationName = "QueryMssqlLogShippingTargets",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

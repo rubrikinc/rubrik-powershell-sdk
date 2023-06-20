@@ -287,7 +287,7 @@ GraphQL argument input: GetMosaicRecoverableRangeInput!"
                 Query = "query QueryCassandraSources" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraSources",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -333,7 +333,7 @@ GraphQL argument input: GetMosaicRecoverableRangeInput!"
                 Query = "query QueryCassandraKeyspaces" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraKeyspaces",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -379,7 +379,7 @@ GraphQL argument input: GetMosaicRecoverableRangeInput!"
                 Query = "query QueryCassandraColumnFamilies" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraColumnFamilies",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -415,7 +415,7 @@ GraphQL argument input: GetMosaicRecoverableRangeInput!"
                 Query = "query QueryCassandraColumnFamilyRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraColumnFamilyRecoverableRange",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -451,7 +451,7 @@ GraphQL argument input: GetMosaicRecoverableRangeInput!"
                 Query = "query QueryCassandraColumnFamilySchema" + parameters + "{" + document + "}",
                 OperationName = "QueryCassandraColumnFamilySchema",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

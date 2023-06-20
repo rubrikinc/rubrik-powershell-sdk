@@ -1477,7 +1477,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationStartAwsNativeEc2InstanceSnapshotsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartAwsNativeEc2InstanceSnapshotsJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1513,7 +1513,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationStartRestoreAwsNativeEc2InstanceSnapshotJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartRestoreAwsNativeEc2InstanceSnapshotJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1549,7 +1549,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationStartRefreshAwsNativeAccountsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartRefreshAwsNativeAccountsJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1585,7 +1585,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationStartCreateAwsNativeEbsVolumeSnapshotsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartCreateAwsNativeEbsVolumeSnapshotsJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1621,7 +1621,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationStartAwsNativeAccountDisableJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartAwsNativeAccountDisableJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1657,7 +1657,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationStartExportAwsNativeEbsVolumeSnapshotJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAwsNativeEbsVolumeSnapshotJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1693,7 +1693,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationExcludeAwsNativeEbsVolumesFromSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationExcludeAwsNativeEbsVolumesFromSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1729,7 +1729,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationStartAwsNativeRdsInstanceSnapshotsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartAwsNativeRdsInstanceSnapshotsJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1765,7 +1765,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationCreateAwsAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAwsAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1801,7 +1801,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpdateAwsAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAwsAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1837,7 +1837,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationCreateAutomaticAwsTargetMapping" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAutomaticAwsTargetMapping",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1873,7 +1873,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationCreateCloudNativeAwsStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateCloudNativeAwsStorageSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1909,7 +1909,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpdateAutomaticAwsTargetMapping" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAutomaticAwsTargetMapping",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1945,7 +1945,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpdateCloudNativeAwsStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCloudNativeAwsStorageSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1981,7 +1981,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationCreateAwsTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAwsTarget",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2017,7 +2017,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpdateAwsTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAwsTarget",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2053,7 +2053,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationCreateAwsReaderTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAwsReaderTarget",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2089,7 +2089,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationCreateAwsComputeSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAwsComputeSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2125,7 +2125,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpdateAwsComputeSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAwsComputeSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2161,7 +2161,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationDeleteAwsComputeSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAwsComputeSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2197,7 +2197,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationAwsCloudAccountValidate" + parameters + "{" + document + "}",
                 OperationName = "MutationAwsCloudAccountValidate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2233,7 +2233,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationAwsCloudAccountInitiate" + parameters + "{" + document + "}",
                 OperationName = "MutationAwsCloudAccountInitiate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2269,7 +2269,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationAwsNativeProtectionAccountAdd" + parameters + "{" + document + "}",
                 OperationName = "MutationAwsNativeProtectionAccountAdd",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2305,7 +2305,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationValidateAndCreateAwsCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationValidateAndCreateAwsCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2341,7 +2341,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationFinalizeAwsCloudAccountProtection" + parameters + "{" + document + "}",
                 OperationName = "MutationFinalizeAwsCloudAccountProtection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2377,7 +2377,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationPrepareAwsCloudAccountDeletion" + parameters + "{" + document + "}",
                 OperationName = "MutationPrepareAwsCloudAccountDeletion",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2413,7 +2413,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationFinalizeAwsCloudAccountDeletion" + parameters + "{" + document + "}",
                 OperationName = "MutationFinalizeAwsCloudAccountDeletion",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2449,7 +2449,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpdateAwsCloudAccountFeature" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAwsCloudAccountFeature",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2485,7 +2485,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpdateAwsCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAwsCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2521,7 +2521,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationPrepareFeatureUpdateForAwsCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationPrepareFeatureUpdateForAwsCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2558,7 +2558,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationAwsCloudAccountUpdateFeature" + parameters + "{" + document + "}",
                 OperationName = "MutationAwsCloudAccountUpdateFeature",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2594,7 +2594,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationCreateAwsExocomputeConfigs" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAwsExocomputeConfigs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2630,7 +2630,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationDeleteAwsExocomputeConfigs" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAwsExocomputeConfigs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2666,7 +2666,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpdateAwsExocomputeConfigs" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAwsExocomputeConfigs",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2702,7 +2702,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationStartAwsExocomputeDisableJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartAwsExocomputeDisableJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2738,7 +2738,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationAddAwsIamUserBasedCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationAddAwsIamUserBasedCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2774,7 +2774,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationDeleteAwsIamUserBasedCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAwsIamUserBasedCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2810,7 +2810,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationDeleteAwsCloudAccountWithoutCft" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAwsCloudAccountWithoutCft",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2846,7 +2846,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpgradeAwsIamUserBasedCloudAccountPermissions" + parameters + "{" + document + "}",
                 OperationName = "MutationUpgradeAwsIamUserBasedCloudAccountPermissions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2882,7 +2882,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationUpgradeAwsCloudAccountFeaturesWithoutCft" + parameters + "{" + document + "}",
                 OperationName = "MutationUpgradeAwsCloudAccountFeaturesWithoutCft",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2918,7 +2918,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationAddAwsAuthenticationServerBasedCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationAddAwsAuthenticationServerBasedCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2954,7 +2954,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationPatchAwsAuthenticationServerBasedCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationPatchAwsAuthenticationServerBasedCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2990,7 +2990,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationPatchAwsIamUserBasedCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationPatchAwsIamUserBasedCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3026,7 +3026,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationCreateAwsCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAwsCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3062,7 +3062,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
                 Query = "mutation MutationDeleteAwsCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAwsCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

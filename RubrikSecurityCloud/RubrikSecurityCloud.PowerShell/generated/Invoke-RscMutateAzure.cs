@@ -1557,7 +1557,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartRefreshAzureNativeSubscriptionsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartRefreshAzureNativeSubscriptionsJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1593,7 +1593,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartRestoreAzureNativeVirtualMachineJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartRestoreAzureNativeVirtualMachineJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1629,7 +1629,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartExportAzureNativeVirtualMachineJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAzureNativeVirtualMachineJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1665,7 +1665,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationExcludeAzureNativeManagedDisksFromSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationExcludeAzureNativeManagedDisksFromSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1701,7 +1701,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartCreateAzureNativeVirtualMachineSnapshotsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartCreateAzureNativeVirtualMachineSnapshotsJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1737,7 +1737,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartDisableAzureNativeSubscriptionProtectionJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartDisableAzureNativeSubscriptionProtectionJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1773,7 +1773,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartCreateAzureNativeManagedDiskSnapshotsJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartCreateAzureNativeManagedDiskSnapshotsJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1809,7 +1809,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartExportAzureNativeManagedDiskJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAzureNativeManagedDiskJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1845,7 +1845,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartExportAzureSqlDatabaseDbJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAzureSqlDatabaseDbJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1881,7 +1881,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartExportAzureSqlManagedInstanceDbJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartExportAzureSqlManagedInstanceDbJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1917,7 +1917,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCreateAzureAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1953,7 +1953,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpdateAzureAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAzureAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1989,7 +1989,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCreateAutomaticAzureTargetMapping" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAutomaticAzureTargetMapping",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2025,7 +2025,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCreateCloudNativeAzureStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateCloudNativeAzureStorageSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2061,7 +2061,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCreateCloudNativeRcvAzureStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateCloudNativeRcvAzureStorageSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2097,7 +2097,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpdateAutomaticAzureTargetMapping" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAutomaticAzureTargetMapping",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2133,7 +2133,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpdateCloudNativeAzureStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCloudNativeAzureStorageSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2169,7 +2169,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpdateCloudNativeRcvAzureStorageSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCloudNativeRcvAzureStorageSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2205,7 +2205,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCreateAzureTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureTarget",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2241,7 +2241,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpdateAzureTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAzureTarget",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2277,7 +2277,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCreateAzureReaderTarget" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureReaderTarget",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2313,7 +2313,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartAzureCloudAccountOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationStartAzureCloudAccountOauth",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2349,7 +2349,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCompleteAzureCloudAccountOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationCompleteAzureCloudAccountOauth",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2385,7 +2385,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationSetAzureCloudAccountCustomerAppCredentials" + parameters + "{" + document + "}",
                 OperationName = "MutationSetAzureCloudAccountCustomerAppCredentials",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2421,7 +2421,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationAddAzureCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationAddAzureCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2457,7 +2457,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationAddAzureCloudAccountWithoutOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationAddAzureCloudAccountWithoutOauth",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2493,7 +2493,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationDeleteAzureCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2529,7 +2529,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationDeleteAzureCloudAccountWithoutOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureCloudAccountWithoutOauth",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2565,7 +2565,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpgradeAzureCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpgradeAzureCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2600,7 +2600,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpdateCustomerAppPermissionForAzureSql" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateCustomerAppPermissionForAzureSql",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2635,7 +2635,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationStartDisableAzureCloudAccountJob" + parameters + "{" + document + "}",
                 OperationName = "MutationStartDisableAzureCloudAccountJob",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2671,7 +2671,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpdateAzureCloudAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateAzureCloudAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2707,7 +2707,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationMapAzureCloudAccountToPersistentStorageLocation" + parameters + "{" + document + "}",
                 OperationName = "MutationMapAzureCloudAccountToPersistentStorageLocation",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2743,7 +2743,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationAddAzureCloudAccountExocomputeConfigurations" + parameters + "{" + document + "}",
                 OperationName = "MutationAddAzureCloudAccountExocomputeConfigurations",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2779,7 +2779,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationDeleteAzureCloudAccountExocomputeConfigurations" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureCloudAccountExocomputeConfigurations",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2815,7 +2815,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationMapAzureCloudAccountExocomputeSubscription" + parameters + "{" + document + "}",
                 OperationName = "MutationMapAzureCloudAccountExocomputeSubscription",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2851,7 +2851,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUnmapAzureCloudAccountExocomputeSubscription" + parameters + "{" + document + "}",
                 OperationName = "MutationUnmapAzureCloudAccountExocomputeSubscription",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2887,7 +2887,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationUpgradeAzureCloudAccountPermissionsWithoutOauth" + parameters + "{" + document + "}",
                 OperationName = "MutationUpgradeAzureCloudAccountPermissionsWithoutOauth",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2922,7 +2922,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationAzureOauthConsentKickoff" + parameters + "{" + document + "}",
                 OperationName = "MutationAzureOauthConsentKickoff",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2957,7 +2957,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationAzureOauthConsentComplete" + parameters + "{" + document + "}",
                 OperationName = "MutationAzureOauthConsentComplete",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2992,7 +2992,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCreateAzureSaasAppAad" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureSaasAppAad",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3027,7 +3027,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCreateAzureCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateAzureCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3063,7 +3063,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationDeleteAzureCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3099,7 +3099,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationKickoffAzureAdAppSetup" + parameters + "{" + document + "}",
                 OperationName = "MutationKickoffAzureAdAppSetup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3135,7 +3135,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCompleteAzureAdAppSetup" + parameters + "{" + document + "}",
                 OperationName = "MutationCompleteAzureAdAppSetup",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3171,7 +3171,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationDeleteAzureAdDirectory" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteAzureAdDirectory",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3207,7 +3207,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationBackupAzureAdDirectory" + parameters + "{" + document + "}",
                 OperationName = "MutationBackupAzureAdDirectory",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3243,7 +3243,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationInitiateAzureAdAppUpdate" + parameters + "{" + document + "}",
                 OperationName = "MutationInitiateAzureAdAppUpdate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -3279,7 +3279,7 @@ GraphQL argument workloadFid: UUID!"
                 Query = "mutation MutationCompleteAzureAdAppUpdate" + parameters + "{" + document + "}",
                 OperationName = "MutationCompleteAzureAdAppUpdate",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

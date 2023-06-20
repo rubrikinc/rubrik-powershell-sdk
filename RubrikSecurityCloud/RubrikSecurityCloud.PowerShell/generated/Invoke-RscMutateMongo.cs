@@ -459,7 +459,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationAddMongoSource" + parameters + "{" + document + "}",
                 OperationName = "MutationAddMongoSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -495,7 +495,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationDeleteMongoSource" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteMongoSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -531,7 +531,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationDiscoverMongoSource" + parameters + "{" + document + "}",
                 OperationName = "MutationDiscoverMongoSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -567,7 +567,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationPatchMongoSource" + parameters + "{" + document + "}",
                 OperationName = "MutationPatchMongoSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -603,7 +603,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationRetryAddMongoSource" + parameters + "{" + document + "}",
                 OperationName = "MutationRetryAddMongoSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -639,7 +639,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationAssignSlaToMongoDbCollection" + parameters + "{" + document + "}",
                 OperationName = "MutationAssignSlaToMongoDbCollection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -675,7 +675,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationRecoverMongoSource" + parameters + "{" + document + "}",
                 OperationName = "MutationRecoverMongoSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -711,7 +711,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationCreateMongodbSource" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateMongodbSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -747,7 +747,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationUpdateMongodbSource" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateMongodbSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -783,7 +783,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationDeleteMongodbSource" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteMongodbSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -819,7 +819,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationBulkDeleteMongodbSources" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkDeleteMongodbSources",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -855,7 +855,7 @@ Supported in m3.2.0-m4.2.0.
                 Query = "mutation MutationRecoverMongodbSource" + parameters + "{" + document + "}",
                 OperationName = "MutationRecoverMongodbSource",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

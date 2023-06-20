@@ -381,7 +381,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Query = "mutation MutationVsphereCreateVcenter" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereCreateVcenter",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -417,7 +417,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Query = "mutation MutationVsphereDeleteVcenter" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereDeleteVcenter",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -465,7 +465,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Query = "mutation MutationVsphereEditVcenter" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereEditVcenter",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -501,7 +501,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Query = "mutation MutationVsphereRefreshVcenter" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereRefreshVcenter",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -537,7 +537,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Query = "mutation MutationUpdateVcenter" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateVcenter",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -573,7 +573,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Query = "mutation MutationUpdateVcenterHotAddNetwork" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateVcenterHotAddNetwork",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -609,7 +609,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                 Query = "mutation MutationUpdateVcenterHotAddBandwidth" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateVcenterHotAddBandwidth",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

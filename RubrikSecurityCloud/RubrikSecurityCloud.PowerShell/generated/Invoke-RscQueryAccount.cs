@@ -296,7 +296,7 @@ GraphQL argument endDateArg: DateTime"
                 Query = "query QueryAccountSettings" + parameters + "{" + document + "}",
                 OperationName = "QueryAccountSettings",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -333,7 +333,7 @@ GraphQL argument endDateArg: DateTime"
                 Query = "query QueryAllAccountsWithExocomputeMappings" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAccountsWithExocomputeMappings",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -379,7 +379,7 @@ GraphQL argument endDateArg: DateTime"
                 Query = "query QueryAllAccountProducts" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAccountProducts",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -414,7 +414,7 @@ GraphQL argument endDateArg: DateTime"
                 Query = "query QueryAccountId" + parameters + "{" + document + "}",
                 OperationName = "QueryAccountId",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -448,7 +448,7 @@ GraphQL argument endDateArg: DateTime"
                 Query = "query QueryAllAccountOwners" + parameters + "{" + document + "}",
                 OperationName = "QueryAllAccountOwners",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

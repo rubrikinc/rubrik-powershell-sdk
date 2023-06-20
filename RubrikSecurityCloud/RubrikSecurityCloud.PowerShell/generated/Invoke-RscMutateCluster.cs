@@ -449,7 +449,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationAddNodesToCloudCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationAddNodesToCloudCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -485,7 +485,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationRegisterCloudCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationRegisterCloudCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -521,7 +521,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationCreateFailoverCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateFailoverCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -557,7 +557,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationUpdateFailoverCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateFailoverCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -593,7 +593,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationDeleteFailoverCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteFailoverCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -629,7 +629,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationBulkDeleteFailoverCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationBulkDeleteFailoverCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -665,7 +665,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationCreateK8sCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateK8sCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -701,7 +701,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationRefreshK8sCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshK8sCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -737,7 +737,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationArchiveK8sCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationArchiveK8sCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -775,7 +775,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationRemoveCdmCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationRemoveCdmCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -811,7 +811,7 @@ GraphQL argument expireInDays: Long"
                 Query = "mutation MutationRecoverCloudCluster" + parameters + "{" + document + "}",
                 OperationName = "MutationRecoverCloudCluster",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

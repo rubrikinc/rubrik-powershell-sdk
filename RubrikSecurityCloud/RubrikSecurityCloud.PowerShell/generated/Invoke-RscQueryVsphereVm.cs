@@ -367,7 +367,7 @@ GraphQL argument id: String!"
                 Query = "query QueryVsphereVmNew" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmNew",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -413,7 +413,7 @@ GraphQL argument id: String!"
                 Query = "query QueryVsphereVmNewConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmNewConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -451,7 +451,7 @@ GraphQL argument id: String!"
                 Query = "query QueryVsphereVmRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmRecoverableRange",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -487,7 +487,7 @@ GraphQL argument id: String!"
                 Query = "query QueryVsphereVmRecoverableRangeInBatch" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmRecoverableRangeInBatch",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -525,7 +525,7 @@ GraphQL argument id: String!"
                 Query = "query QueryVsphereVmMissedRecoverableRange" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmMissedRecoverableRange",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -562,7 +562,7 @@ GraphQL argument id: String!"
                 Query = "query QueryVsphereVmAsyncRequestStatus" + parameters + "{" + document + "}",
                 OperationName = "QueryVsphereVmAsyncRequestStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

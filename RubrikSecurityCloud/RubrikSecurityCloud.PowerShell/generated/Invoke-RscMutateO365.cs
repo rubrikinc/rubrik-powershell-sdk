@@ -1096,7 +1096,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationO365SaaSsetupKickoff" + parameters + "{" + document + "}",
                 OperationName = "MutationO365SaaSsetupKickoff",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1131,7 +1131,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationO365PdlGroups" + parameters + "{" + document + "}",
                 OperationName = "MutationO365PdlGroups",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1167,7 +1167,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationO365SaasSetupComplete" + parameters + "{" + document + "}",
                 OperationName = "MutationO365SaasSetupComplete",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1202,7 +1202,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationO365SetupKickoff" + parameters + "{" + document + "}",
                 OperationName = "MutationO365SetupKickoff",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1237,7 +1237,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationAddO365Org" + parameters + "{" + document + "}",
                 OperationName = "MutationAddO365Org",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1273,7 +1273,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationO365OauthConsentKickoff" + parameters + "{" + document + "}",
                 OperationName = "MutationO365OauthConsentKickoff",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1309,7 +1309,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationO365OauthConsentComplete" + parameters + "{" + document + "}",
                 OperationName = "MutationO365OauthConsentComplete",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1345,7 +1345,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationCreateO365AppKickoff" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateO365AppKickoff",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1381,7 +1381,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationCreateO365AppComplete" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateO365AppComplete",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1417,7 +1417,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationInsertCustomerO365App" + parameters + "{" + document + "}",
                 OperationName = "MutationInsertCustomerO365App",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1453,7 +1453,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationUpdateO365AppAuthStatus" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateO365AppAuthStatus",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1489,7 +1489,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationUpdateO365AppPermissions" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateO365AppPermissions",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1526,7 +1526,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationDeleteO365AzureApp" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteO365AzureApp",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1562,7 +1562,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationBackupO365Mailbox" + parameters + "{" + document + "}",
                 OperationName = "MutationBackupO365Mailbox",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1598,7 +1598,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationBackupO365Onedrive" + parameters + "{" + document + "}",
                 OperationName = "MutationBackupO365Onedrive",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1634,7 +1634,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationBackupO365SharepointDrive" + parameters + "{" + document + "}",
                 OperationName = "MutationBackupO365SharepointDrive",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1670,7 +1670,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationBackupO365SharepointList" + parameters + "{" + document + "}",
                 OperationName = "MutationBackupO365SharepointList",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1706,7 +1706,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationBackupO365SharePointSite" + parameters + "{" + document + "}",
                 OperationName = "MutationBackupO365SharePointSite",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1742,7 +1742,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationBackupO365Team" + parameters + "{" + document + "}",
                 OperationName = "MutationBackupO365Team",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1778,7 +1778,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationRestoreO365TeamsFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreO365TeamsFiles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1814,7 +1814,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationRestoreO365TeamsConversations" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreO365TeamsConversations",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1850,7 +1850,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationRestoreO365Snappable" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreO365Snappable",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1886,7 +1886,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationRefreshO365Org" + parameters + "{" + document + "}",
                 OperationName = "MutationRefreshO365Org",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1922,7 +1922,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationDeleteO365Org" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteO365Org",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1958,7 +1958,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationRestoreO365Mailbox" + parameters + "{" + document + "}",
                 OperationName = "MutationRestoreO365Mailbox",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -1994,7 +1994,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationExportO365Mailbox" + parameters + "{" + document + "}",
                 OperationName = "MutationExportO365Mailbox",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2032,7 +2032,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationSetO365ServiceAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationSetO365ServiceAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2068,7 +2068,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationEnableO365SharePoint" + parameters + "{" + document + "}",
                 OperationName = "MutationEnableO365SharePoint",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2104,7 +2104,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationEnableO365Teams" + parameters + "{" + document + "}",
                 OperationName = "MutationEnableO365Teams",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2140,7 +2140,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationDeleteO365ServiceAccount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteO365ServiceAccount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -2176,7 +2176,7 @@ GraphQL argument exocomputeClusterId: String!"
                 Query = "mutation MutationUpdateO365OrgCustomName" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateO365OrgCustomName",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

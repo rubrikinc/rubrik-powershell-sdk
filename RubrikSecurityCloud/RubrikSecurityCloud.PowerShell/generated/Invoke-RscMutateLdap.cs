@@ -363,7 +363,7 @@ GraphQL argument input: SetLdapMfaSettingInput!"
                 Query = "mutation MutationUpdateLdapIntegration" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateLdapIntegration",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -399,7 +399,7 @@ GraphQL argument input: SetLdapMfaSettingInput!"
                 Query = "mutation MutationRemoveLdapIntegration" + parameters + "{" + document + "}",
                 OperationName = "MutationRemoveLdapIntegration",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -435,7 +435,7 @@ GraphQL argument input: SetLdapMfaSettingInput!"
                 Query = "mutation MutationDeleteLdapPrincipals" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteLdapPrincipals",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -471,7 +471,7 @@ GraphQL argument input: SetLdapMfaSettingInput!"
                 Query = "mutation MutationSetLdapMfaSetting" + parameters + "{" + document + "}",
                 OperationName = "MutationSetLdapMfaSetting",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

@@ -257,7 +257,7 @@ GraphQL argument timezoneOffset: Float"
                 Query = "query QueryActivitySeries" + parameters + "{" + document + "}",
                 OperationName = "QueryActivitySeries",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -307,7 +307,7 @@ GraphQL argument timezoneOffset: Float"
                 Query = "query QueryActivitySeriesConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryActivitySeriesConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -357,7 +357,7 @@ GraphQL argument timezoneOffset: Float"
                 Query = "query QueryActivitySeriesGroupByConnection" + parameters + "{" + document + "}",
                 OperationName = "QueryActivitySeriesGroupByConnection",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

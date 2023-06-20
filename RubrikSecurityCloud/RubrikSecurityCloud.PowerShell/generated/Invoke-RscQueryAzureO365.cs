@@ -508,7 +508,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365Exocompute" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365Exocompute",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -546,7 +546,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365CheckStorageAccountName" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckStorageAccountName",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -590,7 +590,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365CheckStorageAccountAccessibility" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckStorageAccountAccessibility",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -628,7 +628,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365CheckSubscriptionQuota" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckSubscriptionQuota",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -666,7 +666,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365CheckResourceGroupName" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckResourceGroupName",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -710,7 +710,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365CheckVirtualNetworkName" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckVirtualNetworkName",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -747,7 +747,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365ValidateUserRoles" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365ValidateUserRoles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -793,7 +793,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365CheckNsgOutboundRules" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckNsgOutboundRules",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -841,7 +841,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365CheckNetworkSubnet" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365CheckNetworkSubnet",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -889,7 +889,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365GetNetworkSubnetUnusedAddr" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365GetNetworkSubnetUnusedAddr",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -924,7 +924,7 @@ GraphQL argument strict_addr_check: Boolean!"
                 Query = "query QueryAzureO365GetAzureHostType" + parameters + "{" + document + "}",
                 OperationName = "QueryAzureO365GetAzureHostType",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);

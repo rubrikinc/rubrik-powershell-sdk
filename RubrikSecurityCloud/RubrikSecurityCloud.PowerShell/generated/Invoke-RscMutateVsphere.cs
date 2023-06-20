@@ -462,7 +462,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationVsphereOnDemandSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereOnDemandSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -498,7 +498,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationVsphereBulkOnDemandSnapshot" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereBulkOnDemandSnapshot",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -534,7 +534,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationDeleteVsphereLiveMount" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteVsphereLiveMount",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -570,7 +570,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationVsphereExportSnapshotToStandaloneHostV2" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereExportSnapshotToStandaloneHostV2",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -626,7 +626,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationVsphereExportSnapshotToStandaloneHost" + parameters + "{" + document + "}",
                 OperationName = "MutationVsphereExportSnapshotToStandaloneHost",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -662,7 +662,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationDownloadVsphereVirtualMachineFiles" + parameters + "{" + document + "}",
                 OperationName = "MutationDownloadVsphereVirtualMachineFiles",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -698,7 +698,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationCreateVsphereAdvancedTag" + parameters + "{" + document + "}",
                 OperationName = "MutationCreateVsphereAdvancedTag",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -734,7 +734,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationDeleteVsphereAdvancedTag" + parameters + "{" + document + "}",
                 OperationName = "MutationDeleteVsphereAdvancedTag",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
@@ -770,7 +770,7 @@ Updates the name, condition, and description of the specified multi-tag filter.
                 Query = "mutation MutationUpdateVsphereAdvancedTag" + parameters + "{" + document + "}",
                 OperationName = "MutationUpdateVsphereAdvancedTag",
             };
-            OperationVariableSet vars = new();
+            var vars = new OperationVariableSet();
             if (this.GetInputs) {
                 this._logger.Debug("Query: " + request.Query);
                 this.WriteObject(this._input);
