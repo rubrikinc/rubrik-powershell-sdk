@@ -1,0 +1,4 @@
+### PolarisSnapshotSortByEnum
+- SnappableId
+- SnapshotId
+- Date

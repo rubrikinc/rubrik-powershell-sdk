@@ -1,0 +1,11 @@
+### SonarContentReportTableColumnEnum
+- AnalyzersBreakdown
+- SnapshotTime
+- Path
+- Size
+- PoliciesBreakdown
+- ObjectName
+- FileName
+- TotalHits
+- Cluster
+- ObjectType

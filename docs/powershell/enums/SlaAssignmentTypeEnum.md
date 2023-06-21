@@ -1,0 +1,4 @@
+### SlaAssignmentTypeEnum
+- Derived
+- Direct
+- Unassigned

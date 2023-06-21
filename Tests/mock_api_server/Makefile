@@ -3,4 +3,4 @@ run:
 	python ./mock_api_server.py -d
 
 clean:
-	rm -rf out __pycache__
+	@rm -rf out __pycache__

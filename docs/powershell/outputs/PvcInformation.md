@@ -1,0 +1,17 @@
+### PvcInformation
+- id: System.String
+  - ID to uniquely identify PVC.
+- name: System.String
+  - Name of PVC in snapshot.
+- capacity: System.String
+  - PVC storage capacity.
+- accessMode: System.String
+  - Access mode mounted on a host.
+- storageClass: System.String
+  - Storage class of PVC.
+- volume: System.String
+  - PV name on which PVC bound.
+- phase: System.String
+  - Phase in which PVC bound to the PV.
+- labels: System.String
+  - Json string of PVC Labels.

@@ -1,0 +1,33 @@
+### SlaObjectType
+Type of objects managed by SLA Domains.
+
+- UNKNOWN_OBJECT_TYPE - Unknown object.
+- SAP_HANA_OBJECT_TYPE - SAP HANA object.
+- AWS_EC2_EBS_OBJECT_TYPE - AWS EC2 EBS object.
+- AWS_RDS_OBJECT_TYPE - AWS RDS object.
+- AZURE_OBJECT_TYPE - Azure object.
+- GCP_OBJECT_TYPE - GCP object.
+- O365_OBJECT_TYPE - Office 365 object.
+- VSPHERE_OBJECT_TYPE - VSphere object.
+- KUPR_OBJECT_TYPE - Kubernetes object.
+- FILESET_OBJECT_TYPE - Fileset object.
+- CASSANDRA_OBJECT_TYPE - Cassandra object.
+- VOLUME_GROUP_OBJECT_TYPE - Volume group object.
+- MSSQL_OBJECT_TYPE - MSSQL object.
+- AZURE_SQL_DATABASE_OBJECT_TYPE - Azure SQL Database object.
+- AZURE_SQL_MANAGED_INSTANCE_OBJECT_TYPE - Azure SQL Managed Instance object.
+- SNAPMIRROR_CLOUD_OBJECT_TYPE - SnapMirror Cloud object.
+- DB2_OBJECT_TYPE - Db2.
+- MONGODB_OBJECT_TYPE - MongoDB object.
+- MANAGED_VOLUME_OBJECT_TYPE - Managed Volume object.
+- EXCHANGE_OBJECT_TYPE - Microsoft Exchange.
+- HYPERV_OBJECT_TYPE - HyperV SLA Domain object.
+- NUTANIX_OBJECT_TYPE - Nutanix object.
+- NAS_OBJECT_TYPE - NAS object.
+- ORACLE_OBJECT_TYPE - Oracle object.
+- VCD_OBJECT_TYPE - VCD vApp object.
+- MONGO_OBJECT_TYPE - CDM Mongo object.
+- AZURE_AD_OBJECT_TYPE - Azure Active Directory object.
+- AZURE_BLOB_OBJECT_TYPE - Azure Blob object.
+- AWS_S3_OBJECT_TYPE - AWS S3 object.
+- ACTIVE_DIRECTORY_OBJECT_TYPE - Active Directory object.

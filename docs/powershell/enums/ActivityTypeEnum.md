@@ -1,0 +1,60 @@
+### ActivityTypeEnum
+Enum representing different type of activities.
+
+- Storage
+- THREAT_MONITORING - Threat monitoring activity event type.
+- Tpr
+- Classification
+- LegalHold
+- HypervScvmm
+- THREAT_FEED - Activity representing threat feed event type.
+- Hdfs
+- RadarAnalysis
+- VolumeGroup
+- LockSnapshot
+- Instantiate
+- BULK_RECOVERY - Activity representing bulk recovery.
+- LOG_BACKUP - Activity representing log backup event type.
+- HypervServer
+- ISOLATED_RECOVERY - Recovering selected objects to an Isolated Recovery Environment (IRE).
+- Configuration
+- K8S - Activity representing Kubernetes event type.
+- Upgrade
+- ENCRYPTION_MANAGEMENT_OPERATION - Activity representing Encryption Management event type.
+- CloudNativeVm
+- StorageArray
+- Connection
+- Conversion
+- AuthDomain
+- UnknownEventType
+- CloudNativeVirtualMachine
+- Discovery
+- Replication
+- Maintenance
+- Support
+- Fileset
+- LocalRecovery
+- System
+- Failover
+- OWNERSHIP - Activity representing change of account ownership.
+- StormResource
+- Diagnostic
+- Vcd
+- Anomaly
+- Archive
+- CloudNativeSource
+- HostEvent
+- AwsEvent
+- ResourceOperations
+- Backup
+- Sync
+- Hardware
+- TestFailover
+- Recovery
+- Download
+- EmbeddedEvent
+- TENANT_OVERLAP - Activity representing tenant permission overlap.
+- NutanixCluster
+- VCenter
+- Index
+- ThreatHunt

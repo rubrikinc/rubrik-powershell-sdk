@@ -1,0 +1,6 @@
+### VsphereMountSortBy
+- MOUNT_TIME
+- CLUSTER_NAME
+- SOURCE_VM_NAME
+- NEW_VM_NAME
+- STATUS

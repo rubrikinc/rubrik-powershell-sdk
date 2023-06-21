@@ -1,0 +1,2 @@
+### ObjectType
+- enumValue: ObjectTypeEnum

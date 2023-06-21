@@ -1,0 +1,57 @@
+### AnomalyResult
+Anomaly analysis report from lambda service.
+
+- id: System.String
+  - The database ID of the anomaly result.
+- workloadFid: System.String
+  - The internal fid of the object.
+- workloadId: System.String
+  - The internal ID of the object.
+- workloadName: System.String
+  - The name of the object.
+- objectType: ObjectTypeEnum
+  - The type of the object.
+- snapshotFid: System.String
+  - The internal fid of the snapshot.
+- snapshotId: System.String
+  - The internal ID of the snapshot.
+- snapshotDate: DateTime
+  - The date of the snapshot.
+- previousSnapshotId: System.String
+  - The ID of the previous snapshot.
+- previousSnapshotDate: DateTime
+  - The date of the previous snapshot.
+- anomalyProbability: System.Single
+  - The probability of the snapshot being anomalous.
+- isAnomaly: System.Boolean
+  - Indicates whether the snapshot is anomalous.
+- filesCreatedCount: System.Int64
+  - Count of new files created.
+- filesModifiedCount: System.Int64
+  - Count of files modified.
+- filesDeletedCount: System.Int64
+  - Count of files deleted.
+- suspiciousFilesCount: System.Int64
+  - Total number of suspicious files.
+- bytesCreatedCount: System.Int64
+  - Total new bytes created.
+- bytesModifiedCount: System.Int64
+  - Total bytes modified.
+- bytesDeletedCount: System.Int64
+  - Total bytes deleted.
+- bytesNetChangedCount: System.Int64
+  - Net change in the number of bytes. For example, if 5 bytes are added and 3 bytes deleted, this field returns 2 as the number of bytes that changed.
+- managedId: System.String
+  - Internal managed ID of the object.
+- isEncrypted: System.Boolean
+  - Specifies whether the snapshot is encrypted.
+- severity: ActivitySeverityEnum
+  - Severity of the anomaly.
+- cluster: Cluster
+  - The Rubrik cluster of the object.
+- location: System.String
+  - The location of the object.
+- snapshot: CdmSnapshot
+  - The analyzed snapshot.
+- ransomwareResult: RansomwareResult
+  - The ransomware analysis result, including encryption.

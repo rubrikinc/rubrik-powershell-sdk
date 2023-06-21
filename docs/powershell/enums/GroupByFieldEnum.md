@@ -1,0 +1,48 @@
+### GroupByFieldEnum
+- ComplianceStatus
+- FailoverStatus
+- HOUR - Group by hour.
+- POLICY_VIOLATIONS
+- SEVERITY - Group by severity of the anomaly.
+- LastActivityType
+- DAY - Group by day.
+- TaskDetailClusterType
+- TaskDetailObjectType
+- ProtectionStatus
+- Month
+- SLA_DOMAIN
+- CLUSTER_UUID - The unique ID of the cluster.
+- MANAGED_ID - The managed ID of the object.
+- ClusterType
+- Quarter
+- Year
+- MONTH - Group by month.
+- Day
+- YEAR - Group by year.
+- SlaDomain
+- UserAuditStatus
+- Object
+- Source
+- TIME_ISSUES
+- WEEK - Group by week.
+- Week
+- IS_ANOMALY - Specifies whether the result is an anomaly.
+- UserAuditType
+- POLICY
+- FILE
+- CLUSTER
+- LastTestStatus
+- ANALYZER
+- FailoverType
+- Hour
+- Cluster
+- STATUS_POLICY
+- TIME
+- PullTimeWithOffset
+- TIME_VIOLATIONS
+- ObjectType
+- LastActivityStatus
+- OBJECT_NAME
+- TargetSite
+- Status
+- Type

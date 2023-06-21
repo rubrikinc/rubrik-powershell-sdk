@@ -1,0 +1,34 @@
+### GcpRegion
+Regions for GCP.
+
+- UNKNOWN_GCP_REGION - GCP region is Unknown.
+- USCENTRAL1 - GCP region is US Central 1.
+- USEAST1 - GCP region is US East 1.
+- USEAST4 - GCP region is US East 4.
+- USWEST1 - GCP region is US West 1.
+- USWEST2 - GCP region is US West 2.
+- US_WEST3 - GCP region is US West 3.
+- US_WEST4 - GCP region is US West 4.
+- NAM4 - GCP region is North America 4.
+- NORTHAMERICA_NORTHEAST1 - GCP region is North America North East 1.
+- SOUTHAMERICA_EAST1 - GCP region is South America East 1.
+- ASIA1 - GCP region is Asia 1.
+- ASIA_EAST1 - GCP region is Asia East 1.
+- ASIA_EAST2 - GCP region is Asia East 2.
+- ASIA_NORTHEAST1 - GCP region is Asia North East 1.
+- ASIA_NORTHEAST2 - GCP region is Asia North East 2.
+- ASIA_NORTHEAST3 - GCP region is Asia North East 3.
+- ASIA_SOUTHEAST1 - GCP region is Asia South East 1.
+- ASIA_SOUTHEAST2 - GCP region is Asia South East 2.
+- ASIA_SOUTH1 - GCP region is Asia South 1.
+- AUSTRALIA_SOUTHEAST1 - GCP region is Australia South East 1.
+- EUR4 - GCP region is Europe 4.
+- EUROPE_WEST1 - GCP region is Europe West 1.
+- EUROPE_WEST2 - GCP region is Europe West 2.
+- EUROPE_WEST3 - GCP region is Europe West 3.
+- EUROPE_WEST4 - GCP region is Europe West 4.
+- EUROPE_WEST6 - GCP region is Europe West 6.
+- EUROPE_NORTH1 - GCP region is Europe North 1.
+- US - GCP region is in US.
+- EU - GCP region is Europe.
+- ASIA - GCP region is Asia.

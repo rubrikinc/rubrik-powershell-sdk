@@ -1,0 +1,5 @@
+### InternalReplicationBandwidthIncomingResponse
+Replication Incoming Bandwidth Response.
+
+- items: list of TimeStats
+  - TimeSeries, in bytes per second.

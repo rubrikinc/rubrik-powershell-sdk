@@ -1,0 +1,35 @@
+### ClusterNodePlatformType
+The computing platform that is running the Rubrik CDM software.
+
+- PE740CITI - Dell PowerEdge 740 Citi.
+- THINKSERVERSD350 - ThinkServer sd350.
+- CE - Cloud Edition.
+- R500 - Production r500.
+- R300 - Production r300.
+- PE6420 - Dell PowerEdge C6420.
+- E1000 - Enterprise ROBO system.
+- CLOUD - Cloud cluster.
+- PE740 - Dell PowerEdge R740xd.
+- VC - Rubrik Virtual Cluster.
+- C240M4 - Cisco UCS C240 M4.
+- SR630 - Lenovo SR-630.
+- R6000SE - Production r6000se with enhanced flash.
+- R6000S - Production r6000s with software encrypted.
+- RKDEV - Forge supported developer OVA.
+- R6408M - R6408M with Azure bundle.
+- F10000 - All-flash appliance.
+- DL360 - HPE DL360.
+- DEV - Internal virtual clusters.
+- R6000F - Production r6000f with FIPS.
+- C220M4 - Cisco UCS C220 M4.
+- C240M5 - Cisco UCS C240 M5.
+- R6408 - Non-TPM r6408.
+- FATTWIN - Fat twin development unit.
+- C220M5 - Cisco UCS C220 M5.
+- PE750 - Dell R750.
+- PE740HD - Dell PowerEdge R740xd special config.
+- VA - Rubrik Virtual Appliance (Edge).
+- LEANCLOUD - LeanCloud cluster.
+- UNKNOWN - Unknown platform type.
+- DL380 - HPE DL380.
+- THIRDPARTY - Third-party appliance.

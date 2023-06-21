@@ -1,0 +1,2 @@
+### GetAzureHostTypeResp
+- hostType: AzureHostType

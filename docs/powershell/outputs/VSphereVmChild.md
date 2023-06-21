@@ -1,0 +1,20 @@
+### VSphereVmChild
+- fid: System.String
+- snappableType: ObjectTypeEnum
+- bootPriority: System.Int32
+- lastRecoveryPoint: System.Int64
+  - Last recovery point.
+- snappable: VsphereVm
+  - The child workload.
+- localRpoLagInfo: RpoLagInfo
+  - local RPO lag information
+- remoteRpoLagInfo: RpoLagInfo
+  - remote RPO lag information
+- resourceSpec: VmwareResourceSpec
+  - Resource specification of the child workload.
+- recoverySpec: RecoverySpec
+  - Recovery specification of the child workload.
+- failoverInstance: VsphereBlueprintChildFailoverInstance
+  - Failover instance of child workload.
+- recoveryInfo: ChildVmRecoveryInfo
+  - The recovery info of the child virtual machine

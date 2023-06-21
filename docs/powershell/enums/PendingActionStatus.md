@@ -1,0 +1,6 @@
+### PendingActionStatus
+- QUEUED
+- IN_PROGRESS
+- SYNCED_TO_CDM
+- SUCCEEDED
+- FAILED

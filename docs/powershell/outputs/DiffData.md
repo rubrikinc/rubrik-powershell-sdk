@@ -1,0 +1,31 @@
+### DiffData
+Statistic result for certain file/folder.
+
+- path: System.String
+  - Absolute path of the file or folder.
+- filesDeleted: System.Int64
+  - Number of files deleted under this path.
+- filesModified: System.Int64
+  - Number of files modified under this path.
+- filesCreated: System.Int64
+  - Number of files created under this path.
+- suspiciousFilesAdded: System.Int64
+  - Number of suspicious files added under this path.
+- mode: System.Int32
+  - Mode of the inode of the file or folder at this path.
+- isFolder: System.Boolean
+  - Boolean indicating whether this is a file or folder.
+- bytesCreated: System.Int64
+  - Number of bytes created under this path.
+- bytesDeleted: System.Int64
+  - Number of bytes deleted under this path.
+- bytesModified: System.Int64
+  - Number of bytes modified under this path.
+- totalSize: System.Int64
+  - Total size of the files under this path.
+- lastModifiedTime: System.Int64
+  - Modification time of the inode of the file or folder at this path.
+- isDeleted: System.Boolean
+  - Boolean indicating whether this file or folder was deleted in this snapshot.
+- anomalyInfo: AnomalyInfo
+  - Additional information corresponding to the anomaly detected.

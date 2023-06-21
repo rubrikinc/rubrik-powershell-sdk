@@ -1,0 +1,14 @@
+### VSphereVMRecoverySpecInputType
+- vcpus: System.Int32
+- memoryMbs: System.Int32
+- volumes: list of VSphereVMVolumeSpecInputTypes
+- nics: list of VSphereVMNicSpecInputTypes
+- version: System.Int64
+- userData: System.String
+- target: VSphereComputeTargetInputType
+- enableNetworkPreserve: System.Boolean
+- enableMacPreserveOnly: System.Boolean
+- email: System.String
+- postScriptTimestamp: System.String
+- postScriptHash: System.String
+- enableNetworkDisconnect: System.Boolean

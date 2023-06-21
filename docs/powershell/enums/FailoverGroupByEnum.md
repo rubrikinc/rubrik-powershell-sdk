@@ -1,0 +1,12 @@
+### FailoverGroupByEnum
+- FailoverStatus
+- Month
+- Quarter
+- Year
+- Day
+- Source
+- Week
+- LastTestStatus
+- FailoverType
+- Hour
+- TargetSite

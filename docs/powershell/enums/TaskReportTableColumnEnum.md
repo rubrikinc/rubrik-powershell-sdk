@@ -1,0 +1,11 @@
+### TaskReportTableColumnEnum
+- Location
+- NumOfCanceled
+- NumOfSucceeded
+- NumOfExpected
+- SlaDomainName
+- ObjectName
+- StartDate
+- EndDate
+- ObjectType
+- NumOfFailed

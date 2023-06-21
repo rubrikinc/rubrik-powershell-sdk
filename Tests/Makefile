@@ -31,3 +31,7 @@ test: unit-test mock-test
 	@if [ -n "$(RSC_SERVICE_ACCOUNT_FILE)" ]; then \
 		make e2e-test; \
 	fi
+
+clean:
+	rm -rf testResults.xml
+	if [ -d mock_api_server ]; then $(MAKE) -C mock_api_server clean ; fi

@@ -1,0 +1,63 @@
+### NasVolume
+NAS volume instance in a registered NAS system.
+
+- snapMirrorLabels: list of System.Strings
+  - Labels that can be applied to a newly created SnapMirror Cloud.
+- isReadonly: System.Boolean
+  - Whether or not the NAS Volume is read-only.
+- sizeInBytes: System.Int64
+  - The size of the volume in bytes.
+- sizeUsedInBytes: System.Int64
+  - The size that has been used of the volume in bytes.
+- id: System.String
+  - Object ID.
+- descendantConnection: NasVolumeDescendantTypeConnection
+  - List of descendants.
+- logicalChildConnection: NasVolumeLogicalChildTypeConnection
+  - List of logical children.
+- nasSystem: NasSystem
+  - The NAS System to which this NAS Volume belongs.
+- nasNamespace: NasNamespace
+  - The NAS Namespace to which this NAS Volume belongs (if any).
+- cluster: Cluster
+  - Rubrik cluster where this object originated.
+- primaryClusterLocation: DataLocation
+  - The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+- pendingSla: SlaDomain
+  - SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+- pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+  - Mapping from objectID to pending object deletion status.
+- replicatedObjects: list of CdmHierarchyObjects
+  - Objects either replicated by this object or related to this object by replication.
+- latestUserNote: LatestUserNote
+  - Latest User note information.
+- replicatedObjectCount: System.Int32
+  - The number of objects either replicated by this object or related to this object by replication.
+- authorizedOperations: list of Operations
+  - The authorized operations on the object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.

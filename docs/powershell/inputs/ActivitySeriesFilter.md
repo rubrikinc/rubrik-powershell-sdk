@@ -1,0 +1,33 @@
+### ActivitySeriesFilter
+Filters for list of event series.
+
+- lastActivityStatus: list of EventStatuss
+  - Filter by last activity status.
+- lastActivityType: list of EventTypes
+  - Filter by last activity type.
+- severity: list of EventSeveritys
+  - Filter by severity of the activity.
+- objectName: System.String
+  - Filter by object name.
+- objectType: list of EventObjectTypes
+  - Filter by object type.
+- startTimeGt: DateTime
+  - Filter activities having start time after the specified value.
+- startTimeLt: DateTime
+  - Filter activities having start time before the specified value.
+- lastUpdatedTimeGt: DateTime
+  - Filter activites having last updated time after the specified value.
+- lastUpdatedTimeLt: DateTime
+  - Filter activites having last updated time before than the specified value.
+- clusterId: list of System.Strings
+  - Filter by cluster UUID.
+- clusterType: list of EventClusterTypes
+  - Filter by cluster type.
+- objectFid: list of System.Strings
+  - Filter by object fid.
+- ancestorId: System.String
+  - Filter by ancestor ID.
+- searchTerm: System.String
+  - Filter by search term.
+- orgIds: list of System.Strings
+  - Filter by organization ID.

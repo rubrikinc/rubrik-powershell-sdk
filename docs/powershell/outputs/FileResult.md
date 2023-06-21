@@ -1,0 +1,49 @@
+### FileResult
+- nativePath: System.String
+- filename: System.String
+- directory: System.String
+- mode: DataGovFileMode
+- size: System.Int64
+- lastModifiedTime: System.Int64
+- lastAccessTime: System.Int64
+- numDescendantFiles: System.Int32
+- numDescendantErrorFiles: System.Int64
+- numDescendantSkippedExtFiles: System.Int64
+- numDescendantSkippedSizeFiles: System.Int64
+- numDescendantFolders: System.Int64
+- analyzerResults: list of AnalyzerResults
+- analyzerGroupResults: list of AnalyzerGroupResults
+- paginationId: System.String
+- hits: Hits
+- stdPath: System.String
+- errorCode: AnalyzerErrorCode
+- filesWithHits: Hits
+- staleFilesWithHits: Hits
+- openAccessFilesWithHits: Hits
+- staleFiles: Hits
+- openAccessFiles: Hits
+- openAccessFolders: Hits
+- openAccessStaleFiles: Hits
+- openAccessType: OpenAccessType
+- stalenessType: StalenessType
+- numActivities: System.Int64
+- numActivitiesBreakdown: list of ActivityResults
+- numActivitiesDelta: System.Int64
+- owner: System.String
+- snapshotFid: System.String
+- snapshotTimestamp: System.Int64
+- userAccessType: UserAccessType
+  - Represents the type of user access for a file.
+- accessibleBySidsRepresentation: System.String
+  - Representation of SIDs that can access this file.
+- accessibleBySidsRepresentationShortForm: System.String
+  - A short form of representation of SIDs that will be used by indexing.
+- sensitiveFiles: SensitiveFiles
+  - Sensitive file count for various risk levels.
+- analyzerRiskHits: AnalyzerHits
+  - Analyzer risk hits for various risk levels.
+- riskLevel: RiskLevelType
+  - Risk level of the file.
+- riskReasons: list of RiskReasons
+  - File access risk reasons.
+- snappable: HierarchyObject

@@ -1,0 +1,2 @@
+### UserDownloadUrl
+- url: System.String

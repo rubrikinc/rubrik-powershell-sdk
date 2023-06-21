@@ -1,0 +1,55 @@
+### AwsNativeAccount
+AWS native account.
+
+- status: AwsAccountStatus
+  - Specifies the state of account in Rubrik environment like Refreshed, Disconnected, etc. An account can be in a single state at a time.
+- lastRefreshedAt: DateTime
+  - Last refresh time of the account, in UTC date-time format.
+- regionSpecs: list of AwsNativeRegionSpecs
+  - List of AWS region specifications associated with the account.
+- ec2InstanceCount: System.Int32
+  - Count of EC2 Instances in the AWS Native account.
+- ebsVolumeCount: System.Int32
+  - Count of EBS Volumes in the AWS Native account.
+- rdsInstanceCount: System.Int32
+  - Count of RDS Instances in the account.
+- s3BucketCount: System.Int32
+  - Count of Amazon S3 Buckets in the AWS native account.
+- cloudType: AwsCloudType
+  - AWS cloud type.
+- authorizedOperations: list of PolarisObjectAuthorizedOperationsEnums
+  - The authorized operations on the object.
+- awsNativeEc2Instances: AwsNativeEc2InstanceConnection
+  - List of all EC2 instances under this AWS Native account.
+- awsNativeEbsVolumes: AwsNativeEbsVolumeConnection
+  - List of all EBS Volumes under this AWS Native account.
+- awsNativeRdsInstances: AwsNativeRdsInstanceConnection
+  - List of all RDS Instances under this AWS Native account.
+- id: System.String
+  - The FID of the hierarchy object.
+- name: System.String
+  - The name of the hierarchy object.
+- objectType: HierarchyObjectTypeEnum
+  - The type of this object.
+- slaAssignment: SlaAssignmentTypeEnum
+  - The SLA Domain assignment type for this object.
+- effectiveSlaDomain: SlaDomain
+  - The effective SLA Domain of the hierarchy object.
+- slaPauseStatus: System.Boolean
+  - The pause status of the effective SLA Domain of the hierarchy object.
+- snapshotDistribution: SnapshotDistribution
+  - The distribution of the snapshots of the hierarchy object.
+- effectiveRetentionSlaDomain: SlaDomain
+  - The effective retention of the SLA Domain of the hierarchy object.
+- configuredSlaDomain: SlaDomain
+  - The SLA Domain configured for the hierarchy object.
+- effectiveSlaSourceObject: PathNode
+  - The path node of the effective SLA Domain source.
+- logicalPath: list of PathNodes
+  - A sequential list of this object's logical ancestors.
+- physicalPath: list of PathNodes
+  - A sequential list of this object's physical ancestors.
+- numWorkloadDescendants: System.Int32
+  - The number of descendant workloads of this object.
+- allOrgs: list of Orgs
+  - The organizations to which this hierarchy object belongs.

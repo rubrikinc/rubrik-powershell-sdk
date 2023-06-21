@@ -1,0 +1,16 @@
+### VSphereComputeTargetInputType
+- vcenterId: System.String
+- vcenterName: System.String
+- vcenterCdmId: System.String
+- computeClusterId: System.String
+- computeClusterCdmId: System.String
+- computeClusterName: System.String
+- resourcePoolId: System.String
+- resourcePoolCdmId: System.String
+- resourcePoolName: System.String
+- hostId: System.String
+- hostName: System.String
+- hostCdmId: System.String
+- datacenterId: System.String
+- datacenterCdmId: System.String
+- datacenterName: System.String

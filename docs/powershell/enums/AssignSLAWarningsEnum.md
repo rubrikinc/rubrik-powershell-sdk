@@ -1,0 +1,44 @@
+### AssignSLAWarningsEnum
+Warnings related to SLA Domain assignment.
+
+- NO_WARNING - No warning.
+- SNAPSHOTS_MAY_EXPIRE - Snapshot may expire on assigning this SLA Domain.
+- REPLICATION_TARGET_SAME_AS_SOURCE - Replication target is same as the source of the object.
+- REMOTE_CONFIGURATION_NOT_RESPECTED - Remote configuration is not supported by object.
+- BACKUP_WINDOWS_NOT_RESPECTED - Backup windows configured in the SLA Domain are not supported by the object.
+- ARCHIVAL_LOCATION_NOT_SPECIFIED - The SLA Domain does not have an archival location configured.
+- ARCHIVAL_CONFIGURATION_NOT_RESPECTED - Archival configuration is not supported by object.
+- REPLICATION_CONFIGURATION_NOT_RESPECTED - Replication configuration is not suppored by object.
+- SLA_NOT_SYNCED - SLA Domain is not synced to cluster yet.
+- AZURE_FULL_SNAPSHOTS - Azure full snapshots is not supported.
+- AZURE_NATIONAL_PUBLIC_REPLICATION_NOT_SUPPORTED - Azure national public replication not supported.
+- INCREMENTAL_BACKUP_FREQUENCY_NOT_RESPECTED - Incremental backup frequency is not respected for object.
+- AWS_CROSS_ACCOUNT_REPLICATION_CONFIG_WARNING - AWS cross-account replication configuration is not supported.
+- AWS_RDS_LOG_BACKUP_CONFIG_WARNING - AWS RDS Log backup configuration is not supported for object.
+- CROSS_REGION_ARCHIVAL - Cross-region archiving is not supported.
+- DIFFERENTIAL_BACKUP_FREQUENCY_NOT_RESPECTED - Differential backup frequency is not supported for the object.
+- AWS_ARCHIVAL_NOT_SUPPORTED_FOR_GOVCLOUD_OBJECTS - AWS Archival not supported for Azure Gov Cloud objects.
+- AWS_REPLICATION_REGION_VALIDATION - AWS replication region not supported for this object.
+- INSTANT_ARCHIVAL_DISK_SIZE_WARNING - Instant archival disk size limit exceeded for the object.
+- INSTANT_ARCHIVAL_ACCOUNT_LEVEL_DISK_SIZE_WARNING - Instant archival disk size limit exceeded for the account.
+- AZURE_SQL_DATABASE_PITR_WINDOW_WARNING - Point-in-time recovery is affected for the object.
+- MINUTE_LEVEL_CONFIGURATION_NOT_RESPECTED - Minute-level configuration in SLA Domain is not supported for this object.
+- RETENTION_LOCK_NOT_SUPPORTED_WARNING - Retention lock policy is not supported for the object.
+- RETENTION_LOCK_CONSTRAINTS_NOT_RESPECTED - Retention lock constraints are not satisified for the object.
+- MULTIPLE_ARCHIVAL_OR_SELECTIVE_FREQ_NOT_SUPPORTED_WARNING - Multiple or selective archival is not supported for object.
+- CDP_LOG_RETENTION_NOT_SUPPORTED_ON_CLUSTER_WARNING - CDP log retention is not supported for this cluster.
+- AZURE_ARCHIVAL_TIERING_NOT_SUPPORTED_ON_CLUSTER_WARNING - Archival tiering for Azure is not supported for this cluster.
+- AWS_ARCHIVAL_TIERING_NOT_SUPPORTED_ON_CLUSTER_WARNING - Archival tiering for AWS is not supported for this cluster.
+- NOSQL_SLA_NOT_SUPPORTED_ON_CDM_CLUSTER_WARNING - SLA Domains protecting NoSql objects is not supported on CDM cluster.
+- NON_NOSQL_SLA_NOT_SUPPORTED_ON_NOSQL_CLUSTER_WARNING - SLA Domains not protecting NoSql objects is not supported on NoSql cluster.
+- REPLICATION_SETUP_NOT_COMPLETE_ON_CLUSTER_WARNING - Replication setup on cluster has not yet completed.
+- ARCHIVAL_LOCATION_NOT_SYNCED_ON_CLUSTER_WARNING - Archival location has not yet synced to cluster.
+- CLOUD_REPLICATION_LOCATION_N0T_SYNCED_ON_CLUSTER_WARNING - Cloud replication location has not yet synced to cluster.
+- RETENTION_LOCK_CONFIG_NOT_ENABLED_ON_CLUSTER_WARNING - Retention lock config is not enabled on the cluster.
+- SAP_HANA_ARCHIVAL_NOT_SUPPORTED_WARNING - Archiving is not supported for SAP HANA workload.
+- STATIC_RETENTION_NOT_SUPPORTED_WARNING - Static Retention is not supported for the object.
+- AZURE_SQL_DATABASE_NATIVE_BACKUP_INCOMPATIBLE_SLA_WARNING
+- UNSUPPORTED_RCV_REGION - Rubrik Cloud Vault not supported for the object.
+- SAP_HANA_RETENTION_LOCK_NOT_SUPPORTED_ON_CLUSTER_WARNING - Retention lock is not supported for SAP HANA workloads on the cluster.
+- AZURE_BLOB_EXCLUSIVE_SLA_ASSIGNMENT_WARNING - Azure Blob SLA is only assignable to Azure Storage Account.
+- SAP_HANA_CHANGE_RETENTION_NOT_SUPPORTED_WARNING

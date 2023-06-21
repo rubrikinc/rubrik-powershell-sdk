@@ -1,0 +1,9 @@
+### TaskSummarySortByEnum
+- NumFailed
+- NumCanceled
+- SlaDomainName
+- ObjectName
+- NumExpected
+- NumSucceeded
+- Date
+- ObjectType

@@ -1,0 +1,8 @@
+### SyslogFacilityTypeEnum
+- ALL_SYSLOG
+- AUTH
+- RUBRIK_CLI
+- RUBRIK_EVENT
+- RUBRIK_SSH
+- SECURITY
+- SYSLOG

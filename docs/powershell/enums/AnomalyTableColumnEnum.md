@@ -1,0 +1,16 @@
+### AnomalyTableColumnEnum
+- BytesNetChanged
+- BytesCreated
+- FilesDeleted
+- IsAnomaly
+- SnapshotDate
+- PreviousSnapshotId
+- SnapshotId
+- FilesModified
+- WorkloadName
+- SuspiciousFilesAdded
+- BytesModified
+- WorkloadType
+- BytesDeleted
+- FilesCreated
+- PreviousSnapshotDate
