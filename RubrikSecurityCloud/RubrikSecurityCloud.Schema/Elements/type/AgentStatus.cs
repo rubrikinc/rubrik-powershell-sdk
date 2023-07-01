@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AgentStatus";
+    }
+
     public AgentStatus Set(
         AgentConnectionStatus? AgentStatusField = null,
         System.String? DisconnectReason = null

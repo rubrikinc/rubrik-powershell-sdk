@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateClusterSettingsReply";
+    }
+
     public UpdateClusterSettingsReply Set(
         RegisteredMode? RegisteredMode = null,
         System.String? AcceptedEulaVersion = null,

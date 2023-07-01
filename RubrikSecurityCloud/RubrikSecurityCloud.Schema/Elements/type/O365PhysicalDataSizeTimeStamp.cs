@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365PhysicalDataSizeTimeStamp";
+    }
+
     public O365PhysicalDataSizeTimeStamp Set(
         System.Int64? PhysicalDataSizeInBytes = null,
         DateTime? Timestamp = null

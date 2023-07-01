@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TakeOnDemandSnapshotReply";
+    }
+
     public TakeOnDemandSnapshotReply Set(
         List<TakeOnDemandSnapshotError>? Errors = null,
         List<TakeOnDemandSnapshotTaskchainUuid>? TaskchainUuids = null

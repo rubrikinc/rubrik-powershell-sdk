@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365LicenseDetails";
+    }
+
     public O365LicenseDetails Set(
         AzureHostType? AllowedHost = null,
         M365Cloud? M365Cloud = null,

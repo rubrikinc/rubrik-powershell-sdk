@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "JiraUserEdge";
+    }
+
     public JiraUserEdge Set(
         System.String? Cursor = null,
         JiraUser? Node = null

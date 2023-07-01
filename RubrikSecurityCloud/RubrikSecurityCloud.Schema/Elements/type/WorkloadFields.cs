@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WorkloadFields";
+    }
+
     public WorkloadFields Set(
         O365SnapshotItemInfo? O365Item = null
     ) 

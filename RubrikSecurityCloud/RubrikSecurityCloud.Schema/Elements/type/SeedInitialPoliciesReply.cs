@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SeedInitialPoliciesReply";
+    }
+
     public SeedInitialPoliciesReply Set(
         List<ClassificationPolicyDetail>? Policies = null
     ) 

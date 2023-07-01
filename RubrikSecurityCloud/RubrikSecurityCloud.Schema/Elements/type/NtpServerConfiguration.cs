@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NtpServerConfiguration";
+    }
+
     public NtpServerConfiguration Set(
         System.String? Server = null,
         NtpSymmKeyConfiguration? SymmetricKey = null

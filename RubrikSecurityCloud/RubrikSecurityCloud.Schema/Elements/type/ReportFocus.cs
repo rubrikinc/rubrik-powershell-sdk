@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReportFocus";
+    }
+
     public ReportFocus Set(
         ReportFocusEnum? EnumValue = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteAzureCloudAccountExocomputeConfigurationsReply";
+    }
+
     public DeleteAzureCloudAccountExocomputeConfigurationsReply Set(
         List<System.String>? DeletionFailedIds = null,
         List<System.String>? DeletionSuccessIds = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixVmAgentStatus";
+    }
+
     public NutanixVmAgentStatus Set(
         NutanixVmAgentConnectionStatus? ConnectionStatus = null,
         System.String? DisconnectReason = null

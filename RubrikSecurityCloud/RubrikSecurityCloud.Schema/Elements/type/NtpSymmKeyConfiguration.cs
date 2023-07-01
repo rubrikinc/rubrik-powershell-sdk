@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NtpSymmKeyConfiguration";
+    }
+
     public NtpSymmKeyConfiguration Set(
         System.String? Key = null,
         System.Int32? KeyId = null,

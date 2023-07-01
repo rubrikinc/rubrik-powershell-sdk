@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatMonitoringStats";
+    }
+
     public ThreatMonitoringStats Set(
         System.Int64? ObjectsWithMatches = null,
         System.Int64? ObjectsWithNoMatches = null,

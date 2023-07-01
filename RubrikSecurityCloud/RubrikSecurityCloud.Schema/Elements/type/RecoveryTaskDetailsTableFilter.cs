@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RecoveryTaskDetailsTableFilter";
+    }
+
     public RecoveryTaskDetailsTableFilter Set(
         List<FilterOption>? ClusterLocation = null,
         List<FilterOption>? ClusterType = null,

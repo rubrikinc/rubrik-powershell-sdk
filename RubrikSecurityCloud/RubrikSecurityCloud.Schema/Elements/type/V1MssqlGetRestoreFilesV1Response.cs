@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "V1MssqlGetRestoreFilesV1Response";
+    }
+
     public V1MssqlGetRestoreFilesV1Response Set(
         List<MssqlRestoreFile>? Items = null
     ) 

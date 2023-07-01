@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TagRuleTag";
+    }
+
     public TagRuleTag Set(
         System.Boolean? MatchAllValues = null,
         System.String? TagKey = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2InstanceConnection";
+    }
+
     public Db2InstanceConnection Set(
         System.Int32? Count = null,
         List<Db2InstanceEdge>? Edges = null,

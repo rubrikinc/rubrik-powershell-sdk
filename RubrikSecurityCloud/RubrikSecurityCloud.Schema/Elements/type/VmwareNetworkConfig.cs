@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareNetworkConfig";
+    }
+
     public VmwareNetworkConfig Set(
         List<VmwareNetworkDeviceInfo>? Nics = null
     ) 

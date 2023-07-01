@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AggregatedValues";
+    }
+
     public AggregatedValues Set(
         System.Int64? MaxCreatedFileCount = null,
         System.Int64? MaxDeletedFileCount = null,

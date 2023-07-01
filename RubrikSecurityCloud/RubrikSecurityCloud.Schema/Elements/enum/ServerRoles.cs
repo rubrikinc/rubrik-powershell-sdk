@@ -19,7 +19,10 @@ namespace RubrikSecurityCloud.Types
         DHCP,
 
         [EnumMember(Value = "DNS")]
-        DNS
+        DNS,
+
+        [EnumMember(Value = "UNKNOWN_SERVER_ROLE")]
+        UNKNOWN_SERVER_ROLE
 
 
     } // enum ServerRoles

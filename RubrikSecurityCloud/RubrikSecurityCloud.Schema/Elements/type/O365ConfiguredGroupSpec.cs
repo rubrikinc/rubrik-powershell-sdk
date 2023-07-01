@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365ConfiguredGroupSpec";
+    }
+
     public O365ConfiguredGroupSpec Set(
         List<System.String>? Pdls = null,
         System.String? Wildcard = null

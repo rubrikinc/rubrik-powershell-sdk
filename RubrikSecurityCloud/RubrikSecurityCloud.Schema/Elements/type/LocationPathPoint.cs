@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LocationPathPoint";
+    }
+
     public LocationPathPoint Set(
         System.String? ManagedId = null,
         System.String? Name = null

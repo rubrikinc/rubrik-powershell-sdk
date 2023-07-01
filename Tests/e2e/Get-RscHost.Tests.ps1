@@ -2,13 +2,12 @@
 .SYNOPSIS
 Run tests around hosts
 #>
-BeforeAll {
-    . "$PSScriptRoot\e2eInit.ps1"
-}
-
-
 
 Describe -Name 'Get-RscHost' -Tag 'Public' -Fixture{
+    BeforeAll {
+        . "$PSScriptRoot\e2eInit.ps1"
+    }
+
     Context -Name 'Parameter Validation' {
         It -Name 'Parameter Name can be $null' -Test {
             { Get-RscHost -OsType Windows -Name $null } |

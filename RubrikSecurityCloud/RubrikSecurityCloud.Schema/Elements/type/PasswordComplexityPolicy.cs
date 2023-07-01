@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PasswordComplexityPolicy";
+    }
+
     public PasswordComplexityPolicy Set(
         PasswordComplexityPolicyTemplate? LengthPolicy = null,
         PasswordComplexityPolicyTemplate? LowercasePolicy = null,

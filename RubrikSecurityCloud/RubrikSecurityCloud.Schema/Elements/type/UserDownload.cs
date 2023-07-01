@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserDownload";
+    }
+
     public UserDownload Set(
         DownloadIdentifierEnum? Identifier = null,
         DownloadStatusEnum? Status = null,

@@ -100,6 +100,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Csr";
+    }
+
     public Csr Set(
         System.String? City = null,
         System.String? Country = null,

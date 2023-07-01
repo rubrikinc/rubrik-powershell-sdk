@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeS3SlaConfig";
+    }
+
     public AwsNativeS3SlaConfig Set(
         System.Int32? ContinuousBackupRetentionInDays = null
     ) 

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaAssignResult";
+    }
+
     public SlaAssignResult Set(
         System.Boolean? Success = null
     ) 

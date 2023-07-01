@@ -150,6 +150,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetSummary";
+    }
+
     public FilesetSummary Set(
         System.String? EffectiveSlaDomainId = null,
         System.String? EffectiveSlaDomainName = null,

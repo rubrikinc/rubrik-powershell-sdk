@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "IdentityProvider";
+    }
+
     public IdentityProvider Set(
         System.String? EntityId = null,
         DateTime? ExpirationDate = null,

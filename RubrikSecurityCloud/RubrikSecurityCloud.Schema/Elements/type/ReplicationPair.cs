@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReplicationPair";
+    }
+
     public ReplicationPair Set(
         ReplicationPairConnectionStatus? Status = null,
         System.Int64? FailedTasks = null,

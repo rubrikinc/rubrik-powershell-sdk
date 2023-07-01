@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NodeStatusListResponse";
+    }
+
     public NodeStatusListResponse Set(
         System.Boolean? HasMore = null,
         System.Int64? Total = null,

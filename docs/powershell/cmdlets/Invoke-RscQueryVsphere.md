@@ -1,25 +1,25 @@
 # Invoke-RscQueryVsphere
 ## Subcommands
-### Blueprint
+### blueprint
 - There is a single argument of type System.String.
 - Returns VSphereBlueprint.
-### Computecluster
+### computecluster
 - There is a single argument of type System.String.
 - Returns VsphereComputeCluster.
-### Datacenter
+### datacenter
 - There is a single argument of type System.String.
 - Returns VsphereDatacenter.
-### Datastore
+### datastore
 Vsphere datastore based on id passed in.
 
 - There is a single argument of type System.String.
 - Returns VsphereDatastore.
-### Datastorecluster
+### datastorecluster
 Vsphere datastore cluster based on id passed in.
 
 - There is a single argument of type System.String.
 - Returns VsphereDatastoreCluster.
-### Datastoreconnection
+### datastorelist
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -27,21 +27,13 @@ Vsphere datastore cluster based on id passed in.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereDatastoreConnection.
-### Folder
+### folder
 - There is a single argument of type System.String.
 - Returns VsphereFolder.
-### Host
+### host
 - There is a single argument of type System.String.
 - Returns VsphereHost.
-### Hostconnection
-- There are 5 arguments.
-    - first - System.Int32: Returns the first n elements from the list.
-    - after - System.String: Returns the elements in the list that come after the specified cursor.
-    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
-    - sortOrder - SortOrder: Sorting order for the results.
-    - filter - list of Filters: The hierarchy object filter.
-- Returns VsphereHostConnection.
-### Hostdetail
+### hostdetail
 Get details of a ESXi hypervisor
 
 Supported in v5.0+
@@ -49,12 +41,20 @@ Get details of a ESXi hypervisor.
 
 - There is a single argument of type GetVmwareHostInput.
 - Returns VmwareHostDetail.
-### Hostsbyfid
+### hostlist
+- There are 5 arguments.
+    - first - System.Int32: Returns the first n elements from the list.
+    - after - System.String: Returns the elements in the list that come after the specified cursor.
+    - sortBy - HierarchySortByField: Sort hierarchy objects by hierarchy field.
+    - sortOrder - SortOrder: Sorting order for the results.
+    - filter - list of Filters: The hierarchy object filter.
+- Returns VsphereHostConnection.
+### hostsbyfid
 All of the VSphere hosts based on fids passed in.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of VsphereHosts.
-### Livemount
+### livemount
 List of vSphere Live Mounts.
 
 - There are 4 arguments.
@@ -63,12 +63,12 @@ List of vSphere Live Mounts.
     - filter - list of VsphereLiveMountFilterInputs: Filter for virtual machine Live Mounts.
     - sortBy - VsphereLiveMountSortBy: Sort virtual machine Live Mounts.
 - Returns VsphereLiveMountConnection.
-### Mount
+### mount
 Get a vSphere Live Mount by id
 
 - There is a single argument of type System.String.
 - Returns VsphereMount.
-### Mountconnection
+### mountlist
 vSphere Live Mount Connection
 
 - There are 5 arguments.
@@ -78,13 +78,13 @@ vSphere Live Mount Connection
     - sortBy - VsphereMountSortBy
     - sortOrder - SortOrder: Sorting order for the results.
 - Returns VsphereMountConnection.
-### Network
+### network
 - There is a single argument of type System.String.
 - Returns VsphereNetwork.
-### Resourcepool
+### resourcepool
 - There is a single argument of type System.String.
 - Returns VsphereResourcePool.
-### Rootrecoveryhierarchy
+### rootrecoveryhierarchy
 The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
 
 - There are 5 arguments.
@@ -94,13 +94,13 @@ The root hierarchy for VMware export, which includes VMware compute clusters and
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns CdmHierarchyObjectConnection.
-### Tag
+### tag
 - There is a single argument of type System.String.
 - Returns VsphereTag.
-### Tagcategory
+### tagcategory
 - There is a single argument of type System.String.
 - Returns VsphereTagCategory.
-### Topleveldescendantsconnection
+### topleveldescendantslist
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -109,6 +109,6 @@ The root hierarchy for VMware export, which includes VMware compute clusters and
     - typeFilter - list of HierarchyObjectTypeEnums: Types of objects to include.
     - filter - list of Filters: The hierarchy object filter.
 - Returns CdmHierarchyObjectConnection.
-### Vmwarecdpliveinfo
+### vmwarecdpliveinfo
 - There is a single argument of type list of System.Strings.
 - Returns BatchVmwareCdpLiveInfo.

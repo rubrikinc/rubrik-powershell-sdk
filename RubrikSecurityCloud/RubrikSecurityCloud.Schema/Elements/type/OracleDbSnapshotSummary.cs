@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDbSnapshotSummary";
+    }
+
     public OracleDbSnapshotSummary Set(
         System.String? DatabaseName = null,
         System.String? HostOrRacManagedId = null,

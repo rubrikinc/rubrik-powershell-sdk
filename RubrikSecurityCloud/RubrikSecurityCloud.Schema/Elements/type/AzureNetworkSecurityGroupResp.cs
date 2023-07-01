@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNetworkSecurityGroupResp";
+    }
+
     public AzureNetworkSecurityGroupResp Set(
         AzureNetworkSecurityRulesStatus? RulesStatus = null,
         System.String? Reason = null

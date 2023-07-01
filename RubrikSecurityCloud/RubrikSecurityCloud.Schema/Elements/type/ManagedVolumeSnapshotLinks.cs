@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeSnapshotLinks";
+    }
+
     public ManagedVolumeSnapshotLinks Set(
         Link? ExportLink = null,
         Link? Self = null

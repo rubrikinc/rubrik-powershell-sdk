@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateK8sClusterReply";
+    }
+
     public CreateK8sClusterReply Set(
         System.String? ClusterId = null,
         System.String? YamlUrl = null

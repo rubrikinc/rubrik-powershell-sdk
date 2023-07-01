@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudDirectSystems";
+    }
+
     public CloudDirectSystems Set(
         List<System.String>? Systems = null
     ) 

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateSupportCaseReply";
+    }
+
     public CreateSupportCaseReply Set(
         System.String? CaseId = null,
         System.String? CaseLink = null,

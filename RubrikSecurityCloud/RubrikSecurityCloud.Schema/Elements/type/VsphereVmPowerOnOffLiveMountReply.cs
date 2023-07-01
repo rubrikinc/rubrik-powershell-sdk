@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereVmPowerOnOffLiveMountReply";
+    }
+
     public VsphereVmPowerOnOffLiveMountReply Set(
         System.String? NasIp = null,
         System.String? PowerStatus = null,

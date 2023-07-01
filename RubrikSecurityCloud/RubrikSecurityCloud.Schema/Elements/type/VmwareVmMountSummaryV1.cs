@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareVmMountSummaryV1";
+    }
+
     public VmwareVmMountSummaryV1 Set(
         System.Int32? AttachingDiskCount = null,
         System.Boolean? CreateDatastoreOnlyMount = null,

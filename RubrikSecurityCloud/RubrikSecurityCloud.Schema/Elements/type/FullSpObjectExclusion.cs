@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FullSpObjectExclusion";
+    }
+
     public FullSpObjectExclusion Set(
         SharePointDescendantType? ObjectType = null,
         System.String? Fid = null,

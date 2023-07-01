@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeRdsPointInTimeRestoreWindow";
+    }
+
     public AwsNativeRdsPointInTimeRestoreWindow Set(
         DateTime? EarliestTime = null,
         DateTime? LatestTime = null

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NasMigrationSummary";
+    }
+
     public NasMigrationSummary Set(
         System.String? FailureReason = null,
         System.String? ManagedId = null,

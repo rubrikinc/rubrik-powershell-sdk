@@ -206,6 +206,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NasShare";
+    }
+
     public NasShare Set(
         List<Operation>? AuthorizedOperations = null,
         ConnectedThroughEnumType? ConnectedThrough = null,

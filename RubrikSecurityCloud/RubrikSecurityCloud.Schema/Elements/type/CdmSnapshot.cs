@@ -241,6 +241,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmSnapshot";
+    }
+
     public CdmSnapshot Set(
         SnapshotCloudState? CloudState = null,
         ConsistencyLevelEnum? ConsistencyLevel = null,

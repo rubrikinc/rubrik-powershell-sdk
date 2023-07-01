@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("matchType")]
         public IndicatorOfCompromiseKind? MatchType { get; set; }
 
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
+        [JsonProperty("objectType")]
+        public HierarchyObjectTypeEnum? ObjectType { get; set; }
+
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
         [JsonProperty("detectedTime")]
@@ -55,23 +60,49 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isQuarantined")]
         public System.Boolean? IsQuarantined { get; set; }
 
+        //      C# -> System.String? ObjectFid
+        // GraphQL -> objectFid: UUID! (scalar)
+        [JsonProperty("objectFid")]
+        public System.String? ObjectFid { get; set; }
+
+        //      C# -> System.String? ObjectName
+        // GraphQL -> objectName: String! (scalar)
+        [JsonProperty("objectName")]
+        public System.String? ObjectName { get; set; }
+
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: UUID! (scalar)
+        [JsonProperty("snapshotFid")]
+        public System.String? SnapshotFid { get; set; }
+
 
         #endregion
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FileMatch";
+    }
+
     public FileMatch Set(
         IndicatorOfCompromiseKind? MatchType = null,
+        HierarchyObjectTypeEnum? ObjectType = null,
         DateTime? DetectedTime = null,
         System.String? FileName = null,
         System.Int64? FileSize = null,
         System.String? Filepath = null,
         DateTime? FirstMatchedSnapshotDate = null,
-        System.Boolean? IsQuarantined = null
+        System.Boolean? IsQuarantined = null,
+        System.String? ObjectFid = null,
+        System.String? ObjectName = null,
+        System.String? SnapshotFid = null
     ) 
     {
         if ( MatchType != null ) {
             this.MatchType = MatchType;
+        }
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
         }
         if ( DetectedTime != null ) {
             this.DetectedTime = DetectedTime;
@@ -91,6 +122,15 @@ namespace RubrikSecurityCloud.Types
         if ( IsQuarantined != null ) {
             this.IsQuarantined = IsQuarantined;
         }
+        if ( ObjectFid != null ) {
+            this.ObjectFid = ObjectFid;
+        }
+        if ( ObjectName != null ) {
+            this.ObjectName = ObjectName;
+        }
+        if ( SnapshotFid != null ) {
+            this.SnapshotFid = SnapshotFid;
+        }
         return this;
     }
 
@@ -105,6 +145,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> matchType: IndicatorOfCompromiseKind! (enum)
         if (this.MatchType != null) {
             s += ind + "matchType\n" ;
+        }
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
+        if (this.ObjectType != null) {
+            s += ind + "objectType\n" ;
         }
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
@@ -136,6 +181,21 @@ namespace RubrikSecurityCloud.Types
         if (this.IsQuarantined != null) {
             s += ind + "isQuarantined\n" ;
         }
+        //      C# -> System.String? ObjectFid
+        // GraphQL -> objectFid: UUID! (scalar)
+        if (this.ObjectFid != null) {
+            s += ind + "objectFid\n" ;
+        }
+        //      C# -> System.String? ObjectName
+        // GraphQL -> objectName: String! (scalar)
+        if (this.ObjectName != null) {
+            s += ind + "objectName\n" ;
+        }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: UUID! (scalar)
+        if (this.SnapshotFid != null) {
+            s += ind + "snapshotFid\n" ;
+        }
         return s;
     }
 
@@ -149,6 +209,12 @@ namespace RubrikSecurityCloud.Types
         if (this.MatchType == null && Exploration.Includes(parent + ".matchType", true))
         {
             this.MatchType = new IndicatorOfCompromiseKind();
+        }
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
+        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        {
+            this.ObjectType = new HierarchyObjectTypeEnum();
         }
         //      C# -> DateTime? DetectedTime
         // GraphQL -> detectedTime: DateTime (scalar)
@@ -185,6 +251,24 @@ namespace RubrikSecurityCloud.Types
         if (this.IsQuarantined == null && Exploration.Includes(parent + ".isQuarantined", true))
         {
             this.IsQuarantined = true;
+        }
+        //      C# -> System.String? ObjectFid
+        // GraphQL -> objectFid: UUID! (scalar)
+        if (this.ObjectFid == null && Exploration.Includes(parent + ".objectFid", true))
+        {
+            this.ObjectFid = "FETCH";
+        }
+        //      C# -> System.String? ObjectName
+        // GraphQL -> objectName: String! (scalar)
+        if (this.ObjectName == null && Exploration.Includes(parent + ".objectName", true))
+        {
+            this.ObjectName = "FETCH";
+        }
+        //      C# -> System.String? SnapshotFid
+        // GraphQL -> snapshotFid: UUID! (scalar)
+        if (this.SnapshotFid == null && Exploration.Includes(parent + ".snapshotFid", true))
+        {
+            this.SnapshotFid = "FETCH";
         }
     }
 

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FakeDataConnection";
+    }
+
     public FakeDataConnection Set(
         System.Int32? Count = null,
         List<FakeDataEdge>? Edges = null,

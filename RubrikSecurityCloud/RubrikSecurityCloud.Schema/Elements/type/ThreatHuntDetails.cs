@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatHuntDetails";
+    }
+
     public ThreatHuntDetails Set(
         System.String? CdmId = null,
         DateTime? EndTime = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SendPdfReportReply";
+    }
+
     public SendPdfReportReply Set(
         System.String? TaskchainUuid = null
     ) 

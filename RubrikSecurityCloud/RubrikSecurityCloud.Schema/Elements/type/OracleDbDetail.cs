@@ -185,6 +185,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDbDetail";
+    }
+
     public OracleDbDetail Set(
         System.String? DbUniqueName = null,
         System.Boolean? IsLiveMount = null,

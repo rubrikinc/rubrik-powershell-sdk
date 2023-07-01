@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RotateServiceAccountSecretReply";
+    }
+
     public RotateServiceAccountSecretReply Set(
         System.String? AccessTokenUri = null,
         System.String? ClientId = null,

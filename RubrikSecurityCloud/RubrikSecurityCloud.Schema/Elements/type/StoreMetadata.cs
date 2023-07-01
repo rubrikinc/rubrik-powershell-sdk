@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StoreMetadata";
+    }
+
     public StoreMetadata Set(
         System.String? S3Bucket = null,
         System.String? S3Region = null

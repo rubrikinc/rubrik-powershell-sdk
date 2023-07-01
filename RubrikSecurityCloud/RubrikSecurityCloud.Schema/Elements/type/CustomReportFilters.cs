@@ -170,6 +170,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CustomReportFilters";
+    }
+
     public CustomReportFilters Set(
         List<ActivityObjectTypeEnum>? ActivityObjectType = null,
         List<ClusterTypeEnum>? ClusterType = null,

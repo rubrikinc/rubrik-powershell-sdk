@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TargetConnection";
+    }
+
     public TargetConnection Set(
         List<Target>? Nodes = null,
         System.Int32? Count = null,

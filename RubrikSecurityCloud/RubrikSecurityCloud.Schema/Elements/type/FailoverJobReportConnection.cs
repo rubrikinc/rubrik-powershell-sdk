@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverJobReportConnection";
+    }
+
     public FailoverJobReportConnection Set(
         System.Int32? Count = null,
         List<FailoverJobReportEdge>? Edges = null,

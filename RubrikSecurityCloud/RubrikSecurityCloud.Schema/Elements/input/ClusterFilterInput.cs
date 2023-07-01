@@ -89,6 +89,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("productFilters")]
         public List<ClusterFilterPerProductInput>? ProductFilters { get; set; }
 
+        //      C# -> List<System.String>? ExcludeId
+        // GraphQL -> excludeId: [UUID!] (scalar)
+        [JsonProperty("excludeId")]
+        public List<System.String>? ExcludeId { get; set; }
+
 
         #endregion
 

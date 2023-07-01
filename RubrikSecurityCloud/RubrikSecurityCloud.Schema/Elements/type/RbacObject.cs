@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RbacObject";
+    }
+
     public RbacObject Set(
         WorkloadLevelHierarchy? WorkloadHierarchy = null,
         System.String? ClusterId = null,

@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsCdmVersion";
+    }
+
     public AwsCdmVersion Set(
         List<AwsInstanceType>? SupportedInstanceTypes = null,
         System.String? ImageId = null,

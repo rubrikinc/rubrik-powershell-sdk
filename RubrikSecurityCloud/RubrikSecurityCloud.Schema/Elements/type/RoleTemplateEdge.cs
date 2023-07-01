@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RoleTemplateEdge";
+    }
+
     public RoleTemplateEdge Set(
         System.String? Cursor = null,
         RoleTemplate? Node = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClassificationPolicyDetailConnection";
+    }
+
     public ClassificationPolicyDetailConnection Set(
         System.Int32? Count = null,
         List<ClassificationPolicyDetailEdge>? Edges = null,

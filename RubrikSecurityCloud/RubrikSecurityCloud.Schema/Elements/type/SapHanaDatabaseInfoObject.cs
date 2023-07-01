@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaDatabaseInfoObject";
+    }
+
     public SapHanaDatabaseInfoObject Set(
         System.Int64? ApproxDbSizeInMb = null,
         System.String? BackintPath = null,

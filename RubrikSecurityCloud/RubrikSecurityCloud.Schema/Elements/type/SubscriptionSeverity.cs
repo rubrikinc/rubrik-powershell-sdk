@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SubscriptionSeverity";
+    }
+
     public SubscriptionSeverity Set(
         List<UserAuditSeverityEnum>? AuditSeverities = null,
         List<ActivitySeverityEnum>? EventSeverities = null

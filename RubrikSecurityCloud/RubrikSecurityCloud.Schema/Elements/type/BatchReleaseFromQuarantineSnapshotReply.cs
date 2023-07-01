@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BatchReleaseFromQuarantineSnapshotReply";
+    }
+
     public BatchReleaseFromQuarantineSnapshotReply Set(
         System.Boolean? IsBatchReleaseFromQuarantineSuccessful = null
     ) 

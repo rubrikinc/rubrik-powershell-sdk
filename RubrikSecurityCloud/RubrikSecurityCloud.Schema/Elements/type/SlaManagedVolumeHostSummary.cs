@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaManagedVolumeHostSummary";
+    }
+
     public SlaManagedVolumeHostSummary Set(
         System.String? HostId = null,
         System.String? HostName = null,

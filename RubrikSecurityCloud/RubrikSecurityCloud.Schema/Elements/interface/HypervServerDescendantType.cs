@@ -161,8 +161,14 @@ namespace RubrikSecurityCloud.Types
             foreach (HypervServerDescendantType item in list) 
             {
                 var fspec = item.AsFieldSpec(indent+1);
+                string typename;
+                if (item is BaseType bt) {
+                    typename = bt.GetGqlTypeName();
+                } else {
+                    typename = item.GetType().Name;
+                }
                 if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
-                    fieldspecs += ind + " ... on " + item.GetType().Name + " {\n" + fspec + ind + "}\n";
+                    fieldspecs += ind + " ... on " + typename + " {\n" + fspec + ind + "}\n";
                 }
             }
             return fieldspecs;

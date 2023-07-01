@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BackupTaskDiagnosticInfo";
+    }
+
     public BackupTaskDiagnosticInfo Set(
         DiagnosticTaskStatus? TaskStatus = null,
         DateTime? ExpectedEndTime = null,

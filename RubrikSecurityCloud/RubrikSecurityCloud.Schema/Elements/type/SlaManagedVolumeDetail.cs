@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaManagedVolumeDetail";
+    }
+
     public SlaManagedVolumeDetail Set(
         List<System.String>? ChannelHostMountPaths = null,
         System.Boolean? ShouldCancelBackupOnPreBackupScriptFailure = null,

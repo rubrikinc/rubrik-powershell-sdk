@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleFileDownloadLink";
+    }
+
     public OracleFileDownloadLink Set(
         System.String? DownloadLink = null
     ) 

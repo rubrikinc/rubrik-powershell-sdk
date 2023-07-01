@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDatabaseConnection";
+    }
+
     public OracleDatabaseConnection Set(
         System.Int32? Count = null,
         List<OracleDatabaseEdge>? Edges = null,

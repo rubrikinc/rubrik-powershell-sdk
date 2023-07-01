@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ScvmmInfo";
+    }
+
     public ScvmmInfo Set(
         System.String? Version = null
     ) 

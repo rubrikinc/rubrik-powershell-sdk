@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmNodeDetail";
+    }
+
     public CdmNodeDetail Set(
         System.String? ClusterId = null,
         System.String? DataIpAddress = null,

@@ -155,6 +155,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureO365ExocomputeCluster";
+    }
+
     public AzureO365ExocomputeCluster Set(
         O365AzureCloudType? AzureCloudType = null,
         AzureHostType? HostType = null,

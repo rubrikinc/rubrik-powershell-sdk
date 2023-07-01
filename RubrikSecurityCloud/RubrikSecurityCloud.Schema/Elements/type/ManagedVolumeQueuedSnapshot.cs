@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeQueuedSnapshot";
+    }
+
     public ManagedVolumeQueuedSnapshot Set(
         DateTime? Date = null
     ) 

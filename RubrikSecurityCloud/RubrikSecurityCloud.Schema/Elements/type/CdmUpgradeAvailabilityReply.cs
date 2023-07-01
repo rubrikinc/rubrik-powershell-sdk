@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmUpgradeAvailabilityReply";
+    }
+
     public CdmUpgradeAvailabilityReply Set(
         System.Boolean? IsAvailable = null,
         StatusResponse? Status = null

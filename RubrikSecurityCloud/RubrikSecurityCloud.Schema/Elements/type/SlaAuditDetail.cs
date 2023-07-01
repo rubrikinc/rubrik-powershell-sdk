@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaAuditDetail";
+    }
+
     public SlaAuditDetail Set(
         SlaDomain? CurrentSlaSummary = null,
         SlaDomain? PreviousSlaSummary = null,

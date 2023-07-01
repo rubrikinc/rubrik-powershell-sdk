@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleHostSummary";
+    }
+
     public OracleHostSummary Set(
         System.Boolean? HasLogConfigFromSla = null,
         System.String? HostId = null,

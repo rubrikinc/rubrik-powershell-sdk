@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DownloadPackageStatusReply";
+    }
+
     public DownloadPackageStatusReply Set(
         System.String? Availability = null,
         System.String? Description = null,

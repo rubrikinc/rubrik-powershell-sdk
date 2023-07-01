@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaLogSnapshotConnection";
+    }
+
     public SapHanaLogSnapshotConnection Set(
         System.Int32? Count = null,
         List<SapHanaLogSnapshotEdge>? Edges = null,

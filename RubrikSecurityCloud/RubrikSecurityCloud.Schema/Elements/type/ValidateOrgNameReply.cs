@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateOrgNameReply";
+    }
+
     public ValidateOrgNameReply Set(
         NameValidity? NameValidity = null,
         System.String? Name = null,

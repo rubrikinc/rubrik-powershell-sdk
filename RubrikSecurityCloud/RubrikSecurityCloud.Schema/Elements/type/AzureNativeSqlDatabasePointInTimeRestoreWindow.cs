@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeSqlDatabasePointInTimeRestoreWindow";
+    }
+
     public AzureNativeSqlDatabasePointInTimeRestoreWindow Set(
         DateTime? EarliestTime = null,
         DateTime? LatestTime = null

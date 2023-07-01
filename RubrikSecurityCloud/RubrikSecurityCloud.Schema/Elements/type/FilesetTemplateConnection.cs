@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetTemplateConnection";
+    }
+
     public FilesetTemplateConnection Set(
         System.Int32? Count = null,
         List<FilesetTemplateEdge>? Edges = null,

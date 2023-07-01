@@ -40,6 +40,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("allocatedStorageInGb")]
         public System.Int64? AllocatedStorageInGb { get; set; }
 
+        //      C# -> System.String? DatabaseInstanceClass
+        // GraphQL -> databaseInstanceClass: String! (scalar)
+        [JsonProperty("databaseInstanceClass")]
+        public System.String? DatabaseInstanceClass { get; set; }
+
         //      C# -> System.String? DbEngineVersion
         // GraphQL -> dbEngineVersion: String! (scalar)
         [JsonProperty("dbEngineVersion")]
@@ -95,11 +100,16 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RdsInstanceExportDefaults";
+    }
+
     public RdsInstanceExportDefaults Set(
         AwsNativeRdsDbEngine? DbEngine = null,
         AwsNativeRdsDbInstanceClass? DbInstanceClass = null,
         AwsNativeRdsStorageType? StorageType = null,
         System.Int64? AllocatedStorageInGb = null,
+        System.String? DatabaseInstanceClass = null,
         System.String? DbEngineVersion = null,
         System.String? DbParameterGroupName = null,
         System.String? DbSubnetGroupName = null,
@@ -123,6 +133,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( AllocatedStorageInGb != null ) {
             this.AllocatedStorageInGb = AllocatedStorageInGb;
+        }
+        if ( DatabaseInstanceClass != null ) {
+            this.DatabaseInstanceClass = DatabaseInstanceClass;
         }
         if ( DbEngineVersion != null ) {
             this.DbEngineVersion = DbEngineVersion;
@@ -183,6 +196,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> allocatedStorageInGb: Long! (scalar)
         if (this.AllocatedStorageInGb != null) {
             s += ind + "allocatedStorageInGb\n" ;
+        }
+        //      C# -> System.String? DatabaseInstanceClass
+        // GraphQL -> databaseInstanceClass: String! (scalar)
+        if (this.DatabaseInstanceClass != null) {
+            s += ind + "databaseInstanceClass\n" ;
         }
         //      C# -> System.String? DbEngineVersion
         // GraphQL -> dbEngineVersion: String! (scalar)
@@ -265,6 +283,12 @@ namespace RubrikSecurityCloud.Types
         if (this.AllocatedStorageInGb == null && Exploration.Includes(parent + ".allocatedStorageInGb", true))
         {
             this.AllocatedStorageInGb = new System.Int64();
+        }
+        //      C# -> System.String? DatabaseInstanceClass
+        // GraphQL -> databaseInstanceClass: String! (scalar)
+        if (this.DatabaseInstanceClass == null && Exploration.Includes(parent + ".databaseInstanceClass", true))
+        {
+            this.DatabaseInstanceClass = "FETCH";
         }
         //      C# -> System.String? DbEngineVersion
         // GraphQL -> dbEngineVersion: String! (scalar)

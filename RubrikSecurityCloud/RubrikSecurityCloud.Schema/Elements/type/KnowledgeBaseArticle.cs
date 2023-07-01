@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "KnowledgeBaseArticle";
+    }
+
     public KnowledgeBaseArticle Set(
         System.String? ArticleNumber = null,
         System.String? Description = null,

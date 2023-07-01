@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeSubscriptionEdge";
+    }
+
     public AzureNativeSubscriptionEdge Set(
         System.String? Cursor = null,
         AzureNativeSubscription? Node = null

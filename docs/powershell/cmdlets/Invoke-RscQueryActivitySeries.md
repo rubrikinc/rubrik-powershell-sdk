@@ -1,11 +1,11 @@
 # Invoke-RscQueryActivitySeries
 ## Subcommands
-### ActivitySeries
+### activityseries
 Retrieve an activity series.
 
 - There is a single argument of type ActivitySeriesInput.
 - Returns ActivitySeries.
-### Groupbyconnection
+### groupbylist
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -15,7 +15,7 @@ Retrieve an activity series.
     - filters - ActivitySeriesFilterInput
     - timezoneOffset - System.Single: Offset based on customer timezone.
 - Returns ActivitySeriesGroupByConnection.
-### List
+### list
 - There are 7 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.

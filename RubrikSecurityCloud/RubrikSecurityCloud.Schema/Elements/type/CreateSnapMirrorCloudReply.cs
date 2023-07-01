@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateSnapMirrorCloudReply";
+    }
+
     public CreateSnapMirrorCloudReply Set(
         System.String? EffectiveSlaDomainId = null,
         System.String? EffectiveSlaDomainName = null,

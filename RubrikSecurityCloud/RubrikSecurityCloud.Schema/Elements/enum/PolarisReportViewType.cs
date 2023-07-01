@@ -25,7 +25,10 @@ namespace RubrikSecurityCloud.Types
         RECOVERY_TASKS_DETAIL_REPORT,
 
         [EnumMember(Value = "REPORT_UNSPECIFIED")]
-        REPORT_UNSPECIFIED
+        REPORT_UNSPECIFIED,
+
+        [EnumMember(Value = "THREAT_MONITORING_REPORT")]
+        THREAT_MONITORING_REPORT
 
 
     } // enum PolarisReportViewType

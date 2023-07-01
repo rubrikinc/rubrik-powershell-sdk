@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HyperVLiveMountConnection";
+    }
+
     public HyperVliveMountConnection Set(
         System.Int32? Count = null,
         List<HyperVliveMountEdge>? Edges = null,

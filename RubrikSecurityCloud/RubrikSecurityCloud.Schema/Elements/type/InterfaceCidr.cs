@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "InterfaceCidr";
+    }
+
     public InterfaceCidr Set(
         InterfaceType? InterfaceType = null,
         System.String? Cidr = null,

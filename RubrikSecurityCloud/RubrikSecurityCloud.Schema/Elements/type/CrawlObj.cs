@@ -115,6 +115,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CrawlObj";
+    }
+
     public CrawlObj Set(
         SnappableCrawlStatus? Status = null,
         HierarchyObject? Snappable = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDataGuardGroupLogicalChildTypeConnection";
+    }
+
     public OracleDataGuardGroupLogicalChildTypeConnection Set(
         List<OracleDataGuardGroupLogicalChildType>? Nodes = null,
         System.Int32? Count = null,

@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlSlaRelatedProperties";
+    }
+
     public MssqlSlaRelatedProperties Set(
         System.Boolean? CopyOnly = null,
         System.Boolean? HasLogConfigFromSla = null,

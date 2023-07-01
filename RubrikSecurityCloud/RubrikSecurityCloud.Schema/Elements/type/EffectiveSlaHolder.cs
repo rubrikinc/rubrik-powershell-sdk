@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "EffectiveSlaHolder";
+    }
+
     public EffectiveSlaHolder Set(
         System.String? EffectiveSlaDomainId = null,
         System.String? EffectiveSlaDomainName = null,

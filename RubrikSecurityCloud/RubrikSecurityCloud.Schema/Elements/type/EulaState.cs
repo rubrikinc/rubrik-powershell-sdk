@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "EulaState";
+    }
+
     public EulaState Set(
         System.Boolean? IsAccepted = null,
         System.Boolean? IsPactsafeEnabled = null,

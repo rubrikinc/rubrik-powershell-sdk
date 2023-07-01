@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TriggerExocomputeHealthCheckReply";
+    }
+
     public TriggerExocomputeHealthCheckReply Set(
         System.String? HealthCheckJobId = null
     ) 

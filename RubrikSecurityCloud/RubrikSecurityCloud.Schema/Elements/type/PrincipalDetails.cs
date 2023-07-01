@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalDetails";
+    }
+
     public PrincipalDetails Set(
         List<UserAccessGroup>? DirectGroups = null,
         PrincipalSummary? PrincipalSummary = null

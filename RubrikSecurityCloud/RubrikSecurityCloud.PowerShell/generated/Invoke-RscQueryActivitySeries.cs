@@ -43,16 +43,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter ActivitySeries { get; set; }
 
-        [Parameter(
-            ParameterSetName = "ActivitySeries",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for retrieving an activity series.
-GraphQL argument input: ActivitySeriesInput!"
-        )]
-        public ActivitySeriesInput? Input { get; set; }
         
         // -------------------------------------------------------------------
         // List parameter set
@@ -71,84 +61,14 @@ GraphQL argument input: ActivitySeriesInput!"
         )]
         public SwitchParameter List { get; set; }
 
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the last n elements from the list.
-GraphQL argument last: Int"
-        )]
-        public System.Int32? Last { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come before the specified cursor.
-GraphQL argument before: String"
-        )]
-        public System.String? Before { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Activity sort order
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort activity series by field.
-GraphQL argument sortBy: ActivitySeriesSortField"
-        )]
-        public ActivitySeriesSortField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument filters: ActivitySeriesFilter"
-        )]
-        public ActivitySeriesFilter? Filters { get; set; }
         
         // -------------------------------------------------------------------
-        // Groupbyconnection parameter set
+        // GroupByList parameter set
         //
         // [GraphQL: activitySeriesGroupByConnection]
         //
         [Parameter(
-            ParameterSetName = "Groupbyconnection",
+            ParameterSetName = "GroupByList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -157,28 +77,8 @@ GraphQL argument filters: ActivitySeriesFilter"
 [GraphQL: activitySeriesGroupByConnection]",
             Position = 0
         )]
-        public SwitchParameter Groupbyconnection { get; set; }
+        public SwitchParameter GroupByList { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Groupbyconnection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"group activity series by a field
-GraphQL argument groupBy: ActivitySeriesGroupByEnum!"
-        )]
-        public ActivitySeriesGroupByEnum? GroupBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Groupbyconnection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Offset based on customer timezone.
-GraphQL argument timezoneOffset: Float"
-        )]
-        public System.Single? TimezoneOffset { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -192,8 +92,8 @@ GraphQL argument timezoneOffset: Float"
                     case "List":
                         this.ProcessRecord_List();
                         break;
-                    case "Groupbyconnection":
-                        this.ProcessRecord_Groupbyconnection();
+                    case "GroupByList":
+                        this.ProcessRecord_GroupByList();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -225,9 +125,9 @@ GraphQL argument timezoneOffset: Float"
 
         // This parameter set invokes a single graphql operation:
         // activitySeriesGroupByConnection.
-        protected void ProcessRecord_Groupbyconnection()
+        protected void ProcessRecord_GroupByList()
         {
-            this._logger.name += " -Groupbyconnection";
+            this._logger.name += " -GroupByList";
             // Invoke graphql operation activitySeriesGroupByConnection
             InvokeQueryActivitySeriesGroupByConnection();
         }

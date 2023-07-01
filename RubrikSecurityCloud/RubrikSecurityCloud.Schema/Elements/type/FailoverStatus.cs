@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverStatus";
+    }
+
     public FailoverStatus Set(
         FailoverStatusEnum? EnumValue = null
     ) 

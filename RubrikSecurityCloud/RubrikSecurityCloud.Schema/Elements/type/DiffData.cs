@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DiffData";
+    }
+
     public DiffData Set(
         System.Int64? BytesCreated = null,
         System.Int64? BytesDeleted = null,

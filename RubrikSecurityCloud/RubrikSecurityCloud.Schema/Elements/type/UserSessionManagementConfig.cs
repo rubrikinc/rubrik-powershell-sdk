@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserSessionManagementConfig";
+    }
+
     public UserSessionManagementConfig Set(
         System.Int64? InactivityTimeoutInSeconds = null,
         System.Int64? InactivityTimeoutInSecondsMaxLimit = null,

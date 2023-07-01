@@ -1,16 +1,16 @@
 # Invoke-RscMutateCluster
 ## Subcommands
-### Addnodestocloud
+### addnodestocloud
 Add nodes to cloud cluster.
 
 - There is a single argument of type AddNodesToCloudClusterInput.
 - Returns CcProvisionJobReply.
-### Archivek8s
+### archivek8s
 Archive a Kubernetes cluster.
 
 - There is a single argument of type ArchiveK8sClusterInput.
 - Returns ArchiveK8sClusterReply.
-### Bulkdeletefailover
+### bulkdeletefailover
 Delete the provided failover clusters
 
 Supported in v5.3+
@@ -18,7 +18,7 @@ Delete the provided failover clusters.
 
 - There is a single argument of type BulkDeleteFailoverClusterInput.
 - Returns ResponseSuccess.
-### Createfailover
+### createfailover
 Create a failover cluster
 
 Supported in v5.2+
@@ -26,12 +26,12 @@ Create a failover cluster.
 
 - There is a single argument of type CreateFailoverClusterInput.
 - Returns CreateFailoverClusterReply.
-### Createk8s
+### createk8s
 Add a Kubernetes cluster.
 
 - There is a single argument of type CreateK8sClusterInput.
 - Returns CreateK8sClusterReply.
-### Deletefailover
+### deletefailover
 Delete a failover cluster
 
 Supported in v5.2+
@@ -39,28 +39,28 @@ Delete a failover cluster.
 
 - There is a single argument of type DeleteFailoverClusterInput.
 - Returns ResponseSuccess.
-### Recovercloud
+### recovercloud
 Recover a Rubrik Cloud Cluster.
 
 - There is a single argument of type RecoverCloudClusterInput.
 - Returns CcProvisionJobReply.
-### Refreshk8s
+### refreshk8s
 Refresh resources of a Kubernetes cluster.
 
 - There is a single argument of type RefreshK8sClusterInput.
 - Returns CreateOnDemandJobReply.
-### Registercloud
+### registercloud
 Register a cloud cluster.
 
 - There is a single argument of type RegisterCloudClusterInput.
 - Returns RegisterCloudClusterReply.
-### Removecdm
+### removecdm
 - There are 3 arguments.
     - clusterUUID - System.String: UUID of the Rubrik cluster.
     - isForce - System.Boolean
     - expireInDays - System.Int64: Number of days after which data from Rubrik is removed.
 - Returns System.Boolean.
-### Updatefailover
+### updatefailover
 Update a failover cluster
 
 Supported in v5.2+

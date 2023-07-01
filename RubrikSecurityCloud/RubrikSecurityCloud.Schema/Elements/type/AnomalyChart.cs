@@ -41,6 +41,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnomalyChart";
+    }
+
     public AnomalyChart Set(
         ReportFocusEnum? Focus = null,
         List<AnomalyResultGroupBy>? GroupBy = null,

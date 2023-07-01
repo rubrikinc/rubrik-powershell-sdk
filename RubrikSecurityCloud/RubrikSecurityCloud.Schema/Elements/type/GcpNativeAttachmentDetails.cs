@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeAttachmentDetails";
+    }
+
     public GcpNativeAttachmentDetails Set(
         System.String? DeviceName = null,
         System.String? DiskId = null,

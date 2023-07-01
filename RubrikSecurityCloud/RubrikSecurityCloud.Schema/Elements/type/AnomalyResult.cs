@@ -160,6 +160,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnomalyResult";
+    }
+
     public AnomalyResult Set(
         ObjectTypeEnum? ObjectType = null,
         ActivitySeverityEnum? Severity = null,

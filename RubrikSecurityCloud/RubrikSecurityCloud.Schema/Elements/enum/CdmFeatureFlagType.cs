@@ -231,6 +231,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "ORACLEDB_TAKE_TLOG_BACKUP")]
         ORACLEDB_TAKE_TLOG_BACKUP,
 
+        [EnumMember(Value = "REPLICATION_TARGET_SETUP_UPDATE")]
+        REPLICATION_TARGET_SETUP_UPDATE,
+
         [EnumMember(Value = "SAP_HANA_STATIC_RETENTION")]
         SAP_HANA_STATIC_RETENTION
 

@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ContentNode";
+    }
+
     public ContentNode Set(
         System.Int32? Index = null,
         System.Int32? ParentIndex = null,

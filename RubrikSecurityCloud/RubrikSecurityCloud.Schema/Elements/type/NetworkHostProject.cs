@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NetworkHostProject";
+    }
+
     public NetworkHostProject Set(
         System.String? Name = null,
         System.String? NativeId = null,

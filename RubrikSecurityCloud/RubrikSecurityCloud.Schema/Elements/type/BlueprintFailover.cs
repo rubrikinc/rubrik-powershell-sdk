@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlueprintFailover";
+    }
+
     public BlueprintFailover Set(
         FailoverTypeEnum? FailoverType = null,
         FailoverStatusEnum? Status = null,

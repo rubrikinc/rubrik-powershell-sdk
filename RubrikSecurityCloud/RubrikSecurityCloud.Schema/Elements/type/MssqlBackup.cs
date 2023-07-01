@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlBackup";
+    }
+
     public MssqlBackup Set(
         MssqlBackupType? BackupType = null,
         System.String? BackupId = null,

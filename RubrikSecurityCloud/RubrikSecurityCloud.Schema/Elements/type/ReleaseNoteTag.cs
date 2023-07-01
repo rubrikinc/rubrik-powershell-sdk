@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReleaseNoteTag";
+    }
+
     public ReleaseNoteTag Set(
         System.Int64? Id = null,
         System.String? Name = null,

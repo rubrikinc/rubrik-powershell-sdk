@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SyslogConfig";
+    }
+
     public SyslogConfig Set(
         System.Int32? Id = null,
         CommonNotificationConfig? NotificationConf = null,

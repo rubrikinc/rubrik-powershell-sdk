@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterAppPhysicalChildTypeConnection";
+    }
+
     public FailoverClusterAppPhysicalChildTypeConnection Set(
         List<FailoverClusterAppPhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

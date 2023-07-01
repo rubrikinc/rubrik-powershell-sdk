@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2InstancePhysicalChildTypeConnection";
+    }
+
     public Db2InstancePhysicalChildTypeConnection Set(
         List<Db2InstancePhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

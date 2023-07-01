@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongodbSourcePhysicalChildTypeConnection";
+    }
+
     public MongodbSourcePhysicalChildTypeConnection Set(
         List<MongodbSourcePhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

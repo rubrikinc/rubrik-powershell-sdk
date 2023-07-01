@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateCertificateHostReply";
+    }
+
     public UpdateCertificateHostReply Set(
         HostDetail? Output = null
     ) 

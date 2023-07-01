@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsCloudAccountListSubnetsResponse";
+    }
+
     public AwsCloudAccountListSubnetsResponse Set(
         List<CloudAccountSubnet>? Result = null
     ) 

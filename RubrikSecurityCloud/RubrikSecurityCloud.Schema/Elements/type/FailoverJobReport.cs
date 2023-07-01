@@ -105,6 +105,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverJobReport";
+    }
+
     public FailoverJobReport Set(
         System.String? BlueprintId = null,
         System.String? BlueprintName = null,

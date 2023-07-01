@@ -181,6 +181,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalSlaReply";
+    }
+
     public GlobalSlaReply Set(
         List<SlaObjectType>? ObjectTypes = null,
         System.String? ClusterUuid = null,

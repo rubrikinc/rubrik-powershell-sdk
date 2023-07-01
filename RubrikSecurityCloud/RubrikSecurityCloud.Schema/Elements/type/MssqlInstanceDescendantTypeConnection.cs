@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlInstanceDescendantTypeConnection";
+    }
+
     public MssqlInstanceDescendantTypeConnection Set(
         List<MssqlInstanceDescendantType>? Nodes = null,
         System.Int32? Count = null,

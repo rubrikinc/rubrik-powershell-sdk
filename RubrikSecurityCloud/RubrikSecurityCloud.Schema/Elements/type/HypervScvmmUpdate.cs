@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervScvmmUpdate";
+    }
+
     public HypervScvmmUpdate Set(
         System.String? ConfiguredSlaDomainId = null,
         System.String? Hostname = null,

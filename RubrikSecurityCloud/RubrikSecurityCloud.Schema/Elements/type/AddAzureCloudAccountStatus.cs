@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddAzureCloudAccountStatus";
+    }
+
     public AddAzureCloudAccountStatus Set(
         System.String? AzureSubscriptionNativeId = null,
         System.String? AzureSubscriptionRubrikId = null,

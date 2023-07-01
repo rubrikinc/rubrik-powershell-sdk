@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmAgentStatus";
+    }
+
     public CdmAgentStatus Set(
         System.String? AgentStatus = null,
         System.String? DisconnectReason = null

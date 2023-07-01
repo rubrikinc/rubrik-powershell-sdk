@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddAzureCloudAccountReply";
+    }
+
     public AddAzureCloudAccountReply Set(
         System.String? TenantId = null,
         List<AddAzureCloudAccountStatus>? Status = null

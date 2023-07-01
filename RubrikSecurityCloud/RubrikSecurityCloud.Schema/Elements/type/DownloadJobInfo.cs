@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DownloadJobInfo";
+    }
+
     public DownloadJobInfo Set(
         System.String? EventId = null,
         System.String? JobInstanceId = null,

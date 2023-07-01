@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PatchNutanixMountV1Reply";
+    }
+
     public PatchNutanixMountV1Reply Set(
         NutanixVmMountSummary? NutanixVmMountSummary = null
     ) 

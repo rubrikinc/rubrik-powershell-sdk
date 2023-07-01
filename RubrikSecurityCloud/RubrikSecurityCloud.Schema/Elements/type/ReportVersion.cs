@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReportVersion";
+    }
+
     public ReportVersion Set(
         ReportVersionType? ReportVersionField = null
     ) 

@@ -480,6 +480,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MONGO_SOURCE_ID")]
         MONGO_SOURCE_ID,
 
+        [EnumMember(Value = "MSSQL_IS_FAILOVER_CLUSTER_PROTECTED")]
+        MSSQL_IS_FAILOVER_CLUSTER_PROTECTED,
+
+        [EnumMember(Value = "MSSQL_IS_HOST_PROTECTED")]
+        MSSQL_IS_HOST_PROTECTED,
+
         [EnumMember(Value = "NAME")]
         NAME,
 

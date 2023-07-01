@@ -43,16 +43,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter Cloud { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Cloud",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Cloud vendor name.
-GraphQL argument cloudVendorType: CcpVendorType!"
-        )]
-        public CcpVendorType? CloudVendorType { get; set; }
         
         // -------------------------------------------------------------------
         // Node parameter set
@@ -74,16 +64,6 @@ Returns the list of all Rubrik nodes.
         )]
         public SwitchParameter Node { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Node",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for InternalGetNodes.
-GraphQL argument input: GetNodesInput!"
-        )]
-        public GetNodesInput? Input { get; set; }
         
         // -------------------------------------------------------------------
         // List parameter set
@@ -102,76 +82,6 @@ GraphQL argument input: GetNodesInput!"
         )]
         public SwitchParameter List { get; set; }
 
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the last n elements from the list.
-GraphQL argument last: Int"
-        )]
-        public System.Int32? Last { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come before the specified cursor.
-GraphQL argument before: String"
-        )]
-        public System.String? Before { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument filter: ClusterFilterInput"
-        )]
-        public ClusterFilterInput? Filter { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Cluster sort order.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort clusters by field.
-GraphQL argument sortBy: ClusterSortByEnum"
-        )]
-        public ClusterSortByEnum? SortBy { get; set; }
         
         // -------------------------------------------------------------------
         // Cluster parameter set
@@ -190,24 +100,14 @@ GraphQL argument sortBy: ClusterSortByEnum"
         )]
         public SwitchParameter Cluster { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The Rubrik cluster ID.
-GraphQL argument clusterUuid: UUID!"
-        )]
-        public System.String? ClusterUuid { get; set; }
         
         // -------------------------------------------------------------------
-        // Withupgradesinfo parameter set
+        // WithUpgradesInfo parameter set
         //
         // [GraphQL: clusterWithUpgradesInfo]
         //
         [Parameter(
-            ParameterSetName = "Withupgradesinfo",
+            ParameterSetName = "WithUpgradesInfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -216,18 +116,8 @@ GraphQL argument clusterUuid: UUID!"
 [GraphQL: clusterWithUpgradesInfo]",
             Position = 0
         )]
-        public SwitchParameter Withupgradesinfo { get; set; }
+        public SwitchParameter WithUpgradesInfo { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Withupgradesinfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument upgradeFilter: CdmUpgradeInfoFilterInput"
-        )]
-        public CdmUpgradeInfoFilterInput? UpgradeFilter { get; set; }
         
         // -------------------------------------------------------------------
         // Dns parameter set
@@ -266,12 +156,12 @@ GraphQL argument upgradeFilter: CdmUpgradeInfoFilterInput"
 
         
         // -------------------------------------------------------------------
-        // Ntpserver parameter set
+        // NtpServer parameter set
         //
         // [GraphQL: clusterNtpServers]
         //
         [Parameter(
-            ParameterSetName = "Ntpserver",
+            ParameterSetName = "NtpServer",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -283,16 +173,16 @@ Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption ke
 [GraphQL: clusterNtpServers]",
             Position = 0
         )]
-        public SwitchParameter Ntpserver { get; set; }
+        public SwitchParameter NtpServer { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Networkinterface parameter set
+        // NetworkInterface parameter set
         //
         // [GraphQL: clusterNetworkInterfaces]
         //
         [Parameter(
-            ParameterSetName = "Networkinterface",
+            ParameterSetName = "NetworkInterface",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -304,16 +194,16 @@ Retrieves network interfaces(including VLANs) on bond0/bond1.
 [GraphQL: clusterNetworkInterfaces]",
             Position = 0
         )]
-        public SwitchParameter Networkinterface { get; set; }
+        public SwitchParameter NetworkInterface { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Floatingip parameter set
+        // FloatingIp parameter set
         //
         // [GraphQL: clusterFloatingIps]
         //
         [Parameter(
-            ParameterSetName = "Floatingip",
+            ParameterSetName = "FloatingIp",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -325,7 +215,7 @@ Get a list of a cluster's always-available Ips.
 [GraphQL: clusterFloatingIps]",
             Position = 0
         )]
-        public SwitchParameter Floatingip { get; set; }
+        public SwitchParameter FloatingIp { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -347,12 +237,12 @@ Get a list of a cluster's always-available Ips.
 
         
         // -------------------------------------------------------------------
-        // Defaultgateway parameter set
+        // DefaultGateway parameter set
         //
         // [GraphQL: clusterDefaultGateway]
         //
         [Parameter(
-            ParameterSetName = "Defaultgateway",
+            ParameterSetName = "DefaultGateway",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -364,16 +254,16 @@ Get current default gateway.
 [GraphQL: clusterDefaultGateway]",
             Position = 0
         )]
-        public SwitchParameter Defaultgateway { get; set; }
+        public SwitchParameter DefaultGateway { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Websignedcertificate parameter set
+        // WebSignedCertificate parameter set
         //
         // [GraphQL: clusterWebSignedCertificate]
         //
         [Parameter(
-            ParameterSetName = "Websignedcertificate",
+            ParameterSetName = "WebSignedCertificate",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -385,7 +275,7 @@ If the web server uses a signed certificate, fetch it.
 [GraphQL: clusterWebSignedCertificate]",
             Position = 0
         )]
-        public SwitchParameter Websignedcertificate { get; set; }
+        public SwitchParameter WebSignedCertificate { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -431,12 +321,12 @@ Get all certificates.
 
         
         // -------------------------------------------------------------------
-        // Webcertsandipmi parameter set
+        // WebCertsAndIpmi parameter set
         //
         // [GraphQL: allClusterWebCertsAndIpmis]
         //
         [Parameter(
-            ParameterSetName = "Webcertsandipmi",
+            ParameterSetName = "WebCertsAndIpmi",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -445,16 +335,16 @@ Get all certificates.
 [GraphQL: allClusterWebCertsAndIpmis]",
             Position = 0
         )]
-        public SwitchParameter Webcertsandipmi { get; set; }
+        public SwitchParameter WebCertsAndIpmi { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Operationjobprogress parameter set
+        // OperationJobProgress parameter set
         //
         // [GraphQL: clusterOperationJobProgress]
         //
         [Parameter(
-            ParameterSetName = "Operationjobprogress",
+            ParameterSetName = "OperationJobProgress",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -463,16 +353,16 @@ Get all certificates.
 [GraphQL: clusterOperationJobProgress]",
             Position = 0
         )]
-        public SwitchParameter Operationjobprogress { get; set; }
+        public SwitchParameter OperationJobProgress { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Ipv6mode parameter set
+        // Ipv6Mode parameter set
         //
         // [GraphQL: clusterIpv6Mode]
         //
         [Parameter(
-            ParameterSetName = "Ipv6mode",
+            ParameterSetName = "Ipv6Mode",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -481,7 +371,7 @@ Get all certificates.
 [GraphQL: clusterIpv6Mode]",
             Position = 0
         )]
-        public SwitchParameter Ipv6mode { get; set; }
+        public SwitchParameter Ipv6Mode { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -506,12 +396,12 @@ Returns the certificate signing request generated from the private key of the Ru
 
         
         // -------------------------------------------------------------------
-        // Typelist parameter set
+        // TypeList parameter set
         //
         // [GraphQL: clusterTypeList]
         //
         [Parameter(
-            ParameterSetName = "Typelist",
+            ParameterSetName = "TypeList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -520,16 +410,16 @@ Returns the certificate signing request generated from the private key of the Ru
 [GraphQL: clusterTypeList]",
             Position = 0
         )]
-        public SwitchParameter Typelist { get; set; }
+        public SwitchParameter TypeList { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Groupbyconnection parameter set
+        // GroupByList parameter set
         //
         // [GraphQL: clusterGroupByConnection]
         //
         [Parameter(
-            ParameterSetName = "Groupbyconnection",
+            ParameterSetName = "GroupByList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -538,36 +428,16 @@ Returns the certificate signing request generated from the private key of the Ru
 [GraphQL: clusterGroupByConnection]",
             Position = 0
         )]
-        public SwitchParameter Groupbyconnection { get; set; }
+        public SwitchParameter GroupByList { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Groupbyconnection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Group by field.
-GraphQL argument groupBy: ClusterGroupByEnum!"
-        )]
-        public ClusterGroupByEnum? GroupBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Groupbyconnection",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Offset based on customer timezone.
-GraphQL argument timezoneOffset: Float"
-        )]
-        public System.Single? TimezoneOffset { get; set; }
         
         // -------------------------------------------------------------------
-        // Withconfigprotectioninfo parameter set
+        // WithConfigProtectionInfo parameter set
         //
         // [GraphQL: clusterWithConfigProtectionInfo]
         //
         [Parameter(
-            ParameterSetName = "Withconfigprotectioninfo",
+            ParameterSetName = "WithConfigProtectionInfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -576,26 +446,16 @@ GraphQL argument timezoneOffset: Float"
 [GraphQL: clusterWithConfigProtectionInfo]",
             Position = 0
         )]
-        public SwitchParameter Withconfigprotectioninfo { get; set; }
+        public SwitchParameter WithConfigProtectionInfo { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Withconfigprotectioninfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Filters for the Configuration Protection page.
-GraphQL argument configProtectionFilter: ConfigProtectionInfoFilterInput"
-        )]
-        public ConfigProtectionInfoFilterInput? ConfigProtectionFilter { get; set; }
         
         // -------------------------------------------------------------------
-        // Rcvlocation parameter set
+        // RcvLocation parameter set
         //
         // [GraphQL: clusterRcvLocations]
         //
         [Parameter(
-            ParameterSetName = "Rcvlocation",
+            ParameterSetName = "RcvLocation",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -604,18 +464,8 @@ GraphQL argument configProtectionFilter: ConfigProtectionInfoFilterInput"
 [GraphQL: clusterRcvLocations]",
             Position = 0
         )]
-        public SwitchParameter Rcvlocation { get; set; }
+        public SwitchParameter RcvLocation { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Rcvlocation",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"UUID of the Rubrik cluster.
-GraphQL argument cdmClusterUUID: UUID!"
-        )]
-        public System.String? CdmClusterUuid { get; set; }
         
         // -------------------------------------------------------------------
         // Connected parameter set
@@ -634,24 +484,14 @@ GraphQL argument cdmClusterUUID: UUID!"
         )]
         public SwitchParameter Connected { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Connected",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Specification to filter cluster based on type.
-GraphQL argument clusterFilterArg: ClusterTypeEnum"
-        )]
-        public ClusterTypeEnum? ClusterFilterArg { get; set; }
         
         // -------------------------------------------------------------------
-        // Replicationtarget parameter set
+        // ReplicationTarget parameter set
         //
         // [GraphQL: allClusterReplicationTargets]
         //
         [Parameter(
-            ParameterSetName = "Replicationtarget",
+            ParameterSetName = "ReplicationTarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -660,16 +500,16 @@ GraphQL argument clusterFilterArg: ClusterTypeEnum"
 [GraphQL: allClusterReplicationTargets]",
             Position = 0
         )]
-        public SwitchParameter Replicationtarget { get; set; }
+        public SwitchParameter ReplicationTarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Encryptioninfo parameter set
+        // EncryptionInfo parameter set
         //
         // [GraphQL: clusterEncryptionInfo]
         //
         [Parameter(
-            ParameterSetName = "Encryptioninfo",
+            ParameterSetName = "EncryptionInfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -678,66 +518,16 @@ GraphQL argument clusterFilterArg: ClusterTypeEnum"
 [GraphQL: clusterEncryptionInfo]",
             Position = 0
         )]
-        public SwitchParameter Encryptioninfo { get; set; }
+        public SwitchParameter EncryptionInfo { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Encryptioninfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The prefix of the name of the Rubrik cluster.
-GraphQL argument clusterName: String"
-        )]
-        public System.String? ClusterName { get; set; }
-        [Parameter(
-            ParameterSetName = "Encryptioninfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The encryption status of the Rubrik cluster.
-GraphQL argument encryptionStatusFilter: [ClusterEncryptionStatusFilter!]!"
-        )]
-        public List<ClusterEncryptionStatusFilter>? EncryptionStatusFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Encryptioninfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The key type used for the most recent key rotation.
-GraphQL argument keyProtection: [ClusterKeyProtection!]!"
-        )]
-        public List<ClusterKeyProtection>? KeyProtection { get; set; }
-        [Parameter(
-            ParameterSetName = "Encryptioninfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The IDs of the Rubrik clusters to select.
-GraphQL argument clusters: [UUID!]!"
-        )]
-        public List<System.String>? Clusters { get; set; }
-        [Parameter(
-            ParameterSetName = "Encryptioninfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The types of encryption.
-GraphQL argument encryptionTypes: [ClusterEncryptionType!]!"
-        )]
-        public List<ClusterEncryptionType>? EncryptionTypes { get; set; }
         
         // -------------------------------------------------------------------
-        // Hostfailover parameter set
+        // HostFailover parameter set
         //
         // [GraphQL: hostFailoverCluster]
         //
         [Parameter(
-            ParameterSetName = "Hostfailover",
+            ParameterSetName = "HostFailover",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -746,26 +536,16 @@ GraphQL argument encryptionTypes: [ClusterEncryptionType!]!"
 [GraphQL: hostFailoverCluster]",
             Position = 0
         )]
-        public SwitchParameter Hostfailover { get; set; }
+        public SwitchParameter HostFailover { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Hostfailover",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The Rubrik UUID for the object.
-GraphQL argument fid: UUID!"
-        )]
-        public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
-        // Globalfilesearchmultiple parameter set
+        // GlobalFileSearchMultiple parameter set
         //
         // [GraphQL: allGlobalFileSearchMultipleClusters]
         //
         [Parameter(
-            ParameterSetName = "Globalfilesearchmultiple",
+            ParameterSetName = "GlobalFileSearchMultiple",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -774,18 +554,8 @@ GraphQL argument fid: UUID!"
 [GraphQL: allGlobalFileSearchMultipleClusters]",
             Position = 0
         )]
-        public SwitchParameter Globalfilesearchmultiple { get; set; }
+        public SwitchParameter GlobalFileSearchMultiple { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Globalfilesearchmultiple",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The regular expression used to filter the files and folders.
-GraphQL argument regex: String!"
-        )]
-        public System.String? Regex { get; set; }
         
         // -------------------------------------------------------------------
         // K8s parameter set
@@ -824,12 +594,12 @@ GraphQL argument regex: String!"
 
         
         // -------------------------------------------------------------------
-        // Ladomainconnection parameter set
+        // LaDomainList parameter set
         //
         // [GraphQL: clusterSlaDomainConnection]
         //
         [Parameter(
-            ParameterSetName = "Ladomainconnection",
+            ParameterSetName = "LaDomainList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -838,16 +608,16 @@ GraphQL argument regex: String!"
 [GraphQL: clusterSlaDomainConnection]",
             Position = 0
         )]
-        public SwitchParameter Ladomainconnection { get; set; }
+        public SwitchParameter LaDomainList { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Ladomainfilterconnection parameter set
+        // LaDomainFilterList parameter set
         //
         // [GraphQL: clusterSlaDomainFilterConnection]
         //
         [Parameter(
-            ParameterSetName = "Ladomainfilterconnection",
+            ParameterSetName = "LaDomainFilterList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -856,16 +626,16 @@ GraphQL argument regex: String!"
 [GraphQL: clusterSlaDomainFilterConnection]",
             Position = 0
         )]
-        public SwitchParameter Ladomainfilterconnection { get; set; }
+        public SwitchParameter LaDomainFilterList { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Verifyslawithreplicationto parameter set
+        // VerifySlaWithReplicationTo parameter set
         //
         // [GraphQL: verifySLAWithReplicationToCluster]
         //
         [Parameter(
-            ParameterSetName = "Verifyslawithreplicationto",
+            ParameterSetName = "VerifySlaWithReplicationTo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -874,26 +644,16 @@ GraphQL argument regex: String!"
 [GraphQL: verifySLAWithReplicationToCluster]",
             Position = 0
         )]
-        public SwitchParameter Verifyslawithreplicationto { get; set; }
+        public SwitchParameter VerifySlaWithReplicationTo { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Verifyslawithreplicationto",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Include Archived SLA.
-GraphQL argument includeArchived: Boolean!"
-        )]
-        public System.Boolean? IncludeArchived { get; set; }
         
         // -------------------------------------------------------------------
-        // Globalsla parameter set
+        // GlobalSla parameter set
         //
         // [GraphQL: allClusterGlobalSlas]
         //
         [Parameter(
-            ParameterSetName = "Globalsla",
+            ParameterSetName = "GlobalSla",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -902,16 +662,16 @@ GraphQL argument includeArchived: Boolean!"
 [GraphQL: allClusterGlobalSlas]",
             Position = 0
         )]
-        public SwitchParameter Globalsla { get; set; }
+        public SwitchParameter GlobalSla { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Registrationproductinfo parameter set
+        // RegistrationProductInfo parameter set
         //
         // [GraphQL: clusterRegistrationProductInfo]
         //
         [Parameter(
-            ParameterSetName = "Registrationproductinfo",
+            ParameterSetName = "RegistrationProductInfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -920,7 +680,7 @@ GraphQL argument includeArchived: Boolean!"
 [GraphQL: clusterRegistrationProductInfo]",
             Position = 0
         )]
-        public SwitchParameter Registrationproductinfo { get; set; }
+        public SwitchParameter RegistrationProductInfo { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -942,12 +702,12 @@ GraphQL argument includeArchived: Boolean!"
 
         
         // -------------------------------------------------------------------
-        // Istotpacknecessary parameter set
+        // IsTotpAckNecessary parameter set
         //
         // [GraphQL: isTotpAckNecessaryForCluster]
         //
         [Parameter(
-            ParameterSetName = "Istotpacknecessary",
+            ParameterSetName = "IsTotpAckNecessary",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -956,16 +716,16 @@ GraphQL argument includeArchived: Boolean!"
 [GraphQL: isTotpAckNecessaryForCluster]",
             Position = 0
         )]
-        public SwitchParameter Istotpacknecessary { get; set; }
+        public SwitchParameter IsTotpAckNecessary { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Totpackstatus parameter set
+        // TotpAckStatus parameter set
         //
         // [GraphQL: allClustersTotpAckStatus]
         //
         [Parameter(
-            ParameterSetName = "Totpackstatus",
+            ParameterSetName = "TotpAckStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -974,18 +734,8 @@ GraphQL argument includeArchived: Boolean!"
 [GraphQL: allClustersTotpAckStatus]",
             Position = 0
         )]
-        public SwitchParameter Totpackstatus { get; set; }
+        public SwitchParameter TotpAckStatus { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Totpackstatus",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Specifies the list of cluster UUIDs.
-GraphQL argument listClusterUuid: [UUID!]!"
-        )]
-        public List<System.String>? ListClusterUuid { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -1005,8 +755,8 @@ GraphQL argument listClusterUuid: [UUID!]!"
                     case "Cluster":
                         this.ProcessRecord_Cluster();
                         break;
-                    case "Withupgradesinfo":
-                        this.ProcessRecord_Withupgradesinfo();
+                    case "WithUpgradesInfo":
+                        this.ProcessRecord_WithUpgradesInfo();
                         break;
                     case "Dns":
                         this.ProcessRecord_Dns();
@@ -1014,23 +764,23 @@ GraphQL argument listClusterUuid: [UUID!]!"
                     case "Proxy":
                         this.ProcessRecord_Proxy();
                         break;
-                    case "Ntpserver":
-                        this.ProcessRecord_Ntpserver();
+                    case "NtpServer":
+                        this.ProcessRecord_NtpServer();
                         break;
-                    case "Networkinterface":
-                        this.ProcessRecord_Networkinterface();
+                    case "NetworkInterface":
+                        this.ProcessRecord_NetworkInterface();
                         break;
-                    case "Floatingip":
-                        this.ProcessRecord_Floatingip();
+                    case "FloatingIp":
+                        this.ProcessRecord_FloatingIp();
                         break;
                     case "Vlan":
                         this.ProcessRecord_Vlan();
                         break;
-                    case "Defaultgateway":
-                        this.ProcessRecord_Defaultgateway();
+                    case "DefaultGateway":
+                        this.ProcessRecord_DefaultGateway();
                         break;
-                    case "Websignedcertificate":
-                        this.ProcessRecord_Websignedcertificate();
+                    case "WebSignedCertificate":
+                        this.ProcessRecord_WebSignedCertificate();
                         break;
                     case "Ipmi":
                         this.ProcessRecord_Ipmi();
@@ -1038,44 +788,44 @@ GraphQL argument listClusterUuid: [UUID!]!"
                     case "Certificate":
                         this.ProcessRecord_Certificate();
                         break;
-                    case "Webcertsandipmi":
-                        this.ProcessRecord_Webcertsandipmi();
+                    case "WebCertsAndIpmi":
+                        this.ProcessRecord_WebCertsAndIpmi();
                         break;
-                    case "Operationjobprogress":
-                        this.ProcessRecord_Operationjobprogress();
+                    case "OperationJobProgress":
+                        this.ProcessRecord_OperationJobProgress();
                         break;
-                    case "Ipv6mode":
-                        this.ProcessRecord_Ipv6mode();
+                    case "Ipv6Mode":
+                        this.ProcessRecord_Ipv6Mode();
                         break;
                     case "Csr":
                         this.ProcessRecord_Csr();
                         break;
-                    case "Typelist":
-                        this.ProcessRecord_Typelist();
+                    case "TypeList":
+                        this.ProcessRecord_TypeList();
                         break;
-                    case "Groupbyconnection":
-                        this.ProcessRecord_Groupbyconnection();
+                    case "GroupByList":
+                        this.ProcessRecord_GroupByList();
                         break;
-                    case "Withconfigprotectioninfo":
-                        this.ProcessRecord_Withconfigprotectioninfo();
+                    case "WithConfigProtectionInfo":
+                        this.ProcessRecord_WithConfigProtectionInfo();
                         break;
-                    case "Rcvlocation":
-                        this.ProcessRecord_Rcvlocation();
+                    case "RcvLocation":
+                        this.ProcessRecord_RcvLocation();
                         break;
                     case "Connected":
                         this.ProcessRecord_Connected();
                         break;
-                    case "Replicationtarget":
-                        this.ProcessRecord_Replicationtarget();
+                    case "ReplicationTarget":
+                        this.ProcessRecord_ReplicationTarget();
                         break;
-                    case "Encryptioninfo":
-                        this.ProcessRecord_Encryptioninfo();
+                    case "EncryptionInfo":
+                        this.ProcessRecord_EncryptionInfo();
                         break;
-                    case "Hostfailover":
-                        this.ProcessRecord_Hostfailover();
+                    case "HostFailover":
+                        this.ProcessRecord_HostFailover();
                         break;
-                    case "Globalfilesearchmultiple":
-                        this.ProcessRecord_Globalfilesearchmultiple();
+                    case "GlobalFileSearchMultiple":
+                        this.ProcessRecord_GlobalFileSearchMultiple();
                         break;
                     case "K8s":
                         this.ProcessRecord_K8s();
@@ -1083,29 +833,29 @@ GraphQL argument listClusterUuid: [UUID!]!"
                     case "Window":
                         this.ProcessRecord_Window();
                         break;
-                    case "Ladomainconnection":
-                        this.ProcessRecord_Ladomainconnection();
+                    case "LaDomainList":
+                        this.ProcessRecord_LaDomainList();
                         break;
-                    case "Ladomainfilterconnection":
-                        this.ProcessRecord_Ladomainfilterconnection();
+                    case "LaDomainFilterList":
+                        this.ProcessRecord_LaDomainFilterList();
                         break;
-                    case "Verifyslawithreplicationto":
-                        this.ProcessRecord_Verifyslawithreplicationto();
+                    case "VerifySlaWithReplicationTo":
+                        this.ProcessRecord_VerifySlaWithReplicationTo();
                         break;
-                    case "Globalsla":
-                        this.ProcessRecord_Globalsla();
+                    case "GlobalSla":
+                        this.ProcessRecord_GlobalSla();
                         break;
-                    case "Registrationproductinfo":
-                        this.ProcessRecord_Registrationproductinfo();
+                    case "RegistrationProductInfo":
+                        this.ProcessRecord_RegistrationProductInfo();
                         break;
                     case "Vcd":
                         this.ProcessRecord_Vcd();
                         break;
-                    case "Istotpacknecessary":
-                        this.ProcessRecord_Istotpacknecessary();
+                    case "IsTotpAckNecessary":
+                        this.ProcessRecord_IsTotpAckNecessary();
                         break;
-                    case "Totpackstatus":
-                        this.ProcessRecord_Totpackstatus();
+                    case "TotpAckStatus":
+                        this.ProcessRecord_TotpAckStatus();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1155,9 +905,9 @@ GraphQL argument listClusterUuid: [UUID!]!"
 
         // This parameter set invokes a single graphql operation:
         // clusterWithUpgradesInfo.
-        protected void ProcessRecord_Withupgradesinfo()
+        protected void ProcessRecord_WithUpgradesInfo()
         {
-            this._logger.name += " -Withupgradesinfo";
+            this._logger.name += " -WithUpgradesInfo";
             // Invoke graphql operation clusterWithUpgradesInfo
             InvokeQueryClusterWithUpgradesInfo();
         }
@@ -1182,27 +932,27 @@ GraphQL argument listClusterUuid: [UUID!]!"
 
         // This parameter set invokes a single graphql operation:
         // clusterNtpServers.
-        protected void ProcessRecord_Ntpserver()
+        protected void ProcessRecord_NtpServer()
         {
-            this._logger.name += " -Ntpserver";
+            this._logger.name += " -NtpServer";
             // Invoke graphql operation clusterNtpServers
             InvokeQueryClusterNtpServers();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterNetworkInterfaces.
-        protected void ProcessRecord_Networkinterface()
+        protected void ProcessRecord_NetworkInterface()
         {
-            this._logger.name += " -Networkinterface";
+            this._logger.name += " -NetworkInterface";
             // Invoke graphql operation clusterNetworkInterfaces
             InvokeQueryClusterNetworkInterfaces();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterFloatingIps.
-        protected void ProcessRecord_Floatingip()
+        protected void ProcessRecord_FloatingIp()
         {
-            this._logger.name += " -Floatingip";
+            this._logger.name += " -FloatingIp";
             // Invoke graphql operation clusterFloatingIps
             InvokeQueryClusterFloatingIps();
         }
@@ -1218,18 +968,18 @@ GraphQL argument listClusterUuid: [UUID!]!"
 
         // This parameter set invokes a single graphql operation:
         // clusterDefaultGateway.
-        protected void ProcessRecord_Defaultgateway()
+        protected void ProcessRecord_DefaultGateway()
         {
-            this._logger.name += " -Defaultgateway";
+            this._logger.name += " -DefaultGateway";
             // Invoke graphql operation clusterDefaultGateway
             InvokeQueryClusterDefaultGateway();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterWebSignedCertificate.
-        protected void ProcessRecord_Websignedcertificate()
+        protected void ProcessRecord_WebSignedCertificate()
         {
-            this._logger.name += " -Websignedcertificate";
+            this._logger.name += " -WebSignedCertificate";
             // Invoke graphql operation clusterWebSignedCertificate
             InvokeQueryClusterWebSignedCertificate();
         }
@@ -1254,27 +1004,27 @@ GraphQL argument listClusterUuid: [UUID!]!"
 
         // This parameter set invokes a single graphql operation:
         // allClusterWebCertsAndIpmis.
-        protected void ProcessRecord_Webcertsandipmi()
+        protected void ProcessRecord_WebCertsAndIpmi()
         {
-            this._logger.name += " -Webcertsandipmi";
+            this._logger.name += " -WebCertsAndIpmi";
             // Invoke graphql operation allClusterWebCertsAndIpmis
             InvokeQueryAllClusterWebCertsAndIpmis();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterOperationJobProgress.
-        protected void ProcessRecord_Operationjobprogress()
+        protected void ProcessRecord_OperationJobProgress()
         {
-            this._logger.name += " -Operationjobprogress";
+            this._logger.name += " -OperationJobProgress";
             // Invoke graphql operation clusterOperationJobProgress
             InvokeQueryClusterOperationJobProgress();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterIpv6Mode.
-        protected void ProcessRecord_Ipv6mode()
+        protected void ProcessRecord_Ipv6Mode()
         {
-            this._logger.name += " -Ipv6mode";
+            this._logger.name += " -Ipv6Mode";
             // Invoke graphql operation clusterIpv6Mode
             InvokeQueryClusterIpv6Mode();
         }
@@ -1290,36 +1040,36 @@ GraphQL argument listClusterUuid: [UUID!]!"
 
         // This parameter set invokes a single graphql operation:
         // clusterTypeList.
-        protected void ProcessRecord_Typelist()
+        protected void ProcessRecord_TypeList()
         {
-            this._logger.name += " -Typelist";
+            this._logger.name += " -TypeList";
             // Invoke graphql operation clusterTypeList
             InvokeQueryClusterTypeList();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterGroupByConnection.
-        protected void ProcessRecord_Groupbyconnection()
+        protected void ProcessRecord_GroupByList()
         {
-            this._logger.name += " -Groupbyconnection";
+            this._logger.name += " -GroupByList";
             // Invoke graphql operation clusterGroupByConnection
             InvokeQueryClusterGroupByConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterWithConfigProtectionInfo.
-        protected void ProcessRecord_Withconfigprotectioninfo()
+        protected void ProcessRecord_WithConfigProtectionInfo()
         {
-            this._logger.name += " -Withconfigprotectioninfo";
+            this._logger.name += " -WithConfigProtectionInfo";
             // Invoke graphql operation clusterWithConfigProtectionInfo
             InvokeQueryClusterWithConfigProtectionInfo();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterRcvLocations.
-        protected void ProcessRecord_Rcvlocation()
+        protected void ProcessRecord_RcvLocation()
         {
-            this._logger.name += " -Rcvlocation";
+            this._logger.name += " -RcvLocation";
             // Invoke graphql operation clusterRcvLocations
             InvokeQueryClusterRcvLocations();
         }
@@ -1335,36 +1085,36 @@ GraphQL argument listClusterUuid: [UUID!]!"
 
         // This parameter set invokes a single graphql operation:
         // allClusterReplicationTargets.
-        protected void ProcessRecord_Replicationtarget()
+        protected void ProcessRecord_ReplicationTarget()
         {
-            this._logger.name += " -Replicationtarget";
+            this._logger.name += " -ReplicationTarget";
             // Invoke graphql operation allClusterReplicationTargets
             InvokeQueryAllClusterReplicationTargets();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterEncryptionInfo.
-        protected void ProcessRecord_Encryptioninfo()
+        protected void ProcessRecord_EncryptionInfo()
         {
-            this._logger.name += " -Encryptioninfo";
+            this._logger.name += " -EncryptionInfo";
             // Invoke graphql operation clusterEncryptionInfo
             InvokeQueryClusterEncryptionInfo();
         }
 
         // This parameter set invokes a single graphql operation:
         // hostFailoverCluster.
-        protected void ProcessRecord_Hostfailover()
+        protected void ProcessRecord_HostFailover()
         {
-            this._logger.name += " -Hostfailover";
+            this._logger.name += " -HostFailover";
             // Invoke graphql operation hostFailoverCluster
             InvokeQueryHostFailoverCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // allGlobalFileSearchMultipleClusters.
-        protected void ProcessRecord_Globalfilesearchmultiple()
+        protected void ProcessRecord_GlobalFileSearchMultiple()
         {
-            this._logger.name += " -Globalfilesearchmultiple";
+            this._logger.name += " -GlobalFileSearchMultiple";
             // Invoke graphql operation allGlobalFileSearchMultipleClusters
             InvokeQueryAllGlobalFileSearchMultipleClusters();
         }
@@ -1389,45 +1139,45 @@ GraphQL argument listClusterUuid: [UUID!]!"
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomainConnection.
-        protected void ProcessRecord_Ladomainconnection()
+        protected void ProcessRecord_LaDomainList()
         {
-            this._logger.name += " -Ladomainconnection";
+            this._logger.name += " -LaDomainList";
             // Invoke graphql operation clusterSlaDomainConnection
             InvokeQueryClusterSlaDomainConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterSlaDomainFilterConnection.
-        protected void ProcessRecord_Ladomainfilterconnection()
+        protected void ProcessRecord_LaDomainFilterList()
         {
-            this._logger.name += " -Ladomainfilterconnection";
+            this._logger.name += " -LaDomainFilterList";
             // Invoke graphql operation clusterSlaDomainFilterConnection
             InvokeQueryClusterSlaDomainFilterConnection();
         }
 
         // This parameter set invokes a single graphql operation:
         // verifySLAWithReplicationToCluster.
-        protected void ProcessRecord_Verifyslawithreplicationto()
+        protected void ProcessRecord_VerifySlaWithReplicationTo()
         {
-            this._logger.name += " -Verifyslawithreplicationto";
+            this._logger.name += " -VerifySlaWithReplicationTo";
             // Invoke graphql operation verifySLAWithReplicationToCluster
             InvokeQueryVerifySlaWithReplicationToCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // allClusterGlobalSlas.
-        protected void ProcessRecord_Globalsla()
+        protected void ProcessRecord_GlobalSla()
         {
-            this._logger.name += " -Globalsla";
+            this._logger.name += " -GlobalSla";
             // Invoke graphql operation allClusterGlobalSlas
             InvokeQueryAllClusterGlobalSlas();
         }
 
         // This parameter set invokes a single graphql operation:
         // clusterRegistrationProductInfo.
-        protected void ProcessRecord_Registrationproductinfo()
+        protected void ProcessRecord_RegistrationProductInfo()
         {
-            this._logger.name += " -Registrationproductinfo";
+            this._logger.name += " -RegistrationProductInfo";
             // Invoke graphql operation clusterRegistrationProductInfo
             InvokeQueryClusterRegistrationProductInfo();
         }
@@ -1443,18 +1193,18 @@ GraphQL argument listClusterUuid: [UUID!]!"
 
         // This parameter set invokes a single graphql operation:
         // isTotpAckNecessaryForCluster.
-        protected void ProcessRecord_Istotpacknecessary()
+        protected void ProcessRecord_IsTotpAckNecessary()
         {
-            this._logger.name += " -Istotpacknecessary";
+            this._logger.name += " -IsTotpAckNecessary";
             // Invoke graphql operation isTotpAckNecessaryForCluster
             InvokeQueryIsTotpAckNecessaryForCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // allClustersTotpAckStatus.
-        protected void ProcessRecord_Totpackstatus()
+        protected void ProcessRecord_TotpAckStatus()
         {
-            this._logger.name += " -Totpackstatus";
+            this._logger.name += " -TotpAckStatus";
             // Invoke graphql operation allClustersTotpAckStatus
             InvokeQueryAllClustersTotpAckStatus();
         }

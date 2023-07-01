@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SubscriptionType";
+    }
+
     public SubscriptionType Set(
         List<UserAuditTypeEnum>? AuditTypes = null,
         List<ActivityTypeEnum>? EventTypes = null,

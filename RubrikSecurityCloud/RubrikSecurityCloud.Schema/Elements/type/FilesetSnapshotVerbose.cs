@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetSnapshotVerbose";
+    }
+
     public FilesetSnapshotVerbose Set(
         System.Boolean? HasFingerprint = null,
         List<System.String>? PartitionPaths = null

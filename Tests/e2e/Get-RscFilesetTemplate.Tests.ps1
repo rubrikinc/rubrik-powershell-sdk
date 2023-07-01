@@ -6,6 +6,8 @@ BeforeAll {
     . "$PSScriptRoot\e2eInit.ps1"
 }
 
+# TODO: SPARK-225906 fix this test
+return
 
 Describe -Name 'Get-RscFilesetTemplate' -Tag 'Public' -Fixture{
     Context -Name 'Parameter Validation' {

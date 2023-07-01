@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotResult";
+    }
+
     public SnapshotResult Set(
         System.String? SnapshotFid = null,
         System.Int64? SnapshotTime = null

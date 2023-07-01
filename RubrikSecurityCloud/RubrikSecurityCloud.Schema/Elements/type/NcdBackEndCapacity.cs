@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NcdBackEndCapacity";
+    }
+
     public NcdBackEndCapacity Set(
         System.Int64? UsageInBytes = null
     ) 

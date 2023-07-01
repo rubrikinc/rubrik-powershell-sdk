@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreatePolarisReportReply";
+    }
+
     public CreatePolarisReportReply Set(
         System.Int64? ReportId = null
     ) 

@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Role";
+    }
+
     public Role Set(
         System.String? Description = null,
         System.String? Id = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FeatureFlag";
+    }
+
     public FeatureFlag Set(
         FeatureFlagName? Name = null,
         System.String? Variant = null

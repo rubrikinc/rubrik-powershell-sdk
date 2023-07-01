@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervAsyncRequestFailureSummary";
+    }
+
     public HypervAsyncRequestFailureSummary Set(
         System.String? Error = null,
         System.String? VmId = null

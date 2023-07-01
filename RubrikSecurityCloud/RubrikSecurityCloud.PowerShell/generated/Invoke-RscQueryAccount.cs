@@ -45,12 +45,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 
         
         // -------------------------------------------------------------------
-        // Swithexocomputemapping parameter set
+        // SWithExocomputeMapping parameter set
         //
         // [GraphQL: allAccountsWithExocomputeMappings]
         //
         [Parameter(
-            ParameterSetName = "Swithexocomputemapping",
+            ParameterSetName = "SWithExocomputeMapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -59,38 +59,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: allAccountsWithExocomputeMappings]",
             Position = 0
         )]
-        public SwitchParameter Swithexocomputemapping { get; set; }
+        public SwitchParameter SWithExocomputeMapping { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Swithexocomputemapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Vendor of the cloud account.
-GraphQL argument cloudVendor: CloudVendor!"
-        )]
-        public CloudVendor? CloudVendor { get; set; }
-        [Parameter(
-            ParameterSetName = "Swithexocomputemapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Cloud account features. Rubrik offers a cloud account feature as part of Rubrik Security Cloud (RSC).
-GraphQL argument features: [CloudAccountFeature!]!"
-        )]
-        public List<CloudAccountFeature>? Features { get; set; }
-        [Parameter(
-            ParameterSetName = "Swithexocomputemapping",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List of mapped Exocompute account IDs.
-GraphQL argument exocomputeAccountIdsFilter: [UUID!]!"
-        )]
-        public List<System.String>? ExocomputeAccountIdsFilter { get; set; }
         
         // -------------------------------------------------------------------
         // Product parameter set
@@ -109,56 +79,6 @@ GraphQL argument exocomputeAccountIdsFilter: [UUID!]!"
         )]
         public SwitchParameter Product { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Product",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Name of product (Data Protection, Ransomware Investigation, etc.).
-GraphQL argument nameFilter: [ProductName!]!"
-        )]
-        public List<ProductName>? NameFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Product",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Type of product (Revenue, POC, etc.).
-GraphQL argument typeFilter: [ProductType!]!"
-        )]
-        public List<ProductType>? TypeFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Product",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"State of product (Active, Expired, etc.).
-GraphQL argument stateFilter: [ProductState!]!"
-        )]
-        public List<ProductState>? StateFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Product",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Start date of product (yyyy-mm-dd).
-GraphQL argument startDateArg: DateTime"
-        )]
-        public DateTime? StartDateArg { get; set; }
-        [Parameter(
-            ParameterSetName = "Product",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"End date of product (yyyy-mm-dd).
-GraphQL argument endDateArg: DateTime"
-        )]
-        public DateTime? EndDateArg { get; set; }
         
         // -------------------------------------------------------------------
         // Id parameter set
@@ -205,8 +125,8 @@ GraphQL argument endDateArg: DateTime"
                     case "Setting":
                         this.ProcessRecord_Setting();
                         break;
-                    case "Swithexocomputemapping":
-                        this.ProcessRecord_Swithexocomputemapping();
+                    case "SWithExocomputeMapping":
+                        this.ProcessRecord_SWithExocomputeMapping();
                         break;
                     case "Product":
                         this.ProcessRecord_Product();
@@ -238,9 +158,9 @@ GraphQL argument endDateArg: DateTime"
 
         // This parameter set invokes a single graphql operation:
         // allAccountsWithExocomputeMappings.
-        protected void ProcessRecord_Swithexocomputemapping()
+        protected void ProcessRecord_SWithExocomputeMapping()
         {
-            this._logger.name += " -Swithexocomputemapping";
+            this._logger.name += " -SWithExocomputeMapping";
             // Invoke graphql operation allAccountsWithExocomputeMappings
             InvokeQueryAllAccountsWithExocomputeMappings();
         }

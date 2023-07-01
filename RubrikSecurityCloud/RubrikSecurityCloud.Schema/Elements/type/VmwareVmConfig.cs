@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareVmConfig";
+    }
+
     public VmwareVmConfig Set(
         System.Int64? LogRetentionSeconds = null
     ) 

@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSubscriptionWithFeaturesType";
+    }
+
     public AzureSubscriptionWithFeaturesType Set(
         AzureCloudType? CloudType = null,
         System.String? CustomerTenantId = null,

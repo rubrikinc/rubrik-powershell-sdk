@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "IssueEvent";
+    }
+
     public IssueEvent Set(
         IssueEventType? Type = null,
         System.String? SnapshotFid = null,

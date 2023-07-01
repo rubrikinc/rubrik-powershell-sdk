@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RegisterNasSystemReply";
+    }
+
     public RegisterNasSystemReply Set(
         AsyncRequestStatus? NasDiscoverJobStatus = null,
         UpdateNasSystemReply? NasSystemSummary = null

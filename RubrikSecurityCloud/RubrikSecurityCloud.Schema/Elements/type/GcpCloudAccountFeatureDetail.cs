@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpCloudAccountFeatureDetail";
+    }
+
     public GcpCloudAccountFeatureDetail Set(
         CloudAccountFeature? Feature = null,
         CloudAccountStatus? Status = null

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MissedSnapshot";
+    }
+
     public MissedSnapshot Set(
         List<System.String>? ArchivalLocationType = null,
         DateTime? MissedSnapshotTime = null,

@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetMfaSettingReply";
+    }
+
     public GetMfaSettingReply Set(
         System.Boolean? IsTotpEnforcedGlobal = null,
         System.Boolean? IsTotpGlobalEnforceLocked = null,

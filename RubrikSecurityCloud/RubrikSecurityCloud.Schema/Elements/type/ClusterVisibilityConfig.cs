@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterVisibilityConfig";
+    }
+
     public ClusterVisibilityConfig Set(
         List<System.String>? HostGroupFilter = null,
         System.String? Id = null,

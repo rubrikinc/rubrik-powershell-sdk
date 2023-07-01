@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotSummaryEdge";
+    }
+
     public SnapshotSummaryEdge Set(
         System.String? Cursor = null,
         SnapshotSummary? Node = null

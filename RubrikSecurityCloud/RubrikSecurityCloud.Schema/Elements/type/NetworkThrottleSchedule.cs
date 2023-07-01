@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NetworkThrottleSchedule";
+    }
+
     public NetworkThrottleSchedule Set(
         List<DayOfWeek>? DaysOfWeek = null,
         System.Int32? EndHour = null,

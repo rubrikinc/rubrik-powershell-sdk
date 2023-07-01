@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteAwsIamUserBasedCloudAccountReply";
+    }
+
     public DeleteAwsIamUserBasedCloudAccountReply Set(
         System.String? Message = null
     ) 

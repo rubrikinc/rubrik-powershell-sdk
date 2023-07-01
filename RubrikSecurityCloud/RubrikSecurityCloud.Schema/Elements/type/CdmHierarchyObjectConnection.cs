@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmHierarchyObjectConnection";
+    }
+
     public CdmHierarchyObjectConnection Set(
         List<CdmHierarchyObject>? Nodes = null,
         System.Int32? Count = null,

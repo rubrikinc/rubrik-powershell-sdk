@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateVsphereAdvancedTagReply";
+    }
+
     public CreateVsphereAdvancedTagReply Set(
         FilterCreateResponse? Output = null
     ) 

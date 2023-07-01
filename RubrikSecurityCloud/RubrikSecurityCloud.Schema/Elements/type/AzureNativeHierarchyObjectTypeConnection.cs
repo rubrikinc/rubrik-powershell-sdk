@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeHierarchyObjectTypeConnection";
+    }
+
     public AzureNativeHierarchyObjectTypeConnection Set(
         List<AzureNativeHierarchyObjectType>? Nodes = null,
         System.Int32? Count = null,

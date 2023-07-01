@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateCloudNativeFileRecoveryFeasibilityReply";
+    }
+
     public ValidateCloudNativeFileRecoveryFeasibilityReply Set(
         List<CloudNativeFileRecoveryFeasibility>? SnapshotFileRecoveryFeasibility = null
     ) 

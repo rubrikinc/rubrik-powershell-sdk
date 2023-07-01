@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2LogSnapshot";
+    }
+
     public Db2LogSnapshot Set(
         System.String? CdmId = null,
         System.String? ClusterUuid = null,

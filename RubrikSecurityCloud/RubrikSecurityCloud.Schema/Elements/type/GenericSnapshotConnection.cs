@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GenericSnapshotConnection";
+    }
+
     public GenericSnapshotConnection Set(
         List<GenericSnapshot>? Nodes = null,
         System.Int32? Count = null,

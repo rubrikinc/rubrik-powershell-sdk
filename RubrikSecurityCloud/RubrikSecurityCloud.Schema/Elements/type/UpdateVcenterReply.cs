@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateVcenterReply";
+    }
+
     public UpdateVcenterReply Set(
         VcenterSummary? Output = null
     ) 

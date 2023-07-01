@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudNativeAccountIdWithName";
+    }
+
     public CloudNativeAccountIdWithName Set(
         System.String? Id = null,
         System.String? Name = null

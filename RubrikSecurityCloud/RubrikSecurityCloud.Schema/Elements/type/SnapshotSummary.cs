@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotSummary";
+    }
+
     public SnapshotSummary Set(
         UnmanagedSnapshotType? SnapshotType = null,
         DateTime? Date = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ComplianceFrequency";
+    }
+
     public ComplianceFrequency Set(
         ComplianceStatusEnum? Status = null,
         System.Int32? Count = null

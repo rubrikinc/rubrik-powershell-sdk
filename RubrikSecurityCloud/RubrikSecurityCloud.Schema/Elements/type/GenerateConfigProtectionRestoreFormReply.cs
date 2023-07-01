@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GenerateConfigProtectionRestoreFormReply";
+    }
+
     public GenerateConfigProtectionRestoreFormReply Set(
         List<ConfigurationTypes>? ConfigurationTypes = null,
         RestoreFormConfigurations? Configurations = null

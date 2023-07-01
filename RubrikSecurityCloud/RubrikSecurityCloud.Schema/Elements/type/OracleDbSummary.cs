@@ -180,6 +180,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDbSummary";
+    }
+
     public OracleDbSummary Set(
         CdmDataGuardType? DataGuardType = null,
         List<System.String>? ArchiveLogDestinations = null,

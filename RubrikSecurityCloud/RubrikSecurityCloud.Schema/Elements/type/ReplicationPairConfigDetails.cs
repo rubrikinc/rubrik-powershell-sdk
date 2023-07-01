@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReplicationPairConfigDetails";
+    }
+
     public ReplicationPairConfigDetails Set(
         System.String? SetupType = null,
         GatewayInfo? SourceGateway = null,

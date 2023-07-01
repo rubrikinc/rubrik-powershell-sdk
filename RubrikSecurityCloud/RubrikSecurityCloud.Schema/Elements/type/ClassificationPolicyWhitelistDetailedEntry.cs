@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClassificationPolicyWhitelistDetailedEntry";
+    }
+
     public ClassificationPolicyWhitelistDetailedEntry Set(
         HierarchyObject? Snappable = null,
         System.String? NativePath = null,

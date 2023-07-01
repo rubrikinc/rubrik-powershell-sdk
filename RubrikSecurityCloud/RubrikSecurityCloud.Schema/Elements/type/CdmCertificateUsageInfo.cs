@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmCertificateUsageInfo";
+    }
+
     public CdmCertificateUsageInfo Set(
         CdmCertificateUsage? Type = null,
         System.String? ClusterName = null,

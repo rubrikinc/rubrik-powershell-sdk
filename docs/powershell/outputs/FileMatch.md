@@ -15,3 +15,11 @@ Data for a matched file.
   - Name of the file that was matched.
 - fileSize: System.Int64
   - Size of the file that was matched.
+- objectFid: System.String
+  - FID of the object.
+- snapshotFid: System.String
+  - FID of the snapshot.
+- objectType: HierarchyObjectTypeEnum
+  - Object type.
+- objectName: System.String
+  - The scanned object name.

@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureCloudAccountTenant";
+    }
+
     public AzureCloudAccountTenant Set(
         AzureCloudType? CloudType = null,
         System.String? AppName = null,

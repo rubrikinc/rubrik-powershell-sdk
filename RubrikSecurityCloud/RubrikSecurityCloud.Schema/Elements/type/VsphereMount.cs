@@ -115,6 +115,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereMount";
+    }
+
     public VsphereMount Set(
         VsphereMountStatus? Status = null,
         System.Int32? AttachingDiskCount = null,

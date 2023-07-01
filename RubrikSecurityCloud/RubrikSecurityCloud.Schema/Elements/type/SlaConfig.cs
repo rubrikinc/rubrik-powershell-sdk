@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaConfig";
+    }
+
     public SlaConfig Set(
         System.String? Id = null,
         System.String? Name = null

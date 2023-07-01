@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CertificateUsageInfo";
+    }
+
     public CertificateUsageInfo Set(
         CertificateUsage? Type = null,
         List<CertificateUsageParameter>? Params = null

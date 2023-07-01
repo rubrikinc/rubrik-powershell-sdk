@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "S3BucketDetails";
+    }
+
     public S3BucketDetails Set(
         System.String? Arn = null,
         System.String? Name = null,

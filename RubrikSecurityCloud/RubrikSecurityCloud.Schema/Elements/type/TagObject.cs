@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TagObject";
+    }
+
     public TagObject Set(
         System.String? Key = null,
         System.String? Value = null

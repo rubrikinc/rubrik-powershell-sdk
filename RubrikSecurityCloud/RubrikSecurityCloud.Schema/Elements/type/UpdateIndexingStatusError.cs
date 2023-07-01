@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateIndexingStatusError";
+    }
+
     public UpdateIndexingStatusError Set(
         System.String? Error = null,
         System.String? WorkloadId = null

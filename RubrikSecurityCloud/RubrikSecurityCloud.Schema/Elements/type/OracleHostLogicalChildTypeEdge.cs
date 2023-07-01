@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleHostLogicalChildTypeEdge";
+    }
+
     public OracleHostLogicalChildTypeEdge Set(
         OracleHostLogicalChildType? Node = null,
         System.String? Cursor = null

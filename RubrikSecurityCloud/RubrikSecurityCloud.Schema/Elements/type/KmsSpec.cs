@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "KmsSpec";
+    }
+
     public KmsSpec Set(
         O365AzureCloudType? CloudType = null,
         System.String? AppId = null,

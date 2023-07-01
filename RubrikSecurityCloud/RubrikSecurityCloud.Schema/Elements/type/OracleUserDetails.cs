@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleUserDetails";
+    }
+
     public OracleUserDetails Set(
         System.String? QueryUser = null,
         System.String? SysDbaUser = null

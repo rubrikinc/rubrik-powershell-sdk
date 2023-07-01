@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365OauthConsentCompleteReply";
+    }
+
     public O365OauthConsentCompleteReply Set(
         System.String? AppId = null,
         System.String? EncryptedRefreshToken = null

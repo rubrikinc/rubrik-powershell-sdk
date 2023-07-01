@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PathNode";
+    }
+
     public PathNode Set(
         HierarchyObjectTypeEnum? ObjectType = null,
         System.String? Fid = null,

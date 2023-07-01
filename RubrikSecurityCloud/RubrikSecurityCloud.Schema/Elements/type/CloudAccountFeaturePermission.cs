@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudAccountFeaturePermission";
+    }
+
     public CloudAccountFeaturePermission Set(
         System.String? CloudAccountId = null,
         List<FeaturePermission>? FeaturePermissions = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TableFilters";
+    }
+
     public TableFilters Set(
         ProtectionTaskDetailsTableFilter? ProtectionTaskDetailsTable = null,
         RecoveryTaskDetailsTableFilter? RecoveryTaskDetailsTable = null

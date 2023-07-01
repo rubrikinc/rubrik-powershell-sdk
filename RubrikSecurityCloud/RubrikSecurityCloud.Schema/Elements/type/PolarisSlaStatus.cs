@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisSlaStatus";
+    }
+
     public PolarisSlaStatus Set(
         PauseStatus? PauseStatus = null,
         SlaSyncStatus? SyncStatus = null,

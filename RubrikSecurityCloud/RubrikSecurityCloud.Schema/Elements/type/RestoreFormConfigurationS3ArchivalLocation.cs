@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationS3ArchivalLocation";
+    }
+
     public RestoreFormConfigurationS3ArchivalLocation Set(
         System.String? Bucket = null,
         System.String? CloudRehydrationSpeed = null,

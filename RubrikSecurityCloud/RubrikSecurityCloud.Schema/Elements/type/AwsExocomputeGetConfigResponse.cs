@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsExocomputeGetConfigResponse";
+    }
+
     public AwsExocomputeGetConfigResponse Set(
         AwsCloudAccountRegion? Region = null,
         System.Boolean? AreSecurityGroupsRscManaged = null,

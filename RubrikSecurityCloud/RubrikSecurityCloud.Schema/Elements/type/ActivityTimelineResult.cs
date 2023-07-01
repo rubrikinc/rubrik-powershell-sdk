@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActivityTimelineResult";
+    }
+
     public ActivityTimelineResult Set(
         System.String? Day = null,
         List<ActivityResult>? ActivityResults = null,

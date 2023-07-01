@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskSummaryConnection";
+    }
+
     public TaskSummaryConnection Set(
         System.Int32? Count = null,
         TaskSummaryAggregation? Aggregation = null,

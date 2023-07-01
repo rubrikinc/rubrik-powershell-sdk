@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateMssqlDefaultPropertiesReply";
+    }
+
     public UpdateMssqlDefaultPropertiesReply Set(
         System.Boolean? CbtStatus = null,
         System.Int64? LogBackupFrequencyInSeconds = null,

@@ -26,6 +26,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("csrIds")]
         public List<System.Int64>? CsrIds { get; set; }
 
+        //      C# -> List<System.String>? CsrFids
+        // GraphQL -> csrFids: [UUID!] (scalar)
+        [JsonProperty("csrFids")]
+        public List<System.String>? CsrFids { get; set; }
+
 
         #endregion
 

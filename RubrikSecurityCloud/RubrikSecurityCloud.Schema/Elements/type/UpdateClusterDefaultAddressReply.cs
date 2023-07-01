@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateClusterDefaultAddressReply";
+    }
+
     public UpdateClusterDefaultAddressReply Set(
         Cluster? Cluster = null
     ) 

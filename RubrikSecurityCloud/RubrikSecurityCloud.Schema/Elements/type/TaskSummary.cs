@@ -85,6 +85,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskSummary";
+    }
+
     public TaskSummary Set(
         ObjectTypeEnum? ObjectType = null,
         System.String? ClusterUuid = null,

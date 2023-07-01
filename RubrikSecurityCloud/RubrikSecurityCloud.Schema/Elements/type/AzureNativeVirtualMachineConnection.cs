@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeVirtualMachineConnection";
+    }
+
     public AzureNativeVirtualMachineConnection Set(
         System.Int32? Count = null,
         List<AzureNativeVirtualMachineEdge>? Edges = null,

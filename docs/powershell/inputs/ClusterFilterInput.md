@@ -29,3 +29,5 @@ Filters for the cluster list.
   - Filter for clusters belonging to the specified organizations.
 - productFilters: list of ClusterFilterPerProductInputs
   - Product type specific filters for the clusters.
+- excludeId: list of System.Strings
+  - Exclude the Rubrik cluster UUIDs.

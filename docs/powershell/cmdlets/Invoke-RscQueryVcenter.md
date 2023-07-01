@@ -1,6 +1,6 @@
 # Invoke-RscQueryVcenter
 ## Subcommands
-### Advancedtagpreview
+### advancedtagpreview
 Preview list of virtual machines of a proposed filter condition
 
 Supported in v7.0+
@@ -8,7 +8,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
 - There is a single argument of type PreviewFilterInput.
 - Returns VcenterAdvancedTagPreviewReply.
-### Hotaddbandwidth
+### hotaddbandwidth
 Get the ingest and export bandwidth limits for HotAdd with the vCenter
 
 Supported in v5.3+
@@ -16,7 +16,7 @@ Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
 - There is a single argument of type GetHotAddBandwidthInput.
 - Returns HotAddBandwidthInfo.
-### Hotaddnetwork
+### hotaddnetwork
 Retrieve the user-configured network for HotAdd operations
 
 Supported in v5.3+
@@ -24,7 +24,7 @@ Retrieve the user-configured network for HotAdd backup and recovery operations o
 
 - There is a single argument of type GetHotAddNetworkInput.
 - Returns HotAddNetworkConfigWithName.
-### Hotaddproxy
+### hotaddproxy
 Get a list of HotAdd proxy virtual machines
 
 Supported in v5.3+
@@ -32,7 +32,7 @@ Retrieve summary information for all HotAdd proxy virtual machines.
 
 - There is a single argument of type list of System.Strings.
 - Returns list of VcenterHotAddProxyVmInfos.
-### List
+### list
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -40,7 +40,7 @@ Retrieve summary information for all HotAdd proxy virtual machines.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereVcenterConnection.
-### Network
+### network
 Get the user-configured networks in the vCenter
 
 Supported in v5.3+
@@ -48,7 +48,7 @@ Get the names and IDs of the user configured networks in the vCenter. This infor
 
 - There is a single argument of type GetNetworksInput.
 - Returns NetworkInfoListResponse.
-### Numproxiesneeded
+### numproxiesneeded
 Get the number of HotAdd proxies needed for the vCenter
 
 Supported in v5.3+
@@ -56,14 +56,14 @@ Get the number of HotAdd proxies that need to be deployed to the vCenter to supp
 
 - There is a single argument of type GetNumProxiesNeededInput.
 - Returns System.Int32.
-### Preaddinfo
+### preaddinfo
 Get preAddInfo for a vcenter.
 
 - There is a single argument of type PreAddVcenterInput.
 - Returns VcenterPreAddInfo.
-### Uniquecount
+### uniquecount
 - There is a single argument of type list of Filters.
 - Returns System.Int32.
-### Vcenter
+### vcenter
 - There is a single argument of type System.String.
 - Returns VsphereVcenter.

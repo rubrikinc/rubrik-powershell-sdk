@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrePostScript";
+    }
+
     public PrePostScript Set(
         PrePostScriptFailureHandlingEnum? FailureHandling = null,
         System.String? ScriptPath = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "InternalChangeVfdOnHostResponse";
+    }
+
     public InternalChangeVfdOnHostResponse Set(
         List<HostVfdInstallResponse>? Items = null
     ) 

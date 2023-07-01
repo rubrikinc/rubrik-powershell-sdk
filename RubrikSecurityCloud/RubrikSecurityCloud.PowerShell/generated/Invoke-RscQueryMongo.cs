@@ -43,56 +43,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter Source { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort hierarchy objects by hierarchy field.
-GraphQL argument sortBy: HierarchySortByField"
-        )]
-        public HierarchySortByField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sorting order for the results.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The hierarchy object filter.
-GraphQL argument filter: [Filter!]"
-        )]
-        public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
         // Database parameter set
@@ -131,12 +81,12 @@ GraphQL argument filter: [Filter!]"
 
         
         // -------------------------------------------------------------------
-        // Recoverablerange parameter set
+        // RecoverableRange parameter set
         //
         // [GraphQL: mongoRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "Recoverablerange",
+            ParameterSetName = "RecoverableRange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -145,26 +95,16 @@ GraphQL argument filter: [Filter!]"
 [GraphQL: mongoRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter Recoverablerange { get; set; }
+        public SwitchParameter RecoverableRange { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Recoverablerange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Arguments for MongoDB recoverable range.
-GraphQL argument input: RecoverableRangeInput!"
-        )]
-        public RecoverableRangeInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Dbsource parameter set
+        // DbSource parameter set
         //
         // [GraphQL: mongodbSources]
         //
         [Parameter(
-            ParameterSetName = "Dbsource",
+            ParameterSetName = "DbSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -173,16 +113,16 @@ GraphQL argument input: RecoverableRangeInput!"
 [GraphQL: mongodbSources]",
             Position = 0
         )]
-        public SwitchParameter Dbsource { get; set; }
+        public SwitchParameter DbSource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Dbdatabase parameter set
+        // DbDatabase parameter set
         //
         // [GraphQL: mongodbDatabases]
         //
         [Parameter(
-            ParameterSetName = "Dbdatabase",
+            ParameterSetName = "DbDatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -191,16 +131,16 @@ GraphQL argument input: RecoverableRangeInput!"
 [GraphQL: mongodbDatabases]",
             Position = 0
         )]
-        public SwitchParameter Dbdatabase { get; set; }
+        public SwitchParameter DbDatabase { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Dbcollection parameter set
+        // DbCollection parameter set
         //
         // [GraphQL: mongodbCollections]
         //
         [Parameter(
-            ParameterSetName = "Dbcollection",
+            ParameterSetName = "DbCollection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -209,16 +149,16 @@ GraphQL argument input: RecoverableRangeInput!"
 [GraphQL: mongodbCollections]",
             Position = 0
         )]
-        public SwitchParameter Dbcollection { get; set; }
+        public SwitchParameter DbCollection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Dbcollectionrecoverablerange parameter set
+        // DbCollectionRecoverableRange parameter set
         //
         // [GraphQL: mongodbCollectionRecoverableRange]
         //
         [Parameter(
-            ParameterSetName = "Dbcollectionrecoverablerange",
+            ParameterSetName = "DbCollectionRecoverableRange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -227,16 +167,16 @@ GraphQL argument input: RecoverableRangeInput!"
 [GraphQL: mongodbCollectionRecoverableRange]",
             Position = 0
         )]
-        public SwitchParameter Dbcollectionrecoverablerange { get; set; }
+        public SwitchParameter DbCollectionRecoverableRange { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Dbbulkrecoverablerange parameter set
+        // DbBulkRecoverableRange parameter set
         //
         // [GraphQL: mongodbBulkRecoverableRange]
         //
         [Parameter(
-            ParameterSetName = "Dbbulkrecoverablerange",
+            ParameterSetName = "DbBulkRecoverableRange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -245,7 +185,7 @@ GraphQL argument input: RecoverableRangeInput!"
 [GraphQL: mongodbBulkRecoverableRange]",
             Position = 0
         )]
-        public SwitchParameter Dbbulkrecoverablerange { get; set; }
+        public SwitchParameter DbBulkRecoverableRange { get; set; }
 
 
         protected override void ProcessRecord()
@@ -263,23 +203,23 @@ GraphQL argument input: RecoverableRangeInput!"
                     case "Collection":
                         this.ProcessRecord_Collection();
                         break;
-                    case "Recoverablerange":
-                        this.ProcessRecord_Recoverablerange();
+                    case "RecoverableRange":
+                        this.ProcessRecord_RecoverableRange();
                         break;
-                    case "Dbsource":
-                        this.ProcessRecord_Dbsource();
+                    case "DbSource":
+                        this.ProcessRecord_DbSource();
                         break;
-                    case "Dbdatabase":
-                        this.ProcessRecord_Dbdatabase();
+                    case "DbDatabase":
+                        this.ProcessRecord_DbDatabase();
                         break;
-                    case "Dbcollection":
-                        this.ProcessRecord_Dbcollection();
+                    case "DbCollection":
+                        this.ProcessRecord_DbCollection();
                         break;
-                    case "Dbcollectionrecoverablerange":
-                        this.ProcessRecord_Dbcollectionrecoverablerange();
+                    case "DbCollectionRecoverableRange":
+                        this.ProcessRecord_DbCollectionRecoverableRange();
                         break;
-                    case "Dbbulkrecoverablerange":
-                        this.ProcessRecord_Dbbulkrecoverablerange();
+                    case "DbBulkRecoverableRange":
+                        this.ProcessRecord_DbBulkRecoverableRange();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -320,54 +260,54 @@ GraphQL argument input: RecoverableRangeInput!"
 
         // This parameter set invokes a single graphql operation:
         // mongoRecoverableRanges.
-        protected void ProcessRecord_Recoverablerange()
+        protected void ProcessRecord_RecoverableRange()
         {
-            this._logger.name += " -Recoverablerange";
+            this._logger.name += " -RecoverableRange";
             // Invoke graphql operation mongoRecoverableRanges
             InvokeQueryMongoRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbSources.
-        protected void ProcessRecord_Dbsource()
+        protected void ProcessRecord_DbSource()
         {
-            this._logger.name += " -Dbsource";
+            this._logger.name += " -DbSource";
             // Invoke graphql operation mongodbSources
             InvokeQueryMongodbSources();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbDatabases.
-        protected void ProcessRecord_Dbdatabase()
+        protected void ProcessRecord_DbDatabase()
         {
-            this._logger.name += " -Dbdatabase";
+            this._logger.name += " -DbDatabase";
             // Invoke graphql operation mongodbDatabases
             InvokeQueryMongodbDatabases();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbCollections.
-        protected void ProcessRecord_Dbcollection()
+        protected void ProcessRecord_DbCollection()
         {
-            this._logger.name += " -Dbcollection";
+            this._logger.name += " -DbCollection";
             // Invoke graphql operation mongodbCollections
             InvokeQueryMongodbCollections();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbCollectionRecoverableRange.
-        protected void ProcessRecord_Dbcollectionrecoverablerange()
+        protected void ProcessRecord_DbCollectionRecoverableRange()
         {
-            this._logger.name += " -Dbcollectionrecoverablerange";
+            this._logger.name += " -DbCollectionRecoverableRange";
             // Invoke graphql operation mongodbCollectionRecoverableRange
             InvokeQueryMongodbCollectionRecoverableRange();
         }
 
         // This parameter set invokes a single graphql operation:
         // mongodbBulkRecoverableRange.
-        protected void ProcessRecord_Dbbulkrecoverablerange()
+        protected void ProcessRecord_DbBulkRecoverableRange()
         {
-            this._logger.name += " -Dbbulkrecoverablerange";
+            this._logger.name += " -DbBulkRecoverableRange";
             // Invoke graphql operation mongodbBulkRecoverableRange
             InvokeQueryMongodbBulkRecoverableRange();
         }

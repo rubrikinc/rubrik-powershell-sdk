@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolicyDetailEdge";
+    }
+
     public PolicyDetailEdge Set(
         System.String? Cursor = null,
         PolicyDetail? Node = null

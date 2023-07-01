@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalManagerUrl";
+    }
+
     public GlobalManagerUrl Set(
         System.Boolean? IsReachable = null,
         System.String? Url = null

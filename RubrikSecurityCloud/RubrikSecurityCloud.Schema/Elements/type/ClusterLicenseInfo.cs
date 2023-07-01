@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterLicenseInfo";
+    }
+
     public ClusterLicenseInfo Set(
         Product? Product = null,
         ClusterLicenseInfoType? Type = null,

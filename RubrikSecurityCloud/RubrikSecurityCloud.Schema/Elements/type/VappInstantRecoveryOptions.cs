@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappInstantRecoveryOptions";
+    }
+
     public VappInstantRecoveryOptions Set(
         List<VappNetworkSummary>? AvailableVappNetworks = null,
         List<VappVmRestoreSpec>? RestorableVms = null

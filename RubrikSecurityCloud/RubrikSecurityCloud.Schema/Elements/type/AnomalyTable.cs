@@ -56,6 +56,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnomalyTable";
+    }
+
     public AnomalyTable Set(
         ReportFocusEnum? Focus = null,
         List<AnomalyResultGroupBy>? GroupBy = null,

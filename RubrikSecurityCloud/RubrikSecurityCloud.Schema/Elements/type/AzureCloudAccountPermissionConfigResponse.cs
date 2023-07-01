@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureCloudAccountPermissionConfigResponse";
+    }
+
     public AzureCloudAccountPermissionConfigResponse Set(
         System.Int32? PermissionVersion = null,
         List<AzureCloudAccountRolePermission>? RolePermissions = null

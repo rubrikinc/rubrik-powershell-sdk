@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RcsArchivalLocationStatsRecord";
+    }
+
     public RcsArchivalLocationStatsRecord Set(
         RcsConsumptionMetricOutputNameType? MetricName = null,
         RcsTierEnumType? Tier = null,

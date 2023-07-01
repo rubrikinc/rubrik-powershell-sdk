@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeHostDetail";
+    }
+
     public ManagedVolumeHostDetail Set(
         HostConnectivityStatusEnum? Status = null,
         System.String? Id = null,

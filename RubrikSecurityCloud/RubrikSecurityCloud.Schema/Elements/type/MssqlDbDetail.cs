@@ -215,6 +215,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlDbDetail";
+    }
+
     public MssqlDbDetail Set(
         System.Int64? ArchiveStorage = null,
         System.Boolean? IsLocal = null,

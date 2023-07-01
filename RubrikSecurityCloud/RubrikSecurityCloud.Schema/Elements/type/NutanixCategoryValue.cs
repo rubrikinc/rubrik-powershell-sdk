@@ -67,7 +67,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? CategoryId { get; set; }
 
         //      C# -> System.String? CdmId
-        // GraphQL -> cdmId: UUID! (scalar)
+        // GraphQL -> cdmId: String! (scalar)
         [JsonProperty("cdmId")]
         public System.String? CdmId { get; set; }
 
@@ -155,6 +155,10 @@ namespace RubrikSecurityCloud.Types
         #endregion
 
     #region methods
+
+    public override string GetGqlTypeName() {
+        return "NutanixCategoryValue";
+    }
 
     public NutanixCategoryValue Set(
         List<Operation>? AuthorizedOperations = null,
@@ -334,7 +338,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "categoryId\n" ;
         }
         //      C# -> System.String? CdmId
-        // GraphQL -> cdmId: UUID! (scalar)
+        // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId != null) {
             s += ind + "cdmId\n" ;
         }
@@ -520,7 +524,7 @@ namespace RubrikSecurityCloud.Types
             this.CategoryId = "FETCH";
         }
         //      C# -> System.String? CdmId
-        // GraphQL -> cdmId: UUID! (scalar)
+        // GraphQL -> cdmId: String! (scalar)
         if (this.CdmId == null && Exploration.Includes(parent + ".cdmId", true))
         {
             this.CdmId = "FETCH";

@@ -266,6 +266,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeVirtualMachine";
+    }
+
     public AzureNativeVirtualMachine Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,

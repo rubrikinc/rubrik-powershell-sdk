@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeSlaClientConfig";
+    }
+
     public ManagedVolumeSlaClientConfig Set(
         List<System.String>? ChannelHostMountPaths = null,
         System.String? HostId = null,

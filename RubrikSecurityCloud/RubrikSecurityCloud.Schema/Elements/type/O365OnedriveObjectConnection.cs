@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365OnedriveObjectConnection";
+    }
+
     public O365OnedriveObjectConnection Set(
         List<O365OnedriveObject>? Nodes = null,
         System.Int32? Count = null,

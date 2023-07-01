@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatHuntResultSnapshotStats";
+    }
+
     public ThreatHuntResultSnapshotStats Set(
         MalwareScanInSnapshotStatus? Status = null,
         System.Boolean? IsExpired = null,

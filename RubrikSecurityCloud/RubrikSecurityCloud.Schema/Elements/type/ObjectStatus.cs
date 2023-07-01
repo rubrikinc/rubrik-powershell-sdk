@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ObjectStatus";
+    }
+
     public ObjectStatus Set(
         System.String? Id = null,
         SnapshotResult? LatestSnapshotResult = null,

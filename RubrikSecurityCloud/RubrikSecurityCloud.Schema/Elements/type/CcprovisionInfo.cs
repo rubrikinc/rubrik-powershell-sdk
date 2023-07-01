@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CcprovisionInfo";
+    }
+
     public CcprovisionInfo Set(
         CcpJobStatus? JobStatus = null,
         CcpJobType? JobType = null,

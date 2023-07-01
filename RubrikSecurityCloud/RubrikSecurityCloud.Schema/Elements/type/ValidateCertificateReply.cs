@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateCertificateReply";
+    }
+
     public ValidateCertificateReply Set(
         System.Boolean? IsValid = null
     ) 

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VolumeGroupConnection";
+    }
+
     public VolumeGroupConnection Set(
         System.Int32? Count = null,
         List<VolumeGroupEdge>? Edges = null,

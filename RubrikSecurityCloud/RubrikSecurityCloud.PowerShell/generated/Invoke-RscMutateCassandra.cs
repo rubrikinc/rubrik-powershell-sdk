@@ -21,18 +21,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateCassandra",
-        DefaultParameterSetName = "Createsource")
+        DefaultParameterSetName = "CreateSource")
     ]
     public class Invoke_RscMutateCassandra : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // Recoversource parameter set
+        // RecoverSource parameter set
         //
         // [GraphQL: recoverCassandraSource]
         //
         [Parameter(
-            ParameterSetName = "Recoversource",
+            ParameterSetName = "RecoverSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,26 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: recoverCassandraSource]",
             Position = 0
         )]
-        public SwitchParameter Recoversource { get; set; }
+        public SwitchParameter RecoverSource { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Recoversource",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for V2MosaicRestoreData.
-GraphQL argument input: MosaicRestoreDataInput!"
-        )]
-        public MosaicRestoreDataInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Createsource parameter set
+        // CreateSource parameter set
         //
         // [GraphQL: createCassandraSource]
         //
         [Parameter(
-            ParameterSetName = "Createsource",
+            ParameterSetName = "CreateSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -69,16 +59,16 @@ GraphQL argument input: MosaicRestoreDataInput!"
 [GraphQL: createCassandraSource]",
             Position = 0
         )]
-        public SwitchParameter Createsource { get; set; }
+        public SwitchParameter CreateSource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatesource parameter set
+        // UpdateSource parameter set
         //
         // [GraphQL: updateCassandraSource]
         //
         [Parameter(
-            ParameterSetName = "Updatesource",
+            ParameterSetName = "UpdateSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -87,16 +77,16 @@ GraphQL argument input: MosaicRestoreDataInput!"
 [GraphQL: updateCassandraSource]",
             Position = 0
         )]
-        public SwitchParameter Updatesource { get; set; }
+        public SwitchParameter UpdateSource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deletesource parameter set
+        // DeleteSource parameter set
         //
         // [GraphQL: deleteCassandraSource]
         //
         [Parameter(
-            ParameterSetName = "Deletesource",
+            ParameterSetName = "DeleteSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -105,16 +95,16 @@ GraphQL argument input: MosaicRestoreDataInput!"
 [GraphQL: deleteCassandraSource]",
             Position = 0
         )]
-        public SwitchParameter Deletesource { get; set; }
+        public SwitchParameter DeleteSource { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Bulkdeletesource parameter set
+        // BulkDeleteSource parameter set
         //
         // [GraphQL: bulkDeleteCassandraSources]
         //
         [Parameter(
-            ParameterSetName = "Bulkdeletesource",
+            ParameterSetName = "BulkDeleteSource",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -123,7 +113,7 @@ GraphQL argument input: MosaicRestoreDataInput!"
 [GraphQL: bulkDeleteCassandraSources]",
             Position = 0
         )]
-        public SwitchParameter Bulkdeletesource { get; set; }
+        public SwitchParameter BulkDeleteSource { get; set; }
 
 
         protected override void ProcessRecord()
@@ -132,20 +122,20 @@ GraphQL argument input: MosaicRestoreDataInput!"
             {
                 switch(Op)
                 {
-                    case "Recoversource":
-                        this.ProcessRecord_Recoversource();
+                    case "RecoverSource":
+                        this.ProcessRecord_RecoverSource();
                         break;
-                    case "Createsource":
-                        this.ProcessRecord_Createsource();
+                    case "CreateSource":
+                        this.ProcessRecord_CreateSource();
                         break;
-                    case "Updatesource":
-                        this.ProcessRecord_Updatesource();
+                    case "UpdateSource":
+                        this.ProcessRecord_UpdateSource();
                         break;
-                    case "Deletesource":
-                        this.ProcessRecord_Deletesource();
+                    case "DeleteSource":
+                        this.ProcessRecord_DeleteSource();
                         break;
-                    case "Bulkdeletesource":
-                        this.ProcessRecord_Bulkdeletesource();
+                    case "BulkDeleteSource":
+                        this.ProcessRecord_BulkDeleteSource();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -159,45 +149,45 @@ GraphQL argument input: MosaicRestoreDataInput!"
 
         // This parameter set invokes a single graphql operation:
         // recoverCassandraSource.
-        protected void ProcessRecord_Recoversource()
+        protected void ProcessRecord_RecoverSource()
         {
-            this._logger.name += " -Recoversource";
+            this._logger.name += " -RecoverSource";
             // Invoke graphql operation recoverCassandraSource
             InvokeMutationRecoverCassandraSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // createCassandraSource.
-        protected void ProcessRecord_Createsource()
+        protected void ProcessRecord_CreateSource()
         {
-            this._logger.name += " -Createsource";
+            this._logger.name += " -CreateSource";
             // Invoke graphql operation createCassandraSource
             InvokeMutationCreateCassandraSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateCassandraSource.
-        protected void ProcessRecord_Updatesource()
+        protected void ProcessRecord_UpdateSource()
         {
-            this._logger.name += " -Updatesource";
+            this._logger.name += " -UpdateSource";
             // Invoke graphql operation updateCassandraSource
             InvokeMutationUpdateCassandraSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteCassandraSource.
-        protected void ProcessRecord_Deletesource()
+        protected void ProcessRecord_DeleteSource()
         {
-            this._logger.name += " -Deletesource";
+            this._logger.name += " -DeleteSource";
             // Invoke graphql operation deleteCassandraSource
             InvokeMutationDeleteCassandraSource();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkDeleteCassandraSources.
-        protected void ProcessRecord_Bulkdeletesource()
+        protected void ProcessRecord_BulkDeleteSource()
         {
-            this._logger.name += " -Bulkdeletesource";
+            this._logger.name += " -BulkDeleteSource";
             // Invoke graphql operation bulkDeleteCassandraSources
             InvokeMutationBulkDeleteCassandraSources();
         }

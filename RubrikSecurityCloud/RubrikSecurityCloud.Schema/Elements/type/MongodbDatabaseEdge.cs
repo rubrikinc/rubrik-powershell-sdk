@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongodbDatabaseEdge";
+    }
+
     public MongodbDatabaseEdge Set(
         System.String? Cursor = null,
         MongodbDatabase? Node = null

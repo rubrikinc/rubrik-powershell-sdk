@@ -331,6 +331,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereVm";
+    }
+
     public VsphereVm Set(
         List<Operation>? AuthorizedOperations = null,
         GuestCredentialAuthorizationStatus? GuestCredentialAuthorizationStatus = null,

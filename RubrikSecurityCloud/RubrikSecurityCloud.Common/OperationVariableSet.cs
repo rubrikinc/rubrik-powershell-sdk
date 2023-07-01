@@ -21,7 +21,6 @@ namespace RubrikSecurityCloud
                     },
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
-
         public string AsJson(IRscLogger? logger = null)
         {
             JObject variables = new JObject();
@@ -58,6 +57,23 @@ namespace RubrikSecurityCloud
                         }
                         variables.Add(item.Key, arr);
                     }
+
+                    // If value is a List<>
+                    else if (item.Value is ICollection objListVal)
+                    {
+                        var arr = new JArray();
+                        foreach (var obj in objListVal)
+                        {
+                            arr.Add(
+                                JObject.FromObject(
+                                    obj,
+                                    JsonSerializer.Create(_serializerSettings)
+                                )
+                            );
+                        }
+                        variables.Add(item.Key, arr);
+                    }
+
                     else if (item.Value is int iVal)
                     {
                         variables.Add(item.Key, iVal);

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RecoverableRange";
+    }
+
     public RecoverableRange Set(
         System.String? BeginTime = null,
         System.String? EndTime = null

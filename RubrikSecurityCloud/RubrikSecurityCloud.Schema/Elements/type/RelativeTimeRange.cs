@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RelativeTimeRange";
+    }
+
     public RelativeTimeRange Set(
         TimeUnitEnum? Unit = null,
         System.Int32? Magnitude = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HyperVVirtualMachineConnection";
+    }
+
     public HyperVvirtualMachineConnection Set(
         System.Int32? Count = null,
         List<HyperVvirtualMachineEdge>? Edges = null,

@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SmbDomain";
+    }
+
     public SmbDomain Set(
         SmbAuthenticationStatus? Status = null,
         System.String? AccountName = null,

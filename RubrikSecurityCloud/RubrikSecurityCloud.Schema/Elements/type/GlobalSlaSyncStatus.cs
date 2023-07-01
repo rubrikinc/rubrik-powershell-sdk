@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalSlaSyncStatus";
+    }
+
     public GlobalSlaSyncStatus Set(
         SlaSyncStatus? SlaSyncStatus = null,
         System.String? ClusterUuid = null

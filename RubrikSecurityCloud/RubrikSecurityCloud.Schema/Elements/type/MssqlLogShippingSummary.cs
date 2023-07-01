@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlLogShippingSummary";
+    }
+
     public MssqlLogShippingSummary Set(
         System.String? Id = null,
         System.Int64? LagTime = null,

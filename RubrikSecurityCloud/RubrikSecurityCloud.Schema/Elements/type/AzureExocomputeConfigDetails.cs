@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureExocomputeConfigDetails";
+    }
+
     public AzureExocomputeConfigDetails Set(
         AzureCloudAccountRegion? Region = null,
         System.String? ConfigUuid = null,

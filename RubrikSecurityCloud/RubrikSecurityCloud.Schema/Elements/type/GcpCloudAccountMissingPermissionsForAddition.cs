@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpCloudAccountMissingPermissionsForAddition";
+    }
+
     public GcpCloudAccountMissingPermissionsForAddition Set(
         List<System.String>? MissingPermissions = null,
         System.String? ProjectId = null

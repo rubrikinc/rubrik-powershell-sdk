@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MapAzureCloudAccountToPersistentStorageLocationReply";
+    }
+
     public MapAzureCloudAccountToPersistentStorageLocationReply Set(
         System.Boolean? IsSuccess = null
     ) 

@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PvcInformation";
+    }
+
     public PvcInformation Set(
         System.String? AccessMode = null,
         System.String? Capacity = null,

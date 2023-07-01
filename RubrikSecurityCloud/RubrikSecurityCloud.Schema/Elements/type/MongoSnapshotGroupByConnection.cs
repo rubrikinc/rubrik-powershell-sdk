@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongoSnapshotGroupByConnection";
+    }
+
     public MongoSnapshotGroupByConnection Set(
         System.Int32? Count = null,
         List<MongoSnapshotGroupByEdge>? Edges = null,

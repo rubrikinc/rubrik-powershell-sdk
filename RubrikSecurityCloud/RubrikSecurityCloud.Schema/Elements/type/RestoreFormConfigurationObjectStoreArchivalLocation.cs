@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationObjectStoreArchivalLocation";
+    }
+
     public RestoreFormConfigurationObjectStoreArchivalLocation Set(
         System.String? Bucket = null,
         System.String? EncryptionType = null,

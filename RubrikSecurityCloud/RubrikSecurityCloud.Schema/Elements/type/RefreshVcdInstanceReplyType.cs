@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RefreshVcdInstanceReplyType";
+    }
+
     public RefreshVcdInstanceReplyType Set(
         System.String? ErrorMessage = null,
         System.String? Id = null,

@@ -85,6 +85,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Activity";
+    }
+
     public Activity Set(
         ActivityObjectTypeEnum? ObjectType = null,
         ActivitySeverityEnum? Severity = null,

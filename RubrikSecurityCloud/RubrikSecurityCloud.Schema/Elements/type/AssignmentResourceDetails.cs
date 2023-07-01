@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AssignmentResourceDetails";
+    }
+
     public AssignmentResourceDetails Set(
         DataGovObjectType? ResourceType = null,
         System.Boolean? IsHigherLevelResource = null,

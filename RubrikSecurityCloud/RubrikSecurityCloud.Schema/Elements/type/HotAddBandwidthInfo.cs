@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HotAddBandwidthInfo";
+    }
+
     public HotAddBandwidthInfo Set(
         System.Int32? ExportLimit = null,
         System.Int32? IngestLimit = null

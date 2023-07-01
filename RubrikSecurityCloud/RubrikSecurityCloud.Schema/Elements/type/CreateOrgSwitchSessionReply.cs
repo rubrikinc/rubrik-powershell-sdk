@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateOrgSwitchSessionReply";
+    }
+
     public CreateOrgSwitchSessionReply Set(
         System.String? AccessToken = null
     ) 

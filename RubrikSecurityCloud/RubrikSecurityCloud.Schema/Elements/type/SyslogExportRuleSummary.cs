@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SyslogExportRuleSummary";
+    }
+
     public SyslogExportRuleSummary Set(
         System.String? Id = null,
         SyslogCertificateInfo? SyslogCertificateInfo = null,

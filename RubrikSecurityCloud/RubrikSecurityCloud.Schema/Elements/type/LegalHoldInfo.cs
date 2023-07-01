@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LegalHoldInfo";
+    }
+
     public LegalHoldInfo Set(
         System.Boolean? ShouldHoldInPlace = null
     ) 

@@ -49,6 +49,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("objectIds")]
         public List<System.String>? ObjectIds { get; set; }
 
+        //      C# -> List<System.String>? ObjectFids
+        // GraphQL -> objectFids: [String!] (scalar)
+        [JsonProperty("objectFids")]
+        public List<System.String>? ObjectFids { get; set; }
+
         //      C# -> DateTime? TimeGt
         // GraphQL -> timeGt: DateTime (scalar)
         [JsonProperty("timeGt")]

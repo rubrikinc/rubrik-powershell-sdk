@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PausedClustersInfo";
+    }
+
     public PausedClustersInfo Set(
         System.Int32? PausedClustersCount = null,
         List<Cluster>? PausedClusters = null

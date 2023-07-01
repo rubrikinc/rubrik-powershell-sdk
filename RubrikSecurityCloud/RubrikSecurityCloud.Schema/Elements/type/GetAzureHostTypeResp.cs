@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetAzureHostTypeResp";
+    }
+
     public GetAzureHostTypeResp Set(
         AzureHostType? HostType = null
     ) 

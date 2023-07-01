@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CheckVmwareVmsRecoveryPermissionReply";
+    }
+
     public CheckVmwareVmsRecoveryPermissionReply Set(
         VmwareRecoveryType? VmwareRecoveryType = null,
         List<VmwareVmRecoveryAccess>? Result = null

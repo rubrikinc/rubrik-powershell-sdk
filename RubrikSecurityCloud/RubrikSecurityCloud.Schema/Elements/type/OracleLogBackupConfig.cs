@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleLogBackupConfig";
+    }
+
     public OracleLogBackupConfig Set(
         System.Int32? HostLogRetentionHours = null,
         System.Int32? LogBackupFrequencyMin = null,

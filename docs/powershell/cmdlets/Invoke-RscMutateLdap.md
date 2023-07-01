@@ -1,19 +1,19 @@
 # Invoke-RscMutateLdap
 ## Subcommands
-### Deleteprincipal
+### deleteprincipal
 - There is a single argument of type list of System.Strings.
 - Returns System.Boolean.
-### Removeintegration
+### removeintegration
 Remove LDAP integration.
 
 - There is a single argument of type System.String.
 - Returns System.Boolean.
-### Setmfasetting
+### setmfasetting
 Update the MFA settings for the given LDAP integration. Return true when the operation succeeds.
 
 - There is a single argument of type SetLdapMfaSettingInput.
 - Returns System.Boolean.
-### Updateintegration
+### updateintegration
 Mutate LDAP integration.
 
 - There are 13 arguments.

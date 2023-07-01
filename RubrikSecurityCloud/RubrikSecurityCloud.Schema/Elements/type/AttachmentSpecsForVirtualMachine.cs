@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AttachmentSpecsForVirtualMachine";
+    }
+
     public AttachmentSpecsForVirtualMachine Set(
         System.Boolean? IsExcludedFromSnapshot = null,
         System.Boolean? IsOsDisk = null,

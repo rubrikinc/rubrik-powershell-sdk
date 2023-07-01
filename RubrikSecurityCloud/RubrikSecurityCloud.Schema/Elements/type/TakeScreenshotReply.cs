@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TakeScreenshotReply";
+    }
+
     public TakeScreenshotReply Set(
         List<System.String>? Screenshots = null
     ) 

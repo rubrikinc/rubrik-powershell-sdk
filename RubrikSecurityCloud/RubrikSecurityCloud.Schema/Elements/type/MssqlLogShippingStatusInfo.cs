@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlLogShippingStatusInfo";
+    }
+
     public MssqlLogShippingStatusInfo Set(
         MssqlLogShippingStatus? Status = null,
         System.String? Message = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaDomainSummary";
+    }
+
     public SlaDomainSummary Set(
         System.String? Id = null,
         System.String? Name = null

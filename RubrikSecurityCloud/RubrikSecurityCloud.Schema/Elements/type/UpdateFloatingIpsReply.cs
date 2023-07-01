@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateFloatingIpsReply";
+    }
+
     public UpdateFloatingIpsReply Set(
         System.Int64? Id = null,
         System.String? Status = null

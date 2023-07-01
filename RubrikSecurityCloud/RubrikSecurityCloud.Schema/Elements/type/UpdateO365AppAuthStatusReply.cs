@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateO365AppAuthStatusReply";
+    }
+
     public UpdateO365AppAuthStatusReply Set(
         System.Boolean? Success = null
     ) 

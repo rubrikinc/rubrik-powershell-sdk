@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddVcdInstancesReply";
+    }
+
     public AddVcdInstancesReply Set(
         List<AddVcdInstanceReplyType>? Responses = null
     ) 

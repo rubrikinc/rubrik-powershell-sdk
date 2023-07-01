@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereComputeClusterEdge";
+    }
+
     public VsphereComputeClusterEdge Set(
         System.String? Cursor = null,
         VsphereComputeCluster? Node = null

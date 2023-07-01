@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpgradeJobReply";
+    }
+
     public UpgradeJobReply Set(
         System.String? Message = null,
         System.Boolean? Success = null

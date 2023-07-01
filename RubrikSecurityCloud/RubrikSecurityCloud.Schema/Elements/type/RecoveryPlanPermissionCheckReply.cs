@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RecoveryPlanPermissionCheckReply";
+    }
+
     public RecoveryPlanPermissionCheckReply Set(
         List<RecoveryPlanPermission>? Result = null
     ) 

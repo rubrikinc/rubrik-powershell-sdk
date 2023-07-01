@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RemoveVlansReply";
+    }
+
     public RemoveVlansReply Set(
         List<System.Int32>? FailureVlanIds = null,
         List<System.Int32>? SuccessVlanIds = null

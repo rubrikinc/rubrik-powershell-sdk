@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicSnapshotGroupByType";
+    }
+
     public MosaicSnapshotGroupByType Set(
         List<MosaicSnapshotGroupByType>? AllSnapshotGroupBys = null,
         MosaicSnapshotConnection? Snapshots = null,

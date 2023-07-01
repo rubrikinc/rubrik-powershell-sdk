@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CompleteAzureAdAppSetupReply";
+    }
+
     public CompleteAzureAdAppSetupReply Set(
         System.String? WorkloadFid = null
     ) 

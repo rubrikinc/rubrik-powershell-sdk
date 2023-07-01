@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverReport";
+    }
+
     public FailoverReport Set(
         AppflowsBlueprintFailoverReportStatusEnum? Status = null,
         DateTime? ExpireTime = null,

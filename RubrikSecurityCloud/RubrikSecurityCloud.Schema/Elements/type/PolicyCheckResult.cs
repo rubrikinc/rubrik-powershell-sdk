@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolicyCheckResult";
+    }
+
     public PolicyCheckResult Set(
         System.String? CheckOutput = null,
         System.Boolean? IsCheckPassed = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365SharePointDrive";
+    }
+
     public O365SharePointDrive Set(
         SharePointDescendantType? ObjectType = null
     ) 

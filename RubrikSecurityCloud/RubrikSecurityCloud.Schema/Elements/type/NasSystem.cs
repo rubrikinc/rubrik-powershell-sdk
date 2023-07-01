@@ -206,6 +206,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NasSystem";
+    }
+
     public NasSystem Set(
         List<Operation>? AuthorizedOperations = null,
         NasSystemConnectivityStatus? LastStatus = null,

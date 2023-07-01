@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongodbCollectionConnection";
+    }
+
     public MongodbCollectionConnection Set(
         System.Int32? Count = null,
         List<MongodbCollectionEdge>? Edges = null,

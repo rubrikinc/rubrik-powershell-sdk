@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaDomainEdge";
+    }
+
     public SlaDomainEdge Set(
         SlaDomain? Node = null,
         System.String? Cursor = null

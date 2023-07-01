@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaDatabaseConnection";
+    }
+
     public SapHanaDatabaseConnection Set(
         System.Int32? Count = null,
         List<SapHanaDatabaseEdge>? Edges = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkOnDemandSnapshotNutanixVmReply";
+    }
+
     public BulkOnDemandSnapshotNutanixVmReply Set(
         NutanixBatchAsyncApiResponse? Output = null
     ) 

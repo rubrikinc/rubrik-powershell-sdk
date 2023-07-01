@@ -176,6 +176,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisSnapshot";
+    }
+
     public PolarisSnapshot Set(
         SnapshotConsistencyLevel? ConsistencyLevel = null,
         PolarisSpecificSnapshot? PolarisSpecificSnapshot = null,

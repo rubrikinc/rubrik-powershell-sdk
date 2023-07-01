@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlTopLevelDescendantTypeEdge";
+    }
+
     public MssqlTopLevelDescendantTypeEdge Set(
         MssqlTopLevelDescendantType? Node = null,
         System.String? Cursor = null

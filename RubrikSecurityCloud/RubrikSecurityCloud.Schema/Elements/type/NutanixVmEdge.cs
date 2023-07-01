@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixVmEdge";
+    }
+
     public NutanixVmEdge Set(
         System.String? Cursor = null,
         NutanixVm? Node = null

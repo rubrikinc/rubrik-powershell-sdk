@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FakeData";
+    }
+
     public FakeData Set(
         System.String? Data = null
     ) 

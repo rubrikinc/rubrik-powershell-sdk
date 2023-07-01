@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetDashboardSummaryReply";
+    }
+
     public GetDashboardSummaryReply Set(
         List<AnalyzerResult>? AnalyzerResults = null,
         List<AnalyzerGroupResult>? PolicyResults = null

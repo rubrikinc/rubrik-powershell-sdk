@@ -120,6 +120,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetPoliciesTimelineReply";
+    }
+
     public GetPoliciesTimelineReply Set(
         List<TimelineEntry>? HighRiskObjects = null,
         List<TimelineCountEntry>? InitialAnalysisStatus = null,

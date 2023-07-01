@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkRotateClusterEncryptionKeyReply";
+    }
+
     public BulkRotateClusterEncryptionKeyReply Set(
         System.Int64? JobId = null,
         System.String? TaskchainId = null

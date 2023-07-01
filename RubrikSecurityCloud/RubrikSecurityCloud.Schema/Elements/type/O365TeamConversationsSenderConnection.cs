@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365TeamConversationsSenderConnection";
+    }
+
     public O365TeamConversationsSenderConnection Set(
         System.Int32? Count = null,
         List<O365TeamConversationsSenderEdge>? Edges = null,

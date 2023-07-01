@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OrgNetwork";
+    }
+
     public OrgNetwork Set(
         List<System.String>? LiveMountIps = null,
         System.String? OrgNetworkId = null,

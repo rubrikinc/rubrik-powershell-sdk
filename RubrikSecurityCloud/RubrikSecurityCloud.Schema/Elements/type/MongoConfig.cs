@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongoConfig";
+    }
+
     public MongoConfig Set(
         Duration? LogFrequency = null,
         Duration? LogRetention = null

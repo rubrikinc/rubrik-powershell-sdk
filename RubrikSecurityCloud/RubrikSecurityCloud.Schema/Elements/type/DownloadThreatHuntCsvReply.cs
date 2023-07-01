@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DownloadThreatHuntCsvReply";
+    }
+
     public DownloadThreatHuntCsvReply Set(
         System.Boolean? IsSuccessful = null
     ) 

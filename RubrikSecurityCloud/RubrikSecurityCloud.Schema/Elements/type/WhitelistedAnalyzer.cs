@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WhitelistedAnalyzer";
+    }
+
     public WhitelistedAnalyzer Set(
         System.Boolean? IsExplicit = null,
         System.String? WhitelistedAnalyzerId = null,

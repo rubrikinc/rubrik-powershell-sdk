@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateAwsExocomputeConfigsReply";
+    }
+
     public CreateAwsExocomputeConfigsReply Set(
         List<AwsExocomputeGetConfigResponse>? Configs = null
     ) 

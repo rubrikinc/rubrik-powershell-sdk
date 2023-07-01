@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RefreshNasSystemsReply";
+    }
+
     public RefreshNasSystemsReply Set(
         List<DiscoverNasSystemSummary>? DiscoverNasSystemSummaries = null
     ) 

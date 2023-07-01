@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PerLocationCloudStorageTier";
+    }
+
     public PerLocationCloudStorageTier Set(
         SnapshotCloudStorageTier? CloudStorageTier = null,
         System.String? LocationId = null

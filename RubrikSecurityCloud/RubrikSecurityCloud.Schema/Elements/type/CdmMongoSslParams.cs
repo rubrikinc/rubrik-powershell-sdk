@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmMongoSslParams";
+    }
+
     public CdmMongoSslParams Set(
         SourceSslCertReqs? SslCertRequirements = null,
         System.Boolean? IsSslEnabled = null,

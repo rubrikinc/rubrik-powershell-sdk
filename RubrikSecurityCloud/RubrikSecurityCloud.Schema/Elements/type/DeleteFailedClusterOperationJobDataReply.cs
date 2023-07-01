@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteFailedClusterOperationJobDataReply";
+    }
+
     public DeleteFailedClusterOperationJobDataReply Set(
         CdmJobStatus? JobStatus = null,
         CcpJobType? JobType = null,

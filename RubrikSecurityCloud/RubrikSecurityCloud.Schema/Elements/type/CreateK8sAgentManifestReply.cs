@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateK8sAgentManifestReply";
+    }
+
     public CreateK8sAgentManifestReply Set(
         K8sAgentManifestInfo? Info = null
     ) 

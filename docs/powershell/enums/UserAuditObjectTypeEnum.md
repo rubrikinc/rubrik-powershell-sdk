@@ -2,6 +2,7 @@
 User audit object type.
 
 - ArchivalLocation
+- ACTIVE_DIRECTORY_DOMAIN - Active Directory domain type.
 - K8S_CLUSTER - Kubernetes Cluster type.
 - OracleRac
 - IpWhitelist
@@ -57,12 +58,14 @@ User audit object type.
 - Snapshot
 - VMWARE_COMPUTE_CLUSTER - VMware Compute Cluster type.
 - SmbDomain
+- NUTANIX_PRISM_CENTRAL - Nutanix Prism Central type.
 - O365Calendar
 - MssqlDatabase
 - SupportTunnel
 - MONGO_SOURCE - MongoDB Source type.
 - MSSQL_OBJECT - MSSQL object type.
 - AwsNativeEbsVolume
+- ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller type.
 - UserActionAudit
 - CASSANDRA_COLUMN_FAMILY - Cassandra column family type.
 - EXCHANGE_SERVER - Exchange Server type.

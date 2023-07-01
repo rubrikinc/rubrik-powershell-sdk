@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SelectorStepEvent";
+    }
+
     public SelectorStepEvent Set(
         System.Int64? ElapsedTime = null,
         System.Int64? EndTime = null,

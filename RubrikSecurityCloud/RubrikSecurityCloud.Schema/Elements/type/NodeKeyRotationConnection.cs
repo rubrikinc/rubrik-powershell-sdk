@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NodeKeyRotationConnection";
+    }
+
     public NodeKeyRotationConnection Set(
         System.Int32? Count = null,
         List<NodeKeyRotationEdge>? Edges = null,

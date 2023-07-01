@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RansomwareInvestigationAnalysisSummaryReply";
+    }
+
     public RansomwareInvestigationAnalysisSummaryReply Set(
         List<DailyAnalysisDetails>? AnalysisDetails = null
     ) 

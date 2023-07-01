@@ -120,6 +120,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Crawl";
+    }
+
     public Crawl Set(
         CrawlStatusEnum? Status = null,
         System.Int64? EndTime = null,

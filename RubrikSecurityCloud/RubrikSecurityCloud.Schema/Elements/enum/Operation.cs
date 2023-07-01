@@ -234,6 +234,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "MODIFY_CLUSTER")]
         MODIFY_CLUSTER,
 
+        [EnumMember(Value = "MODIFY_EVENT_CLUSTER_SETTING")]
+        MODIFY_EVENT_CLUSTER_SETTING,
+
         [EnumMember(Value = "MODIFY_INVENTORY")]
         MODIFY_INVENTORY,
 
@@ -285,6 +288,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "UPGRADE_CLUSTER")]
         UPGRADE_CLUSTER,
 
+        [EnumMember(Value = "USE_AS_REPLICATION_TARGET")]
+        USE_AS_REPLICATION_TARGET,
+
         [EnumMember(Value = "VIEW_ACCESS")]
         VIEW_ACCESS,
 
@@ -326,6 +332,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "VIEW_DATA_SECURITY_DETAILS")]
         VIEW_DATA_SECURITY_DETAILS,
+
+        [EnumMember(Value = "VIEW_EVENT_CLUSTER_SETTING")]
+        VIEW_EVENT_CLUSTER_SETTING,
 
         [EnumMember(Value = "VIEW_GCP_CLOUD_ACCOUNT")]
         VIEW_GCP_CLOUD_ACCOUNT,

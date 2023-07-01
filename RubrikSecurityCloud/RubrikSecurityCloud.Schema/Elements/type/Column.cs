@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Column";
+    }
+
     public Column Set(
         DataTypeEnum? Type = null,
         System.Boolean? Aggregate = null,

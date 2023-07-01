@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetTemplateCreate";
+    }
+
     public FilesetTemplateCreate Set(
         FilesetTemplateCreateOperatingSystemType? OperatingSystemType = null,
         FilesetTemplateCreateShareType? ShareType = null,

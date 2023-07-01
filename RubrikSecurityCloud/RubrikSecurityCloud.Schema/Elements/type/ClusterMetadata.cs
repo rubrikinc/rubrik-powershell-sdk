@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterMetadata";
+    }
+
     public ClusterMetadata Set(
         CcpClusterType? ClusterType = null,
         CcpJobStatus? JobStatus = null,

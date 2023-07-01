@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverSubStep";
+    }
+
     public FailoverSubStep Set(
         System.Int64? ElapsedTime = null,
         System.Int64? EndTime = null,

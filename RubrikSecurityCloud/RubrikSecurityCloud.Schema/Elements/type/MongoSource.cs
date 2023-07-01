@@ -211,6 +211,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongoSource";
+    }
+
     public MongoSource Set(
         List<Operation>? AuthorizedOperations = null,
         MongoDiscoveryStatus? DiscoveryStatus = null,

@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StorageArrayDetail";
+    }
+
     public StorageArrayDetail Set(
         StorageArrayType? ArrayType = null,
         System.String? CaCerts = null,

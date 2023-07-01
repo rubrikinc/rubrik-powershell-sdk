@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverTargetSite";
+    }
+
     public FailoverTargetSite Set(
         System.String? TargetSite = null
     ) 

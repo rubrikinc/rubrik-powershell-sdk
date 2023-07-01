@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaSystemSummary";
+    }
+
     public SapHanaSystemSummary Set(
         SapHanaSystemSummaryContainerType? ContainerType = null,
         SapHanaSystemSummaryStatus? Status = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetImplicitlyAuthorizedAncestorSummariesResponse";
+    }
+
     public GetImplicitlyAuthorizedAncestorSummariesResponse Set(
         List<ObjectSummary>? ObjectSummaries = null
     ) 

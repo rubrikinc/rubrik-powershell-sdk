@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotFileDeltaV2Connection";
+    }
+
     public SnapshotFileDeltaV2Connection Set(
         GenericSnapshot? CurrentSnapshot = null,
         GenericSnapshot? PreviousSnapshot = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SupportUserAccessConnection";
+    }
+
     public SupportUserAccessConnection Set(
         System.Int32? Count = null,
         List<SupportUserAccessEdge>? Edges = null,

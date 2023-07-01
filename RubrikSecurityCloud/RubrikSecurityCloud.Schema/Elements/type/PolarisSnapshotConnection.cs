@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisSnapshotConnection";
+    }
+
     public PolarisSnapshotConnection Set(
         System.Int32? Count = null,
         List<PolarisSnapshotEdge>? Edges = null,

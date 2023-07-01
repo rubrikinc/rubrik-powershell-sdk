@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudDirectSnapshotEdge";
+    }
+
     public CloudDirectSnapshotEdge Set(
         System.String? Cursor = null,
         CloudDirectSnapshot? Node = null

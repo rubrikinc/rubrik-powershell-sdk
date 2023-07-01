@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActivityConnection";
+    }
+
     public ActivityConnection Set(
         System.Int32? Count = null,
         List<ActivityEdge>? Edges = null,

@@ -171,6 +171,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostFailoverCluster";
+    }
+
     public HostFailoverCluster Set(
         List<Operation>? AuthorizedOperations = null,
         GuestOsType? NodesOsType = null,

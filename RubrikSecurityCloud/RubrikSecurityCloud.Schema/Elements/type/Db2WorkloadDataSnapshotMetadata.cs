@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2WorkloadDataSnapshotMetadata";
+    }
+
     public Db2WorkloadDataSnapshotMetadata Set(
         List<System.String>? KvSnapshotFileInstancesInfoList = null
     ) 

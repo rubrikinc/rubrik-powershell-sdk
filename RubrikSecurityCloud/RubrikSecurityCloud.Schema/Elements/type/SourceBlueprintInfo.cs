@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SourceBlueprintInfo";
+    }
+
     public SourceBlueprintInfo Set(
         System.String? BlueprintId = null,
         List<SourceChildInfo>? SourceChildInfos = null

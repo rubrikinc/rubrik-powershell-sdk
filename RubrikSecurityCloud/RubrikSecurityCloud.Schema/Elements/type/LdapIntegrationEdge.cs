@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LdapIntegrationEdge";
+    }
+
     public LdapIntegrationEdge Set(
         System.String? Cursor = null,
         LdapIntegration? Node = null

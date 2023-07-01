@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AmiTypeForAwsNativeArchivedSnapshotExportReply";
+    }
+
     public AmiTypeForAwsNativeArchivedSnapshotExportReply Set(
         AmiType? AmiType = null,
         AwsNativeRegion? RegionNativeId = null,

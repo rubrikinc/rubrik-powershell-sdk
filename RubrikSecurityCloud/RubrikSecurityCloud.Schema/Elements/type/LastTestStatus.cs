@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LastTestStatus";
+    }
+
     public LastTestStatus Set(
         LastTestStatusEnum? EnumValue = null
     ) 

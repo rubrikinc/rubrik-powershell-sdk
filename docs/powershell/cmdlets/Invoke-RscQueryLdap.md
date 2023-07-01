@@ -1,6 +1,6 @@
 # Invoke-RscQueryLdap
 ## Subcommands
-### Authorizedprincipalconnection
+### authorizedprincipallist
 Browse LDAP-authorized principals.
 
 - There are 8 arguments.
@@ -13,7 +13,7 @@ Browse LDAP-authorized principals.
     - searchText - System.String: Search Text for LDAP principal.
     - roleIds - list of System.Strings: Assigned role IDs for LDAP principal.
 - Returns AuthorizedPrincipalConnection.
-### Integrationconnection
+### integrationlist
 Browse LDAP integrations.
 
 - There are 6 arguments.
@@ -24,7 +24,7 @@ Browse LDAP integrations.
     - sortOrder - SortOrder: Sorting order for the results.
     - sortBy - LdapIntegrationFieldEnum
 - Returns LdapIntegrationConnection.
-### Principalconnection
+### principallist
 Search LDAP Principals.
 
 - There are 8 arguments.

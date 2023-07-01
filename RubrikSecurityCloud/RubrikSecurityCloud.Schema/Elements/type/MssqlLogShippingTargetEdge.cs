@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlLogShippingTargetEdge";
+    }
+
     public MssqlLogShippingTargetEdge Set(
         System.String? Cursor = null,
         MssqlLogShippingTarget? Node = null

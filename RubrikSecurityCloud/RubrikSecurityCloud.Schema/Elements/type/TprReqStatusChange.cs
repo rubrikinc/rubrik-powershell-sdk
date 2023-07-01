@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TprReqStatusChange";
+    }
+
     public TprReqStatusChange Set(
         TprReqOperation? Operation = null,
         System.String? AuthorId = null,

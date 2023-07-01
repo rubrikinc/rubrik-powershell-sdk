@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "InternalGetClusterIpsResponse";
+    }
+
     public InternalGetClusterIpsResponse Set(
         List<System.String>? Items = null
     ) 

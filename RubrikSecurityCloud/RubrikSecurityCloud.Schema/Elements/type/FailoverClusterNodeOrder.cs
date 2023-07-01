@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterNodeOrder";
+    }
+
     public FailoverClusterNodeOrder Set(
         System.String? NodeId = null,
         System.String? NodeName = null,

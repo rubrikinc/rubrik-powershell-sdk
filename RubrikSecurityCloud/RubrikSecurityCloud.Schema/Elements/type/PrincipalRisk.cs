@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalRisk";
+    }
+
     public PrincipalRisk Set(
         RiskLevelType? RiskLevel = null,
         System.Int64? Date = null,

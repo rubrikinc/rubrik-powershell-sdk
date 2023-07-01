@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SelfServicePermission";
+    }
+
     public SelfServicePermission Set(
         InventorySubHierarchyRootEnum? InventoryRoot = null,
         WorkloadLevelHierarchy? InventoryWorkloadType = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpCloudAccountAddProjectsReply";
+    }
+
     public GcpCloudAccountAddProjectsReply Set(
         List<GcpCloudAccountAddProjectDetail>? Details = null
     ) 

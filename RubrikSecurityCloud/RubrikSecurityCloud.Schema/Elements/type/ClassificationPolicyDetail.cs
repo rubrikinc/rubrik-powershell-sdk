@@ -115,6 +115,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClassificationPolicyDetail";
+    }
+
     public ClassificationPolicyDetail Set(
         ClassificationPolicyColor? ColorEnum = null,
         ClassificationPolicyMode? Mode = null,

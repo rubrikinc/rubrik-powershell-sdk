@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ChartConfig";
+    }
+
     public ChartConfig Set(
         ChartType? ChartType = null,
         List<System.String>? Aggregations = null,

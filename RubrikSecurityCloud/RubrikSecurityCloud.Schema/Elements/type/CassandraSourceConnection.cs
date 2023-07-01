@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CassandraSourceConnection";
+    }
+
     public CassandraSourceConnection Set(
         System.Int32? Count = null,
         List<CassandraSourceEdge>? Edges = null,

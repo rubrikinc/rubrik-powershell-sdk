@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Link";
+    }
+
     public Link Set(
         System.String? Href = null,
         System.String? Rel = null

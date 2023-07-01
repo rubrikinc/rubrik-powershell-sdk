@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterEncryptionInfoEdge";
+    }
+
     public ClusterEncryptionInfoEdge Set(
         System.String? Cursor = null,
         ClusterEncryptionInfo? Node = null

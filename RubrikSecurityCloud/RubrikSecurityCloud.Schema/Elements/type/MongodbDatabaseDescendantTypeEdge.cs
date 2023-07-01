@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongodbDatabaseDescendantTypeEdge";
+    }
+
     public MongodbDatabaseDescendantTypeEdge Set(
         MongodbDatabaseDescendantType? Node = null,
         System.String? Cursor = null

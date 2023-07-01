@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PendingEvaluationResultsReply";
+    }
+
     public PendingEvaluationResultsReply Set(
         System.Int64? Count = null,
         List<PendingEvaluationResults>? PendingEvaluationResults = null

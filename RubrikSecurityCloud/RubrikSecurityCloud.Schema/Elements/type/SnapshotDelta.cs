@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotDelta";
+    }
+
     public SnapshotDelta Set(
         DeltaType? DeltaType = null,
         System.Int64? DeltaAmount = null

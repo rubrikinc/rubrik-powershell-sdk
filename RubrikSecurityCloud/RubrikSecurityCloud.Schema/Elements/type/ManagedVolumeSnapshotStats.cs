@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeSnapshotStats";
+    }
+
     public ManagedVolumeSnapshotStats Set(
         System.Int64? LogicalBytes = null,
         System.Int64? PhysicalBytes = null,

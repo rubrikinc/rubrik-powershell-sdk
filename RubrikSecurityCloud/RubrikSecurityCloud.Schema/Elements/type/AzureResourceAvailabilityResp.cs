@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureResourceAvailabilityResp";
+    }
+
     public AzureResourceAvailabilityResp Set(
         System.Boolean? Available = null,
         System.String? Reason = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "InitiateAzureAdAppUpdateReply";
+    }
+
     public InitiateAzureAdAppUpdateReply Set(
         System.String? AppId = null,
         System.String? CsrfToken = null

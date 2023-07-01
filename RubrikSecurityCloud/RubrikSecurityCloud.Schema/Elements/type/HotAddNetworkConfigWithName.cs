@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HotAddNetworkConfigWithName";
+    }
+
     public HotAddNetworkConfigWithName Set(
         System.String? NetworkName = null,
         StaticIpInfo? StaticIpConfig = null

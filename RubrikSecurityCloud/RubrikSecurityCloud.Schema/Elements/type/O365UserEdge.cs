@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365UserEdge";
+    }
+
     public O365UserEdge Set(
         System.String? Cursor = null,
         O365User? Node = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostVolumeSummary";
+    }
+
     public HostVolumeSummary Set(
         System.Boolean? IsCurrentlyPresentOnSystem = null,
         System.String? NaturalId = null,

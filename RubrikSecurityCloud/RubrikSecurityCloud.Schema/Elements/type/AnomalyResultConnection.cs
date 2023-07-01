@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnomalyResultConnection";
+    }
+
     public AnomalyResultConnection Set(
         System.Int32? Count = null,
         AnomalyResultAggregation? Aggregation = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ArchivalLocationToClusterMapping";
+    }
+
     public ArchivalLocationToClusterMapping Set(
         SlaArchivalCluster? Cluster = null,
         DlsArchivalLocation? Location = null

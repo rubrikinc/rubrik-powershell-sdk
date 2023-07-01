@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Issue";
+    }
+
     public Issue Set(
         System.String? Id = null,
         System.Int64? OpenTime = null,

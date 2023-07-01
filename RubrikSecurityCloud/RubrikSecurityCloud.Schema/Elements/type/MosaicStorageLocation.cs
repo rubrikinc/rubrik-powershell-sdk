@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicStorageLocation";
+    }
+
     public MosaicStorageLocation Set(
         MosaicStoreConnectionStatus? StoreConnectionStatus = null,
         MosaicStoreType? StoreType = null,

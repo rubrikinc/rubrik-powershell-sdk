@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TableViewWithName";
+    }
+
     public TableViewWithName Set(
         TableViewType? TableViewType = null,
         System.String? TableName = null

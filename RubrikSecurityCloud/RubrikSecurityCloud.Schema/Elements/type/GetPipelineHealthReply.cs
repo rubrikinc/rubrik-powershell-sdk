@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetPipelineHealthReply";
+    }
+
     public GetPipelineHealthReply Set(
         System.Int64? FailedAnalysis = null,
         System.Int64? FailedBackup = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BeginManagedVolumeSnapshotReply";
+    }
+
     public BeginManagedVolumeSnapshotReply Set(
         System.String? OwnerId = null,
         System.String? SnapshotId = null,

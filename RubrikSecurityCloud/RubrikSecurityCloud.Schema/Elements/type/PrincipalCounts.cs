@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalCounts";
+    }
+
     public PrincipalCounts Set(
         SummaryCount? HighRiskCount = null,
         SummaryCount? LowRiskCount = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AssignMssqlSlaDomainPropertiesAsyncReply";
+    }
+
     public AssignMssqlSlaDomainPropertiesAsyncReply Set(
         List<ManagedObjectPendingSlaInfo>? Items = null
     ) 

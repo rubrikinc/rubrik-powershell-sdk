@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "EnableDisableAppConsistencyReply";
+    }
+
     public EnableDisableAppConsistencyReply Set(
         List<System.String>? FailedWorkloadIds = null,
         List<System.String>? SuccessWorkloadIds = null

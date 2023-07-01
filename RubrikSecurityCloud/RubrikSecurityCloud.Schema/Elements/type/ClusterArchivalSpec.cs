@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterArchivalSpec";
+    }
+
     public ClusterArchivalSpec Set(
         List<RetentionUnit>? Frequencies = null,
         RetentionUnit? ThresholdUnit = null,

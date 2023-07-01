@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RunningJobsReply";
+    }
+
     public RunningJobsReply Set(
         List<ClusterMetadata>? RunningJobs = null
     ) 

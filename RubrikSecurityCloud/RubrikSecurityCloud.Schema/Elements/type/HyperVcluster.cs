@@ -156,6 +156,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HyperVCluster";
+    }
+
     public HyperVcluster Set(
         List<Operation>? AuthorizedOperations = null,
         HypervHostStatusType? ConnectionStatus = null,

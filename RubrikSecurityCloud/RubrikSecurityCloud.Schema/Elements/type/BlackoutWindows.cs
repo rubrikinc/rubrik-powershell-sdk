@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlackoutWindows";
+    }
+
     public BlackoutWindows Set(
         List<BlackoutWindow>? GlobalBlackoutWindows = null,
         List<BlackoutWindow>? SnappableBlackoutWindows = null

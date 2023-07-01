@@ -100,6 +100,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ScheduledReport";
+    }
+
     public ScheduledReport Set(
         List<ReportAttachmentType>? AttachmentTypes = null,
         List<WeekDay>? WeeklyDays = null,

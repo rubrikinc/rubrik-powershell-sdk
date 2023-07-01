@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserAuditGroupByBase";
+    }
+
     public UserAuditGroupByBase Set(
         UserAuditGroupBy? GroupByField = null,
         System.Int64? Count = null,

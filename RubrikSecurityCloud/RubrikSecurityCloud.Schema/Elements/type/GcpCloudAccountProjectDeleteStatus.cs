@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpCloudAccountProjectDeleteStatus";
+    }
+
     public GcpCloudAccountProjectDeleteStatus Set(
         System.String? Error = null,
         System.String? ProjectUuid = null,

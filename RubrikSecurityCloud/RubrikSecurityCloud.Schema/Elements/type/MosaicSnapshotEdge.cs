@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicSnapshotEdge";
+    }
+
     public MosaicSnapshotEdge Set(
         System.String? Cursor = null,
         MosaicSnapshot? Node = null

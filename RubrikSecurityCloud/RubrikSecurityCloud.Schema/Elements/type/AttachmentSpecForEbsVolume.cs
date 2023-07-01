@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AttachmentSpecForEbsVolume";
+    }
+
     public AttachmentSpecForEbsVolume Set(
         System.String? AwsNativeEc2InstanceId = null,
         System.String? DevicePath = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaSystemPhysicalChildTypeEdge";
+    }
+
     public SapHanaSystemPhysicalChildTypeEdge Set(
         SapHanaSystemPhysicalChildType? Node = null,
         System.String? Cursor = null

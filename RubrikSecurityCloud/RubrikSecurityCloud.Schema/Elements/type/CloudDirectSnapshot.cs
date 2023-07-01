@@ -136,6 +136,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudDirectSnapshot";
+    }
+
     public CloudDirectSnapshot Set(
         SlaDomain? SlaDomain = null,
         CloudDirectHierarchyWorkload? Snappable = null,

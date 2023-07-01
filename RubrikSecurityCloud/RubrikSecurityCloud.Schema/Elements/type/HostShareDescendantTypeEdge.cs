@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostShareDescendantTypeEdge";
+    }
+
     public HostShareDescendantTypeEdge Set(
         HostShareDescendantType? Node = null,
         System.String? Cursor = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GenerateTotpSecretReply";
+    }
+
     public GenerateTotpSecretReply Set(
         System.String? Secret = null,
         System.String? SecretUri = null

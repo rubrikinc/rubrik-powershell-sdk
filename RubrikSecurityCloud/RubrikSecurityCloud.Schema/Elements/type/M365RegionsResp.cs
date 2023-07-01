@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "M365RegionsResp";
+    }
+
     public M365RegionsResp Set(
         List<M365Region>? Regions = null
     ) 

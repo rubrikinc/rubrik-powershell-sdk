@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "dataViewMetadata";
+    }
+
     public DataViewMetadata Set(
         DataViewTypeEnum? DataViewType = null,
         System.Int64? Count = null

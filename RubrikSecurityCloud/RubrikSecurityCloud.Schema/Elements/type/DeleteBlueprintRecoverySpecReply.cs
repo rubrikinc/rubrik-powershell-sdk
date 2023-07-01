@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteBlueprintRecoverySpecReply";
+    }
+
     public DeleteBlueprintRecoverySpecReply Set(
         List<RecoverySpecId>? RecoverySpecIds = null
     ) 

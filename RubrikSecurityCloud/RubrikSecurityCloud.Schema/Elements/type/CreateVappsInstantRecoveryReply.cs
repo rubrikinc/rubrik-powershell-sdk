@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateVappsInstantRecoveryReply";
+    }
+
     public CreateVappsInstantRecoveryReply Set(
         List<AsyncRequestStatus>? Responses = null
     ) 

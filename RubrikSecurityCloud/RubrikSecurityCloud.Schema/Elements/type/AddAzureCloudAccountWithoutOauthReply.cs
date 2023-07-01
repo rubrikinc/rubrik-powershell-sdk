@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddAzureCloudAccountWithoutOauthReply";
+    }
+
     public AddAzureCloudAccountWithoutOauthReply Set(
         System.String? TenantId = null,
         List<AddAzureCloudAccountStatus>? Status = null

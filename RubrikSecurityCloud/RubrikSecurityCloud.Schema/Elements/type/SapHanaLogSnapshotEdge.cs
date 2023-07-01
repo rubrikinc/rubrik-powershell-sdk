@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaLogSnapshotEdge";
+    }
+
     public SapHanaLogSnapshotEdge Set(
         System.String? Cursor = null,
         SapHanaLogSnapshot? Node = null

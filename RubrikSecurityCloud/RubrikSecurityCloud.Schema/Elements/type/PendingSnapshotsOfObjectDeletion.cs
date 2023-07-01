@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PendingSnapshotsOfObjectDeletion";
+    }
+
     public PendingSnapshotsOfObjectDeletion Set(
         PendingActionStatus? Status = null,
         System.String? ObjectFid = null

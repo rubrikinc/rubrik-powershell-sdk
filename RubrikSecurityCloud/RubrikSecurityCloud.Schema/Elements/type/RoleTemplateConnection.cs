@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RoleTemplateConnection";
+    }
+
     public RoleTemplateConnection Set(
         System.Int32? Count = null,
         List<RoleTemplateEdge>? Edges = null,

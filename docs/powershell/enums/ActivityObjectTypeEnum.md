@@ -41,6 +41,7 @@
 - O365Mailbox
 - AwsNativeAccount
 - AZURE_STORAGE_ACCOUNT - Specifies that the activity object type is Azure Storage Account.
+- VMWARE_HOST - Specifies that the activity object type is a VSphere host.
 - PolarisAccount
 - AzureSqlManagedInstance
 - AzureNativeVm

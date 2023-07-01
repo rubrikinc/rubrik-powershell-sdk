@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NcdSlaComplianceData";
+    }
+
     public NcdSlaComplianceData Set(
         System.Int32? JobsFailing = null,
         System.Int32? JobsPassing = null,

@@ -20,6 +20,11 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> List<VmwareRecoveryType>? AllowedRecoveryTypes
+        // GraphQL -> allowedRecoveryTypes: [VmwareRecoveryType!]! (enum)
+        [JsonProperty("allowedRecoveryTypes")]
+        public List<VmwareRecoveryType>? AllowedRecoveryTypes { get; set; }
+
         //      C# -> System.Boolean? IsRecoverable
         // GraphQL -> isRecoverable: Boolean! (scalar)
         [JsonProperty("isRecoverable")]
@@ -45,13 +50,21 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RecoveryPlanPermission";
+    }
+
     public RecoveryPlanPermission Set(
+        List<VmwareRecoveryType>? AllowedRecoveryTypes = null,
         System.Boolean? IsRecoverable = null,
         System.Boolean? IsViewable = null,
         System.String? RecoveryPlanFid = null,
         System.String? RecoveryPlanName = null
     ) 
     {
+        if ( AllowedRecoveryTypes != null ) {
+            this.AllowedRecoveryTypes = AllowedRecoveryTypes;
+        }
         if ( IsRecoverable != null ) {
             this.IsRecoverable = IsRecoverable;
         }
@@ -74,6 +87,11 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> List<VmwareRecoveryType>? AllowedRecoveryTypes
+        // GraphQL -> allowedRecoveryTypes: [VmwareRecoveryType!]! (enum)
+        if (this.AllowedRecoveryTypes != null) {
+            s += ind + "allowedRecoveryTypes\n" ;
+        }
         //      C# -> System.Boolean? IsRecoverable
         // GraphQL -> isRecoverable: Boolean! (scalar)
         if (this.IsRecoverable != null) {
@@ -102,6 +120,12 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> List<VmwareRecoveryType>? AllowedRecoveryTypes
+        // GraphQL -> allowedRecoveryTypes: [VmwareRecoveryType!]! (enum)
+        if (this.AllowedRecoveryTypes == null && Exploration.Includes(parent + ".allowedRecoveryTypes", true))
+        {
+            this.AllowedRecoveryTypes = new List<VmwareRecoveryType>();
+        }
         //      C# -> System.Boolean? IsRecoverable
         // GraphQL -> isRecoverable: Boolean! (scalar)
         if (this.IsRecoverable == null && Exploration.Includes(parent + ".isRecoverable", true))

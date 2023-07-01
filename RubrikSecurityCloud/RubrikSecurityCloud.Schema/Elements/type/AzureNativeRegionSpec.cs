@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeRegionSpec";
+    }
+
     public AzureNativeRegionSpec Set(
         AzureNativeRegion? Region = null,
         System.Boolean? IsExocomputeConfigured = null

@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReportFilterDetail";
+    }
+
     public ReportFilterDetail Set(
         DataTypeEnum? DataType = null,
         FilterTypeEnum? Type = null,

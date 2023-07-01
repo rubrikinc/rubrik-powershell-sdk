@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NcdObjectsOverTimeData";
+    }
+
     public NcdObjectsOverTimeData Set(
         System.Int32? Directories = null,
         System.Int32? Files = null,

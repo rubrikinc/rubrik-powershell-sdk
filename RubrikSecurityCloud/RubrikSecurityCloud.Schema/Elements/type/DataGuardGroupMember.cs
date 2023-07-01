@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DataGuardGroupMember";
+    }
+
     public DataGuardGroupMember Set(
         System.String? DbUniqueName = null,
         System.String? RacId = null,

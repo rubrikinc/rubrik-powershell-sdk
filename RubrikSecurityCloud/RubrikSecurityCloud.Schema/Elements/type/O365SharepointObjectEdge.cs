@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365SharepointObjectEdge";
+    }
+
     public O365SharepointObjectEdge Set(
         O365SharepointObject? Node = null,
         System.String? Cursor = null

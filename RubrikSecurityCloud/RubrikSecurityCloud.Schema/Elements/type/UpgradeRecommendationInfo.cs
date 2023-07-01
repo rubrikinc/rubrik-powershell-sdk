@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpgradeRecommendationInfo";
+    }
+
     public UpgradeRecommendationInfo Set(
         System.String? NextReleaseRecommendation = null,
         System.String? Recommendation = null,

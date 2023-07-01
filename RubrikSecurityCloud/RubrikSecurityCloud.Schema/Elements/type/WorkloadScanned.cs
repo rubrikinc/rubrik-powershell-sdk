@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WorkloadScanned";
+    }
+
     public WorkloadScanned Set(
         System.Int64? Count = null,
         System.String? WorkloadId = null,

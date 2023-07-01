@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CurrentStateInfo";
+    }
+
     public CurrentStateInfo Set(
         List<System.String>? CompletedStates = null,
         System.String? CurrentState = null,

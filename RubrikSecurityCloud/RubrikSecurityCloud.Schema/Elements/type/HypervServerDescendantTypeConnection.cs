@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervServerDescendantTypeConnection";
+    }
+
     public HypervServerDescendantTypeConnection Set(
         List<HypervServerDescendantType>? Nodes = null,
         System.Int32? Count = null,

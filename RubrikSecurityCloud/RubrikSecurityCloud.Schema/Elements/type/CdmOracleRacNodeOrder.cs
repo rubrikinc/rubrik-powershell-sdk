@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmOracleRacNodeOrder";
+    }
+
     public CdmOracleRacNodeOrder Set(
         System.String? NodeName = null,
         System.Int32? Order = null

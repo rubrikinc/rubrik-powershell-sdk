@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlRestoreFile";
+    }
+
     public MssqlRestoreFile Set(
         MssqlDatabaseFileType? FileType = null,
         System.Int64? FileId = null,

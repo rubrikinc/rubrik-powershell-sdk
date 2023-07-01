@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RansomwareResultGroupedData";
+    }
+
     public RansomwareResultGroupedData Set(
         List<RansomwareResultGroupedData>? RansomwareResultGroupedDataField = null,
         RansomwareResultConnection? RansomwareResults = null,

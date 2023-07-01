@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ComplianceStatus";
+    }
+
     public ComplianceStatus Set(
         ComplianceStatusEnum? EnumValue = null
     ) 

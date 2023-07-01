@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleHostDescendantTypeConnection";
+    }
+
     public OracleHostDescendantTypeConnection Set(
         List<OracleHostDescendantType>? Nodes = null,
         System.Int32? Count = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeSubscriptionConnection";
+    }
+
     public AzureNativeSubscriptionConnection Set(
         System.Int32? Count = null,
         List<AzureNativeSubscriptionEdge>? Edges = null,

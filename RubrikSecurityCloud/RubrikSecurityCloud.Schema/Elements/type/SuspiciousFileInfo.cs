@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SuspiciousFileInfo";
+    }
+
     public SuspiciousFileInfo Set(
         System.String? FilePath = null,
         System.Int64? FileSizeBytes = null,

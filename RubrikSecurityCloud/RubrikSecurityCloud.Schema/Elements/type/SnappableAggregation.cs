@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnappableAggregation";
+    }
+
     public SnappableAggregation Set(
         System.Int64? ArchiveStorage = null,
         System.Int64? LastSnapshotLogicalBytes = null,

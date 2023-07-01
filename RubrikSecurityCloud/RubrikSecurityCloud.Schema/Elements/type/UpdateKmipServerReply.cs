@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateKmipServerReply";
+    }
+
     public UpdateKmipServerReply Set(
         System.Boolean? IsPending = null
     ) 

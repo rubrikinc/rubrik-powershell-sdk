@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateSnapMirrorCloudRelationshipReply";
+    }
+
     public CreateSnapMirrorCloudRelationshipReply Set(
         System.String? CloudTargetId = null,
         System.String? PolicyId = null,

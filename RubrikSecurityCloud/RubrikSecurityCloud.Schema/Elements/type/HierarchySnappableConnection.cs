@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HierarchySnappableConnection";
+    }
+
     public HierarchySnappableConnection Set(
         List<HierarchySnappable>? Nodes = null,
         System.Int32? Count = null,

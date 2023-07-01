@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FileResultEdge";
+    }
+
     public FileResultEdge Set(
         System.String? Cursor = null,
         FileResult? Node = null

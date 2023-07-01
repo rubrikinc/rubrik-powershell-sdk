@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleLiveMountConnection";
+    }
+
     public OracleLiveMountConnection Set(
         System.Int32? Count = null,
         List<OracleLiveMountEdge>? Edges = null,

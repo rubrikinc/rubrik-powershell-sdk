@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeProjectLogicalChildTypeEdge";
+    }
+
     public GcpNativeProjectLogicalChildTypeEdge Set(
         GcpNativeProjectLogicalChildType? Node = null,
         System.String? Cursor = null

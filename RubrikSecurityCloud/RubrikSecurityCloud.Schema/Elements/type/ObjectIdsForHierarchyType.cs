@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ObjectIdsForHierarchyType";
+    }
+
     public ObjectIdsForHierarchyType Set(
         WorkloadLevelHierarchy? SnappableType = null,
         List<System.String>? ObjectIds = null

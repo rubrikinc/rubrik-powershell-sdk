@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeSubscriptionEnabledFeature";
+    }
+
     public AzureNativeSubscriptionEnabledFeature Set(
         AzureNativeProtectionFeature? FeatureName = null,
         AzureSubscriptionStatus? Status = null,

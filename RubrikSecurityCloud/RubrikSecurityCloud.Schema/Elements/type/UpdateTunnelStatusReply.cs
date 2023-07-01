@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateTunnelStatusReply";
+    }
+
     public UpdateTunnelStatusReply Set(
         SupportTunnelInfo? Output = null
     ) 

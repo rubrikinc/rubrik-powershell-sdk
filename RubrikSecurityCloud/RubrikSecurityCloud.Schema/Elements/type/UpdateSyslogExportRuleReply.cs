@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateSyslogExportRuleReply";
+    }
+
     public UpdateSyslogExportRuleReply Set(
         SyslogExportRuleSummary? Output = null
     ) 

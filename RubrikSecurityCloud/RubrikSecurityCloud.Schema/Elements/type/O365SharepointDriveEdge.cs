@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365SharepointDriveEdge";
+    }
+
     public O365SharepointDriveEdge Set(
         System.String? Cursor = null,
         O365SharepointDrive? Node = null

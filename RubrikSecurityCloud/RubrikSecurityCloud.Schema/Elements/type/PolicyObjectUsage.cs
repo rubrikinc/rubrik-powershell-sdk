@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolicyObjectUsage";
+    }
+
     public PolicyObjectUsage Set(
         HierarchyObject? HierarchyObject = null,
         List<ClassificationPolicySummary>? Policies = null

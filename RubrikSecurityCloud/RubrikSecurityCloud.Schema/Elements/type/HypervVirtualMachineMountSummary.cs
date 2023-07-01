@@ -85,6 +85,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervVirtualMachineMountSummary";
+    }
+
     public HypervVirtualMachineMountSummary Set(
         HypervVirtualMachineMountSummaryPowerStatus? PowerStatus = null,
         System.String? HostId = null,

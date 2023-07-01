@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddClusterNodesReply";
+    }
+
     public AddClusterNodesReply Set(
         System.String? JobId = null,
         System.String? Status = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureUserRoleResp";
+    }
+
     public AzureUserRoleResp Set(
         RoleStatus? GlobalAdministrator = null,
         RoleStatus? SubscriptionOwner = null

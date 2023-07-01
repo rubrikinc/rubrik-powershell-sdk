@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NetworkInfo";
+    }
+
     public NetworkInfo Set(
         System.String? Id = null,
         System.String? Name = null

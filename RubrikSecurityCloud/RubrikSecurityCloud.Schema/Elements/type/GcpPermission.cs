@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpPermission";
+    }
+
     public GcpPermission Set(
         System.String? Permission = null
     ) 

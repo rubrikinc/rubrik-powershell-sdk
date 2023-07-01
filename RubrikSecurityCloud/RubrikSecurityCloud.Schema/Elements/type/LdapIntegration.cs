@@ -90,6 +90,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LdapIntegration";
+    }
+
     public LdapIntegration Set(
         System.String? BaseDn = null,
         System.String? BindUserName = null,

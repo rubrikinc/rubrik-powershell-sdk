@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterAppConfig";
+    }
+
     public FailoverClusterAppConfig Set(
         FailoverClusterType? FailoverClusterType = null,
         System.String? ConfiguredSlaDomainId = null,

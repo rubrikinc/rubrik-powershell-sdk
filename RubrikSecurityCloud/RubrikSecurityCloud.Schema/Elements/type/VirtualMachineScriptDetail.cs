@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VirtualMachineScriptDetail";
+    }
+
     public VirtualMachineScriptDetail Set(
         VirtualMachineScriptDetailFailureHandling? FailureHandling = null,
         System.String? ScriptPath = null,

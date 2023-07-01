@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2HadrInstanceInfo";
+    }
+
     public Db2HadrInstanceInfo Set(
         System.String? Role = null,
         Db2Instance? Db2Instance = null

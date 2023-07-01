@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatMonitoringFileMatchDetailsReply";
+    }
+
     public ThreatMonitoringFileMatchDetailsReply Set(
         IndicatorOfCompromiseKind? MatchType = null,
         DateTime? DetectedSnapshotDate = null,

@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetO365StorageStatsResp";
+    }
+
     public GetO365StorageStatsResp Set(
         System.Int64? DailyGrowthInBytes = null,
         System.Int64? EstimatedThirtyDaysStorageInBytes = null,

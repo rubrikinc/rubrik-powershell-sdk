@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExchangeDagSummary";
+    }
+
     public ExchangeDagSummary Set(
         ExchangeBackupPreference? BackupPreference = null,
         System.String? ConfiguredSlaDomainId = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareDatastoreFreespaceThreshold";
+    }
+
     public VmwareDatastoreFreespaceThreshold Set(
         System.Single? Threshold = null,
         System.String? VmId = null

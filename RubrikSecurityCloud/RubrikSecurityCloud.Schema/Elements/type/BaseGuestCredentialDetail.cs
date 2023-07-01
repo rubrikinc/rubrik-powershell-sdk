@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BaseGuestCredentialDetail";
+    }
+
     public BaseGuestCredentialDetail Set(
         System.String? Username = null
     ) 

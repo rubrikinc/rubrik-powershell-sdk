@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateHealthMonitorPolicyStatusReply";
+    }
+
     public UpdateHealthMonitorPolicyStatusReply Set(
         List<NodePolicyCheckResult>? Items = null
     ) 

@@ -191,6 +191,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeS3Bucket";
+    }
+
     public AwsNativeS3Bucket Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,

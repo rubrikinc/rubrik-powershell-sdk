@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReplicationSpecV2";
+    }
+
     public ReplicationSpecV2 Set(
         System.String? AwsRegion = null,
         System.String? AzureRegion = null,

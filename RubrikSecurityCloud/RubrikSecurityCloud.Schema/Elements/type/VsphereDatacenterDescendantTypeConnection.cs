@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereDatacenterDescendantTypeConnection";
+    }
+
     public VsphereDatacenterDescendantTypeConnection Set(
         List<VsphereDatacenterDescendantType>? Nodes = null,
         System.Int32? Count = null,

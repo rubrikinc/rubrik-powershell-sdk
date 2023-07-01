@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleRacDetail";
+    }
+
     public OracleRacDetail Set(
         System.String? Scan = null,
         OracleNonSlaProperties? OracleNonSlaProperties = null,

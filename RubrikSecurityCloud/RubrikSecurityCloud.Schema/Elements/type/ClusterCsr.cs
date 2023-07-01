@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterCsr";
+    }
+
     public ClusterCsr Set(
         System.String? Csr = null
     ) 

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateAzureCloudAccountReply";
+    }
+
     public UpdateAzureCloudAccountReply Set(
         List<UpdateAzureCloudAccountStatus>? Status = null
     ) 

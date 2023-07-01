@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActivitySeriesGroupBy";
+    }
+
     public ActivitySeriesGroupBy Set(
         ActivitySeriesConnection? ActivitySeriesConnection = null,
         List<ActivitySeriesGroupBy>? ActivitySeriesGroupByField = null,

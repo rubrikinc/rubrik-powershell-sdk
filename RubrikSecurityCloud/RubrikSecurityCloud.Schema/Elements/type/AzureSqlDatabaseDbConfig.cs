@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSqlDatabaseDbConfig";
+    }
+
     public AzureSqlDatabaseDbConfig Set(
         System.Int32? LogRetentionInDays = null
     ) 

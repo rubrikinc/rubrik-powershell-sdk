@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsAuthServerDetail";
+    }
+
     public AwsAuthServerDetail Set(
         List<AwsAuthServerBasedCloudAccountRegion>? AuthServerAwsRegions = null,
         System.String? Agency = null,

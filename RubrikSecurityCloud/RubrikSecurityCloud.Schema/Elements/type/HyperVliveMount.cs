@@ -90,6 +90,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HyperVLiveMount";
+    }
+
     public HyperVliveMount Set(
         HypervMountedVmStatusType? MountedVmStatus = null,
         System.String? Id = null,

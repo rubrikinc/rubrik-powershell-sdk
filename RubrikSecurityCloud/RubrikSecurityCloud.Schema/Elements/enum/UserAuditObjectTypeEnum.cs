@@ -15,6 +15,12 @@ namespace RubrikSecurityCloud.Types
 {
     public enum UserAuditObjectTypeEnum
     {
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN")]
+        ACTIVE_DIRECTORY_DOMAIN,
+
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
+        ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
+
         [EnumMember(Value = "AWS_NATIVE_S3_BUCKET")]
         AWS_NATIVE_S3_BUCKET,
 
@@ -188,6 +194,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "MssqlDatabase")]
         MSSQL_DATABASE,
+
+        [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
+        NUTANIX_PRISM_CENTRAL,
 
         [EnumMember(Value = "NasHost")]
         NAS_HOST,

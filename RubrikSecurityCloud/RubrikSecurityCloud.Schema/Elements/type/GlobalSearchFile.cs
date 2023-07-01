@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalSearchFile";
+    }
+
     public GlobalSearchFile Set(
         List<System.String>? Dirs = null,
         System.String? Filename = null,

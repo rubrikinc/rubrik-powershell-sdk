@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RansomwareInvestigationWorkloadScannedCountReply";
+    }
+
     public RansomwareInvestigationWorkloadScannedCountReply Set(
         List<WorkloadScanned>? WorkloadScannedCounts = null
     ) 

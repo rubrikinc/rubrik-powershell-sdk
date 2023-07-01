@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicAsyncResponse";
+    }
+
     public MosaicAsyncResponse Set(
         System.String? Data = null,
         System.String? Message = null,

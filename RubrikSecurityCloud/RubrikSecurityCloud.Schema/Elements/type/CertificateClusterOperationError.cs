@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CertificateClusterOperationError";
+    }
+
     public CertificateClusterOperationError Set(
         System.String? ClusterUuid = null,
         System.String? Error = null,

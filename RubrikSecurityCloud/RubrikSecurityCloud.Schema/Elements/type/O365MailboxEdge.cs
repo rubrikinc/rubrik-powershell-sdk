@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365MailboxEdge";
+    }
+
     public O365MailboxEdge Set(
         System.String? Cursor = null,
         O365Mailbox? Node = null

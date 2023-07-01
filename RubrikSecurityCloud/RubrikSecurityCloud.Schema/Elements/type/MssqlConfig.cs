@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlConfig";
+    }
+
     public MssqlConfig Set(
         Duration? Frequency = null,
         Duration? LogRetention = null

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateFailoverClusterAppReply";
+    }
+
     public UpdateFailoverClusterAppReply Set(
         FailoverClusterAppSummary? Output = null
     ) 

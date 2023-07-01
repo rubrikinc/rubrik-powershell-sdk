@@ -1,6 +1,6 @@
 # Invoke-RscMutateAzureO365
 ## Subcommands
-### Setupexocompute
+### setupexocompute
 Sets up Exocompute for an O365 subscription.
 
 - There are 3 arguments.

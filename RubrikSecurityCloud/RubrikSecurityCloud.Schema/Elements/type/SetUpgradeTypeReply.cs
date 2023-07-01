@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SetUpgradeTypeReply";
+    }
+
     public SetUpgradeTypeReply Set(
         System.String? Code = null,
         System.String? Excepshuns = null,

@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotDistribution";
+    }
+
     public SnapshotDistribution Set(
         System.String? Id = null,
         System.Int64? OnDemandCount = null,

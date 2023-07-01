@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeExportConfig";
+    }
+
     public ManagedVolumeExportConfig Set(
         ManagedVolumeShareType? ShareType = null,
         System.String? Subnet = null,

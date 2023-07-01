@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CustomReportGroupBy";
+    }
+
     public CustomReportGroupBy Set(
         CustomReportConnection? ReportConnection = null,
         List<CustomReportGroupBy>? ReportGroupBy = null,

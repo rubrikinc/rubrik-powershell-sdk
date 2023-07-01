@@ -1,6 +1,6 @@
 # Invoke-RscMutateActivitySeries
 ## Subcommands
-### Cancel
+### cancel
 Cancel an activity series.
 
 - There is a single argument of type CancelActivitySeriesInput.

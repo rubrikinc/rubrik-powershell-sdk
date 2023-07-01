@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureArmTemplateByFeature";
+    }
+
     public AzureArmTemplateByFeature Set(
         CloudAccountFeature? Feature = null,
         System.String? RoleDefinitionAssignmentTemplate = null,

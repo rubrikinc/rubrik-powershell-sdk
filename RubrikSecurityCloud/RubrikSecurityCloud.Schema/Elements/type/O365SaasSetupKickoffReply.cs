@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365SaasSetupKickoffReply";
+    }
+
     public O365SaasSetupKickoffReply Set(
         System.String? CsrfToken = null,
         List<AppIdForType>? AppClientIdsPerType = null

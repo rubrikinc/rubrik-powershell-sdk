@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterRegistrationToken";
+    }
+
     public ClusterRegistrationToken Set(
         System.String? ProductType = null,
         System.String? Pubkey = null,

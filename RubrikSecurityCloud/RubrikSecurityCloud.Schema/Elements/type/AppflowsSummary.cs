@@ -90,6 +90,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AppflowsSummary";
+    }
+
     public AppflowsSummary Set(
         System.Int32? NumBlueprintsReady = null,
         System.Int32? NumBlueprintsWithIssues = null,

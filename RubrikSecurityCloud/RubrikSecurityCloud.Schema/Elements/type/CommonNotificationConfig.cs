@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CommonNotificationConfig";
+    }
+
     public CommonNotificationConfig Set(
         NetworkProtocolTypeEnum? NetworkType = null,
         SmtpSecurityTypeEnum? SecurityType = null,

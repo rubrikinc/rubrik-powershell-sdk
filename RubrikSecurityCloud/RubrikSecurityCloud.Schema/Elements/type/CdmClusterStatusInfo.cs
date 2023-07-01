@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmClusterStatusInfo";
+    }
+
     public CdmClusterStatusInfo Set(
         System.String? CompletedNodes = null,
         System.String? CurrentNode = null,

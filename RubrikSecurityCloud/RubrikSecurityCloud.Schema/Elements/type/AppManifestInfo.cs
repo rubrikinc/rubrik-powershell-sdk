@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AppManifestInfo";
+    }
+
     public AppManifestInfo Set(
         K8sContentType? ManifestContentType = null,
         System.String? Manifest = null,

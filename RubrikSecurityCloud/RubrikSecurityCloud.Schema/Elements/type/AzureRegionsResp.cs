@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureRegionsResp";
+    }
+
     public AzureRegionsResp Set(
         List<Region>? Regions = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudNativeCheckRbaConnectivityReply";
+    }
+
     public CloudNativeCheckRbaConnectivityReply Set(
         List<Failure>? Failures = null,
         List<Success>? Successes = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixPrismCentralLogicalChildTypeEdge";
+    }
+
     public NutanixPrismCentralLogicalChildTypeEdge Set(
         NutanixPrismCentralLogicalChildType? Node = null,
         System.String? Cursor = null

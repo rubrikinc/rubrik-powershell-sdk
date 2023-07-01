@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnappableRecoveryInfo";
+    }
+
     public SnappableRecoveryInfo Set(
         System.Boolean? IsRefreshInProgressOpt = null,
         DateTime? LastUpdatedTimeOpt = null,

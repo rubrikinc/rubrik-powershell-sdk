@@ -1,6 +1,6 @@
 ### HierarchyFilterField
 - IS_ARCHIVED - Filters archived workloads.
-- NAME - Filter by name.
+- NAME - Filter by name. For an exact match, use NAME_EXACT_MATCH.
 - IS_RELIC - Filters workloads that are relics.
 - EC2_INSTANCE_ID - Filter by EC2Instance native ID.
 - EC2_INSTANCE_NAME - Filter by EC2Instance.name.
@@ -243,3 +243,5 @@
  associated with any Prism Central object.
 - DOMAIN_CONTROLLER_CONNECTION_STATUS - Filter by the Active Directory domain controller connection status.
 - MIGRATED_HOSTS_WITH_GHOST_OBJECTS - Filter to show all migrated hosts, including ghost objects.
+- MSSQL_IS_HOST_PROTECTED - Filter Microsoft SQL Server hosts that are protected by an SLA Domain.
+- MSSQL_IS_FAILOVER_CLUSTER_PROTECTED - Filter Microsoft SQL Server failover clusters that are protected by an SLA Domain.

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmWorkloadSnapshotConnection";
+    }
+
     public CdmWorkloadSnapshotConnection Set(
         System.Int32? Count = null,
         List<CdmWorkloadSnapshotEdge>? Edges = null,

@@ -24,8 +24,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "CLUSTER_DELETE")]
         CLUSTER_DELETE,
 
+        [EnumMember(Value = "CLUSTER_RECOVER")]
+        CLUSTER_RECOVER,
+
         [EnumMember(Value = "REMOVE_NODE")]
-        REMOVE_NODE
+        REMOVE_NODE,
+
+        [EnumMember(Value = "REPLACE_NODE")]
+        REPLACE_NODE
 
 
     } // enum CcpJobType

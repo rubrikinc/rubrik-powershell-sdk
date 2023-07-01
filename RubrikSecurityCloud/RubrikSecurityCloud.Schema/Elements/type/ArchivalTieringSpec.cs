@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ArchivalTieringSpec";
+    }
+
     public ArchivalTieringSpec Set(
         ColdStorageClass? ColdStorageClass = null,
         System.Boolean? IsInstantTieringEnabled = null,

@@ -90,6 +90,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkRecoveryGroupWorkloadProgress";
+    }
+
     public BulkRecoveryGroupWorkloadProgress Set(
         BulkRecoveryGroupWorkloadStatus? Status = null,
         System.Int32? CanceledWorkloads = null,

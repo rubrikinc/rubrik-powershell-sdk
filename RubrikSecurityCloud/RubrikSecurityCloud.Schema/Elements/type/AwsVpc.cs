@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsVpc";
+    }
+
     public AwsVpc Set(
         System.String? Id = null,
         System.String? Name = null,

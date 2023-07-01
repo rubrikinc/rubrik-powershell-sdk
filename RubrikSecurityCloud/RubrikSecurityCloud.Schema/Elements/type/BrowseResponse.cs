@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BrowseResponse";
+    }
+
     public BrowseResponse Set(
         System.String? FileMode = null,
         System.String? Filename = null,

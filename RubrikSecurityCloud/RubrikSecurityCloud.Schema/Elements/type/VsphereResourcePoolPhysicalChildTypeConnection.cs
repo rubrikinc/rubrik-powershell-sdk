@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereResourcePoolPhysicalChildTypeConnection";
+    }
+
     public VsphereResourcePoolPhysicalChildTypeConnection Set(
         List<VsphereResourcePoolPhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

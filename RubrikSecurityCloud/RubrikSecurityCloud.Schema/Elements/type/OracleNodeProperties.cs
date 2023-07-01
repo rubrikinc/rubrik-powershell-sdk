@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleNodeProperties";
+    }
+
     public OracleNodeProperties Set(
         System.String? HostId = null,
         System.String? NodeName = null,

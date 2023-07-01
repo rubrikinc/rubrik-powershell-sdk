@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatHuntConfig";
+    }
+
     public ThreatHuntConfig Set(
         List<CdmHierarchySnappableNew>? Objects = null,
         System.String? ClusterUuid = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "KmipServer";
+    }
+
     public KmipServer Set(
         System.String? Address = null,
         System.Int32? Port = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AdvancedVirtualMachineSummary";
+    }
+
     public AdvancedVirtualMachineSummary Set(
         List<System.String>? ExcludedVmdks = null,
         VirtualMachineScriptDetail? PostBackupScript = null,

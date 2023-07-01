@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LambdaSettings";
+    }
+
     public LambdaSettings Set(
         System.Single? AnomalyThreshold = null,
         System.Boolean? IsAnomalyAlertEnabled = null,

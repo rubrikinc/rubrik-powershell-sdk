@@ -125,6 +125,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WorkloadAnomaly";
+    }
+
     public WorkloadAnomaly Set(
         EncryptionLevel? Encryption = null,
         HierarchyObjectTypeEnum? ObjectType = null,

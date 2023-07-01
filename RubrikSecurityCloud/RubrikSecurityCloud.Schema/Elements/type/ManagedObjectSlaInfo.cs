@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedObjectSlaInfo";
+    }
+
     public ManagedObjectSlaInfo Set(
         SlaAssignment? SlaAssignment = null,
         System.String? ConfiguredSlaDomainId = null,

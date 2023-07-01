@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongodbDatabasePhysicalChildTypeEdge";
+    }
+
     public MongodbDatabasePhysicalChildTypeEdge Set(
         MongodbDatabasePhysicalChildType? Node = null,
         System.String? Cursor = null

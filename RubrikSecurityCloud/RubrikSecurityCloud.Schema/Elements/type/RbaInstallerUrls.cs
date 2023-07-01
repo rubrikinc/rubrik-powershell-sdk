@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RbaInstallerUrls";
+    }
+
     public RbaInstallerUrls Set(
         System.String? DebianHashSha256 = null,
         System.String? DebianUrl = null,

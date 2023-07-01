@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NetworkInterface";
+    }
+
     public NetworkInterface Set(
         NetworkInterfaceType? InterfaceType = null,
         System.String? InterfaceName = null,

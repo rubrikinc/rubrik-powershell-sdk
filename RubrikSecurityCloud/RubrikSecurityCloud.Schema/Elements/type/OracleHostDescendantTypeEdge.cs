@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleHostDescendantTypeEdge";
+    }
+
     public OracleHostDescendantTypeEdge Set(
         OracleHostDescendantType? Node = null,
         System.String? Cursor = null

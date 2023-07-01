@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalCertificateEdge";
+    }
+
     public GlobalCertificateEdge Set(
         System.String? Cursor = null,
         GlobalCertificate? Node = null

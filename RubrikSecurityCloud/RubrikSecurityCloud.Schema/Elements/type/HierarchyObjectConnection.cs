@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HierarchyObjectConnection";
+    }
+
     public HierarchyObjectConnection Set(
         List<HierarchyObject>? Nodes = null,
         System.Int32? Count = null,

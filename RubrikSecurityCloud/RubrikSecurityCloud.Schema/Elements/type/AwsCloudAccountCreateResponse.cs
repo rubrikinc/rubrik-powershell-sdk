@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsCloudAccountCreateResponse";
+    }
+
     public AwsCloudAccountCreateResponse Set(
         List<AwsCloudAccountRegion>? AwsRegions = null,
         System.String? CloudFormationUrl = null,

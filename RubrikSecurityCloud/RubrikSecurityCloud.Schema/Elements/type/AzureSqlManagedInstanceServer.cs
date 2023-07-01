@@ -161,6 +161,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSqlManagedInstanceServer";
+    }
+
     public AzureSqlManagedInstanceServer Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         AzureSqlBackupStorageRedundancyType? BackupStorageRedundancy = null,

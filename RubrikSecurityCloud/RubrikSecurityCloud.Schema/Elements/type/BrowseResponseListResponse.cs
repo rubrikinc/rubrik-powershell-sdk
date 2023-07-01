@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BrowseResponseListResponse";
+    }
+
     public BrowseResponseListResponse Set(
         System.Boolean? HasMore = null,
         System.Int64? Total = null,

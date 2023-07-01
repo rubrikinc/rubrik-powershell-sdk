@@ -1,6 +1,6 @@
 # Invoke-RscMutateOracle
 ## Subcommands
-### Bulkupdatedatabase
+### bulkupdatedatabase
 Update Oracle Databases
 
 Supported in v5.2+
@@ -8,7 +8,7 @@ Update the properties of the objects that represent the specified Oracle Databas
 
 - There is a single argument of type BulkUpdateOracleDatabasesInput.
 - Returns BulkUpdateOracleDatabasesReply.
-### Bulkupdatehost
+### bulkupdatehost
 Update Oracle Hosts
 
 Supported in v5.2+
@@ -16,7 +16,7 @@ Update properties to Oracle Host objects.
 
 - There is a single argument of type BulkUpdateOracleHostsInput.
 - Returns BulkUpdateOracleHostsReply.
-### Bulkupdaterac
+### bulkupdaterac
 Update Oracle RACs
 
 Supported in v5.2+
@@ -24,7 +24,7 @@ Update the properties of the objects that represent the specified Oracle RAC.
 
 - There is a single argument of type BulkUpdateOracleRacsInput.
 - Returns BulkUpdateOracleRacsReply.
-### Createpdbrestore
+### createpdbrestore
 Restore PDBs on an Oracle database
 
 Supported in v8.0+
@@ -32,7 +32,7 @@ Initiates an asynchronous request to restore PDBs on an Oracle database from a s
 
 - There is a single argument of type CreateOraclePdbRestoreInput.
 - Returns AsyncRequestStatus.
-### Deletealldatabasesnapshot
+### deletealldatabasesnapshot
 Delete Oracle database snapshots
 
 Supported in v5.0+
@@ -40,7 +40,7 @@ Delete all snapshots for a specified Oracle database object. For the operation t
 
 - There is a single argument of type DeleteAllOracleDatabaseSnapshotsInput.
 - Returns System.String.
-### Deletemount
+### deletemount
 Delete an Oracle database Live Mount
 
 Supported in v5.0+
@@ -48,7 +48,7 @@ Request an asynchronous job to delete a specified Live Mount of an Oracle databa
 
 - There is a single argument of type DeleteOracleMountInput.
 - Returns AsyncRequestStatus.
-### Downloaddatabasesnapshot
+### downloaddatabasesnapshot
 Download Oracle snapshot from cloud
 
 Supported in v5.0+
@@ -56,7 +56,7 @@ Create an asynchronous job to download an Oracle database snapshot and associate
 
 - There is a single argument of type DownloadOracleDatabaseSnapshotInput.
 - Returns AsyncRequestStatus.
-### Exportdatabase
+### exportdatabase
 Export an Oracle database
 
 Supported in v5.0+
@@ -64,7 +64,7 @@ Request an asynchronous job to export an Oracle database from a specified snapsh
 
 - There is a single argument of type ExportOracleDatabaseInput.
 - Returns AsyncRequestStatus.
-### Exporttablespace
+### exporttablespace
 Export an Oracle tablespace
 
 Supported in v5.0+
@@ -72,7 +72,7 @@ Request an asynchronous job to export an Oracle tablespace from a specified snap
 
 - There is a single argument of type ExportOracleTablespaceInput.
 - Returns AsyncRequestStatus.
-### Instantrecoversnapshot
+### instantrecoversnapshot
 Instant recovery of a database
 
 Supported in v5.0+
@@ -80,7 +80,7 @@ Creates an instant recover request that restores a target database from the give
 
 - There is a single argument of type InstantRecoverOracleSnapshotInput.
 - Returns AsyncRequestStatus.
-### Mountdatabase
+### mountdatabase
 Live Mount an Oracle database snapshot
 
 Supported in v5.0+
@@ -88,7 +88,7 @@ Create an asynchronous job to Live Mount an Oracle database from a snapshot.
 
 - There is a single argument of type MountOracleDatabaseInput.
 - Returns AsyncRequestStatus.
-### Refreshdatabase
+### refreshdatabase
 Refresh an Oracle database
 
 Supported in v6.0+
@@ -96,7 +96,7 @@ Starts an asynchronous job to refresh the Oracle database metadata by querying t
 
 - There is a single argument of type RefreshOracleDatabaseInput.
 - Returns AsyncRequestStatus.
-### Restorelog
+### restorelog
 Restore archive logs of an Oracle database
 
 Supported in v6.0+
@@ -105,7 +105,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
 - There is a single argument of type RestoreOracleLogsInput.
 - Returns AsyncRequestStatus.
-### Takeondemanddatabasesnapshot
+### takeondemanddatabasesnapshot
 On-demand backup of an Oracle database
 
 Supported in v5.0+
@@ -113,7 +113,7 @@ Create an asynchronous job for an on-demand snapshot of an Oracle database. The 
 
 - There is a single argument of type TakeOnDemandOracleDatabaseSnapshotInput.
 - Returns AsyncRequestStatus.
-### Takeondemandlogsnapshot
+### takeondemandlogsnapshot
 On-demand log backup for an Oracle database log
 
 Supported in v5.0+
@@ -121,7 +121,7 @@ Create an asynchronous job for an on-demand backup of an Oracle database log. Th
 
 - There is a single argument of type TakeOnDemandOracleLogSnapshotInput.
 - Returns AsyncRequestStatus.
-### Updatedataguardgroup
+### updatedataguardgroup
 Update an Oracle Data Guard group
 
 Supported in v6.0+
@@ -129,7 +129,7 @@ Update properties of an Oracle Data Guard group object.
 
 - There is a single argument of type UpdateOracleDataGuardGroupInput.
 - Returns OracleDbDetail.
-### Validateacofile
+### validateacofile
 Validate Oracle ACO file
 
 Supported in v6.0+
@@ -137,7 +137,7 @@ Validate the provided Oracle ACO (Advanced Cloning Options) file.
 
 - There is a single argument of type ValidateOracleAcoFileInput.
 - Returns ValidateOracleAcoFileReply.
-### Validatedatabasebackup
+### validatedatabasebackup
 Validate Oracle database backups
 
 Supported in v5.3+

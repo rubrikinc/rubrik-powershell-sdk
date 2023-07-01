@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365ConfiguredGroupMemberEdge";
+    }
+
     public O365ConfiguredGroupMemberEdge Set(
         System.String? Cursor = null,
         O365ConfiguredGroupMember? Node = null

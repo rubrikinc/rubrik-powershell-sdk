@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Vnet";
+    }
+
     public Vnet Set(
         System.String? Id = null,
         System.String? Name = null,

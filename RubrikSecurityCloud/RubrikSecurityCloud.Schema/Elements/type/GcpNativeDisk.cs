@@ -206,6 +206,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeDisk";
+    }
+
     public GcpNativeDisk Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,

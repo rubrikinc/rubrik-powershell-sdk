@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcdVmInfo";
+    }
+
     public VcdVmInfo Set(
         System.Boolean? IsExcludedFromSnapshot = null,
         System.String? VcdVmMoid = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateBadDiskLedStatusReply";
+    }
+
     public UpdateBadDiskLedStatusReply Set(
         CdmFindBadDiskResultType? Result = null,
         System.String? Output = null

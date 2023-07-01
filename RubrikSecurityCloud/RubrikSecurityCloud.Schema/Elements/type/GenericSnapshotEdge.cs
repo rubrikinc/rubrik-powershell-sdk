@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GenericSnapshotEdge";
+    }
+
     public GenericSnapshotEdge Set(
         GenericSnapshot? Node = null,
         System.String? Cursor = null

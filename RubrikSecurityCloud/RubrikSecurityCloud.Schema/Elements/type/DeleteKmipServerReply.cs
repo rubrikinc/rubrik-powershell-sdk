@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteKmipServerReply";
+    }
+
     public DeleteKmipServerReply Set(
         System.Boolean? Succeeded = null
     ) 

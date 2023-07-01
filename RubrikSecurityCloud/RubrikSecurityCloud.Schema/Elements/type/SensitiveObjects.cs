@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SensitiveObjects";
+    }
+
     public SensitiveObjects Set(
         SummaryCount? HighRiskCount = null,
         SummaryCount? LowRiskCount = null,

@@ -125,6 +125,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkRecoveryProgressReply";
+    }
+
     public BulkRecoveryProgressReply Set(
         RecoveryDomainType? BulkRecoveryDomain = null,
         FailureActionType? FailureActionType = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalObjectSummaryConnection";
+    }
+
     public PrincipalObjectSummaryConnection Set(
         System.Int32? Count = null,
         List<PrincipalObjectSummaryEdge>? Edges = null,

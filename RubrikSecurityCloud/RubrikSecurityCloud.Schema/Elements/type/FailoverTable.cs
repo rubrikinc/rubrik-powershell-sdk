@@ -56,6 +56,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverTable";
+    }
+
     public FailoverTable Set(
         ReportFocusEnum? Focus = null,
         List<FailoverGroupByEnum>? GroupBy = null,

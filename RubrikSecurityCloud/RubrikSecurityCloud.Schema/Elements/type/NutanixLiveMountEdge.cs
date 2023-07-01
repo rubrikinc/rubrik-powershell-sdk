@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixLiveMountEdge";
+    }
+
     public NutanixLiveMountEdge Set(
         System.String? Cursor = null,
         NutanixLiveMount? Node = null

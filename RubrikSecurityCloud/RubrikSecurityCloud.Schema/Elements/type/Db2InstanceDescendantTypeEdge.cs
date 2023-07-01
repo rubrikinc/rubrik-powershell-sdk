@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2InstanceDescendantTypeEdge";
+    }
+
     public Db2InstanceDescendantTypeEdge Set(
         Db2InstanceDescendantType? Node = null,
         System.String? Cursor = null

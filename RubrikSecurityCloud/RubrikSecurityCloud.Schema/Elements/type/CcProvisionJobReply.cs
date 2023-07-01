@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CcProvisionJobReply";
+    }
+
     public CcProvisionJobReply Set(
         System.Int64? JobId = null,
         System.String? Message = null,

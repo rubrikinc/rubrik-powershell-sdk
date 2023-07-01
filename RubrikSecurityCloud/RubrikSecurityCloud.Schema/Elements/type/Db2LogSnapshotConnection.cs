@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2LogSnapshotConnection";
+    }
+
     public Db2LogSnapshotConnection Set(
         System.Int32? Count = null,
         List<Db2LogSnapshotEdge>? Edges = null,

@@ -25,6 +25,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("matchType")]
         public List<IndicatorOfCompromiseKind>? MatchType { get; set; }
 
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
+        [JsonProperty("objectType")]
+        public HierarchyObjectTypeEnum? ObjectType { get; set; }
+
         //      C# -> System.Int64? FilesMatched
         // GraphQL -> filesMatched: Long! (scalar)
         [JsonProperty("filesMatched")]
@@ -34,6 +39,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastDetection: DateTime (scalar)
         [JsonProperty("lastDetection")]
         public DateTime? LastDetection { get; set; }
+
+        //      C# -> System.String? ObjectFid
+        // GraphQL -> objectFid: UUID! (scalar)
+        [JsonProperty("objectFid")]
+        public System.String? ObjectFid { get; set; }
 
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
@@ -50,10 +60,16 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatMonitoringMatchedObject";
+    }
+
     public ThreatMonitoringMatchedObject Set(
         List<IndicatorOfCompromiseKind>? MatchType = null,
+        HierarchyObjectTypeEnum? ObjectType = null,
         System.Int64? FilesMatched = null,
         DateTime? LastDetection = null,
+        System.String? ObjectFid = null,
         System.String? ObjectName = null,
         Cluster? Cluster = null
     ) 
@@ -61,11 +77,17 @@ namespace RubrikSecurityCloud.Types
         if ( MatchType != null ) {
             this.MatchType = MatchType;
         }
+        if ( ObjectType != null ) {
+            this.ObjectType = ObjectType;
+        }
         if ( FilesMatched != null ) {
             this.FilesMatched = FilesMatched;
         }
         if ( LastDetection != null ) {
             this.LastDetection = LastDetection;
+        }
+        if ( ObjectFid != null ) {
+            this.ObjectFid = ObjectFid;
         }
         if ( ObjectName != null ) {
             this.ObjectName = ObjectName;
@@ -88,6 +110,11 @@ namespace RubrikSecurityCloud.Types
         if (this.MatchType != null) {
             s += ind + "matchType\n" ;
         }
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
+        if (this.ObjectType != null) {
+            s += ind + "objectType\n" ;
+        }
         //      C# -> System.Int64? FilesMatched
         // GraphQL -> filesMatched: Long! (scalar)
         if (this.FilesMatched != null) {
@@ -97,6 +124,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> lastDetection: DateTime (scalar)
         if (this.LastDetection != null) {
             s += ind + "lastDetection\n" ;
+        }
+        //      C# -> System.String? ObjectFid
+        // GraphQL -> objectFid: UUID! (scalar)
+        if (this.ObjectFid != null) {
+            s += ind + "objectFid\n" ;
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)
@@ -125,6 +157,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.MatchType = new List<IndicatorOfCompromiseKind>();
         }
+        //      C# -> HierarchyObjectTypeEnum? ObjectType
+        // GraphQL -> objectType: HierarchyObjectTypeEnum (enum)
+        if (this.ObjectType == null && Exploration.Includes(parent + ".objectType", true))
+        {
+            this.ObjectType = new HierarchyObjectTypeEnum();
+        }
         //      C# -> System.Int64? FilesMatched
         // GraphQL -> filesMatched: Long! (scalar)
         if (this.FilesMatched == null && Exploration.Includes(parent + ".filesMatched", true))
@@ -136,6 +174,12 @@ namespace RubrikSecurityCloud.Types
         if (this.LastDetection == null && Exploration.Includes(parent + ".lastDetection", true))
         {
             this.LastDetection = new DateTime();
+        }
+        //      C# -> System.String? ObjectFid
+        // GraphQL -> objectFid: UUID! (scalar)
+        if (this.ObjectFid == null && Exploration.Includes(parent + ".objectFid", true))
+        {
+            this.ObjectFid = "FETCH";
         }
         //      C# -> System.String? ObjectName
         // GraphQL -> objectName: String! (scalar)

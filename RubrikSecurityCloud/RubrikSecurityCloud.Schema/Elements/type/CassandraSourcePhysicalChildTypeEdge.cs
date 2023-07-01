@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CassandraSourcePhysicalChildTypeEdge";
+    }
+
     public CassandraSourcePhysicalChildTypeEdge Set(
         CassandraSourcePhysicalChildType? Node = null,
         System.String? Cursor = null

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ListCidrsForComputeSettingReply";
+    }
+
     public ListCidrsForComputeSettingReply Set(
         List<ClusterInfCidrs>? ClusterInterfaceCidrs = null
     ) 

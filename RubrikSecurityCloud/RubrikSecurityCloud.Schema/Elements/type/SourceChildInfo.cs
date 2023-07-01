@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SourceChildInfo";
+    }
+
     public SourceChildInfo Set(
         System.String? FailoverChildId = null,
         ChildInfo? ChildInfo = null

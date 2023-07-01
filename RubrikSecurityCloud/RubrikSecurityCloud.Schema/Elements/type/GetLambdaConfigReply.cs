@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetLambdaConfigReply";
+    }
+
     public GetLambdaConfigReply Set(
         System.String? AccountId = null,
         System.String? ClusterId = null,

@@ -56,6 +56,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskSummaryTable";
+    }
+
     public TaskSummaryTable Set(
         ReportFocusEnum? Focus = null,
         List<TaskSummaryGroupByEnum>? GroupBy = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkUpdateMssqlDbsReply";
+    }
+
     public BulkUpdateMssqlDbsReply Set(
         List<MssqlDbDetail>? Items = null
     ) 

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixVmSnapshotDetail";
+    }
+
     public NutanixVmSnapshotDetail Set(
         NutanixVmSnapshotSummary? NutanixVmSnapshotSummary = null
     ) 

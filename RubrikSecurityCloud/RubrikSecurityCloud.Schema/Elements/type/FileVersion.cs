@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FileVersion";
+    }
+
     public FileVersion Set(
         System.String? FileMode = null,
         System.String? LastModified = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NcdFilesObjectProtectionStatusData";
+    }
+
     public NcdFilesObjectProtectionStatusData Set(
         System.Int64? Protected = null,
         System.Int64? TotalSizeInBytes = null

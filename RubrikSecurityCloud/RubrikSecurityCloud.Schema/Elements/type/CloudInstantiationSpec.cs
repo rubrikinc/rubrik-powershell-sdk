@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudInstantiationSpec";
+    }
+
     public CloudInstantiationSpec Set(
         System.Int64? ImageRetentionInSeconds = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FullSpSiteExclusions";
+    }
+
     public FullSpSiteExclusions Set(
         System.String? SiteFid = null,
         List<FullSpObjectExclusion>? ExcludedObjects = null

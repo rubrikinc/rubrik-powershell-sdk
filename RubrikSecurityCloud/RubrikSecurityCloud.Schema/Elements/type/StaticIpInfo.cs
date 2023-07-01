@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StaticIpInfo";
+    }
+
     public StaticIpInfo Set(
         List<System.String>? DnsServers = null,
         System.String? Gateway = null,

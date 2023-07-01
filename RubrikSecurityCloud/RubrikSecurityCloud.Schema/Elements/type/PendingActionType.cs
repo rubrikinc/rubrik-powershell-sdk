@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PendingActionType";
+    }
+
     public PendingActionType Set(
         PendingActionGroupTypeEnum? PendingActionGroupType = null,
         PendingActionSubGroupTypeEnum? PendingActionSubGroupType = null,

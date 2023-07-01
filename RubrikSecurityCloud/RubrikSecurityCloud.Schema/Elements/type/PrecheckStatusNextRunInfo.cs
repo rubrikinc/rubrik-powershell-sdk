@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrecheckStatusNextRunInfo";
+    }
+
     public PrecheckStatusNextRunInfo Set(
         System.String? JobInstanceId = null,
         System.Int64? StartTime = null,

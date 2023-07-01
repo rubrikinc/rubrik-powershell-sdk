@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RouteConfig";
+    }
+
     public RouteConfig Set(
         System.String? Device = null,
         System.String? Gateway = null,

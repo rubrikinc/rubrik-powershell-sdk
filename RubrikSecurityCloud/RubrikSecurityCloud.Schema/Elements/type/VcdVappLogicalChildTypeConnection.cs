@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcdVappLogicalChildTypeConnection";
+    }
+
     public VcdVappLogicalChildTypeConnection Set(
         List<VcdVappLogicalChildType>? Nodes = null,
         System.Int32? Count = null,

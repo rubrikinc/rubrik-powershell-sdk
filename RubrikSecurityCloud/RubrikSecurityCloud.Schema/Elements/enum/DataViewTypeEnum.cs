@@ -79,7 +79,10 @@ namespace RubrikSecurityCloud.Types
         SLA_COMPLIANCE,
 
         [EnumMember(Value = "TASK_DETAILS")]
-        TASK_DETAILS
+        TASK_DETAILS,
+
+        [EnumMember(Value = "THREAT_MONITORING_LIST")]
+        THREAT_MONITORING_LIST
 
 
     } // enum DataViewTypeEnum

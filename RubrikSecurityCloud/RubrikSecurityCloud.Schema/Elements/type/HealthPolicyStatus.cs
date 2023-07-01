@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HealthPolicyStatus";
+    }
+
     public HealthPolicyStatus Set(
         HardwareHealthPolicyName? PolicyName = null,
         System.Boolean? IsHealthy = null,

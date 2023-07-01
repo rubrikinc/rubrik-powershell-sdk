@@ -33,6 +33,7 @@ Feature flag names.
 - DATA_DISCOVERY_OBJECT_DETAILS_COMPUTE_ENABLED - Determines whether the Data Discovery object details computation is enabled.
 - CLUSTER_CARD_V2_ENABLED - Enables the updated cluster card view.
 - WINDOWS_VOLUME_GROUP_LIVE_MOUNT_ENABLED
+- CLOUD_COMPUTE_CONNECTIVITY_CHECK_ENABLED - Specifies whether the Cloud Compute Connectivity Check feature is enabled.
 - DetailedInventoryCardEnabled
 - AzureSeparateResourceGroupEnabled
 - AWSAutoProtectByTagsEnabled
@@ -86,6 +87,7 @@ Feature flag names.
 - DOWNLOAD_REPLICATED_SNAPSHOT_ENABLED - Determine whether download replicated snapshot feature is enabled.
 - MssqlGAEnabled
 - O365CalendarEnabled
+- FEDERATED_LOGIN_PORT_ENABLED - Determines if port is enabled for federated login redirection.
 - SLA_DOMAIN_UPGRADE_ENABLED
 - AwsRDSProtectionEnabled
 - CNP_AWS_AURORA_SUPPORT_ENABLED - Determines whether AWS Aurora support is enabled.
@@ -106,6 +108,7 @@ Feature flag names.
 - CDM_ENCRYPTION_MANAGEMENT_ENABLED - Determines if the Encryption Management feature in RSC is enabled.
 - GLOBAL_FILE_SEARCH_ENABLED - Determines if the improved global file search feature is enabled.
 - DATA_DISCOVERY_RISK_COMPUTATION_UI_ENABLED - Determines whether Sonar risk computation is enabled on the UI.
+- AZURE_GRANULAR_PERMISSIONS_ENABLED - Determines whether granular scoping and on-demand authorization for Azure native permissions is enabled.
 - DELL_ECS_ENABLED - Specifies whether DELL ECS archival location is enabled.
 - DATA_DISCOVERY_OPTIMIZED_CONTENT_REPORT_ENABLED - Determines if the optimized Data Discovery content report is enabled.
 - SMB_SETTINGS_ENABLED - Enables SMB settings.
@@ -244,6 +247,7 @@ Feature flag names.
 - O365DashboardV2Enabled
 - AZURE_AD_WORKLOAD_ENABLED - Specifies whether Azure AD protection is enabled.
 - FilesetRbacEnabled
+- ACCOUNT_AUTO_UPGRADED_TO_RSC - Determines whether account is auto upgraded from GPS to RSC.
 - MetadataSyncDeletionEnabled
 - AwsNativeArchivalShortTermRetentionEnabled
 - LANGUAGE_CHINESE_SIMPLIFIED_ENABLED - Determines whether Chinese (Simplified) can be selected as the display language in the UI.
@@ -369,10 +373,12 @@ Feature flag names.
 - POLARIS2_CC_CNP_UX_REDESIGN_ENABLED - Enables the UX redesign updates for CC-CNP unification changes.
 - CLOUD_DIRECT_ENABLED
 - LANGUAGE_JAPANESE_ENABLED - Determines whether Japanese can be selected as the display language in the UI.
+- SUPPORT_TUNNEL_ENABLED - Determines whether managing support tunnel operations is enabled.
 - SlaComplianceFilterEnabled
 - PRISM_CENTRAL_ENABLED - Enables Prism Central on AHV virtual machines workload inventory.
 - VMWARE_VM_LEVEL_FILE_DOWNLOAD_ENABLED - Specifies whether VM-level file download feature is supported.
 - TPR_ENABLED - Specifies whether the two-person rule (TPR) has been enabled.
+- REPLICATION_MT_V2_ENABLED - Specifies whether the multitenancy tenant self-service enhancements for replication are enabled.
 - SAP_HANA_STATIC_RETENTION_ENABLED - Specifies whether SAP HANA static retention is enabled or disabled.
 - HYPERV_BATCH_ON_DEMAND_BACKUP_ENABLED - Enables batch on-demand snapshot for HyperV virtual machines
 - RadarSIEMEnabled
@@ -419,6 +425,7 @@ Feature flag names.
 - RADAR_ENCRYPTION_BETA_ENABLED
 - RADAR_INTERNAL_TEST_MODE_DEV_ONLY_MODE_ENABLED - Enables the Ransomware Investigation test mode which is applicable only for development deployments.
 - RadarDevEnabled
+- INTEGRATIONS_HUB_ENABLED - Determines whether the integrations hub settings page is enabled.
 - SENTRY_PERFORMANCE_ENABLED
 - ON_PREM_PREFERENCES_ENABLED
 - AWS_NATIVE_INSTANT_ARCHIVAL_ENABLED
@@ -465,6 +472,7 @@ Feature flag names.
 - CONTINUOUS_THREAT_MONITORING_ENABLED - Determines if Continuous Threat Monitoring is enabled.
 - CLUSTER_NETWORK_ENABLED - Determines whether the cluster network settings are enabled.
 - SETTINGS_MENU_V2_ENABLED - Determines if Settings Menu V2 is enabled.
+- ZSCALER_DLP_ENABLED - Specifies whether Zscaler DLP Integration is enabled.
 - GcpNativeAutoProtectByTagsEnabled
 - RubrikSEDemoEnabled
 - AWSCustomKeyPairInExportEnabled
@@ -478,4 +486,5 @@ Feature flag names.
 - CloudAccountsAzureUpgradePermissionEnabled
 - VOLUME_GROUP_RADAR_ENABLED - Determines whether Radar is enabled for Volume groups.
 - LegalHoldEnabled
+- INFINITY_K8S_ENABLED - Determines whether INFINITY Kubernetes is enabled.
 - CNP_AWS_S3_V1_ENABLED - Defines if AWS S3 V1 protection is enabled.

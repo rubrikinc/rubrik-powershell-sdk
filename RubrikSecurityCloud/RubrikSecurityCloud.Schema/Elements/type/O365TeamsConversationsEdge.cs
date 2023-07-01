@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365TeamsConversationsEdge";
+    }
+
     public O365TeamsConversationsEdge Set(
         System.String? Cursor = null,
         O365TeamsConversations? Node = null

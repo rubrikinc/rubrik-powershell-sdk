@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TprRoleEligibilityType";
+    }
+
     public TprRoleEligibilityType Set(
         System.Boolean? IsTprRoleEligible = null,
         System.String? Reason = null

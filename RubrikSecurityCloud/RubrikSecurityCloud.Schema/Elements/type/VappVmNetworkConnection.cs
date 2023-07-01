@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappVmNetworkConnection";
+    }
+
     public VappVmNetworkConnection Set(
         VappVmIpAddressingMode? AddressingMode = null,
         System.String? IpAddress = null,

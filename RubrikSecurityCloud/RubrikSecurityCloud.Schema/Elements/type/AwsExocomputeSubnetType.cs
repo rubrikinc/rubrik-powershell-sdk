@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsExocomputeSubnetType";
+    }
+
     public AwsExocomputeSubnetType Set(
         System.String? AvailabilityZone = null,
         System.String? SubnetId = null

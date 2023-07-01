@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatHuntResultObjectsSummary";
+    }
+
     public ThreatHuntResultObjectsSummary Set(
         CdmHierarchySnappableNew? Object = null,
         DateTime? EarliestMatchedSnapshotDate = null,

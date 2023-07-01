@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClassificationBannerSettings";
+    }
+
     public ClassificationBannerSettings Set(
         BannerColor? BannerColor = null,
         System.String? BannerText = null,

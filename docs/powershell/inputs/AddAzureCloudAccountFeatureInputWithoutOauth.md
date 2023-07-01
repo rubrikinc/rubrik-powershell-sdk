@@ -9,3 +9,5 @@ Input for enabling a feature for an Azure cloud account without oauth.
   - Specific feature input to be used for enabling the feature. It is required only for the Cloud Native Archival Encryption feature. It will be ignored for other features.
 - featureType: CloudAccountFeature
   - Feature to be enabled.
+- permissionsGroups: list of PermissionsGroups
+  - Specifies a list of permission groups for onboarding the feature. If the list is empty, all permission groups will be onboarded.

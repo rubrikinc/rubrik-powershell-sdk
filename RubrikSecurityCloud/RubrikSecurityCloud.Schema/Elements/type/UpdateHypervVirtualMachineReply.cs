@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateHypervVirtualMachineReply";
+    }
+
     public UpdateHypervVirtualMachineReply Set(
         HypervVirtualMachineDetailGuestOsType? GuestOsType = null,
         HypervVirtualMachineDetailOperatingSystemType? OperatingSystemType = null,

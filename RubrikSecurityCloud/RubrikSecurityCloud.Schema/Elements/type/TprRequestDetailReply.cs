@@ -100,6 +100,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TprRequestDetailReply";
+    }
+
     public TprRequestDetailReply Set(
         TprExecutionType? ExecutionType = null,
         TprReqStatus? Status = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnappableTypeSummary";
+    }
+
     public SnappableTypeSummary Set(
         HierarchyObjectTypeEnum? SnappableType = null,
         System.Int32? Count = null

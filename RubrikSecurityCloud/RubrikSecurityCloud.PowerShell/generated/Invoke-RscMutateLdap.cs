@@ -21,18 +21,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateLdap",
-        DefaultParameterSetName = "Setmfasetting")
+        DefaultParameterSetName = "SetMfaSetting")
     ]
     public class Invoke_RscMutateLdap : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // Updateintegration parameter set
+        // UpdateIntegration parameter set
         //
         // [GraphQL: updateLdapIntegration]
         //
         [Parameter(
-            ParameterSetName = "Updateintegration",
+            ParameterSetName = "UpdateIntegration",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,146 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: updateLdapIntegration]",
             Position = 0
         )]
-        public SwitchParameter Updateintegration { get; set; }
+        public SwitchParameter UpdateIntegration { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"ID for your LDAP integration.
-GraphQL argument id: UUID"
-        )]
-        public System.String? Id { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Name for your LDAP integration.
-GraphQL argument name: String!"
-        )]
-        public System.String? Name { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"BindUserName for your LDAP integration.
-GraphQL argument bindUserName: String!"
-        )]
-        public System.String? BindUserName { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"BindUserPassword for your LDAP integration.
-GraphQL argument bindUserPassword: String!"
-        )]
-        public System.String? BindUserPassword { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"BaseDn for your LDAP integration.
-GraphQL argument baseDn: String"
-        )]
-        public System.String? BaseDn { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"TrustedCerts for your LDAP integration.
-GraphQL argument trustedCerts: String"
-        )]
-        public System.String? TrustedCerts { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Dynamic DNS name for your LDAP integration.
-GraphQL argument dynamicDnsName: String"
-        )]
-        public System.String? DynamicDnsName { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"LdapServers for your LDAP integration.
-GraphQL argument ldapServers: [LdapServerInput!]"
-        )]
-        public List<LdapServerInput>? LdapServers { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"User search filter for your LDAP integration.
-GraphQL argument userSearchFilter: String"
-        )]
-        public System.String? UserSearchFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"User name attribute for your LDAP integration.
-GraphQL argument userNameAttr: String"
-        )]
-        public System.String? UserNameAttr { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Group membership attribute for your LDAP integration.
-GraphQL argument groupMembershipAttr: String"
-        )]
-        public System.String? GroupMembershipAttr { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Group search filter for your LDAP integration.
-GraphQL argument groupSearchFilter: String"
-        )]
-        public System.String? GroupSearchFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Updateintegration",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Group member attribute for your LDAP integration.
-GraphQL argument groupMemberAttr: String"
-        )]
-        public System.String? GroupMemberAttr { get; set; }
         
         // -------------------------------------------------------------------
-        // Removeintegration parameter set
+        // RemoveIntegration parameter set
         //
         // [GraphQL: removeLdapIntegration]
         //
         [Parameter(
-            ParameterSetName = "Removeintegration",
+            ParameterSetName = "RemoveIntegration",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -189,16 +59,16 @@ GraphQL argument groupMemberAttr: String"
 [GraphQL: removeLdapIntegration]",
             Position = 0
         )]
-        public SwitchParameter Removeintegration { get; set; }
+        public SwitchParameter RemoveIntegration { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deleteprincipal parameter set
+        // DeletePrincipal parameter set
         //
         // [GraphQL: deleteLdapPrincipals]
         //
         [Parameter(
-            ParameterSetName = "Deleteprincipal",
+            ParameterSetName = "DeletePrincipal",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -207,26 +77,16 @@ GraphQL argument groupMemberAttr: String"
 [GraphQL: deleteLdapPrincipals]",
             Position = 0
         )]
-        public SwitchParameter Deleteprincipal { get; set; }
+        public SwitchParameter DeletePrincipal { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Deleteprincipal",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument principalIds: [String!]!"
-        )]
-        public List<System.String>? PrincipalIds { get; set; }
         
         // -------------------------------------------------------------------
-        // Setmfasetting parameter set
+        // SetMfaSetting parameter set
         //
         // [GraphQL: setLdapMfaSetting]
         //
         [Parameter(
-            ParameterSetName = "Setmfasetting",
+            ParameterSetName = "SetMfaSetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -235,18 +95,8 @@ GraphQL argument principalIds: [String!]!"
 [GraphQL: setLdapMfaSetting]",
             Position = 0
         )]
-        public SwitchParameter Setmfasetting { get; set; }
+        public SwitchParameter SetMfaSetting { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Setmfasetting",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input required for updating LDAP MFA settings.
-GraphQL argument input: SetLdapMfaSettingInput!"
-        )]
-        public SetLdapMfaSettingInput? Input { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -254,17 +104,17 @@ GraphQL argument input: SetLdapMfaSettingInput!"
             {
                 switch(Op)
                 {
-                    case "Updateintegration":
-                        this.ProcessRecord_Updateintegration();
+                    case "UpdateIntegration":
+                        this.ProcessRecord_UpdateIntegration();
                         break;
-                    case "Removeintegration":
-                        this.ProcessRecord_Removeintegration();
+                    case "RemoveIntegration":
+                        this.ProcessRecord_RemoveIntegration();
                         break;
-                    case "Deleteprincipal":
-                        this.ProcessRecord_Deleteprincipal();
+                    case "DeletePrincipal":
+                        this.ProcessRecord_DeletePrincipal();
                         break;
-                    case "Setmfasetting":
-                        this.ProcessRecord_Setmfasetting();
+                    case "SetMfaSetting":
+                        this.ProcessRecord_SetMfaSetting();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -278,36 +128,36 @@ GraphQL argument input: SetLdapMfaSettingInput!"
 
         // This parameter set invokes a single graphql operation:
         // updateLdapIntegration.
-        protected void ProcessRecord_Updateintegration()
+        protected void ProcessRecord_UpdateIntegration()
         {
-            this._logger.name += " -Updateintegration";
+            this._logger.name += " -UpdateIntegration";
             // Invoke graphql operation updateLdapIntegration
             InvokeMutationUpdateLdapIntegration();
         }
 
         // This parameter set invokes a single graphql operation:
         // removeLdapIntegration.
-        protected void ProcessRecord_Removeintegration()
+        protected void ProcessRecord_RemoveIntegration()
         {
-            this._logger.name += " -Removeintegration";
+            this._logger.name += " -RemoveIntegration";
             // Invoke graphql operation removeLdapIntegration
             InvokeMutationRemoveLdapIntegration();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteLdapPrincipals.
-        protected void ProcessRecord_Deleteprincipal()
+        protected void ProcessRecord_DeletePrincipal()
         {
-            this._logger.name += " -Deleteprincipal";
+            this._logger.name += " -DeletePrincipal";
             // Invoke graphql operation deleteLdapPrincipals
             InvokeMutationDeleteLdapPrincipals();
         }
 
         // This parameter set invokes a single graphql operation:
         // setLdapMfaSetting.
-        protected void ProcessRecord_Setmfasetting()
+        protected void ProcessRecord_SetMfaSetting()
         {
-            this._logger.name += " -Setmfasetting";
+            this._logger.name += " -SetMfaSetting";
             // Invoke graphql operation setLdapMfaSetting
             InvokeMutationSetLdapMfaSetting();
         }

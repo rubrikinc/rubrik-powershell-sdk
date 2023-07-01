@@ -41,6 +41,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SonarReportChart";
+    }
+
     public SonarReportChart Set(
         ReportFocusEnum? Focus = null,
         List<DiscoveryReportGroupBy>? GroupBy = null,

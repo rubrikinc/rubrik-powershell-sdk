@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RansomwareResultConnection";
+    }
+
     public RansomwareResultConnection Set(
         System.Int32? Count = null,
         List<RansomwareResultEdge>? Edges = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365FullSpObjectConnection";
+    }
+
     public O365FullSpObjectConnection Set(
         List<O365FullSpObject>? Nodes = null,
         System.Int32? Count = null,

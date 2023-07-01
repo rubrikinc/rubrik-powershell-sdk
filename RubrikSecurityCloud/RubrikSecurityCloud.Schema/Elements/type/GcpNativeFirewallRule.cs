@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeFirewallRule";
+    }
+
     public GcpNativeFirewallRule Set(
         System.String? Name = null,
         List<System.String>? TargetTags = null

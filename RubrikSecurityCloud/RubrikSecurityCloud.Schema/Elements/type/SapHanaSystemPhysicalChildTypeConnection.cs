@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaSystemPhysicalChildTypeConnection";
+    }
+
     public SapHanaSystemPhysicalChildTypeConnection Set(
         List<SapHanaSystemPhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

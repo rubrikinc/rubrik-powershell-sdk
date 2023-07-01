@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserAuditGroupByInfoEdge";
+    }
+
     public UserAuditGroupByInfoEdge Set(
         System.String? Cursor = null,
         UserAuditGroupByInfo? Node = null

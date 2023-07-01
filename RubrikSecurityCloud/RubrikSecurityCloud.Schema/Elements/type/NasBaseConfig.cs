@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NasBaseConfig";
+    }
+
     public NasBaseConfig Set(
         System.String? ApiCertificate = null,
         System.String? ApiEndpoint = null,

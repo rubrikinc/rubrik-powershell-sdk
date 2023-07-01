@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkAddKmipServerReply";
+    }
+
     public BulkAddKmipServerReply Set(
         System.Boolean? Succeeded = null
     ) 

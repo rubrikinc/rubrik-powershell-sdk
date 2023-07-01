@@ -21,18 +21,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateAzureO365",
-        DefaultParameterSetName = "Setupexocompute")
+        DefaultParameterSetName = "SetupExocompute")
     ]
     public class Invoke_RscMutateAzureO365 : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // Setupexocompute parameter set
+        // SetupExocompute parameter set
         //
         // [GraphQL: setupAzureO365Exocompute]
         //
         [Parameter(
-            ParameterSetName = "Setupexocompute",
+            ParameterSetName = "SetupExocompute",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,38 +41,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: setupAzureO365Exocompute]",
             Position = 0
         )]
-        public SwitchParameter Setupexocompute { get; set; }
+        public SwitchParameter SetupExocompute { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Setupexocompute",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument tenantId: String!"
-        )]
-        public System.String? TenantId { get; set; }
-        [Parameter(
-            ParameterSetName = "Setupexocompute",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument subscriptionId: UUID!"
-        )]
-        public System.String? SubscriptionId { get; set; }
-        [Parameter(
-            ParameterSetName = "Setupexocompute",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!"
-        )]
-        public AzureO365ExocomputeConfig? ExocomputeConfig { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -80,8 +50,8 @@ GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!"
             {
                 switch(Op)
                 {
-                    case "Setupexocompute":
-                        this.ProcessRecord_Setupexocompute();
+                    case "SetupExocompute":
+                        this.ProcessRecord_SetupExocompute();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -95,9 +65,9 @@ GraphQL argument exocomputeConfig: AzureO365ExocomputeConfig!"
 
         // This parameter set invokes a single graphql operation:
         // setupAzureO365Exocompute.
-        protected void ProcessRecord_Setupexocompute()
+        protected void ProcessRecord_SetupExocompute()
         {
-            this._logger.name += " -Setupexocompute";
+            this._logger.name += " -SetupExocompute";
             // Invoke graphql operation setupAzureO365Exocompute
             InvokeMutationSetupAzureO365Exocompute();
         }

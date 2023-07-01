@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrechecksJobReply";
+    }
+
     public PrechecksJobReply Set(
         System.String? JobId = null
     ) 

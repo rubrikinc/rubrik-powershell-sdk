@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SDDLPermission";
+    }
+
     public SddlPermission Set(
         AceQualifier? AccessType = null,
         List<AceFlags>? Flags = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidationStatusInfo";
+    }
+
     public ValidationStatusInfo Set(
         ValidationStatus? ValidationStatus = null,
         List<System.String>? FailureReasons = null,

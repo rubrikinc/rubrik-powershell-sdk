@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ParentAppInfo";
+    }
+
     public ParentAppInfo Set(
         System.String? Id = null,
         System.Boolean? IsProtectedThruHierarchy = null

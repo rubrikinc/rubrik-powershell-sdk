@@ -4,7 +4,9 @@
 
 Thank you for using the Rubrik Security Cloud PowerShell SDK.
 
-We rely on your feedback to improve the SDK !
+We rely on
+[your feedback](https://github.com/rubrikinc/rubrik-powershell-sdk/discussions)
+to improve the SDK !
 
 This is a fully supported SDK to work with Rubrik Security Cloud (RSC).
 

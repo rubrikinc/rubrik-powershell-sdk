@@ -125,6 +125,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalCertificate";
+    }
+
     public GlobalCertificate Set(
         GlobalCertificateStatus? Status = null,
         System.String? Certificate = null,

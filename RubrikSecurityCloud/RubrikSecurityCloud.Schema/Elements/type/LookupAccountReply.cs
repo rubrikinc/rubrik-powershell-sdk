@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LookupAccountReply";
+    }
+
     public LookupAccountReply Set(
         AccountState? AccountState = null,
         AccountType? AccountType = null,

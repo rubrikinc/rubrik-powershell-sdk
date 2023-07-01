@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalFileEntry";
+    }
+
     public GlobalFileEntry Set(
         System.String? ClusterName = null,
         System.String? ClusterUuid = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmSnapshotGroupBySummaryEdge";
+    }
+
     public CdmSnapshotGroupBySummaryEdge Set(
         System.String? Cursor = null,
         CdmSnapshotGroupBySummary? Node = null

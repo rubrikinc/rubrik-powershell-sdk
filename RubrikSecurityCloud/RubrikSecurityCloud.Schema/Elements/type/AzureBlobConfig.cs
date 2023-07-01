@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureBlobConfig";
+    }
+
     public AzureBlobConfig Set(
         System.Int32? ContinuousBackupRetentionInDays = null
     ) 

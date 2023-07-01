@@ -27,12 +27,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // Topleveldescendant parameter set
+        // TopLevelDescendant parameter set
         //
         // [GraphQL: nutanixTopLevelDescendants]
         //
         [Parameter(
-            ParameterSetName = "Topleveldescendant",
+            ParameterSetName = "TopLevelDescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,76 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: nutanixTopLevelDescendants]",
             Position = 0
         )]
-        public SwitchParameter Topleveldescendant { get; set; }
+        public SwitchParameter TopLevelDescendant { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort hierarchy objects by hierarchy field.
-GraphQL argument sortBy: HierarchySortByField"
-        )]
-        public HierarchySortByField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sorting order for the results.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Types of objects to include.
-GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
-        )]
-        public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The hierarchy object filter.
-GraphQL argument filter: [Filter!]"
-        )]
-        public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
-        // Topleveldescendantsv2 parameter set
+        // TopLevelDescendantsV2 parameter set
         //
         // [GraphQL: nutanixTopLevelDescendantsV2]
         //
         [Parameter(
-            ParameterSetName = "Topleveldescendantsv2",
+            ParameterSetName = "TopLevelDescendantsV2",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -119,7 +59,7 @@ GraphQL argument filter: [Filter!]"
 [GraphQL: nutanixTopLevelDescendantsV2]",
             Position = 0
         )]
-        public SwitchParameter Topleveldescendantsv2 { get; set; }
+        public SwitchParameter TopLevelDescendantsV2 { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -139,24 +79,14 @@ GraphQL argument filter: [Filter!]"
         )]
         public SwitchParameter Cluster { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Cluster",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The Rubrik UUID for the object.
-GraphQL argument fid: UUID!"
-        )]
-        public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
-        // Prismcentral parameter set
+        // PrismCentral parameter set
         //
         // [GraphQL: nutanixPrismCentrals]
         //
         [Parameter(
-            ParameterSetName = "Prismcentral",
+            ParameterSetName = "PrismCentral",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -165,7 +95,7 @@ GraphQL argument fid: UUID!"
 [GraphQL: nutanixPrismCentrals]",
             Position = 0
         )]
-        public SwitchParameter Prismcentral { get; set; }
+        public SwitchParameter PrismCentral { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -187,12 +117,12 @@ GraphQL argument fid: UUID!"
 
         
         // -------------------------------------------------------------------
-        // Categoryvalue parameter set
+        // CategoryValue parameter set
         //
         // [GraphQL: nutanixCategoryValues]
         //
         [Parameter(
-            ParameterSetName = "Categoryvalue",
+            ParameterSetName = "CategoryValue",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -201,16 +131,16 @@ GraphQL argument fid: UUID!"
 [GraphQL: nutanixCategoryValues]",
             Position = 0
         )]
-        public SwitchParameter Categoryvalue { get; set; }
+        public SwitchParameter CategoryValue { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Categoryvaluevm parameter set
+        // CategoryValueVm parameter set
         //
         // [GraphQL: nutanixCategoryValueVms]
         //
         [Parameter(
-            ParameterSetName = "Categoryvaluevm",
+            ParameterSetName = "CategoryValueVm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -219,7 +149,7 @@ GraphQL argument fid: UUID!"
 [GraphQL: nutanixCategoryValueVms]",
             Position = 0
         )]
-        public SwitchParameter Categoryvaluevm { get; set; }
+        public SwitchParameter CategoryValueVm { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -257,24 +187,14 @@ GraphQL argument fid: UUID!"
         )]
         public SwitchParameter Mount { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Mount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Filter for Nutanix virtual machine live mounts.
-GraphQL argument filters: [NutanixLiveMountFilterInput!]"
-        )]
-        public List<NutanixLiveMountFilterInput>? Filters { get; set; }
         
         // -------------------------------------------------------------------
-        // Clustercontainer parameter set
+        // ClusterContainer parameter set
         //
         // [GraphQL: nutanixClusterContainers]
         //
         [Parameter(
-            ParameterSetName = "Clustercontainer",
+            ParameterSetName = "ClusterContainer",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -286,26 +206,16 @@ Query the nutanix cluster to get the list of containers, used for export purpose
 [GraphQL: nutanixClusterContainers]",
             Position = 0
         )]
-        public SwitchParameter Clustercontainer { get; set; }
+        public SwitchParameter ClusterContainer { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Clustercontainer",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for InternalGetContainers.
-GraphQL argument input: GetContainersInput!"
-        )]
-        public GetContainersInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Clusternetwork parameter set
+        // ClusterNetwork parameter set
         //
         // [GraphQL: nutanixClusterNetworks]
         //
         [Parameter(
-            ParameterSetName = "Clusternetwork",
+            ParameterSetName = "ClusterNetwork",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -317,16 +227,16 @@ Retrieves the list of networks by querying the Nutanix cluster. The list of netw
 [GraphQL: nutanixClusterNetworks]",
             Position = 0
         )]
-        public SwitchParameter Clusternetwork { get; set; }
+        public SwitchParameter ClusterNetwork { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Clusterasyncrequeststatus parameter set
+        // ClusterAsyncRequestStatus parameter set
         //
         // [GraphQL: nutanixClusterAsyncRequestStatus]
         //
         [Parameter(
-            ParameterSetName = "Clusterasyncrequeststatus",
+            ParameterSetName = "ClusterAsyncRequestStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -338,16 +248,16 @@ Get details about a Nutanix cluster-related async request.
 [GraphQL: nutanixClusterAsyncRequestStatus]",
             Position = 0
         )]
-        public SwitchParameter Clusterasyncrequeststatus { get; set; }
+        public SwitchParameter ClusterAsyncRequestStatus { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Vmasyncrequeststatus parameter set
+        // VmAsyncRequestStatus parameter set
         //
         // [GraphQL: nutanixVmAsyncRequestStatus]
         //
         [Parameter(
-            ParameterSetName = "Vmasyncrequeststatus",
+            ParameterSetName = "VmAsyncRequestStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -361,16 +271,16 @@ v8.1+: Get details about a Nutanix virtual machine-related async request.
 [GraphQL: nutanixVmAsyncRequestStatus]",
             Position = 0
         )]
-        public SwitchParameter Vmasyncrequeststatus { get; set; }
+        public SwitchParameter VmAsyncRequestStatus { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Searchvm parameter set
+        // SearchVm parameter set
         //
         // [GraphQL: searchNutanixVm]
         //
         [Parameter(
-            ParameterSetName = "Searchvm",
+            ParameterSetName = "SearchVm",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -383,16 +293,16 @@ Search for a file within the Nutanix Virtual Machine. Search via full path prefi
 [GraphQL: searchNutanixVm]",
             Position = 0
         )]
-        public SwitchParameter Searchvm { get; set; }
+        public SwitchParameter SearchVm { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Vmmissedsnapshot parameter set
+        // VmMissedSnapshot parameter set
         //
         // [GraphQL: nutanixVmMissedSnapshots]
         //
         [Parameter(
-            ParameterSetName = "Vmmissedsnapshot",
+            ParameterSetName = "VmMissedSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -406,16 +316,16 @@ v8.1+: Retrieve the time of the day when the snapshots were missed specific to a
 [GraphQL: nutanixVmMissedSnapshots]",
             Position = 0
         )]
-        public SwitchParameter Vmmissedsnapshot { get; set; }
+        public SwitchParameter VmMissedSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Browsesnapshot parameter set
+        // BrowseSnapshot parameter set
         //
         // [GraphQL: nutanixBrowseSnapshot]
         //
         [Parameter(
-            ParameterSetName = "Browsesnapshot",
+            ParameterSetName = "BrowseSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -428,16 +338,16 @@ Lists all files and directories in a given path.
 [GraphQL: nutanixBrowseSnapshot]",
             Position = 0
         )]
-        public SwitchParameter Browsesnapshot { get; set; }
+        public SwitchParameter BrowseSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Snapshotdetail parameter set
+        // SnapshotDetail parameter set
         //
         // [GraphQL: nutanixSnapshotDetail]
         //
         [Parameter(
-            ParameterSetName = "Snapshotdetail",
+            ParameterSetName = "SnapshotDetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -447,7 +357,7 @@ Lists all files and directories in a given path.
 [GraphQL: nutanixSnapshotDetail]",
             Position = 0
         )]
-        public SwitchParameter Snapshotdetail { get; set; }
+        public SwitchParameter SnapshotDetail { get; set; }
 
 
         protected override void ProcessRecord()
@@ -456,26 +366,26 @@ Lists all files and directories in a given path.
             {
                 switch(Op)
                 {
-                    case "Topleveldescendant":
-                        this.ProcessRecord_Topleveldescendant();
+                    case "TopLevelDescendant":
+                        this.ProcessRecord_TopLevelDescendant();
                         break;
-                    case "Topleveldescendantsv2":
-                        this.ProcessRecord_Topleveldescendantsv2();
+                    case "TopLevelDescendantsV2":
+                        this.ProcessRecord_TopLevelDescendantsV2();
                         break;
                     case "Cluster":
                         this.ProcessRecord_Cluster();
                         break;
-                    case "Prismcentral":
-                        this.ProcessRecord_Prismcentral();
+                    case "PrismCentral":
+                        this.ProcessRecord_PrismCentral();
                         break;
                     case "Categorie":
                         this.ProcessRecord_Categorie();
                         break;
-                    case "Categoryvalue":
-                        this.ProcessRecord_Categoryvalue();
+                    case "CategoryValue":
+                        this.ProcessRecord_CategoryValue();
                         break;
-                    case "Categoryvaluevm":
-                        this.ProcessRecord_Categoryvaluevm();
+                    case "CategoryValueVm":
+                        this.ProcessRecord_CategoryValueVm();
                         break;
                     case "Vm":
                         this.ProcessRecord_Vm();
@@ -483,29 +393,29 @@ Lists all files and directories in a given path.
                     case "Mount":
                         this.ProcessRecord_Mount();
                         break;
-                    case "Clustercontainer":
-                        this.ProcessRecord_Clustercontainer();
+                    case "ClusterContainer":
+                        this.ProcessRecord_ClusterContainer();
                         break;
-                    case "Clusternetwork":
-                        this.ProcessRecord_Clusternetwork();
+                    case "ClusterNetwork":
+                        this.ProcessRecord_ClusterNetwork();
                         break;
-                    case "Clusterasyncrequeststatus":
-                        this.ProcessRecord_Clusterasyncrequeststatus();
+                    case "ClusterAsyncRequestStatus":
+                        this.ProcessRecord_ClusterAsyncRequestStatus();
                         break;
-                    case "Vmasyncrequeststatus":
-                        this.ProcessRecord_Vmasyncrequeststatus();
+                    case "VmAsyncRequestStatus":
+                        this.ProcessRecord_VmAsyncRequestStatus();
                         break;
-                    case "Searchvm":
-                        this.ProcessRecord_Searchvm();
+                    case "SearchVm":
+                        this.ProcessRecord_SearchVm();
                         break;
-                    case "Vmmissedsnapshot":
-                        this.ProcessRecord_Vmmissedsnapshot();
+                    case "VmMissedSnapshot":
+                        this.ProcessRecord_VmMissedSnapshot();
                         break;
-                    case "Browsesnapshot":
-                        this.ProcessRecord_Browsesnapshot();
+                    case "BrowseSnapshot":
+                        this.ProcessRecord_BrowseSnapshot();
                         break;
-                    case "Snapshotdetail":
-                        this.ProcessRecord_Snapshotdetail();
+                    case "SnapshotDetail":
+                        this.ProcessRecord_SnapshotDetail();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -519,18 +429,18 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixTopLevelDescendants.
-        protected void ProcessRecord_Topleveldescendant()
+        protected void ProcessRecord_TopLevelDescendant()
         {
-            this._logger.name += " -Topleveldescendant";
+            this._logger.name += " -TopLevelDescendant";
             // Invoke graphql operation nutanixTopLevelDescendants
             InvokeQueryNutanixTopLevelDescendants();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixTopLevelDescendantsV2.
-        protected void ProcessRecord_Topleveldescendantsv2()
+        protected void ProcessRecord_TopLevelDescendantsV2()
         {
-            this._logger.name += " -Topleveldescendantsv2";
+            this._logger.name += " -TopLevelDescendantsV2";
             // Invoke graphql operation nutanixTopLevelDescendantsV2
             InvokeQueryNutanixTopLevelDescendantsV2();
         }
@@ -546,9 +456,9 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixPrismCentrals.
-        protected void ProcessRecord_Prismcentral()
+        protected void ProcessRecord_PrismCentral()
         {
-            this._logger.name += " -Prismcentral";
+            this._logger.name += " -PrismCentral";
             // Invoke graphql operation nutanixPrismCentrals
             InvokeQueryNutanixPrismCentrals();
         }
@@ -564,18 +474,18 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixCategoryValues.
-        protected void ProcessRecord_Categoryvalue()
+        protected void ProcessRecord_CategoryValue()
         {
-            this._logger.name += " -Categoryvalue";
+            this._logger.name += " -CategoryValue";
             // Invoke graphql operation nutanixCategoryValues
             InvokeQueryNutanixCategoryValues();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixCategoryValueVms.
-        protected void ProcessRecord_Categoryvaluevm()
+        protected void ProcessRecord_CategoryValueVm()
         {
-            this._logger.name += " -Categoryvaluevm";
+            this._logger.name += " -CategoryValueVm";
             // Invoke graphql operation nutanixCategoryValueVms
             InvokeQueryNutanixCategoryValueVms();
         }
@@ -600,72 +510,72 @@ Lists all files and directories in a given path.
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusterContainers.
-        protected void ProcessRecord_Clustercontainer()
+        protected void ProcessRecord_ClusterContainer()
         {
-            this._logger.name += " -Clustercontainer";
+            this._logger.name += " -ClusterContainer";
             // Invoke graphql operation nutanixClusterContainers
             InvokeQueryNutanixClusterContainers();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusterNetworks.
-        protected void ProcessRecord_Clusternetwork()
+        protected void ProcessRecord_ClusterNetwork()
         {
-            this._logger.name += " -Clusternetwork";
+            this._logger.name += " -ClusterNetwork";
             // Invoke graphql operation nutanixClusterNetworks
             InvokeQueryNutanixClusterNetworks();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixClusterAsyncRequestStatus.
-        protected void ProcessRecord_Clusterasyncrequeststatus()
+        protected void ProcessRecord_ClusterAsyncRequestStatus()
         {
-            this._logger.name += " -Clusterasyncrequeststatus";
+            this._logger.name += " -ClusterAsyncRequestStatus";
             // Invoke graphql operation nutanixClusterAsyncRequestStatus
             InvokeQueryNutanixClusterAsyncRequestStatus();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixVmAsyncRequestStatus.
-        protected void ProcessRecord_Vmasyncrequeststatus()
+        protected void ProcessRecord_VmAsyncRequestStatus()
         {
-            this._logger.name += " -Vmasyncrequeststatus";
+            this._logger.name += " -VmAsyncRequestStatus";
             // Invoke graphql operation nutanixVmAsyncRequestStatus
             InvokeQueryNutanixVmAsyncRequestStatus();
         }
 
         // This parameter set invokes a single graphql operation:
         // searchNutanixVm.
-        protected void ProcessRecord_Searchvm()
+        protected void ProcessRecord_SearchVm()
         {
-            this._logger.name += " -Searchvm";
+            this._logger.name += " -SearchVm";
             // Invoke graphql operation searchNutanixVm
             InvokeQuerySearchNutanixVm();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixVmMissedSnapshots.
-        protected void ProcessRecord_Vmmissedsnapshot()
+        protected void ProcessRecord_VmMissedSnapshot()
         {
-            this._logger.name += " -Vmmissedsnapshot";
+            this._logger.name += " -VmMissedSnapshot";
             // Invoke graphql operation nutanixVmMissedSnapshots
             InvokeQueryNutanixVmMissedSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixBrowseSnapshot.
-        protected void ProcessRecord_Browsesnapshot()
+        protected void ProcessRecord_BrowseSnapshot()
         {
-            this._logger.name += " -Browsesnapshot";
+            this._logger.name += " -BrowseSnapshot";
             // Invoke graphql operation nutanixBrowseSnapshot
             InvokeQueryNutanixBrowseSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // nutanixSnapshotDetail.
-        protected void ProcessRecord_Snapshotdetail()
+        protected void ProcessRecord_SnapshotDetail()
         {
-            this._logger.name += " -Snapshotdetail";
+            this._logger.name += " -SnapshotDetail";
             // Invoke graphql operation nutanixSnapshotDetail
             InvokeQueryNutanixSnapshotDetail();
         }

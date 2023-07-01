@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DownloadFilesReply";
+    }
+
     public DownloadFilesReply Set(
         System.String? TaskchainId = null
     ) 

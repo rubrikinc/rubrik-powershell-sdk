@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LambdaFeatureHistory";
+    }
+
     public LambdaFeatureHistory Set(
         System.Boolean? WasRansomwareInvestigationEverEnabled = null,
         System.Boolean? WasSensitiveDataDiscoveryEverEnabled = null

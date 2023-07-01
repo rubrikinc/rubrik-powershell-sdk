@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlAvailabilityGroupLogicalChildTypeEdge";
+    }
+
     public MssqlAvailabilityGroupLogicalChildTypeEdge Set(
         MssqlAvailabilityGroupLogicalChildType? Node = null,
         System.String? Cursor = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CellData";
+    }
+
     public CellData Set(
         DisplayableValue? DisplayableValue = null,
         List<Metadata>? Metadata = null

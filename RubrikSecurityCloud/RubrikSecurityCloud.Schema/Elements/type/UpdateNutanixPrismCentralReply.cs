@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateNutanixPrismCentralReply";
+    }
+
     public UpdateNutanixPrismCentralReply Set(
         System.String? Hostname = null,
         System.String? Username = null,

@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TargetMapping";
+    }
+
     public TargetMapping Set(
         ArchivalGroupType? GroupType = null,
         TargetType? TargetType = null,

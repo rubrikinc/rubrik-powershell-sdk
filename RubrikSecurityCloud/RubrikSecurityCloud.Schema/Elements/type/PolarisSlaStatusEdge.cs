@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisSlaStatusEdge";
+    }
+
     public PolarisSlaStatusEdge Set(
         System.String? Cursor = null,
         PolarisSlaStatus? Node = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MissedSnapshotTimeUnitConfig";
+    }
+
     public MissedSnapshotTimeUnitConfig Set(
         MissedSnapshotDayOfTimeUnit? DayOfTime = null,
         SlaTimeUnit? TimeUnit = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateScheduledReportReply";
+    }
+
     public CreateScheduledReportReply Set(
         ScheduledReport? ScheduledReport = null
     ) 

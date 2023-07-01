@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DlsArchivalLocation";
+    }
+
     public DlsArchivalLocation Set(
         TargetType? TargetType = null,
         System.String? Id = null,

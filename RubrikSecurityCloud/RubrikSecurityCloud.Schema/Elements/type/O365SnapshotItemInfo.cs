@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365SnapshotItemInfo";
+    }
+
     public O365SnapshotItemInfo Set(
         List<System.String>? FolderIdsTillRoot = null,
         System.String? Id = null,

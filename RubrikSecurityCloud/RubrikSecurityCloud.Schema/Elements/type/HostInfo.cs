@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostInfo";
+    }
+
     public HostInfo Set(
         System.String? Hostname = null,
         System.String? Id = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddAzureCloudAccountExocomputeConfigurationsReply";
+    }
+
     public AddAzureCloudAccountExocomputeConfigurationsReply Set(
         List<AzureExocomputeConfigDetails>? Configs = null
     ) 

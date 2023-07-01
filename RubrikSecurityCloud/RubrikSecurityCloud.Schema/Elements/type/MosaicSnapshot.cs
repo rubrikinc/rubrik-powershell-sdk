@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicSnapshot";
+    }
+
     public MosaicSnapshot Set(
         MosaicSnapshotType? SnapshotType = null,
         SlaDomain? SlaDomain = null,

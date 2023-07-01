@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "K8sNamespaceEdge";
+    }
+
     public K8sNamespaceEdge Set(
         System.String? Cursor = null,
         K8sNamespace? Node = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TprConfigurationType";
+    }
+
     public TprConfigurationType Set(
         System.Int32? ExecutionMaxTimeoutHours = null,
         System.Boolean? IsTprEnabled = null,

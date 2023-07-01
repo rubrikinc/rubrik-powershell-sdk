@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AuthorizedOperations";
+    }
+
     public AuthorizedOperations Set(
         List<Operation>? Operations = null,
         WorkloadLevelHierarchy? WorkloadHierarchy = null,

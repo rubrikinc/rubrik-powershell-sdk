@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongoSnapshotGroupByEdge";
+    }
+
     public MongoSnapshotGroupByEdge Set(
         System.String? Cursor = null,
         MongoSnapshotGroupBy? Node = null

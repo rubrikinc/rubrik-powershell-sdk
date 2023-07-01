@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervServerLogicalChildTypeEdge";
+    }
+
     public HypervServerLogicalChildTypeEdge Set(
         HypervServerLogicalChildType? Node = null,
         System.String? Cursor = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GroupedReleaseNoteConnection";
+    }
+
     public GroupedReleaseNoteConnection Set(
         System.Int32? Count = null,
         List<GroupedReleaseNoteEdge>? Edges = null,

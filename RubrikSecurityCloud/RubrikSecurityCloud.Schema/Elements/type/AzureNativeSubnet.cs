@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeSubnet";
+    }
+
     public AzureNativeSubnet Set(
         List<System.String>? AddressPrefixes = null,
         System.String? Name = null,

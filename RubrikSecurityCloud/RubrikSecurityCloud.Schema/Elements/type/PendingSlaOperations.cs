@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PendingSlaOperations";
+    }
+
     public PendingSlaOperations Set(
         List<System.String>? InvalidIds = null,
         List<ManagedObjectSlaInfo>? ObjectsWithNoOp = null,

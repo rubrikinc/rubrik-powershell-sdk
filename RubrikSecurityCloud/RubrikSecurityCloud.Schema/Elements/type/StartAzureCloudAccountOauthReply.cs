@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StartAzureCloudAccountOauthReply";
+    }
+
     public StartAzureCloudAccountOauthReply Set(
         System.String? ClientId = null,
         System.String? SessionId = null

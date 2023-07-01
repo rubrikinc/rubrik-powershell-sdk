@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkUpdateOracleDatabasesReply";
+    }
+
     public BulkUpdateOracleDatabasesReply Set(
         List<OracleDbDetail>? Responses = null
     ) 

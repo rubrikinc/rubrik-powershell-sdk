@@ -43,56 +43,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter Source { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort hierarchy objects by hierarchy field.
-GraphQL argument sortBy: HierarchySortByField"
-        )]
-        public HierarchySortByField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sorting order for the results.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "Source",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The hierarchy object filter.
-GraphQL argument filter: [Filter!]"
-        )]
-        public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
         // Keyspace parameter set
@@ -113,12 +63,12 @@ GraphQL argument filter: [Filter!]"
 
         
         // -------------------------------------------------------------------
-        // Columnfamily parameter set
+        // ColumnFamily parameter set
         //
         // [GraphQL: cassandraColumnFamilies]
         //
         [Parameter(
-            ParameterSetName = "Columnfamily",
+            ParameterSetName = "ColumnFamily",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -127,16 +77,16 @@ GraphQL argument filter: [Filter!]"
 [GraphQL: cassandraColumnFamilies]",
             Position = 0
         )]
-        public SwitchParameter Columnfamily { get; set; }
+        public SwitchParameter ColumnFamily { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Columnfamilyrecoverablerange parameter set
+        // ColumnFamilyRecoverableRange parameter set
         //
         // [GraphQL: cassandraColumnFamilyRecoverableRange]
         //
         [Parameter(
-            ParameterSetName = "Columnfamilyrecoverablerange",
+            ParameterSetName = "ColumnFamilyRecoverableRange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -145,26 +95,16 @@ GraphQL argument filter: [Filter!]"
 [GraphQL: cassandraColumnFamilyRecoverableRange]",
             Position = 0
         )]
-        public SwitchParameter Columnfamilyrecoverablerange { get; set; }
+        public SwitchParameter ColumnFamilyRecoverableRange { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Columnfamilyrecoverablerange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for V2GetMosaicRecoverableRange.
-GraphQL argument input: GetMosaicRecoverableRangeInput!"
-        )]
-        public GetMosaicRecoverableRangeInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Columnfamilyschema parameter set
+        // ColumnFamilySchema parameter set
         //
         // [GraphQL: cassandraColumnFamilySchema]
         //
         [Parameter(
-            ParameterSetName = "Columnfamilyschema",
+            ParameterSetName = "ColumnFamilySchema",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -173,7 +113,7 @@ GraphQL argument input: GetMosaicRecoverableRangeInput!"
 [GraphQL: cassandraColumnFamilySchema]",
             Position = 0
         )]
-        public SwitchParameter Columnfamilyschema { get; set; }
+        public SwitchParameter ColumnFamilySchema { get; set; }
 
 
         protected override void ProcessRecord()
@@ -188,14 +128,14 @@ GraphQL argument input: GetMosaicRecoverableRangeInput!"
                     case "Keyspace":
                         this.ProcessRecord_Keyspace();
                         break;
-                    case "Columnfamily":
-                        this.ProcessRecord_Columnfamily();
+                    case "ColumnFamily":
+                        this.ProcessRecord_ColumnFamily();
                         break;
-                    case "Columnfamilyrecoverablerange":
-                        this.ProcessRecord_Columnfamilyrecoverablerange();
+                    case "ColumnFamilyRecoverableRange":
+                        this.ProcessRecord_ColumnFamilyRecoverableRange();
                         break;
-                    case "Columnfamilyschema":
-                        this.ProcessRecord_Columnfamilyschema();
+                    case "ColumnFamilySchema":
+                        this.ProcessRecord_ColumnFamilySchema();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -227,27 +167,27 @@ GraphQL argument input: GetMosaicRecoverableRangeInput!"
 
         // This parameter set invokes a single graphql operation:
         // cassandraColumnFamilies.
-        protected void ProcessRecord_Columnfamily()
+        protected void ProcessRecord_ColumnFamily()
         {
-            this._logger.name += " -Columnfamily";
+            this._logger.name += " -ColumnFamily";
             // Invoke graphql operation cassandraColumnFamilies
             InvokeQueryCassandraColumnFamilies();
         }
 
         // This parameter set invokes a single graphql operation:
         // cassandraColumnFamilyRecoverableRange.
-        protected void ProcessRecord_Columnfamilyrecoverablerange()
+        protected void ProcessRecord_ColumnFamilyRecoverableRange()
         {
-            this._logger.name += " -Columnfamilyrecoverablerange";
+            this._logger.name += " -ColumnFamilyRecoverableRange";
             // Invoke graphql operation cassandraColumnFamilyRecoverableRange
             InvokeQueryCassandraColumnFamilyRecoverableRange();
         }
 
         // This parameter set invokes a single graphql operation:
         // cassandraColumnFamilySchema.
-        protected void ProcessRecord_Columnfamilyschema()
+        protected void ProcessRecord_ColumnFamilySchema()
         {
-            this._logger.name += " -Columnfamilyschema";
+            this._logger.name += " -ColumnFamilySchema";
             // Invoke graphql operation cassandraColumnFamilySchema
             InvokeQueryCassandraColumnFamilySchema();
         }

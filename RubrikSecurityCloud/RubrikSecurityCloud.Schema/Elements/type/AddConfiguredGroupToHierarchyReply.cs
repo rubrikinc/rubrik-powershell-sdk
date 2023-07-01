@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddConfiguredGroupToHierarchyReply";
+    }
+
     public AddConfiguredGroupToHierarchyReply Set(
         System.String? GroupId = null
     ) 

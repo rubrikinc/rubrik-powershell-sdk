@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SupportPortalStatusReply";
+    }
+
     public SupportPortalStatusReply Set(
         System.Boolean? IsLoggedIn = null,
         System.String? Username = null,

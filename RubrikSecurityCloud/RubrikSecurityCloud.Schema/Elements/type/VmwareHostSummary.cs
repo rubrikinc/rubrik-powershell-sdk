@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareHostSummary";
+    }
+
     public VmwareHostSummary Set(
         HostFilterStatus? IoFilterStatus = null,
         HostUiFilterStatus? IoFilterUiStatus = null,

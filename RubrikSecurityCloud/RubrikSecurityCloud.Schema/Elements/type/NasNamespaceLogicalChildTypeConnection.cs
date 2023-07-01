@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NasNamespaceLogicalChildTypeConnection";
+    }
+
     public NasNamespaceLogicalChildTypeConnection Set(
         List<NasNamespaceLogicalChildType>? Nodes = null,
         System.Int32? Count = null,

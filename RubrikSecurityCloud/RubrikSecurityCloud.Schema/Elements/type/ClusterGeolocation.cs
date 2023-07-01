@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterGeolocation";
+    }
+
     public ClusterGeolocation Set(
         System.String? Address = null
     ) 

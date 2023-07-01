@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeRoot";
+    }
+
     public AwsNativeRoot Set(
         AwsNativeHierarchyObjectConnection? ObjectTypeDescendantConnection = null
     ) 

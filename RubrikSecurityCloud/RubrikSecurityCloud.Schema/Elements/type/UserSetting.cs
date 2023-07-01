@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserSetting";
+    }
+
     public UserSetting Set(
         System.String? Setting = null,
         System.String? Value = null

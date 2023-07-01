@@ -11,3 +11,7 @@ Details about the scanned object.
   - The scanned object name.
 - cluster: Cluster
   - The cluster of the scan.
+- objectFid: System.String
+  - FID of the object.
+- objectType: HierarchyObjectTypeEnum
+  - Object type.

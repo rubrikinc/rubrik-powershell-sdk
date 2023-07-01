@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateAwsNativeRdsClusterNameForExportReply";
+    }
+
     public ValidateAwsNativeRdsClusterNameForExportReply Set(
         System.String? Error = null,
         System.Boolean? IsValid = null

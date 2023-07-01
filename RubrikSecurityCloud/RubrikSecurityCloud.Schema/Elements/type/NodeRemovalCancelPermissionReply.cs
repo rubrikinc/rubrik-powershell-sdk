@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NodeRemovalCancelPermissionReply";
+    }
+
     public NodeRemovalCancelPermissionReply Set(
         System.String? EventSeriesId = null,
         System.Boolean? IsCancelable = null

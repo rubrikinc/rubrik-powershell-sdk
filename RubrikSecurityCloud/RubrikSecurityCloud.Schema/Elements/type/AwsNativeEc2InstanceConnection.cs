@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeEc2InstanceConnection";
+    }
+
     public AwsNativeEc2InstanceConnection Set(
         System.Int32? Count = null,
         List<AwsNativeEc2InstanceEdge>? Edges = null,

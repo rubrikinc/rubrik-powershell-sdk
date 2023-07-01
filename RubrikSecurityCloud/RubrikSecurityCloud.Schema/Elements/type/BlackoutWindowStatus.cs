@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlackoutWindowStatus";
+    }
+
     public BlackoutWindowStatus Set(
         System.Boolean? IsGlobalBlackoutActive = null,
         System.Boolean? IsSnappableBlackoutActive = null

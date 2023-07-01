@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolicyObjConnection";
+    }
+
     public PolicyObjConnection Set(
         System.Int32? Count = null,
         List<PolicyObjEdge>? Edges = null,

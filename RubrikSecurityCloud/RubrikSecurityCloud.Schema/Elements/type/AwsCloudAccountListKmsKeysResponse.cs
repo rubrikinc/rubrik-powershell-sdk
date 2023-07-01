@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsCloudAccountListKMSKeysResponse";
+    }
+
     public AwsCloudAccountListKmsKeysResponse Set(
         List<KmsKey>? Result = null
     ) 

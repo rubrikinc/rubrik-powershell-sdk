@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlUnprotectableReason";
+    }
+
     public MssqlUnprotectableReason Set(
         MssqlUnprotectableType? UnprotectableType = null,
         System.String? Message = null

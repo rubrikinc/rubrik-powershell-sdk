@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NetworkRuleSet";
+    }
+
     public NetworkRuleSet Set(
         DefaultActionType? DefaultAction = null,
         List<IpRule>? IpRules = null

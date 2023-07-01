@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotFile";
+    }
+
     public SnapshotFile Set(
         FileModeEnum? FileMode = null,
         System.String? AbsolutePath = null,

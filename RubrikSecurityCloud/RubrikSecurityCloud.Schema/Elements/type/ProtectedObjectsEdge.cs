@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ProtectedObjectsEdge";
+    }
+
     public ProtectedObjectsEdge Set(
         System.String? Cursor = null,
         ProtectedObjects? Node = null

@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "K8sNamespaceConnection";
+    }
+
     public K8sNamespaceConnection Set(
         System.Int32? AggregateK8sPvcs = null,
         System.Int32? AggregateK8sWorkloads = null,

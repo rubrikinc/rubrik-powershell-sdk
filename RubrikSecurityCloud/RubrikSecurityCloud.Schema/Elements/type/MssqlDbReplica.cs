@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlDbReplica";
+    }
+
     public MssqlDbReplica Set(
         MssqlDbReplicaRecoveryModel? RecoveryModel = null,
         System.Boolean? HasPermissions = null,

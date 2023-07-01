@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Failure";
+    }
+
     public Failure Set(
         System.String? Error = null,
         System.String? SnappableId = null

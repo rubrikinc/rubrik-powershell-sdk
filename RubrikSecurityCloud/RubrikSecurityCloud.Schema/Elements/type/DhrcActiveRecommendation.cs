@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DhrcActiveRecommendation";
+    }
+
     public DhrcActiveRecommendation Set(
         DhrcCategory? Category = null,
         DhrcRecommendationKey? Key = null,

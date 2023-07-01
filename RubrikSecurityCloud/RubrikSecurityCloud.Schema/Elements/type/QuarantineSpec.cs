@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "QuarantineSpec";
+    }
+
     public QuarantineSpec Set(
         System.String? SnapshotId = null,
         List<FileDetails>? FilesDetails = null

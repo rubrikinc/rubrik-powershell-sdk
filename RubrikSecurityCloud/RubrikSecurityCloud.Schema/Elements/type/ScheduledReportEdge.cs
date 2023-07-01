@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ScheduledReportEdge";
+    }
+
     public ScheduledReportEdge Set(
         System.String? Cursor = null,
         ScheduledReport? Node = null

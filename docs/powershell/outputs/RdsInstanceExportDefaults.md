@@ -7,6 +7,8 @@ RDS Export defaults from AWS.
   - Version of DB engine.
 - dbInstanceClass: AwsNativeRdsDbInstanceClass
   - DB class for RDS Instance.
+- databaseInstanceClass: System.String
+  - DB class for RDS Instance. AWS supported instance classes can be found here https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#Concepts.DBInstanceClass.Types.
 - vpcId: System.String
   - Virtual Private Cloud (VPC) associated with RDS Instance.
 - allocatedStorageInGb: System.Int64

@@ -105,3 +105,6 @@ Represents all the object types for which we expect to see audits.
 - K8S_RESOURCE_SET - Kubernetes resource set object.
 - AZURE_AD_DIRECTORY - Azure AD Directory object.
 - ENCRYPTION_MANAGEMENT - Encryption Management object.
+- NUTANIX_PRISM_CENTRAL - Nutanix prism central audit object.
+- ACTIVE_DIRECTORY_DOMAIN - Active Directory domain.
+- ACTIVE_DIRECTORY_DOMAIN_CONTROLLER - Active Directory domain controller.

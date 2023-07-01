@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmPathPoint";
+    }
+
     public VmPathPoint Set(
         System.String? Id = null,
         System.String? ManagedId = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HelpContentSnippetEdge";
+    }
+
     public HelpContentSnippetEdge Set(
         System.String? Cursor = null,
         HelpContentSnippet? Node = null

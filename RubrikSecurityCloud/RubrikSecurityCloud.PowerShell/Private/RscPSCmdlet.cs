@@ -57,7 +57,6 @@ namespace RubrikSecurityCloud.PowerShell.Private
             {
                 RetrieveConnection();
             }
-            _validOperations = RscCmdletHelper.GetCmdletValidGraphQLOperations(this.MyInvocation.MyCommand.Name);
         }
 
         protected override void EndProcessing()

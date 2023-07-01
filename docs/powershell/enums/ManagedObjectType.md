@@ -121,3 +121,5 @@ All supported managed objects.
 - JIRA_PROJECT - Jira project.
 - ATLASSIAN_SITE - Atlassian site.
 - JIRA_FIXED_OBJECT - Jira fixed object.
+- NUTANIX_CATEGORY - Nutanix Category.
+- NUTANIX_CATEGORY_VALUE - Nutanix Category Value.

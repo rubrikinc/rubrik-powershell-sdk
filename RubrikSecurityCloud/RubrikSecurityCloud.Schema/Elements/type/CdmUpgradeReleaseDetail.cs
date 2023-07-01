@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmUpgradeReleaseDetail";
+    }
+
     public CdmUpgradeReleaseDetail Set(
         AdoptionStatus? AdoptionStatus = null,
         System.String? Description = null,

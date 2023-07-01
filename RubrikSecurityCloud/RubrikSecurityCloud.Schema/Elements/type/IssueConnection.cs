@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "IssueConnection";
+    }
+
     public IssueConnection Set(
         System.Int32? Count = null,
         List<IssueEdge>? Edges = null,

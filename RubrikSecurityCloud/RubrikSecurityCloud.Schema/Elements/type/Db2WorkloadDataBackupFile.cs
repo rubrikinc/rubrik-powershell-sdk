@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2WorkloadDataBackupFile";
+    }
+
     public Db2WorkloadDataBackupFile Set(
         System.Int32? PartitionNum = null,
         System.Int32? SequenceNum = null

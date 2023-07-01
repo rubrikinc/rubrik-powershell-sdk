@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationReplicationTarget";
+    }
+
     public RestoreFormConfigurationReplicationTarget Set(
         System.String? TargetClusterAddress = null,
         System.String? TargetClusterName = null

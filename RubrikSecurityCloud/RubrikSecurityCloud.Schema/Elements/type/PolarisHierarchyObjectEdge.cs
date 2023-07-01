@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisHierarchyObjectEdge";
+    }
+
     public PolarisHierarchyObjectEdge Set(
         PolarisHierarchyObject? Node = null,
         System.String? Cursor = null

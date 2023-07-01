@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TakeOnDemandSnapshotTaskchainUuid";
+    }
+
     public TakeOnDemandSnapshotTaskchainUuid Set(
         System.String? TaskchainUuid = null,
         System.String? WorkloadId = null

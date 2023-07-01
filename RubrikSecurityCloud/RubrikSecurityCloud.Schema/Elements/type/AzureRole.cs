@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureRole";
+    }
+
     public AzureRole Set(
         System.Boolean? IsRubrikManaged = null,
         System.String? RoleAssignmentName = null,

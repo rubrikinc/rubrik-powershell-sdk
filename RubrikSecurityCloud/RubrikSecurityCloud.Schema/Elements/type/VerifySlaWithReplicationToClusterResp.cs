@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VerifySLAWithReplicationToClusterResp";
+    }
+
     public VerifySlaWithReplicationToClusterResp Set(
         System.Boolean? IsActiveSla = null
     ) 

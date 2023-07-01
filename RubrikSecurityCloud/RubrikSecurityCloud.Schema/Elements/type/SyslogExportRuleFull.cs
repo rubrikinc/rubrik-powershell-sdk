@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SyslogExportRuleFull";
+    }
+
     public SyslogExportRuleFull Set(
         SyslogFacility? Facility = null,
         TransportLayerProtocol? Protocol = null,

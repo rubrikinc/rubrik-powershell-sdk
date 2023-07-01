@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DayOfWeekOpt";
+    }
+
     public DayOfWeekOpt Set(
         DayOfWeek? Day = null
     ) 

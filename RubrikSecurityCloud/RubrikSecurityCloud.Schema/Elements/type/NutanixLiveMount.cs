@@ -160,6 +160,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixLiveMount";
+    }
+
     public NutanixLiveMount Set(
         System.String? CdmId = null,
         System.String? Id = null,

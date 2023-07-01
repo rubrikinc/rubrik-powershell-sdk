@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MapCloudAccountExocomputeAccountReply";
+    }
+
     public MapCloudAccountExocomputeAccountReply Set(
         System.Boolean? IsSuccess = null
     ) 

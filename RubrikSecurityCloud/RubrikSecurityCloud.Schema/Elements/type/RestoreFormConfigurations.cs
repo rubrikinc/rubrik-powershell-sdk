@@ -105,6 +105,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurations";
+    }
+
     public RestoreFormConfigurations Set(
         List<RestoreFormConfigurationGuestOs>? GuestOsCredentials = null,
         List<RestoreFormConfigurationKmipServer>? KmipServers = null,

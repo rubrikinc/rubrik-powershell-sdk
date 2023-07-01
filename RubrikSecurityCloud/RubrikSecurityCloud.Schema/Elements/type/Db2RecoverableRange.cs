@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2RecoverableRange";
+    }
+
     public Db2RecoverableRange Set(
         System.String? BaseSnapshotId = null,
         System.String? CdmId = null,

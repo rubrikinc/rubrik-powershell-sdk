@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SensitiveHits";
+    }
+
     public SensitiveHits Set(
         SummaryHits? HighRiskHits = null,
         SummaryHits? LowRiskHits = null,

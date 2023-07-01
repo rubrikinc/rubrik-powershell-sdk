@@ -236,6 +236,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Snappable";
+    }
+
     public Snappable Set(
         ComplianceStatusEnum? ArchivalComplianceStatus = null,
         ComplianceStatusEnum? ComplianceStatus = null,

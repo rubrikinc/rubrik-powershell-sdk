@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BackupWindow";
+    }
+
     public BackupWindow Set(
         System.Int32? DurationInHours = null,
         StartTimeAttributes? StartTimeAttributes = null

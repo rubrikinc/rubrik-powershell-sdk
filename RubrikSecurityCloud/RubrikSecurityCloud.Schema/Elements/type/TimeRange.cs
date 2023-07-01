@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TimeRange";
+    }
+
     public TimeRange Set(
         DateTime? End = null,
         DateTime? Start = null

@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LicensedClusterProduct";
+    }
+
     public LicensedClusterProduct Set(
         Product? Product = null,
         System.Single? NextExpiringBytes = null,

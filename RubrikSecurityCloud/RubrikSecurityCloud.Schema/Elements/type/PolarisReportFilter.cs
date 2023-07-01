@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisReportFilter";
+    }
+
     public PolarisReportFilter Set(
         DataTypeEnum? DataType = null,
         FilterTypeEnum? FilterType = null,

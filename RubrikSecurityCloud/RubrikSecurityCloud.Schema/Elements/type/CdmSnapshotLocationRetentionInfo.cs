@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmSnapshotLocationRetentionInfo";
+    }
+
     public CdmSnapshotLocationRetentionInfo Set(
         SnapshotFrequency? SnapshotFrequency = null,
         DateTime? ExpirationTime = null,

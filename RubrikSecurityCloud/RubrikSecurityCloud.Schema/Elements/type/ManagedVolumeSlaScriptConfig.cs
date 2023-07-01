@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeSlaScriptConfig";
+    }
+
     public ManagedVolumeSlaScriptConfig Set(
         System.String? ScriptCommand = null,
         System.Int64? Timeout = null

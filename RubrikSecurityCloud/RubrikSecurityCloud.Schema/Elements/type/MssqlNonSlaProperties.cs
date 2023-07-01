@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlNonSlaProperties";
+    }
+
     public MssqlNonSlaProperties Set(
         System.Boolean? CopyOnly = null,
         System.Int32? LogBackupFrequencyInSeconds = null,

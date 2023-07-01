@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateServiceAccountReply";
+    }
+
     public CreateServiceAccountReply Set(
         System.String? AccessTokenUri = null,
         System.String? ClientId = null,

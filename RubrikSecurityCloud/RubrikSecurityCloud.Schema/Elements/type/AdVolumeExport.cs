@@ -20,6 +20,21 @@ namespace RubrikSecurityCloud.Types
     {
         #region members
 
+        //      C# -> System.String? DomainControllerId
+        // GraphQL -> domainControllerId: String! (scalar)
+        [JsonProperty("domainControllerId")]
+        public System.String? DomainControllerId { get; set; }
+
+        //      C# -> System.String? DomainControllerName
+        // GraphQL -> domainControllerName: String! (scalar)
+        [JsonProperty("domainControllerName")]
+        public System.String? DomainControllerName { get; set; }
+
+        //      C# -> System.String? FloatingIp
+        // GraphQL -> floatingIp: String (scalar)
+        [JsonProperty("floatingIp")]
+        public System.String? FloatingIp { get; set; }
+
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         [JsonProperty("id")]
@@ -35,10 +50,25 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("isActive")]
         public System.Boolean? IsActive { get; set; }
 
+        //      C# -> System.Boolean? IsUserVisible
+        // GraphQL -> isUserVisible: Boolean! (scalar)
+        [JsonProperty("isUserVisible")]
+        public System.Boolean? IsUserVisible { get; set; }
+
+        //      C# -> System.String? MountDir
+        // GraphQL -> mountDir: String! (scalar)
+        [JsonProperty("mountDir")]
+        public System.String? MountDir { get; set; }
+
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         [JsonProperty("cluster")]
         public Cluster? Cluster { get; set; }
+
+        //      C# -> ClusterNode? Node
+        // GraphQL -> node: ClusterNode (type)
+        [JsonProperty("node")]
+        public ClusterNode? Node { get; set; }
 
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)
@@ -50,14 +80,33 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AdVolumeExport";
+    }
+
     public AdVolumeExport Set(
+        System.String? DomainControllerId = null,
+        System.String? DomainControllerName = null,
+        System.String? FloatingIp = null,
         System.String? Id = null,
         System.Int64? InternalTimestamp = null,
         System.Boolean? IsActive = null,
+        System.Boolean? IsUserVisible = null,
+        System.String? MountDir = null,
         Cluster? Cluster = null,
+        ClusterNode? Node = null,
         CdmSnapshot? SourceSnapshot = null
     ) 
     {
+        if ( DomainControllerId != null ) {
+            this.DomainControllerId = DomainControllerId;
+        }
+        if ( DomainControllerName != null ) {
+            this.DomainControllerName = DomainControllerName;
+        }
+        if ( FloatingIp != null ) {
+            this.FloatingIp = FloatingIp;
+        }
         if ( Id != null ) {
             this.Id = Id;
         }
@@ -67,8 +116,17 @@ namespace RubrikSecurityCloud.Types
         if ( IsActive != null ) {
             this.IsActive = IsActive;
         }
+        if ( IsUserVisible != null ) {
+            this.IsUserVisible = IsUserVisible;
+        }
+        if ( MountDir != null ) {
+            this.MountDir = MountDir;
+        }
         if ( Cluster != null ) {
             this.Cluster = Cluster;
+        }
+        if ( Node != null ) {
+            this.Node = Node;
         }
         if ( SourceSnapshot != null ) {
             this.SourceSnapshot = SourceSnapshot;
@@ -83,6 +141,21 @@ namespace RubrikSecurityCloud.Types
     {
         string ind = new string(' ', indent*2);
         string s = "";
+        //      C# -> System.String? DomainControllerId
+        // GraphQL -> domainControllerId: String! (scalar)
+        if (this.DomainControllerId != null) {
+            s += ind + "domainControllerId\n" ;
+        }
+        //      C# -> System.String? DomainControllerName
+        // GraphQL -> domainControllerName: String! (scalar)
+        if (this.DomainControllerName != null) {
+            s += ind + "domainControllerName\n" ;
+        }
+        //      C# -> System.String? FloatingIp
+        // GraphQL -> floatingIp: String (scalar)
+        if (this.FloatingIp != null) {
+            s += ind + "floatingIp\n" ;
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id != null) {
@@ -98,12 +171,30 @@ namespace RubrikSecurityCloud.Types
         if (this.IsActive != null) {
             s += ind + "isActive\n" ;
         }
+        //      C# -> System.Boolean? IsUserVisible
+        // GraphQL -> isUserVisible: Boolean! (scalar)
+        if (this.IsUserVisible != null) {
+            s += ind + "isUserVisible\n" ;
+        }
+        //      C# -> System.String? MountDir
+        // GraphQL -> mountDir: String! (scalar)
+        if (this.MountDir != null) {
+            s += ind + "mountDir\n" ;
+        }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster != null) {
             var fspec = this.Cluster.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "cluster {\n" + fspec + ind + "}\n" ;
+            }
+        }
+        //      C# -> ClusterNode? Node
+        // GraphQL -> node: ClusterNode (type)
+        if (this.Node != null) {
+            var fspec = this.Node.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "node {\n" + fspec + ind + "}\n" ;
             }
         }
         //      C# -> CdmSnapshot? SourceSnapshot
@@ -122,6 +213,24 @@ namespace RubrikSecurityCloud.Types
     //[JsonIgnore]
     public override void ApplyExploratoryFieldSpec(String parent = "")
     {
+        //      C# -> System.String? DomainControllerId
+        // GraphQL -> domainControllerId: String! (scalar)
+        if (this.DomainControllerId == null && Exploration.Includes(parent + ".domainControllerId", true))
+        {
+            this.DomainControllerId = "FETCH";
+        }
+        //      C# -> System.String? DomainControllerName
+        // GraphQL -> domainControllerName: String! (scalar)
+        if (this.DomainControllerName == null && Exploration.Includes(parent + ".domainControllerName", true))
+        {
+            this.DomainControllerName = "FETCH";
+        }
+        //      C# -> System.String? FloatingIp
+        // GraphQL -> floatingIp: String (scalar)
+        if (this.FloatingIp == null && Exploration.Includes(parent + ".floatingIp", true))
+        {
+            this.FloatingIp = "FETCH";
+        }
         //      C# -> System.String? Id
         // GraphQL -> id: UUID! (scalar)
         if (this.Id == null && Exploration.Includes(parent + ".id", true))
@@ -140,12 +249,31 @@ namespace RubrikSecurityCloud.Types
         {
             this.IsActive = true;
         }
+        //      C# -> System.Boolean? IsUserVisible
+        // GraphQL -> isUserVisible: Boolean! (scalar)
+        if (this.IsUserVisible == null && Exploration.Includes(parent + ".isUserVisible", true))
+        {
+            this.IsUserVisible = true;
+        }
+        //      C# -> System.String? MountDir
+        // GraphQL -> mountDir: String! (scalar)
+        if (this.MountDir == null && Exploration.Includes(parent + ".mountDir", true))
+        {
+            this.MountDir = "FETCH";
+        }
         //      C# -> Cluster? Cluster
         // GraphQL -> cluster: Cluster! (type)
         if (this.Cluster == null && Exploration.Includes(parent + ".cluster"))
         {
             this.Cluster = new Cluster();
             this.Cluster.ApplyExploratoryFieldSpec(parent + ".cluster");
+        }
+        //      C# -> ClusterNode? Node
+        // GraphQL -> node: ClusterNode (type)
+        if (this.Node == null && Exploration.Includes(parent + ".node"))
+        {
+            this.Node = new ClusterNode();
+            this.Node.ApplyExploratoryFieldSpec(parent + ".node");
         }
         //      C# -> CdmSnapshot? SourceSnapshot
         // GraphQL -> sourceSnapshot: CdmSnapshot! (type)

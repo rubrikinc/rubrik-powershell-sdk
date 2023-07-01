@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilterCreateResponse";
+    }
+
     public FilterCreateResponse Set(
         System.String? Condition = null,
         System.String? Id = null,

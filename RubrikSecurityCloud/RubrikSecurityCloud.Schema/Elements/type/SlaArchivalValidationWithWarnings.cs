@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaArchivalValidationWithWarnings";
+    }
+
     public SlaArchivalValidationWithWarnings Set(
         SlaArchivalWarning? Code = null,
         WarningSeverityEnum? Severity = null,

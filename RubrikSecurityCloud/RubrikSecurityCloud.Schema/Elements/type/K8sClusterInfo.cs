@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "K8sClusterInfo";
+    }
+
     public K8sClusterInfo Set(
         K8sClusterType? Type = null,
         System.String? K8sVersion = null,

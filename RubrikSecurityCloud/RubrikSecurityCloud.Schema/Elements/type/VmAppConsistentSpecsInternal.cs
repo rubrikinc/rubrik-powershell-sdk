@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmAppConsistentSpecsInternal";
+    }
+
     public VmAppConsistentSpecsInternal Set(
         CloudNativeRbaStatusType? RbaStatus = null,
         System.Boolean? CancelBackupIfPreScriptFails = null,

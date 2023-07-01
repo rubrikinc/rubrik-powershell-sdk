@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisReportColumn";
+    }
+
     public PolarisReportColumn Set(
         System.Int32? ColumnWidth = null,
         System.Boolean? Default = null,

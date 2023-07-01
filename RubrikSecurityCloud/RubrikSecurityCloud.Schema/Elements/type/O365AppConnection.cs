@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365AppConnection";
+    }
+
     public O365AppConnection Set(
         System.Int32? Count = null,
         List<O365AppEdge>? Edges = null,

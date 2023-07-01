@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "K8sAgentManifestInfo";
+    }
+
     public K8sAgentManifestInfo Set(
         System.String? ClusterId = null,
         System.String? SignedUrl = null

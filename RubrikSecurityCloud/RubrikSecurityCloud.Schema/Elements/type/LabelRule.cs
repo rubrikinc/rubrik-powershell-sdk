@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LabelRule";
+    }
+
     public LabelRule Set(
         ManagedObjectType? ObjectType = null,
         System.Boolean? ApplyToAllCloudAccounts = null,

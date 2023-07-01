@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisInventorySubHierarchyRoot";
+    }
+
     public PolarisInventorySubHierarchyRoot Set(
         InventorySubHierarchyRootEnum? RootEnum = null,
         PolarisHierarchyObjectConnection? ChildConnection = null,

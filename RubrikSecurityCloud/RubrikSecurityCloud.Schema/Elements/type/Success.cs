@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Success";
+    }
+
     public Success Set(
         System.String? TaskchainId = null,
         System.String? WorkloadId = null

@@ -16,6 +16,14 @@ namespace RubrikSecurityCloud.Types
         // IFieldSpec interface:
         public abstract string AsFieldSpec(int indent = 0);
         public abstract void ApplyExploratoryFieldSpec(string parent = "");
+
+        // Returns the name of the type as it would appear in a GraphQL schema.
+        // Should be overridden if the GraphQL type name is different from 
+        // the C# class name.
+        public virtual string GetGqlTypeName()
+        {
+            return this.GetType().Name;
+        }
     }
 
     public static class ListBaseTypeExtensions

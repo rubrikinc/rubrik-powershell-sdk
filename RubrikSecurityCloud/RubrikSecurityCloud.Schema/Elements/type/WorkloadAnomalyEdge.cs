@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WorkloadAnomalyEdge";
+    }
+
     public WorkloadAnomalyEdge Set(
         System.String? Cursor = null,
         WorkloadAnomaly? Node = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CustomReportGroupByConnection";
+    }
+
     public CustomReportGroupByConnection Set(
         System.Int32? Count = null,
         List<CustomReportGroupByEdge>? Edges = null,

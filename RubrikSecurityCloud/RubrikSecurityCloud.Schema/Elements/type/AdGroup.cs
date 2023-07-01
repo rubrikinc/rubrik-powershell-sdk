@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AdGroup";
+    }
+
     public AdGroup Set(
         System.String? DisplayName = null,
         System.String? Id = null

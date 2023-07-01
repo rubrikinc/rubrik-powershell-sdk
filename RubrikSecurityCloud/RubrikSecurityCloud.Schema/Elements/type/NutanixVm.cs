@@ -276,6 +276,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixVm";
+    }
+
     public NutanixVm Set(
         List<Operation>? AuthorizedOperations = null,
         CdmNutanixSnapshotConsistencyMandate? NutanixSnapshotConsistencyMandate = null,

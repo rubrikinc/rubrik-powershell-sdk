@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateEventDigestReply";
+    }
+
     public UpdateEventDigestReply Set(
         List<EventDigest>? EventDigests = null
     ) 

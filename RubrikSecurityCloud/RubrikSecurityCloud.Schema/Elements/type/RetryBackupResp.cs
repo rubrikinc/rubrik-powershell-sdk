@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RetryBackupResp";
+    }
+
     public RetryBackupResp Set(
         List<RetryBackupClusterResp>? ClusterResp = null
     ) 

@@ -56,6 +56,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserAuditTable";
+    }
+
     public UserAuditTable Set(
         ReportFocusEnum? Focus = null,
         List<UserAuditGroupByEnum>? GroupBy = null,

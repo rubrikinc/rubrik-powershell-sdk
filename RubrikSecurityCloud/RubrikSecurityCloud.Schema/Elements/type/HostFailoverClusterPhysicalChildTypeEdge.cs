@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostFailoverClusterPhysicalChildTypeEdge";
+    }
+
     public HostFailoverClusterPhysicalChildTypeEdge Set(
         HostFailoverClusterPhysicalChildType? Node = null,
         System.String? Cursor = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaLogPositionInterval";
+    }
+
     public SapHanaLogPositionInterval Set(
         System.Int64? NewestLogPosition = null,
         System.Int64? OldestLogPosition = null

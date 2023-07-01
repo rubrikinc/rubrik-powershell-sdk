@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ElasticStorageConfig";
+    }
+
     public ElasticStorageConfig Set(
         System.Boolean? IsImmutable = null,
         System.String? LocationId = null,

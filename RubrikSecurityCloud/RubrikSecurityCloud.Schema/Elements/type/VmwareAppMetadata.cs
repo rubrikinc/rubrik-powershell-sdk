@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareAppMetadata";
+    }
+
     public VmwareAppMetadata Set(
         VmwareSnapshotVmConfig? VmConfig = null
     ) 

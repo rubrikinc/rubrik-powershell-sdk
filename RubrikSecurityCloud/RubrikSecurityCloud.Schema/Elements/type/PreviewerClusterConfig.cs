@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PreviewerClusterConfig";
+    }
+
     public PreviewerClusterConfig Set(
         System.String? ClusterId = null,
         System.Boolean? Enabled = null

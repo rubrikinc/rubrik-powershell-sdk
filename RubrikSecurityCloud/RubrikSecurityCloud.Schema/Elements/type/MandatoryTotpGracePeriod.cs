@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "mandatoryTotpGracePeriod";
+    }
+
     public MandatoryTotpGracePeriod Set(
         DateTime? MandatoryTotpEnforcementDate = null,
         System.Boolean? ShouldHideMandatoryTotpGracePeriodWarning = null

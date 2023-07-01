@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateNetworkThrottleReply";
+    }
+
     public UpdateNetworkThrottleReply Set(
         NetworkThrottleResourceId? ResourceId = null,
         System.Int32? ArchivalThrottlePort = null,

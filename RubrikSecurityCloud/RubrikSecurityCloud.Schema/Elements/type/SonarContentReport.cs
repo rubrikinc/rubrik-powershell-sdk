@@ -115,6 +115,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SonarContentReport";
+    }
+
     public SonarContentReport Set(
         HierarchyObjectTypeEnum? ObjectType = null,
         System.String? AnalyzerId = null,

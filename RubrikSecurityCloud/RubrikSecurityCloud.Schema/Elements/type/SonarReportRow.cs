@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SonarReportRow";
+    }
+
     public SonarReportRow Set(
         DiscoveryReportTablePolicyStatus? PolicyStatus = null,
         System.Int32? NumHighRiskLocations = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeResourceGroupConnection";
+    }
+
     public AzureNativeResourceGroupConnection Set(
         System.Int32? Count = null,
         List<AzureNativeResourceGroupEdge>? Edges = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskDetailConnection";
+    }
+
     public TaskDetailConnection Set(
         System.Int32? Count = null,
         List<TaskDetailEdge>? Edges = null,

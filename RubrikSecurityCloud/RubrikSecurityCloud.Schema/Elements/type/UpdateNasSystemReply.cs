@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateNasSystemReply";
+    }
+
     public UpdateNasSystemReply Set(
         NasVendorType? VendorType = null,
         System.String? Hostname = null,

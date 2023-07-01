@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RoleTemplate";
+    }
+
     public RoleTemplate Set(
         System.String? Description = null,
         System.String? Id = null,

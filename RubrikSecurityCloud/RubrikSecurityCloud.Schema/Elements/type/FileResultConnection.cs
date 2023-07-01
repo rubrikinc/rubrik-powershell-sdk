@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FileResultConnection";
+    }
+
     public FileResultConnection Set(
         System.Int32? Count = null,
         List<FileResultEdge>? Edges = null,

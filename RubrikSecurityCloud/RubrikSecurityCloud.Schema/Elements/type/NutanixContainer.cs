@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixContainer";
+    }
+
     public NutanixContainer Set(
         System.String? Name = null,
         System.String? NaturalId = null

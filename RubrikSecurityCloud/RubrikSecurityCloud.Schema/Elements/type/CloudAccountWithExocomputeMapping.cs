@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudAccountWithExocomputeMapping";
+    }
+
     public CloudAccountWithExocomputeMapping Set(
         CloudAccountDetails? ApplicationAccount = null,
         CloudAccountDetails? ExocomputeAccount = null

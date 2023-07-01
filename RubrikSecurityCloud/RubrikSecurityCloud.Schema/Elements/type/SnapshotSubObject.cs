@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotSubObject";
+    }
+
     public SnapshotSubObject Set(
         SnapshotSubObj? SubObj = null
     ) 

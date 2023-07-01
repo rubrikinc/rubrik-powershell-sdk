@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetUserDetailReply";
+    }
+
     public GetUserDetailReply Set(
         RiskLevelType? Risk = null,
         System.String? Location = null,

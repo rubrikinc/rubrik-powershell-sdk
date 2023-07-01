@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDatabaseLastValidationStatus";
+    }
+
     public OracleDatabaseLastValidationStatus Set(
         System.String? EventId = null,
         System.Boolean? IsSuccess = null,

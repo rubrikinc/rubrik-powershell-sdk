@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365ExchangeObjectConnection";
+    }
+
     public O365ExchangeObjectConnection Set(
         List<O365ExchangeObject>? Nodes = null,
         System.Int32? Count = null,

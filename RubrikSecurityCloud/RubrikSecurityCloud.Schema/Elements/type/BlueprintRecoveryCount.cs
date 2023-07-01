@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlueprintRecoveryCount";
+    }
+
     public BlueprintRecoveryCount Set(
         System.Int64? FailoverRecoveryCount = null,
         System.Int64? IsolatedRecoveryCount = null,

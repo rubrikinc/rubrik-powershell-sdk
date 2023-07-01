@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CyberRecoveryLocationPathPoint";
+    }
+
     public CyberRecoveryLocationPathPoint Set(
         System.String? ManagedId = null,
         System.String? Name = null

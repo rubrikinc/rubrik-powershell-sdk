@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterEncryptionInfo";
+    }
+
     public ClusterEncryptionInfo Set(
         ClusterEncryptionType? EncryptionType = null,
         List<ClusterKeyProtection>? SupportedKeyTypes = null,

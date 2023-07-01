@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AccountProduct";
+    }
+
     public AccountProduct Set(
         ProductName? Name = null,
         ProductState? State = null,

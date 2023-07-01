@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereVirtualDiskConnection";
+    }
+
     public VsphereVirtualDiskConnection Set(
         System.Int32? Count = null,
         List<VsphereVirtualDiskEdge>? Edges = null,

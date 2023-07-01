@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DhrcCollectedMetric";
+    }
+
     public DhrcCollectedMetric Set(
         DhrcMetric? Metric = null,
         DateTime? CollectedAt = null,

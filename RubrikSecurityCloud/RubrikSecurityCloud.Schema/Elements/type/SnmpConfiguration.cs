@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnmpConfiguration";
+    }
+
     public SnmpConfiguration Set(
         System.String? CommunityString = null,
         System.Boolean? IsEnabled = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmSnapshotGroupBy";
+    }
+
     public CdmSnapshotGroupBy Set(
         List<CdmSnapshotGroupBy>? CdmSnapshotGroupByField = null,
         CdmSnapshotConnection? SnapshotConnection = null,

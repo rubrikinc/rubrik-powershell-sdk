@@ -90,6 +90,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365OrgInfo";
+    }
+
     public O365OrgInfo Set(
         ProvisionStatus? Status = null,
         System.Boolean? ExchangeOnColossus = null,

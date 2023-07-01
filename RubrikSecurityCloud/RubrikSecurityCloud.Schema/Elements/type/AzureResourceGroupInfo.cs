@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureResourceGroupInfo";
+    }
+
     public AzureResourceGroupInfo Set(
         AzureCloudAccountRegion? Region = null,
         System.String? ResourceGroupName = null,

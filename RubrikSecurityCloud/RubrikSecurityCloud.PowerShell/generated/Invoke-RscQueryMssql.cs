@@ -27,12 +27,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // Topleveldescendant parameter set
+        // TopLevelDescendant parameter set
         //
         // [GraphQL: mssqlTopLevelDescendants]
         //
         [Parameter(
-            ParameterSetName = "Topleveldescendant",
+            ParameterSetName = "TopLevelDescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,68 +41,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: mssqlTopLevelDescendants]",
             Position = 0
         )]
-        public SwitchParameter Topleveldescendant { get; set; }
+        public SwitchParameter TopLevelDescendant { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort hierarchy objects by hierarchy field.
-GraphQL argument sortBy: HierarchySortByField"
-        )]
-        public HierarchySortByField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sorting order for the results.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Types of objects to include.
-GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
-        )]
-        public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The hierarchy object filter.
-GraphQL argument filter: [Filter!]"
-        )]
-        public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
         // Database parameter set
@@ -123,12 +63,12 @@ GraphQL argument filter: [Filter!]"
 
         
         // -------------------------------------------------------------------
-        // Availabilitygroup parameter set
+        // AvailabilityGroup parameter set
         //
         // [GraphQL: mssqlAvailabilityGroup]
         //
         [Parameter(
-            ParameterSetName = "Availabilitygroup",
+            ParameterSetName = "AvailabilityGroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -137,18 +77,8 @@ GraphQL argument filter: [Filter!]"
 [GraphQL: mssqlAvailabilityGroup]",
             Position = 0
         )]
-        public SwitchParameter Availabilitygroup { get; set; }
+        public SwitchParameter AvailabilityGroup { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Availabilitygroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The Rubrik UUID for the object.
-GraphQL argument fid: UUID!"
-        )]
-        public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
         // Instance parameter set
@@ -169,12 +99,12 @@ GraphQL argument fid: UUID!"
 
         
         // -------------------------------------------------------------------
-        // Recoverablerange parameter set
+        // RecoverableRange parameter set
         //
         // [GraphQL: mssqlRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "Recoverablerange",
+            ParameterSetName = "RecoverableRange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -183,26 +113,16 @@ GraphQL argument fid: UUID!"
 [GraphQL: mssqlRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter Recoverablerange { get; set; }
+        public SwitchParameter RecoverableRange { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Recoverablerange",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for V1GetMssqlDbRecoverableRanges.
-GraphQL argument input: GetMssqlDbRecoverableRangesInput!"
-        )]
-        public GetMssqlDbRecoverableRangesInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Databasemissedsnapshot parameter set
+        // DatabaseMissedSnapshot parameter set
         //
         // [GraphQL: mssqlDatabaseMissedSnapshots]
         //
         [Parameter(
-            ParameterSetName = "Databasemissedsnapshot",
+            ParameterSetName = "DatabaseMissedSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -211,16 +131,16 @@ GraphQL argument input: GetMssqlDbRecoverableRangesInput!"
 [GraphQL: mssqlDatabaseMissedSnapshots]",
             Position = 0
         )]
-        public SwitchParameter Databasemissedsnapshot { get; set; }
+        public SwitchParameter DatabaseMissedSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Compatibleinstance parameter set
+        // CompatibleInstance parameter set
         //
         // [GraphQL: mssqlCompatibleInstances]
         //
         [Parameter(
-            ParameterSetName = "Compatibleinstance",
+            ParameterSetName = "CompatibleInstance",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -229,16 +149,16 @@ GraphQL argument input: GetMssqlDbRecoverableRangesInput!"
 [GraphQL: mssqlCompatibleInstances]",
             Position = 0
         )]
-        public SwitchParameter Compatibleinstance { get; set; }
+        public SwitchParameter CompatibleInstance { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Databasemissedrecoverablerange parameter set
+        // DatabaseMissedRecoverableRange parameter set
         //
         // [GraphQL: mssqlDatabaseMissedRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "Databasemissedrecoverablerange",
+            ParameterSetName = "DatabaseMissedRecoverableRange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -247,16 +167,16 @@ GraphQL argument input: GetMssqlDbRecoverableRangesInput!"
 [GraphQL: mssqlDatabaseMissedRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter Databasemissedrecoverablerange { get; set; }
+        public SwitchParameter DatabaseMissedRecoverableRange { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Alldatabaserestorefile parameter set
+        // AllDatabaseRestoreFile parameter set
         //
         // [GraphQL: allMssqlDatabaseRestoreFiles]
         //
         [Parameter(
-            ParameterSetName = "Alldatabaserestorefile",
+            ParameterSetName = "AllDatabaseRestoreFile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -265,16 +185,16 @@ GraphQL argument input: GetMssqlDbRecoverableRangesInput!"
 [GraphQL: allMssqlDatabaseRestoreFiles]",
             Position = 0
         )]
-        public SwitchParameter Alldatabaserestorefile { get; set; }
+        public SwitchParameter AllDatabaseRestoreFile { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Databaselivemount parameter set
+        // DatabaseLiveMount parameter set
         //
         // [GraphQL: mssqlDatabaseLiveMounts]
         //
         [Parameter(
-            ParameterSetName = "Databaselivemount",
+            ParameterSetName = "DatabaseLiveMount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -283,26 +203,16 @@ GraphQL argument input: GetMssqlDbRecoverableRangesInput!"
 [GraphQL: mssqlDatabaseLiveMounts]",
             Position = 0
         )]
-        public SwitchParameter Databaselivemount { get; set; }
+        public SwitchParameter DatabaseLiveMount { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Databaselivemount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Filters for Mssql database live mounts.
-GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
-        )]
-        public List<MssqlDatabaseLiveMountFilterInput>? Filters { get; set; }
         
         // -------------------------------------------------------------------
-        // Defaultpropertie parameter set
+        // DefaultPropertie parameter set
         //
         // [GraphQL: mssqlDefaultProperties]
         //
         [Parameter(
-            ParameterSetName = "Defaultpropertie",
+            ParameterSetName = "DefaultPropertie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -311,16 +221,16 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
 [GraphQL: mssqlDefaultProperties]",
             Position = 0
         )]
-        public SwitchParameter Defaultpropertie { get; set; }
+        public SwitchParameter DefaultPropertie { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Databaserestoreestimate parameter set
+        // DatabaseRestoreEstimate parameter set
         //
         // [GraphQL: mssqlDatabaseRestoreEstimate]
         //
         [Parameter(
-            ParameterSetName = "Databaserestoreestimate",
+            ParameterSetName = "DatabaseRestoreEstimate",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -329,16 +239,16 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
 [GraphQL: mssqlDatabaseRestoreEstimate]",
             Position = 0
         )]
-        public SwitchParameter Databaserestoreestimate { get; set; }
+        public SwitchParameter DatabaseRestoreEstimate { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Cdmlogshippingtarget parameter set
+        // CdmLogShippingTarget parameter set
         //
         // [GraphQL: cdmMssqlLogShippingTargets]
         //
         [Parameter(
-            ParameterSetName = "Cdmlogshippingtarget",
+            ParameterSetName = "CdmLogShippingTarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -347,16 +257,16 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
 [GraphQL: cdmMssqlLogShippingTargets]",
             Position = 0
         )]
-        public SwitchParameter Cdmlogshippingtarget { get; set; }
+        public SwitchParameter CdmLogShippingTarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Logshippingtarget parameter set
+        // LogShippingTarget parameter set
         //
         // [GraphQL: mssqlLogShippingTargets]
         //
         [Parameter(
-            ParameterSetName = "Logshippingtarget",
+            ParameterSetName = "LogShippingTarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -365,7 +275,7 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
 [GraphQL: mssqlLogShippingTargets]",
             Position = 0
         )]
-        public SwitchParameter Logshippingtarget { get; set; }
+        public SwitchParameter LogShippingTarget { get; set; }
 
 
         protected override void ProcessRecord()
@@ -374,47 +284,47 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
             {
                 switch(Op)
                 {
-                    case "Topleveldescendant":
-                        this.ProcessRecord_Topleveldescendant();
+                    case "TopLevelDescendant":
+                        this.ProcessRecord_TopLevelDescendant();
                         break;
                     case "Database":
                         this.ProcessRecord_Database();
                         break;
-                    case "Availabilitygroup":
-                        this.ProcessRecord_Availabilitygroup();
+                    case "AvailabilityGroup":
+                        this.ProcessRecord_AvailabilityGroup();
                         break;
                     case "Instance":
                         this.ProcessRecord_Instance();
                         break;
-                    case "Recoverablerange":
-                        this.ProcessRecord_Recoverablerange();
+                    case "RecoverableRange":
+                        this.ProcessRecord_RecoverableRange();
                         break;
-                    case "Databasemissedsnapshot":
-                        this.ProcessRecord_Databasemissedsnapshot();
+                    case "DatabaseMissedSnapshot":
+                        this.ProcessRecord_DatabaseMissedSnapshot();
                         break;
-                    case "Compatibleinstance":
-                        this.ProcessRecord_Compatibleinstance();
+                    case "CompatibleInstance":
+                        this.ProcessRecord_CompatibleInstance();
                         break;
-                    case "Databasemissedrecoverablerange":
-                        this.ProcessRecord_Databasemissedrecoverablerange();
+                    case "DatabaseMissedRecoverableRange":
+                        this.ProcessRecord_DatabaseMissedRecoverableRange();
                         break;
-                    case "Alldatabaserestorefile":
-                        this.ProcessRecord_Alldatabaserestorefile();
+                    case "AllDatabaseRestoreFile":
+                        this.ProcessRecord_AllDatabaseRestoreFile();
                         break;
-                    case "Databaselivemount":
-                        this.ProcessRecord_Databaselivemount();
+                    case "DatabaseLiveMount":
+                        this.ProcessRecord_DatabaseLiveMount();
                         break;
-                    case "Defaultpropertie":
-                        this.ProcessRecord_Defaultpropertie();
+                    case "DefaultPropertie":
+                        this.ProcessRecord_DefaultPropertie();
                         break;
-                    case "Databaserestoreestimate":
-                        this.ProcessRecord_Databaserestoreestimate();
+                    case "DatabaseRestoreEstimate":
+                        this.ProcessRecord_DatabaseRestoreEstimate();
                         break;
-                    case "Cdmlogshippingtarget":
-                        this.ProcessRecord_Cdmlogshippingtarget();
+                    case "CdmLogShippingTarget":
+                        this.ProcessRecord_CdmLogShippingTarget();
                         break;
-                    case "Logshippingtarget":
-                        this.ProcessRecord_Logshippingtarget();
+                    case "LogShippingTarget":
+                        this.ProcessRecord_LogShippingTarget();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -428,9 +338,9 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
 
         // This parameter set invokes a single graphql operation:
         // mssqlTopLevelDescendants.
-        protected void ProcessRecord_Topleveldescendant()
+        protected void ProcessRecord_TopLevelDescendant()
         {
-            this._logger.name += " -Topleveldescendant";
+            this._logger.name += " -TopLevelDescendant";
             // Invoke graphql operation mssqlTopLevelDescendants
             InvokeQueryMssqlTopLevelDescendants();
         }
@@ -446,9 +356,9 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
 
         // This parameter set invokes a single graphql operation:
         // mssqlAvailabilityGroup.
-        protected void ProcessRecord_Availabilitygroup()
+        protected void ProcessRecord_AvailabilityGroup()
         {
-            this._logger.name += " -Availabilitygroup";
+            this._logger.name += " -AvailabilityGroup";
             // Invoke graphql operation mssqlAvailabilityGroup
             InvokeQueryMssqlAvailabilityGroup();
         }
@@ -464,90 +374,90 @@ GraphQL argument filters: [MssqlDatabaseLiveMountFilterInput!]"
 
         // This parameter set invokes a single graphql operation:
         // mssqlRecoverableRanges.
-        protected void ProcessRecord_Recoverablerange()
+        protected void ProcessRecord_RecoverableRange()
         {
-            this._logger.name += " -Recoverablerange";
+            this._logger.name += " -RecoverableRange";
             // Invoke graphql operation mssqlRecoverableRanges
             InvokeQueryMssqlRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseMissedSnapshots.
-        protected void ProcessRecord_Databasemissedsnapshot()
+        protected void ProcessRecord_DatabaseMissedSnapshot()
         {
-            this._logger.name += " -Databasemissedsnapshot";
+            this._logger.name += " -DatabaseMissedSnapshot";
             // Invoke graphql operation mssqlDatabaseMissedSnapshots
             InvokeQueryMssqlDatabaseMissedSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlCompatibleInstances.
-        protected void ProcessRecord_Compatibleinstance()
+        protected void ProcessRecord_CompatibleInstance()
         {
-            this._logger.name += " -Compatibleinstance";
+            this._logger.name += " -CompatibleInstance";
             // Invoke graphql operation mssqlCompatibleInstances
             InvokeQueryMssqlCompatibleInstances();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseMissedRecoverableRanges.
-        protected void ProcessRecord_Databasemissedrecoverablerange()
+        protected void ProcessRecord_DatabaseMissedRecoverableRange()
         {
-            this._logger.name += " -Databasemissedrecoverablerange";
+            this._logger.name += " -DatabaseMissedRecoverableRange";
             // Invoke graphql operation mssqlDatabaseMissedRecoverableRanges
             InvokeQueryMssqlDatabaseMissedRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // allMssqlDatabaseRestoreFiles.
-        protected void ProcessRecord_Alldatabaserestorefile()
+        protected void ProcessRecord_AllDatabaseRestoreFile()
         {
-            this._logger.name += " -Alldatabaserestorefile";
+            this._logger.name += " -AllDatabaseRestoreFile";
             // Invoke graphql operation allMssqlDatabaseRestoreFiles
             InvokeQueryAllMssqlDatabaseRestoreFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseLiveMounts.
-        protected void ProcessRecord_Databaselivemount()
+        protected void ProcessRecord_DatabaseLiveMount()
         {
-            this._logger.name += " -Databaselivemount";
+            this._logger.name += " -DatabaseLiveMount";
             // Invoke graphql operation mssqlDatabaseLiveMounts
             InvokeQueryMssqlDatabaseLiveMounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDefaultProperties.
-        protected void ProcessRecord_Defaultpropertie()
+        protected void ProcessRecord_DefaultPropertie()
         {
-            this._logger.name += " -Defaultpropertie";
+            this._logger.name += " -DefaultPropertie";
             // Invoke graphql operation mssqlDefaultProperties
             InvokeQueryMssqlDefaultProperties();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlDatabaseRestoreEstimate.
-        protected void ProcessRecord_Databaserestoreestimate()
+        protected void ProcessRecord_DatabaseRestoreEstimate()
         {
-            this._logger.name += " -Databaserestoreestimate";
+            this._logger.name += " -DatabaseRestoreEstimate";
             // Invoke graphql operation mssqlDatabaseRestoreEstimate
             InvokeQueryMssqlDatabaseRestoreEstimate();
         }
 
         // This parameter set invokes a single graphql operation:
         // cdmMssqlLogShippingTargets.
-        protected void ProcessRecord_Cdmlogshippingtarget()
+        protected void ProcessRecord_CdmLogShippingTarget()
         {
-            this._logger.name += " -Cdmlogshippingtarget";
+            this._logger.name += " -CdmLogShippingTarget";
             // Invoke graphql operation cdmMssqlLogShippingTargets
             InvokeQueryCdmMssqlLogShippingTargets();
         }
 
         // This parameter set invokes a single graphql operation:
         // mssqlLogShippingTargets.
-        protected void ProcessRecord_Logshippingtarget()
+        protected void ProcessRecord_LogShippingTarget()
         {
-            this._logger.name += " -Logshippingtarget";
+            this._logger.name += " -LogShippingTarget";
             // Invoke graphql operation mssqlLogShippingTargets
             InvokeQueryMssqlLogShippingTargets();
         }

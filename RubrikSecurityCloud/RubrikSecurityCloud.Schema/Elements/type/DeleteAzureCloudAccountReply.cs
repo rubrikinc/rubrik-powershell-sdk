@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteAzureCloudAccountReply";
+    }
+
     public DeleteAzureCloudAccountReply Set(
         List<DeleteAzureCloudAccountStatus>? Status = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ConfigProtectionBackupsEdge";
+    }
+
     public ConfigProtectionBackupsEdge Set(
         System.String? Cursor = null,
         ConfigProtectionBackups? Node = null

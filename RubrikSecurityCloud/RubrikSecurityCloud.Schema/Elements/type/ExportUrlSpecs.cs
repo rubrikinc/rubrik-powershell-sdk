@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExportUrlSpecs";
+    }
+
     public ExportUrlSpecs Set(
         System.String? BlobName = null,
         System.String? BlobSasUri = null,

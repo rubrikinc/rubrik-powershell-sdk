@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaRecoverableRange";
+    }
+
     public SapHanaRecoverableRange Set(
         System.String? BaseFullSnapshotId = null,
         System.String? CdmId = null,

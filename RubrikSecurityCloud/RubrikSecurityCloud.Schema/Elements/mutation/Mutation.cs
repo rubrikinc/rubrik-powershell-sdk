@@ -1797,6 +1797,21 @@ namespace RubrikSecurityCloud.Types
             return new string("patchAwsIamUserBasedCloudAccount" + args + "\n");
         }
 
+        //      C# -> System.String? PauseClusterAlerts
+        // GraphQL -> pauseClusterAlerts: Void (scalar)
+        public static string PauseClusterAlerts(
+            ref System.String? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = "FETCH" ;
+            }
+            return new string("pauseClusterAlerts" + args + "\n");
+        }
+
         //      C# -> System.String? PromoteReaderTarget
         // GraphQL -> promoteReaderTarget: Void (scalar)
         public static string PromoteReaderTarget(
@@ -2260,6 +2275,21 @@ namespace RubrikSecurityCloud.Types
                 fieldSpec = "FETCH" ;
             }
             return new string("unlockUsersByAdmin" + args + "\n");
+        }
+
+        //      C# -> System.String? UnpauseClusterAlerts
+        // GraphQL -> unpauseClusterAlerts: Void (scalar)
+        public static string UnpauseClusterAlerts(
+            ref System.String? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if ( fieldSpec == null ) {
+                // there is no field spec for scalar types, but we still
+                // populate the fieldSpec so that caller can see the type 
+                fieldSpec = "FETCH" ;
+            }
+            return new string("unpauseClusterAlerts" + args + "\n");
         }
 
         //      C# -> System.Boolean? UpdateAccountOwner
@@ -4569,6 +4599,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> CompleteAtlassianAuthConsentReply? CompleteAtlassianAuthConsent
+        // GraphQL -> completeAtlassianAuthConsent: CompleteAtlassianAuthConsentReply! (type)
+        public static string CompleteAtlassianAuthConsent(
+            ref CompleteAtlassianAuthConsentReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new CompleteAtlassianAuthConsentReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "completeAtlassianAuthConsent" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> CompleteAzureAdAppSetupReply? CompleteAzureAdAppSetup
         // GraphQL -> completeAzureAdAppSetup: CompleteAzureAdAppSetupReply! (type)
         public static string CompleteAzureAdAppSetup(
@@ -4619,6 +4667,42 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "configureSapHanaRestore" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AsyncRequestStatus? CreateActiveDirectoryLiveMount
+        // GraphQL -> createActiveDirectoryLiveMount: AsyncRequestStatus! (type)
+        public static string CreateActiveDirectoryLiveMount(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "createActiveDirectoryLiveMount" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AsyncRequestStatus? CreateActiveDirectoryUnmount
+        // GraphQL -> createActiveDirectoryUnmount: AsyncRequestStatus! (type)
+        public static string CreateActiveDirectoryUnmount(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "createActiveDirectoryUnmount" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -7719,6 +7803,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> RequestSuccess? ExcludeVmDisks
+        // GraphQL -> excludeVmDisks: RequestSuccess! (type)
+        public static string ExcludeVmDisks(
+            ref RequestSuccess? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new RequestSuccess() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "excludeVmDisks" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> AsyncRequestStatus? ExpireDownloadedDb2Snapshots
         // GraphQL -> expireDownloadedDb2Snapshots: AsyncRequestStatus! (type)
         public static string ExpireDownloadedDb2Snapshots(
@@ -8673,6 +8775,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> AsyncRequestStatus? ModifyActiveDirectoryLiveMount
+        // GraphQL -> modifyActiveDirectoryLiveMount: AsyncRequestStatus! (type)
+        public static string ModifyActiveDirectoryLiveMount(
+            ref AsyncRequestStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new AsyncRequestStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "modifyActiveDirectoryLiveMount" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> ModifyIpmiReply? ModifyIpmi
         // GraphQL -> modifyIpmi: ModifyIpmiReply! (type)
         public static string ModifyIpmi(
@@ -8849,6 +8969,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "o365SetupKickoff" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> PatchDb2DatabaseReply? PatchDb2Database
+        // GraphQL -> patchDb2Database: PatchDb2DatabaseReply! (type)
+        public static string PatchDb2Database(
+            ref PatchDb2DatabaseReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new PatchDb2DatabaseReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "patchDb2Database" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -9609,6 +9747,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> ReplaceClusterNodeReply? ReplaceClusterNode
+        // GraphQL -> replaceClusterNode: ReplaceClusterNodeReply! (type)
+        public static string ReplaceClusterNode(
+            ref ReplaceClusterNodeReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new ReplaceClusterNodeReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "replaceClusterNode" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> AsyncRequestStatus? ReseedLogShippingSecondary
         // GraphQL -> reseedLogShippingSecondary: AsyncRequestStatus! (type)
         public static string ReseedLogShippingSecondary(
@@ -10005,6 +10161,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> BatchAsyncJobStatus? RunPrechecks
+        // GraphQL -> runPrechecks: BatchAsyncJobStatus! (type)
+        public static string RunPrechecks(
+            ref BatchAsyncJobStatus? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new BatchAsyncJobStatus() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "runPrechecks" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> List<UpgradeJobReplyWithUuid>? ScheduleUpgradeBatchJob
         // GraphQL -> scheduleUpgradeBatchJob: [UpgradeJobReplyWithUuid!]! (type)
         public static string ScheduleUpgradeBatchJob(
@@ -10311,6 +10485,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> SetupAtlassianSiteReply? SetupAtlassianSite
+        // GraphQL -> setupAtlassianSite: SetupAtlassianSiteReply! (type)
+        public static string SetupAtlassianSite(
+            ref SetupAtlassianSiteReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new SetupAtlassianSiteReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "setupAtlassianSite" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> SetupAzureO365ExocomputeResp? SetupAzureO365Exocompute
         // GraphQL -> setupAzureO365Exocompute: SetupAzureO365ExocomputeResp! (type)
         public static string SetupAzureO365Exocompute(
@@ -10361,6 +10553,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "setupDisk" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> StartAtlassianAuthConsentReply? StartAtlassianAuthConsent
+        // GraphQL -> startAtlassianAuthConsent: StartAtlassianAuthConsentReply! (type)
+        public static string StartAtlassianAuthConsent(
+            ref StartAtlassianAuthConsentReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+           if (fieldSpec == null)
+            {
+                fieldSpec = new StartAtlassianAuthConsentReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "startAtlassianAuthConsent" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

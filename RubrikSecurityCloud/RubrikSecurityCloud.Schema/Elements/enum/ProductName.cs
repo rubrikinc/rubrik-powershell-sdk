@@ -39,6 +39,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "RADAR")]
         RADAR,
 
+        [EnumMember(Value = "RADAR_NAS")]
+        RADAR_NAS,
+
         [EnumMember(Value = "RADAR_UCL")]
         RADAR_UCL,
 
@@ -56,6 +59,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SONAR")]
         SONAR,
+
+        [EnumMember(Value = "SONAR_NAS")]
+        SONAR_NAS,
 
         [EnumMember(Value = "SONAR_UCL")]
         SONAR_UCL,

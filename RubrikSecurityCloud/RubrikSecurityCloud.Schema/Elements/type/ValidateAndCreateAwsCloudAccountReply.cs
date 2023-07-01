@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateAndCreateAwsCloudAccountReply";
+    }
+
     public ValidateAndCreateAwsCloudAccountReply Set(
         AwsCloudAccountCreateResponse? InitiateResponse = null,
         AwsCloudAccountValidateResponse? ValidateResponse = null

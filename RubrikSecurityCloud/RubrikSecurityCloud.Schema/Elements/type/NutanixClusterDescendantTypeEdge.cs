@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixClusterDescendantTypeEdge";
+    }
+
     public NutanixClusterDescendantTypeEdge Set(
         NutanixClusterDescendantType? Node = null,
         System.String? Cursor = null

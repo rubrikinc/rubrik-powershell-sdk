@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateClusterPauseStatusReply";
+    }
+
     public UpdateClusterPauseStatusReply Set(
         List<ClusterPauseStatusResult>? PauseStatuses = null
     ) 

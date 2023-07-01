@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WorkloadGroupByInfo";
+    }
+
     public WorkloadGroupByInfo Set(
         WorkloadGroupByEnum? GroupByField = null,
         System.String? GroupByValue = null

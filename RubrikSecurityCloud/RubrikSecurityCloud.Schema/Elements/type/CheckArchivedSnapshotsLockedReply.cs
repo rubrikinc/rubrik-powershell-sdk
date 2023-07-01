@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CheckArchivedSnapshotsLockedReply";
+    }
+
     public CheckArchivedSnapshotsLockedReply Set(
         List<System.String>? InvalidSnapshotIds = null,
         List<System.String>? LockedSnapshotIds = null,

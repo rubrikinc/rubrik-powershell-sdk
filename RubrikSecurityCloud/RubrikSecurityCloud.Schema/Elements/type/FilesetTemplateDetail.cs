@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetTemplateDetail";
+    }
+
     public FilesetTemplateDetail Set(
         System.Int32? HostCount = null,
         System.String? Id = null,

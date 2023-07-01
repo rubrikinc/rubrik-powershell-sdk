@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsExocomputeConfigsDeletionStatusType";
+    }
+
     public AwsExocomputeConfigsDeletionStatusType Set(
         System.String? ExocomputeConfigId = null,
         System.Boolean? Success = null

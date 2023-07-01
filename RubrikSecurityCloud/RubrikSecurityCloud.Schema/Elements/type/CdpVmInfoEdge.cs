@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdpVmInfoEdge";
+    }
+
     public CdpVmInfoEdge Set(
         System.String? Cursor = null,
         CdpVmInfo? Node = null

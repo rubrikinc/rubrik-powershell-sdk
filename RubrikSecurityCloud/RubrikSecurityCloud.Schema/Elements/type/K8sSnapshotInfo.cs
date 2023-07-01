@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "K8sSnapshotInfo";
+    }
+
     public K8sSnapshotInfo Set(
         DateTime? ExpirationTime = null,
         System.Boolean? IsArchived = null,

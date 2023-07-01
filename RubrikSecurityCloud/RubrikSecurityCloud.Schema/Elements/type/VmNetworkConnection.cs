@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmNetworkConnection";
+    }
+
     public VmNetworkConnection Set(
         VmNetworkAddressingMode? IpAddressingMode = null,
         System.String? AdapterType = null,

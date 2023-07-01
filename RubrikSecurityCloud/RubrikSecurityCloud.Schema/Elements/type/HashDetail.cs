@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HashDetail";
+    }
+
     public HashDetail Set(
         System.String? HashType = null,
         System.String? HashValue = null

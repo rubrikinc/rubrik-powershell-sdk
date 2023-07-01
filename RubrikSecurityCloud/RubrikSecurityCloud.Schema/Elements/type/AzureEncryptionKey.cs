@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureEncryptionKey";
+    }
+
     public AzureEncryptionKey Set(
         System.String? KeyName = null
     ) 

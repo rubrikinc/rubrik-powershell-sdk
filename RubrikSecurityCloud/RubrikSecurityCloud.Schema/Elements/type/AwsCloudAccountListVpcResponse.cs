@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsCloudAccountListVpcResponse";
+    }
+
     public AwsCloudAccountListVpcResponse Set(
         List<CloudAccountVpc>? Result = null
     ) 

@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AccessUser";
+    }
+
     public AccessUser Set(
         System.Int64? ActivityDelta = null,
         System.String? Email = null,

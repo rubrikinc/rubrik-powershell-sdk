@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UnmanagedObjectDetailEdge";
+    }
+
     public UnmanagedObjectDetailEdge Set(
         System.String? Cursor = null,
         UnmanagedObjectDetail? Node = null

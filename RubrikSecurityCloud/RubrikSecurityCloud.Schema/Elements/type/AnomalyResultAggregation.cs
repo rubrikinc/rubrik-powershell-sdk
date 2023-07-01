@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnomalyResultAggregation";
+    }
+
     public AnomalyResultAggregation Set(
         System.Int64? BytesAdded = null,
         System.Int64? BytesDeleted = null,

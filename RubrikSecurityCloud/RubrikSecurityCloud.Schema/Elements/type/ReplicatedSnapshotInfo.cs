@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReplicatedSnapshotInfo";
+    }
+
     public ReplicatedSnapshotInfo Set(
         DateTime? Date = null,
         DateTime? ExpirationDate = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActiveDirectoryDomainControllerConnection";
+    }
+
     public ActiveDirectoryDomainControllerConnection Set(
         System.Int32? Count = null,
         List<ActiveDirectoryDomainControllerEdge>? Edges = null,

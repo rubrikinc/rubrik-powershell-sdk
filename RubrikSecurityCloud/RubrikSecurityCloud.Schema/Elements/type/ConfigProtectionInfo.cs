@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ConfigProtectionInfo";
+    }
+
     public ConfigProtectionInfo Set(
         ConfigProtectionStatus? ConfigProtectionStatus = null,
         UploadLocationType? UploadLocation = null,

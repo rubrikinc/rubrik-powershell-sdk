@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CsrConnection";
+    }
+
     public CsrConnection Set(
         System.Int32? Count = null,
         List<CsrEdge>? Edges = null,

@@ -205,6 +205,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlDbSummary";
+    }
+
     public MssqlDbSummary Set(
         MssqlDbSummaryRecoveryModel? RecoveryModel = null,
         System.String? AvailabilityGroupId = null,

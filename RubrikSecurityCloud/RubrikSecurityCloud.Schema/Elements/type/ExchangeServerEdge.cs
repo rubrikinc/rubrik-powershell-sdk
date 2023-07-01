@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExchangeServerEdge";
+    }
+
     public ExchangeServerEdge Set(
         System.String? Cursor = null,
         ExchangeServer? Node = null

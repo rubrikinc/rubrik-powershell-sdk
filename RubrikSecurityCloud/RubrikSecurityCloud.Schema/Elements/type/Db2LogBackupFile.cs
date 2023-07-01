@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2LogBackupFile";
+    }
+
     public Db2LogBackupFile Set(
         System.Int64? BackupFileSizeInBytes = null,
         System.String? BackupId = null,

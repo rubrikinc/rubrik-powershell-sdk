@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetSMTPConfigurationReply";
+    }
+
     public GetSmtpConfigurationReply Set(
         SmtpSecurityTypeEnum? SecurityType = null,
         System.String? DefaultFromEmail = null,

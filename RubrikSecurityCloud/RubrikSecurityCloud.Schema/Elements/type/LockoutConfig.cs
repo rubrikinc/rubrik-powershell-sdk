@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LockoutConfig";
+    }
+
     public LockoutConfig Set(
         System.Int32? AccountAutoUnlockDurationInMins = null,
         System.Boolean? IsAutoUnlockFeatureEnabled = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterNode";
+    }
+
     public FailoverClusterNode Set(
         FailoverClusterNodeConnectionStatus? ConnectionStatus = null,
         System.String? Id = null,

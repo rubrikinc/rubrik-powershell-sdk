@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StartBulkRecoveryReply";
+    }
+
     public StartBulkRecoveryReply Set(
         System.String? BulkRecoveryInstanceId = null,
         System.String? Error = null,

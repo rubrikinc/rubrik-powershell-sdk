@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BatchVmwareCdpLiveInfo";
+    }
+
     public BatchVmwareCdpLiveInfo Set(
         List<VmwareCdpLiveInfo>? Responses = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReplicationToCloudLocationSpec";
+    }
+
     public ReplicationToCloudLocationSpec Set(
         Duration? RetentionDuration = null,
         TargetMapping? TargetMapping = null

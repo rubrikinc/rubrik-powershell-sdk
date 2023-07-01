@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActivitySeriesGroupByEdge";
+    }
+
     public ActivitySeriesGroupByEdge Set(
         System.String? Cursor = null,
         ActivitySeriesGroupBy? Node = null

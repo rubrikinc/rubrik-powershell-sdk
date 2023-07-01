@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappVmRestoreSpec";
+    }
+
     public VappVmRestoreSpec Set(
         System.String? Name = null,
         System.String? StoragePolicyId = null,

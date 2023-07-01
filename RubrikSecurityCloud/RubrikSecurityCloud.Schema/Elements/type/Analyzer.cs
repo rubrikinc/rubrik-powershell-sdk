@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Analyzer";
+    }
+
     public Analyzer Set(
         AnalyzerTypeEnum? AnalyzerType = null,
         RiskLevelType? Risk = null,

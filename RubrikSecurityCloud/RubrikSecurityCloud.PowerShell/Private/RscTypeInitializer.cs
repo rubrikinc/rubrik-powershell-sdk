@@ -271,11 +271,11 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             Type genericArgumentType = currentProperty.PropertyType
                                 .GetGenericArguments()[0];
 
-                            if (returnInstance.GetType()
+                            if (currentObject.GetType()
                                 .GetProperty(requestedPropertyTree[i],
                                     BindingFlags.IgnoreCase |
                                     BindingFlags.Instance |
-                                    BindingFlags.Public).GetValue(returnInstance) == null)
+                                    BindingFlags.Public).GetValue(currentObject) == null)
                             {
                                 // Reassign genericArgumentType to currentPropertyType
                                 // to make the code easier to read later on.

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmNicMapEntry";
+    }
+
     public VmNicMapEntry Set(
         System.String? SourceNicAdapterType = null,
         System.String? SourceNicId = null,

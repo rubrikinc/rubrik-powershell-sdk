@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ComputeClusterIofilterStatus";
+    }
+
     public ComputeClusterIofilterStatus Set(
         System.String? ComputeClusterFid = null,
         System.String? ComputeClusterName = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateAzureCloudAccountStatus";
+    }
+
     public UpdateAzureCloudAccountStatus Set(
         System.String? AzureSubscriptionNativeId = null,
         System.Boolean? IsSuccess = null

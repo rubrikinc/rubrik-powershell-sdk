@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlDatabaseLiveMountEdge";
+    }
+
     public MssqlDatabaseLiveMountEdge Set(
         System.String? Cursor = null,
         MssqlDatabaseLiveMount? Node = null

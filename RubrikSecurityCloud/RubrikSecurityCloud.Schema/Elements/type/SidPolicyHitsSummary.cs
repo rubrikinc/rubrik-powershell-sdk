@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SidPolicyHitsSummary";
+    }
+
     public SidPolicyHitsSummary Set(
         List<System.String>? AnalyzerNames = null,
         System.String? Principal = null,

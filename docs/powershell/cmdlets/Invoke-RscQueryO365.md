@@ -1,23 +1,23 @@
 # Invoke-RscQueryO365
 ## Subcommands
-### Alladgroup
+### alladgroup
 All AD Groups belonging to the O365 organization.
 
 - There are 2 arguments.
     - orgId - System.String: Org UUID.
     - adGroupSearchFilter - System.String: AD group search filter.
 - Returns list of AdGroups.
-### Allorgstatus
+### allorgstatus
 Gets the status of each org in the account.
 
-- The Allorgstatus subcommand takes no arguments.
+- The allorgstatus subcommand takes no arguments.
 - Returns list of O365OrgInfos.
-### Allsubscriptionsapptypecount
+### allsubscriptionsapptypecount
 Returns the total number of apps of each type, for each O365 org.
 
-- The Allsubscriptionsapptypecount subcommand takes no arguments.
+- The allsubscriptionsapptypecount subcommand takes no arguments.
 - Returns list of O365SubscriptionAppTypeCountss.
-### Browseteamconvchannel
+### browseteamconvchannel
 Browse channels in a Teams conversations snapshot.
 
 - There are 8 arguments.
@@ -30,12 +30,12 @@ Browse channels in a Teams conversations snapshot.
     - channelMembershipTypeFilter - ChannelMembershipType: Filter on channel membership type.
     - nameFilter - System.String
 - Returns O365TeamConvChannelConnection.
-### Calendar
+### calendar
 Details of the Exchange calendar pertaining to the snappable ID.
 
 - There is a single argument of type System.String.
 - Returns O365Calendar.
-### Group
+### group
 List of O365 Groups in the O365Org.
 
 - There are 7 arguments.
@@ -47,12 +47,12 @@ List of O365 Groups in the O365Org.
     - o365OrgId - System.String: The fid for the O365 organization.
     - snappableType - SnappableType
 - Returns O365GroupConnection.
-### License
+### license
 Retrieve o365 licence details.
 
-- The License subcommand takes no arguments.
+- The license subcommand takes no arguments.
 - Returns O365License.
-### Listapp
+### listapp
 Lists the O365 apps.
 
 - There are 4 arguments.
@@ -61,12 +61,12 @@ Lists the O365 apps.
     - o365AppFilters - list of AppFilters
     - o365AppSortByParam - AppSortByParam
 - Returns O365AppConnection.
-### Mailbox
+### mailbox
 Details for the Exchange mailbox corresponding to the snappable ID.
 
 - There is a single argument of type System.String.
 - Returns O365Mailbox.
-### Mailboxe
+### mailboxe
 List of Mailboxes in the O365Org.
 
 - There are 6 arguments.
@@ -77,50 +77,50 @@ List of Mailboxes in the O365Org.
     - filter - list of Filters: The hierarchy object filter.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns O365MailboxConnection.
-### Objectancestor
+### objectancestor
 - There is a single argument of type System.String.
 - Returns GetImplicitlyAuthorizedAncestorSummariesResponse.
-### Onedrive
+### onedrive
 Details for the OneDrive corresponding to the snappable ID.
 
 - There is a single argument of type System.String.
 - Returns O365Onedrive.
-### Org
+### org
 Details of the O365Org.
 
 - There is a single argument of type System.String.
 - Returns O365Org.
-### Orgatsnappablelevel
+### orgatsnappablelevel
 Details of the O365Org at snappable level, given the snappable type.
 
 - There are 2 arguments.
     - fid - System.String: The Rubrik UUID for the object.
     - snappableType - SnappableType
 - Returns O365Org.
-### Orgsummarie
-- The Orgsummarie subcommand takes no arguments.
+### orgsummarie
+- The orgsummarie subcommand takes no arguments.
 - Returns GetImplicitlyAuthorizedObjectSummariesResponse.
-### Serviceaccount
+### serviceaccount
 Gets the service account for the given org.
 
 - There is a single argument of type System.String.
 - Returns O365ServiceAccountStatusResp.
-### Servicestatus
+### servicestatus
 Returns the service status of the O365 service running on MSFT server.
 
 - There is a single argument of type System.String.
 - Returns GetO365ServiceStatusResp.
-### Sharepointdrive
+### sharepointdrive
 Details for the SharePoint drive corresponding to the snappable ID.
 
 - There is a single argument of type System.String.
 - Returns O365SharepointDrive.
-### Sharepointlist
+### sharepointlist
 Details for the SharePoint list corresponding to the snappable ID.
 
 - There is a single argument of type System.String.
 - Returns O365SharepointList.
-### Sharepointobject
+### sharepointobject
 - There are 6 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -129,7 +129,7 @@ Details for the SharePoint list corresponding to the snappable ID.
     - filter - list of Filters: The hierarchy object filter.
     - fid - System.String: The Rubrik UUID for the object.
 - Returns O365SharepointObjectConnection.
-### Sharepointobjectlist
+### sharepointobjectlist
 Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
 
 - There are 8 arguments.
@@ -142,27 +142,27 @@ Returns the sharepoint objects after filtering on the object types and includeEn
     - includeEntireHierarchy - System.Boolean: If true, the entire hierarchy will be searched.
     - fid - System.String: The Rubrik UUID for the object.
 - Returns O365SharepointObjectConnection.
-### Sharepointsite
+### sharepointsite
 Details for the SharePoint site corresponding to the site ID.
 
 - There is a single argument of type System.String.
 - Returns O365Site.
-### Site
+### site
 Details for the SharePoint site corresponding to the snappable ID.
 
 - There is a single argument of type System.String.
 - Returns O365Site.
-### Storagestat
+### storagestat
 Returns the storage stats of an O365 org.
 
 - There is a single argument of type System.String.
 - Returns GetO365StorageStatsResp.
-### Team
+### team
 Details for the team corresponding to the snappable ID.
 
 - There is a single argument of type System.String.
 - Returns O365Teams.
-### Teamchannel
+### teamchannel
 List of Channels for the O365Team.
 
 - There are 6 arguments.
@@ -173,7 +173,7 @@ List of Channels for the O365Team.
     - channelMembershipTypeFilter - ChannelMembershipType: Filter on channel membership type.
     - nameFilter - System.String
 - Returns O365TeamsChannelConnection.
-### Teamconversationsfolderid
+### teamconversationsfolderid
 ID for the conversations folder in the Team's Group Mailbox.
 
 - There are 3 arguments.
@@ -181,7 +181,7 @@ ID for the conversations folder in the Team's Group Mailbox.
     - snapshotFid - System.String: The ID of the snapshot.
     - o365OrgId - System.String: The fid for the O365 organization.
 - Returns System.String.
-### Teampostedby
+### teampostedby
 Users who have posted in a team.
 
 - There are 5 arguments.
@@ -191,12 +191,12 @@ Users who have posted in a team.
     - o365OrgId - System.String: The fid for the O365 organization.
     - nameFilter - System.String
 - Returns O365TeamConversationsSenderConnection.
-### User
+### user
 Details for the O365 user corresponding to the ID.
 
 - There is a single argument of type System.String.
 - Returns O365User.
-### Userobject
+### userobject
 Name, id, object type, and mail address of user descendant object.
 
 - There are 6 arguments.

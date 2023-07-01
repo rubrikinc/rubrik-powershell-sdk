@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ChildRecoverySpecMap";
+    }
+
     public ChildRecoverySpecMap Set(
         RecoverySpec? RecoverySpec = null,
         SlaDomain? Sla = null,

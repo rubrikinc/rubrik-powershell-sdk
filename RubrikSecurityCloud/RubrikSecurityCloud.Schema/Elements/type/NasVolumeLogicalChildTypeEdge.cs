@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NasVolumeLogicalChildTypeEdge";
+    }
+
     public NasVolumeLogicalChildTypeEdge Set(
         NasVolumeLogicalChildType? Node = null,
         System.String? Cursor = null

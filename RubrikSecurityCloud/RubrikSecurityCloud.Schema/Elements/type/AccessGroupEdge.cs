@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AccessGroupEdge";
+    }
+
     public AccessGroupEdge Set(
         System.String? Cursor = null,
         AccessGroup? Node = null

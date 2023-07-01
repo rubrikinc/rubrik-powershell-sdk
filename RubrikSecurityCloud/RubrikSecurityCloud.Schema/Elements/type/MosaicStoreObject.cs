@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicStoreObject";
+    }
+
     public MosaicStoreObject Set(
         MosaicStoreObjectStoreType? StoreType = null,
         System.String? Id = null,

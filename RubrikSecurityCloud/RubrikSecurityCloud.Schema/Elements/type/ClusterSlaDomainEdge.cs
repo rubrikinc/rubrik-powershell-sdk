@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterSlaDomainEdge";
+    }
+
     public ClusterSlaDomainEdge Set(
         System.String? Cursor = null,
         ClusterSlaDomain? Node = null

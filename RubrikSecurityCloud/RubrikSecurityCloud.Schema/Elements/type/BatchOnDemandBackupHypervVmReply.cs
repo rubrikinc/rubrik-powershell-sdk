@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BatchOnDemandBackupHypervVmReply";
+    }
+
     public BatchOnDemandBackupHypervVmReply Set(
         List<HypervAsyncRequestFailureSummary>? FailedRequests = null,
         List<HypervAsyncRequestSuccessSummary>? SuccessfulRequests = null

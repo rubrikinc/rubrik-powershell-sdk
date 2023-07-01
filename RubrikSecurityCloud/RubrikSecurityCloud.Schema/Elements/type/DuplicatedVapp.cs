@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DuplicatedVapp";
+    }
+
     public DuplicatedVapp Set(
         SlaAssignmentTypeEnum? SlaAssignment = null,
         SlaDomain? EffectiveSlaDomain = null,

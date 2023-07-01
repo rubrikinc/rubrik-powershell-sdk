@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateAndSaveCustomerKmsInfoReply";
+    }
+
     public ValidateAndSaveCustomerKmsInfoReply Set(
         System.String? ErrorMessage = null,
         System.String? InputFieldName = null

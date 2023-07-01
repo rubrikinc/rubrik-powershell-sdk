@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnomalyInfo";
+    }
+
     public AnomalyInfo Set(
         List<StrainInfo>? StrainAnalysisInfo = null
     ) 

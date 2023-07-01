@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskSummaryAggregation";
+    }
+
     public TaskSummaryAggregation Set(
         System.Int32? NumOfCanceled = null,
         System.Int32? NumOfExpected = null,

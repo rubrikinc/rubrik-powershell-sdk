@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalEdge";
+    }
+
     public PrincipalEdge Set(
         System.String? Cursor = null,
         Principal? Node = null

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LogConfigResult";
+    }
+
     public LogConfigResult Set(
         SlaLogFrequencyConfigResult? SlaLogFrequencyConfig = null
     ) 

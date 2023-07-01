@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DownloadCdmUpgradesPdfReply";
+    }
+
     public DownloadCdmUpgradesPdfReply Set(
         System.String? DownloadLink = null
     ) 

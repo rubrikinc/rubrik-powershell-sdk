@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongoSnapshotGroupBy";
+    }
+
     public MongoSnapshotGroupBy Set(
         CdmSnapshotConnection? MongoSnapshotConnection = null,
         List<MongoSnapshotGroupBy>? MongoSnapshotGroupByField = null,

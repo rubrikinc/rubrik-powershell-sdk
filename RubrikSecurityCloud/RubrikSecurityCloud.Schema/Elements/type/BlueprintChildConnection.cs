@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlueprintChildConnection";
+    }
+
     public BlueprintChildConnection Set(
         List<BlueprintChild>? Nodes = null,
         System.Int32? Count = null,

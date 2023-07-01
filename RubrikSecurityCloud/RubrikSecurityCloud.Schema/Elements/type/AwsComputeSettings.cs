@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsComputeSettings";
+    }
+
     public AwsComputeSettings Set(
         AwsRegion? Region = null,
         CloudAccount? CloudAccount = null,

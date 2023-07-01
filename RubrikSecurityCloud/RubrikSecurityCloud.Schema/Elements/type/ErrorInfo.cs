@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ErrorInfo";
+    }
+
     public ErrorInfo Set(
         System.String? ErrorMessage = null,
         System.Int32? StatusCode = null

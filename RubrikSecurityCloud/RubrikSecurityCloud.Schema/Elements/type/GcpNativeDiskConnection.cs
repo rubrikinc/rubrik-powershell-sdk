@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeDiskConnection";
+    }
+
     public GcpNativeDiskConnection Set(
         System.Int32? Count = null,
         List<GcpNativeDiskEdge>? Edges = null,

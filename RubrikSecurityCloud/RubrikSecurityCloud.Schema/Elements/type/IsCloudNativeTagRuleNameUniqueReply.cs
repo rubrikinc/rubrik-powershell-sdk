@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "IsCloudNativeTagRuleNameUniqueReply";
+    }
+
     public IsCloudNativeTagRuleNameUniqueReply Set(
         System.Boolean? IsUnique = null
     ) 

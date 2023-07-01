@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "JobReply";
+    }
+
     public JobReply Set(
         System.String? ClusterName = null,
         System.String? ClusterUuid = null,

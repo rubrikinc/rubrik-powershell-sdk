@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SmbDomainDetail";
+    }
+
     public SmbDomainDetail Set(
         SmbDomainStatus? Status = null,
         System.Boolean? IsStickySmbService = null,

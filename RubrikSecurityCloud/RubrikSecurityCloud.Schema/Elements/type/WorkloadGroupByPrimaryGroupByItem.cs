@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WorkloadGroupByPrimaryGroupByItem";
+    }
+
     public WorkloadGroupByPrimaryGroupByItem Set(
         WorkloadGroupByAggregationData? AggregationData = null,
         WorkloadGroupByInfo? GroupByInfo = null,

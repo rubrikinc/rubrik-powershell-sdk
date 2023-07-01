@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterMetric";
+    }
+
     public ClusterMetric Set(
         System.Int64? AvailableCapacity = null,
         System.Int64? IngestedArchivalStorage = null,

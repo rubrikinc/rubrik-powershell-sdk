@@ -21,18 +21,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateOracle",
-        DefaultParameterSetName = "Restorelog")
+        DefaultParameterSetName = "RestoreLog")
     ]
     public class Invoke_RscMutateOracle : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // Bulkupdatehost parameter set
+        // BulkUpdateHost parameter set
         //
         // [GraphQL: bulkUpdateOracleHosts]
         //
         [Parameter(
-            ParameterSetName = "Bulkupdatehost",
+            ParameterSetName = "BulkUpdateHost",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -44,26 +44,16 @@ Update properties to Oracle Host objects.
 [GraphQL: bulkUpdateOracleHosts]",
             Position = 0
         )]
-        public SwitchParameter Bulkupdatehost { get; set; }
+        public SwitchParameter BulkUpdateHost { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Bulkupdatehost",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for V1BulkUpdateOracleHost.
-GraphQL argument input: BulkUpdateOracleHostsInput!"
-        )]
-        public BulkUpdateOracleHostsInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Refreshdatabase parameter set
+        // RefreshDatabase parameter set
         //
         // [GraphQL: refreshOracleDatabase]
         //
         [Parameter(
-            ParameterSetName = "Refreshdatabase",
+            ParameterSetName = "RefreshDatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -75,16 +65,16 @@ Starts an asynchronous job to refresh the Oracle database metadata by querying t
 [GraphQL: refreshOracleDatabase]",
             Position = 0
         )]
-        public SwitchParameter Refreshdatabase { get; set; }
+        public SwitchParameter RefreshDatabase { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatedataguardgroup parameter set
+        // UpdateDataGuardGroup parameter set
         //
         // [GraphQL: updateOracleDataGuardGroup]
         //
         [Parameter(
-            ParameterSetName = "Updatedataguardgroup",
+            ParameterSetName = "UpdateDataGuardGroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -96,16 +86,16 @@ Update properties of an Oracle Data Guard group object.
 [GraphQL: updateOracleDataGuardGroup]",
             Position = 0
         )]
-        public SwitchParameter Updatedataguardgroup { get; set; }
+        public SwitchParameter UpdateDataGuardGroup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deletealldatabasesnapshot parameter set
+        // DeleteAllDatabaseSnapshot parameter set
         //
         // [GraphQL: deleteAllOracleDatabaseSnapshots]
         //
         [Parameter(
-            ParameterSetName = "Deletealldatabasesnapshot",
+            ParameterSetName = "DeleteAllDatabaseSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -117,16 +107,16 @@ Delete all snapshots for a specified Oracle database object. For the operation t
 [GraphQL: deleteAllOracleDatabaseSnapshots]",
             Position = 0
         )]
-        public SwitchParameter Deletealldatabasesnapshot { get; set; }
+        public SwitchParameter DeleteAllDatabaseSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Takeondemanddatabasesnapshot parameter set
+        // TakeOnDemandDatabaseSnapshot parameter set
         //
         // [GraphQL: takeOnDemandOracleDatabaseSnapshot]
         //
         [Parameter(
-            ParameterSetName = "Takeondemanddatabasesnapshot",
+            ParameterSetName = "TakeOnDemandDatabaseSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -138,16 +128,16 @@ Create an asynchronous job for an on-demand snapshot of an Oracle database. The 
 [GraphQL: takeOnDemandOracleDatabaseSnapshot]",
             Position = 0
         )]
-        public SwitchParameter Takeondemanddatabasesnapshot { get; set; }
+        public SwitchParameter TakeOnDemandDatabaseSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Takeondemandlogsnapshot parameter set
+        // TakeOnDemandLogSnapshot parameter set
         //
         // [GraphQL: takeOnDemandOracleLogSnapshot]
         //
         [Parameter(
-            ParameterSetName = "Takeondemandlogsnapshot",
+            ParameterSetName = "TakeOnDemandLogSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -159,16 +149,16 @@ Create an asynchronous job for an on-demand backup of an Oracle database log. Th
 [GraphQL: takeOnDemandOracleLogSnapshot]",
             Position = 0
         )]
-        public SwitchParameter Takeondemandlogsnapshot { get; set; }
+        public SwitchParameter TakeOnDemandLogSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Bulkupdaterac parameter set
+        // BulkUpdateRac parameter set
         //
         // [GraphQL: bulkUpdateOracleRacs]
         //
         [Parameter(
-            ParameterSetName = "Bulkupdaterac",
+            ParameterSetName = "BulkUpdateRac",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -180,16 +170,16 @@ Update the properties of the objects that represent the specified Oracle RAC.
 [GraphQL: bulkUpdateOracleRacs]",
             Position = 0
         )]
-        public SwitchParameter Bulkupdaterac { get; set; }
+        public SwitchParameter BulkUpdateRac { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Exporttablespace parameter set
+        // ExportTablespace parameter set
         //
         // [GraphQL: exportOracleTablespace]
         //
         [Parameter(
-            ParameterSetName = "Exporttablespace",
+            ParameterSetName = "ExportTablespace",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -201,16 +191,16 @@ Request an asynchronous job to export an Oracle tablespace from a specified snap
 [GraphQL: exportOracleTablespace]",
             Position = 0
         )]
-        public SwitchParameter Exporttablespace { get; set; }
+        public SwitchParameter ExportTablespace { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Validateacofile parameter set
+        // ValidateAcoFile parameter set
         //
         // [GraphQL: validateOracleAcoFile]
         //
         [Parameter(
-            ParameterSetName = "Validateacofile",
+            ParameterSetName = "ValidateAcoFile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -222,16 +212,16 @@ Validate the provided Oracle ACO (Advanced Cloning Options) file.
 [GraphQL: validateOracleAcoFile]",
             Position = 0
         )]
-        public SwitchParameter Validateacofile { get; set; }
+        public SwitchParameter ValidateAcoFile { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Validatedatabasebackup parameter set
+        // ValidateDatabaseBackup parameter set
         //
         // [GraphQL: validateOracleDatabaseBackups]
         //
         [Parameter(
-            ParameterSetName = "Validatedatabasebackup",
+            ParameterSetName = "ValidateDatabaseBackup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -243,16 +233,16 @@ Queue a job to validate Oracle backups for a database snapshot or a specified ti
 [GraphQL: validateOracleDatabaseBackups]",
             Position = 0
         )]
-        public SwitchParameter Validatedatabasebackup { get; set; }
+        public SwitchParameter ValidateDatabaseBackup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Bulkupdatedatabase parameter set
+        // BulkUpdateDatabase parameter set
         //
         // [GraphQL: bulkUpdateOracleDatabases]
         //
         [Parameter(
-            ParameterSetName = "Bulkupdatedatabase",
+            ParameterSetName = "BulkUpdateDatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -264,16 +254,16 @@ Update the properties of the objects that represent the specified Oracle Databas
 [GraphQL: bulkUpdateOracleDatabases]",
             Position = 0
         )]
-        public SwitchParameter Bulkupdatedatabase { get; set; }
+        public SwitchParameter BulkUpdateDatabase { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Instantrecoversnapshot parameter set
+        // InstantRecoverSnapshot parameter set
         //
         // [GraphQL: instantRecoverOracleSnapshot]
         //
         [Parameter(
-            ParameterSetName = "Instantrecoversnapshot",
+            ParameterSetName = "InstantRecoverSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -285,16 +275,16 @@ Creates an instant recover request that restores a target database from the give
 [GraphQL: instantRecoverOracleSnapshot]",
             Position = 0
         )]
-        public SwitchParameter Instantrecoversnapshot { get; set; }
+        public SwitchParameter InstantRecoverSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Mountdatabase parameter set
+        // MountDatabase parameter set
         //
         // [GraphQL: mountOracleDatabase]
         //
         [Parameter(
-            ParameterSetName = "Mountdatabase",
+            ParameterSetName = "MountDatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -306,16 +296,16 @@ Create an asynchronous job to Live Mount an Oracle database from a snapshot.
 [GraphQL: mountOracleDatabase]",
             Position = 0
         )]
-        public SwitchParameter Mountdatabase { get; set; }
+        public SwitchParameter MountDatabase { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Exportdatabase parameter set
+        // ExportDatabase parameter set
         //
         // [GraphQL: exportOracleDatabase]
         //
         [Parameter(
-            ParameterSetName = "Exportdatabase",
+            ParameterSetName = "ExportDatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -327,16 +317,16 @@ Request an asynchronous job to export an Oracle database from a specified snapsh
 [GraphQL: exportOracleDatabase]",
             Position = 0
         )]
-        public SwitchParameter Exportdatabase { get; set; }
+        public SwitchParameter ExportDatabase { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createpdbrestore parameter set
+        // CreatePdbRestore parameter set
         //
         // [GraphQL: createOraclePdbRestore]
         //
         [Parameter(
-            ParameterSetName = "Createpdbrestore",
+            ParameterSetName = "CreatePdbRestore",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -348,16 +338,16 @@ Initiates an asynchronous request to restore PDBs on an Oracle database from a s
 [GraphQL: createOraclePdbRestore]",
             Position = 0
         )]
-        public SwitchParameter Createpdbrestore { get; set; }
+        public SwitchParameter CreatePdbRestore { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Downloaddatabasesnapshot parameter set
+        // DownloadDatabaseSnapshot parameter set
         //
         // [GraphQL: downloadOracleDatabaseSnapshot]
         //
         [Parameter(
-            ParameterSetName = "Downloaddatabasesnapshot",
+            ParameterSetName = "DownloadDatabaseSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -369,16 +359,16 @@ Create an asynchronous job to download an Oracle database snapshot and associate
 [GraphQL: downloadOracleDatabaseSnapshot]",
             Position = 0
         )]
-        public SwitchParameter Downloaddatabasesnapshot { get; set; }
+        public SwitchParameter DownloadDatabaseSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deletemount parameter set
+        // DeleteMount parameter set
         //
         // [GraphQL: deleteOracleMount]
         //
         [Parameter(
-            ParameterSetName = "Deletemount",
+            ParameterSetName = "DeleteMount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -390,16 +380,16 @@ Request an asynchronous job to delete a specified Live Mount of an Oracle databa
 [GraphQL: deleteOracleMount]",
             Position = 0
         )]
-        public SwitchParameter Deletemount { get; set; }
+        public SwitchParameter DeleteMount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Restorelog parameter set
+        // RestoreLog parameter set
         //
         // [GraphQL: restoreOracleLogs]
         //
         [Parameter(
-            ParameterSetName = "Restorelog",
+            ParameterSetName = "RestoreLog",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -412,7 +402,7 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 [GraphQL: restoreOracleLogs]",
             Position = 0
         )]
-        public SwitchParameter Restorelog { get; set; }
+        public SwitchParameter RestoreLog { get; set; }
 
 
         protected override void ProcessRecord()
@@ -421,59 +411,59 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
             {
                 switch(Op)
                 {
-                    case "Bulkupdatehost":
-                        this.ProcessRecord_Bulkupdatehost();
+                    case "BulkUpdateHost":
+                        this.ProcessRecord_BulkUpdateHost();
                         break;
-                    case "Refreshdatabase":
-                        this.ProcessRecord_Refreshdatabase();
+                    case "RefreshDatabase":
+                        this.ProcessRecord_RefreshDatabase();
                         break;
-                    case "Updatedataguardgroup":
-                        this.ProcessRecord_Updatedataguardgroup();
+                    case "UpdateDataGuardGroup":
+                        this.ProcessRecord_UpdateDataGuardGroup();
                         break;
-                    case "Deletealldatabasesnapshot":
-                        this.ProcessRecord_Deletealldatabasesnapshot();
+                    case "DeleteAllDatabaseSnapshot":
+                        this.ProcessRecord_DeleteAllDatabaseSnapshot();
                         break;
-                    case "Takeondemanddatabasesnapshot":
-                        this.ProcessRecord_Takeondemanddatabasesnapshot();
+                    case "TakeOnDemandDatabaseSnapshot":
+                        this.ProcessRecord_TakeOnDemandDatabaseSnapshot();
                         break;
-                    case "Takeondemandlogsnapshot":
-                        this.ProcessRecord_Takeondemandlogsnapshot();
+                    case "TakeOnDemandLogSnapshot":
+                        this.ProcessRecord_TakeOnDemandLogSnapshot();
                         break;
-                    case "Bulkupdaterac":
-                        this.ProcessRecord_Bulkupdaterac();
+                    case "BulkUpdateRac":
+                        this.ProcessRecord_BulkUpdateRac();
                         break;
-                    case "Exporttablespace":
-                        this.ProcessRecord_Exporttablespace();
+                    case "ExportTablespace":
+                        this.ProcessRecord_ExportTablespace();
                         break;
-                    case "Validateacofile":
-                        this.ProcessRecord_Validateacofile();
+                    case "ValidateAcoFile":
+                        this.ProcessRecord_ValidateAcoFile();
                         break;
-                    case "Validatedatabasebackup":
-                        this.ProcessRecord_Validatedatabasebackup();
+                    case "ValidateDatabaseBackup":
+                        this.ProcessRecord_ValidateDatabaseBackup();
                         break;
-                    case "Bulkupdatedatabase":
-                        this.ProcessRecord_Bulkupdatedatabase();
+                    case "BulkUpdateDatabase":
+                        this.ProcessRecord_BulkUpdateDatabase();
                         break;
-                    case "Instantrecoversnapshot":
-                        this.ProcessRecord_Instantrecoversnapshot();
+                    case "InstantRecoverSnapshot":
+                        this.ProcessRecord_InstantRecoverSnapshot();
                         break;
-                    case "Mountdatabase":
-                        this.ProcessRecord_Mountdatabase();
+                    case "MountDatabase":
+                        this.ProcessRecord_MountDatabase();
                         break;
-                    case "Exportdatabase":
-                        this.ProcessRecord_Exportdatabase();
+                    case "ExportDatabase":
+                        this.ProcessRecord_ExportDatabase();
                         break;
-                    case "Createpdbrestore":
-                        this.ProcessRecord_Createpdbrestore();
+                    case "CreatePdbRestore":
+                        this.ProcessRecord_CreatePdbRestore();
                         break;
-                    case "Downloaddatabasesnapshot":
-                        this.ProcessRecord_Downloaddatabasesnapshot();
+                    case "DownloadDatabaseSnapshot":
+                        this.ProcessRecord_DownloadDatabaseSnapshot();
                         break;
-                    case "Deletemount":
-                        this.ProcessRecord_Deletemount();
+                    case "DeleteMount":
+                        this.ProcessRecord_DeleteMount();
                         break;
-                    case "Restorelog":
-                        this.ProcessRecord_Restorelog();
+                    case "RestoreLog":
+                        this.ProcessRecord_RestoreLog();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -487,162 +477,162 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
         // This parameter set invokes a single graphql operation:
         // bulkUpdateOracleHosts.
-        protected void ProcessRecord_Bulkupdatehost()
+        protected void ProcessRecord_BulkUpdateHost()
         {
-            this._logger.name += " -Bulkupdatehost";
+            this._logger.name += " -BulkUpdateHost";
             // Invoke graphql operation bulkUpdateOracleHosts
             InvokeMutationBulkUpdateOracleHosts();
         }
 
         // This parameter set invokes a single graphql operation:
         // refreshOracleDatabase.
-        protected void ProcessRecord_Refreshdatabase()
+        protected void ProcessRecord_RefreshDatabase()
         {
-            this._logger.name += " -Refreshdatabase";
+            this._logger.name += " -RefreshDatabase";
             // Invoke graphql operation refreshOracleDatabase
             InvokeMutationRefreshOracleDatabase();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateOracleDataGuardGroup.
-        protected void ProcessRecord_Updatedataguardgroup()
+        protected void ProcessRecord_UpdateDataGuardGroup()
         {
-            this._logger.name += " -Updatedataguardgroup";
+            this._logger.name += " -UpdateDataGuardGroup";
             // Invoke graphql operation updateOracleDataGuardGroup
             InvokeMutationUpdateOracleDataGuardGroup();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAllOracleDatabaseSnapshots.
-        protected void ProcessRecord_Deletealldatabasesnapshot()
+        protected void ProcessRecord_DeleteAllDatabaseSnapshot()
         {
-            this._logger.name += " -Deletealldatabasesnapshot";
+            this._logger.name += " -DeleteAllDatabaseSnapshot";
             // Invoke graphql operation deleteAllOracleDatabaseSnapshots
             InvokeMutationDeleteAllOracleDatabaseSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // takeOnDemandOracleDatabaseSnapshot.
-        protected void ProcessRecord_Takeondemanddatabasesnapshot()
+        protected void ProcessRecord_TakeOnDemandDatabaseSnapshot()
         {
-            this._logger.name += " -Takeondemanddatabasesnapshot";
+            this._logger.name += " -TakeOnDemandDatabaseSnapshot";
             // Invoke graphql operation takeOnDemandOracleDatabaseSnapshot
             InvokeMutationTakeOnDemandOracleDatabaseSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // takeOnDemandOracleLogSnapshot.
-        protected void ProcessRecord_Takeondemandlogsnapshot()
+        protected void ProcessRecord_TakeOnDemandLogSnapshot()
         {
-            this._logger.name += " -Takeondemandlogsnapshot";
+            this._logger.name += " -TakeOnDemandLogSnapshot";
             // Invoke graphql operation takeOnDemandOracleLogSnapshot
             InvokeMutationTakeOnDemandOracleLogSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkUpdateOracleRacs.
-        protected void ProcessRecord_Bulkupdaterac()
+        protected void ProcessRecord_BulkUpdateRac()
         {
-            this._logger.name += " -Bulkupdaterac";
+            this._logger.name += " -BulkUpdateRac";
             // Invoke graphql operation bulkUpdateOracleRacs
             InvokeMutationBulkUpdateOracleRacs();
         }
 
         // This parameter set invokes a single graphql operation:
         // exportOracleTablespace.
-        protected void ProcessRecord_Exporttablespace()
+        protected void ProcessRecord_ExportTablespace()
         {
-            this._logger.name += " -Exporttablespace";
+            this._logger.name += " -ExportTablespace";
             // Invoke graphql operation exportOracleTablespace
             InvokeMutationExportOracleTablespace();
         }
 
         // This parameter set invokes a single graphql operation:
         // validateOracleAcoFile.
-        protected void ProcessRecord_Validateacofile()
+        protected void ProcessRecord_ValidateAcoFile()
         {
-            this._logger.name += " -Validateacofile";
+            this._logger.name += " -ValidateAcoFile";
             // Invoke graphql operation validateOracleAcoFile
             InvokeMutationValidateOracleAcoFile();
         }
 
         // This parameter set invokes a single graphql operation:
         // validateOracleDatabaseBackups.
-        protected void ProcessRecord_Validatedatabasebackup()
+        protected void ProcessRecord_ValidateDatabaseBackup()
         {
-            this._logger.name += " -Validatedatabasebackup";
+            this._logger.name += " -ValidateDatabaseBackup";
             // Invoke graphql operation validateOracleDatabaseBackups
             InvokeMutationValidateOracleDatabaseBackups();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkUpdateOracleDatabases.
-        protected void ProcessRecord_Bulkupdatedatabase()
+        protected void ProcessRecord_BulkUpdateDatabase()
         {
-            this._logger.name += " -Bulkupdatedatabase";
+            this._logger.name += " -BulkUpdateDatabase";
             // Invoke graphql operation bulkUpdateOracleDatabases
             InvokeMutationBulkUpdateOracleDatabases();
         }
 
         // This parameter set invokes a single graphql operation:
         // instantRecoverOracleSnapshot.
-        protected void ProcessRecord_Instantrecoversnapshot()
+        protected void ProcessRecord_InstantRecoverSnapshot()
         {
-            this._logger.name += " -Instantrecoversnapshot";
+            this._logger.name += " -InstantRecoverSnapshot";
             // Invoke graphql operation instantRecoverOracleSnapshot
             InvokeMutationInstantRecoverOracleSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // mountOracleDatabase.
-        protected void ProcessRecord_Mountdatabase()
+        protected void ProcessRecord_MountDatabase()
         {
-            this._logger.name += " -Mountdatabase";
+            this._logger.name += " -MountDatabase";
             // Invoke graphql operation mountOracleDatabase
             InvokeMutationMountOracleDatabase();
         }
 
         // This parameter set invokes a single graphql operation:
         // exportOracleDatabase.
-        protected void ProcessRecord_Exportdatabase()
+        protected void ProcessRecord_ExportDatabase()
         {
-            this._logger.name += " -Exportdatabase";
+            this._logger.name += " -ExportDatabase";
             // Invoke graphql operation exportOracleDatabase
             InvokeMutationExportOracleDatabase();
         }
 
         // This parameter set invokes a single graphql operation:
         // createOraclePdbRestore.
-        protected void ProcessRecord_Createpdbrestore()
+        protected void ProcessRecord_CreatePdbRestore()
         {
-            this._logger.name += " -Createpdbrestore";
+            this._logger.name += " -CreatePdbRestore";
             // Invoke graphql operation createOraclePdbRestore
             InvokeMutationCreateOraclePdbRestore();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadOracleDatabaseSnapshot.
-        protected void ProcessRecord_Downloaddatabasesnapshot()
+        protected void ProcessRecord_DownloadDatabaseSnapshot()
         {
-            this._logger.name += " -Downloaddatabasesnapshot";
+            this._logger.name += " -DownloadDatabaseSnapshot";
             // Invoke graphql operation downloadOracleDatabaseSnapshot
             InvokeMutationDownloadOracleDatabaseSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteOracleMount.
-        protected void ProcessRecord_Deletemount()
+        protected void ProcessRecord_DeleteMount()
         {
-            this._logger.name += " -Deletemount";
+            this._logger.name += " -DeleteMount";
             // Invoke graphql operation deleteOracleMount
             InvokeMutationDeleteOracleMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // restoreOracleLogs.
-        protected void ProcessRecord_Restorelog()
+        protected void ProcessRecord_RestoreLog()
         {
-            this._logger.name += " -Restorelog";
+            this._logger.name += " -RestoreLog";
             // Invoke graphql operation restoreOracleLogs
             InvokeMutationRestoreOracleLogs();
         }

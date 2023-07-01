@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetOptions";
+    }
+
     public FilesetOptions Set(
         System.Boolean? AllowBackupHiddenFoldersInNetworkMounts = null,
         System.Boolean? AllowBackupNetworkMounts = null,

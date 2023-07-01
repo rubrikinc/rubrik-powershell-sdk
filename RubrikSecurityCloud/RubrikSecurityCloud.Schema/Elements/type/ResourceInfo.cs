@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ResourceInfo";
+    }
+
     public ResourceInfo Set(
         ResourceType? ResourceType = null,
         System.String? ResourceId = null

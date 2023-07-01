@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureKeyVault";
+    }
+
     public AzureKeyVault Set(
         System.Boolean? IsAccessibleByUserAssignedManagedIdentity = null,
         System.String? KeyVaultName = null,

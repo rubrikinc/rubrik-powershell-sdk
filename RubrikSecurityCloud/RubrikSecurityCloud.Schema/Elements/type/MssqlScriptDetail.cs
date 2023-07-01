@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlScriptDetail";
+    }
+
     public MssqlScriptDetail Set(
         ScriptErrorAction? ScriptErrorAction = null,
         System.String? ScriptPath = null,

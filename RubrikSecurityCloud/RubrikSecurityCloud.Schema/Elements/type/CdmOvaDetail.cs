@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmOvaDetail";
+    }
+
     public CdmOvaDetail Set(
         System.String? CdmVersion = null,
         System.String? OvaDownloadLink = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RunCustomAnalyzerReply";
+    }
+
     public RunCustomAnalyzerReply Set(
         List<CustomAnalyzerMatch>? Matches = null
     ) 

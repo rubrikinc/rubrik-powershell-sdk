@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudNativeFileVersion";
+    }
+
     public CloudNativeFileVersion Set(
         FileModeEnum? FileMode = null,
         DateTime? LastModified = null,

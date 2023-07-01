@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrechecksStatusReply";
+    }
+
     public PrechecksStatusReply Set(
         System.Int64? EndTime = null,
         System.Int32? NumPrechecks = null,

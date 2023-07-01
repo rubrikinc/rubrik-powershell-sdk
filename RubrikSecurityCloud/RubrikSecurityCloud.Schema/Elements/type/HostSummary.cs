@@ -100,6 +100,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostSummary";
+    }
+
     public HostSummary Set(
         MssqlCbtEffectiveStatusType? MssqlCbtEffectiveStatus = null,
         MssqlCbtStatusType? MssqlCbtEnabled = null,

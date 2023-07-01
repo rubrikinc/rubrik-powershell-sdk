@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappExportOptions";
+    }
+
     public VappExportOptions Set(
         List<VappVmRestoreSpec>? AllChildVmsWithDefaultNetworkConnections = null,
         List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies = null,

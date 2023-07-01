@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DownloadSlaWithReplicationCsvReply";
+    }
+
     public DownloadSlaWithReplicationCsvReply Set(
         System.Boolean? DoesSlaExists = null,
         System.Boolean? IsDownloadSuccessful = null

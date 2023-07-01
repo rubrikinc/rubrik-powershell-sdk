@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GeoLocation";
+    }
+
     public GeoLocation Set(
         System.String? Address = null,
         System.Single? Latitude = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AppIdForType";
+    }
+
     public AppIdForType Set(
         System.String? AppId = null,
         System.String? AppType = null

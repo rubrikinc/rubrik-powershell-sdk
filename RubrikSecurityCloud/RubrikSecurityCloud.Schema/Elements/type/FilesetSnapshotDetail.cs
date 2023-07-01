@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetSnapshotDetail";
+    }
+
     public FilesetSnapshotDetail Set(
         System.String? LastModified = null,
         System.Int64? Size = null,

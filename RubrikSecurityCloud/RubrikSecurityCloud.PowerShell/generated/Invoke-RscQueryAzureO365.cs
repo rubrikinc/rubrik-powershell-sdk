@@ -43,34 +43,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter Exocompute { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Exocompute",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Org UUID.
-GraphQL argument orgId: UUID!"
-        )]
-        public System.String? OrgId { get; set; }
-        [Parameter(
-            ParameterSetName = "Exocompute",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument exocomputeClusterId: String!"
-        )]
-        public System.String? ExocomputeClusterId { get; set; }
         
         // -------------------------------------------------------------------
-        // Checkstorageaccountname parameter set
+        // CheckStorageAccountName parameter set
         //
         // [GraphQL: azureO365CheckStorageAccountName]
         //
         [Parameter(
-            ParameterSetName = "Checkstorageaccountname",
+            ParameterSetName = "CheckStorageAccountName",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -79,46 +59,16 @@ GraphQL argument exocomputeClusterId: String!"
 [GraphQL: azureO365CheckStorageAccountName]",
             Position = 0
         )]
-        public SwitchParameter Checkstorageaccountname { get; set; }
+        public SwitchParameter CheckStorageAccountName { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Checkstorageaccountname",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument tenantId: String!"
-        )]
-        public System.String? TenantId { get; set; }
-        [Parameter(
-            ParameterSetName = "Checkstorageaccountname",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument subscriptionId: UUID!"
-        )]
-        public System.String? SubscriptionId { get; set; }
-        [Parameter(
-            ParameterSetName = "Checkstorageaccountname",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument storage_account_name: String!"
-        )]
-        public System.String? StorageAccountName { get; set; }
         
         // -------------------------------------------------------------------
-        // Checkstorageaccountaccessibility parameter set
+        // CheckStorageAccountAccessibility parameter set
         //
         // [GraphQL: azureO365CheckStorageAccountAccessibility]
         //
         [Parameter(
-            ParameterSetName = "Checkstorageaccountaccessibility",
+            ParameterSetName = "CheckStorageAccountAccessibility",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -127,26 +77,16 @@ GraphQL argument storage_account_name: String!"
 [GraphQL: azureO365CheckStorageAccountAccessibility]",
             Position = 0
         )]
-        public SwitchParameter Checkstorageaccountaccessibility { get; set; }
+        public SwitchParameter CheckStorageAccountAccessibility { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Checkstorageaccountaccessibility",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument groupName: String!"
-        )]
-        public System.String? GroupName { get; set; }
         
         // -------------------------------------------------------------------
-        // Checksubscriptionquota parameter set
+        // CheckSubscriptionQuota parameter set
         //
         // [GraphQL: azureO365CheckSubscriptionQuota]
         //
         [Parameter(
-            ParameterSetName = "Checksubscriptionquota",
+            ParameterSetName = "CheckSubscriptionQuota",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -155,26 +95,16 @@ GraphQL argument groupName: String!"
 [GraphQL: azureO365CheckSubscriptionQuota]",
             Position = 0
         )]
-        public SwitchParameter Checksubscriptionquota { get; set; }
+        public SwitchParameter CheckSubscriptionQuota { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Checksubscriptionquota",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument regionName: String!"
-        )]
-        public System.String? RegionName { get; set; }
         
         // -------------------------------------------------------------------
-        // Checkresourcegroupname parameter set
+        // CheckResourceGroupName parameter set
         //
         // [GraphQL: azureO365CheckResourceGroupName]
         //
         [Parameter(
-            ParameterSetName = "Checkresourcegroupname",
+            ParameterSetName = "CheckResourceGroupName",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -183,16 +113,16 @@ GraphQL argument regionName: String!"
 [GraphQL: azureO365CheckResourceGroupName]",
             Position = 0
         )]
-        public SwitchParameter Checkresourcegroupname { get; set; }
+        public SwitchParameter CheckResourceGroupName { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Checkvirtualnetworkname parameter set
+        // CheckVirtualNetworkName parameter set
         //
         // [GraphQL: azureO365CheckVirtualNetworkName]
         //
         [Parameter(
-            ParameterSetName = "Checkvirtualnetworkname",
+            ParameterSetName = "CheckVirtualNetworkName",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -201,26 +131,16 @@ GraphQL argument regionName: String!"
 [GraphQL: azureO365CheckVirtualNetworkName]",
             Position = 0
         )]
-        public SwitchParameter Checkvirtualnetworkname { get; set; }
+        public SwitchParameter CheckVirtualNetworkName { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Checkvirtualnetworkname",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument vnet_name: String!"
-        )]
-        public System.String? VnetName { get; set; }
         
         // -------------------------------------------------------------------
-        // Validateuserrole parameter set
+        // ValidateUserRole parameter set
         //
         // [GraphQL: azureO365ValidateUserRoles]
         //
         [Parameter(
-            ParameterSetName = "Validateuserrole",
+            ParameterSetName = "ValidateUserRole",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -229,16 +149,16 @@ GraphQL argument vnet_name: String!"
 [GraphQL: azureO365ValidateUserRoles]",
             Position = 0
         )]
-        public SwitchParameter Validateuserrole { get; set; }
+        public SwitchParameter ValidateUserRole { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Checknsgoutboundrule parameter set
+        // CheckNSGOutboundRule parameter set
         //
         // [GraphQL: azureO365CheckNSGOutboundRules]
         //
         [Parameter(
-            ParameterSetName = "Checknsgoutboundrule",
+            ParameterSetName = "CheckNSGOutboundRule",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -247,36 +167,16 @@ GraphQL argument vnet_name: String!"
 [GraphQL: azureO365CheckNSGOutboundRules]",
             Position = 0
         )]
-        public SwitchParameter Checknsgoutboundrule { get; set; }
+        public SwitchParameter CheckNSGOutboundRule { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Checknsgoutboundrule",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument resourceGroupName: String!"
-        )]
-        public System.String? ResourceGroupName { get; set; }
-        [Parameter(
-            ParameterSetName = "Checknsgoutboundrule",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument subnet_name: String!"
-        )]
-        public System.String? SubnetName { get; set; }
         
         // -------------------------------------------------------------------
-        // Checknetworksubnet parameter set
+        // CheckNetworkSubnet parameter set
         //
         // [GraphQL: azureO365CheckNetworkSubnet]
         //
         [Parameter(
-            ParameterSetName = "Checknetworksubnet",
+            ParameterSetName = "CheckNetworkSubnet",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -285,26 +185,16 @@ GraphQL argument subnet_name: String!"
 [GraphQL: azureO365CheckNetworkSubnet]",
             Position = 0
         )]
-        public SwitchParameter Checknetworksubnet { get; set; }
+        public SwitchParameter CheckNetworkSubnet { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Checknetworksubnet",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument strict_addr_check: Boolean!"
-        )]
-        public System.Boolean? StrictAddrCheck { get; set; }
         
         // -------------------------------------------------------------------
-        // Getnetworksubnetunusedaddr parameter set
+        // GetNetworkSubnetUnusedAddr parameter set
         //
         // [GraphQL: azureO365GetNetworkSubnetUnusedAddr]
         //
         [Parameter(
-            ParameterSetName = "Getnetworksubnetunusedaddr",
+            ParameterSetName = "GetNetworkSubnetUnusedAddr",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -313,16 +203,16 @@ GraphQL argument strict_addr_check: Boolean!"
 [GraphQL: azureO365GetNetworkSubnetUnusedAddr]",
             Position = 0
         )]
-        public SwitchParameter Getnetworksubnetunusedaddr { get; set; }
+        public SwitchParameter GetNetworkSubnetUnusedAddr { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Getazurehosttype parameter set
+        // GetAzureHostType parameter set
         //
         // [GraphQL: azureO365GetAzureHostType]
         //
         [Parameter(
-            ParameterSetName = "Getazurehosttype",
+            ParameterSetName = "GetAzureHostType",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -331,7 +221,7 @@ GraphQL argument strict_addr_check: Boolean!"
 [GraphQL: azureO365GetAzureHostType]",
             Position = 0
         )]
-        public SwitchParameter Getazurehosttype { get; set; }
+        public SwitchParameter GetAzureHostType { get; set; }
 
 
         protected override void ProcessRecord()
@@ -343,35 +233,35 @@ GraphQL argument strict_addr_check: Boolean!"
                     case "Exocompute":
                         this.ProcessRecord_Exocompute();
                         break;
-                    case "Checkstorageaccountname":
-                        this.ProcessRecord_Checkstorageaccountname();
+                    case "CheckStorageAccountName":
+                        this.ProcessRecord_CheckStorageAccountName();
                         break;
-                    case "Checkstorageaccountaccessibility":
-                        this.ProcessRecord_Checkstorageaccountaccessibility();
+                    case "CheckStorageAccountAccessibility":
+                        this.ProcessRecord_CheckStorageAccountAccessibility();
                         break;
-                    case "Checksubscriptionquota":
-                        this.ProcessRecord_Checksubscriptionquota();
+                    case "CheckSubscriptionQuota":
+                        this.ProcessRecord_CheckSubscriptionQuota();
                         break;
-                    case "Checkresourcegroupname":
-                        this.ProcessRecord_Checkresourcegroupname();
+                    case "CheckResourceGroupName":
+                        this.ProcessRecord_CheckResourceGroupName();
                         break;
-                    case "Checkvirtualnetworkname":
-                        this.ProcessRecord_Checkvirtualnetworkname();
+                    case "CheckVirtualNetworkName":
+                        this.ProcessRecord_CheckVirtualNetworkName();
                         break;
-                    case "Validateuserrole":
-                        this.ProcessRecord_Validateuserrole();
+                    case "ValidateUserRole":
+                        this.ProcessRecord_ValidateUserRole();
                         break;
-                    case "Checknsgoutboundrule":
-                        this.ProcessRecord_Checknsgoutboundrule();
+                    case "CheckNSGOutboundRule":
+                        this.ProcessRecord_CheckNSGOutboundRule();
                         break;
-                    case "Checknetworksubnet":
-                        this.ProcessRecord_Checknetworksubnet();
+                    case "CheckNetworkSubnet":
+                        this.ProcessRecord_CheckNetworkSubnet();
                         break;
-                    case "Getnetworksubnetunusedaddr":
-                        this.ProcessRecord_Getnetworksubnetunusedaddr();
+                    case "GetNetworkSubnetUnusedAddr":
+                        this.ProcessRecord_GetNetworkSubnetUnusedAddr();
                         break;
-                    case "Getazurehosttype":
-                        this.ProcessRecord_Getazurehosttype();
+                    case "GetAzureHostType":
+                        this.ProcessRecord_GetAzureHostType();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -394,90 +284,90 @@ GraphQL argument strict_addr_check: Boolean!"
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckStorageAccountName.
-        protected void ProcessRecord_Checkstorageaccountname()
+        protected void ProcessRecord_CheckStorageAccountName()
         {
-            this._logger.name += " -Checkstorageaccountname";
+            this._logger.name += " -CheckStorageAccountName";
             // Invoke graphql operation azureO365CheckStorageAccountName
             InvokeQueryAzureO365CheckStorageAccountName();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckStorageAccountAccessibility.
-        protected void ProcessRecord_Checkstorageaccountaccessibility()
+        protected void ProcessRecord_CheckStorageAccountAccessibility()
         {
-            this._logger.name += " -Checkstorageaccountaccessibility";
+            this._logger.name += " -CheckStorageAccountAccessibility";
             // Invoke graphql operation azureO365CheckStorageAccountAccessibility
             InvokeQueryAzureO365CheckStorageAccountAccessibility();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckSubscriptionQuota.
-        protected void ProcessRecord_Checksubscriptionquota()
+        protected void ProcessRecord_CheckSubscriptionQuota()
         {
-            this._logger.name += " -Checksubscriptionquota";
+            this._logger.name += " -CheckSubscriptionQuota";
             // Invoke graphql operation azureO365CheckSubscriptionQuota
             InvokeQueryAzureO365CheckSubscriptionQuota();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckResourceGroupName.
-        protected void ProcessRecord_Checkresourcegroupname()
+        protected void ProcessRecord_CheckResourceGroupName()
         {
-            this._logger.name += " -Checkresourcegroupname";
+            this._logger.name += " -CheckResourceGroupName";
             // Invoke graphql operation azureO365CheckResourceGroupName
             InvokeQueryAzureO365CheckResourceGroupName();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckVirtualNetworkName.
-        protected void ProcessRecord_Checkvirtualnetworkname()
+        protected void ProcessRecord_CheckVirtualNetworkName()
         {
-            this._logger.name += " -Checkvirtualnetworkname";
+            this._logger.name += " -CheckVirtualNetworkName";
             // Invoke graphql operation azureO365CheckVirtualNetworkName
             InvokeQueryAzureO365CheckVirtualNetworkName();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365ValidateUserRoles.
-        protected void ProcessRecord_Validateuserrole()
+        protected void ProcessRecord_ValidateUserRole()
         {
-            this._logger.name += " -Validateuserrole";
+            this._logger.name += " -ValidateUserRole";
             // Invoke graphql operation azureO365ValidateUserRoles
             InvokeQueryAzureO365ValidateUserRoles();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckNSGOutboundRules.
-        protected void ProcessRecord_Checknsgoutboundrule()
+        protected void ProcessRecord_CheckNSGOutboundRule()
         {
-            this._logger.name += " -Checknsgoutboundrule";
+            this._logger.name += " -CheckNSGOutboundRule";
             // Invoke graphql operation azureO365CheckNSGOutboundRules
             InvokeQueryAzureO365CheckNsgOutboundRules();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365CheckNetworkSubnet.
-        protected void ProcessRecord_Checknetworksubnet()
+        protected void ProcessRecord_CheckNetworkSubnet()
         {
-            this._logger.name += " -Checknetworksubnet";
+            this._logger.name += " -CheckNetworkSubnet";
             // Invoke graphql operation azureO365CheckNetworkSubnet
             InvokeQueryAzureO365CheckNetworkSubnet();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365GetNetworkSubnetUnusedAddr.
-        protected void ProcessRecord_Getnetworksubnetunusedaddr()
+        protected void ProcessRecord_GetNetworkSubnetUnusedAddr()
         {
-            this._logger.name += " -Getnetworksubnetunusedaddr";
+            this._logger.name += " -GetNetworkSubnetUnusedAddr";
             // Invoke graphql operation azureO365GetNetworkSubnetUnusedAddr
             InvokeQueryAzureO365GetNetworkSubnetUnusedAddr();
         }
 
         // This parameter set invokes a single graphql operation:
         // azureO365GetAzureHostType.
-        protected void ProcessRecord_Getazurehosttype()
+        protected void ProcessRecord_GetAzureHostType()
         {
-            this._logger.name += " -Getazurehosttype";
+            this._logger.name += " -GetAzureHostType";
             // Invoke graphql operation azureO365GetAzureHostType
             InvokeQueryAzureO365GetAzureHostType();
         }

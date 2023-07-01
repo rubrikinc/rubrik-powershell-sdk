@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudDirectSnapshotConnection";
+    }
+
     public CloudDirectSnapshotConnection Set(
         System.Int32? Count = null,
         List<CloudDirectSnapshotEdge>? Edges = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365FullSpObjectEdge";
+    }
+
     public O365FullSpObjectEdge Set(
         O365FullSpObject? Node = null,
         System.String? Cursor = null

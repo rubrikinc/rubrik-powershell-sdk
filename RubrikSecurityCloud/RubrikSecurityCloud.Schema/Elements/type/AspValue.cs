@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ASPValue";
+    }
+
     public AspValue Set(
         System.String? Value = null,
         AspKey? Key = null

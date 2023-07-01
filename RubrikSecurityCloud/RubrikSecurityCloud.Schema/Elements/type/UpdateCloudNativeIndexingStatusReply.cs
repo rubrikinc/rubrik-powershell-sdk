@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateCloudNativeIndexingStatusReply";
+    }
+
     public UpdateCloudNativeIndexingStatusReply Set(
         List<UpdateIndexingStatusError>? Errors = null
     ) 

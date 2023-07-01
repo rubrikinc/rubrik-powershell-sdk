@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpgradeGcpCloudAccountPermissionsWithoutOauthReply";
+    }
+
     public UpgradeGcpCloudAccountPermissionsWithoutOauthReply Set(
         GcpCloudAccountProjectUpgradeStatus? Status = null
     ) 

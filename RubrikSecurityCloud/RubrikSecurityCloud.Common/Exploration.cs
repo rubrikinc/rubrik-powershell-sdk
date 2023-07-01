@@ -60,8 +60,23 @@ namespace RubrikSecurityCloud
             bool isLeaf)
         {
             if (!isLeaf) {
-                return lastNode == "nodes" ||
-                    lastNode == "effectivesladomain" ;
+                if (lastNode == "nodes")
+                {
+                    return true;
+                }
+                if (lastNode == "physicalchildconnection" ||
+                    lastNode == "effectivesladomain")
+                {
+                    int firstIndex = Array.IndexOf(nodes, nodes[nodes.Length - 1]);
+                    if (firstIndex != nodes.Length - 1)
+                    {
+                        // The value of lastNode is elsewhere in nodes
+                        // => probably a loop
+                        return false;
+                    }
+                    return true;
+                }
+                return false;
             }
 
             if ( lastNode == "id" || 

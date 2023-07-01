@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClassificationLoginSettings";
+    }
+
     public ClassificationLoginSettings Set(
         System.Boolean? IsLoginEnabled = null,
         System.String? LoginText = null

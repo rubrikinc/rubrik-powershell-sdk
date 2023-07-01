@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateSnapMirrorCloudReply";
+    }
+
     public UpdateSnapMirrorCloudReply Set(
         System.Int64? ArchiveStorage = null,
         System.Int64? LocalStorage = null,

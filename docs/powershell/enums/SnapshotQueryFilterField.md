@@ -55,3 +55,8 @@ Filters to query snapshots.
 - EXCLUDE_QUARANTINED - When true, returns snapshots that are not quarantined.
 - EXCLUDE_ANOMALOUS - When true, returns snapshots that are not anomalous.
 - SNAPSHOT_CUSTOMIZATION - Field to filter based on snapshot customization.
+- HAS_UNEXPIRED_ARCHIVED_OR_UNGCED_SOURCE_SNAPSHOTS - When true, returns unGCed snapshots (may/may not have expiry hint time
+ set) or snapshots that have unexpired archived snapshots.
+ When false, returns GCed snapshots that do not have any unexpired
+ archived snapshots.
+ Note that, in either case, it only returns source snapshots.

@@ -100,6 +100,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpgradeStatusReply";
+    }
+
     public UpgradeStatusReply Set(
         System.String? CurrentState = null,
         System.String? CurrentStateName = null,

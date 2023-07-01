@@ -125,6 +125,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "JobMetadata";
+    }
+
     public JobMetadata Set(
         LogLevel? LogLevel = null,
         DateTime? CreatedAt = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlDatabaseEdge";
+    }
+
     public MssqlDatabaseEdge Set(
         System.String? Cursor = null,
         MssqlDatabase? Node = null

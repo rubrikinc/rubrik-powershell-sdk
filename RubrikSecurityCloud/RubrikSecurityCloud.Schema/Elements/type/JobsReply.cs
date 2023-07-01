@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "JobsReply";
+    }
+
     public JobsReply Set(
         List<JobReply>? Jobs = null
     ) 

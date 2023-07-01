@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcenterPatch";
+    }
+
     public VcenterPatch Set(
         System.String? CaCerts = null,
         System.String? ConfiguredSlaDomainId = null

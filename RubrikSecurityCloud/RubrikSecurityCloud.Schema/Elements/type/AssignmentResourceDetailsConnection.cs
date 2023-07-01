@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AssignmentResourceDetailsConnection";
+    }
+
     public AssignmentResourceDetailsConnection Set(
         System.Int32? Count = null,
         List<AssignmentResourceDetailsEdge>? Edges = null,

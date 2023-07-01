@@ -170,6 +170,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetAnomalyDetailsReply";
+    }
+
     public GetAnomalyDetailsReply Set(
         EncryptionLevel? Encryption = null,
         ObjectTypeEnum? ObjectType = null,

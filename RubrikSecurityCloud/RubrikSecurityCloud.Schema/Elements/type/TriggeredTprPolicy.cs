@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TriggeredTprPolicy";
+    }
+
     public TriggeredTprPolicy Set(
         TprPolicyStatus? Status = null,
         System.String? Id = null,

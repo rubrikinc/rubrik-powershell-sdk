@@ -145,6 +145,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmUpgradeInfo";
+    }
+
     public CdmUpgradeInfo Set(
         ClusterJobStatusTypeEnum? ClusterJobStatus = null,
         VersionStatus? VersionStatus = null,

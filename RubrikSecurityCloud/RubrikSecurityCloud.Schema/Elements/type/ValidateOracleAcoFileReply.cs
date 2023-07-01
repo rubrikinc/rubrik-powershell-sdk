@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateOracleAcoFileReply";
+    }
+
     public ValidateOracleAcoFileReply Set(
         List<System.String>? AcoParameterErrors = null,
         List<OracleAcoParameterDetail>? AcoMap = null,

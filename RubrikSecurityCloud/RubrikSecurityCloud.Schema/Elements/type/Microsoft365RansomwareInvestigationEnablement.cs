@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Microsoft365RansomwareInvestigationEnablement";
+    }
+
     public Microsoft365RansomwareInvestigationEnablement Set(
         System.Boolean? Enabled = null,
         HierarchyObjectCommon? Subscription = null

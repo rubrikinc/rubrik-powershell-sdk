@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NodeStatus";
+    }
+
     public NodeStatus Set(
         System.String? BrikId = null,
         System.Boolean? HasUnavailableDisks = null,

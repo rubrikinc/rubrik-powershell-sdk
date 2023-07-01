@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaHost";
+    }
+
     public SapHanaHost Set(
         SapHanaHostHostType? HostType = null,
         System.String? HostName = null,

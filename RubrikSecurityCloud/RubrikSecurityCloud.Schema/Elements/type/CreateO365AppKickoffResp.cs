@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateO365AppKickoffResp";
+    }
+
     public CreateO365AppKickoffResp Set(
         System.String? AppClientId = null,
         System.String? CsrfToken = null,

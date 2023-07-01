@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudNativeRegion";
+    }
+
     public CloudNativeRegion Set(
         AwsNativeRegion? AwsRegion = null,
         AzureNativeRegion? AzureRegion = null,

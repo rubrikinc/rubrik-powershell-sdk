@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterStatus";
+    }
+
     public FailoverClusterStatus Set(
         FailoverClusterConnectivityStatus? Connectivity = null,
         DateTime? TimestampMillis = null

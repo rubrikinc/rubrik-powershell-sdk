@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2LogSnapshotEdge";
+    }
+
     public Db2LogSnapshotEdge Set(
         System.String? Cursor = null,
         Db2LogSnapshot? Node = null

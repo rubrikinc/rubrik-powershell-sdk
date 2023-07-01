@@ -105,6 +105,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2InstanceSummary";
+    }
+
     public Db2InstanceSummary Set(
         Db2InstanceSummaryStatus? Status = null,
         List<System.String>? DatabaseIds = null,

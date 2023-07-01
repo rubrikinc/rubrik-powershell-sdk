@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetTemplatePhysicalChildTypeConnection";
+    }
+
     public FilesetTemplatePhysicalChildTypeConnection Set(
         List<FilesetTemplatePhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

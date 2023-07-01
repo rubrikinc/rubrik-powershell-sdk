@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDataGuardGroupLogicalChildTypeEdge";
+    }
+
     public OracleDataGuardGroupLogicalChildTypeEdge Set(
         OracleDataGuardGroupLogicalChildType? Node = null,
         System.String? Cursor = null

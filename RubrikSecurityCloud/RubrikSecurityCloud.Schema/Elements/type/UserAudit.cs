@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserAudit";
+    }
+
     public UserAudit Set(
         UserAuditTypeEnum? AuditType = null,
         UserAuditObjectTypeEnum? ObjectType = null,

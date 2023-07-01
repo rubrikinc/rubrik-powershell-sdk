@@ -20,3 +20,10 @@
  have unexpired archived snapshots.
  When false, returns expired snapshots and snapshots that
  do not have any unexpired archived snapshots.
+- HAS_UNEXPIRED_ARCHIVED_OR_UNGCED_SOURCE_SNAPSHOTS - When true, returns unGCed snapshots (may/may not have expiry hint time
+ set) or snapshots that have unexpired archived snapshots.
+ When false, returns GCed snapshots that do not have any unexpired
+ archived snapshots.
+ Note that this filter is only for source snapshots, so it is
+ incompatible with IS_REPLICA = true. No snapshots would be returned in
+ that case.

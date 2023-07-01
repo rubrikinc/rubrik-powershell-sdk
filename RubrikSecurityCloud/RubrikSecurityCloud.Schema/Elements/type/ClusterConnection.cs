@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterConnection";
+    }
+
     public ClusterConnection Set(
         System.Int32? Count = null,
         ClusterHealthAggregation? AggregateClusterHealth = null,

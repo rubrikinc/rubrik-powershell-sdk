@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareNetworkDeviceInfo";
+    }
+
     public VmwareNetworkDeviceInfo Set(
         System.Int32? Key = null,
         System.String? Name = null

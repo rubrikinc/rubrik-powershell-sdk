@@ -236,6 +236,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeEbsVolume";
+    }
+
     public AwsNativeEbsVolume Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,

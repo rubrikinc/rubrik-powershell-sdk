@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeMountSpec";
+    }
+
     public ManagedVolumeMountSpec Set(
         System.Int64? ImageSizeOpt = null,
         System.String? MountDir = null,

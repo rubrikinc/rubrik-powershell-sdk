@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolicySummary";
+    }
+
     public PolicySummary Set(
         TimelineEntry? HighRiskFiles = null,
         TimelineEntry? LowRiskFiles = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StartTimeAttributes";
+    }
+
     public StartTimeAttributes Set(
         System.Int32? Hour = null,
         System.Int32? Minute = null,

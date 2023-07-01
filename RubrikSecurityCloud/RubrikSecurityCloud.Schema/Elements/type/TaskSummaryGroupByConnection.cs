@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskSummaryGroupByConnection";
+    }
+
     public TaskSummaryGroupByConnection Set(
         System.Int32? Count = null,
         List<TaskSummaryGroupByEdge>? Edges = null,

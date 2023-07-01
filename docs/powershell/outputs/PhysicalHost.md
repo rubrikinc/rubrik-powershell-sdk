@@ -16,6 +16,8 @@
   - Specifies the NAS vendor, which can be ISILON, NETAPP, FLASHBLADE, or NUTANIX.
 - isChangelistEnabled: System.Boolean
   - Specifies whether the Changelist option is enabled.
+- agentId: System.String
+  - ID of the Rubrik Backup Service (RBS) installed on the host.
 - osType: GuestOsType
   - The operating system type of the physical host.
 - defaultCbt: System.Boolean

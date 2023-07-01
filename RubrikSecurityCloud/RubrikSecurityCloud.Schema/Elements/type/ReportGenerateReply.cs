@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "reportGenerateReply";
+    }
+
     public ReportGenerateReply Set(
         System.Int64? JobId = null,
         System.String? ReferenceId = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExchangeServerDescendantTypeConnection";
+    }
+
     public ExchangeServerDescendantTypeConnection Set(
         List<ExchangeServerDescendantType>? Nodes = null,
         System.Int32? Count = null,

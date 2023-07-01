@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateNutanixClusterReply";
+    }
+
     public UpdateNutanixClusterReply Set(
         System.String? CaCerts = null,
         RefreshableObjectConnectionStatus? ConnectionStatus = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HierarchyObjectCommon";
+    }
+
     public HierarchyObjectCommon Set(
         HierarchyObjectTypeEnum? ObjectType = null,
         System.String? Fid = null,

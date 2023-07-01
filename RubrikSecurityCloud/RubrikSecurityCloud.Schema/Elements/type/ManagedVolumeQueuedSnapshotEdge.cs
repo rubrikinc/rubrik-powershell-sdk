@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeQueuedSnapshotEdge";
+    }
+
     public ManagedVolumeQueuedSnapshotEdge Set(
         System.String? Cursor = null,
         ManagedVolumeQueuedSnapshot? Node = null

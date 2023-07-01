@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeKmsCryptoKey";
+    }
+
     public GcpNativeKmsCryptoKey Set(
         System.String? Key = null,
         System.String? KeyRing = null,

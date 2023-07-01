@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalSlaForFilterEdge";
+    }
+
     public GlobalSlaForFilterEdge Set(
         System.String? Cursor = null,
         GlobalSlaForFilter? Node = null

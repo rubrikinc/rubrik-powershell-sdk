@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ListLocationsReply";
+    }
+
     public ListLocationsReply Set(
         List<System.String>? Locations = null
     ) 

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365License";
+    }
+
     public O365License Set(
         O365LicenseDetails? LicenseDetails = null
     ) 

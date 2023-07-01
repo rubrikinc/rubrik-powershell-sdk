@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RubrikCloudVaultRansomwareInvestigationEnablement";
+    }
+
     public RubrikCloudVaultRansomwareInvestigationEnablement Set(
         System.Boolean? Enabled = null,
         RubrikCloudVaultLocation? Location = null

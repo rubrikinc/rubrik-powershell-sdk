@@ -41,6 +41,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "InfrastructureChart";
+    }
+
     public InfrastructureChart Set(
         ReportFocusEnum? Focus = null,
         List<ClusterGroupByEnum>? GroupBy = null,

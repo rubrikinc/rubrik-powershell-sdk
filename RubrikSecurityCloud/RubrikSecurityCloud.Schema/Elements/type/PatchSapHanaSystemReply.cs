@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PatchSapHanaSystemReply";
+    }
+
     public PatchSapHanaSystemReply Set(
         AsyncRequestStatus? AsyncRequestStatus = null,
         SapHanaSystemSummary? SystemSummary = null

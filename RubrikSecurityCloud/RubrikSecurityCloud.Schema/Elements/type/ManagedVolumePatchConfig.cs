@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumePatchConfig";
+    }
+
     public ManagedVolumePatchConfig Set(
         List<System.String>? HostPatterns = null,
         List<System.String>? NodeHint = null,

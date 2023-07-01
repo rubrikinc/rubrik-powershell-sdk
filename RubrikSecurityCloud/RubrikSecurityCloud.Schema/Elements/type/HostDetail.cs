@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostDetail";
+    }
+
     public HostDetail Set(
         HostVfdState? HostVfdDriverState = null,
         HostVfdInstallConfig? HostVfdEnabled = null,

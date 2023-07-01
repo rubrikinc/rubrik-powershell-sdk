@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExchangeLiveMountConnection";
+    }
+
     public ExchangeLiveMountConnection Set(
         System.Int32? Count = null,
         List<ExchangeLiveMountEdge>? Edges = null,

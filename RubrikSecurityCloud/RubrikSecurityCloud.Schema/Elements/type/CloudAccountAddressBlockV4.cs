@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudAccountAddressBlockV4";
+    }
+
     public CloudAccountAddressBlockV4 Set(
         System.String? CidrBlock = null
     ) 

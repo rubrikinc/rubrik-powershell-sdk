@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365PdlGroupsReply";
+    }
+
     public O365PdlGroupsReply Set(
         List<O365PdlGroup>? Groups = null
     ) 

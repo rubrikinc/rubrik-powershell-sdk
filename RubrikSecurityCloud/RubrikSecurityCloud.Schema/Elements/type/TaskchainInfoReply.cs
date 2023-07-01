@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskchainInfoReply";
+    }
+
     public TaskchainInfoReply Set(
         TaskchainState? State = null,
         System.String? Account = null,

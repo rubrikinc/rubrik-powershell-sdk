@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeSmbShare";
+    }
+
     public ManagedVolumeSmbShare Set(
         List<System.String>? ActiveDirectoryGroups = null,
         System.String? DomainName = null,

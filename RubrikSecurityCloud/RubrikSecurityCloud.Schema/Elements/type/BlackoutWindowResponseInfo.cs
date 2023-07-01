@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlackoutWindowResponseInfo";
+    }
+
     public BlackoutWindowResponseInfo Set(
         BlackoutWindowStatus? BlackoutWindowStatus = null,
         BlackoutWindows? BlackoutWindows = null

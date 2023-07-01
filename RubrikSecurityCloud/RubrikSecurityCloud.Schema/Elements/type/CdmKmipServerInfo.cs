@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmKmipServerInfo";
+    }
+
     public CdmKmipServerInfo Set(
         System.String? CertificateId = null,
         System.String? CertificateName = null,

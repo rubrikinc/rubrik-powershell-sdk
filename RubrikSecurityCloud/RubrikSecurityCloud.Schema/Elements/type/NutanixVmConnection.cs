@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixVmConnection";
+    }
+
     public NutanixVmConnection Set(
         System.Int32? Count = null,
         List<NutanixVmEdge>? Edges = null,

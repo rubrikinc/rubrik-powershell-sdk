@@ -161,6 +161,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CassandraColumnFamily";
+    }
+
     public CassandraColumnFamily Set(
         List<PolarisObjectAuthorizedOperationsEnum>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,

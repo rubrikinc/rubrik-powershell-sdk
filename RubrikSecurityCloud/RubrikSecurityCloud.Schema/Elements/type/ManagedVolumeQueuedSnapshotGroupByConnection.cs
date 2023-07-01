@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeQueuedSnapshotGroupByConnection";
+    }
+
     public ManagedVolumeQueuedSnapshotGroupByConnection Set(
         System.Int32? Count = null,
         List<ManagedVolumeQueuedSnapshotGroupByEdge>? Edges = null,

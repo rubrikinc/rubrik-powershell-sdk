@@ -105,6 +105,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "User";
+    }
+
     public User Set(
         UserDomainEnum? Domain = null,
         UserStatus? Status = null,

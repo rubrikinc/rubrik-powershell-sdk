@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterIpv6ModeReply";
+    }
+
     public ClusterIpv6ModeReply Set(
         System.Boolean? IsIpv6Mode = null
     ) 

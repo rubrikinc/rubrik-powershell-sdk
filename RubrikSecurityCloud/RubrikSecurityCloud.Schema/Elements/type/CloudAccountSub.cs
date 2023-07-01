@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudAccountSub";
+    }
+
     public CloudAccountSub Set(
         System.String? Description = null,
         System.String? Name = null,

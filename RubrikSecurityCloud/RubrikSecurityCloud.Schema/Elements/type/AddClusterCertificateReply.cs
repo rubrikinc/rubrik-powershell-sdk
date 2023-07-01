@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddClusterCertificateReply";
+    }
+
     public AddClusterCertificateReply Set(
         System.String? CertId = null,
         System.String? Description = null,

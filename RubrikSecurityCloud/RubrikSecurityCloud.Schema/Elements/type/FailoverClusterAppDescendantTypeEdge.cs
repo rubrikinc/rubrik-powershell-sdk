@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterAppDescendantTypeEdge";
+    }
+
     public FailoverClusterAppDescendantTypeEdge Set(
         FailoverClusterAppDescendantType? Node = null,
         System.String? Cursor = null

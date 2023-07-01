@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmOracleRacNode";
+    }
+
     public CdmOracleRacNode Set(
         HostConnectivityStatusEnum? Status = null,
         System.String? HostFid = null,

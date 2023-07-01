@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolicyStatus";
+    }
+
     public PolicyStatus Set(
         ObjectPolicyStatus? Status = null,
         System.String? PolicyId = null

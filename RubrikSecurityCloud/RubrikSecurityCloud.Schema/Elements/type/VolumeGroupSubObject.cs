@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VolumeGroupSubObject";
+    }
+
     public VolumeGroupSubObject Set(
         System.Int64? CapacityInBytes = null,
         System.Int64? FileSizeInBytes = null,

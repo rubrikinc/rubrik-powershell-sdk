@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervScvmmUpdateReply";
+    }
+
     public HypervScvmmUpdateReply Set(
         HypervScvmmSummary? HypervScvmmSummary = null,
         HypervScvmmUpdate? HypervScvmmUpdate = null

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SearchResultResponse";
+    }
+
     public SearchResultResponse Set(
         System.String? Filename = null,
         System.String? Path = null,

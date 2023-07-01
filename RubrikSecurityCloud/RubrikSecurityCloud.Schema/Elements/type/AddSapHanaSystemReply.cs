@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddSapHanaSystemReply";
+    }
+
     public AddSapHanaSystemReply Set(
         System.String? Id = null,
         AsyncRequestStatus? AsyncRequestStatus = null

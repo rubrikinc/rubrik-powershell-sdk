@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReportGroupByDetail";
+    }
+
     public ReportGroupByDetail Set(
         List<DisplayableValue>? Aggregations = null,
         List<DisplayableValue>? AllValues = null,

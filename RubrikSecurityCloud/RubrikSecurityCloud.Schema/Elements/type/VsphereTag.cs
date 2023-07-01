@@ -86,10 +86,20 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("numWorkloadDescendants")]
         public System.Int32? NumWorkloadDescendants { get; set; }
 
+        //      C# -> List<System.String>? ObjectIds
+        // GraphQL -> objectIds: [String!]! (scalar)
+        [JsonProperty("objectIds")]
+        public List<System.String>? ObjectIds { get; set; }
+
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         [JsonProperty("replicatedObjectCount")]
         public System.Int32? ReplicatedObjectCount { get; set; }
+
+        //      C# -> System.String? SlaDomainId
+        // GraphQL -> slaDomainId: String! (scalar)
+        [JsonProperty("slaDomainId")]
+        public System.String? SlaDomainId { get; set; }
 
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -161,6 +171,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereTag";
+    }
+
     public VsphereTag Set(
         List<Operation>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,
@@ -175,7 +189,9 @@ namespace RubrikSecurityCloud.Types
         System.Boolean? IsFilter = null,
         System.String? Name = null,
         System.Int32? NumWorkloadDescendants = null,
+        List<System.String>? ObjectIds = null,
         System.Int32? ReplicatedObjectCount = null,
+        System.String? SlaDomainId = null,
         System.Boolean? SlaPauseStatus = null,
         System.String? VcenterId = null,
         List<Org>? AllOrgs = null,
@@ -230,8 +246,14 @@ namespace RubrikSecurityCloud.Types
         if ( NumWorkloadDescendants != null ) {
             this.NumWorkloadDescendants = NumWorkloadDescendants;
         }
+        if ( ObjectIds != null ) {
+            this.ObjectIds = ObjectIds;
+        }
         if ( ReplicatedObjectCount != null ) {
             this.ReplicatedObjectCount = ReplicatedObjectCount;
+        }
+        if ( SlaDomainId != null ) {
+            this.SlaDomainId = SlaDomainId;
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
@@ -362,10 +384,20 @@ namespace RubrikSecurityCloud.Types
         if (this.NumWorkloadDescendants != null) {
             s += ind + "numWorkloadDescendants\n" ;
         }
+        //      C# -> List<System.String>? ObjectIds
+        // GraphQL -> objectIds: [String!]! (scalar)
+        if (this.ObjectIds != null) {
+            s += ind + "objectIds\n" ;
+        }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount != null) {
             s += ind + "replicatedObjectCount\n" ;
+        }
+        //      C# -> System.String? SlaDomainId
+        // GraphQL -> slaDomainId: String! (scalar)
+        if (this.SlaDomainId != null) {
+            s += ind + "slaDomainId\n" ;
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
@@ -560,11 +592,23 @@ namespace RubrikSecurityCloud.Types
         {
             this.NumWorkloadDescendants = Int32.MinValue;
         }
+        //      C# -> List<System.String>? ObjectIds
+        // GraphQL -> objectIds: [String!]! (scalar)
+        if (this.ObjectIds == null && Exploration.Includes(parent + ".objectIds", true))
+        {
+            this.ObjectIds = new List<System.String>();
+        }
         //      C# -> System.Int32? ReplicatedObjectCount
         // GraphQL -> replicatedObjectCount: Int! (scalar)
         if (this.ReplicatedObjectCount == null && Exploration.Includes(parent + ".replicatedObjectCount", true))
         {
             this.ReplicatedObjectCount = Int32.MinValue;
+        }
+        //      C# -> System.String? SlaDomainId
+        // GraphQL -> slaDomainId: String! (scalar)
+        if (this.SlaDomainId == null && Exploration.Includes(parent + ".slaDomainId", true))
+        {
+            this.SlaDomainId = "FETCH";
         }
         //      C# -> System.Boolean? SlaPauseStatus
         // GraphQL -> slaPauseStatus: Boolean! (scalar)

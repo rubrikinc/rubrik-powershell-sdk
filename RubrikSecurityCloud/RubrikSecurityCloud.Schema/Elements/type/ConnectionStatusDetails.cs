@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ConnectionStatusDetails";
+    }
+
     public ConnectionStatusDetails Set(
         ClusterConnectionStatus? SourceAndRubrik = null,
         ConnectionStatusType? SourceAndTarget = null,

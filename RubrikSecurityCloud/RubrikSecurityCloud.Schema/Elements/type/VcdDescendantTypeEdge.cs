@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcdDescendantTypeEdge";
+    }
+
     public VcdDescendantTypeEdge Set(
         VcdDescendantType? Node = null,
         System.String? Cursor = null

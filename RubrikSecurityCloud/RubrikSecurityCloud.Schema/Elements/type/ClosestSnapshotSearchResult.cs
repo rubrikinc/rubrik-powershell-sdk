@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClosestSnapshotSearchResult";
+    }
+
     public ClosestSnapshotSearchResult Set(
         SnapshotSearchError? Error = null,
         System.String? SnappableId = null,

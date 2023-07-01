@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WindowsClusterDescendantTypeEdge";
+    }
+
     public WindowsClusterDescendantTypeEdge Set(
         WindowsClusterDescendantType? Node = null,
         System.String? Cursor = null

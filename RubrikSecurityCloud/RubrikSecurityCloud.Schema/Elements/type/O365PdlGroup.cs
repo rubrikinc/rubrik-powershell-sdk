@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365PdlGroup";
+    }
+
     public O365PdlGroup Set(
         System.String? GroupId = null,
         O365PdlAndWorkloadPair? PdlAndWorkload = null

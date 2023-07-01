@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RansomwareResult";
+    }
+
     public RansomwareResult Set(
         System.String? ClusterUuid = null,
         System.Single? EncryptionProbability = null,

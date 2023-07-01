@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "clusterState";
+    }
+
     public ClusterState Set(
         ClusterRemovalState? ClusterRemovalState = null,
         ClusterStatus? ConnectedState = null,

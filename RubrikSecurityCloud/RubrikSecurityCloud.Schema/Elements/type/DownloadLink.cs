@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DownloadLink";
+    }
+
     public DownloadLink Set(
         System.String? Link = null
     ) 

@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnomalyStatus";
+    }
+
     public AnomalyStatus Set(
         System.Boolean? IsAnomaly = null
     ) 

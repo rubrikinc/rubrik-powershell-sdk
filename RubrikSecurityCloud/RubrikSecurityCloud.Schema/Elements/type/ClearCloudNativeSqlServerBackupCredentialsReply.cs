@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClearCloudNativeSqlServerBackupCredentialsReply";
+    }
+
     public ClearCloudNativeSqlServerBackupCredentialsReply Set(
         List<System.String>? FailedObjectIds = null,
         List<System.String>? SuccessObjectIds = null

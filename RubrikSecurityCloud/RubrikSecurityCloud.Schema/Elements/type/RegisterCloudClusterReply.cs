@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RegisterCloudClusterReply";
+    }
+
     public RegisterCloudClusterReply Set(
         System.String? Error = null,
         System.Boolean? IsSuccessful = null

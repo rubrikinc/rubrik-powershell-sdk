@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaLogSnapshot";
+    }
+
     public SapHanaLogSnapshot Set(
         System.String? CdmId = null,
         System.String? ClusterUuid = null,

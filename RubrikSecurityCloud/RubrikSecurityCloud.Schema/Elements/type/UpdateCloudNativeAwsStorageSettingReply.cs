@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateCloudNativeAwsStorageSettingReply";
+    }
+
     public UpdateCloudNativeAwsStorageSettingReply Set(
         TargetMapping? TargetMapping = null
     ) 

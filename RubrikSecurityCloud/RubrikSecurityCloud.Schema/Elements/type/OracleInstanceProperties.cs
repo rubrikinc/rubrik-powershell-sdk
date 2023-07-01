@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleInstanceProperties";
+    }
+
     public OracleInstanceProperties Set(
         System.String? HostName = null,
         System.String? InstanceSid = null

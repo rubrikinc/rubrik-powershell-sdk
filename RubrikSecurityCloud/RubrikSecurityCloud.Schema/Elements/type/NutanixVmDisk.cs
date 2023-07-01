@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixVmDisk";
+    }
+
     public NutanixVmDisk Set(
         System.String? DeviceType = null,
         System.Boolean? IsSnapshottable = null,

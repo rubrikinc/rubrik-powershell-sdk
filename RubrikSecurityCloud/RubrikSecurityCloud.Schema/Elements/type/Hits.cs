@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Hits";
+    }
+
     public Hits Set(
         System.Int32? PermittedHits = null,
         System.Int32? PermittedHitsDelta = null,

@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NetworkThrottle";
+    }
+
     public NetworkThrottle Set(
         System.Single? CurrentThrottleLimit = null,
         System.Single? DefaultThrottleLimit = null,

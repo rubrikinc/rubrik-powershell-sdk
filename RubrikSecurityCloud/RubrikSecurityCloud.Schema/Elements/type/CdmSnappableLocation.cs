@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmSnappableLocation";
+    }
+
     public CdmSnappableLocation Set(
         System.String? Location = null
     ) 

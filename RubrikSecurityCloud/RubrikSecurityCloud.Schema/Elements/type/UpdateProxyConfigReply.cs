@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateProxyConfigReply";
+    }
+
     public UpdateProxyConfigReply Set(
         System.String? Host = null,
         System.Int32? Port = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmInventorySubHierarchyRoot";
+    }
+
     public CdmInventorySubHierarchyRoot Set(
         InventorySubHierarchyRootEnum? RootEnum = null,
         CdmHierarchyObjectConnection? ChildConnection = null,

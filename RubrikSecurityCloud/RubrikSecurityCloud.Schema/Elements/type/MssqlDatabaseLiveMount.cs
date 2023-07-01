@@ -90,6 +90,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlDatabaseLiveMount";
+    }
+
     public MssqlDatabaseLiveMount Set(
         System.String? CdmId = null,
         DateTime? CreationDate = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnalyzerConnection";
+    }
+
     public AnalyzerConnection Set(
         System.Int32? Count = null,
         List<AnalyzerEdge>? Edges = null,

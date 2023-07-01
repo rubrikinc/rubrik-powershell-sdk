@@ -1,6 +1,6 @@
 # Invoke-RscMutateMongo
 ## Subcommands
-### Addsource
+### addsource
 Add a new MongoDB source
 
 Supported in v8.1+
@@ -8,7 +8,7 @@ Adds a new MongoDB source to the Rubrik Cluster.
 
 - There is a single argument of type AddMongoSourceInput.
 - Returns AddMongoSourceReply.
-### Assignslatodbcollection
+### assignslatodbcollection
 Assign SLA Domain to MongoDB collection objects
 
 Supported in v8.1+
@@ -16,26 +16,26 @@ Assigns SLA Domain to the given MongoDB collection objects.
 
 - There is a single argument of type AssignSlaToMongoDbCollectionInput.
 - Returns AsyncRequestStatus.
-### Bulkdeletedbsource
+### bulkdeletedbsource
 Bulk Delete Sources
 
 Supported in m3.2.0-m4.2.0.
 
 - There is a single argument of type BulkDeleteMosaicSourcesInput.
 - Returns MosaicAsyncResponse.
-### Createdbsource
+### createdbsource
 Register a new MongoDB source to NoSQL cluster. 
 For MongoDB, the term "source" is usually used for either a replica set or a sharded cluster.
 For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/introduction/.
 
 - There is a single argument of type AddMosaicSourceInput.
 - Returns MosaicAsyncResponse.
-### Deletedbsource
+### deletedbsource
 Remove a registered MongoDB source from NoSQL cluster.
 
 - There is a single argument of type DeleteMosaicSourceInput.
 - Returns MosaicAsyncResponse.
-### Deletesource
+### deletesource
 Delete a MongoDB source
 
 Supported in v8.1+
@@ -43,7 +43,7 @@ Deletes a specific MongoDB source.
 
 - There is a single argument of type DeleteMongoSourceInput.
 - Returns AsyncRequestStatus.
-### Discoversource
+### discoversource
 Discover a MongoDB source on-demand
 
 Supported in v8.1+
@@ -51,7 +51,7 @@ Initiates an on-demand job to discover a MongoDB source.
 
 - There is a single argument of type DiscoverMongoSourceInput.
 - Returns AsyncRequestStatus.
-### Patchsource
+### patchsource
 Edit a MongoDB source
 
 Supported in v8.1+
@@ -59,17 +59,17 @@ Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB canno
 
 - There is a single argument of type PatchMongoSourceInput.
 - Returns AsyncRequestStatus.
-### Recoverdbsource
+### recoverdbsource
 Recover a MongoDB source from NoSQL cluster.
 
 - There is a single argument of type MosaicRestoreDataInput.
 - Returns MosaicAsyncResponse.
-### Recoversource
+### recoversource
 Recover a MongoDB source from Rubrik CDM cluster.
 
 - There is a single argument of type RecoverMongoSourceInput.
 - Returns AsyncRequestStatus.
-### Retryaddsource
+### retryaddsource
 Update a MongoDB source
 
 Supported in v8.1+
@@ -77,7 +77,7 @@ Updates a MongoDB source details. You can use this endpoint for updating MongoDB
 
 - There is a single argument of type RetryAddMongoSourceInput.
 - Returns AsyncRequestStatus.
-### Updatedbsource
+### updatedbsource
 Modifies configuration for a registered MongoDB source in NoSQL cluster.
 
 - There is a single argument of type ModifyMosaicSourceInput.

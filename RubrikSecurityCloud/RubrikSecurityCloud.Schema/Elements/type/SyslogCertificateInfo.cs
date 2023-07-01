@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SyslogCertificateInfo";
+    }
+
     public SyslogCertificateInfo Set(
         System.String? ServerCertificate = null,
         System.String? ServerCertificateName = null

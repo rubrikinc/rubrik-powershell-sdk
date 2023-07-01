@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FederatedLoginStatus";
+    }
+
     public FederatedLoginStatus Set(
         System.Boolean? Enabled = null,
         System.Boolean? InventoryCardEnabled = null

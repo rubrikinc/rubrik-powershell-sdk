@@ -1,6 +1,10 @@
 ### VsphereTag
 - vcenterId: System.String
 - vsphereTagPath: list of PathNodes
+- objectIds: list of System.Strings
+  - The list of moids of child VMs.
+- slaDomainId: System.String
+  - The CDM ID of the configured SLA Domain.
 - isFilter: System.Boolean
   - Specifies whether this tag is a multi-tag filter or a vSphere tag.
 - condition: System.String

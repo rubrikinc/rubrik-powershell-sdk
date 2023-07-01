@@ -141,6 +141,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365Group";
+    }
+
     public O365Group Set(
         List<Operation>? AuthorizedOperations = null,
         O365GroupType? GroupType = null,

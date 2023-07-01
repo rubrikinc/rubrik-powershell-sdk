@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NcdTaskData";
+    }
+
     public NcdTaskData Set(
         NcdTaskStatus? Status = null,
         System.String? Description = null,

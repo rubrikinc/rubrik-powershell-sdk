@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NcdUsageOverTimeData";
+    }
+
     public NcdUsageOverTimeData Set(
         System.Int64? ChangeInBytes = null,
         System.Int64? NewInBytes = null,

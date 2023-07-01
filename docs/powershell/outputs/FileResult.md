@@ -46,4 +46,8 @@
   - Risk level of the file.
 - riskReasons: list of RiskReasons
   - File access risk reasons.
+- isDirectAcl: System.Boolean
+  - Represents if file has direct ACL.
+- principalAccessInfo: PrincipalAccessInfo
+  - Represents principal access information for the file.
 - snappable: HierarchyObject

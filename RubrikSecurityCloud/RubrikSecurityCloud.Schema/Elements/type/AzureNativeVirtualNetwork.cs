@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeVirtualNetwork";
+    }
+
     public AzureNativeVirtualNetwork Set(
         System.String? Name = null,
         System.String? ResourceGroupName = null

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateGuestCredentialReply";
+    }
+
     public UpdateGuestCredentialReply Set(
         CreateGuestCredentialReply? Output = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongodbBackupParams";
+    }
+
     public MongodbBackupParams Set(
         System.String? StoreName = null,
         System.Int64? WatcherFrequency = null

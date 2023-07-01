@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterSlaDomainForFilter";
+    }
+
     public ClusterSlaDomainForFilter Set(
         System.String? ClusterName = null,
         System.String? ClusterUuid = null,

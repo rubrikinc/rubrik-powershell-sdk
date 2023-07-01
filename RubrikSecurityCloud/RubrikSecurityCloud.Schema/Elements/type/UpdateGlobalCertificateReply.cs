@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateGlobalCertificateReply";
+    }
+
     public UpdateGlobalCertificateReply Set(
         List<System.String>? ClusterUuids = null,
         List<CertificateClusterOperationError>? ClusterErrors = null

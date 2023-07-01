@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereBlueprintChildSnapshotInfo";
+    }
+
     public VsphereBlueprintChildSnapshotInfo Set(
         System.Int32? MemoryMbs = null,
         System.String? OsType = null,

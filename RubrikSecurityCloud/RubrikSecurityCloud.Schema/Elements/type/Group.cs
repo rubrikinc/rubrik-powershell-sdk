@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Group";
+    }
+
     public Group Set(
         System.String? GroupId = null,
         System.String? GroupName = null,

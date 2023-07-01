@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdatePactsafeEulaSeenReply";
+    }
+
     public UpdatePactsafeEulaSeenReply Set(
         EulaViewStatus? Status = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "JiraIssueType";
+    }
+
     public JiraIssueType Set(
         System.String? Name = null,
         System.String? NaturalId = null

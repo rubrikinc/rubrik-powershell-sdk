@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WindowsClusterLogicalChildTypeConnection";
+    }
+
     public WindowsClusterLogicalChildTypeConnection Set(
         List<WindowsClusterLogicalChildType>? Nodes = null,
         System.Int32? Count = null,

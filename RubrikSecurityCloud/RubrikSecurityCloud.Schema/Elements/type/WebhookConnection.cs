@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WebhookConnection";
+    }
+
     public WebhookConnection Set(
         System.Int32? Count = null,
         List<WebhookEdge>? Edges = null,

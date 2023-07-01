@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcdVcenterConnectionInfo";
+    }
+
     public VcdVcenterConnectionInfo Set(
         HostConnectivityStatusEnum? ConnectionStatus = null,
         System.String? Name = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SonarReportRowEdge";
+    }
+
     public SonarReportRowEdge Set(
         System.String? Cursor = null,
         SonarReportRow? Node = null

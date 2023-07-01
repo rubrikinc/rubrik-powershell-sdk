@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDirectoryPaths";
+    }
+
     public OracleDirectoryPaths Set(
         System.String? ArchiveDests = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureAdDirectoryEdge";
+    }
+
     public AzureAdDirectoryEdge Set(
         System.String? Cursor = null,
         AzureAdDirectory? Node = null

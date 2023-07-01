@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Certificate";
+    }
+
     public Certificate Set(
         System.String? CertificateField = null,
         System.Int64? CertificateId = null,

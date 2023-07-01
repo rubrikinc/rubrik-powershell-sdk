@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CheckGuestOsReply";
+    }
+
     public CheckGuestOsReply Set(
         List<GuestOs>? SupportedOs = null,
         System.Boolean? Success = null,

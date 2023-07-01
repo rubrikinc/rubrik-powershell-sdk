@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "EnableLambdaForSnappableReply";
+    }
+
     public EnableLambdaForSnappableReply Set(
         System.Boolean? DiffFmdEnabled = null,
         System.Boolean? FullFmdEnabled = null,

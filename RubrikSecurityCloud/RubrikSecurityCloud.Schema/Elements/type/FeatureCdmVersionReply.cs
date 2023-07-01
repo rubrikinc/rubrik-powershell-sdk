@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FeatureCdmVersionReply";
+    }
+
     public FeatureCdmVersionReply Set(
         System.Boolean? IsSupported = null
     ) 

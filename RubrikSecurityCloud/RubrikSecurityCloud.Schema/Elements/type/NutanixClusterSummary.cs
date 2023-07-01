@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixClusterSummary";
+    }
+
     public NutanixClusterSummary Set(
         System.String? Hostname = null,
         System.String? NaturalId = null,

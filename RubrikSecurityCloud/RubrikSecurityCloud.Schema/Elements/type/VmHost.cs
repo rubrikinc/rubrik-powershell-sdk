@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmHost";
+    }
+
     public VmHost Set(
         System.String? HostId = null,
         System.String? HostName = null,

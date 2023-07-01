@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StorageAccountEdge";
+    }
+
     public StorageAccountEdge Set(
         System.String? Cursor = null,
         StorageAccount? Node = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CassandraColumnObject";
+    }
+
     public CassandraColumnObject Set(
         System.String? ColumnName = null,
         System.String? ColumnType = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixAsyncRequestFailureSummary";
+    }
+
     public NutanixAsyncRequestFailureSummary Set(
         System.String? Error = null,
         System.String? VmId = null

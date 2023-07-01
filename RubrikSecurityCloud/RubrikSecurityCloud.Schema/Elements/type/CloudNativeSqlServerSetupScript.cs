@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudNativeSqlServerSetupScript";
+    }
+
     public CloudNativeSqlServerSetupScript Set(
         System.String? Script = null
     ) 

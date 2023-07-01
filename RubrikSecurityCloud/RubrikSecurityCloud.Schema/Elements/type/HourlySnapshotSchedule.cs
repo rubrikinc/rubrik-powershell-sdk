@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HourlySnapshotSchedule";
+    }
+
     public HourlySnapshotSchedule Set(
         BasicSnapshotSchedule? BasicSchedule = null
     ) 

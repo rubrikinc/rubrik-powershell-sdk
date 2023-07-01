@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "metricTimeSeries";
+    }
+
     public MetricTimeSeries Set(
         ClusterMetric? Metric = null,
         ClusterMetricGroupByInfo? TimeInfo = null

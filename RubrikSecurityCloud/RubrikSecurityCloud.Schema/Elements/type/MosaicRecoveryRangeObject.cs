@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicRecoveryRangeObject";
+    }
+
     public MosaicRecoveryRangeObject Set(
         System.String? EarliestTimestamp = null,
         System.String? LatestTimestamp = null

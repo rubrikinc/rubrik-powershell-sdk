@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotLocationRetentionInfo";
+    }
+
     public SnapshotLocationRetentionInfo Set(
         DateTime? ExpirationTime = null,
         System.String? Id = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365TeamConvChannelConnection";
+    }
+
     public O365TeamConvChannelConnection Set(
         System.Int32? Count = null,
         List<O365TeamConvChannelEdge>? Edges = null,

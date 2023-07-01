@@ -90,6 +90,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BootstrappableNodeInfo";
+    }
+
     public BootstrappableNodeInfo Set(
         System.Int64? CapacityInBytes = null,
         System.String? ChassisId = null,

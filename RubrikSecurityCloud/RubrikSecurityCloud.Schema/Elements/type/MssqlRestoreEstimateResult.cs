@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlRestoreEstimateResult";
+    }
+
     public MssqlRestoreEstimateResult Set(
         System.Int64? BytesFromCloud = null
     ) 

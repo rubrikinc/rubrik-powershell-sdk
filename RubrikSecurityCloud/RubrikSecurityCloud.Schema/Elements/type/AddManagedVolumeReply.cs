@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddManagedVolumeReply";
+    }
+
     public AddManagedVolumeReply Set(
         AsyncRequestStatus? AsyncRequestStatus = null,
         UpdateManagedVolumeReply? ManagedVolumeSummary = null

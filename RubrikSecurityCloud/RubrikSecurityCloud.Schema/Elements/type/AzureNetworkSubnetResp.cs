@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNetworkSubnetResp";
+    }
+
     public AzureNetworkSubnetResp Set(
         System.Boolean? Valid = null
     ) 

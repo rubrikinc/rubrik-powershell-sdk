@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicRecoveryRangeResponse";
+    }
+
     public MosaicRecoveryRangeResponse Set(
         System.String? Message = null,
         System.Int64? ReturnCode = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CrawlObjEdge";
+    }
+
     public CrawlObjEdge Set(
         System.String? Cursor = null,
         CrawlObj? Node = null

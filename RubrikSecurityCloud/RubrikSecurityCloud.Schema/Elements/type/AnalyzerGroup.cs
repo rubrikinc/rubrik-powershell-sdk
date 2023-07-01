@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnalyzerGroup";
+    }
+
     public AnalyzerGroup Set(
         AnalyzerGroupTypeEnum? GroupType = null,
         System.String? Id = null,

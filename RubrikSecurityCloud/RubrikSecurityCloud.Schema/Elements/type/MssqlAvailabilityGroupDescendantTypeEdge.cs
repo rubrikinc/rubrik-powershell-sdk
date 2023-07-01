@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlAvailabilityGroupDescendantTypeEdge";
+    }
+
     public MssqlAvailabilityGroupDescendantTypeEdge Set(
         MssqlAvailabilityGroupDescendantType? Node = null,
         System.String? Cursor = null

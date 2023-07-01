@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ChartDataResult";
+    }
+
     public ChartDataResult Set(
         ChartType? ChartType = null,
         List<ChartPrimaryGroupBy>? ChartData = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SpecificReplicationSpec";
+    }
+
     public SpecificReplicationSpec Set(
         BidirectionalReplicationSpec? BidirectionalSpec = null,
         ReplicationToCloudLocationSpec? CloudLocationSpec = null,

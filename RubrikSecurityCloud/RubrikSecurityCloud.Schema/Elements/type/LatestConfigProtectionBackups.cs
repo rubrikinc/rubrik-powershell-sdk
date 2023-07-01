@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LatestConfigProtectionBackups";
+    }
+
     public LatestConfigProtectionBackups Set(
         Cluster? Cluster = null,
         List<ConfigProtectionBackups>? LatestConfigProtectionBackupsByVersion = null

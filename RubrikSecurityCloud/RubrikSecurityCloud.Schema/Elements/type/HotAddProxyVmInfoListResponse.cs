@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HotAddProxyVmInfoListResponse";
+    }
+
     public HotAddProxyVmInfoListResponse Set(
         System.Boolean? HasMore = null,
         System.Int32? Total = null,

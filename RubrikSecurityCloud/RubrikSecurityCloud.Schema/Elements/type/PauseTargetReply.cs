@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PauseTargetReply";
+    }
+
     public PauseTargetReply Set(
         ArchivalLocationStatus? Status = null,
         System.String? LocationId = null

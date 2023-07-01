@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterStatsAggregation";
+    }
+
     public ClusterStatsAggregation Set(
         System.Int64? IngestedArchivalStorage = null,
         System.Int64? IngestedSnapshotStorage = null,

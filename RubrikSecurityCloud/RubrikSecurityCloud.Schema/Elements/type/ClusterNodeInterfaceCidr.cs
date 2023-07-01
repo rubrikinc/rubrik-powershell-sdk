@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterNodeInterfaceCidr";
+    }
+
     public ClusterNodeInterfaceCidr Set(
         System.String? Cidr = null,
         System.String? InterfaceName = null

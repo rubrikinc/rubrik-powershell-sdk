@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateVappNetworkParams";
+    }
+
     public CreateVappNetworkParams Set(
         System.String? NewName = null,
         VappNetworkSummary? VappNetworkSummary = null

@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VolumeGroupSummary";
+    }
+
     public VolumeGroupSummary Set(
         System.Boolean? ForceFull = null,
         System.String? HostId = null,

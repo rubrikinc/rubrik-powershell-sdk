@@ -43,24 +43,14 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter Org { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Org",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The Rubrik UUID for the object.
-GraphQL argument fid: UUID!"
-        )]
-        public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
-        // Orgatsnappablelevel parameter set
+        // OrgAtSnappableLevel parameter set
         //
         // [GraphQL: o365OrgAtSnappableLevel]
         //
         [Parameter(
-            ParameterSetName = "Orgatsnappablelevel",
+            ParameterSetName = "OrgAtSnappableLevel",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -69,26 +59,16 @@ GraphQL argument fid: UUID!"
 [GraphQL: o365OrgAtSnappableLevel]",
             Position = 0
         )]
-        public SwitchParameter Orgatsnappablelevel { get; set; }
+        public SwitchParameter OrgAtSnappableLevel { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Orgatsnappablelevel",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument snappableType: SnappableType!"
-        )]
-        public SnappableType? SnappableType { get; set; }
         
         // -------------------------------------------------------------------
-        // Alladgroup parameter set
+        // AllAdGroup parameter set
         //
         // [GraphQL: allO365AdGroups]
         //
         [Parameter(
-            ParameterSetName = "Alladgroup",
+            ParameterSetName = "AllAdGroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -97,28 +77,8 @@ GraphQL argument snappableType: SnappableType!"
 [GraphQL: allO365AdGroups]",
             Position = 0
         )]
-        public SwitchParameter Alladgroup { get; set; }
+        public SwitchParameter AllAdGroup { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Alladgroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Org UUID.
-GraphQL argument orgId: UUID!"
-        )]
-        public System.String? OrgId { get; set; }
-        [Parameter(
-            ParameterSetName = "Alladgroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"AD group search filter.
-GraphQL argument adGroupSearchFilter: String!"
-        )]
-        public System.String? AdGroupSearchFilter { get; set; }
         
         // -------------------------------------------------------------------
         // User parameter set
@@ -155,16 +115,6 @@ GraphQL argument adGroupSearchFilter: String!"
         )]
         public SwitchParameter Mailbox { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Mailbox",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The fid for the workload.
-GraphQL argument snappableFid: UUID!"
-        )]
-        public System.String? SnappableFid { get; set; }
         
         // -------------------------------------------------------------------
         // Group parameter set
@@ -183,66 +133,6 @@ GraphQL argument snappableFid: UUID!"
         )]
         public SwitchParameter Group { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Group",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "Group",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "Group",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort hierarchy objects by hierarchy field.
-GraphQL argument sortBy: HierarchySortByField"
-        )]
-        public HierarchySortByField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Group",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sorting order for the results.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "Group",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The hierarchy object filter.
-GraphQL argument filter: [Filter!]"
-        )]
-        public List<Filter>? Filter { get; set; }
-        [Parameter(
-            ParameterSetName = "Group",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The fid for the O365 organization.
-GraphQL argument o365OrgId: UUID!"
-        )]
-        public System.String? O365OrgId { get; set; }
         
         // -------------------------------------------------------------------
         // Mailboxe parameter set
@@ -299,12 +189,12 @@ GraphQL argument o365OrgId: UUID!"
 
         
         // -------------------------------------------------------------------
-        // Sharepointdrive parameter set
+        // SharepointDrive parameter set
         //
         // [GraphQL: o365SharepointDrive]
         //
         [Parameter(
-            ParameterSetName = "Sharepointdrive",
+            ParameterSetName = "SharepointDrive",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -313,16 +203,16 @@ GraphQL argument o365OrgId: UUID!"
 [GraphQL: o365SharepointDrive]",
             Position = 0
         )]
-        public SwitchParameter Sharepointdrive { get; set; }
+        public SwitchParameter SharepointDrive { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Sharepointlist parameter set
+        // SharepointList parameter set
         //
         // [GraphQL: o365SharepointList]
         //
         [Parameter(
-            ParameterSetName = "Sharepointlist",
+            ParameterSetName = "SharepointList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -331,16 +221,16 @@ GraphQL argument o365OrgId: UUID!"
 [GraphQL: o365SharepointList]",
             Position = 0
         )]
-        public SwitchParameter Sharepointlist { get; set; }
+        public SwitchParameter SharepointList { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Sharepointsite parameter set
+        // SharepointSite parameter set
         //
         // [GraphQL: o365SharepointSite]
         //
         [Parameter(
-            ParameterSetName = "Sharepointsite",
+            ParameterSetName = "SharepointSite",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -349,18 +239,8 @@ GraphQL argument o365OrgId: UUID!"
 [GraphQL: o365SharepointSite]",
             Position = 0
         )]
-        public SwitchParameter Sharepointsite { get; set; }
+        public SwitchParameter SharepointSite { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Sharepointsite",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The fid for the site.
-GraphQL argument siteFid: UUID!"
-        )]
-        public System.String? SiteFid { get; set; }
         
         // -------------------------------------------------------------------
         // Team parameter set
@@ -381,12 +261,12 @@ GraphQL argument siteFid: UUID!"
 
         
         // -------------------------------------------------------------------
-        // Teamchannel parameter set
+        // TeamChannel parameter set
         //
         // [GraphQL: o365TeamChannels]
         //
         [Parameter(
-            ParameterSetName = "Teamchannel",
+            ParameterSetName = "TeamChannel",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -395,46 +275,16 @@ GraphQL argument siteFid: UUID!"
 [GraphQL: o365TeamChannels]",
             Position = 0
         )]
-        public SwitchParameter Teamchannel { get; set; }
+        public SwitchParameter TeamChannel { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Teamchannel",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument excludeArchived: Boolean!"
-        )]
-        public System.Boolean? ExcludeArchived { get; set; }
-        [Parameter(
-            ParameterSetName = "Teamchannel",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Filter on channel membership type.
-GraphQL argument channelMembershipTypeFilter: ChannelMembershipType!"
-        )]
-        public ChannelMembershipType? ChannelMembershipTypeFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Teamchannel",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument nameFilter: String"
-        )]
-        public System.String? NameFilter { get; set; }
         
         // -------------------------------------------------------------------
-        // Teamconversationsfolderid parameter set
+        // TeamConversationsFolderID parameter set
         //
         // [GraphQL: o365TeamConversationsFolderID]
         //
         [Parameter(
-            ParameterSetName = "Teamconversationsfolderid",
+            ParameterSetName = "TeamConversationsFolderID",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -443,26 +293,16 @@ GraphQL argument nameFilter: String"
 [GraphQL: o365TeamConversationsFolderID]",
             Position = 0
         )]
-        public SwitchParameter Teamconversationsfolderid { get; set; }
+        public SwitchParameter TeamConversationsFolderID { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Teamconversationsfolderid",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The ID of the snapshot.
-GraphQL argument snapshotFid: UUID!"
-        )]
-        public System.String? SnapshotFid { get; set; }
         
         // -------------------------------------------------------------------
-        // Teampostedby parameter set
+        // TeamPostedBy parameter set
         //
         // [GraphQL: o365TeamPostedBy]
         //
         [Parameter(
-            ParameterSetName = "Teampostedby",
+            ParameterSetName = "TeamPostedBy",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -471,7 +311,7 @@ GraphQL argument snapshotFid: UUID!"
 [GraphQL: o365TeamPostedBy]",
             Position = 0
         )]
-        public SwitchParameter Teampostedby { get; set; }
+        public SwitchParameter TeamPostedBy { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -493,12 +333,12 @@ GraphQL argument snapshotFid: UUID!"
 
         
         // -------------------------------------------------------------------
-        // Sharepointobjectlist parameter set
+        // SharepointObjectList parameter set
         //
         // [GraphQL: o365SharepointObjectList]
         //
         [Parameter(
-            ParameterSetName = "Sharepointobjectlist",
+            ParameterSetName = "SharepointObjectList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -507,36 +347,16 @@ GraphQL argument snapshotFid: UUID!"
 [GraphQL: o365SharepointObjectList]",
             Position = 0
         )]
-        public SwitchParameter Sharepointobjectlist { get; set; }
+        public SwitchParameter SharepointObjectList { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Sharepointobjectlist",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Types of objects to include.
-GraphQL argument objectTypeFilter: [String!]"
-        )]
-        public List<System.String>? ObjectTypeFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Sharepointobjectlist",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"If true, the entire hierarchy will be searched.
-GraphQL argument includeEntireHierarchy: Boolean!"
-        )]
-        public System.Boolean? IncludeEntireHierarchy { get; set; }
         
         // -------------------------------------------------------------------
-        // Sharepointobject parameter set
+        // SharepointObject parameter set
         //
         // [GraphQL: o365SharepointObjects]
         //
         [Parameter(
-            ParameterSetName = "Sharepointobject",
+            ParameterSetName = "SharepointObject",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -545,16 +365,16 @@ GraphQL argument includeEntireHierarchy: Boolean!"
 [GraphQL: o365SharepointObjects]",
             Position = 0
         )]
-        public SwitchParameter Sharepointobject { get; set; }
+        public SwitchParameter SharepointObject { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Userobject parameter set
+        // UserObject parameter set
         //
         // [GraphQL: o365UserObjects]
         //
         [Parameter(
-            ParameterSetName = "Userobject",
+            ParameterSetName = "UserObject",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -563,16 +383,16 @@ GraphQL argument includeEntireHierarchy: Boolean!"
 [GraphQL: o365UserObjects]",
             Position = 0
         )]
-        public SwitchParameter Userobject { get; set; }
+        public SwitchParameter UserObject { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Orgsummarie parameter set
+        // OrgSummarie parameter set
         //
         // [GraphQL: o365OrgSummaries]
         //
         [Parameter(
-            ParameterSetName = "Orgsummarie",
+            ParameterSetName = "OrgSummarie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -581,16 +401,16 @@ GraphQL argument includeEntireHierarchy: Boolean!"
 [GraphQL: o365OrgSummaries]",
             Position = 0
         )]
-        public SwitchParameter Orgsummarie { get; set; }
+        public SwitchParameter OrgSummarie { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Objectancestor parameter set
+        // ObjectAncestor parameter set
         //
         // [GraphQL: o365ObjectAncestors]
         //
         [Parameter(
-            ParameterSetName = "Objectancestor",
+            ParameterSetName = "ObjectAncestor",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -599,16 +419,16 @@ GraphQL argument includeEntireHierarchy: Boolean!"
 [GraphQL: o365ObjectAncestors]",
             Position = 0
         )]
-        public SwitchParameter Objectancestor { get; set; }
+        public SwitchParameter ObjectAncestor { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Browseteamconvchannel parameter set
+        // BrowseTeamConvChannel parameter set
         //
         // [GraphQL: browseO365TeamConvChannels]
         //
         [Parameter(
-            ParameterSetName = "Browseteamconvchannel",
+            ParameterSetName = "BrowseTeamConvChannel",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -617,26 +437,16 @@ GraphQL argument includeEntireHierarchy: Boolean!"
 [GraphQL: browseO365TeamConvChannels]",
             Position = 0
         )]
-        public SwitchParameter Browseteamconvchannel { get; set; }
+        public SwitchParameter BrowseTeamConvChannel { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Browseteamconvchannel",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"snapshotFid arg which is of optional type
-GraphQL argument snapshotFidOpt: UUID"
-        )]
-        public System.String? SnapshotFidOpt { get; set; }
         
         // -------------------------------------------------------------------
-        // Serviceaccount parameter set
+        // ServiceAccount parameter set
         //
         // [GraphQL: o365ServiceAccount]
         //
         [Parameter(
-            ParameterSetName = "Serviceaccount",
+            ParameterSetName = "ServiceAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -645,16 +455,16 @@ GraphQL argument snapshotFidOpt: UUID"
 [GraphQL: o365ServiceAccount]",
             Position = 0
         )]
-        public SwitchParameter Serviceaccount { get; set; }
+        public SwitchParameter ServiceAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Allorgstatus parameter set
+        // AllOrgStatus parameter set
         //
         // [GraphQL: allO365OrgStatuses]
         //
         [Parameter(
-            ParameterSetName = "Allorgstatus",
+            ParameterSetName = "AllOrgStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -663,7 +473,7 @@ GraphQL argument snapshotFidOpt: UUID"
 [GraphQL: allO365OrgStatuses]",
             Position = 0
         )]
-        public SwitchParameter Allorgstatus { get; set; }
+        public SwitchParameter AllOrgStatus { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -685,12 +495,12 @@ GraphQL argument snapshotFidOpt: UUID"
 
         
         // -------------------------------------------------------------------
-        // Listapp parameter set
+        // ListApp parameter set
         //
         // [GraphQL: listO365Apps]
         //
         [Parameter(
-            ParameterSetName = "Listapp",
+            ParameterSetName = "ListApp",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -699,36 +509,16 @@ GraphQL argument snapshotFidOpt: UUID"
 [GraphQL: listO365Apps]",
             Position = 0
         )]
-        public SwitchParameter Listapp { get; set; }
+        public SwitchParameter ListApp { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Listapp",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument o365AppFilters: [AppFilter!]!"
-        )]
-        public List<AppFilter>? O365AppFilters { get; set; }
-        [Parameter(
-            ParameterSetName = "Listapp",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument o365AppSortByParam: AppSortByParam"
-        )]
-        public AppSortByParam? O365AppSortByParam { get; set; }
         
         // -------------------------------------------------------------------
-        // Allsubscriptionsapptypecount parameter set
+        // AllSubscriptionsAppTypeCount parameter set
         //
         // [GraphQL: allO365SubscriptionsAppTypeCounts]
         //
         [Parameter(
-            ParameterSetName = "Allsubscriptionsapptypecount",
+            ParameterSetName = "AllSubscriptionsAppTypeCount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -737,16 +527,16 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
 [GraphQL: allO365SubscriptionsAppTypeCounts]",
             Position = 0
         )]
-        public SwitchParameter Allsubscriptionsapptypecount { get; set; }
+        public SwitchParameter AllSubscriptionsAppTypeCount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Storagestat parameter set
+        // StorageStat parameter set
         //
         // [GraphQL: o365StorageStats]
         //
         [Parameter(
-            ParameterSetName = "Storagestat",
+            ParameterSetName = "StorageStat",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -755,16 +545,16 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
 [GraphQL: o365StorageStats]",
             Position = 0
         )]
-        public SwitchParameter Storagestat { get; set; }
+        public SwitchParameter StorageStat { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Servicestatus parameter set
+        // ServiceStatus parameter set
         //
         // [GraphQL: o365ServiceStatus]
         //
         [Parameter(
-            ParameterSetName = "Servicestatus",
+            ParameterSetName = "ServiceStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -773,7 +563,7 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
 [GraphQL: o365ServiceStatus]",
             Position = 0
         )]
-        public SwitchParameter Servicestatus { get; set; }
+        public SwitchParameter ServiceStatus { get; set; }
 
 
         protected override void ProcessRecord()
@@ -785,11 +575,11 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                     case "Org":
                         this.ProcessRecord_Org();
                         break;
-                    case "Orgatsnappablelevel":
-                        this.ProcessRecord_Orgatsnappablelevel();
+                    case "OrgAtSnappableLevel":
+                        this.ProcessRecord_OrgAtSnappableLevel();
                         break;
-                    case "Alladgroup":
-                        this.ProcessRecord_Alladgroup();
+                    case "AllAdGroup":
+                        this.ProcessRecord_AllAdGroup();
                         break;
                     case "User":
                         this.ProcessRecord_User();
@@ -809,68 +599,68 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
                     case "Site":
                         this.ProcessRecord_Site();
                         break;
-                    case "Sharepointdrive":
-                        this.ProcessRecord_Sharepointdrive();
+                    case "SharepointDrive":
+                        this.ProcessRecord_SharepointDrive();
                         break;
-                    case "Sharepointlist":
-                        this.ProcessRecord_Sharepointlist();
+                    case "SharepointList":
+                        this.ProcessRecord_SharepointList();
                         break;
-                    case "Sharepointsite":
-                        this.ProcessRecord_Sharepointsite();
+                    case "SharepointSite":
+                        this.ProcessRecord_SharepointSite();
                         break;
                     case "Team":
                         this.ProcessRecord_Team();
                         break;
-                    case "Teamchannel":
-                        this.ProcessRecord_Teamchannel();
+                    case "TeamChannel":
+                        this.ProcessRecord_TeamChannel();
                         break;
-                    case "Teamconversationsfolderid":
-                        this.ProcessRecord_Teamconversationsfolderid();
+                    case "TeamConversationsFolderID":
+                        this.ProcessRecord_TeamConversationsFolderID();
                         break;
-                    case "Teampostedby":
-                        this.ProcessRecord_Teampostedby();
+                    case "TeamPostedBy":
+                        this.ProcessRecord_TeamPostedBy();
                         break;
                     case "Calendar":
                         this.ProcessRecord_Calendar();
                         break;
-                    case "Sharepointobjectlist":
-                        this.ProcessRecord_Sharepointobjectlist();
+                    case "SharepointObjectList":
+                        this.ProcessRecord_SharepointObjectList();
                         break;
-                    case "Sharepointobject":
-                        this.ProcessRecord_Sharepointobject();
+                    case "SharepointObject":
+                        this.ProcessRecord_SharepointObject();
                         break;
-                    case "Userobject":
-                        this.ProcessRecord_Userobject();
+                    case "UserObject":
+                        this.ProcessRecord_UserObject();
                         break;
-                    case "Orgsummarie":
-                        this.ProcessRecord_Orgsummarie();
+                    case "OrgSummarie":
+                        this.ProcessRecord_OrgSummarie();
                         break;
-                    case "Objectancestor":
-                        this.ProcessRecord_Objectancestor();
+                    case "ObjectAncestor":
+                        this.ProcessRecord_ObjectAncestor();
                         break;
-                    case "Browseteamconvchannel":
-                        this.ProcessRecord_Browseteamconvchannel();
+                    case "BrowseTeamConvChannel":
+                        this.ProcessRecord_BrowseTeamConvChannel();
                         break;
-                    case "Serviceaccount":
-                        this.ProcessRecord_Serviceaccount();
+                    case "ServiceAccount":
+                        this.ProcessRecord_ServiceAccount();
                         break;
-                    case "Allorgstatus":
-                        this.ProcessRecord_Allorgstatus();
+                    case "AllOrgStatus":
+                        this.ProcessRecord_AllOrgStatus();
                         break;
                     case "License":
                         this.ProcessRecord_License();
                         break;
-                    case "Listapp":
-                        this.ProcessRecord_Listapp();
+                    case "ListApp":
+                        this.ProcessRecord_ListApp();
                         break;
-                    case "Allsubscriptionsapptypecount":
-                        this.ProcessRecord_Allsubscriptionsapptypecount();
+                    case "AllSubscriptionsAppTypeCount":
+                        this.ProcessRecord_AllSubscriptionsAppTypeCount();
                         break;
-                    case "Storagestat":
-                        this.ProcessRecord_Storagestat();
+                    case "StorageStat":
+                        this.ProcessRecord_StorageStat();
                         break;
-                    case "Servicestatus":
-                        this.ProcessRecord_Servicestatus();
+                    case "ServiceStatus":
+                        this.ProcessRecord_ServiceStatus();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -893,18 +683,18 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
 
         // This parameter set invokes a single graphql operation:
         // o365OrgAtSnappableLevel.
-        protected void ProcessRecord_Orgatsnappablelevel()
+        protected void ProcessRecord_OrgAtSnappableLevel()
         {
-            this._logger.name += " -Orgatsnappablelevel";
+            this._logger.name += " -OrgAtSnappableLevel";
             // Invoke graphql operation o365OrgAtSnappableLevel
             InvokeQueryO365OrgAtSnappableLevel();
         }
 
         // This parameter set invokes a single graphql operation:
         // allO365AdGroups.
-        protected void ProcessRecord_Alladgroup()
+        protected void ProcessRecord_AllAdGroup()
         {
-            this._logger.name += " -Alladgroup";
+            this._logger.name += " -AllAdGroup";
             // Invoke graphql operation allO365AdGroups
             InvokeQueryAllO365AdGroups();
         }
@@ -965,27 +755,27 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
 
         // This parameter set invokes a single graphql operation:
         // o365SharepointDrive.
-        protected void ProcessRecord_Sharepointdrive()
+        protected void ProcessRecord_SharepointDrive()
         {
-            this._logger.name += " -Sharepointdrive";
+            this._logger.name += " -SharepointDrive";
             // Invoke graphql operation o365SharepointDrive
             InvokeQueryO365SharepointDrive();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365SharepointList.
-        protected void ProcessRecord_Sharepointlist()
+        protected void ProcessRecord_SharepointList()
         {
-            this._logger.name += " -Sharepointlist";
+            this._logger.name += " -SharepointList";
             // Invoke graphql operation o365SharepointList
             InvokeQueryO365SharepointList();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365SharepointSite.
-        protected void ProcessRecord_Sharepointsite()
+        protected void ProcessRecord_SharepointSite()
         {
-            this._logger.name += " -Sharepointsite";
+            this._logger.name += " -SharepointSite";
             // Invoke graphql operation o365SharepointSite
             InvokeQueryO365SharepointSite();
         }
@@ -1001,27 +791,27 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
 
         // This parameter set invokes a single graphql operation:
         // o365TeamChannels.
-        protected void ProcessRecord_Teamchannel()
+        protected void ProcessRecord_TeamChannel()
         {
-            this._logger.name += " -Teamchannel";
+            this._logger.name += " -TeamChannel";
             // Invoke graphql operation o365TeamChannels
             InvokeQueryO365TeamChannels();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365TeamConversationsFolderID.
-        protected void ProcessRecord_Teamconversationsfolderid()
+        protected void ProcessRecord_TeamConversationsFolderID()
         {
-            this._logger.name += " -Teamconversationsfolderid";
+            this._logger.name += " -TeamConversationsFolderID";
             // Invoke graphql operation o365TeamConversationsFolderID
             InvokeQueryO365TeamConversationsFolderId();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365TeamPostedBy.
-        protected void ProcessRecord_Teampostedby()
+        protected void ProcessRecord_TeamPostedBy()
         {
-            this._logger.name += " -Teampostedby";
+            this._logger.name += " -TeamPostedBy";
             // Invoke graphql operation o365TeamPostedBy
             InvokeQueryO365TeamPostedBy();
         }
@@ -1037,72 +827,72 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
 
         // This parameter set invokes a single graphql operation:
         // o365SharepointObjectList.
-        protected void ProcessRecord_Sharepointobjectlist()
+        protected void ProcessRecord_SharepointObjectList()
         {
-            this._logger.name += " -Sharepointobjectlist";
+            this._logger.name += " -SharepointObjectList";
             // Invoke graphql operation o365SharepointObjectList
             InvokeQueryO365SharepointObjectList();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365SharepointObjects.
-        protected void ProcessRecord_Sharepointobject()
+        protected void ProcessRecord_SharepointObject()
         {
-            this._logger.name += " -Sharepointobject";
+            this._logger.name += " -SharepointObject";
             // Invoke graphql operation o365SharepointObjects
             InvokeQueryO365SharepointObjects();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365UserObjects.
-        protected void ProcessRecord_Userobject()
+        protected void ProcessRecord_UserObject()
         {
-            this._logger.name += " -Userobject";
+            this._logger.name += " -UserObject";
             // Invoke graphql operation o365UserObjects
             InvokeQueryO365UserObjects();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365OrgSummaries.
-        protected void ProcessRecord_Orgsummarie()
+        protected void ProcessRecord_OrgSummarie()
         {
-            this._logger.name += " -Orgsummarie";
+            this._logger.name += " -OrgSummarie";
             // Invoke graphql operation o365OrgSummaries
             InvokeQueryO365OrgSummaries();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365ObjectAncestors.
-        protected void ProcessRecord_Objectancestor()
+        protected void ProcessRecord_ObjectAncestor()
         {
-            this._logger.name += " -Objectancestor";
+            this._logger.name += " -ObjectAncestor";
             // Invoke graphql operation o365ObjectAncestors
             InvokeQueryO365ObjectAncestors();
         }
 
         // This parameter set invokes a single graphql operation:
         // browseO365TeamConvChannels.
-        protected void ProcessRecord_Browseteamconvchannel()
+        protected void ProcessRecord_BrowseTeamConvChannel()
         {
-            this._logger.name += " -Browseteamconvchannel";
+            this._logger.name += " -BrowseTeamConvChannel";
             // Invoke graphql operation browseO365TeamConvChannels
             InvokeQueryBrowseO365TeamConvChannels();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365ServiceAccount.
-        protected void ProcessRecord_Serviceaccount()
+        protected void ProcessRecord_ServiceAccount()
         {
-            this._logger.name += " -Serviceaccount";
+            this._logger.name += " -ServiceAccount";
             // Invoke graphql operation o365ServiceAccount
             InvokeQueryO365ServiceAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // allO365OrgStatuses.
-        protected void ProcessRecord_Allorgstatus()
+        protected void ProcessRecord_AllOrgStatus()
         {
-            this._logger.name += " -Allorgstatus";
+            this._logger.name += " -AllOrgStatus";
             // Invoke graphql operation allO365OrgStatuses
             InvokeQueryAllO365OrgStatuses();
         }
@@ -1118,36 +908,36 @@ GraphQL argument o365AppSortByParam: AppSortByParam"
 
         // This parameter set invokes a single graphql operation:
         // listO365Apps.
-        protected void ProcessRecord_Listapp()
+        protected void ProcessRecord_ListApp()
         {
-            this._logger.name += " -Listapp";
+            this._logger.name += " -ListApp";
             // Invoke graphql operation listO365Apps
             InvokeQueryListO365Apps();
         }
 
         // This parameter set invokes a single graphql operation:
         // allO365SubscriptionsAppTypeCounts.
-        protected void ProcessRecord_Allsubscriptionsapptypecount()
+        protected void ProcessRecord_AllSubscriptionsAppTypeCount()
         {
-            this._logger.name += " -Allsubscriptionsapptypecount";
+            this._logger.name += " -AllSubscriptionsAppTypeCount";
             // Invoke graphql operation allO365SubscriptionsAppTypeCounts
             InvokeQueryAllO365SubscriptionsAppTypeCounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365StorageStats.
-        protected void ProcessRecord_Storagestat()
+        protected void ProcessRecord_StorageStat()
         {
-            this._logger.name += " -Storagestat";
+            this._logger.name += " -StorageStat";
             // Invoke graphql operation o365StorageStats
             InvokeQueryO365StorageStats();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365ServiceStatus.
-        protected void ProcessRecord_Servicestatus()
+        protected void ProcessRecord_ServiceStatus()
         {
-            this._logger.name += " -Servicestatus";
+            this._logger.name += " -ServiceStatus";
             // Invoke graphql operation o365ServiceStatus
             InvokeQueryO365ServiceStatus();
         }

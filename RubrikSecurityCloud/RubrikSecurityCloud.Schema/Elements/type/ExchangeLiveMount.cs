@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExchangeLiveMount";
+    }
+
     public ExchangeLiveMount Set(
         System.String? CdmId = null,
         System.String? Id = null,

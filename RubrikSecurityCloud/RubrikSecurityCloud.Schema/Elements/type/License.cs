@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "License";
+    }
+
     public License Set(
         Product? Product = null,
         System.Single? Quantity = null,

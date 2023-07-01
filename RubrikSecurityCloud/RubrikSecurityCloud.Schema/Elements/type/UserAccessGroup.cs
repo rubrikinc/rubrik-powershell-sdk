@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserAccessGroup";
+    }
+
     public UserAccessGroup Set(
         System.String? Name = null,
         System.String? Sid = null

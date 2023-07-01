@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNetworkSubnetUnusedAddrResp";
+    }
+
     public AzureNetworkSubnetUnusedAddrResp Set(
         System.Int64? UnusedAddr = null
     ) 

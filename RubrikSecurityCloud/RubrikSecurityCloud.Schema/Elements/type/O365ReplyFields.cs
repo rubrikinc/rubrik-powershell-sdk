@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365ReplyFields";
+    }
+
     public O365ReplyFields Set(
         O365SharePointDrive? SpDriveItem = null
     ) 

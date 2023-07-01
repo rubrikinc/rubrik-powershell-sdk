@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Datastore";
+    }
+
     public Datastore Set(
         System.String? Name = null
     ) 

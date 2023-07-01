@@ -1,6 +1,6 @@
 # Invoke-RscMutateVcenter
 ## Subcommands
-### Create
+### create
 - There are 6 arguments.
     - clusterUuid - System.String
     - hostname - System.String
@@ -9,7 +9,7 @@
     - conflictResolutionAuthz - ConflictResolutionAuthzEnum
     - caCert - System.String
 - Returns VsphereAsyncRequestStatus.
-### Delete
+### delete
 Remove vCenter Server
 
 Supported in v5.0+
@@ -17,7 +17,7 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
 
 - There is a single argument of type VsphereDeleteVcenterInput.
 - Returns AsyncRequestStatus.
-### Edit
+### edit
 - There are 6 arguments.
     - vcenterId - System.String
     - hostname - System.String
@@ -26,10 +26,10 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
     - conflictResolutionAuthz - ConflictResolutionAuthzEnum
     - caCert - System.String
 - Returns RequestSuccess.
-### Refresh
+### refresh
 - There is a single argument of type System.String.
 - Returns VsphereAsyncRequestStatus.
-### Update
+### update
 Update vCenter Server
 
 Supported in v5.0+
@@ -37,7 +37,7 @@ Update the address, username and password of the specified vCenter Server object
 
 - There is a single argument of type UpdateVcenterInput.
 - Returns UpdateVcenterReply.
-### Updatehotaddbandwidth
+### updatehotaddbandwidth
 Set the ingest and export bandwidth limits for HotAdd with the vCenter
 
 Supported in v5.3+
@@ -45,7 +45,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
 - There is a single argument of type UpdateVcenterHotAddBandwidthInput.
 - Returns RequestSuccess.
-### Updatehotaddnetwork
+### updatehotaddnetwork
 Set the user-configured network for HotAdd backup and recovery
 
 Supported in v5.3+

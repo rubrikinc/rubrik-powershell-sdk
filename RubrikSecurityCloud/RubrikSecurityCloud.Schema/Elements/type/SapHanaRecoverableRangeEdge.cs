@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaRecoverableRangeEdge";
+    }
+
     public SapHanaRecoverableRangeEdge Set(
         System.String? Cursor = null,
         SapHanaRecoverableRange? Node = null

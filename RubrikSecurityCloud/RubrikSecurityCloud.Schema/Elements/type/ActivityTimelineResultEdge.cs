@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActivityTimelineResultEdge";
+    }
+
     public ActivityTimelineResultEdge Set(
         System.String? Cursor = null,
         ActivityTimelineResult? Node = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeHierarchyObjectConnection";
+    }
+
     public AwsNativeHierarchyObjectConnection Set(
         List<AwsNativeHierarchyObject>? Nodes = null,
         System.Int32? Count = null,

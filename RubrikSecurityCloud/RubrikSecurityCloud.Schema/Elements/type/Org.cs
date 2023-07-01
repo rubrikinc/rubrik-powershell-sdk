@@ -110,6 +110,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Org";
+    }
+
     public Org Set(
         TenantAuthDomainConfig? AuthDomainConfig = null,
         TenantNetworkHealth? TenantNetworkHealth = null,

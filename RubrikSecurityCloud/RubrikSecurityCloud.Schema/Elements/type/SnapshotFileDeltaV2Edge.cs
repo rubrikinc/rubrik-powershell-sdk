@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotFileDeltaV2Edge";
+    }
+
     public SnapshotFileDeltaV2Edge Set(
         System.String? Cursor = null,
         SnapshotFileDeltaV2? Node = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostConnectivitySummary";
+    }
+
     public HostConnectivitySummary Set(
         System.String? Action = null,
         System.String? Status = null

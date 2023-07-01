@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateIdentityProviderReply";
+    }
+
     public UpdateIdentityProviderReply Set(
         System.String? EntityId = null,
         DateTime? ExpirationDate = null,

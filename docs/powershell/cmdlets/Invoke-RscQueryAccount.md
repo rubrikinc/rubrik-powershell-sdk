@@ -1,16 +1,16 @@
 # Invoke-RscQueryAccount
 ## Subcommands
-### Id
+### id
 Account ID.
 
-- The Id subcommand takes no arguments.
+- The id subcommand takes no arguments.
 - Returns System.String.
-### Owner
+### owner
 List of account owners.
 
-- The Owner subcommand takes no arguments.
+- The owner subcommand takes no arguments.
 - Returns list of Users.
-### Product
+### product
 - There are 5 arguments.
     - nameFilter - list of ProductNames: Name of product (Data Protection, Ransomware Investigation, etc.).
     - typeFilter - list of ProductTypes: Type of product (Revenue, POC, etc.).
@@ -18,12 +18,12 @@ List of account owners.
     - startDateArg - DateTime: Start date of product (yyyy-mm-dd).
     - endDateArg - DateTime: End date of product (yyyy-mm-dd).
 - Returns list of AccountProducts.
-### Setting
+### setting
 This endpoint is deprecated.
 
-- The Setting subcommand takes no arguments.
+- The setting subcommand takes no arguments.
 - Returns AccountSetting.
-### Swithexocomputemapping
+### swithexocomputemapping
 Retrieves the list of all accounts with their Exocompute account mapping, if exists.
 
 - There are 3 arguments.

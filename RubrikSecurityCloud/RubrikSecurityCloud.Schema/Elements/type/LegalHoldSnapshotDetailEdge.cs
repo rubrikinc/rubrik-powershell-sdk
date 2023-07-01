@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LegalHoldSnapshotDetailEdge";
+    }
+
     public LegalHoldSnapshotDetailEdge Set(
         System.String? Cursor = null,
         LegalHoldSnapshotDetail? Node = null

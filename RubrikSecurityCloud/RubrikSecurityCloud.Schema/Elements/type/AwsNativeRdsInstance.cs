@@ -231,6 +231,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeRdsInstance";
+    }
+
     public AwsNativeRdsInstance Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         AwsNativeRdsDbEngine? DbEngine = null,

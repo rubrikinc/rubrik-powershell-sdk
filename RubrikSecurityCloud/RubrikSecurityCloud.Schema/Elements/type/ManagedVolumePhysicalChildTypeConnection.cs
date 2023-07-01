@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumePhysicalChildTypeConnection";
+    }
+
     public ManagedVolumePhysicalChildTypeConnection Set(
         List<ManagedVolumePhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

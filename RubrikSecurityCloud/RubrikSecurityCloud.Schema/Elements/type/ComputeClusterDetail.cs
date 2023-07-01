@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ComputeClusterDetail";
+    }
+
     public ComputeClusterDetail Set(
         System.String? Moid = null,
         ComputeClusterSummary? ComputeClusterSummary = null,

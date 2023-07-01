@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TakeOnDemandSnapshotError";
+    }
+
     public TakeOnDemandSnapshotError Set(
         System.String? Error = null,
         System.String? WorkloadId = null

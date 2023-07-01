@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterKeyRotation";
+    }
+
     public ClusterKeyRotation Set(
         ClusterKeyProtection? ProtectionType = null,
         ClusterKeyRotationState? State = null,

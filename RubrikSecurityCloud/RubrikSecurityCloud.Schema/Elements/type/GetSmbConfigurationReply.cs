@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetSmbConfigurationReply";
+    }
+
     public GetSmbConfigurationReply Set(
         SmbConfig? Output = null
     ) 

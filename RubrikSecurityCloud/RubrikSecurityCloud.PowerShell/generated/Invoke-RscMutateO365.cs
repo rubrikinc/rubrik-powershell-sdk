@@ -21,18 +21,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateO365",
-        DefaultParameterSetName = "Addorg")
+        DefaultParameterSetName = "AddOrg")
     ]
     public class Invoke_RscMutateO365 : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // Saassetupkickoff parameter set
+        // SaaSSetupKickoff parameter set
         //
         // [GraphQL: o365SaaSSetupKickoff]
         //
         [Parameter(
-            ParameterSetName = "Saassetupkickoff",
+            ParameterSetName = "SaaSSetupKickoff",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,16 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365SaaSSetupKickoff]",
             Position = 0
         )]
-        public SwitchParameter Saassetupkickoff { get; set; }
+        public SwitchParameter SaaSSetupKickoff { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Pdlgroup parameter set
+        // PdlGroup parameter set
         //
         // [GraphQL: o365PdlGroups]
         //
         [Parameter(
-            ParameterSetName = "Pdlgroup",
+            ParameterSetName = "PdlGroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -59,26 +59,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: o365PdlGroups]",
             Position = 0
         )]
-        public SwitchParameter Pdlgroup { get; set; }
+        public SwitchParameter PdlGroup { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Pdlgroup",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The input for the O365PdlGroups mutation.
-GraphQL argument input: O365PdlGroupsInput!"
-        )]
-        public O365PdlGroupsInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Saassetupcomplete parameter set
+        // SaasSetupComplete parameter set
         //
         // [GraphQL: o365SaasSetupComplete]
         //
         [Parameter(
-            ParameterSetName = "Saassetupcomplete",
+            ParameterSetName = "SaasSetupComplete",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -87,16 +77,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: o365SaasSetupComplete]",
             Position = 0
         )]
-        public SwitchParameter Saassetupcomplete { get; set; }
+        public SwitchParameter SaasSetupComplete { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Setupkickoff parameter set
+        // SetupKickoff parameter set
         //
         // [GraphQL: o365SetupKickoff]
         //
         [Parameter(
-            ParameterSetName = "Setupkickoff",
+            ParameterSetName = "SetupKickoff",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -105,16 +95,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: o365SetupKickoff]",
             Position = 0
         )]
-        public SwitchParameter Setupkickoff { get; set; }
+        public SwitchParameter SetupKickoff { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Addorg parameter set
+        // AddOrg parameter set
         //
         // [GraphQL: addO365Org]
         //
         [Parameter(
-            ParameterSetName = "Addorg",
+            ParameterSetName = "AddOrg",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -123,16 +113,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: addO365Org]",
             Position = 0
         )]
-        public SwitchParameter Addorg { get; set; }
+        public SwitchParameter AddOrg { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Oauthconsentkickoff parameter set
+        // OauthConsentKickoff parameter set
         //
         // [GraphQL: o365OauthConsentKickoff]
         //
         [Parameter(
-            ParameterSetName = "Oauthconsentkickoff",
+            ParameterSetName = "OauthConsentKickoff",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -141,16 +131,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: o365OauthConsentKickoff]",
             Position = 0
         )]
-        public SwitchParameter Oauthconsentkickoff { get; set; }
+        public SwitchParameter OauthConsentKickoff { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Oauthconsentcomplete parameter set
+        // OauthConsentComplete parameter set
         //
         // [GraphQL: o365OauthConsentComplete]
         //
         [Parameter(
-            ParameterSetName = "Oauthconsentcomplete",
+            ParameterSetName = "OauthConsentComplete",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -159,16 +149,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: o365OauthConsentComplete]",
             Position = 0
         )]
-        public SwitchParameter Oauthconsentcomplete { get; set; }
+        public SwitchParameter OauthConsentComplete { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createappkickoff parameter set
+        // CreateAppKickoff parameter set
         //
         // [GraphQL: createO365AppKickoff]
         //
         [Parameter(
-            ParameterSetName = "Createappkickoff",
+            ParameterSetName = "CreateAppKickoff",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -177,16 +167,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: createO365AppKickoff]",
             Position = 0
         )]
-        public SwitchParameter Createappkickoff { get; set; }
+        public SwitchParameter CreateAppKickoff { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createappcomplete parameter set
+        // CreateAppComplete parameter set
         //
         // [GraphQL: createO365AppComplete]
         //
         [Parameter(
-            ParameterSetName = "Createappcomplete",
+            ParameterSetName = "CreateAppComplete",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -195,16 +185,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: createO365AppComplete]",
             Position = 0
         )]
-        public SwitchParameter Createappcomplete { get; set; }
+        public SwitchParameter CreateAppComplete { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Insertcustomerapp parameter set
+        // InsertCustomerApp parameter set
         //
         // [GraphQL: insertCustomerO365App]
         //
         [Parameter(
-            ParameterSetName = "Insertcustomerapp",
+            ParameterSetName = "InsertCustomerApp",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -213,16 +203,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: insertCustomerO365App]",
             Position = 0
         )]
-        public SwitchParameter Insertcustomerapp { get; set; }
+        public SwitchParameter InsertCustomerApp { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updateappauthstatus parameter set
+        // UpdateAppAuthStatus parameter set
         //
         // [GraphQL: updateO365AppAuthStatus]
         //
         [Parameter(
-            ParameterSetName = "Updateappauthstatus",
+            ParameterSetName = "UpdateAppAuthStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -231,16 +221,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: updateO365AppAuthStatus]",
             Position = 0
         )]
-        public SwitchParameter Updateappauthstatus { get; set; }
+        public SwitchParameter UpdateAppAuthStatus { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updateapppermission parameter set
+        // UpdateAppPermission parameter set
         //
         // [GraphQL: updateO365AppPermissions]
         //
         [Parameter(
-            ParameterSetName = "Updateapppermission",
+            ParameterSetName = "UpdateAppPermission",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -249,16 +239,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: updateO365AppPermissions]",
             Position = 0
         )]
-        public SwitchParameter Updateapppermission { get; set; }
+        public SwitchParameter UpdateAppPermission { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deleteazureapp parameter set
+        // DeleteAzureApp parameter set
         //
         // [GraphQL: deleteO365AzureApp]
         //
         [Parameter(
-            ParameterSetName = "Deleteazureapp",
+            ParameterSetName = "DeleteAzureApp",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -267,36 +257,16 @@ GraphQL argument input: O365PdlGroupsInput!"
 [GraphQL: deleteO365AzureApp]",
             Position = 0
         )]
-        public SwitchParameter Deleteazureapp { get; set; }
+        public SwitchParameter DeleteAzureApp { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Deleteazureapp",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument o365AppClientId: String!"
-        )]
-        public System.String? O365AppClientId { get; set; }
-        [Parameter(
-            ParameterSetName = "Deleteazureapp",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument o365AppType: String!"
-        )]
-        public System.String? O365AppType { get; set; }
         
         // -------------------------------------------------------------------
-        // Backupmailbox parameter set
+        // BackupMailbox parameter set
         //
         // [GraphQL: backupO365Mailbox]
         //
         [Parameter(
-            ParameterSetName = "Backupmailbox",
+            ParameterSetName = "BackupMailbox",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -305,26 +275,16 @@ GraphQL argument o365AppType: String!"
 [GraphQL: backupO365Mailbox]",
             Position = 0
         )]
-        public SwitchParameter Backupmailbox { get; set; }
+        public SwitchParameter BackupMailbox { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Backupmailbox",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The list of mailbox UUIDs to backup.
-GraphQL argument mailboxIds: [UUID!]!"
-        )]
-        public List<System.String>? MailboxIds { get; set; }
         
         // -------------------------------------------------------------------
-        // Backuponedrive parameter set
+        // BackupOnedrive parameter set
         //
         // [GraphQL: backupO365Onedrive]
         //
         [Parameter(
-            ParameterSetName = "Backuponedrive",
+            ParameterSetName = "BackupOnedrive",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -333,16 +293,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: backupO365Onedrive]",
             Position = 0
         )]
-        public SwitchParameter Backuponedrive { get; set; }
+        public SwitchParameter BackupOnedrive { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Backupsharepointdrive parameter set
+        // BackupSharepointDrive parameter set
         //
         // [GraphQL: backupO365SharepointDrive]
         //
         [Parameter(
-            ParameterSetName = "Backupsharepointdrive",
+            ParameterSetName = "BackupSharepointDrive",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -351,16 +311,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: backupO365SharepointDrive]",
             Position = 0
         )]
-        public SwitchParameter Backupsharepointdrive { get; set; }
+        public SwitchParameter BackupSharepointDrive { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Backupsharepointlist parameter set
+        // BackupSharepointList parameter set
         //
         // [GraphQL: backupO365SharepointList]
         //
         [Parameter(
-            ParameterSetName = "Backupsharepointlist",
+            ParameterSetName = "BackupSharepointList",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -369,16 +329,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: backupO365SharepointList]",
             Position = 0
         )]
-        public SwitchParameter Backupsharepointlist { get; set; }
+        public SwitchParameter BackupSharepointList { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Backupsharepointsite parameter set
+        // BackupSharePointSite parameter set
         //
         // [GraphQL: backupO365SharePointSite]
         //
         [Parameter(
-            ParameterSetName = "Backupsharepointsite",
+            ParameterSetName = "BackupSharePointSite",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -387,16 +347,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: backupO365SharePointSite]",
             Position = 0
         )]
-        public SwitchParameter Backupsharepointsite { get; set; }
+        public SwitchParameter BackupSharePointSite { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Backupteam parameter set
+        // BackupTeam parameter set
         //
         // [GraphQL: backupO365Team]
         //
         [Parameter(
-            ParameterSetName = "Backupteam",
+            ParameterSetName = "BackupTeam",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -405,16 +365,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: backupO365Team]",
             Position = 0
         )]
-        public SwitchParameter Backupteam { get; set; }
+        public SwitchParameter BackupTeam { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Restoreteamsfile parameter set
+        // RestoreTeamsFile parameter set
         //
         // [GraphQL: restoreO365TeamsFiles]
         //
         [Parameter(
-            ParameterSetName = "Restoreteamsfile",
+            ParameterSetName = "RestoreTeamsFile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -423,16 +383,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: restoreO365TeamsFiles]",
             Position = 0
         )]
-        public SwitchParameter Restoreteamsfile { get; set; }
+        public SwitchParameter RestoreTeamsFile { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Restoreteamsconversation parameter set
+        // RestoreTeamsConversation parameter set
         //
         // [GraphQL: restoreO365TeamsConversations]
         //
         [Parameter(
-            ParameterSetName = "Restoreteamsconversation",
+            ParameterSetName = "RestoreTeamsConversation",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -441,16 +401,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: restoreO365TeamsConversations]",
             Position = 0
         )]
-        public SwitchParameter Restoreteamsconversation { get; set; }
+        public SwitchParameter RestoreTeamsConversation { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Restoresnappable parameter set
+        // RestoreSnappable parameter set
         //
         // [GraphQL: restoreO365Snappable]
         //
         [Parameter(
-            ParameterSetName = "Restoresnappable",
+            ParameterSetName = "RestoreSnappable",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -459,16 +419,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: restoreO365Snappable]",
             Position = 0
         )]
-        public SwitchParameter Restoresnappable { get; set; }
+        public SwitchParameter RestoreSnappable { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Refreshorg parameter set
+        // RefreshOrg parameter set
         //
         // [GraphQL: refreshO365Org]
         //
         [Parameter(
-            ParameterSetName = "Refreshorg",
+            ParameterSetName = "RefreshOrg",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -477,26 +437,16 @@ GraphQL argument mailboxIds: [UUID!]!"
 [GraphQL: refreshO365Org]",
             Position = 0
         )]
-        public SwitchParameter Refreshorg { get; set; }
+        public SwitchParameter RefreshOrg { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Refreshorg",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Org UUID.
-GraphQL argument orgId: UUID!"
-        )]
-        public System.String? OrgId { get; set; }
         
         // -------------------------------------------------------------------
-        // Deleteorg parameter set
+        // DeleteOrg parameter set
         //
         // [GraphQL: deleteO365Org]
         //
         [Parameter(
-            ParameterSetName = "Deleteorg",
+            ParameterSetName = "DeleteOrg",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -505,16 +455,16 @@ GraphQL argument orgId: UUID!"
 [GraphQL: deleteO365Org]",
             Position = 0
         )]
-        public SwitchParameter Deleteorg { get; set; }
+        public SwitchParameter DeleteOrg { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Restoremailbox parameter set
+        // RestoreMailbox parameter set
         //
         // [GraphQL: restoreO365Mailbox]
         //
         [Parameter(
-            ParameterSetName = "Restoremailbox",
+            ParameterSetName = "RestoreMailbox",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -523,26 +473,16 @@ GraphQL argument orgId: UUID!"
 [GraphQL: restoreO365Mailbox]",
             Position = 0
         )]
-        public SwitchParameter Restoremailbox { get; set; }
+        public SwitchParameter RestoreMailbox { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Restoremailbox",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument restoreConfig: RestoreO365MailboxInput!"
-        )]
-        public RestoreO365MailboxInput? RestoreConfig { get; set; }
         
         // -------------------------------------------------------------------
-        // Exportmailbox parameter set
+        // ExportMailbox parameter set
         //
         // [GraphQL: exportO365Mailbox]
         //
         [Parameter(
-            ParameterSetName = "Exportmailbox",
+            ParameterSetName = "ExportMailbox",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -551,26 +491,16 @@ GraphQL argument restoreConfig: RestoreO365MailboxInput!"
 [GraphQL: exportO365Mailbox]",
             Position = 0
         )]
-        public SwitchParameter Exportmailbox { get; set; }
+        public SwitchParameter ExportMailbox { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Exportmailbox",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument exportConfig: ExportO365MailboxInput!"
-        )]
-        public ExportO365MailboxInput? ExportConfig { get; set; }
         
         // -------------------------------------------------------------------
-        // Setserviceaccount parameter set
+        // SetServiceAccount parameter set
         //
         // [GraphQL: setO365ServiceAccount]
         //
         [Parameter(
-            ParameterSetName = "Setserviceaccount",
+            ParameterSetName = "SetServiceAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -579,36 +509,16 @@ GraphQL argument exportConfig: ExportO365MailboxInput!"
 [GraphQL: setO365ServiceAccount]",
             Position = 0
         )]
-        public SwitchParameter Setserviceaccount { get; set; }
+        public SwitchParameter SetServiceAccount { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Setserviceaccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument username: String!"
-        )]
-        public System.String? Username { get; set; }
-        [Parameter(
-            ParameterSetName = "Setserviceaccount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument appPassword: String!"
-        )]
-        public System.String? AppPassword { get; set; }
         
         // -------------------------------------------------------------------
-        // Enablesharepoint parameter set
+        // EnableSharePoint parameter set
         //
         // [GraphQL: enableO365SharePoint]
         //
         [Parameter(
-            ParameterSetName = "Enablesharepoint",
+            ParameterSetName = "EnableSharePoint",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -617,16 +527,16 @@ GraphQL argument appPassword: String!"
 [GraphQL: enableO365SharePoint]",
             Position = 0
         )]
-        public SwitchParameter Enablesharepoint { get; set; }
+        public SwitchParameter EnableSharePoint { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Enableteam parameter set
+        // EnableTeam parameter set
         //
         // [GraphQL: enableO365Teams]
         //
         [Parameter(
-            ParameterSetName = "Enableteam",
+            ParameterSetName = "EnableTeam",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -635,26 +545,16 @@ GraphQL argument appPassword: String!"
 [GraphQL: enableO365Teams]",
             Position = 0
         )]
-        public SwitchParameter Enableteam { get; set; }
+        public SwitchParameter EnableTeam { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Enableteam",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument exocomputeClusterId: String!"
-        )]
-        public System.String? ExocomputeClusterId { get; set; }
         
         // -------------------------------------------------------------------
-        // Deleteserviceaccount parameter set
+        // DeleteServiceAccount parameter set
         //
         // [GraphQL: deleteO365ServiceAccount]
         //
         [Parameter(
-            ParameterSetName = "Deleteserviceaccount",
+            ParameterSetName = "DeleteServiceAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -663,16 +563,16 @@ GraphQL argument exocomputeClusterId: String!"
 [GraphQL: deleteO365ServiceAccount]",
             Position = 0
         )]
-        public SwitchParameter Deleteserviceaccount { get; set; }
+        public SwitchParameter DeleteServiceAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updateorgcustomname parameter set
+        // UpdateOrgCustomName parameter set
         //
         // [GraphQL: updateO365OrgCustomName]
         //
         [Parameter(
-            ParameterSetName = "Updateorgcustomname",
+            ParameterSetName = "UpdateOrgCustomName",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -681,7 +581,7 @@ GraphQL argument exocomputeClusterId: String!"
 [GraphQL: updateO365OrgCustomName]",
             Position = 0
         )]
-        public SwitchParameter Updateorgcustomname { get; set; }
+        public SwitchParameter UpdateOrgCustomName { get; set; }
 
 
         protected override void ProcessRecord()
@@ -690,98 +590,98 @@ GraphQL argument exocomputeClusterId: String!"
             {
                 switch(Op)
                 {
-                    case "Saassetupkickoff":
-                        this.ProcessRecord_Saassetupkickoff();
+                    case "SaaSSetupKickoff":
+                        this.ProcessRecord_SaaSSetupKickoff();
                         break;
-                    case "Pdlgroup":
-                        this.ProcessRecord_Pdlgroup();
+                    case "PdlGroup":
+                        this.ProcessRecord_PdlGroup();
                         break;
-                    case "Saassetupcomplete":
-                        this.ProcessRecord_Saassetupcomplete();
+                    case "SaasSetupComplete":
+                        this.ProcessRecord_SaasSetupComplete();
                         break;
-                    case "Setupkickoff":
-                        this.ProcessRecord_Setupkickoff();
+                    case "SetupKickoff":
+                        this.ProcessRecord_SetupKickoff();
                         break;
-                    case "Addorg":
-                        this.ProcessRecord_Addorg();
+                    case "AddOrg":
+                        this.ProcessRecord_AddOrg();
                         break;
-                    case "Oauthconsentkickoff":
-                        this.ProcessRecord_Oauthconsentkickoff();
+                    case "OauthConsentKickoff":
+                        this.ProcessRecord_OauthConsentKickoff();
                         break;
-                    case "Oauthconsentcomplete":
-                        this.ProcessRecord_Oauthconsentcomplete();
+                    case "OauthConsentComplete":
+                        this.ProcessRecord_OauthConsentComplete();
                         break;
-                    case "Createappkickoff":
-                        this.ProcessRecord_Createappkickoff();
+                    case "CreateAppKickoff":
+                        this.ProcessRecord_CreateAppKickoff();
                         break;
-                    case "Createappcomplete":
-                        this.ProcessRecord_Createappcomplete();
+                    case "CreateAppComplete":
+                        this.ProcessRecord_CreateAppComplete();
                         break;
-                    case "Insertcustomerapp":
-                        this.ProcessRecord_Insertcustomerapp();
+                    case "InsertCustomerApp":
+                        this.ProcessRecord_InsertCustomerApp();
                         break;
-                    case "Updateappauthstatus":
-                        this.ProcessRecord_Updateappauthstatus();
+                    case "UpdateAppAuthStatus":
+                        this.ProcessRecord_UpdateAppAuthStatus();
                         break;
-                    case "Updateapppermission":
-                        this.ProcessRecord_Updateapppermission();
+                    case "UpdateAppPermission":
+                        this.ProcessRecord_UpdateAppPermission();
                         break;
-                    case "Deleteazureapp":
-                        this.ProcessRecord_Deleteazureapp();
+                    case "DeleteAzureApp":
+                        this.ProcessRecord_DeleteAzureApp();
                         break;
-                    case "Backupmailbox":
-                        this.ProcessRecord_Backupmailbox();
+                    case "BackupMailbox":
+                        this.ProcessRecord_BackupMailbox();
                         break;
-                    case "Backuponedrive":
-                        this.ProcessRecord_Backuponedrive();
+                    case "BackupOnedrive":
+                        this.ProcessRecord_BackupOnedrive();
                         break;
-                    case "Backupsharepointdrive":
-                        this.ProcessRecord_Backupsharepointdrive();
+                    case "BackupSharepointDrive":
+                        this.ProcessRecord_BackupSharepointDrive();
                         break;
-                    case "Backupsharepointlist":
-                        this.ProcessRecord_Backupsharepointlist();
+                    case "BackupSharepointList":
+                        this.ProcessRecord_BackupSharepointList();
                         break;
-                    case "Backupsharepointsite":
-                        this.ProcessRecord_Backupsharepointsite();
+                    case "BackupSharePointSite":
+                        this.ProcessRecord_BackupSharePointSite();
                         break;
-                    case "Backupteam":
-                        this.ProcessRecord_Backupteam();
+                    case "BackupTeam":
+                        this.ProcessRecord_BackupTeam();
                         break;
-                    case "Restoreteamsfile":
-                        this.ProcessRecord_Restoreteamsfile();
+                    case "RestoreTeamsFile":
+                        this.ProcessRecord_RestoreTeamsFile();
                         break;
-                    case "Restoreteamsconversation":
-                        this.ProcessRecord_Restoreteamsconversation();
+                    case "RestoreTeamsConversation":
+                        this.ProcessRecord_RestoreTeamsConversation();
                         break;
-                    case "Restoresnappable":
-                        this.ProcessRecord_Restoresnappable();
+                    case "RestoreSnappable":
+                        this.ProcessRecord_RestoreSnappable();
                         break;
-                    case "Refreshorg":
-                        this.ProcessRecord_Refreshorg();
+                    case "RefreshOrg":
+                        this.ProcessRecord_RefreshOrg();
                         break;
-                    case "Deleteorg":
-                        this.ProcessRecord_Deleteorg();
+                    case "DeleteOrg":
+                        this.ProcessRecord_DeleteOrg();
                         break;
-                    case "Restoremailbox":
-                        this.ProcessRecord_Restoremailbox();
+                    case "RestoreMailbox":
+                        this.ProcessRecord_RestoreMailbox();
                         break;
-                    case "Exportmailbox":
-                        this.ProcessRecord_Exportmailbox();
+                    case "ExportMailbox":
+                        this.ProcessRecord_ExportMailbox();
                         break;
-                    case "Setserviceaccount":
-                        this.ProcessRecord_Setserviceaccount();
+                    case "SetServiceAccount":
+                        this.ProcessRecord_SetServiceAccount();
                         break;
-                    case "Enablesharepoint":
-                        this.ProcessRecord_Enablesharepoint();
+                    case "EnableSharePoint":
+                        this.ProcessRecord_EnableSharePoint();
                         break;
-                    case "Enableteam":
-                        this.ProcessRecord_Enableteam();
+                    case "EnableTeam":
+                        this.ProcessRecord_EnableTeam();
                         break;
-                    case "Deleteserviceaccount":
-                        this.ProcessRecord_Deleteserviceaccount();
+                    case "DeleteServiceAccount":
+                        this.ProcessRecord_DeleteServiceAccount();
                         break;
-                    case "Updateorgcustomname":
-                        this.ProcessRecord_Updateorgcustomname();
+                    case "UpdateOrgCustomName":
+                        this.ProcessRecord_UpdateOrgCustomName();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -795,279 +695,279 @@ GraphQL argument exocomputeClusterId: String!"
 
         // This parameter set invokes a single graphql operation:
         // o365SaaSSetupKickoff.
-        protected void ProcessRecord_Saassetupkickoff()
+        protected void ProcessRecord_SaaSSetupKickoff()
         {
-            this._logger.name += " -Saassetupkickoff";
+            this._logger.name += " -SaaSSetupKickoff";
             // Invoke graphql operation o365SaaSSetupKickoff
             InvokeMutationO365SaaSsetupKickoff();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365PdlGroups.
-        protected void ProcessRecord_Pdlgroup()
+        protected void ProcessRecord_PdlGroup()
         {
-            this._logger.name += " -Pdlgroup";
+            this._logger.name += " -PdlGroup";
             // Invoke graphql operation o365PdlGroups
             InvokeMutationO365PdlGroups();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365SaasSetupComplete.
-        protected void ProcessRecord_Saassetupcomplete()
+        protected void ProcessRecord_SaasSetupComplete()
         {
-            this._logger.name += " -Saassetupcomplete";
+            this._logger.name += " -SaasSetupComplete";
             // Invoke graphql operation o365SaasSetupComplete
             InvokeMutationO365SaasSetupComplete();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365SetupKickoff.
-        protected void ProcessRecord_Setupkickoff()
+        protected void ProcessRecord_SetupKickoff()
         {
-            this._logger.name += " -Setupkickoff";
+            this._logger.name += " -SetupKickoff";
             // Invoke graphql operation o365SetupKickoff
             InvokeMutationO365SetupKickoff();
         }
 
         // This parameter set invokes a single graphql operation:
         // addO365Org.
-        protected void ProcessRecord_Addorg()
+        protected void ProcessRecord_AddOrg()
         {
-            this._logger.name += " -Addorg";
+            this._logger.name += " -AddOrg";
             // Invoke graphql operation addO365Org
             InvokeMutationAddO365Org();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365OauthConsentKickoff.
-        protected void ProcessRecord_Oauthconsentkickoff()
+        protected void ProcessRecord_OauthConsentKickoff()
         {
-            this._logger.name += " -Oauthconsentkickoff";
+            this._logger.name += " -OauthConsentKickoff";
             // Invoke graphql operation o365OauthConsentKickoff
             InvokeMutationO365OauthConsentKickoff();
         }
 
         // This parameter set invokes a single graphql operation:
         // o365OauthConsentComplete.
-        protected void ProcessRecord_Oauthconsentcomplete()
+        protected void ProcessRecord_OauthConsentComplete()
         {
-            this._logger.name += " -Oauthconsentcomplete";
+            this._logger.name += " -OauthConsentComplete";
             // Invoke graphql operation o365OauthConsentComplete
             InvokeMutationO365OauthConsentComplete();
         }
 
         // This parameter set invokes a single graphql operation:
         // createO365AppKickoff.
-        protected void ProcessRecord_Createappkickoff()
+        protected void ProcessRecord_CreateAppKickoff()
         {
-            this._logger.name += " -Createappkickoff";
+            this._logger.name += " -CreateAppKickoff";
             // Invoke graphql operation createO365AppKickoff
             InvokeMutationCreateO365AppKickoff();
         }
 
         // This parameter set invokes a single graphql operation:
         // createO365AppComplete.
-        protected void ProcessRecord_Createappcomplete()
+        protected void ProcessRecord_CreateAppComplete()
         {
-            this._logger.name += " -Createappcomplete";
+            this._logger.name += " -CreateAppComplete";
             // Invoke graphql operation createO365AppComplete
             InvokeMutationCreateO365AppComplete();
         }
 
         // This parameter set invokes a single graphql operation:
         // insertCustomerO365App.
-        protected void ProcessRecord_Insertcustomerapp()
+        protected void ProcessRecord_InsertCustomerApp()
         {
-            this._logger.name += " -Insertcustomerapp";
+            this._logger.name += " -InsertCustomerApp";
             // Invoke graphql operation insertCustomerO365App
             InvokeMutationInsertCustomerO365App();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateO365AppAuthStatus.
-        protected void ProcessRecord_Updateappauthstatus()
+        protected void ProcessRecord_UpdateAppAuthStatus()
         {
-            this._logger.name += " -Updateappauthstatus";
+            this._logger.name += " -UpdateAppAuthStatus";
             // Invoke graphql operation updateO365AppAuthStatus
             InvokeMutationUpdateO365AppAuthStatus();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateO365AppPermissions.
-        protected void ProcessRecord_Updateapppermission()
+        protected void ProcessRecord_UpdateAppPermission()
         {
-            this._logger.name += " -Updateapppermission";
+            this._logger.name += " -UpdateAppPermission";
             // Invoke graphql operation updateO365AppPermissions
             InvokeMutationUpdateO365AppPermissions();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteO365AzureApp.
-        protected void ProcessRecord_Deleteazureapp()
+        protected void ProcessRecord_DeleteAzureApp()
         {
-            this._logger.name += " -Deleteazureapp";
+            this._logger.name += " -DeleteAzureApp";
             // Invoke graphql operation deleteO365AzureApp
             InvokeMutationDeleteO365AzureApp();
         }
 
         // This parameter set invokes a single graphql operation:
         // backupO365Mailbox.
-        protected void ProcessRecord_Backupmailbox()
+        protected void ProcessRecord_BackupMailbox()
         {
-            this._logger.name += " -Backupmailbox";
+            this._logger.name += " -BackupMailbox";
             // Invoke graphql operation backupO365Mailbox
             InvokeMutationBackupO365Mailbox();
         }
 
         // This parameter set invokes a single graphql operation:
         // backupO365Onedrive.
-        protected void ProcessRecord_Backuponedrive()
+        protected void ProcessRecord_BackupOnedrive()
         {
-            this._logger.name += " -Backuponedrive";
+            this._logger.name += " -BackupOnedrive";
             // Invoke graphql operation backupO365Onedrive
             InvokeMutationBackupO365Onedrive();
         }
 
         // This parameter set invokes a single graphql operation:
         // backupO365SharepointDrive.
-        protected void ProcessRecord_Backupsharepointdrive()
+        protected void ProcessRecord_BackupSharepointDrive()
         {
-            this._logger.name += " -Backupsharepointdrive";
+            this._logger.name += " -BackupSharepointDrive";
             // Invoke graphql operation backupO365SharepointDrive
             InvokeMutationBackupO365SharepointDrive();
         }
 
         // This parameter set invokes a single graphql operation:
         // backupO365SharepointList.
-        protected void ProcessRecord_Backupsharepointlist()
+        protected void ProcessRecord_BackupSharepointList()
         {
-            this._logger.name += " -Backupsharepointlist";
+            this._logger.name += " -BackupSharepointList";
             // Invoke graphql operation backupO365SharepointList
             InvokeMutationBackupO365SharepointList();
         }
 
         // This parameter set invokes a single graphql operation:
         // backupO365SharePointSite.
-        protected void ProcessRecord_Backupsharepointsite()
+        protected void ProcessRecord_BackupSharePointSite()
         {
-            this._logger.name += " -Backupsharepointsite";
+            this._logger.name += " -BackupSharePointSite";
             // Invoke graphql operation backupO365SharePointSite
             InvokeMutationBackupO365SharePointSite();
         }
 
         // This parameter set invokes a single graphql operation:
         // backupO365Team.
-        protected void ProcessRecord_Backupteam()
+        protected void ProcessRecord_BackupTeam()
         {
-            this._logger.name += " -Backupteam";
+            this._logger.name += " -BackupTeam";
             // Invoke graphql operation backupO365Team
             InvokeMutationBackupO365Team();
         }
 
         // This parameter set invokes a single graphql operation:
         // restoreO365TeamsFiles.
-        protected void ProcessRecord_Restoreteamsfile()
+        protected void ProcessRecord_RestoreTeamsFile()
         {
-            this._logger.name += " -Restoreteamsfile";
+            this._logger.name += " -RestoreTeamsFile";
             // Invoke graphql operation restoreO365TeamsFiles
             InvokeMutationRestoreO365TeamsFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // restoreO365TeamsConversations.
-        protected void ProcessRecord_Restoreteamsconversation()
+        protected void ProcessRecord_RestoreTeamsConversation()
         {
-            this._logger.name += " -Restoreteamsconversation";
+            this._logger.name += " -RestoreTeamsConversation";
             // Invoke graphql operation restoreO365TeamsConversations
             InvokeMutationRestoreO365TeamsConversations();
         }
 
         // This parameter set invokes a single graphql operation:
         // restoreO365Snappable.
-        protected void ProcessRecord_Restoresnappable()
+        protected void ProcessRecord_RestoreSnappable()
         {
-            this._logger.name += " -Restoresnappable";
+            this._logger.name += " -RestoreSnappable";
             // Invoke graphql operation restoreO365Snappable
             InvokeMutationRestoreO365Snappable();
         }
 
         // This parameter set invokes a single graphql operation:
         // refreshO365Org.
-        protected void ProcessRecord_Refreshorg()
+        protected void ProcessRecord_RefreshOrg()
         {
-            this._logger.name += " -Refreshorg";
+            this._logger.name += " -RefreshOrg";
             // Invoke graphql operation refreshO365Org
             InvokeMutationRefreshO365Org();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteO365Org.
-        protected void ProcessRecord_Deleteorg()
+        protected void ProcessRecord_DeleteOrg()
         {
-            this._logger.name += " -Deleteorg";
+            this._logger.name += " -DeleteOrg";
             // Invoke graphql operation deleteO365Org
             InvokeMutationDeleteO365Org();
         }
 
         // This parameter set invokes a single graphql operation:
         // restoreO365Mailbox.
-        protected void ProcessRecord_Restoremailbox()
+        protected void ProcessRecord_RestoreMailbox()
         {
-            this._logger.name += " -Restoremailbox";
+            this._logger.name += " -RestoreMailbox";
             // Invoke graphql operation restoreO365Mailbox
             InvokeMutationRestoreO365Mailbox();
         }
 
         // This parameter set invokes a single graphql operation:
         // exportO365Mailbox.
-        protected void ProcessRecord_Exportmailbox()
+        protected void ProcessRecord_ExportMailbox()
         {
-            this._logger.name += " -Exportmailbox";
+            this._logger.name += " -ExportMailbox";
             // Invoke graphql operation exportO365Mailbox
             InvokeMutationExportO365Mailbox();
         }
 
         // This parameter set invokes a single graphql operation:
         // setO365ServiceAccount.
-        protected void ProcessRecord_Setserviceaccount()
+        protected void ProcessRecord_SetServiceAccount()
         {
-            this._logger.name += " -Setserviceaccount";
+            this._logger.name += " -SetServiceAccount";
             // Invoke graphql operation setO365ServiceAccount
             InvokeMutationSetO365ServiceAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // enableO365SharePoint.
-        protected void ProcessRecord_Enablesharepoint()
+        protected void ProcessRecord_EnableSharePoint()
         {
-            this._logger.name += " -Enablesharepoint";
+            this._logger.name += " -EnableSharePoint";
             // Invoke graphql operation enableO365SharePoint
             InvokeMutationEnableO365SharePoint();
         }
 
         // This parameter set invokes a single graphql operation:
         // enableO365Teams.
-        protected void ProcessRecord_Enableteam()
+        protected void ProcessRecord_EnableTeam()
         {
-            this._logger.name += " -Enableteam";
+            this._logger.name += " -EnableTeam";
             // Invoke graphql operation enableO365Teams
             InvokeMutationEnableO365Teams();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteO365ServiceAccount.
-        protected void ProcessRecord_Deleteserviceaccount()
+        protected void ProcessRecord_DeleteServiceAccount()
         {
-            this._logger.name += " -Deleteserviceaccount";
+            this._logger.name += " -DeleteServiceAccount";
             // Invoke graphql operation deleteO365ServiceAccount
             InvokeMutationDeleteO365ServiceAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateO365OrgCustomName.
-        protected void ProcessRecord_Updateorgcustomname()
+        protected void ProcessRecord_UpdateOrgCustomName()
         {
-            this._logger.name += " -Updateorgcustomname";
+            this._logger.name += " -UpdateOrgCustomName";
             // Invoke graphql operation updateO365OrgCustomName
             InvokeMutationUpdateO365OrgCustomName();
         }

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "QuarantineInfo";
+    }
+
     public QuarantineInfo Set(
         System.Boolean? ContainsQuarantinedFiles = null,
         System.Boolean? IsQuarantined = null

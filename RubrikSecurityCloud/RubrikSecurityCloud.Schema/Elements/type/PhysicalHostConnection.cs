@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PhysicalHostConnection";
+    }
+
     public PhysicalHostConnection Set(
         System.Int32? Count = null,
         List<PhysicalHostEdge>? Edges = null,

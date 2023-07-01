@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleRacDescendantTypeEdge";
+    }
+
     public OracleRacDescendantTypeEdge Set(
         OracleRacDescendantType? Node = null,
         System.String? Cursor = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "IndicatorOfCompromise";
+    }
+
     public IndicatorOfCompromise Set(
         IndicatorOfCompromiseKind? IocKind = null,
         System.String? IocValue = null

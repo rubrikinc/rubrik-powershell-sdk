@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HyperVStatus";
+    }
+
     public HyperVstatus Set(
         System.String? Connectivity = null,
         DateTime? TimestampMillis = null

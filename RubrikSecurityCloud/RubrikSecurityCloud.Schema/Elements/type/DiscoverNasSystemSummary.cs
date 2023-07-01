@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DiscoverNasSystemSummary";
+    }
+
     public DiscoverNasSystemSummary Set(
         System.String? NasSystemId = null,
         AsyncRequestStatus? NasDiscoverJobStatus = null

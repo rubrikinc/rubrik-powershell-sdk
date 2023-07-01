@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AttachmentSpecsForManagedDisk";
+    }
+
     public AttachmentSpecsForManagedDisk Set(
         System.String? AttachedToVmId = null,
         System.Boolean? IsExcludedFromSnapshot = null,

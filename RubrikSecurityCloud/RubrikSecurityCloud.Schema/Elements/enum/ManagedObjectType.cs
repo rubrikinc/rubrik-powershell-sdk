@@ -225,6 +225,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "NAS_VOLUME")]
         NAS_VOLUME,
 
+        [EnumMember(Value = "NUTANIX_CATEGORY")]
+        NUTANIX_CATEGORY,
+
+        [EnumMember(Value = "NUTANIX_CATEGORY_VALUE")]
+        NUTANIX_CATEGORY_VALUE,
+
         [EnumMember(Value = "NUTANIX_CLUSTER")]
         NUTANIX_CLUSTER,
 

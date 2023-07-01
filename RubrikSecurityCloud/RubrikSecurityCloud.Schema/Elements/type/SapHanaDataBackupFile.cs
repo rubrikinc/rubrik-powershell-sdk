@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaDataBackupFile";
+    }
+
     public SapHanaDataBackupFile Set(
         System.Int64? BackupFileSizeInBytes = null,
         System.String? DestinationPath = null,

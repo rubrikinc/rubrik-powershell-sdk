@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsCloudAccount";
+    }
+
     public AwsCloudAccount Set(
         AwsCloudType? CloudType = null,
         System.String? AccountName = null,

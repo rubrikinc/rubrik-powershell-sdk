@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateVsphereVcenterReply";
+    }
+
     public CreateVsphereVcenterReply Set(
         System.String? Id = null,
         System.Boolean? IsHotAddProxyEnabledForOnPremVcenter = null,

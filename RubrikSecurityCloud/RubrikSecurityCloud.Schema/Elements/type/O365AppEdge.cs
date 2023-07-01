@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365AppEdge";
+    }
+
     public O365AppEdge Set(
         System.String? Cursor = null,
         O365App? Node = null

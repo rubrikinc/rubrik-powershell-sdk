@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnappableGroupByAtSpecifiedTimeConnection";
+    }
+
     public SnappableGroupByAtSpecifiedTimeConnection Set(
         System.Int32? Count = null,
         List<SnappableGroupByAtSpecifiedTimeEdge>? Edges = null,

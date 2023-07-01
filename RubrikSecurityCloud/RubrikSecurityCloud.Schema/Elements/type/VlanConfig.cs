@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VlanConfig";
+    }
+
     public VlanConfig Set(
         System.String? Netmask = null,
         System.Int32? Vlan = null,

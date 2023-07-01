@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StorageAccount";
+    }
+
     public StorageAccount Set(
         StorageAccountTier? AccessTier = null,
         StorageAccountSku? Sku = null,

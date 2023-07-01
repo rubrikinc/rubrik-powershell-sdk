@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RequestedMatchDetails";
+    }
+
     public RequestedMatchDetails Set(
         List<HashType>? RequestedHashTypes = null
     ) 

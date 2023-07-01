@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixCategoryEdge";
+    }
+
     public NutanixCategoryEdge Set(
         System.String? Cursor = null,
         NutanixCategory? Node = null

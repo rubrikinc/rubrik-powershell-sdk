@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CancelJobReply";
+    }
+
     public CancelJobReply Set(
         System.String? Message = null,
         System.Boolean? Status = null

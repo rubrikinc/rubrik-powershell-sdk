@@ -8,3 +8,6 @@ not be considered.
 - SNAPSHOT - Filter the results by the FID of snapshot.
 - IS_ACTIVE - Filter the results based on whether the export is
  active.
+- ACTIVE_DIRECTORY_DOMAIN - Filter the results by FID of the domain.
+- IS_USER_VISIBLE - Filter the results based on whether the export is visible
+ to user not not.

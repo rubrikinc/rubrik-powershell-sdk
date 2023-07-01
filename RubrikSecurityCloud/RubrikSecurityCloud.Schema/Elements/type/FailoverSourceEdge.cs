@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverSourceEdge";
+    }
+
     public FailoverSourceEdge Set(
         System.String? Cursor = null,
         FailoverSource? Node = null

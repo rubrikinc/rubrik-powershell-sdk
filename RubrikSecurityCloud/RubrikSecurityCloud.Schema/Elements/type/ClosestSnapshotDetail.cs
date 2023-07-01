@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClosestSnapshotDetail";
+    }
+
     public ClosestSnapshotDetail Set(
         DateTime? Date = null,
         System.String? Id = null,

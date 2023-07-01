@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereDatastoreClusterPhysicalChildTypeEdge";
+    }
+
     public VsphereDatastoreClusterPhysicalChildTypeEdge Set(
         VsphereDatastoreClusterPhysicalChildType? Node = null,
         System.String? Cursor = null

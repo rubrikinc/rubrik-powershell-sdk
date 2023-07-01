@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcdOrgVdcDescendantTypeConnection";
+    }
+
     public VcdOrgVdcDescendantTypeConnection Set(
         List<VcdOrgVdcDescendantType>? Nodes = null,
         System.Int32? Count = null,

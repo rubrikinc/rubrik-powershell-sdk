@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ModifyIpmiReply";
+    }
+
     public ModifyIpmiReply Set(
         System.Boolean? IsAvailable = null,
         IpmiAccess? Access = null

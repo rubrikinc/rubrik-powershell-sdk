@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReplicationSource";
+    }
+
     public ReplicationSource Set(
         System.String? Id = null,
         System.String? SourceClusterAddress = null,

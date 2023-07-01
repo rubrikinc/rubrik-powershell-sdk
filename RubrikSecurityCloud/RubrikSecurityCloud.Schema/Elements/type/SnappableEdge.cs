@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnappableEdge";
+    }
+
     public SnappableEdge Set(
         System.String? Cursor = null,
         Snappable? Node = null

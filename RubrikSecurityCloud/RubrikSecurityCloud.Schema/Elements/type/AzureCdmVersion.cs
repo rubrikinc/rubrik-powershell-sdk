@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureCdmVersion";
+    }
+
     public AzureCdmVersion Set(
         List<AzureInstanceType>? SupportedInstanceTypes = null,
         System.String? CdmVersion = null,

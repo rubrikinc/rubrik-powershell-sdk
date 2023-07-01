@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeHierarchyObjectEdge";
+    }
+
     public AwsNativeHierarchyObjectEdge Set(
         AwsNativeHierarchyObject? Node = null,
         System.String? Cursor = null

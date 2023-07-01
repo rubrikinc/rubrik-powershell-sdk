@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExocomputeHealthCheckStatus";
+    }
+
     public ExocomputeHealthCheckStatus Set(
         ExocomputeHealthCheckStatusValue? Status = null,
         System.String? FailureReason = null,

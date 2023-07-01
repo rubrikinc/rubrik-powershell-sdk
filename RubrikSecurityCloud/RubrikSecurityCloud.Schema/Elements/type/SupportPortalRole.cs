@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SupportPortalRole";
+    }
+
     public SupportPortalRole Set(
         System.Boolean? CanCreateCases = null
     ) 

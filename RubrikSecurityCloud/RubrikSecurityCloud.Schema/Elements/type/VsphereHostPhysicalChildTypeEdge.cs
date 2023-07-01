@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereHostPhysicalChildTypeEdge";
+    }
+
     public VsphereHostPhysicalChildTypeEdge Set(
         VsphereHostPhysicalChildType? Node = null,
         System.String? Cursor = null

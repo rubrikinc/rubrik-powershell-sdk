@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmDiskMapEntry";
+    }
+
     public VmDiskMapEntry Set(
         System.String? SourceVmDiskId = null,
         System.String? TargetDiskId = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetSPExplicitReply";
+    }
+
     public GetSpExplicitReply Set(
         System.String? ApplicationCallbackUrl = null,
         System.String? EncryptionCertificate = null,

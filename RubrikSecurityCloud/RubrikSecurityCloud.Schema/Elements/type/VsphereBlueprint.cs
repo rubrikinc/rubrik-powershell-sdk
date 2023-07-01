@@ -286,6 +286,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VSphereBlueprint";
+    }
+
     public VsphereBlueprint Set(
         List<Operation>? AuthorizedOperations = null,
         AppBlueprintFailoverStatus? CurrentFailoverStatus = null,

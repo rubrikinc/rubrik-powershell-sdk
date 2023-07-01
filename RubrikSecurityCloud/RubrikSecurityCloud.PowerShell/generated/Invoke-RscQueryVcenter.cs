@@ -43,16 +43,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter Vcenter { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Vcenter",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The Rubrik UUID for the object.
-GraphQL argument fid: UUID!"
-        )]
-        public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
         // List parameter set
@@ -71,64 +61,14 @@ GraphQL argument fid: UUID!"
         )]
         public SwitchParameter List { get; set; }
 
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort hierarchy objects by hierarchy field.
-GraphQL argument sortBy: HierarchySortByField"
-        )]
-        public HierarchySortByField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sorting order for the results.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "List",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The hierarchy object filter.
-GraphQL argument filter: [Filter!]"
-        )]
-        public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
-        // Uniquecount parameter set
+        // UniqueCount parameter set
         //
         // [GraphQL: uniqueVSphereVCenterCount]
         //
         [Parameter(
-            ParameterSetName = "Uniquecount",
+            ParameterSetName = "UniqueCount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -137,16 +77,16 @@ GraphQL argument filter: [Filter!]"
 [GraphQL: uniqueVSphereVCenterCount]",
             Position = 0
         )]
-        public SwitchParameter Uniquecount { get; set; }
+        public SwitchParameter UniqueCount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Preaddinfo parameter set
+        // PreAddInfo parameter set
         //
         // [GraphQL: vCenterPreAddInfo]
         //
         [Parameter(
-            ParameterSetName = "Preaddinfo",
+            ParameterSetName = "PreAddInfo",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -155,18 +95,8 @@ GraphQL argument filter: [Filter!]"
 [GraphQL: vCenterPreAddInfo]",
             Position = 0
         )]
-        public SwitchParameter Preaddinfo { get; set; }
+        public SwitchParameter PreAddInfo { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Preaddinfo",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for V1PreAddVcenter.
-GraphQL argument input: PreAddVcenterInput!"
-        )]
-        public PreAddVcenterInput? Input { get; set; }
         
         // -------------------------------------------------------------------
         // Network parameter set
@@ -190,12 +120,12 @@ Get the names and IDs of the user configured networks in the vCenter. This infor
 
         
         // -------------------------------------------------------------------
-        // Hotaddnetwork parameter set
+        // HotAddNetwork parameter set
         //
         // [GraphQL: vCenterHotAddNetwork]
         //
         [Parameter(
-            ParameterSetName = "Hotaddnetwork",
+            ParameterSetName = "HotAddNetwork",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -207,16 +137,16 @@ Retrieve the user-configured network for HotAdd backup and recovery operations o
 [GraphQL: vCenterHotAddNetwork]",
             Position = 0
         )]
-        public SwitchParameter Hotaddnetwork { get; set; }
+        public SwitchParameter HotAddNetwork { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Numproxiesneeded parameter set
+        // NumProxiesNeeded parameter set
         //
         // [GraphQL: vCenterNumProxiesNeeded]
         //
         [Parameter(
-            ParameterSetName = "Numproxiesneeded",
+            ParameterSetName = "NumProxiesNeeded",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -228,16 +158,16 @@ Get the number of HotAdd proxies that need to be deployed to the vCenter to supp
 [GraphQL: vCenterNumProxiesNeeded]",
             Position = 0
         )]
-        public SwitchParameter Numproxiesneeded { get; set; }
+        public SwitchParameter NumProxiesNeeded { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Hotaddproxy parameter set
+        // HotAddProxy parameter set
         //
         // [GraphQL: allVcenterHotAddProxyVms]
         //
         [Parameter(
-            ParameterSetName = "Hotaddproxy",
+            ParameterSetName = "HotAddProxy",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -249,26 +179,16 @@ Retrieve summary information for all HotAdd proxy virtual machines.
 [GraphQL: allVcenterHotAddProxyVms]",
             Position = 0
         )]
-        public SwitchParameter Hotaddproxy { get; set; }
+        public SwitchParameter HotAddProxy { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Hotaddproxy",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"List of cluster IDs.
-GraphQL argument clusterUuids: [UUID!]!"
-        )]
-        public List<System.String>? ClusterUuids { get; set; }
         
         // -------------------------------------------------------------------
-        // Hotaddbandwidth parameter set
+        // HotAddBandwidth parameter set
         //
         // [GraphQL: vCenterHotAddBandwidth]
         //
         [Parameter(
-            ParameterSetName = "Hotaddbandwidth",
+            ParameterSetName = "HotAddBandwidth",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -280,16 +200,16 @@ Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 [GraphQL: vCenterHotAddBandwidth]",
             Position = 0
         )]
-        public SwitchParameter Hotaddbandwidth { get; set; }
+        public SwitchParameter HotAddBandwidth { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Advancedtagpreview parameter set
+        // AdvancedTagPreview parameter set
         //
         // [GraphQL: vCenterAdvancedTagPreview]
         //
         [Parameter(
-            ParameterSetName = "Advancedtagpreview",
+            ParameterSetName = "AdvancedTagPreview",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -301,7 +221,7 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 [GraphQL: vCenterAdvancedTagPreview]",
             Position = 0
         )]
-        public SwitchParameter Advancedtagpreview { get; set; }
+        public SwitchParameter AdvancedTagPreview { get; set; }
 
 
         protected override void ProcessRecord()
@@ -316,29 +236,29 @@ Preview list of virtual machines of a proposed filter condition. The result migh
                     case "List":
                         this.ProcessRecord_List();
                         break;
-                    case "Uniquecount":
-                        this.ProcessRecord_Uniquecount();
+                    case "UniqueCount":
+                        this.ProcessRecord_UniqueCount();
                         break;
-                    case "Preaddinfo":
-                        this.ProcessRecord_Preaddinfo();
+                    case "PreAddInfo":
+                        this.ProcessRecord_PreAddInfo();
                         break;
                     case "Network":
                         this.ProcessRecord_Network();
                         break;
-                    case "Hotaddnetwork":
-                        this.ProcessRecord_Hotaddnetwork();
+                    case "HotAddNetwork":
+                        this.ProcessRecord_HotAddNetwork();
                         break;
-                    case "Numproxiesneeded":
-                        this.ProcessRecord_Numproxiesneeded();
+                    case "NumProxiesNeeded":
+                        this.ProcessRecord_NumProxiesNeeded();
                         break;
-                    case "Hotaddproxy":
-                        this.ProcessRecord_Hotaddproxy();
+                    case "HotAddProxy":
+                        this.ProcessRecord_HotAddProxy();
                         break;
-                    case "Hotaddbandwidth":
-                        this.ProcessRecord_Hotaddbandwidth();
+                    case "HotAddBandwidth":
+                        this.ProcessRecord_HotAddBandwidth();
                         break;
-                    case "Advancedtagpreview":
-                        this.ProcessRecord_Advancedtagpreview();
+                    case "AdvancedTagPreview":
+                        this.ProcessRecord_AdvancedTagPreview();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -370,18 +290,18 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // uniqueVSphereVCenterCount.
-        protected void ProcessRecord_Uniquecount()
+        protected void ProcessRecord_UniqueCount()
         {
-            this._logger.name += " -Uniquecount";
+            this._logger.name += " -UniqueCount";
             // Invoke graphql operation uniqueVSphereVCenterCount
             InvokeQueryUniqueVsphereVcenterCount();
         }
 
         // This parameter set invokes a single graphql operation:
         // vCenterPreAddInfo.
-        protected void ProcessRecord_Preaddinfo()
+        protected void ProcessRecord_PreAddInfo()
         {
-            this._logger.name += " -Preaddinfo";
+            this._logger.name += " -PreAddInfo";
             // Invoke graphql operation vCenterPreAddInfo
             InvokeQueryVcenterPreAddInfo();
         }
@@ -397,45 +317,45 @@ Preview list of virtual machines of a proposed filter condition. The result migh
 
         // This parameter set invokes a single graphql operation:
         // vCenterHotAddNetwork.
-        protected void ProcessRecord_Hotaddnetwork()
+        protected void ProcessRecord_HotAddNetwork()
         {
-            this._logger.name += " -Hotaddnetwork";
+            this._logger.name += " -HotAddNetwork";
             // Invoke graphql operation vCenterHotAddNetwork
             InvokeQueryVcenterHotAddNetwork();
         }
 
         // This parameter set invokes a single graphql operation:
         // vCenterNumProxiesNeeded.
-        protected void ProcessRecord_Numproxiesneeded()
+        protected void ProcessRecord_NumProxiesNeeded()
         {
-            this._logger.name += " -Numproxiesneeded";
+            this._logger.name += " -NumProxiesNeeded";
             // Invoke graphql operation vCenterNumProxiesNeeded
             InvokeQueryVcenterNumProxiesNeeded();
         }
 
         // This parameter set invokes a single graphql operation:
         // allVcenterHotAddProxyVms.
-        protected void ProcessRecord_Hotaddproxy()
+        protected void ProcessRecord_HotAddProxy()
         {
-            this._logger.name += " -Hotaddproxy";
+            this._logger.name += " -HotAddProxy";
             // Invoke graphql operation allVcenterHotAddProxyVms
             InvokeQueryAllVcenterHotAddProxyVms();
         }
 
         // This parameter set invokes a single graphql operation:
         // vCenterHotAddBandwidth.
-        protected void ProcessRecord_Hotaddbandwidth()
+        protected void ProcessRecord_HotAddBandwidth()
         {
-            this._logger.name += " -Hotaddbandwidth";
+            this._logger.name += " -HotAddBandwidth";
             // Invoke graphql operation vCenterHotAddBandwidth
             InvokeQueryVcenterHotAddBandwidth();
         }
 
         // This parameter set invokes a single graphql operation:
         // vCenterAdvancedTagPreview.
-        protected void ProcessRecord_Advancedtagpreview()
+        protected void ProcessRecord_AdvancedTagPreview()
         {
-            this._logger.name += " -Advancedtagpreview";
+            this._logger.name += " -AdvancedTagPreview";
             // Invoke graphql operation vCenterAdvancedTagPreview
             InvokeQueryVcenterAdvancedTagPreview();
         }

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeMountDescendantTypeEdge";
+    }
+
     public ManagedVolumeMountDescendantTypeEdge Set(
         ManagedVolumeMountDescendantType? Node = null,
         System.String? Cursor = null

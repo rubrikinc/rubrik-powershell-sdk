@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Result";
+    }
+
     public Result Set(
         System.String? AppFid = null,
         System.String? Id = null,

@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmWorkload";
+    }
+
     public CdmWorkload Set(
         SnappableSlaAssignment? SlaAssignment = null,
         System.String? EffectiveSlaDomainId = null,

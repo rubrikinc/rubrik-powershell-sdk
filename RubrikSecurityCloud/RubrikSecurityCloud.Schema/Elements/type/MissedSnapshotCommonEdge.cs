@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MissedSnapshotCommonEdge";
+    }
+
     public MissedSnapshotCommonEdge Set(
         System.String? Cursor = null,
         MissedSnapshotCommon? Node = null

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DiffResult";
+    }
+
     public DiffResult Set(
         System.Int64? PreviousSnapshotDate = null,
         System.String? PreviousSnapshotId = null,

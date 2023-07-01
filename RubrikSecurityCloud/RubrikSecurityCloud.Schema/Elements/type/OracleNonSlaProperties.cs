@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleNonSlaProperties";
+    }
+
     public OracleNonSlaProperties Set(
         System.Int32? HostLogRetentionHours = null,
         System.String? HostMount = null,

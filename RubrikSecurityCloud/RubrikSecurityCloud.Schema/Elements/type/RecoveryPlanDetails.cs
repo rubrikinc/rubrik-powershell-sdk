@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RecoveryPlanDetails";
+    }
+
     public RecoveryPlanDetails Set(
         RecoveryPlanType? Type = null,
         System.String? Id = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HdfsHost";
+    }
+
     public HdfsHost Set(
         System.String? Hostname = null,
         System.Int32? Port = null

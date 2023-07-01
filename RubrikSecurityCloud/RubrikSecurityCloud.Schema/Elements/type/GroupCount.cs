@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GroupCount";
+    }
+
     public GroupCount Set(
         System.Int32? Count = null,
         System.String? Group = null

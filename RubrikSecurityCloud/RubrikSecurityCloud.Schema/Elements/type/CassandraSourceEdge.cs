@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CassandraSourceEdge";
+    }
+
     public CassandraSourceEdge Set(
         System.String? Cursor = null,
         CassandraSource? Node = null

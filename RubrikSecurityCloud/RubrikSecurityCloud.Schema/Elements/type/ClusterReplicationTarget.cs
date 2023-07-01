@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterReplicationTarget";
+    }
+
     public ClusterReplicationTarget Set(
         System.String? Id = null,
         System.String? Name = null

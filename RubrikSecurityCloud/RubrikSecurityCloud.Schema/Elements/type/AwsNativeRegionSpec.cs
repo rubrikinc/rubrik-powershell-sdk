@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeRegionSpec";
+    }
+
     public AwsNativeRegionSpec Set(
         AwsNativeRegion? Region = null,
         System.Boolean? IsExocomputeConfigured = null

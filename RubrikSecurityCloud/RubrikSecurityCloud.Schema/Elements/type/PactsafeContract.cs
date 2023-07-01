@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PactsafeContract";
+    }
+
     public PactsafeContract Set(
         System.String? ContractFile = null,
         System.String? ContractId = null,

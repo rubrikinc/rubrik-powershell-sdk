@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RelatedContent";
+    }
+
     public RelatedContent Set(
         ProductDocumentationType? Type = null,
         System.String? Description = null,

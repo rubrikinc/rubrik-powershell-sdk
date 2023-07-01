@@ -246,6 +246,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActiveDirectoryDomainController";
+    }
+
     public ActiveDirectoryDomainController Set(
         List<Operation>? AuthorizedOperations = null,
         List<FsmoRoles>? FsmoRoles = null,

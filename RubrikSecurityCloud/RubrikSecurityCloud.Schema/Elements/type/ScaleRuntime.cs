@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ScaleRuntime";
+    }
+
     public ScaleRuntime Set(
         DateTime? Deadline = null,
         System.Int32? NewCount = null,

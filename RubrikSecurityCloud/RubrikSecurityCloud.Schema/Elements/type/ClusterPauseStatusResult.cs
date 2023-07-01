@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterPauseStatusResult";
+    }
+
     public ClusterPauseStatusResult Set(
         System.String? ClusterUuid = null,
         System.Boolean? Success = null

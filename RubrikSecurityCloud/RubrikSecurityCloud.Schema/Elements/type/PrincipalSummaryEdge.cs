@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalSummaryEdge";
+    }
+
     public PrincipalSummaryEdge Set(
         System.String? Cursor = null,
         PrincipalSummary? Node = null

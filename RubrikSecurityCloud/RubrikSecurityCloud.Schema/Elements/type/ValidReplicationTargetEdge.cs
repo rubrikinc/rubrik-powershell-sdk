@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidReplicationTargetEdge";
+    }
+
     public ValidReplicationTargetEdge Set(
         System.String? Cursor = null,
         ValidReplicationTarget? Node = null

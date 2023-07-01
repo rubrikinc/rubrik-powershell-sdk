@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetSchemaResponse";
+    }
+
     public GetSchemaResponse Set(
         System.String? Message = null,
         System.Int64? ReturnCode = null,

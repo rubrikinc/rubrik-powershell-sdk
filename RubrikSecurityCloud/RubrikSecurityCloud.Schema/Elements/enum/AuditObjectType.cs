@@ -15,6 +15,12 @@ namespace RubrikSecurityCloud.Types
 {
     public enum AuditObjectType
     {
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN")]
+        ACTIVE_DIRECTORY_DOMAIN,
+
+        [EnumMember(Value = "ACTIVE_DIRECTORY_DOMAIN_CONTROLLER")]
+        ACTIVE_DIRECTORY_DOMAIN_CONTROLLER,
+
         [EnumMember(Value = "APP_BLUEPRINT")]
         APP_BLUEPRINT,
 
@@ -197,6 +203,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "NUTANIX_CLUSTER")]
         NUTANIX_CLUSTER,
+
+        [EnumMember(Value = "NUTANIX_PRISM_CENTRAL")]
+        NUTANIX_PRISM_CENTRAL,
 
         [EnumMember(Value = "NUTANIX_VM")]
         NUTANIX_VM,

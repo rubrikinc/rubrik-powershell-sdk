@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaSystemInfo";
+    }
+
     public SapHanaSystemInfo Set(
         System.String? HanaVersion = null,
         System.Boolean? IsSystemReplicationEnabled = null

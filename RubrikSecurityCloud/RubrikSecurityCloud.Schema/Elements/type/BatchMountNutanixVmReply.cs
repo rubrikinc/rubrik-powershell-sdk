@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BatchMountNutanixVmReply";
+    }
+
     public BatchMountNutanixVmReply Set(
         NutanixBatchAsyncApiResponse? Output = null
     ) 

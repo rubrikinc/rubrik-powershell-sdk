@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FeatureDetail";
+    }
+
     public FeatureDetail Set(
         List<AwsCloudAccountRegion>? AwsRegions = null,
         CloudAccountFeature? Feature = null,

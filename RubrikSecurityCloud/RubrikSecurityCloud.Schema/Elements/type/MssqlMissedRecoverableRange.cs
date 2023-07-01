@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlMissedRecoverableRange";
+    }
+
     public MssqlMissedRecoverableRange Set(
         DateTime? BeginTime = null,
         System.String? Description = null,

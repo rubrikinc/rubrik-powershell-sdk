@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterAppSummary";
+    }
+
     public FailoverClusterAppSummary Set(
         FailoverClusterAppConnectionStatus? ConnectionStatus = null,
         FailoverClusterOsType? OperatingSystemType = null,

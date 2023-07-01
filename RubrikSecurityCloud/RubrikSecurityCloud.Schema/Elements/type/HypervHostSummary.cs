@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervHostSummary";
+    }
+
     public HypervHostSummary Set(
         System.String? Hostname = null,
         System.String? Id = null,

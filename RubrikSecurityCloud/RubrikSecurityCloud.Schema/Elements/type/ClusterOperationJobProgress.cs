@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterOperationJobProgress";
+    }
+
     public ClusterOperationJobProgress Set(
         CdmJobStatus? JobStatus = null,
         CcpJobType? JobType = null,

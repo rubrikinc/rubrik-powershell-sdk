@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RubrikSyncStatus";
+    }
+
     public RubrikSyncStatus Set(
         DateTime? ClusterSyncLastSuccessTime = null,
         DateTime? EventsSyncLastSuccessTime = null,

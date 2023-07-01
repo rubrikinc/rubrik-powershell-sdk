@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappTemplateExportOptions";
+    }
+
     public VappTemplateExportOptions Set(
         System.String? OrgVdcId = null,
         List<VcdOrgVdcStorageProfile>? AvailableStoragePolicies = null

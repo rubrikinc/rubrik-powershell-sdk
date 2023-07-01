@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HierarchySnappableFileVersion";
+    }
+
     public HierarchySnappableFileVersion Set(
         FileModeEnum? FileMode = null,
         FileVersionSourceEnum? Source = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaSystemDescendantTypeEdge";
+    }
+
     public SapHanaSystemDescendantTypeEdge Set(
         SapHanaSystemDescendantType? Node = null,
         System.String? Cursor = null

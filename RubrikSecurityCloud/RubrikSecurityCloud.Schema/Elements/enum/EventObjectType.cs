@@ -342,6 +342,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "VMWARE_COMPUTE_CLUSTER")]
         VMWARE_COMPUTE_CLUSTER,
 
+        [EnumMember(Value = "VMWARE_HOST")]
+        VMWARE_HOST,
+
         [EnumMember(Value = "VMWARE_VM")]
         VMWARE_VM,
 

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmGroupByInfo";
+    }
+
     public CdmGroupByInfo Set(
         DateTime? End = null,
         System.String? Group = null,

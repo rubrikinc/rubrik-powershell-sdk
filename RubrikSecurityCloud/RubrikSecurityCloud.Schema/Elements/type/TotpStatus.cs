@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TotpStatus";
+    }
+
     public TotpStatus Set(
         System.Boolean? IsEnabled = null,
         System.Boolean? IsEnforced = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisHierarchyObjectConnection";
+    }
+
     public PolarisHierarchyObjectConnection Set(
         List<PolarisHierarchyObject>? Nodes = null,
         System.Int32? Count = null,

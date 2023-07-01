@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetTemplateDescendantTypeConnection";
+    }
+
     public FilesetTemplateDescendantTypeConnection Set(
         List<FilesetTemplateDescendantType>? Nodes = null,
         System.Int32? Count = null,

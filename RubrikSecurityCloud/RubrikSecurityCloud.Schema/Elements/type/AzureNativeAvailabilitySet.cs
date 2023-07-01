@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeAvailabilitySet";
+    }
+
     public AzureNativeAvailabilitySet Set(
         System.String? Name = null,
         System.String? NativeId = null

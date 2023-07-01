@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AuthCounts";
+    }
+
     public AuthCounts Set(
         System.Int32? Authenticated = null,
         System.Int32? PartiallyAuthenticated = null,

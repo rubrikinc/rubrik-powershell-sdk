@@ -1,6 +1,6 @@
 # Invoke-RscQueryMongo
 ## Subcommands
-### Collection
+### collection
 Paginated list of MongoDB collections.
 
 - There are 5 arguments.
@@ -10,7 +10,7 @@ Paginated list of MongoDB collections.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MongoCollectionConnection.
-### Database
+### database
 Paginated list of MongoDB databases.
 
 - There are 5 arguments.
@@ -20,12 +20,12 @@ Paginated list of MongoDB databases.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MongoDatabaseConnection.
-### Dbbulkrecoverablerange
+### dbbulkrecoverablerange
 Recoverable range for multiple Management Objects on NoSQL cluster.
 
 - There is a single argument of type MosaicBulkRecoveryRangeInput.
 - Returns MosaicRecoveryRangeResponse.
-### Dbcollection
+### dbcollection
 Paginated list of MongoDB collections on NoSQL cluster.
 
 - There are 5 arguments.
@@ -35,12 +35,12 @@ Paginated list of MongoDB collections on NoSQL cluster.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MongodbCollectionConnection.
-### Dbcollectionrecoverablerange
+### dbcollectionrecoverablerange
 Recoverable Range of a MongoDB collection on NoSQL cluster.
 
 - There is a single argument of type GetMosaicRecoverableRangeInput.
 - Returns GetMosaicRecoverableRangeResponse.
-### Dbdatabase
+### dbdatabase
 Paginated list of MongoDB databases on NoSQL cluster.
 
 - There are 5 arguments.
@@ -50,7 +50,7 @@ Paginated list of MongoDB databases on NoSQL cluster.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MongodbDatabaseConnection.
-### Dbsource
+### dbsource
 Paginated list of MongoDB sources on NoSQL cluster.
 
 - There are 5 arguments.
@@ -60,12 +60,12 @@ Paginated list of MongoDB sources on NoSQL cluster.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MongodbSourceConnection.
-### Recoverablerange
+### recoverablerange
 Provides the range for recovery of MongoDB objects.
 
 - There is a single argument of type RecoverableRangeInput.
 - Returns MongoRecoverableRanges.
-### Source
+### source
 Paginated list of MongoDB sources.
 
 - There are 5 arguments.

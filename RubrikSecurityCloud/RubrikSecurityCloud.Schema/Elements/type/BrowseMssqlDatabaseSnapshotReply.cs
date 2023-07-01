@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BrowseMssqlDatabaseSnapshotReply";
+    }
+
     public BrowseMssqlDatabaseSnapshotReply Set(
         List<MssqlBackup>? Items = null
     ) 

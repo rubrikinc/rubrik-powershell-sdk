@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleRacSummary";
+    }
+
     public OracleRacSummary Set(
         System.Boolean? HasLogConfigFromSla = null,
         System.String? Id = null,

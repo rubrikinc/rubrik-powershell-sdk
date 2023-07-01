@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PhoenixRolloutProgress";
+    }
+
     public PhoenixRolloutProgress Set(
         System.Int32? NumEnabled = null,
         System.Int32? NumInProcess = null,

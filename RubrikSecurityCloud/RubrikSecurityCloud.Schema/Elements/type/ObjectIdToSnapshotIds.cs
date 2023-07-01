@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ObjectIdToSnapshotIds";
+    }
+
     public ObjectIdToSnapshotIds Set(
         System.String? Id = null,
         List<System.String>? Snapshots = null

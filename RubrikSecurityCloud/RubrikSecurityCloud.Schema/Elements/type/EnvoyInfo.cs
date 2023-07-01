@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "EnvoyInfo";
+    }
+
     public EnvoyInfo Set(
         EnvoyStatusField? EnvoyStatus = null,
         System.String? EnvoyHostname = null,

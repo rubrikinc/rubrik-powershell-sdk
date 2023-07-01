@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CountOfObjectsProtectedBySLAsResult";
+    }
+
     public CountOfObjectsProtectedBySlAsResult Set(
         List<SlaIdToObjectCount>? SlaObjectCounts = null
     ) 

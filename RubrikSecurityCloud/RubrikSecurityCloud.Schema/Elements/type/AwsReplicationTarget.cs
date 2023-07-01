@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsReplicationTarget";
+    }
+
     public AwsReplicationTarget Set(
         AwsNativeRegionForReplication? Region = null,
         System.String? AccountId = null,

@@ -276,6 +276,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Cluster";
+    }
+
     public Cluster Set(
         List<Product>? LicensedProducts = null,
         ClusterPauseStatus? PauseStatus = null,

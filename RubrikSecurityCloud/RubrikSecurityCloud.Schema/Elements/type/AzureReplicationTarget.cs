@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureReplicationTarget";
+    }
+
     public AzureReplicationTarget Set(
         AzureNativeRegionForReplication? Region = null,
         System.String? SubscriptionId = null,

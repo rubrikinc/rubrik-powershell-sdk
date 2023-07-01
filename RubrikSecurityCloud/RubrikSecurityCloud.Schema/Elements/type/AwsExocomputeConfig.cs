@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsExocomputeConfig";
+    }
+
     public AwsExocomputeConfig Set(
         List<AwsCloudAccountRegion>? ExocomputeEligibleRegions = null,
         List<System.String>? MappedCloudAccountIds = null,

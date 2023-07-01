@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OverallRansomwareInvestigationSummary";
+    }
+
     public OverallRansomwareInvestigationSummary Set(
         System.Int64? AnalysisFailureCount = null,
         System.Int64? AnalysisSuccessCount = null,

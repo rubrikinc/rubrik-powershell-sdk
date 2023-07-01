@@ -41,6 +41,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSnappableLocation";
+    }
+
     public AzureSnappableLocation Set(
         System.String? AzureRegion = null,
         System.String? SubscriptionRubrikId = null,

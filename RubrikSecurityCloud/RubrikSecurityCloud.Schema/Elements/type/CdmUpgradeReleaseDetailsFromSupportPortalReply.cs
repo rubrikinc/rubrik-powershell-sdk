@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmUpgradeReleaseDetailsFromSupportPortalReply";
+    }
+
     public CdmUpgradeReleaseDetailsFromSupportPortalReply Set(
         System.String? CompatibilityMatrixLink = null,
         System.String? SupportSoftwareLink = null,

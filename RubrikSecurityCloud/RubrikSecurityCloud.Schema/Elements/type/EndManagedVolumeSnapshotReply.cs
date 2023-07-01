@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "EndManagedVolumeSnapshotReply";
+    }
+
     public EndManagedVolumeSnapshotReply Set(
         AsyncRequestStatus? AsyncRequestStatus = null,
         ManagedVolumeSnapshotSummary? ManagedVolumeSnapshotSummary = null

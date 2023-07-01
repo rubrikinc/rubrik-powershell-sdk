@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixBatchAsyncApiResponse";
+    }
+
     public NutanixBatchAsyncApiResponse Set(
         List<NutanixAsyncRequestFailureSummary>? FailedRequests = null,
         List<NutanixAsyncRequestSuccessSummary>? SuccessfulRequests = null

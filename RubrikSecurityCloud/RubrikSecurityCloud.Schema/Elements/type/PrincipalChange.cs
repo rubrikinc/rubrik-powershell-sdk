@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalChange";
+    }
+
     public PrincipalChange Set(
         System.String? FullName = null,
         System.String? PrincipalId = null,

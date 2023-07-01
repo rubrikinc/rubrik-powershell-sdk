@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixBackupScript";
+    }
+
     public NutanixBackupScript Set(
         NutanixBackupScriptFailureHandling? FailureHandling = null,
         System.String? ScriptPath = null,

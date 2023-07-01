@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ProtectedObjectTypeToSla";
+    }
+
     public ProtectedObjectTypeToSla Set(
         WorkloadLevelHierarchy? ProtectedObjectType = null,
         AzureNativeResourceGroupSlaAssignment? SlaAssignment = null

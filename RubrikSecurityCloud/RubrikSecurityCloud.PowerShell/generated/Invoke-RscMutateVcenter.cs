@@ -43,66 +43,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter Create { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument clusterUuid: UUID!"
-        )]
-        public System.String? ClusterUuid { get; set; }
-        [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument hostname: String!"
-        )]
-        public System.String? Hostname { get; set; }
-        [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument username: String!"
-        )]
-        public System.String? Username { get; set; }
-        [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument password: String!"
-        )]
-        public System.String? Password { get; set; }
-        [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument conflictResolutionAuthz: ConflictResolutionAuthzEnum!"
-        )]
-        public ConflictResolutionAuthzEnum? ConflictResolutionAuthz { get; set; }
-        [Parameter(
-            ParameterSetName = "Create",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument caCert: String"
-        )]
-        public System.String? CaCert { get; set; }
         
         // -------------------------------------------------------------------
         // Delete parameter set
@@ -124,16 +64,6 @@ Initiates an asynchronous job to remove a vCenter Server object. The vCenter Ser
         )]
         public SwitchParameter Delete { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Delete",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for V1DeleteVcenter.
-GraphQL argument input: VsphereDeleteVcenterInput!"
-        )]
-        public VsphereDeleteVcenterInput? Input { get; set; }
         
         // -------------------------------------------------------------------
         // Edit parameter set
@@ -152,16 +82,6 @@ GraphQL argument input: VsphereDeleteVcenterInput!"
         )]
         public SwitchParameter Edit { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Edit",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"
-GraphQL argument vcenterId: UUID!"
-        )]
-        public System.String? VcenterId { get; set; }
         
         // -------------------------------------------------------------------
         // Refresh parameter set
@@ -203,12 +123,12 @@ Update the address, username and password of the specified vCenter Server object
 
         
         // -------------------------------------------------------------------
-        // Updatehotaddnetwork parameter set
+        // UpdateHotAddNetwork parameter set
         //
         // [GraphQL: updateVcenterHotAddNetwork]
         //
         [Parameter(
-            ParameterSetName = "Updatehotaddnetwork",
+            ParameterSetName = "UpdateHotAddNetwork",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -220,16 +140,16 @@ Set the user-configured network for HotAdd backup and recovery operations on VMw
 [GraphQL: updateVcenterHotAddNetwork]",
             Position = 0
         )]
-        public SwitchParameter Updatehotaddnetwork { get; set; }
+        public SwitchParameter UpdateHotAddNetwork { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatehotaddbandwidth parameter set
+        // UpdateHotAddBandwidth parameter set
         //
         // [GraphQL: updateVcenterHotAddBandwidth]
         //
         [Parameter(
-            ParameterSetName = "Updatehotaddbandwidth",
+            ParameterSetName = "UpdateHotAddBandwidth",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -241,7 +161,7 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 [GraphQL: updateVcenterHotAddBandwidth]",
             Position = 0
         )]
-        public SwitchParameter Updatehotaddbandwidth { get; set; }
+        public SwitchParameter UpdateHotAddBandwidth { get; set; }
 
 
         protected override void ProcessRecord()
@@ -265,11 +185,11 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
                     case "Update":
                         this.ProcessRecord_Update();
                         break;
-                    case "Updatehotaddnetwork":
-                        this.ProcessRecord_Updatehotaddnetwork();
+                    case "UpdateHotAddNetwork":
+                        this.ProcessRecord_UpdateHotAddNetwork();
                         break;
-                    case "Updatehotaddbandwidth":
-                        this.ProcessRecord_Updatehotaddbandwidth();
+                    case "UpdateHotAddBandwidth":
+                        this.ProcessRecord_UpdateHotAddBandwidth();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -328,18 +248,18 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
         // This parameter set invokes a single graphql operation:
         // updateVcenterHotAddNetwork.
-        protected void ProcessRecord_Updatehotaddnetwork()
+        protected void ProcessRecord_UpdateHotAddNetwork()
         {
-            this._logger.name += " -Updatehotaddnetwork";
+            this._logger.name += " -UpdateHotAddNetwork";
             // Invoke graphql operation updateVcenterHotAddNetwork
             InvokeMutationUpdateVcenterHotAddNetwork();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateVcenterHotAddBandwidth.
-        protected void ProcessRecord_Updatehotaddbandwidth()
+        protected void ProcessRecord_UpdateHotAddBandwidth()
         {
-            this._logger.name += " -Updatehotaddbandwidth";
+            this._logger.name += " -UpdateHotAddBandwidth";
             // Invoke graphql operation updateVcenterHotAddBandwidth
             InvokeMutationUpdateVcenterHotAddBandwidth();
         }

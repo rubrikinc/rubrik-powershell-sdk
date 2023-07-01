@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedObjectPendingSlaInfo";
+    }
+
     public ManagedObjectPendingSlaInfo Set(
         System.Boolean? IsPendingSlaDomainRetentionLocked = null,
         System.String? ObjectId = null,

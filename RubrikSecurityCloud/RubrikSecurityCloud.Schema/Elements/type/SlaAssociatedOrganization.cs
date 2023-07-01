@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaAssociatedOrganization";
+    }
+
     public SlaAssociatedOrganization Set(
         System.String? Id = null,
         System.String? Name = null

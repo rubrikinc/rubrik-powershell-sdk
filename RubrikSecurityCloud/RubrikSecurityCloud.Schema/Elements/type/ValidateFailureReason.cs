@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateFailureReason";
+    }
+
     public ValidateFailureReason Set(
         PlanName? PlanName = null,
         System.String? FailureReason = null,

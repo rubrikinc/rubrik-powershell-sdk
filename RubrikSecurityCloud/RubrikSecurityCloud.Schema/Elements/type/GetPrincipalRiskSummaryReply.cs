@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetPrincipalRiskSummaryReply";
+    }
+
     public GetPrincipalRiskSummaryReply Set(
         RiskSummary? RiskSummary = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlInstanceLogicalChildTypeEdge";
+    }
+
     public MssqlInstanceLogicalChildTypeEdge Set(
         MssqlInstanceLogicalChildType? Node = null,
         System.String? Cursor = null

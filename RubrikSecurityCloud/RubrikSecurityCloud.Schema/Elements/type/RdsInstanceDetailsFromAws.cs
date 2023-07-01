@@ -115,6 +115,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RdsInstanceDetailsFromAws";
+    }
+
     public RdsInstanceDetailsFromAws Set(
         System.Int64? AllocatedStorageInGb = null,
         System.Int64? BackupRetentionPeriod = null,

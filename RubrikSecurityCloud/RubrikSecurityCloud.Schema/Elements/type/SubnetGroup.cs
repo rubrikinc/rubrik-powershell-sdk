@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SubnetGroup";
+    }
+
     public SubnetGroup Set(
         System.String? Arn = null,
         System.String? Name = null,

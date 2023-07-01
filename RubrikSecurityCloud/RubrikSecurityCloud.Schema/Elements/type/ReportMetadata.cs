@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReportMetadata";
+    }
+
     public ReportMetadata Set(
         PolarisReportViewType? ReportViewType = null,
         System.Int64? Count = null

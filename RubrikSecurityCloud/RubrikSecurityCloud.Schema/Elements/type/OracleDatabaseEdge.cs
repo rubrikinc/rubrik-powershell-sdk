@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDatabaseEdge";
+    }
+
     public OracleDatabaseEdge Set(
         System.String? Cursor = null,
         OracleDatabase? Node = null

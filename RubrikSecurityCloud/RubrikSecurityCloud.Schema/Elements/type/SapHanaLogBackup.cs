@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaLogBackup";
+    }
+
     public SapHanaLogBackup Set(
         System.Int64? BackupId = null,
         System.Int64? BytesTransferred = null,

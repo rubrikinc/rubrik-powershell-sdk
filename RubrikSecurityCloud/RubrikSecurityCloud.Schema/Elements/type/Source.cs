@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Source";
+    }
+
     public Source Set(
         System.String? StringValue = null
     ) 

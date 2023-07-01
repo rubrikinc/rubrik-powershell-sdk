@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumePhysicalChildTypeEdge";
+    }
+
     public ManagedVolumePhysicalChildTypeEdge Set(
         ManagedVolumePhysicalChildType? Node = null,
         System.String? Cursor = null

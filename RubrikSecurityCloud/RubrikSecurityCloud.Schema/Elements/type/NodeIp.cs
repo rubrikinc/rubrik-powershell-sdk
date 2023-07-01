@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NodeIp";
+    }
+
     public NodeIp Set(
         System.String? Ip = null,
         System.String? Node = null

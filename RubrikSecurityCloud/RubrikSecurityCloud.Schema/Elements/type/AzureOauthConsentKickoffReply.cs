@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureOauthConsentKickoffReply";
+    }
+
     public AzureOauthConsentKickoffReply Set(
         System.String? AppClientId = null,
         System.String? CsrfToken = null,

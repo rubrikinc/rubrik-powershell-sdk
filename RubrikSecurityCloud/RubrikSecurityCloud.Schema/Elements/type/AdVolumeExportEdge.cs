@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AdVolumeExportEdge";
+    }
+
     public AdVolumeExportEdge Set(
         System.String? Cursor = null,
         AdVolumeExport? Node = null

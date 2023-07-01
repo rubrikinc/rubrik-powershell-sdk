@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteVappSnapshotReply";
+    }
+
     public DeleteVappSnapshotReply Set(
         System.String? ErrorMessage = null
     ) 

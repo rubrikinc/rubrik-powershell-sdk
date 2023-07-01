@@ -8,3 +8,9 @@ All valid table views.
 - PROTECTION_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE - Table displaying task status statistics for each object type.
 - PROTECTION_TASKS_DETAIL_BY_TIME_TABLE - Table displaying task status statistics for a period of time.
 - OBJECT_CAPACITY_OVERTIME_ALL_TABLE - Object capacity over time report's main table.
+- RECOVERY_TASKS_DETAIL_TABLE
+- RECOVERY_TASKS_DETAIL_BY_CLUSTER_TABLE
+- RECOVERY_TASKS_DETAIL_BY_CLUSTER_TYPE_TABLE
+- RECOVERY_TASKS_DETAIL_BY_OBJECT_TYPE_TABLE
+- RECOVERY_TASKS_DETAIL_BY_TIME_TABLE
+- THREAT_MONITORING_LIST_TABLE - Table displaying a list of workloads where files were matched by IOC rules.

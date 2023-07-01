@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaManagedVolumeScriptSummary";
+    }
+
     public SlaManagedVolumeScriptSummary Set(
         System.String? RunAsUser = null,
         System.String? ScriptCommand = null,

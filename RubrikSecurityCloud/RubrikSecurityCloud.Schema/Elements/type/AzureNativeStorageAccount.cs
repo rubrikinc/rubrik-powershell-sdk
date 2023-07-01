@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeStorageAccount";
+    }
+
     public AzureNativeStorageAccount Set(
         AzureNativeRegion? Region = null,
         System.String? Id = null,

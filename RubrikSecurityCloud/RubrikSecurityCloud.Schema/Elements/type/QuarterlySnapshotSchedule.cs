@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "QuarterlySnapshotSchedule";
+    }
+
     public QuarterlySnapshotSchedule Set(
         DayOfQuarter? DayOfQuarter = null,
         Month? QuarterStartMonth = null,

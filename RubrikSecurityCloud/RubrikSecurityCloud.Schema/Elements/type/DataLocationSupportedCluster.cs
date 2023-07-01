@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DataLocationSupportedCluster";
+    }
+
     public DataLocationSupportedCluster Set(
         System.String? Name = null,
         System.String? Uuid = null,

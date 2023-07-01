@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudNativeFileRecoveryFeasibility";
+    }
+
     public CloudNativeFileRecoveryFeasibility Set(
         FileRecoveryFeasibility? FileRecoveryFeasibility = null,
         System.String? SnapshotId = null

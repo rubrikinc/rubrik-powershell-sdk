@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExocomputeStorageAccountIds";
+    }
+
     public ExocomputeStorageAccountIds Set(
         List<System.String>? Ids = null
     ) 

@@ -140,6 +140,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VirtualMachineSummary";
+    }
+
     public VirtualMachineSummary Set(
         VirtualMachineSummarySnapshotConsistencyMandate? SnapshotConsistencyMandate = null,
         System.String? ClusterName = null,

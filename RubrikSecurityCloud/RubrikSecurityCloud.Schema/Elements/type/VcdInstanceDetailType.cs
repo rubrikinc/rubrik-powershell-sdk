@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcdInstanceDetailType";
+    }
+
     public VcdInstanceDetailType Set(
         System.String? ErrorMessage = null,
         Cluster? Cluster = null,

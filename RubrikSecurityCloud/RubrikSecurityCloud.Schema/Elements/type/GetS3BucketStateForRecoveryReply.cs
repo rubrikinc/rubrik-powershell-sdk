@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetS3BucketStateForRecoveryReply";
+    }
+
     public GetS3BucketStateForRecoveryReply Set(
         System.Boolean? IsObjectAclEnabled = null,
         System.Boolean? IsVersioningEnabled = null

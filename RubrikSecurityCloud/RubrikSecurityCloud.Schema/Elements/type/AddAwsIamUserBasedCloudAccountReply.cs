@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddAwsIamUserBasedCloudAccountReply";
+    }
+
     public AddAwsIamUserBasedCloudAccountReply Set(
         AwsCloudAccount? AwsAccount = null
     ) 

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaUpgrade";
+    }
+
     public SlaUpgrade Set(
         SlaMigrationStatus? Status = null,
         System.String? Msg = null,

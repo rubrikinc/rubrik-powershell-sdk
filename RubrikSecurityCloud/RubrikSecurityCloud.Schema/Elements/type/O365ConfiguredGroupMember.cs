@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365ConfiguredGroupMember";
+    }
+
     public O365ConfiguredGroupMember Set(
         O365ConfiguredGroupMemberType? ObjectType = null,
         System.String? DisplayName = null,

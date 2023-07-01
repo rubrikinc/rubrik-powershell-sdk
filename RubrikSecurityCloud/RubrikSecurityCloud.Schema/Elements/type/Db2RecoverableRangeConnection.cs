@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2RecoverableRangeConnection";
+    }
+
     public Db2RecoverableRangeConnection Set(
         System.Int32? Count = null,
         List<Db2RecoverableRangeEdge>? Edges = null,

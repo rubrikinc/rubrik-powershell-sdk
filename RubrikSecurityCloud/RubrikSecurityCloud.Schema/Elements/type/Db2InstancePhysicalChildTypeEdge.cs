@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2InstancePhysicalChildTypeEdge";
+    }
+
     public Db2InstancePhysicalChildTypeEdge Set(
         Db2InstancePhysicalChildType? Node = null,
         System.String? Cursor = null

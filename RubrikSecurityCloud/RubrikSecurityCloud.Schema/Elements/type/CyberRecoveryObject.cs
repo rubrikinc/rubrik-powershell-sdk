@@ -110,6 +110,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CyberRecoveryObject";
+    }
+
     public CyberRecoveryObject Set(
         WorkloadLastFailoverStatus? LastRecoveryStatus = null,
         RecoveryPlanType? LastRecoveryType = null,

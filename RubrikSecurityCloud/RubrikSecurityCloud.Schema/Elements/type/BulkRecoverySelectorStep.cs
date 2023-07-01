@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkRecoverySelectorStep";
+    }
+
     public BulkRecoverySelectorStep Set(
         System.Int64? ElapsedTime = null,
         System.Int64? EndTime = null,

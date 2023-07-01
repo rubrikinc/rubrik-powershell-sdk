@@ -85,6 +85,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ComputeClusterSummary";
+    }
+
     public ComputeClusterSummary Set(
         IoFilterStatus? IoFilterStatus = null,
         System.String? DatacenterId = null,

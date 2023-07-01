@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpCloudAccountOauthInitiateReply";
+    }
+
     public GcpCloudAccountOauthInitiateReply Set(
         System.String? ClientId = null,
         System.String? RedirectUrl = null,

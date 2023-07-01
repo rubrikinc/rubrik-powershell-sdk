@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GroupedReleaseNote";
+    }
+
     public GroupedReleaseNote Set(
         System.String? Id = null,
         DateTime? ReleaseDate = null,

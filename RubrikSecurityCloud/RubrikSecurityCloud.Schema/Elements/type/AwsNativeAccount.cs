@@ -156,6 +156,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeAccount";
+    }
+
     public AwsNativeAccount Set(
         List<PolarisObjectAuthorizedOperationsEnum>? AuthorizedOperations = null,
         AwsCloudType? CloudType = null,

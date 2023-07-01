@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2LogSnapshotAppMetadata";
+    }
+
     public Db2LogSnapshotAppMetadata Set(
         System.String? SnapshotId = null,
         List<Db2LogBackupFile>? Backups = null

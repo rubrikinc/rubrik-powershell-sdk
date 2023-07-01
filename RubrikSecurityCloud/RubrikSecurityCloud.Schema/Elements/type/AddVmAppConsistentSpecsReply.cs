@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddVmAppConsistentSpecsReply";
+    }
+
     public AddVmAppConsistentSpecsReply Set(
         List<System.String>? FailedSnappableIds = null,
         List<System.String>? SuccessSnappableIds = null

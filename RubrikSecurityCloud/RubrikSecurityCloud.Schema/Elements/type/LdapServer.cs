@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LdapServer";
+    }
+
     public LdapServer Set(
         System.String? Hostname = null,
         System.Int32? Port = null,

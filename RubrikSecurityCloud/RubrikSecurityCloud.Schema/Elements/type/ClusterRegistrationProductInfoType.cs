@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterRegistrationProductInfoType";
+    }
+
     public ClusterRegistrationProductInfoType Set(
         System.String? LatestProductType = null,
         List<System.String>? ProductTypes = null

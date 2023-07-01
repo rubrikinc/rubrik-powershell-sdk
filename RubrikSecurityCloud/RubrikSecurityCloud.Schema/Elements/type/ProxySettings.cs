@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ProxySettings";
+    }
+
     public ProxySettings Set(
         System.Int32? PortNumber = null,
         System.String? Protocol = null,

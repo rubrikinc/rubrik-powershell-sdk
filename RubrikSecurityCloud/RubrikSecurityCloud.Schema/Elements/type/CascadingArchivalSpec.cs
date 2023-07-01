@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CascadingArchivalSpec";
+    }
+
     public CascadingArchivalSpec Set(
         List<RetentionUnit>? Frequency = null,
         Target? ArchivalLocation = null,

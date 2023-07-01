@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleConfig";
+    }
+
     public OracleConfig Set(
         Duration? Frequency = null,
         Duration? HostLogRetention = null,

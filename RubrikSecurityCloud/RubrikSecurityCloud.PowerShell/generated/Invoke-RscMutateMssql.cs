@@ -21,18 +21,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateMssql",
-        DefaultParameterSetName = "Bulkupdatedb")
+        DefaultParameterSetName = "BulkUpdateDb")
     ]
     public class Invoke_RscMutateMssql : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // Browsedatabasesnapshot parameter set
+        // BrowseDatabaseSnapshot parameter set
         //
         // [GraphQL: browseMssqlDatabaseSnapshot]
         //
         [Parameter(
-            ParameterSetName = "Browsedatabasesnapshot",
+            ParameterSetName = "BrowseDatabaseSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,26 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: browseMssqlDatabaseSnapshot]",
             Position = 0
         )]
-        public SwitchParameter Browsedatabasesnapshot { get; set; }
+        public SwitchParameter BrowseDatabaseSnapshot { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Browsedatabasesnapshot",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for V1BrowseMssqlBackupFiles.
-GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!"
-        )]
-        public BrowseMssqlDatabaseSnapshotInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Exportdatabase parameter set
+        // ExportDatabase parameter set
         //
         // [GraphQL: exportMssqlDatabase]
         //
         [Parameter(
-            ParameterSetName = "Exportdatabase",
+            ParameterSetName = "ExportDatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -69,16 +59,16 @@ GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!"
 [GraphQL: exportMssqlDatabase]",
             Position = 0
         )]
-        public SwitchParameter Exportdatabase { get; set; }
+        public SwitchParameter ExportDatabase { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Restoredatabase parameter set
+        // RestoreDatabase parameter set
         //
         // [GraphQL: restoreMssqlDatabase]
         //
         [Parameter(
-            ParameterSetName = "Restoredatabase",
+            ParameterSetName = "RestoreDatabase",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -87,16 +77,16 @@ GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!"
 [GraphQL: restoreMssqlDatabase]",
             Position = 0
         )]
-        public SwitchParameter Restoredatabase { get; set; }
+        public SwitchParameter RestoreDatabase { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Bulkupdatedb parameter set
+        // BulkUpdateDb parameter set
         //
         // [GraphQL: bulkUpdateMssqlDbs]
         //
         [Parameter(
-            ParameterSetName = "Bulkupdatedb",
+            ParameterSetName = "BulkUpdateDb",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -105,16 +95,16 @@ GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!"
 [GraphQL: bulkUpdateMssqlDbs]",
             Position = 0
         )]
-        public SwitchParameter Bulkupdatedb { get; set; }
+        public SwitchParameter BulkUpdateDb { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Takelogbackup parameter set
+        // TakeLogBackup parameter set
         //
         // [GraphQL: takeMssqlLogBackup]
         //
         [Parameter(
-            ParameterSetName = "Takelogbackup",
+            ParameterSetName = "TakeLogBackup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -123,16 +113,16 @@ GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!"
 [GraphQL: takeMssqlLogBackup]",
             Position = 0
         )]
-        public SwitchParameter Takelogbackup { get; set; }
+        public SwitchParameter TakeLogBackup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createondemandbackup parameter set
+        // CreateOnDemandBackup parameter set
         //
         // [GraphQL: createOnDemandMssqlBackup]
         //
         [Parameter(
-            ParameterSetName = "Createondemandbackup",
+            ParameterSetName = "CreateOnDemandBackup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -141,16 +131,16 @@ GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!"
 [GraphQL: createOnDemandMssqlBackup]",
             Position = 0
         )]
-        public SwitchParameter Createondemandbackup { get; set; }
+        public SwitchParameter CreateOnDemandBackup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deletedbsnapshot parameter set
+        // DeleteDbSnapshot parameter set
         //
         // [GraphQL: deleteMssqlDbSnapshots]
         //
         [Parameter(
-            ParameterSetName = "Deletedbsnapshot",
+            ParameterSetName = "DeleteDbSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -159,16 +149,16 @@ GraphQL argument input: BrowseMssqlDatabaseSnapshotInput!"
 [GraphQL: deleteMssqlDbSnapshots]",
             Position = 0
         )]
-        public SwitchParameter Deletedbsnapshot { get; set; }
+        public SwitchParameter DeleteDbSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deletelivemount parameter set
+        // DeleteLiveMount parameter set
         //
         // [GraphQL: deleteMssqlLiveMount]
         //
         [Parameter(
-            ParameterSetName = "Deletelivemount",
+            ParameterSetName = "DeleteLiveMount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -180,16 +170,16 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 [GraphQL: deleteMssqlLiveMount]",
             Position = 0
         )]
-        public SwitchParameter Deletelivemount { get; set; }
+        public SwitchParameter DeleteLiveMount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Bulkcreateondemandbackup parameter set
+        // BulkCreateOnDemandBackup parameter set
         //
         // [GraphQL: bulkCreateOnDemandMssqlBackup]
         //
         [Parameter(
-            ParameterSetName = "Bulkcreateondemandbackup",
+            ParameterSetName = "BulkCreateOnDemandBackup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -198,16 +188,16 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 [GraphQL: bulkCreateOnDemandMssqlBackup]",
             Position = 0
         )]
-        public SwitchParameter Bulkcreateondemandbackup { get; set; }
+        public SwitchParameter BulkCreateOnDemandBackup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createlivemount parameter set
+        // CreateLiveMount parameter set
         //
         // [GraphQL: createMssqlLiveMount]
         //
         [Parameter(
-            ParameterSetName = "Createlivemount",
+            ParameterSetName = "CreateLiveMount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -216,16 +206,16 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 [GraphQL: createMssqlLiveMount]",
             Position = 0
         )]
-        public SwitchParameter Createlivemount { get; set; }
+        public SwitchParameter CreateLiveMount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatelogshippingconfiguration parameter set
+        // UpdateLogShippingConfiguration parameter set
         //
         // [GraphQL: updateMssqlLogShippingConfiguration]
         //
         [Parameter(
-            ParameterSetName = "Updatelogshippingconfiguration",
+            ParameterSetName = "UpdateLogShippingConfiguration",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -234,16 +224,16 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 [GraphQL: updateMssqlLogShippingConfiguration]",
             Position = 0
         )]
-        public SwitchParameter Updatelogshippingconfiguration { get; set; }
+        public SwitchParameter UpdateLogShippingConfiguration { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Downloaddatabasefilesfromarchivallocation parameter set
+        // DownloadDatabaseFilesFromArchivalLocation parameter set
         //
         // [GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]
         //
         [Parameter(
-            ParameterSetName = "Downloaddatabasefilesfromarchivallocation",
+            ParameterSetName = "DownloadDatabaseFilesFromArchivalLocation",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -252,16 +242,16 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 [GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]",
             Position = 0
         )]
-        public SwitchParameter Downloaddatabasefilesfromarchivallocation { get; set; }
+        public SwitchParameter DownloadDatabaseFilesFromArchivalLocation { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Downloaddatabasebackupfile parameter set
+        // DownloadDatabaseBackupFile parameter set
         //
         // [GraphQL: downloadMssqlDatabaseBackupFiles]
         //
         [Parameter(
-            ParameterSetName = "Downloaddatabasebackupfile",
+            ParameterSetName = "DownloadDatabaseBackupFile",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -273,16 +263,16 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 [GraphQL: downloadMssqlDatabaseBackupFiles]",
             Position = 0
         )]
-        public SwitchParameter Downloaddatabasebackupfile { get; set; }
+        public SwitchParameter DownloadDatabaseBackupFile { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Assignsladomainpropertie parameter set
+        // AssignSlaDomainPropertie parameter set
         //
         // [GraphQL: assignMssqlSlaDomainProperties]
         //
         [Parameter(
-            ParameterSetName = "Assignsladomainpropertie",
+            ParameterSetName = "AssignSlaDomainPropertie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -291,16 +281,16 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 [GraphQL: assignMssqlSlaDomainProperties]",
             Position = 0
         )]
-        public SwitchParameter Assignsladomainpropertie { get; set; }
+        public SwitchParameter AssignSlaDomainPropertie { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatedefaultpropertie parameter set
+        // UpdateDefaultPropertie parameter set
         //
         // [GraphQL: updateMssqlDefaultProperties]
         //
         [Parameter(
-            ParameterSetName = "Updatedefaultpropertie",
+            ParameterSetName = "UpdateDefaultPropertie",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -309,16 +299,16 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 [GraphQL: updateMssqlDefaultProperties]",
             Position = 0
         )]
-        public SwitchParameter Updatedefaultpropertie { get; set; }
+        public SwitchParameter UpdateDefaultPropertie { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createlogshippingconfiguration parameter set
+        // CreateLogShippingConfiguration parameter set
         //
         // [GraphQL: createMssqlLogShippingConfiguration]
         //
         [Parameter(
-            ParameterSetName = "Createlogshippingconfiguration",
+            ParameterSetName = "CreateLogShippingConfiguration",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -327,16 +317,16 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 [GraphQL: createMssqlLogShippingConfiguration]",
             Position = 0
         )]
-        public SwitchParameter Createlogshippingconfiguration { get; set; }
+        public SwitchParameter CreateLogShippingConfiguration { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Assignsladomainpropertiesasync parameter set
+        // AssignSlaDomainPropertiesAsync parameter set
         //
         // [GraphQL: assignMssqlSlaDomainPropertiesAsync]
         //
         [Parameter(
-            ParameterSetName = "Assignsladomainpropertiesasync",
+            ParameterSetName = "AssignSlaDomainPropertiesAsync",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -345,7 +335,7 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 [GraphQL: assignMssqlSlaDomainPropertiesAsync]",
             Position = 0
         )]
-        public SwitchParameter Assignsladomainpropertiesasync { get; set; }
+        public SwitchParameter AssignSlaDomainPropertiesAsync { get; set; }
 
 
         protected override void ProcessRecord()
@@ -354,56 +344,56 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
             {
                 switch(Op)
                 {
-                    case "Browsedatabasesnapshot":
-                        this.ProcessRecord_Browsedatabasesnapshot();
+                    case "BrowseDatabaseSnapshot":
+                        this.ProcessRecord_BrowseDatabaseSnapshot();
                         break;
-                    case "Exportdatabase":
-                        this.ProcessRecord_Exportdatabase();
+                    case "ExportDatabase":
+                        this.ProcessRecord_ExportDatabase();
                         break;
-                    case "Restoredatabase":
-                        this.ProcessRecord_Restoredatabase();
+                    case "RestoreDatabase":
+                        this.ProcessRecord_RestoreDatabase();
                         break;
-                    case "Bulkupdatedb":
-                        this.ProcessRecord_Bulkupdatedb();
+                    case "BulkUpdateDb":
+                        this.ProcessRecord_BulkUpdateDb();
                         break;
-                    case "Takelogbackup":
-                        this.ProcessRecord_Takelogbackup();
+                    case "TakeLogBackup":
+                        this.ProcessRecord_TakeLogBackup();
                         break;
-                    case "Createondemandbackup":
-                        this.ProcessRecord_Createondemandbackup();
+                    case "CreateOnDemandBackup":
+                        this.ProcessRecord_CreateOnDemandBackup();
                         break;
-                    case "Deletedbsnapshot":
-                        this.ProcessRecord_Deletedbsnapshot();
+                    case "DeleteDbSnapshot":
+                        this.ProcessRecord_DeleteDbSnapshot();
                         break;
-                    case "Deletelivemount":
-                        this.ProcessRecord_Deletelivemount();
+                    case "DeleteLiveMount":
+                        this.ProcessRecord_DeleteLiveMount();
                         break;
-                    case "Bulkcreateondemandbackup":
-                        this.ProcessRecord_Bulkcreateondemandbackup();
+                    case "BulkCreateOnDemandBackup":
+                        this.ProcessRecord_BulkCreateOnDemandBackup();
                         break;
-                    case "Createlivemount":
-                        this.ProcessRecord_Createlivemount();
+                    case "CreateLiveMount":
+                        this.ProcessRecord_CreateLiveMount();
                         break;
-                    case "Updatelogshippingconfiguration":
-                        this.ProcessRecord_Updatelogshippingconfiguration();
+                    case "UpdateLogShippingConfiguration":
+                        this.ProcessRecord_UpdateLogShippingConfiguration();
                         break;
-                    case "Downloaddatabasefilesfromarchivallocation":
-                        this.ProcessRecord_Downloaddatabasefilesfromarchivallocation();
+                    case "DownloadDatabaseFilesFromArchivalLocation":
+                        this.ProcessRecord_DownloadDatabaseFilesFromArchivalLocation();
                         break;
-                    case "Downloaddatabasebackupfile":
-                        this.ProcessRecord_Downloaddatabasebackupfile();
+                    case "DownloadDatabaseBackupFile":
+                        this.ProcessRecord_DownloadDatabaseBackupFile();
                         break;
-                    case "Assignsladomainpropertie":
-                        this.ProcessRecord_Assignsladomainpropertie();
+                    case "AssignSlaDomainPropertie":
+                        this.ProcessRecord_AssignSlaDomainPropertie();
                         break;
-                    case "Updatedefaultpropertie":
-                        this.ProcessRecord_Updatedefaultpropertie();
+                    case "UpdateDefaultPropertie":
+                        this.ProcessRecord_UpdateDefaultPropertie();
                         break;
-                    case "Createlogshippingconfiguration":
-                        this.ProcessRecord_Createlogshippingconfiguration();
+                    case "CreateLogShippingConfiguration":
+                        this.ProcessRecord_CreateLogShippingConfiguration();
                         break;
-                    case "Assignsladomainpropertiesasync":
-                        this.ProcessRecord_Assignsladomainpropertiesasync();
+                    case "AssignSlaDomainPropertiesAsync":
+                        this.ProcessRecord_AssignSlaDomainPropertiesAsync();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -417,153 +407,153 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
         // This parameter set invokes a single graphql operation:
         // browseMssqlDatabaseSnapshot.
-        protected void ProcessRecord_Browsedatabasesnapshot()
+        protected void ProcessRecord_BrowseDatabaseSnapshot()
         {
-            this._logger.name += " -Browsedatabasesnapshot";
+            this._logger.name += " -BrowseDatabaseSnapshot";
             // Invoke graphql operation browseMssqlDatabaseSnapshot
             InvokeMutationBrowseMssqlDatabaseSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // exportMssqlDatabase.
-        protected void ProcessRecord_Exportdatabase()
+        protected void ProcessRecord_ExportDatabase()
         {
-            this._logger.name += " -Exportdatabase";
+            this._logger.name += " -ExportDatabase";
             // Invoke graphql operation exportMssqlDatabase
             InvokeMutationExportMssqlDatabase();
         }
 
         // This parameter set invokes a single graphql operation:
         // restoreMssqlDatabase.
-        protected void ProcessRecord_Restoredatabase()
+        protected void ProcessRecord_RestoreDatabase()
         {
-            this._logger.name += " -Restoredatabase";
+            this._logger.name += " -RestoreDatabase";
             // Invoke graphql operation restoreMssqlDatabase
             InvokeMutationRestoreMssqlDatabase();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkUpdateMssqlDbs.
-        protected void ProcessRecord_Bulkupdatedb()
+        protected void ProcessRecord_BulkUpdateDb()
         {
-            this._logger.name += " -Bulkupdatedb";
+            this._logger.name += " -BulkUpdateDb";
             // Invoke graphql operation bulkUpdateMssqlDbs
             InvokeMutationBulkUpdateMssqlDbs();
         }
 
         // This parameter set invokes a single graphql operation:
         // takeMssqlLogBackup.
-        protected void ProcessRecord_Takelogbackup()
+        protected void ProcessRecord_TakeLogBackup()
         {
-            this._logger.name += " -Takelogbackup";
+            this._logger.name += " -TakeLogBackup";
             // Invoke graphql operation takeMssqlLogBackup
             InvokeMutationTakeMssqlLogBackup();
         }
 
         // This parameter set invokes a single graphql operation:
         // createOnDemandMssqlBackup.
-        protected void ProcessRecord_Createondemandbackup()
+        protected void ProcessRecord_CreateOnDemandBackup()
         {
-            this._logger.name += " -Createondemandbackup";
+            this._logger.name += " -CreateOnDemandBackup";
             // Invoke graphql operation createOnDemandMssqlBackup
             InvokeMutationCreateOnDemandMssqlBackup();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteMssqlDbSnapshots.
-        protected void ProcessRecord_Deletedbsnapshot()
+        protected void ProcessRecord_DeleteDbSnapshot()
         {
-            this._logger.name += " -Deletedbsnapshot";
+            this._logger.name += " -DeleteDbSnapshot";
             // Invoke graphql operation deleteMssqlDbSnapshots
             InvokeMutationDeleteMssqlDbSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteMssqlLiveMount.
-        protected void ProcessRecord_Deletelivemount()
+        protected void ProcessRecord_DeleteLiveMount()
         {
-            this._logger.name += " -Deletelivemount";
+            this._logger.name += " -DeleteLiveMount";
             // Invoke graphql operation deleteMssqlLiveMount
             InvokeMutationDeleteMssqlLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // bulkCreateOnDemandMssqlBackup.
-        protected void ProcessRecord_Bulkcreateondemandbackup()
+        protected void ProcessRecord_BulkCreateOnDemandBackup()
         {
-            this._logger.name += " -Bulkcreateondemandbackup";
+            this._logger.name += " -BulkCreateOnDemandBackup";
             // Invoke graphql operation bulkCreateOnDemandMssqlBackup
             InvokeMutationBulkCreateOnDemandMssqlBackup();
         }
 
         // This parameter set invokes a single graphql operation:
         // createMssqlLiveMount.
-        protected void ProcessRecord_Createlivemount()
+        protected void ProcessRecord_CreateLiveMount()
         {
-            this._logger.name += " -Createlivemount";
+            this._logger.name += " -CreateLiveMount";
             // Invoke graphql operation createMssqlLiveMount
             InvokeMutationCreateMssqlLiveMount();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateMssqlLogShippingConfiguration.
-        protected void ProcessRecord_Updatelogshippingconfiguration()
+        protected void ProcessRecord_UpdateLogShippingConfiguration()
         {
-            this._logger.name += " -Updatelogshippingconfiguration";
+            this._logger.name += " -UpdateLogShippingConfiguration";
             // Invoke graphql operation updateMssqlLogShippingConfiguration
             InvokeMutationUpdateMssqlLogShippingConfiguration();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadMssqlDatabaseFilesFromArchivalLocation.
-        protected void ProcessRecord_Downloaddatabasefilesfromarchivallocation()
+        protected void ProcessRecord_DownloadDatabaseFilesFromArchivalLocation()
         {
-            this._logger.name += " -Downloaddatabasefilesfromarchivallocation";
+            this._logger.name += " -DownloadDatabaseFilesFromArchivalLocation";
             // Invoke graphql operation downloadMssqlDatabaseFilesFromArchivalLocation
             InvokeMutationDownloadMssqlDatabaseFilesFromArchivalLocation();
         }
 
         // This parameter set invokes a single graphql operation:
         // downloadMssqlDatabaseBackupFiles.
-        protected void ProcessRecord_Downloaddatabasebackupfile()
+        protected void ProcessRecord_DownloadDatabaseBackupFile()
         {
-            this._logger.name += " -Downloaddatabasebackupfile";
+            this._logger.name += " -DownloadDatabaseBackupFile";
             // Invoke graphql operation downloadMssqlDatabaseBackupFiles
             InvokeMutationDownloadMssqlDatabaseBackupFiles();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignMssqlSlaDomainProperties.
-        protected void ProcessRecord_Assignsladomainpropertie()
+        protected void ProcessRecord_AssignSlaDomainPropertie()
         {
-            this._logger.name += " -Assignsladomainpropertie";
+            this._logger.name += " -AssignSlaDomainPropertie";
             // Invoke graphql operation assignMssqlSlaDomainProperties
             InvokeMutationAssignMssqlSlaDomainProperties();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateMssqlDefaultProperties.
-        protected void ProcessRecord_Updatedefaultpropertie()
+        protected void ProcessRecord_UpdateDefaultPropertie()
         {
-            this._logger.name += " -Updatedefaultpropertie";
+            this._logger.name += " -UpdateDefaultPropertie";
             // Invoke graphql operation updateMssqlDefaultProperties
             InvokeMutationUpdateMssqlDefaultProperties();
         }
 
         // This parameter set invokes a single graphql operation:
         // createMssqlLogShippingConfiguration.
-        protected void ProcessRecord_Createlogshippingconfiguration()
+        protected void ProcessRecord_CreateLogShippingConfiguration()
         {
-            this._logger.name += " -Createlogshippingconfiguration";
+            this._logger.name += " -CreateLogShippingConfiguration";
             // Invoke graphql operation createMssqlLogShippingConfiguration
             InvokeMutationCreateMssqlLogShippingConfiguration();
         }
 
         // This parameter set invokes a single graphql operation:
         // assignMssqlSlaDomainPropertiesAsync.
-        protected void ProcessRecord_Assignsladomainpropertiesasync()
+        protected void ProcessRecord_AssignSlaDomainPropertiesAsync()
         {
-            this._logger.name += " -Assignsladomainpropertiesasync";
+            this._logger.name += " -AssignSlaDomainPropertiesAsync";
             // Invoke graphql operation assignMssqlSlaDomainPropertiesAsync
             InvokeMutationAssignMssqlSlaDomainPropertiesAsync();
         }

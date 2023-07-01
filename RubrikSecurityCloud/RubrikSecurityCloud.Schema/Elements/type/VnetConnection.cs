@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VnetConnection";
+    }
+
     public VnetConnection Set(
         System.Int32? Count = null,
         List<VnetEdge>? Edges = null,

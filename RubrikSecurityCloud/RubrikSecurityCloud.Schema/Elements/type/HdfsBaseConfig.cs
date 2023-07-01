@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HdfsBaseConfig";
+    }
+
     public HdfsBaseConfig Set(
         System.String? ApiToken = null,
         System.String? KerberosTicket = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateClusterRegisteredModeReply";
+    }
+
     public UpdateClusterRegisteredModeReply Set(
         RegisteredMode? NewRegisteredMode = null
     ) 

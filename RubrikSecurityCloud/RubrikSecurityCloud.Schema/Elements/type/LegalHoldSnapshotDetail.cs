@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LegalHoldSnapshotDetail";
+    }
+
     public LegalHoldSnapshotDetail Set(
         List<SnapshotCustomization>? Customizations = null,
         SnapshotTypeEnum? Type = null,

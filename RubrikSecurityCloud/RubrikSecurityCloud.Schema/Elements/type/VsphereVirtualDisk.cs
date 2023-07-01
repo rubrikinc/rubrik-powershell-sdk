@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereVirtualDisk";
+    }
+
     public VsphereVirtualDisk Set(
         System.String? CdmId = null,
         System.String? CdmVersion = null,

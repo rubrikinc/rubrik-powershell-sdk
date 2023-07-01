@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeExportChannel";
+    }
+
     public ManagedVolumeExportChannel Set(
         DateTime? ExportDate = null,
         System.String? FloatingIpAddress = null,

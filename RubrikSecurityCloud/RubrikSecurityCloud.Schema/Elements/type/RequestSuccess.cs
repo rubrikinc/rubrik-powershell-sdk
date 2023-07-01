@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RequestSuccess";
+    }
+
     public RequestSuccess Set(
         System.Boolean? Success = null
     ) 

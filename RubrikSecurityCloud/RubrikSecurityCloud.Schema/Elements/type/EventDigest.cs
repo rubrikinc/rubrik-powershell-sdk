@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "EventDigest";
+    }
+
     public EventDigest Set(
         System.String? Account = null,
         List<System.String>? ClusterUuids = null,

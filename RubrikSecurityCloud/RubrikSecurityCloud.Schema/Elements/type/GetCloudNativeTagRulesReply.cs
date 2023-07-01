@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetCloudNativeTagRulesReply";
+    }
+
     public GetCloudNativeTagRulesReply Set(
         List<CloudNativeTagRule>? TagRules = null
     ) 

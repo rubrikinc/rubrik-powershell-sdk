@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdatePactsafeEulaAcceptedReply";
+    }
+
     public UpdatePactsafeEulaAcceptedReply Set(
         System.Boolean? IsValidSignature = null
     ) 

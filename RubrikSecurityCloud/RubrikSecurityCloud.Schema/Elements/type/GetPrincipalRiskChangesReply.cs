@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetPrincipalRiskChangesReply";
+    }
+
     public GetPrincipalRiskChangesReply Set(
         List<PrincipalChange>? PrincipalChanges = null
     ) 

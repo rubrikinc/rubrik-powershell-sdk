@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OrgEdge";
+    }
+
     public OrgEdge Set(
         System.String? Cursor = null,
         Org? Node = null

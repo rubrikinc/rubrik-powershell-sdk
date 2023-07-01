@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DownloadPackageReplyWithUuid";
+    }
+
     public DownloadPackageReplyWithUuid Set(
         System.String? JobId = null,
         System.String? Uuid = null

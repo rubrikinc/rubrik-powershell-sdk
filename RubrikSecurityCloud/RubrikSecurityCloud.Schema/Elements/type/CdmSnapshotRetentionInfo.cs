@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmSnapshotRetentionInfo";
+    }
+
     public CdmSnapshotRetentionInfo Set(
         System.Boolean? IsCustomRetentionApplied = null,
         List<CdmSnapshotLocationRetentionInfo>? ArchivalInfos = null,

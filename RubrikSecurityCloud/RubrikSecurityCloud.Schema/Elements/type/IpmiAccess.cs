@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "IpmiAccess";
+    }
+
     public IpmiAccess Set(
         System.Boolean? Https = null,
         System.Boolean? Ikvm = null

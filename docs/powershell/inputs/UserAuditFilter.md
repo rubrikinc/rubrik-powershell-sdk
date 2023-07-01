@@ -13,6 +13,8 @@ Filter user audit data.
   - Filter by cluster UUIDs.
 - objectIds: list of System.Strings
   - Filter by object IDs.
+- objectFids: list of System.Strings
+  - Filter by object forever IDs.
 - timeGt: DateTime
   - Filter audits that have time after the specified value.
 - timeLt: DateTime

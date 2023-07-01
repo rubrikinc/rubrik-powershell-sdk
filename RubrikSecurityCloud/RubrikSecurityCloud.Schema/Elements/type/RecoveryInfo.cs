@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RecoveryInfo";
+    }
+
     public RecoveryInfo Set(
         System.Int32? RecoveryCount = null,
         List<System.String>? RecoveryIds = null,

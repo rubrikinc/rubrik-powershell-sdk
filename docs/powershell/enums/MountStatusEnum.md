@@ -1,0 +1,4 @@
+### MountStatusEnum
+- MOUNT_STATUS_UNSPECIFIED
+- MOUNTED
+- MOUNTING

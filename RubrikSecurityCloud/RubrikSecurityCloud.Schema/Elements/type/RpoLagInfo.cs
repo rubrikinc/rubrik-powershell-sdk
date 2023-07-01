@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RpoLagInfo";
+    }
+
     public RpoLagInfo Set(
         System.Int64? ActualInSecs = null,
         System.Int64? ExpectedInSecs = null,

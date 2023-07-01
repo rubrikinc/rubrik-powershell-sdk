@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExchangeLiveMountEdge";
+    }
+
     public ExchangeLiveMountEdge Set(
         System.String? Cursor = null,
         ExchangeLiveMount? Node = null

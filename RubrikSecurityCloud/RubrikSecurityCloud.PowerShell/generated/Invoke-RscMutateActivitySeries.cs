@@ -43,16 +43,6 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
         )]
         public SwitchParameter Cancel { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Cancel",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for canceling an activity series.
-GraphQL argument input: CancelActivitySeriesInput!"
-        )]
-        public CancelActivitySeriesInput? Input { get; set; }
 
         protected override void ProcessRecord()
         {

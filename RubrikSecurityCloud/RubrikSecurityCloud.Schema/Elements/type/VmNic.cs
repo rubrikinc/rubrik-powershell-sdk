@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmNic";
+    }
+
     public VmNic Set(
         System.String? NicId = null,
         System.String? NicMoid = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkUpdateOracleHostsReply";
+    }
+
     public BulkUpdateOracleHostsReply Set(
         List<OracleHostDetail>? Responses = null
     ) 

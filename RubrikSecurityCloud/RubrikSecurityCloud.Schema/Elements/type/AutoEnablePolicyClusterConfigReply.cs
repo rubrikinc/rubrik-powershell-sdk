@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AutoEnablePolicyClusterConfigReply";
+    }
+
     public AutoEnablePolicyClusterConfigReply Set(
         System.String? ClusterId = null,
         System.Boolean? Enabled = null

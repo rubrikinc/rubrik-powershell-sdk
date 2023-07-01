@@ -216,6 +216,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereVcenter";
+    }
+
     public VsphereVcenter Set(
         List<Operation>? AuthorizedOperations = null,
         VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareCdpStateInfo";
+    }
+
     public VmwareCdpStateInfo Set(
         CdpLocalStatus? LocalStatus = null,
         CdpReplicationStatus? ReplicationStatus = null,

@@ -27,12 +27,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // Topleveldescendant parameter set
+        // TopLevelDescendant parameter set
         //
         // [GraphQL: hypervTopLevelDescendants]
         //
         [Parameter(
-            ParameterSetName = "Topleveldescendant",
+            ParameterSetName = "TopLevelDescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,76 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: hypervTopLevelDescendants]",
             Position = 0
         )]
-        public SwitchParameter Topleveldescendant { get; set; }
+        public SwitchParameter TopLevelDescendant { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort hierarchy objects by hierarchy field.
-GraphQL argument sortBy: HierarchySortByField"
-        )]
-        public HierarchySortByField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sorting order for the results.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Types of objects to include.
-GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
-        )]
-        public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The hierarchy object filter.
-GraphQL argument filter: [Filter!]"
-        )]
-        public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
-        // Virtualmachine parameter set
+        // VirtualMachine parameter set
         //
         // [GraphQL: hypervVirtualMachines]
         //
         [Parameter(
-            ParameterSetName = "Virtualmachine",
+            ParameterSetName = "VirtualMachine",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -119,7 +59,7 @@ GraphQL argument filter: [Filter!]"
 [GraphQL: hypervVirtualMachines]",
             Position = 0
         )]
-        public SwitchParameter Virtualmachine { get; set; }
+        public SwitchParameter VirtualMachine { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -139,16 +79,6 @@ GraphQL argument filter: [Filter!]"
         )]
         public SwitchParameter Scvmm { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Scvmm",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The Rubrik UUID for the object.
-GraphQL argument fid: UUID!"
-        )]
-        public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
         // Cluster parameter set
@@ -187,12 +117,12 @@ GraphQL argument fid: UUID!"
 
         
         // -------------------------------------------------------------------
-        // Uniqueserverscount parameter set
+        // UniqueServersCount parameter set
         //
         // [GraphQL: uniqueHypervServersCount]
         //
         [Parameter(
-            ParameterSetName = "Uniqueserverscount",
+            ParameterSetName = "UniqueServersCount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -201,7 +131,7 @@ GraphQL argument fid: UUID!"
 [GraphQL: uniqueHypervServersCount]",
             Position = 0
         )]
-        public SwitchParameter Uniqueserverscount { get; set; }
+        public SwitchParameter UniqueServersCount { get; set; }
 
         
         // -------------------------------------------------------------------
@@ -221,24 +151,14 @@ GraphQL argument fid: UUID!"
         )]
         public SwitchParameter Mount { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Mount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Filter for hyper-v live mounts.
-GraphQL argument filters: [HypervLiveMountFilterInput!]"
-        )]
-        public List<HypervLiveMountFilterInput>? Filters { get; set; }
         
         // -------------------------------------------------------------------
-        // Vmdetail parameter set
+        // VmDetail parameter set
         //
         // [GraphQL: hypervVmDetail]
         //
         [Parameter(
-            ParameterSetName = "Vmdetail",
+            ParameterSetName = "VmDetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -247,26 +167,16 @@ GraphQL argument filters: [HypervLiveMountFilterInput!]"
 [GraphQL: hypervVmDetail]",
             Position = 0
         )]
-        public SwitchParameter Vmdetail { get; set; }
+        public SwitchParameter VmDetail { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Vmdetail",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for InternalGetHypervVirtualMachine.
-GraphQL argument input: GetHypervVirtualMachineInput!"
-        )]
-        public GetHypervVirtualMachineInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Hostasyncrequeststatus parameter set
+        // HostAsyncRequestStatus parameter set
         //
         // [GraphQL: hypervHostAsyncRequestStatus]
         //
         [Parameter(
-            ParameterSetName = "Hostasyncrequeststatus",
+            ParameterSetName = "HostAsyncRequestStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -278,16 +188,16 @@ Get details about a Hyper-V host related async request.
 [GraphQL: hypervHostAsyncRequestStatus]",
             Position = 0
         )]
-        public SwitchParameter Hostasyncrequeststatus { get; set; }
+        public SwitchParameter HostAsyncRequestStatus { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Scvmmasyncrequeststatus parameter set
+        // ScvmmAsyncRequestStatus parameter set
         //
         // [GraphQL: hypervScvmmAsyncRequestStatus]
         //
         [Parameter(
-            ParameterSetName = "Scvmmasyncrequeststatus",
+            ParameterSetName = "ScvmmAsyncRequestStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -299,16 +209,16 @@ Get details about a Hyper-V SCVMM related async request.
 [GraphQL: hypervScvmmAsyncRequestStatus]",
             Position = 0
         )]
-        public SwitchParameter Scvmmasyncrequeststatus { get; set; }
+        public SwitchParameter ScvmmAsyncRequestStatus { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Virtualmachineasyncrequeststatus parameter set
+        // VirtualMachineAsyncRequestStatus parameter set
         //
         // [GraphQL: hypervVirtualMachineAsyncRequestStatus]
         //
         [Parameter(
-            ParameterSetName = "Virtualmachineasyncrequeststatus",
+            ParameterSetName = "VirtualMachineAsyncRequestStatus",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -320,7 +230,7 @@ Get details about a Hyper-V vm related async request.
 [GraphQL: hypervVirtualMachineAsyncRequestStatus]",
             Position = 0
         )]
-        public SwitchParameter Virtualmachineasyncrequeststatus { get; set; }
+        public SwitchParameter VirtualMachineAsyncRequestStatus { get; set; }
 
 
         protected override void ProcessRecord()
@@ -329,11 +239,11 @@ Get details about a Hyper-V vm related async request.
             {
                 switch(Op)
                 {
-                    case "Topleveldescendant":
-                        this.ProcessRecord_Topleveldescendant();
+                    case "TopLevelDescendant":
+                        this.ProcessRecord_TopLevelDescendant();
                         break;
-                    case "Virtualmachine":
-                        this.ProcessRecord_Virtualmachine();
+                    case "VirtualMachine":
+                        this.ProcessRecord_VirtualMachine();
                         break;
                     case "Scvmm":
                         this.ProcessRecord_Scvmm();
@@ -344,23 +254,23 @@ Get details about a Hyper-V vm related async request.
                     case "Server":
                         this.ProcessRecord_Server();
                         break;
-                    case "Uniqueserverscount":
-                        this.ProcessRecord_Uniqueserverscount();
+                    case "UniqueServersCount":
+                        this.ProcessRecord_UniqueServersCount();
                         break;
                     case "Mount":
                         this.ProcessRecord_Mount();
                         break;
-                    case "Vmdetail":
-                        this.ProcessRecord_Vmdetail();
+                    case "VmDetail":
+                        this.ProcessRecord_VmDetail();
                         break;
-                    case "Hostasyncrequeststatus":
-                        this.ProcessRecord_Hostasyncrequeststatus();
+                    case "HostAsyncRequestStatus":
+                        this.ProcessRecord_HostAsyncRequestStatus();
                         break;
-                    case "Scvmmasyncrequeststatus":
-                        this.ProcessRecord_Scvmmasyncrequeststatus();
+                    case "ScvmmAsyncRequestStatus":
+                        this.ProcessRecord_ScvmmAsyncRequestStatus();
                         break;
-                    case "Virtualmachineasyncrequeststatus":
-                        this.ProcessRecord_Virtualmachineasyncrequeststatus();
+                    case "VirtualMachineAsyncRequestStatus":
+                        this.ProcessRecord_VirtualMachineAsyncRequestStatus();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -374,18 +284,18 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervTopLevelDescendants.
-        protected void ProcessRecord_Topleveldescendant()
+        protected void ProcessRecord_TopLevelDescendant()
         {
-            this._logger.name += " -Topleveldescendant";
+            this._logger.name += " -TopLevelDescendant";
             // Invoke graphql operation hypervTopLevelDescendants
             InvokeQueryHypervTopLevelDescendants();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervVirtualMachines.
-        protected void ProcessRecord_Virtualmachine()
+        protected void ProcessRecord_VirtualMachine()
         {
-            this._logger.name += " -Virtualmachine";
+            this._logger.name += " -VirtualMachine";
             // Invoke graphql operation hypervVirtualMachines
             InvokeQueryHypervVirtualMachines();
         }
@@ -419,9 +329,9 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // uniqueHypervServersCount.
-        protected void ProcessRecord_Uniqueserverscount()
+        protected void ProcessRecord_UniqueServersCount()
         {
-            this._logger.name += " -Uniqueserverscount";
+            this._logger.name += " -UniqueServersCount";
             // Invoke graphql operation uniqueHypervServersCount
             InvokeQueryUniqueHypervServersCount();
         }
@@ -437,36 +347,36 @@ Get details about a Hyper-V vm related async request.
 
         // This parameter set invokes a single graphql operation:
         // hypervVmDetail.
-        protected void ProcessRecord_Vmdetail()
+        protected void ProcessRecord_VmDetail()
         {
-            this._logger.name += " -Vmdetail";
+            this._logger.name += " -VmDetail";
             // Invoke graphql operation hypervVmDetail
             InvokeQueryHypervVmDetail();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervHostAsyncRequestStatus.
-        protected void ProcessRecord_Hostasyncrequeststatus()
+        protected void ProcessRecord_HostAsyncRequestStatus()
         {
-            this._logger.name += " -Hostasyncrequeststatus";
+            this._logger.name += " -HostAsyncRequestStatus";
             // Invoke graphql operation hypervHostAsyncRequestStatus
             InvokeQueryHypervHostAsyncRequestStatus();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervScvmmAsyncRequestStatus.
-        protected void ProcessRecord_Scvmmasyncrequeststatus()
+        protected void ProcessRecord_ScvmmAsyncRequestStatus()
         {
-            this._logger.name += " -Scvmmasyncrequeststatus";
+            this._logger.name += " -ScvmmAsyncRequestStatus";
             // Invoke graphql operation hypervScvmmAsyncRequestStatus
             InvokeQueryHypervScvmmAsyncRequestStatus();
         }
 
         // This parameter set invokes a single graphql operation:
         // hypervVirtualMachineAsyncRequestStatus.
-        protected void ProcessRecord_Virtualmachineasyncrequeststatus()
+        protected void ProcessRecord_VirtualMachineAsyncRequestStatus()
         {
-            this._logger.name += " -Virtualmachineasyncrequeststatus";
+            this._logger.name += " -VirtualMachineAsyncRequestStatus";
             // Invoke graphql operation hypervVirtualMachineAsyncRequestStatus
             InvokeQueryHypervVirtualMachineAsyncRequestStatus();
         }

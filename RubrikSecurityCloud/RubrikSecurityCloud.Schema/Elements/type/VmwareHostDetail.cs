@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareHostDetail";
+    }
+
     public VmwareHostDetail Set(
         System.String? ComputeClusterId = null,
         System.String? Moid = null,

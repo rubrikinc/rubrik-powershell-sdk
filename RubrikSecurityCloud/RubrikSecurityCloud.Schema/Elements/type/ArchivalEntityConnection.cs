@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ArchivalEntityConnection";
+    }
+
     public ArchivalEntityConnection Set(
         List<ArchivalEntity>? Nodes = null,
         System.Int32? Count = null,

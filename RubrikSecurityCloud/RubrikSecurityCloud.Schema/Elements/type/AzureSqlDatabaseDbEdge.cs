@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSqlDatabaseDbEdge";
+    }
+
     public AzureSqlDatabaseDbEdge Set(
         System.String? Cursor = null,
         AzureSqlDatabaseDb? Node = null

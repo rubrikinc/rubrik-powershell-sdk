@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterNode";
+    }
+
     public ClusterNode Set(
         ClusterNodePlatformType? PlatformType = null,
         ClusterNodePosition? Position = null,

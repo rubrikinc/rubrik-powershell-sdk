@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ProductTypeInfo";
+    }
+
     public ProductTypeInfo Set(
         List<System.String>? BundleFeatures = null,
         System.String? ProductType = null,

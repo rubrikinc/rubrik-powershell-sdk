@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcenterSummary";
+    }
+
     public VcenterSummary Set(
         VcenterSummaryConflictResolutionAuthz? ConflictResolutionAuthz = null,
         System.String? ConfiguredSlaDomainPolarisManagedId = null,

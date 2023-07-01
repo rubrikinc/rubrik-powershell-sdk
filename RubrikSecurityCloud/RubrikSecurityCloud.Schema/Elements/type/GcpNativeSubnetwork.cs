@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeSubnetwork";
+    }
+
     public GcpNativeSubnetwork Set(
         System.String? Name = null,
         System.String? Region = null

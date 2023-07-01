@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpgradeAzureCloudAccountReply";
+    }
+
     public UpgradeAzureCloudAccountReply Set(
         List<UpgradeAzureCloudAccountStatus>? Status = null
     ) 

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SidsPolicyHitsSummaries";
+    }
+
     public SidsPolicyHitsSummaries Set(
         List<SidPolicyHitsSummary>? SidSummaries = null
     ) 

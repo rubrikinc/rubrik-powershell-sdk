@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "pendingAction";
+    }
+
     public PendingAction Set(
         PendingActionStatus? Status = null,
         System.String? ActionTypeStr = null,

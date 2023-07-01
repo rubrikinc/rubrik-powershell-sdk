@@ -41,6 +41,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("slaAssignment")]
         public SlaAssignmentTypeEnum? SlaAssignment { get; set; }
 
+        //      C# -> Db2DatabaseStatus? Status
+        // GraphQL -> status: Db2DatabaseStatus! (enum)
+        [JsonProperty("status")]
+        public Db2DatabaseStatus? Status { get; set; }
+
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         [JsonProperty("configuredSlaDomain")]
@@ -140,6 +145,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         [JsonProperty("slaPauseStatus")]
         public System.Boolean? SlaPauseStatus { get; set; }
+
+        //      C# -> List<System.String>? StatusMessage
+        // GraphQL -> statusMessage: [String!]! (scalar)
+        [JsonProperty("statusMessage")]
+        public List<System.String>? StatusMessage { get; set; }
 
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -261,11 +271,16 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2Database";
+    }
+
     public Db2Database Set(
         List<Operation>? AuthorizedOperations = null,
         Db2DatabaseType? Db2DbType = null,
         HierarchyObjectTypeEnum? ObjectType = null,
         SlaAssignmentTypeEnum? SlaAssignment = null,
+        Db2DatabaseStatus? Status = null,
         SlaDomain? ConfiguredSlaDomain = null,
         SlaDomain? EffectiveRetentionSlaDomain = null,
         SlaDomain? EffectiveSlaDomain = null,
@@ -286,6 +301,7 @@ namespace RubrikSecurityCloud.Types
         DateTime? ProtectionDate = null,
         System.Int32? ReplicatedObjectCount = null,
         System.Boolean? SlaPauseStatus = null,
+        List<System.String>? StatusMessage = null,
         List<Org>? AllOrgs = null,
         Cluster? Cluster = null,
         Db2HadrMetadata? Db2HadrMetadata = null,
@@ -322,6 +338,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaAssignment != null ) {
             this.SlaAssignment = SlaAssignment;
+        }
+        if ( Status != null ) {
+            this.Status = Status;
         }
         if ( ConfiguredSlaDomain != null ) {
             this.ConfiguredSlaDomain = ConfiguredSlaDomain;
@@ -382,6 +401,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( SlaPauseStatus != null ) {
             this.SlaPauseStatus = SlaPauseStatus;
+        }
+        if ( StatusMessage != null ) {
+            this.StatusMessage = StatusMessage;
         }
         if ( AllOrgs != null ) {
             this.AllOrgs = AllOrgs;
@@ -481,6 +503,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaAssignment: SlaAssignmentTypeEnum! (enum)
         if (this.SlaAssignment != null) {
             s += ind + "slaAssignment\n" ;
+        }
+        //      C# -> Db2DatabaseStatus? Status
+        // GraphQL -> status: Db2DatabaseStatus! (enum)
+        if (this.Status != null) {
+            s += ind + "status\n" ;
         }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
@@ -596,6 +623,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> slaPauseStatus: Boolean! (scalar)
         if (this.SlaPauseStatus != null) {
             s += ind + "slaPauseStatus\n" ;
+        }
+        //      C# -> List<System.String>? StatusMessage
+        // GraphQL -> statusMessage: [String!]! (scalar)
+        if (this.StatusMessage != null) {
+            s += ind + "statusMessage\n" ;
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)
@@ -813,6 +845,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.SlaAssignment = new SlaAssignmentTypeEnum();
         }
+        //      C# -> Db2DatabaseStatus? Status
+        // GraphQL -> status: Db2DatabaseStatus! (enum)
+        if (this.Status == null && Exploration.Includes(parent + ".status", true))
+        {
+            this.Status = new Db2DatabaseStatus();
+        }
         //      C# -> SlaDomain? ConfiguredSlaDomain
         // GraphQL -> configuredSlaDomain: SlaDomain! (interface)
         if (this.ConfiguredSlaDomain == null && Exploration.Includes(parent + ".configuredSlaDomain"))
@@ -941,6 +979,12 @@ namespace RubrikSecurityCloud.Types
         if (this.SlaPauseStatus == null && Exploration.Includes(parent + ".slaPauseStatus", true))
         {
             this.SlaPauseStatus = true;
+        }
+        //      C# -> List<System.String>? StatusMessage
+        // GraphQL -> statusMessage: [String!]! (scalar)
+        if (this.StatusMessage == null && Exploration.Includes(parent + ".statusMessage", true))
+        {
+            this.StatusMessage = new List<System.String>();
         }
         //      C# -> List<Org>? AllOrgs
         // GraphQL -> allOrgs: [Org!]! (type)

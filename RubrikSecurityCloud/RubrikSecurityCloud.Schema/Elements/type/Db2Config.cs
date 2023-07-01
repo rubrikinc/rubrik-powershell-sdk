@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Db2Config";
+    }
+
     public Db2Config Set(
         Duration? DifferentialFrequency = null,
         Duration? IncrementalFrequency = null,

@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MountedVolume";
+    }
+
     public MountedVolume Set(
         System.String? FileSystemType = null,
         System.String? HostMountPath = null,

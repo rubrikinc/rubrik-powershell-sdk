@@ -224,6 +224,7 @@ namespace RubrikSecurityCloud.NetSDK.Client
             {
                 BaseAddress = new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}")
             };
+            apiClient.Timeout = TimeSpan.FromMinutes(6);
             GraphQLHttpClientOptions myOptions = new GraphQLHttpClientOptions
             {
                 EndPoint = new Uri($"{_polarisUrlScheme}://{_polarisBaseUrl}/api/graphql"),

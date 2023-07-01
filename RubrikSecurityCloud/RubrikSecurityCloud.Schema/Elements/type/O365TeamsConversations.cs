@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365TeamsConversations";
+    }
+
     public O365TeamsConversations Set(
         System.String? ChannelId = null,
         System.String? ChannelName = null,

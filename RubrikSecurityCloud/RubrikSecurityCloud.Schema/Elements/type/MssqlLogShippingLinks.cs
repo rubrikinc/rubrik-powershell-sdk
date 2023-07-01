@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlLogShippingLinks";
+    }
+
     public MssqlLogShippingLinks Set(
         Link? PrimaryDatabase = null,
         Link? SecondaryDatabase = null,

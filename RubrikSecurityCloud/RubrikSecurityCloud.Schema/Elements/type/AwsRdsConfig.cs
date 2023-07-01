@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsRdsConfig";
+    }
+
     public AwsRdsConfig Set(
         Duration? LogRetention = null
     ) 

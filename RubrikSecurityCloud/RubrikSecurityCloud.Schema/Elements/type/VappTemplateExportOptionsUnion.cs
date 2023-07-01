@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappTemplateExportOptionsUnion";
+    }
+
     public VappTemplateExportOptionsUnion Set(
         VappTemplateExportOptions? AdvancedExportOptions = null,
         VappTemplateExportOptions? DefaultCatalogExportOptions = null,

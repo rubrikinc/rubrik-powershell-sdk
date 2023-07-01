@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "IpRule";
+    }
+
     public IpRule Set(
         System.String? Ip = null
     ) 

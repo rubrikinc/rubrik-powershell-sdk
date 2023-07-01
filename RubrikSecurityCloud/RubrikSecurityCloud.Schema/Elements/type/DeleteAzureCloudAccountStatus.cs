@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteAzureCloudAccountStatus";
+    }
+
     public DeleteAzureCloudAccountStatus Set(
         System.String? AzureSubscriptionNativeId = null,
         System.String? Error = null,

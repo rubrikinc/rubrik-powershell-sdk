@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervTopLevelDescendantTypeEdge";
+    }
+
     public HypervTopLevelDescendantTypeEdge Set(
         HypervTopLevelDescendantType? Node = null,
         System.String? Cursor = null

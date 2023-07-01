@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisReportFilterConfigs";
+    }
+
     public PolarisReportFilterConfigs Set(
         List<Value>? Values = null,
         System.String? Key = null

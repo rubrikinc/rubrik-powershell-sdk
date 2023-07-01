@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterHealthAggregation";
+    }
+
     public ClusterHealthAggregation Set(
         System.Int64? Fatal = null,
         System.Int64? Ok = null,

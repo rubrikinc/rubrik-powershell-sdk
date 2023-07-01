@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RscKeyRotationRequest";
+    }
+
     public RscKeyRotationRequest Set(
         System.String? ClusterUuid = null,
         System.Boolean? DidKeyRotationJobFail = null,

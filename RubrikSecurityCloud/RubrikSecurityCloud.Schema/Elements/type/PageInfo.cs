@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PageInfo";
+    }
+
     public PageInfo Set(
         System.String? EndCursor = null,
         System.Boolean? HasNextPage = null,

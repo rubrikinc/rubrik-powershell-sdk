@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongodbSslOptions";
+    }
+
     public MongodbSslOptions Set(
         SourceSslCertReqs? SslCertRequirements = null,
         System.Boolean? Ssl = null,

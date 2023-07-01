@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervAsyncRequestSuccessSummary";
+    }
+
     public HypervAsyncRequestSuccessSummary Set(
         System.String? VmId = null,
         AsyncRequestStatus? AsyncRequestStatus = null

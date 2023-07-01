@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActiveDirectoryServiceStatus";
+    }
+
     public ActiveDirectoryServiceStatus Set(
         ServiceStatus? ServiceStatus = null,
         DateTime? TimestampMillis = null

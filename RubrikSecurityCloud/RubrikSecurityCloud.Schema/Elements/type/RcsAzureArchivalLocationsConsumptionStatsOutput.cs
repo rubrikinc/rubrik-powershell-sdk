@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RcsAzureArchivalLocationsConsumptionStatsOutput";
+    }
+
     public RcsAzureArchivalLocationsConsumptionStatsOutput Set(
         List<RcsArchivalLocationConsumptionStats>? RcsAzureConsumptionStats = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateOnDemandJobReply";
+    }
+
     public CreateOnDemandJobReply Set(
         System.Int64? JobId = null,
         System.String? TaskchainId = null

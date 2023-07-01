@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateAzureNativeSqlManagedInstanceDbNameForExportReply";
+    }
+
     public ValidateAzureNativeSqlManagedInstanceDbNameForExportReply Set(
         System.String? Error = null,
         System.Boolean? IsValid = null

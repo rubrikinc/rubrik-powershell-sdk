@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RcvEntitlementsUsageDetails";
+    }
+
     public RcvEntitlementsUsageDetails Set(
         System.Single? UsedCapacity = null,
         RcvEntitlement? Entitlement = null

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationSnmp";
+    }
+
     public RestoreFormConfigurationSnmp Set(
         System.String? Username = null
     ) 

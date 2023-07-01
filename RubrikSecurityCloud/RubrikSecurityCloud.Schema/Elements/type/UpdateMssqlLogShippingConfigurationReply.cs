@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateMssqlLogShippingConfigurationReply";
+    }
+
     public UpdateMssqlLogShippingConfigurationReply Set(
         System.Boolean? ShouldDisconnectStandbyUsers = null,
         MssqlLogShippingLinks? Links = null,

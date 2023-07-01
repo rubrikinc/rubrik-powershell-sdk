@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ObjectType";
+    }
+
     public ObjectType Set(
         ObjectTypeEnum? EnumValue = null
     ) 

@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RecoveryPermission";
+    }
+
     public RecoveryPermission Set(
         System.Boolean? IsCleanable = null,
         System.Boolean? IsResumable = null,

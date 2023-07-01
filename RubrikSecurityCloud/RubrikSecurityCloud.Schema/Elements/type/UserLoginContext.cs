@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserLoginContext";
+    }
+
     public UserLoginContext Set(
         System.String? AccountName = null,
         System.String? OrgFullName = null,

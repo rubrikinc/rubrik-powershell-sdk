@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeRegion";
+    }
+
     public GcpNativeRegion Set(
         System.String? Name = null,
         List<System.String>? Zones = null

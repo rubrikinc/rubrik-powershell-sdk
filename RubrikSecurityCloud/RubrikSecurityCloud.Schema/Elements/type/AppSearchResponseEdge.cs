@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AppSearchResponseEdge";
+    }
+
     public AppSearchResponseEdge Set(
         System.String? Cursor = null,
         AppSearchResponse? Node = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WorkloadTypeToBackupSetupSpecs";
+    }
+
     public WorkloadTypeToBackupSetupSpecs Set(
         WorkloadLevelHierarchy? SnappableType = null,
         PathNode? SetupSourceObject = null

@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkRecoveryGroupProgress";
+    }
+
     public BulkRecoveryGroupProgress Set(
         BulkRecoveryGroupStatus? Status = null,
         System.Int64? ElapsedTime = null,

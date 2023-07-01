@@ -1,16 +1,16 @@
 # Invoke-RscQueryMssql
 ## Subcommands
-### Alldatabaserestorefile
+### alldatabaserestorefile
 Provides a list of database files to be restored for the specified restore or export operation.
 
 - There is a single argument of type MssqlGetRestoreFilesV1Input.
 - Returns V1MssqlGetRestoreFilesV1Response.
-### Availabilitygroup
+### availabilitygroup
 A Microsoft SQL Availability Group.
 
 - There is a single argument of type System.String.
 - Returns MssqlAvailabilityGroup.
-### Cdmlogshippingtarget
+### cdmlogshippingtarget
 Paginated list of Microsoft SQL log shipping target.
 
 - There are 4 arguments.
@@ -19,12 +19,12 @@ Paginated list of Microsoft SQL log shipping target.
     - sortBy - MssqlLogShippingTargetSortByInput: Sort by argument for Mssql log shipping targets. Default sort is by id in ascending order.
     - filters - list of MssqlLogShippingTargetFilterInputs: Filters for Mssql log shipping targets. No filters by default.
 - Returns MssqlLogShippingTargetConnection.
-### Compatibleinstance
+### compatibleinstance
 Returns all compatible instances for export for the specified recovery time.
 
 - There is a single argument of type GetCompatibleMssqlInstancesV1Input.
 - Returns MssqlInstanceSummaryListResponse.
-### Database
+### database
 Paginated list of Microsoft SQL Databases.
 
 - There are 5 arguments.
@@ -34,7 +34,7 @@ Paginated list of Microsoft SQL Databases.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns MssqlDatabaseConnection.
-### Databaselivemount
+### databaselivemount
 Paginated list of Microsoft SQL Database live mounts.
 
 - There are 4 arguments.
@@ -43,42 +43,42 @@ Paginated list of Microsoft SQL Database live mounts.
     - sortBy - MssqlDatabaseLiveMountSortByInput: Sort by argument for Mssql database live mounts.
     - filters - list of MssqlDatabaseLiveMountFilterInputs: Filters for Mssql database live mounts.
 - Returns MssqlDatabaseLiveMountConnection.
-### Databasemissedrecoverablerange
+### databasemissedrecoverablerange
 List of missed recoverable ranges for a Microsoft SQL Database.
 
 - There is a single argument of type GetMssqlDbMissedRecoverableRangesInput.
 - Returns MssqlMissedRecoverableRangeListResponse.
-### Databasemissedsnapshot
+### databasemissedsnapshot
 List of missed snapshots for a Microsoft SQL Database.
 
 - There is a single argument of type GetMissedMssqlDbSnapshotsInput.
 - Returns MissedSnapshotListResponse.
-### Databaserestoreestimate
+### databaserestoreestimate
 Returns a size estimate for a restore, export, or mount.
 
 - There is a single argument of type MssqlRestoreEstimateV1Input.
 - Returns MssqlRestoreEstimateResult.
-### Defaultpropertie
+### defaultpropertie
 The current default properties for Microsoft SQL databases.
 
 - There is a single argument of type GetDefaultDbPropertiesV1Input.
 - Returns UpdateMssqlDefaultPropertiesReply.
-### Instance
+### instance
 A Microsoft SQL Instance.
 
 - There is a single argument of type System.String.
 - Returns MssqlInstance.
-### Logshippingtarget
+### logshippingtarget
 List of filtered Microsoft SQL log shipping targets.
 
 - There is a single argument of type QueryLogShippingConfigurationsV2Input.
 - Returns MssqlLogShippingSummaryV2ListResponse.
-### Recoverablerange
+### recoverablerange
 List of recoverable ranges for a Microsoft SQL Database.
 
 - There is a single argument of type GetMssqlDbRecoverableRangesInput.
 - Returns MssqlRecoverableRangeListResponse.
-### Topleveldescendant
+### topleveldescendant
 Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
 
 - There are 6 arguments.

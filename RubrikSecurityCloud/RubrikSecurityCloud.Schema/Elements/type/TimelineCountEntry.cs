@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TimelineCountEntry";
+    }
+
     public TimelineCountEntry Set(
         System.Int32? Count = null,
         System.String? Day = null

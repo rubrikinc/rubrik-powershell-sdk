@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365TeamConvChannel";
+    }
+
     public O365TeamConvChannel Set(
         ChannelMembershipType? MembershipType = null,
         System.String? FolderId = null,

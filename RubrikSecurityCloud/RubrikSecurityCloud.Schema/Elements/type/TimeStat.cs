@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TimeStat";
+    }
+
     public TimeStat Set(
         System.Int64? Stat = null,
         DateTime? Time = null

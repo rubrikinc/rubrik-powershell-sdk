@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatHuntEdge";
+    }
+
     public ThreatHuntEdge Set(
         System.String? Cursor = null,
         ThreatHunt? Node = null

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReplicationPairConnection";
+    }
+
     public ReplicationPairConnection Set(
         System.Int32? Count = null,
         List<ReplicationPairEdge>? Edges = null,

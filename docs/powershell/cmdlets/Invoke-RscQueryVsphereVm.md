@@ -1,20 +1,20 @@
 # Invoke-RscQueryVsphereVm
 ## Subcommands
-### Asyncrequeststatus
+### asyncrequeststatus
 - There are 2 arguments.
     - clusterUuid - System.String
     - id - System.String: ID of an asynchronous request.
 - Returns AsyncRequestStatus.
-### Missedrecoverablerange
+### missedrecoverablerange
 - There are 3 arguments.
     - snappableFid - System.String
     - beforeTime - DateTime
     - afterTime - DateTime
 - Returns RecoverableRangeResponse.
-### New
+### new
 - There is a single argument of type System.String.
 - Returns VsphereVm.
-### Newconnection
+### newlist
 - There are 5 arguments.
     - first - System.Int32: Returns the first n elements from the list.
     - after - System.String: Returns the elements in the list that come after the specified cursor.
@@ -22,12 +22,12 @@
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns VsphereVmConnection.
-### Recoverablerange
+### recoverablerange
 - There are 3 arguments.
     - snappableFid - System.String
     - beforeTime - DateTime
     - afterTime - DateTime
 - Returns RecoverableRangeResponse.
-### Recoverablerangeinbatch
+### recoverablerangeinbatch
 - There is a single argument of type BatchVmwareVmRecoverableRangesRequestInput.
 - Returns BatchVmwareVmRecoverableRanges.

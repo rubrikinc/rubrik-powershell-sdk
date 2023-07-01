@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterLicenseCapacityValidations";
+    }
+
     public ClusterLicenseCapacityValidations Set(
         List<ClusterLicenseInfo>? Errors = null,
         List<ClusterLicenseInfo>? Warnings = null

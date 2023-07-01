@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeResourceGroupSlaAssignment";
+    }
+
     public AzureNativeResourceGroupSlaAssignment Set(
         SlaAssignmentTypeEnum? SlaAssignment = null,
         GlobalSlaReply? ConfiguredSlaDomain = null,

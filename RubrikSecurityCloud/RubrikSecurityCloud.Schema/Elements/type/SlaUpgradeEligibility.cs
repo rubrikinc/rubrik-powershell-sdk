@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaUpgradeEligibility";
+    }
+
     public SlaUpgradeEligibility Set(
         SlaMigrationIneligibilityReason? IneligibilityReason = null,
         System.Boolean? IsEligible = null

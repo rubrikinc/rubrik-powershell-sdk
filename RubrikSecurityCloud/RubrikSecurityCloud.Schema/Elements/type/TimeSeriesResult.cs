@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TimeSeriesResult";
+    }
+
     public TimeSeriesResult Set(
         System.Int64? Count = null,
         System.String? Timestamp = null

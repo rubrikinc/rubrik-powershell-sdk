@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CcWithCloudInfo";
+    }
+
     public CcWithCloudInfo Set(
         CcpVendorType? Vendor = null,
         System.String? CloudAccount = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaDatabaseEdge";
+    }
+
     public SapHanaDatabaseEdge Set(
         System.String? Cursor = null,
         SapHanaDatabase? Node = null

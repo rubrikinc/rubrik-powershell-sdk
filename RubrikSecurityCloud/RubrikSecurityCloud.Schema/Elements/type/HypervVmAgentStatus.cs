@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervVmAgentStatus";
+    }
+
     public HypervVmAgentStatus Set(
         HypervVmAgentConnectionStatus? ConnectionStatus = null,
         System.String? DisconnectReason = null

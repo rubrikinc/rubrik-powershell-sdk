@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongoSourceDescendantTypeConnection";
+    }
+
     public MongoSourceDescendantTypeConnection Set(
         List<MongoSourceDescendantType>? Nodes = null,
         System.Int32? Count = null,

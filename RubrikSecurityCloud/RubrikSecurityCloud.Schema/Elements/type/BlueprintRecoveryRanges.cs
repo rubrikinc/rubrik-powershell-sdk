@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlueprintRecoveryRanges";
+    }
+
     public BlueprintRecoveryRanges Set(
         List<BlueprintRecoveryRange>? MissedRecoverableRanges = null,
         List<BlueprintRecoveryRange>? RecoverableRanges = null

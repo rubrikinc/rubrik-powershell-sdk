@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterAppSource";
+    }
+
     public FailoverClusterAppSource Set(
         List<System.String>? Vips = null,
         List<System.String>? VirtualIps = null,

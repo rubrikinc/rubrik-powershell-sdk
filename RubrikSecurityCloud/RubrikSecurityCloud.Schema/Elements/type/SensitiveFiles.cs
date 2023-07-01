@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SensitiveFiles";
+    }
+
     public SensitiveFiles Set(
         SummaryCount? HighRiskFileCount = null,
         SummaryCount? LowRiskFileCount = null,

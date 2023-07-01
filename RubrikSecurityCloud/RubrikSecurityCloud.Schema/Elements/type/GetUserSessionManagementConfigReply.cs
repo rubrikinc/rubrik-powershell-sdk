@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetUserSessionManagementConfigReply";
+    }
+
     public GetUserSessionManagementConfigReply Set(
         UserSessionManagementConfig? Config = null
     ) 

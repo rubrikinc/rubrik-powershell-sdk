@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterGroupBy";
+    }
+
     public ClusterGroupBy Set(
         ClusterConnection? ClusterConnection = null,
         List<ClusterGroupBy>? ClusterGroupByField = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CapacityContribution";
+    }
+
     public CapacityContribution Set(
         Product? Product = null,
         System.Single? RegisteredCapacityBytes = null

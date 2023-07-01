@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetTaskchainStatusReply";
+    }
+
     public GetTaskchainStatusReply Set(
         Taskchain? Taskchain = null
     ) 

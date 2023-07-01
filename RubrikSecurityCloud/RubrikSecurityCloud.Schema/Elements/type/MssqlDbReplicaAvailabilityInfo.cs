@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlDbReplicaAvailabilityInfo";
+    }
+
     public MssqlDbReplicaAvailabilityInfo Set(
         MssqlDbReplicaAvailabilityInfoRole? Role = null
     ) 

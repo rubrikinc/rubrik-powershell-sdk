@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeAppMetadata";
+    }
+
     public ManagedVolumeAppMetadata Set(
         ManagedVolumeSnapshotStats? Stats = null
     ) 

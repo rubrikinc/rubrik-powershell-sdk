@@ -171,6 +171,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeSubscription";
+    }
+
     public AzureNativeSubscription Set(
         List<PolarisObjectAuthorizedOperationsEnum>? AuthorizedOperations = null,
         AzureCloudType? AzureCloudType = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateAzureSaasAppAadReply";
+    }
+
     public CreateAzureSaasAppAadReply Set(
         System.String? ClientId = null
     ) 

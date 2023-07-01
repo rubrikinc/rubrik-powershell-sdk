@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterDisk";
+    }
+
     public ClusterDisk Set(
         ClusterDiskType? DiskType = null,
         ClusterDiskStatus? Status = null,

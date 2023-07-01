@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterNodeStats";
+    }
+
     public ClusterNodeStats Set(
         System.String? ClusterId = null,
         System.Int64? CpuStat = null,

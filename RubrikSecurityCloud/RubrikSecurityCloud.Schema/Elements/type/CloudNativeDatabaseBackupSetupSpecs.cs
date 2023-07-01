@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudNativeDatabaseBackupSetupSpecs";
+    }
+
     public CloudNativeDatabaseBackupSetupSpecs Set(
         System.Boolean? IsSetupSuccessful = null,
         PathNode? SetupSourceObject = null

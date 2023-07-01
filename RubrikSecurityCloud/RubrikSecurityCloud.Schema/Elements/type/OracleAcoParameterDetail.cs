@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleAcoParameterDetail";
+    }
+
     public OracleAcoParameterDetail Set(
         System.String? Parameter = null,
         System.String? Value = null

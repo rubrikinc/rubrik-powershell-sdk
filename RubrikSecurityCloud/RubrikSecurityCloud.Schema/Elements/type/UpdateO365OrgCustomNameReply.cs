@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateO365OrgCustomNameReply";
+    }
+
     public UpdateO365OrgCustomNameReply Set(
         System.String? CustomName = null,
         System.String? OrgUuid = null

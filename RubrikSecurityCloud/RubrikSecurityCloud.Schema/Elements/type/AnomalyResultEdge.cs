@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnomalyResultEdge";
+    }
+
     public AnomalyResultEdge Set(
         System.String? Cursor = null,
         AnomalyResult? Node = null

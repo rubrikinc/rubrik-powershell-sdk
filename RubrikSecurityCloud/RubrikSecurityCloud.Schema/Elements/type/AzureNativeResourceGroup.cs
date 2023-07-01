@@ -166,6 +166,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeResourceGroup";
+    }
+
     public AzureNativeResourceGroup Set(
         List<PolarisObjectAuthorizedOperationsEnum>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AtlassianSiteEdge";
+    }
+
     public AtlassianSiteEdge Set(
         System.String? Cursor = null,
         AtlassianSite? Node = null

@@ -85,6 +85,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PactsafeEulaState";
+    }
+
     public PactsafeEulaState Set(
         System.Boolean? BypassCheck = null,
         System.String? ContractBase64 = null,

@@ -48,6 +48,12 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "HYPERV_ROOT")]
         HYPERV_ROOT,
 
+        [EnumMember(Value = "HYPERV_SCVMM")]
+        HYPERV_SCVMM,
+
+        [EnumMember(Value = "HYPERV_SERVER")]
+        HYPERV_SERVER,
+
         [EnumMember(Value = "HYPERV_VIRTUAL_MACHINE")]
         HYPERV_VIRTUAL_MACHINE,
 
@@ -95,6 +101,15 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "SHARE_FILESET")]
         SHARE_FILESET,
+
+        [EnumMember(Value = "VMWARE_DATACENTER")]
+        VMWARE_DATACENTER,
+
+        [EnumMember(Value = "VMWARE_HOST")]
+        VMWARE_HOST,
+
+        [EnumMember(Value = "VMWARE_TAG_CATEGORY")]
+        VMWARE_TAG_CATEGORY,
 
         [EnumMember(Value = "VOLUME_GROUP")]
         VOLUME_GROUP,

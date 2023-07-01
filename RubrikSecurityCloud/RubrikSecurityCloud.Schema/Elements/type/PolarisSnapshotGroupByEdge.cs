@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisSnapshotGroupByEdge";
+    }
+
     public PolarisSnapshotGroupByEdge Set(
         System.String? Cursor = null,
         PolarisSnapshotGroupBy? Node = null

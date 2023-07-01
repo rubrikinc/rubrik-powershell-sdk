@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotFileDelta";
+    }
+
     public SnapshotFileDelta Set(
         List<SnapshotDelta>? ChildrenDeltas = null,
         SnapshotFile? File = null,

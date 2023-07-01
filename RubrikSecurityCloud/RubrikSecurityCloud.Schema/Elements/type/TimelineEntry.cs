@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TimelineEntry";
+    }
+
     public TimelineEntry Set(
         System.String? Day = null,
         System.String? PolicyId = null,

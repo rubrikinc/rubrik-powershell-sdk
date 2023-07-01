@@ -216,6 +216,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSqlDatabaseDb";
+    }
+
     public AzureSqlDatabaseDb Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         AzureSqlDbBackupSetupStatus? BackupSetupStatus = null,

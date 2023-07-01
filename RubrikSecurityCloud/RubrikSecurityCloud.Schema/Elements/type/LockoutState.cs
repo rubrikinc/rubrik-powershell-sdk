@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LockoutState";
+    }
+
     public LockoutState Set(
         LockMethod? LockMethod = null,
         UnlockMethod? UnlockMethod = null,

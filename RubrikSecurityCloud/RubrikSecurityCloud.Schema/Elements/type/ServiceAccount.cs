@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ServiceAccount";
+    }
+
     public ServiceAccount Set(
         System.String? ClientId = null,
         System.String? Description = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "JiraProjectConnection";
+    }
+
     public JiraProjectConnection Set(
         System.Int32? Count = null,
         List<JiraProjectEdge>? Edges = null,

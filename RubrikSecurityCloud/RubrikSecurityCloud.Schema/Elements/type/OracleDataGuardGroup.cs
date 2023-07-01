@@ -296,6 +296,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleDataGuardGroup";
+    }
+
     public OracleDataGuardGroup Set(
         List<Operation>? AuthorizedOperations = null,
         DataGuardType? DataGuardType = null,

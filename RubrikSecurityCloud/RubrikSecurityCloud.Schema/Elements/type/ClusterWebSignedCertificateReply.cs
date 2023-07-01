@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterWebSignedCertificateReply";
+    }
+
     public ClusterWebSignedCertificateReply Set(
         System.Boolean? WebServerConfiguredWithCaSignedCertificate = null,
         AddClusterCertificateReply? Cert = null

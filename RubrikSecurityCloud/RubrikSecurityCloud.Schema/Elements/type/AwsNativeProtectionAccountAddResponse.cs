@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeProtectionAccountAddResponse";
+    }
+
     public AwsNativeProtectionAccountAddResponse Set(
         System.String? CloudFormationName = null,
         System.String? CloudFormationTemplateUrl = null,

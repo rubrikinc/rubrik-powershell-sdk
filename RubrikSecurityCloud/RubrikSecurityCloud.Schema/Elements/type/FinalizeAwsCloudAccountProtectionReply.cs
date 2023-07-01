@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FinalizeAwsCloudAccountProtectionReply";
+    }
+
     public FinalizeAwsCloudAccountProtectionReply Set(
         System.String? Message = null,
         List<AwsCloudAccount>? AwsChildAccounts = null

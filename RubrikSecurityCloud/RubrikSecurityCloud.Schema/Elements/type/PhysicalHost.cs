@@ -66,6 +66,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("replicatedObjects")]
         public List<CdmHierarchyObject>? ReplicatedObjects { get; set; }
 
+        //      C# -> System.String? AgentId
+        // GraphQL -> agentId: String (scalar)
+        [JsonProperty("agentId")]
+        public System.String? AgentId { get; set; }
+
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)
         [JsonProperty("cbtStatus")]
@@ -226,6 +231,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PhysicalHost";
+    }
+
     public PhysicalHost Set(
         List<Operation>? AuthorizedOperations = null,
         HierarchyObjectTypeEnum? ObjectType = null,
@@ -236,6 +245,7 @@ namespace RubrikSecurityCloud.Types
         SlaDomain? EffectiveSlaDomain = null,
         SlaDomain? PendingSla = null,
         List<CdmHierarchyObject>? ReplicatedObjects = null,
+        System.String? AgentId = null,
         System.String? CbtStatus = null,
         System.String? CdmId = null,
         System.String? CdmLink = null,
@@ -295,6 +305,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( ReplicatedObjects != null ) {
             this.ReplicatedObjects = ReplicatedObjects;
+        }
+        if ( AgentId != null ) {
+            this.AgentId = AgentId;
         }
         if ( CbtStatus != null ) {
             this.CbtStatus = CbtStatus;
@@ -458,6 +471,11 @@ namespace RubrikSecurityCloud.Types
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
                 s += ind + "replicatedObjects {\n" + fspec + ind + "}\n";
             }
+        }
+        //      C# -> System.String? AgentId
+        // GraphQL -> agentId: String (scalar)
+        if (this.AgentId != null) {
+            s += ind + "agentId\n" ;
         }
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)
@@ -726,6 +744,12 @@ namespace RubrikSecurityCloud.Types
         {
             this.ReplicatedObjects = new List<CdmHierarchyObject>();
             this.ReplicatedObjects.ApplyExploratoryFieldSpec(parent + ".replicatedObjects");
+        }
+        //      C# -> System.String? AgentId
+        // GraphQL -> agentId: String (scalar)
+        if (this.AgentId == null && Exploration.Includes(parent + ".agentId", true))
+        {
+            this.AgentId = "FETCH";
         }
         //      C# -> System.String? CbtStatus
         // GraphQL -> cbtStatus: String (scalar)

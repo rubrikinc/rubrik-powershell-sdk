@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "EdgeWindowsToolLink";
+    }
+
     public EdgeWindowsToolLink Set(
         System.String? DownloadLink = null
     ) 

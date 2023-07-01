@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AsyncJobStatus";
+    }
+
     public AsyncJobStatus Set(
         System.String? Error = null,
         System.String? JobId = null

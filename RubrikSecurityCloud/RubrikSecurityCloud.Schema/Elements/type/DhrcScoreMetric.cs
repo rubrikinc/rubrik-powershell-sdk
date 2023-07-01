@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DhrcScoreMetric";
+    }
+
     public DhrcScoreMetric Set(
         DhrcMetric? Metric = null,
         System.Single? Impact = null,

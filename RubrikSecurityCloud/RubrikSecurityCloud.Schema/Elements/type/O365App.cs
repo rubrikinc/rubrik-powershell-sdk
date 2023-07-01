@@ -71,6 +71,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365App";
+    }
+
     public O365App Set(
         AppAuthStatus? AppAuthStatus = null,
         DateTime? AddedAt = null,

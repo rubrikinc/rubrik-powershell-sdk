@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicStoreConnectionParameters";
+    }
+
     public MosaicStoreConnectionParameters Set(
         System.String? NfsServer = null,
         System.String? NfsServerMountPath = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NcdSharesObjectProtectionStatusData";
+    }
+
     public NcdSharesObjectProtectionStatusData Set(
         System.Int64? NotProtected = null,
         System.Int64? Protected = null,

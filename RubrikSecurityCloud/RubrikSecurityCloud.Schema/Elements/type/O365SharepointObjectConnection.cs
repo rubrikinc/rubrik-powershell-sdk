@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365SharepointObjectConnection";
+    }
+
     public O365SharepointObjectConnection Set(
         List<O365SharepointObject>? Nodes = null,
         System.Int32? Count = null,

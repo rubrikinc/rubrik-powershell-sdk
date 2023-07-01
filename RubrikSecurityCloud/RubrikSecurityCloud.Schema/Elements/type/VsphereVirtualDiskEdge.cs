@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereVirtualDiskEdge";
+    }
+
     public VsphereVirtualDiskEdge Set(
         System.String? Cursor = null,
         VsphereVirtualDisk? Node = null

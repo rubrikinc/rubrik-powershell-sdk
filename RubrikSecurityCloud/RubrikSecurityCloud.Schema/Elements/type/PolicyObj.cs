@@ -135,6 +135,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolicyObj";
+    }
+
     public PolicyObj Set(
         List<RiskReason>? AccessRiskReasons = null,
         AnalysisStatus? AnalysisStatus = null,

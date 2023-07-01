@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365SubscriptionAppTypeCounts";
+    }
+
     public O365SubscriptionAppTypeCounts Set(
         System.String? SubscriptionId = null,
         AuthCounts? ExchangeAppCounts = null,

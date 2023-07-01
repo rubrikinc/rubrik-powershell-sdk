@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OauthCodesForEdgeRegReply";
+    }
+
     public OauthCodesForEdgeRegReply Set(
         System.String? CdmOvaLink = null,
         System.String? WindowsToolLink = null,

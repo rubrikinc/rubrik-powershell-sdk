@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TopRiskPrincipalsReply";
+    }
+
     public TopRiskPrincipalsReply Set(
         System.Int64? LatestTimelineDate = null,
         List<TopRiskPrincipalSummary>? TopRiskPrincipalSummaries = null

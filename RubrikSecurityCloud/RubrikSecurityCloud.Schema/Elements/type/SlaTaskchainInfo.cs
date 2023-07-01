@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaTaskchainInfo";
+    }
+
     public SlaTaskchainInfo Set(
         System.String? ErrMsg = null,
         System.String? SlaId = null,

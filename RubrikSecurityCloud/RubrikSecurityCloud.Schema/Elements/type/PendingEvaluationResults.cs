@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PendingEvaluationResults";
+    }
+
     public PendingEvaluationResults Set(
         System.String? ClusterUuid = null,
         DateTime? CreatedAt = null,

@@ -231,6 +231,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeManagedDisk";
+    }
+
     public AzureNativeManagedDisk Set(
         List<PolarisSnappableAuthorizedOperationsEnum>? AuthorizedOperations = null,
         AzureNativeManagedDiskType? DiskStorageTier = null,

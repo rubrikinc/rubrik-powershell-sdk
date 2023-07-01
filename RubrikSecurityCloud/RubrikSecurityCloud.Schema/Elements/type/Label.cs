@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Label";
+    }
+
     public Label Set(
         System.String? Key = null,
         System.String? Value = null

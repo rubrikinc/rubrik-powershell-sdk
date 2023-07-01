@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CertificateEdge";
+    }
+
     public CertificateEdge Set(
         System.String? Cursor = null,
         Certificate? Node = null

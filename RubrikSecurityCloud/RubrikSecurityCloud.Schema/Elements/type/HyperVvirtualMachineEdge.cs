@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HyperVVirtualMachineEdge";
+    }
+
     public HyperVvirtualMachineEdge Set(
         System.String? Cursor = null,
         HyperVvirtualMachine? Node = null

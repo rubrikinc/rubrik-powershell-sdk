@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "YARAMatchDetail";
+    }
+
     public YaraMatchDetail Set(
         System.String? Name = null,
         List<System.String>? Tags = null

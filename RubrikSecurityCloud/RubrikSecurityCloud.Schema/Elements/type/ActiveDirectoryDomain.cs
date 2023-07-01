@@ -72,7 +72,7 @@ namespace RubrikSecurityCloud.Types
         public System.String? DomainName { get; set; }
 
         //      C# -> System.String? DomainSid
-        // GraphQL -> domainSid: String! (scalar)
+        // GraphQL -> domainSid: String (scalar)
         [JsonProperty("domainSid")]
         public System.String? DomainSid { get; set; }
 
@@ -152,7 +152,7 @@ namespace RubrikSecurityCloud.Types
         public DataLocation? PrimaryClusterLocation { get; set; }
 
         //      C# -> SmbDomain? SmbDomain
-        // GraphQL -> smbDomain: SmbDomain! (type)
+        // GraphQL -> smbDomain: SmbDomain (type)
         [JsonProperty("smbDomain")]
         public SmbDomain? SmbDomain { get; set; }
 
@@ -165,6 +165,10 @@ namespace RubrikSecurityCloud.Types
         #endregion
 
     #region methods
+
+    public override string GetGqlTypeName() {
+        return "ActiveDirectoryDomain";
+    }
 
     public ActiveDirectoryDomain Set(
         List<Operation>? AuthorizedOperations = null,
@@ -357,7 +361,7 @@ namespace RubrikSecurityCloud.Types
             s += ind + "domainName\n" ;
         }
         //      C# -> System.String? DomainSid
-        // GraphQL -> domainSid: String! (scalar)
+        // GraphQL -> domainSid: String (scalar)
         if (this.DomainSid != null) {
             s += ind + "domainSid\n" ;
         }
@@ -467,7 +471,7 @@ namespace RubrikSecurityCloud.Types
             }
         }
         //      C# -> SmbDomain? SmbDomain
-        // GraphQL -> smbDomain: SmbDomain! (type)
+        // GraphQL -> smbDomain: SmbDomain (type)
         if (this.SmbDomain != null) {
             var fspec = this.SmbDomain.AsFieldSpec(indent+1);
             if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
@@ -560,7 +564,7 @@ namespace RubrikSecurityCloud.Types
             this.DomainName = "FETCH";
         }
         //      C# -> System.String? DomainSid
-        // GraphQL -> domainSid: String! (scalar)
+        // GraphQL -> domainSid: String (scalar)
         if (this.DomainSid == null && Exploration.Includes(parent + ".domainSid", true))
         {
             this.DomainSid = "FETCH";
@@ -666,7 +670,7 @@ namespace RubrikSecurityCloud.Types
             this.PrimaryClusterLocation.ApplyExploratoryFieldSpec(parent + ".primaryClusterLocation");
         }
         //      C# -> SmbDomain? SmbDomain
-        // GraphQL -> smbDomain: SmbDomain! (type)
+        // GraphQL -> smbDomain: SmbDomain (type)
         if (this.SmbDomain == null && Exploration.Includes(parent + ".smbDomain"))
         {
             this.SmbDomain = new SmbDomain();

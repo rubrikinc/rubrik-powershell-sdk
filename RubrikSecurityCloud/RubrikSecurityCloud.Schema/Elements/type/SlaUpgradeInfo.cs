@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaUpgradeInfo";
+    }
+
     public SlaUpgradeInfo Set(
         SlaUpgradeEligibility? Eligibility = null,
         SlaUpgrade? LatestUpgrade = null

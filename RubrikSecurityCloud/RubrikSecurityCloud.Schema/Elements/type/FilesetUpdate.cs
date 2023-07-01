@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetUpdate";
+    }
+
     public FilesetUpdate Set(
         System.String? ConfiguredSlaDomainId = null,
         System.Boolean? ForceFull = null,

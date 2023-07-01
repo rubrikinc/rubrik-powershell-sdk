@@ -85,6 +85,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaAppMetadata";
+    }
+
     public SapHanaAppMetadata Set(
         System.Int64? BackupId = null,
         System.String? BackupPrefix = null,

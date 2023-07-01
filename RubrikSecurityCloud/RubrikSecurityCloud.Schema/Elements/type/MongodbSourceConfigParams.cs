@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongodbSourceConfigParams";
+    }
+
     public MongodbSourceConfigParams Set(
         System.String? SourceDbUser = null,
         System.String? SourceNodeUser = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeChannelConfig";
+    }
+
     public ManagedVolumeChannelConfig Set(
         System.String? HostMountPoint = null,
         System.String? IpAddress = null,

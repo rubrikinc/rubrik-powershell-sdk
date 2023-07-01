@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeGceInstanceEdge";
+    }
+
     public GcpNativeGceInstanceEdge Set(
         System.String? Cursor = null,
         GcpNativeGceInstance? Node = null

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SourceRecoverySpecsReply";
+    }
+
     public SourceRecoverySpecsReply Set(
         List<SourceChildRecoverySpecMap>? ChildRecoverySpecs = null
     ) 

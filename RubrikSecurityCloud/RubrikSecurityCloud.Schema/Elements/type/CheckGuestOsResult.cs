@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CheckGuestOsResult";
+    }
+
     public CheckGuestOsResult Set(
         GuestOs? InstanceOs = null,
         System.String? ErrorMessage = null,

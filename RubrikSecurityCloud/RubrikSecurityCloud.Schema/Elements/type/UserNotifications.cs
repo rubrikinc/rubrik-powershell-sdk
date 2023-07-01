@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserNotifications";
+    }
+
     public UserNotifications Set(
         System.String? Id = null,
         System.Int64? UnreadCount = null

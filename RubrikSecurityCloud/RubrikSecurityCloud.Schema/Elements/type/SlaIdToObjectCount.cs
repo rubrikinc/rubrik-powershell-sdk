@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SLAIdToObjectCount";
+    }
+
     public SlaIdToObjectCount Set(
         System.Int32? ObjectCount = null,
         System.String? SlaId = null

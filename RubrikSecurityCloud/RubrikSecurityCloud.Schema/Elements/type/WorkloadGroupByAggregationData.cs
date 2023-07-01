@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "WorkloadGroupByAggregationData";
+    }
+
     public WorkloadGroupByAggregationData Set(
         System.Int64? ArchiveStorage = null,
         System.Int32? Count = null,

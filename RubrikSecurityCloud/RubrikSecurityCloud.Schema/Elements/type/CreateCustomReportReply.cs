@@ -100,6 +100,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateCustomReportReply";
+    }
+
     public CreateCustomReportReply Set(
         ReportFocusEnum? Focus = null,
         DateTime? CreatedAt = null,

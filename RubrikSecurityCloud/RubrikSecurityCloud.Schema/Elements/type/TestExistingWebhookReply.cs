@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TestExistingWebhookReply";
+    }
+
     public TestExistingWebhookReply Set(
         WebhookStatus? WebhookStatus = null,
         System.Boolean? IsSuccessful = null,

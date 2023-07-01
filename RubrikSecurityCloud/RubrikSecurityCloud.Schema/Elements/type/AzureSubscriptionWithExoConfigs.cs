@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSubscriptionWithExoConfigs";
+    }
+
     public AzureSubscriptionWithExoConfigs Set(
         System.String? AzureSubscriptionNativeId = null,
         System.String? AzureSubscriptionRubrikId = null,

@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CassandraSslOptions";
+    }
+
     public CassandraSslOptions Set(
         SourceSslCertReqs? SslCertRequirements = null,
         System.Boolean? Ssl = null,

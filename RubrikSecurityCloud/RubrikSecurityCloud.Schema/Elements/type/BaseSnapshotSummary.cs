@@ -120,6 +120,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BaseSnapshotSummary";
+    }
+
     public BaseSnapshotSummary Set(
         SnapshotCloudStorageTier? CloudStorageTier = null,
         List<System.String>? ArchivalLocationIds = null,

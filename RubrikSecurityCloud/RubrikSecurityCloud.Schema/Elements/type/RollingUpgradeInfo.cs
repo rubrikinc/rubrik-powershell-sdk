@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RollingUpgradeInfo";
+    }
+
     public RollingUpgradeInfo Set(
         List<System.String>? RuCurrentNodes = null,
         List<RollingUpgradeNodeInfoEntry>? RuNodeInfoList = null

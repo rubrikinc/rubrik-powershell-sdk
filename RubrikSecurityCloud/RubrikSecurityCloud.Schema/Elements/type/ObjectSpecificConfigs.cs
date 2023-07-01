@@ -80,6 +80,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ObjectSpecificConfigs";
+    }
+
     public ObjectSpecificConfigs Set(
         AwsNativeS3SlaConfig? AwsNativeS3SlaConfig = null,
         AwsRdsConfig? AwsRdsConfig = null,

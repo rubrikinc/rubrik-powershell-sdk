@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DailyComplianceStats";
+    }
+
     public DailyComplianceStats Set(
         DateTime? Date = null,
         List<ComplianceFrequency>? Counts = null

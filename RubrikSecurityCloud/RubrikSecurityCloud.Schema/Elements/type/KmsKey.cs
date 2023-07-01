@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "KMSKey";
+    }
+
     public KmsKey Set(
         System.String? Arn = null,
         System.String? Id = null,

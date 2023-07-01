@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterDnsReply";
+    }
+
     public ClusterDnsReply Set(
         List<System.String>? Domains = null,
         List<System.String>? Servers = null

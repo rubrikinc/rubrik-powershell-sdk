@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationSmtp";
+    }
+
     public RestoreFormConfigurationSmtp Set(
         System.String? FromEmailId = null,
         System.String? SmtpHostname = null,

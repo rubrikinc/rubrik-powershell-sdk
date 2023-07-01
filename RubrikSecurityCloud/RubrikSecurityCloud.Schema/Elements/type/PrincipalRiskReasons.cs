@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalRiskReasons";
+    }
+
     public PrincipalRiskReasons Set(
         List<RiskReason>? AccessRiskReasons = null,
         List<InsecureReason>? InsecureReasons = null

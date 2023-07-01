@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RcsArchivalLocationConsumptionStats";
+    }
+
     public RcsArchivalLocationConsumptionStats Set(
         System.String? LocationId = null,
         List<RcsArchivalLocationStatsRecord>? BlobCapacityStats = null,

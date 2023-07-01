@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormArchivalProxyConfig";
+    }
+
     public RestoreFormArchivalProxyConfig Set(
         System.String? ProxyServer = null
     ) 

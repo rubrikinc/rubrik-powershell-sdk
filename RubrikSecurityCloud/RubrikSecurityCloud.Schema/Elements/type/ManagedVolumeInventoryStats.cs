@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeInventoryStats";
+    }
+
     public ManagedVolumeInventoryStats Set(
         ManagedVolumeStats? AlwaysMounted = null,
         ManagedVolumeStats? SlaBased = null

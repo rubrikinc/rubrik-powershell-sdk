@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LegalHoldSnappableDetailConnection";
+    }
+
     public LegalHoldSnappableDetailConnection Set(
         System.Int32? Count = null,
         List<LegalHoldSnappableDetailEdge>? Edges = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UnifiedFeatureFlag";
+    }
+
     public UnifiedFeatureFlag Set(
         FlagDataType? DataType = null,
         System.String? Name = null,

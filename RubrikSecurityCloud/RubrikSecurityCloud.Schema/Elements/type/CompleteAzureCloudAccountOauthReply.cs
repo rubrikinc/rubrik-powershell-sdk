@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CompleteAzureCloudAccountOauthReply";
+    }
+
     public CompleteAzureCloudAccountOauthReply Set(
         System.Boolean? IsSuccess = null,
         List<AzureCloudAccountSubscription>? Subscriptions = null

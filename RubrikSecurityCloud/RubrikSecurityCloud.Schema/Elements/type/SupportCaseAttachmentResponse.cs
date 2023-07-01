@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SupportCaseAttachmentResponse";
+    }
+
     public SupportCaseAttachmentResponse Set(
         List<System.String>? Errors = null,
         System.String? Id = null,

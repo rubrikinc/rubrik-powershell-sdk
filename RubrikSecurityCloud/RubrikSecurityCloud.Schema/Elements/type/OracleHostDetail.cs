@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleHostDetail";
+    }
+
     public OracleHostDetail Set(
         OracleHostSummary? OracleHostSummary = null,
         OracleNonSlaProperties? OracleNonSlaProperties = null

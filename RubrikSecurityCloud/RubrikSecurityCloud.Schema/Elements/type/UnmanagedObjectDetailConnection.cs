@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UnmanagedObjectDetailConnection";
+    }
+
     public UnmanagedObjectDetailConnection Set(
         System.Int32? Count = null,
         List<UnmanagedObjectDetailEdge>? Edges = null,

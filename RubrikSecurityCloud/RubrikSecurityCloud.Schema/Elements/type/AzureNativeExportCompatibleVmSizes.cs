@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeExportCompatibleVmSizes";
+    }
+
     public AzureNativeExportCompatibleVmSizes Set(
         System.String? AvailabilityZone = null,
         List<System.String>? VmSizes = null

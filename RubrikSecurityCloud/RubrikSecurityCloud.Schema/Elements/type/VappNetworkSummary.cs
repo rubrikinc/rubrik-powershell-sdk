@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappNetworkSummary";
+    }
+
     public VappNetworkSummary Set(
         System.Boolean? IsDeployed = null,
         System.String? Name = null,

@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MosaicVersionObject";
+    }
+
     public MosaicVersionObject Set(
         MosaicVersionObjectVersionState? VersionState = null,
         System.String? DbInfo = null,

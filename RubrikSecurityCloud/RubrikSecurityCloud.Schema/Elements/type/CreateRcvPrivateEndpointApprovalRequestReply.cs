@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateRcvPrivateEndpointApprovalRequestReply";
+    }
+
     public CreateRcvPrivateEndpointApprovalRequestReply Set(
         System.String? RequestMessage = null,
         System.String? StorageAccountId = null

@@ -30,6 +30,16 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("account")]
         public System.String? Account { get; set; }
 
+        //      C# -> System.String? ExpirationDate
+        // GraphQL -> expirationDate: String! (scalar)
+        [JsonProperty("expirationDate")]
+        public System.String? ExpirationDate { get; set; }
+
+        //      C# -> System.String? JiraTicket
+        // GraphQL -> jiraTicket: String! (scalar)
+        [JsonProperty("jiraTicket")]
+        public System.String? JiraTicket { get; set; }
+
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
         [JsonProperty("name")]
@@ -45,9 +55,15 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ASPKey";
+    }
+
     public AspKey Set(
         ComponentEnum? Component = null,
         System.String? Account = null,
+        System.String? ExpirationDate = null,
+        System.String? JiraTicket = null,
         System.String? Name = null,
         System.String? TargetId = null
     ) 
@@ -57,6 +73,12 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Account != null ) {
             this.Account = Account;
+        }
+        if ( ExpirationDate != null ) {
+            this.ExpirationDate = ExpirationDate;
+        }
+        if ( JiraTicket != null ) {
+            this.JiraTicket = JiraTicket;
         }
         if ( Name != null ) {
             this.Name = Name;
@@ -83,6 +105,16 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> account: String! (scalar)
         if (this.Account != null) {
             s += ind + "account\n" ;
+        }
+        //      C# -> System.String? ExpirationDate
+        // GraphQL -> expirationDate: String! (scalar)
+        if (this.ExpirationDate != null) {
+            s += ind + "expirationDate\n" ;
+        }
+        //      C# -> System.String? JiraTicket
+        // GraphQL -> jiraTicket: String! (scalar)
+        if (this.JiraTicket != null) {
+            s += ind + "jiraTicket\n" ;
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)
@@ -113,6 +145,18 @@ namespace RubrikSecurityCloud.Types
         if (this.Account == null && Exploration.Includes(parent + ".account", true))
         {
             this.Account = "FETCH";
+        }
+        //      C# -> System.String? ExpirationDate
+        // GraphQL -> expirationDate: String! (scalar)
+        if (this.ExpirationDate == null && Exploration.Includes(parent + ".expirationDate", true))
+        {
+            this.ExpirationDate = "FETCH";
+        }
+        //      C# -> System.String? JiraTicket
+        // GraphQL -> jiraTicket: String! (scalar)
+        if (this.JiraTicket == null && Exploration.Includes(parent + ".jiraTicket", true))
+        {
+            this.JiraTicket = "FETCH";
         }
         //      C# -> System.String? Name
         // GraphQL -> name: String! (scalar)

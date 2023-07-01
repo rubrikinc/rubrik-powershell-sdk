@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365OrgDescendantConnection";
+    }
+
     public O365OrgDescendantConnection Set(
         List<O365OrgDescendant>? Nodes = null,
         System.Int32? Count = null,

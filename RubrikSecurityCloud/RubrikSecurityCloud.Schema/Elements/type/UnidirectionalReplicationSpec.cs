@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UnidirectionalReplicationSpec";
+    }
+
     public UnidirectionalReplicationSpec Set(
         RetentionUnit? RetentionUnit = null,
         System.String? ReplicationTargetId = null,

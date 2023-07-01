@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AsyncDownloadReply";
+    }
+
     public AsyncDownloadReply Set(
         System.Int64? DownloadId = null,
         System.Int64? JobId = null,

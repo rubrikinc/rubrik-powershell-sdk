@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HyperVSCVMMConnection";
+    }
+
     public HyperVscvmmConnection Set(
         System.Int32? Count = null,
         List<HyperVscvmmEdge>? Edges = null,

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostSharePhysicalChildTypeConnection";
+    }
+
     public HostSharePhysicalChildTypeConnection Set(
         List<HostSharePhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

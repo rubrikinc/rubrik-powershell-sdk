@@ -176,6 +176,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HyperVSCVMM";
+    }
+
     public HyperVscvmm Set(
         List<Operation>? AuthorizedOperations = null,
         HypervHostStatusType? ConnectionStatus = null,

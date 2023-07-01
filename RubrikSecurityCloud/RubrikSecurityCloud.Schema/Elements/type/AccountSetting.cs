@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AccountSetting";
+    }
+
     public AccountSetting Set(
         System.Boolean? IsEmailNotificationEnabled = null,
         System.Boolean? IsEulaAccepted = null

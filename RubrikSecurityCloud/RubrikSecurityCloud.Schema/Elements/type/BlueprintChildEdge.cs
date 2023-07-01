@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlueprintChildEdge";
+    }
+
     public BlueprintChildEdge Set(
         BlueprintChild? Node = null,
         System.String? Cursor = null

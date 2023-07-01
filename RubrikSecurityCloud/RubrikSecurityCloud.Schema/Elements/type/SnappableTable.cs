@@ -56,6 +56,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnappableTable";
+    }
+
     public SnappableTable Set(
         ReportFocusEnum? Focus = null,
         List<SnappableGroupByEnum>? GroupBy = null,

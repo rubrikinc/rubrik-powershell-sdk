@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappAppMetadata";
+    }
+
     public VappAppMetadata Set(
         System.String? SnapshotId = null,
         System.String? VcdVmMoid = null,

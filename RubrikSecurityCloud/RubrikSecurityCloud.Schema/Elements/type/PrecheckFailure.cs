@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrecheckFailure";
+    }
+
     public PrecheckFailure Set(
         System.String? Cause = null,
         System.String? PrecheckName = null,

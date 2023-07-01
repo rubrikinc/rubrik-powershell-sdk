@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolicyDetail";
+    }
+
     public PolicyDetail Set(
         System.Int32? Analyzers = null,
         System.String? Description = null,

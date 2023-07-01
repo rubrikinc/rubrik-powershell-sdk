@@ -16,1241 +16,1241 @@ Cancel an activity series.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Startnativeec2instancesnapshotsjob
+# Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Startnativeec2instancesnapshotsjob -GetInputs
+$inputs = Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Startnativeec2instancesnapshotsjob" @"
+Write-Message "Invoke-RscMutateAws -StartNativeEc2InstanceSnapshotsJob" @"
 Start an on demand create snapshot job for AWS EC2 Instances.When completed, this will start taking an on-demand snapshot of the selected EC2 Instances  as per the SLA Policy assigned to the respective instances.
 "@ "[GraphQL: startAwsNativeEc2InstanceSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Startrestorenativeec2instancesnapshotjob
+# Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Startrestorenativeec2instancesnapshotjob -GetInputs
+$inputs = Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Startrestorenativeec2instancesnapshotjob" @"
+Write-Message "Invoke-RscMutateAws -StartRestoreNativeEc2InstanceSnapshotJob" @"
 Start an on demand restore snapshot job for AWS EC2 Instance. When completed, this will replace the original EC2 Instance with the selected snapshot.
 "@ "[GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Startrefreshnativeaccountsjob
+# Invoke-RscMutateAws -StartRefreshNativeAccountsJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Startrefreshnativeaccountsjob -GetInputs
+$inputs = Invoke-RscMutateAws -StartRefreshNativeAccountsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Startrefreshnativeaccountsjob" @"
+Write-Message "Invoke-RscMutateAws -StartRefreshNativeAccountsJob" @"
 Start an on demand job to refresh AWS accounts. The job updates the Rubrik platform with changes to the AWS Native accounts.
 "@ "[GraphQL: startRefreshAwsNativeAccountsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Startcreatenativeebsvolumesnapshotsjob
+# Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Startcreatenativeebsvolumesnapshotsjob -GetInputs
+$inputs = Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Startcreatenativeebsvolumesnapshotsjob" @"
+Write-Message "Invoke-RscMutateAws -StartCreateNativeEbsVolumeSnapshotsJob" @"
 Start job to create snapshots of EBS Volumes with given IDs. When completed, this will start taking an on-demand snapshot of the selected EBS Volumes  as per the SLA Policy assigned to the respective volumes.
 "@ "[GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Startnativeaccountdisablejob
+# Invoke-RscMutateAws -StartNativeAccountDisableJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Startnativeaccountdisablejob -GetInputs
+$inputs = Invoke-RscMutateAws -StartNativeAccountDisableJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Startnativeaccountdisablejob" @"
+Write-Message "Invoke-RscMutateAws -StartNativeAccountDisableJob" @"
 Starts a job to disable a specific AWS Native account. When complete, the job will disable protection for the specified AWS Native account.
 "@ "[GraphQL: startAwsNativeAccountDisableJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Startexportnativeebsvolumesnapshotjob
+# Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Startexportnativeebsvolumesnapshotjob -GetInputs
+$inputs = Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Startexportnativeebsvolumesnapshotjob" @"
+Write-Message "Invoke-RscMutateAws -StartExportNativeEbsVolumeSnapshotJob" @"
 Start a job to export EBS Volume. The job creates a new EBS Volume with the same properties as that of the snapshot that is exported.
 "@ "[GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Excludenativeebsvolumesfromsnapshot
+# Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Excludenativeebsvolumesfromsnapshot -GetInputs
+$inputs = Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Excludenativeebsvolumesfromsnapshot" @"
+Write-Message "Invoke-RscMutateAws -ExcludeNativeEbsVolumesFromSnapshot" @"
 Mark AWS Native EBS Volumes to be excluded from EC2 Instance snapshot. By default, all EBS Volumes are marked as included.
 "@ "[GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Startnativerdsinstancesnapshotsjob
+# Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Startnativerdsinstancesnapshotsjob -GetInputs
+$inputs = Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Startnativerdsinstancesnapshotsjob" @"
+Write-Message "Invoke-RscMutateAws -StartNativeRdsInstanceSnapshotsJob" @"
 Start job to create snapshots of RDS Instance with given IDs. When completed, this will start taking an on-demand snapshot of the selected RDS Instances  as per the SLA Policy assigned to the respective instances.
 "@ "[GraphQL: startAwsNativeRdsInstanceSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Createaccount
+# Invoke-RscMutateAws -CreateAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Createaccount -GetInputs
+$inputs = Invoke-RscMutateAws -CreateAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Createaccount" @"
+Write-Message "Invoke-RscMutateAws -CreateAccount" @"
 
 "@ "[GraphQL: createAwsAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Updateaccount
+# Invoke-RscMutateAws -UpdateAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Updateaccount -GetInputs
+$inputs = Invoke-RscMutateAws -UpdateAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Updateaccount" @"
+Write-Message "Invoke-RscMutateAws -UpdateAccount" @"
 
 "@ "[GraphQL: updateAwsAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Createautomatictargetmapping
+# Invoke-RscMutateAws -CreateAutomaticTargetMapping
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Createautomatictargetmapping -GetInputs
+$inputs = Invoke-RscMutateAws -CreateAutomaticTargetMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Createautomatictargetmapping" @"
+Write-Message "Invoke-RscMutateAws -CreateAutomaticTargetMapping" @"
 
 "@ "[GraphQL: createAutomaticAwsTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Createcloudnativestoragesetting
+# Invoke-RscMutateAws -CreateCloudNativeStorageSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Createcloudnativestoragesetting -GetInputs
+$inputs = Invoke-RscMutateAws -CreateCloudNativeStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Createcloudnativestoragesetting" @"
+Write-Message "Invoke-RscMutateAws -CreateCloudNativeStorageSetting" @"
 
 "@ "[GraphQL: createCloudNativeAwsStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Updateautomatictargetmapping
+# Invoke-RscMutateAws -UpdateAutomaticTargetMapping
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Updateautomatictargetmapping -GetInputs
+$inputs = Invoke-RscMutateAws -UpdateAutomaticTargetMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Updateautomatictargetmapping" @"
+Write-Message "Invoke-RscMutateAws -UpdateAutomaticTargetMapping" @"
 
 "@ "[GraphQL: updateAutomaticAwsTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Updatecloudnativestoragesetting
+# Invoke-RscMutateAws -UpdateCloudNativeStorageSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Updatecloudnativestoragesetting -GetInputs
+$inputs = Invoke-RscMutateAws -UpdateCloudNativeStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Updatecloudnativestoragesetting" @"
+Write-Message "Invoke-RscMutateAws -UpdateCloudNativeStorageSetting" @"
 
 "@ "[GraphQL: updateCloudNativeAwsStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Createtarget
+# Invoke-RscMutateAws -CreateTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Createtarget -GetInputs
+$inputs = Invoke-RscMutateAws -CreateTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Createtarget" @"
+Write-Message "Invoke-RscMutateAws -CreateTarget" @"
 
 "@ "[GraphQL: createAwsTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Updatetarget
+# Invoke-RscMutateAws -UpdateTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Updatetarget -GetInputs
+$inputs = Invoke-RscMutateAws -UpdateTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Updatetarget" @"
+Write-Message "Invoke-RscMutateAws -UpdateTarget" @"
 
 "@ "[GraphQL: updateAwsTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Createreadertarget
+# Invoke-RscMutateAws -CreateReaderTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Createreadertarget -GetInputs
+$inputs = Invoke-RscMutateAws -CreateReaderTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Createreadertarget" @"
+Write-Message "Invoke-RscMutateAws -CreateReaderTarget" @"
 Create a reader type for AWS archival location on a Rubrik cluster.
 "@ "[GraphQL: createAwsReaderTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Createcomputesetting
+# Invoke-RscMutateAws -CreateComputeSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Createcomputesetting -GetInputs
+$inputs = Invoke-RscMutateAws -CreateComputeSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Createcomputesetting" @"
+Write-Message "Invoke-RscMutateAws -CreateComputeSetting" @"
 
 "@ "[GraphQL: createAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Updatecomputesetting
+# Invoke-RscMutateAws -UpdateComputeSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Updatecomputesetting -GetInputs
+$inputs = Invoke-RscMutateAws -UpdateComputeSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Updatecomputesetting" @"
+Write-Message "Invoke-RscMutateAws -UpdateComputeSetting" @"
 
 "@ "[GraphQL: updateAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Deletecomputesetting
+# Invoke-RscMutateAws -DeleteComputeSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Deletecomputesetting -GetInputs
+$inputs = Invoke-RscMutateAws -DeleteComputeSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Deletecomputesetting" @"
+Write-Message "Invoke-RscMutateAws -DeleteComputeSetting" @"
 
 "@ "[GraphQL: deleteAwsComputeSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Cloudaccountvalidate
+# Invoke-RscMutateAws -CloudAccountValidate
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Cloudaccountvalidate -GetInputs
+$inputs = Invoke-RscMutateAws -CloudAccountValidate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Cloudaccountvalidate" @"
+Write-Message "Invoke-RscMutateAws -CloudAccountValidate" @"
 This endpoint is deprecated.
 "@ "[GraphQL: awsCloudAccountValidate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Cloudaccountinitiate
+# Invoke-RscMutateAws -CloudAccountInitiate
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Cloudaccountinitiate -GetInputs
+$inputs = Invoke-RscMutateAws -CloudAccountInitiate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Cloudaccountinitiate" @"
+Write-Message "Invoke-RscMutateAws -CloudAccountInitiate" @"
 This endpoint is deprecated.
 "@ "[GraphQL: awsCloudAccountInitiate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Nativeprotectionaccountadd
+# Invoke-RscMutateAws -NativeProtectionAccountAdd
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Nativeprotectionaccountadd -GetInputs
+$inputs = Invoke-RscMutateAws -NativeProtectionAccountAdd -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Nativeprotectionaccountadd" @"
+Write-Message "Invoke-RscMutateAws -NativeProtectionAccountAdd" @"
 This endpoint is deprecated.
 "@ "[GraphQL: awsNativeProtectionAccountAdd]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Validateandcreatecloudaccount
+# Invoke-RscMutateAws -ValidateAndCreateCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Validateandcreatecloudaccount -GetInputs
+$inputs = Invoke-RscMutateAws -ValidateAndCreateCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Validateandcreatecloudaccount" @"
+Write-Message "Invoke-RscMutateAws -ValidateAndCreateCloudAccount" @"
 Validate and create AWS cloud account. If validation fails, no error is returned and the cause is present in the ""message"" field of return object or within admin/child accounts of return object. In case validation succeeds, it initiates creation of AWS cloud account. This is the first step to set up native protection.
 "@ "[GraphQL: validateAndCreateAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Finalizecloudaccountprotection
+# Invoke-RscMutateAws -FinalizeCloudAccountProtection
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Finalizecloudaccountprotection -GetInputs
+$inputs = Invoke-RscMutateAws -FinalizeCloudAccountProtection -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Finalizecloudaccountprotection" @"
+Write-Message "Invoke-RscMutateAws -FinalizeCloudAccountProtection" @"
 Process cloud account. This is the second step after validate and create in addition of a feature for cloud account.The CloudFormation stack should be created after this step using the CloudFormation URL provided in the first step.
 "@ "[GraphQL: finalizeAwsCloudAccountProtection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Preparecloudaccountdeletion
+# Invoke-RscMutateAws -PrepareCloudAccountDeletion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Preparecloudaccountdeletion -GetInputs
+$inputs = Invoke-RscMutateAws -PrepareCloudAccountDeletion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Preparecloudaccountdeletion" @"
+Write-Message "Invoke-RscMutateAws -PrepareCloudAccountDeletion" @"
 Prepare deletion of cloud account. This is the first step to delete AWS cloud account. It generated template for deletion of cloud account and does not change any state of account.
 "@ "[GraphQL: prepareAwsCloudAccountDeletion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Finalizecloudaccountdeletion
+# Invoke-RscMutateAws -FinalizeCloudAccountDeletion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Finalizecloudaccountdeletion -GetInputs
+$inputs = Invoke-RscMutateAws -FinalizeCloudAccountDeletion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Finalizecloudaccountdeletion" @"
+Write-Message "Invoke-RscMutateAws -FinalizeCloudAccountDeletion" @"
 Process and finalize deletion of cloud account is the last step in deletion of a feature from cloud account. This endpoint is a MUST for deletion of disconnected features.
 "@ "[GraphQL: finalizeAwsCloudAccountDeletion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Updatecloudaccountfeature
+# Invoke-RscMutateAws -UpdateCloudAccountFeature
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Updatecloudaccountfeature -GetInputs
+$inputs = Invoke-RscMutateAws -UpdateCloudAccountFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Updatecloudaccountfeature" @"
+Write-Message "Invoke-RscMutateAws -UpdateCloudAccountFeature" @"
 Updates regions, stack ARN, and role ARN for a feature for a given cloud account.
 "@ "[GraphQL: updateAwsCloudAccountFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Updatecloudaccount
+# Invoke-RscMutateAws -UpdateCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Updatecloudaccount -GetInputs
+$inputs = Invoke-RscMutateAws -UpdateCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Updatecloudaccount" @"
+Write-Message "Invoke-RscMutateAws -UpdateCloudAccount" @"
 Update properties for a given AWS cloud account.
 "@ "[GraphQL: updateAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Preparefeatureupdateforcloudaccount
+# Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Preparefeatureupdateforcloudaccount -GetInputs
+$inputs = Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Preparefeatureupdateforcloudaccount" @"
+Write-Message "Invoke-RscMutateAws -PrepareFeatureUpdateForCloudAccount" @"
 Prepare manual update features to latest version.
 "@ "[GraphQL: prepareFeatureUpdateForAwsCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Cloudaccountupdatefeature
+# Invoke-RscMutateAws -CloudAccountUpdateFeature
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Cloudaccountupdatefeature -GetInputs
+$inputs = Invoke-RscMutateAws -CloudAccountUpdateFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Cloudaccountupdatefeature" @"
+Write-Message "Invoke-RscMutateAws -CloudAccountUpdateFeature" @"
 This endpoint is deprecated.
 "@ "[GraphQL: awsCloudAccountUpdateFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Createexocomputeconfig
+# Invoke-RscMutateAws -CreateExocomputeConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Createexocomputeconfig -GetInputs
+$inputs = Invoke-RscMutateAws -CreateExocomputeConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Createexocomputeconfig" @"
+Write-Message "Invoke-RscMutateAws -CreateExocomputeConfig" @"
 Create AWS Exocompute configs.
 "@ "[GraphQL: createAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Deleteexocomputeconfig
+# Invoke-RscMutateAws -DeleteExocomputeConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Deleteexocomputeconfig -GetInputs
+$inputs = Invoke-RscMutateAws -DeleteExocomputeConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Deleteexocomputeconfig" @"
+Write-Message "Invoke-RscMutateAws -DeleteExocomputeConfig" @"
 Deletes AWS Exocompute configs.
 "@ "[GraphQL: deleteAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Updateexocomputeconfig
+# Invoke-RscMutateAws -UpdateExocomputeConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Updateexocomputeconfig -GetInputs
+$inputs = Invoke-RscMutateAws -UpdateExocomputeConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Updateexocomputeconfig" @"
+Write-Message "Invoke-RscMutateAws -UpdateExocomputeConfig" @"
 Update AWS Exocompute configs.
 "@ "[GraphQL: updateAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Startexocomputedisablejob
+# Invoke-RscMutateAws -StartExocomputeDisableJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Startexocomputedisablejob -GetInputs
+$inputs = Invoke-RscMutateAws -StartExocomputeDisableJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Startexocomputedisablejob" @"
+Write-Message "Invoke-RscMutateAws -StartExocomputeDisableJob" @"
 Starts a job to disable AWS Exocompute feature. When complete, the job will disable exocompute feature for the specified AWS Native account.
 "@ "[GraphQL: startAwsExocomputeDisableJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Addiamuserbasedcloudaccount
+# Invoke-RscMutateAws -AddIamUserBasedCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Addiamuserbasedcloudaccount -GetInputs
+$inputs = Invoke-RscMutateAws -AddIamUserBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Addiamuserbasedcloudaccount" @"
+Write-Message "Invoke-RscMutateAws -AddIamUserBasedCloudAccount" @"
 Adds an IAM user-based AWS cloud account and enables the features specified in the input after successful validation of the request.
 "@ "[GraphQL: addAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Deleteiamuserbasedcloudaccount
+# Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Deleteiamuserbasedcloudaccount -GetInputs
+$inputs = Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Deleteiamuserbasedcloudaccount" @"
+Write-Message "Invoke-RscMutateAws -DeleteIamUserBasedCloudAccount" @"
 Deletes IAM user-based AWS cloud account.
 "@ "[GraphQL: deleteAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Deletecloudaccountwithoutcft
+# Invoke-RscMutateAws -DeleteCloudAccountWithoutCft
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Deletecloudaccountwithoutcft -GetInputs
+$inputs = Invoke-RscMutateAws -DeleteCloudAccountWithoutCft -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Deletecloudaccountwithoutcft" @"
+Write-Message "Invoke-RscMutateAws -DeleteCloudAccountWithoutCft" @"
 Removes AWS cloud account without cleaning up the associated permissions from the AWS cloud account. Customer needs to clean up the permissions in the AWS account themselves. This mutation is supported only for IAM user-based and authentication server-based AWS cloud accounts.
 "@ "[GraphQL: deleteAwsCloudAccountWithoutCft]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Upgradeiamuserbasedcloudaccountpermission
+# Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermission
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Upgradeiamuserbasedcloudaccountpermission -GetInputs
+$inputs = Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermission -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Upgradeiamuserbasedcloudaccountpermission" @"
+Write-Message "Invoke-RscMutateAws -UpgradeIamUserBasedCloudAccountPermission" @"
 Set IAM user-based AWS account features status to Connected from Update Permissions state. It should be used by caution from cloud accounts only after latest required permissions are granted to authorized IAM user.
 "@ "[GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Upgradecloudaccountfeatureswithoutcft
+# Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Upgradecloudaccountfeatureswithoutcft -GetInputs
+$inputs = Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Upgradecloudaccountfeatureswithoutcft" @"
+Write-Message "Invoke-RscMutateAws -UpgradeCloudAccountFeaturesWithoutCft" @"
 Updates status of AWS cloud account features to connected if they are in update permissions state. This mutation should be used with caution. It should be invoked only after the latest required permissions are granted to the AWS cloud account user used by Rubrik. This mutation does not verify if the required permissions are actually granted to the user or not. Its usage is restricted to only IAM user-based and authentication server-based AWS cloud accounts.
 "@ "[GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Addauthenticationserverbasedcloudaccount
+# Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Addauthenticationserverbasedcloudaccount -GetInputs
+$inputs = Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Addauthenticationserverbasedcloudaccount" @"
+Write-Message "Invoke-RscMutateAws -AddAuthenticationServerBasedCloudAccount" @"
 Validates and adds an authentication server-based AWS cloud account. When validation succeeds, the AWS cloud account is added and the features specified in the request are enabled. When validation fails, an error is not returned, but the cause of the failure is specified in the ""message"" field of the response object.
 "@ "[GraphQL: addAwsAuthenticationServerBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Patchauthenticationserverbasedcloudaccount
+# Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Patchauthenticationserverbasedcloudaccount -GetInputs
+$inputs = Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Patchauthenticationserverbasedcloudaccount" @"
+Write-Message "Invoke-RscMutateAws -PatchAuthenticationServerBasedCloudAccount" @"
 Updates authentication server-based AWS cloud account. Use this mutation to update account details related to role name, certificates, features. The mutation can update one or more certificates associated to an account in a single request. All input fields except account identifier are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
 "@ "[GraphQL: patchAwsAuthenticationServerBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Patchiamuserbasedcloudaccount
+# Invoke-RscMutateAws -PatchIamUserBasedCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Patchiamuserbasedcloudaccount -GetInputs
+$inputs = Invoke-RscMutateAws -PatchIamUserBasedCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Patchiamuserbasedcloudaccount" @"
+Write-Message "Invoke-RscMutateAws -PatchIamUserBasedCloudAccount" @"
 Updates IAM user-based AWS cloud account. Use this mutation to update account details access/secret keys, role ARN and regions. All input fields except account ID are optional so that any combination of account attributes can be updated in a single call. If none of the optional fields are provided in the input then no updates are performed, and the response does not contain any error message.
 "@ "[GraphQL: patchAwsIamUserBasedCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Createcluster
+# Invoke-RscMutateAws -CreateCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Createcluster -GetInputs
+$inputs = Invoke-RscMutateAws -CreateCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Createcluster" @"
+Write-Message "Invoke-RscMutateAws -CreateCluster" @"
 Create a Rubrik Cloud Cluster on AWS.
 "@ "[GraphQL: createAwsCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAws -Deletecluster
+# Invoke-RscMutateAws -DeleteCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAws -Deletecluster -GetInputs
+$inputs = Invoke-RscMutateAws -DeleteCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAws -Deletecluster" @"
+Write-Message "Invoke-RscMutateAws -DeleteCluster" @"
 Delete a Rubrik Cloud Cluster on AWS.
 "@ "[GraphQL: deleteAwsCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startrefreshnativesubscriptionsjob
+# Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startrefreshnativesubscriptionsjob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startrefreshnativesubscriptionsjob" @"
+Write-Message "Invoke-RscMutateAzure -StartRefreshNativeSubscriptionsJob" @"
 Start a job to refresh Azure Native subscription for the given subscription IDs. When started, this job will update the Rubrik platform with any changes that have been done on Azure for the respective subscription.
 "@ "[GraphQL: startRefreshAzureNativeSubscriptionsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startrestorenativevirtualmachinejob
+# Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startrestorenativevirtualmachinejob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startrestorenativevirtualmachinejob" @"
+Write-Message "Invoke-RscMutateAzure -StartRestoreNativeVirtualMachineJob" @"
 Start a job to restore Azure Native virtual machine with the selected snapshot. When started, this will replace the original VM with the selected snapshot.
 "@ "[GraphQL: startRestoreAzureNativeVirtualMachineJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startexportnativevirtualmachinejob
+# Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startexportnativevirtualmachinejob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startexportnativevirtualmachinejob" @"
+Write-Message "Invoke-RscMutateAzure -StartExportNativeVirtualMachineJob" @"
 Start a job to export the Azure native virtual machine for a specified snapshot to a specified destination.
 "@ "[GraphQL: startExportAzureNativeVirtualMachineJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Excludenativemanageddisksfromsnapshot
+# Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Excludenativemanageddisksfromsnapshot -GetInputs
+$inputs = Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Excludenativemanageddisksfromsnapshot" @"
+Write-Message "Invoke-RscMutateAzure -ExcludeNativeManagedDisksFromSnapshot" @"
 Exclude the Managed Disks from snapshots, for the specified virtual machines.
 "@ "[GraphQL: excludeAzureNativeManagedDisksFromSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startcreatenativevirtualmachinesnapshotsjob
+# Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startcreatenativevirtualmachinesnapshotsjob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startcreatenativevirtualmachinesnapshotsjob" @"
+Write-Message "Invoke-RscMutateAzure -StartCreateNativeVirtualMachineSnapshotsJob" @"
 Start a job to create a snapshot for the Azure Native virtual machine identified by the IDs. When started, this will start taking an on-demand snapshot of the selected VMs as per the SLA Policy assigned to the respective VMs.
 "@ "[GraphQL: startCreateAzureNativeVirtualMachineSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startdisablenativesubscriptionprotectionjob
+# Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startdisablenativesubscriptionprotectionjob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startdisablenativesubscriptionprotectionjob" @"
+Write-Message "Invoke-RscMutateAzure -StartDisableNativeSubscriptionProtectionJob" @"
 Start a job to disable protection for a specified Azure subscription.
 "@ "[GraphQL: startDisableAzureNativeSubscriptionProtectionJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startcreatenativemanageddisksnapshotsjob
+# Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startcreatenativemanageddisksnapshotsjob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startcreatenativemanageddisksnapshotsjob" @"
+Write-Message "Invoke-RscMutateAzure -StartCreateNativeManagedDiskSnapshotsJob" @"
 Start a job to create snapshots of the Azure Native Managed Disks identified by the given IDs. When started, this will start taking an on-demand snapshot of the selected disks as per the SLA Policy assigned to the respective disks.
 "@ "[GraphQL: startCreateAzureNativeManagedDiskSnapshotsJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startexportnativemanageddiskjob
+# Invoke-RscMutateAzure -StartExportNativeManagedDiskJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startexportnativemanageddiskjob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartExportNativeManagedDiskJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startexportnativemanageddiskjob" @"
+Write-Message "Invoke-RscMutateAzure -StartExportNativeManagedDiskJob" @"
 Start a job to export the specified Azure Native Managed Disks to the desired destination.
 "@ "[GraphQL: startExportAzureNativeManagedDiskJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startexportsqldatabasedbjob
+# Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startexportsqldatabasedbjob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startexportsqldatabasedbjob" @"
+Write-Message "Invoke-RscMutateAzure -StartExportSqlDatabaseDbJob" @"
 Start a job to export Azure SQL Database. The job creates a new Azure SQL Database with the same properties as that of the instance that is exported.
 "@ "[GraphQL: startExportAzureSqlDatabaseDbJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startexportsqlmanagedinstancedbjob
+# Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startexportsqlmanagedinstancedbjob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startexportsqlmanagedinstancedbjob" @"
+Write-Message "Invoke-RscMutateAzure -StartExportSqlManagedInstanceDbJob" @"
 Start a job to export Azure SQL Managed Instance database. The job creates a new Azure SQL Managed Instance database with the same properties as that of the instance that is exported.
 "@ "[GraphQL: startExportAzureSqlManagedInstanceDbJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Createaccount
+# Invoke-RscMutateAzure -CreateAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Createaccount -GetInputs
+$inputs = Invoke-RscMutateAzure -CreateAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Createaccount" @"
+Write-Message "Invoke-RscMutateAzure -CreateAccount" @"
 
 "@ "[GraphQL: createAzureAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Updateaccount
+# Invoke-RscMutateAzure -UpdateAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Updateaccount -GetInputs
+$inputs = Invoke-RscMutateAzure -UpdateAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Updateaccount" @"
+Write-Message "Invoke-RscMutateAzure -UpdateAccount" @"
 
 "@ "[GraphQL: updateAzureAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Createautomatictargetmapping
+# Invoke-RscMutateAzure -CreateAutomaticTargetMapping
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Createautomatictargetmapping -GetInputs
+$inputs = Invoke-RscMutateAzure -CreateAutomaticTargetMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Createautomatictargetmapping" @"
+Write-Message "Invoke-RscMutateAzure -CreateAutomaticTargetMapping" @"
 
 "@ "[GraphQL: createAutomaticAzureTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Createcloudnativestoragesetting
+# Invoke-RscMutateAzure -CreateCloudNativeStorageSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Createcloudnativestoragesetting -GetInputs
+$inputs = Invoke-RscMutateAzure -CreateCloudNativeStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Createcloudnativestoragesetting" @"
+Write-Message "Invoke-RscMutateAzure -CreateCloudNativeStorageSetting" @"
 Creates Storage Settings for the archival of azure cloud native protected objects
 "@ "[GraphQL: createCloudNativeAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Createcloudnativercvstoragesetting
+# Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Createcloudnativercvstoragesetting -GetInputs
+$inputs = Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Createcloudnativercvstoragesetting" @"
+Write-Message "Invoke-RscMutateAzure -CreateCloudNativeRcvStorageSetting" @"
 Create Rubrik Cloud Vault storage settings for archiving azure cloud native protected objects.
 "@ "[GraphQL: createCloudNativeRcvAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Updateautomatictargetmapping
+# Invoke-RscMutateAzure -UpdateAutomaticTargetMapping
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Updateautomatictargetmapping -GetInputs
+$inputs = Invoke-RscMutateAzure -UpdateAutomaticTargetMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Updateautomatictargetmapping" @"
+Write-Message "Invoke-RscMutateAzure -UpdateAutomaticTargetMapping" @"
 
 "@ "[GraphQL: updateAutomaticAzureTargetMapping]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Updatecloudnativestoragesetting
+# Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Updatecloudnativestoragesetting -GetInputs
+$inputs = Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Updatecloudnativestoragesetting" @"
+Write-Message "Invoke-RscMutateAzure -UpdateCloudNativeStorageSetting" @"
 
 "@ "[GraphQL: updateCloudNativeAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Updatecloudnativercvstoragesetting
+# Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Updatecloudnativercvstoragesetting -GetInputs
+$inputs = Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Updatecloudnativercvstoragesetting" @"
+Write-Message "Invoke-RscMutateAzure -UpdateCloudNativeRcvStorageSetting" @"
 Updates an existing Rubrik Cloud Vault Storage Settings for the archival of azure cloud native protected objects.
 "@ "[GraphQL: updateCloudNativeRcvAzureStorageSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Createtarget
+# Invoke-RscMutateAzure -CreateTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Createtarget -GetInputs
+$inputs = Invoke-RscMutateAzure -CreateTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Createtarget" @"
+Write-Message "Invoke-RscMutateAzure -CreateTarget" @"
 Creates an Azure archival target on the Rubrik cluster.
 "@ "[GraphQL: createAzureTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Updatetarget
+# Invoke-RscMutateAzure -UpdateTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Updatetarget -GetInputs
+$inputs = Invoke-RscMutateAzure -UpdateTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Updatetarget" @"
+Write-Message "Invoke-RscMutateAzure -UpdateTarget" @"
 
 "@ "[GraphQL: updateAzureTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Createreadertarget
+# Invoke-RscMutateAzure -CreateReaderTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Createreadertarget -GetInputs
+$inputs = Invoke-RscMutateAzure -CreateReaderTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Createreadertarget" @"
+Write-Message "Invoke-RscMutateAzure -CreateReaderTarget" @"
 Creates reader type for Azure archival location on a CDM cluster.
 "@ "[GraphQL: createAzureReaderTarget]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startcloudaccountoauth
+# Invoke-RscMutateAzure -StartCloudAccountOauth
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startcloudaccountoauth -GetInputs
+$inputs = Invoke-RscMutateAzure -StartCloudAccountOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startcloudaccountoauth" @"
+Write-Message "Invoke-RscMutateAzure -StartCloudAccountOauth" @"
 Initiates a session before doing Azure OAuth flow. If a custom app is configured for the tenant, the client ID of the custom app is returned. Otherwise, the client ID of the default app is returned.
 "@ "[GraphQL: startAzureCloudAccountOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Completecloudaccountoauth
+# Invoke-RscMutateAzure -CompleteCloudAccountOauth
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Completecloudaccountoauth -GetInputs
+$inputs = Invoke-RscMutateAzure -CompleteCloudAccountOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Completecloudaccountoauth" @"
+Write-Message "Invoke-RscMutateAzure -CompleteCloudAccountOauth" @"
 Complete the Azure OAuth flow and pass the authorization code.
 "@ "[GraphQL: completeAzureCloudAccountOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Setcloudaccountcustomerappcredential
+# Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredential
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Setcloudaccountcustomerappcredential -GetInputs
+$inputs = Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredential -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Setcloudaccountcustomerappcredential" @"
+Write-Message "Invoke-RscMutateAzure -SetCloudAccountCustomerAppCredential" @"
 Set credentials for the customer application, for the tenant domain name.
 "@ "[GraphQL: setAzureCloudAccountCustomerAppCredentials]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Addcloudaccount
+# Invoke-RscMutateAzure -AddCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Addcloudaccount -GetInputs
+$inputs = Invoke-RscMutateAzure -AddCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Addcloudaccount" @"
+Write-Message "Invoke-RscMutateAzure -AddCloudAccount" @"
 Add the Azure Subscriptions cloud account for the given feature.
 "@ "[GraphQL: addAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Addcloudaccountwithoutoauth
+# Invoke-RscMutateAzure -AddCloudAccountWithoutOauth
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Addcloudaccountwithoutoauth -GetInputs
+$inputs = Invoke-RscMutateAzure -AddCloudAccountWithoutOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Addcloudaccountwithoutoauth" @"
+Write-Message "Invoke-RscMutateAzure -AddCloudAccountWithoutOauth" @"
 Add the Azure Subscription cloud account for the given feature without OAuth.
 "@ "[GraphQL: addAzureCloudAccountWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Deletecloudaccount
+# Invoke-RscMutateAzure -DeleteCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Deletecloudaccount -GetInputs
+$inputs = Invoke-RscMutateAzure -DeleteCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Deletecloudaccount" @"
+Write-Message "Invoke-RscMutateAzure -DeleteCloudAccount" @"
 Delete the Azure Subscriptions cloud account for the given feature.
 "@ "[GraphQL: deleteAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Deletecloudaccountwithoutoauth
+# Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Deletecloudaccountwithoutoauth -GetInputs
+$inputs = Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Deletecloudaccountwithoutoauth" @"
+Write-Message "Invoke-RscMutateAzure -DeleteCloudAccountWithoutOauth" @"
 Delete the Azure Subscriptions cloud account for the given feature without OAuth.
 "@ "[GraphQL: deleteAzureCloudAccountWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Upgradecloudaccount
+# Invoke-RscMutateAzure -UpgradeCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Upgradecloudaccount -GetInputs
+$inputs = Invoke-RscMutateAzure -UpgradeCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Upgradecloudaccount" @"
+Write-Message "Invoke-RscMutateAzure -UpgradeCloudAccount" @"
 Update permissions of the Azure Subscriptions cloud account for given feature.
 "@ "[GraphQL: upgradeAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Updatecustomerapppermissionforsql
+# Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Updatecustomerapppermissionforsql -GetInputs
+$inputs = Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Updatecustomerapppermissionforsql" @"
+Write-Message "Invoke-RscMutateAzure -UpdateCustomerAppPermissionForSql" @"
 Updates the Azure app for the specified account in an idempotent manner to support Azure SQL Database and  Managed Instance Database authentication.
 "@ "[GraphQL: updateCustomerAppPermissionForAzureSql]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Startdisablecloudaccountjob
+# Invoke-RscMutateAzure -StartDisableCloudAccountJob
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Startdisablecloudaccountjob -GetInputs
+$inputs = Invoke-RscMutateAzure -StartDisableCloudAccountJob -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Startdisablecloudaccountjob" @"
+Write-Message "Invoke-RscMutateAzure -StartDisableCloudAccountJob" @"
 Start on-demand jobs to disable the feature for the given Azure Cloud Accounts. When completed, the status of cloud account feature will change to Disabled and the feature will become eligible to be deleted.
 "@ "[GraphQL: startDisableAzureCloudAccountJob]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Updatecloudaccount
+# Invoke-RscMutateAzure -UpdateCloudAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Updatecloudaccount -GetInputs
+$inputs = Invoke-RscMutateAzure -UpdateCloudAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Updatecloudaccount" @"
+Write-Message "Invoke-RscMutateAzure -UpdateCloudAccount" @"
 Update names of the Azure Subscriptions cloud account and regions for the given feature.
 "@ "[GraphQL: updateAzureCloudAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Mapcloudaccounttopersistentstoragelocation
+# Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Mapcloudaccounttopersistentstoragelocation -GetInputs
+$inputs = Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Mapcloudaccounttopersistentstoragelocation" @"
+Write-Message "Invoke-RscMutateAzure -MapCloudAccountToPersistentStorageLocation" @"
 Map Azure cloud accounts to a persistent storage location.
 "@ "[GraphQL: mapAzureCloudAccountToPersistentStorageLocation]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Addcloudaccountexocomputeconfiguration
+# Invoke-RscMutateAzure -AddCloudAccountExocomputeConfiguration
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Addcloudaccountexocomputeconfiguration -GetInputs
+$inputs = Invoke-RscMutateAzure -AddCloudAccountExocomputeConfiguration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Addcloudaccountexocomputeconfiguration" @"
+Write-Message "Invoke-RscMutateAzure -AddCloudAccountExocomputeConfiguration" @"
 Add Exocompute configurations for an Azure Cloud Account.
 "@ "[GraphQL: addAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Deletecloudaccountexocomputeconfiguration
+# Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfiguration
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Deletecloudaccountexocomputeconfiguration -GetInputs
+$inputs = Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfiguration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Deletecloudaccountexocomputeconfiguration" @"
+Write-Message "Invoke-RscMutateAzure -DeleteCloudAccountExocomputeConfiguration" @"
 Delete Exocompute configurations for an Azure Cloud Account.
 "@ "[GraphQL: deleteAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Mapcloudaccountexocomputesubscription
+# Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Mapcloudaccountexocomputesubscription -GetInputs
+$inputs = Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Mapcloudaccountexocomputesubscription" @"
+Write-Message "Invoke-RscMutateAzure -MapCloudAccountExocomputeSubscription" @"
 Map Azure cloud accounts to an Exocompute subscription.
 "@ "[GraphQL: mapAzureCloudAccountExocomputeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Unmapcloudaccountexocomputesubscription
+# Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Unmapcloudaccountexocomputesubscription -GetInputs
+$inputs = Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Unmapcloudaccountexocomputesubscription" @"
+Write-Message "Invoke-RscMutateAzure -UnmapCloudAccountExocomputeSubscription" @"
 Unmap Azure cloud accounts from the mapped Exocompute subscription.
 "@ "[GraphQL: unmapAzureCloudAccountExocomputeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Upgradecloudaccountpermissionswithoutoauth
+# Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Upgradecloudaccountpermissionswithoutoauth -GetInputs
+$inputs = Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Upgradecloudaccountpermissionswithoutoauth" @"
+Write-Message "Invoke-RscMutateAzure -UpgradeCloudAccountPermissionsWithoutOauth" @"
 Set Azure Cloud Account feature status to Connected from Update Permissions state without any permission validation. It should be used by caution from cloud accounts which have been set up without using OAuth, only after adding the latest permissions that are required.
 "@ "[GraphQL: upgradeAzureCloudAccountPermissionsWithoutOauth]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Oauthconsentkickoff
+# Invoke-RscMutateAzure -OauthConsentKickoff
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Oauthconsentkickoff -GetInputs
+$inputs = Invoke-RscMutateAzure -OauthConsentKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Oauthconsentkickoff" @"
+Write-Message "Invoke-RscMutateAzure -OauthConsentKickoff" @"
 Kicks off an OAuth consent flow for Azure resource access.
 "@ "[GraphQL: azureOauthConsentKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Oauthconsentcomplete
+# Invoke-RscMutateAzure -OauthConsentComplete
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Oauthconsentcomplete -GetInputs
+$inputs = Invoke-RscMutateAzure -OauthConsentComplete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Oauthconsentcomplete" @"
+Write-Message "Invoke-RscMutateAzure -OauthConsentComplete" @"
 Completes an OAuth consent flow for Azure resource access.
 "@ "[GraphQL: azureOauthConsentComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Createsaasappaad
+# Invoke-RscMutateAzure -CreateSaasAppAad
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Createsaasappaad -GetInputs
+$inputs = Invoke-RscMutateAzure -CreateSaasAppAad -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Createsaasappaad" @"
+Write-Message "Invoke-RscMutateAzure -CreateSaasAppAad" @"
 Create or get an Azure AAD application.
 "@ "[GraphQL: createAzureSaasAppAad]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Createcluster
+# Invoke-RscMutateAzure -CreateCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Createcluster -GetInputs
+$inputs = Invoke-RscMutateAzure -CreateCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Createcluster" @"
+Write-Message "Invoke-RscMutateAzure -CreateCluster" @"
 Create a Rubrik Cloud Cluster on Azure.
 "@ "[GraphQL: createAzureCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Deletecluster
+# Invoke-RscMutateAzure -DeleteCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Deletecluster -GetInputs
+$inputs = Invoke-RscMutateAzure -DeleteCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Deletecluster" @"
+Write-Message "Invoke-RscMutateAzure -DeleteCluster" @"
 Delete a Rubrik Cloud Cluster on Azure.
 "@ "[GraphQL: deleteAzureCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Kickoffadappsetup
+# Invoke-RscMutateAzure -KickoffAdAppSetup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Kickoffadappsetup -GetInputs
+$inputs = Invoke-RscMutateAzure -KickoffAdAppSetup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Kickoffadappsetup" @"
+Write-Message "Invoke-RscMutateAzure -KickoffAdAppSetup" @"
 Initiates the Azure AD app creation flow.
 "@ "[GraphQL: kickoffAzureAdAppSetup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Completeadappsetup
+# Invoke-RscMutateAzure -CompleteAdAppSetup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Completeadappsetup -GetInputs
+$inputs = Invoke-RscMutateAzure -CompleteAdAppSetup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Completeadappsetup" @"
+Write-Message "Invoke-RscMutateAzure -CompleteAdAppSetup" @"
 Completes the creation flow for an Azure AD app.
 "@ "[GraphQL: completeAzureAdAppSetup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Deleteaddirectory
+# Invoke-RscMutateAzure -DeleteAdDirectory
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Deleteaddirectory -GetInputs
+$inputs = Invoke-RscMutateAzure -DeleteAdDirectory -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Deleteaddirectory" @"
+Write-Message "Invoke-RscMutateAzure -DeleteAdDirectory" @"
 Deletes an Azure AD directory.
 "@ "[GraphQL: deleteAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Backupaddirectory
+# Invoke-RscMutateAzure -BackupAdDirectory
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Backupaddirectory -GetInputs
+$inputs = Invoke-RscMutateAzure -BackupAdDirectory -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Backupaddirectory" @"
+Write-Message "Invoke-RscMutateAzure -BackupAdDirectory" @"
 Backs up the Azure AD directory.
 "@ "[GraphQL: backupAzureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Initiateadappupdate
+# Invoke-RscMutateAzure -InitiateAdAppUpdate
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Initiateadappupdate -GetInputs
+$inputs = Invoke-RscMutateAzure -InitiateAdAppUpdate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Initiateadappupdate" @"
+Write-Message "Invoke-RscMutateAzure -InitiateAdAppUpdate" @"
 Initiates an update to the Azure AD directory App.
 "@ "[GraphQL: initiateAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzure -Completeadappupdate
+# Invoke-RscMutateAzure -CompleteAdAppUpdate
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzure -Completeadappupdate -GetInputs
+$inputs = Invoke-RscMutateAzure -CompleteAdAppUpdate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzure -Completeadappupdate" @"
+Write-Message "Invoke-RscMutateAzure -CompleteAdAppUpdate" @"
 Completes an update to the Azure AD directory App.
 "@ "[GraphQL: completeAzureAdAppUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateAzureO365 -Setupexocompute
+# Invoke-RscMutateAzureO365 -SetupExocompute
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateAzureO365 -Setupexocompute -GetInputs
+$inputs = Invoke-RscMutateAzureO365 -SetupExocompute -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateAzureO365 -Setupexocompute" @"
+Write-Message "Invoke-RscMutateAzureO365 -SetupExocompute" @"
 Sets up Exocompute for an O365 subscription.
 "@ "[GraphQL: setupAzureO365Exocompute]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -Recoversource
+# Invoke-RscMutateCassandra -RecoverSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCassandra -Recoversource -GetInputs
+$inputs = Invoke-RscMutateCassandra -RecoverSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCassandra -Recoversource" @"
+Write-Message "Invoke-RscMutateCassandra -RecoverSource" @"
 Recover a cassandra source.
 "@ "[GraphQL: recoverCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -Createsource
+# Invoke-RscMutateCassandra -CreateSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCassandra -Createsource -GetInputs
+$inputs = Invoke-RscMutateCassandra -CreateSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCassandra -Createsource" @"
+Write-Message "Invoke-RscMutateCassandra -CreateSource" @"
 Create a cassandra source.
 "@ "[GraphQL: createCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -Updatesource
+# Invoke-RscMutateCassandra -UpdateSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCassandra -Updatesource -GetInputs
+$inputs = Invoke-RscMutateCassandra -UpdateSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCassandra -Updatesource" @"
+Write-Message "Invoke-RscMutateCassandra -UpdateSource" @"
 Update a cassandra source.
 "@ "[GraphQL: updateCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -Deletesource
+# Invoke-RscMutateCassandra -DeleteSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCassandra -Deletesource -GetInputs
+$inputs = Invoke-RscMutateCassandra -DeleteSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCassandra -Deletesource" @"
+Write-Message "Invoke-RscMutateCassandra -DeleteSource" @"
 Delete a cassandra source.
 "@ "[GraphQL: deleteCassandraSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCassandra -Bulkdeletesource
+# Invoke-RscMutateCassandra -BulkDeleteSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCassandra -Bulkdeletesource -GetInputs
+$inputs = Invoke-RscMutateCassandra -BulkDeleteSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCassandra -Bulkdeletesource" @"
+Write-Message "Invoke-RscMutateCassandra -BulkDeleteSource" @"
 Bulk Delete cassandra sources.
 "@ "[GraphQL: bulkDeleteCassandraSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Addnodestocloud
+# Invoke-RscMutateCluster -AddNodesToCloud
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Addnodestocloud -GetInputs
+$inputs = Invoke-RscMutateCluster -AddNodesToCloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Addnodestocloud" @"
+Write-Message "Invoke-RscMutateCluster -AddNodesToCloud" @"
 Add nodes to cloud cluster.
 "@ "[GraphQL: addNodesToCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Registercloud
+# Invoke-RscMutateCluster -RegisterCloud
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Registercloud -GetInputs
+$inputs = Invoke-RscMutateCluster -RegisterCloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Registercloud" @"
+Write-Message "Invoke-RscMutateCluster -RegisterCloud" @"
 Register a cloud cluster.
 "@ "[GraphQL: registerCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Createfailover
+# Invoke-RscMutateCluster -CreateFailover
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Createfailover -GetInputs
+$inputs = Invoke-RscMutateCluster -CreateFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Createfailover" @"
+Write-Message "Invoke-RscMutateCluster -CreateFailover" @"
 Create a failover cluster
 
 Supported in v5.2+
@@ -1259,13 +1259,13 @@ Create a failover cluster.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Updatefailover
+# Invoke-RscMutateCluster -UpdateFailover
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Updatefailover -GetInputs
+$inputs = Invoke-RscMutateCluster -UpdateFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Updatefailover" @"
+Write-Message "Invoke-RscMutateCluster -UpdateFailover" @"
 Update a failover cluster
 
 Supported in v5.2+
@@ -1274,13 +1274,13 @@ Update failover cluster with specified properties.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Deletefailover
+# Invoke-RscMutateCluster -DeleteFailover
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Deletefailover -GetInputs
+$inputs = Invoke-RscMutateCluster -DeleteFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Deletefailover" @"
+Write-Message "Invoke-RscMutateCluster -DeleteFailover" @"
 Delete a failover cluster
 
 Supported in v5.2+
@@ -1289,13 +1289,13 @@ Delete a failover cluster.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Bulkdeletefailover
+# Invoke-RscMutateCluster -BulkDeleteFailover
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Bulkdeletefailover -GetInputs
+$inputs = Invoke-RscMutateCluster -BulkDeleteFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Bulkdeletefailover" @"
+Write-Message "Invoke-RscMutateCluster -BulkDeleteFailover" @"
 Delete the provided failover clusters
 
 Supported in v5.3+
@@ -1304,122 +1304,122 @@ Delete the provided failover clusters.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Createk8s
+# Invoke-RscMutateCluster -CreateK8s
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Createk8s -GetInputs
+$inputs = Invoke-RscMutateCluster -CreateK8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Createk8s" @"
+Write-Message "Invoke-RscMutateCluster -CreateK8s" @"
 Add a Kubernetes cluster.
 "@ "[GraphQL: createK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Refreshk8s
+# Invoke-RscMutateCluster -RefreshK8s
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Refreshk8s -GetInputs
+$inputs = Invoke-RscMutateCluster -RefreshK8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Refreshk8s" @"
+Write-Message "Invoke-RscMutateCluster -RefreshK8s" @"
 Refresh resources of a Kubernetes cluster.
 "@ "[GraphQL: refreshK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Archivek8s
+# Invoke-RscMutateCluster -ArchiveK8s
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Archivek8s -GetInputs
+$inputs = Invoke-RscMutateCluster -ArchiveK8s -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Archivek8s" @"
+Write-Message "Invoke-RscMutateCluster -ArchiveK8s" @"
 Archive a Kubernetes cluster.
 "@ "[GraphQL: archiveK8sCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Removecdm
+# Invoke-RscMutateCluster -RemoveCdm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Removecdm -GetInputs
+$inputs = Invoke-RscMutateCluster -RemoveCdm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Removecdm" @"
+Write-Message "Invoke-RscMutateCluster -RemoveCdm" @"
 
 "@ "[GraphQL: removeCdmCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateCluster -Recovercloud
+# Invoke-RscMutateCluster -RecoverCloud
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateCluster -Recovercloud -GetInputs
+$inputs = Invoke-RscMutateCluster -RecoverCloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateCluster -Recovercloud" @"
+Write-Message "Invoke-RscMutateCluster -RecoverCloud" @"
 Recover a Rubrik Cloud Cluster.
 "@ "[GraphQL: recoverCloudCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Registerscvmm
+# Invoke-RscMutateHyperv -RegisterScvmm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Registerscvmm -GetInputs
+$inputs = Invoke-RscMutateHyperv -RegisterScvmm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Registerscvmm" @"
+Write-Message "Invoke-RscMutateHyperv -RegisterScvmm" @"
 Register HyperV SCVMM to Rubrik Cluster.
 "@ "[GraphQL: registerHypervScvmm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Scvmmupdate
+# Invoke-RscMutateHyperv -ScvmmUpdate
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Scvmmupdate -GetInputs
+$inputs = Invoke-RscMutateHyperv -ScvmmUpdate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Scvmmupdate" @"
+Write-Message "Invoke-RscMutateHyperv -ScvmmUpdate" @"
 Update properties for a given HyperV SCVMM.
 "@ "[GraphQL: hypervScvmmUpdate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Scvmmdelete
+# Invoke-RscMutateHyperv -ScvmmDelete
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Scvmmdelete -GetInputs
+$inputs = Invoke-RscMutateHyperv -ScvmmDelete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Scvmmdelete" @"
+Write-Message "Invoke-RscMutateHyperv -ScvmmDelete" @"
 Delete a given HyperV SCVMM.
 "@ "[GraphQL: hypervScvmmDelete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Refreshscvmm
+# Invoke-RscMutateHyperv -RefreshScvmm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Refreshscvmm -GetInputs
+$inputs = Invoke-RscMutateHyperv -RefreshScvmm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Refreshscvmm" @"
+Write-Message "Invoke-RscMutateHyperv -RefreshScvmm" @"
 Refresh a given HyperV SCVMM.
 "@ "[GraphQL: refreshHypervScvmm]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Ondemandsnapshot
+# Invoke-RscMutateHyperv -OnDemandSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Ondemandsnapshot -GetInputs
+$inputs = Invoke-RscMutateHyperv -OnDemandSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Ondemandsnapshot" @"
+Write-Message "Invoke-RscMutateHyperv -OnDemandSnapshot" @"
 Create on-demand VM snapshot
 
 Supported in v5.0+
@@ -1428,13 +1428,13 @@ Create an on-demand snapshot for the given VM ID.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Deleteallsnapshot
+# Invoke-RscMutateHyperv -DeleteAllSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Deleteallsnapshot -GetInputs
+$inputs = Invoke-RscMutateHyperv -DeleteAllSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Deleteallsnapshot" @"
+Write-Message "Invoke-RscMutateHyperv -DeleteAllSnapshot" @"
 Delete all snapshots of VM
 
 Supported in v5.0+
@@ -1443,13 +1443,13 @@ Delete all snapshots of a virtual machine.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Exportvirtualmachine
+# Invoke-RscMutateHyperv -ExportVirtualMachine
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Exportvirtualmachine -GetInputs
+$inputs = Invoke-RscMutateHyperv -ExportVirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Exportvirtualmachine" @"
+Write-Message "Invoke-RscMutateHyperv -ExportVirtualMachine" @"
 Export VM snapshot
 
 Supported in v5.0+
@@ -1458,13 +1458,13 @@ Export snapshot of a vm.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Downloadvirtualmachinesnapshotfile
+# Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Downloadvirtualmachinesnapshotfile -GetInputs
+$inputs = Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Downloadvirtualmachinesnapshotfile" @"
+Write-Message "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshotFile" @"
 Download files from a Hyper-V VM backup
 
 Supported in v5.0+
@@ -1473,13 +1473,13 @@ Start an asynchronous job to download multiple files and folders from a specifie
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Instantrecovervirtualmachinesnapshot
+# Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Instantrecovervirtualmachinesnapshot -GetInputs
+$inputs = Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Instantrecovervirtualmachinesnapshot" @"
+Write-Message "Invoke-RscMutateHyperv -InstantRecoverVirtualMachineSnapshot" @"
 Creates an instant recover request that restores a target VM from the given Rubrik-hosted-snapshot
 
 Supported in v5.0+
@@ -1488,13 +1488,13 @@ The VM will be started with networking enabled. If the VM does not exist anymore
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Restorevirtualmachinesnapshotfile
+# Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Restorevirtualmachinesnapshotfile -GetInputs
+$inputs = Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Restorevirtualmachinesnapshotfile" @"
+Write-Message "Invoke-RscMutateHyperv -RestoreVirtualMachineSnapshotFile" @"
 Restore files from snapshot
 
 Supported in v5.0+
@@ -1503,13 +1503,13 @@ Restore files from a snapshot to the original source location.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Registeragentvirtualmachine
+# Invoke-RscMutateHyperv -RegisterAgentVirtualMachine
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Registeragentvirtualmachine -GetInputs
+$inputs = Invoke-RscMutateHyperv -RegisterAgentVirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Registeragentvirtualmachine" @"
+Write-Message "Invoke-RscMutateHyperv -RegisterAgentVirtualMachine" @"
 Register the agent installed in VM
 
 Supported in v5.0+
@@ -1518,13 +1518,13 @@ Register the agent that installed in VM.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Deletevirtualmachinesnapshot
+# Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Deletevirtualmachinesnapshot -GetInputs
+$inputs = Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Deletevirtualmachinesnapshot" @"
+Write-Message "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshot" @"
 Delete VM snapshot
 
 Supported in v5.0+
@@ -1533,13 +1533,13 @@ Delete a snapshot by expiring it. Snapshot is expired only if it is a manual sna
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Downloadvirtualmachinesnapshot
+# Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Downloadvirtualmachinesnapshot -GetInputs
+$inputs = Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Downloadvirtualmachinesnapshot" @"
+Write-Message "Invoke-RscMutateHyperv -DownloadVirtualMachineSnapshot" @"
 Creates a download from archival request
 
 Supported in v5.0+
@@ -1548,13 +1548,13 @@ Download a snapshot from archival.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Createvirtualmachinesnapshotmount
+# Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Createvirtualmachinesnapshotmount -GetInputs
+$inputs = Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Createvirtualmachinesnapshotmount" @"
+Write-Message "Invoke-RscMutateHyperv -CreateVirtualMachineSnapshotMount" @"
 Create a live mount request
 
 Supported in v5.0+
@@ -1563,13 +1563,13 @@ Create a live mount request with given configuration.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Updatevirtualmachinesnapshotmount
+# Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Updatevirtualmachinesnapshotmount -GetInputs
+$inputs = Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Updatevirtualmachinesnapshotmount" @"
+Write-Message "Invoke-RscMutateHyperv -UpdateVirtualMachineSnapshotMount" @"
 Power a Live Mount on and off
 
 Supported in v5.0+
@@ -1578,13 +1578,13 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Deletevirtualmachinesnapshotmount
+# Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Deletevirtualmachinesnapshotmount -GetInputs
+$inputs = Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Deletevirtualmachinesnapshotmount" @"
+Write-Message "Invoke-RscMutateHyperv -DeleteVirtualMachineSnapshotMount" @"
 Requst to delete a live mount
 
 Supported in v5.0+
@@ -1593,13 +1593,13 @@ Create a request to delete a live mount.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Refreshserver
+# Invoke-RscMutateHyperv -RefreshServer
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Refreshserver -GetInputs
+$inputs = Invoke-RscMutateHyperv -RefreshServer -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Refreshserver" @"
+Write-Message "Invoke-RscMutateHyperv -RefreshServer" @"
 Refresh Hyper-V host metadata
 
 Supported in v5.0+
@@ -1608,13 +1608,13 @@ Create a job to refresh the metadata for the specified Hyper-V host.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Batchondemandbackupvm
+# Invoke-RscMutateHyperv -BatchOnDemandBackupVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Batchondemandbackupvm -GetInputs
+$inputs = Invoke-RscMutateHyperv -BatchOnDemandBackupVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Batchondemandbackupvm" @"
+Write-Message "Invoke-RscMutateHyperv -BatchOnDemandBackupVm" @"
 Takes bulk on-demand backup of Hyper-V virtual machines
 
 Supported in v9.0
@@ -1623,13 +1623,13 @@ Takes on-demand backup of multiple specified Hyper-V virtual machines.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Batchexportvm
+# Invoke-RscMutateHyperv -BatchExportVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Batchexportvm -GetInputs
+$inputs = Invoke-RscMutateHyperv -BatchExportVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Batchexportvm" @"
+Write-Message "Invoke-RscMutateHyperv -BatchExportVm" @"
 Exports a snapshot from each member of a set of virtual machines
 
 Supported in v7.0+
@@ -1638,13 +1638,13 @@ Export a snapshot from each member of a set of virtual machines.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Batchmountvm
+# Invoke-RscMutateHyperv -BatchMountVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Batchmountvm -GetInputs
+$inputs = Invoke-RscMutateHyperv -BatchMountVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Batchmountvm" @"
+Write-Message "Invoke-RscMutateHyperv -BatchMountVm" @"
 Mount snapshots from multiple virtual machines
 
 Supported in v7.0+
@@ -1653,13 +1653,13 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Batchinstantrecovervm
+# Invoke-RscMutateHyperv -BatchInstantRecoverVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Batchinstantrecovervm -GetInputs
+$inputs = Invoke-RscMutateHyperv -BatchInstantRecoverVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Batchinstantrecovervm" @"
+Write-Message "Invoke-RscMutateHyperv -BatchInstantRecoverVm" @"
 Instantly recovers snapshots from multiple virtual machines
 
 Supported in v7.0+
@@ -1668,13 +1668,13 @@ Instantly recovers a batch of snapshots from a group of specified virtual machin
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Updatevirtualmachine
+# Invoke-RscMutateHyperv -UpdateVirtualMachine
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Updatevirtualmachine -GetInputs
+$inputs = Invoke-RscMutateHyperv -UpdateVirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Updatevirtualmachine" @"
+Write-Message "Invoke-RscMutateHyperv -UpdateVirtualMachine" @"
 Update VM
 
 Supported in v5.0+
@@ -1683,13 +1683,13 @@ Update VM with specified properties.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateHyperv -Downloadsnapshotfromlocation
+# Invoke-RscMutateHyperv -DownloadSnapshotFromLocation
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateHyperv -Downloadsnapshotfromlocation -GetInputs
+$inputs = Invoke-RscMutateHyperv -DownloadSnapshotFromLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateHyperv -Downloadsnapshotfromlocation" @"
+Write-Message "Invoke-RscMutateHyperv -DownloadSnapshotFromLocation" @"
 Download a snapshot from a replication target
 
 Supported in v7.0+
@@ -1699,62 +1699,62 @@ Initiates a job to download a snapshot from the specified location when the snap
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateLdap -Updateintegration
+# Invoke-RscMutateLdap -UpdateIntegration
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateLdap -Updateintegration -GetInputs
+$inputs = Invoke-RscMutateLdap -UpdateIntegration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateLdap -Updateintegration" @"
+Write-Message "Invoke-RscMutateLdap -UpdateIntegration" @"
 Mutate LDAP integration.
 "@ "[GraphQL: updateLdapIntegration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateLdap -Removeintegration
+# Invoke-RscMutateLdap -RemoveIntegration
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateLdap -Removeintegration -GetInputs
+$inputs = Invoke-RscMutateLdap -RemoveIntegration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateLdap -Removeintegration" @"
+Write-Message "Invoke-RscMutateLdap -RemoveIntegration" @"
 Remove LDAP integration.
 "@ "[GraphQL: removeLdapIntegration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateLdap -Deleteprincipal
+# Invoke-RscMutateLdap -DeletePrincipal
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateLdap -Deleteprincipal -GetInputs
+$inputs = Invoke-RscMutateLdap -DeletePrincipal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateLdap -Deleteprincipal" @"
+Write-Message "Invoke-RscMutateLdap -DeletePrincipal" @"
 
 "@ "[GraphQL: deleteLdapPrincipals]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateLdap -Setmfasetting
+# Invoke-RscMutateLdap -SetMfaSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateLdap -Setmfasetting -GetInputs
+$inputs = Invoke-RscMutateLdap -SetMfaSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateLdap -Setmfasetting" @"
+Write-Message "Invoke-RscMutateLdap -SetMfaSetting" @"
 Update the MFA settings for the given LDAP integration. Return true when the operation succeeds.
 "@ "[GraphQL: setLdapMfaSetting]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Addsource
+# Invoke-RscMutateMongo -AddSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Addsource -GetInputs
+$inputs = Invoke-RscMutateMongo -AddSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Addsource" @"
+Write-Message "Invoke-RscMutateMongo -AddSource" @"
 Add a new MongoDB source
 
 Supported in v8.1+
@@ -1763,13 +1763,13 @@ Adds a new MongoDB source to the Rubrik Cluster.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Deletesource
+# Invoke-RscMutateMongo -DeleteSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Deletesource -GetInputs
+$inputs = Invoke-RscMutateMongo -DeleteSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Deletesource" @"
+Write-Message "Invoke-RscMutateMongo -DeleteSource" @"
 Delete a MongoDB source
 
 Supported in v8.1+
@@ -1778,13 +1778,13 @@ Deletes a specific MongoDB source.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Discoversource
+# Invoke-RscMutateMongo -DiscoverSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Discoversource -GetInputs
+$inputs = Invoke-RscMutateMongo -DiscoverSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Discoversource" @"
+Write-Message "Invoke-RscMutateMongo -DiscoverSource" @"
 Discover a MongoDB source on-demand
 
 Supported in v8.1+
@@ -1793,13 +1793,13 @@ Initiates an on-demand job to discover a MongoDB source.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Patchsource
+# Invoke-RscMutateMongo -PatchSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Patchsource -GetInputs
+$inputs = Invoke-RscMutateMongo -PatchSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Patchsource" @"
+Write-Message "Invoke-RscMutateMongo -PatchSource" @"
 Edit a MongoDB source
 
 Supported in v8.1+
@@ -1808,13 +1808,13 @@ Edits the properties of a MongoDB source. Hosts, name, and type of MongoDB canno
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Retryaddsource
+# Invoke-RscMutateMongo -RetryAddSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Retryaddsource -GetInputs
+$inputs = Invoke-RscMutateMongo -RetryAddSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Retryaddsource" @"
+Write-Message "Invoke-RscMutateMongo -RetryAddSource" @"
 Update a MongoDB source
 
 Supported in v8.1+
@@ -1823,13 +1823,13 @@ Updates a MongoDB source details. You can use this endpoint for updating MongoDB
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Assignslatodbcollection
+# Invoke-RscMutateMongo -AssignSlaToDbCollection
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Assignslatodbcollection -GetInputs
+$inputs = Invoke-RscMutateMongo -AssignSlaToDbCollection -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Assignslatodbcollection" @"
+Write-Message "Invoke-RscMutateMongo -AssignSlaToDbCollection" @"
 Assign SLA Domain to MongoDB collection objects
 
 Supported in v8.1+
@@ -1838,25 +1838,25 @@ Assigns SLA Domain to the given MongoDB collection objects.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Recoversource
+# Invoke-RscMutateMongo -RecoverSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Recoversource -GetInputs
+$inputs = Invoke-RscMutateMongo -RecoverSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Recoversource" @"
+Write-Message "Invoke-RscMutateMongo -RecoverSource" @"
 Recover a MongoDB source from Rubrik CDM cluster.
 "@ "[GraphQL: recoverMongoSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Createdbsource
+# Invoke-RscMutateMongo -CreatedbSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Createdbsource -GetInputs
+$inputs = Invoke-RscMutateMongo -CreatedbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Createdbsource" @"
+Write-Message "Invoke-RscMutateMongo -CreatedbSource" @"
 Register a new MongoDB source to NoSQL cluster. 
 For MongoDB, the term ""source"" is usually used for either a replica set or a sharded cluster.
 For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/introduction/.
@@ -1864,37 +1864,37 @@ For more info on MongoDB cluster, refer to: https://docs.mongodb.com/manual/intr
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Updatedbsource
+# Invoke-RscMutateMongo -UpdatedbSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Updatedbsource -GetInputs
+$inputs = Invoke-RscMutateMongo -UpdatedbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Updatedbsource" @"
+Write-Message "Invoke-RscMutateMongo -UpdatedbSource" @"
 Modifies configuration for a registered MongoDB source in NoSQL cluster.
 "@ "[GraphQL: updateMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Deletedbsource
+# Invoke-RscMutateMongo -DeletedbSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Deletedbsource -GetInputs
+$inputs = Invoke-RscMutateMongo -DeletedbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Deletedbsource" @"
+Write-Message "Invoke-RscMutateMongo -DeletedbSource" @"
 Remove a registered MongoDB source from NoSQL cluster.
 "@ "[GraphQL: deleteMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Bulkdeletedbsource
+# Invoke-RscMutateMongo -BulkDeletedbSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Bulkdeletedbsource -GetInputs
+$inputs = Invoke-RscMutateMongo -BulkDeletedbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Bulkdeletedbsource" @"
+Write-Message "Invoke-RscMutateMongo -BulkDeletedbSource" @"
 Bulk Delete Sources
 
 Supported in m3.2.0-m4.2.0.
@@ -1902,110 +1902,110 @@ Supported in m3.2.0-m4.2.0.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMongo -Recoverdbsource
+# Invoke-RscMutateMongo -RecoverdbSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMongo -Recoverdbsource -GetInputs
+$inputs = Invoke-RscMutateMongo -RecoverdbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMongo -Recoverdbsource" @"
+Write-Message "Invoke-RscMutateMongo -RecoverdbSource" @"
 Recover a MongoDB source from NoSQL cluster.
 "@ "[GraphQL: recoverMongodbSource]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Browsedatabasesnapshot
+# Invoke-RscMutateMssql -BrowseDatabaseSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Browsedatabasesnapshot -GetInputs
+$inputs = Invoke-RscMutateMssql -BrowseDatabaseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Browsedatabasesnapshot" @"
+Write-Message "Invoke-RscMutateMssql -BrowseDatabaseSnapshot" @"
 List snapshots and logs from a Mssql Database. This endpoint is only used to fetch data, but uses a mutation instead of a query due to limitations with the CDM API.
 "@ "[GraphQL: browseMssqlDatabaseSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Exportdatabase
+# Invoke-RscMutateMssql -ExportDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Exportdatabase -GetInputs
+$inputs = Invoke-RscMutateMssql -ExportDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Exportdatabase" @"
+Write-Message "Invoke-RscMutateMssql -ExportDatabase" @"
 Create a request to export a Microsoft SQL database.
 "@ "[GraphQL: exportMssqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Restoredatabase
+# Invoke-RscMutateMssql -RestoreDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Restoredatabase -GetInputs
+$inputs = Invoke-RscMutateMssql -RestoreDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Restoredatabase" @"
+Write-Message "Invoke-RscMutateMssql -RestoreDatabase" @"
 Create a request to restore a Microsoft SQL database.
 "@ "[GraphQL: restoreMssqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Bulkupdatedb
+# Invoke-RscMutateMssql -BulkUpdateDb
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Bulkupdatedb -GetInputs
+$inputs = Invoke-RscMutateMssql -BulkUpdateDb -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Bulkupdatedb" @"
+Write-Message "Invoke-RscMutateMssql -BulkUpdateDb" @"
 Update multiple Microsoft SQL databases with the specified properties.
 "@ "[GraphQL: bulkUpdateMssqlDbs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Takelogbackup
+# Invoke-RscMutateMssql -TakeLogBackup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Takelogbackup -GetInputs
+$inputs = Invoke-RscMutateMssql -TakeLogBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Takelogbackup" @"
+Write-Message "Invoke-RscMutateMssql -TakeLogBackup" @"
 Take an on-demand log backup for a Microsoft SQL database.
 "@ "[GraphQL: takeMssqlLogBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Createondemandbackup
+# Invoke-RscMutateMssql -CreateOnDemandBackup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Createondemandbackup -GetInputs
+$inputs = Invoke-RscMutateMssql -CreateOnDemandBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Createondemandbackup" @"
+Write-Message "Invoke-RscMutateMssql -CreateOnDemandBackup" @"
 Take an on-demand backup of a Microsoft SQL Database
 "@ "[GraphQL: createOnDemandMssqlBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Deletedbsnapshot
+# Invoke-RscMutateMssql -DeleteDbSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Deletedbsnapshot -GetInputs
+$inputs = Invoke-RscMutateMssql -DeleteDbSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Deletedbsnapshot" @"
+Write-Message "Invoke-RscMutateMssql -DeleteDbSnapshot" @"
 Delete snapshots of a Microsoft SQL Database.
 "@ "[GraphQL: deleteMssqlDbSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Deletelivemount
+# Invoke-RscMutateMssql -DeleteLiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Deletelivemount -GetInputs
+$inputs = Invoke-RscMutateMssql -DeleteLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Deletelivemount" @"
+Write-Message "Invoke-RscMutateMssql -DeleteLiveMount" @"
 Delete a Live Mount of a SQL Server database
 
 Supported in v5.0+
@@ -2014,61 +2014,61 @@ Create an async request to delete a Live Mount of a SQL Server database. Poll th
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Bulkcreateondemandbackup
+# Invoke-RscMutateMssql -BulkCreateOnDemandBackup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Bulkcreateondemandbackup -GetInputs
+$inputs = Invoke-RscMutateMssql -BulkCreateOnDemandBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Bulkcreateondemandbackup" @"
+Write-Message "Invoke-RscMutateMssql -BulkCreateOnDemandBackup" @"
 Take a bulk on-demand backup of a Microsoft SQL Database.
 "@ "[GraphQL: bulkCreateOnDemandMssqlBackup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Createlivemount
+# Invoke-RscMutateMssql -CreateLiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Createlivemount -GetInputs
+$inputs = Invoke-RscMutateMssql -CreateLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Createlivemount" @"
+Write-Message "Invoke-RscMutateMssql -CreateLiveMount" @"
 Create live mount of a Microsoft SQL Database.
 "@ "[GraphQL: createMssqlLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Updatelogshippingconfiguration
+# Invoke-RscMutateMssql -UpdateLogShippingConfiguration
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Updatelogshippingconfiguration -GetInputs
+$inputs = Invoke-RscMutateMssql -UpdateLogShippingConfiguration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Updatelogshippingconfiguration" @"
+Write-Message "Invoke-RscMutateMssql -UpdateLogShippingConfiguration" @"
 Update log shipping configuration of a Microsoft SQL Database.
 "@ "[GraphQL: updateMssqlLogShippingConfiguration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Downloaddatabasefilesfromarchivallocation
+# Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Downloaddatabasefilesfromarchivallocation -GetInputs
+$inputs = Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Downloaddatabasefilesfromarchivallocation" @"
+Write-Message "Invoke-RscMutateMssql -DownloadDatabaseFilesFromArchivalLocation" @"
 Download Microsoft SQL Database backup files from archival location.
 "@ "[GraphQL: downloadMssqlDatabaseFilesFromArchivalLocation]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Downloaddatabasebackupfile
+# Invoke-RscMutateMssql -DownloadDatabaseBackupFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Downloaddatabasebackupfile -GetInputs
+$inputs = Invoke-RscMutateMssql -DownloadDatabaseBackupFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Downloaddatabasebackupfile" @"
+Write-Message "Invoke-RscMutateMssql -DownloadDatabaseBackupFile" @"
 Downloads a list of snapshot and log backups from a Microsoft SQL database
 
 Supported in v5.2+
@@ -2077,62 +2077,62 @@ Downloads a list of snapshot and log backups from a Microsoft SQL database.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Assignsladomainpropertie
+# Invoke-RscMutateMssql -AssignSlaDomainPropertie
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Assignsladomainpropertie -GetInputs
+$inputs = Invoke-RscMutateMssql -AssignSlaDomainPropertie -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Assignsladomainpropertie" @"
+Write-Message "Invoke-RscMutateMssql -AssignSlaDomainPropertie" @"
 Assign SLA domain properties to Mssql objects.
 "@ "[GraphQL: assignMssqlSlaDomainProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Updatedefaultpropertie
+# Invoke-RscMutateMssql -UpdateDefaultPropertie
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Updatedefaultpropertie -GetInputs
+$inputs = Invoke-RscMutateMssql -UpdateDefaultPropertie -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Updatedefaultpropertie" @"
+Write-Message "Invoke-RscMutateMssql -UpdateDefaultPropertie" @"
 Update the default properties for Microsoft SQL databases.
 "@ "[GraphQL: updateMssqlDefaultProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Createlogshippingconfiguration
+# Invoke-RscMutateMssql -CreateLogShippingConfiguration
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Createlogshippingconfiguration -GetInputs
+$inputs = Invoke-RscMutateMssql -CreateLogShippingConfiguration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Createlogshippingconfiguration" @"
+Write-Message "Invoke-RscMutateMssql -CreateLogShippingConfiguration" @"
 Create log shipping configuration of a Microsoft SQL Database.
 "@ "[GraphQL: createMssqlLogShippingConfiguration]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateMssql -Assignsladomainpropertiesasync
+# Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateMssql -Assignsladomainpropertiesasync -GetInputs
+$inputs = Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateMssql -Assignsladomainpropertiesasync" @"
+Write-Message "Invoke-RscMutateMssql -AssignSlaDomainPropertiesAsync" @"
 Assign SLA domain properties to Mssql objects.
 "@ "[GraphQL: assignMssqlSlaDomainPropertiesAsync]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Createcluster
+# Invoke-RscMutateNutanix -CreateCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Createcluster -GetInputs
+$inputs = Invoke-RscMutateNutanix -CreateCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Createcluster" @"
+Write-Message "Invoke-RscMutateNutanix -CreateCluster" @"
 Add Nutanix cluster
 
 Supported in v5.0+
@@ -2141,13 +2141,13 @@ Create a Nutanix cluster object by providing an address and account credentials 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Refreshcluster
+# Invoke-RscMutateNutanix -RefreshCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Refreshcluster -GetInputs
+$inputs = Invoke-RscMutateNutanix -RefreshCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Refreshcluster" @"
+Write-Message "Invoke-RscMutateNutanix -RefreshCluster" @"
 Refresh Nutanix cluster metadata
 
 Supported in v5.0+
@@ -2156,13 +2156,13 @@ Create a job to refresh the metadata for the specified Nutanix cluster.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Updatecluster
+# Invoke-RscMutateNutanix -UpdateCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Updatecluster -GetInputs
+$inputs = Invoke-RscMutateNutanix -UpdateCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Updatecluster" @"
+Write-Message "Invoke-RscMutateNutanix -UpdateCluster" @"
 Patch Nutanix cluster
 
 Supported in v5.0+
@@ -2171,13 +2171,13 @@ Patch the host, credentials, and/or CA certs of the specified Nutanix cluster ob
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Deletecluster
+# Invoke-RscMutateNutanix -DeleteCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Deletecluster -GetInputs
+$inputs = Invoke-RscMutateNutanix -DeleteCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Deletecluster" @"
+Write-Message "Invoke-RscMutateNutanix -DeleteCluster" @"
 Remove Nutanix cluster
 
 Supported in v5.0+
@@ -2186,13 +2186,13 @@ Initiates an asynchronous job to remove a Nutanix cluster object. The Nutanix cl
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Registeragentvm
+# Invoke-RscMutateNutanix -RegisterAgentVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Registeragentvm -GetInputs
+$inputs = Invoke-RscMutateNutanix -RegisterAgentVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Registeragentvm" @"
+Write-Message "Invoke-RscMutateNutanix -RegisterAgentVm" @"
 v5.0-v8.0: Register the agent installed on the Nutanix VM
 v8.1+: Register the agent installed on the Nutanix virtual machine
 
@@ -2204,13 +2204,13 @@ v8.1+: Register the agent installed on the Nutanix virtual machine.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Updatevm
+# Invoke-RscMutateNutanix -UpdateVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Updatevm -GetInputs
+$inputs = Invoke-RscMutateNutanix -UpdateVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Updatevm" @"
+Write-Message "Invoke-RscMutateNutanix -UpdateVm" @"
 v5.0-v8.0: Patch VM
 v8.1+: Patch virtual machine
 
@@ -2222,13 +2222,13 @@ v8.1+: Patch virtual machine with specified properties.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Createondemandbackup
+# Invoke-RscMutateNutanix -CreateOnDemandBackup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Createondemandbackup -GetInputs
+$inputs = Invoke-RscMutateNutanix -CreateOnDemandBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Createondemandbackup" @"
+Write-Message "Invoke-RscMutateNutanix -CreateOnDemandBackup" @"
 v5.0-v8.0: Create on-demand VM snapshot
 v8.1+: Create on-demand virtual machine snapshot
 
@@ -2240,13 +2240,13 @@ v8.1+: Create an on-demand snapshot for the given virtual machine ID.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Deletesnapshot
+# Invoke-RscMutateNutanix -DeleteSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Deletesnapshot -GetInputs
+$inputs = Invoke-RscMutateNutanix -DeleteSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Deletesnapshot" @"
+Write-Message "Invoke-RscMutateNutanix -DeleteSnapshot" @"
 v5.0-v8.0: Delete all snapshots of VM
 v8.1+: Delete all snapshots of virtual machine
 
@@ -2256,13 +2256,13 @@ Delete all snapshots of a virtual machine.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Mountsnapshotv1
+# Invoke-RscMutateNutanix -MountSnapshotV1
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Mountsnapshotv1 -GetInputs
+$inputs = Invoke-RscMutateNutanix -MountSnapshotV1 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Mountsnapshotv1" @"
+Write-Message "Invoke-RscMutateNutanix -MountSnapshotV1" @"
 Initiate a Live Mount of a Nutanix virtual machine snapshot
 
 Supported in v6.0+
@@ -2271,13 +2271,13 @@ Initiates a request to perform a Live Mount of a Nutanix virtual machine snapsho
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Patchmountv1
+# Invoke-RscMutateNutanix -PatchMountV1
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Patchmountv1 -GetInputs
+$inputs = Invoke-RscMutateNutanix -PatchMountV1 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Patchmountv1" @"
+Write-Message "Invoke-RscMutateNutanix -PatchMountV1" @"
 Change Nutanix Live Mount power status
 
 Supported in v6.0+
@@ -2286,13 +2286,13 @@ Changes the power status of a mounted Nutanix virtual machine.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Deletemountv1
+# Invoke-RscMutateNutanix -DeleteMountV1
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Deletemountv1 -GetInputs
+$inputs = Invoke-RscMutateNutanix -DeleteMountV1 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Deletemountv1" @"
+Write-Message "Invoke-RscMutateNutanix -DeleteMountV1" @"
 Remove a Live Mount of a Nutanix virtual machine snapshot
 
 Supported in v6.0+
@@ -2301,13 +2301,13 @@ Initiates a request to remove a Live Mount of a Nutanix virtual machine snapshot
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Migratemountv1
+# Invoke-RscMutateNutanix -MigrateMountV1
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Migratemountv1 -GetInputs
+$inputs = Invoke-RscMutateNutanix -MigrateMountV1 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Migratemountv1" @"
+Write-Message "Invoke-RscMutateNutanix -MigrateMountV1" @"
 Relocate a Nutanix virtual machine to another storage container
 
 Supported in v6.0+
@@ -2316,13 +2316,13 @@ Initiate a request to migrate the virtual disks of a specified Nutanix Live Moun
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Restorefilessnapshot
+# Invoke-RscMutateNutanix -RestoreFilesSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Restorefilessnapshot -GetInputs
+$inputs = Invoke-RscMutateNutanix -RestoreFilesSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Restorefilessnapshot" @"
+Write-Message "Invoke-RscMutateNutanix -RestoreFilesSnapshot" @"
 Restore files
 
 Supported in v5.0+
@@ -2331,13 +2331,13 @@ Restore files from a snapshot to the source Nutanix virtual machine.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Downloadfilessnapshot
+# Invoke-RscMutateNutanix -DownloadFilesSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Downloadfilessnapshot -GetInputs
+$inputs = Invoke-RscMutateNutanix -DownloadFilesSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Downloadfilessnapshot" @"
+Write-Message "Invoke-RscMutateNutanix -DownloadFilesSnapshot" @"
 v5.0-v8.0: Download files from a Nutanix VM backup
 v8.1+: Download files from a Nutanix virtual machine backup
 
@@ -2348,13 +2348,13 @@ v8.1+: Start an asynchronous job to download multiple files and folders from a s
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Exportsnapshot
+# Invoke-RscMutateNutanix -ExportSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Exportsnapshot -GetInputs
+$inputs = Invoke-RscMutateNutanix -ExportSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Exportsnapshot" @"
+Write-Message "Invoke-RscMutateNutanix -ExportSnapshot" @"
 v5.0-v8.0: Export VM snapshot
 v8.1+: Export virtual machine snapshot
 
@@ -2365,13 +2365,13 @@ v8.1+: Export snapshot of a virtual machine.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Downloadsnapshot
+# Invoke-RscMutateNutanix -DownloadSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Downloadsnapshot -GetInputs
+$inputs = Invoke-RscMutateNutanix -DownloadSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Downloadsnapshot" @"
+Write-Message "Invoke-RscMutateNutanix -DownloadSnapshot" @"
 Creates a download from archival request
 
 Supported in v5.0+
@@ -2380,13 +2380,13 @@ Download a snapshot from archival.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Batchexportvm
+# Invoke-RscMutateNutanix -BatchExportVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Batchexportvm -GetInputs
+$inputs = Invoke-RscMutateNutanix -BatchExportVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Batchexportvm" @"
+Write-Message "Invoke-RscMutateNutanix -BatchExportVm" @"
 Exports a snapshot from each member of a set of virtual machines
 
 Supported in v7.0+
@@ -2395,13 +2395,13 @@ Export a snapshot from each member of a set of virtual machines.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Batchmountvm
+# Invoke-RscMutateNutanix -BatchMountVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Batchmountvm -GetInputs
+$inputs = Invoke-RscMutateNutanix -BatchMountVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Batchmountvm" @"
+Write-Message "Invoke-RscMutateNutanix -BatchMountVm" @"
 Mount snapshots from multiple virtual machines
 
 Supported in v7.0+
@@ -2410,13 +2410,13 @@ Mounts a batch of snapshots from a group of specified virtual machines.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Downloadvmfromlocation
+# Invoke-RscMutateNutanix -DownloadVmFromLocation
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Downloadvmfromlocation -GetInputs
+$inputs = Invoke-RscMutateNutanix -DownloadVmFromLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Downloadvmfromlocation" @"
+Write-Message "Invoke-RscMutateNutanix -DownloadVmFromLocation" @"
 Download a snapshot from a replication target
 
 Supported in v7.0+
@@ -2425,13 +2425,13 @@ Initiates a job to download a snapshot from the specified location when the snap
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Createprismcentral
+# Invoke-RscMutateNutanix -CreatePrismCentral
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Createprismcentral -GetInputs
+$inputs = Invoke-RscMutateNutanix -CreatePrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Createprismcentral" @"
+Write-Message "Invoke-RscMutateNutanix -CreatePrismCentral" @"
 Add Nutanix Prism Central and it's corresponding Prism Elements
 
 Supported in v9.0
@@ -2440,13 +2440,13 @@ Create a Nutanix Prism Central object and refresh the Prism Elements present in 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Updateprismcentral
+# Invoke-RscMutateNutanix -UpdatePrismCentral
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Updateprismcentral -GetInputs
+$inputs = Invoke-RscMutateNutanix -UpdatePrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Updateprismcentral" @"
+Write-Message "Invoke-RscMutateNutanix -UpdatePrismCentral" @"
 Patch Nutanix Prism Central
 
 Supported in v9.0
@@ -2455,13 +2455,13 @@ Patch the host and credentials of Nutanix Prism Central.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Deleteprismcentral
+# Invoke-RscMutateNutanix -DeletePrismCentral
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Deleteprismcentral -GetInputs
+$inputs = Invoke-RscMutateNutanix -DeletePrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Deleteprismcentral" @"
+Write-Message "Invoke-RscMutateNutanix -DeletePrismCentral" @"
 Remove Nutanix Prism Central
 
 Supported in v9.0
@@ -2470,13 +2470,13 @@ Initiates an asynchronous job to remove a Nutanix Prism Central object. The Nuta
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Refreshprismcentral
+# Invoke-RscMutateNutanix -RefreshPrismCentral
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Refreshprismcentral -GetInputs
+$inputs = Invoke-RscMutateNutanix -RefreshPrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Refreshprismcentral" @"
+Write-Message "Invoke-RscMutateNutanix -RefreshPrismCentral" @"
 Refresh Nutanix Prism Central metadata
 
 Supported in v9.0
@@ -2485,13 +2485,13 @@ Initiates a job to refresh the metadata for the specified Nutanix Prism Central 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateNutanix -Bulkondemandsnapshotvm
+# Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateNutanix -Bulkondemandsnapshotvm -GetInputs
+$inputs = Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateNutanix -Bulkondemandsnapshotvm" @"
+Write-Message "Invoke-RscMutateNutanix -BulkOnDemandSnapshotVm" @"
 Take an on-demand snapshot for selected Nutanix virtual machines
 
 Supported in v9.0
@@ -2501,386 +2501,386 @@ Take bulk backups for multiple Nutanix virtual machines.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Saassetupkickoff
+# Invoke-RscMutateO365 -SaaSSetupKickoff
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Saassetupkickoff -GetInputs
+$inputs = Invoke-RscMutateO365 -SaaSSetupKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Saassetupkickoff" @"
+Write-Message "Invoke-RscMutateO365 -SaaSSetupKickoff" @"
 
 "@ "[GraphQL: o365SaaSSetupKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Pdlgroup
+# Invoke-RscMutateO365 -PdlGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Pdlgroup -GetInputs
+$inputs = Invoke-RscMutateO365 -PdlGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Pdlgroup" @"
+Write-Message "Invoke-RscMutateO365 -PdlGroup" @"
 Retrieve or create the groups corresponding to the preferred data location and workload pairings for use in role creation.
 "@ "[GraphQL: o365PdlGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Saassetupcomplete
+# Invoke-RscMutateO365 -SaasSetupComplete
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Saassetupcomplete -GetInputs
+$inputs = Invoke-RscMutateO365 -SaasSetupComplete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Saassetupcomplete" @"
+Write-Message "Invoke-RscMutateO365 -SaasSetupComplete" @"
 Completes a Rubrik-Hosted setup flow.
 "@ "[GraphQL: o365SaasSetupComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Setupkickoff
+# Invoke-RscMutateO365 -SetupKickoff
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Setupkickoff -GetInputs
+$inputs = Invoke-RscMutateO365 -SetupKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Setupkickoff" @"
+Write-Message "Invoke-RscMutateO365 -SetupKickoff" @"
 Kicks off an O365 subscription setup flow.
 "@ "[GraphQL: o365SetupKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Addorg
+# Invoke-RscMutateO365 -AddOrg
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Addorg -GetInputs
+$inputs = Invoke-RscMutateO365 -AddOrg -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Addorg" @"
+Write-Message "Invoke-RscMutateO365 -AddOrg" @"
 Adds an O365 org to the account.
 "@ "[GraphQL: addO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Oauthconsentkickoff
+# Invoke-RscMutateO365 -OauthConsentKickoff
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Oauthconsentkickoff -GetInputs
+$inputs = Invoke-RscMutateO365 -OauthConsentKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Oauthconsentkickoff" @"
+Write-Message "Invoke-RscMutateO365 -OauthConsentKickoff" @"
 Kicks off the OAuth consent flow for an O365 Azure AD App.
 "@ "[GraphQL: o365OauthConsentKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Oauthconsentcomplete
+# Invoke-RscMutateO365 -OauthConsentComplete
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Oauthconsentcomplete -GetInputs
+$inputs = Invoke-RscMutateO365 -OauthConsentComplete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Oauthconsentcomplete" @"
+Write-Message "Invoke-RscMutateO365 -OauthConsentComplete" @"
 Completes the OAuth consent flow for an O365 Azure AD App.
 "@ "[GraphQL: o365OauthConsentComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Createappkickoff
+# Invoke-RscMutateO365 -CreateAppKickoff
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Createappkickoff -GetInputs
+$inputs = Invoke-RscMutateO365 -CreateAppKickoff -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Createappkickoff" @"
+Write-Message "Invoke-RscMutateO365 -CreateAppKickoff" @"
 Kicks off the creation flow for an O365 Azure AD App.
 "@ "[GraphQL: createO365AppKickoff]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Createappcomplete
+# Invoke-RscMutateO365 -CreateAppComplete
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Createappcomplete -GetInputs
+$inputs = Invoke-RscMutateO365 -CreateAppComplete -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Createappcomplete" @"
+Write-Message "Invoke-RscMutateO365 -CreateAppComplete" @"
 Completes the creation flow for an O365 Azure AD App.
 "@ "[GraphQL: createO365AppComplete]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Insertcustomerapp
+# Invoke-RscMutateO365 -InsertCustomerApp
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Insertcustomerapp -GetInputs
+$inputs = Invoke-RscMutateO365 -InsertCustomerApp -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Insertcustomerapp" @"
+Write-Message "Invoke-RscMutateO365 -InsertCustomerApp" @"
 Inserts a Customer-hosted O365 Azure AD App.
 "@ "[GraphQL: insertCustomerO365App]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Updateappauthstatus
+# Invoke-RscMutateO365 -UpdateAppAuthStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Updateappauthstatus -GetInputs
+$inputs = Invoke-RscMutateO365 -UpdateAppAuthStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Updateappauthstatus" @"
+Write-Message "Invoke-RscMutateO365 -UpdateAppAuthStatus" @"
 Update O365 App authentication status to applicable app version.
 "@ "[GraphQL: updateO365AppAuthStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Updateapppermission
+# Invoke-RscMutateO365 -UpdateAppPermission
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Updateapppermission -GetInputs
+$inputs = Invoke-RscMutateO365 -UpdateAppPermission -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Updateapppermission" @"
+Write-Message "Invoke-RscMutateO365 -UpdateAppPermission" @"
 Update O365 Azure app permission in Azure AD portal.
 "@ "[GraphQL: updateO365AppPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Deleteazureapp
+# Invoke-RscMutateO365 -DeleteAzureApp
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Deleteazureapp -GetInputs
+$inputs = Invoke-RscMutateO365 -DeleteAzureApp -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Deleteazureapp" @"
+Write-Message "Invoke-RscMutateO365 -DeleteAzureApp" @"
 Deletes an O365 Azure AD App from the account.
 "@ "[GraphQL: deleteO365AzureApp]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Backupmailbox
+# Invoke-RscMutateO365 -BackupMailbox
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Backupmailbox -GetInputs
+$inputs = Invoke-RscMutateO365 -BackupMailbox -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Backupmailbox" @"
+Write-Message "Invoke-RscMutateO365 -BackupMailbox" @"
 Backup mailbox workload.
 "@ "[GraphQL: backupO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Backuponedrive
+# Invoke-RscMutateO365 -BackupOnedrive
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Backuponedrive -GetInputs
+$inputs = Invoke-RscMutateO365 -BackupOnedrive -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Backuponedrive" @"
+Write-Message "Invoke-RscMutateO365 -BackupOnedrive" @"
 Take on-demand snapshot for Onedrive.
 "@ "[GraphQL: backupO365Onedrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Backupsharepointdrive
+# Invoke-RscMutateO365 -BackupSharepointDrive
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Backupsharepointdrive -GetInputs
+$inputs = Invoke-RscMutateO365 -BackupSharepointDrive -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Backupsharepointdrive" @"
+Write-Message "Invoke-RscMutateO365 -BackupSharepointDrive" @"
 Take on-demand snapshot for Sharepoint drive.
 "@ "[GraphQL: backupO365SharepointDrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Backupsharepointlist
+# Invoke-RscMutateO365 -BackupSharepointList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Backupsharepointlist -GetInputs
+$inputs = Invoke-RscMutateO365 -BackupSharepointList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Backupsharepointlist" @"
+Write-Message "Invoke-RscMutateO365 -BackupSharepointList" @"
 Take on-demand snapshot for SharePoint list.
 "@ "[GraphQL: backupO365SharepointList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Backupsharepointsite
+# Invoke-RscMutateO365 -BackupSharePointSite
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Backupsharepointsite -GetInputs
+$inputs = Invoke-RscMutateO365 -BackupSharePointSite -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Backupsharepointsite" @"
+Write-Message "Invoke-RscMutateO365 -BackupSharePointSite" @"
 Take on-demand snapshot for a SharePoint site.
 "@ "[GraphQL: backupO365SharePointSite]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Backupteam
+# Invoke-RscMutateO365 -BackupTeam
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Backupteam -GetInputs
+$inputs = Invoke-RscMutateO365 -BackupTeam -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Backupteam" @"
+Write-Message "Invoke-RscMutateO365 -BackupTeam" @"
 Take on-demand snapshot for Teams.
 "@ "[GraphQL: backupO365Team]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Restoreteamsfile
+# Invoke-RscMutateO365 -RestoreTeamsFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Restoreteamsfile -GetInputs
+$inputs = Invoke-RscMutateO365 -RestoreTeamsFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Restoreteamsfile" @"
+Write-Message "Invoke-RscMutateO365 -RestoreTeamsFile" @"
 Restore Team files.
 "@ "[GraphQL: restoreO365TeamsFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Restoreteamsconversation
+# Invoke-RscMutateO365 -RestoreTeamsConversation
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Restoreteamsconversation -GetInputs
+$inputs = Invoke-RscMutateO365 -RestoreTeamsConversation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Restoreteamsconversation" @"
+Write-Message "Invoke-RscMutateO365 -RestoreTeamsConversation" @"
 Restore Team conversations.
 "@ "[GraphQL: restoreO365TeamsConversations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Restoresnappable
+# Invoke-RscMutateO365 -RestoreSnappable
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Restoresnappable -GetInputs
+$inputs = Invoke-RscMutateO365 -RestoreSnappable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Restoresnappable" @"
+Write-Message "Invoke-RscMutateO365 -RestoreSnappable" @"
 Restores an O365 snappable.
 "@ "[GraphQL: restoreO365Snappable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Refreshorg
+# Invoke-RscMutateO365 -RefreshOrg
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Refreshorg -GetInputs
+$inputs = Invoke-RscMutateO365 -RefreshOrg -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Refreshorg" @"
+Write-Message "Invoke-RscMutateO365 -RefreshOrg" @"
 Refreshes an O365 org.
 "@ "[GraphQL: refreshO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Deleteorg
+# Invoke-RscMutateO365 -DeleteOrg
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Deleteorg -GetInputs
+$inputs = Invoke-RscMutateO365 -DeleteOrg -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Deleteorg" @"
+Write-Message "Invoke-RscMutateO365 -DeleteOrg" @"
 Deletes an O365 org from the account.
 "@ "[GraphQL: deleteO365Org]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Restoremailbox
+# Invoke-RscMutateO365 -RestoreMailbox
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Restoremailbox -GetInputs
+$inputs = Invoke-RscMutateO365 -RestoreMailbox -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Restoremailbox" @"
+Write-Message "Invoke-RscMutateO365 -RestoreMailbox" @"
 Restores an Exchange mailbox.
 "@ "[GraphQL: restoreO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Exportmailbox
+# Invoke-RscMutateO365 -ExportMailbox
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Exportmailbox -GetInputs
+$inputs = Invoke-RscMutateO365 -ExportMailbox -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Exportmailbox" @"
+Write-Message "Invoke-RscMutateO365 -ExportMailbox" @"
 Exports an Exchange mailbox.
 "@ "[GraphQL: exportO365Mailbox]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Setserviceaccount
+# Invoke-RscMutateO365 -SetServiceAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Setserviceaccount -GetInputs
+$inputs = Invoke-RscMutateO365 -SetServiceAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Setserviceaccount" @"
+Write-Message "Invoke-RscMutateO365 -SetServiceAccount" @"
 Sets the service account for the org.
 "@ "[GraphQL: setO365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Enablesharepoint
+# Invoke-RscMutateO365 -EnableSharePoint
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Enablesharepoint -GetInputs
+$inputs = Invoke-RscMutateO365 -EnableSharePoint -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Enablesharepoint" @"
+Write-Message "Invoke-RscMutateO365 -EnableSharePoint" @"
 Enables SharePoint protection in the exocompute cluster.
 "@ "[GraphQL: enableO365SharePoint]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Enableteam
+# Invoke-RscMutateO365 -EnableTeam
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Enableteam -GetInputs
+$inputs = Invoke-RscMutateO365 -EnableTeam -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Enableteam" @"
+Write-Message "Invoke-RscMutateO365 -EnableTeam" @"
 Enables Teams protection in the exocompute cluster.
 "@ "[GraphQL: enableO365Teams]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Deleteserviceaccount
+# Invoke-RscMutateO365 -DeleteServiceAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Deleteserviceaccount -GetInputs
+$inputs = Invoke-RscMutateO365 -DeleteServiceAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Deleteserviceaccount" @"
+Write-Message "Invoke-RscMutateO365 -DeleteServiceAccount" @"
 Deletes the service account for an org.
 "@ "[GraphQL: deleteO365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateO365 -Updateorgcustomname
+# Invoke-RscMutateO365 -UpdateOrgCustomName
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateO365 -Updateorgcustomname -GetInputs
+$inputs = Invoke-RscMutateO365 -UpdateOrgCustomName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateO365 -Updateorgcustomname" @"
+Write-Message "Invoke-RscMutateO365 -UpdateOrgCustomName" @"
 Update the custom name for an O365 Organization.
 "@ "[GraphQL: updateO365OrgCustomName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Bulkupdatehost
+# Invoke-RscMutateOracle -BulkUpdateHost
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Bulkupdatehost -GetInputs
+$inputs = Invoke-RscMutateOracle -BulkUpdateHost -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Bulkupdatehost" @"
+Write-Message "Invoke-RscMutateOracle -BulkUpdateHost" @"
 Update Oracle Hosts
 
 Supported in v5.2+
@@ -2889,13 +2889,13 @@ Update properties to Oracle Host objects.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Refreshdatabase
+# Invoke-RscMutateOracle -RefreshDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Refreshdatabase -GetInputs
+$inputs = Invoke-RscMutateOracle -RefreshDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Refreshdatabase" @"
+Write-Message "Invoke-RscMutateOracle -RefreshDatabase" @"
 Refresh an Oracle database
 
 Supported in v6.0+
@@ -2904,13 +2904,13 @@ Starts an asynchronous job to refresh the Oracle database metadata by querying t
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Updatedataguardgroup
+# Invoke-RscMutateOracle -UpdateDataGuardGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Updatedataguardgroup -GetInputs
+$inputs = Invoke-RscMutateOracle -UpdateDataGuardGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Updatedataguardgroup" @"
+Write-Message "Invoke-RscMutateOracle -UpdateDataGuardGroup" @"
 Update an Oracle Data Guard group
 
 Supported in v6.0+
@@ -2919,13 +2919,13 @@ Update properties of an Oracle Data Guard group object.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Deletealldatabasesnapshot
+# Invoke-RscMutateOracle -DeleteAllDatabaseSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Deletealldatabasesnapshot -GetInputs
+$inputs = Invoke-RscMutateOracle -DeleteAllDatabaseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Deletealldatabasesnapshot" @"
+Write-Message "Invoke-RscMutateOracle -DeleteAllDatabaseSnapshot" @"
 Delete Oracle database snapshots
 
 Supported in v5.0+
@@ -2934,13 +2934,13 @@ Delete all snapshots for a specified Oracle database object. For the operation t
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Takeondemanddatabasesnapshot
+# Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Takeondemanddatabasesnapshot -GetInputs
+$inputs = Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Takeondemanddatabasesnapshot" @"
+Write-Message "Invoke-RscMutateOracle -TakeOnDemandDatabaseSnapshot" @"
 On-demand backup of an Oracle database
 
 Supported in v5.0+
@@ -2949,13 +2949,13 @@ Create an asynchronous job for an on-demand snapshot of an Oracle database. The 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Takeondemandlogsnapshot
+# Invoke-RscMutateOracle -TakeOnDemandLogSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Takeondemandlogsnapshot -GetInputs
+$inputs = Invoke-RscMutateOracle -TakeOnDemandLogSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Takeondemandlogsnapshot" @"
+Write-Message "Invoke-RscMutateOracle -TakeOnDemandLogSnapshot" @"
 On-demand log backup for an Oracle database log
 
 Supported in v5.0+
@@ -2964,13 +2964,13 @@ Create an asynchronous job for an on-demand backup of an Oracle database log. Th
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Bulkupdaterac
+# Invoke-RscMutateOracle -BulkUpdateRac
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Bulkupdaterac -GetInputs
+$inputs = Invoke-RscMutateOracle -BulkUpdateRac -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Bulkupdaterac" @"
+Write-Message "Invoke-RscMutateOracle -BulkUpdateRac" @"
 Update Oracle RACs
 
 Supported in v5.2+
@@ -2979,13 +2979,13 @@ Update the properties of the objects that represent the specified Oracle RAC.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Exporttablespace
+# Invoke-RscMutateOracle -ExportTablespace
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Exporttablespace -GetInputs
+$inputs = Invoke-RscMutateOracle -ExportTablespace -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Exporttablespace" @"
+Write-Message "Invoke-RscMutateOracle -ExportTablespace" @"
 Export an Oracle tablespace
 
 Supported in v5.0+
@@ -2994,13 +2994,13 @@ Request an asynchronous job to export an Oracle tablespace from a specified snap
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Validateacofile
+# Invoke-RscMutateOracle -ValidateAcoFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Validateacofile -GetInputs
+$inputs = Invoke-RscMutateOracle -ValidateAcoFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Validateacofile" @"
+Write-Message "Invoke-RscMutateOracle -ValidateAcoFile" @"
 Validate Oracle ACO file
 
 Supported in v6.0+
@@ -3009,13 +3009,13 @@ Validate the provided Oracle ACO (Advanced Cloning Options) file.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Validatedatabasebackup
+# Invoke-RscMutateOracle -ValidateDatabaseBackup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Validatedatabasebackup -GetInputs
+$inputs = Invoke-RscMutateOracle -ValidateDatabaseBackup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Validatedatabasebackup" @"
+Write-Message "Invoke-RscMutateOracle -ValidateDatabaseBackup" @"
 Validate Oracle database backups
 
 Supported in v5.3+
@@ -3024,13 +3024,13 @@ Queue a job to validate Oracle backups for a database snapshot or a specified ti
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Bulkupdatedatabase
+# Invoke-RscMutateOracle -BulkUpdateDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Bulkupdatedatabase -GetInputs
+$inputs = Invoke-RscMutateOracle -BulkUpdateDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Bulkupdatedatabase" @"
+Write-Message "Invoke-RscMutateOracle -BulkUpdateDatabase" @"
 Update Oracle Databases
 
 Supported in v5.2+
@@ -3039,13 +3039,13 @@ Update the properties of the objects that represent the specified Oracle Databas
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Instantrecoversnapshot
+# Invoke-RscMutateOracle -InstantRecoverSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Instantrecoversnapshot -GetInputs
+$inputs = Invoke-RscMutateOracle -InstantRecoverSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Instantrecoversnapshot" @"
+Write-Message "Invoke-RscMutateOracle -InstantRecoverSnapshot" @"
 Instant recovery of a database
 
 Supported in v5.0+
@@ -3054,13 +3054,13 @@ Creates an instant recover request that restores a target database from the give
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Mountdatabase
+# Invoke-RscMutateOracle -MountDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Mountdatabase -GetInputs
+$inputs = Invoke-RscMutateOracle -MountDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Mountdatabase" @"
+Write-Message "Invoke-RscMutateOracle -MountDatabase" @"
 Live Mount an Oracle database snapshot
 
 Supported in v5.0+
@@ -3069,13 +3069,13 @@ Create an asynchronous job to Live Mount an Oracle database from a snapshot.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Exportdatabase
+# Invoke-RscMutateOracle -ExportDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Exportdatabase -GetInputs
+$inputs = Invoke-RscMutateOracle -ExportDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Exportdatabase" @"
+Write-Message "Invoke-RscMutateOracle -ExportDatabase" @"
 Export an Oracle database
 
 Supported in v5.0+
@@ -3084,13 +3084,13 @@ Request an asynchronous job to export an Oracle database from a specified snapsh
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Createpdbrestore
+# Invoke-RscMutateOracle -CreatePdbRestore
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Createpdbrestore -GetInputs
+$inputs = Invoke-RscMutateOracle -CreatePdbRestore -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Createpdbrestore" @"
+Write-Message "Invoke-RscMutateOracle -CreatePdbRestore" @"
 Restore PDBs on an Oracle database
 
 Supported in v8.0+
@@ -3099,13 +3099,13 @@ Initiates an asynchronous request to restore PDBs on an Oracle database from a s
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Downloaddatabasesnapshot
+# Invoke-RscMutateOracle -DownloadDatabaseSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Downloaddatabasesnapshot -GetInputs
+$inputs = Invoke-RscMutateOracle -DownloadDatabaseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Downloaddatabasesnapshot" @"
+Write-Message "Invoke-RscMutateOracle -DownloadDatabaseSnapshot" @"
 Download Oracle snapshot from cloud
 
 Supported in v5.0+
@@ -3114,13 +3114,13 @@ Create an asynchronous job to download an Oracle database snapshot and associate
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Deletemount
+# Invoke-RscMutateOracle -DeleteMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Deletemount -GetInputs
+$inputs = Invoke-RscMutateOracle -DeleteMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Deletemount" @"
+Write-Message "Invoke-RscMutateOracle -DeleteMount" @"
 Delete an Oracle database Live Mount
 
 Supported in v5.0+
@@ -3129,13 +3129,13 @@ Request an asynchronous job to delete a specified Live Mount of an Oracle databa
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateOracle -Restorelog
+# Invoke-RscMutateOracle -RestoreLog
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateOracle -Restorelog -GetInputs
+$inputs = Invoke-RscMutateOracle -RestoreLog -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateOracle -Restorelog" @"
+Write-Message "Invoke-RscMutateOracle -RestoreLog" @"
 Restore archive logs of an Oracle database
 
 Supported in v6.0+
@@ -3146,49 +3146,49 @@ v7.0+: Starts an asynchronous job to restore archive logs of an Oracle database.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Createglobal
+# Invoke-RscMutateSla -CreateGlobal
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Createglobal -GetInputs
+$inputs = Invoke-RscMutateSla -CreateGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Createglobal" @"
+Write-Message "Invoke-RscMutateSla -CreateGlobal" @"
 Create SLA Domain.
 "@ "[GraphQL: createGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Editglobal
+# Invoke-RscMutateSla -EditGlobal
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Editglobal -GetInputs
+$inputs = Invoke-RscMutateSla -EditGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Editglobal" @"
+Write-Message "Invoke-RscMutateSla -EditGlobal" @"
 
 "@ "[GraphQL: editGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Updateglobal
+# Invoke-RscMutateSla -UpdateGlobal
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Updateglobal -GetInputs
+$inputs = Invoke-RscMutateSla -UpdateGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Updateglobal" @"
+Write-Message "Invoke-RscMutateSla -UpdateGlobal" @"
 Update SLA Domain.
 "@ "[GraphQL: updateGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Deleteglobal
+# Invoke-RscMutateSla -DeleteGlobal
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Deleteglobal -GetInputs
+$inputs = Invoke-RscMutateSla -DeleteGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Deleteglobal" @"
+Write-Message "Invoke-RscMutateSla -DeleteGlobal" @"
 
 "@ "[GraphQL: deleteGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -3206,37 +3206,37 @@ Endpoint to assign SLA Domain.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Assignsforsnappablehierarchie
+# Invoke-RscMutateSla -AssignsForSnappableHierarchie
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Assignsforsnappablehierarchie -GetInputs
+$inputs = Invoke-RscMutateSla -AssignsForSnappableHierarchie -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Assignsforsnappablehierarchie" @"
+Write-Message "Invoke-RscMutateSla -AssignsForSnappableHierarchie" @"
 
 "@ "[GraphQL: assignSlasForSnappableHierarchies]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Assignretentiontosnappable
+# Invoke-RscMutateSla -AssignRetentionToSnappable
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Assignretentiontosnappable -GetInputs
+$inputs = Invoke-RscMutateSla -AssignRetentionToSnappable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Assignretentiontosnappable" @"
+Write-Message "Invoke-RscMutateSla -AssignRetentionToSnappable" @"
 
 "@ "[GraphQL: assignRetentionSLAToSnappables]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Assignretentiontosnapshot
+# Invoke-RscMutateSla -AssignRetentionToSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Assignretentiontosnapshot -GetInputs
+$inputs = Invoke-RscMutateSla -AssignRetentionToSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Assignretentiontosnapshot" @"
+Write-Message "Invoke-RscMutateSla -AssignRetentionToSnapshot" @"
 
 "@ "[GraphQL: assignRetentionSLAToSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -3266,13 +3266,13 @@ Upgrade SLA Domains from the Rubrik clusters.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Getpendingassignment
+# Invoke-RscMutateSla -GetPendingAssignment
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Getpendingassignment -GetInputs
+$inputs = Invoke-RscMutateSla -GetPendingAssignment -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Getpendingassignment" @"
+Write-Message "Invoke-RscMutateSla -GetPendingAssignment" @"
 Get pending SLA Domain assignments on selected managed objects
 
 Supported in v5.2+
@@ -3281,13 +3281,13 @@ Retrieve the details of pending SLA Domain assignments on the given managed obje
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateSla -Exportmanagedvolumesnapshot
+# Invoke-RscMutateSla -ExportManagedVolumeSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateSla -Exportmanagedvolumesnapshot -GetInputs
+$inputs = Invoke-RscMutateSla -ExportManagedVolumeSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateSla -Exportmanagedvolumesnapshot" @"
+Write-Message "Invoke-RscMutateSla -ExportManagedVolumeSnapshot" @"
 Create a request to export a snapshot and mount it on a host
 
 Supported in v5.3+
@@ -3363,13 +3363,13 @@ Update the address, username and password of the specified vCenter Server object
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -Updatehotaddnetwork
+# Invoke-RscMutateVcenter -UpdateHotAddNetwork
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVcenter -Updatehotaddnetwork -GetInputs
+$inputs = Invoke-RscMutateVcenter -UpdateHotAddNetwork -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVcenter -Updatehotaddnetwork" @"
+Write-Message "Invoke-RscMutateVcenter -UpdateHotAddNetwork" @"
 Set the user-configured network for HotAdd backup and recovery
 
 Supported in v5.3+
@@ -3378,13 +3378,13 @@ Set the user-configured network for HotAdd backup and recovery operations on VMw
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVcenter -Updatehotaddbandwidth
+# Invoke-RscMutateVcenter -UpdateHotAddBandwidth
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVcenter -Updatehotaddbandwidth -GetInputs
+$inputs = Invoke-RscMutateVcenter -UpdateHotAddBandwidth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVcenter -Updatehotaddbandwidth" @"
+Write-Message "Invoke-RscMutateVcenter -UpdateHotAddBandwidth" @"
 Set the ingest and export bandwidth limits for HotAdd with the vCenter
 
 Supported in v5.3+
@@ -3394,37 +3394,37 @@ Set the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Ondemandsnapshot
+# Invoke-RscMutateVsphere -OnDemandSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Ondemandsnapshot -GetInputs
+$inputs = Invoke-RscMutateVsphere -OnDemandSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Ondemandsnapshot" @"
+Write-Message "Invoke-RscMutateVsphere -OnDemandSnapshot" @"
 
 "@ "[GraphQL: vsphereOnDemandSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Bulkondemandsnapshot
+# Invoke-RscMutateVsphere -BulkOnDemandSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Bulkondemandsnapshot -GetInputs
+$inputs = Invoke-RscMutateVsphere -BulkOnDemandSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Bulkondemandsnapshot" @"
+Write-Message "Invoke-RscMutateVsphere -BulkOnDemandSnapshot" @"
 Trigger a bulk on demand snapshot.
 "@ "[GraphQL: vsphereBulkOnDemandSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Deletelivemount
+# Invoke-RscMutateVsphere -DeleteLiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Deletelivemount -GetInputs
+$inputs = Invoke-RscMutateVsphere -DeleteLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Deletelivemount" @"
+Write-Message "Invoke-RscMutateVsphere -DeleteLiveMount" @"
 Delete a Live Mount VM
 
 Supported in v5.0+
@@ -3433,37 +3433,37 @@ Create a request to delete a Live Mount virtual machine.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Exportsnapshottostandalonehostv2
+# Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Exportsnapshottostandalonehostv2 -GetInputs
+$inputs = Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Exportsnapshottostandalonehostv2" @"
+Write-Message "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHostV2" @"
 Export snapshot of a virtual machine to standalone ESXi server.
 "@ "[GraphQL: vsphereExportSnapshotToStandaloneHostV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Exportsnapshottostandalonehost
+# Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Exportsnapshottostandalonehost -GetInputs
+$inputs = Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Exportsnapshottostandalonehost" @"
+Write-Message "Invoke-RscMutateVsphere -ExportSnapshotToStandaloneHost" @"
 
 "@ "[GraphQL: vsphereExportSnapshotToStandaloneHost]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Downloadvirtualmachinefile
+# Invoke-RscMutateVsphere -DownloadVirtualMachineFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Downloadvirtualmachinefile -GetInputs
+$inputs = Invoke-RscMutateVsphere -DownloadVirtualMachineFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Downloadvirtualmachinefile" @"
+Write-Message "Invoke-RscMutateVsphere -DownloadVirtualMachineFile" @"
 Download Virtual Machine files from a snapshot
 
 Supported in v9.0
@@ -3472,13 +3472,13 @@ Start an asynchronous job to download multiple Virtual Machine files, such as .v
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Createadvancedtag
+# Invoke-RscMutateVsphere -CreateAdvancedTag
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Createadvancedtag -GetInputs
+$inputs = Invoke-RscMutateVsphere -CreateAdvancedTag -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Createadvancedtag" @"
+Write-Message "Invoke-RscMutateVsphere -CreateAdvancedTag" @"
 Create a multi-tag filter for vSphere tags
 
 Supported in v7.0+
@@ -3487,13 +3487,13 @@ Create a filter consisting of vSphere tags joined with logical operators.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Deleteadvancedtag
+# Invoke-RscMutateVsphere -DeleteAdvancedTag
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Deleteadvancedtag -GetInputs
+$inputs = Invoke-RscMutateVsphere -DeleteAdvancedTag -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Deleteadvancedtag" @"
+Write-Message "Invoke-RscMutateVsphere -DeleteAdvancedTag" @"
 Remove the multi-tag filter
 
 Supported in v7.0+
@@ -3502,13 +3502,13 @@ Remove the multi-tag filter.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphere -Updateadvancedtag
+# Invoke-RscMutateVsphere -UpdateAdvancedTag
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphere -Updateadvancedtag -GetInputs
+$inputs = Invoke-RscMutateVsphere -UpdateAdvancedTag -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphere -Updateadvancedtag" @"
+Write-Message "Invoke-RscMutateVsphere -UpdateAdvancedTag" @"
 Update the multi-tag filter
 
 Supported in v7.0+
@@ -3518,37 +3518,37 @@ Updates the name, condition, and description of the specified multi-tag filter.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Recoverfile
+# Invoke-RscMutateVsphereVm -RecoverFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Recoverfile -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -RecoverFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Recoverfile" @"
+Write-Message "Invoke-RscMutateVsphereVm -RecoverFile" @"
 Restores multiple files/directories from snapshot.
 "@ "[GraphQL: vsphereVmRecoverFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Recoverfilesnew
+# Invoke-RscMutateVsphereVm -RecoverFilesNew
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Recoverfilesnew -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -RecoverFilesNew -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Recoverfilesnew" @"
+Write-Message "Invoke-RscMutateVsphereVm -RecoverFilesNew" @"
 Restores multiple files/directories from snapshot.
 "@ "[GraphQL: vsphereVmRecoverFilesNew]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Registeragent
+# Invoke-RscMutateVsphereVm -RegisterAgent
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Registeragent -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -RegisterAgent -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Registeragent" @"
+Write-Message "Invoke-RscMutateVsphereVm -RegisterAgent" @"
 Register Rubrik Backup Service
 
 Supported in v5.0+
@@ -3557,13 +3557,13 @@ Register the Rubrik Backup Service that is running on a specified host with the 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Downloadsnapshot
+# Invoke-RscMutateVsphereVm -DownloadSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Downloadsnapshot -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -DownloadSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Downloadsnapshot" @"
+Write-Message "Invoke-RscMutateVsphereVm -DownloadSnapshot" @"
 Download snapshot from archive
 
 Supported in v5.0+
@@ -3572,85 +3572,85 @@ Provides a method for retrieving a snapshot, that is not available locally, from
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Exportsnapshot
+# Invoke-RscMutateVsphereVm -ExportSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Exportsnapshot -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -ExportSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Exportsnapshot" @"
+Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshot" @"
 
 "@ "[GraphQL: vsphereVMExportSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Exportsnapshotv2
+# Invoke-RscMutateVsphereVm -ExportSnapshotV2
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Exportsnapshotv2 -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -ExportSnapshotV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Exportsnapshotv2" @"
+Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotV2" @"
 Create a vSphere Export from a snapshot or a point-in-time.
 "@ "[GraphQL: vsphereVmExportSnapshotV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Exportsnapshotv3
+# Invoke-RscMutateVsphereVm -ExportSnapshotV3
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Exportsnapshotv3 -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -ExportSnapshotV3 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Exportsnapshotv3" @"
+Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotV3" @"
 Create a vSphere Export from a snapshot or a point-in-time with datastore cluster and virtual disk mapping support.
 "@ "[GraphQL: vsphereVmExportSnapshotV3]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Batchexport
+# Invoke-RscMutateVsphereVm -BatchExport
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Batchexport -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -BatchExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Batchexport" @"
+Write-Message "Invoke-RscMutateVsphereVm -BatchExport" @"
 Create a mass export for a group of virtual machines.
 "@ "[GraphQL: vsphereVmBatchExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Batchexportv3
+# Invoke-RscMutateVsphereVm -BatchExportV3
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Batchexportv3 -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -BatchExportV3 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Batchexportv3" @"
+Write-Message "Invoke-RscMutateVsphereVm -BatchExportV3" @"
 Create a batch export for a group of virtual machines with datastore cluster support.
 "@ "[GraphQL: vsphereVmBatchExportV3]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Initiateinplacerecovery
+# Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Initiateinplacerecovery -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Initiateinplacerecovery" @"
+Write-Message "Invoke-RscMutateVsphereVm -InitiateInPlaceRecovery" @"
 Trigger an in-place recovery from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateInPlaceRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Exportsnapshotwithdownloadfromcloud
+# Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Exportsnapshotwithdownloadfromcloud -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Exportsnapshotwithdownloadfromcloud" @"
+Write-Message "Invoke-RscMutateVsphereVm -ExportSnapshotWithDownloadFromCloud" @"
 Download a snapshot from an archival location, then export a virtual machine using the downloaded snapshot
 
 Supported in v5.3+
@@ -3659,25 +3659,25 @@ Download a snapshot from an archival location and then export a virtual machine 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Batchinplacerecovery
+# Invoke-RscMutateVsphereVm -BatchInPlaceRecovery
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Batchinplacerecovery -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -BatchInPlaceRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Batchinplacerecovery" @"
+Write-Message "Invoke-RscMutateVsphereVm -BatchInPlaceRecovery" @"
 Supported in v6.0+. Export a snapshot each from a set of virtual machines.
 "@ "[GraphQL: vsphereVmBatchInPlaceRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Deletesnapshot
+# Invoke-RscMutateVsphereVm -DeleteSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Deletesnapshot -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -DeleteSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Deletesnapshot" @"
+Write-Message "Invoke-RscMutateVsphereVm -DeleteSnapshot" @"
 Designate a snapshot as expired and available for garbage collection. The snapshot must be an on-demand snapshot or a snapshot from a virtual machine that is not assigned to an SLA Domain.
 "@ "[GraphQL: vsphereVmDeleteSnapshot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -3695,49 +3695,49 @@ Write-Message "Invoke-RscMutateVsphereVm -Update" @"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Initiateinstantrecovery
+# Invoke-RscMutateVsphereVm -InitiateInstantRecovery
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Initiateinstantrecovery -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -InitiateInstantRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Initiateinstantrecovery" @"
+Write-Message "Invoke-RscMutateVsphereVm -InitiateInstantRecovery" @"
 
 "@ "[GraphQL: vsphereVMInitiateInstantRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Initiateinstantrecoveryv2
+# Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Initiateinstantrecoveryv2 -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Initiateinstantrecoveryv2" @"
+Write-Message "Invoke-RscMutateVsphereVm -InitiateInstantRecoveryV2" @"
 Instantly recover a vSphere virtual machine from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateInstantRecoveryV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Initiatebatchinstantrecovery
+# Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Initiatebatchinstantrecovery -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Initiatebatchinstantrecovery" @"
+Write-Message "Invoke-RscMutateVsphereVm -InitiateBatchInstantRecovery" @"
 Initiate a mass instant recovery for a group of VMs.
 "@ "[GraphQL: vsphereVmInitiateBatchInstantRecovery]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Initiatediskmount
+# Invoke-RscMutateVsphereVm -InitiateDiskMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Initiatediskmount -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -InitiateDiskMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Initiatediskmount" @"
+Write-Message "Invoke-RscMutateVsphereVm -InitiateDiskMount" @"
 Attaching disks from a snapshot to an existing virtual machine
 
 Supported in v5.0+
@@ -3746,61 +3746,61 @@ Requests a snapshot mount to attach disks to an existing virtual machine.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Initiatelivemount
+# Invoke-RscMutateVsphereVm -InitiateLiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Initiatelivemount -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -InitiateLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Initiatelivemount" @"
+Write-Message "Invoke-RscMutateVsphereVm -InitiateLiveMount" @"
 
 "@ "[GraphQL: vsphereVMInitiateLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Initiatelivemountv2
+# Invoke-RscMutateVsphereVm -InitiateLiveMountV2
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Initiatelivemountv2 -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -InitiateLiveMountV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Initiatelivemountv2" @"
+Write-Message "Invoke-RscMutateVsphereVm -InitiateLiveMountV2" @"
 Create a vSphere Live Mount from a snapshot or point-in-time.
 "@ "[GraphQL: vsphereVmInitiateLiveMountV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Batchlivemount
+# Invoke-RscMutateVsphereVm -BatchLiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Batchlivemount -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -BatchLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Batchlivemount" @"
+Write-Message "Invoke-RscMutateVsphereVm -BatchLiveMount" @"
 
 "@ "[GraphQL: vSphereVMBatchLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Initiatebatchlivemountv2
+# Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Initiatebatchlivemountv2 -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Initiatebatchlivemountv2" @"
+Write-Message "Invoke-RscMutateVsphereVm -InitiateBatchLiveMountV2" @"
 Initiate a mass live mount for a group of VMs.
 "@ "[GraphQL: vsphereVmInitiateBatchLiveMountV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Poweronofflivemount
+# Invoke-RscMutateVsphereVm -PowerOnOffLiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Poweronofflivemount -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -PowerOnOffLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Poweronofflivemount" @"
+Write-Message "Invoke-RscMutateVsphereVm -PowerOnOffLiveMount" @"
 Power a Live Mount on and off
 
 Supported in v5.0+
@@ -3809,25 +3809,25 @@ Power a specified Live Mount virtual machine on or off. Pass **_true_** to power
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Deletelivemount
+# Invoke-RscMutateVsphereVm -DeleteLiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Deletelivemount -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -DeleteLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Deletelivemount" @"
+Write-Message "Invoke-RscMutateVsphereVm -DeleteLiveMount" @"
 
 "@ "[GraphQL: vsphereVMDeleteLiveMount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Listesxidatastore
+# Invoke-RscMutateVsphereVm -ListEsxiDatastore
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Listesxidatastore -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -ListEsxiDatastore -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Listesxidatastore" @"
+Write-Message "Invoke-RscMutateVsphereVm -ListEsxiDatastore" @"
 List ESXi datastores
 
 Supported in v5.0+
@@ -3836,13 +3836,13 @@ Retrieve a list of the datastores for a specified ESXi host.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Mountrelocate
+# Invoke-RscMutateVsphereVm -MountRelocate
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Mountrelocate -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -MountRelocate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Mountrelocate" @"
+Write-Message "Invoke-RscMutateVsphereVm -MountRelocate" @"
 Relocate a virtual machine to another datastore
 
 Supported in v5.0+
@@ -3851,37 +3851,37 @@ Run storage VMotion to relocate a specified Live Mount into another data store.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Mountrelocatev2
+# Invoke-RscMutateVsphereVm -MountRelocateV2
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Mountrelocatev2 -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -MountRelocateV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Mountrelocatev2" @"
+Write-Message "Invoke-RscMutateVsphereVm -MountRelocateV2" @"
 Create a Live Mount migration to a datastore or datastore cluster with virtual disk mapping support.
 "@ "[GraphQL: vsphereVmMountRelocateV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Excludevmdisk
+# Invoke-RscMutateVsphereVm -ExcludeVmDisk
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Excludevmdisk -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -ExcludeVmDisk -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Excludevmdisk" @"
+Write-Message "Invoke-RscMutateVsphereVm -ExcludeVmDisk" @"
 Exclude or include virtual disks during snapshot.
 "@ "[GraphQL: vsphereExcludeVmDisks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscMutateVsphereVm -Downloadsnapshotfile
+# Invoke-RscMutateVsphereVm -DownloadSnapshotFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscMutateVsphereVm -Downloadsnapshotfile -GetInputs
+$inputs = Invoke-RscMutateVsphereVm -DownloadSnapshotFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscMutateVsphereVm -Downloadsnapshotfile" @"
+Write-Message "Invoke-RscMutateVsphereVm -DownloadSnapshotFile" @"
 Download files from snapshot.
 "@ "[GraphQL: vsphereVmDownloadSnapshotFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -3900,13 +3900,13 @@ This endpoint is deprecated.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAccount -Swithexocomputemapping
+# Invoke-RscQueryAccount -SWithExocomputeMapping
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAccount -Swithexocomputemapping -GetInputs
+$inputs = Invoke-RscQueryAccount -SWithExocomputeMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAccount -Swithexocomputemapping" @"
+Write-Message "Invoke-RscQueryAccount -SWithExocomputeMapping" @"
 Retrieves the list of all accounts with their Exocompute account mapping, if exists.
 "@ "[GraphQL: allAccountsWithExocomputeMappings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -3973,1059 +3973,1059 @@ Write-Message "Invoke-RscQueryActivitySeries -List" @"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryActivitySeries -Groupbyconnection
+# Invoke-RscQueryActivitySeries -GroupByList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryActivitySeries -Groupbyconnection -GetInputs
+$inputs = Invoke-RscQueryActivitySeries -GroupByList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryActivitySeries -Groupbyconnection" @"
+Write-Message "Invoke-RscQueryActivitySeries -GroupByList" @"
 
 "@ "[GraphQL: activitySeriesGroupByConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativeroot
+# Invoke-RscQueryAws -NativeRoot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativeroot -GetInputs
+$inputs = Invoke-RscQueryAws -NativeRoot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativeroot" @"
+Write-Message "Invoke-RscQueryAws -NativeRoot" @"
 Root of AWS native hierarchy.
 "@ "[GraphQL: awsNativeRoot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativeaccount
+# Invoke-RscQueryAws -NativeAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativeaccount -GetInputs
+$inputs = Invoke-RscQueryAws -NativeAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativeaccount" @"
+Write-Message "Invoke-RscQueryAws -NativeAccount" @"
 Refers to the AWS Native account that serves as a container for all your AWS resources. The AWS Native account contains information about the metadata related to the AWS Native resources.
 "@ "[GraphQL: awsNativeAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativeec2instance
+# Invoke-RscQueryAws -NativeEc2Instance
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativeec2instance -GetInputs
+$inputs = Invoke-RscQueryAws -NativeEc2Instance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativeec2instance" @"
+Write-Message "Invoke-RscQueryAws -NativeEc2Instance" @"
 Refers to Amazon Elastic Compute Cloud (EC2) Instance represented by a specific ID. For more information, see https://aws.amazon.com/ec2/.
 "@ "[GraphQL: awsNativeEc2Instance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativeebsvolume
+# Invoke-RscQueryAws -NativeEbsVolume
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativeebsvolume -GetInputs
+$inputs = Invoke-RscQueryAws -NativeEbsVolume -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativeebsvolume" @"
+Write-Message "Invoke-RscQueryAws -NativeEbsVolume" @"
 Refers to the Amazon Elastic Block Store (EBS) Volume represented by a specific ID. For more information, see https://aws.amazon.com/ebs/.
 "@ "[GraphQL: awsNativeEbsVolume]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Natives3bucket
+# Invoke-RscQueryAws -NativeS3Bucket
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Natives3bucket -GetInputs
+$inputs = Invoke-RscQueryAws -NativeS3Bucket -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Natives3bucket" @"
+Write-Message "Invoke-RscQueryAws -NativeS3Bucket" @"
 Represents the Amazon S3 Bucket with a specific ID. For more information, see https://aws.amazon.com/s3/.
 "@ "[GraphQL: awsNativeS3Bucket]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativeec2instancesbyname
+# Invoke-RscQueryAws -NativeEc2InstancesByName
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativeec2instancesbyname -GetInputs
+$inputs = Invoke-RscQueryAws -NativeEc2InstancesByName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativeec2instancesbyname" @"
+Write-Message "Invoke-RscQueryAws -NativeEc2InstancesByName" @"
 Paginated list of all AWS EC2 Instances by name or substring of name.
 "@ "[GraphQL: awsNativeEc2InstancesByName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativeebsvolumesbyname
+# Invoke-RscQueryAws -NativeEbsVolumesByName
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativeebsvolumesbyname -GetInputs
+$inputs = Invoke-RscQueryAws -NativeEbsVolumesByName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativeebsvolumesbyname" @"
+Write-Message "Invoke-RscQueryAws -NativeEbsVolumesByName" @"
 Paginated list of all AWS EBS Volumes by name or substring of name.
 "@ "[GraphQL: awsNativeEbsVolumesByName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allvpcsbyregion
+# Invoke-RscQueryAws -AllVpcsByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allvpcsbyregion -GetInputs
+$inputs = Invoke-RscQueryAws -AllVpcsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allvpcsbyregion" @"
+Write-Message "Invoke-RscQueryAws -AllVpcsByRegion" @"
 List of all Virtual Private Clouds (VPCs) in the AWS Native account, classified by region.
 "@ "[GraphQL: allVpcsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allvpc
+# Invoke-RscQueryAws -AllVpc
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allvpc -GetInputs
+$inputs = Invoke-RscQueryAws -AllVpc -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allvpc" @"
+Write-Message "Invoke-RscQueryAws -AllVpc" @"
 List of all Virtual Private Clouds (VPCs) in the AWS Native account.
 "@ "[GraphQL: allVpcsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Isnativeebsvolumesnapshotrestorable
+# Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Isnativeebsvolumesnapshotrestorable -GetInputs
+$inputs = Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Isnativeebsvolumesnapshotrestorable" @"
+Write-Message "Invoke-RscQueryAws -IsNativeEbsVolumeSnapshotRestorable" @"
 Specified whether an EBS volume is restorable. For an EBS Volume to be restorable, the volume should be able to replace where attached.
 "@ "[GraphQL: isAwsNativeEbsVolumeSnapshotRestorable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allavailabilityzonesbyregion
+# Invoke-RscQueryAws -AllAvailabilityZonesByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allavailabilityzonesbyregion -GetInputs
+$inputs = Invoke-RscQueryAws -AllAvailabilityZonesByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allavailabilityzonesbyregion" @"
+Write-Message "Invoke-RscQueryAws -AllAvailabilityZonesByRegion" @"
 List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
 "@ "[GraphQL: allAvailabilityZonesByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allkmsencryptionkeysbyregion
+# Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allkmsencryptionkeysbyregion -GetInputs
+$inputs = Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allkmsencryptionkeysbyregion" @"
+Write-Message "Invoke-RscQueryAws -AllKmsEncryptionKeysByRegion" @"
 List of encryption keys in the specified region on the specified AWS Native account. All the encrytion keys listed are managed by AWS Key Management System (KMS). For more information, see https://aws.amazon.com/kms/.
 "@ "[GraphQL: allKmsEncryptionKeysByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Iss3bucketnameavailable
+# Invoke-RscQueryAws -IsS3BucketNameAvailable
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Iss3bucketnameavailable -GetInputs
+$inputs = Invoke-RscQueryAws -IsS3BucketNameAvailable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Iss3bucketnameavailable" @"
+Write-Message "Invoke-RscQueryAws -IsS3BucketNameAvailable" @"
 Specifies whether an S3 bucket name is available for use in AWS or not. When true, the bucket name is available for use.
 "@ "[GraphQL: isAwsS3BucketNameAvailable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Alls3bucket
+# Invoke-RscQueryAws -AllS3Bucket
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Alls3bucket -GetInputs
+$inputs = Invoke-RscQueryAws -AllS3Bucket -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Alls3bucket" @"
+Write-Message "Invoke-RscQueryAws -AllS3Bucket" @"
 List of all S3 bucket names across regions for the AWS Native account.
 "@ "[GraphQL: allS3BucketsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Alls3bucketsdetail
+# Invoke-RscQueryAws -AllS3BucketsDetail
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Alls3bucketsdetail -GetInputs
+$inputs = Invoke-RscQueryAws -AllS3BucketsDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Alls3bucketsdetail" @"
+Write-Message "Invoke-RscQueryAws -AllS3BucketsDetail" @"
 List of all S3 bucket details across regions for the AWS Native account.
 "@ "[GraphQL: allS3BucketsDetailsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativerdsinstance
+# Invoke-RscQueryAws -NativeRdsInstance
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativerdsinstance -GetInputs
+$inputs = Invoke-RscQueryAws -NativeRdsInstance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativerdsinstance" @"
+Write-Message "Invoke-RscQueryAws -NativeRdsInstance" @"
 Refers to AWS Relational Database Service (RDS) represented by a specific ID. For more information, see https://aws.amazon.com/rds/.
 "@ "[GraphQL: awsNativeRdsInstance]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativerdspointintimerestorewindow
+# Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativerdspointintimerestorewindow -GetInputs
+$inputs = Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativerdspointintimerestorewindow" @"
+Write-Message "Invoke-RscQueryAws -NativeRdsPointInTimeRestoreWindow" @"
 Point-in-Time (PiT) restore window of the RDS Instance in the AWS Native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information,see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIT.html.
 "@ "[GraphQL: awsNativeRdsPointInTimeRestoreWindow]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Rdsinstancedetail
+# Invoke-RscQueryAws -RdsInstanceDetail
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Rdsinstancedetail -GetInputs
+$inputs = Invoke-RscQueryAws -RdsInstanceDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Rdsinstancedetail" @"
+Write-Message "Invoke-RscQueryAws -RdsInstanceDetail" @"
 Details of the RDS Instance in the AWS Native account.
 "@ "[GraphQL: rdsInstanceDetailsFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Isnativerdsinstancelaunchconfigurationvalid
+# Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Isnativerdsinstancelaunchconfigurationvalid -GetInputs
+$inputs = Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Isnativerdsinstancelaunchconfigurationvalid" @"
+Write-Message "Invoke-RscQueryAws -IsNativeRdsInstanceLaunchConfigurationValid" @"
 Specifies whether the given DbInstance class, storage type, multi-az capability, encryption capability, iops value are supported for the given dbEngine, dbEngineVersion in the specified availability zone. When true, the specification is valid for a RDS Instance and can be used to create a new Instance.
 "@ "[GraphQL: isAwsNativeRdsInstanceLaunchConfigurationValid]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Alloptiongroupsbyregion
+# Invoke-RscQueryAws -AllOptionGroupsByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Alloptiongroupsbyregion -GetInputs
+$inputs = Invoke-RscQueryAws -AllOptionGroupsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Alloptiongroupsbyregion" @"
+Write-Message "Invoke-RscQueryAws -AllOptionGroupsByRegion" @"
 List of all RDS option groups in a given region. Refers to settings of how a particular option works for an RDS Instance. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 "@ "[GraphQL: allOptionGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Alldbparametergroupsbyregion
+# Invoke-RscQueryAws -AllDbParameterGroupsByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Alldbparametergroupsbyregion -GetInputs
+$inputs = Invoke-RscQueryAws -AllDbParameterGroupsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Alldbparametergroupsbyregion" @"
+Write-Message "Invoke-RscQueryAws -AllDbParameterGroupsByRegion" @"
 List of all DB parameter groups in a given region. Refers to container for engine configuration that applies to one or more DB Instances. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithOptionGroups.html.
 "@ "[GraphQL: allDbParameterGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Alldbsubnetgroupsbyregion
+# Invoke-RscQueryAws -AllDbSubnetGroupsByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Alldbsubnetgroupsbyregion -GetInputs
+$inputs = Invoke-RscQueryAws -AllDbSubnetGroupsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Alldbsubnetgroupsbyregion" @"
+Write-Message "Invoke-RscQueryAws -AllDbSubnetGroupsByRegion" @"
 All DB subnet groups in a given region. Refers to logical isolation of RDS on a network. For more information, see https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html.
 "@ "[GraphQL: allDbSubnetGroupsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Validatenativerdsinstancenameforexport
+# Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Validatenativerdsinstancenameforexport -GetInputs
+$inputs = Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Validatenativerdsinstancenameforexport" @"
+Write-Message "Invoke-RscQueryAws -ValidateNativeRdsInstanceNameForExport" @"
 Validates the name used for an RDS Instance during an export operation. Returns true if the RDS Instance name is valid. Returns false, with an error message, if the RDS Instance name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAwsNativeRdsInstanceNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Validatenativerdsclusternameforexport
+# Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Validatenativerdsclusternameforexport -GetInputs
+$inputs = Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Validatenativerdsclusternameforexport" @"
+Write-Message "Invoke-RscQueryAws -ValidateNativeRdsClusterNameForExport" @"
 Validates the name used for an RDS cluster during an export operation. Returns true if the RDS cluster name is valid. Returns false, with an error message, if the RDS cluster name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAwsNativeRdsClusterNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Nativerdsexportdefault
+# Invoke-RscQueryAws -NativeRdsExportDefault
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Nativerdsexportdefault -GetInputs
+$inputs = Invoke-RscQueryAws -NativeRdsExportDefault -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Nativerdsexportdefault" @"
+Write-Message "Invoke-RscQueryAws -NativeRdsExportDefault" @"
 Refers to the default values for the export operation of the RDS DB Instance in the AWS Native account.
 "@ "[GraphQL: awsNativeRdsExportDefaults]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allec2keypairsbyregion
+# Invoke-RscQueryAws -AllEc2KeyPairsByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allec2keypairsbyregion -GetInputs
+$inputs = Invoke-RscQueryAws -AllEc2KeyPairsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allec2keypairsbyregion" @"
+Write-Message "Invoke-RscQueryAws -AllEc2KeyPairsByRegion" @"
 List of all key pairs for a given region. A key pair, consisting of a public key and a private key, is a set of security credentials that you use to prove your identity when connecting to an EC2 instance. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html.
 "@ "[GraphQL: allEc2KeyPairsByRegionFromAws]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Amitypefornativearchivedsnapshotexport
+# Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Amitypefornativearchivedsnapshotexport -GetInputs
+$inputs = Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Amitypefornativearchivedsnapshotexport" @"
+Write-Message "Invoke-RscQueryAws -AmiTypeForNativeArchivedSnapshotExport" @"
 Amazon Machine Image (AMI) type for export of an archived EC2 Instance snapshot. For more information, see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instances-and-amis.html.
 "@ "[GraphQL: amiTypeForAwsNativeArchivedSnapshotExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allrdsaurorainstanceclass
+# Invoke-RscQueryAws -AllRdsAuroraInstanceClass
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allrdsaurorainstanceclass -GetInputs
+$inputs = Invoke-RscQueryAws -AllRdsAuroraInstanceClass -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allrdsaurorainstanceclass" @"
+Write-Message "Invoke-RscQueryAws -AllRdsAuroraInstanceClass" @"
 List of all the database instance classes supported by AWS RDS Aurora databases.
 "@ "[GraphQL: allAwsRdsAuroraInstanceClasses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allsupportedrdsdatabaseinstanceclass
+# Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClass
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allsupportedrdsdatabaseinstanceclass -GetInputs
+$inputs = Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClass -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allsupportedrdsdatabaseinstanceclass" @"
+Write-Message "Invoke-RscQueryAws -AllSupportedRdsDatabaseInstanceClass" @"
 List of all the database instance classes supported by AWS RDS database for the provided DB engine and engine version. DB engine version is a optional argument, it can be ignored if we want to retrieve all the supported instance class for a DB engine irrespective of DB engine version.
 "@ "[GraphQL: allSupportedAwsRdsDatabaseInstanceClasses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Computesetting
+# Invoke-RscQueryAws -ComputeSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Computesetting -GetInputs
+$inputs = Invoke-RscQueryAws -ComputeSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Computesetting" @"
+Write-Message "Invoke-RscQueryAws -ComputeSetting" @"
 Retrieve aws compute settings.
 "@ "[GraphQL: awsComputeSettings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allcomputesetting
+# Invoke-RscQueryAws -AllComputeSetting
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allcomputesetting -GetInputs
+$inputs = Invoke-RscQueryAws -AllComputeSetting -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allcomputesetting" @"
+Write-Message "Invoke-RscQueryAws -AllComputeSetting" @"
 List all aws compute settings.
 "@ "[GraphQL: allAwsComputeSettings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allcloudaccountswithfeature
+# Invoke-RscQueryAws -AllCloudAccountsWithFeature
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allcloudaccountswithfeature -GetInputs
+$inputs = Invoke-RscQueryAws -AllCloudAccountsWithFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allcloudaccountswithfeature" @"
+Write-Message "Invoke-RscQueryAws -AllCloudAccountsWithFeature" @"
 List of active AWS cloud accounts and the features for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 "@ "[GraphQL: allAwsCloudAccountsWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allcloudaccountsfeatureswithexoconfig
+# Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allcloudaccountsfeatureswithexoconfig -GetInputs
+$inputs = Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allcloudaccountsfeatureswithexoconfig" @"
+Write-Message "Invoke-RscQueryAws -AllCloudAccountsFeaturesWithExoConfig" @"
 List of active AWS cloud account features and the Exocompute mapping information for the accounts. A cloud account is an AWS account added to the Rubrik platform.
 "@ "[GraphQL: allAwsCloudAccountsFeaturesWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Cloudaccountwithfeature
+# Invoke-RscQueryAws -CloudAccountWithFeature
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Cloudaccountwithfeature -GetInputs
+$inputs = Invoke-RscQueryAws -CloudAccountWithFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Cloudaccountwithfeature" @"
+Write-Message "Invoke-RscQueryAws -CloudAccountWithFeature" @"
 List of AWS cloud accounts and the features for each account, classified by ID.
 "@ "[GraphQL: awsCloudAccountWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Cloudaccountlistvpc
+# Invoke-RscQueryAws -CloudAccountListVpc
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Cloudaccountlistvpc -GetInputs
+$inputs = Invoke-RscQueryAws -CloudAccountListVpc -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Cloudaccountlistvpc" @"
+Write-Message "Invoke-RscQueryAws -CloudAccountListVpc" @"
 Retrieves a list of virtual private clouds (VPCs) in the specific cloud account.
 "@ "[GraphQL: awsCloudAccountListVpcs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Cloudaccountlistsubnet
+# Invoke-RscQueryAws -CloudAccountListSubnet
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Cloudaccountlistsubnet -GetInputs
+$inputs = Invoke-RscQueryAws -CloudAccountListSubnet -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Cloudaccountlistsubnet" @"
+Write-Message "Invoke-RscQueryAws -CloudAccountListSubnet" @"
 Retrieves a list of subnets in the specified cloud account and virtual private cloud (VPC).
 "@ "[GraphQL: awsCloudAccountListSubnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Cloudaccountlistsecuritygroup
+# Invoke-RscQueryAws -CloudAccountListSecurityGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Cloudaccountlistsecuritygroup -GetInputs
+$inputs = Invoke-RscQueryAws -CloudAccountListSecurityGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Cloudaccountlistsecuritygroup" @"
+Write-Message "Invoke-RscQueryAws -CloudAccountListSecurityGroup" @"
 Retrieves a list of security groups in the specified cloud account and virtual private cloud (VPC).
 "@ "[GraphQL: awsCloudAccountListSecurityGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Cloudaccountlistkmskey
+# Invoke-RscQueryAws -CloudAccountListKMSKey
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Cloudaccountlistkmskey -GetInputs
+$inputs = Invoke-RscQueryAws -CloudAccountListKMSKey -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Cloudaccountlistkmskey" @"
+Write-Message "Invoke-RscQueryAws -CloudAccountListKMSKey" @"
 
 "@ "[GraphQL: AwsCloudAccountListKMSKeys]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allexocomputeconfig
+# Invoke-RscQueryAws -AllExocomputeConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allexocomputeconfig -GetInputs
+$inputs = Invoke-RscQueryAws -AllExocomputeConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allexocomputeconfig" @"
+Write-Message "Invoke-RscQueryAws -AllExocomputeConfig" @"
 List of all AWS exocompute configurations filtered by a cloud account ID or a cloud account name prefix.
 "@ "[GraphQL: allAwsExocomputeConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allcloudaccountconfig
+# Invoke-RscQueryAws -AllCloudAccountConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allcloudaccountconfig -GetInputs
+$inputs = Invoke-RscQueryAws -AllCloudAccountConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allcloudaccountconfig" @"
+Write-Message "Invoke-RscQueryAws -AllCloudAccountConfig" @"
 List of all AWS cloud account configurations with the given search query.
 "@ "[GraphQL: allAwsCloudAccountConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allregion
+# Invoke-RscQueryAws -AllRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allregion -GetInputs
+$inputs = Invoke-RscQueryAws -AllRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allregion" @"
+Write-Message "Invoke-RscQueryAws -AllRegion" @"
 All valid AWS regions for this cloud account.
 "@ "[GraphQL: allAwsRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allcdmversion
+# Invoke-RscQueryAws -AllCdmVersion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allcdmversion -GetInputs
+$inputs = Invoke-RscQueryAws -AllCdmVersion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allcdmversion" @"
+Write-Message "Invoke-RscQueryAws -AllCdmVersion" @"
 Get all Rubrik CDM versions in the AWS marketplace.
 "@ "[GraphQL: allAwsCdmVersions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAws -Allinstanceprofilename
+# Invoke-RscQueryAws -AllInstanceProfileName
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAws -Allinstanceprofilename -GetInputs
+$inputs = Invoke-RscQueryAws -AllInstanceProfileName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAws -Allinstanceprofilename" @"
+Write-Message "Invoke-RscQueryAws -AllInstanceProfileName" @"
 All Rubrik CC-ES instance profiles in the AWS account.
 "@ "[GraphQL: allAwsInstanceProfileNames]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Nativeroot
+# Invoke-RscQueryAzure -NativeRoot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Nativeroot -GetInputs
+$inputs = Invoke-RscQueryAzure -NativeRoot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Nativeroot" @"
+Write-Message "Invoke-RscQueryAzure -NativeRoot" @"
 Root of Azure native hierarchy.
 "@ "[GraphQL: azureNativeRoot]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Nativesubscription
+# Invoke-RscQueryAzure -NativeSubscription
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Nativesubscription -GetInputs
+$inputs = Invoke-RscQueryAzure -NativeSubscription -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Nativesubscription" @"
+Write-Message "Invoke-RscQueryAzure -NativeSubscription" @"
 Retrieves an Azure Native Subscription. Refers to the logical entity that provides entitlement to deploy and consume Azure resources.
 "@ "[GraphQL: azureNativeSubscription]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Nativeresourcegroup
+# Invoke-RscQueryAzure -NativeResourceGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Nativeresourcegroup -GetInputs
+$inputs = Invoke-RscQueryAzure -NativeResourceGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Nativeresourcegroup" @"
+Write-Message "Invoke-RscQueryAzure -NativeResourceGroup" @"
 Retrieves an Azure Native Resource Group. Refers to a collection of resources in which multiple Azure services can reside.
 "@ "[GraphQL: azureNativeResourceGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Nativevirtualmachine
+# Invoke-RscQueryAzure -NativeVirtualMachine
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Nativevirtualmachine -GetInputs
+$inputs = Invoke-RscQueryAzure -NativeVirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Nativevirtualmachine" @"
+Write-Message "Invoke-RscQueryAzure -NativeVirtualMachine" @"
 Retrieves an Azure Virtual Machine that refers to the Azure infrastructure as a service (IaaS) used to deploy persistent VMs. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/.
 "@ "[GraphQL: azureNativeVirtualMachine]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Nativemanageddisk
+# Invoke-RscQueryAzure -NativeManagedDisk
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Nativemanageddisk -GetInputs
+$inputs = Invoke-RscQueryAzure -NativeManagedDisk -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Nativemanageddisk" @"
+Write-Message "Invoke-RscQueryAzure -NativeManagedDisk" @"
 Retrieves an Azure Native Managed Disk that refers to the block storage designed to be used with Azure Virtual Machines. Some examples are: ultra disks, premium solid-state drives (SSD), standard SSDs, and standard hard disk drives (HDD). For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview.
 "@ "[GraphQL: azureNativeManagedDisk]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativevirtualnetwork
+# Invoke-RscQueryAzure -AllNativeVirtualNetwork
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativevirtualnetwork -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeVirtualNetwork -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativevirtualnetwork" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeVirtualNetwork" @"
 Retrieves all virtual networks (VNets) in the protected subscriptions. VNet enables secure communication with other VNets, the internet, and on-premise networks. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview.
 "@ "[GraphQL: allAzureNativeVirtualNetworks]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativesubnetsbyregionfromazure
+# Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativesubnetsbyregionfromazure -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativesubnetsbyregionfromazure" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeSubnetsByRegionFromAzure" @"
 Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
 "@ "[GraphQL: allAzureNativeSubnetsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativesecuritygroupsbyregionfromazure
+# Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativesecuritygroupsbyregionfromazure -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativesecuritygroupsbyregionfromazure" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeSecurityGroupsByRegionFromAzure" @"
 Retrieves all security groups in the specified region and subscription. Security groups enable you to configure network security as a natural extension of an application's structure, allowing you to group virtual machines and define network security policies based on those groups. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/application-security-groups.
 "@ "[GraphQL: allAzureNativeSecurityGroupsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Alldiskencryptionsetsbyregion
+# Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Alldiskencryptionsetsbyregion -GetInputs
+$inputs = Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Alldiskencryptionsetsbyregion" @"
+Write-Message "Invoke-RscQueryAzure -AllDiskEncryptionSetsByRegion" @"
 List of all Azure Disk Encryption Sets in a region.
 "@ "[GraphQL: allAzureDiskEncryptionSetsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativeavailabilitysetsbyregionfromazure
+# Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativeavailabilitysetsbyregionfromazure -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativeavailabilitysetsbyregionfromazure" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeAvailabilitySetsByRegionFromAzure" @"
 Retrieves all availability sets in the specified region, resource group, and subscription. An availability set is a logical grouping of VMs to facilitate redundancy and availability. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/availability-set-overview.
 "@ "[GraphQL: allAzureNativeAvailabilitySetsByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativeexportcompatiblevmsizesbyregionfromazure
+# Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativeexportcompatiblevmsizesbyregionfromazure -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativeexportcompatiblevmsizesbyregionfromazure" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeExportCompatibleVmSizesByRegionFromAzure" @"
 Retrieves all supported virtual machine (VM) sizes when exporting a particular snapshot. Not all VM sizes are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
 "@ "[GraphQL: allAzureNativeExportCompatibleVmSizesByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativeexportcompatibledisktypesbyregionfromazure
+# Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativeexportcompatibledisktypesbyregionfromazure -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativeexportcompatibledisktypesbyregionfromazure" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeExportCompatibleDiskTypesByRegionFromAzure" @"
 Retrieves all supported disk types when exporting a specific snapshot. Not all disk types are supported in all the regions. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types.
 "@ "[GraphQL: allAzureNativeExportCompatibleDiskTypesByRegionFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativevirtualmachinesize
+# Invoke-RscQueryAzure -AllNativeVirtualMachineSize
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativevirtualmachinesize -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeVirtualMachineSize -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativevirtualmachinesize" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeVirtualMachineSize" @"
 Retrieves all virtual machine (VM) sizes in the subscriptions protected by Rubrik that have been configured for protection. For more information, see https://docs.microsoft.com/en-us/azure/virtual-machines/sizes.
 "@ "[GraphQL: allAzureNativeVirtualMachineSizes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Isnativemanageddisksnapshotrestorable
+# Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Isnativemanageddisksnapshotrestorable -GetInputs
+$inputs = Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Isnativemanageddisksnapshotrestorable" @"
+Write-Message "Invoke-RscQueryAzure -IsNativeManagedDiskSnapshotRestorable" @"
 Specifies whether the Managed Disk snapshot is restorable or not. A managed disk is restorable when the restore settings of the Managed Disk are configured on the Azure portal and on the Rubrik platform. When the value is true, the managed disk snapshot is restorable.
 "@ "[GraphQL: isAzureNativeManagedDiskSnapshotRestorable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Isstorageaccountnameavailable
+# Invoke-RscQueryAzure -IsStorageAccountNameAvailable
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Isstorageaccountnameavailable -GetInputs
+$inputs = Invoke-RscQueryAzure -IsStorageAccountNameAvailable -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Isstorageaccountnameavailable" @"
+Write-Message "Invoke-RscQueryAzure -IsStorageAccountNameAvailable" @"
 Specifies whether the given storage account name is valid and available in Azure to be assigned to a new storage account. When the value is true, the specified account name is available in Azure.
 "@ "[GraphQL: isAzureStorageAccountNameAvailable]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativestorageaccountsfromazure
+# Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativestorageaccountsfromazure -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativestorageaccountsfromazure" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeStorageAccountsFromAzure" @"
 Retrieves list of all storage Accounts in a subscription.
 "@ "[GraphQL: allAzureNativeStorageAccountsFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Sqldatabase
+# Invoke-RscQueryAzure -SqlDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Sqldatabase -GetInputs
+$inputs = Invoke-RscQueryAzure -SqlDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Sqldatabase" @"
+Write-Message "Invoke-RscQueryAzure -SqlDatabase" @"
 Retrieves an Azure SQL Database. Refers to the fully managed SQL database built for the cloud. For more information, see https://azure.microsoft.com/en-us/products/azure-sql/database/.
 "@ "[GraphQL: azureSqlDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Sqldatabaseserver
+# Invoke-RscQueryAzure -SqlDatabaseServer
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Sqldatabaseserver -GetInputs
+$inputs = Invoke-RscQueryAzure -SqlDatabaseServer -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Sqldatabaseserver" @"
+Write-Message "Invoke-RscQueryAzure -SqlDatabaseServer" @"
 Retrieves an Azure SQL Database Server. Refers to the server that contains the Azure SQL Databases. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers.
 "@ "[GraphQL: azureSqlDatabaseServer]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Sqlmanagedinstancedatabase
+# Invoke-RscQueryAzure -SqlManagedInstanceDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Sqlmanagedinstancedatabase -GetInputs
+$inputs = Invoke-RscQueryAzure -SqlManagedInstanceDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Sqlmanagedinstancedatabase" @"
+Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceDatabase" @"
 Retrieves an Azure SQL Managed Instance Database. Refers to the database engine compatible with the latest SQL Server (Enterprise Edition) database engine. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/sql-managed-instance-paas-overview.
 "@ "[GraphQL: azureSqlManagedInstanceDatabase]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Sqlmanagedinstanceserver
+# Invoke-RscQueryAzure -SqlManagedInstanceServer
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Sqlmanagedinstanceserver -GetInputs
+$inputs = Invoke-RscQueryAzure -SqlManagedInstanceServer -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Sqlmanagedinstanceserver" @"
+Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceServer" @"
 Retrieves an Azure SQL Managed Instance Server. Refers to the server the Azure SQL Managed Instance Database is a part of.
 "@ "[GraphQL: azureSqlManagedInstanceServer]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Sqldatabasedbpointintimerestorewindowfromazure
+# Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Sqldatabasedbpointintimerestorewindowfromazure -GetInputs
+$inputs = Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Sqldatabasedbpointintimerestorewindowfromazure" @"
+Write-Message "Invoke-RscQueryAzure -SqlDatabaseDbPointInTimeRestoreWindowFromAzure" @"
 Point-in-Time (PiT) restore window of the Azure SQL Database instance in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://azure.microsoft.com/en-in/blog/azure-sql-database-point-in-time-restore/.
 "@ "[GraphQL: azureSqlDatabaseDbPointInTimeRestoreWindowFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Sqlmanagedinstancedbpointintimerestorewindowfromazure
+# Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Sqlmanagedinstancedbpointintimerestorewindowfromazure -GetInputs
+$inputs = Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Sqlmanagedinstancedbpointintimerestorewindowfromazure" @"
+Write-Message "Invoke-RscQueryAzure -SqlManagedInstanceDbPointInTimeRestoreWindowFromAzure" @"
 Point-in-Time (PiT) restore window of the Azure SQL Managed Instance database in the Azure native account. Refers to the range of time within which the database is available to be restored to a particular point in time. For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/managed-instance/point-in-time-restore?tabs=azure-portal.
 "@ "[GraphQL: azureSqlManagedInstanceDbPointInTimeRestoreWindowFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Validatenativesqldatabasedbnameforexport
+# Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Validatenativesqldatabasedbnameforexport -GetInputs
+$inputs = Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Validatenativesqldatabasedbnameforexport" @"
+Write-Message "Invoke-RscQueryAzure -ValidateNativeSqlDatabaseDbNameForExport" @"
 Validates the name used for an Sql Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAzureNativeSqlDatabaseDbNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Validatenativesqlmanagedinstancedbnameforexport
+# Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Validatenativesqlmanagedinstancedbnameforexport -GetInputs
+$inputs = Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Validatenativesqlmanagedinstancedbnameforexport" @"
+Write-Message "Invoke-RscQueryAzure -ValidateNativeSqlManagedInstanceDbNameForExport" @"
 Validates the name used for an Managed Instance Database during an export operation. Returns true if the database name is valid. Returns false, with an error message, if the database name validation fails. Returns false, without an error message for all other failures.
 "@ "[GraphQL: validateAzureNativeSqlManagedInstanceDbNameForExport]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allsqldatabaseserverelasticpool
+# Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPool
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allsqldatabaseserverelasticpool -GetInputs
+$inputs = Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPool -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allsqldatabaseserverelasticpool" @"
+Write-Message "Invoke-RscQueryAzure -AllSqlDatabaseServerElasticPool" @"
 Retrieves the list of elastic pools available for a SQL Database Server.For more information, see https://docs.microsoft.com/en-us/azure/azure-sql/database/elastic-pool-overview.
 "@ "[GraphQL: allAzureSqlDatabaseServerElasticPools]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Isnativesqldatabasesnapshotpersistent
+# Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Isnativesqldatabasesnapshotpersistent -GetInputs
+$inputs = Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Isnativesqldatabasesnapshotpersistent" @"
+Write-Message "Invoke-RscQueryAzure -IsNativeSqlDatabaseSnapshotPersistent" @"
 Checks if an Azure SQL Database Snapshot or an Azure SQL Managed Instance Database Snapshot is a persistent snapshot.
 "@ "[GraphQL: isAzureNativeSqlDatabaseSnapshotPersistent]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allkeyvaultsbyregion
+# Invoke-RscQueryAzure -AllKeyVaultsByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allkeyvaultsbyregion -GetInputs
+$inputs = Invoke-RscQueryAzure -AllKeyVaultsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allkeyvaultsbyregion" @"
+Write-Message "Invoke-RscQueryAzure -AllKeyVaultsByRegion" @"
 List of all Azure Key Vaults in a region.
 "@ "[GraphQL: allAzureKeyVaultsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allencryptionkey
+# Invoke-RscQueryAzure -AllEncryptionKey
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allencryptionkey -GetInputs
+$inputs = Invoke-RscQueryAzure -AllEncryptionKey -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allencryptionkey" @"
+Write-Message "Invoke-RscQueryAzure -AllEncryptionKey" @"
 List of all Encryption Keys in an Azure Key Vault.
 "@ "[GraphQL: allAzureEncryptionKeys]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Cloudaccounttenant
+# Invoke-RscQueryAzure -CloudAccountTenant
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Cloudaccounttenant -GetInputs
+$inputs = Invoke-RscQueryAzure -CloudAccountTenant -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Cloudaccounttenant" @"
+Write-Message "Invoke-RscQueryAzure -CloudAccountTenant" @"
 Retrieves the details of the Azure tenant and all the subscriptions of the tenant, for a feature.
 "@ "[GraphQL: azureCloudAccountTenant]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Cloudaccounttenantwithexoconfig
+# Invoke-RscQueryAzure -CloudAccountTenantWithExoConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Cloudaccounttenantwithexoconfig -GetInputs
+$inputs = Invoke-RscQueryAzure -CloudAccountTenantWithExoConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Cloudaccounttenantwithexoconfig" @"
+Write-Message "Invoke-RscQueryAzure -CloudAccountTenantWithExoConfig" @"
 Retrieves details about the Azure cloud account tenant including the Exocompute configurations for the tenant subscriptions, for a specified feature.
 "@ "[GraphQL: azureCloudAccountTenantWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allcloudaccounttenantswithexoconfig
+# Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allcloudaccounttenantswithexoconfig -GetInputs
+$inputs = Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allcloudaccounttenantswithexoconfig" @"
+Write-Message "Invoke-RscQueryAzure -AllCloudAccountTenantsWithExoConfig" @"
 Retrieves details about all the Azure cloud account tenants including the Exocompute configurations for the tenant subscriptions, for specified set of features.
 "@ "[GraphQL: allAzureCloudAccountTenantsWithExoConfigs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allcloudaccounttenant
+# Invoke-RscQueryAzure -AllCloudAccountTenant
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allcloudaccounttenant -GetInputs
+$inputs = Invoke-RscQueryAzure -AllCloudAccountTenant -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allcloudaccounttenant" @"
+Write-Message "Invoke-RscQueryAzure -AllCloudAccountTenant" @"
 Retrieves a list of all the Azure tenants and tenant subscriptions for features. The list can be filtered by feature status, subscription native ID, and subscription name.
 "@ "[GraphQL: allAzureCloudAccountTenants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Cloudaccountsubscriptionwithfeature
+# Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeature
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Cloudaccountsubscriptionwithfeature -GetInputs
+$inputs = Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Cloudaccountsubscriptionwithfeature" @"
+Write-Message "Invoke-RscQueryAzure -CloudAccountSubscriptionWithFeature" @"
 Retrieves the details of the Azure cloud account.
 "@ "[GraphQL: azureCloudAccountSubscriptionWithFeatures]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allcloudaccountsubscriptionsbyfeature
+# Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allcloudaccountsubscriptionsbyfeature -GetInputs
+$inputs = Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allcloudaccountsubscriptionsbyfeature" @"
+Write-Message "Invoke-RscQueryAzure -AllCloudAccountSubscriptionsByFeature" @"
 Retrieves a list of all Azure Subscriptions with feature details such as feature, status, and regions.
 "@ "[GraphQL: allAzureCloudAccountSubscriptionsByFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allsubscriptionwithexocomputemapping
+# Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMapping
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allsubscriptionwithexocomputemapping -GetInputs
+$inputs = Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMapping -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allsubscriptionwithexocomputemapping" @"
+Write-Message "Invoke-RscQueryAzure -AllSubscriptionWithExocomputeMapping" @"
 Retrieves a list of all Azure subscriptions with Exocompute subscription mapping.
 "@ "[GraphQL: allAzureSubscriptionWithExocomputeMappings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allresourcegroupsfrom
+# Invoke-RscQueryAzure -AllResourceGroupsFrom
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allresourcegroupsfrom -GetInputs
+$inputs = Invoke-RscQueryAzure -AllResourceGroupsFrom -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allresourcegroupsfrom" @"
+Write-Message "Invoke-RscQueryAzure -AllResourceGroupsFrom" @"
 Retrieves a list og all resource groups in the specified account.
 "@ "[GraphQL: allResourceGroupsFromAzure]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Doesnativeresourcegroupexist
+# Invoke-RscQueryAzure -DoesNativeResourceGroupExist
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Doesnativeresourcegroupexist -GetInputs
+$inputs = Invoke-RscQueryAzure -DoesNativeResourceGroupExist -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Doesnativeresourcegroupexist" @"
+Write-Message "Invoke-RscQueryAzure -DoesNativeResourceGroupExist" @"
 Checks if a resource group with the specified name exists in the specified account.
 "@ "[GraphQL: doesAzureNativeResourceGroupExist]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnativeresourcegroupsinfoifexist
+# Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnativeresourcegroupsinfoifexist -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnativeresourcegroupsinfoifexist" @"
+Write-Message "Invoke-RscQueryAzure -AllNativeResourceGroupsInfoIfExist" @"
 Retrieves a list of resource groups with the specified names which exist in the specified account.
 "@ "[GraphQL: allAzureNativeResourceGroupsInfoIfExist]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allcloudaccountmissingpermission
+# Invoke-RscQueryAzure -AllCloudAccountMissingPermission
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allcloudaccountmissingpermission -GetInputs
+$inputs = Invoke-RscQueryAzure -AllCloudAccountMissingPermission -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allcloudaccountmissingpermission" @"
+Write-Message "Invoke-RscQueryAzure -AllCloudAccountMissingPermission" @"
 Retrieves a list of all the missing permissions on Azure subscriptions that are a part of the Azure Cloud Account.
 "@ "[GraphQL: allAzureCloudAccountMissingPermissions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Cloudaccountpermissionconfig
+# Invoke-RscQueryAzure -CloudAccountPermissionConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Cloudaccountpermissionconfig -GetInputs
+$inputs = Invoke-RscQueryAzure -CloudAccountPermissionConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Cloudaccountpermissionconfig" @"
+Write-Message "Invoke-RscQueryAzure -CloudAccountPermissionConfig" @"
 Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
 "@ "[GraphQL: azureCloudAccountPermissionConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allexocomputeconfigsinaccount
+# Invoke-RscQueryAzure -AllExocomputeConfigsInAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allexocomputeconfigsinaccount -GetInputs
+$inputs = Invoke-RscQueryAzure -AllExocomputeConfigsInAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allexocomputeconfigsinaccount" @"
+Write-Message "Invoke-RscQueryAzure -AllExocomputeConfigsInAccount" @"
 Retrieves a list of Azure Exocompute configurations filtered by a cloud account ID or a search query.
 "@ "[GraphQL: allAzureExocomputeConfigsInAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allcloudaccountsubnetsbyregion
+# Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allcloudaccountsubnetsbyregion -GetInputs
+$inputs = Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allcloudaccountsubnetsbyregion" @"
+Write-Message "Invoke-RscQueryAzure -AllCloudAccountSubnetsByRegion" @"
 Retrieves all subnets in the specified region and subscription. Subnets allow you to choose IP address range of your choice. For more information, see https://docs.microsoft.com/en-us/azure/virtual-network/network-overview#virtual-network-and-subnets.
 "@ "[GraphQL: allAzureCloudAccountSubnetsByRegion]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Validatecloudaccountexocomputeconfiguration
+# Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfiguration
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Validatecloudaccountexocomputeconfiguration -GetInputs
+$inputs = Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfiguration -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Validatecloudaccountexocomputeconfiguration" @"
+Write-Message "Invoke-RscQueryAzure -ValidateCloudAccountExocomputeConfiguration" @"
 Validates if Azure subnets are correctly configured for running Azure Kubernetes Service (AKS) Clusters. When correctly configured, the Azure subnets allow the required region-specific outbound connectivity and do not overlap with Azure restricted IP Address Space.
 "@ "[GraphQL: validateAzureCloudAccountExocomputeConfigurations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allarmtemplatesbyfeature
+# Invoke-RscQueryAzure -AllArmTemplatesByFeature
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allarmtemplatesbyfeature -GetInputs
+$inputs = Invoke-RscQueryAzure -AllArmTemplatesByFeature -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allarmtemplatesbyfeature" @"
+Write-Message "Invoke-RscQueryAzure -AllArmTemplatesByFeature" @"
 Retrieve ARM templates for role definition and role assignment.
 "@ "[GraphQL: allAzureArmTemplatesByFeature]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5055,25 +5055,25 @@ Gets the Azure regions for the given subscription.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Resourcegroup
+# Invoke-RscQueryAzure -ResourceGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Resourcegroup -GetInputs
+$inputs = Invoke-RscQueryAzure -ResourceGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Resourcegroup" @"
+Write-Message "Invoke-RscQueryAzure -ResourceGroup" @"
 Gets the Azure resource groups for the given subscription.
 "@ "[GraphQL: azureResourceGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Vnet
+# Invoke-RscQueryAzure -VNet
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Vnet -GetInputs
+$inputs = Invoke-RscQueryAzure -VNet -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Vnet" @"
+Write-Message "Invoke-RscQueryAzure -VNet" @"
 Gets the VNets for the given subscription.
 "@ "[GraphQL: azureVNets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5091,133 +5091,133 @@ Gets the subnets for the given subscription.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Storageaccount
+# Invoke-RscQueryAzure -StorageAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Storageaccount -GetInputs
+$inputs = Invoke-RscQueryAzure -StorageAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Storageaccount" @"
+Write-Message "Invoke-RscQueryAzure -StorageAccount" @"
 Gets the storage accounts for the given subscription.
 "@ "[GraphQL: azureStorageAccounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allhostedregion
+# Invoke-RscQueryAzure -AllHostedRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allhostedregion -GetInputs
+$inputs = Invoke-RscQueryAzure -AllHostedRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allhostedregion" @"
+Write-Message "Invoke-RscQueryAzure -AllHostedRegion" @"
 Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
 "@ "[GraphQL: allHostedAzureRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allresourcegroup
+# Invoke-RscQueryAzure -AllResourceGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allresourcegroup -GetInputs
+$inputs = Invoke-RscQueryAzure -AllResourceGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allresourcegroup" @"
+Write-Message "Invoke-RscQueryAzure -AllResourceGroup" @"
 Get resource groups for a service principal in Azure.
 "@ "[GraphQL: allAzureResourceGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allvnet
+# Invoke-RscQueryAzure -AllVnet
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allvnet -GetInputs
+$inputs = Invoke-RscQueryAzure -AllVnet -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allvnet" @"
+Write-Message "Invoke-RscQueryAzure -AllVnet" @"
 Get VNets for a given account in Azure.
 "@ "[GraphQL: allAzureVnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allsubnet
+# Invoke-RscQueryAzure -AllSubnet
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allsubnet -GetInputs
+$inputs = Invoke-RscQueryAzure -AllSubnet -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allsubnet" @"
+Write-Message "Invoke-RscQueryAzure -AllSubnet" @"
 Get subnets for a given account in Azure.
 "@ "[GraphQL: allAzureSubnets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allcdmversion
+# Invoke-RscQueryAzure -AllCdmVersion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allcdmversion -GetInputs
+$inputs = Invoke-RscQueryAzure -AllCdmVersion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allcdmversion" @"
+Write-Message "Invoke-RscQueryAzure -AllCdmVersion" @"
 Get all Rubrik CDM versions in the Azure marketplace.
 "@ "[GraphQL: allAzureCdmVersions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allregion
+# Invoke-RscQueryAzure -AllRegion
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allregion -GetInputs
+$inputs = Invoke-RscQueryAzure -AllRegion -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allregion" @"
+Write-Message "Invoke-RscQueryAzure -AllRegion" @"
 Get all available regions for Azure.
 "@ "[GraphQL: allAzureRegions]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allnsg
+# Invoke-RscQueryAzure -AllNsg
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allnsg -GetInputs
+$inputs = Invoke-RscQueryAzure -AllNsg -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allnsg" @"
+Write-Message "Invoke-RscQueryAzure -AllNsg" @"
 Get all available network security groups for Azure.
 "@ "[GraphQL: allAzureNsgs]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Allstorageaccount
+# Invoke-RscQueryAzure -AllStorageAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Allstorageaccount -GetInputs
+$inputs = Invoke-RscQueryAzure -AllStorageAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Allstorageaccount" @"
+Write-Message "Invoke-RscQueryAzure -AllStorageAccount" @"
 List all storage accounts from Azure.
 "@ "[GraphQL: allAzureStorageAccounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Addirectorie
+# Invoke-RscQueryAzure -AdDirectorie
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Addirectorie -GetInputs
+$inputs = Invoke-RscQueryAzure -AdDirectorie -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Addirectorie" @"
+Write-Message "Invoke-RscQueryAzure -AdDirectorie" @"
 All Azure AD directories for the account.
 "@ "[GraphQL: azureAdDirectories]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzure -Addirectory
+# Invoke-RscQueryAzure -AdDirectory
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzure -Addirectory -GetInputs
+$inputs = Invoke-RscQueryAzure -AdDirectory -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzure -Addirectory" @"
+Write-Message "Invoke-RscQueryAzure -AdDirectory" @"
 Details of the Azure AD corresponds to the workload ID.
 "@ "[GraphQL: azureAdDirectory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5236,121 +5236,121 @@ Gets the exocompute details of the given cluster.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Checkstorageaccountname
+# Invoke-RscQueryAzureO365 -CheckStorageAccountName
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Checkstorageaccountname -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -CheckStorageAccountName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Checkstorageaccountname" @"
+Write-Message "Invoke-RscQueryAzureO365 -CheckStorageAccountName" @"
 Checks the storage account name.
 "@ "[GraphQL: azureO365CheckStorageAccountName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Checkstorageaccountaccessibility
+# Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Checkstorageaccountaccessibility -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Checkstorageaccountaccessibility" @"
+Write-Message "Invoke-RscQueryAzureO365 -CheckStorageAccountAccessibility" @"
 Checks the accessibility of the storage account.
 "@ "[GraphQL: azureO365CheckStorageAccountAccessibility]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Checksubscriptionquota
+# Invoke-RscQueryAzureO365 -CheckSubscriptionQuota
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Checksubscriptionquota -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -CheckSubscriptionQuota -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Checksubscriptionquota" @"
+Write-Message "Invoke-RscQueryAzureO365 -CheckSubscriptionQuota" @"
 Checks the Azure subscription quota.
 "@ "[GraphQL: azureO365CheckSubscriptionQuota]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Checkresourcegroupname
+# Invoke-RscQueryAzureO365 -CheckResourceGroupName
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Checkresourcegroupname -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -CheckResourceGroupName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Checkresourcegroupname" @"
+Write-Message "Invoke-RscQueryAzureO365 -CheckResourceGroupName" @"
 Checks the resource group name.
 "@ "[GraphQL: azureO365CheckResourceGroupName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Checkvirtualnetworkname
+# Invoke-RscQueryAzureO365 -CheckVirtualNetworkName
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Checkvirtualnetworkname -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -CheckVirtualNetworkName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Checkvirtualnetworkname" @"
+Write-Message "Invoke-RscQueryAzureO365 -CheckVirtualNetworkName" @"
 Checks the virtual network name.
 "@ "[GraphQL: azureO365CheckVirtualNetworkName]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Validateuserrole
+# Invoke-RscQueryAzureO365 -ValidateUserRole
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Validateuserrole -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -ValidateUserRole -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Validateuserrole" @"
+Write-Message "Invoke-RscQueryAzureO365 -ValidateUserRole" @"
 Validates the user roles in the subscription.
 "@ "[GraphQL: azureO365ValidateUserRoles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Checknsgoutboundrule
+# Invoke-RscQueryAzureO365 -CheckNSGOutboundRule
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Checknsgoutboundrule -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -CheckNSGOutboundRule -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Checknsgoutboundrule" @"
+Write-Message "Invoke-RscQueryAzureO365 -CheckNSGOutboundRule" @"
 Checks the NSG Outbound rules of the Azure resources.
 "@ "[GraphQL: azureO365CheckNSGOutboundRules]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Checknetworksubnet
+# Invoke-RscQueryAzureO365 -CheckNetworkSubnet
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Checknetworksubnet -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -CheckNetworkSubnet -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Checknetworksubnet" @"
+Write-Message "Invoke-RscQueryAzureO365 -CheckNetworkSubnet" @"
 Checks the network subnet of the Azure resources.
 "@ "[GraphQL: azureO365CheckNetworkSubnet]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Getnetworksubnetunusedaddr
+# Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Getnetworksubnetunusedaddr -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Getnetworksubnetunusedaddr" @"
+Write-Message "Invoke-RscQueryAzureO365 -GetNetworkSubnetUnusedAddr" @"
 Retrieves the unused addresses available in a subnet.
 "@ "[GraphQL: azureO365GetNetworkSubnetUnusedAddr]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryAzureO365 -Getazurehosttype
+# Invoke-RscQueryAzureO365 -GetAzureHostType
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryAzureO365 -Getazurehosttype -GetInputs
+$inputs = Invoke-RscQueryAzureO365 -GetAzureHostType -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryAzureO365 -Getazurehosttype" @"
+Write-Message "Invoke-RscQueryAzureO365 -GetAzureHostType" @"
 Retrieves the AzureHostType of the account.
 "@ "[GraphQL: azureO365GetAzureHostType]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5381,37 +5381,37 @@ Paginated list of cassandra keyspaces.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -Columnfamily
+# Invoke-RscQueryCassandra -ColumnFamily
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCassandra -Columnfamily -GetInputs
+$inputs = Invoke-RscQueryCassandra -ColumnFamily -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCassandra -Columnfamily" @"
+Write-Message "Invoke-RscQueryCassandra -ColumnFamily" @"
 Paginated list of cassandra column families.
 "@ "[GraphQL: cassandraColumnFamilies]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -Columnfamilyrecoverablerange
+# Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCassandra -Columnfamilyrecoverablerange -GetInputs
+$inputs = Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCassandra -Columnfamilyrecoverablerange" @"
+Write-Message "Invoke-RscQueryCassandra -ColumnFamilyRecoverableRange" @"
 Get Recoverable Range of a Cassandra Column Family.
 "@ "[GraphQL: cassandraColumnFamilyRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCassandra -Columnfamilyschema
+# Invoke-RscQueryCassandra -ColumnFamilySchema
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCassandra -Columnfamilyschema -GetInputs
+$inputs = Invoke-RscQueryCassandra -ColumnFamilySchema -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCassandra -Columnfamilyschema" @"
+Write-Message "Invoke-RscQueryCassandra -ColumnFamilySchema" @"
 Get Schema of a Cassandra Column Family.
 "@ "[GraphQL: cassandraColumnFamilySchema]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5469,13 +5469,13 @@ A cluster object.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Withupgradesinfo
+# Invoke-RscQueryCluster -WithUpgradesInfo
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Withupgradesinfo -GetInputs
+$inputs = Invoke-RscQueryCluster -WithUpgradesInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Withupgradesinfo" @"
+Write-Message "Invoke-RscQueryCluster -WithUpgradesInfo" @"
 
 "@ "[GraphQL: clusterWithUpgradesInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5505,13 +5505,13 @@ Rubrik cluster proxy information.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Ntpserver
+# Invoke-RscQueryCluster -NtpServer
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Ntpserver -GetInputs
+$inputs = Invoke-RscQueryCluster -NtpServer -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Ntpserver" @"
+Write-Message "Invoke-RscQueryCluster -NtpServer" @"
 Get NTP Servers
 
 Supported in v5.0+
@@ -5520,13 +5520,13 @@ Retrieve a list of the NTP servers assigned to the Rubrik cluster. Encryption ke
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Networkinterface
+# Invoke-RscQueryCluster -NetworkInterface
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Networkinterface -GetInputs
+$inputs = Invoke-RscQueryCluster -NetworkInterface -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Networkinterface" @"
+Write-Message "Invoke-RscQueryCluster -NetworkInterface" @"
 Get network interfaces for a Rubrik Cluster cluster
 
 Supported in v5.0+
@@ -5535,13 +5535,13 @@ Retrieves network interfaces(including VLANs) on bond0/bond1.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Floatingip
+# Invoke-RscQueryCluster -FloatingIp
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Floatingip -GetInputs
+$inputs = Invoke-RscQueryCluster -FloatingIp -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Floatingip" @"
+Write-Message "Invoke-RscQueryCluster -FloatingIp" @"
 Get a list of a cluster's always-available Ips
 
 Supported in v5.0+
@@ -5562,13 +5562,13 @@ Rubrik cluster VLAN information.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Defaultgateway
+# Invoke-RscQueryCluster -DefaultGateway
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Defaultgateway -GetInputs
+$inputs = Invoke-RscQueryCluster -DefaultGateway -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Defaultgateway" @"
+Write-Message "Invoke-RscQueryCluster -DefaultGateway" @"
 Get current default gateway
 
 Supported in v5.0+
@@ -5577,13 +5577,13 @@ Get current default gateway.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Websignedcertificate
+# Invoke-RscQueryCluster -WebSignedCertificate
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Websignedcertificate -GetInputs
+$inputs = Invoke-RscQueryCluster -WebSignedCertificate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Websignedcertificate" @"
+Write-Message "Invoke-RscQueryCluster -WebSignedCertificate" @"
 Get the signed certificate for Web server
 
 Supported in v5.2+
@@ -5622,37 +5622,37 @@ Get all certificates.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Webcertsandipmi
+# Invoke-RscQueryCluster -WebCertsAndIpmi
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Webcertsandipmi -GetInputs
+$inputs = Invoke-RscQueryCluster -WebCertsAndIpmi -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Webcertsandipmi" @"
+Write-Message "Invoke-RscQueryCluster -WebCertsAndIpmi" @"
 Get web server certificate and IPMI details for multiple clusters.
 "@ "[GraphQL: allClusterWebCertsAndIpmis]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Operationjobprogress
+# Invoke-RscQueryCluster -OperationJobProgress
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Operationjobprogress -GetInputs
+$inputs = Invoke-RscQueryCluster -OperationJobProgress -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Operationjobprogress" @"
+Write-Message "Invoke-RscQueryCluster -OperationJobProgress" @"
 Get updates on the job progress of the Rubrik cluster operation.
 "@ "[GraphQL: clusterOperationJobProgress]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Ipv6mode
+# Invoke-RscQueryCluster -Ipv6Mode
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Ipv6mode -GetInputs
+$inputs = Invoke-RscQueryCluster -Ipv6Mode -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Ipv6mode" @"
+Write-Message "Invoke-RscQueryCluster -Ipv6Mode" @"
 Rubrik cluster IPv6 mode.
 "@ "[GraphQL: clusterIpv6Mode]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5673,49 +5673,49 @@ Returns the certificate signing request generated from the private key of the Ru
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Typelist
+# Invoke-RscQueryCluster -TypeList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Typelist -GetInputs
+$inputs = Invoke-RscQueryCluster -TypeList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Typelist" @"
+Write-Message "Invoke-RscQueryCluster -TypeList" @"
 
 "@ "[GraphQL: clusterTypeList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Groupbyconnection
+# Invoke-RscQueryCluster -GroupByList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Groupbyconnection -GetInputs
+$inputs = Invoke-RscQueryCluster -GroupByList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Groupbyconnection" @"
+Write-Message "Invoke-RscQueryCluster -GroupByList" @"
 
 "@ "[GraphQL: clusterGroupByConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Withconfigprotectioninfo
+# Invoke-RscQueryCluster -WithConfigProtectionInfo
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Withconfigprotectioninfo -GetInputs
+$inputs = Invoke-RscQueryCluster -WithConfigProtectionInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Withconfigprotectioninfo" @"
+Write-Message "Invoke-RscQueryCluster -WithConfigProtectionInfo" @"
 A cluster object with config protection information.
 "@ "[GraphQL: clusterWithConfigProtectionInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Rcvlocation
+# Invoke-RscQueryCluster -RcvLocation
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Rcvlocation -GetInputs
+$inputs = Invoke-RscQueryCluster -RcvLocation -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Rcvlocation" @"
+Write-Message "Invoke-RscQueryCluster -RcvLocation" @"
 List Rubrik Cloud Vault locations of the cluster.
 "@ "[GraphQL: clusterRcvLocations]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5733,49 +5733,49 @@ List all connected clusters.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Replicationtarget
+# Invoke-RscQueryCluster -ReplicationTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Replicationtarget -GetInputs
+$inputs = Invoke-RscQueryCluster -ReplicationTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Replicationtarget" @"
+Write-Message "Invoke-RscQueryCluster -ReplicationTarget" @"
 All replication targets for a cluster.
 "@ "[GraphQL: allClusterReplicationTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Encryptioninfo
+# Invoke-RscQueryCluster -EncryptionInfo
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Encryptioninfo -GetInputs
+$inputs = Invoke-RscQueryCluster -EncryptionInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Encryptioninfo" @"
+Write-Message "Invoke-RscQueryCluster -EncryptionInfo" @"
 Filter clusters by encryption information.
 "@ "[GraphQL: clusterEncryptionInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Hostfailover
+# Invoke-RscQueryCluster -HostFailover
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Hostfailover -GetInputs
+$inputs = Invoke-RscQueryCluster -HostFailover -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Hostfailover" @"
+Write-Message "Invoke-RscQueryCluster -HostFailover" @"
 Get details of the given host failover cluster.
 "@ "[GraphQL: hostFailoverCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Globalfilesearchmultiple
+# Invoke-RscQueryCluster -GlobalFileSearchMultiple
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Globalfilesearchmultiple -GetInputs
+$inputs = Invoke-RscQueryCluster -GlobalFileSearchMultiple -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Globalfilesearchmultiple" @"
+Write-Message "Invoke-RscQueryCluster -GlobalFileSearchMultiple" @"
 All files and folders matching input filters.
 "@ "[GraphQL: allGlobalFileSearchMultipleClusters]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5805,61 +5805,61 @@ A Windows Cluster.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Ladomainconnection
+# Invoke-RscQueryCluster -LaDomainList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Ladomainconnection -GetInputs
+$inputs = Invoke-RscQueryCluster -LaDomainList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Ladomainconnection" @"
+Write-Message "Invoke-RscQueryCluster -LaDomainList" @"
 
 "@ "[GraphQL: clusterSlaDomainConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Ladomainfilterconnection
+# Invoke-RscQueryCluster -LaDomainFilterList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Ladomainfilterconnection -GetInputs
+$inputs = Invoke-RscQueryCluster -LaDomainFilterList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Ladomainfilterconnection" @"
+Write-Message "Invoke-RscQueryCluster -LaDomainFilterList" @"
 
 "@ "[GraphQL: clusterSlaDomainFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Verifyslawithreplicationto
+# Invoke-RscQueryCluster -VerifySlaWithReplicationTo
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Verifyslawithreplicationto -GetInputs
+$inputs = Invoke-RscQueryCluster -VerifySlaWithReplicationTo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Verifyslawithreplicationto" @"
+Write-Message "Invoke-RscQueryCluster -VerifySlaWithReplicationTo" @"
 
 "@ "[GraphQL: verifySLAWithReplicationToCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Globalsla
+# Invoke-RscQueryCluster -GlobalSla
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Globalsla -GetInputs
+$inputs = Invoke-RscQueryCluster -GlobalSla -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Globalsla" @"
+Write-Message "Invoke-RscQueryCluster -GlobalSla" @"
 Global SLA Domains protecting at least one object on the specified Rubrik cluster.
 "@ "[GraphQL: allClusterGlobalSlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Registrationproductinfo
+# Invoke-RscQueryCluster -RegistrationProductInfo
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Registrationproductinfo -GetInputs
+$inputs = Invoke-RscQueryCluster -RegistrationProductInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Registrationproductinfo" @"
+Write-Message "Invoke-RscQueryCluster -RegistrationProductInfo" @"
 Info about the cluster product types the user is entitled to.
 "@ "[GraphQL: clusterRegistrationProductInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5877,50 +5877,50 @@ List of vCloud Director clusters.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Istotpacknecessary
+# Invoke-RscQueryCluster -IsTotpAckNecessary
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Istotpacknecessary -GetInputs
+$inputs = Invoke-RscQueryCluster -IsTotpAckNecessary -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Istotpacknecessary" @"
+Write-Message "Invoke-RscQueryCluster -IsTotpAckNecessary" @"
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 "@ "[GraphQL: isTotpAckNecessaryForCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryCluster -Totpackstatus
+# Invoke-RscQueryCluster -TotpAckStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryCluster -Totpackstatus -GetInputs
+$inputs = Invoke-RscQueryCluster -TotpAckStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryCluster -Totpackstatus" @"
+Write-Message "Invoke-RscQueryCluster -TotpAckStatus" @"
 Checks whether acknowledgement of the Time-based, One-Time Password (TOTP) mandate is required for upgrading the Rubrik cluster version.
 "@ "[GraphQL: allClustersTotpAckStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Topleveldescendant
+# Invoke-RscQueryHyperv -TopLevelDescendant
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryHyperv -Topleveldescendant -GetInputs
+$inputs = Invoke-RscQueryHyperv -TopLevelDescendant -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryHyperv -Topleveldescendant" @"
+Write-Message "Invoke-RscQueryHyperv -TopLevelDescendant" @"
 Paginated list of the highest-level HyperV Objects accessible by the current user.
 "@ "[GraphQL: hypervTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Virtualmachine
+# Invoke-RscQueryHyperv -VirtualMachine
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryHyperv -Virtualmachine -GetInputs
+$inputs = Invoke-RscQueryHyperv -VirtualMachine -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryHyperv -Virtualmachine" @"
+Write-Message "Invoke-RscQueryHyperv -VirtualMachine" @"
 Paginated list of HyperV Virtual Machines.
 "@ "[GraphQL: hypervVirtualMachines]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5962,13 +5962,13 @@ Details of the given Hyper-V Server.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Uniqueserverscount
+# Invoke-RscQueryHyperv -UniqueServersCount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryHyperv -Uniqueserverscount -GetInputs
+$inputs = Invoke-RscQueryHyperv -UniqueServersCount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryHyperv -Uniqueserverscount" @"
+Write-Message "Invoke-RscQueryHyperv -UniqueServersCount" @"
 Count of unique HyperV Servers.
 "@ "[GraphQL: uniqueHypervServersCount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -5986,25 +5986,25 @@ HyperV Live Mount Connection.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Vmdetail
+# Invoke-RscQueryHyperv -VmDetail
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryHyperv -Vmdetail -GetInputs
+$inputs = Invoke-RscQueryHyperv -VmDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryHyperv -Vmdetail" @"
+Write-Message "Invoke-RscQueryHyperv -VmDetail" @"
 HyperV Virtual Machine detail from CDM.
 "@ "[GraphQL: hypervVmDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Hostasyncrequeststatus
+# Invoke-RscQueryHyperv -HostAsyncRequestStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryHyperv -Hostasyncrequeststatus -GetInputs
+$inputs = Invoke-RscQueryHyperv -HostAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryHyperv -Hostasyncrequeststatus" @"
+Write-Message "Invoke-RscQueryHyperv -HostAsyncRequestStatus" @"
 Get Hyper-V host async request
 
 Supported in v5.0+
@@ -6013,13 +6013,13 @@ Get details about a Hyper-V host related async request.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Scvmmasyncrequeststatus
+# Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryHyperv -Scvmmasyncrequeststatus -GetInputs
+$inputs = Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryHyperv -Scvmmasyncrequeststatus" @"
+Write-Message "Invoke-RscQueryHyperv -ScvmmAsyncRequestStatus" @"
 Get Hyper-V SCVMM async request
 
 Supported in v5.0+
@@ -6028,13 +6028,13 @@ Get details about a Hyper-V SCVMM related async request.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryHyperv -Virtualmachineasyncrequeststatus
+# Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryHyperv -Virtualmachineasyncrequeststatus -GetInputs
+$inputs = Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryHyperv -Virtualmachineasyncrequeststatus" @"
+Write-Message "Invoke-RscQueryHyperv -VirtualMachineAsyncRequestStatus" @"
 Get VM async request details
 
 Supported in v5.0+
@@ -6044,37 +6044,37 @@ Get details about a Hyper-V vm related async request.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryLdap -Integrationconnection
+# Invoke-RscQueryLdap -IntegrationList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryLdap -Integrationconnection -GetInputs
+$inputs = Invoke-RscQueryLdap -IntegrationList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryLdap -Integrationconnection" @"
+Write-Message "Invoke-RscQueryLdap -IntegrationList" @"
 Browse LDAP integrations.
 "@ "[GraphQL: ldapIntegrationConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryLdap -Principalconnection
+# Invoke-RscQueryLdap -PrincipalList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryLdap -Principalconnection -GetInputs
+$inputs = Invoke-RscQueryLdap -PrincipalList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryLdap -Principalconnection" @"
+Write-Message "Invoke-RscQueryLdap -PrincipalList" @"
 Search LDAP Principals.
 "@ "[GraphQL: ldapPrincipalConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryLdap -Authorizedprincipalconnection
+# Invoke-RscQueryLdap -AuthorizedPrincipalList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryLdap -Authorizedprincipalconnection -GetInputs
+$inputs = Invoke-RscQueryLdap -AuthorizedPrincipalList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryLdap -Authorizedprincipalconnection" @"
+Write-Message "Invoke-RscQueryLdap -AuthorizedPrincipalList" @"
 Browse LDAP-authorized principals.
 "@ "[GraphQL: ldapAuthorizedPrincipalConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6117,86 +6117,86 @@ Paginated list of MongoDB collections.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Recoverablerange
+# Invoke-RscQueryMongo -RecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMongo -Recoverablerange -GetInputs
+$inputs = Invoke-RscQueryMongo -RecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMongo -Recoverablerange" @"
+Write-Message "Invoke-RscQueryMongo -RecoverableRange" @"
 Provides the range for recovery of MongoDB objects.
 "@ "[GraphQL: mongoRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Dbsource
+# Invoke-RscQueryMongo -DbSource
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMongo -Dbsource -GetInputs
+$inputs = Invoke-RscQueryMongo -DbSource -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMongo -Dbsource" @"
+Write-Message "Invoke-RscQueryMongo -DbSource" @"
 Paginated list of MongoDB sources on NoSQL cluster.
 "@ "[GraphQL: mongodbSources]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Dbdatabase
+# Invoke-RscQueryMongo -DbDatabase
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMongo -Dbdatabase -GetInputs
+$inputs = Invoke-RscQueryMongo -DbDatabase -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMongo -Dbdatabase" @"
+Write-Message "Invoke-RscQueryMongo -DbDatabase" @"
 Paginated list of MongoDB databases on NoSQL cluster.
 "@ "[GraphQL: mongodbDatabases]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Dbcollection
+# Invoke-RscQueryMongo -DbCollection
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMongo -Dbcollection -GetInputs
+$inputs = Invoke-RscQueryMongo -DbCollection -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMongo -Dbcollection" @"
+Write-Message "Invoke-RscQueryMongo -DbCollection" @"
 Paginated list of MongoDB collections on NoSQL cluster.
 "@ "[GraphQL: mongodbCollections]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Dbcollectionrecoverablerange
+# Invoke-RscQueryMongo -DbCollectionRecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMongo -Dbcollectionrecoverablerange -GetInputs
+$inputs = Invoke-RscQueryMongo -DbCollectionRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMongo -Dbcollectionrecoverablerange" @"
+Write-Message "Invoke-RscQueryMongo -DbCollectionRecoverableRange" @"
 Recoverable Range of a MongoDB collection on NoSQL cluster.
 "@ "[GraphQL: mongodbCollectionRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMongo -Dbbulkrecoverablerange
+# Invoke-RscQueryMongo -DbBulkRecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMongo -Dbbulkrecoverablerange -GetInputs
+$inputs = Invoke-RscQueryMongo -DbBulkRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMongo -Dbbulkrecoverablerange" @"
+Write-Message "Invoke-RscQueryMongo -DbBulkRecoverableRange" @"
 Recoverable range for multiple Management Objects on NoSQL cluster.
 "@ "[GraphQL: mongodbBulkRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Topleveldescendant
+# Invoke-RscQueryMssql -TopLevelDescendant
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Topleveldescendant -GetInputs
+$inputs = Invoke-RscQueryMssql -TopLevelDescendant -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Topleveldescendant" @"
+Write-Message "Invoke-RscQueryMssql -TopLevelDescendant" @"
 Paginated list of the highest-level Microsoft SQL Objects accessible by the current user.
 "@ "[GraphQL: mssqlTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6214,13 +6214,13 @@ Paginated list of Microsoft SQL Databases.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Availabilitygroup
+# Invoke-RscQueryMssql -AvailabilityGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Availabilitygroup -GetInputs
+$inputs = Invoke-RscQueryMssql -AvailabilityGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Availabilitygroup" @"
+Write-Message "Invoke-RscQueryMssql -AvailabilityGroup" @"
 A Microsoft SQL Availability Group.
 "@ "[GraphQL: mssqlAvailabilityGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6238,146 +6238,146 @@ A Microsoft SQL Instance.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Recoverablerange
+# Invoke-RscQueryMssql -RecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Recoverablerange -GetInputs
+$inputs = Invoke-RscQueryMssql -RecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Recoverablerange" @"
+Write-Message "Invoke-RscQueryMssql -RecoverableRange" @"
 List of recoverable ranges for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Databasemissedsnapshot
+# Invoke-RscQueryMssql -DatabaseMissedSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Databasemissedsnapshot -GetInputs
+$inputs = Invoke-RscQueryMssql -DatabaseMissedSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Databasemissedsnapshot" @"
+Write-Message "Invoke-RscQueryMssql -DatabaseMissedSnapshot" @"
 List of missed snapshots for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlDatabaseMissedSnapshots]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Compatibleinstance
+# Invoke-RscQueryMssql -CompatibleInstance
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Compatibleinstance -GetInputs
+$inputs = Invoke-RscQueryMssql -CompatibleInstance -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Compatibleinstance" @"
+Write-Message "Invoke-RscQueryMssql -CompatibleInstance" @"
 Returns all compatible instances for export for the specified recovery time.
 "@ "[GraphQL: mssqlCompatibleInstances]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Databasemissedrecoverablerange
+# Invoke-RscQueryMssql -DatabaseMissedRecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Databasemissedrecoverablerange -GetInputs
+$inputs = Invoke-RscQueryMssql -DatabaseMissedRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Databasemissedrecoverablerange" @"
+Write-Message "Invoke-RscQueryMssql -DatabaseMissedRecoverableRange" @"
 List of missed recoverable ranges for a Microsoft SQL Database.
 "@ "[GraphQL: mssqlDatabaseMissedRecoverableRanges]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Alldatabaserestorefile
+# Invoke-RscQueryMssql -AllDatabaseRestoreFile
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Alldatabaserestorefile -GetInputs
+$inputs = Invoke-RscQueryMssql -AllDatabaseRestoreFile -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Alldatabaserestorefile" @"
+Write-Message "Invoke-RscQueryMssql -AllDatabaseRestoreFile" @"
 Provides a list of database files to be restored for the specified restore or export operation.
 "@ "[GraphQL: allMssqlDatabaseRestoreFiles]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Databaselivemount
+# Invoke-RscQueryMssql -DatabaseLiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Databaselivemount -GetInputs
+$inputs = Invoke-RscQueryMssql -DatabaseLiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Databaselivemount" @"
+Write-Message "Invoke-RscQueryMssql -DatabaseLiveMount" @"
 Paginated list of Microsoft SQL Database live mounts.
 "@ "[GraphQL: mssqlDatabaseLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Defaultpropertie
+# Invoke-RscQueryMssql -DefaultPropertie
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Defaultpropertie -GetInputs
+$inputs = Invoke-RscQueryMssql -DefaultPropertie -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Defaultpropertie" @"
+Write-Message "Invoke-RscQueryMssql -DefaultPropertie" @"
 The current default properties for Microsoft SQL databases.
 "@ "[GraphQL: mssqlDefaultProperties]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Databaserestoreestimate
+# Invoke-RscQueryMssql -DatabaseRestoreEstimate
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Databaserestoreestimate -GetInputs
+$inputs = Invoke-RscQueryMssql -DatabaseRestoreEstimate -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Databaserestoreestimate" @"
+Write-Message "Invoke-RscQueryMssql -DatabaseRestoreEstimate" @"
 Returns a size estimate for a restore, export, or mount.
 "@ "[GraphQL: mssqlDatabaseRestoreEstimate]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Cdmlogshippingtarget
+# Invoke-RscQueryMssql -CdmLogShippingTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Cdmlogshippingtarget -GetInputs
+$inputs = Invoke-RscQueryMssql -CdmLogShippingTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Cdmlogshippingtarget" @"
+Write-Message "Invoke-RscQueryMssql -CdmLogShippingTarget" @"
 Paginated list of Microsoft SQL log shipping target.
 "@ "[GraphQL: cdmMssqlLogShippingTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryMssql -Logshippingtarget
+# Invoke-RscQueryMssql -LogShippingTarget
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryMssql -Logshippingtarget -GetInputs
+$inputs = Invoke-RscQueryMssql -LogShippingTarget -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryMssql -Logshippingtarget" @"
+Write-Message "Invoke-RscQueryMssql -LogShippingTarget" @"
 List of filtered Microsoft SQL log shipping targets.
 "@ "[GraphQL: mssqlLogShippingTargets]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Topleveldescendant
+# Invoke-RscQueryNutanix -TopLevelDescendant
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Topleveldescendant -GetInputs
+$inputs = Invoke-RscQueryNutanix -TopLevelDescendant -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Topleveldescendant" @"
+Write-Message "Invoke-RscQueryNutanix -TopLevelDescendant" @"
 Paginated list of the highest-level Nutanix Objects accessible by the current user.
 "@ "[GraphQL: nutanixTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Topleveldescendantsv2
+# Invoke-RscQueryNutanix -TopLevelDescendantsV2
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Topleveldescendantsv2 -GetInputs
+$inputs = Invoke-RscQueryNutanix -TopLevelDescendantsV2 -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Topleveldescendantsv2" @"
+Write-Message "Invoke-RscQueryNutanix -TopLevelDescendantsV2" @"
 Paginated list of the highest-level Nutanix Objects accessible by the current user.
 "@ "[GraphQL: nutanixTopLevelDescendantsV2]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6395,13 +6395,13 @@ A Nutanix Cluster.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Prismcentral
+# Invoke-RscQueryNutanix -PrismCentral
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Prismcentral -GetInputs
+$inputs = Invoke-RscQueryNutanix -PrismCentral -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Prismcentral" @"
+Write-Message "Invoke-RscQueryNutanix -PrismCentral" @"
 Paginated list of Nutanix Prism Central objects.
 "@ "[GraphQL: nutanixPrismCentrals]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6419,25 +6419,25 @@ Paginated list of Nutanix Category objects.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Categoryvalue
+# Invoke-RscQueryNutanix -CategoryValue
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Categoryvalue -GetInputs
+$inputs = Invoke-RscQueryNutanix -CategoryValue -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Categoryvalue" @"
+Write-Message "Invoke-RscQueryNutanix -CategoryValue" @"
 Paginated list of Nutanix Category Value objects.
 "@ "[GraphQL: nutanixCategoryValues]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Categoryvaluevm
+# Invoke-RscQueryNutanix -CategoryValueVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Categoryvaluevm -GetInputs
+$inputs = Invoke-RscQueryNutanix -CategoryValueVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Categoryvaluevm" @"
+Write-Message "Invoke-RscQueryNutanix -CategoryValueVm" @"
 Paginated list of Nutanix Virtual Machines in a Category Value.
 "@ "[GraphQL: nutanixCategoryValueVms]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6467,13 +6467,13 @@ Nutanix Live Mount Connection.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Clustercontainer
+# Invoke-RscQueryNutanix -ClusterContainer
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Clustercontainer -GetInputs
+$inputs = Invoke-RscQueryNutanix -ClusterContainer -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Clustercontainer" @"
+Write-Message "Invoke-RscQueryNutanix -ClusterContainer" @"
 Get list of containers on this cluster
 
 Supported in v5.0+
@@ -6482,13 +6482,13 @@ Query the nutanix cluster to get the list of containers, used for export purpose
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Clusternetwork
+# Invoke-RscQueryNutanix -ClusterNetwork
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Clusternetwork -GetInputs
+$inputs = Invoke-RscQueryNutanix -ClusterNetwork -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Clusternetwork" @"
+Write-Message "Invoke-RscQueryNutanix -ClusterNetwork" @"
 Get list of networks on this cluster
 
 Supported in v8.1+
@@ -6497,13 +6497,13 @@ Retrieves the list of networks by querying the Nutanix cluster. The list of netw
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Clusterasyncrequeststatus
+# Invoke-RscQueryNutanix -ClusterAsyncRequestStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Clusterasyncrequeststatus -GetInputs
+$inputs = Invoke-RscQueryNutanix -ClusterAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Clusterasyncrequeststatus" @"
+Write-Message "Invoke-RscQueryNutanix -ClusterAsyncRequestStatus" @"
 Get Nutanix cluster async request
 
 Supported in v5.0+
@@ -6512,13 +6512,13 @@ Get details about a Nutanix cluster-related async request.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Vmasyncrequeststatus
+# Invoke-RscQueryNutanix -VmAsyncRequestStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Vmasyncrequeststatus -GetInputs
+$inputs = Invoke-RscQueryNutanix -VmAsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Vmasyncrequeststatus" @"
+Write-Message "Invoke-RscQueryNutanix -VmAsyncRequestStatus" @"
 v5.0-v8.0: Get VM async request details
 v8.1+: Get virtual machine async request details
 
@@ -6529,13 +6529,13 @@ v8.1+: Get details about a Nutanix virtual machine-related async request.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Searchvm
+# Invoke-RscQueryNutanix -SearchVm
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Searchvm -GetInputs
+$inputs = Invoke-RscQueryNutanix -SearchVm -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Searchvm" @"
+Write-Message "Invoke-RscQueryNutanix -SearchVm" @"
 v5.0-v8.0: Search for file in Nutanix VM
 v8.1+: Search for file in Nutanix virtual machine
 
@@ -6545,13 +6545,13 @@ Search for a file within the Nutanix Virtual Machine. Search via full path prefi
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Vmmissedsnapshot
+# Invoke-RscQueryNutanix -VmMissedSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Vmmissedsnapshot -GetInputs
+$inputs = Invoke-RscQueryNutanix -VmMissedSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Vmmissedsnapshot" @"
+Write-Message "Invoke-RscQueryNutanix -VmMissedSnapshot" @"
 v5.0-v8.0: Get details about missed snapshots for a VM
 v8.1+: Get details about missed snapshots for a virtual machine
 
@@ -6562,13 +6562,13 @@ v8.1+: Retrieve the time of the day when the snapshots were missed specific to a
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Browsesnapshot
+# Invoke-RscQueryNutanix -BrowseSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Browsesnapshot -GetInputs
+$inputs = Invoke-RscQueryNutanix -BrowseSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Browsesnapshot" @"
+Write-Message "Invoke-RscQueryNutanix -BrowseSnapshot" @"
 v5.0-v8.0: Lists all files in VM snapshot
 v8.1+: Lists all files in virtual machine snapshot
 
@@ -6578,13 +6578,13 @@ Lists all files and directories in a given path.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryNutanix -Snapshotdetail
+# Invoke-RscQueryNutanix -SnapshotDetail
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryNutanix -Snapshotdetail -GetInputs
+$inputs = Invoke-RscQueryNutanix -SnapshotDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryNutanix -Snapshotdetail" @"
+Write-Message "Invoke-RscQueryNutanix -SnapshotDetail" @"
 Supported in v5.0+. Get Nutanix virtual machine snapshot details.
  Retrieve detailed information about a snapshot.
 "@ "[GraphQL: nutanixSnapshotDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
@@ -6604,25 +6604,25 @@ Details of the O365Org.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Orgatsnappablelevel
+# Invoke-RscQueryO365 -OrgAtSnappableLevel
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Orgatsnappablelevel -GetInputs
+$inputs = Invoke-RscQueryO365 -OrgAtSnappableLevel -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Orgatsnappablelevel" @"
+Write-Message "Invoke-RscQueryO365 -OrgAtSnappableLevel" @"
 Details of the O365Org at snappable level, given the snappable type.
 "@ "[GraphQL: o365OrgAtSnappableLevel]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Alladgroup
+# Invoke-RscQueryO365 -AllAdGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Alladgroup -GetInputs
+$inputs = Invoke-RscQueryO365 -AllAdGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Alladgroup" @"
+Write-Message "Invoke-RscQueryO365 -AllAdGroup" @"
 All AD Groups belonging to the O365 organization.
 "@ "[GraphQL: allO365AdGroups]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6700,37 +6700,37 @@ Details for the SharePoint site corresponding to the snappable ID.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Sharepointdrive
+# Invoke-RscQueryO365 -SharepointDrive
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Sharepointdrive -GetInputs
+$inputs = Invoke-RscQueryO365 -SharepointDrive -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Sharepointdrive" @"
+Write-Message "Invoke-RscQueryO365 -SharepointDrive" @"
 Details for the SharePoint drive corresponding to the snappable ID.
 "@ "[GraphQL: o365SharepointDrive]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Sharepointlist
+# Invoke-RscQueryO365 -SharepointList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Sharepointlist -GetInputs
+$inputs = Invoke-RscQueryO365 -SharepointList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Sharepointlist" @"
+Write-Message "Invoke-RscQueryO365 -SharepointList" @"
 Details for the SharePoint list corresponding to the snappable ID.
 "@ "[GraphQL: o365SharepointList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Sharepointsite
+# Invoke-RscQueryO365 -SharepointSite
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Sharepointsite -GetInputs
+$inputs = Invoke-RscQueryO365 -SharepointSite -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Sharepointsite" @"
+Write-Message "Invoke-RscQueryO365 -SharepointSite" @"
 Details for the SharePoint site corresponding to the site ID.
 "@ "[GraphQL: o365SharepointSite]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6748,37 +6748,37 @@ Details for the team corresponding to the snappable ID.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Teamchannel
+# Invoke-RscQueryO365 -TeamChannel
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Teamchannel -GetInputs
+$inputs = Invoke-RscQueryO365 -TeamChannel -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Teamchannel" @"
+Write-Message "Invoke-RscQueryO365 -TeamChannel" @"
 List of Channels for the O365Team.
 "@ "[GraphQL: o365TeamChannels]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Teamconversationsfolderid
+# Invoke-RscQueryO365 -TeamConversationsFolderID
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Teamconversationsfolderid -GetInputs
+$inputs = Invoke-RscQueryO365 -TeamConversationsFolderID -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Teamconversationsfolderid" @"
+Write-Message "Invoke-RscQueryO365 -TeamConversationsFolderID" @"
 ID for the conversations folder in the Team's Group Mailbox.
 "@ "[GraphQL: o365TeamConversationsFolderID]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Teampostedby
+# Invoke-RscQueryO365 -TeamPostedBy
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Teampostedby -GetInputs
+$inputs = Invoke-RscQueryO365 -TeamPostedBy -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Teampostedby" @"
+Write-Message "Invoke-RscQueryO365 -TeamPostedBy" @"
 Users who have posted in a team.
 "@ "[GraphQL: o365TeamPostedBy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6796,97 +6796,97 @@ Details of the Exchange calendar pertaining to the snappable ID.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Sharepointobjectlist
+# Invoke-RscQueryO365 -SharepointObjectList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Sharepointobjectlist -GetInputs
+$inputs = Invoke-RscQueryO365 -SharepointObjectList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Sharepointobjectlist" @"
+Write-Message "Invoke-RscQueryO365 -SharepointObjectList" @"
 Returns the sharepoint objects after filtering on the object types and includeEntireHierarchy.
 "@ "[GraphQL: o365SharepointObjectList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Sharepointobject
+# Invoke-RscQueryO365 -SharepointObject
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Sharepointobject -GetInputs
+$inputs = Invoke-RscQueryO365 -SharepointObject -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Sharepointobject" @"
+Write-Message "Invoke-RscQueryO365 -SharepointObject" @"
 
 "@ "[GraphQL: o365SharepointObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Userobject
+# Invoke-RscQueryO365 -UserObject
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Userobject -GetInputs
+$inputs = Invoke-RscQueryO365 -UserObject -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Userobject" @"
+Write-Message "Invoke-RscQueryO365 -UserObject" @"
 Name, id, object type, and mail address of user descendant object.
 "@ "[GraphQL: o365UserObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Orgsummarie
+# Invoke-RscQueryO365 -OrgSummarie
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Orgsummarie -GetInputs
+$inputs = Invoke-RscQueryO365 -OrgSummarie -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Orgsummarie" @"
+Write-Message "Invoke-RscQueryO365 -OrgSummarie" @"
 
 "@ "[GraphQL: o365OrgSummaries]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Objectancestor
+# Invoke-RscQueryO365 -ObjectAncestor
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Objectancestor -GetInputs
+$inputs = Invoke-RscQueryO365 -ObjectAncestor -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Objectancestor" @"
+Write-Message "Invoke-RscQueryO365 -ObjectAncestor" @"
 
 "@ "[GraphQL: o365ObjectAncestors]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Browseteamconvchannel
+# Invoke-RscQueryO365 -BrowseTeamConvChannel
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Browseteamconvchannel -GetInputs
+$inputs = Invoke-RscQueryO365 -BrowseTeamConvChannel -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Browseteamconvchannel" @"
+Write-Message "Invoke-RscQueryO365 -BrowseTeamConvChannel" @"
 Browse channels in a Teams conversations snapshot.
 "@ "[GraphQL: browseO365TeamConvChannels]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Serviceaccount
+# Invoke-RscQueryO365 -ServiceAccount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Serviceaccount -GetInputs
+$inputs = Invoke-RscQueryO365 -ServiceAccount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Serviceaccount" @"
+Write-Message "Invoke-RscQueryO365 -ServiceAccount" @"
 Gets the service account for the given org.
 "@ "[GraphQL: o365ServiceAccount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Allorgstatus
+# Invoke-RscQueryO365 -AllOrgStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Allorgstatus -GetInputs
+$inputs = Invoke-RscQueryO365 -AllOrgStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Allorgstatus" @"
+Write-Message "Invoke-RscQueryO365 -AllOrgStatus" @"
 Gets the status of each org in the account.
 "@ "[GraphQL: allO365OrgStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -6904,62 +6904,62 @@ Retrieve o365 licence details.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Listapp
+# Invoke-RscQueryO365 -ListApp
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Listapp -GetInputs
+$inputs = Invoke-RscQueryO365 -ListApp -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Listapp" @"
+Write-Message "Invoke-RscQueryO365 -ListApp" @"
 Lists the O365 apps.
 "@ "[GraphQL: listO365Apps]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Allsubscriptionsapptypecount
+# Invoke-RscQueryO365 -AllSubscriptionsAppTypeCount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Allsubscriptionsapptypecount -GetInputs
+$inputs = Invoke-RscQueryO365 -AllSubscriptionsAppTypeCount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Allsubscriptionsapptypecount" @"
+Write-Message "Invoke-RscQueryO365 -AllSubscriptionsAppTypeCount" @"
 Returns the total number of apps of each type, for each O365 org.
 "@ "[GraphQL: allO365SubscriptionsAppTypeCounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Storagestat
+# Invoke-RscQueryO365 -StorageStat
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Storagestat -GetInputs
+$inputs = Invoke-RscQueryO365 -StorageStat -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Storagestat" @"
+Write-Message "Invoke-RscQueryO365 -StorageStat" @"
 Returns the storage stats of an O365 org.
 "@ "[GraphQL: o365StorageStats]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryO365 -Servicestatus
+# Invoke-RscQueryO365 -ServiceStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryO365 -Servicestatus -GetInputs
+$inputs = Invoke-RscQueryO365 -ServiceStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryO365 -Servicestatus" @"
+Write-Message "Invoke-RscQueryO365 -ServiceStatus" @"
 Returns the service status of the O365 service running on MSFT server.
 "@ "[GraphQL: o365ServiceStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Topleveldescendant
+# Invoke-RscQueryOracle -TopLevelDescendant
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Topleveldescendant -GetInputs
+$inputs = Invoke-RscQueryOracle -TopLevelDescendant -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Topleveldescendant" @"
+Write-Message "Invoke-RscQueryOracle -TopLevelDescendant" @"
 Paginated list of the highest-level Oracle Objects accessible by the current user.
 "@ "[GraphQL: oracleTopLevelDescendants]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7001,37 +7001,37 @@ An Oracle Real Application Cluster.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Dataguardgroup
+# Invoke-RscQueryOracle -DataGuardGroup
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Dataguardgroup -GetInputs
+$inputs = Invoke-RscQueryOracle -DataGuardGroup -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Dataguardgroup" @"
+Write-Message "Invoke-RscQueryOracle -DataGuardGroup" @"
 An Oracle Data Guard Group.
 "@ "[GraphQL: oracleDataGuardGroup]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Livemount
+# Invoke-RscQueryOracle -LiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Livemount -GetInputs
+$inputs = Invoke-RscQueryOracle -LiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Livemount" @"
+Write-Message "Invoke-RscQueryOracle -LiveMount" @"
 Paginated list of Oracle Live Mounts.
 "@ "[GraphQL: oracleLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Acoparameter
+# Invoke-RscQueryOracle -AcoParameter
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Acoparameter -GetInputs
+$inputs = Invoke-RscQueryOracle -AcoParameter -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Acoparameter" @"
+Write-Message "Invoke-RscQueryOracle -AcoParameter" @"
 List of supported Advanced Cloning Options
 
 Supported in v6.0+
@@ -7040,13 +7040,13 @@ Get the list of supported Advanced Cloning Options (ACO) parameters.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Recoverablerange
+# Invoke-RscQueryOracle -RecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Recoverablerange -GetInputs
+$inputs = Invoke-RscQueryOracle -RecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Recoverablerange" @"
+Write-Message "Invoke-RscQueryOracle -RecoverableRange" @"
 Get recoverable ranges of a Oracle database
 
 Supported in v5.0+
@@ -7055,13 +7055,13 @@ Retrieve the recoverable ranges for a specified Oracle database. A begin and/or 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Missedrecoverablerange
+# Invoke-RscQueryOracle -MissedRecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Missedrecoverablerange -GetInputs
+$inputs = Invoke-RscQueryOracle -MissedRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Missedrecoverablerange" @"
+Write-Message "Invoke-RscQueryOracle -MissedRecoverableRange" @"
 Get missed recoverable ranges of a Oracle database
 
 Supported in v5.0+
@@ -7070,13 +7070,13 @@ Retrieve a list of missed recoverable ranges for a Oracle database. For each run
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Missedsnapshot
+# Invoke-RscQueryOracle -MissedSnapshot
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Missedsnapshot -GetInputs
+$inputs = Invoke-RscQueryOracle -MissedSnapshot -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Missedsnapshot" @"
+Write-Message "Invoke-RscQueryOracle -MissedSnapshot" @"
 Get missed snapshots for an Oracle database
 
 Supported in v5.0+
@@ -7085,13 +7085,13 @@ Retrieve summary information about the missed snapshots of an Oracle database.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Acoexampledownloadlink
+# Invoke-RscQueryOracle -AcoExampleDownloadLink
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Acoexampledownloadlink -GetInputs
+$inputs = Invoke-RscQueryOracle -AcoExampleDownloadLink -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Acoexampledownloadlink" @"
+Write-Message "Invoke-RscQueryOracle -AcoExampleDownloadLink" @"
 Link to download the Advanced Recovery Options example file
 
 Supported in v5.3+
@@ -7100,13 +7100,13 @@ Link to download the Advanced Recovery Options example file which can be used to
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Pdbdetail
+# Invoke-RscQueryOracle -PdbDetail
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Pdbdetail -GetInputs
+$inputs = Invoke-RscQueryOracle -PdbDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Pdbdetail" @"
+Write-Message "Invoke-RscQueryOracle -PdbDetail" @"
 Get PDB details
 
 Supported in v8.0+
@@ -7115,62 +7115,62 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Hostlogbackupconfig
+# Invoke-RscQueryOracle -HostLogBackupConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Hostlogbackupconfig -GetInputs
+$inputs = Invoke-RscQueryOracle -HostLogBackupConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Hostlogbackupconfig" @"
+Write-Message "Invoke-RscQueryOracle -HostLogBackupConfig" @"
 Oracle Log backup configuration for Oracle Host.
 "@ "[GraphQL: oracleHostLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Databaselogbackupconfig
+# Invoke-RscQueryOracle -DatabaseLogBackupConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Databaselogbackupconfig -GetInputs
+$inputs = Invoke-RscQueryOracle -DatabaseLogBackupConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Databaselogbackupconfig" @"
+Write-Message "Invoke-RscQueryOracle -DatabaseLogBackupConfig" @"
 Oracle log backup configuration for an Oracle Database.
 "@ "[GraphQL: oracleDatabaseLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryOracle -Raclogbackupconfig
+# Invoke-RscQueryOracle -RacLogBackupConfig
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryOracle -Raclogbackupconfig -GetInputs
+$inputs = Invoke-RscQueryOracle -RacLogBackupConfig -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryOracle -Raclogbackupconfig" @"
+Write-Message "Invoke-RscQueryOracle -RacLogBackupConfig" @"
 Oracle log backup configuration for an Oracle RAC.
 "@ "[GraphQL: oracleRacLogBackupConfig]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Alliofilterstatus
+# Invoke-RscQuerySla -AllIofilterStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Alliofilterstatus -GetInputs
+$inputs = Invoke-RscQuerySla -AllIofilterStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Alliofilterstatus" @"
+Write-Message "Invoke-RscQuerySla -AllIofilterStatus" @"
 The iofilter installation status of the compute clusters related to this SLA Domain.
 "@ "[GraphQL: allSlaIofilterStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Allcdpvmname
+# Invoke-RscQuerySla -AllCdpVmName
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Allcdpvmname -GetInputs
+$inputs = Invoke-RscQuerySla -AllCdpVmName -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Allcdpvmname" @"
+Write-Message "Invoke-RscQuerySla -AllCdpVmName" @"
 Names of the virtual machines in compute cluster with Continuous Data Protection (CDP) SLA Domain.
 "@ "[GraphQL: allCdpSlaVmNames]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7188,217 +7188,205 @@ Retrieves a list of SLA Domains.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Domainwithwarningslist
+# Invoke-RscQuerySla -DomainWithWarningsList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Domainwithwarningslist -GetInputs
+$inputs = Invoke-RscQuerySla -DomainWithWarningsList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Domainwithwarningslist" @"
+Write-Message "Invoke-RscQuerySla -DomainWithWarningsList" @"
 Query sla list with warnings
 "@ "[GraphQL: slaDomainWithWarningsList]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Globalfilterconnection
+# Invoke-RscQuerySla -GlobalFilterList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Globalfilterconnection -GetInputs
+$inputs = Invoke-RscQuerySla -GlobalFilterList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Globalfilterconnection" @"
+Write-Message "Invoke-RscQuerySla -GlobalFilterList" @"
 
 "@ "[GraphQL: globalSlaFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Domainwithwarning
+# Invoke-RscQuerySla -DomainWithWarning
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Domainwithwarning -GetInputs
+$inputs = Invoke-RscQuerySla -DomainWithWarning -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Domainwithwarning" @"
+Write-Message "Invoke-RscQuerySla -DomainWithWarning" @"
 
 "@ "[GraphQL: slaDomainWithWarnings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Archivalvalidationwarning
+# Invoke-RscQuerySla -ArchivalValidationWarning
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Archivalvalidationwarning -GetInputs
+$inputs = Invoke-RscQuerySla -ArchivalValidationWarning -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Archivalvalidationwarning" @"
+Write-Message "Invoke-RscQuerySla -ArchivalValidationWarning" @"
 SLA Domain warnings related to non-compliant archival retention duration in the archival policy.
 "@ "[GraphQL: slaArchivalValidationWarnings]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Countofobjectsprotected
+# Invoke-RscQuerySla -CountOfObjectsProtected
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Countofobjectsprotected -GetInputs
+$inputs = Invoke-RscQuerySla -CountOfObjectsProtected -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Countofobjectsprotected" @"
+Write-Message "Invoke-RscQuerySla -CountOfObjectsProtected" @"
 The number of objects protected by the SLA Domains.
 "@ "[GraphQL: countOfObjectsProtectedBySlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Auditdetail
+# Invoke-RscQuerySla -AuditDetail
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Auditdetail -GetInputs
+$inputs = Invoke-RscQuerySla -AuditDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Auditdetail" @"
+Write-Message "Invoke-RscQuerySla -AuditDetail" @"
 List of audit details for a given SLA Domain.
 "@ "[GraphQL: slaAuditDetail]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Summariesbyid
+# Invoke-RscQuerySla -SummariesById
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Summariesbyid -GetInputs
+$inputs = Invoke-RscQuerySla -SummariesById -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Summariesbyid" @"
+Write-Message "Invoke-RscQuerySla -SummariesById" @"
 List of SLA summaries for the given ids
 "@ "[GraphQL: slaSummariesByIds]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Globalstatus
+# Invoke-RscQuerySla -GlobalStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Globalstatus -GetInputs
+$inputs = Invoke-RscQuerySla -GlobalStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Globalstatus" @"
+Write-Message "Invoke-RscQuerySla -GlobalStatus" @"
 Status on the clusters where global SLA is synced.
 "@ "[GraphQL: globalSlaStatuses]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Protectedclustersforglobal
+# Invoke-RscQuerySla -ProtectedClustersForGlobal
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Protectedclustersforglobal -GetInputs
+$inputs = Invoke-RscQuerySla -ProtectedClustersForGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Protectedclustersforglobal" @"
+Write-Message "Invoke-RscQuerySla -ProtectedClustersForGlobal" @"
 Clusters that have object(s) protected by global SLA.
 "@ "[GraphQL: protectedClustersForGlobalSla]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Conflictobject
+# Invoke-RscQuerySla -ConflictObject
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Conflictobject -GetInputs
+$inputs = Invoke-RscQuerySla -ConflictObject -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Conflictobject" @"
+Write-Message "Invoke-RscQuerySla -ConflictObject" @"
 
 "@ "[GraphQL: slaConflictObjects]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Managedvolume
+# Invoke-RscQuerySla -ManagedVolume
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Managedvolume -GetInputs
+$inputs = Invoke-RscQuerySla -ManagedVolume -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Managedvolume" @"
+Write-Message "Invoke-RscQuerySla -ManagedVolume" @"
 Paginated list of SLA Managed Volumes.
 "@ "[GraphQL: slaManagedVolumes]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Clusterdomainconnection
+# Invoke-RscQuerySla -ClusterDomainList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Clusterdomainconnection -GetInputs
+$inputs = Invoke-RscQuerySla -ClusterDomainList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Clusterdomainconnection" @"
+Write-Message "Invoke-RscQuerySla -ClusterDomainList" @"
 
 "@ "[GraphQL: clusterSlaDomainConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Clusterdomainfilterconnection
+# Invoke-RscQuerySla -ClusterDomainFilterList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Clusterdomainfilterconnection -GetInputs
+$inputs = Invoke-RscQuerySla -ClusterDomainFilterList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Clusterdomainfilterconnection" @"
+Write-Message "Invoke-RscQuerySla -ClusterDomainFilterList" @"
 
 "@ "[GraphQL: clusterSlaDomainFilterConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Verifywithreplicationtocluster
+# Invoke-RscQuerySla -VerifyWithReplicationToCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Verifywithreplicationtocluster -GetInputs
+$inputs = Invoke-RscQuerySla -VerifyWithReplicationToCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Verifywithreplicationtocluster" @"
+Write-Message "Invoke-RscQuerySla -VerifyWithReplicationToCluster" @"
 
 "@ "[GraphQL: verifySLAWithReplicationToCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Downloadwithreplicationcsv
+# Invoke-RscQuerySla -DownloadWithReplicationCsv
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Downloadwithreplicationcsv -GetInputs
+$inputs = Invoke-RscQuerySla -DownloadWithReplicationCsv -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Downloadwithreplicationcsv" @"
+Write-Message "Invoke-RscQuerySla -DownloadWithReplicationCsv" @"
 Download list of Global SLA CSV that have Replication to the given Rubrik Cluster.
 "@ "[GraphQL: downloadSlaWithReplicationCsv]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Allclusterglobal
+# Invoke-RscQuerySla -AllClusterGlobal
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Allclusterglobal -GetInputs
+$inputs = Invoke-RscQuerySla -AllClusterGlobal -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Allclusterglobal" @"
+Write-Message "Invoke-RscQuerySla -AllClusterGlobal" @"
 Global SLA Domains protecting at least one object on the specified Rubrik cluster.
 "@ "[GraphQL: allClusterGlobalSlas]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQuerySla -Allobjecttestusernoteaudit
+# Invoke-RscQuerySla -AllNcdComplianceData
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQuerySla -Allobjecttestusernoteaudit -GetInputs
+$inputs = Invoke-RscQuerySla -AllNcdComplianceData -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Allobjecttestusernoteaudit" @"
-Latest audit with usernote for a list of objects.
-"@ "[GraphQL: allObjectsLatestUserNoteAudit]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
-
-
-# -------------------------------------------------------------------
-# Invoke-RscQuerySla -Allncdcompliancedata
-# -------------------------------------------------------------------
-
-$inputs = Invoke-RscQuerySla -Allncdcompliancedata -GetInputs
-$fieldTypeName = $inputs.Field.GetType().Name
-$argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQuerySla -Allncdcompliancedata" @"
+Write-Message "Invoke-RscQuerySla -AllNcdComplianceData" @"
 NAS Cloud Direct SLA Domain compliance data for the requested clusters.
 "@ "[GraphQL: allNcdSlaComplianceData]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7429,25 +7417,25 @@ Write-Message "Invoke-RscQueryVcenter -List" @"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Uniquecount
+# Invoke-RscQueryVcenter -UniqueCount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVcenter -Uniquecount -GetInputs
+$inputs = Invoke-RscQueryVcenter -UniqueCount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVcenter -Uniquecount" @"
+Write-Message "Invoke-RscQueryVcenter -UniqueCount" @"
 
 "@ "[GraphQL: uniqueVSphereVCenterCount]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Preaddinfo
+# Invoke-RscQueryVcenter -PreAddInfo
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVcenter -Preaddinfo -GetInputs
+$inputs = Invoke-RscQueryVcenter -PreAddInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVcenter -Preaddinfo" @"
+Write-Message "Invoke-RscQueryVcenter -PreAddInfo" @"
 Get preAddInfo for a vcenter.
 "@ "[GraphQL: vCenterPreAddInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7468,13 +7456,13 @@ Get the names and IDs of the user configured networks in the vCenter. This infor
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Hotaddnetwork
+# Invoke-RscQueryVcenter -HotAddNetwork
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVcenter -Hotaddnetwork -GetInputs
+$inputs = Invoke-RscQueryVcenter -HotAddNetwork -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVcenter -Hotaddnetwork" @"
+Write-Message "Invoke-RscQueryVcenter -HotAddNetwork" @"
 Retrieve the user-configured network for HotAdd operations
 
 Supported in v5.3+
@@ -7483,13 +7471,13 @@ Retrieve the user-configured network for HotAdd backup and recovery operations o
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Numproxiesneeded
+# Invoke-RscQueryVcenter -NumProxiesNeeded
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVcenter -Numproxiesneeded -GetInputs
+$inputs = Invoke-RscQueryVcenter -NumProxiesNeeded -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVcenter -Numproxiesneeded" @"
+Write-Message "Invoke-RscQueryVcenter -NumProxiesNeeded" @"
 Get the number of HotAdd proxies needed for the vCenter
 
 Supported in v5.3+
@@ -7498,13 +7486,13 @@ Get the number of HotAdd proxies that need to be deployed to the vCenter to supp
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Hotaddproxy
+# Invoke-RscQueryVcenter -HotAddProxy
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVcenter -Hotaddproxy -GetInputs
+$inputs = Invoke-RscQueryVcenter -HotAddProxy -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVcenter -Hotaddproxy" @"
+Write-Message "Invoke-RscQueryVcenter -HotAddProxy" @"
 Get a list of HotAdd proxy virtual machines
 
 Supported in v5.3+
@@ -7513,13 +7501,13 @@ Retrieve summary information for all HotAdd proxy virtual machines.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Hotaddbandwidth
+# Invoke-RscQueryVcenter -HotAddBandwidth
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVcenter -Hotaddbandwidth -GetInputs
+$inputs = Invoke-RscQueryVcenter -HotAddBandwidth -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVcenter -Hotaddbandwidth" @"
+Write-Message "Invoke-RscQueryVcenter -HotAddBandwidth" @"
 Get the ingest and export bandwidth limits for HotAdd with the vCenter
 
 Supported in v5.3+
@@ -7528,13 +7516,13 @@ Get the ingest and export bandwidth limits in Mbps when using HotAdd with the vC
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVcenter -Advancedtagpreview
+# Invoke-RscQueryVcenter -AdvancedTagPreview
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVcenter -Advancedtagpreview -GetInputs
+$inputs = Invoke-RscQueryVcenter -AdvancedTagPreview -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVcenter -Advancedtagpreview" @"
+Write-Message "Invoke-RscQueryVcenter -AdvancedTagPreview" @"
 Preview list of virtual machines of a proposed filter condition
 
 Supported in v7.0+
@@ -7568,25 +7556,25 @@ Write-Message "Invoke-RscQueryVsphere -Datacenter" @"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Computecluster
+# Invoke-RscQueryVsphere -ComputeCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Computecluster -GetInputs
+$inputs = Invoke-RscQueryVsphere -ComputeCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Computecluster" @"
+Write-Message "Invoke-RscQueryVsphere -ComputeCluster" @"
 
 "@ "[GraphQL: vSphereComputeCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Resourcepool
+# Invoke-RscQueryVsphere -ResourcePool
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Resourcepool -GetInputs
+$inputs = Invoke-RscQueryVsphere -ResourcePool -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Resourcepool" @"
+Write-Message "Invoke-RscQueryVsphere -ResourcePool" @"
 
 "@ "[GraphQL: vSphereResourcePool]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7616,13 +7604,13 @@ Write-Message "Invoke-RscQueryVsphere -Host" @"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Datastorecluster
+# Invoke-RscQueryVsphere -DatastoreCluster
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Datastorecluster -GetInputs
+$inputs = Invoke-RscQueryVsphere -DatastoreCluster -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Datastorecluster" @"
+Write-Message "Invoke-RscQueryVsphere -DatastoreCluster" @"
 Vsphere datastore cluster based on id passed in.
 "@ "[GraphQL: vSphereDatastoreCluster]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7640,13 +7628,13 @@ Vsphere datastore based on id passed in.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Hostsbyfid
+# Invoke-RscQueryVsphere -HostsByFid
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Hostsbyfid -GetInputs
+$inputs = Invoke-RscQueryVsphere -HostsByFid -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Hostsbyfid" @"
+Write-Message "Invoke-RscQueryVsphere -HostsByFid" @"
 All of the VSphere hosts based on fids passed in.
 "@ "[GraphQL: vSphereHostsByFids]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7664,13 +7652,13 @@ Write-Message "Invoke-RscQueryVsphere -Tag" @"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Tagcategory
+# Invoke-RscQueryVsphere -TagCategory
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Tagcategory -GetInputs
+$inputs = Invoke-RscQueryVsphere -TagCategory -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Tagcategory" @"
+Write-Message "Invoke-RscQueryVsphere -TagCategory" @"
 
 "@ "[GraphQL: vSphereTagCategory]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7688,73 +7676,73 @@ Write-Message "Invoke-RscQueryVsphere -Network" @"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Topleveldescendantsconnection
+# Invoke-RscQueryVsphere -TopLevelDescendantsList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Topleveldescendantsconnection -GetInputs
+$inputs = Invoke-RscQueryVsphere -TopLevelDescendantsList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Topleveldescendantsconnection" @"
+Write-Message "Invoke-RscQueryVsphere -TopLevelDescendantsList" @"
 
 "@ "[GraphQL: vSphereTopLevelDescendantsConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Rootrecoveryhierarchy
+# Invoke-RscQueryVsphere -RootRecoveryHierarchy
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Rootrecoveryhierarchy -GetInputs
+$inputs = Invoke-RscQueryVsphere -RootRecoveryHierarchy -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Rootrecoveryhierarchy" @"
+Write-Message "Invoke-RscQueryVsphere -RootRecoveryHierarchy" @"
 The root hierarchy for VMware export, which includes VMware compute clusters and standalone hosts.
 "@ "[GraphQL: vSphereRootRecoveryHierarchy]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Hostconnection
+# Invoke-RscQueryVsphere -HostList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Hostconnection -GetInputs
+$inputs = Invoke-RscQueryVsphere -HostList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Hostconnection" @"
+Write-Message "Invoke-RscQueryVsphere -HostList" @"
 
 "@ "[GraphQL: vSphereHostConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Datastoreconnection
+# Invoke-RscQueryVsphere -DatastoreList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Datastoreconnection -GetInputs
+$inputs = Invoke-RscQueryVsphere -DatastoreList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Datastoreconnection" @"
+Write-Message "Invoke-RscQueryVsphere -DatastoreList" @"
 
 "@ "[GraphQL: vSphereDatastoreConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Livemount
+# Invoke-RscQueryVsphere -LiveMount
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Livemount -GetInputs
+$inputs = Invoke-RscQueryVsphere -LiveMount -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Livemount" @"
+Write-Message "Invoke-RscQueryVsphere -LiveMount" @"
 List of vSphere Live Mounts.
 "@ "[GraphQL: vSphereLiveMounts]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Mountconnection
+# Invoke-RscQueryVsphere -MountList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Mountconnection -GetInputs
+$inputs = Invoke-RscQueryVsphere -MountList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Mountconnection" @"
+Write-Message "Invoke-RscQueryVsphere -MountList" @"
 vSphere Live Mount Connection
 "@ "[GraphQL: vSphereMountConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7772,13 +7760,13 @@ Get a vSphere Live Mount by id
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Hostdetail
+# Invoke-RscQueryVsphere -HostDetail
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Hostdetail -GetInputs
+$inputs = Invoke-RscQueryVsphere -HostDetail -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Hostdetail" @"
+Write-Message "Invoke-RscQueryVsphere -HostDetail" @"
 Get details of a ESXi hypervisor
 
 Supported in v5.0+
@@ -7787,13 +7775,13 @@ Get details of a ESXi hypervisor.
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphere -Vmwarecdpliveinfo
+# Invoke-RscQueryVsphere -VmwareCdpLiveInfo
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphere -Vmwarecdpliveinfo -GetInputs
+$inputs = Invoke-RscQueryVsphere -VmwareCdpLiveInfo -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphere -Vmwarecdpliveinfo" @"
+Write-Message "Invoke-RscQueryVsphere -VmwareCdpLiveInfo" @"
 
 "@ "[GraphQL: vsphereVmwareCdpLiveInfo]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
@@ -7812,61 +7800,61 @@ Write-Message "Invoke-RscQueryVsphereVm -New" @"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -Newconnection
+# Invoke-RscQueryVsphereVm -NewList
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphereVm -Newconnection -GetInputs
+$inputs = Invoke-RscQueryVsphereVm -NewList -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphereVm -Newconnection" @"
+Write-Message "Invoke-RscQueryVsphereVm -NewList" @"
 
 "@ "[GraphQL: vSphereVmNewConnection]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -Recoverablerange
+# Invoke-RscQueryVsphereVm -RecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphereVm -Recoverablerange -GetInputs
+$inputs = Invoke-RscQueryVsphereVm -RecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphereVm -Recoverablerange" @"
+Write-Message "Invoke-RscQueryVsphereVm -RecoverableRange" @"
 
 "@ "[GraphQL: vsphereVMRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -Recoverablerangeinbatch
+# Invoke-RscQueryVsphereVm -RecoverableRangeInBatch
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphereVm -Recoverablerangeinbatch -GetInputs
+$inputs = Invoke-RscQueryVsphereVm -RecoverableRangeInBatch -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphereVm -Recoverablerangeinbatch" @"
+Write-Message "Invoke-RscQueryVsphereVm -RecoverableRangeInBatch" @"
 
 "@ "[GraphQL: vsphereVMRecoverableRangeInBatch]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -Missedrecoverablerange
+# Invoke-RscQueryVsphereVm -MissedRecoverableRange
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphereVm -Missedrecoverablerange -GetInputs
+$inputs = Invoke-RscQueryVsphereVm -MissedRecoverableRange -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphereVm -Missedrecoverablerange" @"
+Write-Message "Invoke-RscQueryVsphereVm -MissedRecoverableRange" @"
 
 "@ "[GraphQL: vsphereVMMissedRecoverableRange]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 
 
 # -------------------------------------------------------------------
-# Invoke-RscQueryVsphereVm -Asyncrequeststatus
+# Invoke-RscQueryVsphereVm -AsyncRequestStatus
 # -------------------------------------------------------------------
 
-$inputs = Invoke-RscQueryVsphereVm -Asyncrequeststatus -GetInputs
+$inputs = Invoke-RscQueryVsphereVm -AsyncRequestStatus -GetInputs
 $fieldTypeName = $inputs.Field.GetType().Name
 $argNames = $inputs.Arg.Keys
-Write-Message "Invoke-RscQueryVsphereVm -Asyncrequeststatus" @"
+Write-Message "Invoke-RscQueryVsphereVm -AsyncRequestStatus" @"
 
 "@ "[GraphQL: vSphereVMAsyncRequestStatus]${nl}[Field: ${fieldTypeName}]${nl}[Args: ${argNames}]"
 

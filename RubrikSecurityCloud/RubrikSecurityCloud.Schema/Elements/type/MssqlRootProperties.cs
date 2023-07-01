@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlRootProperties";
+    }
+
     public MssqlRootProperties Set(
         MssqlRootPropertiesRootType? RootType = null,
         System.String? RootId = null,

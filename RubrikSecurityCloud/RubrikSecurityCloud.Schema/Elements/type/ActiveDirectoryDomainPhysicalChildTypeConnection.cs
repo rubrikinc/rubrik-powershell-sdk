@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActiveDirectoryDomainPhysicalChildTypeConnection";
+    }
+
     public ActiveDirectoryDomainPhysicalChildTypeConnection Set(
         List<ActiveDirectoryDomainPhysicalChildType>? Nodes = null,
         System.Int32? Count = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "KickoffAzureAdAppSetupReply";
+    }
+
     public KickoffAzureAdAppSetupReply Set(
         System.String? AppId = null,
         System.String? CsrfToken = null

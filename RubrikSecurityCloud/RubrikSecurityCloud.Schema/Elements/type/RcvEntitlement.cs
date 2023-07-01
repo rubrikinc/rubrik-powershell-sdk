@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RcvEntitlement";
+    }
+
     public RcvEntitlement Set(
         RcvRegionBundle? Bundle = null,
         RcvTier? Tier = null,

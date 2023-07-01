@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaDomainWithWarnings";
+    }
+
     public SlaDomainWithWarnings Set(
         SlaDomain? SlaDomain = null,
         List<SlaWarning>? Warnings = null

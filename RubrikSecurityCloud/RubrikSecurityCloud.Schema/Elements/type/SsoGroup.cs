@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SsoGroup";
+    }
+
     public SsoGroup Set(
         System.String? Id = null,
         System.Boolean? IsOrgAdmin = null

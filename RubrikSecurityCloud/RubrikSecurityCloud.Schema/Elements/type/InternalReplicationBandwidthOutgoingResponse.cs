@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "InternalReplicationBandwidthOutgoingResponse";
+    }
+
     public InternalReplicationBandwidthOutgoingResponse Set(
         List<TimeStat>? Items = null
     ) 

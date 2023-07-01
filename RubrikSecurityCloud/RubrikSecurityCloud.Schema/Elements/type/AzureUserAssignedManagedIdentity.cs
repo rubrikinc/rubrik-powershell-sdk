@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureUserAssignedManagedIdentity";
+    }
+
     public AzureUserAssignedManagedIdentity Set(
         System.String? Name = null,
         System.String? NativeId = null,

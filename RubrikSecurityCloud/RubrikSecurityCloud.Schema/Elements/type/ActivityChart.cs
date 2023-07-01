@@ -41,6 +41,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActivityChart";
+    }
+
     public ActivityChart Set(
         ReportFocusEnum? Focus = null,
         List<ActivitySeriesGroupByEnum>? GroupBy = null,

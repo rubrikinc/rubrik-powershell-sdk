@@ -105,6 +105,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OracleLiveMount";
+    }
+
     public OracleLiveMount Set(
         OracleLiveMountStatus? Status = null,
         System.String? CdmId = null,

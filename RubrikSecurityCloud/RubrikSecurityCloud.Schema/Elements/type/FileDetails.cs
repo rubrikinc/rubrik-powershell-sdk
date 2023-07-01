@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FileDetails";
+    }
+
     public FileDetails Set(
         System.String? FileName = null
     ) 

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FailoverClusterAppConnection";
+    }
+
     public FailoverClusterAppConnection Set(
         System.Int32? Count = null,
         List<FailoverClusterAppEdge>? Edges = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AppSearchResponse";
+    }
+
     public AppSearchResponse Set(
         System.String? ChildObjectId = null,
         System.String? ChildObjectName = null,

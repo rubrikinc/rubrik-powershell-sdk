@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CassandraBackupParams";
+    }
+
     public CassandraBackupParams Set(
         System.String? StoreName = null,
         System.Int64? WatcherFrequency = null

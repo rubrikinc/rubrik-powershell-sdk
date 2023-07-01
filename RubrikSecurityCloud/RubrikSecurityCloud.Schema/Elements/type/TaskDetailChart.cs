@@ -41,6 +41,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskDetailChart";
+    }
+
     public TaskDetailChart Set(
         ReportFocusEnum? Focus = null,
         List<TaskDetailGroupByEnum>? GroupBy = null,

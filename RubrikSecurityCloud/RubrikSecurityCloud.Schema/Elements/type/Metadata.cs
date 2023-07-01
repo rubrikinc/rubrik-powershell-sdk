@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Metadata";
+    }
+
     public Metadata Set(
         Value? Value = null,
         System.String? Key = null

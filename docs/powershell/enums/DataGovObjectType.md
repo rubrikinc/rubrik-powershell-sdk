@@ -40,3 +40,8 @@ TODO: SPARK-150447 - Deprecate this enum to use managed object type
 - NUTANIX_ROOT - Represents Nutanix root.
 - CDM_CLUSTER - Represents Rubrik CDM cluster.
 - NAS_FILESET - Represents RSC NAS Filesets.
+- VMWARE_DATACENTER - Represents VMware Data Center.
+- VMWARE_HOST - Represents VMware Host.
+- VMWARE_TAG_CATEGORY - Represents VMware Tag Category.
+- HYPERV_SCVMM - Represents HyperV SCVMM.
+- HYPERV_SERVER - Represents HyperV Server.

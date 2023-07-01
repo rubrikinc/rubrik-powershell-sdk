@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReportSchema";
+    }
+
     public ReportSchema Set(
         SortOrder? SortOrder = null,
         List<Column>? AggregateColumns = null,

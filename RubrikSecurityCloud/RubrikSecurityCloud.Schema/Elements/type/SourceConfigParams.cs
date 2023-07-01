@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SourceConfigParams";
+    }
+
     public SourceConfigParams Set(
         List<System.String>? CassandraYaml = null,
         List<System.String>? DseYaml = null,

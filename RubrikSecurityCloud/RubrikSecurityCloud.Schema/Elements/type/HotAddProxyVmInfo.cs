@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HotAddProxyVmInfo";
+    }
+
     public HotAddProxyVmInfo Set(
         HotAddProxyVmStatusType? Status = null,
         System.String? ComputeClusterName = null,

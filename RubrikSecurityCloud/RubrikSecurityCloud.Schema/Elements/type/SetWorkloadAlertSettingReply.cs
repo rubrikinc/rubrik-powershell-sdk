@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SetWorkloadAlertSettingReply";
+    }
+
     public SetWorkloadAlertSettingReply Set(
         System.Boolean? Enabled = null
     ) 

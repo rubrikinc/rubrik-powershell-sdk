@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DissolveLegalHoldReply";
+    }
+
     public DissolveLegalHoldReply Set(
         List<System.String>? SnapshotIds = null
     ) 

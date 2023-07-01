@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "V1BulkUpdateExchangeDagResponse";
+    }
+
     public V1BulkUpdateExchangeDagResponse Set(
         List<ExchangeDagSummary>? Items = null
     ) 

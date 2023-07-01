@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnappableGroupBy";
+    }
+
     public SnappableGroupBy Set(
         SnappableConnection? SnappableConnection = null,
         List<SnappableGroupBy>? SnappableGroupByField = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CassandraColumnFamilyEdge";
+    }
+
     public CassandraColumnFamilyEdge Set(
         System.String? Cursor = null,
         CassandraColumnFamily? Node = null

@@ -105,6 +105,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NutanixVmMountSummary";
+    }
+
     public NutanixVmMountSummary Set(
         System.String? Id = null,
         System.Boolean? IsReady = null,

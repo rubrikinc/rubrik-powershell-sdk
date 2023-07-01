@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "NtpServerConfigurationListResponse";
+    }
+
     public NtpServerConfigurationListResponse Set(
         System.Boolean? HasMore = null,
         System.Int64? Total = null,

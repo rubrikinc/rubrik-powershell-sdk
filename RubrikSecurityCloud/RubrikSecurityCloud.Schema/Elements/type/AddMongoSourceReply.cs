@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddMongoSourceReply";
+    }
+
     public AddMongoSourceReply Set(
         System.String? Id = null,
         AsyncRequestStatus? AsyncRequestStatus = null

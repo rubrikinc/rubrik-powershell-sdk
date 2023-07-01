@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExchangeDagDescendantTypeEdge";
+    }
+
     public ExchangeDagDescendantTypeEdge Set(
         ExchangeDagDescendantType? Node = null,
         System.String? Cursor = null

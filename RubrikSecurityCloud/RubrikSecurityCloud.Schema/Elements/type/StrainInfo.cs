@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StrainInfo";
+    }
+
     public StrainInfo Set(
         List<System.String>? SampleAffectedFiles = null,
         List<System.String>? SampleRansomwareNotes = null,

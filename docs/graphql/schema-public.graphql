@@ -69,6 +69,11 @@ type Query {
     # The Rubrik UUID for the object.
     fid: UUID!): [Operation!]!
 
+  # List of authorizations for the objects.
+  allAuthorizationsForObjects(
+    # The Rubrik UUIDs for the objects.
+    fids: [UUID!]!): [AuthorizedOperations!]!
+
   # List of Availability Zones (AZs) in the specified region on the specified AWS Native account.
   allAvailabilityZonesByRegionFromAws(
     # Rubrik ID for AWS account.
@@ -118,6 +123,14 @@ type Query {
 
     # Region of AWS account.
     region: String!): [String!]!
+
+  # Retrieves the permissions policy for all the input features along with any AWS-managed policy ARNs which need to be attached to the roles. Each policy document can be used to create an AWS-managed policy which then needs to be attached to corresponding role.
+  allAwsPermissionPolicies(
+    # AWS cloud type.
+    awsCloudType: AwsCloudType!,
+
+    # Cloud Account Features.
+    features: [CloudAccountFeature!]!): [PermissionPolicy!]!
 
   # All valid AWS regions for this cloud account.
   allAwsRegions(
@@ -442,7 +455,10 @@ type Query {
     last: Int,
 
     # Returns the elements in the list that come before the specified cursor.
-    before: String, filter: ClusterFilterInput,
+    before: String,
+
+    # Filter by cluster.
+    filter: ClusterFilterInput,
 
     # Cluster sort order.
     sortOrder: SortOrder = DESC,
@@ -547,6 +563,9 @@ type Query {
   allEffectiveRbacPermissions(
     # ID of the role.
     roleId: String!): [RbacPermission!]!
+
+  # Provides a list of all features enabled for the Rubrik account.
+  allEnabledFeaturesForAccount: AllEnabledFeaturesForAccountReply!
 
   # Retrieve event digests for specific recipients.
   allEventDigests(
@@ -923,7 +942,7 @@ type Query {
     getWhitelistedResults: Boolean!,
 
     # Maximum number of entries in the response.
-    limit: Int!,
+    limit: Int! = 0,
 
     # Types of workloads that can be used for filtering query results.
     workloadTypes: [DataGovObjectType!]! = []): [PolicySummary!]!
@@ -1004,6 +1023,14 @@ type Query {
   allVirtualMachineFiles(
     # Input for V1GetVirtualMachineFiles.
     input: VirtualMachineFilesInput!): VirtualMachineFilesReply!
+
+  # All Vm recovery jobs info.
+  allVmRecoveryJobsInfo(
+    # The Rubrik UUID for the object.
+    fid: UUID!,
+
+    # Input to get all vm recovery jobs info.
+    input: AllVmRecoveryJobsInfoInput!): [VmRecoveryJobInfo!]!
 
   # Batch get vsphere vmware cdp state infos.
   allVmwareCdpStateInfos(
@@ -1347,6 +1374,11 @@ type Query {
   awsNativeS3Bucket(
     # Rubrik ID for the AWS S3 bucket object.
     s3BucketRubrikId: UUID!): AwsNativeS3Bucket!
+
+  # Retrieves the AWS trust policy that will be attached with each role (cross-account, exocompute, etc.) in the customer's environment.
+  awsTrustPolicy(
+    # Input to retrieve the AWS trust policy.
+    input: AwsTrustPolicyInput!): AwsTrustPolicy!
 
   # Retrieves the configuration consisting of role permissions and feature policy version required for Azure subscription setup. Features refer to the Polaris features that the customer wants to be enabled on the cloud account.
   azureCloudAccountPermissionConfig(
@@ -1974,7 +2006,9 @@ type Query {
     # The hierarchy object filter.
     filter: [Filter!]): CassandraSourceConnection!
   cdmHierarchySnappableNew(snappableFid: UUID!): CdmHierarchySnappableNew!
-  cdmHierarchySnappablesNew(fids: [UUID!]!): [CdmHierarchySnappableNew!]!
+  cdmHierarchySnappablesNew(
+    # The Rubrik UUIDs for the objects.
+    fids: [UUID!]!): [CdmHierarchySnappableNew!]!
   cdmInventorySubHierarchyRoot(rootEnum: InventorySubHierarchyRootEnum!): CdmInventorySubHierarchyRoot!
 
   # A single Microsoft SQL log shipping target.
@@ -2054,6 +2088,17 @@ type Query {
 
   # Certificates having private key.
   certificatesWithKey: CertificateConnection!
+
+  # Checks if we can unmap the archival location from the subscription.
+  checkAzurePersistentStorageSubscriptionCanUnmap(
+    # The Rubrik ID of the cloud account.
+    cloudAccountId: UUID!,
+
+    # A cloud account feature of Rubrik Security Cloud.
+    feature: CloudAccountFeature!,
+
+    # Unmapping validation type.
+    unmappingValidationType: UnmappingValidationType!): CheckAzurePersistentStorageSubscriptionCanUnmapReply!
 
   # Get details of the cloud compute connectivity check request
   # 
@@ -2197,7 +2242,10 @@ type Query {
     last: Int,
 
     # Returns the elements in the list that come before the specified cursor.
-    before: String, filter: ClusterFilterInput,
+    before: String,
+
+    # Filter by cluster.
+    filter: ClusterFilterInput,
 
     # Cluster sort order.
     sortOrder: SortOrder = DESC,
@@ -2247,7 +2295,10 @@ type Query {
     before: String,
 
     # Group by field.
-    groupBy: ClusterGroupByEnum!, filter: ClusterFilterInput,
+    groupBy: ClusterGroupByEnum!,
+
+    # Filter by cluster.
+    filter: ClusterFilterInput,
 
     # Offset based on customer timezone.
     timezoneOffset: Float = 0.0): ClusterGroupByConnection!
@@ -2301,6 +2352,34 @@ type Query {
 
   # Info about the cluster product types the user is entitled to.
   clusterRegistrationProductInfo: ClusterRegistrationProductInfoType!
+
+  # Retrieve the counts of the Rubrik cluster reports migration.
+  clusterReportMigrationCount(
+    # The Rubrik cluster ID.
+    clusterUuid: UUID,
+
+    # Rubrik cluster report migration status.
+    status: [CdmReportMigrationStatus!]!): ReportsMigrationCount!
+
+  # Retrieve details of the Rubrik clusters' reports migration.
+  clusterReportMigrationStatus(
+    # The Rubrik cluster ID.
+    clusterUuid: UUID,
+
+    # Rubrik cluster report migration status.
+    status: [CdmReportMigrationStatus!]!,
+
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Returns the last n elements from the list.
+    last: Int,
+
+    # Returns the elements in the list that come before the specified cursor.
+    before: String): ReportMigrationStatusConnection!
   clusterTypeList: [GroupCount!]!
 
   # Rubrik cluster VLAN information.
@@ -2506,6 +2585,9 @@ type Query {
 
   # Decrypt Export URL.
   decryptExportUrl(
+    # The fid of the workload.
+    workloadFid: UUID,
+
     # Encrypted string of Export URL Specs containing arbitrary characters
     exportUrlSpecsEnc: String!): ExportUrlSpecs!
 
@@ -3046,7 +3128,9 @@ type Query {
   hierarchyObject(
     # The Rubrik UUID for the object.
     fid: UUID!): HierarchyObject!
-  hierarchyObjects(fids: [UUID!]!,
+  hierarchyObjects(
+    # The Rubrik UUIDs for the objects.
+    fids: [UUID!]!,
 
     # The hierarchy object filter.
     filter: [Filter!]): [HierarchyObject!]!
@@ -4017,6 +4101,16 @@ type Query {
     # Input for InternalBrowseNutanixSnapshot.
     input: BrowseNutanixSnapshotInput!): BrowseResponseListResponse!
 
+  # Details of the given category.
+  nutanixCategory(
+    # The Rubrik UUID for the object.
+    fid: UUID!): NutanixCategory!
+
+  # Details of the given category value.
+  nutanixCategoryValue(
+    # The Rubrik UUID for the object.
+    fid: UUID!): NutanixCategoryValue!
+
   # A Nutanix Cluster.
   nutanixCluster(
     # The Rubrik UUID for the object.
@@ -4076,6 +4170,11 @@ type Query {
 
     # Sort by argument for Nutanix virtual machine live mounts.
     sortBy: NutanixLiveMountSortByInput): NutanixLiveMountConnection!
+
+  # Details of the given Prism Central.
+  nutanixPrismCentral(
+    # The Rubrik UUID for the object.
+    fid: UUID!): NutanixPrismCentral!
 
   # Paginated list of Nutanix Prism Central objects.
   nutanixPrismCentrals(
@@ -4946,7 +5045,10 @@ type Query {
     last: Int,
 
     # Returns the elements in the list that come before the specified cursor.
-    before: String, filter: ClusterFilterInput,
+    before: String,
+
+    # Filter by cluster.
+    filter: ClusterFilterInput,
 
     # Cluster sort order.
     sortOrder: SortOrder = DESC,
@@ -5465,7 +5567,9 @@ type Query {
 
     # Timezone.
     timezone: String): [SlaAuditDetail!]!
-  slaConflictObjects(fids: [UUID!]!): [HierarchyObject!]!
+  slaConflictObjects(
+    # The Rubrik UUIDs for the objects.
+    fids: [UUID!]!): [HierarchyObject!]!
 
   # Query that retrieves an SLA Domain.
   slaDomain(
@@ -6273,7 +6377,7 @@ type Query {
     startDay: String!, timezone: String!,
 
     # Maximum number of entries in the response.
-    limit: Int!): AnalyzerAccessUsageConnection!
+    limit: Int! = 0): AnalyzerAccessUsageConnection!
   userAuditConnection(
     # Returns the first n elements from the list.
     first: Int,
@@ -6483,7 +6587,9 @@ type Query {
     input: GetVmwareHostInput!): VmwareHostDetail!
 
   # All of the VSphere hosts based on fids passed in.
-  vSphereHostsByFids(fids: [UUID!]!): [VsphereHost!]!
+  vSphereHostsByFids(
+    # The Rubrik UUIDs for the objects.
+    fids: [UUID!]!): [VsphereHost!]!
 
   # List of vSphere Live Mounts.
   vSphereLiveMounts(
@@ -6851,6 +6957,14 @@ type Mutation {
     # Inventory workloads to add for an account.
     input: AddInventoryWorkloadsInput!): Boolean!
 
+  # Add a Kubernetes cluster
+  # 
+  # Supported in v9.0
+  # Adds a Kubernetes cluster to the Rubrik cluster.
+  addK8sCluster(
+    # Input for V1AddK8sCluster.
+    input: AddK8sClusterInput!): K8sClusterSummary!
+
   # Create a Managed Volume
   # 
   # Supported in v7.0+
@@ -7192,6 +7306,14 @@ type Mutation {
   bulkRegisterHost(
     # Input for InternalBulkRegisterHost.
     input: BulkRegisterHostInput!): BulkRegisterHostReply!
+
+  # Bulk tier existing snapshots to cold storage
+  # 
+  # Supported in v6.0+
+  # Schedules a job to tier existing snapshots of the specified objects to cold storage.
+  bulkTierExistingSnapshots(
+    # Input for V1BulkTierExistingSnapshots.
+    input: BulkTierExistingSnapshotsInput!): AsyncRequestStatus!
 
   # Update multiple Exchange DAGs
   # 
@@ -8169,6 +8291,16 @@ type Mutation {
     # Input for InternalCreateManagedVolumeDownloadFilesJob.
     input: DownloadManagedVolumeFilesInput!): AsyncRequestStatus!
 
+  # Download a snapshot from a remote target
+  # 
+  # Supported in v7.0+
+  # Initiates a job to download a snapshot from the specified
+  # location when the snapshot does not exist locally.
+  # The specified location has to be a remote target connected to this Rubrik cluster.
+  downloadManagedVolumeFromLocation(
+    # Input for V1ManagedVolumeDownloadFromLocation.
+    input: DownloadManagedVolumeFromLocationInput!): AsyncRequestStatus!
+
   # Downloads a list of snapshot and log backups from a Microsoft SQL database
   # 
   # Supported in v5.2+
@@ -8982,6 +9114,11 @@ type Mutation {
     # Input for InternalNutanixVmRegisterAgent.
     input: RegisterAgentNutanixVmInput!): RequestSuccess!
 
+  # Registers the AWS account artifacts such as roles in RSC backend while onboarding AWS account in manual flow.
+  registerAwsFeatureArtifacts(
+    # Input to register external artifacts for AWS cloud account.
+    input: RegisterAwsFeatureArtifactsInput!): RegisterAwsFeatureArtifactsReply!
+
   # Register a cloud cluster.
   registerCloudCluster(
     # Input for cloud cluster registration.
@@ -9063,6 +9200,11 @@ type Mutation {
     # Input for V1ReseedSecondary.
     input: ReseedLogShippingSecondaryInput!): AsyncRequestStatus!
 
+  # Used by the administrator to reset passwords for selected users in the organization.
+  resetUsersPasswordsWithUserIds(
+    # Specifies the input used to reset passwords for selected users in the organization.
+    input: ResetUsersPasswordsWithUserIdsInput!): Void
+
   # Resize the disk and updates cluster metadata.
   resizeDisk(
     # Input for InternalResizeDisk.
@@ -9115,7 +9257,7 @@ type Mutation {
 
   # Restores an O365 snappable.
   restoreO365Snappable(
-    # The input for restore O365 snappable mutation.
+    # The input for the mutation to restore an O365 workload.
     input: RestoreO365SnappableInput!): CreateOnDemandJobReply!
 
   # Restore Team conversations.
@@ -9125,7 +9267,7 @@ type Mutation {
 
   # Restore Team files.
   restoreO365TeamsFiles(
-    # The input for the operation to restore files for O365 teams.
+    # The input for the mutation to restore files for O365 Teams.
     input: RestoreO365TeamsFilesInput!): CreateOnDemandJobReply!
 
   # Restore archive logs of an Oracle database
@@ -9320,6 +9462,11 @@ type Mutation {
   startCloudNativeSnapshotsIndexJob(
     # Input for create snapshots index job.
     input: StartCloudNativeSnapshotsIndexJobInput!): BatchAsyncJobStatus!
+
+  # Start a job to migrate reports from Rubrik cluster to RSC.
+  startClusterReportMigrationJob(
+    # The input configuration to start the report migration job.
+    input: StartClusterReportMigrationJobInput!): StartClusterReportMigrationJobReply!
 
   # Start a crawl.
   startCrawl(name: String!, resources: [ResourceInput!]!, analyzerGroups: [AnalyzerGroupInput!]!, extWhiteList: [String!]): StartCrawlReply!
@@ -9571,6 +9718,11 @@ type Mutation {
   unmapAzureCloudAccountExocomputeSubscription(
     # Input for unmapping Azure cloud accounts from the mapped Exocompute subscription.
     input: UnmapAzureCloudAccountExocomputeSubscriptionInput!): UnmapAzureCloudAccountExocomputeSubscriptionReply!
+
+  # Unmaps the archival location from the subscription.
+  unmapAzurePersistentStorageSubscription(
+    # Input to initiate archival location unmapping.
+    input: UnmapAzurePersistentStorageSubscriptionInput!): Void
 
   # Unmap cloud accounts from the mapped Exocompute account.
   unmapCloudAccountExocomputeAccount(
@@ -10560,6 +10712,9 @@ enum ActivityObjectTypeEnum {
   # Specifies that the activity object type is related to Activity Directory domain controller.
   ACTIVE_DIRECTORY_DOMAIN_CONTROLLER
 
+  # Specifies that the activity object type is Atlassian site.
+  ATLASSIAN_SITE
+
   # Specifies that the activity object type is AWS S3 Bucket.
   AWS_NATIVE_S3_BUCKET
 
@@ -10624,6 +10779,12 @@ enum ActivityObjectTypeEnum {
   HypervScvmm
   HypervServer
   HypervVm
+
+  # Specifies that the activity object type is Jira project.
+  JIRA_PROJECT
+
+  # Specifies that the activity object type is Jira settings.
+  JIRA_SETTINGS
   JobInstance
 
   # Specifies that the activity object type is Kubernetes Cluster.
@@ -11425,6 +11586,13 @@ input AddInventoryWorkloadsInput {
   # List of Inventory Cards.
   inventoryCards: [InventoryCard!]!
 }
+input AddK8sClusterInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. The Kubernetes cluster configuration.
+  config: K8sClusterAddInput!
+}
 # Input for adding a Managed Volume.
 input AddManagedVolumeInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -11721,6 +11889,11 @@ input AllCloudDirectSharesInput {
   # Export type of Cloud Direct shares.
   exportType: ShareTypeEnum!
 }
+# All Features enabled for a Rubrik cloud account.
+type AllEnabledFeaturesForAccountReply {
+  # List of all features enabled for the Rubrik cloud account.
+  features: [CloudAccountFeature!]!
+}
 # Input for retrieving event digests.
 input AllEventDigestsInput {
   # User IDs of recipients whose event digests must be retrieved.
@@ -11730,6 +11903,11 @@ input AllEventDigestsInput {
 type AllStorageArraysReply {
   # List of storage arrays in Rubrik clusters.
   clusterStorageArrays: [ClusterStorageArrays!]!
+}
+# Input for getting all child vm recovery jobs info for a recovery.
+input AllVmRecoveryJobsInfoInput {
+  # failover id.
+  failoverId: UUID!
 }
 # AMIType to be used for exporting an archived EC2 instance snapshot.
 enum AmiType {
@@ -12033,6 +12211,9 @@ enum AnalyzerTypeEnum {
 
   # Germany passport number analyzer.
   GERMANY_PASSPORT
+
+  # Google API Key analyzer.
+  GOOGLE_API_KEY
 
   # International Bank Account Number (IBAN) analyzer.
   IBAN
@@ -12776,6 +12957,14 @@ type ArchiveK8sClusterReply {
   # UUID of the archived Kubernetes cluster.
   clusterId: UUID!
 }
+# Represents the trust policy for a role.
+type ArtifactPolicy {
+  # The role for the trust policy.
+  externalArtifactKey: AwsCloudExternalArtifact!
+
+  # Trust policy JSON document to be attached to the role.
+  trustPolicyDoc: String!
+}
 # Input for assigning SLA Domain to SQL Server objects.
 input AssignMssqlSlaDomainPropertiesAsyncInput {
   # Required. Update information.
@@ -13008,6 +13197,9 @@ enum AuditObjectType {
   # Archival location audit object.
   ARCHIVAL_LOCATION
 
+  # Atlassian site.
+  ATLASSIAN_SITE
+
   # Unspecified audit object type.
   AUDIT_OBJECT_TYPE_UNSPECIFIED
 
@@ -13133,6 +13325,12 @@ enum AuditObjectType {
 
   # IP Whitelist audit object.
   IP_WHITELIST
+
+  # Atlassian Jira project.
+  JIRA_PROJECT
+
+  # Atlassian Jira settings.
+  JIRA_SETTINGS
 
   # Job instance audit object.
   JOB_INSTANCE
@@ -13554,6 +13752,17 @@ type AwsAccount implements CloudAccount {
   # The connection status of this Cloud Account.
   connectionStatus: ConnectionStatusType!
 }
+# AWS Native ID to features/artifacts map.
+input AwsAccountFeatureArtifact {
+  # AWS native ID of the account being onboarded.
+  awsNativeId: String!
+
+  # Details of the artifacts to be registered.
+  externalArtifacts: [ExternalArtifactMap!]!
+
+  # List of RSC features being enabled.
+  features: [CloudAccountFeature!]!
+}
 # Status of an AWS Account.
 enum AwsAccountStatus {
   # The AWS account has been added.
@@ -13946,6 +14155,29 @@ input AwsCloudComputeSettingsInput {
   # Compute proxy settings of the AWS target.
   computeProxySettings: ProxySettingsInput
 }
+# Keywords for AWS external artifacts.
+enum AwsCloudExternalArtifact {
+  # Keyword to capture AWS Account access key.
+  ACCESS_KEY
+
+  # Unspecified.
+  ARTIFACT_KEY_UNSPECIFIED
+
+  # Keyword to capture cross account role.
+  CROSSACCOUNT_ROLE_ARN
+
+  # Keyword to capture EKS worker node instance profile.
+  EXOCOMPUTE_EKS_MASTERNODE_INSTANCE_PROFILE
+
+  # Keyword to capture EKS master node role.
+  EXOCOMPUTE_EKS_MASTERNODE_ROLE_ARN
+
+  # Keyword to capture EKS worker node role.
+  EXOCOMPUTE_EKS_WORKERNODE_ROLE_ARN
+
+  # Keyword to capture AWS account secret key.
+  SECRET_KEY
+}
 # AWS Cloud Type Enum.
 enum AwsCloudType {
   # Cloud type for AWS C2S cloud account.
@@ -14196,6 +14428,9 @@ type AwsNativeAccount implements PolarisHierarchyObject , HierarchyObject {
   # AWS cloud type.
   cloudType: AwsCloudType!
 
+  # Specifies the status of the cloud account associated with the feature requested.
+  cloudAccountState: CloudAccountState!
+
   # The authorized operations on the object.
   authorizedOperations: [PolarisObjectAuthorizedOperationsEnum!]!
 
@@ -14390,6 +14625,17 @@ input AwsNativeAccountFilters {
 
   # Filter by AWS cloud type.
   cloudTypeFilter: AwsCloudTypeFilter
+}
+# Represent an AWS native account.
+input AwsNativeAccountInput {
+  # Cloud account name.
+  name: String = ""
+
+  # External ID to be associated with account roles.
+  externalId: String = ""
+
+  # Native ID of the cloud account.
+  id: String! = ""
 }
 interface AwsNativeAccountLogicalChildType {
   # The FID of the hierarchy object.
@@ -17483,6 +17729,17 @@ type AwsRoleBasedAccount implements CloudAccount {
   # The connection status of this Cloud Account.
   connectionStatus: ConnectionStatusType!
 }
+# AWS RSC account details.
+type AwsRscAccountDetails {
+  # ID generated after the AWS native account is registered.
+  awsCloudAccountId: String!
+
+  # AWS native account ID.
+  awsNativeId: String!
+
+  # Message denoting status of registration(Empty if successful).
+  message: String!
+}
 # A Security group in AWS realm.
 type AwsSecurityGroup {
   # ID of the AWS security group.
@@ -17556,6 +17813,30 @@ type AwsTargetTemplate implements TargetTemplate {
 
   # The type of this Target.
   targetType: TargetType!
+}
+# Response of retrieving the trust policy.
+type AwsTrustPolicy {
+  # Result of retrieving the trust policy.
+  result: [AwsTrustPolicyResult!]!
+}
+# Input to retrieve the AWS trust policy.
+input AwsTrustPolicyInput {
+  # Type of the AWS cloud (Standard, Gov, etc.).
+  cloudType: AwsCloudType
+
+  # List of cloud account features.
+  features: [CloudAccountFeature!]!
+
+  # IDs for the native AWS accounts.
+  awsNativeAccounts: [AwsNativeAccountInput!]!
+}
+# Result of retrieving the trust policy.
+type AwsTrustPolicyResult {
+  # Trust policy for an artifact.
+  artifacts: [ArtifactPolicy!]!
+
+  # Native ID of the AWS account.
+  awsNativeId: String!
 }
 # Input to update AWS IAM user keys for IAM user-based AWS cloud account.
 input AwsUserKeysInput {
@@ -20091,6 +20372,9 @@ type AzureO365ExocomputeCluster {
 
   # Storage account used for the backup of Colossus metadata.
   colossusBackupStorageAccountId: String!
+
+  # Database IDs used for Zeus data store.
+  databaseIds: ZeusDatabaseIds
 }
 # Exocompute configuration.
 input AzureO365ExocomputeConfig {
@@ -21817,6 +22101,14 @@ input AzureVnetReq {
   # VNet resource group.
   resourceGroup: String = ""
 }
+# Represents the status of the backup for a specific M365 snapshot.
+type BackupEventStatus {
+  # Status of the backup.
+  status: SnapshotServiceBackupStatus!
+
+  # Number of items skipped in the backup.
+  skippedItemCount: Long!
+}
 # Configuration for O365 Mailbox backup.
 input BackupM365MailboxInput {
   # Rubrik IDs of the mailboxes to backup.
@@ -22637,6 +22929,24 @@ type BulkRegisterHostReply {
   # Supported in v5.0+
   # Total list responses.
   total: Long
+}
+# Input to initiate bulk tiering of existing archived snapshots.
+input BulkTierExistingSnapshotsInput {
+  # Required. UUID used to identify the cluster the request goes to.
+  clusterUuid: String!
+
+  # Required. A list of object IDs to tier. Optionally specifies a location ID.
+  objectTierInfo: BulkTierSnapshotsConfigInput!
+}
+# Supported in v6.0+
+input BulkTierSnapshotsConfigInput {
+  # Supported in v6.0+
+  # Users can specify the archival location ID in order to tier snapshots in the specified archival location. When an archival location ID is not specified, snapshots in the archival location specified in the SLA Domain policy for protected objects will be tiered. Relic and unprotected object snapshots across all archival locations will be tiered.
+  locationId: String
+
+  # Required. Supported in v6.0+
+  # A list of object IDs to tier.
+  objectIds: [String!]!
 }
 input BulkUpdateExchangeDagInput {
   # Required. UUID used to identify the cluster the request goes to.
@@ -24516,19 +24826,19 @@ type CdmManagedAwsTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -24555,10 +24865,10 @@ type CdmManagedAwsTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific info for Azure target created on Cdm.
@@ -24578,19 +24888,19 @@ type CdmManagedAzureTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -24617,10 +24927,10 @@ type CdmManagedAzureTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific info for Gcp target created on Cdm.
@@ -24634,19 +24944,19 @@ type CdmManagedGcpTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -24673,10 +24983,10 @@ type CdmManagedGcpTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific info for Glacier target created on Cdm.
@@ -24690,19 +25000,19 @@ type CdmManagedGlacierTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -24729,10 +25039,10 @@ type CdmManagedGlacierTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific info for Nfs target created on Cdm.
@@ -24746,19 +25056,19 @@ type CdmManagedNfsTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -24785,10 +25095,10 @@ type CdmManagedNfsTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific info for S3Compatible created on Cdm.
@@ -24802,19 +25112,19 @@ type CdmManagedS3CompatibleTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -24841,10 +25151,66 @@ type CdmManagedS3CompatibleTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
+  locationConnectionStatus: ConnectionStatusType!
+}
+# Specific information for Tape target created on CDM cluster.
+type CdmManagedTapeTarget implements Target {
+  # ID of the Tape location.
+  id: String!
+
+  # Host name of the Tape location.
+  hostName: String!
+
+  # The cluster to which this target belongs.
+  cluster: Cluster!
+
+  # The type of the target.
+  targetType: TargetType!
+
+  # The name of the target.
+  name: String!
+
+  # The scope of the location of the target. Possible values are Global or Local.
+  locationScope: LocationScope!
+
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
+  isActive: Boolean!
+
+  # Specifies whether the target is archived.
+  isArchived: Boolean!
+
+  # Archival location to which the mapping target belongs.
+  targetMapping: TargetMappingBasic
+
+  # Name of the Rubrik cluster that archives to this archival location.
+  clusterName: String
+
+  # Status of the target.
+  status: ArchivalLocationStatus!
+
+  # Upgrade status of the target.
+  upgradeStatus: UpgradeStatus!
+
+  # Number of bytes stored on the target.
+  consumedBytes: Long
+
+  # Number of archiving tasks running on this target.
+  runningTasks: Int
+
+  # Number of archiving tasks failed on this target.
+  failedTasks: Int
+
+  # The retrieval method of the reader target.
+  readerRetrievalMethod: ReaderRetrievalMethod
+
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
+  targetMappingBasic: [TargetMappingBasic!]
+
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Supported in v5.3+
@@ -24974,6 +25340,26 @@ type CdmOvaDetail {
 
   # Size of the Rubrik CDM OVA file.
   ovaSize: String!
+}
+# The enum describes the status of migration.
+enum CdmReportMigrationStatus {
+  # The report failed to migrate.
+  FAILED
+
+  # The report is partially migrated.
+  PARTIAL_SUCCESS
+
+  # The report is ready for migration.
+  READY
+
+  # The report has migrated successfully.
+  SUCCESS
+
+  # The report can not be migrated.
+  UNAVAILABLE
+
+  # Unspecified.
+  UNSPECIFIED
 }
 # Location for Rubrik CDM workload.
 type CdmSnappableLocation {
@@ -25276,19 +25662,19 @@ type CdmTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -25315,10 +25701,10 @@ type CdmTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # CDM upgrade availability.
@@ -25888,6 +26274,11 @@ type CheckArchivedSnapshotsLockedReply {
   # Snapshot IDs are not valid for checking if they are locked. Snapshots which do not have unexpired archival copy are considered invalid.
   invalidSnapshotIds: [String!]!
 }
+# Response for request to check if we can unmap subscription from storage account.
+type CheckAzurePersistentStorageSubscriptionCanUnmapReply {
+  # Whether we can unmap archival location from subscription.
+  canUnmap: Boolean!
+}
 enum ClassificationPolicyColor {
   COLOR_001
   COLOR_002
@@ -26153,6 +26544,26 @@ enum CloudAccountOperation {
 enum CloudAccountSortByFieldEnum {
   NAME
 }
+# State of a cloud account.
+enum CloudAccountState {
+  # The cloud account is connected.
+  CONNECTED
+
+  # The cloud account is connecting.
+  CONNECTING
+
+  # The cloud account is not enabled.
+  DISABLED
+
+  # The cloud account is disconnected.
+  DISCONNECTED
+
+  # The cloud account is missing permissions.
+  MISSING_PERMISSIONS
+
+  # The cloud account state is not specified.
+  STATUS_UNSPECIFIED
+}
 # Cloud account statuses.
 enum CloudAccountStatus {
   # Cloud account is connected.
@@ -26253,6 +26664,22 @@ type CloudAccountsExocomputeAccountMapping {
 
   # Represents the Exocompute account to which the application account is mapped.
   exocomputeCloudAccountId: UUID!
+}
+# Cloud Direct cluster location details.
+type CloudDirectCluster {
+  # The Cloud Direct cluster ID.
+  id: UUID!
+
+  # The Cloud Direct cluster name.
+  name: String!
+}
+# Cloud Direct clusters on which Ransomware Monitoring can be enabled.
+type CloudDirectClusterRansomwareInvestigationEnablement {
+  # Cloud Direct cluster information.
+  cluster: CloudDirectCluster!
+
+  # Whether Ransomware Monitoring is enabled.
+  enabled: Boolean!
 }
 # A NAS Cloud Direct managed hierarchy object.
 interface CloudDirectHierarchyObject {
@@ -26948,6 +27375,9 @@ type Cluster {
 
     # Sort activity series by field.
     sortBy: ActivitySeriesSortField, filters: ActivitySeriesFilter): ActivitySeriesConnection!
+
+  # Rubrik cluster email notification settings.
+  cdmNotificationSettings: NotificationSettingSummaryListResponse!
 
   # The cluster's snappables.
   snappableConnection(
@@ -28460,6 +28890,9 @@ input CompleteAzureCloudAccountOauthInput {
 
   # Ensures that only basic OAuth is performed. The session will be stored in Rubrik, however, no additional information (such as list of subscriptions) is returned.
   performBasicOauth: Boolean = false
+
+  # Indicates whether the OAuth refresh token should be retained for future use.
+  shouldKeepRefreshToken: Boolean = false
 }
 # Response of the operation to complete Azure Cloud Account OAuth.
 type CompleteAzureCloudAccountOauthReply {
@@ -29018,6 +29451,9 @@ input CreateAutomaticRcsTargetMappingInput {
 
   # IP mapping for each Rubrik cluster.
   ipMapping: [IpMappingInput!]
+
+  # Specifies whether the proxy settings must be bypassed for  the RCV archival target.
+  shouldBypassProxy: Boolean
 }
 # Input for creating an AWS account.
 input CreateAwsAccountInput {
@@ -30145,6 +30581,9 @@ input CreateRcsTargetInput {
 
   # Immutability lock period, in days.
   lockDurationDays: Long!
+
+  # Specifies whether the proxy settings must be bypassed for  the RCV archival target.
+  shouldBypassProxy: Boolean
 }
 # Input for creating Rubrik Cloud Vault locations.
 input CreateRcvLocationsFromTemplateInput {
@@ -30165,6 +30604,9 @@ input CreateRcvLocationsFromTemplateInput {
 
   # IP mapping for each Rubrik cluster.
   ipMapping: [IpMappingInput!]
+
+  # Specifies whether the proxy settings must be bypassed for  the RCV archival target.
+  shouldBypassProxy: Boolean
 
   # RSA key for the RCV location.
   rsaKey: String
@@ -30761,6 +31203,17 @@ input CustomReportFiltersConfig {
   policyId: [String!]
   sonarObjectTypes: [HierarchyObjectTypeEnum!]
 }
+# AWS customer created permission policy details.
+type CustomerManagedPolicy {
+  # Feature associated with the policy.
+  feature: CloudAccountFeature!
+
+  # Custom name of the policy to be created in AWS.
+  policyName: String!
+
+  # Policy document JSON string to be used as policy body in AWS.
+  policyDocumentJson: String!
+}
 # A daily summary of Ransomware Investigation results across all workloads.
 type DailyAnalysisDetails {
   # The count of suspicious files.
@@ -30938,6 +31391,9 @@ enum DataGovObjectType {
 
   # Represents VMware Host.
   VMWARE_HOST
+
+  # Represents VMware resource pool.
+  VMWARE_RESOURCE_POOL
 
   # Represents VMware Tag Category.
   VMWARE_TAG_CATEGORY
@@ -33616,6 +34072,24 @@ input DownloadManagedVolumeFilesInput {
   # Required. ID assigned to a managed volume backup object.
   id: String!
 }
+# Initiates a job to download a snapshot from the specified location when the snapshot does not exist locally. The specified location can be a replication target or an archival location.
+input DownloadManagedVolumeFromLocationInput {
+  # Additional configuration for the operation. This includes the SLA Domain to be assigned to the snapshot when it is downloaded.
+  downloadConfig: DownloadManagedVolumeRequestInput
+
+  # Required. v7.0-v8.1: ID of the replication location.
+  # v9.0: ID of the remote location.
+  locationId: String!
+
+  # Required. ID of the snapshot to be downloaded.
+  snapshotId: String!
+}
+# Additional parameters for the download request.
+input DownloadManagedVolumeRequestInput {
+  # Supported in v7.0+
+  # ID of the SLA Domain to manage retention of the downloaded snapshot.
+  slaId: String
+}
 # Supported in v5.2+
 input DownloadMssqlBackupFilesByIdJobConfigInput {
   # Supported in v5.2+
@@ -34232,6 +34706,9 @@ enum EventObjectType {
   # AppRecovery object.
   APP_FLOWS
 
+  # Atlassian site.
+  ATLASSIAN_SITE
+
   # AWS account object.
   AWS_ACCOUNT
 
@@ -34348,6 +34825,12 @@ enum EventObjectType {
 
   # HyperV virtual machine object.
   HYPERV_VM
+
+  # Atlassian Jira project.
+  JIRA_PROJECT
+
+  # Atlassian Jira settings.
+  JIRA_SETTINGS
 
   # Job instance.
   JOB_INSTANCE
@@ -36111,6 +36594,14 @@ type ExportUrlSpecs {
 
   # Polaris account of the user.
   polarisAccount: String!
+}
+# Key Value pair for external artifacts for AWS account.
+input ExternalArtifactMap {
+  # AWS unique identifier of the external artifact.
+  externalArtifactValue: String!
+
+  # Keyword for external artifacts.
+  externalArtifactKey: AwsCloudExternalArtifact
 }
 type FailoverChart {
   name: String!
@@ -38299,10 +38790,10 @@ input FinalizeAwsCloudAccountProtectionInput {
   stackSetName: String
 
   # External ID of the IAM role trust policy for the cloud account.
-  externalId: String!
+  externalId: String
 
   # List of feature types to be protected for the cloud account.
-  featureVersion: [AwsCloudAccountFeatureVersionInput!]!
+  featureVersion: [AwsCloudAccountFeatureVersionInput!]
 }
 # Response for the operation to finalize protection for AWS cloud accounts.
 type FinalizeAwsCloudAccountProtectionReply {
@@ -38311,6 +38802,23 @@ type FinalizeAwsCloudAccountProtectionReply {
 
   # Contains success response message.
   awsChildAccounts: [AwsCloudAccount!]!
+}
+# API credentials to add or update the Pure NAS system with API integration. Also contains credentials for SMB share access.
+input FlashBladeSystemParametersInput {
+  # TLS certification to validate the NAS server.
+  apiCertificate: String
+
+  # ID corresponding to the imported certificate.
+  certificateId: String
+
+  # Credentials to access SMB shares.
+  smbCredentials: GenericNasSystemCredentialsInput
+
+  # Required. 
+  apiToken: String!
+
+  # Required. Specifies whether to enable SMB for this NAS system.
+  hasSmbSupport: Boolean!
 }
 # The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
 scalar Float
@@ -41645,6 +42153,9 @@ enum HierarchyFilterField {
   # Filter VSphere virtual machines by guest OS type for file export.
   GUEST_OS_TYPE_FOR_FILE_RESTORE
 
+  # Filter objects if they have snapshots that are expired and indexed.
+  HAS_EXPIRED_INDEXED_SNAPSHOTS
+
   # Filter if a workload has parent workload.
   HAS_PARENT_SNAPPABLE
 
@@ -42101,6 +42612,12 @@ enum HierarchyObjectTypeEnum {
 
   # Jira project.
   JIRA_PROJECT
+
+  # Kubernetes Cluster
+  K8S_CLUSTER
+
+  # Kubernetes Resource Set
+  K8S_RESOURCE_SET
   KuprCluster
   KuprNamespace
   LinuxFileset
@@ -42655,6 +43172,14 @@ type HostDetail {
   # Specifies whether the refresh of host metadata for this host is paused.
   isRefreshPaused: Boolean
   hostSummary: HostSummary
+
+  # Supported in v9.0
+  # Specify the name of active directory domain.
+  hostDomainName: String
+
+  # Supported in v9.0
+  # Id of the Active Directory Domain if the windows host has domain controller hosted.
+  hostDomainId: String
   hostVfdDriverState: HostVfdState!
   hostVfdEnabled: HostVfdInstallConfig
 }
@@ -43471,6 +43996,10 @@ type HostSummary {
   # Supported in v9.0
   # Specifies whether the refresh of host metadata for this host is paused.
   isRefreshPaused: Boolean
+
+  # Supported in v9.0
+  # Specifies the last refresh epoch time in msec.
+  lastRefreshTimeStamp: Long
   mssqlCbtEffectiveStatus: MssqlCbtEffectiveStatusType
   mssqlCbtEnabled: MssqlCbtStatusType
 }
@@ -45017,6 +45546,10 @@ input HypervRestoreFileConfigInput {
 }
 # Supported in v5.0+
 input HypervRestoreFilesConfigInput {
+  # Supported in v9.0
+  # Workload ID of the target HyperV virtual machine, which is the destination for the recovered data.
+  targetVirtualMachineId: String
+
   # Required. Supported in v5.0+
   # v5.0-v5.3: Absolute path of the target location for the copied files
   # v6.0-v7.0: Absolute path of the target location for the copied files.
@@ -46262,6 +46795,9 @@ enum InventorySubHierarchyRootEnum {
   FELDSPAR_ROOT
   GCPNATIVE_ROOT
   HYPERV_ROOT
+
+  # K8S root.
+  K8S_ROOT
   KUPR_ROOT
   LINUX_HOST_ROOT
   MANAGED_VOLUME_ROOT
@@ -46599,6 +47135,17 @@ type K8sCluster implements HierarchyObject , PolarisHierarchyObject {
   # The organizations to which this hierarchy object belongs.
   allOrgs: [Org!]!
 }
+# Input to add a Kubernetes cluster.
+input K8sClusterAddInput {
+  # Container registry URL for storing Rubrik container images.
+  registry: String
+
+  # Required. Kubeconfig is a YAML string to store Kubernetes cluster authentication information. You can get this config file directly from the cluster administrator or from a cloud platform if you are using managed Kubernetes cluster.
+  kubeconfig: String!
+
+  # Required. Name of the Kubernetes cluster to be added.
+  name: String!
+}
 # Paginated list of K8sCluster objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
 type K8sClusterConnection {
   # List of K8sCluster objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
@@ -46750,6 +47297,23 @@ enum K8sClusterStatus {
 
   # Unknown connection status.
   STATUS_UNKNOWN
+}
+# Key properties of a Kubernetes cluster.
+type K8sClusterSummary {
+  # Required. ID of the Kubernetes cluster.
+  id: String!
+
+  # Required. Name of the Kubernetes cluster.
+  name: String!
+
+  # Container registry URL for storing Rubrik container images.
+  registry: String
+
+  # Last refresh time of the Kubernetes cluster.
+  lastRefreshTime: DateTime
+
+  # Required. Connection status of the Kubernetes cluster.
+  status: String!
 }
 # Type of the Kubernetes cluster.
 enum K8sClusterType {
@@ -48129,6 +48693,14 @@ type M365RegionsResp {
   # The list of regions.
   regions: [M365Region!]!
 }
+# Represents backup information for a specific M365 snapshot taken by Rubrik.
+type M365Snapshot implements PolarisSpecificSnapshot {
+  # BackupEventStatus for the M365 snapshot.
+  backupEventStatus: BackupEventStatus
+
+  # ID of the snapshot.
+  snapshotId: UUID!
+}
 # Type representing the mailbox contents to be restored.
 input MailboxRestoreConfig {
   SnapshotUUID: UUID
@@ -48542,6 +49114,12 @@ enum ManagedObjectType {
 
   # Jira project.
   JIRA_PROJECT
+
+  # On-prem Kubernetes Cluster
+  K8S_CLUSTER
+
+  # On-prem Kubernetes Resource Set
+  K8S_RESOURCE_SET
 
   # Kubernetes cluster.
   KUPR_CLUSTER
@@ -49435,12 +50013,6 @@ type ManagedVolumeInventoryStats {
 
   # SLA-based Managed Volume inventory statistics.
   slaBased: ManagedVolumeStats!
-}
-# Supported in v9.0
-input ManagedVolumeLogConfigInput {
-  # Required. Supported in v9.0
-  # Path on the host machine to mount the log export.
-  clientLogMountPath: String!
 }
 # Managed Volume Export details object.
 type ManagedVolumeMount implements HierarchyObject , CdmHierarchyObject , ManagedVolumeDescendantType , ManagedVolumePhysicalChildType {
@@ -55085,8 +55657,8 @@ type MssqlDbSummary {
   hasLogConfigFromSla: Boolean
 
   # Supported in v9.0
-  # Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes Mssql log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
-  hostLogRetentionInSeconds: Int
+  # Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes MSSQL log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
+  hostLogRetention: Int
   snappable: CdmWorkload
 
   # A list of reasons that a SQL Server database cannot be protected by Rubrik.
@@ -56128,8 +56700,8 @@ type MssqlSlaRelatedProperties {
   hasLogConfigFromSla: Boolean
 
   # Supported in v9.0
-  # Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes Mssql log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
-  hostLogRetentionInSeconds: Int
+  # Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes MSSQL log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
+  hostLogRetention: Int
 }
 # Supported in v5.1+
 input MssqlSlaRelatedPropertiesInput {
@@ -56150,8 +56722,8 @@ input MssqlSlaRelatedPropertiesInput {
   hasLogConfigFromSla: Boolean
 
   # Supported in v9.0
-  # Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes Mssql log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
-  hostLogRetentionInSeconds: Int
+  # Specifies the interval, in seconds, the Rubrik cluster waits before the next log backup job deletes MSSQL log files whose 'nextTime' field specifies a time longer than this interval. To specify a wait interval, enter a positive integer. To immediately delete log files regardless of age, specify an interval of -1. To preserve all log files, specify an interval of -2.
+  hostLogRetention: Int
 }
 # Mssql top level descendant.
 interface MssqlTopLevelDescendantType {
@@ -57679,6 +58251,7 @@ input NasSystemRegisterInput {
 
   # Supported in v7.0+
   nasTmpApiCredentials: NasApiCredentialsInput
+  nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
 
   # Required. Supported in v7.0+
   nasVendorType: NasVendorType!
@@ -57705,6 +58278,7 @@ input NasSystemUpdateInput {
   # Supported in v7.0+
   # The updated API credentials of the NAS system.
   nasApiCredentials: NasApiCredentialsInput
+  nasFlashBladeApiCredentials: FlashBladeSystemParametersInput
 }
 # Supported in v5.2+
 # NAS Vendor Type.
@@ -58517,6 +59091,40 @@ input NodesMapInput {
   # Node map value.
   value: NodeConfigInput!
 }
+# Rubrik cluster email notification setting.
+type NotificationSettingSummary {
+  # Email addresses for this setting.
+  emailAddresses: [String!]!
+
+  # Event types for this setting.
+  eventTypes: [String!]!
+
+  # ID for this setting.
+  id: String!
+
+  # Indicates if this setting sends messages to syslog.
+  shouldSendToSyslog: Boolean!
+
+  # Configured SNMP Addresses for this setting.
+  snmpAddresses: [String!]!
+
+  # Severity for this setting.
+  severity: [String!]!
+
+  # Object types for this setting.
+  objectTypes: [String!]!
+}
+# All Email notification settings for the Rubrik cluster.
+type NotificationSettingSummaryListResponse {
+  # Notification settings.
+  data: [NotificationSettingSummary!]!
+
+  # Placeholder for additional notification settings.
+  hasMore: Boolean
+
+  # Number of notification settings.
+  total: Long
+}
 # Supported in v5.0+
 type NtpServerConfiguration {
   # Required. Supported in v5.0+
@@ -58653,6 +59261,615 @@ input NutanixBatchMountSnapshotJobConfigInput {
 input NutanixBulkOnDemandSnapshotJobConfigInput {
   # Required. List of backupConfig objects for nutanix virtual machine.
   vms: [NutanixOnDemandSnapshotJobConfigForBulkInput!]!
+}
+# Nutanix Category details.
+type NutanixCategory implements CdmHierarchyObject , HierarchyObject , NutanixPrismCentralDescendantType , NutanixPrismCentralLogicalChildType {
+  # CDM ID of the Nutanix Category.
+  cdmId: String!
+
+  # Prism Central ID of the Category.
+  prismCentralId: String!
+
+  # Connection status of the CDM cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
+  connectionStatus: RefreshableObjectConnectionStatus!
+
+  # List of descendants.
+  descendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryDescendantTypeConnection!
+
+  # List of logical children.
+  logicalChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryLogicalChildTypeConnection!
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Nutanix Category descendant type.
+interface NutanixCategoryDescendantType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of NutanixCategoryDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type NutanixCategoryDescendantTypeConnection {
+  # List of NutanixCategoryDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [NutanixCategoryDescendantTypeEdge!]!
+
+  # List of NutanixCategoryDescendantType objects.
+  nodes: [NutanixCategoryDescendantType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of NutanixCategoryDescendantType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the NutanixCategoryDescendantType object. This wrapper is used for pagination.
+type NutanixCategoryDescendantTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual NutanixCategoryDescendantType object wrapped by this edge.
+  node: NutanixCategoryDescendantType!
+}
+# Nutanix Category logical child type.
+interface NutanixCategoryLogicalChildType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of NutanixCategoryLogicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type NutanixCategoryLogicalChildTypeConnection {
+  # List of NutanixCategoryLogicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [NutanixCategoryLogicalChildTypeEdge!]!
+
+  # List of NutanixCategoryLogicalChildType objects.
+  nodes: [NutanixCategoryLogicalChildType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of NutanixCategoryLogicalChildType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the NutanixCategoryLogicalChildType object. This wrapper is used for pagination.
+type NutanixCategoryLogicalChildTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual NutanixCategoryLogicalChildType object wrapped by this edge.
+  node: NutanixCategoryLogicalChildType!
+}
+# Nutanix Category Value details.
+type NutanixCategoryValue implements CdmHierarchyObject , HierarchyObject , NutanixPrismCentralDescendantType , NutanixCategoryDescendantType , NutanixCategoryLogicalChildType {
+  # CDM ID of the Nutanix Category Value.
+  cdmId: String!
+
+  # Prism Central ID of the Category Value.
+  prismCentralId: String!
+
+  # Category ID of the Category Value.
+  categoryId: String!
+
+  # Connection status of the CDM Cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
+  connectionStatus: RefreshableObjectConnectionStatus!
+
+  # List of descendants.
+  descendantConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryValueDescendantTypeConnection!
+
+  # List of logical children.
+  logicalChildConnection(
+    # Returns the first n elements from the list.
+    first: Int,
+
+    # Returns the elements in the list that come after the specified cursor.
+    after: String,
+
+    # Sort hierarchy objects by hierarchy field.
+    sortBy: HierarchySortByField,
+
+    # Sorting order for the results.
+    sortOrder: SortOrder,
+
+    # Types of objects to include.
+    typeFilter: [HierarchyObjectTypeEnum!],
+
+    # The hierarchy object filter.
+    filter: [Filter!],
+
+    # Each value in the enum represents the hierarchy of a specific type of protected object for RBAC and SLA Domain assignments. The value None represents the hierarchy of all types of objects.
+    workloadHierarchy: WorkloadLevelHierarchy): NutanixCategoryValueLogicalChildTypeConnection!
+
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Nutanix Category Value descendant type.
+interface NutanixCategoryValueDescendantType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of NutanixCategoryValueDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type NutanixCategoryValueDescendantTypeConnection {
+  # List of NutanixCategoryValueDescendantType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [NutanixCategoryValueDescendantTypeEdge!]!
+
+  # List of NutanixCategoryValueDescendantType objects.
+  nodes: [NutanixCategoryValueDescendantType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of NutanixCategoryValueDescendantType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the NutanixCategoryValueDescendantType object. This wrapper is used for pagination.
+type NutanixCategoryValueDescendantTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual NutanixCategoryValueDescendantType object wrapped by this edge.
+  node: NutanixCategoryValueDescendantType!
+}
+# Nutanix Category Value logical child type.
+interface NutanixCategoryValueLogicalChildType {
+  # Rubrik cluster where this object originated.
+  cluster: Cluster!
+
+  # The source cluster of this object. Returned as a data location because there is no guarantee that Rubrik has knowledge about the source cluster.
+  primaryClusterLocation: DataLocation!
+
+  # SLA Domain assignment of the object during the process of being communicated over to Rubrik CDM.
+  pendingSla: SlaDomain
+
+  # Mapping from objectID to pending object deletion status.
+  pendingObjectDeletionStatus: PendingSnapshotsOfObjectDeletion
+
+  # Objects either replicated by this object or related to this object by replication.
+  replicatedObjects: [CdmHierarchyObject!]!
+
+  # Latest User note information.
+  latestUserNote: LatestUserNote
+
+  # The number of objects either replicated by this object or related to this object by replication.
+  replicatedObjectCount: Int!
+
+  # The authorized operations on the object.
+  authorizedOperations: [Operation!]!
+
+  # The FID of the hierarchy object.
+  id: UUID!
+
+  # The name of the hierarchy object.
+  name: String!
+
+  # The type of this object.
+  objectType: HierarchyObjectTypeEnum!
+
+  # The SLA Domain assignment type for this object.
+  slaAssignment: SlaAssignmentTypeEnum!
+
+  # The effective SLA Domain of the hierarchy object.
+  effectiveSlaDomain: SlaDomain!
+
+  # The pause status of the effective SLA Domain of the hierarchy object.
+  slaPauseStatus: Boolean!
+
+  # The distribution of the snapshots of the hierarchy object.
+  snapshotDistribution: SnapshotDistribution!
+
+  # The effective retention of the SLA Domain of the hierarchy object.
+  effectiveRetentionSlaDomain: SlaDomain
+
+  # The SLA Domain configured for the hierarchy object.
+  configuredSlaDomain: SlaDomain!
+
+  # The path node of the effective SLA Domain source.
+  effectiveSlaSourceObject: PathNode
+
+  # A sequential list of this object's logical ancestors.
+  logicalPath: [PathNode!]!
+
+  # A sequential list of this object's physical ancestors.
+  physicalPath: [PathNode!]!
+
+  # The number of descendant workloads of this object.
+  numWorkloadDescendants: Int!
+
+  # The organizations to which this hierarchy object belongs.
+  allOrgs: [Org!]!
+}
+# Paginated list of NutanixCategoryValueLogicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type NutanixCategoryValueLogicalChildTypeConnection {
+  # List of NutanixCategoryValueLogicalChildType objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [NutanixCategoryValueLogicalChildTypeEdge!]!
+
+  # List of NutanixCategoryValueLogicalChildType objects.
+  nodes: [NutanixCategoryValueLogicalChildType!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of NutanixCategoryValueLogicalChildType objects matching the request arguments.
+  count: Int!
+}
+# Wrapper around the NutanixCategoryValueLogicalChildType object. This wrapper is used for pagination.
+type NutanixCategoryValueLogicalChildTypeEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual NutanixCategoryValueLogicalChildType object wrapped by this edge.
+  node: NutanixCategoryValueLogicalChildType!
 }
 # Nutanix cluster details.
 type NutanixCluster implements CdmHierarchyObject , HierarchyObject , NutanixTopLevelDescendantType , NutanixPrismCentralDescendantType , NutanixPrismCentralLogicalChildType {
@@ -59825,7 +61042,7 @@ input NutanixVirtualMachineScriptDetailInput {
   timeoutMs: Long!
 }
 # Nutanix virtual machine details.
-type NutanixVm implements CdmHierarchyObject , CdmHierarchySnappableNew , HierarchyObject , HierarchySnappable , NutanixClusterDescendantType , NutanixClusterLogicalChildType {
+type NutanixVm implements CdmHierarchyObject , CdmHierarchySnappableNew , HierarchyObject , HierarchySnappable , NutanixClusterDescendantType , NutanixClusterLogicalChildType , NutanixPrismCentralDescendantType , NutanixCategoryDescendantType , NutanixCategoryValueDescendantType , NutanixCategoryValueLogicalChildType {
   # CDM ID of the Nutanix virtual machine.
   cdmId: String!
 
@@ -63395,6 +64612,9 @@ enum ObjectTypeEnum {
 
   # Jira project.
   JIRA_PROJECT
+
+  # Kubernetes Resource Set.
+  K8S_RESOURCE_SET
   KuprNamespace
   LinuxFileset
 
@@ -63642,6 +64862,9 @@ enum Operation {
   RESTORE
   RESTORE_TO_ORIGIN
   TAKE_ON_DEMAND_SNAPSHOT
+
+  # The operation to tier existing snapshots in bulk through snapshot management.
+  TIER_EXISTING_SNAPSHOTS
   TOGGLE_BLACKOUT_WINDOW
   TRANSFER_ACCOUNT_OWNERSHIP
   UPDATE_ACCOUNT_OWNERSHIP
@@ -66746,6 +67969,17 @@ input PermissionInput {
   operation: Operation!
   objectsForHierarchyTypes: [ObjectIdsForHierarchyTypeInput!]!
 }
+# AWS permission policy details.
+type PermissionPolicy {
+  # External artifact key to uniquely identify the AWS artifact such as cross account role.
+  externalArtifactKey: AwsCloudExternalArtifact!
+
+  # List of AWS-managed policy ARNs to be attached to the role.
+  awsManagedPolicies: [String!]!
+
+  # List of custom policy documents to be attached to the role.
+  customerManagedPolicies: [CustomerManagedPolicy!]!
+}
 # PermissionsGroup represents the collection of various permission groups that
 # exist across all features. However, not all permission groups are applicable
 # to every feature. PermissionsGroup serves as a superset encompassing all
@@ -67502,7 +68736,7 @@ type PolarisSnapshot implements GenericSnapshot {
   # Latest User note information.
   latestUserNote: LatestUserNote
 
-  # Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and O365 Site snapshots.
+  # Rubrik-specific information about snapshots of specific workloads. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and M365 snapshots.
   polarisSpecificSnapshot: PolarisSpecificSnapshot
   slaDomain: SlaDomain
 
@@ -67639,7 +68873,7 @@ enum PolarisSnapshotSortByEnum {
   SnappableId
   SnapshotId
 }
-# Rubrik-specific information about snapshots of specific object types. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and O365 Site snapshots.
+# Rubrik-specific information about snapshots of specific object types. Currently, this is only valid for Azure Virtual Machine, AWS EC2, and M365 snapshots.
 interface PolarisSpecificSnapshot {
   # ID of the snapshot.
   snapshotId: UUID!
@@ -67910,6 +69144,20 @@ type PrecheckFailure {
 
   # Is upgrade blocker flag.
   upgradeBlocker: Boolean!
+
+  # Identifier for the precheck.
+  precheckIdentifier: PrecheckIdentifier!
+}
+# Identifier for the precheck.
+enum PrecheckIdentifier {
+  # RSC migration precheck.
+  PRECHECK_MIGRATION
+
+  # CDM precheck.
+  PRECHECK_OTHER
+
+  # This is not used. Added due to backward compatibility guidelines.
+  PRECHECK_UNSPECIFIED
 }
 # Precheck status running information.
 type PrecheckStatusNextRunInfo {
@@ -68744,6 +69992,9 @@ type RansomwareInvestigationEnablementReply {
 
   # Rubrik Cloud Vault archival locations on which Ransomware Monitoring can be enabled.
   rubrikCloudVaultLocations: [RubrikCloudVaultRansomwareInvestigationEnablement!]
+
+  # Cloud Direct clusters on which Ransomware Monitoring can be enabled.
+  cloudDirectClusters: [CloudDirectClusterRansomwareInvestigationEnablement!]
 }
 # Specifies the workload ID and type and the number of times Ransomware Investigation has scanned a workload.
 type RansomwareInvestigationWorkloadScannedCountReply {
@@ -69538,6 +70789,19 @@ input RegisterAgentNutanixVmInput {
   # Required. ID of the Virtual Machine.
   id: String!
 }
+# Input to register external artifacts for AWS account.
+input RegisterAwsFeatureArtifactsInput {
+  # List of external Artifacts and features to be registered for AWS native account.
+  awsArtifacts: [AwsAccountFeatureArtifact!]!
+
+  # Cloud type (Standard/China) for the cloud account.
+  cloudType: AwsCloudType = STANDARD
+}
+# Reply for registering AWS account external artifacts.
+type RegisterAwsFeatureArtifactsReply {
+  # List of AWS native ID to RSC account ID mapping.
+  allAwsNativeIdtoRscIdMappings: [AwsRscAccountDetails!]!
+}
 # Input for cloud cluster registration.
 input RegisterCloudClusterInput {
   # Cluster UUID.
@@ -70126,6 +71390,59 @@ enum ReportFocusEnum {
   SonarContent
   TaskSummary
 }
+# Migration details of the Rubrik cluster report.
+type ReportMigrationStatus {
+  # Report ID on the Rubrik cluster.
+  reportId: String!
+
+  # Report name.
+  reportName: String!
+
+  # Report template.
+  reportTemplate: String!
+
+  # Migration status of the report.
+  status: CdmReportMigrationStatus!
+
+  # JSON string that captures the migration details, if any.
+  details: String!
+
+  # Rubrik cluster of the report.
+  cluster: Cluster
+
+  # The corresponding report ID on RSC after migration.
+  rscReportId: Long!
+}
+# Paginated list of ReportMigrationStatus objects. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
+type ReportMigrationStatusConnection {
+  # List of ReportMigrationStatus objects with additional pagination information. Use `nodes` if per-object cursors are not needed.
+  edges: [ReportMigrationStatusEdge!]!
+
+  # List of ReportMigrationStatus objects.
+  nodes: [ReportMigrationStatus!]!
+
+  # General information about this page of results.
+  pageInfo: PageInfo!
+
+  # Total number of ReportMigrationStatus objects matching the request arguments.
+  count: Int!
+}
+# The count of each report migration status.
+type ReportMigrationStatusCountItem {
+  # Migration status of the report.
+  status: CdmReportMigrationStatus!
+
+  # Count of Rubrik cluster reports for the corresponding migration status.
+  count: Int!
+}
+# Wrapper around the ReportMigrationStatus object. This wrapper is used for pagination.
+type ReportMigrationStatusEdge {
+  # String used to identify this edge.
+  cursor: String!
+
+  # The actual ReportMigrationStatus object wrapped by this edge.
+  node: ReportMigrationStatus!
+}
 enum ReportTableColumnEnum {
   ActivityStatus
   ActivityType
@@ -70232,6 +71549,11 @@ input ReportTableCreate {
 }
 # All the possible table types.
 union ReportTableType = SnappableTable | ActivityTable | InfrastructureTable | AnomalyTable | FailoverTable | UserAuditTable | TaskDetailTable | TaskSummaryTable | SonarReportTable | SonarContentReportTable
+# The result containing the report count according to migration status.
+type ReportsMigrationCount {
+  # Report count according to migration status.
+  counts: [ReportMigrationStatusCountItem!]!
+}
 # Supported in v5.0+
 type RequestErrorInfo {
   # Required. Supported in v5.0+
@@ -70274,6 +71596,11 @@ input ReseedLogShippingSecondaryInput {
 
   # Required. ID of the log shipping configuration object for the specified secondary database.
   id: String!
+}
+# Specifies the input used to reset passwords for selected users in the organization.
+input ResetUsersPasswordsWithUserIdsInput {
+  # Required. Specifies the IDs of the users whose password is being reset.
+  userIds: [String!]!
 }
 # Input for resizing a disk.
 input ResizeDiskInput {
@@ -71228,22 +72555,22 @@ type RubrikManagedAwsTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -71270,10 +72597,10 @@ type RubrikManagedAwsTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific information for Azure target created on Rubrik.
@@ -71329,22 +72656,22 @@ type RubrikManagedAzureTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -71371,10 +72698,10 @@ type RubrikManagedAzureTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific information for Google Cloud Platform (GCP) target created on Rubrik.
@@ -71406,22 +72733,22 @@ type RubrikManagedGcpTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -71448,10 +72775,10 @@ type RubrikManagedGcpTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Information about the Amazon Glacier target created on Rubrik.
@@ -71480,22 +72807,22 @@ type RubrikManagedGlacierTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -71522,10 +72849,10 @@ type RubrikManagedGlacierTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific information for Network File System (NFS) target created on Rubrik.
@@ -71566,22 +72893,22 @@ type RubrikManagedNfsTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -71608,14 +72935,17 @@ type RubrikManagedNfsTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific information for Rubrik Cloud Vault (RCV) target created on Rubrik.
 type RubrikManagedRcsTarget implements Target {
+  # Specifies whether the proxy settings is bypassed for  the RCV archival target.
+  shouldBypassProxy: Boolean!
+
   # Sync status of RCV target.
   syncStatus: TargetSyncStatus!
 
@@ -71646,22 +72976,22 @@ type RubrikManagedRcsTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -71688,10 +73018,10 @@ type RubrikManagedRcsTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific information for Amazon S3 compatible target created on Rubrik.
@@ -71744,22 +73074,22 @@ type RubrikManagedS3CompatibleTarget implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -71786,10 +73116,10 @@ type RubrikManagedS3CompatibleTarget implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Specific information for Q-star target created on Rubrik.
@@ -71821,22 +73151,22 @@ type RubrikManagedTapeTargetType implements Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -71863,10 +73193,10 @@ type RubrikManagedTapeTargetType implements Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Status of the data syncing jobs from CDM to RSC.
@@ -73550,17 +74880,23 @@ type SelfServicePermission {
 
   # The operations granted to the org on newly added objects matching the provided `inventoryRoot` and `inventoryWorkloadType`.
   operations: [Operation!]!
+
+  # The hierarchy root to which this set of permissions applies.
+  hierarchyRoot: String!
 }
 # When an org member adds an object to Rubrik that matches the provided (`inventoryRoot`, `inventoryWorkloadType`) category, the org is granted all permission operations specified within the `operations` field on that new object.
 input SelfServicePermissionInput {
   # The inventory hierarchy root to which this set of permissions will apply.
-  inventoryRoot: InventorySubHierarchyRootEnum!
+  inventoryRoot: InventorySubHierarchyRootEnum
 
   # The inventory workload type to which this set of permissions will apply.
   inventoryWorkloadType: WorkloadLevelHierarchy!
 
   # The operations granted to the org on newly added objects matching the provided `inventoryRoot` and `inventoryWorkloadType`.
   operations: [Operation!]!
+
+  # The hierarchy root to which this set of permissions applies.
+  hierarchyRoot: String
 }
 # Input for sending report email to one or more recipients.
 input SendPdfReportInput {
@@ -74501,8 +75837,8 @@ input SlaManagedVolumeClientConfigInput {
   shouldCancelBackupOnPreBackupScriptFailure: Boolean
 
   # Supported in v9.0
-  # Specifies the configuration for creating log export.
-  logConfig: ManagedVolumeLogConfigInput
+  # Specifies whether log streaming should be enabled for the specified Managed Volume.
+  shouldEnableLogExport: Boolean
 
   # Required. Supported in v5.3+
   # Specifies configuration information for the main backup script that backs up data from the host.
@@ -74556,6 +75892,14 @@ type SlaManagedVolumeDetail {
   # Supported in v5.3+
   # Indicates if a failure of the script run prior to backup halts the backup process.
   shouldCancelBackupOnPreBackupScriptFailure: Boolean
+
+  # Supported in v9.0
+  # Log export specifications.
+  logExportSummary: SlaManagedVolumeLogExportSummary
+
+  # Supported in v9.0
+  # Indicates if log export is enabled for the specified Managed Volume.
+  isLogExportEnabled: Boolean
 }
 # Supported in v5.3+
 type SlaManagedVolumeHostSummary {
@@ -74579,6 +75923,13 @@ type SlaManagedVolumeHostSummary {
   # v7.0: Status of the Rubrik Backup Service (RBS) installed on the SLA Managed Volume host. Possible responses are `Connected`, `Disconnected`, and `REPLICATION_TARGET` when the host is being replicated from a separate Rubrik cluster.
   # v8.0+: Status of the Rubrik Backup Service (RBS) installed on the Managed Volume host. Possible responses are `Connected`, `Disconnected`, and `REPLICATION_TARGET` when the host is being replicated from a separate Rubrik cluster.
   rubrikBackupServiceStatus: String!
+}
+# Supported in v9.0
+# Log export summary of the SLA Managed Volume.
+type SlaManagedVolumeLogExportSummary {
+  # Required. Supported in v9.0
+  # Path on the client host machine where log export for the SLA Managed Volume is mounted. Note that this path is created and managed by Rubrik. Changing permissions on this path can result in unexpected behavior.
+  clientLogMountPath: String!
 }
 # Supported in v5.3+
 input SlaManagedVolumeScriptConfigInput {
@@ -76816,6 +78167,19 @@ input StartCloudNativeSnapshotsIndexJobInput {
   # The IDs of snapshots whose index needs to be generated.
   snapshotIds: [UUID!]!
 }
+# The input configuration to start the report migration job.
+input StartClusterReportMigrationJobInput {
+  # The ID of the Rubrik cluster. If the cluster ID is not provided, the job will perform migration of reports for all the eligible clusters connected. 
+  clusterUuid: UUID
+
+  # Specifies whether to delete schedules of the cluster reports that get migrated to RSC.
+  shouldDeleteCdmSchedules: Boolean
+}
+# The response of the request to start report migration.
+type StartClusterReportMigrationJobReply {
+  # The ID of the job instance.
+  jobInstanceId: String!
+}
 type StartCrawlReply {
   crawlId: String!
 }
@@ -78147,22 +79511,22 @@ interface Target {
   # The cluster to which this target belongs.
   cluster: Cluster!
 
-  # The type of this target.
+  # The type of the target.
   targetType: TargetType!
 
-  # The ID of this target.
+  # The ID of the target.
   id: String!
 
-  # The name of this target.
+  # The name of the target.
   name: String!
 
-  # The scope of location of this target. Possible values are Global or Local.
+  # The scope of the location of the target. Possible values are Global or Local.
   locationScope: LocationScope!
 
-  # Specifies whether this target is active. When false, the target is either paused or not enabled.
+  # Specifies whether the status of the target is active. When set to false, the target is either paused or not enabled.
   isActive: Boolean!
 
-  # Specifies whether this target is archived.
+  # Specifies whether the target is archived.
   isArchived: Boolean!
 
   # Archival location to which the mapping target belongs.
@@ -78189,10 +79553,10 @@ interface Target {
   # The retrieval method of the reader target.
   readerRetrievalMethod: ReaderRetrievalMethod
 
-  # List of archival groups the archival target belongs to. In case target has no valid mappings we return null array.
+  # List of archival groups the archival target belongs to. In case the target has no valid mappings, a null array is returned.
   targetMappingBasic: [TargetMappingBasic!]
 
-  # Connected or Disconnected status of the target.
+  # Status of the target.
   locationConnectionStatus: ConnectionStatusType!
 }
 # Paginated list of Target objects with additional pagination information. Use `nodes` if per-object cursors are not needed. Each page of the results will include at most 1000 entries. Query the `pageInfo.hasNextPage` field to know whether all objects were returned.
@@ -79506,6 +80870,20 @@ type UnmapAzureCloudAccountExocomputeSubscriptionReply {
   # Specifies whether the unmapping was completed successfully.
   isSuccess: Boolean!
 }
+# Input to check if we can unmap archival location from subscription.
+input UnmapAzurePersistentStorageSubscriptionInput {
+  # Native ID for AWS Account.
+  accountId: String!
+
+  # Subscription IDs from which to unmap archival location.
+  applicationCloudAccountIds: [String!]!
+
+  # Feature for which to unmap archival locations.
+  feature: CloudAccountFeature!
+
+  # Validation type to check if we can unmap the archival locations.
+  unmappingValidationType: UnmappingValidationType!
+}
 # Input for unmapping cloud accounts from the mapped Exocompute account.
 input UnmapCloudAccountExocomputeAccountInput {
   # Rubrik IDs of the cloud accounts to be unmapped.
@@ -79518,6 +80896,14 @@ input UnmapCloudAccountExocomputeAccountInput {
 type UnmapCloudAccountExocomputeAccountReply {
   # Specifies whether the unmapping was completed successfully.
   isSuccess: Boolean!
+}
+# The validation type to use to check if archival location unmapping is allowed.
+enum UnmappingValidationType {
+  # Check if relevant Account Setting Table has been set.
+  AST
+
+  # Check if storage account is empty.
+  EMPTY_STORAGE_ACCOUNT
 }
 # Input required to unmount disks.
 input UnmountDiskInput {
@@ -80897,6 +82283,9 @@ input UpdateRcsAutomaticTargetMappingInput {
 
   # List of cluster UUIDs.
   clusterUuidList: [String!]
+
+  # Specifies whether the proxy settings must be bypassed  the RCV archival target.
+  shouldBypassProxy: Boolean
 }
 # Input for the Rubrik Cloud Vault update request.
 input UpdateRcvTargetInput {
@@ -80911,6 +82300,9 @@ input UpdateRcvTargetInput {
 
   # List of allowed IP addresses for the RCV location.
   ipMapping: IpMappingInput
+
+  # Specifies whether the proxy settings must be bypassed for the RCV archival target.
+  shouldBypassProxy: Boolean
 }
 # Request to update replication target information.
 input UpdateReplicationTargetInput {
@@ -84805,6 +86197,23 @@ enum VmPowerStatus {
 
   # Virtual machine is suspended.
   SUSPENDED
+}
+# Child VM recovery jobs info for a recovery.
+type VmRecoveryJobInfo {
+  # ID of virtual machine.
+  vmId: String!
+
+  # Name of virtual machine.
+  vmName: String!
+
+  # Size of virtual machine in Kbs.
+  vmSizeInKbs: Long!
+
+  # The status of recovery job.
+  jobStatus: String!
+
+  # The ID of recovery job.
+  cdmRecoveryJobId: String!
 }
 # Supported in v5.0+
 input VmRestorePathPairInput {
@@ -90187,6 +91596,9 @@ enum WorkloadAnomaliesSortBy {
   # Sort by the number of files deleted in the snapshot.
   DELETED_FILE_COUNT
 
+  # Sort by detection time.
+  DETECTION_TIME
+
   # Sort by encryption level of the snapshot.
   ENCRYPTION
 
@@ -90260,6 +91672,9 @@ type WorkloadAnomaly {
 
   # Type of the anomaly detected.
   anomalyType: AnomalyType!
+
+  # Time when the anomaly was detected.
+  detectionTime: DateTime
 
   # The object type of the workload.
   objectType: HierarchyObjectTypeEnum!
@@ -90409,6 +91824,11 @@ input YearlySnapshotScheduleInput {
 
   # Starting month of year.
   yearStartMonth: Month = JANUARY
+}
+# Zeus database ids.
+type ZeusDatabaseIds {
+  # List of database ids used by Zeus.
+  ids: [String!]!
 }
 # Represents the availability of Zone Redundancy for a given servicetier, region and subscription combination.
 type ZrsAvailabilityReply {

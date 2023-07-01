@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VsphereVcenterLogicalChildTypeEdge";
+    }
+
     public VsphereVcenterLogicalChildTypeEdge Set(
         VsphereVcenterLogicalChildType? Node = null,
         System.String? Cursor = null

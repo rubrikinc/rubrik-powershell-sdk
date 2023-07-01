@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RubrikCloudVaultLocation";
+    }
+
     public RubrikCloudVaultLocation Set(
         RubrikCloudVaultType? Type = null,
         System.String? ClusterName = null,

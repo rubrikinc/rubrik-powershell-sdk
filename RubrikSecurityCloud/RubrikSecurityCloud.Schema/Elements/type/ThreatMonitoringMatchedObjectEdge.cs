@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatMonitoringMatchedObjectEdge";
+    }
+
     public ThreatMonitoringMatchedObjectEdge Set(
         System.String? Cursor = null,
         ThreatMonitoringMatchedObject? Node = null

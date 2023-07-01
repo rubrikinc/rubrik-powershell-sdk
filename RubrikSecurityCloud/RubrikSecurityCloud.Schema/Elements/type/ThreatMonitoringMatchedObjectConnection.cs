@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatMonitoringMatchedObjectConnection";
+    }
+
     public ThreatMonitoringMatchedObjectConnection Set(
         System.Int32? Count = null,
         List<ThreatMonitoringMatchedObjectEdge>? Edges = null,

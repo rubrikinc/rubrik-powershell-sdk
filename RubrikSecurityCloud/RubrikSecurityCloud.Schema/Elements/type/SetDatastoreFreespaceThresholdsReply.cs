@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SetDatastoreFreespaceThresholdsReply";
+    }
+
     public SetDatastoreFreespaceThresholdsReply Set(
         List<DatastoreFreespaceThresholdType>? Thresholds = null
     ) 

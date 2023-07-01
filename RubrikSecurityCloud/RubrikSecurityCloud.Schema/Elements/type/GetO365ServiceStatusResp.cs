@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetO365ServiceStatusResp";
+    }
+
     public GetO365ServiceStatusResp Set(
         O365ServiceStatusIndication? Status = null,
         DateTime? LastUpdated = null

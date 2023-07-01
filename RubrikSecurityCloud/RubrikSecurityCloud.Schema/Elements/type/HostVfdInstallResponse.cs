@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostVfdInstallResponse";
+    }
+
     public HostVfdInstallResponse Set(
         HostVfdState? HostVfdDriverState = null,
         System.String? ErrorInfo = null,

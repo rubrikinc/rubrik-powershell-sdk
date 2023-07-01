@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RansomwareResultEdge";
+    }
+
     public RansomwareResultEdge Set(
         System.String? Cursor = null,
         RansomwareResult? Node = null

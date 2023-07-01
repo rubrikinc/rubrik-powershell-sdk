@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "KmipServerConnection";
+    }
+
     public KmipServerConnection Set(
         System.Int32? Count = null,
         List<KmipServerEdge>? Edges = null,

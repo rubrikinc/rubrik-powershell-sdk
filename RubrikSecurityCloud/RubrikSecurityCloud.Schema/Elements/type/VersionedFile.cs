@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VersionedFile";
+    }
+
     public VersionedFile Set(
         System.String? AbsolutePath = null,
         System.String? DisplayPath = null,

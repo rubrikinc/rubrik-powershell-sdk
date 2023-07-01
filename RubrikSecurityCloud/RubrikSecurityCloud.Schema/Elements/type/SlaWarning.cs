@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SlaWarning";
+    }
+
     public SlaWarning Set(
         AssignSlaWarningsEnum? Code = null,
         WarningSeverityEnum? Severity = null,

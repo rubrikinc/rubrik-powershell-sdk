@@ -1,6 +1,6 @@
 # Invoke-RscQueryOracle
 ## Subcommands
-### Acoexampledownloadlink
+### acoexampledownloadlink
 Link to download the Advanced Recovery Options example file
 
 Supported in v5.3+
@@ -8,7 +8,7 @@ Link to download the Advanced Recovery Options example file which can be used to
 
 - There is a single argument of type ClusterUuidWithDbIdInput.
 - Returns OracleFileDownloadLink.
-### Acoparameter
+### acoparameter
 List of supported Advanced Cloning Options
 
 Supported in v6.0+
@@ -16,7 +16,7 @@ Get the list of supported Advanced Cloning Options (ACO) parameters.
 
 - There is a single argument of type ClusterUuidWithDbIdInput.
 - Returns OracleAcoParameterList.
-### Database
+### database
 Paginated list of Oracle Databases.
 
 - There are 5 arguments.
@@ -26,27 +26,27 @@ Paginated list of Oracle Databases.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns OracleDatabaseConnection.
-### Databaselogbackupconfig
+### databaselogbackupconfig
 Oracle log backup configuration for an Oracle Database.
 
 - There is a single argument of type OracleDbInput.
 - Returns OracleLogBackupConfig.
-### Dataguardgroup
+### dataguardgroup
 An Oracle Data Guard Group.
 
 - There is a single argument of type System.String.
 - Returns OracleDataGuardGroup.
-### Host
+### host
 An Oracle Host.
 
 - There is a single argument of type System.String.
 - Returns OracleHost.
-### Hostlogbackupconfig
+### hostlogbackupconfig
 Oracle Log backup configuration for Oracle Host.
 
 - There is a single argument of type OracleHostInput.
 - Returns OracleLogBackupConfig.
-### Livemount
+### livemount
 Paginated list of Oracle Live Mounts.
 
 - There are 4 arguments.
@@ -55,7 +55,7 @@ Paginated list of Oracle Live Mounts.
     - filters - list of OracleLiveMountFilterInputs: Filter for Oracle live mounts.
     - sortBy - OracleLiveMountSortBy: Sort by argument for Oracle live mounts.
 - Returns OracleLiveMountConnection.
-### Missedrecoverablerange
+### missedrecoverablerange
 Get missed recoverable ranges of a Oracle database
 
 Supported in v5.0+
@@ -63,7 +63,7 @@ Retrieve a list of missed recoverable ranges for a Oracle database. For each run
 
 - There is a single argument of type GetOracleDbMissedRecoverableRangesInput.
 - Returns OracleMissedRecoverableRangeListResponse.
-### Missedsnapshot
+### missedsnapshot
 Get missed snapshots for an Oracle database
 
 Supported in v5.0+
@@ -71,7 +71,7 @@ Retrieve summary information about the missed snapshots of an Oracle database.
 
 - There is a single argument of type GetMissedOracleDbSnapshotsInput.
 - Returns MissedSnapshotListResponse.
-### Pdbdetail
+### pdbdetail
 Get PDB details
 
 Supported in v8.0+
@@ -79,17 +79,17 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
 - There is a single argument of type OraclePdbDetailsInput.
 - Returns OraclePdbDetails.
-### Rac
+### rac
 An Oracle Real Application Cluster.
 
 - There is a single argument of type System.String.
 - Returns OracleRac.
-### Raclogbackupconfig
+### raclogbackupconfig
 Oracle log backup configuration for an Oracle RAC.
 
 - There is a single argument of type OracleRacInput.
 - Returns OracleLogBackupConfig.
-### Recoverablerange
+### recoverablerange
 Get recoverable ranges of a Oracle database
 
 Supported in v5.0+
@@ -97,7 +97,7 @@ Retrieve the recoverable ranges for a specified Oracle database. A begin and/or 
 
 - There is a single argument of type GetOracleDbRecoverableRangesInput.
 - Returns OracleRecoverableRangeListResponse.
-### Topleveldescendant
+### topleveldescendant
 Paginated list of the highest-level Oracle Objects accessible by the current user.
 
 - There are 6 arguments.

@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalObjectSummary";
+    }
+
     public PrincipalObjectSummary Set(
         DataGovObjectType? ObjectType = null,
         RiskLevelType? RiskLevel = null,

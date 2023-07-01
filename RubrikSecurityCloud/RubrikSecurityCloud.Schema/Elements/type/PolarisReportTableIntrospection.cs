@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisReportTableIntrospection";
+    }
+
     public PolarisReportTableIntrospection Set(
         SortOrder? DefaultSortByOrder = null,
         System.String? DefaultSortByColumn = null,

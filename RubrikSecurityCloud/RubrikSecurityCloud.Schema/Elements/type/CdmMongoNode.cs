@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmMongoNode";
+    }
+
     public CdmMongoNode Set(
         System.String? Host = null,
         System.Int32? Port = null

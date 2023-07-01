@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GenericTimeRange";
+    }
+
     public GenericTimeRange Set(
         TimeRange? AbsoluteTimeRange = null,
         RelativeTimeRange? RelativeTimeRange = null

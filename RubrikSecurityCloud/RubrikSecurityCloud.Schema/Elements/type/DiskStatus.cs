@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DiskStatus";
+    }
+
     public DiskStatus Set(
         System.String? DiskType = null,
         System.String? Id = null,

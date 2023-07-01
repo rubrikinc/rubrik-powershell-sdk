@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrincipalRiskCount";
+    }
+
     public PrincipalRiskCount Set(
         System.Int64? Count = null,
         System.Int64? DeltaCount = null

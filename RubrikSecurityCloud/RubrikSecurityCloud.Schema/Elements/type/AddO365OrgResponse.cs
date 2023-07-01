@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddO365OrgResponse";
+    }
+
     public AddO365OrgResponse Set(
         System.String? OrgId = null,
         System.String? RefreshOrgTaskchainId = null

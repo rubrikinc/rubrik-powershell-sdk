@@ -1095,7 +1095,7 @@ namespace RubrikSecurityCloud.Types
             ref System.Boolean? fieldSpec
         )
         {
-            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\ndbClass: $dbClass\nprimaryAz: $primaryAz\nstorageType: $storageType\nisMultiAz: $isMultiAz\nkmsKeyId: $kmsKeyId\niops: $iops\n)";
+            string args = "\n(\nawsAccountRubrikId: $awsAccountRubrikId\nregion: $region\ndbEngine: $dbEngine\ndbEngineVersion: $dbEngineVersion\ndbClass: $dbClass\ndatabaseInstanceClass: $databaseInstanceClass\nprimaryAz: $primaryAz\nstorageType: $storageType\nisMultiAz: $isMultiAz\nkmsKeyId: $kmsKeyId\niops: $iops\n)";
             if ( fieldSpec == null ) {
                 // there is no field spec for scalar types, but we still
                 // populate the fieldSpec so that caller can see the type 
@@ -1362,6 +1362,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> GetMountDetailsReply? GetMountDetails
+        // GraphQL -> GetMountDetails: GetMountDetailsReply! (type)
+        public static string GetMountDetails(
+            ref GetMountDetailsReply? fieldSpec
+        )
+        {
+            string args = "\n(\nliveMountId: $liveMountId\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new GetMountDetailsReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "GetMountDetails" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> AccountSetting? AccountSettings
         // GraphQL -> accountSettings: AccountSetting! (type)
         public static string AccountSettings(
@@ -1466,6 +1484,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "activeDirectoryDomains" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> ActiveInsightConnection? ActiveInsights
+        // GraphQL -> activeInsights: ActiveInsightConnection! (type)
+        public static string ActiveInsights(
+            ref ActiveInsightConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nclusterUUIDs: $clusterUUIDs\nseverities: $severities\nincludeClusterLevelInsights: $includeClusterLevelInsights\nincludeAccountLevelInsights: $includeAccountLevelInsights\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new ActiveInsightConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "activeInsights" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -2316,6 +2352,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> ItemDiffBetweenSnapshotAndLiveEnvironment? AllComparisonsBetweenSaasAppSnapshotAndLive
+        // GraphQL -> allComparisonsBetweenSaasAppSnapshotAndLive: ItemDiffBetweenSnapshotAndLiveEnvironment! (type)
+        public static string AllComparisonsBetweenSaasAppSnapshotAndLive(
+            ref ItemDiffBetweenSnapshotAndLiveEnvironment? fieldSpec
+        )
+        {
+            string args = "\n(\nworkloadId: $workloadId\nitemId: $itemId\nsnapshotId: $snapshotId\nappItemTypeToken: $appItemTypeToken\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new ItemDiffBetweenSnapshotAndLiveEnvironment() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allComparisonsBetweenSaasAppSnapshotAndLive" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> List<DailyComplianceStats>? AllComplianceTimeSeries
         // GraphQL -> allComplianceTimeSeries: [DailyComplianceStats!]! (type)
         public static string AllComplianceTimeSeries(
@@ -2856,6 +2910,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> List<Prechecks>? AllMigrationPrechecks
+        // GraphQL -> allMigrationPrechecks: [Prechecks!]! (type)
+        public static string AllMigrationPrechecks(
+            ref List<Prechecks>? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<Prechecks>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "allMigrationPrechecks" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> V1MssqlGetRestoreFilesV1Response? AllMssqlDatabaseRestoreFiles
         // GraphQL -> allMssqlDatabaseRestoreFiles: V1MssqlGetRestoreFilesV1Response! (type)
         public static string AllMssqlDatabaseRestoreFiles(
@@ -3032,24 +3104,6 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "allObjectsAlreadyAssignedToOrgs" + args + "{\n" +
-                fieldSpec.AsFieldSpec(1) +
-                "}\n");
-        }
-
-        //      C# -> List<LatestUserNote>? AllObjectsLatestUserNoteAudit
-        // GraphQL -> allObjectsLatestUserNoteAudit: [LatestUserNote!]! (type)
-        public static string AllObjectsLatestUserNoteAudit(
-            ref List<LatestUserNote>? fieldSpec
-        )
-        {
-            string args = "\n(\nobjectIds: $objectIds\n)";
-            if (fieldSpec == null)
-            {
-                fieldSpec = new List<LatestUserNote>() ;
-                fieldSpec.ApplyExploratoryFieldSpec();
-            }
-            return new string(
-                "allObjectsLatestUserNoteAudit" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -3788,6 +3842,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "atlassianSites" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> AttributedFeatureFlag? AttributedFeatureFlag
+        // GraphQL -> attributedFeatureFlag: AttributedFeatureFlag! (type)
+        public static string AttributedFeatureFlag(
+            ref AttributedFeatureFlag? fieldSpec
+        )
+        {
+            string args = "\n(\nkey: $key\nattributes: $attributes\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new AttributedFeatureFlag() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "attributedFeatureFlag" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -6834,6 +6906,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> EventClusterSettingReply? EventClusterSetting
+        // GraphQL -> eventClusterSetting: EventClusterSettingReply! (type)
+        public static string EventClusterSetting(
+            ref EventClusterSettingReply? fieldSpec
+        )
+        {
+            string args = "\n(\ninput: $input\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new EventClusterSettingReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "eventClusterSetting" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> ExchangeDag? ExchangeDag
         // GraphQL -> exchangeDag: ExchangeDag! (type)
         public static string ExchangeDag(
@@ -8706,6 +8796,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> GetLastInsightSyncReply? LatestInsightSync
+        // GraphQL -> latestInsightSync: GetLastInsightSyncReply! (type)
+        public static string LatestInsightSync(
+            ref GetLastInsightSyncReply? fieldSpec
+        )
+        {
+            string args = "";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new GetLastInsightSyncReply() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "latestInsightSync" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> AuthorizedPrincipalConnection? LdapAuthorizedPrincipalConnection
         // GraphQL -> ldapAuthorizedPrincipalConnection: AuthorizedPrincipalConnection! (type)
         public static string LdapAuthorizedPrincipalConnection(
@@ -9062,6 +9170,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "mfaSetting" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<MigrationMetadata>? MigrationMetadata
+        // GraphQL -> migrationMetadata: [MigrationMetadata!]! (type)
+        public static string MigrationMetadata(
+            ref List<MigrationMetadata>? fieldSpec
+        )
+        {
+            string args = "";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<MigrationMetadata>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "migrationMetadata" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -11556,7 +11682,7 @@ namespace RubrikSecurityCloud.Types
             ref PolicyObj? fieldSpec
         )
         {
-            string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\n)";
+            string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nincludeWhitelistedResults: $includeWhitelistedResults\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PolicyObj() ;
@@ -11574,7 +11700,7 @@ namespace RubrikSecurityCloud.Types
             ref PolicyObj? fieldSpec
         )
         {
-            string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\n)";
+            string args = "\n(\nsnappableFid: $snappableFid\nsnapshotFid: $snapshotFid\nincludeWhitelistedResults: $includeWhitelistedResults\n)";
             if (fieldSpec == null)
             {
                 fieldSpec = new PolicyObj() ;
@@ -12428,6 +12554,42 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "s3BucketStateForRecovery" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> List<AppItemWithCascadingImpact>? SaasAppCascadingImpact
+        // GraphQL -> saasAppCascadingImpact: [AppItemWithCascadingImpact!]! (type)
+        public static string SaasAppCascadingImpact(
+            ref List<AppItemWithCascadingImpact>? fieldSpec
+        )
+        {
+            string args = "\n(\nrestoreConfig: $restoreConfig\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new List<AppItemWithCascadingImpact>() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "saasAppCascadingImpact" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> SaasAppSnapshotConnection? SaasAppItemOverlappingSnapshots
+        // GraphQL -> saasAppItemOverlappingSnapshots: SaasAppSnapshotConnection! (type)
+        public static string SaasAppItemOverlappingSnapshots(
+            ref SaasAppSnapshotConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\nworkloadId: $workloadId\nitemId: $itemId\nappItemTypeToken: $appItemTypeToken\ntimeFilter: $timeFilter\nsortBy: $sortBy\nsortOrder: $sortOrder\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new SaasAppSnapshotConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "saasAppItemOverlappingSnapshots" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }
@@ -14124,6 +14286,24 @@ namespace RubrikSecurityCloud.Types
                 "}\n");
         }
 
+        //      C# -> TprRequestSummaryConnection? TprRequestSummaries
+        // GraphQL -> tprRequestSummaries: TprRequestSummaryConnection! (type)
+        public static string TprRequestSummaries(
+            ref TprRequestSummaryConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new TprRequestSummaryConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "tprRequestSummaries" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
         //      C# -> TprRoleEligibilityType? TprRoleEligibility
         // GraphQL -> tprRoleEligibility: TprRoleEligibilityType! (type)
         public static string TprRoleEligibility(
@@ -14192,6 +14372,24 @@ namespace RubrikSecurityCloud.Types
             }
             return new string(
                 "upgradeStatus" + args + "{\n" +
+                fieldSpec.AsFieldSpec(1) +
+                "}\n");
+        }
+
+        //      C# -> PrincipalInsightConnection? UserAccessInsights
+        // GraphQL -> userAccessInsights: PrincipalInsightConnection! (type)
+        public static string UserAccessInsights(
+            ref PrincipalInsightConnection? fieldSpec
+        )
+        {
+            string args = "\n(\nstartTime: $startTime\nendTime: $endTime\nincludeWhitelistedResults: $includeWhitelistedResults\nfirst: $first\nafter: $after\nlast: $last\nbefore: $before\n)";
+            if (fieldSpec == null)
+            {
+                fieldSpec = new PrincipalInsightConnection() ;
+                fieldSpec.ApplyExploratoryFieldSpec();
+            }
+            return new string(
+                "userAccessInsights" + args + "{\n" +
                 fieldSpec.AsFieldSpec(1) +
                 "}\n");
         }

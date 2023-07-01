@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BlueprintRecoverySpecs";
+    }
+
     public BlueprintRecoverySpecs Set(
         List<ValidateFailureReason>? Errors = null,
         List<BlueprintRecoverySpec>? Specs = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ChartViewWithName";
+    }
+
     public ChartViewWithName Set(
         ChartViewType? ChartViewType = null,
         System.String? ChartName = null

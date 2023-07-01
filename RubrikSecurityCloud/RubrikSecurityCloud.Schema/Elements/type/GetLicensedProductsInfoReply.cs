@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetLicensedProductsInfoReply";
+    }
+
     public GetLicensedProductsInfoReply Set(
         List<LicensedClusterProduct>? ClusterProducts = null
     ) 

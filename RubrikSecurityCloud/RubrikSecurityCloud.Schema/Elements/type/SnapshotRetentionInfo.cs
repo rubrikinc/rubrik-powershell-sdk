@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnapshotRetentionInfo";
+    }
+
     public SnapshotRetentionInfo Set(
         List<SnapshotLocationRetentionInfo>? ArchivalInfos = null,
         List<SnapshotLocationRetentionInfo>? CloudNativeLocationInfo = null,

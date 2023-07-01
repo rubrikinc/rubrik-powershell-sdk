@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ValidateBlueprintReply";
+    }
+
     public ValidateBlueprintReply Set(
         System.Boolean? IsValidationSucceeded = null,
         System.String? BlueprintId = null,

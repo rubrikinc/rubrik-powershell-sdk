@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365PdlAndWorkloadPair";
+    }
+
     public O365PdlAndWorkloadPair Set(
         WorkloadLevelHierarchy? Workload = null,
         System.String? Pdl = null

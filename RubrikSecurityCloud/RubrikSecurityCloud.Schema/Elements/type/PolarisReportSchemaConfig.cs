@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PolarisReportSchemaConfig";
+    }
+
     public PolarisReportSchemaConfig Set(
         System.String? ChartTitle = null,
         System.String? DefaultName = null,

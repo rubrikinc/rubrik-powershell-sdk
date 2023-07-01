@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365TeamsConnection";
+    }
+
     public O365TeamsConnection Set(
         System.Int32? Count = null,
         List<O365TeamsEdge>? Edges = null,

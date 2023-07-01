@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StartThreatHuntReply";
+    }
+
     public StartThreatHuntReply Set(
         System.String? HuntId = null,
         System.Boolean? IsSyncSuccessful = null,

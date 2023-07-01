@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HostFailoverClusterDescendantTypeConnection";
+    }
+
     public HostFailoverClusterDescendantTypeConnection Set(
         List<HostFailoverClusterDescendantType>? Nodes = null,
         System.Int32? Count = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PatchDb2InstanceReply";
+    }
+
     public PatchDb2InstanceReply Set(
         AsyncRequestStatus? AsyncRequestStatus = null,
         Db2InstanceSummary? Db2InstanceSummary = null

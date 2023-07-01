@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FilesetArraySpec";
+    }
+
     public FilesetArraySpec Set(
         System.String? ProxyHostId = null
     ) 

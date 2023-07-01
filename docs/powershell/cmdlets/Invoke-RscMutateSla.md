@@ -1,11 +1,11 @@
 # Invoke-RscMutateSla
 ## Subcommands
-### Assign
+### assign
 Endpoint to assign SLA Domain.
 
 - There is a single argument of type AssignSlaInput.
 - Returns SlaAssignResult.
-### Assignretentiontosnappable
+### assignretentiontosnappable
 - There are 6 arguments.
     - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
     - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
@@ -14,14 +14,14 @@ Endpoint to assign SLA Domain.
     - shouldApplyToNonPolicySnapshots - System.Boolean: Boolean value to indicate if the new configuration keeps existing, non-policy snapshots of data sources retained by this SLA Domain.
     - userNote - System.String: Optional User note.
 - Returns SlaAssignResult.
-### Assignretentiontosnapshot
+### assignretentiontosnapshot
 - There are 4 arguments.
     - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
     - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
     - snapshotFids - list of System.Strings: List of UUIDs of objects.
     - userNote - System.String: Optional User note.
 - Returns SlaAssignResult.
-### Assignsforsnappablehierarchie
+### assignsforsnappablehierarchie
 - There are 8 arguments.
     - globalSlaOptionalFid - System.String: Global SLA Domain forever UUID.
     - globalSlaAssignType - SlaAssignTypeEnum: Corresponds to the assignment type for the global SLA
@@ -32,20 +32,20 @@ Endpoint to assign SLA Domain.
     - globalExistingSnapshotRetention - GlobalExistingSnapshotRetention: Choose what to do with existing snapshot in case of do not protect slas
     - userNote - System.String: Optional User note.
 - Returns list of SlaAssignResults.
-### Createglobal
+### createglobal
 Create SLA Domain.
 
 - There is a single argument of type CreateGlobalSlaInput.
 - Returns GlobalSlaReply.
-### Deleteglobal
+### deleteglobal
 - There are 2 arguments.
     - id - System.String: SLA Domain ID.
     - userNote - System.String: Optional User note.
 - Returns SlaResult.
-### Editglobal
+### editglobal
 - There is a single argument of type GlobalSlaEditRequest.
 - Returns GlobalSlaReply.
-### Exportmanagedvolumesnapshot
+### exportmanagedvolumesnapshot
 Create a request to export a snapshot and mount it on a host
 
 Supported in v5.3+
@@ -53,7 +53,7 @@ Export a managed volume snapshot as a share and mount it on a given host.
 
 - There is a single argument of type ExportSlaManagedVolumeSnapshotInput.
 - Returns AsyncRequestStatus.
-### Getpendingassignment
+### getpendingassignment
 Get pending SLA Domain assignments on selected managed objects
 
 Supported in v5.2+
@@ -61,17 +61,17 @@ Retrieve the details of pending SLA Domain assignments on the given managed obje
 
 - There is a single argument of type GetPendingSlaAssignmentsInput.
 - Returns PendingSlaOperations.
-### Pause
+### pause
 Pause/Resume Global SLA on the given clusters.
 
 - There is a single argument of type PauseSlaRequest.
 - Returns SlaResult.
-### Updateglobal
+### updateglobal
 Update SLA Domain.
 
 - There is a single argument of type UpdateGlobalSlaInput.
 - Returns GlobalSlaReply.
-### Upgrade
+### upgrade
 Upgrade SLA Domains from the Rubrik clusters.
 
 - There is a single argument of type UpgradeSlasInput.

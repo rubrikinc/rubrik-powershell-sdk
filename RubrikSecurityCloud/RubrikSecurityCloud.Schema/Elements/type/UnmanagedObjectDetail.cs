@@ -115,6 +115,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UnmanagedObjectDetail";
+    }
+
     public UnmanagedObjectDetail Set(
         ManagedObjectType? ObjectType = null,
         UnmanagedObjectAvailabilityFilter? UnmanagedStatus = null,

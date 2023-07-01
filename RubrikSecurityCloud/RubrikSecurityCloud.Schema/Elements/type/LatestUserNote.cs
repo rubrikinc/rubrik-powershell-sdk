@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LatestUserNote";
+    }
+
     public LatestUserNote Set(
         System.String? ObjectId = null,
         DateTime? Time = null,

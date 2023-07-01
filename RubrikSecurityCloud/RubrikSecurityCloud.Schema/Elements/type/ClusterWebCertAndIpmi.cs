@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterWebCertAndIpmi";
+    }
+
     public ClusterWebCertAndIpmi Set(
         System.String? ClusterUuid = null,
         System.String? Error = null,

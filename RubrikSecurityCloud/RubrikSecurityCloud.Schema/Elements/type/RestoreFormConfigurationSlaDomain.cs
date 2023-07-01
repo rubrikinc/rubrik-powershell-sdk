@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationSlaDomain";
+    }
+
     public RestoreFormConfigurationSlaDomain Set(
         System.String? Name = null
     ) 

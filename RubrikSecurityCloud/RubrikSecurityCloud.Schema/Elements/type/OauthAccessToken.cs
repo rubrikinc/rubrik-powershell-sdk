@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OauthAccessToken";
+    }
+
     public OauthAccessToken Set(
         System.String? ClientId = null,
         System.String? Code = null,

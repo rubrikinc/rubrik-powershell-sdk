@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "InstalledVersionGroupCount";
+    }
+
     public InstalledVersionGroupCount Set(
         System.Int32? Count = null,
         System.String? Group = null,

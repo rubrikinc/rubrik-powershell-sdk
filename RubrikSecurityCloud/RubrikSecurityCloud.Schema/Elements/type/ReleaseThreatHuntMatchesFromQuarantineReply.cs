@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReleaseThreatHuntMatchesFromQuarantineReply";
+    }
+
     public ReleaseThreatHuntMatchesFromQuarantineReply Set(
         System.Boolean? IsReleaseFromQuarantineSuccessful = null
     ) 

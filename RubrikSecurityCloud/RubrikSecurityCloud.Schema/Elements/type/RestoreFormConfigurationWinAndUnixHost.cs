@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationWinAndUnixHost";
+    }
+
     public RestoreFormConfigurationWinAndUnixHost Set(
         System.String? Hostname = null
     ) 

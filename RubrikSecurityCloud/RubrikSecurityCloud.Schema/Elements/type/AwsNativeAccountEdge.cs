@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeAccountEdge";
+    }
+
     public AwsNativeAccountEdge Set(
         System.String? Cursor = null,
         AwsNativeAccount? Node = null

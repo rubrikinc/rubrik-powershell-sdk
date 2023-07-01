@@ -19,6 +19,10 @@ Db2 Database details object.
   - Specifies the value of the configuration parameter for parallelism in backup operations.
 - backupSessions: System.Int32
   - Specifies the value of the configuration parameter for sessions in backup operations.
+- status: Db2DatabaseStatus
+  - Status of Db2 database: OK, WARNING, ERROR, UNKNOWN or UNSPECIFIED.
+- statusMessage: list of System.Strings
+  - Additional information about the current status of the Db2 database.
 - reportWorkload: Snappable
   - Stats for DB2 database.
 - db2Instance: Db2Instance

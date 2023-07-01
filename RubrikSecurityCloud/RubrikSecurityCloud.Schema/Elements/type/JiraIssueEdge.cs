@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "JiraIssueEdge";
+    }
+
     public JiraIssueEdge Set(
         System.String? Cursor = null,
         JiraIssue? Node = null

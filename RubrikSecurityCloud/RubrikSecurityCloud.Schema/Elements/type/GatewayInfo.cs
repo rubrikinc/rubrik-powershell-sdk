@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GatewayInfo";
+    }
+
     public GatewayInfo Set(
         System.String? Address = null,
         List<System.Int32>? Ports = null

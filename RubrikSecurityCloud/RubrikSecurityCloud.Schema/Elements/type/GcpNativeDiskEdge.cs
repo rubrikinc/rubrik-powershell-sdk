@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpNativeDiskEdge";
+    }
+
     public GcpNativeDiskEdge Set(
         System.String? Cursor = null,
         GcpNativeDisk? Node = null

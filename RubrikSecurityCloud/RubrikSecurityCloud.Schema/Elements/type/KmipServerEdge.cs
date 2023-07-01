@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "KmipServerEdge";
+    }
+
     public KmipServerEdge Set(
         System.String? Cursor = null,
         KmipServer? Node = null

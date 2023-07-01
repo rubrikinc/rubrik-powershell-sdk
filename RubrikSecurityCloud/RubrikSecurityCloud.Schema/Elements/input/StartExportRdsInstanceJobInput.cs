@@ -71,6 +71,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("dbInstanceClass")]
         public AwsNativeRdsDbInstanceClass? DbInstanceClass { get; set; }
 
+        //      C# -> System.String? DatabaseInstanceClass
+        // GraphQL -> databaseInstanceClass: String (scalar)
+        [JsonProperty("databaseInstanceClass")]
+        public System.String? DatabaseInstanceClass { get; set; }
+
         //      C# -> System.String? PrimaryAz
         // GraphQL -> primaryAz: String (scalar)
         [JsonProperty("primaryAz")]

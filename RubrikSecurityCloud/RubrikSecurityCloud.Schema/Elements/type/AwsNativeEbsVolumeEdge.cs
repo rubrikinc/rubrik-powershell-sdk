@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeEbsVolumeEdge";
+    }
+
     public AwsNativeEbsVolumeEdge Set(
         System.String? Cursor = null,
         AwsNativeEbsVolume? Node = null

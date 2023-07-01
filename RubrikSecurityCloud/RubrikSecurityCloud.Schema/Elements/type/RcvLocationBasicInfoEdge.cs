@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RcvLocationBasicInfoEdge";
+    }
+
     public RcvLocationBasicInfoEdge Set(
         System.String? Cursor = null,
         RcvLocationBasicInfo? Node = null

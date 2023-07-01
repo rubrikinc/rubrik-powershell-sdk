@@ -215,6 +215,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskDetail";
+    }
+
     public TaskDetail Set(
         System.String? ArchivalTarget = null,
         System.String? ClusterLocation = null,

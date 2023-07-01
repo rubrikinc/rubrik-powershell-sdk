@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcenterAdvancedTagPreviewReply";
+    }
+
     public VcenterAdvancedTagPreviewReply Set(
         FilterPreviewResultListResponse? Output = null
     ) 

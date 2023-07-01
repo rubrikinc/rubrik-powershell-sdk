@@ -15,6 +15,9 @@ namespace RubrikSecurityCloud.Types
 {
     public enum FeatureFlagName
     {
+        [EnumMember(Value = "ACCOUNT_AUTO_UPGRADED_TO_RSC")]
+        ACCOUNT_AUTO_UPGRADED_TO_RSC,
+
         [EnumMember(Value = "ACCOUNT_DEPROVISIONING_ENABLED")]
         ACCOUNT_DEPROVISIONING_ENABLED,
 
@@ -122,6 +125,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "AZURE_GRANULAR_DISK_RECOVERIES_ENABLED")]
         AZURE_GRANULAR_DISK_RECOVERIES_ENABLED,
+
+        [EnumMember(Value = "AZURE_GRANULAR_PERMISSIONS_ENABLED")]
+        AZURE_GRANULAR_PERMISSIONS_ENABLED,
 
         [EnumMember(Value = "AZURE_MANUAL_CLOUD_ACCOUNTS_SETUP_ENABLED")]
         AZURE_MANUAL_CLOUD_ACCOUNTS_SETUP_ENABLED,
@@ -287,6 +293,9 @@ namespace RubrikSecurityCloud.Types
 
         [EnumMember(Value = "CLOUD_CLUSTER_ES_ENABLED")]
         CLOUD_CLUSTER_ES_ENABLED,
+
+        [EnumMember(Value = "CLOUD_COMPUTE_CONNECTIVITY_CHECK_ENABLED")]
+        CLOUD_COMPUTE_CONNECTIVITY_CHECK_ENABLED,
 
         [EnumMember(Value = "CLOUD_DIRECT_ENABLED")]
         CLOUD_DIRECT_ENABLED,
@@ -540,6 +549,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "EnforceMoatOnAPIsEnabled")]
         ENFORCE_MOAT_ON_AP_IS_ENABLED,
 
+        [EnumMember(Value = "FEDERATED_LOGIN_PORT_ENABLED")]
+        FEDERATED_LOGIN_PORT_ENABLED,
+
         [EnumMember(Value = "FORMIK_ROLE_ORG_CRUD_WIZARD_ENABLED")]
         FORMIK_ROLE_ORG_CRUD_WIZARD_ENABLED,
 
@@ -639,8 +651,14 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "IBM_COS_ENABLED")]
         IBM_COS_ENABLED,
 
+        [EnumMember(Value = "INFINITY_K8S_ENABLED")]
+        INFINITY_K8S_ENABLED,
+
         [EnumMember(Value = "INFRASTRUCTURE_MENU_ENABLED")]
         INFRASTRUCTURE_MENU_ENABLED,
+
+        [EnumMember(Value = "INTEGRATIONS_HUB_ENABLED")]
+        INTEGRATIONS_HUB_ENABLED,
 
         [EnumMember(Value = "INVENTORY_SWITCHER_ENABLED")]
         INVENTORY_SWITCHER_ENABLED,
@@ -1113,6 +1131,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "REPLICATION_EXPLICIT_CRUD_ENABLED")]
         REPLICATION_EXPLICIT_CRUD_ENABLED,
 
+        [EnumMember(Value = "REPLICATION_MT_V2_ENABLED")]
+        REPLICATION_MT_V2_ENABLED,
+
         [EnumMember(Value = "REPLICATION_NETWORK_UTILISATION_ENABLED")]
         REPLICATION_NETWORK_UTILISATION_ENABLED,
 
@@ -1305,6 +1326,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "SUPPORT_IMPERSONATION_UI")]
         SUPPORT_IMPERSONATION_UI,
 
+        [EnumMember(Value = "SUPPORT_TUNNEL_ENABLED")]
+        SUPPORT_TUNNEL_ENABLED,
+
         [EnumMember(Value = "SapHanaInventoryEnabled")]
         SAP_HANA_INVENTORY_ENABLED,
 
@@ -1447,7 +1471,10 @@ namespace RubrikSecurityCloud.Types
         WINDOWS_VOLUME_GROUP_LIVE_MOUNT_ENABLED,
 
         [EnumMember(Value = "WIPEnabled")]
-        WIP_ENABLED
+        WIP_ENABLED,
+
+        [EnumMember(Value = "ZSCALER_DLP_ENABLED")]
+        ZSCALER_DLP_ENABLED
 
 
     } // enum FeatureFlagName

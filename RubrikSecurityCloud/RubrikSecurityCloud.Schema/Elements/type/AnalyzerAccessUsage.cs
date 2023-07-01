@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnalyzerAccessUsage";
+    }
+
     public AnalyzerAccessUsage Set(
         System.Int32? Count = null,
         System.Int32? CountDelta = null,

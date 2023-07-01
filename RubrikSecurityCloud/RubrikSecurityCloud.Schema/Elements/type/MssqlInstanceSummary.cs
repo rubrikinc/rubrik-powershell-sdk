@@ -180,6 +180,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlInstanceSummary";
+    }
+
     public MssqlInstanceSummary Set(
         System.String? ClusterInstanceAddress = null,
         System.String? ConfiguredSlaDomainId = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RiskLevelChange";
+    }
+
     public RiskLevelChange Set(
         RiskLevelType? From = null,
         RiskLevelType? To = null

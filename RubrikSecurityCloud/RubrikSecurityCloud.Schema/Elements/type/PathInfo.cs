@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PathInfo";
+    }
+
     public PathInfo Set(
         System.String? AclDetails = null,
         DateTime? CreationTime = null,

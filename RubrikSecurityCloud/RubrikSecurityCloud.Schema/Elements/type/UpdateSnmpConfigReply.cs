@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateSnmpConfigReply";
+    }
+
     public UpdateSnmpConfigReply Set(
         SnmpConfiguration? Output = null
     ) 

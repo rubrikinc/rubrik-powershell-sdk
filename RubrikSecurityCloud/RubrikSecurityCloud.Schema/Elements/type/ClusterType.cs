@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterType";
+    }
+
     public ClusterType Set(
         ClusterTypeEnum? EnumValue = null
     ) 

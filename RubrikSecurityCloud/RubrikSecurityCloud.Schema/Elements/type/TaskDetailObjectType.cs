@@ -31,6 +31,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TaskDetailObjectType";
+    }
+
     public TaskDetailObjectType Set(
         System.String? StringValue = null
     ) 

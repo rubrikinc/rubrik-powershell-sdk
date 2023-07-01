@@ -120,6 +120,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VolumeGroupLiveMount";
+    }
+
     public VolumeGroupLiveMount Set(
         System.String? Id = null,
         System.Boolean? IsReady = null,

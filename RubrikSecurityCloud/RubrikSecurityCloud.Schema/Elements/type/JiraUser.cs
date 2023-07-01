@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "JiraUser";
+    }
+
     public JiraUser Set(
         System.String? DisplayName = null
     ) 

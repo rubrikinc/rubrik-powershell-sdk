@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VmwareCdpLiveInfo";
+    }
+
     public VmwareCdpLiveInfo Set(
         DateTime? CurrentTime = null,
         DateTime? LocalRecoveryPoint = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudNativeSnapshotDetailsForRecoveryReply";
+    }
+
     public CloudNativeSnapshotDetailsForRecoveryReply Set(
         List<CloudNativeSnapshotDetailsForRecovery>? SnapshotDetails = null
     ) 

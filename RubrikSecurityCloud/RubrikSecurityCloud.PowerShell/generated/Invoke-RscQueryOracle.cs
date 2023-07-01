@@ -27,12 +27,12 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     {
         
         // -------------------------------------------------------------------
-        // Topleveldescendant parameter set
+        // TopLevelDescendant parameter set
         //
         // [GraphQL: oracleTopLevelDescendants]
         //
         [Parameter(
-            ParameterSetName = "Topleveldescendant",
+            ParameterSetName = "TopLevelDescendant",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,68 +41,8 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: oracleTopLevelDescendants]",
             Position = 0
         )]
-        public SwitchParameter Topleveldescendant { get; set; }
+        public SwitchParameter TopLevelDescendant { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the first n elements from the list.
-GraphQL argument first: Int"
-        )]
-        public System.Int32? First { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Returns the elements in the list that come after the specified cursor.
-GraphQL argument after: String"
-        )]
-        public System.String? After { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sort hierarchy objects by hierarchy field.
-GraphQL argument sortBy: HierarchySortByField"
-        )]
-        public HierarchySortByField? SortBy { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Sorting order for the results.
-GraphQL argument sortOrder: SortOrder"
-        )]
-        public SortOrder? SortOrder { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Types of objects to include.
-GraphQL argument typeFilter: [HierarchyObjectTypeEnum!]"
-        )]
-        public List<HierarchyObjectTypeEnum>? TypeFilter { get; set; }
-        [Parameter(
-            ParameterSetName = "Topleveldescendant",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The hierarchy object filter.
-GraphQL argument filter: [Filter!]"
-        )]
-        public List<Filter>? Filter { get; set; }
         
         // -------------------------------------------------------------------
         // Database parameter set
@@ -139,16 +79,6 @@ GraphQL argument filter: [Filter!]"
         )]
         public new SwitchParameter Host { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Host",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The Rubrik UUID for the object.
-GraphQL argument fid: UUID!"
-        )]
-        public System.String? Fid { get; set; }
         
         // -------------------------------------------------------------------
         // Rac parameter set
@@ -169,12 +99,12 @@ GraphQL argument fid: UUID!"
 
         
         // -------------------------------------------------------------------
-        // Dataguardgroup parameter set
+        // DataGuardGroup parameter set
         //
         // [GraphQL: oracleDataGuardGroup]
         //
         [Parameter(
-            ParameterSetName = "Dataguardgroup",
+            ParameterSetName = "DataGuardGroup",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -183,16 +113,16 @@ GraphQL argument fid: UUID!"
 [GraphQL: oracleDataGuardGroup]",
             Position = 0
         )]
-        public SwitchParameter Dataguardgroup { get; set; }
+        public SwitchParameter DataGuardGroup { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Livemount parameter set
+        // LiveMount parameter set
         //
         // [GraphQL: oracleLiveMounts]
         //
         [Parameter(
-            ParameterSetName = "Livemount",
+            ParameterSetName = "LiveMount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -201,26 +131,16 @@ GraphQL argument fid: UUID!"
 [GraphQL: oracleLiveMounts]",
             Position = 0
         )]
-        public SwitchParameter Livemount { get; set; }
+        public SwitchParameter LiveMount { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Livemount",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Filter for Oracle live mounts.
-GraphQL argument filters: [OracleLiveMountFilterInput!]"
-        )]
-        public List<OracleLiveMountFilterInput>? Filters { get; set; }
         
         // -------------------------------------------------------------------
-        // Acoparameter parameter set
+        // AcoParameter parameter set
         //
         // [GraphQL: oracleAcoParameters]
         //
         [Parameter(
-            ParameterSetName = "Acoparameter",
+            ParameterSetName = "AcoParameter",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -232,26 +152,16 @@ Get the list of supported Advanced Cloning Options (ACO) parameters.
 [GraphQL: oracleAcoParameters]",
             Position = 0
         )]
-        public SwitchParameter Acoparameter { get; set; }
+        public SwitchParameter AcoParameter { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Acoparameter",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Specifies input for V1GetAcoParameterList including the Oracle database ID.
-GraphQL argument input: ClusterUuidWithDbIdInput!"
-        )]
-        public ClusterUuidWithDbIdInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Recoverablerange parameter set
+        // RecoverableRange parameter set
         //
         // [GraphQL: oracleRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "Recoverablerange",
+            ParameterSetName = "RecoverableRange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -263,16 +173,16 @@ Retrieve the recoverable ranges for a specified Oracle database. A begin and/or 
 [GraphQL: oracleRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter Recoverablerange { get; set; }
+        public SwitchParameter RecoverableRange { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Missedrecoverablerange parameter set
+        // MissedRecoverableRange parameter set
         //
         // [GraphQL: oracleMissedRecoverableRanges]
         //
         [Parameter(
-            ParameterSetName = "Missedrecoverablerange",
+            ParameterSetName = "MissedRecoverableRange",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -284,16 +194,16 @@ Retrieve a list of missed recoverable ranges for a Oracle database. For each run
 [GraphQL: oracleMissedRecoverableRanges]",
             Position = 0
         )]
-        public SwitchParameter Missedrecoverablerange { get; set; }
+        public SwitchParameter MissedRecoverableRange { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Missedsnapshot parameter set
+        // MissedSnapshot parameter set
         //
         // [GraphQL: oracleMissedSnapshots]
         //
         [Parameter(
-            ParameterSetName = "Missedsnapshot",
+            ParameterSetName = "MissedSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -305,16 +215,16 @@ Retrieve summary information about the missed snapshots of an Oracle database.
 [GraphQL: oracleMissedSnapshots]",
             Position = 0
         )]
-        public SwitchParameter Missedsnapshot { get; set; }
+        public SwitchParameter MissedSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Acoexampledownloadlink parameter set
+        // AcoExampleDownloadLink parameter set
         //
         // [GraphQL: oracleAcoExampleDownloadLink]
         //
         [Parameter(
-            ParameterSetName = "Acoexampledownloadlink",
+            ParameterSetName = "AcoExampleDownloadLink",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -326,16 +236,16 @@ Link to download the Advanced Recovery Options example file which can be used to
 [GraphQL: oracleAcoExampleDownloadLink]",
             Position = 0
         )]
-        public SwitchParameter Acoexampledownloadlink { get; set; }
+        public SwitchParameter AcoExampleDownloadLink { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Pdbdetail parameter set
+        // PdbDetail parameter set
         //
         // [GraphQL: oraclePdbDetails]
         //
         [Parameter(
-            ParameterSetName = "Pdbdetail",
+            ParameterSetName = "PdbDetail",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -347,16 +257,16 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 [GraphQL: oraclePdbDetails]",
             Position = 0
         )]
-        public SwitchParameter Pdbdetail { get; set; }
+        public SwitchParameter PdbDetail { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Hostlogbackupconfig parameter set
+        // HostLogBackupConfig parameter set
         //
         // [GraphQL: oracleHostLogBackupConfig]
         //
         [Parameter(
-            ParameterSetName = "Hostlogbackupconfig",
+            ParameterSetName = "HostLogBackupConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -365,16 +275,16 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 [GraphQL: oracleHostLogBackupConfig]",
             Position = 0
         )]
-        public SwitchParameter Hostlogbackupconfig { get; set; }
+        public SwitchParameter HostLogBackupConfig { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Databaselogbackupconfig parameter set
+        // DatabaseLogBackupConfig parameter set
         //
         // [GraphQL: oracleDatabaseLogBackupConfig]
         //
         [Parameter(
-            ParameterSetName = "Databaselogbackupconfig",
+            ParameterSetName = "DatabaseLogBackupConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -383,16 +293,16 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 [GraphQL: oracleDatabaseLogBackupConfig]",
             Position = 0
         )]
-        public SwitchParameter Databaselogbackupconfig { get; set; }
+        public SwitchParameter DatabaseLogBackupConfig { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Raclogbackupconfig parameter set
+        // RacLogBackupConfig parameter set
         //
         // [GraphQL: oracleRacLogBackupConfig]
         //
         [Parameter(
-            ParameterSetName = "Raclogbackupconfig",
+            ParameterSetName = "RacLogBackupConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -401,7 +311,7 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 [GraphQL: oracleRacLogBackupConfig]",
             Position = 0
         )]
-        public SwitchParameter Raclogbackupconfig { get; set; }
+        public SwitchParameter RacLogBackupConfig { get; set; }
 
 
         protected override void ProcessRecord()
@@ -410,8 +320,8 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
             {
                 switch(Op)
                 {
-                    case "Topleveldescendant":
-                        this.ProcessRecord_Topleveldescendant();
+                    case "TopLevelDescendant":
+                        this.ProcessRecord_TopLevelDescendant();
                         break;
                     case "Database":
                         this.ProcessRecord_Database();
@@ -422,38 +332,38 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
                     case "Rac":
                         this.ProcessRecord_Rac();
                         break;
-                    case "Dataguardgroup":
-                        this.ProcessRecord_Dataguardgroup();
+                    case "DataGuardGroup":
+                        this.ProcessRecord_DataGuardGroup();
                         break;
-                    case "Livemount":
-                        this.ProcessRecord_Livemount();
+                    case "LiveMount":
+                        this.ProcessRecord_LiveMount();
                         break;
-                    case "Acoparameter":
-                        this.ProcessRecord_Acoparameter();
+                    case "AcoParameter":
+                        this.ProcessRecord_AcoParameter();
                         break;
-                    case "Recoverablerange":
-                        this.ProcessRecord_Recoverablerange();
+                    case "RecoverableRange":
+                        this.ProcessRecord_RecoverableRange();
                         break;
-                    case "Missedrecoverablerange":
-                        this.ProcessRecord_Missedrecoverablerange();
+                    case "MissedRecoverableRange":
+                        this.ProcessRecord_MissedRecoverableRange();
                         break;
-                    case "Missedsnapshot":
-                        this.ProcessRecord_Missedsnapshot();
+                    case "MissedSnapshot":
+                        this.ProcessRecord_MissedSnapshot();
                         break;
-                    case "Acoexampledownloadlink":
-                        this.ProcessRecord_Acoexampledownloadlink();
+                    case "AcoExampleDownloadLink":
+                        this.ProcessRecord_AcoExampleDownloadLink();
                         break;
-                    case "Pdbdetail":
-                        this.ProcessRecord_Pdbdetail();
+                    case "PdbDetail":
+                        this.ProcessRecord_PdbDetail();
                         break;
-                    case "Hostlogbackupconfig":
-                        this.ProcessRecord_Hostlogbackupconfig();
+                    case "HostLogBackupConfig":
+                        this.ProcessRecord_HostLogBackupConfig();
                         break;
-                    case "Databaselogbackupconfig":
-                        this.ProcessRecord_Databaselogbackupconfig();
+                    case "DatabaseLogBackupConfig":
+                        this.ProcessRecord_DatabaseLogBackupConfig();
                         break;
-                    case "Raclogbackupconfig":
-                        this.ProcessRecord_Raclogbackupconfig();
+                    case "RacLogBackupConfig":
+                        this.ProcessRecord_RacLogBackupConfig();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -467,9 +377,9 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleTopLevelDescendants.
-        protected void ProcessRecord_Topleveldescendant()
+        protected void ProcessRecord_TopLevelDescendant()
         {
-            this._logger.name += " -Topleveldescendant";
+            this._logger.name += " -TopLevelDescendant";
             // Invoke graphql operation oracleTopLevelDescendants
             InvokeQueryOracleTopLevelDescendants();
         }
@@ -503,99 +413,99 @@ Retrieves information about available pluggable databases (PDBs) for a given rec
 
         // This parameter set invokes a single graphql operation:
         // oracleDataGuardGroup.
-        protected void ProcessRecord_Dataguardgroup()
+        protected void ProcessRecord_DataGuardGroup()
         {
-            this._logger.name += " -Dataguardgroup";
+            this._logger.name += " -DataGuardGroup";
             // Invoke graphql operation oracleDataGuardGroup
             InvokeQueryOracleDataGuardGroup();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleLiveMounts.
-        protected void ProcessRecord_Livemount()
+        protected void ProcessRecord_LiveMount()
         {
-            this._logger.name += " -Livemount";
+            this._logger.name += " -LiveMount";
             // Invoke graphql operation oracleLiveMounts
             InvokeQueryOracleLiveMounts();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleAcoParameters.
-        protected void ProcessRecord_Acoparameter()
+        protected void ProcessRecord_AcoParameter()
         {
-            this._logger.name += " -Acoparameter";
+            this._logger.name += " -AcoParameter";
             // Invoke graphql operation oracleAcoParameters
             InvokeQueryOracleAcoParameters();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleRecoverableRanges.
-        protected void ProcessRecord_Recoverablerange()
+        protected void ProcessRecord_RecoverableRange()
         {
-            this._logger.name += " -Recoverablerange";
+            this._logger.name += " -RecoverableRange";
             // Invoke graphql operation oracleRecoverableRanges
             InvokeQueryOracleRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleMissedRecoverableRanges.
-        protected void ProcessRecord_Missedrecoverablerange()
+        protected void ProcessRecord_MissedRecoverableRange()
         {
-            this._logger.name += " -Missedrecoverablerange";
+            this._logger.name += " -MissedRecoverableRange";
             // Invoke graphql operation oracleMissedRecoverableRanges
             InvokeQueryOracleMissedRecoverableRanges();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleMissedSnapshots.
-        protected void ProcessRecord_Missedsnapshot()
+        protected void ProcessRecord_MissedSnapshot()
         {
-            this._logger.name += " -Missedsnapshot";
+            this._logger.name += " -MissedSnapshot";
             // Invoke graphql operation oracleMissedSnapshots
             InvokeQueryOracleMissedSnapshots();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleAcoExampleDownloadLink.
-        protected void ProcessRecord_Acoexampledownloadlink()
+        protected void ProcessRecord_AcoExampleDownloadLink()
         {
-            this._logger.name += " -Acoexampledownloadlink";
+            this._logger.name += " -AcoExampleDownloadLink";
             // Invoke graphql operation oracleAcoExampleDownloadLink
             InvokeQueryOracleAcoExampleDownloadLink();
         }
 
         // This parameter set invokes a single graphql operation:
         // oraclePdbDetails.
-        protected void ProcessRecord_Pdbdetail()
+        protected void ProcessRecord_PdbDetail()
         {
-            this._logger.name += " -Pdbdetail";
+            this._logger.name += " -PdbDetail";
             // Invoke graphql operation oraclePdbDetails
             InvokeQueryOraclePdbDetails();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleHostLogBackupConfig.
-        protected void ProcessRecord_Hostlogbackupconfig()
+        protected void ProcessRecord_HostLogBackupConfig()
         {
-            this._logger.name += " -Hostlogbackupconfig";
+            this._logger.name += " -HostLogBackupConfig";
             // Invoke graphql operation oracleHostLogBackupConfig
             InvokeQueryOracleHostLogBackupConfig();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleDatabaseLogBackupConfig.
-        protected void ProcessRecord_Databaselogbackupconfig()
+        protected void ProcessRecord_DatabaseLogBackupConfig()
         {
-            this._logger.name += " -Databaselogbackupconfig";
+            this._logger.name += " -DatabaseLogBackupConfig";
             // Invoke graphql operation oracleDatabaseLogBackupConfig
             InvokeQueryOracleDatabaseLogBackupConfig();
         }
 
         // This parameter set invokes a single graphql operation:
         // oracleRacLogBackupConfig.
-        protected void ProcessRecord_Raclogbackupconfig()
+        protected void ProcessRecord_RacLogBackupConfig()
         {
-            this._logger.name += " -Raclogbackupconfig";
+            this._logger.name += " -RacLogBackupConfig";
             // Invoke graphql operation oracleRacLogBackupConfig
             InvokeQueryOracleRacLogBackupConfig();
         }

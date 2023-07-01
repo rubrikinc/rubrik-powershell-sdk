@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UserActivityResult";
+    }
+
     public UserActivityResult Set(
         System.Int64? NumActivities = null,
         System.String? PaginationId = null,

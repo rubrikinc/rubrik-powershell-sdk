@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Duration";
+    }
+
     public Duration Set(
         RetentionUnit? Unit = null,
         System.Int32? DurationField = null

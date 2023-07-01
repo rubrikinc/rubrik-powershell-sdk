@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AnalyzerResult";
+    }
+
     public AnalyzerResult Set(
         Analyzer? Analyzer = null,
         Hits? Hits = null

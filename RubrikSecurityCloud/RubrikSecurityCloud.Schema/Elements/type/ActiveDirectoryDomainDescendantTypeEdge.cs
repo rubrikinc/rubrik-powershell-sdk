@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ActiveDirectoryDomainDescendantTypeEdge";
+    }
+
     public ActiveDirectoryDomainDescendantTypeEdge Set(
         ActiveDirectoryDomainDescendantType? Node = null,
         System.String? Cursor = null

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BulkUpdateFilesetTemplateReply";
+    }
+
     public BulkUpdateFilesetTemplateReply Set(
         BulkCreateFilesetTemplatesReply? Output = null
     ) 

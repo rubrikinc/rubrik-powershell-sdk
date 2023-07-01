@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MissedSnapshotGroupBy";
+    }
+
     public MissedSnapshotGroupBy Set(
         MissedSnapshotCommonConnection? MissedSnapshotConnection = null,
         List<MissedSnapshotGroupBy>? MissedSnapshotGroupByField = null,

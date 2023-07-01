@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AboutInformation";
+    }
+
     public AboutInformation Set(
         System.String? ApiType = null,
         System.String? Name = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MssqlLogShippingSummaryV2";
+    }
+
     public MssqlLogShippingSummaryV2 Set(
         System.Int32? MakeupReseedLimit = null,
         MssqlLogShippingSummary? MssqlLogShippingSummary = null

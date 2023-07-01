@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DbParameterGroup";
+    }
+
     public DbParameterGroup Set(
         AwsNativeRdsType? RdsType = null,
         System.String? Arn = null,

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DeleteGlobalCertificateReply";
+    }
+
     public DeleteGlobalCertificateReply Set(
         List<System.String>? ClusterUuids = null,
         List<CertificateClusterOperationError>? ClusterErrors = null

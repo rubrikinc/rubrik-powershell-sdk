@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ConfigProtectionSetupInfo";
+    }
+
     public ConfigProtectionSetupInfo Set(
         CaCertProviderType? CaCertProvider = null,
         UploadLocationType? UploadLocationType = null,

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "BatchVmwareVmRecoverableRanges";
+    }
+
     public BatchVmwareVmRecoverableRanges Set(
         List<VmwareVmRecoverableRanges>? Responses = null
     ) 

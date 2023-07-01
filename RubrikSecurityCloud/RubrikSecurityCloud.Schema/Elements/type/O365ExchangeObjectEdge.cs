@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365ExchangeObjectEdge";
+    }
+
     public O365ExchangeObjectEdge Set(
         O365ExchangeObject? Node = null,
         System.String? Cursor = null

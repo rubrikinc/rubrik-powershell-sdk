@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ShareExportIdPair";
+    }
+
     public ShareExportIdPair Set(
         System.Int32? ExportId = null,
         System.String? Share = null

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SyslogSetting";
+    }
+
     public SyslogSetting Set(
         SyslogFacilityTypeEnum? Facility = null,
         SyslogSeverityTypeEnum? Severity = null

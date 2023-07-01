@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ExistingUser";
+    }
+
     public ExistingUser Set(
         System.String? Id = null,
         System.Boolean? IsOrgAdmin = null,

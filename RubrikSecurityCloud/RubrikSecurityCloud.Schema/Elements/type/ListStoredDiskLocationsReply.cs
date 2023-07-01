@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ListStoredDiskLocationsReply";
+    }
+
     public ListStoredDiskLocationsReply Set(
         List<System.String>? Regions = null,
         List<System.String>? Zones = null

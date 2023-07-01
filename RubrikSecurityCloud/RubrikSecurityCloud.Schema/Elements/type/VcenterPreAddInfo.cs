@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcenterPreAddInfo";
+    }
+
     public VcenterPreAddInfo Set(
         List<ClusterHostGroupInfo>? ClusterHostGroupInfo = null
     ) 

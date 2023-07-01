@@ -135,6 +135,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateManagedVolumeReply";
+    }
+
     public UpdateManagedVolumeReply Set(
         ManagedVolumeApplicationTag? ApplicationTag = null,
         CdmManagedVolumeType? MvType = null,

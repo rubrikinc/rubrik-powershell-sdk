@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationLdapServer";
+    }
+
     public RestoreFormConfigurationLdapServer Set(
         System.String? Name = null
     ) 

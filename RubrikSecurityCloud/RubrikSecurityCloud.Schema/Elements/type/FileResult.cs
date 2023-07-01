@@ -80,6 +80,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("filename")]
         public System.String? Filename { get; set; }
 
+        //      C# -> System.Boolean? IsDirectAcl
+        // GraphQL -> isDirectAcl: Boolean! (scalar)
+        [JsonProperty("isDirectAcl")]
+        public System.Boolean? IsDirectAcl { get; set; }
+
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
         [JsonProperty("lastAccessTime")]
@@ -210,6 +215,11 @@ namespace RubrikSecurityCloud.Types
         [JsonProperty("openAccessStaleFiles")]
         public Hits? OpenAccessStaleFiles { get; set; }
 
+        //      C# -> PrincipalAccessInfo? PrincipalAccessInfo
+        // GraphQL -> principalAccessInfo: PrincipalAccessInfo (type)
+        [JsonProperty("principalAccessInfo")]
+        public PrincipalAccessInfo? PrincipalAccessInfo { get; set; }
+
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
         [JsonProperty("sensitiveFiles")]
@@ -230,6 +240,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FileResult";
+    }
+
     public FileResult Set(
         AnalyzerErrorCode? ErrorCode = null,
         DataGovFileMode? Mode = null,
@@ -243,6 +257,7 @@ namespace RubrikSecurityCloud.Types
         System.String? AccessibleBySidsRepresentationShortForm = null,
         System.String? Directory = null,
         System.String? Filename = null,
+        System.Boolean? IsDirectAcl = null,
         System.Int64? LastAccessTime = null,
         System.Int64? LastModifiedTime = null,
         System.String? NativePath = null,
@@ -269,6 +284,7 @@ namespace RubrikSecurityCloud.Types
         Hits? OpenAccessFilesWithHits = null,
         Hits? OpenAccessFolders = null,
         Hits? OpenAccessStaleFiles = null,
+        PrincipalAccessInfo? PrincipalAccessInfo = null,
         SensitiveFiles? SensitiveFiles = null,
         Hits? StaleFiles = null,
         Hits? StaleFilesWithHits = null
@@ -309,6 +325,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( Filename != null ) {
             this.Filename = Filename;
+        }
+        if ( IsDirectAcl != null ) {
+            this.IsDirectAcl = IsDirectAcl;
         }
         if ( LastAccessTime != null ) {
             this.LastAccessTime = LastAccessTime;
@@ -387,6 +406,9 @@ namespace RubrikSecurityCloud.Types
         }
         if ( OpenAccessStaleFiles != null ) {
             this.OpenAccessStaleFiles = OpenAccessStaleFiles;
+        }
+        if ( PrincipalAccessInfo != null ) {
+            this.PrincipalAccessInfo = PrincipalAccessInfo;
         }
         if ( SensitiveFiles != null ) {
             this.SensitiveFiles = SensitiveFiles;
@@ -469,6 +491,11 @@ namespace RubrikSecurityCloud.Types
         // GraphQL -> filename: String! (scalar)
         if (this.Filename != null) {
             s += ind + "filename\n" ;
+        }
+        //      C# -> System.Boolean? IsDirectAcl
+        // GraphQL -> isDirectAcl: Boolean! (scalar)
+        if (this.IsDirectAcl != null) {
+            s += ind + "isDirectAcl\n" ;
         }
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
@@ -630,6 +657,14 @@ namespace RubrikSecurityCloud.Types
                 s += ind + "openAccessStaleFiles {\n" + fspec + ind + "}\n" ;
             }
         }
+        //      C# -> PrincipalAccessInfo? PrincipalAccessInfo
+        // GraphQL -> principalAccessInfo: PrincipalAccessInfo (type)
+        if (this.PrincipalAccessInfo != null) {
+            var fspec = this.PrincipalAccessInfo.AsFieldSpec(indent+1);
+            if(fspec.Replace(" ", "").Replace("\n", "").Length > 0) {
+                s += ind + "principalAccessInfo {\n" + fspec + ind + "}\n" ;
+            }
+        }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)
         if (this.SensitiveFiles != null) {
@@ -735,6 +770,12 @@ namespace RubrikSecurityCloud.Types
         if (this.Filename == null && Exploration.Includes(parent + ".filename", true))
         {
             this.Filename = "FETCH";
+        }
+        //      C# -> System.Boolean? IsDirectAcl
+        // GraphQL -> isDirectAcl: Boolean! (scalar)
+        if (this.IsDirectAcl == null && Exploration.Includes(parent + ".isDirectAcl", true))
+        {
+            this.IsDirectAcl = true;
         }
         //      C# -> System.Int64? LastAccessTime
         // GraphQL -> lastAccessTime: Long! (scalar)
@@ -901,6 +942,13 @@ namespace RubrikSecurityCloud.Types
         {
             this.OpenAccessStaleFiles = new Hits();
             this.OpenAccessStaleFiles.ApplyExploratoryFieldSpec(parent + ".openAccessStaleFiles");
+        }
+        //      C# -> PrincipalAccessInfo? PrincipalAccessInfo
+        // GraphQL -> principalAccessInfo: PrincipalAccessInfo (type)
+        if (this.PrincipalAccessInfo == null && Exploration.Includes(parent + ".principalAccessInfo"))
+        {
+            this.PrincipalAccessInfo = new PrincipalAccessInfo();
+            this.PrincipalAccessInfo.ApplyExploratoryFieldSpec(parent + ".principalAccessInfo");
         }
         //      C# -> SensitiveFiles? SensitiveFiles
         // GraphQL -> sensitiveFiles: SensitiveFiles (type)

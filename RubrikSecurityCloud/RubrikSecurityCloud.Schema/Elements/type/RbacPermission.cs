@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RbacPermission";
+    }
+
     public RbacPermission Set(
         List<Operation>? Operations = null,
         RbacObject? RbacObject = null

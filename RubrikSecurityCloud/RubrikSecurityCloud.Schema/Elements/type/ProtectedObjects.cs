@@ -61,6 +61,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ProtectedObjects";
+    }
+
     public ProtectedObjects Set(
         ManagedObjectType? ObjectType = null,
         System.String? EffectiveSlaOpt = null,

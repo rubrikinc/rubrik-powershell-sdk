@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeResourceGroupEdge";
+    }
+
     public AzureNativeResourceGroupEdge Set(
         System.String? Cursor = null,
         AzureNativeResourceGroup? Node = null

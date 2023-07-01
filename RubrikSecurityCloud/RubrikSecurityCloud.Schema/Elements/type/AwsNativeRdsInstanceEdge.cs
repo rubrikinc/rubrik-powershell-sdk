@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeRdsInstanceEdge";
+    }
+
     public AwsNativeRdsInstanceEdge Set(
         System.String? Cursor = null,
         AwsNativeRdsInstance? Node = null

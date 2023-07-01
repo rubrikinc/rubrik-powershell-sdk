@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterHostGroupInfo";
+    }
+
     public ClusterHostGroupInfo Set(
         System.String? DatacenterName = null,
         System.String? Id = null,

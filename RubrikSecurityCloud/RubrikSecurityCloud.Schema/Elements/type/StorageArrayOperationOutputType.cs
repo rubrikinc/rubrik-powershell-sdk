@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "StorageArrayOperationOutputType";
+    }
+
     public StorageArrayOperationOutputType Set(
         System.String? ErrorMessage = null,
         System.String? Id = null,

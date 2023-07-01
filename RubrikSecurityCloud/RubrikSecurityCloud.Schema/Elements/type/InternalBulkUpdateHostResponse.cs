@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "InternalBulkUpdateHostResponse";
+    }
+
     public InternalBulkUpdateHostResponse Set(
         List<HostDetail>? Items = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PrepareFeatureUpdateForAwsCloudAccountReply";
+    }
+
     public PrepareFeatureUpdateForAwsCloudAccountReply Set(
         System.String? CloudFormationUrl = null,
         System.String? TemplateUrl = null

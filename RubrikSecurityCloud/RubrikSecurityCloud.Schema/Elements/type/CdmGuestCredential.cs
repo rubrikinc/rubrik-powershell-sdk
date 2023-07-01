@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CdmGuestCredential";
+    }
+
     public CdmGuestCredential Set(
         Cluster? Cluster = null,
         CreateGuestCredentialReply? Detail = null

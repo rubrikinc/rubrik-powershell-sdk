@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GetUsersSummaryReply";
+    }
+
     public GetUsersSummaryReply Set(
         SummaryCount? SecureUsers = null,
         SummaryCount? VulnerableUsers = null

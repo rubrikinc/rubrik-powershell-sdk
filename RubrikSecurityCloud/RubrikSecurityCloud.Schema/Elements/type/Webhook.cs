@@ -95,6 +95,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Webhook";
+    }
+
     public Webhook Set(
         AuthenticationType? AuthType = null,
         ProviderType? ProviderType = null,

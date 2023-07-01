@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TprRequestDetail";
+    }
+
     public TprRequestDetail Set(
         RequestedChangesTemplate? RequestedChangesTemplate = null,
         System.String? Description = null,

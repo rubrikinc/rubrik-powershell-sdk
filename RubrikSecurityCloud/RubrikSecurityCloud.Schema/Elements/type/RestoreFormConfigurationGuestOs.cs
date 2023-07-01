@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RestoreFormConfigurationGuestOs";
+    }
+
     public RestoreFormConfigurationGuestOs Set(
         System.String? Domain = null,
         System.String? Username = null

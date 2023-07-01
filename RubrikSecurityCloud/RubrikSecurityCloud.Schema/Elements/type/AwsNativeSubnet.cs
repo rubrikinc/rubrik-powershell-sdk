@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AwsNativeSubnet";
+    }
+
     public AwsNativeSubnet Set(
         System.String? AvailabilityZone = null,
         System.String? Id = null,

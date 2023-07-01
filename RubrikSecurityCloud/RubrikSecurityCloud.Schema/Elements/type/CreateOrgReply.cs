@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateOrgReply";
+    }
+
     public CreateOrgReply Set(
         System.String? OrganizationId = null
     ) 

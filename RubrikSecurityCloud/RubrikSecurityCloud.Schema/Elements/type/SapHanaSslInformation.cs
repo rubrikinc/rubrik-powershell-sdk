@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaSslInformation";
+    }
+
     public SapHanaSslInformation Set(
         SapHanaEncryptionProvider? EncryptionProvider = null,
         System.String? CryptoLibPath = null,

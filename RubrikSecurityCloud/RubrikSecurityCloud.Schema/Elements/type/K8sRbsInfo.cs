@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "K8sRbsInfo";
+    }
+
     public K8sRbsInfo Set(
         System.String? KuprClusterUuid = null,
         System.Int32? MaxPort = null,

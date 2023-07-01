@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VcdClusterDetail";
+    }
+
     public VcdClusterDetail Set(
         VcdClusterSummary? VcdClusterSummary = null
     ) 

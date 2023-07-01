@@ -1,26 +1,26 @@
 # Invoke-RscMutateCassandra
 ## Subcommands
-### Bulkdeletesource
+### bulkdeletesource
 Bulk Delete cassandra sources.
 
 - There is a single argument of type BulkDeleteMosaicSourcesInput.
 - Returns MosaicAsyncResponse.
-### Createsource
+### createsource
 Create a cassandra source.
 
 - There is a single argument of type AddMosaicSourceInput.
 - Returns MosaicAsyncResponse.
-### Deletesource
+### deletesource
 Delete a cassandra source.
 
 - There is a single argument of type DeleteMosaicSourceInput.
 - Returns MosaicAsyncResponse.
-### Recoversource
+### recoversource
 Recover a cassandra source.
 
 - There is a single argument of type MosaicRestoreDataInput.
 - Returns MosaicAsyncResponse.
-### Updatesource
+### updatesource
 Update a cassandra source.
 
 - There is a single argument of type ModifyMosaicSourceInput.

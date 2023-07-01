@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SupportTunnelInfo";
+    }
+
     public SupportTunnelInfo Set(
         DateTime? EnabledTime = null,
         System.String? ErrorMessage = null,

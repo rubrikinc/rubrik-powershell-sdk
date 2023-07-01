@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpdateVolumeGroupReply";
+    }
+
     public UpdateVolumeGroupReply Set(
         System.String? ConfiguredSlaDomainId = null,
         System.Boolean? IsPaused = null,

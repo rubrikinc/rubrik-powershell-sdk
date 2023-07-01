@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnmpTrapReceiverConfig";
+    }
+
     public SnmpTrapReceiverConfig Set(
         SnmpSecurityLevel? SecurityLevel = null,
         System.String? Address = null,

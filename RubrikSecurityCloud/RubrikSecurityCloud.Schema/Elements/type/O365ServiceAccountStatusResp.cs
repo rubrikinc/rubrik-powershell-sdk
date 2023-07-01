@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "O365ServiceAccountStatusResp";
+    }
+
     public O365ServiceAccountStatusResp Set(
         O365ServiceAccountStatus? Status = null,
         System.String? Username = null

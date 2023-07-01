@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OrgSecurityPolicy";
+    }
+
     public OrgSecurityPolicy Set(
         System.Boolean? DisallowWeakerPolicy = null
     ) 

@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "configGroupBy";
+    }
+
     public ConfigGroupBy Set(
         List<System.String>? Aggregations = null,
         System.String? GroupById = null

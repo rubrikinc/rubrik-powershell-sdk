@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RscAutoUpgradeInfo";
+    }
+
     public RscAutoUpgradeInfo Set(
         DateTime? AutoUpgradeDate = null,
         DateTime? FinalAutoUpgradeDate = null,

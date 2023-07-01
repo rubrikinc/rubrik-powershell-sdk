@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolumeExportChannelStats";
+    }
+
     public ManagedVolumeExportChannelStats Set(
         System.Int64? TotalSize = null,
         System.Int64? UsedSize = null

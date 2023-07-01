@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SummaryCount";
+    }
+
     public SummaryCount Set(
         System.Int64? TotalCount = null,
         System.Int64? ViolatedCount = null

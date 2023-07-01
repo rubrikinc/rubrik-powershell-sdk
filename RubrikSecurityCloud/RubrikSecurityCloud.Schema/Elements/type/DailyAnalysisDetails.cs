@@ -75,6 +75,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DailyAnalysisDetails";
+    }
+
     public DailyAnalysisDetails Set(
         System.Int64? AnomalyEventCount = null,
         System.Int64? CreatedDataBytes = null,

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CloudDirectSite";
+    }
+
     public CloudDirectSite Set(
         System.String? Endpoint = null,
         System.String? Id = null,

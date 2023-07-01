@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AddAndJoinSmbDomainReply";
+    }
+
     public AddAndJoinSmbDomainReply Set(
         SmbDomainDetail? Output = null
     ) 

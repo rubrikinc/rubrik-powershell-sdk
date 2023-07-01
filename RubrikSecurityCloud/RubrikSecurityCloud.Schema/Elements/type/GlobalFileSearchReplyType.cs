@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GlobalFileSearchReplyType";
+    }
+
     public GlobalFileSearchReplyType Set(
         System.Int32? Total = null,
         List<GlobalFileEntry>? Results = null

@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SupportUserAccess";
+    }
+
     public SupportUserAccess Set(
         SupportUserAccessStatus? AccessStatus = null,
         System.Int32? DurationInHours = null,

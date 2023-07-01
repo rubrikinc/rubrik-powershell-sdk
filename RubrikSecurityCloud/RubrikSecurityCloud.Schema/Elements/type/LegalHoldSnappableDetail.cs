@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "LegalHoldSnappableDetail";
+    }
+
     public LegalHoldSnappableDetail Set(
         ManagedObjectType? SnappableType = null,
         System.String? Id = null,

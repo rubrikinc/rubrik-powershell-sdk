@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "RefreshStorageArraysReply";
+    }
+
     public RefreshStorageArraysReply Set(
         List<StorageArrayOperationOutputType>? Responses = null
     ) 

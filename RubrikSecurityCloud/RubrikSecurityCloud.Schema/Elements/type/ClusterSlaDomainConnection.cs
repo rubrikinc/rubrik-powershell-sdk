@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ClusterSlaDomainConnection";
+    }
+
     public ClusterSlaDomainConnection Set(
         System.Int32? Count = null,
         List<ClusterSlaDomainEdge>? Edges = null,

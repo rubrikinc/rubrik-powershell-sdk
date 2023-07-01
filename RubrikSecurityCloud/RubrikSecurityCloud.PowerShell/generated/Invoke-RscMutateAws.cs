@@ -21,18 +21,18 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
     [Cmdlet(
         "Invoke",
         "RscMutateAws",
-        DefaultParameterSetName = "Createtarget")
+        DefaultParameterSetName = "CreateTarget")
     ]
     public class Invoke_RscMutateAws : RscPSCmdlet
     {
         
         // -------------------------------------------------------------------
-        // Startnativeec2instancesnapshotsjob parameter set
+        // StartNativeEc2InstanceSnapshotsJob parameter set
         //
         // [GraphQL: startAwsNativeEc2InstanceSnapshotsJob]
         //
         [Parameter(
-            ParameterSetName = "Startnativeec2instancesnapshotsjob",
+            ParameterSetName = "StartNativeEc2InstanceSnapshotsJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -41,26 +41,16 @@ namespace RubrikSecurityCloud.PowerShell.Cmdlets
 [GraphQL: startAwsNativeEc2InstanceSnapshotsJob]",
             Position = 0
         )]
-        public SwitchParameter Startnativeec2instancesnapshotsjob { get; set; }
+        public SwitchParameter StartNativeEc2InstanceSnapshotsJob { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Startnativeec2instancesnapshotsjob",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Input for create AWS EC2 Instance snapshots job.
-GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
-        )]
-        public StartAwsNativeEc2InstanceSnapshotsJobInput? Input { get; set; }
         
         // -------------------------------------------------------------------
-        // Startrestorenativeec2instancesnapshotjob parameter set
+        // StartRestoreNativeEc2InstanceSnapshotJob parameter set
         //
         // [GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]
         //
         [Parameter(
-            ParameterSetName = "Startrestorenativeec2instancesnapshotjob",
+            ParameterSetName = "StartRestoreNativeEc2InstanceSnapshotJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -69,16 +59,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: startRestoreAwsNativeEc2InstanceSnapshotJob]",
             Position = 0
         )]
-        public SwitchParameter Startrestorenativeec2instancesnapshotjob { get; set; }
+        public SwitchParameter StartRestoreNativeEc2InstanceSnapshotJob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Startrefreshnativeaccountsjob parameter set
+        // StartRefreshNativeAccountsJob parameter set
         //
         // [GraphQL: startRefreshAwsNativeAccountsJob]
         //
         [Parameter(
-            ParameterSetName = "Startrefreshnativeaccountsjob",
+            ParameterSetName = "StartRefreshNativeAccountsJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -87,16 +77,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: startRefreshAwsNativeAccountsJob]",
             Position = 0
         )]
-        public SwitchParameter Startrefreshnativeaccountsjob { get; set; }
+        public SwitchParameter StartRefreshNativeAccountsJob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Startcreatenativeebsvolumesnapshotsjob parameter set
+        // StartCreateNativeEbsVolumeSnapshotsJob parameter set
         //
         // [GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]
         //
         [Parameter(
-            ParameterSetName = "Startcreatenativeebsvolumesnapshotsjob",
+            ParameterSetName = "StartCreateNativeEbsVolumeSnapshotsJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -105,16 +95,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: startCreateAwsNativeEbsVolumeSnapshotsJob]",
             Position = 0
         )]
-        public SwitchParameter Startcreatenativeebsvolumesnapshotsjob { get; set; }
+        public SwitchParameter StartCreateNativeEbsVolumeSnapshotsJob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Startnativeaccountdisablejob parameter set
+        // StartNativeAccountDisableJob parameter set
         //
         // [GraphQL: startAwsNativeAccountDisableJob]
         //
         [Parameter(
-            ParameterSetName = "Startnativeaccountdisablejob",
+            ParameterSetName = "StartNativeAccountDisableJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -123,16 +113,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: startAwsNativeAccountDisableJob]",
             Position = 0
         )]
-        public SwitchParameter Startnativeaccountdisablejob { get; set; }
+        public SwitchParameter StartNativeAccountDisableJob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Startexportnativeebsvolumesnapshotjob parameter set
+        // StartExportNativeEbsVolumeSnapshotJob parameter set
         //
         // [GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]
         //
         [Parameter(
-            ParameterSetName = "Startexportnativeebsvolumesnapshotjob",
+            ParameterSetName = "StartExportNativeEbsVolumeSnapshotJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -141,16 +131,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: startExportAwsNativeEbsVolumeSnapshotJob]",
             Position = 0
         )]
-        public SwitchParameter Startexportnativeebsvolumesnapshotjob { get; set; }
+        public SwitchParameter StartExportNativeEbsVolumeSnapshotJob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Excludenativeebsvolumesfromsnapshot parameter set
+        // ExcludeNativeEbsVolumesFromSnapshot parameter set
         //
         // [GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]
         //
         [Parameter(
-            ParameterSetName = "Excludenativeebsvolumesfromsnapshot",
+            ParameterSetName = "ExcludeNativeEbsVolumesFromSnapshot",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -159,16 +149,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: excludeAwsNativeEbsVolumesFromSnapshot]",
             Position = 0
         )]
-        public SwitchParameter Excludenativeebsvolumesfromsnapshot { get; set; }
+        public SwitchParameter ExcludeNativeEbsVolumesFromSnapshot { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Startnativerdsinstancesnapshotsjob parameter set
+        // StartNativeRdsInstanceSnapshotsJob parameter set
         //
         // [GraphQL: startAwsNativeRdsInstanceSnapshotsJob]
         //
         [Parameter(
-            ParameterSetName = "Startnativerdsinstancesnapshotsjob",
+            ParameterSetName = "StartNativeRdsInstanceSnapshotsJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -177,16 +167,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: startAwsNativeRdsInstanceSnapshotsJob]",
             Position = 0
         )]
-        public SwitchParameter Startnativerdsinstancesnapshotsjob { get; set; }
+        public SwitchParameter StartNativeRdsInstanceSnapshotsJob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createaccount parameter set
+        // CreateAccount parameter set
         //
         // [GraphQL: createAwsAccount]
         //
         [Parameter(
-            ParameterSetName = "Createaccount",
+            ParameterSetName = "CreateAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -195,16 +185,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: createAwsAccount]",
             Position = 0
         )]
-        public SwitchParameter Createaccount { get; set; }
+        public SwitchParameter CreateAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updateaccount parameter set
+        // UpdateAccount parameter set
         //
         // [GraphQL: updateAwsAccount]
         //
         [Parameter(
-            ParameterSetName = "Updateaccount",
+            ParameterSetName = "UpdateAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -213,16 +203,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: updateAwsAccount]",
             Position = 0
         )]
-        public SwitchParameter Updateaccount { get; set; }
+        public SwitchParameter UpdateAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createautomatictargetmapping parameter set
+        // CreateAutomaticTargetMapping parameter set
         //
         // [GraphQL: createAutomaticAwsTargetMapping]
         //
         [Parameter(
-            ParameterSetName = "Createautomatictargetmapping",
+            ParameterSetName = "CreateAutomaticTargetMapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -231,16 +221,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: createAutomaticAwsTargetMapping]",
             Position = 0
         )]
-        public SwitchParameter Createautomatictargetmapping { get; set; }
+        public SwitchParameter CreateAutomaticTargetMapping { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createcloudnativestoragesetting parameter set
+        // CreateCloudNativeStorageSetting parameter set
         //
         // [GraphQL: createCloudNativeAwsStorageSetting]
         //
         [Parameter(
-            ParameterSetName = "Createcloudnativestoragesetting",
+            ParameterSetName = "CreateCloudNativeStorageSetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -249,16 +239,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: createCloudNativeAwsStorageSetting]",
             Position = 0
         )]
-        public SwitchParameter Createcloudnativestoragesetting { get; set; }
+        public SwitchParameter CreateCloudNativeStorageSetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updateautomatictargetmapping parameter set
+        // UpdateAutomaticTargetMapping parameter set
         //
         // [GraphQL: updateAutomaticAwsTargetMapping]
         //
         [Parameter(
-            ParameterSetName = "Updateautomatictargetmapping",
+            ParameterSetName = "UpdateAutomaticTargetMapping",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -267,16 +257,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: updateAutomaticAwsTargetMapping]",
             Position = 0
         )]
-        public SwitchParameter Updateautomatictargetmapping { get; set; }
+        public SwitchParameter UpdateAutomaticTargetMapping { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatecloudnativestoragesetting parameter set
+        // UpdateCloudNativeStorageSetting parameter set
         //
         // [GraphQL: updateCloudNativeAwsStorageSetting]
         //
         [Parameter(
-            ParameterSetName = "Updatecloudnativestoragesetting",
+            ParameterSetName = "UpdateCloudNativeStorageSetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -285,16 +275,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: updateCloudNativeAwsStorageSetting]",
             Position = 0
         )]
-        public SwitchParameter Updatecloudnativestoragesetting { get; set; }
+        public SwitchParameter UpdateCloudNativeStorageSetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createtarget parameter set
+        // CreateTarget parameter set
         //
         // [GraphQL: createAwsTarget]
         //
         [Parameter(
-            ParameterSetName = "Createtarget",
+            ParameterSetName = "CreateTarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -303,16 +293,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: createAwsTarget]",
             Position = 0
         )]
-        public SwitchParameter Createtarget { get; set; }
+        public SwitchParameter CreateTarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatetarget parameter set
+        // UpdateTarget parameter set
         //
         // [GraphQL: updateAwsTarget]
         //
         [Parameter(
-            ParameterSetName = "Updatetarget",
+            ParameterSetName = "UpdateTarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -321,16 +311,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: updateAwsTarget]",
             Position = 0
         )]
-        public SwitchParameter Updatetarget { get; set; }
+        public SwitchParameter UpdateTarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createreadertarget parameter set
+        // CreateReaderTarget parameter set
         //
         // [GraphQL: createAwsReaderTarget]
         //
         [Parameter(
-            ParameterSetName = "Createreadertarget",
+            ParameterSetName = "CreateReaderTarget",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -339,16 +329,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: createAwsReaderTarget]",
             Position = 0
         )]
-        public SwitchParameter Createreadertarget { get; set; }
+        public SwitchParameter CreateReaderTarget { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createcomputesetting parameter set
+        // CreateComputeSetting parameter set
         //
         // [GraphQL: createAwsComputeSetting]
         //
         [Parameter(
-            ParameterSetName = "Createcomputesetting",
+            ParameterSetName = "CreateComputeSetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -357,16 +347,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: createAwsComputeSetting]",
             Position = 0
         )]
-        public SwitchParameter Createcomputesetting { get; set; }
+        public SwitchParameter CreateComputeSetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatecomputesetting parameter set
+        // UpdateComputeSetting parameter set
         //
         // [GraphQL: updateAwsComputeSetting]
         //
         [Parameter(
-            ParameterSetName = "Updatecomputesetting",
+            ParameterSetName = "UpdateComputeSetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -375,16 +365,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: updateAwsComputeSetting]",
             Position = 0
         )]
-        public SwitchParameter Updatecomputesetting { get; set; }
+        public SwitchParameter UpdateComputeSetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deletecomputesetting parameter set
+        // DeleteComputeSetting parameter set
         //
         // [GraphQL: deleteAwsComputeSetting]
         //
         [Parameter(
-            ParameterSetName = "Deletecomputesetting",
+            ParameterSetName = "DeleteComputeSetting",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -393,16 +383,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: deleteAwsComputeSetting]",
             Position = 0
         )]
-        public SwitchParameter Deletecomputesetting { get; set; }
+        public SwitchParameter DeleteComputeSetting { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Cloudaccountvalidate parameter set
+        // CloudAccountValidate parameter set
         //
         // [GraphQL: awsCloudAccountValidate]
         //
         [Parameter(
-            ParameterSetName = "Cloudaccountvalidate",
+            ParameterSetName = "CloudAccountValidate",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -411,26 +401,16 @@ GraphQL argument input: StartAwsNativeEc2InstanceSnapshotsJobInput!"
 [GraphQL: awsCloudAccountValidate]",
             Position = 0
         )]
-        public SwitchParameter Cloudaccountvalidate { get; set; }
+        public SwitchParameter CloudAccountValidate { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Cloudaccountvalidate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Arguments for validate aws cloud accounts.
-GraphQL argument awsCloudAccountValidateArg: AwsCloudAccountValidateInput!"
-        )]
-        public AwsCloudAccountValidateInput? AwsCloudAccountValidateArg { get; set; }
         
         // -------------------------------------------------------------------
-        // Cloudaccountinitiate parameter set
+        // CloudAccountInitiate parameter set
         //
         // [GraphQL: awsCloudAccountInitiate]
         //
         [Parameter(
-            ParameterSetName = "Cloudaccountinitiate",
+            ParameterSetName = "CloudAccountInitiate",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -439,26 +419,16 @@ GraphQL argument awsCloudAccountValidateArg: AwsCloudAccountValidateInput!"
 [GraphQL: awsCloudAccountInitiate]",
             Position = 0
         )]
-        public SwitchParameter Cloudaccountinitiate { get; set; }
+        public SwitchParameter CloudAccountInitiate { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Cloudaccountinitiate",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Arguments for initiate aws cloud accounts for creation.
-GraphQL argument awsCloudAccountInitiateArg: AwsCloudAccountInitiateInput!"
-        )]
-        public AwsCloudAccountInitiateInput? AwsCloudAccountInitiateArg { get; set; }
         
         // -------------------------------------------------------------------
-        // Nativeprotectionaccountadd parameter set
+        // NativeProtectionAccountAdd parameter set
         //
         // [GraphQL: awsNativeProtectionAccountAdd]
         //
         [Parameter(
-            ParameterSetName = "Nativeprotectionaccountadd",
+            ParameterSetName = "NativeProtectionAccountAdd",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -467,26 +437,16 @@ GraphQL argument awsCloudAccountInitiateArg: AwsCloudAccountInitiateInput!"
 [GraphQL: awsNativeProtectionAccountAdd]",
             Position = 0
         )]
-        public SwitchParameter Nativeprotectionaccountadd { get; set; }
+        public SwitchParameter NativeProtectionAccountAdd { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Nativeprotectionaccountadd",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Arguments to add account for native protection.
-GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAddRequest!"
-        )]
-        public AwsNativeProtectionAccountAddRequest? AwsNativeProtectionAccountAddArg { get; set; }
         
         // -------------------------------------------------------------------
-        // Validateandcreatecloudaccount parameter set
+        // ValidateAndCreateCloudAccount parameter set
         //
         // [GraphQL: validateAndCreateAwsCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "Validateandcreatecloudaccount",
+            ParameterSetName = "ValidateAndCreateCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -495,16 +455,16 @@ GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAdd
 [GraphQL: validateAndCreateAwsCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter Validateandcreatecloudaccount { get; set; }
+        public SwitchParameter ValidateAndCreateCloudAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Finalizecloudaccountprotection parameter set
+        // FinalizeCloudAccountProtection parameter set
         //
         // [GraphQL: finalizeAwsCloudAccountProtection]
         //
         [Parameter(
-            ParameterSetName = "Finalizecloudaccountprotection",
+            ParameterSetName = "FinalizeCloudAccountProtection",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -513,16 +473,16 @@ GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAdd
 [GraphQL: finalizeAwsCloudAccountProtection]",
             Position = 0
         )]
-        public SwitchParameter Finalizecloudaccountprotection { get; set; }
+        public SwitchParameter FinalizeCloudAccountProtection { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Preparecloudaccountdeletion parameter set
+        // PrepareCloudAccountDeletion parameter set
         //
         // [GraphQL: prepareAwsCloudAccountDeletion]
         //
         [Parameter(
-            ParameterSetName = "Preparecloudaccountdeletion",
+            ParameterSetName = "PrepareCloudAccountDeletion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -531,16 +491,16 @@ GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAdd
 [GraphQL: prepareAwsCloudAccountDeletion]",
             Position = 0
         )]
-        public SwitchParameter Preparecloudaccountdeletion { get; set; }
+        public SwitchParameter PrepareCloudAccountDeletion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Finalizecloudaccountdeletion parameter set
+        // FinalizeCloudAccountDeletion parameter set
         //
         // [GraphQL: finalizeAwsCloudAccountDeletion]
         //
         [Parameter(
-            ParameterSetName = "Finalizecloudaccountdeletion",
+            ParameterSetName = "FinalizeCloudAccountDeletion",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -549,16 +509,16 @@ GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAdd
 [GraphQL: finalizeAwsCloudAccountDeletion]",
             Position = 0
         )]
-        public SwitchParameter Finalizecloudaccountdeletion { get; set; }
+        public SwitchParameter FinalizeCloudAccountDeletion { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatecloudaccountfeature parameter set
+        // UpdateCloudAccountFeature parameter set
         //
         // [GraphQL: updateAwsCloudAccountFeature]
         //
         [Parameter(
-            ParameterSetName = "Updatecloudaccountfeature",
+            ParameterSetName = "UpdateCloudAccountFeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -567,16 +527,16 @@ GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAdd
 [GraphQL: updateAwsCloudAccountFeature]",
             Position = 0
         )]
-        public SwitchParameter Updatecloudaccountfeature { get; set; }
+        public SwitchParameter UpdateCloudAccountFeature { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updatecloudaccount parameter set
+        // UpdateCloudAccount parameter set
         //
         // [GraphQL: updateAwsCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "Updatecloudaccount",
+            ParameterSetName = "UpdateCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -585,16 +545,16 @@ GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAdd
 [GraphQL: updateAwsCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter Updatecloudaccount { get; set; }
+        public SwitchParameter UpdateCloudAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Preparefeatureupdateforcloudaccount parameter set
+        // PrepareFeatureUpdateForCloudAccount parameter set
         //
         // [GraphQL: prepareFeatureUpdateForAwsCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "Preparefeatureupdateforcloudaccount",
+            ParameterSetName = "PrepareFeatureUpdateForCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -603,16 +563,16 @@ GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAdd
 [GraphQL: prepareFeatureUpdateForAwsCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter Preparefeatureupdateforcloudaccount { get; set; }
+        public SwitchParameter PrepareFeatureUpdateForCloudAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Cloudaccountupdatefeature parameter set
+        // CloudAccountUpdateFeature parameter set
         //
         // [GraphQL: awsCloudAccountUpdateFeature]
         //
         [Parameter(
-            ParameterSetName = "Cloudaccountupdatefeature",
+            ParameterSetName = "CloudAccountUpdateFeature",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -621,36 +581,16 @@ GraphQL argument awsNativeProtectionAccountAddArg: AwsNativeProtectionAccountAdd
 [GraphQL: awsCloudAccountUpdateFeature]",
             Position = 0
         )]
-        public SwitchParameter Cloudaccountupdatefeature { get; set; }
+        public SwitchParameter CloudAccountUpdateFeature { get; set; }
 
-        [Parameter(
-            ParameterSetName = "Cloudaccountupdatefeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"The ID of the cloud account.
-GraphQL argument cloudAccountUuid: UUID!"
-        )]
-        public System.String? CloudAccountUuid { get; set; }
-        [Parameter(
-            ParameterSetName = "Cloudaccountupdatefeature",
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false,
-            HelpMessage =
-@"Cloud Account Features.
-GraphQL argument features: [CloudAccountFeature!]!"
-        )]
-        public List<CloudAccountFeature>? Features { get; set; }
         
         // -------------------------------------------------------------------
-        // Createexocomputeconfig parameter set
+        // CreateExocomputeConfig parameter set
         //
         // [GraphQL: createAwsExocomputeConfigs]
         //
         [Parameter(
-            ParameterSetName = "Createexocomputeconfig",
+            ParameterSetName = "CreateExocomputeConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -659,16 +599,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: createAwsExocomputeConfigs]",
             Position = 0
         )]
-        public SwitchParameter Createexocomputeconfig { get; set; }
+        public SwitchParameter CreateExocomputeConfig { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deleteexocomputeconfig parameter set
+        // DeleteExocomputeConfig parameter set
         //
         // [GraphQL: deleteAwsExocomputeConfigs]
         //
         [Parameter(
-            ParameterSetName = "Deleteexocomputeconfig",
+            ParameterSetName = "DeleteExocomputeConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -677,16 +617,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: deleteAwsExocomputeConfigs]",
             Position = 0
         )]
-        public SwitchParameter Deleteexocomputeconfig { get; set; }
+        public SwitchParameter DeleteExocomputeConfig { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Updateexocomputeconfig parameter set
+        // UpdateExocomputeConfig parameter set
         //
         // [GraphQL: updateAwsExocomputeConfigs]
         //
         [Parameter(
-            ParameterSetName = "Updateexocomputeconfig",
+            ParameterSetName = "UpdateExocomputeConfig",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -695,16 +635,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: updateAwsExocomputeConfigs]",
             Position = 0
         )]
-        public SwitchParameter Updateexocomputeconfig { get; set; }
+        public SwitchParameter UpdateExocomputeConfig { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Startexocomputedisablejob parameter set
+        // StartExocomputeDisableJob parameter set
         //
         // [GraphQL: startAwsExocomputeDisableJob]
         //
         [Parameter(
-            ParameterSetName = "Startexocomputedisablejob",
+            ParameterSetName = "StartExocomputeDisableJob",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -713,16 +653,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: startAwsExocomputeDisableJob]",
             Position = 0
         )]
-        public SwitchParameter Startexocomputedisablejob { get; set; }
+        public SwitchParameter StartExocomputeDisableJob { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Addiamuserbasedcloudaccount parameter set
+        // AddIamUserBasedCloudAccount parameter set
         //
         // [GraphQL: addAwsIamUserBasedCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "Addiamuserbasedcloudaccount",
+            ParameterSetName = "AddIamUserBasedCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -731,16 +671,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: addAwsIamUserBasedCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter Addiamuserbasedcloudaccount { get; set; }
+        public SwitchParameter AddIamUserBasedCloudAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deleteiamuserbasedcloudaccount parameter set
+        // DeleteIamUserBasedCloudAccount parameter set
         //
         // [GraphQL: deleteAwsIamUserBasedCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "Deleteiamuserbasedcloudaccount",
+            ParameterSetName = "DeleteIamUserBasedCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -749,16 +689,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: deleteAwsIamUserBasedCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter Deleteiamuserbasedcloudaccount { get; set; }
+        public SwitchParameter DeleteIamUserBasedCloudAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deletecloudaccountwithoutcft parameter set
+        // DeleteCloudAccountWithoutCft parameter set
         //
         // [GraphQL: deleteAwsCloudAccountWithoutCft]
         //
         [Parameter(
-            ParameterSetName = "Deletecloudaccountwithoutcft",
+            ParameterSetName = "DeleteCloudAccountWithoutCft",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -767,16 +707,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: deleteAwsCloudAccountWithoutCft]",
             Position = 0
         )]
-        public SwitchParameter Deletecloudaccountwithoutcft { get; set; }
+        public SwitchParameter DeleteCloudAccountWithoutCft { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Upgradeiamuserbasedcloudaccountpermission parameter set
+        // UpgradeIamUserBasedCloudAccountPermission parameter set
         //
         // [GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]
         //
         [Parameter(
-            ParameterSetName = "Upgradeiamuserbasedcloudaccountpermission",
+            ParameterSetName = "UpgradeIamUserBasedCloudAccountPermission",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -785,16 +725,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: upgradeAwsIamUserBasedCloudAccountPermissions]",
             Position = 0
         )]
-        public SwitchParameter Upgradeiamuserbasedcloudaccountpermission { get; set; }
+        public SwitchParameter UpgradeIamUserBasedCloudAccountPermission { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Upgradecloudaccountfeatureswithoutcft parameter set
+        // UpgradeCloudAccountFeaturesWithoutCft parameter set
         //
         // [GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]
         //
         [Parameter(
-            ParameterSetName = "Upgradecloudaccountfeatureswithoutcft",
+            ParameterSetName = "UpgradeCloudAccountFeaturesWithoutCft",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -803,16 +743,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: upgradeAwsCloudAccountFeaturesWithoutCft]",
             Position = 0
         )]
-        public SwitchParameter Upgradecloudaccountfeatureswithoutcft { get; set; }
+        public SwitchParameter UpgradeCloudAccountFeaturesWithoutCft { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Addauthenticationserverbasedcloudaccount parameter set
+        // AddAuthenticationServerBasedCloudAccount parameter set
         //
         // [GraphQL: addAwsAuthenticationServerBasedCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "Addauthenticationserverbasedcloudaccount",
+            ParameterSetName = "AddAuthenticationServerBasedCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -821,16 +761,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: addAwsAuthenticationServerBasedCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter Addauthenticationserverbasedcloudaccount { get; set; }
+        public SwitchParameter AddAuthenticationServerBasedCloudAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Patchauthenticationserverbasedcloudaccount parameter set
+        // PatchAuthenticationServerBasedCloudAccount parameter set
         //
         // [GraphQL: patchAwsAuthenticationServerBasedCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "Patchauthenticationserverbasedcloudaccount",
+            ParameterSetName = "PatchAuthenticationServerBasedCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -839,16 +779,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: patchAwsAuthenticationServerBasedCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter Patchauthenticationserverbasedcloudaccount { get; set; }
+        public SwitchParameter PatchAuthenticationServerBasedCloudAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Patchiamuserbasedcloudaccount parameter set
+        // PatchIamUserBasedCloudAccount parameter set
         //
         // [GraphQL: patchAwsIamUserBasedCloudAccount]
         //
         [Parameter(
-            ParameterSetName = "Patchiamuserbasedcloudaccount",
+            ParameterSetName = "PatchIamUserBasedCloudAccount",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -857,16 +797,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: patchAwsIamUserBasedCloudAccount]",
             Position = 0
         )]
-        public SwitchParameter Patchiamuserbasedcloudaccount { get; set; }
+        public SwitchParameter PatchIamUserBasedCloudAccount { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Createcluster parameter set
+        // CreateCluster parameter set
         //
         // [GraphQL: createAwsCluster]
         //
         [Parameter(
-            ParameterSetName = "Createcluster",
+            ParameterSetName = "CreateCluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -875,16 +815,16 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: createAwsCluster]",
             Position = 0
         )]
-        public SwitchParameter Createcluster { get; set; }
+        public SwitchParameter CreateCluster { get; set; }
 
         
         // -------------------------------------------------------------------
-        // Deletecluster parameter set
+        // DeleteCluster parameter set
         //
         // [GraphQL: deleteAwsCluster]
         //
         [Parameter(
-            ParameterSetName = "Deletecluster",
+            ParameterSetName = "DeleteCluster",
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false,
@@ -893,7 +833,7 @@ GraphQL argument features: [CloudAccountFeature!]!"
 [GraphQL: deleteAwsCluster]",
             Position = 0
         )]
-        public SwitchParameter Deletecluster { get; set; }
+        public SwitchParameter DeleteCluster { get; set; }
 
 
         protected override void ProcessRecord()
@@ -902,140 +842,140 @@ GraphQL argument features: [CloudAccountFeature!]!"
             {
                 switch(Op)
                 {
-                    case "Startnativeec2instancesnapshotsjob":
-                        this.ProcessRecord_Startnativeec2instancesnapshotsjob();
+                    case "StartNativeEc2InstanceSnapshotsJob":
+                        this.ProcessRecord_StartNativeEc2InstanceSnapshotsJob();
                         break;
-                    case "Startrestorenativeec2instancesnapshotjob":
-                        this.ProcessRecord_Startrestorenativeec2instancesnapshotjob();
+                    case "StartRestoreNativeEc2InstanceSnapshotJob":
+                        this.ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob();
                         break;
-                    case "Startrefreshnativeaccountsjob":
-                        this.ProcessRecord_Startrefreshnativeaccountsjob();
+                    case "StartRefreshNativeAccountsJob":
+                        this.ProcessRecord_StartRefreshNativeAccountsJob();
                         break;
-                    case "Startcreatenativeebsvolumesnapshotsjob":
-                        this.ProcessRecord_Startcreatenativeebsvolumesnapshotsjob();
+                    case "StartCreateNativeEbsVolumeSnapshotsJob":
+                        this.ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob();
                         break;
-                    case "Startnativeaccountdisablejob":
-                        this.ProcessRecord_Startnativeaccountdisablejob();
+                    case "StartNativeAccountDisableJob":
+                        this.ProcessRecord_StartNativeAccountDisableJob();
                         break;
-                    case "Startexportnativeebsvolumesnapshotjob":
-                        this.ProcessRecord_Startexportnativeebsvolumesnapshotjob();
+                    case "StartExportNativeEbsVolumeSnapshotJob":
+                        this.ProcessRecord_StartExportNativeEbsVolumeSnapshotJob();
                         break;
-                    case "Excludenativeebsvolumesfromsnapshot":
-                        this.ProcessRecord_Excludenativeebsvolumesfromsnapshot();
+                    case "ExcludeNativeEbsVolumesFromSnapshot":
+                        this.ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot();
                         break;
-                    case "Startnativerdsinstancesnapshotsjob":
-                        this.ProcessRecord_Startnativerdsinstancesnapshotsjob();
+                    case "StartNativeRdsInstanceSnapshotsJob":
+                        this.ProcessRecord_StartNativeRdsInstanceSnapshotsJob();
                         break;
-                    case "Createaccount":
-                        this.ProcessRecord_Createaccount();
+                    case "CreateAccount":
+                        this.ProcessRecord_CreateAccount();
                         break;
-                    case "Updateaccount":
-                        this.ProcessRecord_Updateaccount();
+                    case "UpdateAccount":
+                        this.ProcessRecord_UpdateAccount();
                         break;
-                    case "Createautomatictargetmapping":
-                        this.ProcessRecord_Createautomatictargetmapping();
+                    case "CreateAutomaticTargetMapping":
+                        this.ProcessRecord_CreateAutomaticTargetMapping();
                         break;
-                    case "Createcloudnativestoragesetting":
-                        this.ProcessRecord_Createcloudnativestoragesetting();
+                    case "CreateCloudNativeStorageSetting":
+                        this.ProcessRecord_CreateCloudNativeStorageSetting();
                         break;
-                    case "Updateautomatictargetmapping":
-                        this.ProcessRecord_Updateautomatictargetmapping();
+                    case "UpdateAutomaticTargetMapping":
+                        this.ProcessRecord_UpdateAutomaticTargetMapping();
                         break;
-                    case "Updatecloudnativestoragesetting":
-                        this.ProcessRecord_Updatecloudnativestoragesetting();
+                    case "UpdateCloudNativeStorageSetting":
+                        this.ProcessRecord_UpdateCloudNativeStorageSetting();
                         break;
-                    case "Createtarget":
-                        this.ProcessRecord_Createtarget();
+                    case "CreateTarget":
+                        this.ProcessRecord_CreateTarget();
                         break;
-                    case "Updatetarget":
-                        this.ProcessRecord_Updatetarget();
+                    case "UpdateTarget":
+                        this.ProcessRecord_UpdateTarget();
                         break;
-                    case "Createreadertarget":
-                        this.ProcessRecord_Createreadertarget();
+                    case "CreateReaderTarget":
+                        this.ProcessRecord_CreateReaderTarget();
                         break;
-                    case "Createcomputesetting":
-                        this.ProcessRecord_Createcomputesetting();
+                    case "CreateComputeSetting":
+                        this.ProcessRecord_CreateComputeSetting();
                         break;
-                    case "Updatecomputesetting":
-                        this.ProcessRecord_Updatecomputesetting();
+                    case "UpdateComputeSetting":
+                        this.ProcessRecord_UpdateComputeSetting();
                         break;
-                    case "Deletecomputesetting":
-                        this.ProcessRecord_Deletecomputesetting();
+                    case "DeleteComputeSetting":
+                        this.ProcessRecord_DeleteComputeSetting();
                         break;
-                    case "Cloudaccountvalidate":
-                        this.ProcessRecord_Cloudaccountvalidate();
+                    case "CloudAccountValidate":
+                        this.ProcessRecord_CloudAccountValidate();
                         break;
-                    case "Cloudaccountinitiate":
-                        this.ProcessRecord_Cloudaccountinitiate();
+                    case "CloudAccountInitiate":
+                        this.ProcessRecord_CloudAccountInitiate();
                         break;
-                    case "Nativeprotectionaccountadd":
-                        this.ProcessRecord_Nativeprotectionaccountadd();
+                    case "NativeProtectionAccountAdd":
+                        this.ProcessRecord_NativeProtectionAccountAdd();
                         break;
-                    case "Validateandcreatecloudaccount":
-                        this.ProcessRecord_Validateandcreatecloudaccount();
+                    case "ValidateAndCreateCloudAccount":
+                        this.ProcessRecord_ValidateAndCreateCloudAccount();
                         break;
-                    case "Finalizecloudaccountprotection":
-                        this.ProcessRecord_Finalizecloudaccountprotection();
+                    case "FinalizeCloudAccountProtection":
+                        this.ProcessRecord_FinalizeCloudAccountProtection();
                         break;
-                    case "Preparecloudaccountdeletion":
-                        this.ProcessRecord_Preparecloudaccountdeletion();
+                    case "PrepareCloudAccountDeletion":
+                        this.ProcessRecord_PrepareCloudAccountDeletion();
                         break;
-                    case "Finalizecloudaccountdeletion":
-                        this.ProcessRecord_Finalizecloudaccountdeletion();
+                    case "FinalizeCloudAccountDeletion":
+                        this.ProcessRecord_FinalizeCloudAccountDeletion();
                         break;
-                    case "Updatecloudaccountfeature":
-                        this.ProcessRecord_Updatecloudaccountfeature();
+                    case "UpdateCloudAccountFeature":
+                        this.ProcessRecord_UpdateCloudAccountFeature();
                         break;
-                    case "Updatecloudaccount":
-                        this.ProcessRecord_Updatecloudaccount();
+                    case "UpdateCloudAccount":
+                        this.ProcessRecord_UpdateCloudAccount();
                         break;
-                    case "Preparefeatureupdateforcloudaccount":
-                        this.ProcessRecord_Preparefeatureupdateforcloudaccount();
+                    case "PrepareFeatureUpdateForCloudAccount":
+                        this.ProcessRecord_PrepareFeatureUpdateForCloudAccount();
                         break;
-                    case "Cloudaccountupdatefeature":
-                        this.ProcessRecord_Cloudaccountupdatefeature();
+                    case "CloudAccountUpdateFeature":
+                        this.ProcessRecord_CloudAccountUpdateFeature();
                         break;
-                    case "Createexocomputeconfig":
-                        this.ProcessRecord_Createexocomputeconfig();
+                    case "CreateExocomputeConfig":
+                        this.ProcessRecord_CreateExocomputeConfig();
                         break;
-                    case "Deleteexocomputeconfig":
-                        this.ProcessRecord_Deleteexocomputeconfig();
+                    case "DeleteExocomputeConfig":
+                        this.ProcessRecord_DeleteExocomputeConfig();
                         break;
-                    case "Updateexocomputeconfig":
-                        this.ProcessRecord_Updateexocomputeconfig();
+                    case "UpdateExocomputeConfig":
+                        this.ProcessRecord_UpdateExocomputeConfig();
                         break;
-                    case "Startexocomputedisablejob":
-                        this.ProcessRecord_Startexocomputedisablejob();
+                    case "StartExocomputeDisableJob":
+                        this.ProcessRecord_StartExocomputeDisableJob();
                         break;
-                    case "Addiamuserbasedcloudaccount":
-                        this.ProcessRecord_Addiamuserbasedcloudaccount();
+                    case "AddIamUserBasedCloudAccount":
+                        this.ProcessRecord_AddIamUserBasedCloudAccount();
                         break;
-                    case "Deleteiamuserbasedcloudaccount":
-                        this.ProcessRecord_Deleteiamuserbasedcloudaccount();
+                    case "DeleteIamUserBasedCloudAccount":
+                        this.ProcessRecord_DeleteIamUserBasedCloudAccount();
                         break;
-                    case "Deletecloudaccountwithoutcft":
-                        this.ProcessRecord_Deletecloudaccountwithoutcft();
+                    case "DeleteCloudAccountWithoutCft":
+                        this.ProcessRecord_DeleteCloudAccountWithoutCft();
                         break;
-                    case "Upgradeiamuserbasedcloudaccountpermission":
-                        this.ProcessRecord_Upgradeiamuserbasedcloudaccountpermission();
+                    case "UpgradeIamUserBasedCloudAccountPermission":
+                        this.ProcessRecord_UpgradeIamUserBasedCloudAccountPermission();
                         break;
-                    case "Upgradecloudaccountfeatureswithoutcft":
-                        this.ProcessRecord_Upgradecloudaccountfeatureswithoutcft();
+                    case "UpgradeCloudAccountFeaturesWithoutCft":
+                        this.ProcessRecord_UpgradeCloudAccountFeaturesWithoutCft();
                         break;
-                    case "Addauthenticationserverbasedcloudaccount":
-                        this.ProcessRecord_Addauthenticationserverbasedcloudaccount();
+                    case "AddAuthenticationServerBasedCloudAccount":
+                        this.ProcessRecord_AddAuthenticationServerBasedCloudAccount();
                         break;
-                    case "Patchauthenticationserverbasedcloudaccount":
-                        this.ProcessRecord_Patchauthenticationserverbasedcloudaccount();
+                    case "PatchAuthenticationServerBasedCloudAccount":
+                        this.ProcessRecord_PatchAuthenticationServerBasedCloudAccount();
                         break;
-                    case "Patchiamuserbasedcloudaccount":
-                        this.ProcessRecord_Patchiamuserbasedcloudaccount();
+                    case "PatchIamUserBasedCloudAccount":
+                        this.ProcessRecord_PatchIamUserBasedCloudAccount();
                         break;
-                    case "Createcluster":
-                        this.ProcessRecord_Createcluster();
+                    case "CreateCluster":
+                        this.ProcessRecord_CreateCluster();
                         break;
-                    case "Deletecluster":
-                        this.ProcessRecord_Deletecluster();
+                    case "DeleteCluster":
+                        this.ProcessRecord_DeleteCluster();
                         break;
                     default:
                         throw new Exception("Unknown Operation " + Op);
@@ -1049,405 +989,405 @@ GraphQL argument features: [CloudAccountFeature!]!"
 
         // This parameter set invokes a single graphql operation:
         // startAwsNativeEc2InstanceSnapshotsJob.
-        protected void ProcessRecord_Startnativeec2instancesnapshotsjob()
+        protected void ProcessRecord_StartNativeEc2InstanceSnapshotsJob()
         {
-            this._logger.name += " -Startnativeec2instancesnapshotsjob";
+            this._logger.name += " -StartNativeEc2InstanceSnapshotsJob";
             // Invoke graphql operation startAwsNativeEc2InstanceSnapshotsJob
             InvokeMutationStartAwsNativeEc2InstanceSnapshotsJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startRestoreAwsNativeEc2InstanceSnapshotJob.
-        protected void ProcessRecord_Startrestorenativeec2instancesnapshotjob()
+        protected void ProcessRecord_StartRestoreNativeEc2InstanceSnapshotJob()
         {
-            this._logger.name += " -Startrestorenativeec2instancesnapshotjob";
+            this._logger.name += " -StartRestoreNativeEc2InstanceSnapshotJob";
             // Invoke graphql operation startRestoreAwsNativeEc2InstanceSnapshotJob
             InvokeMutationStartRestoreAwsNativeEc2InstanceSnapshotJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startRefreshAwsNativeAccountsJob.
-        protected void ProcessRecord_Startrefreshnativeaccountsjob()
+        protected void ProcessRecord_StartRefreshNativeAccountsJob()
         {
-            this._logger.name += " -Startrefreshnativeaccountsjob";
+            this._logger.name += " -StartRefreshNativeAccountsJob";
             // Invoke graphql operation startRefreshAwsNativeAccountsJob
             InvokeMutationStartRefreshAwsNativeAccountsJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startCreateAwsNativeEbsVolumeSnapshotsJob.
-        protected void ProcessRecord_Startcreatenativeebsvolumesnapshotsjob()
+        protected void ProcessRecord_StartCreateNativeEbsVolumeSnapshotsJob()
         {
-            this._logger.name += " -Startcreatenativeebsvolumesnapshotsjob";
+            this._logger.name += " -StartCreateNativeEbsVolumeSnapshotsJob";
             // Invoke graphql operation startCreateAwsNativeEbsVolumeSnapshotsJob
             InvokeMutationStartCreateAwsNativeEbsVolumeSnapshotsJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startAwsNativeAccountDisableJob.
-        protected void ProcessRecord_Startnativeaccountdisablejob()
+        protected void ProcessRecord_StartNativeAccountDisableJob()
         {
-            this._logger.name += " -Startnativeaccountdisablejob";
+            this._logger.name += " -StartNativeAccountDisableJob";
             // Invoke graphql operation startAwsNativeAccountDisableJob
             InvokeMutationStartAwsNativeAccountDisableJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // startExportAwsNativeEbsVolumeSnapshotJob.
-        protected void ProcessRecord_Startexportnativeebsvolumesnapshotjob()
+        protected void ProcessRecord_StartExportNativeEbsVolumeSnapshotJob()
         {
-            this._logger.name += " -Startexportnativeebsvolumesnapshotjob";
+            this._logger.name += " -StartExportNativeEbsVolumeSnapshotJob";
             // Invoke graphql operation startExportAwsNativeEbsVolumeSnapshotJob
             InvokeMutationStartExportAwsNativeEbsVolumeSnapshotJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // excludeAwsNativeEbsVolumesFromSnapshot.
-        protected void ProcessRecord_Excludenativeebsvolumesfromsnapshot()
+        protected void ProcessRecord_ExcludeNativeEbsVolumesFromSnapshot()
         {
-            this._logger.name += " -Excludenativeebsvolumesfromsnapshot";
+            this._logger.name += " -ExcludeNativeEbsVolumesFromSnapshot";
             // Invoke graphql operation excludeAwsNativeEbsVolumesFromSnapshot
             InvokeMutationExcludeAwsNativeEbsVolumesFromSnapshot();
         }
 
         // This parameter set invokes a single graphql operation:
         // startAwsNativeRdsInstanceSnapshotsJob.
-        protected void ProcessRecord_Startnativerdsinstancesnapshotsjob()
+        protected void ProcessRecord_StartNativeRdsInstanceSnapshotsJob()
         {
-            this._logger.name += " -Startnativerdsinstancesnapshotsjob";
+            this._logger.name += " -StartNativeRdsInstanceSnapshotsJob";
             // Invoke graphql operation startAwsNativeRdsInstanceSnapshotsJob
             InvokeMutationStartAwsNativeRdsInstanceSnapshotsJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAwsAccount.
-        protected void ProcessRecord_Createaccount()
+        protected void ProcessRecord_CreateAccount()
         {
-            this._logger.name += " -Createaccount";
+            this._logger.name += " -CreateAccount";
             // Invoke graphql operation createAwsAccount
             InvokeMutationCreateAwsAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAwsAccount.
-        protected void ProcessRecord_Updateaccount()
+        protected void ProcessRecord_UpdateAccount()
         {
-            this._logger.name += " -Updateaccount";
+            this._logger.name += " -UpdateAccount";
             // Invoke graphql operation updateAwsAccount
             InvokeMutationUpdateAwsAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAutomaticAwsTargetMapping.
-        protected void ProcessRecord_Createautomatictargetmapping()
+        protected void ProcessRecord_CreateAutomaticTargetMapping()
         {
-            this._logger.name += " -Createautomatictargetmapping";
+            this._logger.name += " -CreateAutomaticTargetMapping";
             // Invoke graphql operation createAutomaticAwsTargetMapping
             InvokeMutationCreateAutomaticAwsTargetMapping();
         }
 
         // This parameter set invokes a single graphql operation:
         // createCloudNativeAwsStorageSetting.
-        protected void ProcessRecord_Createcloudnativestoragesetting()
+        protected void ProcessRecord_CreateCloudNativeStorageSetting()
         {
-            this._logger.name += " -Createcloudnativestoragesetting";
+            this._logger.name += " -CreateCloudNativeStorageSetting";
             // Invoke graphql operation createCloudNativeAwsStorageSetting
             InvokeMutationCreateCloudNativeAwsStorageSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAutomaticAwsTargetMapping.
-        protected void ProcessRecord_Updateautomatictargetmapping()
+        protected void ProcessRecord_UpdateAutomaticTargetMapping()
         {
-            this._logger.name += " -Updateautomatictargetmapping";
+            this._logger.name += " -UpdateAutomaticTargetMapping";
             // Invoke graphql operation updateAutomaticAwsTargetMapping
             InvokeMutationUpdateAutomaticAwsTargetMapping();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateCloudNativeAwsStorageSetting.
-        protected void ProcessRecord_Updatecloudnativestoragesetting()
+        protected void ProcessRecord_UpdateCloudNativeStorageSetting()
         {
-            this._logger.name += " -Updatecloudnativestoragesetting";
+            this._logger.name += " -UpdateCloudNativeStorageSetting";
             // Invoke graphql operation updateCloudNativeAwsStorageSetting
             InvokeMutationUpdateCloudNativeAwsStorageSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAwsTarget.
-        protected void ProcessRecord_Createtarget()
+        protected void ProcessRecord_CreateTarget()
         {
-            this._logger.name += " -Createtarget";
+            this._logger.name += " -CreateTarget";
             // Invoke graphql operation createAwsTarget
             InvokeMutationCreateAwsTarget();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAwsTarget.
-        protected void ProcessRecord_Updatetarget()
+        protected void ProcessRecord_UpdateTarget()
         {
-            this._logger.name += " -Updatetarget";
+            this._logger.name += " -UpdateTarget";
             // Invoke graphql operation updateAwsTarget
             InvokeMutationUpdateAwsTarget();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAwsReaderTarget.
-        protected void ProcessRecord_Createreadertarget()
+        protected void ProcessRecord_CreateReaderTarget()
         {
-            this._logger.name += " -Createreadertarget";
+            this._logger.name += " -CreateReaderTarget";
             // Invoke graphql operation createAwsReaderTarget
             InvokeMutationCreateAwsReaderTarget();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAwsComputeSetting.
-        protected void ProcessRecord_Createcomputesetting()
+        protected void ProcessRecord_CreateComputeSetting()
         {
-            this._logger.name += " -Createcomputesetting";
+            this._logger.name += " -CreateComputeSetting";
             // Invoke graphql operation createAwsComputeSetting
             InvokeMutationCreateAwsComputeSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAwsComputeSetting.
-        protected void ProcessRecord_Updatecomputesetting()
+        protected void ProcessRecord_UpdateComputeSetting()
         {
-            this._logger.name += " -Updatecomputesetting";
+            this._logger.name += " -UpdateComputeSetting";
             // Invoke graphql operation updateAwsComputeSetting
             InvokeMutationUpdateAwsComputeSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsComputeSetting.
-        protected void ProcessRecord_Deletecomputesetting()
+        protected void ProcessRecord_DeleteComputeSetting()
         {
-            this._logger.name += " -Deletecomputesetting";
+            this._logger.name += " -DeleteComputeSetting";
             // Invoke graphql operation deleteAwsComputeSetting
             InvokeMutationDeleteAwsComputeSetting();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountValidate.
-        protected void ProcessRecord_Cloudaccountvalidate()
+        protected void ProcessRecord_CloudAccountValidate()
         {
-            this._logger.name += " -Cloudaccountvalidate";
+            this._logger.name += " -CloudAccountValidate";
             // Invoke graphql operation awsCloudAccountValidate
             InvokeMutationAwsCloudAccountValidate();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountInitiate.
-        protected void ProcessRecord_Cloudaccountinitiate()
+        protected void ProcessRecord_CloudAccountInitiate()
         {
-            this._logger.name += " -Cloudaccountinitiate";
+            this._logger.name += " -CloudAccountInitiate";
             // Invoke graphql operation awsCloudAccountInitiate
             InvokeMutationAwsCloudAccountInitiate();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsNativeProtectionAccountAdd.
-        protected void ProcessRecord_Nativeprotectionaccountadd()
+        protected void ProcessRecord_NativeProtectionAccountAdd()
         {
-            this._logger.name += " -Nativeprotectionaccountadd";
+            this._logger.name += " -NativeProtectionAccountAdd";
             // Invoke graphql operation awsNativeProtectionAccountAdd
             InvokeMutationAwsNativeProtectionAccountAdd();
         }
 
         // This parameter set invokes a single graphql operation:
         // validateAndCreateAwsCloudAccount.
-        protected void ProcessRecord_Validateandcreatecloudaccount()
+        protected void ProcessRecord_ValidateAndCreateCloudAccount()
         {
-            this._logger.name += " -Validateandcreatecloudaccount";
+            this._logger.name += " -ValidateAndCreateCloudAccount";
             // Invoke graphql operation validateAndCreateAwsCloudAccount
             InvokeMutationValidateAndCreateAwsCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // finalizeAwsCloudAccountProtection.
-        protected void ProcessRecord_Finalizecloudaccountprotection()
+        protected void ProcessRecord_FinalizeCloudAccountProtection()
         {
-            this._logger.name += " -Finalizecloudaccountprotection";
+            this._logger.name += " -FinalizeCloudAccountProtection";
             // Invoke graphql operation finalizeAwsCloudAccountProtection
             InvokeMutationFinalizeAwsCloudAccountProtection();
         }
 
         // This parameter set invokes a single graphql operation:
         // prepareAwsCloudAccountDeletion.
-        protected void ProcessRecord_Preparecloudaccountdeletion()
+        protected void ProcessRecord_PrepareCloudAccountDeletion()
         {
-            this._logger.name += " -Preparecloudaccountdeletion";
+            this._logger.name += " -PrepareCloudAccountDeletion";
             // Invoke graphql operation prepareAwsCloudAccountDeletion
             InvokeMutationPrepareAwsCloudAccountDeletion();
         }
 
         // This parameter set invokes a single graphql operation:
         // finalizeAwsCloudAccountDeletion.
-        protected void ProcessRecord_Finalizecloudaccountdeletion()
+        protected void ProcessRecord_FinalizeCloudAccountDeletion()
         {
-            this._logger.name += " -Finalizecloudaccountdeletion";
+            this._logger.name += " -FinalizeCloudAccountDeletion";
             // Invoke graphql operation finalizeAwsCloudAccountDeletion
             InvokeMutationFinalizeAwsCloudAccountDeletion();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAwsCloudAccountFeature.
-        protected void ProcessRecord_Updatecloudaccountfeature()
+        protected void ProcessRecord_UpdateCloudAccountFeature()
         {
-            this._logger.name += " -Updatecloudaccountfeature";
+            this._logger.name += " -UpdateCloudAccountFeature";
             // Invoke graphql operation updateAwsCloudAccountFeature
             InvokeMutationUpdateAwsCloudAccountFeature();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAwsCloudAccount.
-        protected void ProcessRecord_Updatecloudaccount()
+        protected void ProcessRecord_UpdateCloudAccount()
         {
-            this._logger.name += " -Updatecloudaccount";
+            this._logger.name += " -UpdateCloudAccount";
             // Invoke graphql operation updateAwsCloudAccount
             InvokeMutationUpdateAwsCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // prepareFeatureUpdateForAwsCloudAccount.
-        protected void ProcessRecord_Preparefeatureupdateforcloudaccount()
+        protected void ProcessRecord_PrepareFeatureUpdateForCloudAccount()
         {
-            this._logger.name += " -Preparefeatureupdateforcloudaccount";
+            this._logger.name += " -PrepareFeatureUpdateForCloudAccount";
             // Invoke graphql operation prepareFeatureUpdateForAwsCloudAccount
             InvokeMutationPrepareFeatureUpdateForAwsCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // awsCloudAccountUpdateFeature.
-        protected void ProcessRecord_Cloudaccountupdatefeature()
+        protected void ProcessRecord_CloudAccountUpdateFeature()
         {
-            this._logger.name += " -Cloudaccountupdatefeature";
+            this._logger.name += " -CloudAccountUpdateFeature";
             // Invoke graphql operation awsCloudAccountUpdateFeature
             InvokeMutationAwsCloudAccountUpdateFeature();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAwsExocomputeConfigs.
-        protected void ProcessRecord_Createexocomputeconfig()
+        protected void ProcessRecord_CreateExocomputeConfig()
         {
-            this._logger.name += " -Createexocomputeconfig";
+            this._logger.name += " -CreateExocomputeConfig";
             // Invoke graphql operation createAwsExocomputeConfigs
             InvokeMutationCreateAwsExocomputeConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsExocomputeConfigs.
-        protected void ProcessRecord_Deleteexocomputeconfig()
+        protected void ProcessRecord_DeleteExocomputeConfig()
         {
-            this._logger.name += " -Deleteexocomputeconfig";
+            this._logger.name += " -DeleteExocomputeConfig";
             // Invoke graphql operation deleteAwsExocomputeConfigs
             InvokeMutationDeleteAwsExocomputeConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
         // updateAwsExocomputeConfigs.
-        protected void ProcessRecord_Updateexocomputeconfig()
+        protected void ProcessRecord_UpdateExocomputeConfig()
         {
-            this._logger.name += " -Updateexocomputeconfig";
+            this._logger.name += " -UpdateExocomputeConfig";
             // Invoke graphql operation updateAwsExocomputeConfigs
             InvokeMutationUpdateAwsExocomputeConfigs();
         }
 
         // This parameter set invokes a single graphql operation:
         // startAwsExocomputeDisableJob.
-        protected void ProcessRecord_Startexocomputedisablejob()
+        protected void ProcessRecord_StartExocomputeDisableJob()
         {
-            this._logger.name += " -Startexocomputedisablejob";
+            this._logger.name += " -StartExocomputeDisableJob";
             // Invoke graphql operation startAwsExocomputeDisableJob
             InvokeMutationStartAwsExocomputeDisableJob();
         }
 
         // This parameter set invokes a single graphql operation:
         // addAwsIamUserBasedCloudAccount.
-        protected void ProcessRecord_Addiamuserbasedcloudaccount()
+        protected void ProcessRecord_AddIamUserBasedCloudAccount()
         {
-            this._logger.name += " -Addiamuserbasedcloudaccount";
+            this._logger.name += " -AddIamUserBasedCloudAccount";
             // Invoke graphql operation addAwsIamUserBasedCloudAccount
             InvokeMutationAddAwsIamUserBasedCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsIamUserBasedCloudAccount.
-        protected void ProcessRecord_Deleteiamuserbasedcloudaccount()
+        protected void ProcessRecord_DeleteIamUserBasedCloudAccount()
         {
-            this._logger.name += " -Deleteiamuserbasedcloudaccount";
+            this._logger.name += " -DeleteIamUserBasedCloudAccount";
             // Invoke graphql operation deleteAwsIamUserBasedCloudAccount
             InvokeMutationDeleteAwsIamUserBasedCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsCloudAccountWithoutCft.
-        protected void ProcessRecord_Deletecloudaccountwithoutcft()
+        protected void ProcessRecord_DeleteCloudAccountWithoutCft()
         {
-            this._logger.name += " -Deletecloudaccountwithoutcft";
+            this._logger.name += " -DeleteCloudAccountWithoutCft";
             // Invoke graphql operation deleteAwsCloudAccountWithoutCft
             InvokeMutationDeleteAwsCloudAccountWithoutCft();
         }
 
         // This parameter set invokes a single graphql operation:
         // upgradeAwsIamUserBasedCloudAccountPermissions.
-        protected void ProcessRecord_Upgradeiamuserbasedcloudaccountpermission()
+        protected void ProcessRecord_UpgradeIamUserBasedCloudAccountPermission()
         {
-            this._logger.name += " -Upgradeiamuserbasedcloudaccountpermission";
+            this._logger.name += " -UpgradeIamUserBasedCloudAccountPermission";
             // Invoke graphql operation upgradeAwsIamUserBasedCloudAccountPermissions
             InvokeMutationUpgradeAwsIamUserBasedCloudAccountPermissions();
         }
 
         // This parameter set invokes a single graphql operation:
         // upgradeAwsCloudAccountFeaturesWithoutCft.
-        protected void ProcessRecord_Upgradecloudaccountfeatureswithoutcft()
+        protected void ProcessRecord_UpgradeCloudAccountFeaturesWithoutCft()
         {
-            this._logger.name += " -Upgradecloudaccountfeatureswithoutcft";
+            this._logger.name += " -UpgradeCloudAccountFeaturesWithoutCft";
             // Invoke graphql operation upgradeAwsCloudAccountFeaturesWithoutCft
             InvokeMutationUpgradeAwsCloudAccountFeaturesWithoutCft();
         }
 
         // This parameter set invokes a single graphql operation:
         // addAwsAuthenticationServerBasedCloudAccount.
-        protected void ProcessRecord_Addauthenticationserverbasedcloudaccount()
+        protected void ProcessRecord_AddAuthenticationServerBasedCloudAccount()
         {
-            this._logger.name += " -Addauthenticationserverbasedcloudaccount";
+            this._logger.name += " -AddAuthenticationServerBasedCloudAccount";
             // Invoke graphql operation addAwsAuthenticationServerBasedCloudAccount
             InvokeMutationAddAwsAuthenticationServerBasedCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // patchAwsAuthenticationServerBasedCloudAccount.
-        protected void ProcessRecord_Patchauthenticationserverbasedcloudaccount()
+        protected void ProcessRecord_PatchAuthenticationServerBasedCloudAccount()
         {
-            this._logger.name += " -Patchauthenticationserverbasedcloudaccount";
+            this._logger.name += " -PatchAuthenticationServerBasedCloudAccount";
             // Invoke graphql operation patchAwsAuthenticationServerBasedCloudAccount
             InvokeMutationPatchAwsAuthenticationServerBasedCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // patchAwsIamUserBasedCloudAccount.
-        protected void ProcessRecord_Patchiamuserbasedcloudaccount()
+        protected void ProcessRecord_PatchIamUserBasedCloudAccount()
         {
-            this._logger.name += " -Patchiamuserbasedcloudaccount";
+            this._logger.name += " -PatchIamUserBasedCloudAccount";
             // Invoke graphql operation patchAwsIamUserBasedCloudAccount
             InvokeMutationPatchAwsIamUserBasedCloudAccount();
         }
 
         // This parameter set invokes a single graphql operation:
         // createAwsCluster.
-        protected void ProcessRecord_Createcluster()
+        protected void ProcessRecord_CreateCluster()
         {
-            this._logger.name += " -Createcluster";
+            this._logger.name += " -CreateCluster";
             // Invoke graphql operation createAwsCluster
             InvokeMutationCreateAwsCluster();
         }
 
         // This parameter set invokes a single graphql operation:
         // deleteAwsCluster.
-        protected void ProcessRecord_Deletecluster()
+        protected void ProcessRecord_DeleteCluster()
         {
-            this._logger.name += " -Deletecluster";
+            this._logger.name += " -DeleteCluster";
             // Invoke graphql operation deleteAwsCluster
             InvokeMutationDeleteAwsCluster();
         }

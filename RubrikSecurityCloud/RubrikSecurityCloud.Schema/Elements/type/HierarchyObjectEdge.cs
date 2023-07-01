@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HierarchyObjectEdge";
+    }
+
     public HierarchyObjectEdge Set(
         HierarchyObject? Node = null,
         System.String? Cursor = null

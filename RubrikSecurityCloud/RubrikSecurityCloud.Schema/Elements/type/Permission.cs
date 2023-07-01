@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "Permission";
+    }
+
     public Permission Set(
         Operation? Operation = null,
         List<ObjectIdsForHierarchyType>? ObjectsForHierarchyTypes = null

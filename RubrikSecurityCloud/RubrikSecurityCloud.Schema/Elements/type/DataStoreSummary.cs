@@ -55,6 +55,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "DataStoreSummary";
+    }
+
     public DataStoreSummary Set(
         System.Int64? Capacity = null,
         System.String? DataCenterName = null,

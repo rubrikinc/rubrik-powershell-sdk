@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CyberRecoveryObjectEdge";
+    }
+
     public CyberRecoveryObjectEdge Set(
         System.String? Cursor = null,
         CyberRecoveryObject? Node = null

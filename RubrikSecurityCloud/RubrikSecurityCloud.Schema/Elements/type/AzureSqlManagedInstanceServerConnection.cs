@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSqlManagedInstanceServerConnection";
+    }
+
     public AzureSqlManagedInstanceServerConnection Set(
         System.Int32? Count = null,
         List<AzureSqlManagedInstanceServerEdge>? Edges = null,

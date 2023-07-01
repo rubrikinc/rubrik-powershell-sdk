@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "OraclePdb";
+    }
+
     public OraclePdb Set(
         OraclePdbOpenMode? OpenMode = null,
         System.Int64? ApplicationRootContainerId = null,

@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "FileAccessResult";
+    }
+
     public FileAccessResult Set(
         ActivityAccessType? AccessType = null,
         System.String? Directory = null,

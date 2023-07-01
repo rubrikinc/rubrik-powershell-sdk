@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "CreateWebhookReply";
+    }
+
     public CreateWebhookReply Set(
         Webhook? Webhook = null
     ) 

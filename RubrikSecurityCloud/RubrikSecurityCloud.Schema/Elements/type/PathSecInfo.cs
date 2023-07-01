@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "PathSecInfo";
+    }
+
     public PathSecInfo Set(
         System.String? Owner = null,
         System.String? Path = null,

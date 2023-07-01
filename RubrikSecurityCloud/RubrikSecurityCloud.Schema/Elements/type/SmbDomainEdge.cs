@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SmbDomainEdge";
+    }
+
     public SmbDomainEdge Set(
         System.String? Cursor = null,
         SmbDomain? Node = null

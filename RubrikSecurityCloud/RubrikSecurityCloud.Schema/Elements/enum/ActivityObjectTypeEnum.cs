@@ -327,6 +327,9 @@ namespace RubrikSecurityCloud.Types
         [EnumMember(Value = "User")]
         USER,
 
+        [EnumMember(Value = "VMWARE_HOST")]
+        VMWARE_HOST,
+
         [EnumMember(Value = "Vcd")]
         VCD,
 

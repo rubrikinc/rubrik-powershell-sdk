@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "GcpCloudAccountProjectForOauth";
+    }
+
     public GcpCloudAccountProjectForOauth Set(
         List<System.String>? MissingPermissions = null,
         System.String? Name = null,

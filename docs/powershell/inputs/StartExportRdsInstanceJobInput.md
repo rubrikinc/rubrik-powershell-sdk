@@ -16,7 +16,9 @@ Input to trigger AWS native RDS Instance export job.
 - destinationRegionNativeId: AwsNativeRegion
   - Region in which the exported RDS DB instance will be launched.
 - dbInstanceClass: AwsNativeRdsDbInstanceClass
-  - Instance class of RDS instance.
+  - Deprecated, use databaseClass instead. Instance class of RDS instance.
+- databaseInstanceClass: System.String
+  - Instance class of RDS instance. AWS supported instance classes can be found here https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#Concepts.DBInstanceClass.Types.
 - primaryAz: System.String
   - Availability Zone (AZ) in which the exported RDS DB instance must be launched.
 - port: System.Int64

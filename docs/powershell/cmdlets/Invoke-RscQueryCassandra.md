@@ -1,6 +1,6 @@
 # Invoke-RscQueryCassandra
 ## Subcommands
-### Columnfamily
+### columnfamily
 Paginated list of cassandra column families.
 
 - There are 5 arguments.
@@ -10,17 +10,17 @@ Paginated list of cassandra column families.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns CassandraColumnFamilyConnection.
-### Columnfamilyrecoverablerange
+### columnfamilyrecoverablerange
 Get Recoverable Range of a Cassandra Column Family.
 
 - There is a single argument of type GetMosaicRecoverableRangeInput.
 - Returns GetMosaicRecoverableRangeResponse.
-### Columnfamilyschema
+### columnfamilyschema
 Get Schema of a Cassandra Column Family.
 
 - There is a single argument of type GetMosaicTableSchemaInput.
 - Returns GetSchemaResponse.
-### Keyspace
+### keyspace
 Paginated list of cassandra keyspaces.
 
 - There are 5 arguments.
@@ -30,7 +30,7 @@ Paginated list of cassandra keyspaces.
     - sortOrder - SortOrder: Sorting order for the results.
     - filter - list of Filters: The hierarchy object filter.
 - Returns CassandraKeyspaceConnection.
-### Source
+### source
 Paginated list of cassandra sources.
 
 - There are 5 arguments.

@@ -45,6 +45,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ThreatHuntConnection";
+    }
+
     public ThreatHuntConnection Set(
         System.Int32? Count = null,
         List<ThreatHuntEdge>? Edges = null,

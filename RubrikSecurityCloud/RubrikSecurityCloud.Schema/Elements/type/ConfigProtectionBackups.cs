@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ConfigProtectionBackups";
+    }
+
     public ConfigProtectionBackups Set(
         UploadLocationType? UploadLocationType = null,
         System.String? BackupClusterVersion = null,

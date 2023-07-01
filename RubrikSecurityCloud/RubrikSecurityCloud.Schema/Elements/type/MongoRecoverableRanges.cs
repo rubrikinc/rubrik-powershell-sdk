@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "MongoRecoverableRanges";
+    }
+
     public MongoRecoverableRanges Set(
         List<MongoRecoverableRange>? RecoverableRanges = null
     ) 

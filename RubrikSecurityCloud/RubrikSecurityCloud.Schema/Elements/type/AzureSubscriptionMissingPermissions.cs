@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSubscriptionMissingPermissions";
+    }
+
     public AzureSubscriptionMissingPermissions Set(
         List<System.String>? MissingPermissions = null,
         System.String? SubscriptionNativeId = null

@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureSqlManagedInstanceDbConfig";
+    }
+
     public AzureSqlManagedInstanceDbConfig Set(
         System.Int32? LogRetentionInDays = null
     ) 

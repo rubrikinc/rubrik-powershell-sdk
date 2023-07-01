@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "TriggerRansomwareDetectionReply";
+    }
+
     public TriggerRansomwareDetectionReply Set(
         System.String? ClusterUuid = null,
         System.String? JobId = null

@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "HypervVirtualMachineUpdate";
+    }
+
     public HypervVirtualMachineUpdate Set(
         System.String? ConfiguredSlaDomainId = null,
         List<System.String>? VirtualDiskIdsExcludedFromSnapshot = null,

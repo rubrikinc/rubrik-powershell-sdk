@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "K8sClusterEdge";
+    }
+
     public K8sClusterEdge Set(
         System.String? Cursor = null,
         K8sCluster? Node = null

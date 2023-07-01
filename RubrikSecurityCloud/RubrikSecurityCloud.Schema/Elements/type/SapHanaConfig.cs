@@ -40,6 +40,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SapHanaConfig";
+    }
+
     public SapHanaConfig Set(
         Duration? DifferentialFrequency = null,
         Duration? IncrementalFrequency = null,

@@ -60,6 +60,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "VappFileVersion";
+    }
+
     public VappFileVersion Set(
         FileModeEnum? FileMode = null,
         VappFileVersionSource? Source = null,

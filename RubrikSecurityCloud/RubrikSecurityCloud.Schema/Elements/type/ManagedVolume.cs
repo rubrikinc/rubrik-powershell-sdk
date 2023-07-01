@@ -311,6 +311,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedVolume";
+    }
+
     public ManagedVolume Set(
         ManagedVolumeApplicationTag? ApplicationTag = null,
         List<Operation>? AuthorizedOperations = null,

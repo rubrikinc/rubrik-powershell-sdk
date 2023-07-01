@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AuthorizedPrincipal";
+    }
+
     public AuthorizedPrincipal Set(
         PrincipalTypeEnum? PrincipalType = null,
         System.String? AuthDomainId = null,

@@ -65,6 +65,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AsyncRequestStatus";
+    }
+
     public AsyncRequestStatus Set(
         DateTime? EndTime = null,
         System.String? Id = null,

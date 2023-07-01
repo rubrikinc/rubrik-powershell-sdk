@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "SnappableConnection";
+    }
+
     public SnappableConnection Set(
         System.Int32? Count = null,
         SnappableAggregation? Aggregation = null,

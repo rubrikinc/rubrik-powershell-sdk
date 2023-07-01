@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "AzureNativeManagedDiskEdge";
+    }
+
     public AzureNativeManagedDiskEdge Set(
         System.String? Cursor = null,
         AzureNativeManagedDisk? Node = null

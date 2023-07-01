@@ -70,6 +70,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ReportConfig";
+    }
+
     public ReportConfig Set(
         DataViewTypeEnum? DataViewType = null,
         SortOrder? SortOrder = null,

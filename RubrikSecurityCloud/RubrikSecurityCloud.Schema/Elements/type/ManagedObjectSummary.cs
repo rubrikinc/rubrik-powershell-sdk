@@ -50,6 +50,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ManagedObjectSummary";
+    }
+
     public ManagedObjectSummary Set(
         ManagedObjectType? ObjectType = null,
         System.String? Id = null,

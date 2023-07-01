@@ -35,6 +35,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "UpgradeDurationReply";
+    }
+
     public UpgradeDurationReply Set(
         System.Int64? FastUpgradeDuration = null,
         System.Int64? RollingUpgradeDuration = null

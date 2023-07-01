@@ -30,6 +30,10 @@ namespace RubrikSecurityCloud.Types
 
     #region methods
 
+    public override string GetGqlTypeName() {
+        return "ArchivalGroupConnectionStatus";
+    }
+
     public ArchivalGroupConnectionStatus Set(
         ConnectionStatusType? Status = null
     ) 
