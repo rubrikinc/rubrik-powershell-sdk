@@ -685,6 +685,14 @@ type Query {
   # Lists all Azure regions supported by the Rubrik-Hosted SaaS protection.
   allHostedAzureRegions: AzureRegionsResp!
 
+  # List the integrations of the specified types.
+  allIntegrations(
+    # List of integration types.
+    integrationTypes: [IntegrationType!]!,
+
+    # Optional filter for integration names.
+    nameFilter: String): ListIntegrationsReply!
+
   # All account level inventory workloads.
   allInventoryWorkloads: [InventoryCard!]!
 
@@ -2361,6 +2369,11 @@ type Query {
     # Rubrik cluster report migration status.
     status: [CdmReportMigrationStatus!]!): ReportsMigrationCount!
 
+  # Retrieve the status of the cluster report migration job.
+  clusterReportMigrationJobStatus(
+    # The Rubrik cluster ID.
+    clusterUuid: UUID): ClusterReportMigrationJobStatus!
+
   # Retrieve details of the Rubrik clusters' reports migration.
   clusterReportMigrationStatus(
     # The Rubrik cluster ID.
@@ -3328,6 +3341,11 @@ type Query {
     # Input for InternalGetHypervVirtualMachine.
     input: GetHypervVirtualMachineInput!): HypervVirtualMachineDetail!
   installedVersionList: [InstalledVersionGroupCount!]!
+
+  # Read the integration with the specified integration ID.
+  integration(
+    # Integration ID.
+    id: Int!): ReadIntegrationReply!
   inventoryRoot: InventoryRoot!
   inventorySubHierarchyRoot(rootEnum: InventorySubHierarchyRootEnum!): InventorySubHierarchyRoot!
 
@@ -4091,6 +4109,9 @@ type Query {
   nodeRemovalCancelPermission(
     # Input for checking if the running node removal job is cancelable.
     input: NodeRemovalCancelPermissionInput!): NodeRemovalCancelPermissionReply!
+
+  # Send notification when the user clicks on the Get License button.
+  notificationForGetLicense: GetLicenseNotificationReply!
 
   # v5.0-v8.0: Lists all files in VM snapshot
   # v8.1+: Lists all files in virtual machine snapshot
@@ -7568,6 +7589,16 @@ type Mutation {
     # Input for InternalCreateHypervVirtualMachineSnapshotMount.
     input: CreateHypervVirtualMachineSnapshotMountInput!): AsyncRequestStatus!
 
+  # Creates a new integration.
+  createIntegration(
+    # Create integration input.
+    input: CreateIntegrationInput!): CreateIntegrationReply!
+
+  # Create a batch of new integrations.
+  createIntegrations(
+    # Create integrations input.
+    input: CreateIntegrationsInput!): CreateIntegrationsReply!
+
   # Create a Rubrik Kubernetes agent manifest.
   createK8sAgentManifest(
     # Request to create a new Rubrik Kubernetes agent manifest.
@@ -7944,6 +7975,16 @@ type Mutation {
   deleteHypervVirtualMachineSnapshotMount(
     # Input for InternalDeleteHypervVirtualMachineSnapshotMount.
     input: DeleteHypervVirtualMachineSnapshotMountInput!): AsyncRequestStatus!
+
+  # Delete the integration with the specified integration ID.
+  deleteIntegration(
+    # Delete integration input.
+    input: DeleteIntegrationInput!): Void
+
+  # Delete a batch of integrations.
+  deleteIntegrations(
+    # Delete integrations input.
+    input: DeleteIntegrationsInput!): Void
   deleteLdapPrincipals(principalIds: [String!]!): Boolean!
 
   # Delete a specified log shipping configuration.
@@ -9940,6 +9981,16 @@ type Mutation {
   updateHypervVirtualMachineSnapshotMount(
     # Input for InternalUpdateHypervVirtualMachineSnapshotMount.
     input: UpdateHypervVirtualMachineSnapshotMountInput!): UpdateHypervVirtualMachineSnapshotMountReply!
+
+  # Update the integration with the specified integration ID.
+  updateIntegration(
+    # Update integration input.
+    input: UpdateIntegrationInput!): Void
+
+  # Update a batch of integrations.
+  updateIntegrations(
+    # Update integrations input.
+    input: UpdateIntegrationsInput!): Void
   updateIpWhitelist(whitelistMode: WhitelistModeEnum!, ipCidrs: [String!]!): Boolean!
   updateLambdaSettings(
     # Probability threshold for anomaly detector.
@@ -14175,6 +14226,9 @@ enum AwsCloudExternalArtifact {
   # Keyword to capture EKS worker node role.
   EXOCOMPUTE_EKS_WORKERNODE_ROLE_ARN
 
+  # Keyword to capture AWS account IAM user.
+  IAM_USER_ARN
+
   # Keyword to capture AWS account secret key.
   SECRET_KEY
 }
@@ -18258,6 +18312,9 @@ type AzureCloudAccountTenant {
 }
 # Azure Cloud Account Tenant with details of exocompute configured for subscriptions for a given feature.
 type AzureCloudAccountTenantWithExoConfigs {
+  # Rubrik ID of the Azure Tenant.
+  rubrikId: String!
+
   # Azure Active Directory (AD) domain corresponding to subscription.
   domainName: String!
 
@@ -25224,11 +25281,14 @@ enum CdmManagedVolumeType {
 }
 # MongoDB node details for the source.
 type CdmMongoNode {
-  # Host details of the MongoDB node.
+  # Host name of the MongoDB node.
   host: String!
 
   # Port details of the MongoDB node.
   port: Int!
+
+  # Host FID of the MongoDB node.
+  hostFid: UUID!
 }
 # SSL Configuration for a MongoDB source object.
 type CdmMongoSslParams {
@@ -28419,6 +28479,25 @@ type ClusterReplicationTarget {
   # Name of replication target.
   name: String!
 }
+# Response containing the cluster report migration job's status.
+type ClusterReportMigrationJobStatus {
+  # Status of the migration job.
+  status: ClusterReportMigrationStatus!
+}
+# The enum describes the status of the migration job.
+enum ClusterReportMigrationStatus {
+  # The cluster's migration job has finished.
+  DONE
+
+  # The cluster's migration job is running.
+  IN_PROGRESS
+
+  # The cluster is ready for migration.
+  READY
+
+  # Unspecified.
+  UNSPECIFIED
+}
 # Metadata for rendering a Rubrik cluster SLA Domain.
 type ClusterSlaDomain implements SlaDomain {
   # Rubrik Cluster SLA Domain name.
@@ -30204,6 +30283,35 @@ input CreateHypervVirtualMachineSnapshotMountInput {
   # Required. ID of Snapshot.
   id: String!
 }
+# Holds the input to a create integration request.
+input CreateIntegrationInput {
+  # The integration name.
+  name: String!
+
+  # The integration type.
+  integrationType: IntegrationType!
+
+  # The integration configuration.
+  config: IntegrationConfigInput!
+}
+# Returned in response to a create integration request and holds the ID of the
+# created integration.
+type CreateIntegrationReply {
+  # ID of the newly created integration.
+  id: Long!
+}
+# Holds the input to a batch create integrations
+# request.
+input CreateIntegrationsInput {
+  # The integrations.
+  integrations: [CreateIntegrationInput!]!
+}
+# Returned in response to a create integrations request and holds the IDs of
+# the created integrations.
+type CreateIntegrationsReply {
+  # The integration IDs.
+  ids: [Long!]!
+}
 # A Set of fields needed to create Rubrik Kubernetes manifest.
 input CreateK8sAgentManifestInput {
   # UUID of the Kubernetes cluster.
@@ -31627,6 +31735,9 @@ enum DataViewTypeEnum {
 
   # Specifies the Threat Monitoring report list information.
   THREAT_MONITORING_LIST
+
+  # Specifies the Threat Monitoring snapshot result information.
+  THREAT_MONITORING_SNAPSHOT_RESULTS
 }
 # Supported in v5.0+
 type Datastore {
@@ -33075,6 +33186,16 @@ input DeleteHypervVirtualMachineSnapshotMountInput {
   # Required. ID of the mount to remove.
   id: String!
 }
+# Holds the input to a delete integration request.
+input DeleteIntegrationInput {
+  # ID of the integration to be deleted.
+  id: Long!
+}
+# Holds the input to a batch delete integrations request.
+input DeleteIntegrationsInput {
+  # IDs of all integrations to be deleted.
+  ids: [Long!]!
+}
 # Input for deleting a SQL Server log shipping target.
 input DeleteLogShippingInput {
   # Boolean value that determines whether to attempt to delete the secondary database associated with the specified log shipping configuration. The default value is false. When set to false, no attempt is made to delete the secondary database. When set to true, starts an asynchronous job to delete the secondary database.
@@ -33892,6 +34013,118 @@ type DisplayableValueString implements DisplayableValue {
   displayValue: String!
   serializedValue: String!
   reportHeader: String!
+}
+# Holds the configuration for the Data Loss Prevention integration.
+type DlpConfig {
+  # Policies to which the configuration applies.
+  policies: [String!]!
+
+  # The target to use when exporting files for fingerprinting.
+  targetType: DlpConfigTargetType!
+
+  # The generic NAS target configuration.
+  genericNas: DlpConfigGenericNas
+
+  # The VMware virtual machine target configuration.
+  vmwareVm: DlpConfigVmwareVm
+}
+# Holds the configuration for a generic NAS target.
+type DlpConfigGenericNas {
+  # The share type.
+  shareType: DlpConfigShareType!
+
+  # The NAS share ID.
+  shareId: String!
+
+  # The path to which files will be recovered on the target.
+  path: String!
+
+  # The NAS host workload ID.
+  workloadId: UUID!
+}
+# Holds the configuration for a generic NAS target.
+input DlpConfigGenericNasInput {
+  # The NAS host workload ID.
+  workloadId: UUID!
+
+  # The share type.
+  shareType: DlpConfigShareType!
+
+  # The NAS share ID.
+  shareId: String!
+
+  # The path to which files will be recovered on the target.
+  path: String!
+}
+# Holds the configuration for the Data Loss Prevention integration.
+input DlpConfigInput {
+  # The generic NAS target configuration.
+  genericNas: DlpConfigGenericNasInput
+
+  # The VMware virtual machine target configuration.
+  vmwareVm: DlpConfigVmwareVmInput
+
+  # Policies to which the configuration applies.
+  policies: [String!]!
+
+  # The target to use when exporting files for fingerprinting.
+  targetType: DlpConfigTargetType!
+}
+# Specifies the OS type of the target.
+enum DlpConfigOsType {
+  # Linux OS.
+  LINUX
+
+  # Represents an unspecified OS type.
+  OS_TYPE_UNSPECIFIED
+
+  # Windows OS.
+  WINDOWS
+}
+# Represents the share type of an NFS workload.
+enum DlpConfigShareType {
+  # NFS share.
+  NFS
+
+  # An unspecified share type.
+  SHARE_TYPE_UNSPECIFIED
+
+  # SMB share.
+  SMB
+}
+# Specifies the type of the target that files will be recovered
+# to. Note, this also specifies which configuration contains valid data.
+enum DlpConfigTargetType {
+  # Generic NAS share target.
+  GENERIC_NAS
+
+  # The TARGET_TYPE_UNSPECIFIED type represents an unspecified target type.
+  TARGET_TYPE_UNSPECIFIED
+
+  # VMware virtual machine target.
+  VMWARE_VM
+}
+# Holds the configuration for a VMware virtual machine target.
+type DlpConfigVmwareVm {
+  # The OS type.
+  osType: DlpConfigOsType!
+
+  # The path to which files will be recovered on the target.
+  path: String!
+
+  # Workload ID of the target.
+  workloadId: UUID!
+}
+# Holds the configuration for a VMware virtual machine target.
+input DlpConfigVmwareVmInput {
+  # Workload ID of the target.
+  workloadId: UUID!
+
+  # The OS type.
+  osType: DlpConfigOsType!
+
+  # The path to which files will be recovered on the target.
+  path: String!
 }
 # Information about the archival location.
 type DlsArchivalLocation {
@@ -40714,6 +40947,11 @@ type GetLambdaConfigReply {
   # Enable or disable threat monitoring.
   isThreatMonitoringEnabled: Boolean!
 }
+# Indicates that the user has clicked the Get License button.
+type GetLicenseNotificationReply {
+  # Indicates whether notification is successfully sent.
+  isSuccessful: Boolean!
+}
 # Information about the licensed products the customer has.
 type GetLicensedProductsInfoReply {
   # Represents a list of licensed cluster products.
@@ -42268,6 +42506,9 @@ enum HierarchyFilterField {
   # Filter by Managed Volume Export ID.
   MANAGED_VOLUME_EXPORT_ID
 
+  # Filter according to the Managed Volume export mount type.
+  MANAGED_VOLUME_EXPORT_MOUNT_TYPE
+
   # Filter Managed Volume Exports for a given Managed Volume ID.
   MANAGED_VOLUME_ID
 
@@ -43081,6 +43322,9 @@ enum HierarchySortByField {
 
   # Sort unmanaged objects by number of snapshot count.
   UNMANAGED_OBJECTS_UNEXPIRED_SNAPSHOT_COUNT
+
+  # Sort based on the combination of vCenter name and virtual machine name.
+  VMWARE_VCENTER_NAME_AND_VM_NAME
 
   # Sort vSphere datastores by capacity.
   VSPHERE_DATASTORE_CAPACITY
@@ -46485,6 +46729,50 @@ input InstantRecoveryJobConfigV2Input {
 }
 # The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 scalar Int
+# Holds an integration and its configuration.
+type Integration {
+  # The integration ID.
+  id: Long!
+
+  # The integration name.
+  name: String!
+
+  # The integration type.
+  integrationType: IntegrationType!
+
+  # The timestamp for when the integration was first created.
+  createdAt: DateTime!
+
+  # The timestamp for when the integration was last updated.
+  updatedAt: DateTime!
+
+  # The configuration.
+  config: IntegrationConfig!
+}
+# Holds the configuration of a single integration. Note that IntegrationConfig
+# can hold multiple configurations at once but only the configuration specified
+# with IntegrationType will be considered.
+type IntegrationConfig {
+  # The DataLossPrevention configuration.
+  dataLossPrevention: DlpConfig
+}
+# Holds the configuration of a single integration. Note that IntegrationConfig
+# can hold multiple configurations at once but only the configuration specified
+# with IntegrationType will be considered.
+input IntegrationConfigInput {
+  # The DataLossPrevention configuration.
+  dataLossPrevention: DlpConfigInput
+}
+# Specifies the type of an integration. Note that the values
+# are stored in a database and therefore cannot be changed.
+enum IntegrationType {
+  # Represents a security integration that fingerprints files
+  # with sensitive data hits to prevent them from being exfiltrated.
+  DATA_LOSS_PREVENTION
+
+  # Represents an unspecified integration.
+  INTEGRATION_TYPE_UNSPECIFIED
+}
 # Interface CIDR Info.
 type InterfaceCidr {
   interfaceType: InterfaceType!
@@ -46812,9 +47100,6 @@ enum InventorySubHierarchyRootEnum {
   NAS_ROOT
   NUTANIX_ROOT
   O365_ROOT
-
-  # On-prem AD root.
-  ON_PREM_AD_ROOT
   ORACLE_ROOT
   PHYSICAL_HOST_ROOT
   SAP_HANA_ROOT
@@ -48432,6 +48717,12 @@ input ListFileResultFiltersInput {
   # List of principal IDs to filter the paths.
   sids: [String!] = []
   fileType: FileCountType!
+}
+# Returned in response to a ListIntegrationsReq and
+# holds the requested integrations.
+type ListIntegrationsReply {
+  # The requested integrations.
+  integrations: [Integration!]!
 }
 # List of Ransomware Investigation workload locations.
 type ListLocationsReply {
@@ -59876,6 +60167,9 @@ type NutanixCluster implements CdmHierarchyObject , HierarchyObject , NutanixTop
   # CDM ID of the Nutanix virtual machine.
   cdmId: String!
 
+  # Last refresh timestamp of Nutanix cluster.
+  lastRefreshTime: DateTime
+
   # IP address of Nutanix cluster.
   hostName: String!
 
@@ -59890,9 +60184,6 @@ type NutanixCluster implements CdmHierarchyObject , HierarchyObject , NutanixTop
 
   # Object ID.
   id: UUID!
-
-  # Last time when the Nutanix cluster was refreshed.
-  lastRefreshTime: DateTime!
 
   # Connection status of the Nutanix Cluster. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
   connectionStatus: RefreshableObjectConnectionStatus!
@@ -60563,6 +60854,9 @@ type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , Nutan
   # CDM ID of the Nutanix Virtual Machine.
   cdmId: String!
 
+  # Last refresh timestamp of Nutanix Prism Central.
+  lastRefreshTime: DateTime
+
   # IP address of Nutanix Prism Central.
   hostName: String!
 
@@ -60580,9 +60874,6 @@ type NutanixPrismCentral implements CdmHierarchyObject , HierarchyObject , Nutan
 
   # Object ID.
   id: UUID!
-
-  # Last time when the Nutanix Prism Central was refreshed.
-  lastRefreshTime: DateTime!
 
   # Connection status of the Nutanix Prism Central. If the CDM cluster is disconnected, then the status is set to 'Disconnected'.
   connectionStatus: RefreshableObjectConnectionStatus!
@@ -64731,6 +65022,9 @@ enum OpenAccessType {
 enum Operation {
   ADD_AWS_CLOUD_ACCOUNT
   ADD_AZURE_CLOUD_ACCOUNT
+
+  # Add certificates and certificate signing requests in tenant organization.
+  ADD_CERTIFICATE
   ADD_CLUSTER
 
   # Add nodes to the cluster.
@@ -64841,6 +65135,9 @@ enum Operation {
   # Manage TPR policy.
   MANAGE_TPR_POLICY
   MANAGE_WEBHOOKS
+
+  # Manage Zscaler integration.
+  MANAGE_ZSCALER_DLP_INTEGRATION
   MODIFY_CLUSTER
 
   # Modify event cluster settings.
@@ -64941,6 +65238,9 @@ enum Operation {
   VIEW_TPR_REQUEST
   VIEW_USER_MANAGEMENT
   VIEW_WEBHOOKS
+
+  # View Zscaler integration.
+  VIEW_ZSCALER_DLP_INTEGRATION
 }
 # Represents option group in AWS.
 type OptionGroup {
@@ -70533,6 +70833,12 @@ type RdsInstanceExportDefaults {
 
   # Specifies whether RDS is available in multi Availability Zones (AZs). If true, it means it is a multi-AZ RDS Instance.
   isMultiAz: Boolean!
+}
+# Returned in response to a read integration request
+# and holds the requested integration.
+type ReadIntegrationReply {
+  # The requested integration.
+  integration: Integration!
 }
 # Retrieval method for reader archival locations.
 enum ReaderRetrievalMethod {
@@ -81760,6 +82066,25 @@ type UpdateIndexingStatusError {
   # The error string.
   error: String!
 }
+# Holds the input to an update integration request.
+input UpdateIntegrationInput {
+  # The integration ID.
+  id: Long!
+
+  # The integration name.
+  name: String!
+
+  # The integration type.
+  integrationType: IntegrationType!
+
+  # The integration configuration.
+  config: IntegrationConfigInput!
+}
+# Holds the input to a batch update integrations request.
+input UpdateIntegrationsInput {
+  # The integrations.
+  integrations: [UpdateIntegrationInput!]!
+}
 # Specifies the input required to update the lockout config by the admin.
 input UpdateLockoutConfigInput {
   # Specifies the number of failed login attempts allowed after which the account is locked.
@@ -83635,6 +83960,24 @@ input ValidateAndCreateAwsCloudAccountInput {
 
   # Details for cloud accounts to be initiated.
   awsChildAccounts: [AwsCloudAccountInput!]!
+
+  # Name of the cross-account role.
+  crossAccountRoleName: String
+
+  # Path of the cross-account role.
+  crossAccountRolePath: String
+
+  # Name of the exocompute's master node's role.
+  clusterRoleName: String
+
+  # Path of the exocompute's master node's role.
+  clusterRolePath: String
+
+  # Name of the exocompute's worker node's role.
+  nodeRoleName: String
+
+  # Name of the exocompute's worker node's role.
+  nodeRolePath: String
 }
 # Aws cloud accounts validate response.
 type ValidateAndCreateAwsCloudAccountReply {
@@ -91675,6 +92018,9 @@ type WorkloadAnomaly {
 
   # Time when the anomaly was detected.
   detectionTime: DateTime
+
+  # Identifies the anomaly for a given workload.
+  anomalyId: String!
 
   # The object type of the workload.
   objectType: HierarchyObjectTypeEnum!
