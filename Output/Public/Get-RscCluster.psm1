@@ -147,7 +147,7 @@ function Get-RscCluster {
         }
 
         # -7- Filter out null values:
-        # $result = $result | Remove-NullProperties
+        $result = $result | Remove-NullProperties
 
         $result
     } 

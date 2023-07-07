@@ -54,13 +54,8 @@ function Get-RscAccount {
             $result | Add-Member -MemberType NoteProperty -Name $_.Name -Value $_.Value }
         
         # -4- Filter out null values:
-        if ($result -is [System.Collections.IList]) {
-            $result | ForEach-Object {
-                $_ | Select-Object -Property ($_.PSObject.Properties | Where-Object { $null -ne $_.Value }).Name
-            }
-        }
-        else {
-            $result | Select-Object -Property ($result.PSObject.Properties | Where-Object { $null -ne $_.Value }).Name
-        }
+        $result | Remove-NullProperties
+
+        $result
     } 
 }

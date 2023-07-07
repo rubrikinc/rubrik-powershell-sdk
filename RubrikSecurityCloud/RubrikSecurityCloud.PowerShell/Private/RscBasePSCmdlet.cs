@@ -86,7 +86,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            Exploration.GlobalProfile = this.InputProfile;
+            Exploration.Init(this.InputProfile);
             this._logger.Debug(CmdletParametersReport());
             if (string.IsNullOrEmpty(Op))
             {

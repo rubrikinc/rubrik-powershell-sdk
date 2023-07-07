@@ -27,7 +27,7 @@ namespace RubrikSecurityCloud.PowerShell.Private
             _parent = parent;
             _logger = parent._logger;
             this.Op = parent.Op;
-            this.Arg = new Hashtable();
+            this.Arg = new Hashtable(StringComparer.OrdinalIgnoreCase);
             this.Field = null;
         }
 
@@ -183,20 +183,20 @@ namespace RubrikSecurityCloud.PowerShell.Private
 
         private Hashtable cmdletArgToHashtable()
         {
-            Hashtable args = null;
+            Hashtable args = new Hashtable(StringComparer.OrdinalIgnoreCase);
+            if (_parent.Arg == null)
+            {
+                return args ;
+            }
             if (_argDefs.Length == 1 && !(_parent.Arg is Hashtable))
             {
-                args = new Hashtable();
                 args.Add(_argDefs[0].Item1, _parent.Arg);
                 return args ;
             }
-            if (_parent.Arg == null)
-            {
-                return new Hashtable(StringComparer.OrdinalIgnoreCase);
-            }
             if (_parent.Arg is String)
             {
-                args = new Hashtable(StringComparer.OrdinalIgnoreCase);
+                Hashtable _args = new Hashtable(StringComparer.OrdinalIgnoreCase);
+
                 // split the String into key-value pairs
                 // separated by commas: key1=value1,key2=value2
                 string[] pairs = ((string)_parent.Arg).Split(',');
@@ -212,12 +212,33 @@ namespace RubrikSecurityCloud.PowerShell.Private
                             )
                         );
                     }
-                    args.Add(kv[0], kv[1]);
+                    _args.Add(kv[0], kv[1]);
                 }
-                return args ;
+                _parent.Arg = _args;
             }
-            // Hashtable coming from PowerShell is case-insensitive
-            return (Hashtable)_parent.Arg;
+            // Passed argument must be a hashtable
+            if ( !(_parent.Arg is Hashtable) )
+            {
+                throw new ArgumentException(
+                    string.Format(
+                        "Invalid argument {0}. Expected a hashtable.",
+                        _parent.Arg
+                    )
+                );
+            }
+            // convert _parent.Arg to a case-insensitive hashtable,
+            // coalescing keys with the same name,
+            // and removing null values
+            foreach (DictionaryEntry entry in (Hashtable)_parent.Arg)
+            {
+                if (entry.Value != null)
+                {
+                    args.Add(
+                        (string)entry.Key, _jsonOk(entry.Value));
+                }
+            }
+
+            return args;
         }
 
         internal string _argString()

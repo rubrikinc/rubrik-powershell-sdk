@@ -147,13 +147,8 @@ function Get-RscCluster {
         }
 
         # -7- Filter out null values:
-        if ($result -is [System.Collections.IList]) {
-            $result | ForEach-Object {
-                $_ | Select-Object -Property ($_.PSObject.Properties | Where-Object { $null -ne $_.Value }).Name
-            }
-        }
-        else {
-            $result | Select-Object -Property ($result.PSObject.Properties | Where-Object { $null -ne $_.Value }).Name
-        }
+        $result = $result | Remove-NullProperties
+
+        $result
     } 
 }

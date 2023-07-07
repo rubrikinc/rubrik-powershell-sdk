@@ -17,13 +17,37 @@ namespace RubrikSecurityCloud
             DETAILS
         }
 
-        // Static field
+        // --------------------------------------------------
+        // CAVEAT:
+        // These global fields are possibly shared among
+        // multiple PowerShell sessions; if so,
+        // we'll need them to be defined with each cmdlet invocation.
+
+        // accessible from PowerShell with
+        // [RubrikSecurityCloud.Exploration]::GlobalProfile
         public static Profile GlobalProfile = Profile.DEFAULT;
+
+        // accessible from PowerShell with
+        // [RubrikSecurityCloud.Exploration]::FieldCount
+        public static int FieldCount = 0;
+
+        public static int MaxFieldCount = 1000;
+        // --------------------------------------------------
+
+        public static void Init(Profile profile=Profile.DEFAULT)
+        {
+            GlobalProfile = profile;
+            FieldCount = 0;
+        }
 
         // Static method
         // a leaf is a scalar or an enum
         public static bool Includes(string nodeName, bool isLeaf=false)
         {
+            if ( FieldCount > MaxFieldCount ) {
+                return false ;
+            }
+
             if (string.IsNullOrEmpty(nodeName))
             {
                 return false;
@@ -39,17 +63,26 @@ namespace RubrikSecurityCloud
             string lastNode = nodes[nodes.Length - 1];
 
             lastNode = lastNode.ToLower();
+            bool included;
             switch (GlobalProfile)
             {
                 case Profile.DEFAULT:
-                    return DefaultIncludes(nodes, lastNode, depth, isLeaf);
+                    included = DefaultIncludes(nodes, lastNode, depth, isLeaf);
+                    break;
 
                 case Profile.DETAILS:
-                    return DetailsIncludes(nodes, lastNode, depth, isLeaf);
+                    included = DetailsIncludes(nodes, lastNode, depth, isLeaf);
+                    break;
 
                 default:
                     return false;
             }
+            if (included)
+            {
+                FieldCount++;
+            }
+
+            return included;
         }
 
         // Static method
@@ -60,7 +93,7 @@ namespace RubrikSecurityCloud
             bool isLeaf)
         {
             if (!isLeaf) {
-                if (lastNode == "nodes")
+                if (lastNode == "nodes" || lastNode == "pageinfo" )
                 {
                     return true;
                 }
@@ -88,7 +121,10 @@ namespace RubrikSecurityCloud
                  lastNode == "type" ||
                  lastNode == "objecttype" ||
                  lastNode == "slaassignment" ||
-                 lastNode == "numworkloaddescendants") 
+                 lastNode == "numworkloaddescendants" ||
+                 lastNode == "startcursor" ||
+                 lastNode == "endcursor" ||
+                 lastNode == "count" )
             {
                 return true;
             }
@@ -112,8 +148,13 @@ namespace RubrikSecurityCloud
             int depth,
             bool isLeaf)
         {
+            // start with default includes
+            if ( DefaultIncludes(nodes, lastNode, depth, isLeaf) ) {
+                return true;
+            }
+            // we use nodes, not edges
             if ( lastNode == "edges" ) {
-                return false; // we use nodes, not edges.
+                return false;
             }
             // WORKAROUND for api server bug
             // TODO: SPARK-230377
@@ -121,7 +162,15 @@ namespace RubrikSecurityCloud
             {
                 return false ;
             }
-            return isLeaf || depth <= 1 || lastNode == "nodes";
+            // try to avoid loops
+            int firstIndex = Array.IndexOf(nodes, nodes[nodes.Length - 1]);
+            if (firstIndex != nodes.Length - 1)
+            {
+                // The value of lastNode is elsewhere in nodes
+                // => probably a loop
+                return false;
+            }
+            return isLeaf || depth <= 1 ;
         }
 
     }
